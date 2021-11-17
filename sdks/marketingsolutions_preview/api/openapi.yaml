@@ -4394,7 +4394,7 @@ components:
     CategoryUpdatesPerCatalog:
       example:
         catalogId: 0
-        categoriess:
+        categories:
         - categoryHashCode: 6
           enabled: true
         - categoryHashCode: 6
@@ -4403,7 +4403,7 @@ components:
         catalogId:
           format: int32
           type: integer
-        categoriess:
+        categories:
           items:
             $ref: '#/components/schemas/CategoryUpdateInput'
           type: array
