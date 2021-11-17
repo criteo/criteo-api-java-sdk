@@ -36,9 +36,9 @@ public class CategoryUpdatesPerCatalog {
   @SerializedName(SERIALIZED_NAME_CATALOG_ID)
   private Integer catalogId;
 
-  public static final String SERIALIZED_NAME_CATEGORIES = "categories";
-  @SerializedName(SERIALIZED_NAME_CATEGORIES)
-  private List<CategoryUpdateInput> categories = null;
+  public static final String SERIALIZED_NAME_CATEGORIESS = "categoriess";
+  @SerializedName(SERIALIZED_NAME_CATEGORIESS)
+  private List<CategoryUpdateInput> categoriess = null;
 
 
   public CategoryUpdatesPerCatalog catalogId(Integer catalogId) {
@@ -64,34 +64,34 @@ public class CategoryUpdatesPerCatalog {
   }
 
 
-  public CategoryUpdatesPerCatalog categories(List<CategoryUpdateInput> categories) {
+  public CategoryUpdatesPerCatalog categoriess(List<CategoryUpdateInput> categoriess) {
     
-    this.categories = categories;
+    this.categoriess = categoriess;
     return this;
   }
 
-  public CategoryUpdatesPerCatalog addCategoriesItem(CategoryUpdateInput categoriesItem) {
-    if (this.categories == null) {
-      this.categories = new ArrayList<>();
+  public CategoryUpdatesPerCatalog addCategoriessItem(CategoryUpdateInput categoriessItem) {
+    if (this.categoriess == null) {
+      this.categoriess = new ArrayList<>();
     }
-    this.categories.add(categoriesItem);
+    this.categoriess.add(categoriessItem);
     return this;
   }
 
    /**
-   * Get categories
-   * @return categories
+   * Get categoriess
+   * @return categoriess
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<CategoryUpdateInput> getCategories() {
-    return categories;
+  public List<CategoryUpdateInput> getCategoriess() {
+    return categoriess;
   }
 
 
-  public void setCategories(List<CategoryUpdateInput> categories) {
-    this.categories = categories;
+  public void setCategoriess(List<CategoryUpdateInput> categoriess) {
+    this.categoriess = categoriess;
   }
 
 
@@ -105,12 +105,12 @@ public class CategoryUpdatesPerCatalog {
     }
     CategoryUpdatesPerCatalog categoryUpdatesPerCatalog = (CategoryUpdatesPerCatalog) o;
     return Objects.equals(this.catalogId, categoryUpdatesPerCatalog.catalogId) &&
-        Objects.equals(this.categories, categoryUpdatesPerCatalog.categories);
+        Objects.equals(this.categoriess, categoryUpdatesPerCatalog.categoriess);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogId, categories);
+    return Objects.hash(catalogId, categoriess);
   }
 
   @Override
@@ -118,7 +118,7 @@ public class CategoryUpdatesPerCatalog {
     StringBuilder sb = new StringBuilder();
     sb.append("class CategoryUpdatesPerCatalog {\n");
     sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
-    sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
+    sb.append("    categoriess: ").append(toIndentedString(categoriess)).append("\n");
     sb.append("}");
     return sb.toString();
   }
