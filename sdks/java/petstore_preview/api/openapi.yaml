@@ -73,47 +73,6 @@ paths:
       - pet
       x-contentType: application/json
       x-accepts: application/json
-    put:
-      description: Update an existing pet by Id
-      operationId: updatePet
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Pet'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Pet'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Pet'
-        description: Update an existent pet in the store
-        required: true
-      responses:
-        "200":
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Pet'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pet'
-          description: Successful operation
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Pet not found
-        "405":
-          description: Validation exception
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
-      summary: Update an existing pet
-      tags:
-      - pet
-      x-contentType: application/json
-      x-accepts: application/json
   /pet/findByStatus:
     get:
       description: Multiple status values can be provided with comma separated strings
