@@ -4,83 +4,13 @@ All URIs are relative to *http://localhost/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addPet**](PetApi.md#addPet) | **POST** /pet | Add a new pet to the store
 [**deletePet**](PetApi.md#deletePet) | **DELETE** /pet/{petId} | Deletes a pet
 [**findPetsByStatus**](PetApi.md#findPetsByStatus) | **GET** /pet/findByStatus | Finds Pets by status
 [**findPetsByTags**](PetApi.md#findPetsByTags) | **GET** /pet/findByTags | Finds Pets by tags
 [**getPetById**](PetApi.md#getPetById) | **GET** /pet/{petId} | Find pet by ID
-[**updatePet**](PetApi.md#updatePet) | **PUT** /pet | Update an existing pet
 [**updatePetWithForm**](PetApi.md#updatePetWithForm) | **POST** /pet/{petId} | Updates a pet in the store with form data
 [**uploadFile**](PetApi.md#uploadFile) | **POST** /pet/{petId}/uploadImage | uploads an image
 
-
-<a name="addPet"></a>
-# **addPet**
-> Pet addPet(pet)
-
-Add a new pet to the store
-
-Add a new pet to the store
-
-### Example
-```java
-// Import classes:
-import com.criteo.api.petstore.preview.ApiClient;
-import com.criteo.api.petstore.preview.ApiException;
-import com.criteo.api.petstore.preview.Configuration;
-import com.criteo.api.petstore.preview.auth.*;
-import com.criteo.api.petstore.preview.models.*;
-import com.criteo.api.petstore.preview.api.PetApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api/v3");
-    
-    // Configure OAuth2 access token for authorization: petstore_auth
-    OAuth petstore_auth = (OAuth) defaultClient.getAuthentication("petstore_auth");
-    petstore_auth.setAccessToken("YOUR ACCESS TOKEN");
-
-    PetApi apiInstance = new PetApi(defaultClient);
-    Pet pet = new Pet(); // Pet | Create a new pet in the store
-    try {
-      Pet result = apiInstance.addPet(pet);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling PetApi#addPet");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **pet** | [**Pet**](Pet.md)| Create a new pet in the store |
-
-### Return type
-
-[**Pet**](Pet.md)
-
-### Authorization
-
-[petstore_auth](../README.md#petstore_auth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/xml, application/x-www-form-urlencoded
- - **Accept**: application/xml, application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful operation |  -  |
-**405** | Invalid input |  -  |
 
 <a name="deletePet"></a>
 # **deletePet**
@@ -358,76 +288,6 @@ Name | Type | Description  | Notes
 **200** | successful operation |  -  |
 **400** | Invalid ID supplied |  -  |
 **404** | Pet not found |  -  |
-
-<a name="updatePet"></a>
-# **updatePet**
-> Pet updatePet(pet)
-
-Update an existing pet
-
-Update an existing pet by Id
-
-### Example
-```java
-// Import classes:
-import com.criteo.api.petstore.preview.ApiClient;
-import com.criteo.api.petstore.preview.ApiException;
-import com.criteo.api.petstore.preview.Configuration;
-import com.criteo.api.petstore.preview.auth.*;
-import com.criteo.api.petstore.preview.models.*;
-import com.criteo.api.petstore.preview.api.PetApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api/v3");
-    
-    // Configure OAuth2 access token for authorization: petstore_auth
-    OAuth petstore_auth = (OAuth) defaultClient.getAuthentication("petstore_auth");
-    petstore_auth.setAccessToken("YOUR ACCESS TOKEN");
-
-    PetApi apiInstance = new PetApi(defaultClient);
-    Pet pet = new Pet(); // Pet | Update an existent pet in the store
-    try {
-      Pet result = apiInstance.updatePet(pet);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling PetApi#updatePet");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **pet** | [**Pet**](Pet.md)| Update an existent pet in the store |
-
-### Return type
-
-[**Pet**](Pet.md)
-
-### Authorization
-
-[petstore_auth](../README.md#petstore_auth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/xml, application/x-www-form-urlencoded
- - **Accept**: application/xml, application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful operation |  -  |
-**400** | Invalid ID supplied |  -  |
-**404** | Pet not found |  -  |
-**405** | Validation exception |  -  |
 
 <a name="updatePetWithForm"></a>
 # **updatePetWithForm**
