@@ -636,6 +636,129 @@ public class PetApi {
         return localVarCall;
     }
     /**
+     * Build call for updatePet
+     * @param pet Update an existent pet in the store (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid ID supplied </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Pet not found </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Validation exception </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updatePetCall(Pet pet, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = pet;
+
+        // create path and map variables
+        String localVarPath = "/pet";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/xml", "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json", "application/xml", "application/x-www-form-urlencoded"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "petstore_auth" };
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updatePetValidateBeforeCall(Pet pet, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'pet' is set
+        if (pet == null) {
+            throw new ApiException("Missing the required parameter 'pet' when calling updatePet(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updatePetCall(pet, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Update an existing pet
+     * Update an existing pet by Id
+     * @param pet Update an existent pet in the store (required)
+     * @return Pet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid ID supplied </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Pet not found </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Validation exception </td><td>  -  </td></tr>
+     </table>
+     */
+    public Pet updatePet(Pet pet) throws ApiException {
+        ApiResponse<Pet> localVarResp = updatePetWithHttpInfo(pet);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Update an existing pet
+     * Update an existing pet by Id
+     * @param pet Update an existent pet in the store (required)
+     * @return ApiResponse&lt;Pet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid ID supplied </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Pet not found </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Validation exception </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Pet> updatePetWithHttpInfo(Pet pet) throws ApiException {
+        okhttp3.Call localVarCall = updatePetValidateBeforeCall(pet, null);
+        Type localVarReturnType = new TypeToken<Pet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Update an existing pet (asynchronously)
+     * Update an existing pet by Id
+     * @param pet Update an existent pet in the store (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid ID supplied </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Pet not found </td><td>  -  </td></tr>
+        <tr><td> 405 </td><td> Validation exception </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updatePetAsync(Pet pet, final ApiCallback<Pet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updatePetValidateBeforeCall(pet, _callback);
+        Type localVarReturnType = new TypeToken<Pet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for updatePetWithForm
      * @param petId ID of pet that needs to be updated (required)
      * @param name Name of pet that needs to be updated (optional)
