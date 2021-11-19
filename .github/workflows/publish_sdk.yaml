@@ -8,8 +8,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Genereate
+
+      - name: Build SDKs
         run: |
-          chmod +x ./scripts/publish_sdk.sh
-          ./scripts/publish_sdk.sh
+          chmod +x ./scripts/run_command.sh
+          ./scripts/run_command.sh "mvn install"
+        shell: bash
+
+      - name: Test SDKs
+        run: |
+          chmod +x ./scripts/run_command.sh
+          ./scripts/run_command.sh "mvn test"
         shell: bash
