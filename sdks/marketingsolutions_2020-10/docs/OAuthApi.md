@@ -30,9 +30,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     OAuthApi apiInstance = new OAuthApi(defaultClient);
     String clientId = "clientId_example"; // String | API Client-Id or Username
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 

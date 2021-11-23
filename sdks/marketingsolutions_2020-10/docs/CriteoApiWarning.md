@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **type** | [**TypeEnum**](#TypeEnum) | A machine-readable code specifying error category |  [optional]
 **code** | [**CodeEnum**](#CodeEnum) | A machine-readable error code string in kabab-case. Unique across Criteo |  [optional]
 **instance** | **String** | A URI reference that identifies the specific occurrence of the problem |  [optional]
-**title** | **String** | A short, human-readable summary of the problem type. |  [optional]
+**title** | **String** | A short, human-readable remarks of the problem type. |  [optional]
 **detail** | **String** | A human-readable explanation specific to this occurrence of the problem. |  [optional]
 
 
