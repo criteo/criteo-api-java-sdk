@@ -73,7 +73,7 @@ public class PetApi {
         Object localVarPostBody = pet;
 
         // create path and map variables
-        String localVarPath = "/pet-test";
+        String localVarPath = "/pet";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
