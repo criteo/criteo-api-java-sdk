@@ -35,7 +35,7 @@ tags:
     url: http://swagger.io
   name: user
 paths:
-  /pet:
+  /pet-test:
     post:
       description: Add a new pet to the store
       operationId: addPet
