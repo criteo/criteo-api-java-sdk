@@ -90,9 +90,9 @@ Class | Method | HTTP request | Description
 *AdvertiserApi* | [**getCategory**](docs/AdvertiserApi.md#getCategory) | **GET** /legacy/marketing/v1/advertisers/{advertiserId}/categories/{categoryHashCode} | Gets a specific advertiser&#39;s category
 *AnalyticsApi* | [**getAdsetReport**](docs/AnalyticsApi.md#getAdsetReport) | **POST** /2021-04/statistics/report | 
 *AnalyticsApi* | [**getTransactionsReport**](docs/AnalyticsApi.md#getTransactionsReport) | **POST** /2021-04/transactions/report | 
-*AudienceApi* | [**createAudience**](docs/AudienceApi.md#createAudience) | **POST** /2021-04/audiences | 
+*AudienceApi* | [**createAudience**](docs/AudienceApi.md#createAudience) | **POST** /2021-10/audiences | 
 *AudienceApi* | [**deleteIdentifiers**](docs/AudienceApi.md#deleteIdentifiers) | **DELETE** /2021-04/audiences/{audience-id}/contactlist | 
-*AudienceApi* | [**getAudiences**](docs/AudienceApi.md#getAudiences) | **GET** /2021-04/audiences | 
+*AudienceApi* | [**getAudiences**](docs/AudienceApi.md#getAudiences) | **GET** /2021-10/audiences | 
 *AudienceApi* | [**modifyAudience**](docs/AudienceApi.md#modifyAudience) | **PATCH** /2021-04/audiences/{audience-id} | 
 *AudienceApi* | [**modifyAudienceUsers**](docs/AudienceApi.md#modifyAudienceUsers) | **PATCH** /2021-04/audiences/{audience-id}/contactlist | 
 *AudienceApi* | [**removeAudience**](docs/AudienceApi.md#removeAudience) | **DELETE** /2021-04/audiences/{audience-id} | 
