@@ -59,7 +59,7 @@ paths:
       - OAuth
       x-contentType: application/x-www-form-urlencoded
       x-accepts: application/json
-  /2021-10/audiences:
+  /2021-04/audiences:
     get:
       description: Get a list of all the audiences for the user or for the given advertiser_id
       operationId: getAudiences

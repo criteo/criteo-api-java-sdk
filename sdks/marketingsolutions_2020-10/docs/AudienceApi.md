@@ -4,9 +4,9 @@ All URIs are relative to *https://api.criteo.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createAudience**](AudienceApi.md#createAudience) | **POST** /2021-10/audiences | 
+[**createAudience**](AudienceApi.md#createAudience) | **POST** /2021-04/audiences | 
 [**deleteIdentifiers**](AudienceApi.md#deleteIdentifiers) | **DELETE** /2021-04/audiences/{audience-id}/contactlist | 
-[**getAudiences**](AudienceApi.md#getAudiences) | **GET** /2021-10/audiences | 
+[**getAudiences**](AudienceApi.md#getAudiences) | **GET** /2021-04/audiences | 
 [**modifyAudience**](AudienceApi.md#modifyAudience) | **PATCH** /2021-04/audiences/{audience-id} | 
 [**modifyAudienceUsers**](AudienceApi.md#modifyAudienceUsers) | **PATCH** /2021-04/audiences/{audience-id}/contactlist | 
 [**removeAudience**](AudienceApi.md#removeAudience) | **DELETE** /2021-04/audiences/{audience-id} | 

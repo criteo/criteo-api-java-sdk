@@ -3,7 +3,7 @@ apply plugin: 'eclipse'
 apply plugin: 'java'
 
 group = 'com.criteo'
-version = '2020_10.1.211125'
+version = 'preview.1.211125'
 
 buildscript {
     repositories {
@@ -87,7 +87,7 @@ if(hasProperty('target') && target == 'android') {
 
     install {
         repositories.mavenInstaller {
-            pom.artifactId = 'criteo-api-marketingsolutions-sdk-java8'
+            pom.artifactId = 'criteo-api-petstore-sdk-java8'
         }
     }
 

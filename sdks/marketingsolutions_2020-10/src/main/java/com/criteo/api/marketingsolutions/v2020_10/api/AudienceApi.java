@@ -80,7 +80,7 @@ public class AudienceApi {
         Object localVarPostBody = newAudienceRequest;
 
         // create path and map variables
-        String localVarPath = "/2021-10/audiences";
+        String localVarPath = "/2021-04/audiences";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -311,7 +311,7 @@ public class AudienceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/2021-10/audiences";
+        String localVarPath = "/2021-04/audiences";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
