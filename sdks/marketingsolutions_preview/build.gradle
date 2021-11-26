@@ -3,7 +3,7 @@ apply plugin: 'eclipse'
 apply plugin: 'java'
 
 group = 'com.criteo'
-version = 'preview.1.211125'
+version = 'preview.1.211126'
 
 buildscript {
     repositories {
