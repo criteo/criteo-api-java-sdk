@@ -49,8 +49,8 @@ Add this dependency to your project's POM:
 ```xml
 <dependency>
   <groupId>com.criteo</groupId>
-  <artifactId>criteo-api-retailmedia-sdk-java8</artifactId>
-  <version></version>
+  <artifactId>criteo-api-retailmedia-sdk</artifactId>
+  <version>2021.10.0.211126</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -60,7 +60,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.criteo:criteo-api-retailmedia-sdk-java8:"
+compile "com.criteo:criteo-api-retailmedia-sdk"
 ```
 
 ### Others
@@ -73,7 +73,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/criteo-api-retailmedia-sdk-java8-.jar`
+* `target/criteo-api-retailmedia-sdk-.jar`
 * `target/lib/*.jar`
 
 ## Example
