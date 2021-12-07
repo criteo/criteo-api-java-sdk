@@ -2,12 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.criteo</groupId>
-    <artifactId>criteo-api-petstore-sdk-java8</artifactId>
+    <artifactId>criteo-api-petstore-sdk</artifactId>
     <packaging>jar</packaging>
-    <name>criteo-api-petstore-sdk-java8</name>
-    <version>preview.1.211125</version>
+    <name>criteo-api-petstore-sdk</name>
+    <version>0.0.211207</version>
     <url>https://github.com/criteo/criteo-api-java-sdk</url>
-    <description>Java SDK for Criteo API petstore for preview version</description>
+    <description>JAVA SDK for Criteo API petstore for preview version</description>
     <scm>
         <connection>scm:git:git://github.com/criteo/criteo-api-java-sdk.git</connection>
         <developerConnection>scm:git:ssh://github.com:criteo/criteo-api-java-sdk.git</developerConnection>
