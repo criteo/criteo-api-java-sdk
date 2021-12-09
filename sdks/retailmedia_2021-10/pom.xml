@@ -2,12 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.criteo</groupId>
-    <artifactId>criteo-api-retailmedia-sdk-java8</artifactId>
+    <artifactId>criteo-api-retailmedia-sdk</artifactId>
     <packaging>jar</packaging>
-    <name>criteo-api-retailmedia-sdk-java8</name>
-    <version>2021_10.1.211209</version>
+    <name>criteo-api-retailmedia-sdk</name>
+    <version>2021.10.0.211209</version>
     <url>https://github.com/criteo/criteo-api-java-sdk</url>
-    <description>Java SDK for Criteo API retailmedia for 2021_10 version</description>
+    <description>JAVA SDK for Criteo API retailmedia for 2021_10 version</description>
     <scm>
         <connection>scm:git:git://github.com/criteo/criteo-api-java-sdk.git</connection>
         <developerConnection>scm:git:ssh://github.com:criteo/criteo-api-java-sdk.git</developerConnection>
