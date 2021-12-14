@@ -5,7 +5,7 @@
     <artifactId>criteo-api-marketingsolutions-sdk</artifactId>
     <packaging>jar</packaging>
     <name>criteo-api-marketingsolutions-sdk</name>
-    <version>2021.10.0.211209</version>
+    <version>2021.10.0.211214</version>
     <url>https://github.com/criteo/criteo-api-java-sdk</url>
     <description>JAVA SDK for Criteo API marketingsolutions for 2021_10 version</description>
     <scm>
