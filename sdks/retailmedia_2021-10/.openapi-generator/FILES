@@ -9,6 +9,9 @@ docs/AddToBasketIdsUpdateModel202110Request.md
 docs/AddToBasketTarget202110Request.md
 docs/AddToBasketTarget202110Response.md
 docs/AnalyticsApi.md
+docs/ApplicationSummaryModel.md
+docs/ApplicationSummaryModelResource.md
+docs/ApplicationSummaryModelResponse.md
 docs/AuctionLineItemCreateModelRequest.md
 docs/AuctionLineItemPagedListResponse.md
 docs/AuctionLineItemResponse.md
@@ -25,6 +28,7 @@ docs/CampaignApi.md
 docs/CommonError.md
 docs/CommonLineItemPagedListResponse.md
 docs/CommonLineItemResponse.md
+docs/CommonProblem.md
 docs/CommonWarning.md
 docs/CreateAudienceBody.md
 docs/CreateAudienceRequest.md
@@ -157,6 +161,9 @@ src/main/java/com/criteo/api/retailmedia/v2021_10/auth/RetryingOAuth.java
 src/main/java/com/criteo/api/retailmedia/v2021_10/model/AddToBasketIdsUpdateModel202110Request.java
 src/main/java/com/criteo/api/retailmedia/v2021_10/model/AddToBasketTarget202110Request.java
 src/main/java/com/criteo/api/retailmedia/v2021_10/model/AddToBasketTarget202110Response.java
+src/main/java/com/criteo/api/retailmedia/v2021_10/model/ApplicationSummaryModel.java
+src/main/java/com/criteo/api/retailmedia/v2021_10/model/ApplicationSummaryModelResource.java
+src/main/java/com/criteo/api/retailmedia/v2021_10/model/ApplicationSummaryModelResponse.java
 src/main/java/com/criteo/api/retailmedia/v2021_10/model/AuctionLineItemCreateModelRequest.java
 src/main/java/com/criteo/api/retailmedia/v2021_10/model/AuctionLineItemPagedListResponse.java
 src/main/java/com/criteo/api/retailmedia/v2021_10/model/AuctionLineItemResponse.java
@@ -171,6 +178,7 @@ src/main/java/com/criteo/api/retailmedia/v2021_10/model/BalanceCampaign202110Pag
 src/main/java/com/criteo/api/retailmedia/v2021_10/model/CommonError.java
 src/main/java/com/criteo/api/retailmedia/v2021_10/model/CommonLineItemPagedListResponse.java
 src/main/java/com/criteo/api/retailmedia/v2021_10/model/CommonLineItemResponse.java
+src/main/java/com/criteo/api/retailmedia/v2021_10/model/CommonProblem.java
 src/main/java/com/criteo/api/retailmedia/v2021_10/model/CommonWarning.java
 src/main/java/com/criteo/api/retailmedia/v2021_10/model/CreateAudienceBody.java
 src/main/java/com/criteo/api/retailmedia/v2021_10/model/CreateAudienceRequest.java
@@ -265,3 +273,4 @@ src/main/java/com/criteo/api/retailmedia/v2021_10/model/ValueTypeResourceOfAudie
 src/main/java/com/criteo/api/retailmedia/v2021_10/model/ValueTypeResourceOfKeywordTarget202110.java
 src/main/java/com/criteo/api/retailmedia/v2021_10/model/ValueTypeResourceOfStoreIdsUpdateModel202110.java
 src/main/java/com/criteo/api/retailmedia/v2021_10/model/ValueTypeResourceOfStoreTarget202110.java
+src/test/java/com/criteo.api.sdk/E2eTest.java

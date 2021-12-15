@@ -59,6 +59,22 @@ paths:
       - OAuth
       x-contentType: application/x-www-form-urlencoded
       x-accepts: application/json
+  /2020-10/me:
+    get:
+      operationId: GetCurrentApplication
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationSummaryModelResponse'
+          description: Success
+        "404":
+          description: Not Found
+      tags:
+      - OAuth
+      x-accepts: application/json
   /2021-10/retail-media/accounts:
     get:
       description: Gets page of account objects that the current user can access
@@ -2139,6 +2155,156 @@ components:
             \ the default value."
           format: int32
           type: integer
+      type: object
+    ApplicationSummaryModelResponse:
+      example:
+        data:
+          attributes:
+            organizationId: 0
+            name: name
+            description: description
+            criteoService: criteoService
+          id: id
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ApplicationSummaryModelResource'
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+          uniqueItems: false
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+          uniqueItems: false
+      type: object
+    ApplicationSummaryModelResource:
+      example:
+        attributes:
+          organizationId: 0
+          name: name
+          description: description
+          criteoService: criteoService
+        id: id
+        type: type
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/ApplicationSummaryModel'
+      type: object
+    ApplicationSummaryModel:
+      example:
+        organizationId: 0
+        name: name
+        description: description
+        criteoService: criteoService
+      properties:
+        name:
+          type: string
+        organizationId:
+          format: int32
+          type: integer
+        description:
+          type: string
+        criteoService:
+          type: string
+      type: object
+      x-criteo-canonical:
+        infoType: entity
+    CommonProblem:
+      description: Common problem object. Can be specialized as needed.
+      example:
+        traceIdentifier: traceIdentifier
+        code: code
+        instance: instance
+        detail: detail
+        source:
+          key: source
+        stackTrace: stackTrace
+        type: unknown
+        title: title
+      properties:
+        traceIdentifier:
+          description: The request correlation ID this problem comes from.
+          type: string
+        type:
+          description: The problem's category.
+          enum:
+          - unknown
+          - access-control
+          - authentication
+          - authorization
+          - availability
+          - deprecation
+          - quota
+          - validation
+          type: string
+        code:
+          description: "A machine-readable  error code, expressed as a string value."
+          type: string
+        instance:
+          description: A URI that identifies the specific occurrence of the problem.
+          type: string
+        title:
+          description: A short human-readable description of the problem type
+          type: string
+        detail:
+          description: A human-readable explanation specific to this occurrence of
+            the problem
+          type: string
+        source:
+          additionalProperties:
+            type: string
+          description: A machine-readable structure to reference to the exact location(s)
+            causing the error(s)
+          type: object
+        stackTrace:
+          type: string
       type: object
     OAuth2Error:
       description: Represents an error response from an OAuth2 flow
