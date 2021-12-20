@@ -1,8 +1,6 @@
 echo "Looping through generated Java SDKs..."
 
-SDK_REPO="$GITHUB_WORKSPACE/sdks"
-
-for dir in $SDK_REPO/*;
+for dir in ./sdks/*;
     do (
         if [ -d "$dir" ];
             then
