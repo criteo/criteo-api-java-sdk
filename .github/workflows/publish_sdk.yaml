@@ -9,14 +9,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Genereate
+        env:
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          MAVEN_SECRING_GPG_BASE64: ${{ secrets.MAVEN_SECRING_GPG_BASE64 }}
+          MAVEN_SECRING_PASSWORD: ${{ secrets.MAVEN_SECRING_PASSWORD }}
         run: |
           chmod +x ./scripts/publish_sdk.sh
           ./scripts/publish_sdk.sh
         shell: bash
-          env:
-            SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
-            MAVEN_SECRING_GPG_BASE64: ${{ secrets.MAVEN_SECRING_GPG_BASE64 }}
-            MAVEN_SECRING_PASSWORD: ${{ secrets.MAVEN_SECRING_PASSWORD }}
 
     
       # - name: Send success notification
