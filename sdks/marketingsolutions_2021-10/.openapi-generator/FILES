@@ -13,9 +13,6 @@ docs/AdSetTargeting.md
 docs/AdSetTargetingRule.md
 docs/AdvertiserApi.md
 docs/AnalyticsApi.md
-docs/ApplicationSummaryModel.md
-docs/ApplicationSummaryModelResource.md
-docs/ApplicationSummaryModelResponse.md
 docs/Audience.md
 docs/AudienceApi.md
 docs/AudienceAttributes.md
@@ -31,7 +28,6 @@ docs/CampaignResponse.md
 docs/CampaignSearchFilters.md
 docs/CampaignSearchRequest.md
 docs/CampaignSpendLimit.md
-docs/CommonProblem.md
 docs/ContactlistAmendment.md
 docs/ContactlistAmendmentAttributes.md
 docs/ContactlistAmendmentRequest.md
@@ -137,9 +133,6 @@ src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/AdSetGeoLocation.
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/AdSetSearchFilter.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/AdSetTargeting.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/AdSetTargetingRule.java
-src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/ApplicationSummaryModel.java
-src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/ApplicationSummaryModelResource.java
-src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/ApplicationSummaryModelResponse.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/Audience.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/AudienceAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/AudienceError.java
@@ -153,7 +146,6 @@ src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/CampaignResponse.
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/CampaignSearchFilters.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/CampaignSearchRequest.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/CampaignSpendLimit.java
-src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/CommonProblem.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/ContactlistAmendment.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/ContactlistAmendmentAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/ContactlistAmendmentRequest.java
@@ -217,4 +209,3 @@ src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/TransparencyRepor
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/TransparencyReportFile.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/WriteModelAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/WriteModelPatchAdSet.java
-src/test/java/com/criteo.api.sdk/E2eTest.java

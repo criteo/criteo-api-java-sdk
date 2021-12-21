@@ -13,9 +13,6 @@ docs/AdSetTargeting.md
 docs/AdSetTargetingRule.md
 docs/AdvertiserApi.md
 docs/AnalyticsApi.md
-docs/ApplicationSummaryModel.md
-docs/ApplicationSummaryModelResource.md
-docs/ApplicationSummaryModelResponse.md
 docs/Audience.md
 docs/AudienceApi.md
 docs/AudienceAttributes.md
@@ -39,7 +36,6 @@ docs/CategoryUpdateInput.md
 docs/CategoryUpdatesPerCatalog.md
 docs/CategoryUpdatesPerCatalogError.md
 docs/CategoryUpdatesPerCatalogErrorMessageWithDetails.md
-docs/CommonProblem.md
 docs/ContactlistAmendment.md
 docs/ContactlistAmendmentAttributes.md
 docs/ContactlistAmendmentRequest.md
@@ -135,9 +131,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetGeoLocation.j
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetSearchFilter.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetTargeting.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetTargetingRule.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/ApplicationSummaryModel.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/ApplicationSummaryModelResource.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/ApplicationSummaryModelResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Audience.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AudienceAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AudienceError.java
@@ -158,7 +151,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/CategoryUpdateInpu
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CategoryUpdatesPerCatalog.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CategoryUpdatesPerCatalogError.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CategoryUpdatesPerCatalogErrorMessageWithDetails.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/CommonProblem.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ContactlistAmendment.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ContactlistAmendmentAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ContactlistAmendmentRequest.java
@@ -211,4 +203,3 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/TransactionsReport
 src/main/java/com/criteo/api/marketingsolutions/preview/model/TransactionsReportQueryMessage.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/WriteModelAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/WriteModelPatchAdSet.java
-src/test/java/com/criteo.api.sdk/E2eTest.java

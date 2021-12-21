@@ -5,7 +5,6 @@ All URIs are relative to *https://api.criteo.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createToken**](OAuthApi.md#createToken) | **POST** /oauth2/token | 
-[**getCurrentApplication**](OAuthApi.md#getCurrentApplication) | **GET** /2021-10/me | 
 
 
 <a name="createToken"></a>
@@ -79,66 +78,4 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Success |  -  |
 **400** | Bad request |  -  |
-
-<a name="getCurrentApplication"></a>
-# **getCurrentApplication**
-> ApplicationSummaryModelResponse getCurrentApplication()
-
-
-
-### Example
-```java
-// Import classes:
-import com.criteo.api.retailmedia.v2021_10.ApiClient;
-import com.criteo.api.retailmedia.v2021_10.ApiException;
-import com.criteo.api.retailmedia.v2021_10.Configuration;
-import com.criteo.api.retailmedia.v2021_10.auth.*;
-import com.criteo.api.retailmedia.v2021_10.models.*;
-import com.criteo.api.retailmedia.v2021_10.api.OAuthApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.criteo.com");
-    
-    // Configure OAuth2 access token for authorization: oauth
-    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-    oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-    OAuthApi apiInstance = new OAuthApi(defaultClient);
-    try {
-      ApplicationSummaryModelResponse result = apiInstance.getCurrentApplication();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling OAuthApi#getCurrentApplication");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**ApplicationSummaryModelResponse**](ApplicationSummaryModelResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Success |  -  |
-**404** | Not Found |  -  |
 
