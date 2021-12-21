@@ -7,6 +7,7 @@ for dir in ./sdks/*;
                 echo "$dir"
                 cd "$dir"
                 echo "Publishing this SDK to Maven Central."
+                ./gradlew publishToSonatype closeSonatypeStagingRepository
         fi
     );
 done
