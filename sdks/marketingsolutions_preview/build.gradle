@@ -1,10 +1,3 @@
-if (JavaVersion.current().isJava8Compatible()) {
-    // Suppress the many Javadoc warnings that we would otherwise get from the generated code
-    tasks.withType(Javadoc) {
-        options.addBooleanOption('Xdoclint:none', true)
-    }
-}
-
 buildscript {
     repositories {
         mavenCentral()
@@ -20,6 +13,13 @@ plugins {
     id 'maven-publish'
     id 'signing'
     id "io.github.gradle-nexus.publish-plugin" version "1.1.0"
+}
+
+if (JavaVersion.current().isJava8Compatible()) {
+    // Suppress the many Javadoc warnings that we would otherwise get from the generated code
+    tasks.withType(Javadoc) {
+        options.addBooleanOption('Xdoclint:none', true)
+    }
 }
 
 group = 'com.criteo'
