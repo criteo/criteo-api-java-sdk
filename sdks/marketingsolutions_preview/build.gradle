@@ -1,3 +1,10 @@
+if (JavaVersion.current().isJava8Compatible()) {
+    // Suppress the many Javadoc warnings that we would otherwise get from the generated code
+    tasks.withType(Javadoc) {
+        options.addBooleanOption('Xdoclint:none', true)
+    }
+}
+
 buildscript {
     repositories {
         mavenCentral()
