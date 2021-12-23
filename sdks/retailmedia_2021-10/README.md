@@ -136,7 +136,7 @@ Class | Method | HTTP request | Description
 *CampaignApi* | [**putApiV1ExternalCampaignByCampaignId**](docs/CampaignApi.md#putApiV1ExternalCampaignByCampaignId) | **PUT** /2021-10/retail-media/campaigns/{campaignId} | 
 *CampaignApi* | [**putApiV2ExternalAuctionLineItemByLineItemId**](docs/CampaignApi.md#putApiV2ExternalAuctionLineItemByLineItemId) | **PUT** /2021-10/retail-media/auction-line-items/{line-item-id} | 
 *GatewayApi* | [**getCurrentApplication**](docs/GatewayApi.md#getCurrentApplication) | **GET** /me | 
-*OAuthApi* | [**clientCredentials**](docs/OAuthApi.md#clientCredentials) | **POST** /oauth2/token | Creates a token when the supplied client credentials are valid
+*OAuthApi* | [**createToken**](docs/OAuthApi.md#createToken) | **POST** /oauth2/token | Creates a token when the supplied client credentials are valid
 
 
 ## Documentation for Models

@@ -104,7 +104,7 @@ Class | Method | HTTP request | Description
 *CampaignApi* | [**startAdSets**](docs/CampaignApi.md#startAdSets) | **POST** /2021-10/marketing-solutions/ad-sets/start | 
 *CampaignApi* | [**stopAdSets**](docs/CampaignApi.md#stopAdSets) | **POST** /2021-10/marketing-solutions/ad-sets/stop | 
 *GatewayApi* | [**getCurrentApplication**](docs/GatewayApi.md#getCurrentApplication) | **GET** /me | 
-*OAuthApi* | [**clientCredentials**](docs/OAuthApi.md#clientCredentials) | **POST** /oauth2/token | Creates a token when the supplied client credentials are valid
+*OAuthApi* | [**createToken**](docs/OAuthApi.md#createToken) | **POST** /oauth2/token | Creates a token when the supplied client credentials are valid
 
 
 ## Documentation for Models

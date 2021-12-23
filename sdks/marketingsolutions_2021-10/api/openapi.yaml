@@ -818,7 +818,25 @@ paths:
   /oauth2/token:
     post:
       description: Creates a token when the supplied client credentials are valid
-      operationId: ClientCredentials
+      operationId: CreateToken
+      requestBody:
+        $ref: '#/components/requestBodies/inline_object'
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                client_id:
+                  description: API Client-Id or Username
+                  type: string
+                client_secret:
+                  description: API Client secret or password
+                  format: password
+                  type: string
+                grant_type:
+                  default: client_credentials
+                  description: Other grant types are not available
+                  type: string
+              type: object
       responses:
         "200":
           content:
@@ -859,6 +877,7 @@ paths:
       summary: Creates a token when the supplied client credentials are valid
       tags:
       - OAuth
+      x-contentType: application/x-www-form-urlencoded
       x-accepts: application/json
   /2021-10/statistics/report:
     post:
@@ -1161,6 +1180,12 @@ paths:
       - Advertiser
       x-accepts: application/json
 components:
+  requestBodies:
+    inline_object:
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            $ref: '#/components/schemas/inline_object'
   schemas:
     GetAudiencesResponse:
       description: Body of the GET audience operation
@@ -4413,6 +4438,20 @@ components:
         advertiserName: advertiserName
       properties:
         advertiserName:
+          type: string
+      type: object
+    inline_object:
+      properties:
+        client_id:
+          description: API Client-Id or Username
+          type: string
+        client_secret:
+          description: API Client secret or password
+          format: password
+          type: string
+        grant_type:
+          default: client_credentials
+          description: Other grant types are not available
           type: string
       type: object
     Audience_attributes:

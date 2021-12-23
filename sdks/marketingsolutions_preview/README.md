@@ -157,7 +157,7 @@ Class | Method | HTTP request | Description
 *CreativeApi* | [**getCreativePreview**](docs/CreativeApi.md#getCreativePreview) | **GET** /preview/creatives/{id}/preview | 
 *CreativeApi* | [**getCreatives**](docs/CreativeApi.md#getCreatives) | **GET** /preview/advertisers/{advertiser-id}/creatives | 
 *GatewayApi* | [**getCurrentApplication**](docs/GatewayApi.md#getCurrentApplication) | **GET** /me | 
-*OAuthApi* | [**clientCredentials**](docs/OAuthApi.md#clientCredentials) | **POST** /oauth2/token | Creates a token when the supplied client credentials are valid
+*OAuthApi* | [**createToken**](docs/OAuthApi.md#createToken) | **POST** /oauth2/token | Creates a token when the supplied client credentials are valid
 *OnSiteRecommendationApi* | [**apiV1RecoPost**](docs/OnSiteRecommendationApi.md#apiV1RecoPost) | **POST** /preview/recommendation/search | 
 
 

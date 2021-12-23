@@ -4,12 +4,12 @@ All URIs are relative to *https://api.criteo.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**clientCredentials**](OAuthApi.md#clientCredentials) | **POST** /oauth2/token | Creates a token when the supplied client credentials are valid
+[**createToken**](OAuthApi.md#createToken) | **POST** /oauth2/token | Creates a token when the supplied client credentials are valid
 
 
-<a name="clientCredentials"></a>
-# **clientCredentials**
-> AccessTokenModel clientCredentials()
+<a name="createToken"></a>
+# **createToken**
+> AccessTokenModel createToken(clientId, clientSecret, grantType)
 
 Creates a token when the supplied client credentials are valid
 
@@ -35,11 +35,14 @@ public class Example {
     oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     OAuthApi apiInstance = new OAuthApi(defaultClient);
+    String clientId = "clientId_example"; // String | API Client-Id or Username
+    String clientSecret = "clientSecret_example"; // String | API Client secret or password
+    String grantType = "\"client_credentials\""; // String | Other grant types are not available
     try {
-      AccessTokenModel result = apiInstance.clientCredentials();
+      AccessTokenModel result = apiInstance.createToken(clientId, clientSecret, grantType);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling OAuthApi#clientCredentials");
+      System.err.println("Exception when calling OAuthApi#createToken");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -50,7 +53,12 @@ public class Example {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientId** | **String**| API Client-Id or Username | [optional]
+ **clientSecret** | **String**| API Client secret or password | [optional]
+ **grantType** | **String**| Other grant types are not available | [optional] [default to &quot;client_credentials&quot;]
 
 ### Return type
 
@@ -62,7 +70,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
