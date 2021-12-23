@@ -1,6 +1,6 @@
 /*
- * Criteo API Specification
- * This is used to help Criteo clients use our API
+ * Criteo API
+ * Criteo publicly exposed API
  *
  * The version of the OpenAPI document: preview
  * 
@@ -99,7 +99,7 @@ public class ApiClient {
         init();
 
         // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("Authorization", new OAuth());
+        authentications.put("oauth", new OAuth());
         authentications.put("CriteoHttpBasicAuth", new HttpBasicAuth());
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
@@ -124,7 +124,7 @@ public class ApiClient {
      */
     public ApiClient(String clientId, String clientSecret, Map<String, String> parameters) {
         RetryingOAuth retryingOAuth = new RetryingOAuth("https://api.criteo.com/oauth2/token", clientId, OAuthFlow.application, clientSecret, parameters);
-        authentications.put("Authorization", retryingOAuth);
+        authentications.put("oauth", retryingOAuth);
         HttpBasicAuth httpBasicAuth = new HttpBasicAuth();
         httpBasicAuth.setPassword(clientSecret);
         httpBasicAuth.setUsername(clientId);

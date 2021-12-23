@@ -4,14 +4,14 @@ All URIs are relative to *https://api.criteo.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createToken**](OAuthApi.md#createToken) | **POST** /oauth2/token | 
+[**clientCredentials**](OAuthApi.md#clientCredentials) | **POST** /oauth2/token | Creates a token when the supplied client credentials are valid
 
 
-<a name="createToken"></a>
-# **createToken**
-> JwtModel createToken(clientId, clientSecret, grantType)
+<a name="clientCredentials"></a>
+# **clientCredentials**
+> AccessTokenModel clientCredentials()
 
-
+Creates a token when the supplied client credentials are valid
 
 Creates a token when the supplied client credentials are valid
 
@@ -30,19 +30,16 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     OAuthApi apiInstance = new OAuthApi(defaultClient);
-    String clientId = "clientId_example"; // String | API Client-Id or Username
-    String clientSecret = "clientSecret_example"; // String | API Client secret or password
-    String grantType = "\"client_credentials\""; // String | Other grant types are not available
     try {
-      JwtModel result = apiInstance.createToken(clientId, clientSecret, grantType);
+      AccessTokenModel result = apiInstance.clientCredentials();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling OAuthApi#createToken");
+      System.err.println("Exception when calling OAuthApi#clientCredentials");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -53,24 +50,19 @@ public class Example {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **clientId** | **String**| API Client-Id or Username | [optional]
- **clientSecret** | **String**| API Client secret or password | [optional]
- **grantType** | **String**| Other grant types are not available | [optional] [default to &quot;client_credentials&quot;]
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**JwtModel**](JwtModel.md)
+[**AccessTokenModel**](AccessTokenModel.md)
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
+ - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
@@ -78,4 +70,5 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Success |  -  |
 **400** | Bad request |  -  |
+**401** | Unauthorized |  -  |
 

@@ -1,6 +1,6 @@
 /*
- * Criteo API Specification
- * This is used to help Criteo clients use our API
+ * Criteo API
+ * Criteo publicly exposed API
  *
  * The version of the OpenAPI document: preview
  * 
@@ -277,11 +277,11 @@ public class CriteoApiError {
   }
 
    /**
-   * A short, human-readable summary of the problem type.
+   * A short, human-readable remarks of the problem type.
    * @return title
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A short, human-readable summary of the problem type.")
+  @ApiModelProperty(value = "A short, human-readable remarks of the problem type.")
 
   public String getTitle() {
     return title;

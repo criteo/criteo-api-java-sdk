@@ -36,6 +36,8 @@ MONTH | &quot;Month&quot;
 YEAR | &quot;Year&quot;
 OS | &quot;Os&quot;
 DEVICE | &quot;Device&quot;
+CAMPAIGNID | &quot;CampaignId&quot;
+CAMPAIGN | &quot;Campaign&quot;
 
 
 

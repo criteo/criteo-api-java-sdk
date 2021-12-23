@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | Name of the ad set |  [optional]
 **advertiserId** | **String** | Advertiser id of the campaign this ad set belongs to |  [optional]
+**datasetId** | **String** | Dataset id of this ad set |  [optional]
 **campaignId** | **String** | Campaign id this ad set belongs to |  [optional]
 **destinationEnvironment** | [**DestinationEnvironmentEnum**](#DestinationEnvironmentEnum) | The environment that an ad click will lead a user to |  [optional]
 **schedule** | [**ReadAdSetSchedule**](ReadAdSetSchedule.md) |  |  [optional]

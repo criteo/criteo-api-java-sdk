@@ -1,6 +1,6 @@
 /*
- * Criteo API Specification
- * This is used to help Criteo clients use our API
+ * Criteo API
+ * Criteo publicly exposed API
  *
  * The version of the OpenAPI document: preview
  * 
@@ -27,11 +27,26 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.criteo.api.marketingsolutions.preview.model.CampaignBidChangeRequest;
-import com.criteo.api.marketingsolutions.preview.model.CampaignBidChangeResponseMessageWithDetails;
-import com.criteo.api.marketingsolutions.preview.model.CampaignBidMessage;
-import com.criteo.api.marketingsolutions.preview.model.CampaignMessage;
-import com.criteo.api.marketingsolutions.preview.model.CategoryMessage;
+import com.criteo.api.marketingsolutions.preview.model.AdSetCategoryBidListResponse;
+import com.criteo.api.marketingsolutions.preview.model.AdSetDisplayMultiplierListResponse;
+import com.criteo.api.marketingsolutions.preview.model.ApiErrorResponse;
+import com.criteo.api.marketingsolutions.preview.model.ApiRequestOfTargetingEntity;
+import com.criteo.api.marketingsolutions.preview.model.ApiResponseOfTargetingEntity;
+import com.criteo.api.marketingsolutions.preview.model.CampaignListResponse;
+import com.criteo.api.marketingsolutions.preview.model.CampaignResponse;
+import com.criteo.api.marketingsolutions.preview.model.CampaignSearchRequest;
+import com.criteo.api.marketingsolutions.preview.model.CreateAdSetRequest;
+import com.criteo.api.marketingsolutions.preview.model.CreateCampaignRequest;
+import com.criteo.api.marketingsolutions.preview.model.OciBrandSafetyResponse;
+import com.criteo.api.marketingsolutions.preview.model.OciBrandSafetyRule;
+import com.criteo.api.marketingsolutions.preview.model.OciTargetingResponse;
+import com.criteo.api.marketingsolutions.preview.model.OciTargetingRule;
+import com.criteo.api.marketingsolutions.preview.model.PatchAdSetCategoryBidListRequest;
+import com.criteo.api.marketingsolutions.preview.model.PatchAdSetCategoryBidResultListResponse;
+import com.criteo.api.marketingsolutions.preview.model.PatchAdSetDisplayMultiplierListRequest;
+import com.criteo.api.marketingsolutions.preview.model.PatchAdSetDisplayMultiplierResultListResponse;
+import com.criteo.api.marketingsolutions.preview.model.PatchCampaignListRequest;
+import com.criteo.api.marketingsolutions.preview.model.PatchResultCampaignListResponse;
 import com.criteo.api.marketingsolutions.preview.model.RequestAdSetSearch;
 import com.criteo.api.marketingsolutions.preview.model.RequestsAdSetId;
 import com.criteo.api.marketingsolutions.preview.model.RequestsPatchAdSet;
@@ -39,6 +54,7 @@ import com.criteo.api.marketingsolutions.preview.model.ResponseAdSetId;
 import com.criteo.api.marketingsolutions.preview.model.ResponseReadAdSet;
 import com.criteo.api.marketingsolutions.preview.model.ResponsesAdSetId;
 import com.criteo.api.marketingsolutions.preview.model.ResponsesReadAdSet;
+import com.criteo.api.marketingsolutions.preview.model.TargetType;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -66,6 +82,1026 @@ public class CampaignApi {
     }
 
     /**
+     * Build call for createAdSet
+     * @param createAdSetRequest the ad sets to create (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAdSetCall(CreateAdSetRequest createAdSetRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = createAdSetRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ad-sets";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createAdSetValidateBeforeCall(CreateAdSetRequest createAdSetRequest, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = createAdSetCall(createAdSetRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Create the specified ad set
+     * @param createAdSetRequest the ad sets to create (optional)
+     * @return ResponseReadAdSet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ResponseReadAdSet createAdSet(CreateAdSetRequest createAdSetRequest) throws ApiException {
+        ApiResponse<ResponseReadAdSet> localVarResp = createAdSetWithHttpInfo(createAdSetRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Create the specified ad set
+     * @param createAdSetRequest the ad sets to create (optional)
+     * @return ApiResponse&lt;ResponseReadAdSet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ResponseReadAdSet> createAdSetWithHttpInfo(CreateAdSetRequest createAdSetRequest) throws ApiException {
+        okhttp3.Call localVarCall = createAdSetValidateBeforeCall(createAdSetRequest, null);
+        Type localVarReturnType = new TypeToken<ResponseReadAdSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Create the specified ad set
+     * @param createAdSetRequest the ad sets to create (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAdSetAsync(CreateAdSetRequest createAdSetRequest, final ApiCallback<ResponseReadAdSet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createAdSetValidateBeforeCall(createAdSetRequest, _callback);
+        Type localVarReturnType = new TypeToken<ResponseReadAdSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createCampaign
+     * @param createCampaignRequest  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The campaign that has been created and errors / warnings </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createCampaignCall(CreateCampaignRequest createCampaignRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = createCampaignRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/campaigns";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createCampaignValidateBeforeCall(CreateCampaignRequest createCampaignRequest, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = createCampaignCall(createCampaignRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Create the specified campaign
+     * @param createCampaignRequest  (optional)
+     * @return CampaignResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The campaign that has been created and errors / warnings </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+     </table>
+     */
+    public CampaignResponse createCampaign(CreateCampaignRequest createCampaignRequest) throws ApiException {
+        ApiResponse<CampaignResponse> localVarResp = createCampaignWithHttpInfo(createCampaignRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Create the specified campaign
+     * @param createCampaignRequest  (optional)
+     * @return ApiResponse&lt;CampaignResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The campaign that has been created and errors / warnings </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CampaignResponse> createCampaignWithHttpInfo(CreateCampaignRequest createCampaignRequest) throws ApiException {
+        okhttp3.Call localVarCall = createCampaignValidateBeforeCall(createCampaignRequest, null);
+        Type localVarReturnType = new TypeToken<CampaignResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Create the specified campaign
+     * @param createCampaignRequest  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The campaign that has been created and errors / warnings </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createCampaignAsync(CreateCampaignRequest createCampaignRequest, final ApiCallback<CampaignResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createCampaignValidateBeforeCall(createCampaignRequest, _callback);
+        Type localVarReturnType = new TypeToken<CampaignResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteAdvertiserBundleRules
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteAdvertiserBundleRulesCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = apiRequestOfTargetingEntity;
+
+        // create path and map variables
+        String localVarPath = "/preview/advertisers/{advertiserId}/targeting/bundle-rules"
+            .replaceAll("\\{" + "advertiserId" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteAdvertiserBundleRulesValidateBeforeCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling deleteAdvertiserBundleRules(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteAdvertiserBundleRulesCall(advertiserId, apiRequestOfTargetingEntity, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Removes some bundles from the current list of targeted bundles for a given advertiser.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
+     * @return ApiResponseOfTargetingEntity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponseOfTargetingEntity deleteAdvertiserBundleRules(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        ApiResponse<ApiResponseOfTargetingEntity> localVarResp = deleteAdvertiserBundleRulesWithHttpInfo(advertiserId, apiRequestOfTargetingEntity);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Removes some bundles from the current list of targeted bundles for a given advertiser.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
+     * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ApiResponseOfTargetingEntity> deleteAdvertiserBundleRulesWithHttpInfo(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        okhttp3.Call localVarCall = deleteAdvertiserBundleRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Removes some bundles from the current list of targeted bundles for a given advertiser.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteAdvertiserBundleRulesAsync(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteAdvertiserBundleRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteAdvertiserDomainRules
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteAdvertiserDomainRulesCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = apiRequestOfTargetingEntity;
+
+        // create path and map variables
+        String localVarPath = "/preview/advertisers/{advertiserId}/targeting/domain-rules"
+            .replaceAll("\\{" + "advertiserId" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteAdvertiserDomainRulesValidateBeforeCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling deleteAdvertiserDomainRules(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteAdvertiserDomainRulesCall(advertiserId, apiRequestOfTargetingEntity, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Removes some domains from the current list of targeted domains for a given advertiser.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
+     * @return ApiResponseOfTargetingEntity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponseOfTargetingEntity deleteAdvertiserDomainRules(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        ApiResponse<ApiResponseOfTargetingEntity> localVarResp = deleteAdvertiserDomainRulesWithHttpInfo(advertiserId, apiRequestOfTargetingEntity);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Removes some domains from the current list of targeted domains for a given advertiser.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
+     * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ApiResponseOfTargetingEntity> deleteAdvertiserDomainRulesWithHttpInfo(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        okhttp3.Call localVarCall = deleteAdvertiserDomainRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Removes some domains from the current list of targeted domains for a given advertiser.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteAdvertiserDomainRulesAsync(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteAdvertiserDomainRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteCampaignBundleRules
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteCampaignBundleRulesCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = apiRequestOfTargetingEntity;
+
+        // create path and map variables
+        String localVarPath = "/preview/campaigns/{campaignId}/targeting/bundle-rules"
+            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteCampaignBundleRulesValidateBeforeCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling deleteCampaignBundleRules(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteCampaignBundleRulesCall(campaignId, apiRequestOfTargetingEntity, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Removes some bundles from the current list of targeted bundles for a given campaign.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
+     * @return ApiResponseOfTargetingEntity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponseOfTargetingEntity deleteCampaignBundleRules(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        ApiResponse<ApiResponseOfTargetingEntity> localVarResp = deleteCampaignBundleRulesWithHttpInfo(campaignId, apiRequestOfTargetingEntity);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Removes some bundles from the current list of targeted bundles for a given campaign.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
+     * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ApiResponseOfTargetingEntity> deleteCampaignBundleRulesWithHttpInfo(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        okhttp3.Call localVarCall = deleteCampaignBundleRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Removes some bundles from the current list of targeted bundles for a given campaign.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteCampaignBundleRulesAsync(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCampaignBundleRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteCampaignDomainRules
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteCampaignDomainRulesCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = apiRequestOfTargetingEntity;
+
+        // create path and map variables
+        String localVarPath = "/preview/campaigns/{campaignId}/targeting/domain-rules"
+            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteCampaignDomainRulesValidateBeforeCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling deleteCampaignDomainRules(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteCampaignDomainRulesCall(campaignId, apiRequestOfTargetingEntity, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Removes some domains from the current list of targeted domains for a given campaign.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
+     * @return ApiResponseOfTargetingEntity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponseOfTargetingEntity deleteCampaignDomainRules(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        ApiResponse<ApiResponseOfTargetingEntity> localVarResp = deleteCampaignDomainRulesWithHttpInfo(campaignId, apiRequestOfTargetingEntity);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Removes some domains from the current list of targeted domains for a given campaign.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
+     * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ApiResponseOfTargetingEntity> deleteCampaignDomainRulesWithHttpInfo(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        okhttp3.Call localVarCall = deleteCampaignDomainRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Removes some domains from the current list of targeted domains for a given campaign.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to delete from the list (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteCampaignDomainRulesAsync(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCampaignDomainRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteOCIbrandSafetyRule
+     * @param targetType Defines a target for a rule. (required)
+     * @param targetId Unique target identifier. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Rule deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteOCIbrandSafetyRuleCall(TargetType targetType, Integer targetId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/brand-safety/oci";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (targetType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("target-type", targetType));
+        }
+
+        if (targetId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("target-id", targetId));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteOCIbrandSafetyRuleValidateBeforeCall(TargetType targetType, Integer targetId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'targetType' is set
+        if (targetType == null) {
+            throw new ApiException("Missing the required parameter 'targetType' when calling deleteOCIbrandSafetyRule(Async)");
+        }
+        
+        // verify the required parameter 'targetId' is set
+        if (targetId == null) {
+            throw new ApiException("Missing the required parameter 'targetId' when calling deleteOCIbrandSafetyRule(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteOCIbrandSafetyRuleCall(targetType, targetId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Delete OCI brand-safety rule.
+     * @param targetType Defines a target for a rule. (required)
+     * @param targetId Unique target identifier. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Rule deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteOCIbrandSafetyRule(TargetType targetType, Integer targetId) throws ApiException {
+        deleteOCIbrandSafetyRuleWithHttpInfo(targetType, targetId);
+    }
+
+    /**
+     * 
+     * Delete OCI brand-safety rule.
+     * @param targetType Defines a target for a rule. (required)
+     * @param targetId Unique target identifier. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Rule deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteOCIbrandSafetyRuleWithHttpInfo(TargetType targetType, Integer targetId) throws ApiException {
+        okhttp3.Call localVarCall = deleteOCIbrandSafetyRuleValidateBeforeCall(targetType, targetId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Delete OCI brand-safety rule.
+     * @param targetType Defines a target for a rule. (required)
+     * @param targetId Unique target identifier. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Rule deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteOCIbrandSafetyRuleAsync(TargetType targetType, Integer targetId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteOCIbrandSafetyRuleValidateBeforeCall(targetType, targetId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteOCItargetingRule
+     * @param targetType Defines a target for a rule. (required)
+     * @param targetId Unique target identifier. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Rule deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteOCItargetingRuleCall(TargetType targetType, Integer targetId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/targeting/oci";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (targetType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("target-type", targetType));
+        }
+
+        if (targetId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("target-id", targetId));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteOCItargetingRuleValidateBeforeCall(TargetType targetType, Integer targetId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'targetType' is set
+        if (targetType == null) {
+            throw new ApiException("Missing the required parameter 'targetType' when calling deleteOCItargetingRule(Async)");
+        }
+        
+        // verify the required parameter 'targetId' is set
+        if (targetId == null) {
+            throw new ApiException("Missing the required parameter 'targetId' when calling deleteOCItargetingRule(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteOCItargetingRuleCall(targetType, targetId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Delete OCI targeting rule.
+     * @param targetType Defines a target for a rule. (required)
+     * @param targetId Unique target identifier. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Rule deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteOCItargetingRule(TargetType targetType, Integer targetId) throws ApiException {
+        deleteOCItargetingRuleWithHttpInfo(targetType, targetId);
+    }
+
+    /**
+     * 
+     * Delete OCI targeting rule.
+     * @param targetType Defines a target for a rule. (required)
+     * @param targetId Unique target identifier. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Rule deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteOCItargetingRuleWithHttpInfo(TargetType targetType, Integer targetId) throws ApiException {
+        okhttp3.Call localVarCall = deleteOCItargetingRuleValidateBeforeCall(targetType, targetId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Delete OCI targeting rule.
+     * @param targetType Defines a target for a rule. (required)
+     * @param targetId Unique target identifier. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Rule deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteOCItargetingRuleAsync(TargetType targetType, Integer targetId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteOCItargetingRuleValidateBeforeCall(targetType, targetId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getAdSet
      * @param adSetId Id of the ad set (required)
      * @param _callback Callback for upload/download progress
@@ -83,7 +1119,7 @@ public class CampaignApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/2021-04/marketing-solutions/ad-sets/{adSetId}"
+        String localVarPath = "/preview/marketing-solutions/ad-sets/{adSetId}"
             .replaceAll("\\{" + "adSetId" + "\\}", localVarApiClient.escapeString(adSetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -106,7 +1142,7 @@ public class CampaignApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -186,31 +1222,26 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for getBids
-     * @param campaignIds Optional. The ids of the campaigns we want to get the bids on. If not specified, advertiserIds will be used. (optional)
-     * @param advertiserIds Optional. The ids of the advertisers&#39; campaigns we want to get the bids on. If campaignIds not specified, and neither is advertiserIds, all the advertisers in the user&#39;s portfolio are used. (optional)
-     * @param categoryHashCodes Optional. Filters only specified categories. By default no filtering is applied. (optional)
-     * @param bidType Optional. Filters by bid type. By default no filtering is applied. (optional)
-     * @param campaignStatus Optional. Filters by campaign status. By default no filtering is applied. (optional)
-     * @param pendingChanges Optional. Filters only pending changes or settled ones. By default no filtering is applied. (optional)
+     * Build call for getAdvertiserBundleRules
+     * @param advertiserId The advertiser id (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Bids returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> There is not even one valid advertiserId or campaignId requested. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBidsCall(String campaignIds, String advertiserIds, String categoryHashCodes, String bidType, String campaignStatus, Boolean pendingChanges, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdvertiserBundleRulesCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/legacy/marketing/v1/campaigns/bids";
+        String localVarPath = "/preview/advertisers/{advertiserId}/targeting/bundle-rules"
+            .replaceAll("\\{" + "advertiserId" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -218,32 +1249,8 @@ public class CampaignApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (campaignIds != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignIds", campaignIds));
-        }
-
-        if (advertiserIds != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("advertiserIds", advertiserIds));
-        }
-
-        if (categoryHashCodes != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("categoryHashCodes", categoryHashCodes));
-        }
-
-        if (bidType != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("bidType", bidType));
-        }
-
-        if (campaignStatus != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("campaignStatus", campaignStatus));
-        }
-
-        if (pendingChanges != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pendingChanges", pendingChanges));
-        }
-
         final String[] localVarAccepts = {
-            "application/json", "text/json", "application/xml", "text/xml", "text/html"
+            "text/plain", "application/json", "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -256,124 +1263,352 @@ public class CampaignApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBidsValidateBeforeCall(String campaignIds, String advertiserIds, String categoryHashCodes, String bidType, String campaignStatus, Boolean pendingChanges, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAdvertiserBundleRulesValidateBeforeCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling getAdvertiserBundleRules(Async)");
+        }
         
 
-        okhttp3.Call localVarCall = getBidsCall(campaignIds, advertiserIds, categoryHashCodes, bidType, campaignStatus, pendingChanges, _callback);
+        okhttp3.Call localVarCall = getAdvertiserBundleRulesCall(advertiserId, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Gets a the bids for campaigns and their categories
-     * Get the campaigns&#39; bids, as well as the bids of their categories
-     * @param campaignIds Optional. The ids of the campaigns we want to get the bids on. If not specified, advertiserIds will be used. (optional)
-     * @param advertiserIds Optional. The ids of the advertisers&#39; campaigns we want to get the bids on. If campaignIds not specified, and neither is advertiserIds, all the advertisers in the user&#39;s portfolio are used. (optional)
-     * @param categoryHashCodes Optional. Filters only specified categories. By default no filtering is applied. (optional)
-     * @param bidType Optional. Filters by bid type. By default no filtering is applied. (optional)
-     * @param campaignStatus Optional. Filters by campaign status. By default no filtering is applied. (optional)
-     * @param pendingChanges Optional. Filters only pending changes or settled ones. By default no filtering is applied. (optional)
-     * @return List&lt;CampaignBidMessage&gt;
+     * 
+     * Returns a list of all targeted bundles for an advertiser.
+     * @param advertiserId The advertiser id (required)
+     * @return ApiResponseOfTargetingEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Bids returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> There is not even one valid advertiserId or campaignId requested. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public List<CampaignBidMessage> getBids(String campaignIds, String advertiserIds, String categoryHashCodes, String bidType, String campaignStatus, Boolean pendingChanges) throws ApiException {
-        ApiResponse<List<CampaignBidMessage>> localVarResp = getBidsWithHttpInfo(campaignIds, advertiserIds, categoryHashCodes, bidType, campaignStatus, pendingChanges);
+    public ApiResponseOfTargetingEntity getAdvertiserBundleRules(Integer advertiserId) throws ApiException {
+        ApiResponse<ApiResponseOfTargetingEntity> localVarResp = getAdvertiserBundleRulesWithHttpInfo(advertiserId);
         return localVarResp.getData();
     }
 
     /**
-     * Gets a the bids for campaigns and their categories
-     * Get the campaigns&#39; bids, as well as the bids of their categories
-     * @param campaignIds Optional. The ids of the campaigns we want to get the bids on. If not specified, advertiserIds will be used. (optional)
-     * @param advertiserIds Optional. The ids of the advertisers&#39; campaigns we want to get the bids on. If campaignIds not specified, and neither is advertiserIds, all the advertisers in the user&#39;s portfolio are used. (optional)
-     * @param categoryHashCodes Optional. Filters only specified categories. By default no filtering is applied. (optional)
-     * @param bidType Optional. Filters by bid type. By default no filtering is applied. (optional)
-     * @param campaignStatus Optional. Filters by campaign status. By default no filtering is applied. (optional)
-     * @param pendingChanges Optional. Filters only pending changes or settled ones. By default no filtering is applied. (optional)
-     * @return ApiResponse&lt;List&lt;CampaignBidMessage&gt;&gt;
+     * 
+     * Returns a list of all targeted bundles for an advertiser.
+     * @param advertiserId The advertiser id (required)
+     * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Bids returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> There is not even one valid advertiserId or campaignId requested. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<CampaignBidMessage>> getBidsWithHttpInfo(String campaignIds, String advertiserIds, String categoryHashCodes, String bidType, String campaignStatus, Boolean pendingChanges) throws ApiException {
-        okhttp3.Call localVarCall = getBidsValidateBeforeCall(campaignIds, advertiserIds, categoryHashCodes, bidType, campaignStatus, pendingChanges, null);
-        Type localVarReturnType = new TypeToken<List<CampaignBidMessage>>(){}.getType();
+    public ApiResponse<ApiResponseOfTargetingEntity> getAdvertiserBundleRulesWithHttpInfo(Integer advertiserId) throws ApiException {
+        okhttp3.Call localVarCall = getAdvertiserBundleRulesValidateBeforeCall(advertiserId, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Gets a the bids for campaigns and their categories (asynchronously)
-     * Get the campaigns&#39; bids, as well as the bids of their categories
-     * @param campaignIds Optional. The ids of the campaigns we want to get the bids on. If not specified, advertiserIds will be used. (optional)
-     * @param advertiserIds Optional. The ids of the advertisers&#39; campaigns we want to get the bids on. If campaignIds not specified, and neither is advertiserIds, all the advertisers in the user&#39;s portfolio are used. (optional)
-     * @param categoryHashCodes Optional. Filters only specified categories. By default no filtering is applied. (optional)
-     * @param bidType Optional. Filters by bid type. By default no filtering is applied. (optional)
-     * @param campaignStatus Optional. Filters by campaign status. By default no filtering is applied. (optional)
-     * @param pendingChanges Optional. Filters only pending changes or settled ones. By default no filtering is applied. (optional)
+     *  (asynchronously)
+     * Returns a list of all targeted bundles for an advertiser.
+     * @param advertiserId The advertiser id (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Bids returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> There is not even one valid advertiserId or campaignId requested. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBidsAsync(String campaignIds, String advertiserIds, String categoryHashCodes, String bidType, String campaignStatus, Boolean pendingChanges, final ApiCallback<List<CampaignBidMessage>> _callback) throws ApiException {
+    public okhttp3.Call getAdvertiserBundleRulesAsync(Integer advertiserId, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getBidsValidateBeforeCall(campaignIds, advertiserIds, categoryHashCodes, bidType, campaignStatus, pendingChanges, _callback);
-        Type localVarReturnType = new TypeToken<List<CampaignBidMessage>>(){}.getType();
+        okhttp3.Call localVarCall = getAdvertiserBundleRulesValidateBeforeCall(advertiserId, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getCategories
-     * @param campaignId Mandatory. The id of the campaign the categories are linked to. (required)
-     * @param enabledOnly Optional. Returns only categories you can bid on. Defaults to false. (optional)
+     * Build call for getAdvertiserDomainRules
+     * @param advertiserId The advertiser id (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Categories returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> One of the requested campaigns doesn&#39;t belong to the API user&#39;s portfolio which prevents from accessing its data. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested campaign was not found. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCategoriesCall(Integer campaignId, Boolean enabledOnly, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdvertiserDomainRulesCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/legacy/marketing/v1/campaigns/{campaignId}/categories"
+        String localVarPath = "/preview/advertisers/{advertiserId}/targeting/domain-rules"
+            .replaceAll("\\{" + "advertiserId" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAdvertiserDomainRulesValidateBeforeCall(Integer advertiserId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling getAdvertiserDomainRules(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getAdvertiserDomainRulesCall(advertiserId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Returns a list of all targeted domains for an advertiser.
+     * @param advertiserId The advertiser id (required)
+     * @return ApiResponseOfTargetingEntity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponseOfTargetingEntity getAdvertiserDomainRules(Integer advertiserId) throws ApiException {
+        ApiResponse<ApiResponseOfTargetingEntity> localVarResp = getAdvertiserDomainRulesWithHttpInfo(advertiserId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Returns a list of all targeted domains for an advertiser.
+     * @param advertiserId The advertiser id (required)
+     * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ApiResponseOfTargetingEntity> getAdvertiserDomainRulesWithHttpInfo(Integer advertiserId) throws ApiException {
+        okhttp3.Call localVarCall = getAdvertiserDomainRulesValidateBeforeCall(advertiserId, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Returns a list of all targeted domains for an advertiser.
+     * @param advertiserId The advertiser id (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdvertiserDomainRulesAsync(Integer advertiserId, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAdvertiserDomainRulesValidateBeforeCall(advertiserId, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCampaign
+     * @param campaignId Id of the campaign (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCampaignCall(String campaignId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/campaigns/{campaign-id}"
+            .replaceAll("\\{" + "campaign-id" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCampaignValidateBeforeCall(String campaignId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling getCampaign(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getCampaignCall(campaignId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Get the data for the specified campaign
+     * @param campaignId Id of the campaign (required)
+     * @return CampaignResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public CampaignResponse getCampaign(String campaignId) throws ApiException {
+        ApiResponse<CampaignResponse> localVarResp = getCampaignWithHttpInfo(campaignId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get the data for the specified campaign
+     * @param campaignId Id of the campaign (required)
+     * @return ApiResponse&lt;CampaignResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CampaignResponse> getCampaignWithHttpInfo(String campaignId) throws ApiException {
+        okhttp3.Call localVarCall = getCampaignValidateBeforeCall(campaignId, null);
+        Type localVarReturnType = new TypeToken<CampaignResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get the data for the specified campaign
+     * @param campaignId Id of the campaign (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> data for the campaign </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCampaignAsync(String campaignId, final ApiCallback<CampaignResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCampaignValidateBeforeCall(campaignId, _callback);
+        Type localVarReturnType = new TypeToken<CampaignResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCampaignBundleRules
+     * @param campaignId The campaign id (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCampaignBundleRulesCall(Integer campaignId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/campaigns/{campaignId}/targeting/bundle-rules"
             .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -382,12 +1617,8 @@ public class CampaignApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (enabledOnly != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("enabledOnly", enabledOnly));
-        }
-
         final String[] localVarAccepts = {
-            "application/json", "text/json", "application/xml", "text/xml", "text/html"
+            "text/plain", "application/json", "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -400,122 +1631,109 @@ public class CampaignApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCategoriesValidateBeforeCall(Integer campaignId, Boolean enabledOnly, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCampaignBundleRulesValidateBeforeCall(Integer campaignId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
-            throw new ApiException("Missing the required parameter 'campaignId' when calling getCategories(Async)");
+            throw new ApiException("Missing the required parameter 'campaignId' when calling getCampaignBundleRules(Async)");
         }
         
 
-        okhttp3.Call localVarCall = getCategoriesCall(campaignId, enabledOnly, _callback);
+        okhttp3.Call localVarCall = getCampaignBundleRulesCall(campaignId, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Gets categories
-     * Get the list of categories linked to the requested campaign.
-     * @param campaignId Mandatory. The id of the campaign the categories are linked to. (required)
-     * @param enabledOnly Optional. Returns only categories you can bid on. Defaults to false. (optional)
-     * @return CategoryMessage
+     * 
+     * Returns a list of all targeted bundles for a campaign.
+     * @param campaignId The campaign id (required)
+     * @return ApiResponseOfTargetingEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Categories returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> One of the requested campaigns doesn&#39;t belong to the API user&#39;s portfolio which prevents from accessing its data. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested campaign was not found. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public CategoryMessage getCategories(Integer campaignId, Boolean enabledOnly) throws ApiException {
-        ApiResponse<CategoryMessage> localVarResp = getCategoriesWithHttpInfo(campaignId, enabledOnly);
+    public ApiResponseOfTargetingEntity getCampaignBundleRules(Integer campaignId) throws ApiException {
+        ApiResponse<ApiResponseOfTargetingEntity> localVarResp = getCampaignBundleRulesWithHttpInfo(campaignId);
         return localVarResp.getData();
     }
 
     /**
-     * Gets categories
-     * Get the list of categories linked to the requested campaign.
-     * @param campaignId Mandatory. The id of the campaign the categories are linked to. (required)
-     * @param enabledOnly Optional. Returns only categories you can bid on. Defaults to false. (optional)
-     * @return ApiResponse&lt;CategoryMessage&gt;
+     * 
+     * Returns a list of all targeted bundles for a campaign.
+     * @param campaignId The campaign id (required)
+     * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Categories returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> One of the requested campaigns doesn&#39;t belong to the API user&#39;s portfolio which prevents from accessing its data. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested campaign was not found. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CategoryMessage> getCategoriesWithHttpInfo(Integer campaignId, Boolean enabledOnly) throws ApiException {
-        okhttp3.Call localVarCall = getCategoriesValidateBeforeCall(campaignId, enabledOnly, null);
-        Type localVarReturnType = new TypeToken<CategoryMessage>(){}.getType();
+    public ApiResponse<ApiResponseOfTargetingEntity> getCampaignBundleRulesWithHttpInfo(Integer campaignId) throws ApiException {
+        okhttp3.Call localVarCall = getCampaignBundleRulesValidateBeforeCall(campaignId, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Gets categories (asynchronously)
-     * Get the list of categories linked to the requested campaign.
-     * @param campaignId Mandatory. The id of the campaign the categories are linked to. (required)
-     * @param enabledOnly Optional. Returns only categories you can bid on. Defaults to false. (optional)
+     *  (asynchronously)
+     * Returns a list of all targeted bundles for a campaign.
+     * @param campaignId The campaign id (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Categories returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> One of the requested campaigns doesn&#39;t belong to the API user&#39;s portfolio which prevents from accessing its data. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested campaign was not found. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCategoriesAsync(Integer campaignId, Boolean enabledOnly, final ApiCallback<CategoryMessage> _callback) throws ApiException {
+    public okhttp3.Call getCampaignBundleRulesAsync(Integer campaignId, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCategoriesValidateBeforeCall(campaignId, enabledOnly, _callback);
-        Type localVarReturnType = new TypeToken<CategoryMessage>(){}.getType();
+        okhttp3.Call localVarCall = getCampaignBundleRulesValidateBeforeCall(campaignId, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getCategory
-     * @param campaignId Mandatory. The id of the campaign the categories are linked to. (required)
-     * @param categoryHashCode Mandatory. The id of the category to return. (required)
+     * Build call for getCampaignDomainRules
+     * @param campaignId The campaign id (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Category returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> One of the requested campaigns doesn&#39;t belong to the API user&#39;s portfolio which prevents from accessing its data. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested category was not found for the campaign. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCategoryCall(Integer campaignId, Integer categoryHashCode, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCampaignDomainRulesCall(Integer campaignId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/legacy/marketing/v1/campaigns/{campaignId}/categories/{categoryHashCode}"
-            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()))
-            .replaceAll("\\{" + "categoryHashCode" + "\\}", localVarApiClient.escapeString(categoryHashCode.toString()));
+        String localVarPath = "/preview/campaigns/{campaignId}/targeting/domain-rules"
+            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -524,7 +1742,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json", "text/json", "application/xml", "text/xml", "text/html"
+            "text/plain", "application/json", "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -537,99 +1755,621 @@ public class CampaignApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCategoryValidateBeforeCall(Integer campaignId, Integer categoryHashCode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCampaignDomainRulesValidateBeforeCall(Integer campaignId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
-            throw new ApiException("Missing the required parameter 'campaignId' when calling getCategory(Async)");
-        }
-        
-        // verify the required parameter 'categoryHashCode' is set
-        if (categoryHashCode == null) {
-            throw new ApiException("Missing the required parameter 'categoryHashCode' when calling getCategory(Async)");
+            throw new ApiException("Missing the required parameter 'campaignId' when calling getCampaignDomainRules(Async)");
         }
         
 
-        okhttp3.Call localVarCall = getCategoryCall(campaignId, categoryHashCode, _callback);
+        okhttp3.Call localVarCall = getCampaignDomainRulesCall(campaignId, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Gets a specific category
-     * Get a specific category linked to the requested campaign.
-     * @param campaignId Mandatory. The id of the campaign the categories are linked to. (required)
-     * @param categoryHashCode Mandatory. The id of the category to return. (required)
-     * @return CategoryMessage
+     * 
+     * Returns a list of all targeted domains for a campaign.
+     * @param campaignId The campaign id (required)
+     * @return ApiResponseOfTargetingEntity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Category returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> One of the requested campaigns doesn&#39;t belong to the API user&#39;s portfolio which prevents from accessing its data. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested category was not found for the campaign. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public CategoryMessage getCategory(Integer campaignId, Integer categoryHashCode) throws ApiException {
-        ApiResponse<CategoryMessage> localVarResp = getCategoryWithHttpInfo(campaignId, categoryHashCode);
+    public ApiResponseOfTargetingEntity getCampaignDomainRules(Integer campaignId) throws ApiException {
+        ApiResponse<ApiResponseOfTargetingEntity> localVarResp = getCampaignDomainRulesWithHttpInfo(campaignId);
         return localVarResp.getData();
     }
 
     /**
-     * Gets a specific category
-     * Get a specific category linked to the requested campaign.
-     * @param campaignId Mandatory. The id of the campaign the categories are linked to. (required)
-     * @param categoryHashCode Mandatory. The id of the category to return. (required)
-     * @return ApiResponse&lt;CategoryMessage&gt;
+     * 
+     * Returns a list of all targeted domains for a campaign.
+     * @param campaignId The campaign id (required)
+     * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Category returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> One of the requested campaigns doesn&#39;t belong to the API user&#39;s portfolio which prevents from accessing its data. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested category was not found for the campaign. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CategoryMessage> getCategoryWithHttpInfo(Integer campaignId, Integer categoryHashCode) throws ApiException {
-        okhttp3.Call localVarCall = getCategoryValidateBeforeCall(campaignId, categoryHashCode, null);
-        Type localVarReturnType = new TypeToken<CategoryMessage>(){}.getType();
+    public ApiResponse<ApiResponseOfTargetingEntity> getCampaignDomainRulesWithHttpInfo(Integer campaignId) throws ApiException {
+        okhttp3.Call localVarCall = getCampaignDomainRulesValidateBeforeCall(campaignId, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Gets a specific category (asynchronously)
-     * Get a specific category linked to the requested campaign.
-     * @param campaignId Mandatory. The id of the campaign the categories are linked to. (required)
-     * @param categoryHashCode Mandatory. The id of the category to return. (required)
+     *  (asynchronously)
+     * Returns a list of all targeted domains for a campaign.
+     * @param campaignId The campaign id (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Category returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> One of the requested campaigns doesn&#39;t belong to the API user&#39;s portfolio which prevents from accessing its data. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested category was not found for the campaign. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCategoryAsync(Integer campaignId, Integer categoryHashCode, final ApiCallback<CategoryMessage> _callback) throws ApiException {
+    public okhttp3.Call getCampaignDomainRulesAsync(Integer campaignId, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCategoryValidateBeforeCall(campaignId, categoryHashCode, _callback);
-        Type localVarReturnType = new TypeToken<CategoryMessage>(){}.getType();
+        okhttp3.Call localVarCall = getCampaignDomainRulesValidateBeforeCall(campaignId, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCategoryBidList
+     * @param adSetId Id of the Ad Set (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCategoryBidListCall(String adSetId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ad-sets/{ad-set-id}/category-bids"
+            .replaceAll("\\{" + "ad-set-id" + "\\}", localVarApiClient.escapeString(adSetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCategoryBidListValidateBeforeCall(String adSetId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'adSetId' is set
+        if (adSetId == null) {
+            throw new ApiException("Missing the required parameter 'adSetId' when calling getCategoryBidList(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getCategoryBidListCall(adSetId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Get the Category Bids for all valid Categories associated to an Ad Set
+     * @param adSetId Id of the Ad Set (required)
+     * @return AdSetCategoryBidListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public AdSetCategoryBidListResponse getCategoryBidList(String adSetId) throws ApiException {
+        ApiResponse<AdSetCategoryBidListResponse> localVarResp = getCategoryBidListWithHttpInfo(adSetId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get the Category Bids for all valid Categories associated to an Ad Set
+     * @param adSetId Id of the Ad Set (required)
+     * @return ApiResponse&lt;AdSetCategoryBidListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AdSetCategoryBidListResponse> getCategoryBidListWithHttpInfo(String adSetId) throws ApiException {
+        okhttp3.Call localVarCall = getCategoryBidListValidateBeforeCall(adSetId, null);
+        Type localVarReturnType = new TypeToken<AdSetCategoryBidListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get the Category Bids for all valid Categories associated to an Ad Set
+     * @param adSetId Id of the Ad Set (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCategoryBidListAsync(String adSetId, final ApiCallback<AdSetCategoryBidListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCategoryBidListValidateBeforeCall(adSetId, _callback);
+        Type localVarReturnType = new TypeToken<AdSetCategoryBidListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getDisplayMultipliers
+     * @param adSetId Id of the Ad Set (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDisplayMultipliersCall(String adSetId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers"
+            .replaceAll("\\{" + "ad-set-id" + "\\}", localVarApiClient.escapeString(adSetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDisplayMultipliersValidateBeforeCall(String adSetId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'adSetId' is set
+        if (adSetId == null) {
+            throw new ApiException("Missing the required parameter 'adSetId' when calling getDisplayMultipliers(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getDisplayMultipliersCall(adSetId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Get the Display Multipliers for all valid Categories associated to an Ad Set
+     * @param adSetId Id of the Ad Set (required)
+     * @return AdSetDisplayMultiplierListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public AdSetDisplayMultiplierListResponse getDisplayMultipliers(String adSetId) throws ApiException {
+        ApiResponse<AdSetDisplayMultiplierListResponse> localVarResp = getDisplayMultipliersWithHttpInfo(adSetId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get the Display Multipliers for all valid Categories associated to an Ad Set
+     * @param adSetId Id of the Ad Set (required)
+     * @return ApiResponse&lt;AdSetDisplayMultiplierListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AdSetDisplayMultiplierListResponse> getDisplayMultipliersWithHttpInfo(String adSetId) throws ApiException {
+        okhttp3.Call localVarCall = getDisplayMultipliersValidateBeforeCall(adSetId, null);
+        Type localVarReturnType = new TypeToken<AdSetDisplayMultiplierListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get the Display Multipliers for all valid Categories associated to an Ad Set
+     * @param adSetId Id of the Ad Set (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDisplayMultipliersAsync(String adSetId, final ApiCallback<AdSetDisplayMultiplierListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDisplayMultipliersValidateBeforeCall(adSetId, _callback);
+        Type localVarReturnType = new TypeToken<AdSetDisplayMultiplierListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getOCIbrandSafetyRule
+     * @param targetType Defines a target for a rule. (required)
+     * @param targetId Unique target identifier. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Rule found </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getOCIbrandSafetyRuleCall(TargetType targetType, Integer targetId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/brand-safety/oci";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (targetType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("target-type", targetType));
+        }
+
+        if (targetId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("target-id", targetId));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getOCIbrandSafetyRuleValidateBeforeCall(TargetType targetType, Integer targetId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'targetType' is set
+        if (targetType == null) {
+            throw new ApiException("Missing the required parameter 'targetType' when calling getOCIbrandSafetyRule(Async)");
+        }
+        
+        // verify the required parameter 'targetId' is set
+        if (targetId == null) {
+            throw new ApiException("Missing the required parameter 'targetId' when calling getOCIbrandSafetyRule(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getOCIbrandSafetyRuleCall(targetType, targetId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Get OCI brand-safety rule for the specified target
+     * @param targetType Defines a target for a rule. (required)
+     * @param targetId Unique target identifier. (required)
+     * @return OciBrandSafetyResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Rule found </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public OciBrandSafetyResponse getOCIbrandSafetyRule(TargetType targetType, Integer targetId) throws ApiException {
+        ApiResponse<OciBrandSafetyResponse> localVarResp = getOCIbrandSafetyRuleWithHttpInfo(targetType, targetId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get OCI brand-safety rule for the specified target
+     * @param targetType Defines a target for a rule. (required)
+     * @param targetId Unique target identifier. (required)
+     * @return ApiResponse&lt;OciBrandSafetyResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Rule found </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<OciBrandSafetyResponse> getOCIbrandSafetyRuleWithHttpInfo(TargetType targetType, Integer targetId) throws ApiException {
+        okhttp3.Call localVarCall = getOCIbrandSafetyRuleValidateBeforeCall(targetType, targetId, null);
+        Type localVarReturnType = new TypeToken<OciBrandSafetyResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get OCI brand-safety rule for the specified target
+     * @param targetType Defines a target for a rule. (required)
+     * @param targetId Unique target identifier. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Rule found </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getOCIbrandSafetyRuleAsync(TargetType targetType, Integer targetId, final ApiCallback<OciBrandSafetyResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getOCIbrandSafetyRuleValidateBeforeCall(targetType, targetId, _callback);
+        Type localVarReturnType = new TypeToken<OciBrandSafetyResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getOCItargetingRule
+     * @param targetType Defines a target for a rule. (required)
+     * @param targetId Unique target identifier. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Rule found </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getOCItargetingRuleCall(TargetType targetType, Integer targetId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/targeting/oci";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (targetType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("target-type", targetType));
+        }
+
+        if (targetId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("target-id", targetId));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getOCItargetingRuleValidateBeforeCall(TargetType targetType, Integer targetId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'targetType' is set
+        if (targetType == null) {
+            throw new ApiException("Missing the required parameter 'targetType' when calling getOCItargetingRule(Async)");
+        }
+        
+        // verify the required parameter 'targetId' is set
+        if (targetId == null) {
+            throw new ApiException("Missing the required parameter 'targetId' when calling getOCItargetingRule(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getOCItargetingRuleCall(targetType, targetId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Get OCI targeting rule for specified target.
+     * @param targetType Defines a target for a rule. (required)
+     * @param targetId Unique target identifier. (required)
+     * @return OciTargetingResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Rule found </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public OciTargetingResponse getOCItargetingRule(TargetType targetType, Integer targetId) throws ApiException {
+        ApiResponse<OciTargetingResponse> localVarResp = getOCItargetingRuleWithHttpInfo(targetType, targetId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get OCI targeting rule for specified target.
+     * @param targetType Defines a target for a rule. (required)
+     * @param targetId Unique target identifier. (required)
+     * @return ApiResponse&lt;OciTargetingResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Rule found </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<OciTargetingResponse> getOCItargetingRuleWithHttpInfo(TargetType targetType, Integer targetId) throws ApiException {
+        okhttp3.Call localVarCall = getOCItargetingRuleValidateBeforeCall(targetType, targetId, null);
+        Type localVarReturnType = new TypeToken<OciTargetingResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get OCI targeting rule for specified target.
+     * @param targetType Defines a target for a rule. (required)
+     * @param targetId Unique target identifier. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Rule found </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getOCItargetingRuleAsync(TargetType targetType, Integer targetId, final ApiCallback<OciTargetingResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getOCItargetingRuleValidateBeforeCall(targetType, targetId, _callback);
+        Type localVarReturnType = new TypeToken<OciTargetingResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -651,7 +2391,7 @@ public class CampaignApi {
         Object localVarPostBody = requestsPatchAdSet;
 
         // create path and map variables
-        String localVarPath = "/2021-04/marketing-solutions/ad-sets";
+        String localVarPath = "/preview/marketing-solutions/ad-sets";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -673,7 +2413,7 @@ public class CampaignApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -748,25 +2488,24 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for searchAdSets
-     * @param requestAdSetSearch  (optional)
+     * Build call for patchCampaigns
+     * @param patchCampaignListRequest List of campaigns to patch. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAdSetsCall(RequestAdSetSearch requestAdSetSearch, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = requestAdSetSearch;
+    public okhttp3.Call patchCampaignsCall(PatchCampaignListRequest patchCampaignListRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = patchCampaignListRequest;
 
         // create path and map variables
-        String localVarPath = "/2021-04/marketing-solutions/ad-sets/search";
+        String localVarPath = "/preview/marketing-solutions/campaigns";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -788,7 +2527,1390 @@ public class CampaignApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchCampaignsValidateBeforeCall(PatchCampaignListRequest patchCampaignListRequest, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = patchCampaignsCall(patchCampaignListRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Patch a list of Campaigns.
+     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @return PatchResultCampaignListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public PatchResultCampaignListResponse patchCampaigns(PatchCampaignListRequest patchCampaignListRequest) throws ApiException {
+        ApiResponse<PatchResultCampaignListResponse> localVarResp = patchCampaignsWithHttpInfo(patchCampaignListRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Patch a list of Campaigns.
+     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @return ApiResponse&lt;PatchResultCampaignListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PatchResultCampaignListResponse> patchCampaignsWithHttpInfo(PatchCampaignListRequest patchCampaignListRequest) throws ApiException {
+        okhttp3.Call localVarCall = patchCampaignsValidateBeforeCall(patchCampaignListRequest, null);
+        Type localVarReturnType = new TypeToken<PatchResultCampaignListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Patch a list of Campaigns.
+     * @param patchCampaignListRequest List of campaigns to patch. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of patched campaigns. </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchCampaignsAsync(PatchCampaignListRequest patchCampaignListRequest, final ApiCallback<PatchResultCampaignListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchCampaignsValidateBeforeCall(patchCampaignListRequest, _callback);
+        Type localVarReturnType = new TypeToken<PatchResultCampaignListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for patchCategoryBidList
+     * @param adSetId Id of the Ad Set (required)
+     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchCategoryBidListCall(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = patchAdSetCategoryBidListRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ad-sets/{ad-set-id}/category-bids"
+            .replaceAll("\\{" + "ad-set-id" + "\\}", localVarApiClient.escapeString(adSetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchCategoryBidListValidateBeforeCall(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'adSetId' is set
+        if (adSetId == null) {
+            throw new ApiException("Missing the required parameter 'adSetId' when calling patchCategoryBidList(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = patchCategoryBidListCall(adSetId, patchAdSetCategoryBidListRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
+     * @param adSetId Id of the Ad Set (required)
+     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @return PatchAdSetCategoryBidResultListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public PatchAdSetCategoryBidResultListResponse patchCategoryBidList(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest) throws ApiException {
+        ApiResponse<PatchAdSetCategoryBidResultListResponse> localVarResp = patchCategoryBidListWithHttpInfo(adSetId, patchAdSetCategoryBidListRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
+     * @param adSetId Id of the Ad Set (required)
+     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @return ApiResponse&lt;PatchAdSetCategoryBidResultListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PatchAdSetCategoryBidResultListResponse> patchCategoryBidListWithHttpInfo(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest) throws ApiException {
+        okhttp3.Call localVarCall = patchCategoryBidListValidateBeforeCall(adSetId, patchAdSetCategoryBidListRequest, null);
+        Type localVarReturnType = new TypeToken<PatchAdSetCategoryBidResultListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
+     * @param adSetId Id of the Ad Set (required)
+     * @param patchAdSetCategoryBidListRequest  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchCategoryBidListAsync(String adSetId, PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest, final ApiCallback<PatchAdSetCategoryBidResultListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchCategoryBidListValidateBeforeCall(adSetId, patchAdSetCategoryBidListRequest, _callback);
+        Type localVarReturnType = new TypeToken<PatchAdSetCategoryBidResultListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for patchDisplayMultipliers
+     * @param adSetId Id of the Ad Set (required)
+     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchDisplayMultipliersCall(String adSetId, PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = patchAdSetDisplayMultiplierListRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers"
+            .replaceAll("\\{" + "ad-set-id" + "\\}", localVarApiClient.escapeString(adSetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchDisplayMultipliersValidateBeforeCall(String adSetId, PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'adSetId' is set
+        if (adSetId == null) {
+            throw new ApiException("Missing the required parameter 'adSetId' when calling patchDisplayMultipliers(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = patchDisplayMultipliersCall(adSetId, patchAdSetDisplayMultiplierListRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
+     * @param adSetId Id of the Ad Set (required)
+     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @return PatchAdSetDisplayMultiplierResultListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public PatchAdSetDisplayMultiplierResultListResponse patchDisplayMultipliers(String adSetId, PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest) throws ApiException {
+        ApiResponse<PatchAdSetDisplayMultiplierResultListResponse> localVarResp = patchDisplayMultipliersWithHttpInfo(adSetId, patchAdSetDisplayMultiplierListRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
+     * @param adSetId Id of the Ad Set (required)
+     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @return ApiResponse&lt;PatchAdSetDisplayMultiplierResultListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PatchAdSetDisplayMultiplierResultListResponse> patchDisplayMultipliersWithHttpInfo(String adSetId, PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest) throws ApiException {
+        okhttp3.Call localVarCall = patchDisplayMultipliersValidateBeforeCall(adSetId, patchAdSetDisplayMultiplierListRequest, null);
+        Type localVarReturnType = new TypeToken<PatchAdSetDisplayMultiplierResultListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
+     * @param adSetId Id of the Ad Set (required)
+     * @param patchAdSetDisplayMultiplierListRequest  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchDisplayMultipliersAsync(String adSetId, PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest, final ApiCallback<PatchAdSetDisplayMultiplierResultListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchDisplayMultipliersValidateBeforeCall(adSetId, patchAdSetDisplayMultiplierListRequest, _callback);
+        Type localVarReturnType = new TypeToken<PatchAdSetDisplayMultiplierResultListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postAdvertiserBundleRules
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAdvertiserBundleRulesCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = apiRequestOfTargetingEntity;
+
+        // create path and map variables
+        String localVarPath = "/preview/advertisers/{advertiserId}/targeting/bundle-rules"
+            .replaceAll("\\{" + "advertiserId" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postAdvertiserBundleRulesValidateBeforeCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling postAdvertiserBundleRules(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = postAdvertiserBundleRulesCall(advertiserId, apiRequestOfTargetingEntity, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Inserts a list of targeted bundles for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @return ApiResponseOfTargetingEntity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponseOfTargetingEntity postAdvertiserBundleRules(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        ApiResponse<ApiResponseOfTargetingEntity> localVarResp = postAdvertiserBundleRulesWithHttpInfo(advertiserId, apiRequestOfTargetingEntity);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Inserts a list of targeted bundles for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ApiResponseOfTargetingEntity> postAdvertiserBundleRulesWithHttpInfo(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        okhttp3.Call localVarCall = postAdvertiserBundleRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Inserts a list of targeted bundles for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAdvertiserBundleRulesAsync(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postAdvertiserBundleRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postAdvertiserDomainRules
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAdvertiserDomainRulesCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = apiRequestOfTargetingEntity;
+
+        // create path and map variables
+        String localVarPath = "/preview/advertisers/{advertiserId}/targeting/domain-rules"
+            .replaceAll("\\{" + "advertiserId" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postAdvertiserDomainRulesValidateBeforeCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling postAdvertiserDomainRules(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = postAdvertiserDomainRulesCall(advertiserId, apiRequestOfTargetingEntity, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Inserts a list of targeted domains for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @return ApiResponseOfTargetingEntity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponseOfTargetingEntity postAdvertiserDomainRules(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        ApiResponse<ApiResponseOfTargetingEntity> localVarResp = postAdvertiserDomainRulesWithHttpInfo(advertiserId, apiRequestOfTargetingEntity);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Inserts a list of targeted domains for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ApiResponseOfTargetingEntity> postAdvertiserDomainRulesWithHttpInfo(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        okhttp3.Call localVarCall = postAdvertiserDomainRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Inserts a list of targeted domains for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAdvertiserDomainRulesAsync(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postAdvertiserDomainRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCampaignBundleRules
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postCampaignBundleRulesCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = apiRequestOfTargetingEntity;
+
+        // create path and map variables
+        String localVarPath = "/preview/campaigns/{campaignId}/targeting/bundle-rules"
+            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCampaignBundleRulesValidateBeforeCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling postCampaignBundleRules(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = postCampaignBundleRulesCall(campaignId, apiRequestOfTargetingEntity, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Inserts a list of targeted bundles for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @return ApiResponseOfTargetingEntity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponseOfTargetingEntity postCampaignBundleRules(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        ApiResponse<ApiResponseOfTargetingEntity> localVarResp = postCampaignBundleRulesWithHttpInfo(campaignId, apiRequestOfTargetingEntity);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Inserts a list of targeted bundles for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ApiResponseOfTargetingEntity> postCampaignBundleRulesWithHttpInfo(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        okhttp3.Call localVarCall = postCampaignBundleRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Inserts a list of targeted bundles for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postCampaignBundleRulesAsync(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCampaignBundleRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCampaignDomainRules
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postCampaignDomainRulesCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = apiRequestOfTargetingEntity;
+
+        // create path and map variables
+        String localVarPath = "/preview/campaigns/{campaignId}/targeting/domain-rules"
+            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCampaignDomainRulesValidateBeforeCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling postCampaignDomainRules(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = postCampaignDomainRulesCall(campaignId, apiRequestOfTargetingEntity, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Inserts a list of targeted domains for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @return ApiResponseOfTargetingEntity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponseOfTargetingEntity postCampaignDomainRules(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        ApiResponse<ApiResponseOfTargetingEntity> localVarResp = postCampaignDomainRulesWithHttpInfo(campaignId, apiRequestOfTargetingEntity);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Inserts a list of targeted domains for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ApiResponseOfTargetingEntity> postCampaignDomainRulesWithHttpInfo(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        okhttp3.Call localVarCall = postCampaignDomainRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Inserts a list of targeted domains for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Description of the targeting rule to setup (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postCampaignDomainRulesAsync(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCampaignDomainRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putAdvertiserBundleRules
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putAdvertiserBundleRulesCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = apiRequestOfTargetingEntity;
+
+        // create path and map variables
+        String localVarPath = "/preview/advertisers/{advertiserId}/targeting/bundle-rules"
+            .replaceAll("\\{" + "advertiserId" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putAdvertiserBundleRulesValidateBeforeCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling putAdvertiserBundleRules(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = putAdvertiserBundleRulesCall(advertiserId, apiRequestOfTargetingEntity, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Updates the targeted bundles for an advertiser by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @return ApiResponseOfTargetingEntity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponseOfTargetingEntity putAdvertiserBundleRules(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        ApiResponse<ApiResponseOfTargetingEntity> localVarResp = putAdvertiserBundleRulesWithHttpInfo(advertiserId, apiRequestOfTargetingEntity);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Updates the targeted bundles for an advertiser by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ApiResponseOfTargetingEntity> putAdvertiserBundleRulesWithHttpInfo(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        okhttp3.Call localVarCall = putAdvertiserBundleRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Updates the targeted bundles for an advertiser by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putAdvertiserBundleRulesAsync(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putAdvertiserBundleRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putAdvertiserDomainRules
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putAdvertiserDomainRulesCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = apiRequestOfTargetingEntity;
+
+        // create path and map variables
+        String localVarPath = "/preview/advertisers/{advertiserId}/targeting/domain-rules"
+            .replaceAll("\\{" + "advertiserId" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putAdvertiserDomainRulesValidateBeforeCall(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling putAdvertiserDomainRules(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = putAdvertiserDomainRulesCall(advertiserId, apiRequestOfTargetingEntity, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Updates the targeted domains for an advertiser by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @return ApiResponseOfTargetingEntity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponseOfTargetingEntity putAdvertiserDomainRules(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        ApiResponse<ApiResponseOfTargetingEntity> localVarResp = putAdvertiserDomainRulesWithHttpInfo(advertiserId, apiRequestOfTargetingEntity);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Updates the targeted domains for an advertiser by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ApiResponseOfTargetingEntity> putAdvertiserDomainRulesWithHttpInfo(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        okhttp3.Call localVarCall = putAdvertiserDomainRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Updates the targeted domains for an advertiser by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param advertiserId The advertiser id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putAdvertiserDomainRulesAsync(Integer advertiserId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putAdvertiserDomainRulesValidateBeforeCall(advertiserId, apiRequestOfTargetingEntity, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putCampaignBundleRules
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putCampaignBundleRulesCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = apiRequestOfTargetingEntity;
+
+        // create path and map variables
+        String localVarPath = "/preview/campaigns/{campaignId}/targeting/bundle-rules"
+            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putCampaignBundleRulesValidateBeforeCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling putCampaignBundleRules(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = putCampaignBundleRulesCall(campaignId, apiRequestOfTargetingEntity, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Updates the targeted bundles for a campaign by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @return ApiResponseOfTargetingEntity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponseOfTargetingEntity putCampaignBundleRules(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        ApiResponse<ApiResponseOfTargetingEntity> localVarResp = putCampaignBundleRulesWithHttpInfo(campaignId, apiRequestOfTargetingEntity);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Updates the targeted bundles for a campaign by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ApiResponseOfTargetingEntity> putCampaignBundleRulesWithHttpInfo(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        okhttp3.Call localVarCall = putCampaignBundleRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Updates the targeted bundles for a campaign by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putCampaignBundleRulesAsync(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putCampaignBundleRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putCampaignDomainRules
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putCampaignDomainRulesCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = apiRequestOfTargetingEntity;
+
+        // create path and map variables
+        String localVarPath = "/preview/campaigns/{campaignId}/targeting/domain-rules"
+            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putCampaignDomainRulesValidateBeforeCall(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'campaignId' is set
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling putCampaignDomainRules(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = putCampaignDomainRulesCall(campaignId, apiRequestOfTargetingEntity, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Updates the targeted domains for a campaign by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @return ApiResponseOfTargetingEntity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponseOfTargetingEntity putCampaignDomainRules(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        ApiResponse<ApiResponseOfTargetingEntity> localVarResp = putCampaignDomainRulesWithHttpInfo(campaignId, apiRequestOfTargetingEntity);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Updates the targeted domains for a campaign by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @return ApiResponse&lt;ApiResponseOfTargetingEntity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ApiResponseOfTargetingEntity> putCampaignDomainRulesWithHttpInfo(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity) throws ApiException {
+        okhttp3.Call localVarCall = putCampaignDomainRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Updates the targeted domains for a campaign by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+     * @param campaignId The campaign id (required)
+     * @param apiRequestOfTargetingEntity Contains the list of items to add to the existing list (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putCampaignDomainRulesAsync(Integer campaignId, ApiRequestOfTargetingEntity apiRequestOfTargetingEntity, final ApiCallback<ApiResponseOfTargetingEntity> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putCampaignDomainRulesValidateBeforeCall(campaignId, apiRequestOfTargetingEntity, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseOfTargetingEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for searchAdSets
+     * @param requestAdSetSearch  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call searchAdSetsCall(RequestAdSetSearch requestAdSetSearch, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = requestAdSetSearch;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ad-sets/search";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -866,24 +3988,25 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for startAdSets
-     * @param requestsAdSetId All the ad sets to start (optional)
+     * Build call for searchCampaigns
+     * @param campaignSearchRequest filters on campaigns (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of ad sets that have been started and errors / warnings by ad set </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call startAdSetsCall(RequestsAdSetId requestsAdSetId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = requestsAdSetId;
+    public okhttp3.Call searchCampaignsCall(CampaignSearchRequest campaignSearchRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = campaignSearchRequest;
 
         // create path and map variables
-        String localVarPath = "/2021-04/marketing-solutions/ad-sets/start";
+        String localVarPath = "/preview/marketing-solutions/campaigns/search";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -905,7 +4028,124 @@ public class CampaignApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call searchCampaignsValidateBeforeCall(CampaignSearchRequest campaignSearchRequest, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = searchCampaignsCall(campaignSearchRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Search for campaigns
+     * @param campaignSearchRequest filters on campaigns (optional)
+     * @return CampaignListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public CampaignListResponse searchCampaigns(CampaignSearchRequest campaignSearchRequest) throws ApiException {
+        ApiResponse<CampaignListResponse> localVarResp = searchCampaignsWithHttpInfo(campaignSearchRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Search for campaigns
+     * @param campaignSearchRequest filters on campaigns (optional)
+     * @return ApiResponse&lt;CampaignListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CampaignListResponse> searchCampaignsWithHttpInfo(CampaignSearchRequest campaignSearchRequest) throws ApiException {
+        okhttp3.Call localVarCall = searchCampaignsValidateBeforeCall(campaignSearchRequest, null);
+        Type localVarReturnType = new TypeToken<CampaignListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Search for campaigns
+     * @param campaignSearchRequest filters on campaigns (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call searchCampaignsAsync(CampaignSearchRequest campaignSearchRequest, final ApiCallback<CampaignListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = searchCampaignsValidateBeforeCall(campaignSearchRequest, _callback);
+        Type localVarReturnType = new TypeToken<CampaignListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for startAdSets
+     * @param requestsAdSetId All the ad sets to start (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of ad sets that have been started and errors / warnings by ad set </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call startAdSetsCall(RequestsAdSetId requestsAdSetId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = requestsAdSetId;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ad-sets/start";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -997,7 +4237,7 @@ public class CampaignApi {
         Object localVarPostBody = requestsAdSetId;
 
         // create path and map variables
-        String localVarPath = "/2021-04/marketing-solutions/ad-sets/stop";
+        String localVarPath = "/preview/marketing-solutions/ad-sets/stop";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1019,7 +4259,7 @@ public class CampaignApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -1094,26 +4334,26 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for updateBids
-     * @param bidChanges Specifies the list of bid changes to be applied. (required)
+     * Build call for upsertOCIbrandSafetyRule
+     * @param ociBrandSafetyRule OCI brand-safety rule input (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Campaign bids updated OK. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid input. Please check returned message for details. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Rule created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateBidsCall(List<CampaignBidChangeRequest> bidChanges, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = bidChanges;
+    public okhttp3.Call upsertOCIbrandSafetyRuleCall(OciBrandSafetyRule ociBrandSafetyRule, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = ociBrandSafetyRule;
 
         // create path and map variables
-        String localVarPath = "/legacy/marketing/v1/campaigns/bids";
+        String localVarPath = "/preview/brand-safety/oci";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1122,7 +4362,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json", "text/json", "application/xml", "text/xml", "text/html"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1130,93 +4370,220 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json", "text/json", "application/xml", "text/xml", "application/x-www-form-urlencoded", "text/html"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateBidsValidateBeforeCall(List<CampaignBidChangeRequest> bidChanges, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertOCIbrandSafetyRuleValidateBeforeCall(OciBrandSafetyRule ociBrandSafetyRule, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'bidChanges' is set
-        if (bidChanges == null) {
-            throw new ApiException("Missing the required parameter 'bidChanges' when calling updateBids(Async)");
+        // verify the required parameter 'ociBrandSafetyRule' is set
+        if (ociBrandSafetyRule == null) {
+            throw new ApiException("Missing the required parameter 'ociBrandSafetyRule' when calling upsertOCIbrandSafetyRule(Async)");
         }
         
 
-        okhttp3.Call localVarCall = updateBidsCall(bidChanges, _callback);
+        okhttp3.Call localVarCall = upsertOCIbrandSafetyRuleCall(ociBrandSafetyRule, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Update bids for campaigns and their categories
-     * If a campaign bid is updated, all (if any) category bids for this campaign will be updated with the new value if they are initially equal to the campaign bid.  If the category bid is not wanted to be cascaded to the categories with the same bid value, new change bids must be added in the request for the categories where the value should be kept (with the initial value).
-     * @param bidChanges Specifies the list of bid changes to be applied. (required)
-     * @return List&lt;CampaignMessage&gt;
+     * 
+     * Create or update a new or replace existing OCI brand-safety rule.
+     * @param ociBrandSafetyRule OCI brand-safety rule input (required)
+     * @return OciBrandSafetyResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Campaign bids updated OK. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid input. Please check returned message for details. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Rule created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
      </table>
      */
-    public List<CampaignMessage> updateBids(List<CampaignBidChangeRequest> bidChanges) throws ApiException {
-        ApiResponse<List<CampaignMessage>> localVarResp = updateBidsWithHttpInfo(bidChanges);
+    public OciBrandSafetyResponse upsertOCIbrandSafetyRule(OciBrandSafetyRule ociBrandSafetyRule) throws ApiException {
+        ApiResponse<OciBrandSafetyResponse> localVarResp = upsertOCIbrandSafetyRuleWithHttpInfo(ociBrandSafetyRule);
         return localVarResp.getData();
     }
 
     /**
-     * Update bids for campaigns and their categories
-     * If a campaign bid is updated, all (if any) category bids for this campaign will be updated with the new value if they are initially equal to the campaign bid.  If the category bid is not wanted to be cascaded to the categories with the same bid value, new change bids must be added in the request for the categories where the value should be kept (with the initial value).
-     * @param bidChanges Specifies the list of bid changes to be applied. (required)
-     * @return ApiResponse&lt;List&lt;CampaignMessage&gt;&gt;
+     * 
+     * Create or update a new or replace existing OCI brand-safety rule.
+     * @param ociBrandSafetyRule OCI brand-safety rule input (required)
+     * @return ApiResponse&lt;OciBrandSafetyResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Campaign bids updated OK. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid input. Please check returned message for details. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Rule created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<CampaignMessage>> updateBidsWithHttpInfo(List<CampaignBidChangeRequest> bidChanges) throws ApiException {
-        okhttp3.Call localVarCall = updateBidsValidateBeforeCall(bidChanges, null);
-        Type localVarReturnType = new TypeToken<List<CampaignMessage>>(){}.getType();
+    public ApiResponse<OciBrandSafetyResponse> upsertOCIbrandSafetyRuleWithHttpInfo(OciBrandSafetyRule ociBrandSafetyRule) throws ApiException {
+        okhttp3.Call localVarCall = upsertOCIbrandSafetyRuleValidateBeforeCall(ociBrandSafetyRule, null);
+        Type localVarReturnType = new TypeToken<OciBrandSafetyResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Update bids for campaigns and their categories (asynchronously)
-     * If a campaign bid is updated, all (if any) category bids for this campaign will be updated with the new value if they are initially equal to the campaign bid.  If the category bid is not wanted to be cascaded to the categories with the same bid value, new change bids must be added in the request for the categories where the value should be kept (with the initial value).
-     * @param bidChanges Specifies the list of bid changes to be applied. (required)
+     *  (asynchronously)
+     * Create or update a new or replace existing OCI brand-safety rule.
+     * @param ociBrandSafetyRule OCI brand-safety rule input (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Campaign bids updated OK. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Invalid input. Please check returned message for details. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Rule created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateBidsAsync(List<CampaignBidChangeRequest> bidChanges, final ApiCallback<List<CampaignMessage>> _callback) throws ApiException {
+    public okhttp3.Call upsertOCIbrandSafetyRuleAsync(OciBrandSafetyRule ociBrandSafetyRule, final ApiCallback<OciBrandSafetyResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateBidsValidateBeforeCall(bidChanges, _callback);
-        Type localVarReturnType = new TypeToken<List<CampaignMessage>>(){}.getType();
+        okhttp3.Call localVarCall = upsertOCIbrandSafetyRuleValidateBeforeCall(ociBrandSafetyRule, _callback);
+        Type localVarReturnType = new TypeToken<OciBrandSafetyResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for upsertOCItargetingRule
+     * @param ociTargetingRule OCI targeting rule input (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Rule created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call upsertOCItargetingRuleCall(OciTargetingRule ociTargetingRule, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = ociTargetingRule;
+
+        // create path and map variables
+        String localVarPath = "/preview/targeting/oci";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call upsertOCItargetingRuleValidateBeforeCall(OciTargetingRule ociTargetingRule, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'ociTargetingRule' is set
+        if (ociTargetingRule == null) {
+            throw new ApiException("Missing the required parameter 'ociTargetingRule' when calling upsertOCItargetingRule(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = upsertOCItargetingRuleCall(ociTargetingRule, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Create or update new or update existing OCI targeting rule.
+     * @param ociTargetingRule OCI targeting rule input (required)
+     * @return OciTargetingResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Rule created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public OciTargetingResponse upsertOCItargetingRule(OciTargetingRule ociTargetingRule) throws ApiException {
+        ApiResponse<OciTargetingResponse> localVarResp = upsertOCItargetingRuleWithHttpInfo(ociTargetingRule);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Create or update new or update existing OCI targeting rule.
+     * @param ociTargetingRule OCI targeting rule input (required)
+     * @return ApiResponse&lt;OciTargetingResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Rule created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<OciTargetingResponse> upsertOCItargetingRuleWithHttpInfo(OciTargetingRule ociTargetingRule) throws ApiException {
+        okhttp3.Call localVarCall = upsertOCItargetingRuleValidateBeforeCall(ociTargetingRule, null);
+        Type localVarReturnType = new TypeToken<OciTargetingResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Create or update new or update existing OCI targeting rule.
+     * @param ociTargetingRule OCI targeting rule input (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Rule created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid input </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal service error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call upsertOCItargetingRuleAsync(OciTargetingRule ociTargetingRule, final ApiCallback<OciTargetingResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertOCItargetingRuleValidateBeforeCall(ociTargetingRule, _callback);
+        Type localVarReturnType = new TypeToken<OciTargetingResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

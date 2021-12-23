@@ -1,6 +1,6 @@
 /*
- * Criteo API Specification
- * This is used to help Criteo clients use our API
+ * Criteo API
+ * Criteo publicly exposed API
  *
  * The version of the OpenAPI document: preview
  * 
@@ -28,6 +28,7 @@ import java.io.IOException;
 
 
 import com.criteo.api.marketingsolutions.preview.model.ContactlistAmendmentRequest;
+import com.criteo.api.marketingsolutions.preview.model.ContactlistWithAttributesAmendmentRequest;
 import com.criteo.api.marketingsolutions.preview.model.DeleteAudienceContactListResponse;
 import com.criteo.api.marketingsolutions.preview.model.DeleteAudienceResponse;
 import com.criteo.api.marketingsolutions.preview.model.ErrorCodeResponse;
@@ -80,7 +81,7 @@ public class AudienceApi {
         Object localVarPostBody = newAudienceRequest;
 
         // create path and map variables
-        String localVarPath = "/2021-04/audiences";
+        String localVarPath = "/preview/audiences";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -102,7 +103,7 @@ public class AudienceApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -195,7 +196,7 @@ public class AudienceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/2021-04/audiences/{audience-id}/contactlist"
+        String localVarPath = "/preview/audiences/{audience-id}/contactlist"
             .replaceAll("\\{" + "audience-id" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -218,7 +219,7 @@ public class AudienceApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -311,7 +312,7 @@ public class AudienceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/2021-04/audiences";
+        String localVarPath = "/preview/audiences";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -337,7 +338,7 @@ public class AudienceApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -426,7 +427,7 @@ public class AudienceApi {
         Object localVarPostBody = replaceAudienceRequest;
 
         // create path and map variables
-        String localVarPath = "/2021-04/audiences/{audience-id}"
+        String localVarPath = "/preview/audiences/{audience-id}"
             .replaceAll("\\{" + "audience-id" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -449,7 +450,7 @@ public class AudienceApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -552,7 +553,7 @@ public class AudienceApi {
         Object localVarPostBody = contactlistAmendmentRequest;
 
         // create path and map variables
-        String localVarPath = "/2021-04/audiences/{audience-id}/contactlist"
+        String localVarPath = "/preview/audiences/{audience-id}/contactlist"
             .replaceAll("\\{" + "audience-id" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -575,7 +576,7 @@ public class AudienceApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -663,6 +664,131 @@ public class AudienceApi {
         return localVarCall;
     }
     /**
+     * Build call for modifyAudienceUsersWithAttributes
+     * @param audienceId The id of the audience to amend (required)
+     * @param contactlistWithAttributesAmendmentRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Not authorized </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call modifyAudienceUsersWithAttributesCall(Integer audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = contactlistWithAttributesAmendmentRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/audiences/{audience-id}/contactlist-attributes"
+            .replaceAll("\\{" + "audience-id" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call modifyAudienceUsersWithAttributesValidateBeforeCall(Integer audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'audienceId' is set
+        if (audienceId == null) {
+            throw new ApiException("Missing the required parameter 'audienceId' when calling modifyAudienceUsersWithAttributes(Async)");
+        }
+        
+        // verify the required parameter 'contactlistWithAttributesAmendmentRequest' is set
+        if (contactlistWithAttributesAmendmentRequest == null) {
+            throw new ApiException("Missing the required parameter 'contactlistWithAttributesAmendmentRequest' when calling modifyAudienceUsersWithAttributes(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = modifyAudienceUsersWithAttributesCall(audienceId, contactlistWithAttributesAmendmentRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Add/remove users to or from an audience
+     * @param audienceId The id of the audience to amend (required)
+     * @param contactlistWithAttributesAmendmentRequest  (required)
+     * @return ModifyAudienceResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Not authorized </td><td>  -  </td></tr>
+     </table>
+     */
+    public ModifyAudienceResponse modifyAudienceUsersWithAttributes(Integer audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest) throws ApiException {
+        ApiResponse<ModifyAudienceResponse> localVarResp = modifyAudienceUsersWithAttributesWithHttpInfo(audienceId, contactlistWithAttributesAmendmentRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Add/remove users to or from an audience
+     * @param audienceId The id of the audience to amend (required)
+     * @param contactlistWithAttributesAmendmentRequest  (required)
+     * @return ApiResponse&lt;ModifyAudienceResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Not authorized </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ModifyAudienceResponse> modifyAudienceUsersWithAttributesWithHttpInfo(Integer audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest) throws ApiException {
+        okhttp3.Call localVarCall = modifyAudienceUsersWithAttributesValidateBeforeCall(audienceId, contactlistWithAttributesAmendmentRequest, null);
+        Type localVarReturnType = new TypeToken<ModifyAudienceResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Add/remove users to or from an audience
+     * @param audienceId The id of the audience to amend (required)
+     * @param contactlistWithAttributesAmendmentRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Not authorized </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call modifyAudienceUsersWithAttributesAsync(Integer audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest, final ApiCallback<ModifyAudienceResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = modifyAudienceUsersWithAttributesValidateBeforeCall(audienceId, contactlistWithAttributesAmendmentRequest, _callback);
+        Type localVarReturnType = new TypeToken<ModifyAudienceResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for removeAudience
      * @param audienceId The id of the audience to amend (required)
      * @param _callback Callback for upload/download progress
@@ -679,7 +805,7 @@ public class AudienceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/2021-04/audiences/{audience-id}"
+        String localVarPath = "/preview/audiences/{audience-id}"
             .replaceAll("\\{" + "audience-id" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -702,7 +828,7 @@ public class AudienceApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 

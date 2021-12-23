@@ -4,16 +4,613 @@ All URIs are relative to *https://api.criteo.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getAdSet**](CampaignApi.md#getAdSet) | **GET** /2021-04/marketing-solutions/ad-sets/{adSetId} | 
-[**getBids**](CampaignApi.md#getBids) | **GET** /legacy/marketing/v1/campaigns/bids | Gets a the bids for campaigns and their categories
-[**getCategories**](CampaignApi.md#getCategories) | **GET** /legacy/marketing/v1/campaigns/{campaignId}/categories | Gets categories
-[**getCategory**](CampaignApi.md#getCategory) | **GET** /legacy/marketing/v1/campaigns/{campaignId}/categories/{categoryHashCode} | Gets a specific category
-[**patchAdSets**](CampaignApi.md#patchAdSets) | **PATCH** /2021-04/marketing-solutions/ad-sets | 
-[**searchAdSets**](CampaignApi.md#searchAdSets) | **POST** /2021-04/marketing-solutions/ad-sets/search | 
-[**startAdSets**](CampaignApi.md#startAdSets) | **POST** /2021-04/marketing-solutions/ad-sets/start | 
-[**stopAdSets**](CampaignApi.md#stopAdSets) | **POST** /2021-04/marketing-solutions/ad-sets/stop | 
-[**updateBids**](CampaignApi.md#updateBids) | **PUT** /legacy/marketing/v1/campaigns/bids | Update bids for campaigns and their categories
+[**createAdSet**](CampaignApi.md#createAdSet) | **POST** /preview/marketing-solutions/ad-sets | 
+[**createCampaign**](CampaignApi.md#createCampaign) | **POST** /preview/marketing-solutions/campaigns | 
+[**deleteAdvertiserBundleRules**](CampaignApi.md#deleteAdvertiserBundleRules) | **DELETE** /preview/advertisers/{advertiserId}/targeting/bundle-rules | 
+[**deleteAdvertiserDomainRules**](CampaignApi.md#deleteAdvertiserDomainRules) | **DELETE** /preview/advertisers/{advertiserId}/targeting/domain-rules | 
+[**deleteCampaignBundleRules**](CampaignApi.md#deleteCampaignBundleRules) | **DELETE** /preview/campaigns/{campaignId}/targeting/bundle-rules | 
+[**deleteCampaignDomainRules**](CampaignApi.md#deleteCampaignDomainRules) | **DELETE** /preview/campaigns/{campaignId}/targeting/domain-rules | 
+[**deleteOCIbrandSafetyRule**](CampaignApi.md#deleteOCIbrandSafetyRule) | **DELETE** /preview/brand-safety/oci | 
+[**deleteOCItargetingRule**](CampaignApi.md#deleteOCItargetingRule) | **DELETE** /preview/targeting/oci | 
+[**getAdSet**](CampaignApi.md#getAdSet) | **GET** /preview/marketing-solutions/ad-sets/{adSetId} | 
+[**getAdvertiserBundleRules**](CampaignApi.md#getAdvertiserBundleRules) | **GET** /preview/advertisers/{advertiserId}/targeting/bundle-rules | 
+[**getAdvertiserDomainRules**](CampaignApi.md#getAdvertiserDomainRules) | **GET** /preview/advertisers/{advertiserId}/targeting/domain-rules | 
+[**getCampaign**](CampaignApi.md#getCampaign) | **GET** /preview/marketing-solutions/campaigns/{campaign-id} | 
+[**getCampaignBundleRules**](CampaignApi.md#getCampaignBundleRules) | **GET** /preview/campaigns/{campaignId}/targeting/bundle-rules | 
+[**getCampaignDomainRules**](CampaignApi.md#getCampaignDomainRules) | **GET** /preview/campaigns/{campaignId}/targeting/domain-rules | 
+[**getCategoryBidList**](CampaignApi.md#getCategoryBidList) | **GET** /preview/marketing-solutions/ad-sets/{ad-set-id}/category-bids | 
+[**getDisplayMultipliers**](CampaignApi.md#getDisplayMultipliers) | **GET** /preview/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers | 
+[**getOCIbrandSafetyRule**](CampaignApi.md#getOCIbrandSafetyRule) | **GET** /preview/brand-safety/oci | 
+[**getOCItargetingRule**](CampaignApi.md#getOCItargetingRule) | **GET** /preview/targeting/oci | 
+[**patchAdSets**](CampaignApi.md#patchAdSets) | **PATCH** /preview/marketing-solutions/ad-sets | 
+[**patchCampaigns**](CampaignApi.md#patchCampaigns) | **PATCH** /preview/marketing-solutions/campaigns | 
+[**patchCategoryBidList**](CampaignApi.md#patchCategoryBidList) | **PATCH** /preview/marketing-solutions/ad-sets/{ad-set-id}/category-bids | 
+[**patchDisplayMultipliers**](CampaignApi.md#patchDisplayMultipliers) | **PATCH** /preview/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers | 
+[**postAdvertiserBundleRules**](CampaignApi.md#postAdvertiserBundleRules) | **POST** /preview/advertisers/{advertiserId}/targeting/bundle-rules | 
+[**postAdvertiserDomainRules**](CampaignApi.md#postAdvertiserDomainRules) | **POST** /preview/advertisers/{advertiserId}/targeting/domain-rules | 
+[**postCampaignBundleRules**](CampaignApi.md#postCampaignBundleRules) | **POST** /preview/campaigns/{campaignId}/targeting/bundle-rules | 
+[**postCampaignDomainRules**](CampaignApi.md#postCampaignDomainRules) | **POST** /preview/campaigns/{campaignId}/targeting/domain-rules | 
+[**putAdvertiserBundleRules**](CampaignApi.md#putAdvertiserBundleRules) | **PUT** /preview/advertisers/{advertiserId}/targeting/bundle-rules | 
+[**putAdvertiserDomainRules**](CampaignApi.md#putAdvertiserDomainRules) | **PUT** /preview/advertisers/{advertiserId}/targeting/domain-rules | 
+[**putCampaignBundleRules**](CampaignApi.md#putCampaignBundleRules) | **PUT** /preview/campaigns/{campaignId}/targeting/bundle-rules | 
+[**putCampaignDomainRules**](CampaignApi.md#putCampaignDomainRules) | **PUT** /preview/campaigns/{campaignId}/targeting/domain-rules | 
+[**searchAdSets**](CampaignApi.md#searchAdSets) | **POST** /preview/marketing-solutions/ad-sets/search | 
+[**searchCampaigns**](CampaignApi.md#searchCampaigns) | **POST** /preview/marketing-solutions/campaigns/search | 
+[**startAdSets**](CampaignApi.md#startAdSets) | **POST** /preview/marketing-solutions/ad-sets/start | 
+[**stopAdSets**](CampaignApi.md#stopAdSets) | **POST** /preview/marketing-solutions/ad-sets/stop | 
+[**upsertOCIbrandSafetyRule**](CampaignApi.md#upsertOCIbrandSafetyRule) | **POST** /preview/brand-safety/oci | 
+[**upsertOCItargetingRule**](CampaignApi.md#upsertOCItargetingRule) | **POST** /preview/targeting/oci | 
 
+
+<a name="createAdSet"></a>
+# **createAdSet**
+> ResponseReadAdSet createAdSet(createAdSetRequest)
+
+
+
+Create the specified ad set
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    CreateAdSetRequest createAdSetRequest = new CreateAdSetRequest(); // CreateAdSetRequest | the ad sets to create
+    try {
+      ResponseReadAdSet result = apiInstance.createAdSet(createAdSetRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#createAdSet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createAdSetRequest** | [**CreateAdSetRequest**](CreateAdSetRequest.md)| the ad sets to create | [optional]
+
+### Return type
+
+[**ResponseReadAdSet**](ResponseReadAdSet.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | The ad set that has been created and errors / warnings |  -  |
+**400** | Bad Request |  -  |
+**401** | The API client is not properly authenticated. |  -  |
+
+<a name="createCampaign"></a>
+# **createCampaign**
+> CampaignResponse createCampaign(createCampaignRequest)
+
+
+
+Create the specified campaign
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    CreateCampaignRequest createCampaignRequest = new CreateCampaignRequest(); // CreateCampaignRequest | 
+    try {
+      CampaignResponse result = apiInstance.createCampaign(createCampaignRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#createCampaign");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCampaignRequest** | [**CreateCampaignRequest**](CreateCampaignRequest.md)|  | [optional]
+
+### Return type
+
+[**CampaignResponse**](CampaignResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | The campaign that has been created and errors / warnings |  -  |
+**400** | Bad Request |  -  |
+**401** | The API client is not properly authenticated. |  -  |
+
+<a name="deleteAdvertiserBundleRules"></a>
+# **deleteAdvertiserBundleRules**
+> ApiResponseOfTargetingEntity deleteAdvertiserBundleRules(advertiserId, apiRequestOfTargetingEntity)
+
+
+
+Removes some bundles from the current list of targeted bundles for a given advertiser.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    Integer advertiserId = 56; // Integer | The advertiser id
+    ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to delete from the list
+    try {
+      ApiResponseOfTargetingEntity result = apiInstance.deleteAdvertiserBundleRules(advertiserId, apiRequestOfTargetingEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#deleteAdvertiserBundleRules");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiserId** | **Integer**| The advertiser id |
+ **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Contains the list of items to delete from the list | [optional]
+
+### Return type
+
+[**ApiResponseOfTargetingEntity**](ApiResponseOfTargetingEntity.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+
+<a name="deleteAdvertiserDomainRules"></a>
+# **deleteAdvertiserDomainRules**
+> ApiResponseOfTargetingEntity deleteAdvertiserDomainRules(advertiserId, apiRequestOfTargetingEntity)
+
+
+
+Removes some domains from the current list of targeted domains for a given advertiser.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    Integer advertiserId = 56; // Integer | The advertiser id
+    ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to delete from the list
+    try {
+      ApiResponseOfTargetingEntity result = apiInstance.deleteAdvertiserDomainRules(advertiserId, apiRequestOfTargetingEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#deleteAdvertiserDomainRules");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiserId** | **Integer**| The advertiser id |
+ **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Contains the list of items to delete from the list | [optional]
+
+### Return type
+
+[**ApiResponseOfTargetingEntity**](ApiResponseOfTargetingEntity.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+
+<a name="deleteCampaignBundleRules"></a>
+# **deleteCampaignBundleRules**
+> ApiResponseOfTargetingEntity deleteCampaignBundleRules(campaignId, apiRequestOfTargetingEntity)
+
+
+
+Removes some bundles from the current list of targeted bundles for a given campaign.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    Integer campaignId = 56; // Integer | The campaign id
+    ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to delete from the list
+    try {
+      ApiResponseOfTargetingEntity result = apiInstance.deleteCampaignBundleRules(campaignId, apiRequestOfTargetingEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#deleteCampaignBundleRules");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignId** | **Integer**| The campaign id |
+ **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Contains the list of items to delete from the list | [optional]
+
+### Return type
+
+[**ApiResponseOfTargetingEntity**](ApiResponseOfTargetingEntity.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+
+<a name="deleteCampaignDomainRules"></a>
+# **deleteCampaignDomainRules**
+> ApiResponseOfTargetingEntity deleteCampaignDomainRules(campaignId, apiRequestOfTargetingEntity)
+
+
+
+Removes some domains from the current list of targeted domains for a given campaign.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    Integer campaignId = 56; // Integer | The campaign id
+    ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to delete from the list
+    try {
+      ApiResponseOfTargetingEntity result = apiInstance.deleteCampaignDomainRules(campaignId, apiRequestOfTargetingEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#deleteCampaignDomainRules");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignId** | **Integer**| The campaign id |
+ **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Contains the list of items to delete from the list | [optional]
+
+### Return type
+
+[**ApiResponseOfTargetingEntity**](ApiResponseOfTargetingEntity.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+
+<a name="deleteOCIbrandSafetyRule"></a>
+# **deleteOCIbrandSafetyRule**
+> deleteOCIbrandSafetyRule(targetType, targetId)
+
+
+
+Delete OCI brand-safety rule.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    TargetType targetType = TargetType.fromValue("Campaign"); // TargetType | Defines a target for a rule.
+    Integer targetId = 56; // Integer | Unique target identifier.
+    try {
+      apiInstance.deleteOCIbrandSafetyRule(targetType, targetId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#deleteOCIbrandSafetyRule");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetType** | [**TargetType**](.md)| Defines a target for a rule. | [enum: Campaign, Advertiser]
+ **targetId** | **Integer**| Unique target identifier. |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Rule deleted |  -  |
+**400** | Invalid input |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Internal service error |  -  |
+
+<a name="deleteOCItargetingRule"></a>
+# **deleteOCItargetingRule**
+> deleteOCItargetingRule(targetType, targetId)
+
+
+
+Delete OCI targeting rule.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    TargetType targetType = TargetType.fromValue("Campaign"); // TargetType | Defines a target for a rule.
+    Integer targetId = 56; // Integer | Unique target identifier.
+    try {
+      apiInstance.deleteOCItargetingRule(targetType, targetId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#deleteOCItargetingRule");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetType** | [**TargetType**](.md)| Defines a target for a rule. | [enum: Campaign, Advertiser]
+ **targetId** | **Integer**| Unique target identifier. |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Rule deleted |  -  |
+**400** | Invalid input |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Internal service error |  -  |
 
 <a name="getAdSet"></a>
 # **getAdSet**
@@ -38,9 +635,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     CampaignApi apiInstance = new CampaignApi(defaultClient);
     String adSetId = "adSetId_example"; // String | Id of the ad set
@@ -70,7 +667,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -84,94 +681,13 @@ Name | Type | Description  | Notes
 **401** | The API client is not properly authenticated. |  -  |
 **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
-<a name="getBids"></a>
-# **getBids**
-> List&lt;CampaignBidMessage&gt; getBids(campaignIds, advertiserIds, categoryHashCodes, bidType, campaignStatus, pendingChanges)
+<a name="getAdvertiserBundleRules"></a>
+# **getAdvertiserBundleRules**
+> ApiResponseOfTargetingEntity getAdvertiserBundleRules(advertiserId)
 
-Gets a the bids for campaigns and their categories
 
-Get the campaigns&#39; bids, as well as the bids of their categories
 
-### Example
-```java
-// Import classes:
-import com.criteo.api.marketingsolutions.preview.ApiClient;
-import com.criteo.api.marketingsolutions.preview.ApiException;
-import com.criteo.api.marketingsolutions.preview.Configuration;
-import com.criteo.api.marketingsolutions.preview.auth.*;
-import com.criteo.api.marketingsolutions.preview.models.*;
-import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.criteo.com");
-    
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
-
-    CampaignApi apiInstance = new CampaignApi(defaultClient);
-    String campaignIds = "campaignIds_example"; // String | Optional. The ids of the campaigns we want to get the bids on. If not specified, advertiserIds will be used.
-    String advertiserIds = "advertiserIds_example"; // String | Optional. The ids of the advertisers' campaigns we want to get the bids on. If campaignIds not specified, and neither is advertiserIds, all the advertisers in the user's portfolio are used.
-    String categoryHashCodes = "categoryHashCodes_example"; // String | Optional. Filters only specified categories. By default no filtering is applied.
-    String bidType = "bidType_example"; // String | Optional. Filters by bid type. By default no filtering is applied.
-    String campaignStatus = "campaignStatus_example"; // String | Optional. Filters by campaign status. By default no filtering is applied.
-    Boolean pendingChanges = true; // Boolean | Optional. Filters only pending changes or settled ones. By default no filtering is applied.
-    try {
-      List<CampaignBidMessage> result = apiInstance.getBids(campaignIds, advertiserIds, categoryHashCodes, bidType, campaignStatus, pendingChanges);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling CampaignApi#getBids");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **campaignIds** | **String**| Optional. The ids of the campaigns we want to get the bids on. If not specified, advertiserIds will be used. | [optional]
- **advertiserIds** | **String**| Optional. The ids of the advertisers&#39; campaigns we want to get the bids on. If campaignIds not specified, and neither is advertiserIds, all the advertisers in the user&#39;s portfolio are used. | [optional]
- **categoryHashCodes** | **String**| Optional. Filters only specified categories. By default no filtering is applied. | [optional]
- **bidType** | **String**| Optional. Filters by bid type. By default no filtering is applied. | [optional] [enum: Unknown, CPC, COS, CPO]
- **campaignStatus** | **String**| Optional. Filters by campaign status. By default no filtering is applied. | [optional] [enum: Running, Archived, NotRunning]
- **pendingChanges** | **Boolean**| Optional. Filters only pending changes or settled ones. By default no filtering is applied. | [optional]
-
-### Return type
-
-[**List&lt;CampaignBidMessage&gt;**](CampaignBidMessage.md)
-
-### Authorization
-
-[Authorization](../README.md#Authorization)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, application/xml, text/xml, text/html
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Bids returned OK. |  -  |
-**401** | Authentication failed. |  -  |
-**403** | There is not even one valid advertiserId or campaignId requested. |  -  |
-**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
-**500** | Unknown error. |  -  |
-
-<a name="getCategories"></a>
-# **getCategories**
-> CategoryMessage getCategories(campaignId, enabledOnly)
-
-Gets categories
-
-Get the list of categories linked to the requested campaign.
+Returns a list of all targeted bundles for an advertiser.
 
 ### Example
 ```java
@@ -188,18 +704,17 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     CampaignApi apiInstance = new CampaignApi(defaultClient);
-    Integer campaignId = 56; // Integer | Mandatory. The id of the campaign the categories are linked to.
-    Boolean enabledOnly = true; // Boolean | Optional. Returns only categories you can bid on. Defaults to false.
+    Integer advertiserId = 56; // Integer | The advertiser id
     try {
-      CategoryMessage result = apiInstance.getCategories(campaignId, enabledOnly);
+      ApiResponseOfTargetingEntity result = apiInstance.getAdvertiserBundleRules(advertiserId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CampaignApi#getCategories");
+      System.err.println("Exception when calling CampaignApi#getAdvertiserBundleRules");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -213,39 +728,36 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignId** | **Integer**| Mandatory. The id of the campaign the categories are linked to. |
- **enabledOnly** | **Boolean**| Optional. Returns only categories you can bid on. Defaults to false. | [optional]
+ **advertiserId** | **Integer**| The advertiser id |
 
 ### Return type
 
-[**CategoryMessage**](CategoryMessage.md)
+[**ApiResponseOfTargetingEntity**](ApiResponseOfTargetingEntity.md)
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+ - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Categories returned OK. |  -  |
-**401** | Authentication failed. |  -  |
-**403** | One of the requested campaigns doesn&#39;t belong to the API user&#39;s portfolio which prevents from accessing its data. |  -  |
-**404** | The requested campaign was not found. |  -  |
-**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
-**500** | Unknown error. |  -  |
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
 
-<a name="getCategory"></a>
-# **getCategory**
-> CategoryMessage getCategory(campaignId, categoryHashCode)
+<a name="getAdvertiserDomainRules"></a>
+# **getAdvertiserDomainRules**
+> ApiResponseOfTargetingEntity getAdvertiserDomainRules(advertiserId)
 
-Gets a specific category
 
-Get a specific category linked to the requested campaign.
+
+Returns a list of all targeted domains for an advertiser.
 
 ### Example
 ```java
@@ -262,18 +774,17 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     CampaignApi apiInstance = new CampaignApi(defaultClient);
-    Integer campaignId = 56; // Integer | Mandatory. The id of the campaign the categories are linked to.
-    Integer categoryHashCode = 56; // Integer | Mandatory. The id of the category to return.
+    Integer advertiserId = 56; // Integer | The advertiser id
     try {
-      CategoryMessage result = apiInstance.getCategory(campaignId, categoryHashCode);
+      ApiResponseOfTargetingEntity result = apiInstance.getAdvertiserDomainRules(advertiserId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CampaignApi#getCategory");
+      System.err.println("Exception when calling CampaignApi#getAdvertiserDomainRules");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -287,31 +798,523 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignId** | **Integer**| Mandatory. The id of the campaign the categories are linked to. |
- **categoryHashCode** | **Integer**| Mandatory. The id of the category to return. |
+ **advertiserId** | **Integer**| The advertiser id |
 
 ### Return type
 
-[**CategoryMessage**](CategoryMessage.md)
+[**ApiResponseOfTargetingEntity**](ApiResponseOfTargetingEntity.md)
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+ - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Category returned OK. |  -  |
-**401** | Authentication failed. |  -  |
-**403** | One of the requested campaigns doesn&#39;t belong to the API user&#39;s portfolio which prevents from accessing its data. |  -  |
-**404** | The requested category was not found for the campaign. |  -  |
-**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
-**500** | Unknown error. |  -  |
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+
+<a name="getCampaign"></a>
+# **getCampaign**
+> CampaignResponse getCampaign(campaignId)
+
+
+
+Get the data for the specified campaign
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    String campaignId = "campaignId_example"; // String | Id of the campaign
+    try {
+      CampaignResponse result = apiInstance.getCampaign(campaignId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#getCampaign");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignId** | **String**| Id of the campaign |
+
+### Return type
+
+[**CampaignResponse**](CampaignResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | data for the campaign |  -  |
+**401** | The API client is not properly authenticated. |  -  |
+**403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
+
+<a name="getCampaignBundleRules"></a>
+# **getCampaignBundleRules**
+> ApiResponseOfTargetingEntity getCampaignBundleRules(campaignId)
+
+
+
+Returns a list of all targeted bundles for a campaign.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    Integer campaignId = 56; // Integer | The campaign id
+    try {
+      ApiResponseOfTargetingEntity result = apiInstance.getCampaignBundleRules(campaignId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#getCampaignBundleRules");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignId** | **Integer**| The campaign id |
+
+### Return type
+
+[**ApiResponseOfTargetingEntity**](ApiResponseOfTargetingEntity.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+
+<a name="getCampaignDomainRules"></a>
+# **getCampaignDomainRules**
+> ApiResponseOfTargetingEntity getCampaignDomainRules(campaignId)
+
+
+
+Returns a list of all targeted domains for a campaign.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    Integer campaignId = 56; // Integer | The campaign id
+    try {
+      ApiResponseOfTargetingEntity result = apiInstance.getCampaignDomainRules(campaignId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#getCampaignDomainRules");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignId** | **Integer**| The campaign id |
+
+### Return type
+
+[**ApiResponseOfTargetingEntity**](ApiResponseOfTargetingEntity.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+
+<a name="getCategoryBidList"></a>
+# **getCategoryBidList**
+> AdSetCategoryBidListResponse getCategoryBidList(adSetId)
+
+
+
+Get the Category Bids for all valid Categories associated to an Ad Set
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    String adSetId = "adSetId_example"; // String | Id of the Ad Set
+    try {
+      AdSetCategoryBidListResponse result = apiInstance.getCategoryBidList(adSetId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#getCategoryBidList");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adSetId** | **String**| Id of the Ad Set |
+
+### Return type
+
+[**AdSetCategoryBidListResponse**](AdSetCategoryBidListResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of Category Bids for all valid Categories associated to an Ad Set. |  -  |
+**400** | Bad Request |  -  |
+**401** | The API client is not properly authenticated. |  -  |
+**403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
+
+<a name="getDisplayMultipliers"></a>
+# **getDisplayMultipliers**
+> AdSetDisplayMultiplierListResponse getDisplayMultipliers(adSetId)
+
+
+
+Get the Display Multipliers for all valid Categories associated to an Ad Set
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    String adSetId = "adSetId_example"; // String | Id of the Ad Set
+    try {
+      AdSetDisplayMultiplierListResponse result = apiInstance.getDisplayMultipliers(adSetId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#getDisplayMultipliers");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adSetId** | **String**| Id of the Ad Set |
+
+### Return type
+
+[**AdSetDisplayMultiplierListResponse**](AdSetDisplayMultiplierListResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of Display Multipliers for all valid Categories associated to an Ad Set. |  -  |
+**400** | Bad Request |  -  |
+**401** | The API client is not properly authenticated. |  -  |
+**403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
+
+<a name="getOCIbrandSafetyRule"></a>
+# **getOCIbrandSafetyRule**
+> OciBrandSafetyResponse getOCIbrandSafetyRule(targetType, targetId)
+
+
+
+Get OCI brand-safety rule for the specified target
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    TargetType targetType = TargetType.fromValue("Campaign"); // TargetType | Defines a target for a rule.
+    Integer targetId = 56; // Integer | Unique target identifier.
+    try {
+      OciBrandSafetyResponse result = apiInstance.getOCIbrandSafetyRule(targetType, targetId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#getOCIbrandSafetyRule");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetType** | [**TargetType**](.md)| Defines a target for a rule. | [enum: Campaign, Advertiser]
+ **targetId** | **Integer**| Unique target identifier. |
+
+### Return type
+
+[**OciBrandSafetyResponse**](OciBrandSafetyResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Rule found |  -  |
+**400** | Invalid input |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Internal service error |  -  |
+
+<a name="getOCItargetingRule"></a>
+# **getOCItargetingRule**
+> OciTargetingResponse getOCItargetingRule(targetType, targetId)
+
+
+
+Get OCI targeting rule for specified target.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    TargetType targetType = TargetType.fromValue("Campaign"); // TargetType | Defines a target for a rule.
+    Integer targetId = 56; // Integer | Unique target identifier.
+    try {
+      OciTargetingResponse result = apiInstance.getOCItargetingRule(targetType, targetId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#getOCItargetingRule");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetType** | [**TargetType**](.md)| Defines a target for a rule. | [enum: Campaign, Advertiser]
+ **targetId** | **Integer**| Unique target identifier. |
+
+### Return type
+
+[**OciTargetingResponse**](OciTargetingResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Rule found |  -  |
+**400** | Invalid input |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Internal service error |  -  |
 
 <a name="patchAdSets"></a>
 # **patchAdSets**
@@ -336,9 +1339,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     CampaignApi apiInstance = new CampaignApi(defaultClient);
     RequestsPatchAdSet requestsPatchAdSet = new RequestsPatchAdSet(); // RequestsPatchAdSet | List of adsets to patch.
@@ -368,7 +1371,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -381,6 +1384,792 @@ Name | Type | Description  | Notes
 **200** | List of patched adSets. |  -  |
 **401** | The API client is not properly authenticated. |  -  |
 **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
+
+<a name="patchCampaigns"></a>
+# **patchCampaigns**
+> PatchResultCampaignListResponse patchCampaigns(patchCampaignListRequest)
+
+
+
+Patch a list of Campaigns.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    PatchCampaignListRequest patchCampaignListRequest = new PatchCampaignListRequest(); // PatchCampaignListRequest | List of campaigns to patch.
+    try {
+      PatchResultCampaignListResponse result = apiInstance.patchCampaigns(patchCampaignListRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#patchCampaigns");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **patchCampaignListRequest** | [**PatchCampaignListRequest**](PatchCampaignListRequest.md)| List of campaigns to patch. | [optional]
+
+### Return type
+
+[**PatchResultCampaignListResponse**](PatchResultCampaignListResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of patched campaigns. |  -  |
+**401** | The API client is not properly authenticated. |  -  |
+**403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
+
+<a name="patchCategoryBidList"></a>
+# **patchCategoryBidList**
+> PatchAdSetCategoryBidResultListResponse patchCategoryBidList(adSetId, patchAdSetCategoryBidListRequest)
+
+
+
+Patch Category Bids for one or more Categories in a single request. Partial success policy is followed.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    String adSetId = "adSetId_example"; // String | Id of the Ad Set
+    PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest = new PatchAdSetCategoryBidListRequest(); // PatchAdSetCategoryBidListRequest | 
+    try {
+      PatchAdSetCategoryBidResultListResponse result = apiInstance.patchCategoryBidList(adSetId, patchAdSetCategoryBidListRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#patchCategoryBidList");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adSetId** | **String**| Id of the Ad Set |
+ **patchAdSetCategoryBidListRequest** | [**PatchAdSetCategoryBidListRequest**](PatchAdSetCategoryBidListRequest.md)|  | [optional]
+
+### Return type
+
+[**PatchAdSetCategoryBidResultListResponse**](PatchAdSetCategoryBidResultListResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of updated Category Bids for given Categories associated to an Ad Set. |  -  |
+**400** | Bad Request |  -  |
+**401** | The API client is not properly authenticated. |  -  |
+**403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
+
+<a name="patchDisplayMultipliers"></a>
+# **patchDisplayMultipliers**
+> PatchAdSetDisplayMultiplierResultListResponse patchDisplayMultipliers(adSetId, patchAdSetDisplayMultiplierListRequest)
+
+
+
+Patch Display Multipliers for one or more Categories in a single request. Partial success policy is followed.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    String adSetId = "adSetId_example"; // String | Id of the Ad Set
+    PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest = new PatchAdSetDisplayMultiplierListRequest(); // PatchAdSetDisplayMultiplierListRequest | 
+    try {
+      PatchAdSetDisplayMultiplierResultListResponse result = apiInstance.patchDisplayMultipliers(adSetId, patchAdSetDisplayMultiplierListRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#patchDisplayMultipliers");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adSetId** | **String**| Id of the Ad Set |
+ **patchAdSetDisplayMultiplierListRequest** | [**PatchAdSetDisplayMultiplierListRequest**](PatchAdSetDisplayMultiplierListRequest.md)|  | [optional]
+
+### Return type
+
+[**PatchAdSetDisplayMultiplierResultListResponse**](PatchAdSetDisplayMultiplierResultListResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of updated Display Multipliers for given Categories associated to an Ad Set. |  -  |
+**400** | Bad Request |  -  |
+**401** | The API client is not properly authenticated. |  -  |
+**403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
+
+<a name="postAdvertiserBundleRules"></a>
+# **postAdvertiserBundleRules**
+> ApiResponseOfTargetingEntity postAdvertiserBundleRules(advertiserId, apiRequestOfTargetingEntity)
+
+
+
+Inserts a list of targeted bundles for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    Integer advertiserId = 56; // Integer | The advertiser id
+    ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Description of the targeting rule to setup
+    try {
+      ApiResponseOfTargetingEntity result = apiInstance.postAdvertiserBundleRules(advertiserId, apiRequestOfTargetingEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#postAdvertiserBundleRules");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiserId** | **Integer**| The advertiser id |
+ **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Description of the targeting rule to setup | [optional]
+
+### Return type
+
+[**ApiResponseOfTargetingEntity**](ApiResponseOfTargetingEntity.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+
+<a name="postAdvertiserDomainRules"></a>
+# **postAdvertiserDomainRules**
+> ApiResponseOfTargetingEntity postAdvertiserDomainRules(advertiserId, apiRequestOfTargetingEntity)
+
+
+
+Inserts a list of targeted domains for an advertiser and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    Integer advertiserId = 56; // Integer | The advertiser id
+    ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Description of the targeting rule to setup
+    try {
+      ApiResponseOfTargetingEntity result = apiInstance.postAdvertiserDomainRules(advertiserId, apiRequestOfTargetingEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#postAdvertiserDomainRules");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiserId** | **Integer**| The advertiser id |
+ **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Description of the targeting rule to setup | [optional]
+
+### Return type
+
+[**ApiResponseOfTargetingEntity**](ApiResponseOfTargetingEntity.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+
+<a name="postCampaignBundleRules"></a>
+# **postCampaignBundleRules**
+> ApiResponseOfTargetingEntity postCampaignBundleRules(campaignId, apiRequestOfTargetingEntity)
+
+
+
+Inserts a list of targeted bundles for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    Integer campaignId = 56; // Integer | The campaign id
+    ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Description of the targeting rule to setup
+    try {
+      ApiResponseOfTargetingEntity result = apiInstance.postCampaignBundleRules(campaignId, apiRequestOfTargetingEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#postCampaignBundleRules");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignId** | **Integer**| The campaign id |
+ **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Description of the targeting rule to setup | [optional]
+
+### Return type
+
+[**ApiResponseOfTargetingEntity**](ApiResponseOfTargetingEntity.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+
+<a name="postCampaignDomainRules"></a>
+# **postCampaignDomainRules**
+> ApiResponseOfTargetingEntity postCampaignDomainRules(campaignId, apiRequestOfTargetingEntity)
+
+
+
+Inserts a list of targeted domains for a campaign and sets the targeting mode : blocklisting or allowlisting.&lt;br /&gt;  It will replace the current list if any.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    Integer campaignId = 56; // Integer | The campaign id
+    ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Description of the targeting rule to setup
+    try {
+      ApiResponseOfTargetingEntity result = apiInstance.postCampaignDomainRules(campaignId, apiRequestOfTargetingEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#postCampaignDomainRules");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignId** | **Integer**| The campaign id |
+ **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Description of the targeting rule to setup | [optional]
+
+### Return type
+
+[**ApiResponseOfTargetingEntity**](ApiResponseOfTargetingEntity.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+
+<a name="putAdvertiserBundleRules"></a>
+# **putAdvertiserBundleRules**
+> ApiResponseOfTargetingEntity putAdvertiserBundleRules(advertiserId, apiRequestOfTargetingEntity)
+
+
+
+Updates the targeted bundles for an advertiser by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    Integer advertiserId = 56; // Integer | The advertiser id
+    ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to add to the existing list
+    try {
+      ApiResponseOfTargetingEntity result = apiInstance.putAdvertiserBundleRules(advertiserId, apiRequestOfTargetingEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#putAdvertiserBundleRules");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiserId** | **Integer**| The advertiser id |
+ **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Contains the list of items to add to the existing list | [optional]
+
+### Return type
+
+[**ApiResponseOfTargetingEntity**](ApiResponseOfTargetingEntity.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+
+<a name="putAdvertiserDomainRules"></a>
+# **putAdvertiserDomainRules**
+> ApiResponseOfTargetingEntity putAdvertiserDomainRules(advertiserId, apiRequestOfTargetingEntity)
+
+
+
+Updates the targeted domains for an advertiser by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    Integer advertiserId = 56; // Integer | The advertiser id
+    ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to add to the existing list
+    try {
+      ApiResponseOfTargetingEntity result = apiInstance.putAdvertiserDomainRules(advertiserId, apiRequestOfTargetingEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#putAdvertiserDomainRules");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiserId** | **Integer**| The advertiser id |
+ **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Contains the list of items to add to the existing list | [optional]
+
+### Return type
+
+[**ApiResponseOfTargetingEntity**](ApiResponseOfTargetingEntity.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+
+<a name="putCampaignBundleRules"></a>
+# **putCampaignBundleRules**
+> ApiResponseOfTargetingEntity putCampaignBundleRules(campaignId, apiRequestOfTargetingEntity)
+
+
+
+Updates the targeted bundles for a campaign by adding a list of bundles to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    Integer campaignId = 56; // Integer | The campaign id
+    ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to add to the existing list
+    try {
+      ApiResponseOfTargetingEntity result = apiInstance.putCampaignBundleRules(campaignId, apiRequestOfTargetingEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#putCampaignBundleRules");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignId** | **Integer**| The campaign id |
+ **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Contains the list of items to add to the existing list | [optional]
+
+### Return type
+
+[**ApiResponseOfTargetingEntity**](ApiResponseOfTargetingEntity.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+
+<a name="putCampaignDomainRules"></a>
+# **putCampaignDomainRules**
+> ApiResponseOfTargetingEntity putCampaignDomainRules(campaignId, apiRequestOfTargetingEntity)
+
+
+
+Updates the targeted domains for a campaign by adding a list of domains to the current list.&lt;br /&gt;  The mode of targeting (allowlist/blocklist) cannot be updated through this method.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    Integer campaignId = 56; // Integer | The campaign id
+    ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to add to the existing list
+    try {
+      ApiResponseOfTargetingEntity result = apiInstance.putCampaignDomainRules(campaignId, apiRequestOfTargetingEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#putCampaignDomainRules");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignId** | **Integer**| The campaign id |
+ **apiRequestOfTargetingEntity** | [**ApiRequestOfTargetingEntity**](ApiRequestOfTargetingEntity.md)| Contains the list of items to add to the existing list | [optional]
+
+### Return type
+
+[**ApiResponseOfTargetingEntity**](ApiResponseOfTargetingEntity.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
 
 <a name="searchAdSets"></a>
 # **searchAdSets**
@@ -405,9 +2194,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     CampaignApi apiInstance = new CampaignApi(defaultClient);
     RequestAdSetSearch requestAdSetSearch = new RequestAdSetSearch(); // RequestAdSetSearch | 
@@ -437,7 +2226,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -448,6 +2237,76 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | data for the ad sets |  -  |
+**400** | Bad Request |  -  |
+**401** | The API client is not properly authenticated. |  -  |
+**403** | Forbidden |  -  |
+
+<a name="searchCampaigns"></a>
+# **searchCampaigns**
+> CampaignListResponse searchCampaigns(campaignSearchRequest)
+
+
+
+Search for campaigns
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    CampaignSearchRequest campaignSearchRequest = new CampaignSearchRequest(); // CampaignSearchRequest | filters on campaigns
+    try {
+      CampaignListResponse result = apiInstance.searchCampaigns(campaignSearchRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#searchCampaigns");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignSearchRequest** | [**CampaignSearchRequest**](CampaignSearchRequest.md)| filters on campaigns | [optional]
+
+### Return type
+
+[**CampaignListResponse**](CampaignListResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | data for the campaigns |  -  |
 **400** | Bad Request |  -  |
 **401** | The API client is not properly authenticated. |  -  |
 **403** | Forbidden |  -  |
@@ -475,9 +2334,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     CampaignApi apiInstance = new CampaignApi(defaultClient);
     RequestsAdSetId requestsAdSetId = new RequestsAdSetId(); // RequestsAdSetId | All the ad sets to start
@@ -507,7 +2366,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -544,9 +2403,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     CampaignApi apiInstance = new CampaignApi(defaultClient);
     RequestsAdSetId requestsAdSetId = new RequestsAdSetId(); // RequestsAdSetId | All the ad sets to stop
@@ -576,7 +2435,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -590,13 +2449,13 @@ Name | Type | Description  | Notes
 **400** | Bad Request |  -  |
 **401** | The API client is not properly authenticated. |  -  |
 
-<a name="updateBids"></a>
-# **updateBids**
-> List&lt;CampaignMessage&gt; updateBids(bidChanges)
+<a name="upsertOCIbrandSafetyRule"></a>
+# **upsertOCIbrandSafetyRule**
+> OciBrandSafetyResponse upsertOCIbrandSafetyRule(ociBrandSafetyRule)
 
-Update bids for campaigns and their categories
 
-If a campaign bid is updated, all (if any) category bids for this campaign will be updated with the new value if they are initially equal to the campaign bid.  If the category bid is not wanted to be cascaded to the categories with the same bid value, new change bids must be added in the request for the categories where the value should be kept (with the initial value).
+
+Create or update a new or replace existing OCI brand-safety rule.
 
 ### Example
 ```java
@@ -613,17 +2472,17 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     CampaignApi apiInstance = new CampaignApi(defaultClient);
-    List<CampaignBidChangeRequest> bidChanges = Arrays.asList(); // List<CampaignBidChangeRequest> | Specifies the list of bid changes to be applied.
+    OciBrandSafetyRule ociBrandSafetyRule = new OciBrandSafetyRule(); // OciBrandSafetyRule | OCI brand-safety rule input
     try {
-      List<CampaignMessage> result = apiInstance.updateBids(bidChanges);
+      OciBrandSafetyResponse result = apiInstance.upsertOCIbrandSafetyRule(ociBrandSafetyRule);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CampaignApi#updateBids");
+      System.err.println("Exception when calling CampaignApi#upsertOCIbrandSafetyRule");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -637,27 +2496,98 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bidChanges** | [**List&lt;CampaignBidChangeRequest&gt;**](CampaignBidChangeRequest.md)| Specifies the list of bid changes to be applied. |
+ **ociBrandSafetyRule** | [**OciBrandSafetyRule**](OciBrandSafetyRule.md)| OCI brand-safety rule input |
 
 ### Return type
 
-[**List&lt;CampaignMessage&gt;**](CampaignMessage.md)
+[**OciBrandSafetyResponse**](OciBrandSafetyResponse.md)
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
- - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Campaign bids updated OK. |  -  |
-**400** | Invalid input. Please check returned message for details. |  -  |
-**401** | Authentication failed. |  -  |
-**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
-**500** | Unknown error. |  -  |
+**200** | Rule created |  -  |
+**400** | Invalid input |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Internal service error |  -  |
+
+<a name="upsertOCItargetingRule"></a>
+# **upsertOCItargetingRule**
+> OciTargetingResponse upsertOCItargetingRule(ociTargetingRule)
+
+
+
+Create or update new or update existing OCI targeting rule.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    OciTargetingRule ociTargetingRule = new OciTargetingRule(); // OciTargetingRule | OCI targeting rule input
+    try {
+      OciTargetingResponse result = apiInstance.upsertOCItargetingRule(ociTargetingRule);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#upsertOCItargetingRule");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ociTargetingRule** | [**OciTargetingRule**](OciTargetingRule.md)| OCI targeting rule input |
+
+### Return type
+
+[**OciTargetingResponse**](OciTargetingResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Rule created |  -  |
+**400** | Invalid input |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**500** | Internal service error |  -  |
 

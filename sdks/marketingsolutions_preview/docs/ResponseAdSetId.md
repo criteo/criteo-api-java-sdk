@@ -8,7 +8,7 @@ output resource
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;ReadModelAdSetId&gt;**](ReadModelAdSetId.md) |  |  [optional] [readonly]
+**data** | [**ReadModelAdSetId**](ReadModelAdSetId.md) |  |  [optional]
 **warnings** | [**List&lt;ProblemDetails&gt;**](ProblemDetails.md) |  |  [optional] [readonly]
 **errors** | [**List&lt;ProblemDetails&gt;**](ProblemDetails.md) |  |  [optional] [readonly]
 

@@ -1,0 +1,5224 @@
+openapi: 3.0.1
+info:
+  description: Criteo publicly exposed API
+  title: Criteo API
+  version: preview
+servers:
+- url: https://api.criteo.com
+security:
+- oauth: []
+paths:
+  /me:
+    get:
+      description: Get information about the currently logged application
+      operationId: GetCurrentApplication
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationSummaryModelResponse'
+          description: Success
+        "404":
+          content:
+            application/json: {}
+          description: Not Found
+      tags:
+      - Gateway
+      x-accepts: application/json
+  /oauth2/token:
+    post:
+      description: Creates a token when the supplied client credentials are valid
+      operationId: ClientCredentials
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccessTokenModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessTokenModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccessTokenModel'
+          description: Success
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OAuthErrorModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthErrorModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OAuthErrorModel'
+          description: Bad request
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OAuthErrorModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthErrorModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OAuthErrorModel'
+          description: Unauthorized
+      summary: Creates a token when the supplied client credentials are valid
+      tags:
+      - OAuth
+      x-accepts: application/json
+  /preview/retail-media/accounts:
+    get:
+      description: Gets page of account objects that the current user can access
+      operationId: AccountsApi_GetApiV1ExternalAccounts
+      parameters:
+      - description: The ids that you would like to limit your result set to
+        explode: true
+        in: query
+        name: limitToId
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: false
+      - description: The 0 indexed page index you would like to receive given the
+          page size
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      - description: The maximum number of items you would like to receive in this
+          request
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfAccount'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /preview/retail-media/accounts/{accountId}/retailers:
+    get:
+      description: Gets page of retailer objects that are associated with the given
+        account
+      operationId: AccountsApi_GetApiV1ExternalAccountRetailersByAccountId
+      parameters:
+      - description: The given account id
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The ids that you would like to limit your result set to
+        explode: true
+        in: query
+        name: limitToId
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: false
+      - description: The 0 indexed page index you would like to receive given the
+          page size
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      - description: The maximum number of items you would like to receive in this
+          request
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfRetailer'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /preview/retail-media/accounts/{accountId}/brands:
+    get:
+      description: Gets page of retailer objects that are associated with the given
+        account
+      operationId: AccountsApi_GetApiV1ExternalAccountBrandsByAccountId
+      parameters:
+      - description: The given account id
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The ids that you would like to limit your result set to
+        explode: true
+        in: query
+        name: limitToId
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: false
+      - description: The 0 indexed page index you would like to receive given the
+          page size
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      - description: The maximum number of items you would like to receive in this
+          request
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfBrand'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /preview/retail-media/accounts/{accountId}/audiences:
+    get:
+      description: Get a page of audiences for a given account ID
+      operationId: AudienceApi_GetAudiencesByAccountId
+      parameters:
+      - description: External account ID which owns audience.
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-example: "68004146450571264"
+      - description: "Limits results to the entity IDs specified; parameter key is\
+          \ repeated, eg. limitToId=1&limitToId=2"
+        explode: true
+        in: query
+        name: limitToId
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: Specifies the maximum number of entities returned in a single
+          page; defaults to 25 entities per page
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-example: 25
+      - description: Returns the specified page of results given a pageSize; pages
+          are 0-indexed
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-example: 0
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPageOfAudiencesByAccountIdResponse'
+          description: A page of audiences for the supplied account.
+        "400":
+          content:
+            application/json: {}
+          description: Missing or invalid account ID.
+        "404":
+          content:
+            application/json: {}
+          description: The audience was not found.
+        "406":
+          content:
+            application/json: {}
+          description: The Accept header must contain application/json.
+        "415":
+          content:
+            application/json: {}
+          description: The Content-Type header must be application/json if present.
+      tags:
+      - Audience
+      x-accepts: application/json
+    post:
+      description: Create an audience for a given account ID
+      operationId: AudienceApi_CreateAudience
+      parameters:
+      - description: ID of the account to which this audience belongs.
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-example: "68004146450571264"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAudienceRequest'
+        required: true
+        x-bodyName: body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateRetailMediaAudienceResponse'
+          description: The audience that was just created.
+        "400":
+          content:
+            application/json: {}
+          description: "Missing or invalid account ID. - OR - Missing or invalid retailerID\
+            \ field. - OR - Missing or invalid name field. Name should be less than\
+            \ 255 characters. - OR - Missing or invalid userType field. Valid values\
+            \ are: 'buy', 'view'. - OR - The retailerTaxonomyIds is not a valid list\
+            \ of IDs or may contain more than 100 elements. - OR - Missing or invalid\
+            \ lookbackDays field.\_ Valid values are:\_7, 14,\_ 30, 45, 60, 90, 120,\
+            \ 150 or 180. - OR - Exactly one of retailerTaxonomyIds or globalBrandIds\
+            \ must be specified, but not both. - OR - The retailer is invalid because\
+            \ it is not live - OR - The globalBrandIds is not a valid list of IDs\
+            \ or may contain more than 100 elements."
+        "404":
+          content:
+            application/json: {}
+          description: The audience was not found. - OR - You do not have permission
+            to access these global brands.
+        "406":
+          content:
+            application/json: {}
+          description: The Accept header must contain application/json.
+        "409":
+          content:
+            application/json: {}
+          description: An audience name should be unique per account.
+        "415":
+          content:
+            application/json: {}
+          description: The Content-Type header must be application/json if present.
+      tags:
+      - Audience
+      x-contentType: application/json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{accountId}/catalogs:
+    post:
+      description: Create a request for a Catalog available to the indicated account.
+      operationId: CatalogApi_PostApiV0ExternalAccountCatalogsByAccountId
+      parameters:
+      - description: The account to request the catalog for.
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JsonApiRequestOfCatalogRequestPreview'
+        x-nullable: false
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfCatalogStatus'
+          description: Catalog request successfully created
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
+  /preview/retail-media/catalogs/{catalogId}/status:
+    get:
+      description: Check the status of a catalog request.
+      operationId: CatalogApi_GetApiV0ExternalCatalogStatusByCatalogId
+      parameters:
+      - description: A catalog ID returned from an account catalog request.
+        explode: false
+        in: path
+        name: catalogId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfCatalogStatus'
+          description: Catalog request found.
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /preview/retail-media/catalogs/{catalogId}/output:
+    get:
+      description: "Output the indicated catalog. Catalogs are only available for\
+        \ retrieval when their associated status request\r\nis at a Success status.\r\
+        \nProduces application/x-json-stream of CatalogProduct json objects."
+      operationId: CatalogApi_GetApiV0ExternalCatalogOutputByCatalogId
+      parameters:
+      - description: A catalog ID returned from an account catalog request.
+        explode: false
+        in: path
+        name: catalogId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/x-json-stream: {}
+            application/json: {}
+          description: Catalog download initiated.
+        "400":
+          content:
+            application/x-json-stream: {}
+            application/json: {}
+          description: "The indicated catalog is not available for retrieval, wait\
+            \ for a success status."
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /preview/retail-media/catalogs/sku-search:
+    post:
+      description: "Endpoint to search skus by text, retailer and sellers/brands."
+      operationId: SkuSearchApi_PostApiV1ExternalCatalogsSkuSearch
+      parameters:
+      - description: The start position in the overall list of matches. Must be zero
+          or greater.
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          maximum: 500.0
+          minimum: 0.0
+          type: integer
+        style: form
+        x-nullable: false
+      - description: The maximum number of results to return with each call. Must
+          be greater than zero.
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 100
+          format: int32
+          maximum: 100.0
+          minimum: 1.0
+          type: integer
+        style: form
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SkuSearchRequestPreviewRequest'
+        x-nullable: false
+        x-bodyName: skuRequest
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkuDataPreviewListResponse'
+          description: Skus found.
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
+  /preview/retail-media/catalogs/sku-retrieval:
+    post:
+      description: "Endpoint to search skus by text, retailer and sellers/brands."
+      operationId: SkuRetrievalApi_PostApiV1ExternalCatalogsSkuRetrieval
+      parameters:
+      - description: The start position in the overall list of matches. Must be zero
+          or greater.
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          maximum: 500.0
+          minimum: 0.0
+          type: integer
+        style: form
+        x-nullable: false
+      - description: The maximum number of results to return with each call. Must
+          be greater than zero.
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 100
+          format: int32
+          maximum: 100.0
+          minimum: 1.0
+          type: integer
+        style: form
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                type: string
+                x-nullable: false
+              type: array
+              uniqueItems: false
+              x-nullable: false
+        description: The list of SKU keys to retrieve sku information
+        x-nullable: false
+        x-bodyName: skuKeys
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkuDataPreviewListResponse'
+          description: Skus found.
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
+  /preview/retail-media/retailers/{retailerId}/sellers/{seller}:
+    get:
+      description: Endpoint to get market place seller id and name
+      operationId: SellerApi_GetApiV1ExternalRetailerByRetailerIdSellerBySeller
+      parameters:
+      - description: The retailer id for which seller should be fetched.
+        explode: false
+        in: path
+        name: retailerId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+        x-nullable: false
+      - description: The seller id or seller name which should be validated.
+        explode: false
+        in: path
+        name: seller
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SellerPreviewResponse'
+          description: Seller found.
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /preview/retail-media/accounts/{accountId}/balances:
+    get:
+      description: Gets page of balance objects for the given account id
+      operationId: BalancesApi_GetApiV1ExternalAccountBalancesByAccountId
+      parameters:
+      - description: The account to get balances for
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The ids that you would like to limit your result set to
+        explode: true
+        in: query
+        name: limitToId
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: false
+      - description: The 0 indexed page index you would like to receive given the
+          page size
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      - description: The maximum number of items you would like to receive in this
+          request
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfBalance'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /preview/retail-media/balances/{balanceId}/campaigns:
+    delete:
+      description: Removes one or more campaigns on the specified balance
+      operationId: BalancesApi_DeleteApiV1ExternalBalanceCampaignsByBalanceId
+      parameters:
+      - description: The balance to remove campaigns from
+        explode: false
+        in: path
+        name: balanceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JsonApiDataRequestOfDeleteBalanceCampaign'
+        description: The campaigns to append
+        x-nullable: false
+        x-bodyName: campaigns
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageOfBalanceCampaign'
+          description: Success
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
+    get:
+      description: Gets page of campaigns for the given balanceId
+      operationId: BalancesApi_GetApiV1ExternalBalanceCampaignsByBalanceId
+      parameters:
+      - description: The balance to get campaigns from
+        explode: false
+        in: path
+        name: balanceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The ids that you would like to limit your result set to
+        explode: true
+        in: query
+        name: limitToId
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: false
+      - description: The 0 indexed page index you would like to receive given the
+          page size
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      - description: The maximum number of items you would like to receive in this
+          request
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageOfBalanceCampaign'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+    put:
+      description: appends one or more campaigns to the specified balance
+      operationId: BalancesApi_PutApiV1ExternalBalanceCampaignsByBalanceId
+      parameters:
+      - description: The balance to add campaigns from
+        explode: false
+        in: path
+        name: balanceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JsonApiDataRequestOfPutBalanceCampaign'
+        description: The campaigns to append
+        x-nullable: false
+        x-bodyName: campaigns
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageOfBalanceCampaign'
+          description: Success
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{accountId}/campaigns:
+    get:
+      description: Gets page of campaign objects for the given account id
+      operationId: CampaignsApi_GetApiV1ExternalAccountCampaignsByAccountId
+      parameters:
+      - description: The given account id
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The ids that you would like to limit your result set to
+        explode: true
+        in: query
+        name: limitToId
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: false
+      - description: The 0 indexed page index you would like to receive given the
+          page size
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      - description: The maximum number of items you would like to receive in this
+          request
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfCampaign'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+    post:
+      description: Creates a new campaign with the specified settings
+      operationId: CampaignsApi_PostApiV1ExternalAccountCampaignsByAccountId
+      parameters:
+      - description: The given account id
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExternalPostCampaign'
+        description: The campaign settings to create a campaign with
+        x-nullable: false
+        x-bodyName: campaign
+      responses:
+        "201":
+          content:
+            application/json: {}
+          description: Success
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfCampaign'
+          description: OK
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
+  /preview/retail-media/campaigns/{campaignId}:
+    get:
+      description: Gets the campaign for the given campaign id
+      operationId: CampaignsApi_GetApiV1ExternalCampaignByCampaignId
+      parameters:
+      - description: The given campaign id
+        explode: false
+        in: path
+        name: campaignId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfCampaign'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+    put:
+      description: Updates the campaign for the given campaign id
+      operationId: CampaignsApi_PutApiV1ExternalCampaignByCampaignId
+      parameters:
+      - description: The given campaign id
+        explode: false
+        in: path
+        name: campaignId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExternalPutCampaign'
+        description: The campaign settings to update that campaign with
+        x-nullable: false
+        x-bodyName: campaign
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfCampaign'
+          description: Success
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
+  /preview/retail-media/campaigns/{campaignId}/line-items:
+    get:
+      description: Gets page of line item objects for the given campaign id
+      operationId: LineItemsApi_GetApiV1ExternalCampaignLineItemsByCampaignId
+      parameters:
+      - description: The given campaign id
+        explode: false
+        in: path
+        name: campaignId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The ids that you would like to limit your result set to
+        explode: true
+        in: query
+        name: limitToId
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: false
+      - description: The 0 indexed page index you would like to receive given the
+          page size
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      - description: The maximum number of items you would like to receive in this
+          request
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfLineItem'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+    post:
+      description: Creates a new line item with the specified settings
+      operationId: LineItemsApi_PostApiV1ExternalCampaignLineItemsByCampaignId
+      parameters:
+      - description: The given campaign id
+        explode: false
+        in: path
+        name: campaignId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExternalPostLineItem'
+        description: The line item settings to create a line item with
+        x-nullable: false
+        x-bodyName: lineItem
+      responses:
+        "201":
+          content:
+            application/json: {}
+          description: Success
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfLineItem'
+          description: OK
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
+  /preview/retail-media/line-items/{lineItemId}:
+    get:
+      description: Gets the line item for the given line item id
+      operationId: LineItemsApi_GetApiV1ExternalLineItemByLineItemId
+      parameters:
+      - description: The given line item id
+        explode: false
+        in: path
+        name: lineItemId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfLineItem'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+    put:
+      description: Updates the line item for the given line item id
+      operationId: LineItemsApi_PutApiV1ExternalLineItemByLineItemId
+      parameters:
+      - description: The given line item id
+        explode: false
+        in: path
+        name: lineItemId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExternalPutLineItem'
+        description: The line item settings to create a line item with
+        x-nullable: false
+        x-bodyName: lineItem
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfLineItem'
+          description: Success
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
+  /preview/retail-media/line-items/{lineItemId}/products:
+    delete:
+      description: This endpoint removes one or more products from promotion on the
+        specified line item.  The resulting state of the line item is returned.
+      operationId: PromotedProductsApi_DeleteApiV1ExternalLineItemProductsByLineItemId
+      parameters:
+      - description: The line item to interact with
+        explode: false
+        in: path
+        name: lineItemId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JsonApiDataRequestWithIdOfStringAndPromotedProduct'
+        x-nullable: false
+        x-bodyName: promotedProductsToRemove
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfStringAndPromotedProduct'
+          description: Success
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
+    get:
+      description: This endpoint gets the promoted products on the specified line
+        item.
+      operationId: PromotedProductsApi_GetApiV1ExternalLineItemProductsByLineItemId
+      parameters:
+      - description: The line item to interact with
+        explode: false
+        in: path
+        name: lineItemId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The ids that you would like to limit your result set to
+        explode: true
+        in: query
+        name: limitToId
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: false
+      - description: The 0 indexed page index you would like to receive given the
+          page size
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      - description: The maximum number of items you would like to receive in this
+          request
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfStringAndPromotedProduct'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+    put:
+      description: This endpoint appends one or more products to promote on the specified
+        line item.  The resulting state of the line item is returned.
+      operationId: PromotedProductsApi_PutApiV1ExternalLineItemProductsByLineItemId
+      parameters:
+      - description: The line item to interact with
+        explode: false
+        in: path
+        name: lineItemId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JsonApiDataRequestWithIdOfStringAndPromotedProduct'
+        description: the products to append to this line item
+        x-nullable: false
+        x-bodyName: promotedProductsToAppend
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfStringAndPromotedProduct'
+          description: Success
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
+  /preview/retail-media/reports/campaigns:
+    post:
+      description: Request a campaign report
+      operationId: requestCampaignReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvelopeReportRequest'
+        description: "// Body of the request\n{\n  \"data\": {\n    \"type\": \"RetailMediaReportRequest\"\
+          ,\n    \"attributes\": {\n      \"reportType\": string, // the name of the\
+          \ report being requested\n      //only one of \"id\" or \"ids\" can be provided\
+          \ for a request\n      \"id\": string, // the campaign id to select\n  \
+          \    \"ids\": Array[string], //the campaign ids to select\n      \"startDate\"\
+          : string, // YYYY-MM-DD format\n      \"endDate\": string, // YYYY-MM-DD\
+          \ format\n      \"timeZone\": string, // examples: 'Europe/London', 'Asia/Tokyo',\
+          \ 'America/New_York'\n      // both attribution windows must be specified\
+          \ when one is specified\n      \"clickAttributionWindow\": \"7D\", \"14D\"\
+          , or \"30D\"  // optional. defaults to campaign's click attribution window\n\
+          \      \"viewAttributionWindow\": \"none\", \"1D\", \"7D\", \"14D\", \"\
+          30D\" // optional. defaults to campaign's view attribution window\n    \
+          \  \"format\": One of \"json\" (default),\"json-compact\",\"json-newline\"\
+          \ or \"csv\" // output format, defaults to json-compact\n    }\n  }\n}"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvelopeReportStatus'
+          description: Returns the status of the report
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+          description: Bad request
+        "401":
+          description: Missing Authorization or token invalid
+        "403":
+          description: Must have access to RetailMedia accounts
+      tags:
+      - Analytics
+      x-contentType: application/json
+      x-accepts: application/json
+  /preview/retail-media/reports/line-items:
+    post:
+      description: Request a line item report
+      operationId: requestLineItemReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvelopeReportRequest'
+        description: "// Body of the request\n{\n  \"data\": {\n    \"type\": \"RetailMediaReportRequest\"\
+          ,\n    \"attributes\": {\n      \"reportType\": string, // the name of the\
+          \ report being requested\n      //only one of \"id\" or \"ids\" can be provided\
+          \ for a request\n      \"id\": string, // the line item id to select\n \
+          \     \"ids: Array[string] // the line item ids to select\n      \"startDate\"\
+          : string, // YYYY-MM-DD format\n      \"endDate\": string, // YYYY-MM-DD\
+          \ format\n      \"timeZone\": string, // examples: 'Europe/London', 'Asia/Tokyo',\
+          \ 'America/New_York'\n      // both attribution windows must be specified\
+          \ when one is specified\n      \"clickAttributionWindow\": \"7D\", \"14D\"\
+          , or \"30D\"  // optional. defaults to campaign's click attribution window\n\
+          \      \"viewAttributionWindow\": \"none\", \"1D\", \"7D\", \"14D\", \"\
+          30D\" // optional. defaults to campaign's view attribution window\n    \
+          \  \"format\": One of \"json\" (default),\"json-compact\",\"json-newline\"\
+          \ or \"csv\" // output format, defaults to json-compact\n    }\n  }\n}"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvelopeReportStatus'
+          description: Returns the status of the report
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+          description: Bad request
+        "401":
+          description: Missing Authorization or token invalid
+        "403":
+          description: Must have access to RetailMedia accounts
+      tags:
+      - Analytics
+      x-contentType: application/json
+      x-accepts: application/json
+  /preview/retail-media/reports/{reportId}/output:
+    get:
+      description: Request the report output
+      operationId: getReportOutput
+      parameters:
+      - description: report id
+        example: ee439121-13e3-4734-9f67-c504dd921a41
+        explode: false
+        in: path
+        name: reportId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/octet-stream:
+              schema:
+                type: integer
+          description: The output
+          headers:
+            Content-Disposition:
+              description: Returns a filename for the output
+              example: inline; filename=data_<reportId>.csv
+              explode: false
+              required: true
+              schema:
+                type: string
+              style: simple
+        "401":
+          description: Missing Authorization or token invalid
+        "403":
+          description: Must have access to RetailMedia accounts
+        "404":
+          description: ReportId not found
+      tags:
+      - Analytics
+      x-accepts: application/octet-stream
+  /preview/retail-media/reports/{reportId}/status:
+    get:
+      description: Get the status of the report
+      operationId: getReportStatus
+      parameters:
+      - description: report id
+        example: ee439121-13e3-4734-9f67-c504dd921a41
+        explode: false
+        in: path
+        name: reportId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvelopeReportStatus'
+          description: Returns the status of the report
+        "401":
+          description: Missing Authorization or token invalid
+        "403":
+          description: Must have access to RetailMedia accounts
+        "404":
+          description: ReportId not found
+      tags:
+      - Analytics
+      x-accepts: application/json
+components:
+  schemas:
+    ApplicationSummaryModelResponse:
+      description: Response of ApplicationSummaryModel
+      example:
+        data:
+          attributes:
+            organizationId: 0
+            name: name
+            description: description
+            criteoService: criteoService
+          id: id
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ApplicationSummaryModelResource'
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+          uniqueItems: false
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+          uniqueItems: false
+      type: object
+    ApplicationSummaryModelResource:
+      description: Resource of ApplicationSummaryModel
+      example:
+        attributes:
+          organizationId: 0
+          name: name
+          description: description
+          criteoService: criteoService
+        id: id
+        type: type
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/ApplicationSummaryModel'
+      type: object
+    CommonProblem:
+      description: Common problem object. Can be specialized as needed.
+      example:
+        traceIdentifier: traceIdentifier
+        code: code
+        instance: instance
+        detail: detail
+        source:
+          key: source
+        stackTrace: stackTrace
+        type: unknown
+        title: title
+      properties:
+        traceIdentifier:
+          description: The request correlation ID this problem comes from.
+          type: string
+        type:
+          description: The problem's category.
+          enum:
+          - unknown
+          - access-control
+          - authentication
+          - authorization
+          - availability
+          - deprecation
+          - quota
+          - validation
+          type: string
+        code:
+          description: "A machine-readable  error code, expressed as a string value."
+          type: string
+        instance:
+          description: A URI that identifies the specific occurrence of the problem.
+          type: string
+        title:
+          description: A short human-readable description of the problem type
+          type: string
+        detail:
+          description: A human-readable explanation specific to this occurrence of
+            the problem
+          type: string
+        source:
+          additionalProperties:
+            type: string
+          description: A machine-readable structure to reference to the exact location(s)
+            causing the error(s)
+          type: object
+        stackTrace:
+          type: string
+      type: object
+    ApplicationSummaryModel:
+      description: A summary of an API application
+      example:
+        organizationId: 0
+        name: name
+        description: description
+        criteoService: criteoService
+      properties:
+        name:
+          description: The name of the application
+          type: string
+        organizationId:
+          description: The id of the organization that own this application
+          format: int32
+          type: integer
+        description:
+          description: The description of the application
+          type: string
+        criteoService:
+          description: The business service of this application
+          type: string
+      type: object
+      x-criteo-canonical:
+        infoType: entity
+    AccessTokenModel:
+      description: Access Token to be used with other services
+      example:
+        access_token: access_token
+        token_type: token_type
+        expires_in: 0
+      properties:
+        access_token:
+          description: The access token issued by the authorization server.
+          type: string
+        token_type:
+          description: The type of the token issued.
+          type: string
+        expires_in:
+          description: "The lifetime in seconds of the access token.For\r\nexample,\
+            \ the value \"3600\" denotes that the access token will\r\nexpire in one\
+            \ hour from the time the response was generated.\r\nIf omitted, the authorization\
+            \ server SHOULD provide the\r\nexpiration time via other means or document\
+            \ the default value."
+          format: int32
+          type: integer
+      type: object
+    OAuthErrorModel:
+      properties:
+        error:
+          type: string
+        error_description:
+          type: string
+        error_uri:
+          type: string
+      type: object
+    JsonApiPageResponseOfAccount:
+      description: A wrapper class to return a single page of <typeparamref name="T"
+        /> with metadata
+      example:
+        metadata:
+          currentPageSize: 6
+          previousPage: previousPage
+          nextPage: nextPage
+          totalPages: 5
+          totalItemsAcrossAllPages: 0
+          currentPageIndex: 1
+        data:
+        - attributes:
+            subtype: unknown
+            parentAccountLabel: parentAccountLabel
+            name: name
+            timeZone: timeZone
+            currency: currency
+            countries:
+            - countries
+            - countries
+            type: unknown
+          id: id
+          type: type
+        - attributes:
+            subtype: unknown
+            parentAccountLabel: parentAccountLabel
+            name: name
+            timeZone: timeZone
+            currency: currency
+            countries:
+            - countries
+            - countries
+            type: unknown
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonError'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonWarning'
+          type: array
+          x-nullable: false
+        metadata:
+          $ref: '#/components/schemas/PageMetadata'
+        data:
+          items:
+            $ref: '#/components/schemas/JsonApiBodyWithIdOfInt64AndAccountAndAccount'
+          type: array
+          x-nullable: false
+      required:
+      - data
+      type: object
+      x-nullable: false
+    JsonApiPageResponseOfRetailer:
+      description: A wrapper class to return a single page of <typeparamref name="T"
+        /> with metadata
+      example:
+        metadata:
+          currentPageSize: 6
+          previousPage: previousPage
+          nextPage: nextPage
+          totalPages: 5
+          totalItemsAcrossAllPages: 0
+          currentPageIndex: 1
+        data:
+        - attributes:
+            name: name
+          id: id
+          type: type
+        - attributes:
+            name: name
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonError'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonWarning'
+          type: array
+          x-nullable: false
+        metadata:
+          $ref: '#/components/schemas/PageMetadata'
+        data:
+          items:
+            $ref: '#/components/schemas/JsonApiBodyWithIdOfInt64AndRetailerAndRetailer'
+          type: array
+          x-nullable: false
+      required:
+      - data
+      type: object
+      x-nullable: false
+    JsonApiPageResponseOfBrand:
+      description: A wrapper class to return a single page of <typeparamref name="T"
+        /> with metadata
+      example:
+        metadata:
+          currentPageSize: 6
+          previousPage: previousPage
+          nextPage: nextPage
+          totalPages: 5
+          totalItemsAcrossAllPages: 0
+          currentPageIndex: 1
+        data:
+        - attributes:
+            name: name
+          id: id
+          type: type
+        - attributes:
+            name: name
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonError'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonWarning'
+          type: array
+          x-nullable: false
+        metadata:
+          $ref: '#/components/schemas/PageMetadata'
+        data:
+          items:
+            $ref: '#/components/schemas/JsonApiBodyWithIdOfInt64AndBrandAndBrand'
+          type: array
+          x-nullable: false
+      required:
+      - data
+      type: object
+      x-nullable: false
+    PageMetadata:
+      description: Metadata related to the current request
+      example:
+        currentPageSize: 6
+        previousPage: previousPage
+        nextPage: nextPage
+        totalPages: 5
+        totalItemsAcrossAllPages: 0
+        currentPageIndex: 1
+      properties:
+        totalItemsAcrossAllPages:
+          format: int64
+          type: integer
+          x-nullable: true
+        currentPageSize:
+          format: int32
+          type: integer
+          x-nullable: false
+        currentPageIndex:
+          format: int32
+          type: integer
+          x-nullable: false
+        totalPages:
+          format: int64
+          type: integer
+          x-nullable: true
+        nextPage:
+          type: string
+          x-nullable: false
+        previousPage:
+          type: string
+          x-nullable: false
+      required:
+      - currentPageIndex
+      - currentPageSize
+      type: object
+      x-nullable: false
+    CommonError:
+      description: A JSON:API Common error structure
+      example:
+        traceId: traceId
+        code: code
+        instance: instance
+        detail: detail
+        source:
+          key: source
+        stackTrace: stackTrace
+        type: unknown
+        title: title
+      properties:
+        traceId:
+          description: (REQUIRED) The Correlation ID provided by the Gateway. It is
+            also a unique identifier for this particular occurrence of the problem.
+          type: string
+          x-nullable: false
+        type:
+          description: (REQUIRED) The classification of the error.
+          enum:
+          - unknown
+          - access-control
+          - authentication
+          - authorization
+          - availability
+          - deprecation
+          - quota
+          - validation
+          type: string
+          x-nullable: false
+        code:
+          description: "(REQUIRED) A machine-readable unique error code, expressed\
+            \ as a string value. The format used must be kabab-case."
+          type: string
+          x-nullable: false
+        instance:
+          description: (REQUIRED) A URI reference that identifies the specific occurrence
+            of the problem.
+          type: string
+          x-nullable: false
+        title:
+          description: "(RECOMMENDED) A short, human-readable summary of the problem\
+            \ type."
+          type: string
+          x-nullable: false
+        detail:
+          description: (RECOMMENDED) A human-readable explanation specific to this
+            occurrence of the problem.
+          type: string
+          x-nullable: false
+        source:
+          additionalProperties:
+            type: string
+            x-nullable: false
+          description: (OPTIONAL) A machine-readable structure to reference to the
+            exact location(s) causing the error(s)
+          type: object
+          x-nullable: false
+        stackTrace:
+          description: (NEVER IN PRODUCTION) A human-readable stacktrace produced
+            by the implementation technology
+          type: string
+          x-nullable: false
+      type: object
+      x-nullable: false
+    CommonWarning:
+      description: A JSON:API Base common warning
+      example:
+        traceId: traceId
+        code: code
+        instance: instance
+        detail: detail
+        source:
+          key: source
+        stackTrace: stackTrace
+        type: unknown
+        title: title
+      properties:
+        traceId:
+          description: (REQUIRED) The Correlation ID provided by the Gateway. It is
+            also a unique identifier for this particular occurrence of the problem.
+          type: string
+          x-nullable: false
+        type:
+          description: (REQUIRED) The classification of the error.
+          enum:
+          - unknown
+          - access-control
+          - authentication
+          - authorization
+          - availability
+          - deprecation
+          - quota
+          - validation
+          type: string
+          x-nullable: false
+        code:
+          description: "(REQUIRED) A machine-readable unique error code, expressed\
+            \ as a string value. The format used must be kabab-case."
+          type: string
+          x-nullable: false
+        instance:
+          description: (REQUIRED) A URI reference that identifies the specific occurrence
+            of the problem.
+          type: string
+          x-nullable: false
+        title:
+          description: "(RECOMMENDED) A short, human-readable summary of the problem\
+            \ type."
+          type: string
+          x-nullable: false
+        detail:
+          description: (RECOMMENDED) A human-readable explanation specific to this
+            occurrence of the problem.
+          type: string
+          x-nullable: false
+        source:
+          additionalProperties:
+            type: string
+            x-nullable: false
+          description: (OPTIONAL) A machine-readable structure to reference to the
+            exact location(s) causing the error(s)
+          type: object
+          x-nullable: false
+        stackTrace:
+          description: (NEVER IN PRODUCTION) A human-readable stacktrace produced
+            by the implementation technology
+          type: string
+          x-nullable: false
+      type: object
+      x-nullable: false
+    JsonApiBodyWithIdOfInt64AndAccountAndAccount:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with external Id, Type, and\r\nAttributes properties"
+      example:
+        attributes:
+          subtype: unknown
+          parentAccountLabel: parentAccountLabel
+          name: name
+          timeZone: timeZone
+          currency: currency
+          countries:
+          - countries
+          - countries
+          type: unknown
+        id: id
+        type: type
+      properties:
+        id:
+          format: long-id
+          type: string
+          x-nullable: false
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalAccount'
+      required:
+      - id
+      - type
+      type: object
+      x-nullable: false
+    JsonApiBodyWithIdOfInt64AndRetailerAndRetailer:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with external Id, Type, and\r\nAttributes properties"
+      example:
+        attributes:
+          name: name
+        id: id
+        type: type
+      properties:
+        id:
+          format: long-id
+          type: string
+          x-nullable: false
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalRetailer'
+      required:
+      - id
+      - type
+      type: object
+      x-nullable: false
+    JsonApiBodyWithIdOfInt64AndBrandAndBrand:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with external Id, Type, and\r\nAttributes properties"
+      example:
+        attributes:
+          name: name
+        id: id
+        type: type
+      properties:
+        id:
+          format: long-id
+          type: string
+          x-nullable: false
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalBrand'
+      required:
+      - id
+      - type
+      type: object
+      x-nullable: false
+    ExternalAccount:
+      description: A Retail Media Account used to launch campaigns and line items
+      example:
+        subtype: unknown
+        parentAccountLabel: parentAccountLabel
+        name: name
+        timeZone: timeZone
+        currency: currency
+        countries:
+        - countries
+        - countries
+        type: unknown
+      properties:
+        name:
+          maxLength: 510
+          minLength: 0
+          type: string
+          x-nullable: false
+        type:
+          enum:
+          - unknown
+          - supply
+          - demand
+          type: string
+          x-nullable: false
+        subtype:
+          enum:
+          - unknown
+          - brand
+          - seller
+          type: string
+          x-nullable: true
+        countries:
+          items:
+            type: string
+            x-nullable: false
+          type: array
+          x-nullable: false
+        currency:
+          type: string
+          x-nullable: false
+        parentAccountLabel:
+          maxLength: 510
+          minLength: 0
+          type: string
+          x-nullable: false
+        timeZone:
+          type: string
+          x-nullable: false
+      required:
+      - countries
+      - currency
+      - name
+      - parentAccountLabel
+      - timeZone
+      - type
+      type: object
+      x-nullable: false
+    ExternalRetailer:
+      description: A Retail Media Retailer used to represent a selection of products
+        from multiple brands
+      example:
+        name: name
+      properties:
+        name:
+          maxLength: 100
+          type: string
+          x-nullable: false
+      required:
+      - name
+      type: object
+      x-nullable: false
+    ExternalBrand:
+      description: A Retail Media Brand used to represent a collection of products
+        sold under the same umbrella name
+      example:
+        name: name
+      properties:
+        name:
+          maxLength: 120
+          minLength: 0
+          type: string
+          x-nullable: false
+      required:
+      - name
+      type: object
+      x-nullable: false
+    GetPageOfAudiencesByAccountIdResponse:
+      description: Response for page of audiences by given account
+      example:
+        metadata:
+          currentPageSize: 6
+          previousPage: previousPage
+          nextPage: nextPage
+          totalPages: 5
+          totalItemsAcrossAllPages: 0
+          currentPageIndex: 1
+        data:
+        - attributes:
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            name: name
+            userType: viewer
+            retailerId: "68004146450571264"
+            brandIds:
+            - brandIds
+            - brandIds
+            lookbackWindow: P7D
+          id: "314159"
+          type: RetailMediaAudience
+        - attributes:
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            name: name
+            userType: viewer
+            retailerId: "68004146450571264"
+            brandIds:
+            - brandIds
+            - brandIds
+            lookbackWindow: P7D
+          id: "314159"
+          type: RetailMediaAudience
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          description: data
+          items:
+            $ref: '#/components/schemas/RetailMediaAudience'
+          readOnly: true
+          type: array
+        errors:
+          description: errors
+          items:
+            $ref: '#/components/schemas/CommonError'
+          readOnly: true
+          type: array
+        warnings:
+          description: warnings
+          items:
+            $ref: '#/components/schemas/CommonWarning'
+          readOnly: true
+          type: array
+        metadata:
+          $ref: '#/components/schemas/PageMetadata'
+      required:
+      - data
+      - metadata
+      type: object
+    CreateRetailMediaAudienceResponse:
+      description: Response of CreateAudienceRequest
+      example:
+        data:
+          attributes:
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            name: name
+            userType: viewer
+            retailerId: "68004146450571264"
+            brandIds:
+            - brandIds
+            - brandIds
+            lookbackWindow: P7D
+          id: "314159"
+          type: RetailMediaAudience
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/RetailMediaAudience'
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonError'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonWarning'
+          type: array
+          x-nullable: false
+      required:
+      - data
+      type: object
+    CreateAudienceRequest:
+      description: Request to create an audience
+      example:
+        data:
+          attributes:
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            name: name
+            userType: viewer
+            retailerId: "68004146450571264"
+            brandIds:
+            - brandIds
+            - brandIds
+            lookbackWindow: P7D
+          type: RetailMediaAudience
+      properties:
+        data:
+          $ref: '#/components/schemas/CreateAudienceBody'
+      required:
+      - data
+      type: object
+    RetailMediaAudience:
+      description: Retail Media audience
+      example:
+        attributes:
+          categoryIds:
+          - categoryIds
+          - categoryIds
+          name: name
+          userType: viewer
+          retailerId: "68004146450571264"
+          brandIds:
+          - brandIds
+          - brandIds
+          lookbackWindow: P7D
+        id: "314159"
+        type: RetailMediaAudience
+      properties:
+        type:
+          description: the name of the entity type
+          example: RetailMediaAudience
+          type: string
+        id:
+          description: Unique ID of this audience.
+          example: "314159"
+          format: int64
+          type: string
+        attributes:
+          $ref: '#/components/schemas/RetailMediaAudienceAttributes'
+      required:
+      - attributes
+      - id
+      - type
+      type: object
+    CreateAudienceBody:
+      description: Request body of CreateAudienceRequest
+      example:
+        attributes:
+          categoryIds:
+          - categoryIds
+          - categoryIds
+          name: name
+          userType: viewer
+          retailerId: "68004146450571264"
+          brandIds:
+          - brandIds
+          - brandIds
+          lookbackWindow: P7D
+        type: RetailMediaAudience
+      properties:
+        type:
+          description: the name of the entity type
+          example: RetailMediaAudience
+          type: string
+        attributes:
+          $ref: '#/components/schemas/RetailMediaAudienceAttributes'
+      required:
+      - attributes
+      - type
+      type: object
+    RetailMediaAudienceAttributes:
+      description: Parameters needed to create an audience
+      example:
+        categoryIds:
+        - categoryIds
+        - categoryIds
+        name: name
+        userType: viewer
+        retailerId: "68004146450571264"
+        brandIds:
+        - brandIds
+        - brandIds
+        lookbackWindow: P7D
+      properties:
+        userType:
+          description: Type of the user
+          enum:
+          - viewer
+          - buyer
+          example: viewer
+          type: string
+        lookbackWindow:
+          description: Length of lookback window
+          enum:
+          - P7D
+          - P14D
+          - P30D
+          - P45D
+          - P60D
+          - P90D
+          - P120D
+          - P150D
+          - P180D
+          example: P7D
+          type: string
+        brandIds:
+          description: The brands to target
+          items:
+            type: string
+          type: array
+        categoryIds:
+          description: The categories to target
+          items:
+            type: string
+          type: array
+        retailerId:
+          description: ID of the retailer associated with this audience
+          example: "68004146450571264"
+          type: string
+        name:
+          description: name
+          type: string
+      required:
+      - lookbackWindow
+      - name
+      - retailerId
+      - userType
+      type: object
+    JsonApiSingleResponseOfCatalogStatus:
+      description: A JSON:API wrapper class to add one JSON:API <typeparamref name="T"
+        /> within a data property
+      example:
+        data:
+          attributes:
+            fileSizeBytes: 6
+            md5Checksum: md5Checksum
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            currency: currency
+            rowCount: 0
+            message: message
+            status: Unknown
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus'
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonError'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonWarning'
+          type: array
+          x-nullable: false
+      required:
+      - data
+      type: object
+      x-nullable: false
+    SkuDataPreviewListResponse:
+      description: Data model for a list of response resources
+      example:
+        data:
+        - attributes:
+            brandName: brandName
+            gtin: gtin
+            sellerName: sellerName
+            description: description
+            mpn: mpn
+            productPage: productPage
+            retailerId: retailerId
+            sellerId: sellerId
+            skuKey: skuKey
+            price: 0.8008281904610115
+            brandId: brandId
+            retailerName: retailerName
+            imageUrl: imageUrl
+            name: name
+            isInStock: true
+            category: category
+            categoryId: categoryId
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        - attributes:
+            brandName: brandName
+            gtin: gtin
+            sellerName: sellerName
+            description: description
+            mpn: mpn
+            productPage: productPage
+            retailerId: retailerId
+            sellerId: sellerId
+            skuKey: skuKey
+            price: 0.8008281904610115
+            brandId: brandId
+            retailerName: retailerName
+            imageUrl: imageUrl
+            name: name
+            isInStock: true
+            category: category
+            categoryId: categoryId
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ResourceOfSkuDataPreview'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    SellerPreviewResponse:
+      description: Data model for response resource
+      example:
+        data:
+          attributes:
+            name: name
+          id: id
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfSellerPreview'
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    JsonApiRequestOfCatalogRequestPreview:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with Type, and Attributes properties"
+      example:
+        data:
+          attributes:
+            format: json-newline
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequestPreview'
+      type: object
+      x-nullable: false
+    SkuSearchRequestPreviewRequest:
+      description: Data model for an input resource
+      example:
+        data:
+          attributes:
+            queryString: queryString
+            retailerId: retailerId
+            brandIds:
+            - brandIds
+            - brandIds
+            sellers:
+            - sellers
+            - sellers
+          id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfSkuSearchRequestPreview'
+      type: object
+      x-nullable: false
+    JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with external Id, Type, and\r\nAttributes properties"
+      example:
+        attributes:
+          fileSizeBytes: 6
+          md5Checksum: md5Checksum
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          currency: currency
+          rowCount: 0
+          message: message
+          status: Unknown
+        id: id
+        type: type
+      properties:
+        id:
+          format: long-id
+          type: string
+          x-nullable: false
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalCatalogStatus'
+      required:
+      - id
+      - type
+      type: object
+      x-nullable: false
+    ResourceOfSkuDataPreview:
+      description: Data model for a Resource
+      example:
+        attributes:
+          brandName: brandName
+          gtin: gtin
+          sellerName: sellerName
+          description: description
+          mpn: mpn
+          productPage: productPage
+          retailerId: retailerId
+          sellerId: sellerId
+          skuKey: skuKey
+          price: 0.8008281904610115
+          brandId: brandId
+          retailerName: retailerName
+          imageUrl: imageUrl
+          name: name
+          isInStock: true
+          category: category
+          categoryId: categoryId
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      properties:
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          description: Canonical type name of the entity
+          type: string
+        attributes:
+          $ref: '#/components/schemas/SkuDataPreview'
+      type: object
+      x-nullable: false
+    ProblemDetails:
+      description: Data model for common error or warning
+      example:
+        traceIdentifier: traceIdentifier
+        code: code
+        instance: instance
+        detail: detail
+        source:
+          key: source
+        stackTrace: stackTrace
+        type: unknown
+        title: title
+      properties:
+        traceIdentifier:
+          description: The request correlation ID this problem comes from.
+          type: string
+          x-nullable: false
+        type:
+          description: The problem's category.
+          enum:
+          - unknown
+          - access-control
+          - authentication
+          - authorization
+          - availability
+          - deprecation
+          - quota
+          - validation
+          type: string
+          x-nullable: false
+        code:
+          description: "A machine-readable  error code, expressed as a string value."
+          type: string
+          x-nullable: false
+        instance:
+          description: A URI that identifies the specific occurrence of the problem.
+          type: string
+          x-nullable: false
+        title:
+          description: A short human-readable description of the problem type
+          type: string
+          x-nullable: false
+        detail:
+          description: A human-readable explanation specific to this occurrence of
+            the problem
+          type: string
+          x-nullable: false
+        source:
+          additionalProperties:
+            type: string
+            x-nullable: false
+          description: A machine-readable structure to reference to the exact location(s)
+            causing the error(s)
+          type: object
+          x-nullable: false
+        stackTrace:
+          description: "Technical information, only used in non-prod environments"
+          type: string
+          x-nullable: false
+      type: object
+      x-nullable: false
+    ResourceOfSellerPreview:
+      description: Data model for a Resource
+      example:
+        attributes:
+          name: name
+        id: id
+        type: type
+      properties:
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          description: Canonical type name of the entity
+          type: string
+        attributes:
+          $ref: '#/components/schemas/SellerPreview'
+      type: object
+      x-nullable: false
+    JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequestPreview:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with Type, and\r\nAttributes properties"
+      example:
+        attributes:
+          format: json-newline
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalCatalogRequestPreview'
+      required:
+      - type
+      type: object
+      x-nullable: false
+    ResourceOfSkuSearchRequestPreview:
+      description: Data model for a Resource
+      example:
+        attributes:
+          queryString: queryString
+          retailerId: retailerId
+          brandIds:
+          - brandIds
+          - brandIds
+          sellers:
+          - sellers
+          - sellers
+        id: id
+        type: type
+      properties:
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          description: Canonical type name of the entity
+          type: string
+        attributes:
+          $ref: '#/components/schemas/SkuSearchRequestPreview'
+      type: object
+      x-nullable: false
+    ExternalCatalogStatus:
+      description: The status of an asynchronous request to generate a catalog
+      example:
+        fileSizeBytes: 6
+        md5Checksum: md5Checksum
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        currency: currency
+        rowCount: 0
+        message: message
+        status: Unknown
+      properties:
+        status:
+          description: An enumeration of the status of the catalog.
+          enum:
+          - Unknown
+          - Pending
+          - Success
+          - Failure
+          - Expired
+          type: string
+          x-nullable: false
+        currency:
+          description: An ISO4217 representation of the currency products are listed
+            under in this catalog.
+          type: string
+          x-nullable: false
+        rowCount:
+          description: "An indication of the number of products contained in this\
+            \ catalog. Available when\r\nthis catalog reaches a success status."
+          format: int32
+          type: integer
+          x-nullable: true
+        fileSizeBytes:
+          description: The size of this catalog in bytes. Available when this catalog
+            reaches a success status.
+          format: int32
+          type: integer
+          x-nullable: true
+        md5Checksum:
+          description: "An MD5 checksum of the catalog for use in confirming complete\
+            \ and uncorrupted retrieval.\r\nAvailable when this catalog reaches a\
+            \ success status."
+          type: string
+          x-nullable: false
+        createdAt:
+          description: The time this catalog was created. Represented as a UTC ISO8601
+            string.
+          format: date-time
+          type: string
+          x-nullable: false
+        message:
+          description: An optional information message intended for developer consumption.
+          type: string
+          x-nullable: false
+      required:
+      - createdAt
+      - currency
+      - fileSizeBytes
+      - md5Checksum
+      - message
+      - rowCount
+      - status
+      type: object
+      x-nullable: false
+    SkuDataPreview:
+      description: Metadata and usage info of a sku search
+      example:
+        brandName: brandName
+        gtin: gtin
+        sellerName: sellerName
+        description: description
+        mpn: mpn
+        productPage: productPage
+        retailerId: retailerId
+        sellerId: sellerId
+        skuKey: skuKey
+        price: 0.8008281904610115
+        brandId: brandId
+        retailerName: retailerName
+        imageUrl: imageUrl
+        name: name
+        isInStock: true
+        category: category
+        categoryId: categoryId
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        skuKey:
+          description: The product SKU Key.
+          type: string
+          x-nullable: false
+        name:
+          description: A short product name.
+          maxLength: 1000
+          minLength: 0
+          type: string
+          x-nullable: false
+        description:
+          description: A product description.
+          type: string
+          x-nullable: false
+        categoryId:
+          description: The category Id.
+          type: string
+          x-nullable: false
+        category:
+          description: The full category breadcrumb in the retailers catalog.
+          maxLength: 1000
+          minLength: 0
+          type: string
+          x-nullable: false
+        sellerId:
+          description: The id of the seller.
+          type: string
+          x-nullable: false
+        sellerName:
+          description: The name of the seller.
+          type: string
+          x-nullable: false
+        brandId:
+          description: The global brand id associated to the product.
+          type: string
+          x-nullable: false
+        brandName:
+          description: The name of the global brand.
+          maxLength: 120
+          minLength: 0
+          type: string
+          x-nullable: false
+        retailerId:
+          description: The identifier for the retailer the product is listed by.
+          type: string
+          x-nullable: false
+        retailerName:
+          description: The retailer name.
+          maxLength: 100
+          minLength: 0
+          type: string
+          x-nullable: false
+        price:
+          description: The price of the product on the retailer site.
+          format: double
+          type: number
+          x-nullable: false
+        isInStock:
+          description: An indication of if the retailer currently has the product
+            in stock.
+          type: boolean
+          x-nullable: false
+        gtin:
+          description: A GTIN identifier for the product if available. Covers variations
+            such as EANs and UPCs.
+          type: string
+          x-nullable: false
+        mpn:
+          description: The MPN for the product if available.
+          type: string
+          x-nullable: false
+        imageUrl:
+          description: An http image resource provided by the retailer.
+          type: string
+          x-nullable: false
+        productPage:
+          description: An The product page URL
+          type: string
+          x-nullable: false
+        updatedAt:
+          description: The last time this product was updated in the Retail Media
+            Catalog. Represented as a UTC ISO8601 string.
+          format: date-time
+          type: string
+          x-nullable: false
+      required:
+      - brandId
+      - brandName
+      - id
+      - isInStock
+      - price
+      - retailerId
+      - retailerName
+      - skuKey
+      - updatedAt
+      type: object
+      x-nullable: false
+    SellerPreview:
+      description: Retail media Seller Id and Name
+      example:
+        name: name
+      properties:
+        name:
+          description: Seller Name
+          type: string
+          x-nullable: false
+      type: object
+      x-nullable: false
+    ExternalCatalogRequestPreview:
+      description: A request for a catalog under the specified format. Currently "json-newline"
+        is supported.
+      example:
+        format: json-newline
+      properties:
+        format:
+          default: json-newline
+          enum:
+          - json-newline
+          type: string
+          x-nullable: false
+      type: object
+      x-nullable: false
+    SkuSearchRequestPreview:
+      description: A request for sku by sellers or brands.
+      example:
+        queryString: queryString
+        retailerId: retailerId
+        brandIds:
+        - brandIds
+        - brandIds
+        sellers:
+        - sellers
+        - sellers
+      properties:
+        queryString:
+          description: "Query string to search for across SKU's properties (gtin,\
+            \ mpn, feed ID, Title, and Description)"
+          type: string
+          x-nullable: false
+        retailerId:
+          description: Retailer Id
+          format: long-id
+          type: string
+          x-nullable: false
+        sellers:
+          description: A list of seller names and/or seller Id's
+          items:
+            type: string
+            x-nullable: false
+          type: array
+          x-nullable: false
+        brandIds:
+          description: A list of brand Id's
+          items:
+            format: long-id
+            type: string
+          type: array
+          x-nullable: false
+      required:
+      - queryString
+      - retailerId
+      type: object
+      x-nullable: false
+    JsonApiPageResponseOfBalance:
+      description: A wrapper class to return a single page of <typeparamref name="T"
+        /> with metadata
+      example:
+        metadata:
+          currentPageSize: 6
+          previousPage: previousPage
+          nextPage: nextPage
+          totalPages: 5
+          totalItemsAcrossAllPages: 0
+          currentPageIndex: 1
+        data:
+        - attributes:
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            endDate: 2000-01-23
+            deposited: 0.8008281904610115
+            spent: 6.027456183070403
+            name: name
+            memo: memo
+            poNumber: poNumber
+            remaining: 1.4658129805029452
+            startDate: 2000-01-23
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        - attributes:
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            endDate: 2000-01-23
+            deposited: 0.8008281904610115
+            spent: 6.027456183070403
+            name: name
+            memo: memo
+            poNumber: poNumber
+            remaining: 1.4658129805029452
+            startDate: 2000-01-23
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonError'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonWarning'
+          type: array
+          x-nullable: false
+        metadata:
+          $ref: '#/components/schemas/PageMetadata'
+        data:
+          items:
+            $ref: '#/components/schemas/JsonApiBodyWithIdOfInt64AndBalanceAndBalance'
+          type: array
+          x-nullable: false
+      required:
+      - data
+      type: object
+      x-nullable: false
+    PageOfBalanceCampaign:
+      description: A wrapper class to return a single page of <typeparamref name="T"
+        /> with metadata
+      example:
+        metadata:
+          currentPageSize: 6
+          previousPage: previousPage
+          nextPage: nextPage
+          totalPages: 5
+          totalItemsAcrossAllPages: 0
+          currentPageIndex: 1
+        data:
+        - attributes: "{}"
+          id: id
+          type: type
+        - attributes: "{}"
+          id: id
+          type: type
+      properties:
+        metadata:
+          $ref: '#/components/schemas/PageMetadata'
+        data:
+          items:
+            $ref: '#/components/schemas/ExternalBalanceCampaign'
+          type: array
+          x-nullable: false
+      required:
+      - data
+      type: object
+      x-nullable: false
+    JsonApiPageResponseOfCampaign:
+      description: A wrapper class to return a single page of <typeparamref name="T"
+        /> with metadata
+      example:
+        metadata:
+          currentPageSize: 6
+          previousPage: previousPage
+          nextPage: nextPage
+          totalPages: 5
+          totalItemsAcrossAllPages: 0
+          currentPageIndex: 1
+        data:
+        - attributes:
+            budgetRemaining: 6.027456183070403
+            clickAttributionWindow: 30D
+            drawableBalanceIds:
+            - drawableBalanceIds
+            - drawableBalanceIds
+            type: auction
+            accountId: accountId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            clickAttributionScope: unknown
+            budgetSpent: 0.8008281904610115
+            viewAttributionScope: unknown
+            promotedBrandIds:
+            - promotedBrandIds
+            - promotedBrandIds
+            viewAttributionWindow: none
+            name: name
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+            budget: 1.4658129805029452
+          id: id
+          type: type
+        - attributes:
+            budgetRemaining: 6.027456183070403
+            clickAttributionWindow: 30D
+            drawableBalanceIds:
+            - drawableBalanceIds
+            - drawableBalanceIds
+            type: auction
+            accountId: accountId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            clickAttributionScope: unknown
+            budgetSpent: 0.8008281904610115
+            viewAttributionScope: unknown
+            promotedBrandIds:
+            - promotedBrandIds
+            - promotedBrandIds
+            viewAttributionWindow: none
+            name: name
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+            budget: 1.4658129805029452
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonError'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonWarning'
+          type: array
+          x-nullable: false
+        metadata:
+          $ref: '#/components/schemas/PageMetadata'
+        data:
+          items:
+            $ref: '#/components/schemas/JsonApiBodyWithIdOfInt64AndCampaignAndCampaign'
+          type: array
+          x-nullable: false
+      required:
+      - data
+      type: object
+      x-nullable: false
+    JsonApiSingleResponseOfCampaign:
+      description: A JSON:API wrapper class to add one JSON:API <typeparamref name="T"
+        /> within a data property
+      example:
+        data:
+          attributes:
+            budgetRemaining: 6.027456183070403
+            clickAttributionWindow: 30D
+            drawableBalanceIds:
+            - drawableBalanceIds
+            - drawableBalanceIds
+            type: auction
+            accountId: accountId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            clickAttributionScope: unknown
+            budgetSpent: 0.8008281904610115
+            viewAttributionScope: unknown
+            promotedBrandIds:
+            - promotedBrandIds
+            - promotedBrandIds
+            viewAttributionWindow: none
+            name: name
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+            budget: 1.4658129805029452
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiBodyWithIdOfInt64AndCampaignAndCampaign'
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonError'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonWarning'
+          type: array
+          x-nullable: false
+      required:
+      - data
+      type: object
+      x-nullable: false
+    JsonApiPageResponseOfLineItem:
+      description: A wrapper class to return a single page of <typeparamref name="T"
+        /> with metadata
+      example:
+        metadata:
+          currentPageSize: 6
+          previousPage: previousPage
+          nextPage: nextPage
+          totalPages: 5
+          totalItemsAcrossAllPages: 0
+          currentPageIndex: 1
+        data:
+        - attributes:
+            budgetRemaining: 6.027456183070403
+            bidStrategy: conversion
+            endDate: 2000-01-23
+            campaignId: campaignId
+            targetBid: 1.4658129805029452
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            budgetSpent: 0.8008281904610115
+            maxBid: 5.962133916683182
+            name: name
+            isAutoDailyPacing: false
+            targetRetailerId: targetRetailerId
+            dailyPacing: 7.061401241503109
+            startDate: 2000-01-23
+            monthlyPacing: 2.3021358869347655
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+            status: unknown
+            budget: 5.637376656633329
+          id: id
+          type: type
+        - attributes:
+            budgetRemaining: 6.027456183070403
+            bidStrategy: conversion
+            endDate: 2000-01-23
+            campaignId: campaignId
+            targetBid: 1.4658129805029452
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            budgetSpent: 0.8008281904610115
+            maxBid: 5.962133916683182
+            name: name
+            isAutoDailyPacing: false
+            targetRetailerId: targetRetailerId
+            dailyPacing: 7.061401241503109
+            startDate: 2000-01-23
+            monthlyPacing: 2.3021358869347655
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+            status: unknown
+            budget: 5.637376656633329
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonError'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonWarning'
+          type: array
+          x-nullable: false
+        metadata:
+          $ref: '#/components/schemas/PageMetadata'
+        data:
+          items:
+            $ref: '#/components/schemas/JsonApiBodyWithIdOfInt64AndLineItemAndLineItem'
+          type: array
+          x-nullable: false
+      required:
+      - data
+      type: object
+      x-nullable: false
+    JsonApiSingleResponseOfLineItem:
+      description: A JSON:API wrapper class to add one JSON:API <typeparamref name="T"
+        /> within a data property
+      example:
+        data:
+          attributes:
+            budgetRemaining: 6.027456183070403
+            bidStrategy: conversion
+            endDate: 2000-01-23
+            campaignId: campaignId
+            targetBid: 1.4658129805029452
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            budgetSpent: 0.8008281904610115
+            maxBid: 5.962133916683182
+            name: name
+            isAutoDailyPacing: false
+            targetRetailerId: targetRetailerId
+            dailyPacing: 7.061401241503109
+            startDate: 2000-01-23
+            monthlyPacing: 2.3021358869347655
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+            status: unknown
+            budget: 5.637376656633329
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiBodyWithIdOfInt64AndLineItemAndLineItem'
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonError'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonWarning'
+          type: array
+          x-nullable: false
+      required:
+      - data
+      type: object
+      x-nullable: false
+    JsonApiPageResponseOfStringAndPromotedProduct:
+      description: A wrapper class to return a single page of <typeparamref name="T"
+        /> with metadata
+      example:
+        metadata:
+          currentPageSize: 6
+          previousPage: previousPage
+          nextPage: nextPage
+          totalPages: 5
+          totalItemsAcrossAllPages: 0
+          currentPageIndex: 1
+        data:
+        - attributes:
+            bidOverride: 0.8008281904610115
+          id: id
+          type: type
+        - attributes:
+            bidOverride: 0.8008281904610115
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonError'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonWarning'
+          type: array
+          x-nullable: false
+        metadata:
+          $ref: '#/components/schemas/PageMetadata'
+        data:
+          items:
+            $ref: '#/components/schemas/JsonApiBodyWithIdOfStringAndPromotedProductAndPromotedProduct'
+          type: array
+          x-nullable: false
+      required:
+      - data
+      type: object
+      x-nullable: false
+    JsonApiDataRequestOfPutBalanceCampaign:
+      description: A JSON:API wrapper class to format request with array of data
+      example:
+        data:
+        - attributes: "{}"
+          id: id
+          type: type
+        - attributes: "{}"
+          id: id
+          type: type
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ExternalPutBalanceCampaign'
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    JsonApiDataRequestOfDeleteBalanceCampaign:
+      description: A JSON:API wrapper class to format request with array of data
+      example:
+        data:
+        - attributes: "{}"
+          id: id
+          type: type
+        - attributes: "{}"
+          id: id
+          type: type
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ExternalDeleteBalanceCampaign'
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    ExternalPostCampaign:
+      description: An object that represents the available options to set when creating
+        a Retail Media Campaign
+      example:
+        data:
+          attributes:
+            clickAttributionWindow: 30D
+            clickAttributionScope: unknown
+            viewAttributionScope: unknown
+            drawableBalanceIds:
+            - drawableBalanceIds
+            - drawableBalanceIds
+            viewAttributionWindow: none
+            name: name
+            type: auction
+            budget: 0.8008281904610115
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiBodyWithoutIdOfCampaignAttributesAndCampaign'
+      type: object
+      x-nullable: false
+    ExternalPutCampaign:
+      description: An object that represents the available options to set when editing
+        a Retail Media Campaign
+      example:
+        data:
+          attributes:
+            clickAttributionWindow: 7D
+            clickAttributionScope: unknown
+            viewAttributionScope: unknown
+            name: name
+            viewAttributionWindow: none
+            budget: 0.8008281904610115
+          id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiBodyWithExternalIdOfEditableCampaignAttributesAndCampaign'
+      type: object
+      x-nullable: false
+    ExternalPostLineItem:
+      description: Represents a line item to be created
+      example:
+        data:
+          attributes:
+            bidStrategy: conversion
+            endDate: 2000-01-23
+            maxBid: 6.027456183070403
+            name: name
+            isAutoDailyPacing: false
+            targetRetailerId: targetRetailerId
+            dailyPacing: 5.637376656633329
+            targetBid: 0.8008281904610115
+            startDate: 2000-01-23
+            monthlyPacing: 5.962133916683182
+            status: unknown
+            budget: 1.4658129805029452
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiBodyWithoutIdOfLineItemAttributesAndLineItem'
+      type: object
+      x-nullable: false
+    ExternalPutLineItem:
+      description: An object to update a Retail Media Line Item
+      example:
+        data:
+          attributes:
+            bidStrategy: conversion
+            endDate: 2000-01-23
+            maxBid: 6.027456183070403
+            name: name
+            isAutoDailyPacing: true
+            dailyPacing: 5.637376656633329
+            startDate: 2000-01-23
+            targetBid: 0.8008281904610115
+            monthlyPacing: 5.962133916683182
+            budget: 1.4658129805029452
+            status: unknown
+          id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiBodyWithExternalIdOfEditableLineItemAttributesAndLineItem'
+      type: object
+      x-nullable: false
+    JsonApiDataRequestWithIdOfStringAndPromotedProduct:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with Type, and Attributes properties"
+      example:
+        data:
+        - attributes:
+            bidOverride: 0.8008281904610115
+          id: id
+          type: type
+        - attributes:
+            bidOverride: 0.8008281904610115
+          id: id
+          type: type
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/JsonApiBodyWithIdOfStringAndPromotedProductAndPromotedProduct'
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    JsonApiBodyWithIdOfInt64AndBalanceAndBalance:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with external Id, Type, and\r\nAttributes properties"
+      example:
+        attributes:
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          endDate: 2000-01-23
+          deposited: 0.8008281904610115
+          spent: 6.027456183070403
+          name: name
+          memo: memo
+          poNumber: poNumber
+          remaining: 1.4658129805029452
+          startDate: 2000-01-23
+          status: unknown
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      properties:
+        id:
+          format: long-id
+          type: string
+          x-nullable: false
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalBalance'
+      required:
+      - id
+      - type
+      type: object
+      x-nullable: false
+    ExternalBalanceCampaign:
+      description: Campaigns related to the balance
+      example:
+        attributes: "{}"
+        id: id
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        id:
+          format: long-id
+          type: string
+          x-nullable: false
+        attributes:
+          description: body that intentionaly has no attributes
+          type: object
+          x-nullable: false
+      required:
+      - id
+      - type
+      type: object
+      x-nullable: false
+    JsonApiBodyWithIdOfInt64AndCampaignAndCampaign:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with external Id, Type, and\r\nAttributes properties"
+      example:
+        attributes:
+          budgetRemaining: 6.027456183070403
+          clickAttributionWindow: 30D
+          drawableBalanceIds:
+          - drawableBalanceIds
+          - drawableBalanceIds
+          type: auction
+          accountId: accountId
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          clickAttributionScope: unknown
+          budgetSpent: 0.8008281904610115
+          viewAttributionScope: unknown
+          promotedBrandIds:
+          - promotedBrandIds
+          - promotedBrandIds
+          viewAttributionWindow: none
+          name: name
+          status: unknown
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          budget: 1.4658129805029452
+        id: id
+        type: type
+      properties:
+        id:
+          format: long-id
+          type: string
+          x-nullable: false
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalCampaign'
+      required:
+      - id
+      - type
+      type: object
+      x-nullable: false
+    JsonApiBodyWithIdOfInt64AndLineItemAndLineItem:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with external Id, Type, and\r\nAttributes properties"
+      example:
+        attributes:
+          budgetRemaining: 6.027456183070403
+          bidStrategy: conversion
+          endDate: 2000-01-23
+          campaignId: campaignId
+          targetBid: 1.4658129805029452
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          budgetSpent: 0.8008281904610115
+          maxBid: 5.962133916683182
+          name: name
+          isAutoDailyPacing: false
+          targetRetailerId: targetRetailerId
+          dailyPacing: 7.061401241503109
+          startDate: 2000-01-23
+          monthlyPacing: 2.3021358869347655
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          status: unknown
+          budget: 5.637376656633329
+        id: id
+        type: type
+      properties:
+        id:
+          format: long-id
+          type: string
+          x-nullable: false
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalLineItem'
+      required:
+      - id
+      - type
+      type: object
+      x-nullable: false
+    JsonApiBodyWithIdOfStringAndPromotedProductAndPromotedProduct:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with external Id, Type, and\r\nAttributes properties"
+      example:
+        attributes:
+          bidOverride: 0.8008281904610115
+        id: id
+        type: type
+      properties:
+        id:
+          type: string
+          x-nullable: false
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalPromotedProduct'
+      required:
+      - id
+      - type
+      type: object
+      x-nullable: false
+    ExternalPutBalanceCampaign:
+      description: Associaties a campaign to a balance
+      example:
+        attributes: "{}"
+        id: id
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        id:
+          format: long-id
+          type: string
+          x-nullable: false
+        attributes:
+          description: body that intentionaly has no attributes
+          type: object
+          x-nullable: false
+      required:
+      - id
+      - type
+      type: object
+      x-nullable: false
+    ExternalDeleteBalanceCampaign:
+      description: represents a campaign to remove from a balance
+      example:
+        attributes: "{}"
+        id: id
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        id:
+          format: long-id
+          type: string
+          x-nullable: false
+        attributes:
+          description: body that intentionaly has no attributes
+          type: object
+          x-nullable: false
+      required:
+      - id
+      - type
+      type: object
+      x-nullable: false
+    JsonApiBodyWithoutIdOfCampaignAttributesAndCampaign:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with Type, and\r\nAttributes properties"
+      example:
+        attributes:
+          clickAttributionWindow: 30D
+          clickAttributionScope: unknown
+          viewAttributionScope: unknown
+          drawableBalanceIds:
+          - drawableBalanceIds
+          - drawableBalanceIds
+          viewAttributionWindow: none
+          name: name
+          type: auction
+          budget: 0.8008281904610115
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalCampaignAttributes'
+      required:
+      - type
+      type: object
+      x-nullable: false
+    JsonApiBodyWithExternalIdOfEditableCampaignAttributesAndCampaign:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with external Id, Type, and\r\nAttributes properties"
+      example:
+        attributes:
+          clickAttributionWindow: 7D
+          clickAttributionScope: unknown
+          viewAttributionScope: unknown
+          name: name
+          viewAttributionWindow: none
+          budget: 0.8008281904610115
+        id: id
+        type: type
+      properties:
+        id:
+          format: long-id
+          type: string
+          x-nullable: false
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalEditableCampaignAttributes'
+      required:
+      - id
+      - type
+      type: object
+      x-nullable: false
+    JsonApiBodyWithoutIdOfLineItemAttributesAndLineItem:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with Type, and\r\nAttributes properties"
+      example:
+        attributes:
+          bidStrategy: conversion
+          endDate: 2000-01-23
+          maxBid: 6.027456183070403
+          name: name
+          isAutoDailyPacing: false
+          targetRetailerId: targetRetailerId
+          dailyPacing: 5.637376656633329
+          targetBid: 0.8008281904610115
+          startDate: 2000-01-23
+          monthlyPacing: 5.962133916683182
+          status: unknown
+          budget: 1.4658129805029452
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalLineItemAttributes'
+      required:
+      - type
+      type: object
+      x-nullable: false
+    JsonApiBodyWithExternalIdOfEditableLineItemAttributesAndLineItem:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with external Id, Type, and\r\nAttributes properties"
+      example:
+        attributes:
+          bidStrategy: conversion
+          endDate: 2000-01-23
+          maxBid: 6.027456183070403
+          name: name
+          isAutoDailyPacing: true
+          dailyPacing: 5.637376656633329
+          startDate: 2000-01-23
+          targetBid: 0.8008281904610115
+          monthlyPacing: 5.962133916683182
+          budget: 1.4658129805029452
+          status: unknown
+        id: id
+        type: type
+      properties:
+        id:
+          format: long-id
+          type: string
+          x-nullable: false
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalEditableLineItemAttributes'
+      required:
+      - id
+      - type
+      type: object
+      x-nullable: false
+    ExternalBalance:
+      description: A Retail Media Balance used to determine the funds available for
+        any or all campaigns in an account
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        endDate: 2000-01-23
+        deposited: 0.8008281904610115
+        spent: 6.027456183070403
+        name: name
+        memo: memo
+        poNumber: poNumber
+        remaining: 1.4658129805029452
+        startDate: 2000-01-23
+        status: unknown
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        name:
+          type: string
+          x-nullable: false
+        poNumber:
+          type: string
+          x-nullable: false
+        memo:
+          type: string
+          x-nullable: false
+        deposited:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        spent:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        remaining:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        startDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          required:
+          - "true"
+          type: string
+        endDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          type: string
+        status:
+          enum:
+          - unknown
+          - scheduled
+          - active
+          - ended
+          type: string
+          x-nullable: false
+        createdAt:
+          format: date-time
+          type: string
+          x-nullable: false
+        updatedAt:
+          format: date-time
+          type: string
+          x-nullable: false
+      required:
+      - createdAt
+      - deposited
+      - endDate
+      - memo
+      - name
+      - poNumber
+      - remaining
+      - spent
+      - startDate
+      - status
+      - updatedAt
+      type: object
+      x-nullable: false
+    ExternalNoAttributes:
+      description: body that intentionaly has no attributes
+      type: object
+      x-nullable: false
+    ExternalCampaign:
+      description: A Retail Media Campaign used to represent an advertiser's marketing
+        objective
+      example:
+        budgetRemaining: 6.027456183070403
+        clickAttributionWindow: 30D
+        drawableBalanceIds:
+        - drawableBalanceIds
+        - drawableBalanceIds
+        type: auction
+        accountId: accountId
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        clickAttributionScope: unknown
+        budgetSpent: 0.8008281904610115
+        viewAttributionScope: unknown
+        promotedBrandIds:
+        - promotedBrandIds
+        - promotedBrandIds
+        viewAttributionWindow: none
+        name: name
+        status: unknown
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+        budget: 1.4658129805029452
+      properties:
+        accountId:
+          format: long-id
+          type: string
+          x-nullable: false
+        promotedBrandIds:
+          items:
+            format: long-id
+            type: string
+          type: array
+          x-nullable: false
+        budgetSpent:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        budgetRemaining:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        status:
+          enum:
+          - unknown
+          - active
+          - inactive
+          type: string
+          x-nullable: false
+        createdAt:
+          format: date-time
+          type: string
+          x-nullable: false
+        updatedAt:
+          format: date-time
+          type: string
+          x-nullable: false
+        type:
+          default: auction
+          enum:
+          - unknown
+          - auction
+          - preferred
+          type: string
+          x-nullable: false
+        drawableBalanceIds:
+          items:
+            format: long-id
+            type: string
+          type: array
+          x-nullable: false
+        clickAttributionWindow:
+          default: 30D
+          enum:
+          - 7D
+          - 14D
+          - 30D
+          - unknown
+          type: string
+          x-nullable: false
+        viewAttributionWindow:
+          default: none
+          enum:
+          - none
+          - 1D
+          - 7D
+          - 14D
+          - 30D
+          - unknown
+          type: string
+          x-nullable: false
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+          x-nullable: false
+        budget:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        clickAttributionScope:
+          enum:
+          - unknown
+          - sameSku
+          - sameSkuCategory
+          - sameSkuCategoryBrand
+          type: string
+          x-nullable: true
+        viewAttributionScope:
+          enum:
+          - unknown
+          - sameSku
+          - sameSkuCategory
+          - sameSkuCategoryBrand
+          type: string
+          x-nullable: true
+      required:
+      - accountId
+      - budgetRemaining
+      - budgetSpent
+      - createdAt
+      - name
+      - promotedBrandIds
+      - updatedAt
+      type: object
+      x-nullable: false
+    ExternalLineItem:
+      description: A Retail Media Line Item used to hold bid settings for one or many
+        promoted products on a single retailer
+      example:
+        budgetRemaining: 6.027456183070403
+        bidStrategy: conversion
+        endDate: 2000-01-23
+        campaignId: campaignId
+        targetBid: 1.4658129805029452
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        budgetSpent: 0.8008281904610115
+        maxBid: 5.962133916683182
+        name: name
+        isAutoDailyPacing: false
+        targetRetailerId: targetRetailerId
+        dailyPacing: 7.061401241503109
+        startDate: 2000-01-23
+        monthlyPacing: 2.3021358869347655
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+        status: unknown
+        budget: 5.637376656633329
+      properties:
+        campaignId:
+          format: long-id
+          type: string
+          x-nullable: false
+        budgetSpent:
+          format: double
+          type: number
+          x-nullable: false
+        budgetRemaining:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        createdAt:
+          format: date-time
+          type: string
+          x-nullable: false
+        updatedAt:
+          format: date-time
+          type: string
+          x-nullable: false
+        targetRetailerId:
+          format: long-id
+          type: string
+          x-nullable: false
+        status:
+          enum:
+          - unknown
+          - active
+          - scheduled
+          - draft
+          - paused
+          - budgetHit
+          - ended
+          - archived
+          - noFunds
+          type: string
+          x-nullable: false
+        targetBid:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        isAutoDailyPacing:
+          default: false
+          type: boolean
+          x-nullable: false
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+          x-nullable: false
+        startDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          required:
+          - "true"
+          type: string
+        endDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          type: string
+        maxBid:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        budget:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        monthlyPacing:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        dailyPacing:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        bidStrategy:
+          default: conversion
+          enum:
+          - unknown
+          - conversion
+          - clicks
+          - revenue
+          type: string
+          x-nullable: false
+      required:
+      - budgetRemaining
+      - campaignId
+      - createdAt
+      - name
+      - startDate
+      - targetRetailerId
+      - updatedAt
+      type: object
+      x-nullable: false
+    ExternalPromotedProduct:
+      description: identifies a promoted product
+      example:
+        bidOverride: 0.8008281904610115
+      properties:
+        bidOverride:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+      required:
+      - bidOverride
+      type: object
+      x-nullable: false
+    ExternalCampaignAttributes:
+      description: An object that represents the available options to set when creating
+        a Retail Media Campaign
+      example:
+        clickAttributionWindow: 30D
+        clickAttributionScope: unknown
+        viewAttributionScope: unknown
+        drawableBalanceIds:
+        - drawableBalanceIds
+        - drawableBalanceIds
+        viewAttributionWindow: none
+        name: name
+        type: auction
+        budget: 0.8008281904610115
+      properties:
+        type:
+          default: auction
+          enum:
+          - unknown
+          - auction
+          - preferred
+          type: string
+          x-nullable: false
+        drawableBalanceIds:
+          items:
+            format: long-id
+            type: string
+          type: array
+          x-nullable: false
+        clickAttributionWindow:
+          default: 30D
+          enum:
+          - 7D
+          - 14D
+          - 30D
+          - unknown
+          type: string
+          x-nullable: false
+        viewAttributionWindow:
+          default: none
+          enum:
+          - none
+          - 1D
+          - 7D
+          - 14D
+          - 30D
+          - unknown
+          type: string
+          x-nullable: false
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+          x-nullable: false
+        budget:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        clickAttributionScope:
+          enum:
+          - unknown
+          - sameSku
+          - sameSkuCategory
+          - sameSkuCategoryBrand
+          type: string
+          x-nullable: true
+        viewAttributionScope:
+          enum:
+          - unknown
+          - sameSku
+          - sameSkuCategory
+          - sameSkuCategoryBrand
+          type: string
+          x-nullable: true
+      required:
+      - name
+      type: object
+      x-nullable: false
+    ExternalEditableCampaignAttributes:
+      description: An object that represents the available options to set when editing
+        a Retail Media Campaign
+      example:
+        clickAttributionWindow: 7D
+        clickAttributionScope: unknown
+        viewAttributionScope: unknown
+        name: name
+        viewAttributionWindow: none
+        budget: 0.8008281904610115
+      properties:
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+          x-nullable: false
+        budget:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        clickAttributionWindow:
+          enum:
+          - 7D
+          - 14D
+          - 30D
+          - unknown
+          type: string
+          x-nullable: false
+        viewAttributionWindow:
+          enum:
+          - none
+          - 1D
+          - 7D
+          - 14D
+          - 30D
+          - unknown
+          type: string
+          x-nullable: false
+        clickAttributionScope:
+          enum:
+          - unknown
+          - sameSku
+          - sameSkuCategory
+          - sameSkuCategoryBrand
+          type: string
+          x-nullable: true
+        viewAttributionScope:
+          enum:
+          - unknown
+          - sameSku
+          - sameSkuCategory
+          - sameSkuCategoryBrand
+          type: string
+          x-nullable: true
+      required:
+      - clickAttributionWindow
+      - name
+      - viewAttributionWindow
+      type: object
+      x-nullable: false
+    ExternalLineItemAttributes:
+      description: The attributes of a Retail Media Line Item
+      example:
+        bidStrategy: conversion
+        endDate: 2000-01-23
+        maxBid: 6.027456183070403
+        name: name
+        isAutoDailyPacing: false
+        targetRetailerId: targetRetailerId
+        dailyPacing: 5.637376656633329
+        targetBid: 0.8008281904610115
+        startDate: 2000-01-23
+        monthlyPacing: 5.962133916683182
+        status: unknown
+        budget: 1.4658129805029452
+      properties:
+        targetRetailerId:
+          format: long-id
+          type: string
+          x-nullable: false
+        status:
+          enum:
+          - unknown
+          - active
+          - scheduled
+          - draft
+          - paused
+          - budgetHit
+          - ended
+          - archived
+          - noFunds
+          type: string
+          x-nullable: false
+        targetBid:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        isAutoDailyPacing:
+          default: false
+          type: boolean
+          x-nullable: false
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+          x-nullable: false
+        startDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          required:
+          - "true"
+          type: string
+        endDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          type: string
+        maxBid:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        budget:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        monthlyPacing:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        dailyPacing:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        bidStrategy:
+          default: conversion
+          enum:
+          - unknown
+          - conversion
+          - clicks
+          - revenue
+          type: string
+          x-nullable: false
+      required:
+      - name
+      - startDate
+      - targetRetailerId
+      type: object
+      x-nullable: false
+    ExternalEditableLineItemAttributes:
+      description: The mutable attributes of a Retail Media Line Item
+      example:
+        bidStrategy: conversion
+        endDate: 2000-01-23
+        maxBid: 6.027456183070403
+        name: name
+        isAutoDailyPacing: true
+        dailyPacing: 5.637376656633329
+        startDate: 2000-01-23
+        targetBid: 0.8008281904610115
+        monthlyPacing: 5.962133916683182
+        budget: 1.4658129805029452
+        status: unknown
+      properties:
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+          x-nullable: false
+        startDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          required:
+          - "true"
+          type: string
+        endDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          type: string
+        targetBid:
+          description: The greater value between RMP default of $0.3 or a retailer-specific
+            value - varies by retailer
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        maxBid:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        budget:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        monthlyPacing:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        dailyPacing:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        isAutoDailyPacing:
+          type: boolean
+          x-nullable: false
+        bidStrategy:
+          default: conversion
+          enum:
+          - unknown
+          - conversion
+          - clicks
+          - revenue
+          type: string
+          x-nullable: false
+        status:
+          enum:
+          - unknown
+          - active
+          - scheduled
+          - draft
+          - paused
+          - budgetHit
+          - ended
+          - archived
+          - noFunds
+          type: string
+          x-nullable: false
+      required:
+      - isAutoDailyPacing
+      - name
+      - startDate
+      - status
+      - targetBid
+      type: object
+      x-nullable: false
+    EnvelopeReportStatus:
+      description: Standard response envelope
+      example:
+        data:
+          attributes:
+            fileSizeBytes: 0
+            md5Checksum: md5Checksum
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            rowCount: 6
+            message: message
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+            status: pending
+          id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ReportStatus'
+      required:
+      - data
+      type: object
+    BadRequest:
+      description: Bad request errors
+      properties:
+        errors:
+          description: The errors
+          items:
+            $ref: '#/components/schemas/Error'
+          type: array
+      type: object
+    EnvelopeReportRequest:
+      description: Standard response envelope
+      example:
+        data:
+          attributes:
+            reportType: summary
+            clickAttributionWindow: 7D
+            endDate: 2000-01-23
+            format: json
+            viewAttributionWindow: none
+            ids:
+            - ids
+            - ids
+            timeZone: timeZone
+            id: id
+            startDate: 2000-01-23
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ReportRequest'
+      required:
+      - data
+      type: object
+    ReportStatus:
+      description: Report Status
+      example:
+        attributes:
+          fileSizeBytes: 0
+          md5Checksum: md5Checksum
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          rowCount: 6
+          message: message
+          expiresAt: 2000-01-23T04:56:07.000+00:00
+          status: pending
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ReportStatusAttributes'
+        id:
+          description: The reportId
+          type: string
+        type:
+          description: Always "RetailMediaReportStatus"
+          type: string
+      required:
+      - attributes
+      - id
+      - type
+      type: object
+    Error:
+      description: Error
+      properties:
+        code:
+          description: "(REQUIRED) A machine-readable unique error code, expressed\
+            \ as a string value. The format used must be kabab-case."
+          type: string
+        detail:
+          description: (RECOMMENDED) A human-readable explanation specific to this
+            occurrence of the problem.
+          type: string
+        instance:
+          description: (REQUIRED) A URI reference that identifies the specific occurrence
+            of the problem.
+          type: string
+        source:
+          additionalProperties:
+            type: string
+          description: (OPTIONAL) A machine-readable structure to reference to the
+            exact location(s) causing the error(s).
+          type: object
+        stackTrace:
+          description: "(NEVER IN PRODUCTION) A human-readable stacktrace produced\
+            \ by the implementation technology e.g. .Net, Scala, etc"
+          items:
+            type: string
+          type: array
+        title:
+          description: "(RECOMMENDED) A short, human-readable summary of the problem\
+            \ type."
+          type: string
+        traceId:
+          description: (REQUIRED) The Correlation ID provided by the Gateway. It is
+            also a unique identifier for this particular occurrence of the problem.
+          type: string
+        type:
+          description: "Type should be: \"validation\", \"unavailable, \"violation\"\
+            , \"permission\", ..."
+          enum:
+          - access-control
+          - authentication
+          - authorization
+          - availability
+          - deprecation
+          - quota
+          - validation
+          type: string
+      required:
+      - code
+      - instance
+      - traceId
+      - type
+      type: object
+    ReportRequest:
+      description: Report Request
+      example:
+        attributes:
+          reportType: summary
+          clickAttributionWindow: 7D
+          endDate: 2000-01-23
+          format: json
+          viewAttributionWindow: none
+          ids:
+          - ids
+          - ids
+          timeZone: timeZone
+          id: id
+          startDate: 2000-01-23
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ReportRequestAttributes'
+        type:
+          description: Always "RetailMediaReportRequest"
+          type: string
+      required:
+      - attributes
+      - type
+      type: object
+    ReportStatusAttributes:
+      description: Report Status Attributes
+      example:
+        fileSizeBytes: 0
+        md5Checksum: md5Checksum
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        rowCount: 6
+        message: message
+        expiresAt: 2000-01-23T04:56:07.000+00:00
+        status: pending
+      properties:
+        createdAt:
+          description: Timestamp when the report started to execute
+          format: date-time
+          type: string
+        expiresAt:
+          description: Timestamp when the cached report will expire
+          format: date-time
+          type: string
+        fileSizeBytes:
+          description: "Total size of file, only populated on success"
+          format: int64
+          type: integer
+        md5Checksum:
+          description: "The MD5 checksum of the content, only populated on success"
+          type: string
+        message:
+          description: "Failure message, only populated on failure"
+          type: string
+        rowCount:
+          description: "Rows of data in report, only populated on success"
+          format: int64
+          type: integer
+        status:
+          description: "One of \"pending\", \"success\", \"failure\", or \"expired\""
+          enum:
+          - pending
+          - success
+          - failure
+          - expired
+          type: string
+      required:
+      - status
+      type: object
+    MapString:
+      additionalProperties:
+        type: string
+      description: (OPTIONAL) A machine-readable structure to reference to the exact
+        location(s) causing the error(s).
+      type: object
+    ReportRequestAttributes:
+      description: Report Request Attributes
+      example:
+        reportType: summary
+        clickAttributionWindow: 7D
+        endDate: 2000-01-23
+        format: json
+        viewAttributionWindow: none
+        ids:
+        - ids
+        - ids
+        timeZone: timeZone
+        id: id
+        startDate: 2000-01-23
+      properties:
+        clickAttributionWindow:
+          description: "Defaults to value from campaign or one of \"7D\", \"14D\"\
+            , or \"30D\". If specified, viewAttributionWindow must also be specified"
+          enum:
+          - 7D
+          - 14D
+          - 30D
+          type: string
+        endDate:
+          description: "YYYY-MM-DD, must not be before startDate and not more than\
+            \ 100 days later"
+          format: date
+          type: string
+        format:
+          default: json
+          description: "One of \"json\" (default),\"json-compact\",\"json-newline\"\
+            \ or \"csv\""
+          enum:
+          - csv
+          - json
+          - json-compact
+          - json-newline
+          type: string
+        id:
+          description: "The id of the campaign or line item.  Either 'id' or 'ids'\
+            \ must be specified, but not both"
+          type: string
+        ids:
+          description: "The ids of the campaigns or line items.  Either 'id' or 'ids'\
+            \ must be specified, but not both"
+          items:
+            type: string
+          type: array
+        reportType:
+          description: "One of \"summary\", \"keyword\", \"pageType\", \"productCategory\"\
+            , \"product\", or \"attributedTransactions\""
+          enum:
+          - summary
+          - keyword
+          - pageType
+          - productCategory
+          - product
+          - attributedTransactions
+          type: string
+        startDate:
+          description: YYYY-MM-DD
+          format: date
+          type: string
+        timeZone:
+          type: string
+        viewAttributionWindow:
+          description: "Defaults to value from campaign or one of \"none\", \"1D\"\
+            , \"7D\", \"14D\", or \"30D\". If specified, must be less than clickAttributionWindow,\
+            \ which must also be specified."
+          enum:
+          - none
+          - 1D
+          - 7D
+          - 14D
+          - 30D
+          type: string
+      required:
+      - endDate
+      - reportType
+      - startDate
+      type: object
+  securitySchemes:
+    oauth:
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://api.criteo.com/oauth2/token
+      type: oauth2
+x-samples-languages:
+- java
+- python
+- php
+- csharp
+- javascript
+- curl
+- ruby
+

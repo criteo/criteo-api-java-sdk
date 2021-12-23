@@ -5,6 +5,7 @@ README.md
 api/openapi.yaml
 build.gradle
 build.sbt
+docs/AccessTokenModel.md
 docs/AdSetDeliveryLimitations.md
 docs/AdSetFrequencyCapping.md
 docs/AdSetGeoLocation.md
@@ -13,6 +14,9 @@ docs/AdSetTargeting.md
 docs/AdSetTargetingRule.md
 docs/AdvertiserApi.md
 docs/AnalyticsApi.md
+docs/ApplicationSummaryModel.md
+docs/ApplicationSummaryModelResource.md
+docs/ApplicationSummaryModelResponse.md
 docs/Audience.md
 docs/AudienceApi.md
 docs/AudienceAttributes.md
@@ -28,6 +32,7 @@ docs/CampaignResponse.md
 docs/CampaignSearchFilters.md
 docs/CampaignSearchRequest.md
 docs/CampaignSpendLimit.md
+docs/CommonProblem.md
 docs/ContactlistAmendment.md
 docs/ContactlistAmendmentAttributes.md
 docs/ContactlistAmendmentRequest.md
@@ -40,9 +45,9 @@ docs/DeleteAudienceResponse.md
 docs/EntityOfPortfolioMessage.md
 docs/ErrorCodeResponse.md
 docs/ErrorMessage.md
+docs/GatewayApi.md
 docs/GetAudiencesResponse.md
 docs/GetPortfolioResponse.md
-docs/JwtModel.md
 docs/ModifyAudienceResponse.md
 docs/NewAudience.md
 docs/NewAudienceAttributes.md
@@ -51,8 +56,8 @@ docs/NewAudienceResponse.md
 docs/NillableAdSetTargetingRule.md
 docs/NillableDateTime.md
 docs/NillableDecimal.md
-docs/OAuth2Error.md
 docs/OAuthApi.md
+docs/OAuthErrorModel.md
 docs/PatchAdSet.md
 docs/PatchAdSetBidding.md
 docs/PatchAdSetBudget.md
@@ -118,6 +123,7 @@ src/main/java/com/criteo/api/marketingsolutions/v2021_10/api/AdvertiserApi.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/api/AnalyticsApi.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/api/AudienceApi.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/api/CampaignApi.java
+src/main/java/com/criteo/api/marketingsolutions/v2021_10/api/GatewayApi.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/api/OAuthApi.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/auth/ApiKeyAuth.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/auth/Authentication.java
@@ -127,12 +133,16 @@ src/main/java/com/criteo/api/marketingsolutions/v2021_10/auth/OAuth.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/auth/OAuthFlow.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/auth/OAuthOkHttpClient.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/auth/RetryingOAuth.java
+src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/AccessTokenModel.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/AdSetDeliveryLimitations.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/AdSetFrequencyCapping.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/AdSetGeoLocation.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/AdSetSearchFilter.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/AdSetTargeting.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/AdSetTargetingRule.java
+src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/ApplicationSummaryModel.java
+src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/ApplicationSummaryModelResource.java
+src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/ApplicationSummaryModelResponse.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/Audience.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/AudienceAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/AudienceError.java
@@ -146,6 +156,7 @@ src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/CampaignResponse.
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/CampaignSearchFilters.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/CampaignSearchRequest.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/CampaignSpendLimit.java
+src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/CommonProblem.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/ContactlistAmendment.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/ContactlistAmendmentAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/ContactlistAmendmentRequest.java
@@ -160,7 +171,6 @@ src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/ErrorCodeResponse
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/ErrorMessage.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/GetAudiencesResponse.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/GetPortfolioResponse.java
-src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/JwtModel.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/ModifyAudienceResponse.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/NewAudience.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/NewAudienceAttributes.java
@@ -169,7 +179,7 @@ src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/NewAudienceRespon
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/NillableAdSetTargetingRule.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/NillableDateTime.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/NillableDecimal.java
-src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/OAuth2Error.java
+src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/OAuthErrorModel.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/PatchAdSet.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/PatchAdSetBidding.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/PatchAdSetBudget.java

@@ -27,8 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.criteo.api.marketingsolutions.v2021_10.model.JwtModel;
-import com.criteo.api.marketingsolutions.v2021_10.model.OAuth2Error;
+import com.criteo.api.marketingsolutions.v2021_10.model.AccessTokenModel;
+import com.criteo.api.marketingsolutions.v2021_10.model.OAuthErrorModel;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -56,10 +56,7 @@ public class OAuthApi {
     }
 
     /**
-     * Build call for createToken
-     * @param clientId API Client-Id or Username (optional)
-     * @param clientSecret API Client secret or password (optional)
-     * @param grantType Other grant types are not available (optional, default to &quot;client_credentials&quot;)
+     * Build call for clientCredentials
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -68,9 +65,10 @@ public class OAuthApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createTokenCall(String clientId, String clientSecret, String grantType, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call clientCredentialsCall(final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -82,18 +80,6 @@ public class OAuthApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (clientId != null) {
-            localVarFormParams.put("client_id", clientId);
-        }
-
-        if (clientSecret != null) {
-            localVarFormParams.put("client_secret", clientSecret);
-        }
-
-        if (grantType != null) {
-            localVarFormParams.put("grant_type", grantType);
-        }
-
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -103,7 +89,7 @@ public class OAuthApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/x-www-form-urlencoded"
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -113,61 +99,54 @@ public class OAuthApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createTokenValidateBeforeCall(String clientId, String clientSecret, String grantType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call clientCredentialsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = createTokenCall(clientId, clientSecret, grantType, _callback);
+        okhttp3.Call localVarCall = clientCredentialsCall(_callback);
         return localVarCall;
 
     }
 
     /**
-     * 
      * Creates a token when the supplied client credentials are valid
-     * @param clientId API Client-Id or Username (optional)
-     * @param clientSecret API Client secret or password (optional)
-     * @param grantType Other grant types are not available (optional, default to &quot;client_credentials&quot;)
-     * @return JwtModel
+     * Creates a token when the supplied client credentials are valid
+     * @return AccessTokenModel
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public JwtModel createToken(String clientId, String clientSecret, String grantType) throws ApiException {
-        ApiResponse<JwtModel> localVarResp = createTokenWithHttpInfo(clientId, clientSecret, grantType);
+    public AccessTokenModel clientCredentials() throws ApiException {
+        ApiResponse<AccessTokenModel> localVarResp = clientCredentialsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * 
      * Creates a token when the supplied client credentials are valid
-     * @param clientId API Client-Id or Username (optional)
-     * @param clientSecret API Client secret or password (optional)
-     * @param grantType Other grant types are not available (optional, default to &quot;client_credentials&quot;)
-     * @return ApiResponse&lt;JwtModel&gt;
+     * Creates a token when the supplied client credentials are valid
+     * @return ApiResponse&lt;AccessTokenModel&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<JwtModel> createTokenWithHttpInfo(String clientId, String clientSecret, String grantType) throws ApiException {
-        okhttp3.Call localVarCall = createTokenValidateBeforeCall(clientId, clientSecret, grantType, null);
-        Type localVarReturnType = new TypeToken<JwtModel>(){}.getType();
+    public ApiResponse<AccessTokenModel> clientCredentialsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = clientCredentialsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<AccessTokenModel>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
+     * Creates a token when the supplied client credentials are valid (asynchronously)
      * Creates a token when the supplied client credentials are valid
-     * @param clientId API Client-Id or Username (optional)
-     * @param clientSecret API Client secret or password (optional)
-     * @param grantType Other grant types are not available (optional, default to &quot;client_credentials&quot;)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -176,12 +155,13 @@ public class OAuthApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createTokenAsync(String clientId, String clientSecret, String grantType, final ApiCallback<JwtModel> _callback) throws ApiException {
+    public okhttp3.Call clientCredentialsAsync(final ApiCallback<AccessTokenModel> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createTokenValidateBeforeCall(clientId, clientSecret, grantType, _callback);
-        Type localVarReturnType = new TypeToken<JwtModel>(){}.getType();
+        okhttp3.Call localVarCall = clientCredentialsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<AccessTokenModel>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

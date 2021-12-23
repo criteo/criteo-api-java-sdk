@@ -1,6 +1,6 @@
 /*
- * Criteo API Specification
- * This is used to help Criteo clients use our API
+ * Criteo API
+ * Criteo publicly exposed API
  *
  * The version of the OpenAPI document: preview
  * 
@@ -15,9 +15,9 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.CriteoApiDataOfPortfolioMessage;
 import com.criteo.api.marketingsolutions.preview.model.CriteoApiError;
 import com.criteo.api.marketingsolutions.preview.model.CriteoApiWarning;
+import com.criteo.api.marketingsolutions.preview.model.EntityOfPortfolioMessage;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -37,7 +37,7 @@ import java.util.List;
 public class GetPortfolioResponse {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<CriteoApiDataOfPortfolioMessage> data = null;
+  private List<EntityOfPortfolioMessage> data = null;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
@@ -48,13 +48,13 @@ public class GetPortfolioResponse {
   private List<CriteoApiWarning> warnings = null;
 
 
-  public GetPortfolioResponse data(List<CriteoApiDataOfPortfolioMessage> data) {
+  public GetPortfolioResponse data(List<EntityOfPortfolioMessage> data) {
     
     this.data = data;
     return this;
   }
 
-  public GetPortfolioResponse addDataItem(CriteoApiDataOfPortfolioMessage dataItem) {
+  public GetPortfolioResponse addDataItem(EntityOfPortfolioMessage dataItem) {
     if (this.data == null) {
       this.data = new ArrayList<>();
     }
@@ -63,18 +63,18 @@ public class GetPortfolioResponse {
   }
 
    /**
-   * The response&#39;s primary data
+   * The response�s primary data
    * @return data
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The response's primary data")
+  @ApiModelProperty(value = "The response�s primary data")
 
-  public List<CriteoApiDataOfPortfolioMessage> getData() {
+  public List<EntityOfPortfolioMessage> getData() {
     return data;
   }
 
 
-  public void setData(List<CriteoApiDataOfPortfolioMessage> data) {
+  public void setData(List<EntityOfPortfolioMessage> data) {
     this.data = data;
   }
 
@@ -94,11 +94,11 @@ public class GetPortfolioResponse {
   }
 
    /**
-   * Error list returned by the Criteo API   For successful requests it is empty
+   * Error list returned by the Criteo API  For successful requests it is empty
    * @return errors
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Error list returned by the Criteo API   For successful requests it is empty")
+  @ApiModelProperty(value = "Error list returned by the Criteo API  For successful requests it is empty")
 
   public List<CriteoApiError> getErrors() {
     return errors;

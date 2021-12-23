@@ -1,6 +1,6 @@
 /*
- * Criteo API Specification
- * This is used to help Criteo clients use our API
+ * Criteo API
+ * Criteo publicly exposed API
  *
  * The version of the OpenAPI document: preview
  * 
@@ -27,8 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.criteo.api.marketingsolutions.preview.model.CategoryMessage;
+import com.criteo.api.marketingsolutions.preview.model.AdvertiserCreationRequest;
+import com.criteo.api.marketingsolutions.preview.model.AdvertiserCreationResponse;
+import com.criteo.api.marketingsolutions.preview.model.AdvertiserDatasetListResponse;
 import com.criteo.api.marketingsolutions.preview.model.GetPortfolioResponse;
+import com.criteo.api.marketingsolutions.preview.model.ListAvailableIndustriesResponse;
+import com.criteo.api.marketingsolutions.preview.model.UnauthorizedResponseV2;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -71,7 +75,7 @@ public class AdvertiserApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/2021-04/advertisers/me";
+        String localVarPath = "/preview/advertisers/me";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -80,7 +84,7 @@ public class AdvertiserApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "application/json", "text/plain", "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -93,7 +97,7 @@ public class AdvertiserApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -108,7 +112,7 @@ public class AdvertiserApi {
 
     /**
      * 
-     * Use this call to fetch a list of all advertisers in your account.
+     * Fetch the portfolio of Advertisers for this account
      * @return GetPortfolioResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -125,7 +129,7 @@ public class AdvertiserApi {
 
     /**
      * 
-     * Use this call to fetch a list of all advertisers in your account.
+     * Fetch the portfolio of Advertisers for this account
      * @return ApiResponse&lt;GetPortfolioResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -143,7 +147,7 @@ public class AdvertiserApi {
 
     /**
      *  (asynchronously)
-     * Use this call to fetch a list of all advertisers in your account.
+     * Fetch the portfolio of Advertisers for this account
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -162,28 +166,25 @@ public class AdvertiserApi {
         return localVarCall;
     }
     /**
-     * Build call for getCategories
-     * @param advertiserId Mandatory. The id of the advertiser to return. (required)
-     * @param enabledOnly Optional. Returns only categories you can bid on. Defaults to false. (optional)
+     * Build call for createAdvertiser
+     * @param advertiserCreationRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Categories returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The requested advertiser is missing from current user’s portfolio. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCategoriesCall(Integer advertiserId, Boolean enabledOnly, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+    public okhttp3.Call createAdvertiserCall(AdvertiserCreationRequest advertiserCreationRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = advertiserCreationRequest;
 
         // create path and map variables
-        String localVarPath = "/legacy/marketing/v1/advertisers/{advertiserId}/categories"
-            .replaceAll("\\{" + "advertiserId" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+        String localVarPath = "/preview/advertisers";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -191,12 +192,8 @@ public class AdvertiserApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (enabledOnly != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("enabledOnly", enabledOnly));
-        }
-
         final String[] localVarAccepts = {
-            "application/json", "text/json", "application/xml", "text/xml", "text/html"
+            "application/json", "text/plain", "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -204,124 +201,113 @@ public class AdvertiserApi {
         }
 
         final String[] localVarContentTypes = {
-            
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCategoriesValidateBeforeCall(Integer advertiserId, Boolean enabledOnly, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAdvertiserValidateBeforeCall(AdvertiserCreationRequest advertiserCreationRequest, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'advertiserId' is set
-        if (advertiserId == null) {
-            throw new ApiException("Missing the required parameter 'advertiserId' when calling getCategories(Async)");
+        // verify the required parameter 'advertiserCreationRequest' is set
+        if (advertiserCreationRequest == null) {
+            throw new ApiException("Missing the required parameter 'advertiserCreationRequest' when calling createAdvertiser(Async)");
         }
         
 
-        okhttp3.Call localVarCall = getCategoriesCall(advertiserId, enabledOnly, _callback);
+        okhttp3.Call localVarCall = createAdvertiserCall(advertiserCreationRequest, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Gets all advertiser&#39;s categories
-     * Get the list of all the categories linked to the requested advertiser.
-     * @param advertiserId Mandatory. The id of the advertiser to return. (required)
-     * @param enabledOnly Optional. Returns only categories you can bid on. Defaults to false. (optional)
-     * @return List&lt;CategoryMessage&gt;
+     * 
+     * Create a new advertiser based on provided parameters. This could take up to 30 seconds.
+     * @param advertiserCreationRequest  (required)
+     * @return AdvertiserCreationResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Categories returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The requested advertiser is missing from current user’s portfolio. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public List<CategoryMessage> getCategories(Integer advertiserId, Boolean enabledOnly) throws ApiException {
-        ApiResponse<List<CategoryMessage>> localVarResp = getCategoriesWithHttpInfo(advertiserId, enabledOnly);
+    public AdvertiserCreationResponse createAdvertiser(AdvertiserCreationRequest advertiserCreationRequest) throws ApiException {
+        ApiResponse<AdvertiserCreationResponse> localVarResp = createAdvertiserWithHttpInfo(advertiserCreationRequest);
         return localVarResp.getData();
     }
 
     /**
-     * Gets all advertiser&#39;s categories
-     * Get the list of all the categories linked to the requested advertiser.
-     * @param advertiserId Mandatory. The id of the advertiser to return. (required)
-     * @param enabledOnly Optional. Returns only categories you can bid on. Defaults to false. (optional)
-     * @return ApiResponse&lt;List&lt;CategoryMessage&gt;&gt;
+     * 
+     * Create a new advertiser based on provided parameters. This could take up to 30 seconds.
+     * @param advertiserCreationRequest  (required)
+     * @return ApiResponse&lt;AdvertiserCreationResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Categories returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The requested advertiser is missing from current user’s portfolio. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<CategoryMessage>> getCategoriesWithHttpInfo(Integer advertiserId, Boolean enabledOnly) throws ApiException {
-        okhttp3.Call localVarCall = getCategoriesValidateBeforeCall(advertiserId, enabledOnly, null);
-        Type localVarReturnType = new TypeToken<List<CategoryMessage>>(){}.getType();
+    public ApiResponse<AdvertiserCreationResponse> createAdvertiserWithHttpInfo(AdvertiserCreationRequest advertiserCreationRequest) throws ApiException {
+        okhttp3.Call localVarCall = createAdvertiserValidateBeforeCall(advertiserCreationRequest, null);
+        Type localVarReturnType = new TypeToken<AdvertiserCreationResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Gets all advertiser&#39;s categories (asynchronously)
-     * Get the list of all the categories linked to the requested advertiser.
-     * @param advertiserId Mandatory. The id of the advertiser to return. (required)
-     * @param enabledOnly Optional. Returns only categories you can bid on. Defaults to false. (optional)
+     *  (asynchronously)
+     * Create a new advertiser based on provided parameters. This could take up to 30 seconds.
+     * @param advertiserCreationRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Categories returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The requested advertiser is missing from current user’s portfolio. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCategoriesAsync(Integer advertiserId, Boolean enabledOnly, final ApiCallback<List<CategoryMessage>> _callback) throws ApiException {
+    public okhttp3.Call createAdvertiserAsync(AdvertiserCreationRequest advertiserCreationRequest, final ApiCallback<AdvertiserCreationResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCategoriesValidateBeforeCall(advertiserId, enabledOnly, _callback);
-        Type localVarReturnType = new TypeToken<List<CategoryMessage>>(){}.getType();
+        okhttp3.Call localVarCall = createAdvertiserValidateBeforeCall(advertiserCreationRequest, _callback);
+        Type localVarReturnType = new TypeToken<AdvertiserCreationResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getCategory
-     * @param advertiserId Mandatory. The id of the advertiser to return. (required)
-     * @param categoryHashCode Mandatory. The id of the category to return. (required)
+     * Build call for getDatasetList
+     * @param advertiserId The id of the Advertiser for which Datasets are being retrieved. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Category returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The requested advertiser is missing from current user’s portfolio. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested category was not found for the advertiser. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCategoryCall(Integer advertiserId, Integer categoryHashCode, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDatasetListCall(String advertiserId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/legacy/marketing/v1/advertisers/{advertiserId}/categories/{categoryHashCode}"
-            .replaceAll("\\{" + "advertiserId" + "\\}", localVarApiClient.escapeString(advertiserId.toString()))
-            .replaceAll("\\{" + "categoryHashCode" + "\\}", localVarApiClient.escapeString(categoryHashCode.toString()));
+        String localVarPath = "/preview/advertisers/{advertiser-id}/datasets"
+            .replaceAll("\\{" + "advertiser-id" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -330,7 +316,7 @@ public class AdvertiserApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json", "text/json", "application/xml", "text/xml", "text/html"
+            "application/json", "text/plain", "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -343,99 +329,184 @@ public class AdvertiserApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCategoryValidateBeforeCall(Integer advertiserId, Integer categoryHashCode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDatasetListValidateBeforeCall(String advertiserId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
-            throw new ApiException("Missing the required parameter 'advertiserId' when calling getCategory(Async)");
-        }
-        
-        // verify the required parameter 'categoryHashCode' is set
-        if (categoryHashCode == null) {
-            throw new ApiException("Missing the required parameter 'categoryHashCode' when calling getCategory(Async)");
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling getDatasetList(Async)");
         }
         
 
-        okhttp3.Call localVarCall = getCategoryCall(advertiserId, categoryHashCode, _callback);
+        okhttp3.Call localVarCall = getDatasetListCall(advertiserId, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Gets a specific advertiser&#39;s category
-     * Get a specific category linked to the requested advertiser.
-     * @param advertiserId Mandatory. The id of the advertiser to return. (required)
-     * @param categoryHashCode Mandatory. The id of the category to return. (required)
-     * @return List&lt;CategoryMessage&gt;
+     * 
+     * Retrieves corresponding Datasets for a given Advertiser. Only those Datasets are included for which the given Advertiser is marked a primary.
+     * @param advertiserId The id of the Advertiser for which Datasets are being retrieved. (required)
+     * @return AdvertiserDatasetListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Category returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The requested advertiser is missing from current user’s portfolio. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested category was not found for the advertiser. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public List<CategoryMessage> getCategory(Integer advertiserId, Integer categoryHashCode) throws ApiException {
-        ApiResponse<List<CategoryMessage>> localVarResp = getCategoryWithHttpInfo(advertiserId, categoryHashCode);
+    public AdvertiserDatasetListResponse getDatasetList(String advertiserId) throws ApiException {
+        ApiResponse<AdvertiserDatasetListResponse> localVarResp = getDatasetListWithHttpInfo(advertiserId);
         return localVarResp.getData();
     }
 
     /**
-     * Gets a specific advertiser&#39;s category
-     * Get a specific category linked to the requested advertiser.
-     * @param advertiserId Mandatory. The id of the advertiser to return. (required)
-     * @param categoryHashCode Mandatory. The id of the category to return. (required)
-     * @return ApiResponse&lt;List&lt;CategoryMessage&gt;&gt;
+     * 
+     * Retrieves corresponding Datasets for a given Advertiser. Only those Datasets are included for which the given Advertiser is marked a primary.
+     * @param advertiserId The id of the Advertiser for which Datasets are being retrieved. (required)
+     * @return ApiResponse&lt;AdvertiserDatasetListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Category returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The requested advertiser is missing from current user’s portfolio. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested category was not found for the advertiser. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<CategoryMessage>> getCategoryWithHttpInfo(Integer advertiserId, Integer categoryHashCode) throws ApiException {
-        okhttp3.Call localVarCall = getCategoryValidateBeforeCall(advertiserId, categoryHashCode, null);
-        Type localVarReturnType = new TypeToken<List<CategoryMessage>>(){}.getType();
+    public ApiResponse<AdvertiserDatasetListResponse> getDatasetListWithHttpInfo(String advertiserId) throws ApiException {
+        okhttp3.Call localVarCall = getDatasetListValidateBeforeCall(advertiserId, null);
+        Type localVarReturnType = new TypeToken<AdvertiserDatasetListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Gets a specific advertiser&#39;s category (asynchronously)
-     * Get a specific category linked to the requested advertiser.
-     * @param advertiserId Mandatory. The id of the advertiser to return. (required)
-     * @param categoryHashCode Mandatory. The id of the category to return. (required)
+     *  (asynchronously)
+     * Retrieves corresponding Datasets for a given Advertiser. Only those Datasets are included for which the given Advertiser is marked a primary.
+     * @param advertiserId The id of the Advertiser for which Datasets are being retrieved. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Category returned OK. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication failed. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The requested advertiser is missing from current user’s portfolio. </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> The requested category was not found for the advertiser. </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Throttling failure. Maximum sending rate exceeded. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Unknown error. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCategoryAsync(Integer advertiserId, Integer categoryHashCode, final ApiCallback<List<CategoryMessage>> _callback) throws ApiException {
+    public okhttp3.Call getDatasetListAsync(String advertiserId, final ApiCallback<AdvertiserDatasetListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCategoryValidateBeforeCall(advertiserId, categoryHashCode, _callback);
-        Type localVarReturnType = new TypeToken<List<CategoryMessage>>(){}.getType();
+        okhttp3.Call localVarCall = getDatasetListValidateBeforeCall(advertiserId, _callback);
+        Type localVarReturnType = new TypeToken<AdvertiserDatasetListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listIndustries
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listIndustriesCall(final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/industries";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json", "text/plain", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listIndustriesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = listIndustriesCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Returns the list of available industries for new advertisers.
+     * @return ListAvailableIndustriesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ListAvailableIndustriesResponse listIndustries() throws ApiException {
+        ApiResponse<ListAvailableIndustriesResponse> localVarResp = listIndustriesWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Returns the list of available industries for new advertisers.
+     * @return ApiResponse&lt;ListAvailableIndustriesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ListAvailableIndustriesResponse> listIndustriesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listIndustriesValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ListAvailableIndustriesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Returns the list of available industries for new advertisers.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listIndustriesAsync(final ApiCallback<ListAvailableIndustriesResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listIndustriesValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ListAvailableIndustriesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

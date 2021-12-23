@@ -1,6 +1,6 @@
 /*
- * Criteo API Specification
- * This is used to help Criteo clients use our API
+ * Criteo API
+ * Criteo publicly exposed API
  *
  * The version of the OpenAPI document: preview
  * 
@@ -28,8 +28,12 @@ import java.io.IOException;
 
 
 import com.criteo.api.marketingsolutions.preview.model.ErrorMessage;
+import com.criteo.api.marketingsolutions.preview.model.GenerateCategoriesReportRequest;
+import com.criteo.api.marketingsolutions.preview.model.PlacementsReportQueryDataMessage;
 import com.criteo.api.marketingsolutions.preview.model.StatisticsReportQueryMessage;
 import com.criteo.api.marketingsolutions.preview.model.TransactionsReportQueryDataMessage;
+import com.criteo.api.marketingsolutions.preview.model.TransparencyQueryMessage;
+import com.criteo.api.marketingsolutions.preview.model.TransparencyReportDataMessage;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -74,7 +78,7 @@ public class AnalyticsApi {
         Object localVarPostBody = statisticsReportQueryMessage;
 
         // create path and map variables
-        String localVarPath = "/2021-04/statistics/report";
+        String localVarPath = "/preview/statistics/report";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -96,7 +100,7 @@ public class AnalyticsApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -171,8 +175,8 @@ public class AnalyticsApi {
         return localVarCall;
     }
     /**
-     * Build call for getTransactionsReport
-     * @param transactionsReportQueryDataMessage  (optional)
+     * Build call for getCategoriesReport
+     * @param generateCategoriesReportRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -184,11 +188,11 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTransactionsReportCall(TransactionsReportQueryDataMessage transactionsReportQueryDataMessage, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = transactionsReportQueryDataMessage;
+    public okhttp3.Call getCategoriesReportCall(GenerateCategoriesReportRequest generateCategoriesReportRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = generateCategoriesReportRequest;
 
         // create path and map variables
-        String localVarPath = "/2021-04/transactions/report";
+        String localVarPath = "/preview/categories/report";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -210,7 +214,235 @@ public class AnalyticsApi {
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        String[] localVarAuthNames = new String[] { "Authorization" };
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCategoriesReportValidateBeforeCall(GenerateCategoriesReportRequest generateCategoriesReportRequest, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getCategoriesReportCall(generateCategoriesReportRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * With this endpoint you can analyse what are the categories of the placements&#39; domains your ads are placed in.
+     * @param generateCategoriesReportRequest  (optional)
+     * @return byte[]
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public byte[] getCategoriesReport(GenerateCategoriesReportRequest generateCategoriesReportRequest) throws ApiException {
+        ApiResponse<byte[]> localVarResp = getCategoriesReportWithHttpInfo(generateCategoriesReportRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * With this endpoint you can analyse what are the categories of the placements&#39; domains your ads are placed in.
+     * @param generateCategoriesReportRequest  (optional)
+     * @return ApiResponse&lt;byte[]&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<byte[]> getCategoriesReportWithHttpInfo(GenerateCategoriesReportRequest generateCategoriesReportRequest) throws ApiException {
+        okhttp3.Call localVarCall = getCategoriesReportValidateBeforeCall(generateCategoriesReportRequest, null);
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * With this endpoint you can analyse what are the categories of the placements&#39; domains your ads are placed in.
+     * @param generateCategoriesReportRequest  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCategoriesReportAsync(GenerateCategoriesReportRequest generateCategoriesReportRequest, final ApiCallback<byte[]> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCategoriesReportValidateBeforeCall(generateCategoriesReportRequest, _callback);
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getPlacementsReport
+     * @param placementsReportQueryDataMessage  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPlacementsReportCall(PlacementsReportQueryDataMessage placementsReportQueryDataMessage, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = placementsReportQueryDataMessage;
+
+        // create path and map variables
+        String localVarPath = "/preview/placements/report";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPlacementsReportValidateBeforeCall(PlacementsReportQueryDataMessage placementsReportQueryDataMessage, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getPlacementsReportCall(placementsReportQueryDataMessage, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.
+     * @param placementsReportQueryDataMessage  (optional)
+     * @return byte[]
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public byte[] getPlacementsReport(PlacementsReportQueryDataMessage placementsReportQueryDataMessage) throws ApiException {
+        ApiResponse<byte[]> localVarResp = getPlacementsReportWithHttpInfo(placementsReportQueryDataMessage);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.
+     * @param placementsReportQueryDataMessage  (optional)
+     * @return ApiResponse&lt;byte[]&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<byte[]> getPlacementsReportWithHttpInfo(PlacementsReportQueryDataMessage placementsReportQueryDataMessage) throws ApiException {
+        okhttp3.Call localVarCall = getPlacementsReportValidateBeforeCall(placementsReportQueryDataMessage, null);
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.
+     * @param placementsReportQueryDataMessage  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPlacementsReportAsync(PlacementsReportQueryDataMessage placementsReportQueryDataMessage, final ApiCallback<byte[]> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPlacementsReportValidateBeforeCall(placementsReportQueryDataMessage, _callback);
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getTransactionsReport
+     * @param transactionsReportQueryDataMessage  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTransactionsReportCall(TransactionsReportQueryDataMessage transactionsReportQueryDataMessage, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = transactionsReportQueryDataMessage;
+
+        // create path and map variables
+        String localVarPath = "/preview/transactions/report";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -281,6 +513,130 @@ public class AnalyticsApi {
 
         okhttp3.Call localVarCall = getTransactionsReportValidateBeforeCall(transactionsReportQueryDataMessage, _callback);
         Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getTransparencyReport
+     * @param advertiserId The advertiser id to fetch the transparency data. (required)
+     * @param transparencyQueryMessage  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTransparencyReportCall(Integer advertiserId, TransparencyQueryMessage transparencyQueryMessage, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = transparencyQueryMessage;
+
+        // create path and map variables
+        String localVarPath = "/preview/log-level/advertisers/{advertiser-id}/report"
+            .replaceAll("\\{" + "advertiser-id" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json", "text/plain", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTransparencyReportValidateBeforeCall(Integer advertiserId, TransparencyQueryMessage transparencyQueryMessage, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling getTransparencyReport(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getTransparencyReportCall(advertiserId, transparencyQueryMessage, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * This Statistics endpoint provides publisher data.
+     * @param advertiserId The advertiser id to fetch the transparency data. (required)
+     * @param transparencyQueryMessage  (optional)
+     * @return TransparencyReportDataMessage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public TransparencyReportDataMessage getTransparencyReport(Integer advertiserId, TransparencyQueryMessage transparencyQueryMessage) throws ApiException {
+        ApiResponse<TransparencyReportDataMessage> localVarResp = getTransparencyReportWithHttpInfo(advertiserId, transparencyQueryMessage);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * This Statistics endpoint provides publisher data.
+     * @param advertiserId The advertiser id to fetch the transparency data. (required)
+     * @param transparencyQueryMessage  (optional)
+     * @return ApiResponse&lt;TransparencyReportDataMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TransparencyReportDataMessage> getTransparencyReportWithHttpInfo(Integer advertiserId, TransparencyQueryMessage transparencyQueryMessage) throws ApiException {
+        okhttp3.Call localVarCall = getTransparencyReportValidateBeforeCall(advertiserId, transparencyQueryMessage, null);
+        Type localVarReturnType = new TypeToken<TransparencyReportDataMessage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * This Statistics endpoint provides publisher data.
+     * @param advertiserId The advertiser id to fetch the transparency data. (required)
+     * @param transparencyQueryMessage  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTransparencyReportAsync(Integer advertiserId, TransparencyQueryMessage transparencyQueryMessage, final ApiCallback<TransparencyReportDataMessage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTransparencyReportValidateBeforeCall(advertiserId, transparencyQueryMessage, _callback);
+        Type localVarReturnType = new TypeToken<TransparencyReportDataMessage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

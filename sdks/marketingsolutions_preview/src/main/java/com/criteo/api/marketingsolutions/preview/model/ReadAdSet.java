@@ -1,6 +1,6 @@
 /*
- * Criteo API Specification
- * This is used to help Criteo clients use our API
+ * Criteo API
+ * Criteo publicly exposed API
  *
  * The version of the OpenAPI document: preview
  * 
@@ -41,6 +41,10 @@ public class ReadAdSet {
   public static final String SERIALIZED_NAME_ADVERTISER_ID = "advertiserId";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_ID)
   private String advertiserId;
+
+  public static final String SERIALIZED_NAME_DATASET_ID = "datasetId";
+  @SerializedName(SERIALIZED_NAME_DATASET_ID)
+  private String datasetId;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
@@ -159,6 +163,29 @@ public class ReadAdSet {
 
   public void setAdvertiserId(String advertiserId) {
     this.advertiserId = advertiserId;
+  }
+
+
+  public ReadAdSet datasetId(String datasetId) {
+    
+    this.datasetId = datasetId;
+    return this;
+  }
+
+   /**
+   * Dataset id of this ad set
+   * @return datasetId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Dataset id of this ad set")
+
+  public String getDatasetId() {
+    return datasetId;
+  }
+
+
+  public void setDatasetId(String datasetId) {
+    this.datasetId = datasetId;
   }
 
 
@@ -311,6 +338,7 @@ public class ReadAdSet {
     ReadAdSet readAdSet = (ReadAdSet) o;
     return Objects.equals(this.name, readAdSet.name) &&
         Objects.equals(this.advertiserId, readAdSet.advertiserId) &&
+        Objects.equals(this.datasetId, readAdSet.datasetId) &&
         Objects.equals(this.campaignId, readAdSet.campaignId) &&
         Objects.equals(this.destinationEnvironment, readAdSet.destinationEnvironment) &&
         Objects.equals(this.schedule, readAdSet.schedule) &&
@@ -321,7 +349,7 @@ public class ReadAdSet {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, advertiserId, campaignId, destinationEnvironment, schedule, bidding, targeting, budget);
+    return Objects.hash(name, advertiserId, datasetId, campaignId, destinationEnvironment, schedule, bidding, targeting, budget);
   }
 
   @Override
@@ -330,6 +358,7 @@ public class ReadAdSet {
     sb.append("class ReadAdSet {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
+    sb.append("    datasetId: ").append(toIndentedString(datasetId)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    destinationEnvironment: ").append(toIndentedString(destinationEnvironment)).append("\n");
     sb.append("    schedule: ").append(toIndentedString(schedule)).append("\n");
