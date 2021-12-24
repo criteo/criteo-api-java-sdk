@@ -1,6 +1,8 @@
 echo "Looping through generated Java SDKs..."
 
-for dir in ./sdks/*;
+DID_FAIL = false
+
+for dir in ./../sdks/*;
     do (
         if [ -d "$dir" ];
             then
@@ -9,13 +11,19 @@ for dir in ./sdks/*;
                 echo "Publishing this SDK to Maven Central."
                 chmod +x gradlew
                 ./gradlew publishToSonatype closeSonatypeStagingRepository; gradlew_return_code=$?
-                echo gradlew_return_code
+                echo $gradlew_return_code
                 if (( gradlew_return_code !=0 )); then
                     echo "Publication failed"
-                    exit 1
+                    DID_FAIL=true
                 fi
         fi
     );
 done
 
-echo "Done."
+if [ DID_FAIL ]
+then
+    echo "At least one SDK failed to publish."
+    exit 1
+fi
+
+echo "SDKs were published successfully."
