@@ -47,6 +47,10 @@ paths:
                   type: string
                 refresh_token:
                   type: string
+              required:
+              - client_id
+              - client_secret
+              - grant_type
       responses:
         "200":
           content:
