@@ -20,7 +20,7 @@ for dir in ./sdks/*;
     );
 done
 
-if [ DID_FAIL ]
+if [ "$DID_FAIL" = true ]
 then
     echo "At least one SDK failed to publish."
     exit 1
