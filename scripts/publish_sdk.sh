@@ -1,8 +1,8 @@
 echo "Looping through generated Java SDKs..."
 
-DID_FAIL = false
+DID_FAIL=false
 
-for dir in ./../sdks/*;
+for dir in ./sdks/*;
     do (
         if [ -d "$dir" ];
             then
