@@ -4,12 +4,13 @@ All URIs are relative to *https://api.criteo.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createAudience**](AudienceApi.md#createAudience) | **POST** /2021-04/audiences | 
-[**deleteIdentifiers**](AudienceApi.md#deleteIdentifiers) | **DELETE** /2021-04/audiences/{audience-id}/contactlist | 
-[**getAudiences**](AudienceApi.md#getAudiences) | **GET** /2021-04/audiences | 
-[**modifyAudience**](AudienceApi.md#modifyAudience) | **PATCH** /2021-04/audiences/{audience-id} | 
-[**modifyAudienceUsers**](AudienceApi.md#modifyAudienceUsers) | **PATCH** /2021-04/audiences/{audience-id}/contactlist | 
-[**removeAudience**](AudienceApi.md#removeAudience) | **DELETE** /2021-04/audiences/{audience-id} | 
+[**createAudience**](AudienceApi.md#createAudience) | **POST** /preview/audiences | 
+[**deleteIdentifiers**](AudienceApi.md#deleteIdentifiers) | **DELETE** /preview/audiences/{audience-id}/contactlist | 
+[**getAudiences**](AudienceApi.md#getAudiences) | **GET** /preview/audiences | 
+[**modifyAudience**](AudienceApi.md#modifyAudience) | **PATCH** /preview/audiences/{audience-id} | 
+[**modifyAudienceUsers**](AudienceApi.md#modifyAudienceUsers) | **PATCH** /preview/audiences/{audience-id}/contactlist | 
+[**modifyAudienceUsersWithAttributes**](AudienceApi.md#modifyAudienceUsersWithAttributes) | **PATCH** /preview/audiences/{audience-id}/contactlist-attributes | 
+[**removeAudience**](AudienceApi.md#removeAudience) | **DELETE** /preview/audiences/{audience-id} | 
 
 
 <a name="createAudience"></a>
@@ -35,9 +36,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     AudienceApi apiInstance = new AudienceApi(defaultClient);
     NewAudienceRequest newAudienceRequest = new NewAudienceRequest(); // NewAudienceRequest | 
@@ -67,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -103,9 +104,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     AudienceApi apiInstance = new AudienceApi(defaultClient);
     String audienceId = "audienceId_example"; // String | The id of the audience to amend
@@ -135,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -171,9 +172,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     AudienceApi apiInstance = new AudienceApi(defaultClient);
     String advertiserId = "advertiserId_example"; // String | The advertiser id to get all the audiences for. Mandatory for internal users. For external users,            if you don't provide it, we will take into account the advertisers from your portfolio
@@ -203,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -239,9 +240,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     AudienceApi apiInstance = new AudienceApi(defaultClient);
     String audienceId = "audienceId_example"; // String | The id of the audience to amend
@@ -273,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -309,9 +310,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     AudienceApi apiInstance = new AudienceApi(defaultClient);
     String audienceId = "audienceId_example"; // String | The id of the audience to amend
@@ -343,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -356,6 +357,76 @@ Name | Type | Description  | Notes
 **200** | Summary of created request |  -  |
 **403** | Forbidden |  -  |
 **404** | Audience 123 not found |  -  |
+
+<a name="modifyAudienceUsersWithAttributes"></a>
+# **modifyAudienceUsersWithAttributes**
+> ModifyAudienceResponse modifyAudienceUsersWithAttributes(audienceId, contactlistWithAttributesAmendmentRequest)
+
+
+
+Add/remove users to or from an audience
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    AudienceApi apiInstance = new AudienceApi(defaultClient);
+    Integer audienceId = 56; // Integer | The id of the audience to amend
+    ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest = new ContactlistWithAttributesAmendmentRequest(); // ContactlistWithAttributesAmendmentRequest | 
+    try {
+      ModifyAudienceResponse result = apiInstance.modifyAudienceUsersWithAttributes(audienceId, contactlistWithAttributesAmendmentRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AudienceApi#modifyAudienceUsersWithAttributes");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **audienceId** | **Integer**| The id of the audience to amend |
+ **contactlistWithAttributesAmendmentRequest** | [**ContactlistWithAttributesAmendmentRequest**](ContactlistWithAttributesAmendmentRequest.md)|  |
+
+### Return type
+
+[**ModifyAudienceResponse**](ModifyAudienceResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Summary of created request |  -  |
+**401** | Not authorized |  -  |
 
 <a name="removeAudience"></a>
 # **removeAudience**
@@ -380,9 +451,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     AudienceApi apiInstance = new AudienceApi(defaultClient);
     String audienceId = "audienceId_example"; // String | The id of the audience to amend
@@ -412,7 +483,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 

@@ -4,14 +4,14 @@ All URIs are relative to *https://api.criteo.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createToken**](OAuthApi.md#createToken) | **POST** /oauth2/token | 
+[**getToken**](OAuthApi.md#getToken) | **POST** /oauth2/token | Creates a token based either on supplied client credentials or on single use authorization code
 
 
-<a name="createToken"></a>
-# **createToken**
-> JwtModel createToken(clientId, clientSecret, grantType)
+<a name="getToken"></a>
+# **getToken**
+> AccessTokenModel getToken(grantType, clientId, clientSecret, redirectUri, code, refreshToken)
 
-
+Creates a token based either on supplied client credentials or on single use authorization code
 
 Creates a token when the supplied client credentials are valid
 
@@ -30,19 +30,22 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     OAuthApi apiInstance = new OAuthApi(defaultClient);
-    String clientId = "clientId_example"; // String | API Client-Id or Username
-    String clientSecret = "clientSecret_example"; // String | API Client secret or password
-    String grantType = "\"client_credentials\""; // String | Other grant types are not available
+    String grantType = "grantType_example"; // String | 
+    String clientId = "clientId_example"; // String | 
+    String clientSecret = "clientSecret_example"; // String | 
+    String redirectUri = "redirectUri_example"; // String | 
+    String code = "code_example"; // String | 
+    String refreshToken = "refreshToken_example"; // String | 
     try {
-      JwtModel result = apiInstance.createToken(clientId, clientSecret, grantType);
+      AccessTokenModel result = apiInstance.getToken(grantType, clientId, clientSecret, redirectUri, code, refreshToken);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling OAuthApi#createToken");
+      System.err.println("Exception when calling OAuthApi#getToken");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -56,17 +59,20 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **clientId** | **String**| API Client-Id or Username | [optional]
- **clientSecret** | **String**| API Client secret or password | [optional]
- **grantType** | **String**| Other grant types are not available | [optional] [default to &quot;client_credentials&quot;]
+ **grantType** | **String**|  | [optional]
+ **clientId** | **String**|  | [optional]
+ **clientSecret** | **String**|  | [optional]
+ **redirectUri** | **String**|  | [optional]
+ **code** | **String**|  | [optional]
+ **refreshToken** | **String**|  | [optional]
 
 ### Return type
 
-[**JwtModel**](JwtModel.md)
+[**AccessTokenModel**](AccessTokenModel.md)
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -78,4 +84,5 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Success |  -  |
 **400** | Bad request |  -  |
+**401** | Unauthorized |  -  |
 

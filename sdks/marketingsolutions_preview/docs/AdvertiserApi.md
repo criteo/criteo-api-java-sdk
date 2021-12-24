@@ -4,9 +4,10 @@ All URIs are relative to *https://api.criteo.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiPortfolioGet**](AdvertiserApi.md#apiPortfolioGet) | **GET** /2021-04/advertisers/me | 
-[**getCategories**](AdvertiserApi.md#getCategories) | **GET** /legacy/marketing/v1/advertisers/{advertiserId}/categories | Gets all advertiser&#39;s categories
-[**getCategory**](AdvertiserApi.md#getCategory) | **GET** /legacy/marketing/v1/advertisers/{advertiserId}/categories/{categoryHashCode} | Gets a specific advertiser&#39;s category
+[**apiPortfolioGet**](AdvertiserApi.md#apiPortfolioGet) | **GET** /preview/advertisers/me | 
+[**createAdvertiser**](AdvertiserApi.md#createAdvertiser) | **POST** /preview/advertisers | 
+[**getDatasetList**](AdvertiserApi.md#getDatasetList) | **GET** /preview/advertisers/{advertiser-id}/datasets | 
+[**listIndustries**](AdvertiserApi.md#listIndustries) | **GET** /preview/industries | 
 
 
 <a name="apiPortfolioGet"></a>
@@ -15,7 +16,7 @@ Method | HTTP request | Description
 
 
 
-Use this call to fetch a list of all advertisers in your account.
+Fetch the portfolio of Advertisers for this account
 
 ### Example
 ```java
@@ -32,9 +33,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     AdvertiserApi apiInstance = new AdvertiserApi(defaultClient);
     try {
@@ -60,12 +61,12 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+ - **Accept**: application/json, text/plain, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -73,86 +74,13 @@ This endpoint does not need any parameter.
 **200** | Success |  -  |
 **401** | Unauthorized |  -  |
 
-<a name="getCategories"></a>
-# **getCategories**
-> List&lt;CategoryMessage&gt; getCategories(advertiserId, enabledOnly)
+<a name="createAdvertiser"></a>
+# **createAdvertiser**
+> AdvertiserCreationResponse createAdvertiser(advertiserCreationRequest)
 
-Gets all advertiser&#39;s categories
 
-Get the list of all the categories linked to the requested advertiser.
 
-### Example
-```java
-// Import classes:
-import com.criteo.api.marketingsolutions.preview.ApiClient;
-import com.criteo.api.marketingsolutions.preview.ApiException;
-import com.criteo.api.marketingsolutions.preview.Configuration;
-import com.criteo.api.marketingsolutions.preview.auth.*;
-import com.criteo.api.marketingsolutions.preview.models.*;
-import com.criteo.api.marketingsolutions.preview.api.AdvertiserApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.criteo.com");
-    
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
-
-    AdvertiserApi apiInstance = new AdvertiserApi(defaultClient);
-    Integer advertiserId = 56; // Integer | Mandatory. The id of the advertiser to return.
-    Boolean enabledOnly = true; // Boolean | Optional. Returns only categories you can bid on. Defaults to false.
-    try {
-      List<CategoryMessage> result = apiInstance.getCategories(advertiserId, enabledOnly);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling AdvertiserApi#getCategories");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **advertiserId** | **Integer**| Mandatory. The id of the advertiser to return. |
- **enabledOnly** | **Boolean**| Optional. Returns only categories you can bid on. Defaults to false. | [optional]
-
-### Return type
-
-[**List&lt;CategoryMessage&gt;**](CategoryMessage.md)
-
-### Authorization
-
-[Authorization](../README.md#Authorization)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, application/xml, text/xml, text/html
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Categories returned OK. |  -  |
-**401** | Authentication failed. |  -  |
-**403** | The requested advertiser is missing from current user’s portfolio. |  -  |
-**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
-**500** | Unknown error. |  -  |
-
-<a name="getCategory"></a>
-# **getCategory**
-> List&lt;CategoryMessage&gt; getCategory(advertiserId, categoryHashCode)
-
-Gets a specific advertiser&#39;s category
-
-Get a specific category linked to the requested advertiser.
+Create a new advertiser based on provided parameters. This could take up to 30 seconds.
 
 ### Example
 ```java
@@ -169,18 +97,17 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.criteo.com");
     
-    // Configure OAuth2 access token for authorization: Authorization
-    OAuth Authorization = (OAuth) defaultClient.getAuthentication("Authorization");
-    Authorization.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     AdvertiserApi apiInstance = new AdvertiserApi(defaultClient);
-    Integer advertiserId = 56; // Integer | Mandatory. The id of the advertiser to return.
-    Integer categoryHashCode = 56; // Integer | Mandatory. The id of the category to return.
+    AdvertiserCreationRequest advertiserCreationRequest = new AdvertiserCreationRequest(); // AdvertiserCreationRequest | 
     try {
-      List<CategoryMessage> result = apiInstance.getCategory(advertiserId, categoryHashCode);
+      AdvertiserCreationResponse result = apiInstance.createAdvertiser(advertiserCreationRequest);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling AdvertiserApi#getCategory");
+      System.err.println("Exception when calling AdvertiserApi#createAdvertiser");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -194,29 +121,158 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **advertiserId** | **Integer**| Mandatory. The id of the advertiser to return. |
- **categoryHashCode** | **Integer**| Mandatory. The id of the category to return. |
+ **advertiserCreationRequest** | [**AdvertiserCreationRequest**](AdvertiserCreationRequest.md)|  |
 
 ### Return type
 
-[**List&lt;CategoryMessage&gt;**](CategoryMessage.md)
+[**AdvertiserCreationResponse**](AdvertiserCreationResponse.md)
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: application/json, text/plain, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Category returned OK. |  -  |
-**401** | Authentication failed. |  -  |
-**403** | The requested advertiser is missing from current user’s portfolio. |  -  |
-**404** | The requested category was not found for the advertiser. |  -  |
-**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
-**500** | Unknown error. |  -  |
+**201** | Success |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**500** | Server Error |  -  |
+
+<a name="getDatasetList"></a>
+# **getDatasetList**
+> AdvertiserDatasetListResponse getDatasetList(advertiserId)
+
+
+
+Retrieves corresponding Datasets for a given Advertiser. Only those Datasets are included for which the given Advertiser is marked a primary.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.AdvertiserApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    AdvertiserApi apiInstance = new AdvertiserApi(defaultClient);
+    String advertiserId = "advertiserId_example"; // String | The id of the Advertiser for which Datasets are being retrieved.
+    try {
+      AdvertiserDatasetListResponse result = apiInstance.getDatasetList(advertiserId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AdvertiserApi#getDatasetList");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiserId** | **String**| The id of the Advertiser for which Datasets are being retrieved. |
+
+### Return type
+
+[**AdvertiserDatasetListResponse**](AdvertiserDatasetListResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/plain, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**403** | Forbidden |  -  |
+**401** | Unauthorized |  -  |
+
+<a name="listIndustries"></a>
+# **listIndustries**
+> ListAvailableIndustriesResponse listIndustries()
+
+
+
+Returns the list of available industries for new advertisers.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.AdvertiserApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    AdvertiserApi apiInstance = new AdvertiserApi(defaultClient);
+    try {
+      ListAvailableIndustriesResponse result = apiInstance.listIndustries();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AdvertiserApi#listIndustries");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ListAvailableIndustriesResponse**](ListAvailableIndustriesResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/plain, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
 
