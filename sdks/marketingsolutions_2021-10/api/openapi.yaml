@@ -821,7 +821,7 @@ paths:
       operationId: GetToken
       requestBody:
         content:
-          multipart/form-data:
+          application/x-www-form-urlencoded:
             schema:
               properties:
                 grant_type:
@@ -877,7 +877,7 @@ paths:
         use authorization code
       tags:
       - OAuth
-      x-contentType: multipart/form-data
+      x-contentType: application/x-www-form-urlencoded
       x-accepts: application/json
   /2021-10/statistics/report:
     post:
@@ -1949,43 +1949,39 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
+        - Type: unknown
+          Instance: Instance
+          Title: Title
+          Code: Code
+          TraceIdentifier: TraceIdentifier
+          Detail: Detail
+          Source:
+            key: Source
+        - Type: unknown
+          Instance: Instance
+          Title: Title
+          Code: Code
+          TraceIdentifier: TraceIdentifier
+          Detail: Detail
+          Source:
+            key: Source
         errors:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
+        - Type: unknown
+          Instance: Instance
+          Title: Title
+          Code: Code
+          TraceIdentifier: TraceIdentifier
+          Detail: Detail
+          Source:
+            key: Source
+        - Type: unknown
+          Instance: Instance
+          Title: Title
+          Code: Code
+          TraceIdentifier: TraceIdentifier
+          Detail: Detail
+          Source:
+            key: Source
       properties:
         data:
           $ref: '#/components/schemas/ApplicationSummaryModelResource'
@@ -2023,20 +2019,19 @@ components:
     CommonProblem:
       description: Common problem object. Can be specialized as needed.
       example:
-        traceIdentifier: traceIdentifier
-        code: code
-        instance: instance
-        detail: detail
-        source:
-          key: source
-        stackTrace: stackTrace
-        type: unknown
-        title: title
+        Type: unknown
+        Instance: Instance
+        Title: Title
+        Code: Code
+        TraceIdentifier: TraceIdentifier
+        Detail: Detail
+        Source:
+          key: Source
       properties:
-        traceIdentifier:
+        TraceIdentifier:
           description: The request correlation ID this problem comes from.
           type: string
-        type:
+        Type:
           description: The problem's category.
           enum:
           - unknown
@@ -2048,27 +2043,25 @@ components:
           - quota
           - validation
           type: string
-        code:
+        Code:
           description: "A machine-readable  error code, expressed as a string value."
           type: string
-        instance:
+        Instance:
           description: A URI that identifies the specific occurrence of the problem.
           type: string
-        title:
+        Title:
           description: A short human-readable description of the problem type
           type: string
-        detail:
+        Detail:
           description: A human-readable explanation specific to this occurrence of
             the problem
           type: string
-        source:
+        Source:
           additionalProperties:
             type: string
           description: A machine-readable structure to reference to the exact location(s)
             causing the error(s)
           type: object
-        stackTrace:
-          type: string
       type: object
     ApplicationSummaryModel:
       description: A summary of an API application

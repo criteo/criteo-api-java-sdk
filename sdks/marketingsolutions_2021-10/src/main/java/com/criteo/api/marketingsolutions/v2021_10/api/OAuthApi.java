@@ -119,7 +119,7 @@ public class OAuthApi {
         }
 
         final String[] localVarContentTypes = {
-            "multipart/form-data"
+            "application/x-www-form-urlencoded"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
