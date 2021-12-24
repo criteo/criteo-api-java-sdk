@@ -207,3 +207,5 @@ src/main/java/com/criteo/api/retailmedia/preview/model/SkuDataPreview.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SkuDataPreviewListResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SkuSearchRequestPreview.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SkuSearchRequestPreviewRequest.java
+src/test/java/com/criteo.api.sdk/GatewayApiTest.java
+src/test/java/com/criteo.api.sdk/OAuthApiTest.java
