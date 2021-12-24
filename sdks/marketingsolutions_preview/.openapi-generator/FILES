@@ -497,3 +497,5 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/UserDef.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/UserEvent.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/WriteModelAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/WriteModelPatchAdSet.java
+src/test/java/com/criteo.api.sdk/GatewayApiTest.java
+src/test/java/com/criteo.api.sdk/OAuthApiTest.java

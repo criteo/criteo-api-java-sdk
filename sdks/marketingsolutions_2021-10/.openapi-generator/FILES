@@ -219,3 +219,5 @@ src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/TransparencyRepor
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/TransparencyReportFile.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/WriteModelAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/model/WriteModelPatchAdSet.java
+src/test/java/com/criteo.api.sdk/GatewayApiTest.java
+src/test/java/com/criteo.api.sdk/OAuthApiTest.java

@@ -56,7 +56,7 @@ import com.criteo.api.marketingsolutions.preview.auth.RetryingOAuth;
 import com.criteo.api.marketingsolutions.preview.auth.OAuthFlow;
 
 import com.criteo.api.marketingsolutions.preview.api.OAuthApi;
-import com.criteo.api.marketingsolutions.preview.model.JwtModel;
+import com.criteo.api.marketingsolutions.preview.model.AccessTokenModel;
 
 public class ApiClient {
 
@@ -1437,8 +1437,8 @@ public class ApiClient {
             if (auth.getUsername() == null || auth.getPassword() == null) {
                 throw new IllegalArgumentException("username or password is not present.");
             }
-            JwtModel response = (new OAuthApi(this)).getToken(
-                "client_credentials", auth.getUsername(), auth.getPassword());
+            AccessTokenModel response = (new OAuthApi(this)).getToken(
+                                "client_credentials", auth.getUsername(), auth.getPassword(), null, null, null);
             tokenInfo = new TokenInfo(response.getExpiresIn() + System.currentTimeMillis() / 1000);
             this.setApiKey(response.getAccessToken());
         }
