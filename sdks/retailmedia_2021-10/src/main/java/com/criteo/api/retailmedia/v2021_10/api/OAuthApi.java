@@ -57,9 +57,9 @@ public class OAuthApi {
 
     /**
      * Build call for getToken
-     * @param grantType  (optional)
-     * @param clientId  (optional)
-     * @param clientSecret  (optional)
+     * @param grantType  (required)
+     * @param clientId  (required)
+     * @param clientSecret  (required)
      * @param redirectUri  (optional)
      * @param code  (optional)
      * @param refreshToken  (optional)
@@ -131,6 +131,21 @@ public class OAuthApi {
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getTokenValidateBeforeCall(String grantType, String clientId, String clientSecret, String redirectUri, String code, String refreshToken, final ApiCallback _callback) throws ApiException {
         
+        // verify the required parameter 'grantType' is set
+        if (grantType == null) {
+            throw new ApiException("Missing the required parameter 'grantType' when calling getToken(Async)");
+        }
+        
+        // verify the required parameter 'clientId' is set
+        if (clientId == null) {
+            throw new ApiException("Missing the required parameter 'clientId' when calling getToken(Async)");
+        }
+        
+        // verify the required parameter 'clientSecret' is set
+        if (clientSecret == null) {
+            throw new ApiException("Missing the required parameter 'clientSecret' when calling getToken(Async)");
+        }
+        
 
         okhttp3.Call localVarCall = getTokenCall(grantType, clientId, clientSecret, redirectUri, code, refreshToken, _callback);
         return localVarCall;
@@ -140,9 +155,9 @@ public class OAuthApi {
     /**
      * Creates a token based either on supplied client credentials or on single use authorization code
      * Creates a token when the supplied client credentials are valid
-     * @param grantType  (optional)
-     * @param clientId  (optional)
-     * @param clientSecret  (optional)
+     * @param grantType  (required)
+     * @param clientId  (required)
+     * @param clientSecret  (required)
      * @param redirectUri  (optional)
      * @param code  (optional)
      * @param refreshToken  (optional)
@@ -164,9 +179,9 @@ public class OAuthApi {
     /**
      * Creates a token based either on supplied client credentials or on single use authorization code
      * Creates a token when the supplied client credentials are valid
-     * @param grantType  (optional)
-     * @param clientId  (optional)
-     * @param clientSecret  (optional)
+     * @param grantType  (required)
+     * @param clientId  (required)
+     * @param clientSecret  (required)
      * @param redirectUri  (optional)
      * @param code  (optional)
      * @param refreshToken  (optional)
@@ -189,9 +204,9 @@ public class OAuthApi {
     /**
      * Creates a token based either on supplied client credentials or on single use authorization code (asynchronously)
      * Creates a token when the supplied client credentials are valid
-     * @param grantType  (optional)
-     * @param clientId  (optional)
-     * @param clientSecret  (optional)
+     * @param grantType  (required)
+     * @param clientId  (required)
+     * @param clientSecret  (required)
      * @param redirectUri  (optional)
      * @param code  (optional)
      * @param refreshToken  (optional)

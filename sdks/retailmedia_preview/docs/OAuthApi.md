@@ -59,9 +59,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **grantType** | **String**|  | [optional]
- **clientId** | **String**|  | [optional]
- **clientSecret** | **String**|  | [optional]
+ **grantType** | **String**|  |
+ **clientId** | **String**|  |
+ **clientSecret** | **String**|  |
  **redirectUri** | **String**|  | [optional]
  **code** | **String**|  | [optional]
  **refreshToken** | **String**|  | [optional]
