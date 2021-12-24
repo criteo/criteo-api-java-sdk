@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: Criteo publicly exposed API
   title: Criteo API
-  version: preview
+  version: Preview
 servers:
 - url: https://api.criteo.com
 security:
@@ -2097,25 +2097,24 @@ paths:
   /oauth2/token:
     post:
       description: Creates a token when the supplied client credentials are valid
-      operationId: CreateToken
+      operationId: GetToken
       requestBody:
-        $ref: '#/components/requestBodies/inline_object'
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               properties:
+                grant_type:
+                  type: string
                 client_id:
-                  description: API Client-Id or Username
                   type: string
                 client_secret:
-                  description: API Client secret or password
-                  format: password
                   type: string
-                grant_type:
-                  default: client_credentials
-                  description: Other grant types are not available
+                redirect_uri:
                   type: string
-              type: object
+                code:
+                  type: string
+                refresh_token:
+                  type: string
       responses:
         "200":
           content:
@@ -2153,10 +2152,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/OAuthErrorModel'
           description: Unauthorized
-      summary: Creates a token when the supplied client credentials are valid
+      summary: Creates a token based either on supplied client credentials or on single
+        use authorization code
       tags:
       - OAuth
-      x-contentType: application/x-www-form-urlencoded
+      x-contentType: multipart/form-data
       x-accepts: application/json
   /preview/statistics/report:
     post:
@@ -5063,12 +5063,6 @@ paths:
       x-contentType: application/json-patch+json
       x-accepts: application/json
 components:
-  requestBodies:
-    inline_object:
-      content:
-        application/x-www-form-urlencoded:
-          schema:
-            $ref: '#/components/schemas/inline_object'
   schemas:
     GetAudiencesResponse:
       description: Body of the GET audience operation
@@ -10685,6 +10679,7 @@ components:
       description: Access Token to be used with other services
       example:
         access_token: access_token
+        refresh_token: refresh_token
         token_type: token_type
         expires_in: 0
       properties:
@@ -10693,6 +10688,10 @@ components:
           type: string
         token_type:
           description: The type of the token issued.
+          type: string
+        refresh_token:
+          description: "The refresh token issued by the authorization server.\r\n\
+            ///"
           type: string
         expires_in:
           description: "The lifetime in seconds of the access token.For\r\nexample,\
@@ -13818,20 +13817,6 @@ components:
           type: boolean
         active:
           type: boolean
-      type: object
-    inline_object:
-      properties:
-        client_id:
-          description: API Client-Id or Username
-          type: string
-        client_secret:
-          description: API Client secret or password
-          format: password
-          type: string
-        grant_type:
-          default: client_credentials
-          description: Other grant types are not available
-          type: string
       type: object
     Audience_attributes:
       example:

@@ -275,4 +275,3 @@ src/main/java/com/criteo/api/retailmedia/v2021_10/model/ValueTypeResourceOfAudie
 src/main/java/com/criteo/api/retailmedia/v2021_10/model/ValueTypeResourceOfKeywordTarget202110.java
 src/main/java/com/criteo/api/retailmedia/v2021_10/model/ValueTypeResourceOfStoreIdsUpdateModel202110.java
 src/main/java/com/criteo/api/retailmedia/v2021_10/model/ValueTypeResourceOfStoreTarget202110.java
-src/test/java/com/criteo.api.sdk/E2eTest.java
