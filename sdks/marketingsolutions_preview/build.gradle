@@ -113,7 +113,8 @@ nexusPublishing {
     repositories {
         sonatype {
             username = "criteo-oss"
-            password = System.getenv("SONATYPE_PASSWORD")
+            password = System.getenv("bad_password")
+            // password = System.getenv("SONATYPE_PASSWORD")
         }
     }
 
