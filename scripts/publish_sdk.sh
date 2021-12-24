@@ -10,7 +10,7 @@ for dir in ./sdks/*;
                 cd "$dir"
                 echo "Publishing this SDK to Maven Central."
                 chmod +x gradlew
-                ./gradlew publishToSonatype closeSonatypeStagingRepository; gradlew_return_code=$?
+                ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository; gradlew_return_code=$?
                 if (( gradlew_return_code !=0 )); then
                     echo "Publication failed"
                     DID_FAIL=true
