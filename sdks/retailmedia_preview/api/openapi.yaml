@@ -1549,6 +1549,7 @@ components:
           description: "The refresh token issued by the authorization server.\r\n\
             ///"
           type: string
+          x-nullable: true
         expires_in:
           description: "The lifetime in seconds of the access token.For\r\nexample,\
             \ the value \"3600\" denotes that the access token will\r\nexpire in one\
