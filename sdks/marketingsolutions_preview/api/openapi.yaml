@@ -449,7 +449,7 @@ paths:
       - Audience
       x-contentType: application/json
       x-accepts: application/json
-  /me:
+  /you:
     get:
       description: Get information about the currently logged application
       operationId: GetCurrentApplication

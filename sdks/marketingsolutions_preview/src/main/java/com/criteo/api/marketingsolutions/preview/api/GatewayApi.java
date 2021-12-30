@@ -70,7 +70,7 @@ public class GatewayApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/me";
+        String localVarPath = "/you";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
