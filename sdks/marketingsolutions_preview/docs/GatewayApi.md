@@ -4,7 +4,7 @@ All URIs are relative to *https://api.criteo.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getCurrentApplication**](GatewayApi.md#getCurrentApplication) | **GET** /you | 
+[**getCurrentApplication**](GatewayApi.md#getCurrentApplication) | **GET** /me | 
 
 
 <a name="getCurrentApplication"></a>
