@@ -1,6 +1,12 @@
 name: Publish SDK
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'sdks/**'
+  workflow_dispatch:
 
 jobs:
   build:
