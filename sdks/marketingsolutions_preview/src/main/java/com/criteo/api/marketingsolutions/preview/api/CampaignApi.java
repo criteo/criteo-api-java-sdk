@@ -197,7 +197,7 @@ public class CampaignApi {
     }
     /**
      * Build call for createCampaign
-     * @param createCampaignRequest  (optional)
+     * @param createCampaignRequest the campaigns to create (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -251,7 +251,7 @@ public class CampaignApi {
     /**
      * 
      * Create the specified campaign
-     * @param createCampaignRequest  (optional)
+     * @param createCampaignRequest the campaigns to create (optional)
      * @return CampaignResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -270,7 +270,7 @@ public class CampaignApi {
     /**
      * 
      * Create the specified campaign
-     * @param createCampaignRequest  (optional)
+     * @param createCampaignRequest the campaigns to create (optional)
      * @return ApiResponse&lt;CampaignResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -290,7 +290,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Create the specified campaign
-     * @param createCampaignRequest  (optional)
+     * @param createCampaignRequest the campaigns to create (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

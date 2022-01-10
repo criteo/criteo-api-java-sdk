@@ -71,6 +71,57 @@ public class CreateAdSet {
   @SerializedName(SERIALIZED_NAME_TRACKING_CODE)
   private String trackingCode;
 
+  /**
+   * Media type for the ad set
+   */
+  @JsonAdapter(MediaTypeEnum.Adapter.class)
+  public enum MediaTypeEnum {
+    DISPLAY("display"),
+    
+    VIDEO("video");
+
+    private String value;
+
+    MediaTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static MediaTypeEnum fromValue(String value) {
+      for (MediaTypeEnum b : MediaTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<MediaTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final MediaTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public MediaTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return MediaTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_MEDIA_TYPE = "mediaType";
+  @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
+  private MediaTypeEnum mediaType;
+
 
   public CreateAdSet name(String name) {
     
@@ -279,6 +330,29 @@ public class CreateAdSet {
   }
 
 
+  public CreateAdSet mediaType(MediaTypeEnum mediaType) {
+    
+    this.mediaType = mediaType;
+    return this;
+  }
+
+   /**
+   * Media type for the ad set
+   * @return mediaType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Media type for the ad set")
+
+  public MediaTypeEnum getMediaType() {
+    return mediaType;
+  }
+
+
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -296,12 +370,13 @@ public class CreateAdSet {
         Objects.equals(this.targeting, createAdSet.targeting) &&
         Objects.equals(this.budget, createAdSet.budget) &&
         Objects.equals(this.audienceConfiguration, createAdSet.audienceConfiguration) &&
-        Objects.equals(this.trackingCode, createAdSet.trackingCode);
+        Objects.equals(this.trackingCode, createAdSet.trackingCode) &&
+        Objects.equals(this.mediaType, createAdSet.mediaType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, datasetId, campaignId, schedule, bidding, targeting, budget, audienceConfiguration, trackingCode);
+    return Objects.hash(name, datasetId, campaignId, schedule, bidding, targeting, budget, audienceConfiguration, trackingCode, mediaType);
   }
 
   @Override
@@ -317,6 +392,7 @@ public class CreateAdSet {
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
     sb.append("    audienceConfiguration: ").append(toIndentedString(audienceConfiguration)).append("\n");
     sb.append("    trackingCode: ").append(toIndentedString(trackingCode)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

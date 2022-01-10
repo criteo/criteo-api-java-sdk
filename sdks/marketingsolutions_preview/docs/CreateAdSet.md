@@ -17,6 +17,16 @@ Name | Type | Description | Notes
 **budget** | [**CreateAdSetBudget**](CreateAdSetBudget.md) |  |  [optional]
 **audienceConfiguration** | [**CreateAdSetAudienceConfiguration**](CreateAdSetAudienceConfiguration.md) |  |  [optional]
 **trackingCode** | **String** | The click tracking code associated to this Ad Set. |  [optional]
+**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) | Media type for the ad set |  [optional]
+
+
+
+## Enum: MediaTypeEnum
+
+Name | Value
+---- | -----
+DISPLAY | &quot;display&quot;
+VIDEO | &quot;video&quot;
 
 
 

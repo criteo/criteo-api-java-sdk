@@ -100,11 +100,11 @@ public class AccessTokenModel {
   }
 
    /**
-   * The refresh token issued by the authorization server.  ///
+   * The refresh token issued by the authorization server.
    * @return refreshToken
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The refresh token issued by the authorization server.  ///")
+  @ApiModelProperty(value = "The refresh token issued by the authorization server.")
 
   public String getRefreshToken() {
     return refreshToken;
@@ -123,11 +123,11 @@ public class AccessTokenModel {
   }
 
    /**
-   * The lifetime in seconds of the access token.For  example, the value \&quot;3600\&quot; denotes that the access token will  expire in one hour from the time the response was generated.  If omitted, the authorization server SHOULD provide the  expiration time via other means or document the default value.
+   * The lifetime in seconds of the access token.For example, the value \&quot;3600\&quot; denotes that the access token will expire in one hour from the time the response was generated. If omitted, the authorization server SHOULD provide the expiration time via other means or document the default value.
    * @return expiresIn
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The lifetime in seconds of the access token.For  example, the value \"3600\" denotes that the access token will  expire in one hour from the time the response was generated.  If omitted, the authorization server SHOULD provide the  expiration time via other means or document the default value.")
+  @ApiModelProperty(value = "The lifetime in seconds of the access token.For example, the value \"3600\" denotes that the access token will expire in one hour from the time the response was generated. If omitted, the authorization server SHOULD provide the expiration time via other means or document the default value.")
 
   public Integer getExpiresIn() {
     return expiresIn;

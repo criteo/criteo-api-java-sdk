@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **bidding** | [**ReadAdSetBidding**](ReadAdSetBidding.md) |  |  [optional]
 **targeting** | [**AdSetTargeting**](AdSetTargeting.md) |  |  [optional]
 **budget** | [**ReadAdSetBudget**](ReadAdSetBudget.md) |  |  [optional]
+**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) | Media type for the ad set |  [optional]
 
 
 
@@ -27,6 +28,15 @@ Name | Value
 UNDEFINED | &quot;undefined&quot;
 WEB | &quot;web&quot;
 APP | &quot;app&quot;
+
+
+
+## Enum: MediaTypeEnum
+
+Name | Value
+---- | -----
+DISPLAY | &quot;display&quot;
+VIDEO | &quot;video&quot;
 
 
 

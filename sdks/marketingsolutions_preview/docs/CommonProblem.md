@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **title** | **String** | A short human-readable description of the problem type |  [optional]
 **detail** | **String** | A human-readable explanation specific to this occurrence of the problem |  [optional]
 **source** | **Map&lt;String, String&gt;** | A machine-readable structure to reference to the exact location(s) causing the error(s) |  [optional]
+**stackTrace** | **String** |  |  [optional]
 
 
 

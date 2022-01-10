@@ -119,6 +119,57 @@ public class ReadAdSet {
   @SerializedName(SERIALIZED_NAME_BUDGET)
   private ReadAdSetBudget budget;
 
+  /**
+   * Media type for the ad set
+   */
+  @JsonAdapter(MediaTypeEnum.Adapter.class)
+  public enum MediaTypeEnum {
+    DISPLAY("display"),
+    
+    VIDEO("video");
+
+    private String value;
+
+    MediaTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static MediaTypeEnum fromValue(String value) {
+      for (MediaTypeEnum b : MediaTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<MediaTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final MediaTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public MediaTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return MediaTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_MEDIA_TYPE = "mediaType";
+  @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
+  private MediaTypeEnum mediaType;
+
 
   public ReadAdSet name(String name) {
     
@@ -327,6 +378,29 @@ public class ReadAdSet {
   }
 
 
+  public ReadAdSet mediaType(MediaTypeEnum mediaType) {
+    
+    this.mediaType = mediaType;
+    return this;
+  }
+
+   /**
+   * Media type for the ad set
+   * @return mediaType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Media type for the ad set")
+
+  public MediaTypeEnum getMediaType() {
+    return mediaType;
+  }
+
+
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -344,12 +418,13 @@ public class ReadAdSet {
         Objects.equals(this.schedule, readAdSet.schedule) &&
         Objects.equals(this.bidding, readAdSet.bidding) &&
         Objects.equals(this.targeting, readAdSet.targeting) &&
-        Objects.equals(this.budget, readAdSet.budget);
+        Objects.equals(this.budget, readAdSet.budget) &&
+        Objects.equals(this.mediaType, readAdSet.mediaType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, advertiserId, datasetId, campaignId, destinationEnvironment, schedule, bidding, targeting, budget);
+    return Objects.hash(name, advertiserId, datasetId, campaignId, destinationEnvironment, schedule, bidding, targeting, budget, mediaType);
   }
 
   @Override
@@ -365,6 +440,7 @@ public class ReadAdSet {
     sb.append("    bidding: ").append(toIndentedString(bidding)).append("\n");
     sb.append("    targeting: ").append(toIndentedString(targeting)).append("\n");
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

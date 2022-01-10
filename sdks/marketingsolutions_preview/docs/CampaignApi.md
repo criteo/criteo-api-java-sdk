@@ -139,7 +139,7 @@ public class Example {
     oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     CampaignApi apiInstance = new CampaignApi(defaultClient);
-    CreateCampaignRequest createCampaignRequest = new CreateCampaignRequest(); // CreateCampaignRequest | 
+    CreateCampaignRequest createCampaignRequest = new CreateCampaignRequest(); // CreateCampaignRequest | the campaigns to create
     try {
       CampaignResponse result = apiInstance.createCampaign(createCampaignRequest);
       System.out.println(result);
@@ -158,7 +158,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createCampaignRequest** | [**CreateCampaignRequest**](CreateCampaignRequest.md)|  | [optional]
+ **createCampaignRequest** | [**CreateCampaignRequest**](CreateCampaignRequest.md)| the campaigns to create | [optional]
 
 ### Return type
 

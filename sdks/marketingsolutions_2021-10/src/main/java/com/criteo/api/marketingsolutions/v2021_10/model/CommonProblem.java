@@ -33,7 +33,7 @@ import java.util.Map;
 @ApiModel(description = "Common problem object. Can be specialized as needed.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CommonProblem {
-  public static final String SERIALIZED_NAME_TRACE_IDENTIFIER = "TraceIdentifier";
+  public static final String SERIALIZED_NAME_TRACE_IDENTIFIER = "traceIdentifier";
   @SerializedName(SERIALIZED_NAME_TRACE_IDENTIFIER)
   private String traceIdentifier;
 
@@ -96,29 +96,33 @@ public class CommonProblem {
     }
   }
 
-  public static final String SERIALIZED_NAME_TYPE = "Type";
+  public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
-  public static final String SERIALIZED_NAME_CODE = "Code";
+  public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
   private String code;
 
-  public static final String SERIALIZED_NAME_INSTANCE = "Instance";
+  public static final String SERIALIZED_NAME_INSTANCE = "instance";
   @SerializedName(SERIALIZED_NAME_INSTANCE)
   private String instance;
 
-  public static final String SERIALIZED_NAME_TITLE = "Title";
+  public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
   private String title;
 
-  public static final String SERIALIZED_NAME_DETAIL = "Detail";
+  public static final String SERIALIZED_NAME_DETAIL = "detail";
   @SerializedName(SERIALIZED_NAME_DETAIL)
   private String detail;
 
-  public static final String SERIALIZED_NAME_SOURCE = "Source";
+  public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
   private Map<String, String> source = null;
+
+  public static final String SERIALIZED_NAME_STACK_TRACE = "stackTrace";
+  @SerializedName(SERIALIZED_NAME_STACK_TRACE)
+  private String stackTrace;
 
 
   public CommonProblem traceIdentifier(String traceIdentifier) {
@@ -290,6 +294,29 @@ public class CommonProblem {
   }
 
 
+  public CommonProblem stackTrace(String stackTrace) {
+    
+    this.stackTrace = stackTrace;
+    return this;
+  }
+
+   /**
+   * Get stackTrace
+   * @return stackTrace
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getStackTrace() {
+    return stackTrace;
+  }
+
+
+  public void setStackTrace(String stackTrace) {
+    this.stackTrace = stackTrace;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -305,12 +332,13 @@ public class CommonProblem {
         Objects.equals(this.instance, commonProblem.instance) &&
         Objects.equals(this.title, commonProblem.title) &&
         Objects.equals(this.detail, commonProblem.detail) &&
-        Objects.equals(this.source, commonProblem.source);
+        Objects.equals(this.source, commonProblem.source) &&
+        Objects.equals(this.stackTrace, commonProblem.stackTrace);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(traceIdentifier, type, code, instance, title, detail, source);
+    return Objects.hash(traceIdentifier, type, code, instance, title, detail, source, stackTrace);
   }
 
   @Override
@@ -324,6 +352,7 @@ public class CommonProblem {
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    stackTrace: ").append(toIndentedString(stackTrace)).append("\n");
     sb.append("}");
     return sb.toString();
   }
