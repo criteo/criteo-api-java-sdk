@@ -23,7 +23,7 @@ if (JavaVersion.current().isJava8Compatible()) {
 }
 
 group = 'com.criteo'
-version = '2021.10.0.220110'
+version = '2021.10.0.220120'
 
 repositories {
     jcenter()
@@ -66,7 +66,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId 'com.criteo'
             artifactId 'criteo-api-retailmedia-sdk'
-            version '2021.10.0.220110'
+            version '2021.10.0.220120'
             from components.java
             artifact sourcesJar
             artifact javadocJar
