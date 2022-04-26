@@ -48,6 +48,59 @@ public class SkuSearchRequestPreview {
   @SerializedName(SERIALIZED_NAME_BRAND_IDS)
   private List<String> brandIds = null;
 
+  /**
+   * Enum to set isSellerSku field
+   */
+  @JsonAdapter(SkuTypeEnum.Adapter.class)
+  public enum SkuTypeEnum {
+    BRAND("brand"),
+    
+    SELLER("seller"),
+    
+    ALL("all");
+
+    private String value;
+
+    SkuTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static SkuTypeEnum fromValue(String value) {
+      for (SkuTypeEnum b : SkuTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<SkuTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SkuTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SkuTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return SkuTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_SKU_TYPE = "skuType";
+  @SerializedName(SERIALIZED_NAME_SKU_TYPE)
+  private SkuTypeEnum skuType = SkuTypeEnum.BRAND;
+
 
   public SkuSearchRequestPreview queryString(String queryString) {
     
@@ -157,6 +210,29 @@ public class SkuSearchRequestPreview {
   }
 
 
+  public SkuSearchRequestPreview skuType(SkuTypeEnum skuType) {
+    
+    this.skuType = skuType;
+    return this;
+  }
+
+   /**
+   * Enum to set isSellerSku field
+   * @return skuType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Enum to set isSellerSku field")
+
+  public SkuTypeEnum getSkuType() {
+    return skuType;
+  }
+
+
+  public void setSkuType(SkuTypeEnum skuType) {
+    this.skuType = skuType;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -169,12 +245,13 @@ public class SkuSearchRequestPreview {
     return Objects.equals(this.queryString, skuSearchRequestPreview.queryString) &&
         Objects.equals(this.retailerId, skuSearchRequestPreview.retailerId) &&
         Objects.equals(this.sellers, skuSearchRequestPreview.sellers) &&
-        Objects.equals(this.brandIds, skuSearchRequestPreview.brandIds);
+        Objects.equals(this.brandIds, skuSearchRequestPreview.brandIds) &&
+        Objects.equals(this.skuType, skuSearchRequestPreview.skuType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(queryString, retailerId, sellers, brandIds);
+    return Objects.hash(queryString, retailerId, sellers, brandIds, skuType);
   }
 
   @Override
@@ -185,6 +262,7 @@ public class SkuSearchRequestPreview {
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    sellers: ").append(toIndentedString(sellers)).append("\n");
     sb.append("    brandIds: ").append(toIndentedString(brandIds)).append("\n");
+    sb.append("    skuType: ").append(toIndentedString(skuType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -26,68 +26,18 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Resource of ApplicationSummaryModel
+ * A class that represents a ValueType in a guild compliant way
  */
-@ApiModel(description = "Resource of ApplicationSummaryModel")
+@ApiModel(description = "A class that represents a ValueType in a guild compliant way")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ApplicationSummaryModelResource {
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private ApplicationSummaryModel attributes;
-
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
-
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-
-  public ApplicationSummaryModelResource attributes(ApplicationSummaryModel attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public ApplicationSummaryModel getAttributes() {
-    return attributes;
-  }
-
-
-  public void setAttributes(ApplicationSummaryModel attributes) {
-    this.attributes = attributes;
-  }
-
-
-  public ApplicationSummaryModelResource id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Get id
-   * @return id
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getId() {
-    return id;
-  }
-
-
-  public void setId(String id) {
-    this.id = id;
-  }
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private ApplicationSummaryModel attributes;
 
 
   public ApplicationSummaryModelResource type(String type) {
@@ -113,6 +63,29 @@ public class ApplicationSummaryModelResource {
   }
 
 
+  public ApplicationSummaryModelResource attributes(ApplicationSummaryModel attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public ApplicationSummaryModel getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(ApplicationSummaryModel attributes) {
+    this.attributes = attributes;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -122,23 +95,21 @@ public class ApplicationSummaryModelResource {
       return false;
     }
     ApplicationSummaryModelResource applicationSummaryModelResource = (ApplicationSummaryModelResource) o;
-    return Objects.equals(this.attributes, applicationSummaryModelResource.attributes) &&
-        Objects.equals(this.id, applicationSummaryModelResource.id) &&
-        Objects.equals(this.type, applicationSummaryModelResource.type);
+    return Objects.equals(this.type, applicationSummaryModelResource.type) &&
+        Objects.equals(this.attributes, applicationSummaryModelResource.attributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, id, type);
+    return Objects.hash(type, attributes);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ApplicationSummaryModelResource {\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

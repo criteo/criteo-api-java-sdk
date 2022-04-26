@@ -31,6 +31,10 @@ import java.io.IOException;
 @ApiModel(description = "Data model for a Resource")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PatchAdSetDisplayMultiplierResource {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private PatchAdSetDisplayMultiplier attributes;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -39,9 +43,28 @@ public class PatchAdSetDisplayMultiplierResource {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private PatchAdSetDisplayMultiplier attributes;
+
+  public PatchAdSetDisplayMultiplierResource attributes(PatchAdSetDisplayMultiplier attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public PatchAdSetDisplayMultiplier getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(PatchAdSetDisplayMultiplier attributes) {
+    this.attributes = attributes;
+  }
 
 
   public PatchAdSetDisplayMultiplierResource id(String id) {
@@ -90,29 +113,6 @@ public class PatchAdSetDisplayMultiplierResource {
   }
 
 
-  public PatchAdSetDisplayMultiplierResource attributes(PatchAdSetDisplayMultiplier attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public PatchAdSetDisplayMultiplier getAttributes() {
-    return attributes;
-  }
-
-
-  public void setAttributes(PatchAdSetDisplayMultiplier attributes) {
-    this.attributes = attributes;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -122,23 +122,23 @@ public class PatchAdSetDisplayMultiplierResource {
       return false;
     }
     PatchAdSetDisplayMultiplierResource patchAdSetDisplayMultiplierResource = (PatchAdSetDisplayMultiplierResource) o;
-    return Objects.equals(this.id, patchAdSetDisplayMultiplierResource.id) &&
-        Objects.equals(this.type, patchAdSetDisplayMultiplierResource.type) &&
-        Objects.equals(this.attributes, patchAdSetDisplayMultiplierResource.attributes);
+    return Objects.equals(this.attributes, patchAdSetDisplayMultiplierResource.attributes) &&
+        Objects.equals(this.id, patchAdSetDisplayMultiplierResource.id) &&
+        Objects.equals(this.type, patchAdSetDisplayMultiplierResource.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, attributes);
+    return Objects.hash(attributes, id, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PatchAdSetDisplayMultiplierResource {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

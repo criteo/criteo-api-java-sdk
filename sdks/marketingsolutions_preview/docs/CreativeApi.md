@@ -161,10 +161,10 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | The created Coupon is returned. |  -  |
 **201** | Success |  -  |
 **400** | The request contained invalid parameters. |  -  |
 **403** | The request was not properly authorized. |  -  |
-**200** | The created Coupon is returned. |  -  |
 
 <a name="createCreative"></a>
 # **createCreative**

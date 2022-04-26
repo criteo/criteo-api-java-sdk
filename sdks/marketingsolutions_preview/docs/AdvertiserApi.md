@@ -210,8 +210,8 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  -  |
-**403** | Forbidden |  -  |
 **401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
 
 <a name="listIndustries"></a>
 # **listIndustries**

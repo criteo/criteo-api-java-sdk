@@ -37,6 +37,18 @@ public class StatisticsReportQueryMessage {
   @SerializedName(SERIALIZED_NAME_ADVERTISER_IDS)
   private String advertiserIds;
 
+  public static final String SERIALIZED_NAME_AD_SET_IDS = "adSetIds";
+  @SerializedName(SERIALIZED_NAME_AD_SET_IDS)
+  private List<String> adSetIds = null;
+
+  public static final String SERIALIZED_NAME_AD_SET_NAMES = "adSetNames";
+  @SerializedName(SERIALIZED_NAME_AD_SET_NAMES)
+  private List<String> adSetNames = null;
+
+  public static final String SERIALIZED_NAME_AD_SET_STATUS = "adSetStatus";
+  @SerializedName(SERIALIZED_NAME_AD_SET_STATUS)
+  private List<String> adSetStatus = null;
+
   /**
    * Gets or Sets dimensions
    */
@@ -70,7 +82,23 @@ public class StatisticsReportQueryMessage {
     
     CAMPAIGNID("CampaignId"),
     
-    CAMPAIGN("Campaign");
+    CAMPAIGN("Campaign"),
+    
+    ADID("AdId"),
+    
+    AD("Ad"),
+    
+    COUPONID("CouponId"),
+    
+    COUPON("Coupon"),
+    
+    MARKETINGOBJECTIVEID("MarketingObjectiveId"),
+    
+    MARKETINGOBJECTIVE("MarketingObjective"),
+    
+    CHANNELID("ChannelId"),
+    
+    CHANNEL("Channel");
 
     private String value;
 
@@ -159,6 +187,99 @@ public class StatisticsReportQueryMessage {
 
   public void setAdvertiserIds(String advertiserIds) {
     this.advertiserIds = advertiserIds;
+  }
+
+
+  public StatisticsReportQueryMessage adSetIds(List<String> adSetIds) {
+    
+    this.adSetIds = adSetIds;
+    return this;
+  }
+
+  public StatisticsReportQueryMessage addAdSetIdsItem(String adSetIdsItem) {
+    if (this.adSetIds == null) {
+      this.adSetIds = new ArrayList<>();
+    }
+    this.adSetIds.add(adSetIdsItem);
+    return this;
+  }
+
+   /**
+   * list of adSets ids. If empty, all the adSets will be fetched
+   * @return adSetIds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "list of adSets ids. If empty, all the adSets will be fetched")
+
+  public List<String> getAdSetIds() {
+    return adSetIds;
+  }
+
+
+  public void setAdSetIds(List<String> adSetIds) {
+    this.adSetIds = adSetIds;
+  }
+
+
+  public StatisticsReportQueryMessage adSetNames(List<String> adSetNames) {
+    
+    this.adSetNames = adSetNames;
+    return this;
+  }
+
+  public StatisticsReportQueryMessage addAdSetNamesItem(String adSetNamesItem) {
+    if (this.adSetNames == null) {
+      this.adSetNames = new ArrayList<>();
+    }
+    this.adSetNames.add(adSetNamesItem);
+    return this;
+  }
+
+   /**
+   * list of adSets names. If empty, all the adSets will be fetched
+   * @return adSetNames
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "list of adSets names. If empty, all the adSets will be fetched")
+
+  public List<String> getAdSetNames() {
+    return adSetNames;
+  }
+
+
+  public void setAdSetNames(List<String> adSetNames) {
+    this.adSetNames = adSetNames;
+  }
+
+
+  public StatisticsReportQueryMessage adSetStatus(List<String> adSetStatus) {
+    
+    this.adSetStatus = adSetStatus;
+    return this;
+  }
+
+  public StatisticsReportQueryMessage addAdSetStatusItem(String adSetStatusItem) {
+    if (this.adSetStatus == null) {
+      this.adSetStatus = new ArrayList<>();
+    }
+    this.adSetStatus.add(adSetStatusItem);
+    return this;
+  }
+
+   /**
+   * list of adSets status. If empty, all the adSets will be fetched
+   * @return adSetStatus
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "list of adSets status. If empty, all the adSets will be fetched")
+
+  public List<String> getAdSetStatus() {
+    return adSetStatus;
+  }
+
+
+  public void setAdSetStatus(List<String> adSetStatus) {
+    this.adSetStatus = adSetStatus;
   }
 
 
@@ -343,6 +464,9 @@ public class StatisticsReportQueryMessage {
     }
     StatisticsReportQueryMessage statisticsReportQueryMessage = (StatisticsReportQueryMessage) o;
     return Objects.equals(this.advertiserIds, statisticsReportQueryMessage.advertiserIds) &&
+        Objects.equals(this.adSetIds, statisticsReportQueryMessage.adSetIds) &&
+        Objects.equals(this.adSetNames, statisticsReportQueryMessage.adSetNames) &&
+        Objects.equals(this.adSetStatus, statisticsReportQueryMessage.adSetStatus) &&
         Objects.equals(this.dimensions, statisticsReportQueryMessage.dimensions) &&
         Objects.equals(this.metrics, statisticsReportQueryMessage.metrics) &&
         Objects.equals(this.currency, statisticsReportQueryMessage.currency) &&
@@ -354,7 +478,7 @@ public class StatisticsReportQueryMessage {
 
   @Override
   public int hashCode() {
-    return Objects.hash(advertiserIds, dimensions, metrics, currency, format, timezone, startDate, endDate);
+    return Objects.hash(advertiserIds, adSetIds, adSetNames, adSetStatus, dimensions, metrics, currency, format, timezone, startDate, endDate);
   }
 
   @Override
@@ -362,6 +486,9 @@ public class StatisticsReportQueryMessage {
     StringBuilder sb = new StringBuilder();
     sb.append("class StatisticsReportQueryMessage {\n");
     sb.append("    advertiserIds: ").append(toIndentedString(advertiserIds)).append("\n");
+    sb.append("    adSetIds: ").append(toIndentedString(adSetIds)).append("\n");
+    sb.append("    adSetNames: ").append(toIndentedString(adSetNames)).append("\n");
+    sb.append("    adSetStatus: ").append(toIndentedString(adSetStatus)).append("\n");
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
     sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");

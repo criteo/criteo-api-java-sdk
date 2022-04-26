@@ -2,13 +2,12 @@
 
 # ApplicationSummaryModelResource
 
-Resource of ApplicationSummaryModel
+A class that represents a ValueType in a guild compliant way
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  |  [optional]
 **type** | **String** |  |  [optional]
 **attributes** | [**ApplicationSummaryModel**](ApplicationSummaryModel.md) |  |  [optional]
 

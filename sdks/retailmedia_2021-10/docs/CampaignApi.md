@@ -33,6 +33,8 @@ Method | HTTP request | Description
 [**postApi202110ExternalCampaignPreferredLineItemsByCampaignId**](CampaignApi.md#postApi202110ExternalCampaignPreferredLineItemsByCampaignId) | **POST** /2021-10/retail-media/campaigns/{campaign-id}/preferred-line-items | 
 [**postApi202110ExternalLineItemProductsAppendByLineItemId**](CampaignApi.md#postApi202110ExternalLineItemProductsAppendByLineItemId) | **POST** /2021-10/retail-media/line-items/{line-item-id}/products/append | 
 [**postApi202110ExternalLineItemProductsDeleteByLineItemId**](CampaignApi.md#postApi202110ExternalLineItemProductsDeleteByLineItemId) | **POST** /2021-10/retail-media/line-items/{line-item-id}/products/delete | 
+[**postApi202110ExternalLineItemProductsPauseByLineItemId**](CampaignApi.md#postApi202110ExternalLineItemProductsPauseByLineItemId) | **POST** /2021-10/retail-media/line-items/{line-item-id}/products/pause | 
+[**postApi202110ExternalLineItemProductsUnpauseByLineItemId**](CampaignApi.md#postApi202110ExternalLineItemProductsUnpauseByLineItemId) | **POST** /2021-10/retail-media/line-items/{line-item-id}/products/unpause | 
 [**postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId) | **POST** /2021-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append | 
 [**postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemId**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemId) | **POST** /2021-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete | 
 [**postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemId**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemId) | **POST** /2021-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append | 
@@ -2080,6 +2082,142 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Success |  -  |
 
+<a name="postApi202110ExternalLineItemProductsPauseByLineItemId"></a>
+# **postApi202110ExternalLineItemProductsPauseByLineItemId**
+> postApi202110ExternalLineItemProductsPauseByLineItemId(lineItemId, promotedProduct202110ListRequest)
+
+
+
+This endpoint pauses one or more promoted products on a specified line item.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.retailmedia.v2021_10.ApiClient;
+import com.criteo.api.retailmedia.v2021_10.ApiException;
+import com.criteo.api.retailmedia.v2021_10.Configuration;
+import com.criteo.api.retailmedia.v2021_10.auth.*;
+import com.criteo.api.retailmedia.v2021_10.models.*;
+import com.criteo.api.retailmedia.v2021_10.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    String lineItemId = "lineItemId_example"; // String | The line item to interact with.
+    PromotedProduct202110ListRequest promotedProduct202110ListRequest = new PromotedProduct202110ListRequest(); // PromotedProduct202110ListRequest | The products from which their IDs will be used to pause.
+    try {
+      apiInstance.postApi202110ExternalLineItemProductsPauseByLineItemId(lineItemId, promotedProduct202110ListRequest);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#postApi202110ExternalLineItemProductsPauseByLineItemId");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **lineItemId** | **String**| The line item to interact with. |
+ **promotedProduct202110ListRequest** | [**PromotedProduct202110ListRequest**](PromotedProduct202110ListRequest.md)| The products from which their IDs will be used to pause. | [optional]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+
+<a name="postApi202110ExternalLineItemProductsUnpauseByLineItemId"></a>
+# **postApi202110ExternalLineItemProductsUnpauseByLineItemId**
+> postApi202110ExternalLineItemProductsUnpauseByLineItemId(lineItemId, promotedProduct202110ListRequest)
+
+
+
+This endpoint unpauses one or more promoted products on a specified line item.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.retailmedia.v2021_10.ApiClient;
+import com.criteo.api.retailmedia.v2021_10.ApiException;
+import com.criteo.api.retailmedia.v2021_10.Configuration;
+import com.criteo.api.retailmedia.v2021_10.auth.*;
+import com.criteo.api.retailmedia.v2021_10.models.*;
+import com.criteo.api.retailmedia.v2021_10.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    String lineItemId = "lineItemId_example"; // String | The line item to interact with.
+    PromotedProduct202110ListRequest promotedProduct202110ListRequest = new PromotedProduct202110ListRequest(); // PromotedProduct202110ListRequest | The products from which their IDs will be used to unpause.
+    try {
+      apiInstance.postApi202110ExternalLineItemProductsUnpauseByLineItemId(lineItemId, promotedProduct202110ListRequest);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#postApi202110ExternalLineItemProductsUnpauseByLineItemId");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **lineItemId** | **String**| The line item to interact with. |
+ **promotedProduct202110ListRequest** | [**PromotedProduct202110ListRequest**](PromotedProduct202110ListRequest.md)| The products from which their IDs will be used to unpause. | [optional]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+
 <a name="postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId"></a>
 # **postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId**
 > AddToBasketTarget202110Response postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId(lineItemId, addToBasketIdsUpdateModel202110Request)
@@ -2567,8 +2705,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Success |  -  |
 **200** | OK |  -  |
+**201** | Success |  -  |
 
 <a name="postApiV1ExternalAccountCatalogsByAccountId"></a>
 # **postApiV1ExternalAccountCatalogsByAccountId**

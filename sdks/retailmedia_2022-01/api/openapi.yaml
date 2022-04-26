@@ -607,16 +607,16 @@ paths:
         x-nullable: false
         x-bodyName: campaign
       responses:
-        "201":
-          content:
-            application/json: {}
-          description: Success
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/JsonApiSingleResponseOfCampaign'
           description: OK
+        "201":
+          content:
+            application/json: {}
+          description: Success
       tags:
       - Campaign
       x-contentType: application/json
@@ -2146,6 +2146,66 @@ paths:
       - Campaign
       x-contentType: application/json
       x-accepts: application/json
+  /2022-01/retail-media/line-items/{line-item-id}/products/pause:
+    post:
+      description: This endpoint pauses one or more promoted products on a specified
+        line item.
+      operationId: PromotedProducts_PostApi202110ExternalLineItemProductsPauseByLineItemId
+      parameters:
+      - description: The line item to interact with.
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromotedProduct202110ListRequest'
+        description: The products from which their IDs will be used to pause.
+        x-nullable: false
+        x-bodyName: promotedProductsToPause
+      responses:
+        "200":
+          description: Success
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
+  /2022-01/retail-media/line-items/{line-item-id}/products/unpause:
+    post:
+      description: This endpoint unpauses one or more promoted products on a specified
+        line item.
+      operationId: PromotedProducts_PostApi202110ExternalLineItemProductsUnpauseByLineItemId
+      parameters:
+      - description: The line item to interact with.
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromotedProduct202110ListRequest'
+        description: The products from which their IDs will be used to unpause.
+        x-nullable: false
+        x-bodyName: promotedProductsToUnpause
+      responses:
+        "200":
+          description: Success
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
 components:
   schemas:
     ApplicationSummaryModelResponse:
@@ -2153,11 +2213,11 @@ components:
       example:
         data:
           attributes:
-            organizationId: 0
+            organizationId: 6
             name: name
             description: description
             criteoService: criteoService
-          id: id
+            applicationId: 0
           type: type
         warnings:
         - traceIdentifier: traceIdentifier
@@ -2214,22 +2274,20 @@ components:
           uniqueItems: false
       type: object
     ApplicationSummaryModelResource:
-      description: Resource of ApplicationSummaryModel
+      description: A class that represents a ValueType in a guild compliant way
       example:
         attributes:
-          organizationId: 0
+          organizationId: 6
           name: name
           description: description
           criteoService: criteoService
-        id: id
+          applicationId: 0
         type: type
       properties:
-        attributes:
-          $ref: '#/components/schemas/ApplicationSummaryModel'
-        id:
-          type: string
         type:
           type: string
+        attributes:
+          $ref: '#/components/schemas/ApplicationSummaryModel'
       type: object
     CommonProblem:
       description: Common problem object. Can be specialized as needed.
@@ -2284,11 +2342,15 @@ components:
     ApplicationSummaryModel:
       description: Model of ApplicationSummary
       example:
-        organizationId: 0
+        organizationId: 6
         name: name
         description: description
         criteoService: criteoService
+        applicationId: 0
       properties:
+        applicationId:
+          format: int32
+          type: integer
         name:
           type: string
         organizationId:
@@ -2299,8 +2361,6 @@ components:
         criteoService:
           type: string
       type: object
-      x-criteo-canonical:
-        infoType: entity
     AccessTokenModel:
       description: Access Token to be used with other services
       example:
@@ -2447,10 +2507,16 @@ components:
         data:
         - attributes:
             name: name
+            campaignEligibilities:
+            - unknown
+            - unknown
           id: id
           type: type
         - attributes:
             name: name
+            campaignEligibilities:
+            - unknown
+            - unknown
           id: id
           type: type
         warnings:
@@ -2799,6 +2865,9 @@ components:
       example:
         attributes:
           name: name
+          campaignEligibilities:
+          - unknown
+          - unknown
         id: id
         type: type
       properties:
@@ -2902,10 +2971,23 @@ components:
         from multiple brands
       example:
         name: name
+        campaignEligibilities:
+        - unknown
+        - unknown
       properties:
         name:
           maxLength: 100
           type: string
+          x-nullable: false
+        campaignEligibilities:
+          items:
+            enum:
+            - unknown
+            - auction
+            - preferred
+            type: string
+            x-nullable: false
+          type: array
           x-nullable: false
       required:
       - name
@@ -4899,7 +4981,7 @@ components:
       x-nullable: false
     BalanceCampaign202110ListRequest:
       description: "A class implementing the request of the Criteo API as described\
-        \ in API Guild Guidelines with a collection of entities as body\r\nhttps://confluence.criteois.com/display/GUA/Response+Body+Guidelines"
+        \ in API Guild Guidelines with a collection of entities as body\r\nhttps://criteo.atlassian.net/wiki/spaces/GUA/pages/1564541212/Response+Body+Guidelines"
       example:
         data:
         - attributes: "{}"

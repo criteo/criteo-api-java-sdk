@@ -29,7 +29,11 @@ import java.io.IOException;
 
 import com.criteo.api.marketingsolutions.preview.model.ErrorMessage;
 import com.criteo.api.marketingsolutions.preview.model.GenerateCategoriesReportRequest;
+import com.criteo.api.marketingsolutions.preview.model.GenerateCreativesReportRequest;
+import com.criteo.api.marketingsolutions.preview.model.GenerateTopProductsReportRequest;
 import com.criteo.api.marketingsolutions.preview.model.PlacementsReportQueryDataMessage;
+import com.criteo.api.marketingsolutions.preview.model.ProblemDetails;
+import com.criteo.api.marketingsolutions.preview.model.ReportDataMessage;
 import com.criteo.api.marketingsolutions.preview.model.StatisticsReportQueryMessage;
 import com.criteo.api.marketingsolutions.preview.model.TransactionsReportQueryDataMessage;
 import com.criteo.api.marketingsolutions.preview.model.TransparencyQueryMessage;
@@ -289,6 +293,120 @@ public class AnalyticsApi {
         return localVarCall;
     }
     /**
+     * Build call for getCreativesReport
+     * @param generateCreativesReportRequest  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCreativesReportCall(GenerateCreativesReportRequest generateCreativesReportRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = generateCreativesReportRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/reports/creatives";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCreativesReportValidateBeforeCall(GenerateCreativesReportRequest generateCreativesReportRequest, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getCreativesReportCall(generateCreativesReportRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.
+     * @param generateCreativesReportRequest  (optional)
+     * @return ReportDataMessage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ReportDataMessage getCreativesReport(GenerateCreativesReportRequest generateCreativesReportRequest) throws ApiException {
+        ApiResponse<ReportDataMessage> localVarResp = getCreativesReportWithHttpInfo(generateCreativesReportRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.
+     * @param generateCreativesReportRequest  (optional)
+     * @return ApiResponse&lt;ReportDataMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ReportDataMessage> getCreativesReportWithHttpInfo(GenerateCreativesReportRequest generateCreativesReportRequest) throws ApiException {
+        okhttp3.Call localVarCall = getCreativesReportValidateBeforeCall(generateCreativesReportRequest, null);
+        Type localVarReturnType = new TypeToken<ReportDataMessage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.
+     * @param generateCreativesReportRequest  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCreativesReportAsync(GenerateCreativesReportRequest generateCreativesReportRequest, final ApiCallback<ReportDataMessage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCreativesReportValidateBeforeCall(generateCreativesReportRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReportDataMessage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getPlacementsReport
      * @param placementsReportQueryDataMessage  (optional)
      * @param _callback Callback for upload/download progress
@@ -399,6 +517,120 @@ public class AnalyticsApi {
 
         okhttp3.Call localVarCall = getPlacementsReportValidateBeforeCall(placementsReportQueryDataMessage, _callback);
         Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getTopProductsReport
+     * @param generateTopProductsReportRequest  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTopProductsReportCall(GenerateTopProductsReportRequest generateTopProductsReportRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = generateTopProductsReportRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/reports/top-products";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTopProductsReportValidateBeforeCall(GenerateTopProductsReportRequest generateTopProductsReportRequest, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getTopProductsReportCall(generateTopProductsReportRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.
+     * @param generateTopProductsReportRequest  (optional)
+     * @return ReportDataMessage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ReportDataMessage getTopProductsReport(GenerateTopProductsReportRequest generateTopProductsReportRequest) throws ApiException {
+        ApiResponse<ReportDataMessage> localVarResp = getTopProductsReportWithHttpInfo(generateTopProductsReportRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.
+     * @param generateTopProductsReportRequest  (optional)
+     * @return ApiResponse&lt;ReportDataMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ReportDataMessage> getTopProductsReportWithHttpInfo(GenerateTopProductsReportRequest generateTopProductsReportRequest) throws ApiException {
+        okhttp3.Call localVarCall = getTopProductsReportValidateBeforeCall(generateTopProductsReportRequest, null);
+        Type localVarReturnType = new TypeToken<ReportDataMessage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.
+     * @param generateTopProductsReportRequest  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTopProductsReportAsync(GenerateTopProductsReportRequest generateTopProductsReportRequest, final ApiCallback<ReportDataMessage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTopProductsReportValidateBeforeCall(generateTopProductsReportRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReportDataMessage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

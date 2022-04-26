@@ -9,6 +9,9 @@ This is the message defining the query for Adset report
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **advertiserIds** | **String** | The comma-separated list of advertiser ids. If empty, all the advertisers in the portfolio will be used |  [optional]
+**adSetIds** | **List&lt;String&gt;** | list of adSets ids. If empty, all the adSets will be fetched |  [optional]
+**adSetNames** | **List&lt;String&gt;** | list of adSets names. If empty, all the adSets will be fetched |  [optional]
+**adSetStatus** | **List&lt;String&gt;** | list of adSets status. If empty, all the adSets will be fetched |  [optional]
 **dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | The dimensions for the report. | 
 **metrics** | **List&lt;String&gt;** | The list of metrics to report. | 
 **currency** | **String** | The currency used for the report. ISO 4217 code (three-letter capitals). | 
@@ -38,6 +41,14 @@ OS | &quot;Os&quot;
 DEVICE | &quot;Device&quot;
 CAMPAIGNID | &quot;CampaignId&quot;
 CAMPAIGN | &quot;Campaign&quot;
+ADID | &quot;AdId&quot;
+AD | &quot;Ad&quot;
+COUPONID | &quot;CouponId&quot;
+COUPON | &quot;Coupon&quot;
+MARKETINGOBJECTIVEID | &quot;MarketingObjectiveId&quot;
+MARKETINGOBJECTIVE | &quot;MarketingObjective&quot;
+CHANNELID | &quot;ChannelId&quot;
+CHANNEL | &quot;Channel&quot;
 
 
 

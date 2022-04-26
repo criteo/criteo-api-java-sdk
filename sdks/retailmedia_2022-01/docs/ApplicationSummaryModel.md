@@ -8,6 +8,7 @@ Model of ApplicationSummary
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**applicationId** | **Integer** |  |  [optional]
 **name** | **String** |  |  [optional]
 **organizationId** | **Integer** |  |  [optional]
 **description** | **String** |  |  [optional]

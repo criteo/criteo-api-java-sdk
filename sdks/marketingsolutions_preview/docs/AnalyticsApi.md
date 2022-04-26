@@ -6,7 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getAdsetReport**](AnalyticsApi.md#getAdsetReport) | **POST** /preview/statistics/report | 
 [**getCategoriesReport**](AnalyticsApi.md#getCategoriesReport) | **POST** /preview/categories/report | 
+[**getCreativesReport**](AnalyticsApi.md#getCreativesReport) | **POST** /preview/reports/creatives | 
 [**getPlacementsReport**](AnalyticsApi.md#getPlacementsReport) | **POST** /preview/placements/report | 
+[**getTopProductsReport**](AnalyticsApi.md#getTopProductsReport) | **POST** /preview/reports/top-products | 
 [**getTransactionsReport**](AnalyticsApi.md#getTransactionsReport) | **POST** /preview/transactions/report | 
 [**getTransparencyReport**](AnalyticsApi.md#getTransparencyReport) | **POST** /preview/log-level/advertisers/{advertiser-id}/report | 
 
@@ -149,6 +151,75 @@ Name | Type | Description  | Notes
 **400** | Bad Request |  -  |
 **403** | Forbidden |  -  |
 
+<a name="getCreativesReport"></a>
+# **getCreativesReport**
+> ReportDataMessage getCreativesReport(generateCreativesReportRequest)
+
+
+
+With Creatives endpoint, you can analyse the daily performances of your creatives on the main metrics: clicks, ctr, displays.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.AnalyticsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
+    GenerateCreativesReportRequest generateCreativesReportRequest = new GenerateCreativesReportRequest(); // GenerateCreativesReportRequest | 
+    try {
+      ReportDataMessage result = apiInstance.getCreativesReport(generateCreativesReportRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AnalyticsApi#getCreativesReport");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **generateCreativesReportRequest** | [**GenerateCreativesReportRequest**](GenerateCreativesReportRequest.md)|  | [optional]
+
+### Return type
+
+[**ReportDataMessage**](ReportDataMessage.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+
 <a name="getPlacementsReport"></a>
 # **getPlacementsReport**
 > byte[] getPlacementsReport(placementsReportQueryDataMessage)
@@ -201,6 +272,75 @@ Name | Type | Description  | Notes
 ### Return type
 
 **byte[]**
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+
+<a name="getTopProductsReport"></a>
+# **getTopProductsReport**
+> ReportDataMessage getTopProductsReport(generateTopProductsReportRequest)
+
+
+
+With the topProducts endpoint, you can analyse the performances for each publisher, by top displays, top clicks or top sales.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.AnalyticsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
+    GenerateTopProductsReportRequest generateTopProductsReportRequest = new GenerateTopProductsReportRequest(); // GenerateTopProductsReportRequest | 
+    try {
+      ReportDataMessage result = apiInstance.getTopProductsReport(generateTopProductsReportRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AnalyticsApi#getTopProductsReport");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **generateTopProductsReportRequest** | [**GenerateTopProductsReportRequest**](GenerateTopProductsReportRequest.md)|  | [optional]
+
+### Return type
+
+[**ReportDataMessage**](ReportDataMessage.md)
 
 ### Authorization
 

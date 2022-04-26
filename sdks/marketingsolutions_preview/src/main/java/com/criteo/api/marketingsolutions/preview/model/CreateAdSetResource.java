@@ -31,36 +31,13 @@ import java.io.IOException;
 @ApiModel(description = "Data model for a Resource")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateAdSetResource {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
-
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private CreateAdSet attributes;
 
-
-  public CreateAdSetResource type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Canonical type name of the entity
-   * @return type
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "AdSet", value = "Canonical type name of the entity")
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
-  }
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
 
 
   public CreateAdSetResource attributes(CreateAdSet attributes) {
@@ -86,6 +63,29 @@ public class CreateAdSetResource {
   }
 
 
+  public CreateAdSetResource type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Canonical type name of the entity
+   * @return type
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "AdSet", value = "Canonical type name of the entity")
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -95,21 +95,21 @@ public class CreateAdSetResource {
       return false;
     }
     CreateAdSetResource createAdSetResource = (CreateAdSetResource) o;
-    return Objects.equals(this.type, createAdSetResource.type) &&
-        Objects.equals(this.attributes, createAdSetResource.attributes);
+    return Objects.equals(this.attributes, createAdSetResource.attributes) &&
+        Objects.equals(this.type, createAdSetResource.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes);
+    return Objects.hash(attributes, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAdSetResource {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

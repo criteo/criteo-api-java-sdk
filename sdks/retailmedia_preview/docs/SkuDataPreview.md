@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **description** | **String** | A product description. |  [optional]
 **categoryId** | **String** | The category Id. |  [optional]
 **category** | **String** | The full category breadcrumb in the retailers catalog. |  [optional]
+**isSellerSku** | **Boolean** | An indication of if the sku is seller sku. |  [optional]
 **sellerId** | **String** | The id of the seller. |  [optional]
 **sellerName** | **String** | The name of the seller. |  [optional]
 **brandId** | **String** | The global brand id associated to the product. | 

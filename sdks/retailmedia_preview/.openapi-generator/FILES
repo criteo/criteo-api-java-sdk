@@ -12,6 +12,8 @@ docs/ApplicationSummaryModelResource.md
 docs/ApplicationSummaryModelResponse.md
 docs/AudienceApi.md
 docs/BadRequest.md
+docs/BrandPreview.md
+docs/BrandPreviewListResponse.md
 docs/CampaignApi.md
 docs/CommonError.md
 docs/CommonProblem.md
@@ -80,6 +82,7 @@ docs/ReportRequest.md
 docs/ReportRequestAttributes.md
 docs/ReportStatus.md
 docs/ReportStatusAttributes.md
+docs/ResourceOfBrandPreview.md
 docs/ResourceOfSellerPreview.md
 docs/ResourceOfSkuDataPreview.md
 docs/ResourceOfSkuSearchRequestPreview.md
@@ -131,6 +134,8 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ApplicationSummaryModel.j
 src/main/java/com/criteo/api/retailmedia/preview/model/ApplicationSummaryModelResource.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ApplicationSummaryModelResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/BadRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/BrandPreview.java
+src/main/java/com/criteo/api/retailmedia/preview/model/BrandPreviewListResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CommonError.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CommonProblem.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CommonWarning.java
@@ -196,6 +201,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ReportRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ReportRequestAttributes.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ReportStatus.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ReportStatusAttributes.java
+src/main/java/com/criteo/api/retailmedia/preview/model/ResourceOfBrandPreview.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ResourceOfSellerPreview.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ResourceOfSkuDataPreview.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ResourceOfSkuSearchRequestPreview.java

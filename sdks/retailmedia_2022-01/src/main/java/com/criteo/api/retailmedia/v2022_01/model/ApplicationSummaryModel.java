@@ -30,6 +30,10 @@ import java.io.IOException;
 @ApiModel(description = "Model of ApplicationSummary")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ApplicationSummaryModel {
+  public static final String SERIALIZED_NAME_APPLICATION_ID = "applicationId";
+  @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
+  private Integer applicationId;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -45,6 +49,29 @@ public class ApplicationSummaryModel {
   public static final String SERIALIZED_NAME_CRITEO_SERVICE = "criteoService";
   @SerializedName(SERIALIZED_NAME_CRITEO_SERVICE)
   private String criteoService;
+
+
+  public ApplicationSummaryModel applicationId(Integer applicationId) {
+    
+    this.applicationId = applicationId;
+    return this;
+  }
+
+   /**
+   * Get applicationId
+   * @return applicationId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Integer getApplicationId() {
+    return applicationId;
+  }
+
+
+  public void setApplicationId(Integer applicationId) {
+    this.applicationId = applicationId;
+  }
 
 
   public ApplicationSummaryModel name(String name) {
@@ -148,7 +175,8 @@ public class ApplicationSummaryModel {
       return false;
     }
     ApplicationSummaryModel applicationSummaryModel = (ApplicationSummaryModel) o;
-    return Objects.equals(this.name, applicationSummaryModel.name) &&
+    return Objects.equals(this.applicationId, applicationSummaryModel.applicationId) &&
+        Objects.equals(this.name, applicationSummaryModel.name) &&
         Objects.equals(this.organizationId, applicationSummaryModel.organizationId) &&
         Objects.equals(this.description, applicationSummaryModel.description) &&
         Objects.equals(this.criteoService, applicationSummaryModel.criteoService);
@@ -156,13 +184,14 @@ public class ApplicationSummaryModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, organizationId, description, criteoService);
+    return Objects.hash(applicationId, name, organizationId, description, criteoService);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ApplicationSummaryModel {\n");
+    sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");

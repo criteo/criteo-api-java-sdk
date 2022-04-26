@@ -23,6 +23,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A Retail Media Retailer used to represent a selection of products from multiple brands
@@ -33,6 +35,59 @@ public class ExternalRetailer {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  /**
+   * Gets or Sets campaignEligibilities
+   */
+  @JsonAdapter(CampaignEligibilitiesEnum.Adapter.class)
+  public enum CampaignEligibilitiesEnum {
+    UNKNOWN("unknown"),
+    
+    AUCTION("auction"),
+    
+    PREFERRED("preferred");
+
+    private String value;
+
+    CampaignEligibilitiesEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static CampaignEligibilitiesEnum fromValue(String value) {
+      for (CampaignEligibilitiesEnum b : CampaignEligibilitiesEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<CampaignEligibilitiesEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final CampaignEligibilitiesEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public CampaignEligibilitiesEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return CampaignEligibilitiesEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_ELIGIBILITIES = "campaignEligibilities";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ELIGIBILITIES)
+  private List<CampaignEligibilitiesEnum> campaignEligibilities = null;
 
 
   public ExternalRetailer name(String name) {
@@ -58,6 +113,37 @@ public class ExternalRetailer {
   }
 
 
+  public ExternalRetailer campaignEligibilities(List<CampaignEligibilitiesEnum> campaignEligibilities) {
+    
+    this.campaignEligibilities = campaignEligibilities;
+    return this;
+  }
+
+  public ExternalRetailer addCampaignEligibilitiesItem(CampaignEligibilitiesEnum campaignEligibilitiesItem) {
+    if (this.campaignEligibilities == null) {
+      this.campaignEligibilities = new ArrayList<>();
+    }
+    this.campaignEligibilities.add(campaignEligibilitiesItem);
+    return this;
+  }
+
+   /**
+   * Get campaignEligibilities
+   * @return campaignEligibilities
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<CampaignEligibilitiesEnum> getCampaignEligibilities() {
+    return campaignEligibilities;
+  }
+
+
+  public void setCampaignEligibilities(List<CampaignEligibilitiesEnum> campaignEligibilities) {
+    this.campaignEligibilities = campaignEligibilities;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -67,12 +153,13 @@ public class ExternalRetailer {
       return false;
     }
     ExternalRetailer externalRetailer = (ExternalRetailer) o;
-    return Objects.equals(this.name, externalRetailer.name);
+    return Objects.equals(this.name, externalRetailer.name) &&
+        Objects.equals(this.campaignEligibilities, externalRetailer.campaignEligibilities);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name);
+    return Objects.hash(name, campaignEligibilities);
   }
 
   @Override
@@ -80,6 +167,7 @@ public class ExternalRetailer {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalRetailer {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    campaignEligibilities: ").append(toIndentedString(campaignEligibilities)).append("\n");
     sb.append("}");
     return sb.toString();
   }

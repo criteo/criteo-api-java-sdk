@@ -31,36 +31,13 @@ import java.io.IOException;
 @ApiModel(description = "Data model for a Resource")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateCampaignResource {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
-
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private CreateCampaign attributes;
 
-
-  public CreateCampaignResource type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Canonical type name of the entity
-   * @return type
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Campaign", value = "Canonical type name of the entity")
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
-  }
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
 
 
   public CreateCampaignResource attributes(CreateCampaign attributes) {
@@ -86,6 +63,29 @@ public class CreateCampaignResource {
   }
 
 
+  public CreateCampaignResource type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Canonical type name of the entity
+   * @return type
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Campaign", value = "Canonical type name of the entity")
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -95,21 +95,21 @@ public class CreateCampaignResource {
       return false;
     }
     CreateCampaignResource createCampaignResource = (CreateCampaignResource) o;
-    return Objects.equals(this.type, createCampaignResource.type) &&
-        Objects.equals(this.attributes, createCampaignResource.attributes);
+    return Objects.equals(this.attributes, createCampaignResource.attributes) &&
+        Objects.equals(this.type, createCampaignResource.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes);
+    return Objects.hash(attributes, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateCampaignResource {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

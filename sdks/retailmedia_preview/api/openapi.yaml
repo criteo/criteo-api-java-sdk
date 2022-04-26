@@ -493,8 +493,8 @@ paths:
         schema:
           default: 0
           format: int32
-          maximum: 500.0
-          minimum: 0.0
+          maximum: 500
+          minimum: 0
           type: integer
         style: form
         x-nullable: false
@@ -507,8 +507,8 @@ paths:
         schema:
           default: 100
           format: int32
-          maximum: 100.0
-          minimum: 1.0
+          maximum: 100
+          minimum: 1
           type: integer
         style: form
         x-nullable: false
@@ -544,8 +544,8 @@ paths:
         schema:
           default: 0
           format: int32
-          maximum: 500.0
-          minimum: 0.0
+          maximum: 500
+          minimum: 0
           type: integer
         style: form
         x-nullable: false
@@ -558,8 +558,8 @@ paths:
         schema:
           default: 100
           format: int32
-          maximum: 100.0
-          minimum: 1.0
+          maximum: 100
+          minimum: 1
           type: integer
         style: form
         x-nullable: false
@@ -618,6 +618,31 @@ paths:
               schema:
                 $ref: '#/components/schemas/SellerPreviewResponse'
           description: Seller found.
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /preview/retail-media/retailers/{retailerId}/brands:
+    get:
+      description: Gets the brands for the given retailer
+      operationId: RetailerApi_GetApiV1ExternalRetailerBrandsByRetailerId
+      parameters:
+      - description: The retailer id for which brands should be fetched.
+        explode: false
+        in: path
+        name: retailerId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandPreviewListResponse'
+          description: Brands found.
       tags:
       - Campaign
       x-accepts: application/json
@@ -878,16 +903,16 @@ paths:
         x-nullable: false
         x-bodyName: campaign
       responses:
-        "201":
-          content:
-            application/json: {}
-          description: Success
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/JsonApiSingleResponseOfCampaign'
           description: OK
+        "201":
+          content:
+            application/json: {}
+          description: Success
       tags:
       - Campaign
       x-contentType: application/json
@@ -1027,16 +1052,16 @@ paths:
         x-nullable: false
         x-bodyName: lineItem
       responses:
-        "201":
-          content:
-            application/json: {}
-          description: Success
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/JsonApiSingleResponseOfLineItem'
           description: OK
+        "201":
+          content:
+            application/json: {}
+          description: Success
       tags:
       - Campaign
       x-contentType: application/json
@@ -1386,11 +1411,11 @@ components:
       example:
         data:
           attributes:
-            organizationId: 0
+            organizationId: 6
             name: name
             description: description
             criteoService: criteoService
-          id: id
+            applicationId: 0
           type: type
         warnings:
         - traceIdentifier: traceIdentifier
@@ -1447,18 +1472,16 @@ components:
           uniqueItems: false
       type: object
     ApplicationSummaryModelResource:
-      description: Resource of ApplicationSummaryModel
+      description: A class that represents a ValueType in a guild compliant way
       example:
         attributes:
-          organizationId: 0
+          organizationId: 6
           name: name
           description: description
           criteoService: criteoService
-        id: id
+          applicationId: 0
         type: type
       properties:
-        id:
-          type: string
         type:
           type: string
         attributes:
@@ -1515,29 +1538,27 @@ components:
           type: string
       type: object
     ApplicationSummaryModel:
-      description: A summary of an API application
+      description: Model of ApplicationSummary
       example:
-        organizationId: 0
+        organizationId: 6
         name: name
         description: description
         criteoService: criteoService
+        applicationId: 0
       properties:
+        applicationId:
+          format: int32
+          type: integer
         name:
-          description: The name of the application
           type: string
         organizationId:
-          description: The id of the organization that own this application
           format: int32
           type: integer
         description:
-          description: The description of the application
           type: string
         criteoService:
-          description: The business service of this application
           type: string
       type: object
-      x-criteo-canonical:
-        infoType: entity
     AccessTokenModel:
       description: Access Token to be used with other services
       example:
@@ -1684,10 +1705,16 @@ components:
         data:
         - attributes:
             name: name
+            campaignEligibilities:
+            - unknown
+            - unknown
           id: id
           type: type
         - attributes:
             name: name
+            campaignEligibilities:
+            - unknown
+            - unknown
           id: id
           type: type
         warnings:
@@ -2036,6 +2063,9 @@ components:
       example:
         attributes:
           name: name
+          campaignEligibilities:
+          - unknown
+          - unknown
         id: id
         type: type
       properties:
@@ -2139,10 +2169,23 @@ components:
         from multiple brands
       example:
         name: name
+        campaignEligibilities:
+        - unknown
+        - unknown
       properties:
         name:
           maxLength: 100
           type: string
+          x-nullable: false
+        campaignEligibilities:
+          items:
+            enum:
+            - unknown
+            - auction
+            - preferred
+            type: string
+            x-nullable: false
+          type: array
           x-nullable: false
       required:
       - name
@@ -2557,6 +2600,7 @@ components:
             retailerId: retailerId
             sellerId: sellerId
             skuKey: skuKey
+            isSellerSku: true
             price: 0.8008281904610115
             brandId: brandId
             retailerName: retailerName
@@ -2578,6 +2622,7 @@ components:
             retailerId: retailerId
             sellerId: sellerId
             skuKey: skuKey
+            isSellerSku: true
             price: 0.8008281904610115
             brandId: brandId
             retailerName: retailerName
@@ -2710,6 +2755,76 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
+    BrandPreviewListResponse:
+      description: Data model for a list of response resources
+      example:
+        data:
+        - attributes:
+            name: name
+          id: id
+          type: type
+        - attributes:
+            name: name
+          id: id
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ResourceOfBrandPreview'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
     JsonApiRequestOfCatalogRequestPreview:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with Type, and Attributes properties"
@@ -2730,6 +2845,7 @@ components:
           attributes:
             queryString: queryString
             retailerId: retailerId
+            skuType: brand
             brandIds:
             - brandIds
             - brandIds
@@ -2785,6 +2901,7 @@ components:
           retailerId: retailerId
           sellerId: sellerId
           skuKey: skuKey
+          isSellerSku: true
           price: 0.8008281904610115
           brandId: brandId
           retailerName: retailerName
@@ -2886,6 +3003,24 @@ components:
           $ref: '#/components/schemas/SellerPreview'
       type: object
       x-nullable: false
+    ResourceOfBrandPreview:
+      description: Data model for a Resource
+      example:
+        attributes:
+          name: name
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/BrandPreview'
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          description: Canonical type name of the entity
+          type: string
+      type: object
+      x-nullable: false
     JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequestPreview:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with Type, and\r\nAttributes properties"
@@ -2909,6 +3044,7 @@ components:
         attributes:
           queryString: queryString
           retailerId: retailerId
+          skuType: brand
           brandIds:
           - brandIds
           - brandIds
@@ -3004,6 +3140,7 @@ components:
         retailerId: retailerId
         sellerId: sellerId
         skuKey: skuKey
+        isSellerSku: true
         price: 0.8008281904610115
         brandId: brandId
         retailerName: retailerName
@@ -3037,6 +3174,10 @@ components:
           maxLength: 1000
           minLength: 0
           type: string
+          x-nullable: false
+        isSellerSku:
+          description: An indication of if the sku is seller sku.
+          type: boolean
           x-nullable: false
         sellerId:
           description: The id of the seller.
@@ -3122,6 +3263,19 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
+    BrandPreview:
+      description: Retail media brands
+      example:
+        name: name
+      properties:
+        name:
+          description: Brand Name
+          type: string
+          x-nullable: false
+      required:
+      - name
+      type: object
+      x-nullable: false
     ExternalCatalogRequestPreview:
       description: A request for a catalog under the specified format. Currently "json-newline"
         is supported.
@@ -3141,6 +3295,7 @@ components:
       example:
         queryString: queryString
         retailerId: retailerId
+        skuType: brand
         brandIds:
         - brandIds
         - brandIds
@@ -3171,6 +3326,15 @@ components:
             format: long-id
             type: string
           type: array
+          x-nullable: false
+        skuType:
+          default: brand
+          description: Enum to set isSellerSku field
+          enum:
+          - brand
+          - seller
+          - all
+          type: string
           x-nullable: false
       required:
       - queryString

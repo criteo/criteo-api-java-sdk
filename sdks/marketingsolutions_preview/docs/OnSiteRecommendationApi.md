@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**400** | Bad Request |  -  |
 **200** | Success |  -  |
+**400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 

@@ -8,8 +8,8 @@ Data model for a Resource
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | Canonical type name of the entity |  [optional]
 **attributes** | [**CreateCampaign**](CreateCampaign.md) |  |  [optional]
+**type** | **String** | Canonical type name of the entity |  [optional]
 
 
 

@@ -15,9 +15,7 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.AudienceContactList;
 import com.criteo.api.marketingsolutions.preview.model.AudienceCustom;
-import com.criteo.api.marketingsolutions.preview.model.AudienceSimilar;
 import com.criteo.api.marketingsolutions.preview.model.AudienceWebsiteVisitor;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -48,17 +46,9 @@ public class CreateAdSetAudienceConfiguration {
   @SerializedName(SERIALIZED_NAME_EXCLUDED_AUDIENCE_IDS)
   private List<String> excludedAudienceIds = null;
 
-  public static final String SERIALIZED_NAME_AUDIENCE_SIMILAR = "audienceSimilar";
-  @SerializedName(SERIALIZED_NAME_AUDIENCE_SIMILAR)
-  private AudienceSimilar audienceSimilar;
-
   public static final String SERIALIZED_NAME_AUDIENCE_WEBSITE_VISITOR = "audienceWebsiteVisitor";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_WEBSITE_VISITOR)
   private AudienceWebsiteVisitor audienceWebsiteVisitor;
-
-  public static final String SERIALIZED_NAME_AUDIENCE_CONTACT_LIST = "audienceContactList";
-  @SerializedName(SERIALIZED_NAME_AUDIENCE_CONTACT_LIST)
-  private AudienceContactList audienceContactList;
 
   public static final String SERIALIZED_NAME_AUDIENCE_CUSTOM = "audienceCustom";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_CUSTOM)
@@ -142,29 +132,6 @@ public class CreateAdSetAudienceConfiguration {
   }
 
 
-  public CreateAdSetAudienceConfiguration audienceSimilar(AudienceSimilar audienceSimilar) {
-    
-    this.audienceSimilar = audienceSimilar;
-    return this;
-  }
-
-   /**
-   * Get audienceSimilar
-   * @return audienceSimilar
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public AudienceSimilar getAudienceSimilar() {
-    return audienceSimilar;
-  }
-
-
-  public void setAudienceSimilar(AudienceSimilar audienceSimilar) {
-    this.audienceSimilar = audienceSimilar;
-  }
-
-
   public CreateAdSetAudienceConfiguration audienceWebsiteVisitor(AudienceWebsiteVisitor audienceWebsiteVisitor) {
     
     this.audienceWebsiteVisitor = audienceWebsiteVisitor;
@@ -185,29 +152,6 @@ public class CreateAdSetAudienceConfiguration {
 
   public void setAudienceWebsiteVisitor(AudienceWebsiteVisitor audienceWebsiteVisitor) {
     this.audienceWebsiteVisitor = audienceWebsiteVisitor;
-  }
-
-
-  public CreateAdSetAudienceConfiguration audienceContactList(AudienceContactList audienceContactList) {
-    
-    this.audienceContactList = audienceContactList;
-    return this;
-  }
-
-   /**
-   * Get audienceContactList
-   * @return audienceContactList
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public AudienceContactList getAudienceContactList() {
-    return audienceContactList;
-  }
-
-
-  public void setAudienceContactList(AudienceContactList audienceContactList) {
-    this.audienceContactList = audienceContactList;
   }
 
 
@@ -246,15 +190,13 @@ public class CreateAdSetAudienceConfiguration {
     return Objects.equals(this.minDaysSinceLastVisit, createAdSetAudienceConfiguration.minDaysSinceLastVisit) &&
         Objects.equals(this.maxDaysSinceLastVisit, createAdSetAudienceConfiguration.maxDaysSinceLastVisit) &&
         Objects.equals(this.excludedAudienceIds, createAdSetAudienceConfiguration.excludedAudienceIds) &&
-        Objects.equals(this.audienceSimilar, createAdSetAudienceConfiguration.audienceSimilar) &&
         Objects.equals(this.audienceWebsiteVisitor, createAdSetAudienceConfiguration.audienceWebsiteVisitor) &&
-        Objects.equals(this.audienceContactList, createAdSetAudienceConfiguration.audienceContactList) &&
         Objects.equals(this.audienceCustom, createAdSetAudienceConfiguration.audienceCustom);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(minDaysSinceLastVisit, maxDaysSinceLastVisit, excludedAudienceIds, audienceSimilar, audienceWebsiteVisitor, audienceContactList, audienceCustom);
+    return Objects.hash(minDaysSinceLastVisit, maxDaysSinceLastVisit, excludedAudienceIds, audienceWebsiteVisitor, audienceCustom);
   }
 
   @Override
@@ -264,9 +206,7 @@ public class CreateAdSetAudienceConfiguration {
     sb.append("    minDaysSinceLastVisit: ").append(toIndentedString(minDaysSinceLastVisit)).append("\n");
     sb.append("    maxDaysSinceLastVisit: ").append(toIndentedString(maxDaysSinceLastVisit)).append("\n");
     sb.append("    excludedAudienceIds: ").append(toIndentedString(excludedAudienceIds)).append("\n");
-    sb.append("    audienceSimilar: ").append(toIndentedString(audienceSimilar)).append("\n");
     sb.append("    audienceWebsiteVisitor: ").append(toIndentedString(audienceWebsiteVisitor)).append("\n");
-    sb.append("    audienceContactList: ").append(toIndentedString(audienceContactList)).append("\n");
     sb.append("    audienceCustom: ").append(toIndentedString(audienceCustom)).append("\n");
     sb.append("}");
     return sb.toString();

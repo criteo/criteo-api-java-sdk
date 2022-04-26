@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.criteo.api.retailmedia.preview.model.BrandPreviewListResponse;
 import com.criteo.api.retailmedia.preview.model.ExternalPostCampaign;
 import com.criteo.api.retailmedia.preview.model.ExternalPostLineItem;
 import com.criteo.api.retailmedia.preview.model.ExternalPutCampaign;
@@ -1834,6 +1835,118 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
+     * Build call for getApiV1ExternalRetailerBrandsByRetailerId
+     * @param retailerId The retailer id for which brands should be fetched. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Brands found. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getApiV1ExternalRetailerBrandsByRetailerIdCall(Integer retailerId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/retailers/{retailerId}/brands"
+            .replaceAll("\\{" + "retailerId" + "\\}", localVarApiClient.escapeString(retailerId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getApiV1ExternalRetailerBrandsByRetailerIdValidateBeforeCall(Integer retailerId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'retailerId' is set
+        if (retailerId == null) {
+            throw new ApiException("Missing the required parameter 'retailerId' when calling getApiV1ExternalRetailerBrandsByRetailerId(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getApiV1ExternalRetailerBrandsByRetailerIdCall(retailerId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Gets the brands for the given retailer
+     * @param retailerId The retailer id for which brands should be fetched. (required)
+     * @return BrandPreviewListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Brands found. </td><td>  -  </td></tr>
+     </table>
+     */
+    public BrandPreviewListResponse getApiV1ExternalRetailerBrandsByRetailerId(Integer retailerId) throws ApiException {
+        ApiResponse<BrandPreviewListResponse> localVarResp = getApiV1ExternalRetailerBrandsByRetailerIdWithHttpInfo(retailerId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Gets the brands for the given retailer
+     * @param retailerId The retailer id for which brands should be fetched. (required)
+     * @return ApiResponse&lt;BrandPreviewListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Brands found. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BrandPreviewListResponse> getApiV1ExternalRetailerBrandsByRetailerIdWithHttpInfo(Integer retailerId) throws ApiException {
+        okhttp3.Call localVarCall = getApiV1ExternalRetailerBrandsByRetailerIdValidateBeforeCall(retailerId, null);
+        Type localVarReturnType = new TypeToken<BrandPreviewListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Gets the brands for the given retailer
+     * @param retailerId The retailer id for which brands should be fetched. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Brands found. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getApiV1ExternalRetailerBrandsByRetailerIdAsync(Integer retailerId, final ApiCallback<BrandPreviewListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getApiV1ExternalRetailerBrandsByRetailerIdValidateBeforeCall(retailerId, _callback);
+        Type localVarReturnType = new TypeToken<BrandPreviewListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getApiV1ExternalRetailerByRetailerIdSellerBySeller
      * @param retailerId The retailer id for which seller should be fetched. (required)
      * @param seller The seller id or seller name which should be validated. (required)
@@ -2081,8 +2194,8 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postApiV1ExternalAccountCampaignsByAccountIdCall(String accountId, ExternalPostCampaign externalPostCampaign, final ApiCallback _callback) throws ApiException {
@@ -2140,8 +2253,8 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public JsonApiSingleResponseOfCampaign postApiV1ExternalAccountCampaignsByAccountId(String accountId, ExternalPostCampaign externalPostCampaign) throws ApiException {
@@ -2159,8 +2272,8 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<JsonApiSingleResponseOfCampaign> postApiV1ExternalAccountCampaignsByAccountIdWithHttpInfo(String accountId, ExternalPostCampaign externalPostCampaign) throws ApiException {
@@ -2180,8 +2293,8 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postApiV1ExternalAccountCampaignsByAccountIdAsync(String accountId, ExternalPostCampaign externalPostCampaign, final ApiCallback<JsonApiSingleResponseOfCampaign> _callback) throws ApiException {
@@ -2201,8 +2314,8 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postApiV1ExternalCampaignLineItemsByCampaignIdCall(String campaignId, ExternalPostLineItem externalPostLineItem, final ApiCallback _callback) throws ApiException {
@@ -2260,8 +2373,8 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public JsonApiSingleResponseOfLineItem postApiV1ExternalCampaignLineItemsByCampaignId(String campaignId, ExternalPostLineItem externalPostLineItem) throws ApiException {
@@ -2279,8 +2392,8 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<JsonApiSingleResponseOfLineItem> postApiV1ExternalCampaignLineItemsByCampaignIdWithHttpInfo(String campaignId, ExternalPostLineItem externalPostLineItem) throws ApiException {
@@ -2300,8 +2413,8 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postApiV1ExternalCampaignLineItemsByCampaignIdAsync(String campaignId, ExternalPostLineItem externalPostLineItem, final ApiCallback<JsonApiSingleResponseOfLineItem> _callback) throws ApiException {

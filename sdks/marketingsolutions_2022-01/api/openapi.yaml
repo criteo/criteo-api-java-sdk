@@ -925,7 +925,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-941c-7dd3acd18056
+                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                  traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
                   instance: /report
@@ -944,7 +945,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-941c-7dd3acd18056
+                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                  traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
                   instance: /report
@@ -1003,7 +1005,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-941c-7dd3acd18056
+                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                  traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
                   instance: /report
@@ -1022,7 +1025,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-941c-7dd3acd18056
+                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                  traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
                   instance: /report
@@ -1097,7 +1101,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-941c-7dd3acd18056
+                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                  traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
                   instance: /report
@@ -1116,7 +1121,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-941c-7dd3acd18056
+                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                  traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
                   instance: /report
@@ -1178,7 +1184,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-941c-7dd3acd18056
+                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                  traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
                   instance: /report
@@ -1197,7 +1204,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-941c-7dd3acd18056
+                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                  traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
                   instance: /report
@@ -2027,11 +2035,11 @@ components:
       example:
         data:
           attributes:
-            organizationId: 0
+            organizationId: 6
             name: name
             description: description
             criteoService: criteoService
-          id: id
+            applicationId: 0
           type: type
         warnings:
         - traceIdentifier: traceIdentifier
@@ -2088,22 +2096,20 @@ components:
           uniqueItems: false
       type: object
     ApplicationSummaryModelResource:
-      description: Resource of ApplicationSummaryModel
+      description: A class that represents a ValueType in a guild compliant way
       example:
         attributes:
-          organizationId: 0
+          organizationId: 6
           name: name
           description: description
           criteoService: criteoService
-        id: id
+          applicationId: 0
         type: type
       properties:
-        attributes:
-          $ref: '#/components/schemas/ApplicationSummaryModel'
-        id:
-          type: string
         type:
           type: string
+        attributes:
+          $ref: '#/components/schemas/ApplicationSummaryModel'
       type: object
     CommonProblem:
       description: Common problem object. Can be specialized as needed.
@@ -2158,11 +2164,15 @@ components:
     ApplicationSummaryModel:
       description: Model of ApplicationSummary
       example:
-        organizationId: 0
+        organizationId: 6
         name: name
         description: description
         criteoService: criteoService
+        applicationId: 0
       properties:
+        applicationId:
+          format: int32
+          type: integer
         name:
           type: string
         organizationId:
@@ -2173,8 +2183,6 @@ components:
         criteoService:
           type: string
       type: object
-      x-criteo-canonical:
-        infoType: entity
     ResponseReadAdSet:
       description: output resource
       example:
@@ -4008,6 +4016,9 @@ components:
           format: uuid
           readOnly: true
           type: string
+        traceIdentifier:
+          readOnly: true
+          type: string
         type:
           readOnly: true
           type: string
@@ -4059,6 +4070,14 @@ components:
       description: This is the message defining the query for Adset report
       example:
         advertiserIds: "123,456,789"
+        adSetIds:
+        - "12345"
+        - "54321"
+        adSetNames:
+        - myAdSet1
+        - myAdSet2
+        adSetStatus:
+        - Active
         dimensions:
         - CampaignId
         - Campaign
@@ -4066,6 +4085,10 @@ components:
         - Adset
         - AdvertiserId
         - Advertiser
+        - AdId
+        - Ad
+        - CouponId
+        - Coupon
         - CategoryId
         - Category
         - Hour
@@ -4083,13 +4106,31 @@ components:
         currency: EUR
         format: csv
         timezone: Europe/Paris
-        startDate: 2021-01-01T00:00:00.0000000+00:00
-        endDate: 2021-01-01T00:00:00.0000000+00:00
+        startDate: 2021-12-29T00:00:00.0000000+01:00
+        endDate: 2022-01-01T00:00:00.0000000+01:00
       properties:
         advertiserIds:
           description: "The comma-separated list of advertiser ids. If empty, all\
             \ the advertisers in the portfolio will be used"
           type: string
+        adSetIds:
+          description: "list of adSets ids. If empty, all the adSets will be fetched"
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        adSetNames:
+          description: "list of adSets names. If empty, all the adSets will be fetched"
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        adSetStatus:
+          description: "list of adSets status. If empty, all the adSets will be fetched"
+          items:
+            type: string
+          type: array
+          uniqueItems: false
         dimensions:
           description: The dimensions for the report.
           items:
@@ -4109,6 +4150,14 @@ components:
             - Device
             - CampaignId
             - Campaign
+            - AdId
+            - Ad
+            - CouponId
+            - Coupon
+            - MarketingObjectiveId
+            - MarketingObjective
+            - ChannelId
+            - Channel
             type: string
           type: array
           uniqueItems: false
@@ -4160,8 +4209,8 @@ components:
             currency: EUR
             format: csv
             timezone: Europe/Paris
-            startDate: 2021-01-01T00:00:00.0000000+00:00
-            endDate: 2021-01-01T00:00:00.0000000+00:00
+            startDate: 2021-12-29T00:00:00.0000000+01:00
+            endDate: 2021-12-29T00:00:00.0000000+01:00
       properties:
         data:
           items:
@@ -4175,8 +4224,8 @@ components:
       description: This is the message defining the query for Transparency report
       example:
         shouldDisplayProductIds: false
-        startDate: 2021-01-01T00:00:00.0000000+00:00
-        endDate: 2021-01-02T00:00:00.0000000+00:00
+        startDate: 2021-12-29T00:00:00.0000000+01:00
+        endDate: 2022-01-01T00:00:00.0000000+01:00
       properties:
         shouldDisplayProductIds:
           default: false
@@ -4219,8 +4268,8 @@ components:
             disclosed: false
             format: csv
             timezone: Europe/Paris
-            startDate: 2021-01-01T00:00:00.0000000+00:00
-            endDate: 2021-01-01T00:00:00.0000000+00:00
+            startDate: 2021-12-29T00:00:00.0000000+01:00
+            endDate: 2021-12-29T00:00:00.0000000+01:00
       properties:
         data:
           items:

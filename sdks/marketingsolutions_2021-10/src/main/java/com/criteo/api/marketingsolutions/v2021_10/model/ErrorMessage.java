@@ -35,6 +35,10 @@ public class ErrorMessage {
   @SerializedName(SERIALIZED_NAME_TRACE_ID)
   private UUID traceId;
 
+  public static final String SERIALIZED_NAME_TRACE_IDENTIFIER = "traceIdentifier";
+  @SerializedName(SERIALIZED_NAME_TRACE_IDENTIFIER)
+  private String traceIdentifier;
+
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
@@ -65,6 +69,20 @@ public class ErrorMessage {
 
   public UUID getTraceId() {
     return traceId;
+  }
+
+
+
+
+   /**
+   * Get traceIdentifier
+   * @return traceIdentifier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getTraceIdentifier() {
+    return traceIdentifier;
   }
 
 
@@ -150,6 +168,7 @@ public class ErrorMessage {
     }
     ErrorMessage errorMessage = (ErrorMessage) o;
     return Objects.equals(this.traceId, errorMessage.traceId) &&
+        Objects.equals(this.traceIdentifier, errorMessage.traceIdentifier) &&
         Objects.equals(this.type, errorMessage.type) &&
         Objects.equals(this.code, errorMessage.code) &&
         Objects.equals(this.instance, errorMessage.instance) &&
@@ -159,7 +178,7 @@ public class ErrorMessage {
 
   @Override
   public int hashCode() {
-    return Objects.hash(traceId, type, code, instance, title, detail);
+    return Objects.hash(traceId, traceIdentifier, type, code, instance, title, detail);
   }
 
   @Override
@@ -167,6 +186,7 @@ public class ErrorMessage {
     StringBuilder sb = new StringBuilder();
     sb.append("class ErrorMessage {\n");
     sb.append("    traceId: ").append(toIndentedString(traceId)).append("\n");
+    sb.append("    traceIdentifier: ").append(toIndentedString(traceIdentifier)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    instance: ").append(toIndentedString(instance)).append("\n");

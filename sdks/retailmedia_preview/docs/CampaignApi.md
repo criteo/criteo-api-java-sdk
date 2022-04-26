@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**getApiV1ExternalCampaignLineItemsByCampaignId**](CampaignApi.md#getApiV1ExternalCampaignLineItemsByCampaignId) | **GET** /preview/retail-media/campaigns/{campaignId}/line-items | 
 [**getApiV1ExternalLineItemByLineItemId**](CampaignApi.md#getApiV1ExternalLineItemByLineItemId) | **GET** /preview/retail-media/line-items/{lineItemId} | 
 [**getApiV1ExternalLineItemProductsByLineItemId**](CampaignApi.md#getApiV1ExternalLineItemProductsByLineItemId) | **GET** /preview/retail-media/line-items/{lineItemId}/products | 
+[**getApiV1ExternalRetailerBrandsByRetailerId**](CampaignApi.md#getApiV1ExternalRetailerBrandsByRetailerId) | **GET** /preview/retail-media/retailers/{retailerId}/brands | 
 [**getApiV1ExternalRetailerByRetailerIdSellerBySeller**](CampaignApi.md#getApiV1ExternalRetailerByRetailerIdSellerBySeller) | **GET** /preview/retail-media/retailers/{retailerId}/sellers/{seller} | 
 [**postApiV0ExternalAccountCatalogsByAccountId**](CampaignApi.md#postApiV0ExternalAccountCatalogsByAccountId) | **POST** /preview/retail-media/accounts/{accountId}/catalogs | 
 [**postApiV1ExternalAccountCampaignsByAccountId**](CampaignApi.md#postApiV1ExternalAccountCampaignsByAccountId) | **POST** /preview/retail-media/accounts/{accountId}/campaigns | 
@@ -1018,6 +1019,73 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Success |  -  |
 
+<a name="getApiV1ExternalRetailerBrandsByRetailerId"></a>
+# **getApiV1ExternalRetailerBrandsByRetailerId**
+> BrandPreviewListResponse getApiV1ExternalRetailerBrandsByRetailerId(retailerId)
+
+
+
+Gets the brands for the given retailer
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.models.*;
+import com.criteo.api.retailmedia.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    Integer retailerId = 56; // Integer | The retailer id for which brands should be fetched.
+    try {
+      BrandPreviewListResponse result = apiInstance.getApiV1ExternalRetailerBrandsByRetailerId(retailerId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#getApiV1ExternalRetailerBrandsByRetailerId");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **retailerId** | **Integer**| The retailer id for which brands should be fetched. |
+
+### Return type
+
+[**BrandPreviewListResponse**](BrandPreviewListResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Brands found. |  -  |
+
 <a name="getApiV1ExternalRetailerByRetailerIdSellerBySeller"></a>
 # **getApiV1ExternalRetailerByRetailerIdSellerBySeller**
 > SellerPreviewResponse getApiV1ExternalRetailerByRetailerIdSellerBySeller(retailerId, seller)
@@ -1223,8 +1291,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Success |  -  |
 **200** | OK |  -  |
+**201** | Success |  -  |
 
 <a name="postApiV1ExternalCampaignLineItemsByCampaignId"></a>
 # **postApiV1ExternalCampaignLineItemsByCampaignId**
@@ -1293,8 +1361,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Success |  -  |
 **200** | OK |  -  |
+**201** | Success |  -  |
 
 <a name="postApiV1ExternalCatalogsSkuRetrieval"></a>
 # **postApiV1ExternalCatalogsSkuRetrieval**

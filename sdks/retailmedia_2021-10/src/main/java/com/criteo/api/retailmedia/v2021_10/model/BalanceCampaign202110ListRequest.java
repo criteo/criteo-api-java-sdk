@@ -28,9 +28,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A class implementing the request of the Criteo API as described in API Guild Guidelines with a collection of entities as body  https://confluence.criteois.com/display/GUA/Response+Body+Guidelines
+ * A class implementing the request of the Criteo API as described in API Guild Guidelines with a collection of entities as body  https://criteo.atlassian.net/wiki/spaces/GUA/pages/1564541212/Response+Body+Guidelines
  */
-@ApiModel(description = "A class implementing the request of the Criteo API as described in API Guild Guidelines with a collection of entities as body  https://confluence.criteois.com/display/GUA/Response+Body+Guidelines")
+@ApiModel(description = "A class implementing the request of the Criteo API as described in API Guild Guidelines with a collection of entities as body  https://criteo.atlassian.net/wiki/spaces/GUA/pages/1564541212/Response+Body+Guidelines")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BalanceCampaign202110ListRequest {
   public static final String SERIALIZED_NAME_DATA = "data";

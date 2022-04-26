@@ -1801,6 +1801,12 @@ paths:
               $ref: '#/components/schemas/CreateCouponRequest'
         x-bodyName: request
       responses:
+        "200":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The created Coupon is returned.
         "201":
           content:
             text/plain:
@@ -1825,12 +1831,6 @@ paths:
             application/json: {}
             text/json: {}
           description: The request was not properly authorized.
-        "200":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The created Coupon is returned.
       tags:
       - Creative
       x-contentType: application/json-patch+json
@@ -2205,7 +2205,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-941c-7dd3acd18056
+                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                  traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
                   instance: /report
@@ -2224,7 +2225,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-941c-7dd3acd18056
+                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                  traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
                   instance: /report
@@ -2283,7 +2285,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-941c-7dd3acd18056
+                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                  traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
                   instance: /report
@@ -2302,7 +2305,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-941c-7dd3acd18056
+                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                  traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
                   instance: /report
@@ -2364,7 +2368,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-941c-7dd3acd18056
+                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                  traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
                   instance: /report
@@ -2383,7 +2388,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-941c-7dd3acd18056
+                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                  traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
                   instance: /report
@@ -2458,7 +2464,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-941c-7dd3acd18056
+                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                  traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
                   instance: /report
@@ -2477,7 +2484,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-941c-7dd3acd18056
+                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                  traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
                   instance: /report
@@ -2537,39 +2545,203 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-941c-7dd3acd18056
+                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                  traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
                   instance: /report
                   title: Start date and end date are required.
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
         "403":
           content:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-941c-7dd3acd18056
+                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                  traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
                   instance: /report
                   title: Insufficient advertiser permission.
                   detail: You do not have the rights to report on this advertiser.
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+      tags:
+      - Analytics
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /preview/reports/top-products:
+    post:
+      description: "With the topProducts endpoint, you can analyse the performances\
+        \ for each publisher, by top displays, top clicks or top sales."
+      operationId: GetTopProductsReport
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/GenerateTopProductsReportRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateTopProductsReportRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GenerateTopProductsReportRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GenerateTopProductsReportRequest'
+        x-bodyName: dataMessage
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportDataMessage'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportDataMessage'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportDataMessage'
+          description: Success
+        "400":
+          content:
+            application/json:
+              example:
+                errors:
+                - traceIdentifier: 1234e1717d88aa8a
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: null
+                  source: null
+                  stackTrace: null
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "403":
+          content:
+            application/json:
+              example:
+                errors:
+                - traceIdentifier: 1234e1717d88aa8a
+                  type: access-control
+                  code: insufficient-advertiser-permission
+                  instance: /report
+                  title: Insufficient advertiser permission.
+                  detail: You do not have the rights to report on this advertiser.
+                  source: null
+                  stackTrace: null
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+      tags:
+      - Analytics
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /preview/reports/creatives:
+    post:
+      description: "With Creatives endpoint, you can analyse the daily performances\
+        \ of your creatives on the main metrics: clicks, ctr, displays."
+      operationId: GetCreativesReport
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/GenerateCreativesReportRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateCreativesReportRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GenerateCreativesReportRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GenerateCreativesReportRequest'
+        x-bodyName: dataMessage
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportDataMessage'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportDataMessage'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportDataMessage'
+          description: Success
+        "400":
+          content:
+            application/json:
+              example:
+                errors:
+                - traceIdentifier: 1234e1717d88aa8a
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: null
+                  source: null
+                  stackTrace: null
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "403":
+          content:
+            application/json:
+              example:
+                errors:
+                - traceIdentifier: 1234e1717d88aa8a
+                  type: access-control
+                  code: insufficient-advertiser-permission
+                  instance: /report
+                  title: Insufficient advertiser permission.
+                  detail: You do not have the rights to report on this advertiser.
+                  source: null
+                  stackTrace: null
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
           description: Forbidden
       tags:
       - Analytics
@@ -2792,6 +2964,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/AdvertiserDatasetListResponse'
           description: Success
+        "401":
+          content:
+            application/json:
+              example:
+                errors:
+                - traceId: cb381a21702b247f
+                  type: authentication
+                  code: invalid
+                  title: Permission Denied; This endpoint expects a user token
+                  detail: Permission Denied; This endpoint expects a user token
+                warnings: []
+            text/plain: {}
+            text/json: {}
+          description: Unauthorized
         "403":
           content:
             application/json:
@@ -2813,20 +2999,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/AdvertiserDatasetListResponse'
           description: Forbidden
-        "401":
-          content:
-            application/json:
-              example:
-                errors:
-                - traceId: cb381a21702b247f
-                  type: authentication
-                  code: invalid
-                  title: Permission Denied; This endpoint expects a user token
-                  detail: Permission Denied; This endpoint expects a user token
-                warnings: []
-            text/plain: {}
-            text/json: {}
-          description: Unauthorized
       tags:
       - Advertiser
       x-accepts: application/json
@@ -2971,6 +3143,317 @@ paths:
       tags:
       - Catalog
       x-accepts: application/json
+  /preview/product-sets/{product-set-id}:
+    delete:
+      description: Remove a product set
+      operationId: RemoveProductSet
+      parameters:
+      - description: ID of the product set to remove
+        explode: false
+        in: path
+        name: product-set-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: ProductSet removed successfully
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Request was not valid
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Operation forbidden
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Internal Error
+      tags:
+      - Reco
+      x-accepts: application/json
+    get:
+      description: Fetch an existing product set
+      operationId: FetchProductSet
+      parameters:
+      - description: ID of the product set
+        explode: false
+        in: path
+        name: product-set-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceOutcomeOfProductSet'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceOutcomeOfProductSet'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceOutcomeOfProductSet'
+          description: Product set fetched successfully
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Unable to parse the request parameters
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Operation forbidden
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Internal Error
+      tags:
+      - Reco
+      x-accepts: application/json
+  /preview/product-sets:
+    post:
+      description: Create a new product set
+      operationId: CreateProductSet
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfCreateProductSetRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfCreateProductSetRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfCreateProductSetRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfCreateProductSetRequest'
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceOutcomeOfProductSet'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceOutcomeOfProductSet'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceOutcomeOfProductSet'
+          description: Product set created successfully
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Unable to parse the request parameters
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Operation forbidden
+        "422":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Cannot process entity content
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Internal Error
+      tags:
+      - Reco
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /preview/product-sets/partner/{partner-id}:
+    get:
+      description: Fetch product sets of a given partner
+      operationId: FetchProductSets
+      parameters:
+      - description: The ID of the partner that should be used for product set retrieval
+        explode: false
+        in: path
+        name: partner-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfProductSet'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfProductSet'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfProductSet'
+          description: Products sets fetched successfully
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Unable to parse the request parameters
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Operation forbidden
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Internal Error
+      tags:
+      - Reco
+      x-accepts: application/json
+  /preview/product-sets/preview:
+    post:
+      description: Display a preview of product set rules
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductSetStatisticsQuery'
+        required: true
+        x-bodyName: body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OkResponse'
+          description: Success
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PreviewFailResponse'
+          description: Authorization Error
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PreviewFailResponse'
+          description: Internal Error
+      tags:
+      - Reco
+      x-contentType: application/json
+      x-accepts: application/json
   /preview/recommendation/search:
     post:
       description: "Retrieves a list of products recommended for the given user. This\
@@ -2993,16 +3476,16 @@ paths:
               $ref: '#/components/schemas/OnSiteRecoRequest'
         x-bodyName: request
       responses:
-        "400":
-          content:
-            application/json: {}
-          description: Bad Request
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/OnSiteRecoResponse'
           description: Success
+        "400":
+          content:
+            application/json: {}
+          description: Bad Request
         "401":
           content:
             application/json: {}
@@ -5897,11 +6380,11 @@ components:
       example:
         data:
           attributes:
-            organizationId: 0
+            organizationId: 6
             name: name
             description: description
             criteoService: criteoService
-          id: id
+            applicationId: 0
           type: type
         warnings:
         - traceIdentifier: traceIdentifier
@@ -5958,18 +6441,16 @@ components:
           uniqueItems: false
       type: object
     ApplicationSummaryModelResource:
-      description: Resource of ApplicationSummaryModel
+      description: A class that represents a ValueType in a guild compliant way
       example:
         attributes:
-          organizationId: 0
+          organizationId: 6
           name: name
           description: description
           criteoService: criteoService
-        id: id
+          applicationId: 0
         type: type
       properties:
-        id:
-          type: string
         type:
           type: string
         attributes:
@@ -6026,29 +6507,27 @@ components:
           type: string
       type: object
     ApplicationSummaryModel:
-      description: A summary of an API application
+      description: Model of ApplicationSummary
       example:
-        organizationId: 0
+        organizationId: 6
         name: name
         description: description
         criteoService: criteoService
+        applicationId: 0
       properties:
+        applicationId:
+          format: int32
+          type: integer
         name:
-          description: The name of the application
           type: string
         organizationId:
-          description: The id of the organization that own this application
           format: int32
           type: integer
         description:
-          description: The description of the application
           type: string
         criteoService:
-          description: The business service of this application
           type: string
       type: object
-      x-criteo-canonical:
-        infoType: entity
     ResponseReadAdSet:
       description: output resource
       example:
@@ -7037,21 +7516,11 @@ components:
               excludedAudienceIds:
               - excludedAudienceIds
               - excludedAudienceIds
-              audienceSimilar:
-                audienceName: audienceName
-                visitorTypes:
-                - nonVisitor
-                - nonVisitor
               maxDaysSinceLastVisit: 5
               audienceWebsiteVisitor:
                 visitorTypes:
                 - nonVisitor
                 - nonVisitor
-              audienceContactList:
-                visitorTypes:
-                - nonVisitor
-                - nonVisitor
-                audienceId: audienceId
               audienceCustom:
                 audienceName: audienceName
                 visitorTypes:
@@ -7439,6 +7908,8 @@ components:
         id: id
         type: AdSetDisplayMultiplier
       properties:
+        attributes:
+          $ref: '#/components/schemas/AdSetDisplayMultiplier'
         id:
           description: Id of the entity
           type: string
@@ -7446,8 +7917,6 @@ components:
           description: Canonical type name of the entity
           example: AdSetDisplayMultiplier
           type: string
-        attributes:
-          $ref: '#/components/schemas/AdSetDisplayMultiplier'
       type: object
     PatchAdSetDisplayMultiplierResultResource:
       description: Data model for a Resource
@@ -7472,6 +7941,8 @@ components:
         id: id
         type: AdSetCategoryBid
       properties:
+        attributes:
+          $ref: '#/components/schemas/AdSetCategoryBid'
         id:
           description: Id of the entity
           type: string
@@ -7479,8 +7950,6 @@ components:
           description: Canonical type name of the entity
           example: AdSetCategoryBid
           type: string
-        attributes:
-          $ref: '#/components/schemas/AdSetCategoryBid'
       type: object
     PatchAdSetCategoryBidResultResource:
       description: Data model for a Resource
@@ -7616,21 +8085,11 @@ components:
             excludedAudienceIds:
             - excludedAudienceIds
             - excludedAudienceIds
-            audienceSimilar:
-              audienceName: audienceName
-              visitorTypes:
-              - nonVisitor
-              - nonVisitor
             maxDaysSinceLastVisit: 5
             audienceWebsiteVisitor:
               visitorTypes:
               - nonVisitor
               - nonVisitor
-            audienceContactList:
-              visitorTypes:
-              - nonVisitor
-              - nonVisitor
-              audienceId: audienceId
             audienceCustom:
               audienceName: audienceName
               visitorTypes:
@@ -7648,12 +8107,12 @@ components:
             budgetStrategy: capped
         type: AdSet
       properties:
+        attributes:
+          $ref: '#/components/schemas/CreateAdSet'
         type:
           description: Canonical type name of the entity
           example: AdSet
           type: string
-        attributes:
-          $ref: '#/components/schemas/CreateAdSet'
       type: object
     WriteModelPatchAdSet:
       description: write model data for resources
@@ -7743,6 +8202,8 @@ components:
         id: id
         type: AdSetDisplayMultiplier
       properties:
+        attributes:
+          $ref: '#/components/schemas/PatchAdSetDisplayMultiplier'
         id:
           description: Id of the entity
           type: string
@@ -7750,8 +8211,6 @@ components:
           description: Canonical type name of the entity
           example: AdSetDisplayMultiplier
           type: string
-        attributes:
-          $ref: '#/components/schemas/PatchAdSetDisplayMultiplier'
       type: object
     PatchAdSetCategoryBidResource:
       description: Data model for a Resource
@@ -7761,6 +8220,8 @@ components:
         id: id
         type: AdSetCategoryBid
       properties:
+        attributes:
+          $ref: '#/components/schemas/PatchAdSetCategoryBid'
         id:
           description: Id of the entity
           type: string
@@ -7768,8 +8229,6 @@ components:
           description: Canonical type name of the entity
           example: AdSetCategoryBid
           type: string
-        attributes:
-          $ref: '#/components/schemas/PatchAdSetCategoryBid'
       type: object
     CampaignSearchFilters:
       description: filters on campaign
@@ -7807,12 +8266,12 @@ components:
           objective: objective
         type: Campaign
       properties:
+        attributes:
+          $ref: '#/components/schemas/CreateCampaign'
         type:
           description: Canonical type name of the entity
           example: Campaign
           type: string
-        attributes:
-          $ref: '#/components/schemas/CreateCampaign'
       type: object
     PatchCampaignWriteResource:
       description: write model data for resources
@@ -8038,21 +8497,11 @@ components:
           excludedAudienceIds:
           - excludedAudienceIds
           - excludedAudienceIds
-          audienceSimilar:
-            audienceName: audienceName
-            visitorTypes:
-            - nonVisitor
-            - nonVisitor
           maxDaysSinceLastVisit: 5
           audienceWebsiteVisitor:
             visitorTypes:
             - nonVisitor
             - nonVisitor
-          audienceContactList:
-            visitorTypes:
-            - nonVisitor
-            - nonVisitor
-            audienceId: audienceId
           audienceCustom:
             audienceName: audienceName
             visitorTypes:
@@ -8544,21 +8993,11 @@ components:
         excludedAudienceIds:
         - excludedAudienceIds
         - excludedAudienceIds
-        audienceSimilar:
-          audienceName: audienceName
-          visitorTypes:
-          - nonVisitor
-          - nonVisitor
         maxDaysSinceLastVisit: 5
         audienceWebsiteVisitor:
           visitorTypes:
           - nonVisitor
           - nonVisitor
-        audienceContactList:
-          visitorTypes:
-          - nonVisitor
-          - nonVisitor
-          audienceId: audienceId
         audienceCustom:
           audienceName: audienceName
           visitorTypes:
@@ -8586,12 +9025,8 @@ components:
             type: string
           type: array
           uniqueItems: false
-        audienceSimilar:
-          $ref: '#/components/schemas/AudienceSimilar'
         audienceWebsiteVisitor:
           $ref: '#/components/schemas/AudienceWebsiteVisitor'
-        audienceContactList:
-          $ref: '#/components/schemas/AudienceContactList'
         audienceCustom:
           $ref: '#/components/schemas/AudienceCustom'
       type: object
@@ -8853,33 +9288,6 @@ components:
         zipCodes:
           $ref: '#/components/schemas/AdSetTargetingRule'
       type: object
-    AudienceSimilar:
-      description: similar audience configuration of the ad set
-      example:
-        audienceName: audienceName
-        visitorTypes:
-        - nonVisitor
-        - nonVisitor
-      properties:
-        audienceName:
-          description: the name of the similar audience that will be created for this
-            ad set
-          type: string
-        visitorTypes:
-          description: the interaction required on the advertiser web site during
-            the interval defined by daysSinceLastVistXXX fields for being part of
-            the audience. AdSetVisitorType.NonVisitor is automatically included for
-            this audience configuration
-          items:
-            enum:
-            - nonVisitor
-            - homePageVisitor
-            - visitor
-            - customer
-            type: string
-          type: array
-          uniqueItems: false
-      type: object
     AudienceWebsiteVisitor:
       description: website visitor audience configuration of the ad set
       example:
@@ -8887,31 +9295,6 @@ components:
         - nonVisitor
         - nonVisitor
       properties:
-        visitorTypes:
-          description: the interaction required on the advertiser web site during
-            the interval defined by daysSinceLastVistXXX fields for being part of
-            the audience
-          items:
-            enum:
-            - nonVisitor
-            - homePageVisitor
-            - visitor
-            - customer
-            type: string
-          type: array
-          uniqueItems: false
-      type: object
-    AudienceContactList:
-      description: contact audience configuration of the ad set
-      example:
-        visitorTypes:
-        - nonVisitor
-        - nonVisitor
-        audienceId: audienceId
-      properties:
-        audienceId:
-          description: the id of the existing contact list audience for this ad set
-          type: string
         visitorTypes:
           description: the interaction required on the advertiser web site during
             the interval defined by daysSinceLastVistXXX fields for being part of
@@ -10743,6 +11126,9 @@ components:
           format: uuid
           readOnly: true
           type: string
+        traceIdentifier:
+          readOnly: true
+          type: string
         type:
           readOnly: true
           type: string
@@ -10790,10 +11176,41 @@ components:
       required:
       - data
       type: object
+    ReportDataMessage:
+      description: This is the message defining the json report data
+      example:
+        data:
+        - attributes:
+            rows:
+            - key: rows
+            - key: rows
+          type: type
+        - attributes:
+            rows:
+            - key: rows
+            - key: rows
+          type: type
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ReportEntityMessage'
+          type: array
+          uniqueItems: false
+      required:
+      - data
+      type: object
     StatisticsReportQueryMessage:
       description: This is the message defining the query for Adset report
       example:
         advertiserIds: "123,456,789"
+        adSetIds:
+        - "12345"
+        - "54321"
+        adSetNames:
+        - myAdSet1
+        - myAdSet2
+        adSetStatus:
+        - Active
         dimensions:
         - CampaignId
         - Campaign
@@ -10801,6 +11218,10 @@ components:
         - Adset
         - AdvertiserId
         - Advertiser
+        - AdId
+        - Ad
+        - CouponId
+        - Coupon
         - CategoryId
         - Category
         - Hour
@@ -10818,13 +11239,31 @@ components:
         currency: EUR
         format: csv
         timezone: Europe/Paris
-        startDate: 2021-01-01T00:00:00.0000000+00:00
-        endDate: 2021-01-01T00:00:00.0000000+00:00
+        startDate: 2021-12-29T00:00:00.0000000+01:00
+        endDate: 2022-01-01T00:00:00.0000000+01:00
       properties:
         advertiserIds:
           description: "The comma-separated list of advertiser ids. If empty, all\
             \ the advertisers in the portfolio will be used"
           type: string
+        adSetIds:
+          description: "list of adSets ids. If empty, all the adSets will be fetched"
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        adSetNames:
+          description: "list of adSets names. If empty, all the adSets will be fetched"
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        adSetStatus:
+          description: "list of adSets status. If empty, all the adSets will be fetched"
+          items:
+            type: string
+          type: array
+          uniqueItems: false
         dimensions:
           description: The dimensions for the report.
           items:
@@ -10844,6 +11283,14 @@ components:
             - Device
             - CampaignId
             - Campaign
+            - AdId
+            - Ad
+            - CouponId
+            - Coupon
+            - MarketingObjectiveId
+            - MarketingObjective
+            - ChannelId
+            - Channel
             type: string
           type: array
           uniqueItems: false
@@ -10895,8 +11342,8 @@ components:
             currency: EUR
             format: csv
             timezone: Europe/Paris
-            startDate: 2021-01-01T00:00:00.0000000+00:00
-            endDate: 2021-01-01T00:00:00.0000000+00:00
+            startDate: 2021-12-29T00:00:00.0000000+01:00
+            endDate: 2021-12-29T00:00:00.0000000+01:00
       properties:
         data:
           items:
@@ -10929,8 +11376,8 @@ components:
             disclosed: false
             format: csv
             timezone: Europe/Paris
-            startDate: 2021-01-01T00:00:00.0000000+00:00
-            endDate: 2021-01-01T00:00:00.0000000+00:00
+            startDate: 2021-12-29T00:00:00.0000000+01:00
+            endDate: 2021-12-29T00:00:00.0000000+01:00
       properties:
         data:
           items:
@@ -10944,8 +11391,8 @@ components:
       description: This is the message defining the query for Transparency report
       example:
         shouldDisplayProductIds: false
-        startDate: 2021-01-01T00:00:00.0000000+00:00
-        endDate: 2021-01-02T00:00:00.0000000+00:00
+        startDate: 2021-12-29T00:00:00.0000000+01:00
+        endDate: 2022-01-01T00:00:00.0000000+01:00
       properties:
         shouldDisplayProductIds:
           default: false
@@ -10982,11 +11429,121 @@ components:
             shouldDisplayDomainDimension: true
             format: csv
             timezone: Europe/Paris
-            startDate: 2021-01-01T00:00:00.0000000+00:00
-            endDate: 2021-01-01T00:00:00.0000000+00:00
+            startDate: 2021-12-29T00:00:00.0000000+01:00
+            endDate: 2021-12-29T00:00:00.0000000+01:00
       properties:
         data:
           $ref: '#/components/schemas/GenerateCategoriesReportRequestData'
+      required:
+      - data
+      type: object
+    GenerateTopProductsReportRequest:
+      description: Contains queries for topProducts report
+      example:
+        data:
+          type: TopProductsReport
+          attributes:
+            timezone: Europe/Paris
+            startDate: 2021-12-29T00:00:00.0000000+01:00
+            endDate: 2022-01-01T00:00:00.0000000+01:00
+            advertiserId: "1234"
+            limit: 200
+            rankProductsBy: Clicks
+            dimensions:
+            - CampaignId
+            - Campaign
+            - AdSetId
+            - AdSet
+            - ProductId
+            - Product
+            - ProductUrl
+            - Brand
+            - Category
+            metrics:
+            - Clicks
+            - Ctr
+            - Visits
+            - Sales
+            - Cost
+            - Revenue
+            - Displays
+            currency: EUR
+            brands:
+            - Brand1
+            - Brand2
+            categoryIds:
+            - "6666"
+            - "7777"
+            campaignIds:
+            - "9999"
+            adSetIds:
+            - "11111"
+            - "22222"
+            adSetStatus:
+            - Active
+            - NotRunning
+      properties:
+        data:
+          $ref: '#/components/schemas/GenerateTopProductsReportRequestData'
+      required:
+      - data
+      type: object
+    GenerateCreativesReportRequest:
+      description: Contains queries for Creatives report
+      example:
+        data:
+          type: CreativesReport
+          attributes:
+            startDate: 2021-12-29T00:00:00.0000000+01:00
+            endDate: 2022-01-01T00:00:00.0000000+01:00
+            advertiserIds:
+            - "6666"
+            - "7777"
+            metrics:
+            - Clicks
+            - Ctr
+            - Displays
+            dimensions:
+            - SizeCategory
+            - DisplaySize
+            - AdType
+            - AdFormat
+            - Coupon
+            - CouponId
+            - Ad
+            - AdId
+            - Day
+            - Hour
+            timezone: Europe/Paris
+            adTypes:
+            - Dynamic
+            - Other types
+            adFormats:
+            - Mozaic
+            - Native
+            displaySizes:
+            - LeaderBoard
+            - LargeBanner
+            couponNames:
+            - a coupon name
+            couponIds:
+            - "3333"
+            - "5555"
+            adNames:
+            - Ad by Criteo team
+            adIds:
+            - "2222"
+            campaignIds:
+            - "1111"
+            adSetIds:
+            - "2222"
+            - "3333"
+            adSetStatus:
+            - Active
+            - NotRunning
+      properties:
+        data:
+          $ref: '#/components/schemas/GenerateCreativesReportRequestData'
       required:
       - data
       type: object
@@ -11009,6 +11566,23 @@ components:
           type: string
         attributes:
           $ref: '#/components/schemas/TransparencyReportAttributes'
+      required:
+      - attributes
+      - type
+      type: object
+    ReportEntityMessage:
+      description: This is the message defining the json report entity
+      example:
+        attributes:
+          rows:
+          - key: rows
+          - key: rows
+        type: type
+      properties:
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/JsonReportRows'
       required:
       - attributes
       - type
@@ -11046,6 +11620,28 @@ components:
       - attributes
       - type
       type: object
+    GenerateTopProductsReportRequestData:
+      description: Contains a query for TopProducts report and its type
+      properties:
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/GenerateTopProductsReportRequestAttributes'
+      required:
+      - attributes
+      - type
+      type: object
+    GenerateCreativesReportRequestData:
+      description: Contains a query for Creatives report and its type
+      properties:
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/GenerateCreativesReportRequestAttributes'
+      required:
+      - attributes
+      - type
+      type: object
     TransparencyReportAttributes:
       description: This is the message defining the attribute response for Transparency
         report
@@ -11072,6 +11668,21 @@ components:
       - advertiserId
       - files
       - tokenValidUntil
+      type: object
+    JsonReportRows:
+      description: This is the message defining the json report rows
+      example:
+        rows:
+        - key: rows
+        - key: rows
+      properties:
+        rows:
+          items:
+            additionalProperties:
+              type: string
+            type: object
+          type: array
+          uniqueItems: false
       type: object
     TransactionsReportQueryMessage:
       description: This is the message defining the query for Transaction report
@@ -11234,6 +11845,229 @@ components:
       - advertiserIds
       - endDate
       - format
+      - startDate
+      type: object
+    GenerateTopProductsReportRequestAttributes:
+      description: This is the message defining the query for TopProducts report
+      properties:
+        timezone:
+          default: UTC
+          description: The timezone used for the report. Timezone Database format
+            (Tz).
+          type: string
+        startDate:
+          description: "Start date of the report. Date component of ISO 8061 format,\
+            \ any time or timezone component is ignored."
+          format: date-time
+          type: string
+        endDate:
+          description: "End date of the report. Date component of ISO 8061 format,\
+            \ any time or timezone component is ignored."
+          format: date-time
+          type: string
+        advertiserId:
+          description: The client id.
+          type: string
+        limit:
+          description: The maximum number of top products returned.
+          format: int32
+          type: integer
+        rankProductsBy:
+          description: The metric used to filter the top products.
+          enum:
+          - Clicks
+          - Displays
+          - Sales
+          type: string
+        dimensions:
+          description: The dimensions for the report.
+          items:
+            enum:
+            - Campaign
+            - CampaignId
+            - AdSet
+            - AdSetId
+            - Product
+            - ProductId
+            - Category
+            - CategoryId
+            - Advertiser
+            - AdvertiserId
+            - ProductUrl
+            - Brand
+            type: string
+          type: array
+          uniqueItems: false
+        metrics:
+          description: The list of metrics to report.
+          items:
+            enum:
+            - Clicks
+            - Ctr
+            - Visits
+            - Sales
+            - Cost
+            - Revenue
+            - Displays
+            type: string
+          type: array
+          uniqueItems: false
+        currency:
+          default: EUR
+          description: The currency used for the report. ISO 4217 code (three-letter
+            capitals).
+          type: string
+        brands:
+          description: The list of brands names.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        categoryIds:
+          description: The list of category ids.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        campaignIds:
+          description: The list of campaign ids.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        adSetIds:
+          description: The list of adSet ids.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        adSetStatus:
+          description: "The list of adSet status (ex: 'Active','NotRunning')."
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+      required:
+      - advertiserId
+      - endDate
+      - rankProductsBy
+      - startDate
+      type: object
+    GenerateCreativesReportRequestAttributes:
+      description: This is the message defining the query for Creatives report
+      properties:
+        startDate:
+          description: "Start date of the report. Date component of ISO 8061 format,\
+            \ any time or timezone component is ignored."
+          format: date-time
+          type: string
+        endDate:
+          description: "End date of the report. Date component of ISO 8061 format,\
+            \ any time or timezone component is ignored."
+          format: date-time
+          type: string
+        advertiserIds:
+          description: The list of client ids.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        metrics:
+          description: The list of metrics to report.
+          items:
+            enum:
+            - Clicks
+            - Ctr
+            - Displays
+            type: string
+          type: array
+          uniqueItems: false
+        dimensions:
+          description: The list of dimensions to report.
+          items:
+            enum:
+            - AdFormat
+            - AdType
+            - Coupon
+            - CouponId
+            - DisplaySize
+            - SizeCategory
+            - Ad
+            - AdId
+            - Day
+            - Hour
+            type: string
+          type: array
+          uniqueItems: false
+        timezone:
+          description: The timezone used for the report. Timezone Database format
+            (Tz).
+          type: string
+        adTypes:
+          description: The list of adTypes.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        adFormats:
+          description: The list of adFormats.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        displaySizes:
+          description: The list of displaySizes.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        couponNames:
+          description: The list of coupon names.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        couponIds:
+          description: The list of coupon ids.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        adNames:
+          description: The list of ad names.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        adIds:
+          description: The list of ad ids.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        campaignIds:
+          description: The list of campaign ids (marketing campaign ids).
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        adSetIds:
+          description: The list of adSet ids (campaign ids).
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        adSetStatus:
+          description: "The list of adSet status (ex: 'Active','NotRunning')."
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+      required:
+      - advertiserIds
+      - dimensions
+      - endDate
+      - metrics
       - startDate
       type: object
     TransparencyReportFile:
@@ -13332,6 +14166,685 @@ components:
       required:
       - name
       - value
+      type: object
+    ResourceOutcomeOfProductSet:
+      description: A class implementing the response of the Criteo API as described
+        in API Guild Guidelines with a single entity as body
+      example:
+        data:
+          attributes:
+            isEnabled: true
+            name: name
+            numberOfProducts: 0
+            rules:
+            - field: Category1
+              values:
+              - values
+              - values
+              operator: IsIn
+            - field: Category1
+              values:
+              - values
+              - values
+              operator: IsIn
+            partnerId: partnerId
+            id: id
+            creationDate: creationDate
+            status: Unknown
+          id: id
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfProductSet'
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+      type: object
+    Outcome:
+      description: A class implementing the body of a response without data of the
+        Criteo API as described in API Guild Guidelines
+      example:
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+      type: object
+    ResourceCollectionOutcomeOfProductSet:
+      description: A class implementing the response  of the Criteo API as described
+        in API Guild Guidelines with collection of entities as body
+      example:
+        data:
+        - attributes:
+            isEnabled: true
+            name: name
+            numberOfProducts: 0
+            rules:
+            - field: Category1
+              values:
+              - values
+              - values
+              operator: IsIn
+            - field: Category1
+              values:
+              - values
+              - values
+              operator: IsIn
+            partnerId: partnerId
+            id: id
+            creationDate: creationDate
+            status: Unknown
+          id: id
+          type: type
+        - attributes:
+            isEnabled: true
+            name: name
+            numberOfProducts: 0
+            rules:
+            - field: Category1
+              values:
+              - values
+              - values
+              operator: IsIn
+            - field: Category1
+              values:
+              - values
+              - values
+              operator: IsIn
+            partnerId: partnerId
+            id: id
+            creationDate: creationDate
+            status: Unknown
+          id: id
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ResourceOfProductSet'
+          type: array
+          uniqueItems: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+      type: object
+    ValueResourceInputOfCreateProductSetRequest:
+      description: "Represents an API request message containing the usual valueResource\
+        \ data field,\r\ni.e. data is not an entity (no id). This can be used for\
+        \ association objects."
+      example:
+        data:
+          type: CreateProductSetRequest
+          attributes:
+            partnerId: "0"
+            name: My Product Set
+            isDraft: true
+            rules:
+            - operator: IsIn
+              field: Brand
+              values:
+              - MyBrand
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfCreateProductSetRequest'
+      type: object
+    ResourceOfProductSet:
+      description: A class that represents an entity in a guild compliant way
+      example:
+        attributes:
+          isEnabled: true
+          name: name
+          numberOfProducts: 0
+          rules:
+          - field: Category1
+            values:
+            - values
+            - values
+            operator: IsIn
+          - field: Category1
+            values:
+            - values
+            - values
+            operator: IsIn
+          partnerId: partnerId
+          id: id
+          creationDate: creationDate
+          status: Unknown
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ProductSet'
+        id:
+          type: string
+        type:
+          type: string
+      type: object
+    ValueResourceOfCreateProductSetRequest:
+      description: A class that represents a ValueType in a guild compliant way
+      properties:
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/CreateProductSetRequest'
+      type: object
+    ProductSet:
+      description: Encapsulate a group of product
+      example:
+        isEnabled: true
+        name: name
+        numberOfProducts: 0
+        rules:
+        - field: Category1
+          values:
+          - values
+          - values
+          operator: IsIn
+        - field: Category1
+          values:
+          - values
+          - values
+          operator: IsIn
+        partnerId: partnerId
+        id: id
+        creationDate: creationDate
+        status: Unknown
+      properties:
+        partnerId:
+          description: The partner to which the product set belong
+          type: string
+        name:
+          description: The name of the product set
+          type: string
+        status:
+          description: The status of the product set
+          enum:
+          - Unknown
+          - Draft
+          - Pending
+          - Valid
+          - Invalid
+          - Deleted
+          type: string
+        isEnabled:
+          description: True if the product set is active
+          type: boolean
+        numberOfProducts:
+          description: The number of product matching the product set
+          format: int32
+          type: integer
+        creationDate:
+          description: "Optional: The creation date of the product set (UTC time in\
+            \ ISO8601 format). Example: \"02/25/2022 14:51:26\"\r\nCan be null if\
+            \ the value doesn't exist."
+          type: string
+        rules:
+          description: The rules identifying the product belonging to the set
+          items:
+            $ref: '#/components/schemas/ProductSetRule'
+          type: array
+          uniqueItems: false
+        id:
+          type: string
+      type: object
+    CreateProductSetRequest:
+      description: Entity to create a product set
+      properties:
+        partnerId:
+          type: string
+        name:
+          type: string
+        isDraft:
+          type: boolean
+        rules:
+          items:
+            $ref: '#/components/schemas/ProductSetRule'
+          type: array
+          uniqueItems: false
+      type: object
+    ProductSetRule:
+      description: Encapsulate a product rule
+      example:
+        field: Category1
+        values:
+        - values
+        - values
+        operator: IsIn
+      properties:
+        operator:
+          description: The operator used with the field
+          enum:
+          - IsIn
+          - IsNotIn
+          - Between
+          - NotBetween
+          - LessThan
+          - GreaterThan
+          type: string
+        field:
+          description: The field on which we want to apply the rule
+          enum:
+          - Category1
+          - Category2
+          - Category3
+          - ExternalItemId
+          - SalePrice
+          - Brand
+          - CustomLabel0
+          - CustomLabel1
+          - CustomLabel2
+          - CustomLabel3
+          - CustomLabel4
+          type: string
+        values:
+          description: The values on which we want to apply the rule
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+      type: object
+    OkResponse:
+      description: Successful server response.
+      example:
+        data:
+          sampleProducts:
+          - sampleProducts
+          - sampleProducts
+          productCount: 0
+          totalProductCount: 6
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          type: type
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          type: type
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ProductSetStatistics'
+        warnings:
+          description: List of warnings
+          items:
+            $ref: '#/components/schemas/PreviewWarning'
+          type: array
+      required:
+      - data
+      - warnings
+      type: object
+    PreviewFailResponse:
+      description: Error server response.
+      properties:
+        errors:
+          description: List of errors
+          items:
+            $ref: '#/components/schemas/PreviewError'
+          type: array
+        warnings:
+          description: List of warnings
+          items:
+            $ref: '#/components/schemas/PreviewWarning'
+          type: array
+      required:
+      - errors
+      - warnings
+      type: object
+    ProductSetStatisticsQuery:
+      description: ProductSet statistics preview request
+      example:
+        productSampleCount: 5
+        productSet:
+          rules:
+          - field: Brand
+            values:
+            - values
+            - values
+            operator: IsIn
+          - field: Brand
+            values:
+            - values
+            - values
+            operator: IsIn
+          partnerId: 123
+      properties:
+        productSet:
+          $ref: '#/components/schemas/ProductSetPreview'
+        productSampleCount:
+          description: The size of the products sample
+          example: 5
+          format: int32
+          type: integer
+      required:
+      - productSampleCount
+      - productSet
+      type: object
+    ProductSetStatistics:
+      description: ProductSet statistics preview response
+      example:
+        sampleProducts:
+        - sampleProducts
+        - sampleProducts
+        productCount: 0
+        totalProductCount: 6
+      properties:
+        productCount:
+          description: Number of products in the product set
+          format: int64
+          type: integer
+        totalProductCount:
+          description: Number of products in the partner's catalog
+          format: int64
+          type: integer
+        sampleProducts:
+          description: A sample of products (hashed external id) contained in the
+            product set
+          items:
+            type: string
+          type: array
+      required:
+      - productCount
+      - sampleProducts
+      - totalProductCount
+      type: object
+    PreviewWarning:
+      description: Warning descriptor.
+      example:
+        traceId: traceId
+        code: code
+        instance: instance
+        detail: detail
+        type: type
+        title: title
+      properties:
+        traceId:
+          description: The MACHINE-READABLE correlation ID provided by the gateway
+          type: string
+        type:
+          description: "A MACHINE-READABLE code specifying error category. This information\
+            \ is used on client side to focus on certain type of error, to either\
+            \ retry some processing or display only certain type of errors."
+          type: string
+        code:
+          description: A MACHINE-READABLE error code string in kebab-case. Unique
+            across Criteo
+          type: string
+        instance:
+          description: A MACHINE-READABLE URI reference that identifies the specific
+            occurrence of the problem. This could be useful when we want to the return
+            the API Endpoint identifying the exact resource related to the error.
+          type: string
+        title:
+          description: "A short, HUMAN-READABLE summary of the problem type. It should\
+            \ not change from occurrence to occurrence of the problem, except for\
+            \ purposes of localization."
+          type: string
+        detail:
+          description: A HUMAN-READABLE detailed explanation specific to this occurrence
+            of the problem. This should not be more that 1 paragraph
+          type: string
+      required:
+      - code
+      - detail
+      - instance
+      - title
+      - traceId
+      - type
+      type: object
+    PreviewError:
+      description: Error descriptor.
+      properties:
+        traceId:
+          description: The MACHINE-READABLE correlation ID provided by the gateway
+          type: string
+        type:
+          description: "A MACHINE-READABLE code specifying error category. This information\
+            \ is used on client side to focus on certain type of error, to either\
+            \ retry some processing or display only certain type of errors."
+          type: string
+        code:
+          description: A MACHINE-READABLE error code string in kebab-case. Unique
+            across Criteo
+          type: string
+        instance:
+          description: A MACHINE-READABLE URI reference that identifies the specific
+            occurrence of the problem. This could be useful when we want to the return
+            the API Endpoint identifying the exact resource related to the error.
+          type: string
+        title:
+          description: "A short, HUMAN-READABLE summary of the problem type. It should\
+            \ not change from occurrence to occurrence of the problem, except for\
+            \ purposes of localization."
+          type: string
+        detail:
+          description: A HUMAN-READABLE detailed explanation specific to this occurrence
+            of the problem. This should not be more that 1 paragraph
+          type: string
+      required:
+      - code
+      - detail
+      - instance
+      - title
+      - traceId
+      - type
+      type: object
+    ProductSetPreview:
+      description: ProductSet preview schema
+      example:
+        rules:
+        - field: Brand
+          values:
+          - values
+          - values
+          operator: IsIn
+        - field: Brand
+          values:
+          - values
+          - values
+          operator: IsIn
+        partnerId: 123
+      properties:
+        partnerId:
+          description: PartnerId
+          example: 123
+          format: int32
+          type: integer
+        rules:
+          description: ProductSet rules
+          items:
+            $ref: '#/components/schemas/Rules'
+          type: array
+      required:
+      - partnerId
+      - rules
+      type: object
+    Rules:
+      description: ProductSet rule
+      example:
+        field: Brand
+        values:
+        - values
+        - values
+        operator: IsIn
+      properties:
+        field:
+          enum:
+          - Brand
+          - Category1
+          - Category2
+          - Category3
+          - CustomLabel0
+          - CustomLabel1
+          - CustomLabel2
+          - CustomLabel3
+          - CustomLabel4
+          - ExternalItemId
+          - RetailPrice
+          - SalePrice
+          example: Brand
+          type: string
+        operator:
+          enum:
+          - Between
+          - EqualTo
+          - GreaterThan
+          - IsIn
+          - IsNotIn
+          - LessThan
+          - NotBetween
+          - NotEqualTo
+          example: IsIn
+          type: string
+        values:
+          items:
+            type: string
+          type: array
+      required:
+      - field
+      - operator
       type: object
     OnSiteRecoResponse:
       description: Recommendation response.
