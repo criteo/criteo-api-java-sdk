@@ -2198,23 +2198,11 @@ components:
             targeting:
               geoLocation:
                 zipCodes:
-                  value:
-                    values:
-                    - values
-                    - values
-                    operand: undefined
+                  value: ""
                 countries:
-                  value:
-                    values:
-                    - values
-                    - values
-                    operand: undefined
+                  value: ""
                 subdivisions:
-                  value:
-                    values:
-                    - values
-                    - values
-                    operand: undefined
+                  value: ""
               frequencyCapping:
                 maximumImpressions: 6
                 frequency: hourly
@@ -2317,23 +2305,11 @@ components:
             targeting:
               geoLocation:
                 zipCodes:
-                  value:
-                    values:
-                    - values
-                    - values
-                    operand: undefined
+                  value: ""
                 countries:
-                  value:
-                    values:
-                    - values
-                    - values
-                    operand: undefined
+                  value: ""
                 subdivisions:
-                  value:
-                    values:
-                    - values
-                    - values
-                    operand: undefined
+                  value: ""
               frequencyCapping:
                 maximumImpressions: 6
                 frequency: hourly
@@ -2378,23 +2354,11 @@ components:
             targeting:
               geoLocation:
                 zipCodes:
-                  value:
-                    values:
-                    - values
-                    - values
-                    operand: undefined
+                  value: ""
                 countries:
-                  value:
-                    values:
-                    - values
-                    - values
-                    operand: undefined
+                  value: ""
                 subdivisions:
-                  value:
-                    values:
-                    - values
-                    - values
-                    operand: undefined
+                  value: ""
               frequencyCapping:
                 maximumImpressions: 6
                 frequency: hourly
@@ -2856,23 +2820,11 @@ components:
             targeting:
               geoLocation:
                 zipCodes:
-                  value:
-                    values:
-                    - values
-                    - values
-                    operand: undefined
+                  value: ""
                 countries:
-                  value:
-                    values:
-                    - values
-                    - values
-                    operand: undefined
+                  value: ""
                 subdivisions:
-                  value:
-                    values:
-                    - values
-                    - values
-                    operand: undefined
+                  value: ""
               frequencyCapping:
                 maximumImpressions: 6
                 frequency: hourly
@@ -2908,23 +2860,11 @@ components:
             targeting:
               geoLocation:
                 zipCodes:
-                  value:
-                    values:
-                    - values
-                    - values
-                    operand: undefined
+                  value: ""
                 countries:
-                  value:
-                    values:
-                    - values
-                    - values
-                    operand: undefined
+                  value: ""
                 subdivisions:
-                  value:
-                    values:
-                    - values
-                    - values
-                    operand: undefined
+                  value: ""
               frequencyCapping:
                 maximumImpressions: 6
                 frequency: hourly
@@ -3033,23 +2973,11 @@ components:
           targeting:
             geoLocation:
               zipCodes:
-                value:
-                  values:
-                  - values
-                  - values
-                  operand: undefined
+                value: ""
               countries:
-                value:
-                  values:
-                  - values
-                  - values
-                  operand: undefined
+                value: ""
               subdivisions:
-                value:
-                  values:
-                  - values
-                  - values
-                  operand: undefined
+                value: ""
             frequencyCapping:
               maximumImpressions: 6
               frequency: hourly
@@ -3228,23 +3156,11 @@ components:
           targeting:
             geoLocation:
               zipCodes:
-                value:
-                  values:
-                  - values
-                  - values
-                  operand: undefined
+                value: ""
               countries:
-                value:
-                  values:
-                  - values
-                  - values
-                  operand: undefined
+                value: ""
               subdivisions:
-                value:
-                  values:
-                  - values
-                  - values
-                  operand: undefined
+                value: ""
             frequencyCapping:
               maximumImpressions: 6
               frequency: hourly
@@ -3359,23 +3275,11 @@ components:
         targeting:
           geoLocation:
             zipCodes:
-              value:
-                values:
-                - values
-                - values
-                operand: undefined
+              value: ""
             countries:
-              value:
-                values:
-                - values
-                - values
-                operand: undefined
+              value: ""
             subdivisions:
-              value:
-                values:
-                - values
-                - values
-                operand: undefined
+              value: ""
           frequencyCapping:
             maximumImpressions: 6
             frequency: hourly
@@ -3472,23 +3376,11 @@ components:
         targeting:
           geoLocation:
             zipCodes:
-              value:
-                values:
-                - values
-                - values
-                operand: undefined
+              value: ""
             countries:
-              value:
-                values:
-                - values
-                - values
-                operand: undefined
+              value: ""
             subdivisions:
-              value:
-                values:
-                - values
-                - values
-                operand: undefined
+              value: ""
           frequencyCapping:
             maximumImpressions: 6
             frequency: hourly
@@ -3623,23 +3515,11 @@ components:
       example:
         geoLocation:
           zipCodes:
-            value:
-              values:
-              - values
-              - values
-              operand: undefined
+            value: ""
           countries:
-            value:
-              values:
-              - values
-              - values
-              operand: undefined
+            value: ""
           subdivisions:
-            value:
-              values:
-              - values
-              - values
-              operand: undefined
+            value: ""
         frequencyCapping:
           maximumImpressions: 6
           frequency: hourly
@@ -3833,6 +3713,9 @@ components:
         value:
           format: date-time
           type: string
+          x-nullable: true
+      required:
+      - value
       type: object
     NillableDecimal:
       description: "structure that encapsulates an object that have valid business\
@@ -3844,6 +3727,9 @@ components:
         value:
           format: double
           type: number
+          x-nullable: true
+      required:
+      - value
       type: object
     AdSetDeliveryLimitations:
       description: ad set delivery limitations model
@@ -3893,23 +3779,11 @@ components:
       description: ad set geolocation model
       example:
         zipCodes:
-          value:
-            values:
-            - values
-            - values
-            operand: undefined
+          value: ""
         countries:
-          value:
-            values:
-            - values
-            - values
-            operand: undefined
+          value: ""
         subdivisions:
-          value:
-            values:
-            - values
-            - values
-            operand: undefined
+          value: ""
       properties:
         countries:
           $ref: '#/components/schemas/NillableAdSetTargetingRule'
@@ -3942,22 +3816,17 @@ components:
         \ null values. If the structure is provided (i.e. not null), then the value\
         \ in it, even null, is provided."
       example:
-        value:
-          values:
-          - values
-          - values
-          operand: undefined
+        value: ""
       properties:
         value:
-          $ref: '#/components/schemas/AdSetTargetingRule'
+          allOf:
+          - $ref: '#/components/schemas/AdSetTargetingRule'
+          x-nullable: true
+      required:
+      - value
       type: object
     AdSetTargetingRule:
       description: ad set targeting rule model
-      example:
-        values:
-        - values
-        - values
-        operand: undefined
       properties:
         operand:
           description: Operand which states how the values should be applied

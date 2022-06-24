@@ -46,8 +46,8 @@ public class NillableAdSetTargetingRule {
    * Get value
    * @return value
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
 
   public AdSetTargetingRule getValue() {
     return value;
