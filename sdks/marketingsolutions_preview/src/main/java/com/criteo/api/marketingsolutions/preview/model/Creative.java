@@ -15,9 +15,10 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.marketingsolutions.preview.model.AdaptiveAttributes;
 import com.criteo.api.marketingsolutions.preview.model.DynamicAttributes;
+import com.criteo.api.marketingsolutions.preview.model.HtmlTagAttributes;
 import com.criteo.api.marketingsolutions.preview.model.ImageAttributes;
-import com.criteo.api.marketingsolutions.preview.model.ThirdPartyHtmlAttributes;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -49,29 +50,33 @@ public class Creative {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
+  public static final String SERIALIZED_NAME_FORMAT = "format";
+  @SerializedName(SERIALIZED_NAME_FORMAT)
+  private String format;
 
   public static final String SERIALIZED_NAME_ADVERTISER_ID = "advertiserId";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_ID)
   private String advertiserId;
 
-  public static final String SERIALIZED_NAME_PARTNER_ID = "partnerId";
-  @SerializedName(SERIALIZED_NAME_PARTNER_ID)
-  private String partnerId;
+  public static final String SERIALIZED_NAME_DATASET_ID = "datasetId";
+  @SerializedName(SERIALIZED_NAME_DATASET_ID)
+  private String datasetId;
 
   public static final String SERIALIZED_NAME_IMAGE_ATTRIBUTES = "imageAttributes";
   @SerializedName(SERIALIZED_NAME_IMAGE_ATTRIBUTES)
   private ImageAttributes imageAttributes;
 
-  public static final String SERIALIZED_NAME_THIRD_PARTY_HTML_ATTRIBUTES = "thirdPartyHtmlAttributes";
-  @SerializedName(SERIALIZED_NAME_THIRD_PARTY_HTML_ATTRIBUTES)
-  private ThirdPartyHtmlAttributes thirdPartyHtmlAttributes;
+  public static final String SERIALIZED_NAME_HTML_TAG_ATTRIBUTES = "htmlTagAttributes";
+  @SerializedName(SERIALIZED_NAME_HTML_TAG_ATTRIBUTES)
+  private HtmlTagAttributes htmlTagAttributes;
 
   public static final String SERIALIZED_NAME_DYNAMIC_ATTRIBUTES = "dynamicAttributes";
   @SerializedName(SERIALIZED_NAME_DYNAMIC_ATTRIBUTES)
   private DynamicAttributes dynamicAttributes;
+
+  public static final String SERIALIZED_NAME_ADAPTIVE_ATTRIBUTES = "adaptiveAttributes";
+  @SerializedName(SERIALIZED_NAME_ADAPTIVE_ATTRIBUTES)
+  private AdaptiveAttributes adaptiveAttributes;
 
 
   public Creative name(String name) {
@@ -84,8 +89,8 @@ public class Creative {
    * The name of the creative
    * @return name
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the creative")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "The name of the creative")
 
   public String getName() {
     return name;
@@ -130,8 +135,8 @@ public class Creative {
    * The login of the person who created this creative (
    * @return author
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The login of the person who created this creative (")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "The login of the person who created this creative (")
 
   public String getAuthor() {
     return author;
@@ -153,8 +158,8 @@ public class Creative {
    * The status of the creative
    * @return status
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The status of the creative")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "The status of the creative")
 
   public String getStatus() {
     return status;
@@ -166,26 +171,26 @@ public class Creative {
   }
 
 
-  public Creative type(String type) {
+  public Creative format(String format) {
     
-    this.type = type;
+    this.format = format;
     return this;
   }
 
    /**
-   * The type of the creative
-   * @return type
+   * The format of the creative
+   * @return format
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The type of the creative")
+  @ApiModelProperty(value = "The format of the creative")
 
-  public String getType() {
-    return type;
+  public String getFormat() {
+    return format;
   }
 
 
-  public void setType(String type) {
-    this.type = type;
+  public void setFormat(String format) {
+    this.format = format;
   }
 
 
@@ -199,8 +204,8 @@ public class Creative {
    * Advertiser linked to the Creative
    * @return advertiserId
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Advertiser linked to the Creative")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Advertiser linked to the Creative")
 
   public String getAdvertiserId() {
     return advertiserId;
@@ -212,26 +217,26 @@ public class Creative {
   }
 
 
-  public Creative partnerId(String partnerId) {
+  public Creative datasetId(String datasetId) {
     
-    this.partnerId = partnerId;
+    this.datasetId = datasetId;
     return this;
   }
 
    /**
-   * Partner linked to the Creative
-   * @return partnerId
+   * Data set id linked to the Creative
+   * @return datasetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Partner linked to the Creative")
+  @ApiModelProperty(value = "Data set id linked to the Creative")
 
-  public String getPartnerId() {
-    return partnerId;
+  public String getDatasetId() {
+    return datasetId;
   }
 
 
-  public void setPartnerId(String partnerId) {
-    this.partnerId = partnerId;
+  public void setDatasetId(String datasetId) {
+    this.datasetId = datasetId;
   }
 
 
@@ -258,26 +263,26 @@ public class Creative {
   }
 
 
-  public Creative thirdPartyHtmlAttributes(ThirdPartyHtmlAttributes thirdPartyHtmlAttributes) {
+  public Creative htmlTagAttributes(HtmlTagAttributes htmlTagAttributes) {
     
-    this.thirdPartyHtmlAttributes = thirdPartyHtmlAttributes;
+    this.htmlTagAttributes = htmlTagAttributes;
     return this;
   }
 
    /**
-   * Get thirdPartyHtmlAttributes
-   * @return thirdPartyHtmlAttributes
+   * Get htmlTagAttributes
+   * @return htmlTagAttributes
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ThirdPartyHtmlAttributes getThirdPartyHtmlAttributes() {
-    return thirdPartyHtmlAttributes;
+  public HtmlTagAttributes getHtmlTagAttributes() {
+    return htmlTagAttributes;
   }
 
 
-  public void setThirdPartyHtmlAttributes(ThirdPartyHtmlAttributes thirdPartyHtmlAttributes) {
-    this.thirdPartyHtmlAttributes = thirdPartyHtmlAttributes;
+  public void setHtmlTagAttributes(HtmlTagAttributes htmlTagAttributes) {
+    this.htmlTagAttributes = htmlTagAttributes;
   }
 
 
@@ -304,6 +309,29 @@ public class Creative {
   }
 
 
+  public Creative adaptiveAttributes(AdaptiveAttributes adaptiveAttributes) {
+    
+    this.adaptiveAttributes = adaptiveAttributes;
+    return this;
+  }
+
+   /**
+   * Get adaptiveAttributes
+   * @return adaptiveAttributes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public AdaptiveAttributes getAdaptiveAttributes() {
+    return adaptiveAttributes;
+  }
+
+
+  public void setAdaptiveAttributes(AdaptiveAttributes adaptiveAttributes) {
+    this.adaptiveAttributes = adaptiveAttributes;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -317,17 +345,18 @@ public class Creative {
         Objects.equals(this.description, creative.description) &&
         Objects.equals(this.author, creative.author) &&
         Objects.equals(this.status, creative.status) &&
-        Objects.equals(this.type, creative.type) &&
+        Objects.equals(this.format, creative.format) &&
         Objects.equals(this.advertiserId, creative.advertiserId) &&
-        Objects.equals(this.partnerId, creative.partnerId) &&
+        Objects.equals(this.datasetId, creative.datasetId) &&
         Objects.equals(this.imageAttributes, creative.imageAttributes) &&
-        Objects.equals(this.thirdPartyHtmlAttributes, creative.thirdPartyHtmlAttributes) &&
-        Objects.equals(this.dynamicAttributes, creative.dynamicAttributes);
+        Objects.equals(this.htmlTagAttributes, creative.htmlTagAttributes) &&
+        Objects.equals(this.dynamicAttributes, creative.dynamicAttributes) &&
+        Objects.equals(this.adaptiveAttributes, creative.adaptiveAttributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, author, status, type, advertiserId, partnerId, imageAttributes, thirdPartyHtmlAttributes, dynamicAttributes);
+    return Objects.hash(name, description, author, status, format, advertiserId, datasetId, imageAttributes, htmlTagAttributes, dynamicAttributes, adaptiveAttributes);
   }
 
   @Override
@@ -338,12 +367,13 @@ public class Creative {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    author: ").append(toIndentedString(author)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
+    sb.append("    datasetId: ").append(toIndentedString(datasetId)).append("\n");
     sb.append("    imageAttributes: ").append(toIndentedString(imageAttributes)).append("\n");
-    sb.append("    thirdPartyHtmlAttributes: ").append(toIndentedString(thirdPartyHtmlAttributes)).append("\n");
+    sb.append("    htmlTagAttributes: ").append(toIndentedString(htmlTagAttributes)).append("\n");
     sb.append("    dynamicAttributes: ").append(toIndentedString(dynamicAttributes)).append("\n");
+    sb.append("    adaptiveAttributes: ").append(toIndentedString(adaptiveAttributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

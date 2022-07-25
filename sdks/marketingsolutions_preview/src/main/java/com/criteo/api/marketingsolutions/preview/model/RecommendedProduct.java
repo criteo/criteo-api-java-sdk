@@ -42,6 +42,22 @@ public class RecommendedProduct {
   @SerializedName(SERIALIZED_NAME_IMAGE_URL)
   private String imageUrl;
 
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
+  public static final String SERIALIZED_NAME_PRICE = "price";
+  @SerializedName(SERIALIZED_NAME_PRICE)
+  private Double price;
+
+  public static final String SERIALIZED_NAME_GOOGLE_CATEGORY = "googleCategory";
+  @SerializedName(SERIALIZED_NAME_GOOGLE_CATEGORY)
+  private String googleCategory;
+
 
   public RecommendedProduct productExternalId(String productExternalId) {
     
@@ -96,11 +112,11 @@ public class RecommendedProduct {
   }
 
    /**
-   * Product image url.
+   * Product image.
    * @return imageUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Product image url.")
+  @ApiModelProperty(value = "Product image.")
 
   public String getImageUrl() {
     return imageUrl;
@@ -109,6 +125,98 @@ public class RecommendedProduct {
 
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
+  }
+
+
+  public RecommendedProduct name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Product name.
+   * @return name
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Product name.")
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public RecommendedProduct description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Product description.
+   * @return description
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Product description.")
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
+  public RecommendedProduct price(Double price) {
+    
+    this.price = price;
+    return this;
+  }
+
+   /**
+   * Product price.
+   * @return price
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Product price.")
+
+  public Double getPrice() {
+    return price;
+  }
+
+
+  public void setPrice(Double price) {
+    this.price = price;
+  }
+
+
+  public RecommendedProduct googleCategory(String googleCategory) {
+    
+    this.googleCategory = googleCategory;
+    return this;
+  }
+
+   /**
+   * Product google category.
+   * @return googleCategory
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Product google category.")
+
+  public String getGoogleCategory() {
+    return googleCategory;
+  }
+
+
+  public void setGoogleCategory(String googleCategory) {
+    this.googleCategory = googleCategory;
   }
 
 
@@ -123,12 +231,16 @@ public class RecommendedProduct {
     RecommendedProduct recommendedProduct = (RecommendedProduct) o;
     return Objects.equals(this.productExternalId, recommendedProduct.productExternalId) &&
         Objects.equals(this.clickUrl, recommendedProduct.clickUrl) &&
-        Objects.equals(this.imageUrl, recommendedProduct.imageUrl);
+        Objects.equals(this.imageUrl, recommendedProduct.imageUrl) &&
+        Objects.equals(this.name, recommendedProduct.name) &&
+        Objects.equals(this.description, recommendedProduct.description) &&
+        Objects.equals(this.price, recommendedProduct.price) &&
+        Objects.equals(this.googleCategory, recommendedProduct.googleCategory);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(productExternalId, clickUrl, imageUrl);
+    return Objects.hash(productExternalId, clickUrl, imageUrl, name, description, price, googleCategory);
   }
 
   @Override
@@ -138,6 +250,10 @@ public class RecommendedProduct {
     sb.append("    productExternalId: ").append(toIndentedString(productExternalId)).append("\n");
     sb.append("    clickUrl: ").append(toIndentedString(clickUrl)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    price: ").append(toIndentedString(price)).append("\n");
+    sb.append("    googleCategory: ").append(toIndentedString(googleCategory)).append("\n");
     sb.append("}");
     return sb.toString();
   }

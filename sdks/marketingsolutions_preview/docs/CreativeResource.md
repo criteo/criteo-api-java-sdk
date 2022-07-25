@@ -8,9 +8,9 @@ Data model for a Resource
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [**Creative**](Creative.md) |  |  [optional]
 **id** | **String** |  |  [optional]
 **type** | **String** |  |  [optional]
-**attributes** | [**Creative**](Creative.md) |  |  [optional]
 
 
 

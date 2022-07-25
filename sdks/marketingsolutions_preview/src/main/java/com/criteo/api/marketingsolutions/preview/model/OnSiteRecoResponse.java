@@ -57,11 +57,11 @@ public class OnSiteRecoResponse {
   }
 
    /**
-   * Recommended products.
+   * Recommended products
    * @return products
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Recommended products.")
+  @ApiModelProperty(value = "Recommended products")
 
   public List<RecommendedProduct> getProducts() {
     return products;
@@ -88,11 +88,11 @@ public class OnSiteRecoResponse {
   }
 
    /**
-   * Additional information in case of non blocking warnings or errors...
+   * Additional information in case of warnings, errors...
    * @return extraInfos
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Additional information in case of non blocking warnings or errors...")
+  @ApiModelProperty(value = "Additional information in case of warnings, errors...")
 
   public List<Integer> getExtraInfos() {
     return extraInfos;

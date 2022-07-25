@@ -31,6 +31,10 @@ import java.io.IOException;
 @ApiModel(description = "Data model for a Resource")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateCouponResource {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private CreateCoupon attributes;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -39,9 +43,28 @@ public class CreateCouponResource {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private CreateCoupon attributes;
+
+  public CreateCouponResource attributes(CreateCoupon attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public CreateCoupon getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(CreateCoupon attributes) {
+    this.attributes = attributes;
+  }
 
 
   public CreateCouponResource id(String id) {
@@ -90,29 +113,6 @@ public class CreateCouponResource {
   }
 
 
-  public CreateCouponResource attributes(CreateCoupon attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public CreateCoupon getAttributes() {
-    return attributes;
-  }
-
-
-  public void setAttributes(CreateCoupon attributes) {
-    this.attributes = attributes;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -122,23 +122,23 @@ public class CreateCouponResource {
       return false;
     }
     CreateCouponResource createCouponResource = (CreateCouponResource) o;
-    return Objects.equals(this.id, createCouponResource.id) &&
-        Objects.equals(this.type, createCouponResource.type) &&
-        Objects.equals(this.attributes, createCouponResource.attributes);
+    return Objects.equals(this.attributes, createCouponResource.attributes) &&
+        Objects.equals(this.id, createCouponResource.id) &&
+        Objects.equals(this.type, createCouponResource.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, attributes);
+    return Objects.hash(attributes, id, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateCouponResource {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

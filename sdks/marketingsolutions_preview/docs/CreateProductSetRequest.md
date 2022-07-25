@@ -8,7 +8,7 @@ Entity to create a product set
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**partnerId** | **String** |  |  [optional]
+**datasetId** | **String** |  |  [optional]
 **name** | **String** |  |  [optional]
 **isDraft** | **Boolean** |  |  [optional]
 **rules** | [**List&lt;ProductSetRule&gt;**](ProductSetRule.md) |  |  [optional]

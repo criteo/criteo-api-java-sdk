@@ -15,9 +15,10 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.marketingsolutions.preview.model.AdaptiveWriteAttributes;
 import com.criteo.api.marketingsolutions.preview.model.DynamicWriteAttributes;
+import com.criteo.api.marketingsolutions.preview.model.HtmlTagWriteAttributes;
 import com.criteo.api.marketingsolutions.preview.model.ImageWriteAttributes;
-import com.criteo.api.marketingsolutions.preview.model.ThirdPartyHtmlWriteAttributes;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -45,29 +46,29 @@ public class CreativeWrite {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
+  public static final String SERIALIZED_NAME_FORMAT = "format";
+  @SerializedName(SERIALIZED_NAME_FORMAT)
+  private String format;
 
-  public static final String SERIALIZED_NAME_ADVERTISER_ID = "advertiserId";
-  @SerializedName(SERIALIZED_NAME_ADVERTISER_ID)
-  private String advertiserId;
-
-  public static final String SERIALIZED_NAME_PARTNER_ID = "partnerId";
-  @SerializedName(SERIALIZED_NAME_PARTNER_ID)
-  private String partnerId;
+  public static final String SERIALIZED_NAME_DATASET_ID = "datasetId";
+  @SerializedName(SERIALIZED_NAME_DATASET_ID)
+  private String datasetId;
 
   public static final String SERIALIZED_NAME_IMAGE_WRITE_ATTRIBUTES = "imageWriteAttributes";
   @SerializedName(SERIALIZED_NAME_IMAGE_WRITE_ATTRIBUTES)
   private ImageWriteAttributes imageWriteAttributes;
 
-  public static final String SERIALIZED_NAME_THIRD_PARTY_HTML_WRITE_ATTRIBUTES = "thirdPartyHtmlWriteAttributes";
-  @SerializedName(SERIALIZED_NAME_THIRD_PARTY_HTML_WRITE_ATTRIBUTES)
-  private ThirdPartyHtmlWriteAttributes thirdPartyHtmlWriteAttributes;
+  public static final String SERIALIZED_NAME_HTML_TAG_WRITE_ATTRIBUTES = "htmlTagWriteAttributes";
+  @SerializedName(SERIALIZED_NAME_HTML_TAG_WRITE_ATTRIBUTES)
+  private HtmlTagWriteAttributes htmlTagWriteAttributes;
 
   public static final String SERIALIZED_NAME_DYNAMIC_WRITE_ATTRIBUTES = "dynamicWriteAttributes";
   @SerializedName(SERIALIZED_NAME_DYNAMIC_WRITE_ATTRIBUTES)
   private DynamicWriteAttributes dynamicWriteAttributes;
+
+  public static final String SERIALIZED_NAME_ADAPTIVE_WRITE_ATTRIBUTES = "adaptiveWriteAttributes";
+  @SerializedName(SERIALIZED_NAME_ADAPTIVE_WRITE_ATTRIBUTES)
+  private AdaptiveWriteAttributes adaptiveWriteAttributes;
 
 
   public CreativeWrite name(String name) {
@@ -103,8 +104,8 @@ public class CreativeWrite {
    * Ad set on which Creative will be applied
    * @return adSetId
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Ad set on which Creative will be applied")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Ad set on which Creative will be applied")
 
   public String getAdSetId() {
     return adSetId;
@@ -139,72 +140,49 @@ public class CreativeWrite {
   }
 
 
-  public CreativeWrite type(String type) {
+  public CreativeWrite format(String format) {
     
-    this.type = type;
+    this.format = format;
     return this;
   }
 
    /**
-   * The type of the creative  You can use \&quot;Image\&quot;, \&quot; ThirdPartyHtml\&quot; or \&quot;Dynamic\&quot;
-   * @return type
+   * The format of the creative  You can use \&quot;Image\&quot;, \&quot; HtmlTag\&quot; or \&quot;Dynamic\&quot;
+   * @return format
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The type of the creative  You can use \"Image\", \" ThirdPartyHtml\" or \"Dynamic\"")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The format of the creative  You can use \"Image\", \" HtmlTag\" or \"Dynamic\"")
 
-  public String getType() {
-    return type;
+  public String getFormat() {
+    return format;
   }
 
 
-  public void setType(String type) {
-    this.type = type;
+  public void setFormat(String format) {
+    this.format = format;
   }
 
 
-  public CreativeWrite advertiserId(String advertiserId) {
+  public CreativeWrite datasetId(String datasetId) {
     
-    this.advertiserId = advertiserId;
+    this.datasetId = datasetId;
     return this;
   }
 
    /**
-   * Advertiser linked to the Creative
-   * @return advertiserId
+   * Dataset linked to the Creative
+   * @return datasetId
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Advertiser linked to the Creative")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Dataset linked to the Creative")
 
-  public String getAdvertiserId() {
-    return advertiserId;
+  public String getDatasetId() {
+    return datasetId;
   }
 
 
-  public void setAdvertiserId(String advertiserId) {
-    this.advertiserId = advertiserId;
-  }
-
-
-  public CreativeWrite partnerId(String partnerId) {
-    
-    this.partnerId = partnerId;
-    return this;
-  }
-
-   /**
-   * Partner linked to the Creative
-   * @return partnerId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Partner linked to the Creative")
-
-  public String getPartnerId() {
-    return partnerId;
-  }
-
-
-  public void setPartnerId(String partnerId) {
-    this.partnerId = partnerId;
+  public void setDatasetId(String datasetId) {
+    this.datasetId = datasetId;
   }
 
 
@@ -231,26 +209,26 @@ public class CreativeWrite {
   }
 
 
-  public CreativeWrite thirdPartyHtmlWriteAttributes(ThirdPartyHtmlWriteAttributes thirdPartyHtmlWriteAttributes) {
+  public CreativeWrite htmlTagWriteAttributes(HtmlTagWriteAttributes htmlTagWriteAttributes) {
     
-    this.thirdPartyHtmlWriteAttributes = thirdPartyHtmlWriteAttributes;
+    this.htmlTagWriteAttributes = htmlTagWriteAttributes;
     return this;
   }
 
    /**
-   * Get thirdPartyHtmlWriteAttributes
-   * @return thirdPartyHtmlWriteAttributes
+   * Get htmlTagWriteAttributes
+   * @return htmlTagWriteAttributes
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ThirdPartyHtmlWriteAttributes getThirdPartyHtmlWriteAttributes() {
-    return thirdPartyHtmlWriteAttributes;
+  public HtmlTagWriteAttributes getHtmlTagWriteAttributes() {
+    return htmlTagWriteAttributes;
   }
 
 
-  public void setThirdPartyHtmlWriteAttributes(ThirdPartyHtmlWriteAttributes thirdPartyHtmlWriteAttributes) {
-    this.thirdPartyHtmlWriteAttributes = thirdPartyHtmlWriteAttributes;
+  public void setHtmlTagWriteAttributes(HtmlTagWriteAttributes htmlTagWriteAttributes) {
+    this.htmlTagWriteAttributes = htmlTagWriteAttributes;
   }
 
 
@@ -277,6 +255,29 @@ public class CreativeWrite {
   }
 
 
+  public CreativeWrite adaptiveWriteAttributes(AdaptiveWriteAttributes adaptiveWriteAttributes) {
+    
+    this.adaptiveWriteAttributes = adaptiveWriteAttributes;
+    return this;
+  }
+
+   /**
+   * Get adaptiveWriteAttributes
+   * @return adaptiveWriteAttributes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public AdaptiveWriteAttributes getAdaptiveWriteAttributes() {
+    return adaptiveWriteAttributes;
+  }
+
+
+  public void setAdaptiveWriteAttributes(AdaptiveWriteAttributes adaptiveWriteAttributes) {
+    this.adaptiveWriteAttributes = adaptiveWriteAttributes;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -289,17 +290,17 @@ public class CreativeWrite {
     return Objects.equals(this.name, creativeWrite.name) &&
         Objects.equals(this.adSetId, creativeWrite.adSetId) &&
         Objects.equals(this.description, creativeWrite.description) &&
-        Objects.equals(this.type, creativeWrite.type) &&
-        Objects.equals(this.advertiserId, creativeWrite.advertiserId) &&
-        Objects.equals(this.partnerId, creativeWrite.partnerId) &&
+        Objects.equals(this.format, creativeWrite.format) &&
+        Objects.equals(this.datasetId, creativeWrite.datasetId) &&
         Objects.equals(this.imageWriteAttributes, creativeWrite.imageWriteAttributes) &&
-        Objects.equals(this.thirdPartyHtmlWriteAttributes, creativeWrite.thirdPartyHtmlWriteAttributes) &&
-        Objects.equals(this.dynamicWriteAttributes, creativeWrite.dynamicWriteAttributes);
+        Objects.equals(this.htmlTagWriteAttributes, creativeWrite.htmlTagWriteAttributes) &&
+        Objects.equals(this.dynamicWriteAttributes, creativeWrite.dynamicWriteAttributes) &&
+        Objects.equals(this.adaptiveWriteAttributes, creativeWrite.adaptiveWriteAttributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, adSetId, description, type, advertiserId, partnerId, imageWriteAttributes, thirdPartyHtmlWriteAttributes, dynamicWriteAttributes);
+    return Objects.hash(name, adSetId, description, format, datasetId, imageWriteAttributes, htmlTagWriteAttributes, dynamicWriteAttributes, adaptiveWriteAttributes);
   }
 
   @Override
@@ -309,12 +310,12 @@ public class CreativeWrite {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    adSetId: ").append(toIndentedString(adSetId)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    datasetId: ").append(toIndentedString(datasetId)).append("\n");
     sb.append("    imageWriteAttributes: ").append(toIndentedString(imageWriteAttributes)).append("\n");
-    sb.append("    thirdPartyHtmlWriteAttributes: ").append(toIndentedString(thirdPartyHtmlWriteAttributes)).append("\n");
+    sb.append("    htmlTagWriteAttributes: ").append(toIndentedString(htmlTagWriteAttributes)).append("\n");
     sb.append("    dynamicWriteAttributes: ").append(toIndentedString(dynamicWriteAttributes)).append("\n");
+    sb.append("    adaptiveWriteAttributes: ").append(toIndentedString(adaptiveWriteAttributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

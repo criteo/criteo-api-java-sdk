@@ -47,11 +47,11 @@ public class Tag {
   }
 
    /**
-   * Third party html tag
+   * Html tag
    * @return htmlTag
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Third party html tag")
+  @ApiModelProperty(value = "Html tag")
 
   public String getHtmlTag() {
     return htmlTag;

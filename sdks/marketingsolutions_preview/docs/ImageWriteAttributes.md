@@ -9,7 +9,7 @@ The attributes specific to create or update an Image creative
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **base64Strings** | **List&lt;String&gt;** | Array of images as a base-64 encoded string |  [optional]
-**landingPageUrl** | **String** | Web redirection of the landing page url |  [optional]
+**landingPageUrl** | **URI** | Web redirection of the landing page url |  [optional]
 
 
 

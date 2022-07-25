@@ -8,7 +8,7 @@ Encapsulate a group of product
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**partnerId** | **String** | The partner to which the product set belong |  [optional]
+**datasetId** | **String** | The dataset to which the product set belong |  [optional]
 **name** | **String** | The name of the product set |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) | The status of the product set |  [optional]
 **isEnabled** | **Boolean** | True if the product set is active |  [optional]

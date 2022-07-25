@@ -8,9 +8,9 @@ Data model for a Resource
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [**Coupon**](Coupon.md) |  |  [optional]
 **id** | **String** |  |  [optional]
 **type** | **String** |  |  [optional]
-**attributes** | [**Coupon**](Coupon.md) |  |  [optional]
 
 
 

@@ -27,15 +27,22 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.criteo.api.marketingsolutions.preview.model.AdSetAudienceLinkEntityV1Response;
+import com.criteo.api.marketingsolutions.preview.model.AdSetAudienceLinkInputEntityV1;
 import com.criteo.api.marketingsolutions.preview.model.AdSetCategoryBidListResponse;
 import com.criteo.api.marketingsolutions.preview.model.AdSetDisplayMultiplierListResponse;
+import com.criteo.api.marketingsolutions.preview.model.AdSetTargetingDealIdsDisableResultResponse;
+import com.criteo.api.marketingsolutions.preview.model.AdSetTargetingDealIdsResponse;
+import com.criteo.api.marketingsolutions.preview.model.AdSetTargetingDealIdsSetResultResponse;
+import com.criteo.api.marketingsolutions.preview.model.AdSetTargetingVideoPositioningDisableResultResponse;
+import com.criteo.api.marketingsolutions.preview.model.AdSetTargetingVideoPositioningResponse;
+import com.criteo.api.marketingsolutions.preview.model.AdSetTargetingVideoPositioningSetResultResponse;
 import com.criteo.api.marketingsolutions.preview.model.ApiErrorResponse;
 import com.criteo.api.marketingsolutions.preview.model.ApiRequestOfTargetingEntity;
 import com.criteo.api.marketingsolutions.preview.model.ApiResponseOfTargetingEntity;
 import com.criteo.api.marketingsolutions.preview.model.CampaignListResponse;
 import com.criteo.api.marketingsolutions.preview.model.CampaignResponse;
 import com.criteo.api.marketingsolutions.preview.model.CampaignSearchRequest;
-import com.criteo.api.marketingsolutions.preview.model.CreateAdSetRequest;
 import com.criteo.api.marketingsolutions.preview.model.CreateCampaignRequest;
 import com.criteo.api.marketingsolutions.preview.model.OciBrandSafetyResponse;
 import com.criteo.api.marketingsolutions.preview.model.OciBrandSafetyRule;
@@ -54,6 +61,9 @@ import com.criteo.api.marketingsolutions.preview.model.ResponseAdSetId;
 import com.criteo.api.marketingsolutions.preview.model.ResponseReadAdSet;
 import com.criteo.api.marketingsolutions.preview.model.ResponsesAdSetId;
 import com.criteo.api.marketingsolutions.preview.model.ResponsesReadAdSet;
+import com.criteo.api.marketingsolutions.preview.model.SetAdSetTargetingDealIdsRequest;
+import com.criteo.api.marketingsolutions.preview.model.SetAdSetTargetingVideoPositioningRequest;
+import com.criteo.api.marketingsolutions.preview.model.SupplyVendorListResponse;
 import com.criteo.api.marketingsolutions.preview.model.TargetType;
 
 import java.lang.reflect.Type;
@@ -81,120 +91,6 @@ public class CampaignApi {
         this.localVarApiClient = apiClient;
     }
 
-    /**
-     * Build call for createAdSet
-     * @param createAdSetRequest the ad sets to create (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createAdSetCall(CreateAdSetRequest createAdSetRequest, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = createAdSetRequest;
-
-        // create path and map variables
-        String localVarPath = "/preview/marketing-solutions/ad-sets";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAdSetValidateBeforeCall(CreateAdSetRequest createAdSetRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = createAdSetCall(createAdSetRequest, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * 
-     * Create the specified ad set
-     * @param createAdSetRequest the ad sets to create (optional)
-     * @return ResponseReadAdSet
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ResponseReadAdSet createAdSet(CreateAdSetRequest createAdSetRequest) throws ApiException {
-        ApiResponse<ResponseReadAdSet> localVarResp = createAdSetWithHttpInfo(createAdSetRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Create the specified ad set
-     * @param createAdSetRequest the ad sets to create (optional)
-     * @return ApiResponse&lt;ResponseReadAdSet&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ResponseReadAdSet> createAdSetWithHttpInfo(CreateAdSetRequest createAdSetRequest) throws ApiException {
-        okhttp3.Call localVarCall = createAdSetValidateBeforeCall(createAdSetRequest, null);
-        Type localVarReturnType = new TypeToken<ResponseReadAdSet>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Create the specified ad set
-     * @param createAdSetRequest the ad sets to create (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call createAdSetAsync(CreateAdSetRequest createAdSetRequest, final ApiCallback<ResponseReadAdSet> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = createAdSetValidateBeforeCall(createAdSetRequest, _callback);
-        Type localVarReturnType = new TypeToken<ResponseReadAdSet>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
     /**
      * Build call for createCampaign
      * @param createCampaignRequest the campaigns to create (optional)
@@ -1102,6 +998,250 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
+     * Build call for disableAdSetTargetingDealIds
+     * @param adSetId Id of the Ad Set (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call disableAdSetTargetingDealIdsCall(String adSetId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids/disable"
+            .replaceAll("\\{" + "ad-set-id" + "\\}", localVarApiClient.escapeString(adSetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call disableAdSetTargetingDealIdsValidateBeforeCall(String adSetId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'adSetId' is set
+        if (adSetId == null) {
+            throw new ApiException("Missing the required parameter 'adSetId' when calling disableAdSetTargetingDealIds(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = disableAdSetTargetingDealIdsCall(adSetId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Disable the Deal Id Targeting configuration for the ad set whose id is specified
+     * @param adSetId Id of the Ad Set (required)
+     * @return AdSetTargetingDealIdsDisableResultResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public AdSetTargetingDealIdsDisableResultResponse disableAdSetTargetingDealIds(String adSetId) throws ApiException {
+        ApiResponse<AdSetTargetingDealIdsDisableResultResponse> localVarResp = disableAdSetTargetingDealIdsWithHttpInfo(adSetId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Disable the Deal Id Targeting configuration for the ad set whose id is specified
+     * @param adSetId Id of the Ad Set (required)
+     * @return ApiResponse&lt;AdSetTargetingDealIdsDisableResultResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AdSetTargetingDealIdsDisableResultResponse> disableAdSetTargetingDealIdsWithHttpInfo(String adSetId) throws ApiException {
+        okhttp3.Call localVarCall = disableAdSetTargetingDealIdsValidateBeforeCall(adSetId, null);
+        Type localVarReturnType = new TypeToken<AdSetTargetingDealIdsDisableResultResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Disable the Deal Id Targeting configuration for the ad set whose id is specified
+     * @param adSetId Id of the Ad Set (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call disableAdSetTargetingDealIdsAsync(String adSetId, final ApiCallback<AdSetTargetingDealIdsDisableResultResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = disableAdSetTargetingDealIdsValidateBeforeCall(adSetId, _callback);
+        Type localVarReturnType = new TypeToken<AdSetTargetingDealIdsDisableResultResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for disableAdSetTargetingVideoPositioning
+     * @param adSetId Id of the Ad Set (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call disableAdSetTargetingVideoPositioningCall(String adSetId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable"
+            .replaceAll("\\{" + "ad-set-id" + "\\}", localVarApiClient.escapeString(adSetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call disableAdSetTargetingVideoPositioningValidateBeforeCall(String adSetId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'adSetId' is set
+        if (adSetId == null) {
+            throw new ApiException("Missing the required parameter 'adSetId' when calling disableAdSetTargetingVideoPositioning(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = disableAdSetTargetingVideoPositioningCall(adSetId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Disable the Video Positioning Targeting configuration for the ad set whose id is specified
+     * @param adSetId Id of the Ad Set (required)
+     * @return AdSetTargetingVideoPositioningDisableResultResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public AdSetTargetingVideoPositioningDisableResultResponse disableAdSetTargetingVideoPositioning(String adSetId) throws ApiException {
+        ApiResponse<AdSetTargetingVideoPositioningDisableResultResponse> localVarResp = disableAdSetTargetingVideoPositioningWithHttpInfo(adSetId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Disable the Video Positioning Targeting configuration for the ad set whose id is specified
+     * @param adSetId Id of the Ad Set (required)
+     * @return ApiResponse&lt;AdSetTargetingVideoPositioningDisableResultResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AdSetTargetingVideoPositioningDisableResultResponse> disableAdSetTargetingVideoPositioningWithHttpInfo(String adSetId) throws ApiException {
+        okhttp3.Call localVarCall = disableAdSetTargetingVideoPositioningValidateBeforeCall(adSetId, null);
+        Type localVarReturnType = new TypeToken<AdSetTargetingVideoPositioningDisableResultResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Disable the Video Positioning Targeting configuration for the ad set whose id is specified
+     * @param adSetId Id of the Ad Set (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call disableAdSetTargetingVideoPositioningAsync(String adSetId, final ApiCallback<AdSetTargetingVideoPositioningDisableResultResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = disableAdSetTargetingVideoPositioningValidateBeforeCall(adSetId, _callback);
+        Type localVarReturnType = new TypeToken<AdSetTargetingVideoPositioningDisableResultResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getAdSet
      * @param adSetId Id of the ad set (required)
      * @param _callback Callback for upload/download progress
@@ -1218,6 +1358,250 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = getAdSetValidateBeforeCall(adSetId, _callback);
         Type localVarReturnType = new TypeToken<ResponseReadAdSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAdSetTargetingDealIds
+     * @param adSetId Id of the Ad Set (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the Deal Id Targeting configuration </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdSetTargetingDealIdsCall(String adSetId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids"
+            .replaceAll("\\{" + "ad-set-id" + "\\}", localVarApiClient.escapeString(adSetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAdSetTargetingDealIdsValidateBeforeCall(String adSetId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'adSetId' is set
+        if (adSetId == null) {
+            throw new ApiException("Missing the required parameter 'adSetId' when calling getAdSetTargetingDealIds(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getAdSetTargetingDealIdsCall(adSetId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Get the Deal Id Targeting configuration for the ad set whose id is specified
+     * @param adSetId Id of the Ad Set (required)
+     * @return AdSetTargetingDealIdsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the Deal Id Targeting configuration </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public AdSetTargetingDealIdsResponse getAdSetTargetingDealIds(String adSetId) throws ApiException {
+        ApiResponse<AdSetTargetingDealIdsResponse> localVarResp = getAdSetTargetingDealIdsWithHttpInfo(adSetId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get the Deal Id Targeting configuration for the ad set whose id is specified
+     * @param adSetId Id of the Ad Set (required)
+     * @return ApiResponse&lt;AdSetTargetingDealIdsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the Deal Id Targeting configuration </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AdSetTargetingDealIdsResponse> getAdSetTargetingDealIdsWithHttpInfo(String adSetId) throws ApiException {
+        okhttp3.Call localVarCall = getAdSetTargetingDealIdsValidateBeforeCall(adSetId, null);
+        Type localVarReturnType = new TypeToken<AdSetTargetingDealIdsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get the Deal Id Targeting configuration for the ad set whose id is specified
+     * @param adSetId Id of the Ad Set (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the Deal Id Targeting configuration </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdSetTargetingDealIdsAsync(String adSetId, final ApiCallback<AdSetTargetingDealIdsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAdSetTargetingDealIdsValidateBeforeCall(adSetId, _callback);
+        Type localVarReturnType = new TypeToken<AdSetTargetingDealIdsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAdSetTargetingVideoPositioning
+     * @param adSetId Id of the Ad Set (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the Video Positioning Targeting configuration </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdSetTargetingVideoPositioningCall(String adSetId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning"
+            .replaceAll("\\{" + "ad-set-id" + "\\}", localVarApiClient.escapeString(adSetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAdSetTargetingVideoPositioningValidateBeforeCall(String adSetId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'adSetId' is set
+        if (adSetId == null) {
+            throw new ApiException("Missing the required parameter 'adSetId' when calling getAdSetTargetingVideoPositioning(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getAdSetTargetingVideoPositioningCall(adSetId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Get the Video Positioning Targeting configuration for the ad set whose id is specified
+     * @param adSetId Id of the Ad Set (required)
+     * @return AdSetTargetingVideoPositioningResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the Video Positioning Targeting configuration </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public AdSetTargetingVideoPositioningResponse getAdSetTargetingVideoPositioning(String adSetId) throws ApiException {
+        ApiResponse<AdSetTargetingVideoPositioningResponse> localVarResp = getAdSetTargetingVideoPositioningWithHttpInfo(adSetId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get the Video Positioning Targeting configuration for the ad set whose id is specified
+     * @param adSetId Id of the Ad Set (required)
+     * @return ApiResponse&lt;AdSetTargetingVideoPositioningResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the Video Positioning Targeting configuration </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AdSetTargetingVideoPositioningResponse> getAdSetTargetingVideoPositioningWithHttpInfo(String adSetId) throws ApiException {
+        okhttp3.Call localVarCall = getAdSetTargetingVideoPositioningValidateBeforeCall(adSetId, null);
+        Type localVarReturnType = new TypeToken<AdSetTargetingVideoPositioningResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get the Video Positioning Targeting configuration for the ad set whose id is specified
+     * @param adSetId Id of the Ad Set (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the Video Positioning Targeting configuration </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAdSetTargetingVideoPositioningAsync(String adSetId, final ApiCallback<AdSetTargetingVideoPositioningResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAdSetTargetingVideoPositioningValidateBeforeCall(adSetId, _callback);
+        Type localVarReturnType = new TypeToken<AdSetTargetingVideoPositioningResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2370,6 +2754,116 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = getOCItargetingRuleValidateBeforeCall(targetType, targetId, _callback);
         Type localVarReturnType = new TypeToken<OciTargetingResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSupplyVendorList
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSupplyVendorListCall(final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ad-sets/targeting/supply-vendors";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSupplyVendorListValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getSupplyVendorListCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Fetch the list of available supply vendors for any Ad Set targetings
+     * @return SupplyVendorListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public SupplyVendorListResponse getSupplyVendorList() throws ApiException {
+        ApiResponse<SupplyVendorListResponse> localVarResp = getSupplyVendorListWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Fetch the list of available supply vendors for any Ad Set targetings
+     * @return ApiResponse&lt;SupplyVendorListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SupplyVendorListResponse> getSupplyVendorListWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSupplyVendorListValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<SupplyVendorListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Fetch the list of available supply vendors for any Ad Set targetings
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSupplyVendorListAsync(final ApiCallback<SupplyVendorListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSupplyVendorListValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<SupplyVendorListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4106,6 +4600,262 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
+     * Build call for setAdSetTargetingDealIds
+     * @param adSetId Id of the Ad Set (required)
+     * @param setAdSetTargetingDealIdsRequest the new Deal Id Targeting configuration (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call setAdSetTargetingDealIdsCall(String adSetId, SetAdSetTargetingDealIdsRequest setAdSetTargetingDealIdsRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = setAdSetTargetingDealIdsRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids"
+            .replaceAll("\\{" + "ad-set-id" + "\\}", localVarApiClient.escapeString(adSetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call setAdSetTargetingDealIdsValidateBeforeCall(String adSetId, SetAdSetTargetingDealIdsRequest setAdSetTargetingDealIdsRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'adSetId' is set
+        if (adSetId == null) {
+            throw new ApiException("Missing the required parameter 'adSetId' when calling setAdSetTargetingDealIds(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = setAdSetTargetingDealIdsCall(adSetId, setAdSetTargetingDealIdsRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Set the Deal Id Targeting configuration for the ad set whose id is specified
+     * @param adSetId Id of the Ad Set (required)
+     * @param setAdSetTargetingDealIdsRequest the new Deal Id Targeting configuration (optional)
+     * @return AdSetTargetingDealIdsSetResultResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public AdSetTargetingDealIdsSetResultResponse setAdSetTargetingDealIds(String adSetId, SetAdSetTargetingDealIdsRequest setAdSetTargetingDealIdsRequest) throws ApiException {
+        ApiResponse<AdSetTargetingDealIdsSetResultResponse> localVarResp = setAdSetTargetingDealIdsWithHttpInfo(adSetId, setAdSetTargetingDealIdsRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Set the Deal Id Targeting configuration for the ad set whose id is specified
+     * @param adSetId Id of the Ad Set (required)
+     * @param setAdSetTargetingDealIdsRequest the new Deal Id Targeting configuration (optional)
+     * @return ApiResponse&lt;AdSetTargetingDealIdsSetResultResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AdSetTargetingDealIdsSetResultResponse> setAdSetTargetingDealIdsWithHttpInfo(String adSetId, SetAdSetTargetingDealIdsRequest setAdSetTargetingDealIdsRequest) throws ApiException {
+        okhttp3.Call localVarCall = setAdSetTargetingDealIdsValidateBeforeCall(adSetId, setAdSetTargetingDealIdsRequest, null);
+        Type localVarReturnType = new TypeToken<AdSetTargetingDealIdsSetResultResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Set the Deal Id Targeting configuration for the ad set whose id is specified
+     * @param adSetId Id of the Ad Set (required)
+     * @param setAdSetTargetingDealIdsRequest the new Deal Id Targeting configuration (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call setAdSetTargetingDealIdsAsync(String adSetId, SetAdSetTargetingDealIdsRequest setAdSetTargetingDealIdsRequest, final ApiCallback<AdSetTargetingDealIdsSetResultResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = setAdSetTargetingDealIdsValidateBeforeCall(adSetId, setAdSetTargetingDealIdsRequest, _callback);
+        Type localVarReturnType = new TypeToken<AdSetTargetingDealIdsSetResultResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for setAdSetTargetingVideoPositioning
+     * @param adSetId Id of the Ad Set (required)
+     * @param setAdSetTargetingVideoPositioningRequest the new Video Positioning Targeting configuration (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call setAdSetTargetingVideoPositioningCall(String adSetId, SetAdSetTargetingVideoPositioningRequest setAdSetTargetingVideoPositioningRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = setAdSetTargetingVideoPositioningRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning"
+            .replaceAll("\\{" + "ad-set-id" + "\\}", localVarApiClient.escapeString(adSetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call setAdSetTargetingVideoPositioningValidateBeforeCall(String adSetId, SetAdSetTargetingVideoPositioningRequest setAdSetTargetingVideoPositioningRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'adSetId' is set
+        if (adSetId == null) {
+            throw new ApiException("Missing the required parameter 'adSetId' when calling setAdSetTargetingVideoPositioning(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = setAdSetTargetingVideoPositioningCall(adSetId, setAdSetTargetingVideoPositioningRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Set the Video Positioning Targeting configuration for the ad set whose id is specified
+     * @param adSetId Id of the Ad Set (required)
+     * @param setAdSetTargetingVideoPositioningRequest the new Video Positioning Targeting configuration (optional)
+     * @return AdSetTargetingVideoPositioningSetResultResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public AdSetTargetingVideoPositioningSetResultResponse setAdSetTargetingVideoPositioning(String adSetId, SetAdSetTargetingVideoPositioningRequest setAdSetTargetingVideoPositioningRequest) throws ApiException {
+        ApiResponse<AdSetTargetingVideoPositioningSetResultResponse> localVarResp = setAdSetTargetingVideoPositioningWithHttpInfo(adSetId, setAdSetTargetingVideoPositioningRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Set the Video Positioning Targeting configuration for the ad set whose id is specified
+     * @param adSetId Id of the Ad Set (required)
+     * @param setAdSetTargetingVideoPositioningRequest the new Video Positioning Targeting configuration (optional)
+     * @return ApiResponse&lt;AdSetTargetingVideoPositioningSetResultResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AdSetTargetingVideoPositioningSetResultResponse> setAdSetTargetingVideoPositioningWithHttpInfo(String adSetId, SetAdSetTargetingVideoPositioningRequest setAdSetTargetingVideoPositioningRequest) throws ApiException {
+        okhttp3.Call localVarCall = setAdSetTargetingVideoPositioningValidateBeforeCall(adSetId, setAdSetTargetingVideoPositioningRequest, null);
+        Type localVarReturnType = new TypeToken<AdSetTargetingVideoPositioningSetResultResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Set the Video Positioning Targeting configuration for the ad set whose id is specified
+     * @param adSetId Id of the Ad Set (required)
+     * @param setAdSetTargetingVideoPositioningRequest the new Video Positioning Targeting configuration (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> the errors/warnings if any </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call setAdSetTargetingVideoPositioningAsync(String adSetId, SetAdSetTargetingVideoPositioningRequest setAdSetTargetingVideoPositioningRequest, final ApiCallback<AdSetTargetingVideoPositioningSetResultResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = setAdSetTargetingVideoPositioningValidateBeforeCall(adSetId, setAdSetTargetingVideoPositioningRequest, _callback);
+        Type localVarReturnType = new TypeToken<AdSetTargetingVideoPositioningSetResultResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for startAdSets
      * @param requestsAdSetId All the ad sets to start (optional)
      * @param _callback Callback for upload/download progress
@@ -4330,6 +5080,134 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = stopAdSetsValidateBeforeCall(requestsAdSetId, _callback);
         Type localVarReturnType = new TypeToken<ResponsesAdSetId>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateAdSetAudience
+     * @param adSetId Ad set id (required)
+     * @param adSetAudienceLinkInputEntityV1 Audience and ad set to link (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateAdSetAudienceCall(String adSetId, AdSetAudienceLinkInputEntityV1 adSetAudienceLinkInputEntityV1, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = adSetAudienceLinkInputEntityV1;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ad-sets/{ad-set-id}/audience"
+            .replaceAll("\\{" + "ad-set-id" + "\\}", localVarApiClient.escapeString(adSetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateAdSetAudienceValidateBeforeCall(String adSetId, AdSetAudienceLinkInputEntityV1 adSetAudienceLinkInputEntityV1, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'adSetId' is set
+        if (adSetId == null) {
+            throw new ApiException("Missing the required parameter 'adSetId' when calling updateAdSetAudience(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = updateAdSetAudienceCall(adSetId, adSetAudienceLinkInputEntityV1, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Link or unlink an audience with an ad set
+     * @param adSetId Ad set id (required)
+     * @param adSetAudienceLinkInputEntityV1 Audience and ad set to link (optional)
+     * @return AdSetAudienceLinkEntityV1Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public AdSetAudienceLinkEntityV1Response updateAdSetAudience(String adSetId, AdSetAudienceLinkInputEntityV1 adSetAudienceLinkInputEntityV1) throws ApiException {
+        ApiResponse<AdSetAudienceLinkEntityV1Response> localVarResp = updateAdSetAudienceWithHttpInfo(adSetId, adSetAudienceLinkInputEntityV1);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Link or unlink an audience with an ad set
+     * @param adSetId Ad set id (required)
+     * @param adSetAudienceLinkInputEntityV1 Audience and ad set to link (optional)
+     * @return ApiResponse&lt;AdSetAudienceLinkEntityV1Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AdSetAudienceLinkEntityV1Response> updateAdSetAudienceWithHttpInfo(String adSetId, AdSetAudienceLinkInputEntityV1 adSetAudienceLinkInputEntityV1) throws ApiException {
+        okhttp3.Call localVarCall = updateAdSetAudienceValidateBeforeCall(adSetId, adSetAudienceLinkInputEntityV1, null);
+        Type localVarReturnType = new TypeToken<AdSetAudienceLinkEntityV1Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Link or unlink an audience with an ad set
+     * @param adSetId Ad set id (required)
+     * @param adSetAudienceLinkInputEntityV1 Audience and ad set to link (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateAdSetAudienceAsync(String adSetId, AdSetAudienceLinkInputEntityV1 adSetAudienceLinkInputEntityV1, final ApiCallback<AdSetAudienceLinkEntityV1Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateAdSetAudienceValidateBeforeCall(adSetId, adSetAudienceLinkInputEntityV1, _callback);
+        Type localVarReturnType = new TypeToken<AdSetAudienceLinkEntityV1Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

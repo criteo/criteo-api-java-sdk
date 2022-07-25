@@ -2,15 +2,25 @@
 
 # RetailMediaAudience
 
-Retail Media audience
+All the information about a retail media audience
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | the name of the entity type | 
+**audienceType** | [**AudienceTypeEnum**](#AudienceTypeEnum) | Type of the audience | 
 **id** | **String** | Unique ID of this audience. | 
+**type** | **String** | Name of the entity i.e. RetailMediaAudienceSummary | 
 **attributes** | [**RetailMediaAudienceAttributes**](RetailMediaAudienceAttributes.md) |  | 
+
+
+
+## Enum: AudienceTypeEnum
+
+Name | Value
+---- | -----
+CUSTOMERLIST | &quot;customerList&quot;
+USERBEHAVIOR | &quot;userBehavior&quot;
 
 
 

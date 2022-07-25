@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**getCoupons**](CreativeApi.md#getCoupons) | **GET** /preview/advertisers/{advertiser-id}/coupons | 
 [**getCreative**](CreativeApi.md#getCreative) | **GET** /preview/creatives/{id} | 
 [**getCreativePreview**](CreativeApi.md#getCreativePreview) | **GET** /preview/creatives/{id}/preview | 
+[**getCreativePreviewPost**](CreativeApi.md#getCreativePreviewPost) | **POST** /preview/creatives/{id}/preview | 
 [**getCreatives**](CreativeApi.md#getCreatives) | **GET** /preview/advertisers/{advertiser-id}/creatives | 
 
 
@@ -97,7 +98,7 @@ Name | Type | Description  | Notes
 
 <a name="createCoupon"></a>
 # **createCoupon**
-> createCoupon(advertiserId, createCouponRequest)
+> CouponResponse createCoupon(advertiserId, createCouponRequest)
 
 
 
@@ -126,7 +127,8 @@ public class Example {
     String advertiserId = "advertiserId_example"; // String | The advertiser identifier.
     CreateCouponRequest createCouponRequest = new CreateCouponRequest(); // CreateCouponRequest | 
     try {
-      apiInstance.createCoupon(advertiserId, createCouponRequest);
+      CouponResponse result = apiInstance.createCoupon(advertiserId, createCouponRequest);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CreativeApi#createCoupon");
       System.err.println("Status code: " + e.getCode());
@@ -147,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**CouponResponse**](CouponResponse.md)
 
 ### Authorization
 
@@ -161,8 +163,7 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The created Coupon is returned. |  -  |
-**201** | Success |  -  |
+**201** | The created Coupon is returned. |  -  |
 **400** | The request contained invalid parameters. |  -  |
 **403** | The request was not properly authorized. |  -  |
 
@@ -667,7 +668,7 @@ Name | Type | Description  | Notes
 
 
 
-Get the list of self-services Ads (50 by default, to get a different number of Ads, you can use the offset and limit parameters in the query string) for a given advertiser
+Get the list of self-services Ads for a given advertiser
 
 ### Example
 ```java
@@ -958,7 +959,7 @@ Name | Type | Description  | Notes
 
 
 
-Get the list of self-services Coupons (50 by default, to get a different number of Coupons, you can use the offset and limit parameters in the query string) for a given advertiser
+Get the list of self-services Coupons for a given advertiser
 
 ### Example
 ```java
@@ -1168,13 +1169,86 @@ Name | Type | Description  | Notes
 **400** | The request contained invalid parameters. |  -  |
 **403** | The request was not properly authorized. |  -  |
 
+<a name="getCreativePreviewPost"></a>
+# **getCreativePreviewPost**
+> String getCreativePreviewPost(id, width, height)
+
+
+
+Get the preview of a specific Creative
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CreativeApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CreativeApi apiInstance = new CreativeApi(defaultClient);
+    String id = "id_example"; // String | The Creative identifier to preview.
+    Integer width = 56; // Integer | The width of the Creative to preview.
+    Integer height = 56; // Integer | The height of the Creative to preview.
+    try {
+      String result = apiInstance.getCreativePreviewPost(id, width, height);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CreativeApi#getCreativePreviewPost");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The Creative identifier to preview. |
+ **width** | **Integer**| The width of the Creative to preview. | [optional]
+ **height** | **Integer**| The height of the Creative to preview. | [optional]
+
+### Return type
+
+**String**
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/html, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The preview HTML of a specific Creative is returned. |  -  |
+**400** | The request contained invalid parameters. |  -  |
+**403** | The request was not properly authorized. |  -  |
+
 <a name="getCreatives"></a>
 # **getCreatives**
 > CreativeListResponse getCreatives(advertiserId, limit, offset)
 
 
 
-Get the list of self-services Creatives (50 by default, to get a different number of Creatives, you can use the offset and limit parameters in the query string) for a given advertiser
+Get the list of self-services Creatives for a given advertiser
 
 ### Example
 ```java

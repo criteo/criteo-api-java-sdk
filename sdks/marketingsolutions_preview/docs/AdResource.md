@@ -8,9 +8,9 @@ Data model for a Resource
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [**Ad**](Ad.md) |  |  [optional]
 **id** | **String** |  |  [optional]
 **type** | **String** |  |  [optional]
-**attributes** | [**Ad**](Ad.md) |  |  [optional]
 
 
 

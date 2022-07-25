@@ -17,7 +17,7 @@ import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.retailmedia.preview.model.CommonError;
 import com.criteo.api.retailmedia.preview.model.CommonWarning;
-import com.criteo.api.retailmedia.preview.model.RetailMediaAudience;
+import com.criteo.api.retailmedia.preview.model.CreateRetailMediaAudience;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -37,7 +37,7 @@ import java.util.List;
 public class CreateRetailMediaAudienceResponse {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private RetailMediaAudience data;
+  private CreateRetailMediaAudience data;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
@@ -48,7 +48,7 @@ public class CreateRetailMediaAudienceResponse {
   private List<CommonWarning> warnings = null;
 
 
-  public CreateRetailMediaAudienceResponse data(RetailMediaAudience data) {
+  public CreateRetailMediaAudienceResponse data(CreateRetailMediaAudience data) {
     
     this.data = data;
     return this;
@@ -58,79 +58,45 @@ public class CreateRetailMediaAudienceResponse {
    * Get data
    * @return data
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
-  public RetailMediaAudience getData() {
+  public CreateRetailMediaAudience getData() {
     return data;
   }
 
 
-  public void setData(RetailMediaAudience data) {
+  public void setData(CreateRetailMediaAudience data) {
     this.data = data;
   }
 
 
-  public CreateRetailMediaAudienceResponse errors(List<CommonError> errors) {
-    
-    this.errors = errors;
-    return this;
-  }
-
-  public CreateRetailMediaAudienceResponse addErrorsItem(CommonError errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
-    }
-    this.errors.add(errorsItem);
-    return this;
-  }
-
    /**
-   * Get errors
+   * errors
    * @return errors
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "errors")
 
   public List<CommonError> getErrors() {
     return errors;
   }
 
 
-  public void setErrors(List<CommonError> errors) {
-    this.errors = errors;
-  }
 
-
-  public CreateRetailMediaAudienceResponse warnings(List<CommonWarning> warnings) {
-    
-    this.warnings = warnings;
-    return this;
-  }
-
-  public CreateRetailMediaAudienceResponse addWarningsItem(CommonWarning warningsItem) {
-    if (this.warnings == null) {
-      this.warnings = new ArrayList<>();
-    }
-    this.warnings.add(warningsItem);
-    return this;
-  }
 
    /**
-   * Get warnings
+   * warnings
    * @return warnings
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "warnings")
 
   public List<CommonWarning> getWarnings() {
     return warnings;
   }
 
 
-  public void setWarnings(List<CommonWarning> warnings) {
-    this.warnings = warnings;
-  }
 
 
   @Override

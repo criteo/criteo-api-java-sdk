@@ -202,8 +202,7 @@ public class CreativeApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The created Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The created Coupon is returned. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
@@ -258,18 +257,19 @@ public class CreativeApi {
      * Create a Coupon
      * @param advertiserId The advertiser identifier. (required)
      * @param createCouponRequest  (optional)
+     * @return CouponResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The created Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The created Coupon is returned. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public void createCoupon(String advertiserId, CreateCouponRequest createCouponRequest) throws ApiException {
-        createCouponWithHttpInfo(advertiserId, createCouponRequest);
+    public CouponResponse createCoupon(String advertiserId, CreateCouponRequest createCouponRequest) throws ApiException {
+        ApiResponse<CouponResponse> localVarResp = createCouponWithHttpInfo(advertiserId, createCouponRequest);
+        return localVarResp.getData();
     }
 
     /**
@@ -277,20 +277,20 @@ public class CreativeApi {
      * Create a Coupon
      * @param advertiserId The advertiser identifier. (required)
      * @param createCouponRequest  (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;CouponResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The created Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The created Coupon is returned. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> createCouponWithHttpInfo(String advertiserId, CreateCouponRequest createCouponRequest) throws ApiException {
+    public ApiResponse<CouponResponse> createCouponWithHttpInfo(String advertiserId, CreateCouponRequest createCouponRequest) throws ApiException {
         okhttp3.Call localVarCall = createCouponValidateBeforeCall(advertiserId, createCouponRequest, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<CouponResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -304,16 +304,16 @@ public class CreativeApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The created Coupon is returned. </td><td>  -  </td></tr>
-        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The created Coupon is returned. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createCouponAsync(String advertiserId, CreateCouponRequest createCouponRequest, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call createCouponAsync(String advertiserId, CreateCouponRequest createCouponRequest, final ApiCallback<CouponResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createCouponValidateBeforeCall(advertiserId, createCouponRequest, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<CouponResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1268,7 +1268,7 @@ public class CreativeApi {
 
     /**
      * 
-     * Get the list of self-services Ads (50 by default, to get a different number of Ads, you can use the offset and limit parameters in the query string) for a given advertiser
+     * Get the list of self-services Ads for a given advertiser
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of ads to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of ads. The default is 0. (optional)
@@ -1290,7 +1290,7 @@ public class CreativeApi {
 
     /**
      * 
-     * Get the list of self-services Ads (50 by default, to get a different number of Ads, you can use the offset and limit parameters in the query string) for a given advertiser
+     * Get the list of self-services Ads for a given advertiser
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of ads to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of ads. The default is 0. (optional)
@@ -1313,7 +1313,7 @@ public class CreativeApi {
 
     /**
      *  (asynchronously)
-     * Get the list of self-services Ads (50 by default, to get a different number of Ads, you can use the offset and limit parameters in the query string) for a given advertiser
+     * Get the list of self-services Ads for a given advertiser
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of ads to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of ads. The default is 0. (optional)
@@ -1811,7 +1811,7 @@ public class CreativeApi {
 
     /**
      * 
-     * Get the list of self-services Coupons (50 by default, to get a different number of Coupons, you can use the offset and limit parameters in the query string) for a given advertiser
+     * Get the list of self-services Coupons for a given advertiser
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of coupons to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of coupons. The default is 0. (optional)
@@ -1832,7 +1832,7 @@ public class CreativeApi {
 
     /**
      * 
-     * Get the list of self-services Coupons (50 by default, to get a different number of Coupons, you can use the offset and limit parameters in the query string) for a given advertiser
+     * Get the list of self-services Coupons for a given advertiser
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of coupons to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of coupons. The default is 0. (optional)
@@ -1854,7 +1854,7 @@ public class CreativeApi {
 
     /**
      *  (asynchronously)
-     * Get the list of self-services Coupons (50 by default, to get a different number of Coupons, you can use the offset and limit parameters in the query string) for a given advertiser
+     * Get the list of self-services Coupons for a given advertiser
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of coupons to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of coupons. The default is 0. (optional)
@@ -2137,6 +2137,142 @@ public class CreativeApi {
         return localVarCall;
     }
     /**
+     * Build call for getCreativePreviewPost
+     * @param id The Creative identifier to preview. (required)
+     * @param width The width of the Creative to preview. (optional)
+     * @param height The height of the Creative to preview. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The preview HTML of a specific Creative is returned. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCreativePreviewPostCall(String id, Integer width, Integer height, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/creatives/{id}/preview"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (width != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("width", width));
+        }
+
+        if (height != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("height", height));
+        }
+
+        final String[] localVarAccepts = {
+            "text/html", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCreativePreviewPostValidateBeforeCall(String id, Integer width, Integer height, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getCreativePreviewPost(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getCreativePreviewPostCall(id, width, height, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Get the preview of a specific Creative
+     * @param id The Creative identifier to preview. (required)
+     * @param width The width of the Creative to preview. (optional)
+     * @param height The height of the Creative to preview. (optional)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The preview HTML of a specific Creative is returned. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
+     </table>
+     */
+    public String getCreativePreviewPost(String id, Integer width, Integer height) throws ApiException {
+        ApiResponse<String> localVarResp = getCreativePreviewPostWithHttpInfo(id, width, height);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get the preview of a specific Creative
+     * @param id The Creative identifier to preview. (required)
+     * @param width The width of the Creative to preview. (optional)
+     * @param height The height of the Creative to preview. (optional)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The preview HTML of a specific Creative is returned. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<String> getCreativePreviewPostWithHttpInfo(String id, Integer width, Integer height) throws ApiException {
+        okhttp3.Call localVarCall = getCreativePreviewPostValidateBeforeCall(id, width, height, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get the preview of a specific Creative
+     * @param id The Creative identifier to preview. (required)
+     * @param width The width of the Creative to preview. (optional)
+     * @param height The height of the Creative to preview. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The preview HTML of a specific Creative is returned. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCreativePreviewPostAsync(String id, Integer width, Integer height, final ApiCallback<String> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCreativePreviewPostValidateBeforeCall(id, width, height, _callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getCreatives
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of creatives to be returned. The default is 50. (optional)
@@ -2208,7 +2344,7 @@ public class CreativeApi {
 
     /**
      * 
-     * Get the list of self-services Creatives (50 by default, to get a different number of Creatives, you can use the offset and limit parameters in the query string) for a given advertiser
+     * Get the list of self-services Creatives for a given advertiser
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of creatives to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of creatives. The default is 0. (optional)
@@ -2230,7 +2366,7 @@ public class CreativeApi {
 
     /**
      * 
-     * Get the list of self-services Creatives (50 by default, to get a different number of Creatives, you can use the offset and limit parameters in the query string) for a given advertiser
+     * Get the list of self-services Creatives for a given advertiser
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of creatives to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of creatives. The default is 0. (optional)
@@ -2253,7 +2389,7 @@ public class CreativeApi {
 
     /**
      *  (asynchronously)
-     * Get the list of self-services Creatives (50 by default, to get a different number of Creatives, you can use the offset and limit parameters in the query string) for a given advertiser
+     * Get the list of self-services Creatives for a given advertiser
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of creatives to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of creatives. The default is 0. (optional)

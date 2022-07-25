@@ -308,7 +308,7 @@ public class RecoApi {
     }
     /**
      * Build call for fetchProductSets
-     * @param partnerId The ID of the partner that should be used for product set retrieval (required)
+     * @param datasetId The ID of the dataset that should be used for product set retrieval (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -321,12 +321,12 @@ public class RecoApi {
         <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call fetchProductSetsCall(String partnerId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call fetchProductSetsCall(String datasetId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/preview/product-sets/partner/{partner-id}"
-            .replaceAll("\\{" + "partner-id" + "\\}", localVarApiClient.escapeString(partnerId.toString()));
+        String localVarPath = "/preview/product-sets/dataset/{dataset-id}"
+            .replaceAll("\\{" + "dataset-id" + "\\}", localVarApiClient.escapeString(datasetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -353,23 +353,23 @@ public class RecoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call fetchProductSetsValidateBeforeCall(String partnerId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call fetchProductSetsValidateBeforeCall(String datasetId, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'partnerId' is set
-        if (partnerId == null) {
-            throw new ApiException("Missing the required parameter 'partnerId' when calling fetchProductSets(Async)");
+        // verify the required parameter 'datasetId' is set
+        if (datasetId == null) {
+            throw new ApiException("Missing the required parameter 'datasetId' when calling fetchProductSets(Async)");
         }
         
 
-        okhttp3.Call localVarCall = fetchProductSetsCall(partnerId, _callback);
+        okhttp3.Call localVarCall = fetchProductSetsCall(datasetId, _callback);
         return localVarCall;
 
     }
 
     /**
      * 
-     * Fetch product sets of a given partner
-     * @param partnerId The ID of the partner that should be used for product set retrieval (required)
+     * Fetch product sets of a given dataset
+     * @param datasetId The ID of the dataset that should be used for product set retrieval (required)
      * @return ResourceCollectionOutcomeOfProductSet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -381,15 +381,15 @@ public class RecoApi {
         <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
-    public ResourceCollectionOutcomeOfProductSet fetchProductSets(String partnerId) throws ApiException {
-        ApiResponse<ResourceCollectionOutcomeOfProductSet> localVarResp = fetchProductSetsWithHttpInfo(partnerId);
+    public ResourceCollectionOutcomeOfProductSet fetchProductSets(String datasetId) throws ApiException {
+        ApiResponse<ResourceCollectionOutcomeOfProductSet> localVarResp = fetchProductSetsWithHttpInfo(datasetId);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Fetch product sets of a given partner
-     * @param partnerId The ID of the partner that should be used for product set retrieval (required)
+     * Fetch product sets of a given dataset
+     * @param datasetId The ID of the dataset that should be used for product set retrieval (required)
      * @return ApiResponse&lt;ResourceCollectionOutcomeOfProductSet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -401,16 +401,16 @@ public class RecoApi {
         <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResourceCollectionOutcomeOfProductSet> fetchProductSetsWithHttpInfo(String partnerId) throws ApiException {
-        okhttp3.Call localVarCall = fetchProductSetsValidateBeforeCall(partnerId, null);
+    public ApiResponse<ResourceCollectionOutcomeOfProductSet> fetchProductSetsWithHttpInfo(String datasetId) throws ApiException {
+        okhttp3.Call localVarCall = fetchProductSetsValidateBeforeCall(datasetId, null);
         Type localVarReturnType = new TypeToken<ResourceCollectionOutcomeOfProductSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Fetch product sets of a given partner
-     * @param partnerId The ID of the partner that should be used for product set retrieval (required)
+     * Fetch product sets of a given dataset
+     * @param datasetId The ID of the dataset that should be used for product set retrieval (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -423,9 +423,9 @@ public class RecoApi {
         <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call fetchProductSetsAsync(String partnerId, final ApiCallback<ResourceCollectionOutcomeOfProductSet> _callback) throws ApiException {
+    public okhttp3.Call fetchProductSetsAsync(String datasetId, final ApiCallback<ResourceCollectionOutcomeOfProductSet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = fetchProductSetsValidateBeforeCall(partnerId, _callback);
+        okhttp3.Call localVarCall = fetchProductSetsValidateBeforeCall(datasetId, _callback);
         Type localVarReturnType = new TypeToken<ResourceCollectionOutcomeOfProductSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

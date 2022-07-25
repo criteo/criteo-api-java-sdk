@@ -30,6 +30,7 @@ import java.io.IOException;
 import com.criteo.api.retailmedia.v2022_04.model.AddToBasketIdsUpdateModel202110Request;
 import com.criteo.api.retailmedia.v2022_04.model.AddToBasketTarget202110Request;
 import com.criteo.api.retailmedia.v2022_04.model.AddToBasketTarget202110Response;
+import com.criteo.api.retailmedia.v2022_04.model.AssetResponse;
 import com.criteo.api.retailmedia.v2022_04.model.AuctionLineItemCreateModelRequest;
 import com.criteo.api.retailmedia.v2022_04.model.AuctionLineItemPagedListResponse;
 import com.criteo.api.retailmedia.v2022_04.model.AuctionLineItemResponse;
@@ -40,12 +41,15 @@ import com.criteo.api.retailmedia.v2022_04.model.AudienceTarget202110Response;
 import com.criteo.api.retailmedia.v2022_04.model.Balance202110PagedListResponse;
 import com.criteo.api.retailmedia.v2022_04.model.BalanceCampaign202110ListRequest;
 import com.criteo.api.retailmedia.v2022_04.model.BalanceCampaign202110PagedListResponse;
+import com.criteo.api.retailmedia.v2022_04.model.Category202204;
+import com.criteo.api.retailmedia.v2022_04.model.Category202204ListResponse;
 import com.criteo.api.retailmedia.v2022_04.model.CommonLineItemPagedListResponse;
 import com.criteo.api.retailmedia.v2022_04.model.CommonLineItemResponse;
 import com.criteo.api.retailmedia.v2022_04.model.Creative202110ListResponse;
 import com.criteo.api.retailmedia.v2022_04.model.ExternalPostCampaign;
 import com.criteo.api.retailmedia.v2022_04.model.ExternalPutCampaign;
 import com.criteo.api.retailmedia.v2022_04.model.ExternalRetailerPages202110;
+import java.io.File;
 import com.criteo.api.retailmedia.v2022_04.model.JsonApiPageResponseOfAccount;
 import com.criteo.api.retailmedia.v2022_04.model.JsonApiPageResponseOfBrand;
 import com.criteo.api.retailmedia.v2022_04.model.JsonApiPageResponseOfCampaign;
@@ -91,6 +95,121 @@ public class CampaignApi {
         this.localVarApiClient = apiClient;
     }
 
+    /**
+     * Build call for createAsset
+     * @param assetFile The asset binary content (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAssetCall(File assetFile, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2022-04/retail-media/assets";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (assetFile != null) {
+            localVarFormParams.put("AssetFile", assetFile);
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "multipart/form-data"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createAssetValidateBeforeCall(File assetFile, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'assetFile' is set
+        if (assetFile == null) {
+            throw new ApiException("Missing the required parameter 'assetFile' when calling createAsset(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createAssetCall(assetFile, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Creates an asset
+     * @param assetFile The asset binary content (required)
+     * @return AssetResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public AssetResponse createAsset(File assetFile) throws ApiException {
+        ApiResponse<AssetResponse> localVarResp = createAssetWithHttpInfo(assetFile);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Creates an asset
+     * @param assetFile The asset binary content (required)
+     * @return ApiResponse&lt;AssetResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AssetResponse> createAssetWithHttpInfo(File assetFile) throws ApiException {
+        okhttp3.Call localVarCall = createAssetValidateBeforeCall(assetFile, null);
+        Type localVarReturnType = new TypeToken<AssetResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Creates an asset
+     * @param assetFile The asset binary content (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAssetAsync(File assetFile, final ApiCallback<AssetResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createAssetValidateBeforeCall(assetFile, _callback);
+        Type localVarReturnType = new TypeToken<AssetResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for getApi202110ExternalAccountBalancesByAccountId
      * @param accountId The account to get balances for (required)
@@ -1324,6 +1443,260 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = getApi202110ExternalRetailerPagesByRetailerIdValidateBeforeCall(retailerId, _callback);
         Type localVarReturnType = new TypeToken<ExternalRetailerPages202110>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getApi202204ExternalCategorieByCategoryId
+     * @param categoryId ID of the desired category (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Retrieval completed and category is returned. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> No IDs were passed in. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> A non-request input based error occurred in the server. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getApi202204ExternalCategorieByCategoryIdCall(Integer categoryId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2022-04/retail-media/categories/{categoryId}"
+            .replaceAll("\\{" + "categoryId" + "\\}", localVarApiClient.escapeString(categoryId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getApi202204ExternalCategorieByCategoryIdValidateBeforeCall(Integer categoryId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'categoryId' is set
+        if (categoryId == null) {
+            throw new ApiException("Missing the required parameter 'categoryId' when calling getApi202204ExternalCategorieByCategoryId(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getApi202204ExternalCategorieByCategoryIdCall(categoryId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Endpoint to search for a specific category by categoryId.
+     * @param categoryId ID of the desired category (required)
+     * @return Category202204
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Retrieval completed and category is returned. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> No IDs were passed in. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> A non-request input based error occurred in the server. </td><td>  -  </td></tr>
+     </table>
+     */
+    public Category202204 getApi202204ExternalCategorieByCategoryId(Integer categoryId) throws ApiException {
+        ApiResponse<Category202204> localVarResp = getApi202204ExternalCategorieByCategoryIdWithHttpInfo(categoryId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Endpoint to search for a specific category by categoryId.
+     * @param categoryId ID of the desired category (required)
+     * @return ApiResponse&lt;Category202204&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Retrieval completed and category is returned. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> No IDs were passed in. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> A non-request input based error occurred in the server. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Category202204> getApi202204ExternalCategorieByCategoryIdWithHttpInfo(Integer categoryId) throws ApiException {
+        okhttp3.Call localVarCall = getApi202204ExternalCategorieByCategoryIdValidateBeforeCall(categoryId, null);
+        Type localVarReturnType = new TypeToken<Category202204>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Endpoint to search for a specific category by categoryId.
+     * @param categoryId ID of the desired category (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Retrieval completed and category is returned. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> No IDs were passed in. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> A non-request input based error occurred in the server. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getApi202204ExternalCategorieByCategoryIdAsync(Integer categoryId, final ApiCallback<Category202204> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getApi202204ExternalCategorieByCategoryIdValidateBeforeCall(categoryId, _callback);
+        Type localVarReturnType = new TypeToken<Category202204>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getApi202204ExternalCategories
+     * @param retailerId The retailer id for which Categories fetched (optional)
+     * @param textSubstring Query string to search across Categories (optional)
+     * @param pageIndex The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
+     * @param pageSize The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Categories found. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getApi202204ExternalCategoriesCall(Integer retailerId, String textSubstring, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2022-04/retail-media/categories";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (retailerId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("retailerId", retailerId));
+        }
+
+        if (textSubstring != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("textSubstring", textSubstring));
+        }
+
+        if (pageIndex != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageIndex", pageIndex));
+        }
+
+        if (pageSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getApi202204ExternalCategoriesValidateBeforeCall(Integer retailerId, String textSubstring, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getApi202204ExternalCategoriesCall(retailerId, textSubstring, pageIndex, pageSize, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Endpoint to search categories by text and retailer.
+     * @param retailerId The retailer id for which Categories fetched (optional)
+     * @param textSubstring Query string to search across Categories (optional)
+     * @param pageIndex The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
+     * @param pageSize The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
+     * @return Category202204ListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Categories found. </td><td>  -  </td></tr>
+     </table>
+     */
+    public Category202204ListResponse getApi202204ExternalCategories(Integer retailerId, String textSubstring, Integer pageIndex, Integer pageSize) throws ApiException {
+        ApiResponse<Category202204ListResponse> localVarResp = getApi202204ExternalCategoriesWithHttpInfo(retailerId, textSubstring, pageIndex, pageSize);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Endpoint to search categories by text and retailer.
+     * @param retailerId The retailer id for which Categories fetched (optional)
+     * @param textSubstring Query string to search across Categories (optional)
+     * @param pageIndex The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
+     * @param pageSize The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
+     * @return ApiResponse&lt;Category202204ListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Categories found. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Category202204ListResponse> getApi202204ExternalCategoriesWithHttpInfo(Integer retailerId, String textSubstring, Integer pageIndex, Integer pageSize) throws ApiException {
+        okhttp3.Call localVarCall = getApi202204ExternalCategoriesValidateBeforeCall(retailerId, textSubstring, pageIndex, pageSize, null);
+        Type localVarReturnType = new TypeToken<Category202204ListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Endpoint to search categories by text and retailer.
+     * @param retailerId The retailer id for which Categories fetched (optional)
+     * @param textSubstring Query string to search across Categories (optional)
+     * @param pageIndex The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
+     * @param pageSize The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Categories found. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getApi202204ExternalCategoriesAsync(Integer retailerId, String textSubstring, Integer pageIndex, Integer pageSize, final ApiCallback<Category202204ListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getApi202204ExternalCategoriesValidateBeforeCall(retailerId, textSubstring, pageIndex, pageSize, _callback);
+        Type localVarReturnType = new TypeToken<Category202204ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -33,9 +33,9 @@ import java.util.List;
 @ApiModel(description = "Encapsulate a group of product")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProductSet {
-  public static final String SERIALIZED_NAME_PARTNER_ID = "partnerId";
-  @SerializedName(SERIALIZED_NAME_PARTNER_ID)
-  private String partnerId;
+  public static final String SERIALIZED_NAME_DATASET_ID = "datasetId";
+  @SerializedName(SERIALIZED_NAME_DATASET_ID)
+  private String datasetId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -121,26 +121,26 @@ public class ProductSet {
   private String id;
 
 
-  public ProductSet partnerId(String partnerId) {
+  public ProductSet datasetId(String datasetId) {
     
-    this.partnerId = partnerId;
+    this.datasetId = datasetId;
     return this;
   }
 
    /**
-   * The partner to which the product set belong
-   * @return partnerId
+   * The dataset to which the product set belong
+   * @return datasetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The partner to which the product set belong")
+  @ApiModelProperty(value = "The dataset to which the product set belong")
 
-  public String getPartnerId() {
-    return partnerId;
+  public String getDatasetId() {
+    return datasetId;
   }
 
 
-  public void setPartnerId(String partnerId) {
-    this.partnerId = partnerId;
+  public void setDatasetId(String datasetId) {
+    this.datasetId = datasetId;
   }
 
 
@@ -322,7 +322,7 @@ public class ProductSet {
       return false;
     }
     ProductSet productSet = (ProductSet) o;
-    return Objects.equals(this.partnerId, productSet.partnerId) &&
+    return Objects.equals(this.datasetId, productSet.datasetId) &&
         Objects.equals(this.name, productSet.name) &&
         Objects.equals(this.status, productSet.status) &&
         Objects.equals(this.isEnabled, productSet.isEnabled) &&
@@ -334,14 +334,14 @@ public class ProductSet {
 
   @Override
   public int hashCode() {
-    return Objects.hash(partnerId, name, status, isEnabled, numberOfProducts, creationDate, rules, id);
+    return Objects.hash(datasetId, name, status, isEnabled, numberOfProducts, creationDate, rules, id);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductSet {\n");
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
+    sb.append("    datasetId: ").append(toIndentedString(datasetId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    isEnabled: ").append(toIndentedString(isEnabled)).append("\n");

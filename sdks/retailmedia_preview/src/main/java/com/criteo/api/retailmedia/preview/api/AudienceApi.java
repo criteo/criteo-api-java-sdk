@@ -27,7 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.criteo.api.retailmedia.preview.model.CreateAudienceRequest;
+import com.criteo.api.retailmedia.preview.model.CreateRetailMediaAudienceRequest;
 import com.criteo.api.retailmedia.preview.model.CreateRetailMediaAudienceResponse;
 import com.criteo.api.retailmedia.preview.model.GetPageOfAudiencesByAccountIdResponse;
 
@@ -59,7 +59,7 @@ public class AudienceApi {
     /**
      * Build call for createAudience
      * @param accountId ID of the account to which this audience belongs. (required)
-     * @param createAudienceRequest  (required)
+     * @param createRetailMediaAudienceRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -74,8 +74,8 @@ public class AudienceApi {
         <tr><td> 415 </td><td> The Content-Type header must be application/json if present. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAudienceCall(String accountId, CreateAudienceRequest createAudienceRequest, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = createAudienceRequest;
+    public okhttp3.Call createAudienceCall(String accountId, CreateRetailMediaAudienceRequest createRetailMediaAudienceRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = createRetailMediaAudienceRequest;
 
         // create path and map variables
         String localVarPath = "/preview/retail-media/accounts/{accountId}/audiences"
@@ -106,20 +106,20 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAudienceValidateBeforeCall(String accountId, CreateAudienceRequest createAudienceRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAudienceValidateBeforeCall(String accountId, CreateRetailMediaAudienceRequest createRetailMediaAudienceRequest, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling createAudience(Async)");
         }
         
-        // verify the required parameter 'createAudienceRequest' is set
-        if (createAudienceRequest == null) {
-            throw new ApiException("Missing the required parameter 'createAudienceRequest' when calling createAudience(Async)");
+        // verify the required parameter 'createRetailMediaAudienceRequest' is set
+        if (createRetailMediaAudienceRequest == null) {
+            throw new ApiException("Missing the required parameter 'createRetailMediaAudienceRequest' when calling createAudience(Async)");
         }
         
 
-        okhttp3.Call localVarCall = createAudienceCall(accountId, createAudienceRequest, _callback);
+        okhttp3.Call localVarCall = createAudienceCall(accountId, createRetailMediaAudienceRequest, _callback);
         return localVarCall;
 
     }
@@ -128,7 +128,7 @@ public class AudienceApi {
      * 
      * Create an audience for a given account ID
      * @param accountId ID of the account to which this audience belongs. (required)
-     * @param createAudienceRequest  (required)
+     * @param createRetailMediaAudienceRequest  (required)
      * @return CreateRetailMediaAudienceResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -142,8 +142,8 @@ public class AudienceApi {
         <tr><td> 415 </td><td> The Content-Type header must be application/json if present. </td><td>  -  </td></tr>
      </table>
      */
-    public CreateRetailMediaAudienceResponse createAudience(String accountId, CreateAudienceRequest createAudienceRequest) throws ApiException {
-        ApiResponse<CreateRetailMediaAudienceResponse> localVarResp = createAudienceWithHttpInfo(accountId, createAudienceRequest);
+    public CreateRetailMediaAudienceResponse createAudience(String accountId, CreateRetailMediaAudienceRequest createRetailMediaAudienceRequest) throws ApiException {
+        ApiResponse<CreateRetailMediaAudienceResponse> localVarResp = createAudienceWithHttpInfo(accountId, createRetailMediaAudienceRequest);
         return localVarResp.getData();
     }
 
@@ -151,7 +151,7 @@ public class AudienceApi {
      * 
      * Create an audience for a given account ID
      * @param accountId ID of the account to which this audience belongs. (required)
-     * @param createAudienceRequest  (required)
+     * @param createRetailMediaAudienceRequest  (required)
      * @return ApiResponse&lt;CreateRetailMediaAudienceResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -165,8 +165,8 @@ public class AudienceApi {
         <tr><td> 415 </td><td> The Content-Type header must be application/json if present. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateRetailMediaAudienceResponse> createAudienceWithHttpInfo(String accountId, CreateAudienceRequest createAudienceRequest) throws ApiException {
-        okhttp3.Call localVarCall = createAudienceValidateBeforeCall(accountId, createAudienceRequest, null);
+    public ApiResponse<CreateRetailMediaAudienceResponse> createAudienceWithHttpInfo(String accountId, CreateRetailMediaAudienceRequest createRetailMediaAudienceRequest) throws ApiException {
+        okhttp3.Call localVarCall = createAudienceValidateBeforeCall(accountId, createRetailMediaAudienceRequest, null);
         Type localVarReturnType = new TypeToken<CreateRetailMediaAudienceResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -175,7 +175,7 @@ public class AudienceApi {
      *  (asynchronously)
      * Create an audience for a given account ID
      * @param accountId ID of the account to which this audience belongs. (required)
-     * @param createAudienceRequest  (required)
+     * @param createRetailMediaAudienceRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -190,9 +190,9 @@ public class AudienceApi {
         <tr><td> 415 </td><td> The Content-Type header must be application/json if present. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAudienceAsync(String accountId, CreateAudienceRequest createAudienceRequest, final ApiCallback<CreateRetailMediaAudienceResponse> _callback) throws ApiException {
+    public okhttp3.Call createAudienceAsync(String accountId, CreateRetailMediaAudienceRequest createRetailMediaAudienceRequest, final ApiCallback<CreateRetailMediaAudienceResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createAudienceValidateBeforeCall(accountId, createAudienceRequest, _callback);
+        okhttp3.Call localVarCall = createAudienceValidateBeforeCall(accountId, createRetailMediaAudienceRequest, _callback);
         Type localVarReturnType = new TypeToken<CreateRetailMediaAudienceResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -24,6 +24,7 @@ Name | Value
 ---- | -----
 NATIVE | &quot;Native&quot;
 DISPLAY | &quot;Display&quot;
+VIDEO | &quot;Video&quot;
 
 
 

@@ -26,44 +26,95 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Retail Media audience
+ * All the information about a retail media audience
  */
-@ApiModel(description = "Retail Media audience")
+@ApiModel(description = "All the information about a retail media audience")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RetailMediaAudience {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
+  /**
+   * Type of the audience
+   */
+  @JsonAdapter(AudienceTypeEnum.Adapter.class)
+  public enum AudienceTypeEnum {
+    CUSTOMERLIST("customerList"),
+    
+    USERBEHAVIOR("userBehavior");
+
+    private String value;
+
+    AudienceTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AudienceTypeEnum fromValue(String value) {
+      for (AudienceTypeEnum b : AudienceTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<AudienceTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AudienceTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AudienceTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return AudienceTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_AUDIENCE_TYPE = "audienceType";
+  @SerializedName(SERIALIZED_NAME_AUDIENCE_TYPE)
+  private AudienceTypeEnum audienceType;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private RetailMediaAudienceAttributes attributes;
 
 
-  public RetailMediaAudience type(String type) {
+  public RetailMediaAudience audienceType(AudienceTypeEnum audienceType) {
     
-    this.type = type;
+    this.audienceType = audienceType;
     return this;
   }
 
    /**
-   * the name of the entity type
-   * @return type
+   * Type of the audience
+   * @return audienceType
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "RetailMediaAudience", required = true, value = "the name of the entity type")
+  @ApiModelProperty(example = "customerList", required = true, value = "Type of the audience")
 
-  public String getType() {
-    return type;
+  public AudienceTypeEnum getAudienceType() {
+    return audienceType;
   }
 
 
-  public void setType(String type) {
-    this.type = type;
+  public void setAudienceType(AudienceTypeEnum audienceType) {
+    this.audienceType = audienceType;
   }
 
 
@@ -87,6 +138,29 @@ public class RetailMediaAudience {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+
+  public RetailMediaAudience type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Name of the entity i.e. RetailMediaAudienceSummary
+   * @return type
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "RetailMediaAudienceSummary", required = true, value = "Name of the entity i.e. RetailMediaAudienceSummary")
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
   }
 
 
@@ -122,22 +196,24 @@ public class RetailMediaAudience {
       return false;
     }
     RetailMediaAudience retailMediaAudience = (RetailMediaAudience) o;
-    return Objects.equals(this.type, retailMediaAudience.type) &&
+    return Objects.equals(this.audienceType, retailMediaAudience.audienceType) &&
         Objects.equals(this.id, retailMediaAudience.id) &&
+        Objects.equals(this.type, retailMediaAudience.type) &&
         Objects.equals(this.attributes, retailMediaAudience.attributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, id, attributes);
+    return Objects.hash(audienceType, id, type, attributes);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RetailMediaAudience {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    audienceType: ").append(toIndentedString(audienceType)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();

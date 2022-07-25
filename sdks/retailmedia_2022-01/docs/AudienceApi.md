@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="createAudience"></a>
 # **createAudience**
-> CreateRetailMediaAudienceResponse createAudience(accountId, createAudienceRequest)
+> CreateRetailMediaAudienceResponse createAudience(accountId, createRetailMediaAudienceRequest)
 
 
 
@@ -37,9 +37,9 @@ public class Example {
 
     AudienceApi apiInstance = new AudienceApi(defaultClient);
     String accountId = "accountId_example"; // String | ID of the account to which this audience belongs.
-    CreateAudienceRequest createAudienceRequest = new CreateAudienceRequest(); // CreateAudienceRequest | 
+    CreateRetailMediaAudienceRequest createRetailMediaAudienceRequest = new CreateRetailMediaAudienceRequest(); // CreateRetailMediaAudienceRequest | 
     try {
-      CreateRetailMediaAudienceResponse result = apiInstance.createAudience(accountId, createAudienceRequest);
+      CreateRetailMediaAudienceResponse result = apiInstance.createAudience(accountId, createRetailMediaAudienceRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AudienceApi#createAudience");
@@ -57,7 +57,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountId** | **String**| ID of the account to which this audience belongs. |
- **createAudienceRequest** | [**CreateAudienceRequest**](CreateAudienceRequest.md)|  |
+ **createRetailMediaAudienceRequest** | [**CreateRetailMediaAudienceRequest**](CreateRetailMediaAudienceRequest.md)|  |
 
 ### Return type
 

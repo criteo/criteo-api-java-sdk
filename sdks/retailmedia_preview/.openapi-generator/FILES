@@ -18,9 +18,12 @@ docs/CampaignApi.md
 docs/CommonError.md
 docs/CommonProblem.md
 docs/CommonWarning.md
-docs/CreateAudienceBody.md
-docs/CreateAudienceRequest.md
+docs/CreateRetailMediaAudience.md
+docs/CreateRetailMediaAudienceAttributes.md
+docs/CreateRetailMediaAudienceBody.md
+docs/CreateRetailMediaAudienceRequest.md
 docs/CreateRetailMediaAudienceResponse.md
+docs/CustomerListDetails.md
 docs/EnvelopeReportRequest.md
 docs/EnvelopeReportStatus.md
 docs/Error.md
@@ -94,6 +97,7 @@ docs/SkuDataPreview.md
 docs/SkuDataPreviewListResponse.md
 docs/SkuSearchRequestPreview.md
 docs/SkuSearchRequestPreviewRequest.md
+docs/UserBehaviorDetails.md
 git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
@@ -139,9 +143,12 @@ src/main/java/com/criteo/api/retailmedia/preview/model/BrandPreviewListResponse.
 src/main/java/com/criteo/api/retailmedia/preview/model/CommonError.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CommonProblem.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CommonWarning.java
-src/main/java/com/criteo/api/retailmedia/preview/model/CreateAudienceBody.java
-src/main/java/com/criteo/api/retailmedia/preview/model/CreateAudienceRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/CreateRetailMediaAudience.java
+src/main/java/com/criteo/api/retailmedia/preview/model/CreateRetailMediaAudienceAttributes.java
+src/main/java/com/criteo/api/retailmedia/preview/model/CreateRetailMediaAudienceBody.java
+src/main/java/com/criteo/api/retailmedia/preview/model/CreateRetailMediaAudienceRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CreateRetailMediaAudienceResponse.java
+src/main/java/com/criteo/api/retailmedia/preview/model/CustomerListDetails.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EnvelopeReportRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EnvelopeReportStatus.java
 src/main/java/com/criteo/api/retailmedia/preview/model/Error.java
@@ -213,5 +220,6 @@ src/main/java/com/criteo/api/retailmedia/preview/model/SkuDataPreview.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SkuDataPreviewListResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SkuSearchRequestPreview.java
 src/main/java/com/criteo/api/retailmedia/preview/model/SkuSearchRequestPreviewRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/UserBehaviorDetails.java
 src/test/java/com/criteo.api.sdk/GatewayApiTest.java
 src/test/java/com/criteo.api.sdk/OAuthApiTest.java

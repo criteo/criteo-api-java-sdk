@@ -348,7 +348,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateAudienceRequest'
+              $ref: '#/components/schemas/CreateRetailMediaAudienceRequest'
         required: true
         x-bodyName: body
       responses:
@@ -525,6 +525,101 @@ paths:
               schema:
                 $ref: '#/components/schemas/Creative202110ListResponse'
           description: Creatives found
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /2022-04/retail-media/categories:
+    get:
+      description: Endpoint to search categories by text and retailer.
+      operationId: CategorySearchApi_GetApi202204ExternalCategories
+      parameters:
+      - description: The retailer id for which Categories fetched
+        explode: true
+        in: query
+        name: retailerId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      - description: Query string to search across Categories
+        explode: true
+        in: query
+        name: textSubstring
+        required: false
+        schema:
+          type: string
+        style: form
+        x-nullable: false
+      - description: The start position in the overall list of matches. Must be zero
+          or greater.
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          maximum: 500
+          minimum: 0
+          type: integer
+        style: form
+        x-nullable: false
+      - description: The maximum number of results to return with each call. Must
+          be greater than zero.
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 100
+          format: int32
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category202204ListResponse'
+          description: Categories found.
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /2022-04/retail-media/categories/{categoryId}:
+    get:
+      description: Endpoint to search for a specific category by categoryId.
+      operationId: CategorySearchApi_GetApi202204ExternalCategorieByCategoryId
+      parameters:
+      - description: ID of the desired category
+        explode: false
+        in: path
+        name: categoryId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category202204'
+          description: Retrieval completed and category is returned.
+        "400":
+          content:
+            application/json: {}
+          description: No IDs were passed in.
+        "500":
+          content:
+            application/json: {}
+          description: A non-request input based error occurred in the server.
       tags:
       - Campaign
       x-accepts: application/json
@@ -2206,6 +2301,37 @@ paths:
       - Campaign
       x-contentType: application/json
       x-accepts: application/json
+  /2022-04/retail-media/assets:
+    post:
+      description: Creates an asset
+      operationId: CreateAsset
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                AssetFile:
+                  description: The asset binary content
+                  type: file
+              required:
+              - AssetFile
+      responses:
+        "201":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AssetResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AssetResponse'
+          description: Success
+      tags:
+      - Campaign
+      x-contentType: multipart/form-data
+      x-accepts: application/json
 components:
   schemas:
     ApplicationSummaryModelResponse:
@@ -3020,31 +3146,35 @@ components:
           currentPageIndex: 1
         data:
         - attributes:
-            categoryIds:
-            - categoryIds
-            - categoryIds
-            name: name
-            userType: viewer
+            customerListDetails:
+              size: "34212"
+            name: Test audience
             retailerId: "68004146450571264"
-            brandIds:
-            - brandIds
-            - brandIds
-            lookbackWindow: P7D
+            userBehaviorDetails:
+              targetIds:
+              - targetIds
+              - targetIds
+              targetType: category
+              userType: viewer
+              lookbackWindow: P7D
           id: "314159"
-          type: RetailMediaAudience
+          audienceType: customerList
+          type: RetailMediaAudienceSummary
         - attributes:
-            categoryIds:
-            - categoryIds
-            - categoryIds
-            name: name
-            userType: viewer
+            customerListDetails:
+              size: "34212"
+            name: Test audience
             retailerId: "68004146450571264"
-            brandIds:
-            - brandIds
-            - brandIds
-            lookbackWindow: P7D
+            userBehaviorDetails:
+              targetIds:
+              - targetIds
+              - targetIds
+              targetType: category
+              userType: viewer
+              lookbackWindow: P7D
           id: "314159"
-          type: RetailMediaAudience
+          audienceType: customerList
+          type: RetailMediaAudienceSummary
         warnings:
         - traceId: traceId
           code: code
@@ -3116,14 +3246,14 @@ components:
             categoryIds:
             - categoryIds
             - categoryIds
-            name: name
+            name: Test audience
             userType: viewer
             retailerId: "68004146450571264"
             brandIds:
             - brandIds
             - brandIds
             lookbackWindow: P7D
-          id: "314159"
+          id: 314159
           type: RetailMediaAudience
         warnings:
         - traceId: traceId
@@ -3165,21 +3295,21 @@ components:
           title: title
       properties:
         data:
-          $ref: '#/components/schemas/RetailMediaAudience'
+          $ref: '#/components/schemas/CreateRetailMediaAudience'
         errors:
+          description: errors
           items:
             $ref: '#/components/schemas/CommonError'
+          readOnly: true
           type: array
-          x-nullable: false
         warnings:
+          description: warnings
           items:
             $ref: '#/components/schemas/CommonWarning'
+          readOnly: true
           type: array
-          x-nullable: false
-      required:
-      - data
       type: object
-    CreateAudienceRequest:
+    CreateRetailMediaAudienceRequest:
       description: Request to create an audience
       example:
         data:
@@ -3187,7 +3317,7 @@ components:
             categoryIds:
             - categoryIds
             - categoryIds
-            name: name
+            name: Test audience
             userType: viewer
             retailerId: "68004146450571264"
             brandIds:
@@ -3197,25 +3327,67 @@ components:
           type: RetailMediaAudience
       properties:
         data:
-          $ref: '#/components/schemas/CreateAudienceBody'
+          $ref: '#/components/schemas/CreateRetailMediaAudienceBody'
       required:
       - data
       type: object
     RetailMediaAudience:
-      description: Retail Media audience
+      description: All the information about a retail media audience
+      example:
+        attributes:
+          customerListDetails:
+            size: "34212"
+          name: Test audience
+          retailerId: "68004146450571264"
+          userBehaviorDetails:
+            targetIds:
+            - targetIds
+            - targetIds
+            targetType: category
+            userType: viewer
+            lookbackWindow: P7D
+        id: "314159"
+        audienceType: customerList
+        type: RetailMediaAudienceSummary
+      properties:
+        audienceType:
+          description: Type of the audience
+          enum:
+          - customerList
+          - userBehavior
+          example: customerList
+          type: string
+        id:
+          description: Unique ID of this audience.
+          example: "314159"
+          type: string
+        type:
+          description: Name of the entity i.e. RetailMediaAudienceSummary
+          example: RetailMediaAudienceSummary
+          type: string
+        attributes:
+          $ref: '#/components/schemas/RetailMediaAudienceAttributes'
+      required:
+      - attributes
+      - audienceType
+      - id
+      - type
+      type: object
+    CreateRetailMediaAudience:
+      description: Retail Media audience used in audience creation
       example:
         attributes:
           categoryIds:
           - categoryIds
           - categoryIds
-          name: name
+          name: Test audience
           userType: viewer
           retailerId: "68004146450571264"
           brandIds:
           - brandIds
           - brandIds
           lookbackWindow: P7D
-        id: "314159"
+        id: 314159
         type: RetailMediaAudience
       properties:
         type:
@@ -3224,24 +3396,24 @@ components:
           type: string
         id:
           description: Unique ID of this audience.
-          example: "314159"
+          example: 314159
           format: int64
-          type: string
+          type: integer
         attributes:
-          $ref: '#/components/schemas/RetailMediaAudienceAttributes'
+          $ref: '#/components/schemas/CreateRetailMediaAudienceAttributes'
       required:
       - attributes
       - id
       - type
       type: object
-    CreateAudienceBody:
-      description: Request body of CreateAudienceRequest
+    CreateRetailMediaAudienceBody:
+      description: Request body of CreateRetailMediaAudienceRequest
       example:
         attributes:
           categoryIds:
           - categoryIds
           - categoryIds
-          name: name
+          name: Test audience
           userType: viewer
           retailerId: "68004146450571264"
           brandIds:
@@ -3255,18 +3427,49 @@ components:
           example: RetailMediaAudience
           type: string
         attributes:
-          $ref: '#/components/schemas/RetailMediaAudienceAttributes'
+          $ref: '#/components/schemas/CreateRetailMediaAudienceAttributes'
       required:
       - attributes
       - type
       type: object
     RetailMediaAudienceAttributes:
+      description: Fields of a retail media audience
+      example:
+        customerListDetails:
+          size: "34212"
+        name: Test audience
+        retailerId: "68004146450571264"
+        userBehaviorDetails:
+          targetIds:
+          - targetIds
+          - targetIds
+          targetType: category
+          userType: viewer
+          lookbackWindow: P7D
+      properties:
+        retailerId:
+          description: ID of the retailer associated with this audience
+          example: "68004146450571264"
+          type: string
+        name:
+          description: Name of the audience.
+          example: Test audience
+          type: string
+        userBehaviorDetails:
+          $ref: '#/components/schemas/UserBehaviorDetails'
+        customerListDetails:
+          $ref: '#/components/schemas/CustomerListDetails'
+      required:
+      - name
+      - retailerId
+      type: object
+    CreateRetailMediaAudienceAttributes:
       description: Parameters needed to create an audience
       example:
         categoryIds:
         - categoryIds
         - categoryIds
-        name: name
+        name: Test audience
         userType: viewer
         retailerId: "68004146450571264"
         brandIds:
@@ -3310,13 +3513,75 @@ components:
           example: "68004146450571264"
           type: string
         name:
-          description: name
+          description: Name of the audience.
+          example: Test audience
           type: string
       required:
       - lookbackWindow
       - name
       - retailerId
       - userType
+      type: object
+    UserBehaviorDetails:
+      description: Details about a user behavior retail media audience
+      example:
+        targetIds:
+        - targetIds
+        - targetIds
+        targetType: category
+        userType: viewer
+        lookbackWindow: P7D
+      properties:
+        targetType:
+          description: Type of target
+          enum:
+          - brand
+          - category
+          example: category
+          type: string
+        targetIds:
+          description: ist of ids for the target type
+          items:
+            type: string
+          type: array
+        lookbackWindow:
+          description: Length of lookback window
+          enum:
+          - P7D
+          - P14D
+          - P30D
+          - P45D
+          - P60D
+          - P90D
+          - P120D
+          - P150D
+          - P180D
+          example: P7D
+          type: string
+        userType:
+          description: Type of the user
+          enum:
+          - viewer
+          - buyer
+          example: viewer
+          type: string
+      required:
+      - lookbackWindow
+      - targetIds
+      - targetType
+      - userType
+      type: object
+    CustomerListDetails:
+      description: Details of a customer list audience
+      example:
+        size: "34212"
+      properties:
+        size:
+          description: Number of users in the customer list audience.
+          example: "34212"
+          type: string
+      required:
+      - size
       type: object
     JsonApiSingleResponseOfCatalogStatus:
       description: A JSON:API wrapper class to add one JSON:API <typeparamref name="T"
@@ -3488,6 +3753,106 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
+    Category202204ListResponse:
+      description: Data model for a list of response resources
+      example:
+        data:
+        - attributes:
+            name: name
+            text: text
+            parentId: parentId
+          id: id
+          type: type
+        - attributes:
+            name: name
+            text: text
+            parentId: parentId
+          id: id
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ResourceOfCategory202204'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    Category202204:
+      description: "List of retailer's categories, including the full hierarchy of\
+        \ categories and their parent category ID"
+      example:
+        name: name
+        text: text
+        parentId: parentId
+      properties:
+        text:
+          description: Category Text
+          type: string
+          x-nullable: false
+        name:
+          description: Category Name
+          type: string
+          x-nullable: false
+        parentId:
+          description: Category ParentId
+          type: string
+          x-nullable: false
+      required:
+      - name
+      - parentId
+      - text
+      type: object
+      x-nullable: false
     JsonApiRequestOfCatalogRequest:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with Type, and Attributes properties"
@@ -3617,6 +3982,26 @@ components:
           description: "Technical information, only used in non-prod environments"
           type: string
           x-nullable: false
+      type: object
+      x-nullable: false
+    ResourceOfCategory202204:
+      description: Data model for a Resource
+      example:
+        attributes:
+          name: name
+          text: text
+          parentId: parentId
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/Category202204'
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          description: Canonical type name of the entity
+          type: string
       type: object
       x-nullable: false
     JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest:
@@ -5435,6 +5820,71 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
+    AssetResponse:
+      description: A class implementing the response of the Criteo API as described
+        in API Guild Guidelines with a single entity as body
+      example:
+        data:
+          attributes:
+            fileExtension: fileExtension
+            fileLocation: fileLocation
+            id: id
+          id: id
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/AssetResource'
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+          uniqueItems: false
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+          uniqueItems: false
+      type: object
     KeywordTarget202110Request:
       description: Data model for a value type input resource
       example:
@@ -6032,6 +6482,23 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
+    AssetResource:
+      description: A class that represents an entity in a guild compliant way
+      example:
+        attributes:
+          fileExtension: fileExtension
+          fileLocation: fileLocation
+          id: id
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/Asset'
+        id:
+          type: string
+        type:
+          type: string
+      type: object
     ValueTypeResourceOfStoreIdsUpdateModel202110:
       description: Data model for a value type resource
       example:
@@ -7051,6 +7518,30 @@ components:
       description: Campaigns related to the balance
       type: object
       x-nullable: false
+    Asset:
+      description: "Handles pointing towards binary content that advertisers can use\
+        \ later on, for example in their creatives."
+      example:
+        fileExtension: fileExtension
+        fileLocation: fileLocation
+        id: id
+      properties:
+        fileExtension:
+          description: "The file extension that is asset is representing. Example:\
+            \ jpg, png, gif or pdf."
+          type: string
+        fileLocation:
+          description: A url pointing towards the static file the asset represents.
+          type: string
+        id:
+          type: string
+      required:
+      - fileExtension
+      type: object
+      x-criteo-canonical:
+        infoType: entity
+        name: RetailMediaAsset
+        version: "202110"
     ExternalStoreIdsUpdateModel202110:
       description: Update model for updating store target ids
       example:

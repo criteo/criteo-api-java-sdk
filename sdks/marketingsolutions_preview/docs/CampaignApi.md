@@ -4,7 +4,6 @@ All URIs are relative to *https://api.criteo.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createAdSet**](CampaignApi.md#createAdSet) | **POST** /preview/marketing-solutions/ad-sets | 
 [**createCampaign**](CampaignApi.md#createCampaign) | **POST** /preview/marketing-solutions/campaigns | 
 [**deleteAdvertiserBundleRules**](CampaignApi.md#deleteAdvertiserBundleRules) | **DELETE** /preview/advertisers/{advertiserId}/targeting/bundle-rules | 
 [**deleteAdvertiserDomainRules**](CampaignApi.md#deleteAdvertiserDomainRules) | **DELETE** /preview/advertisers/{advertiserId}/targeting/domain-rules | 
@@ -12,7 +11,11 @@ Method | HTTP request | Description
 [**deleteCampaignDomainRules**](CampaignApi.md#deleteCampaignDomainRules) | **DELETE** /preview/campaigns/{campaignId}/targeting/domain-rules | 
 [**deleteOCIbrandSafetyRule**](CampaignApi.md#deleteOCIbrandSafetyRule) | **DELETE** /preview/brand-safety/oci | 
 [**deleteOCItargetingRule**](CampaignApi.md#deleteOCItargetingRule) | **DELETE** /preview/targeting/oci | 
+[**disableAdSetTargetingDealIds**](CampaignApi.md#disableAdSetTargetingDealIds) | **POST** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids/disable | 
+[**disableAdSetTargetingVideoPositioning**](CampaignApi.md#disableAdSetTargetingVideoPositioning) | **POST** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable | 
 [**getAdSet**](CampaignApi.md#getAdSet) | **GET** /preview/marketing-solutions/ad-sets/{adSetId} | 
+[**getAdSetTargetingDealIds**](CampaignApi.md#getAdSetTargetingDealIds) | **GET** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids | 
+[**getAdSetTargetingVideoPositioning**](CampaignApi.md#getAdSetTargetingVideoPositioning) | **GET** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning | 
 [**getAdvertiserBundleRules**](CampaignApi.md#getAdvertiserBundleRules) | **GET** /preview/advertisers/{advertiserId}/targeting/bundle-rules | 
 [**getAdvertiserDomainRules**](CampaignApi.md#getAdvertiserDomainRules) | **GET** /preview/advertisers/{advertiserId}/targeting/domain-rules | 
 [**getCampaign**](CampaignApi.md#getCampaign) | **GET** /preview/marketing-solutions/campaigns/{campaign-id} | 
@@ -22,6 +25,7 @@ Method | HTTP request | Description
 [**getDisplayMultipliers**](CampaignApi.md#getDisplayMultipliers) | **GET** /preview/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers | 
 [**getOCIbrandSafetyRule**](CampaignApi.md#getOCIbrandSafetyRule) | **GET** /preview/brand-safety/oci | 
 [**getOCItargetingRule**](CampaignApi.md#getOCItargetingRule) | **GET** /preview/targeting/oci | 
+[**getSupplyVendorList**](CampaignApi.md#getSupplyVendorList) | **GET** /preview/marketing-solutions/ad-sets/targeting/supply-vendors | 
 [**patchAdSets**](CampaignApi.md#patchAdSets) | **PATCH** /preview/marketing-solutions/ad-sets | 
 [**patchCampaigns**](CampaignApi.md#patchCampaigns) | **PATCH** /preview/marketing-solutions/campaigns | 
 [**patchCategoryBidList**](CampaignApi.md#patchCategoryBidList) | **PATCH** /preview/marketing-solutions/ad-sets/{ad-set-id}/category-bids | 
@@ -36,80 +40,14 @@ Method | HTTP request | Description
 [**putCampaignDomainRules**](CampaignApi.md#putCampaignDomainRules) | **PUT** /preview/campaigns/{campaignId}/targeting/domain-rules | 
 [**searchAdSets**](CampaignApi.md#searchAdSets) | **POST** /preview/marketing-solutions/ad-sets/search | 
 [**searchCampaigns**](CampaignApi.md#searchCampaigns) | **POST** /preview/marketing-solutions/campaigns/search | 
+[**setAdSetTargetingDealIds**](CampaignApi.md#setAdSetTargetingDealIds) | **PUT** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids | 
+[**setAdSetTargetingVideoPositioning**](CampaignApi.md#setAdSetTargetingVideoPositioning) | **PUT** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning | 
 [**startAdSets**](CampaignApi.md#startAdSets) | **POST** /preview/marketing-solutions/ad-sets/start | 
 [**stopAdSets**](CampaignApi.md#stopAdSets) | **POST** /preview/marketing-solutions/ad-sets/stop | 
+[**updateAdSetAudience**](CampaignApi.md#updateAdSetAudience) | **PUT** /preview/marketing-solutions/ad-sets/{ad-set-id}/audience | 
 [**upsertOCIbrandSafetyRule**](CampaignApi.md#upsertOCIbrandSafetyRule) | **POST** /preview/brand-safety/oci | 
 [**upsertOCItargetingRule**](CampaignApi.md#upsertOCItargetingRule) | **POST** /preview/targeting/oci | 
 
-
-<a name="createAdSet"></a>
-# **createAdSet**
-> ResponseReadAdSet createAdSet(createAdSetRequest)
-
-
-
-Create the specified ad set
-
-### Example
-```java
-// Import classes:
-import com.criteo.api.marketingsolutions.preview.ApiClient;
-import com.criteo.api.marketingsolutions.preview.ApiException;
-import com.criteo.api.marketingsolutions.preview.Configuration;
-import com.criteo.api.marketingsolutions.preview.auth.*;
-import com.criteo.api.marketingsolutions.preview.models.*;
-import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.criteo.com");
-    
-    // Configure OAuth2 access token for authorization: oauth
-    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-    oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-    CampaignApi apiInstance = new CampaignApi(defaultClient);
-    CreateAdSetRequest createAdSetRequest = new CreateAdSetRequest(); // CreateAdSetRequest | the ad sets to create
-    try {
-      ResponseReadAdSet result = apiInstance.createAdSet(createAdSetRequest);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling CampaignApi#createAdSet");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createAdSetRequest** | [**CreateAdSetRequest**](CreateAdSetRequest.md)| the ad sets to create | [optional]
-
-### Return type
-
-[**ResponseReadAdSet**](ResponseReadAdSet.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
- - **Accept**: text/plain, application/json, text/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | The ad set that has been created and errors / warnings |  -  |
-**400** | Bad Request |  -  |
-**401** | The API client is not properly authenticated. |  -  |
 
 <a name="createCampaign"></a>
 # **createCampaign**
@@ -612,6 +550,145 @@ null (empty response body)
 **403** | Forbidden |  -  |
 **500** | Internal service error |  -  |
 
+<a name="disableAdSetTargetingDealIds"></a>
+# **disableAdSetTargetingDealIds**
+> AdSetTargetingDealIdsDisableResultResponse disableAdSetTargetingDealIds(adSetId)
+
+
+
+Disable the Deal Id Targeting configuration for the ad set whose id is specified
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    String adSetId = "adSetId_example"; // String | Id of the Ad Set
+    try {
+      AdSetTargetingDealIdsDisableResultResponse result = apiInstance.disableAdSetTargetingDealIds(adSetId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#disableAdSetTargetingDealIds");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adSetId** | **String**| Id of the Ad Set |
+
+### Return type
+
+[**AdSetTargetingDealIdsDisableResultResponse**](AdSetTargetingDealIdsDisableResultResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the errors/warnings if any |  -  |
+**401** | The API client is not properly authenticated. |  -  |
+**403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
+
+<a name="disableAdSetTargetingVideoPositioning"></a>
+# **disableAdSetTargetingVideoPositioning**
+> AdSetTargetingVideoPositioningDisableResultResponse disableAdSetTargetingVideoPositioning(adSetId)
+
+
+
+Disable the Video Positioning Targeting configuration for the ad set whose id is specified
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    String adSetId = "adSetId_example"; // String | Id of the Ad Set
+    try {
+      AdSetTargetingVideoPositioningDisableResultResponse result = apiInstance.disableAdSetTargetingVideoPositioning(adSetId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#disableAdSetTargetingVideoPositioning");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adSetId** | **String**| Id of the Ad Set |
+
+### Return type
+
+[**AdSetTargetingVideoPositioningDisableResultResponse**](AdSetTargetingVideoPositioningDisableResultResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the errors/warnings if any |  -  |
+**400** | Bad Request |  -  |
+**401** | The API client is not properly authenticated. |  -  |
+**403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
+
 <a name="getAdSet"></a>
 # **getAdSet**
 > ResponseReadAdSet getAdSet(adSetId)
@@ -678,6 +755,145 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | data for the ad set |  -  |
+**401** | The API client is not properly authenticated. |  -  |
+**403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
+
+<a name="getAdSetTargetingDealIds"></a>
+# **getAdSetTargetingDealIds**
+> AdSetTargetingDealIdsResponse getAdSetTargetingDealIds(adSetId)
+
+
+
+Get the Deal Id Targeting configuration for the ad set whose id is specified
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    String adSetId = "adSetId_example"; // String | Id of the Ad Set
+    try {
+      AdSetTargetingDealIdsResponse result = apiInstance.getAdSetTargetingDealIds(adSetId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#getAdSetTargetingDealIds");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adSetId** | **String**| Id of the Ad Set |
+
+### Return type
+
+[**AdSetTargetingDealIdsResponse**](AdSetTargetingDealIdsResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the Deal Id Targeting configuration |  -  |
+**401** | The API client is not properly authenticated. |  -  |
+**403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
+
+<a name="getAdSetTargetingVideoPositioning"></a>
+# **getAdSetTargetingVideoPositioning**
+> AdSetTargetingVideoPositioningResponse getAdSetTargetingVideoPositioning(adSetId)
+
+
+
+Get the Video Positioning Targeting configuration for the ad set whose id is specified
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    String adSetId = "adSetId_example"; // String | Id of the Ad Set
+    try {
+      AdSetTargetingVideoPositioningResponse result = apiInstance.getAdSetTargetingVideoPositioning(adSetId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#getAdSetTargetingVideoPositioning");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adSetId** | **String**| Id of the Ad Set |
+
+### Return type
+
+[**AdSetTargetingVideoPositioningResponse**](AdSetTargetingVideoPositioningResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the Video Positioning Targeting configuration |  -  |
+**400** | Bad Request |  -  |
 **401** | The API client is not properly authenticated. |  -  |
 **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
@@ -1315,6 +1531,71 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **500** | Internal service error |  -  |
+
+<a name="getSupplyVendorList"></a>
+# **getSupplyVendorList**
+> SupplyVendorListResponse getSupplyVendorList()
+
+
+
+Fetch the list of available supply vendors for any Ad Set targetings
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    try {
+      SupplyVendorListResponse result = apiInstance.getSupplyVendorList();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#getSupplyVendorList");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SupplyVendorListResponse**](SupplyVendorListResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the errors/warnings if any |  -  |
+**401** | The API client is not properly authenticated. |  -  |
+**403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 <a name="patchAdSets"></a>
 # **patchAdSets**
@@ -2311,6 +2592,150 @@ Name | Type | Description  | Notes
 **401** | The API client is not properly authenticated. |  -  |
 **403** | Forbidden |  -  |
 
+<a name="setAdSetTargetingDealIds"></a>
+# **setAdSetTargetingDealIds**
+> AdSetTargetingDealIdsSetResultResponse setAdSetTargetingDealIds(adSetId, setAdSetTargetingDealIdsRequest)
+
+
+
+Set the Deal Id Targeting configuration for the ad set whose id is specified
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    String adSetId = "adSetId_example"; // String | Id of the Ad Set
+    SetAdSetTargetingDealIdsRequest setAdSetTargetingDealIdsRequest = new SetAdSetTargetingDealIdsRequest(); // SetAdSetTargetingDealIdsRequest | the new Deal Id Targeting configuration
+    try {
+      AdSetTargetingDealIdsSetResultResponse result = apiInstance.setAdSetTargetingDealIds(adSetId, setAdSetTargetingDealIdsRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#setAdSetTargetingDealIds");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adSetId** | **String**| Id of the Ad Set |
+ **setAdSetTargetingDealIdsRequest** | [**SetAdSetTargetingDealIdsRequest**](SetAdSetTargetingDealIdsRequest.md)| the new Deal Id Targeting configuration | [optional]
+
+### Return type
+
+[**AdSetTargetingDealIdsSetResultResponse**](AdSetTargetingDealIdsSetResultResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the errors/warnings if any |  -  |
+**400** | Bad Request |  -  |
+**401** | The API client is not properly authenticated. |  -  |
+**403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
+
+<a name="setAdSetTargetingVideoPositioning"></a>
+# **setAdSetTargetingVideoPositioning**
+> AdSetTargetingVideoPositioningSetResultResponse setAdSetTargetingVideoPositioning(adSetId, setAdSetTargetingVideoPositioningRequest)
+
+
+
+Set the Video Positioning Targeting configuration for the ad set whose id is specified
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    String adSetId = "adSetId_example"; // String | Id of the Ad Set
+    SetAdSetTargetingVideoPositioningRequest setAdSetTargetingVideoPositioningRequest = new SetAdSetTargetingVideoPositioningRequest(); // SetAdSetTargetingVideoPositioningRequest | the new Video Positioning Targeting configuration
+    try {
+      AdSetTargetingVideoPositioningSetResultResponse result = apiInstance.setAdSetTargetingVideoPositioning(adSetId, setAdSetTargetingVideoPositioningRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#setAdSetTargetingVideoPositioning");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adSetId** | **String**| Id of the Ad Set |
+ **setAdSetTargetingVideoPositioningRequest** | [**SetAdSetTargetingVideoPositioningRequest**](SetAdSetTargetingVideoPositioningRequest.md)| the new Video Positioning Targeting configuration | [optional]
+
+### Return type
+
+[**AdSetTargetingVideoPositioningSetResultResponse**](AdSetTargetingVideoPositioningSetResultResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the errors/warnings if any |  -  |
+**400** | Bad Request |  -  |
+**401** | The API client is not properly authenticated. |  -  |
+**403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
+
 <a name="startAdSets"></a>
 # **startAdSets**
 > ResponsesAdSetId startAdSets(requestsAdSetId)
@@ -2448,6 +2873,78 @@ Name | Type | Description  | Notes
 **200** | List of ad sets that have been stopped and errors / warnings by ad set |  -  |
 **400** | Bad Request |  -  |
 **401** | The API client is not properly authenticated. |  -  |
+
+<a name="updateAdSetAudience"></a>
+# **updateAdSetAudience**
+> AdSetAudienceLinkEntityV1Response updateAdSetAudience(adSetId, adSetAudienceLinkInputEntityV1)
+
+
+
+Link or unlink an audience with an ad set
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.models.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    String adSetId = "adSetId_example"; // String | Ad set id
+    AdSetAudienceLinkInputEntityV1 adSetAudienceLinkInputEntityV1 = new AdSetAudienceLinkInputEntityV1(); // AdSetAudienceLinkInputEntityV1 | Audience and ad set to link
+    try {
+      AdSetAudienceLinkEntityV1Response result = apiInstance.updateAdSetAudience(adSetId, adSetAudienceLinkInputEntityV1);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#updateAdSetAudience");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **adSetId** | **String**| Ad set id |
+ **adSetAudienceLinkInputEntityV1** | [**AdSetAudienceLinkInputEntityV1**](AdSetAudienceLinkInputEntityV1.md)| Audience and ad set to link | [optional]
+
+### Return type
+
+[**AdSetAudienceLinkEntityV1Response**](AdSetAudienceLinkEntityV1Response.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad request |  -  |
+**401** | The API client is not properly authenticated. |  -  |
+**403** | The API client is not authorized to access this resource. |  -  |
 
 <a name="upsertOCIbrandSafetyRule"></a>
 # **upsertOCIbrandSafetyRule**

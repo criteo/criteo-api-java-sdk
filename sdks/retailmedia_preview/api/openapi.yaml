@@ -348,7 +348,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateAudienceRequest'
+              $ref: '#/components/schemas/CreateRetailMediaAudienceRequest'
         required: true
         x-bodyName: body
       responses:
@@ -2218,31 +2218,35 @@ components:
           currentPageIndex: 1
         data:
         - attributes:
-            categoryIds:
-            - categoryIds
-            - categoryIds
-            name: name
-            userType: viewer
+            customerListDetails:
+              size: "34212"
+            name: Test audience
             retailerId: "68004146450571264"
-            brandIds:
-            - brandIds
-            - brandIds
-            lookbackWindow: P7D
+            userBehaviorDetails:
+              targetIds:
+              - targetIds
+              - targetIds
+              targetType: category
+              userType: viewer
+              lookbackWindow: P7D
           id: "314159"
-          type: RetailMediaAudience
+          audienceType: customerList
+          type: RetailMediaAudienceSummary
         - attributes:
-            categoryIds:
-            - categoryIds
-            - categoryIds
-            name: name
-            userType: viewer
+            customerListDetails:
+              size: "34212"
+            name: Test audience
             retailerId: "68004146450571264"
-            brandIds:
-            - brandIds
-            - brandIds
-            lookbackWindow: P7D
+            userBehaviorDetails:
+              targetIds:
+              - targetIds
+              - targetIds
+              targetType: category
+              userType: viewer
+              lookbackWindow: P7D
           id: "314159"
-          type: RetailMediaAudience
+          audienceType: customerList
+          type: RetailMediaAudienceSummary
         warnings:
         - traceId: traceId
           code: code
@@ -2314,14 +2318,14 @@ components:
             categoryIds:
             - categoryIds
             - categoryIds
-            name: name
+            name: Test audience
             userType: viewer
             retailerId: "68004146450571264"
             brandIds:
             - brandIds
             - brandIds
             lookbackWindow: P7D
-          id: "314159"
+          id: 314159
           type: RetailMediaAudience
         warnings:
         - traceId: traceId
@@ -2363,21 +2367,21 @@ components:
           title: title
       properties:
         data:
-          $ref: '#/components/schemas/RetailMediaAudience'
+          $ref: '#/components/schemas/CreateRetailMediaAudience'
         errors:
+          description: errors
           items:
             $ref: '#/components/schemas/CommonError'
+          readOnly: true
           type: array
-          x-nullable: false
         warnings:
+          description: warnings
           items:
             $ref: '#/components/schemas/CommonWarning'
+          readOnly: true
           type: array
-          x-nullable: false
-      required:
-      - data
       type: object
-    CreateAudienceRequest:
+    CreateRetailMediaAudienceRequest:
       description: Request to create an audience
       example:
         data:
@@ -2385,7 +2389,7 @@ components:
             categoryIds:
             - categoryIds
             - categoryIds
-            name: name
+            name: Test audience
             userType: viewer
             retailerId: "68004146450571264"
             brandIds:
@@ -2395,25 +2399,67 @@ components:
           type: RetailMediaAudience
       properties:
         data:
-          $ref: '#/components/schemas/CreateAudienceBody'
+          $ref: '#/components/schemas/CreateRetailMediaAudienceBody'
       required:
       - data
       type: object
     RetailMediaAudience:
-      description: Retail Media audience
+      description: All the information about a retail media audience
+      example:
+        attributes:
+          customerListDetails:
+            size: "34212"
+          name: Test audience
+          retailerId: "68004146450571264"
+          userBehaviorDetails:
+            targetIds:
+            - targetIds
+            - targetIds
+            targetType: category
+            userType: viewer
+            lookbackWindow: P7D
+        id: "314159"
+        audienceType: customerList
+        type: RetailMediaAudienceSummary
+      properties:
+        audienceType:
+          description: Type of the audience
+          enum:
+          - customerList
+          - userBehavior
+          example: customerList
+          type: string
+        id:
+          description: Unique ID of this audience.
+          example: "314159"
+          type: string
+        type:
+          description: Name of the entity i.e. RetailMediaAudienceSummary
+          example: RetailMediaAudienceSummary
+          type: string
+        attributes:
+          $ref: '#/components/schemas/RetailMediaAudienceAttributes'
+      required:
+      - attributes
+      - audienceType
+      - id
+      - type
+      type: object
+    CreateRetailMediaAudience:
+      description: Retail Media audience used in audience creation
       example:
         attributes:
           categoryIds:
           - categoryIds
           - categoryIds
-          name: name
+          name: Test audience
           userType: viewer
           retailerId: "68004146450571264"
           brandIds:
           - brandIds
           - brandIds
           lookbackWindow: P7D
-        id: "314159"
+        id: 314159
         type: RetailMediaAudience
       properties:
         type:
@@ -2422,24 +2468,24 @@ components:
           type: string
         id:
           description: Unique ID of this audience.
-          example: "314159"
+          example: 314159
           format: int64
-          type: string
+          type: integer
         attributes:
-          $ref: '#/components/schemas/RetailMediaAudienceAttributes'
+          $ref: '#/components/schemas/CreateRetailMediaAudienceAttributes'
       required:
       - attributes
       - id
       - type
       type: object
-    CreateAudienceBody:
-      description: Request body of CreateAudienceRequest
+    CreateRetailMediaAudienceBody:
+      description: Request body of CreateRetailMediaAudienceRequest
       example:
         attributes:
           categoryIds:
           - categoryIds
           - categoryIds
-          name: name
+          name: Test audience
           userType: viewer
           retailerId: "68004146450571264"
           brandIds:
@@ -2453,18 +2499,49 @@ components:
           example: RetailMediaAudience
           type: string
         attributes:
-          $ref: '#/components/schemas/RetailMediaAudienceAttributes'
+          $ref: '#/components/schemas/CreateRetailMediaAudienceAttributes'
       required:
       - attributes
       - type
       type: object
     RetailMediaAudienceAttributes:
+      description: Fields of a retail media audience
+      example:
+        customerListDetails:
+          size: "34212"
+        name: Test audience
+        retailerId: "68004146450571264"
+        userBehaviorDetails:
+          targetIds:
+          - targetIds
+          - targetIds
+          targetType: category
+          userType: viewer
+          lookbackWindow: P7D
+      properties:
+        retailerId:
+          description: ID of the retailer associated with this audience
+          example: "68004146450571264"
+          type: string
+        name:
+          description: Name of the audience.
+          example: Test audience
+          type: string
+        userBehaviorDetails:
+          $ref: '#/components/schemas/UserBehaviorDetails'
+        customerListDetails:
+          $ref: '#/components/schemas/CustomerListDetails'
+      required:
+      - name
+      - retailerId
+      type: object
+    CreateRetailMediaAudienceAttributes:
       description: Parameters needed to create an audience
       example:
         categoryIds:
         - categoryIds
         - categoryIds
-        name: name
+        name: Test audience
         userType: viewer
         retailerId: "68004146450571264"
         brandIds:
@@ -2508,13 +2585,75 @@ components:
           example: "68004146450571264"
           type: string
         name:
-          description: name
+          description: Name of the audience.
+          example: Test audience
           type: string
       required:
       - lookbackWindow
       - name
       - retailerId
       - userType
+      type: object
+    UserBehaviorDetails:
+      description: Details about a user behavior retail media audience
+      example:
+        targetIds:
+        - targetIds
+        - targetIds
+        targetType: category
+        userType: viewer
+        lookbackWindow: P7D
+      properties:
+        targetType:
+          description: Type of target
+          enum:
+          - brand
+          - category
+          example: category
+          type: string
+        targetIds:
+          description: ist of ids for the target type
+          items:
+            type: string
+          type: array
+        lookbackWindow:
+          description: Length of lookback window
+          enum:
+          - P7D
+          - P14D
+          - P30D
+          - P45D
+          - P60D
+          - P90D
+          - P120D
+          - P150D
+          - P180D
+          example: P7D
+          type: string
+        userType:
+          description: Type of the user
+          enum:
+          - viewer
+          - buyer
+          example: viewer
+          type: string
+      required:
+      - lookbackWindow
+      - targetIds
+      - targetType
+      - userType
+      type: object
+    CustomerListDetails:
+      description: Details of a customer list audience
+      example:
+        size: "34212"
+      properties:
+        size:
+          description: Number of users in the customer list audience.
+          example: "34212"
+          type: string
+      required:
+      - size
       type: object
     JsonApiSingleResponseOfCatalogStatus:
       description: A JSON:API wrapper class to add one JSON:API <typeparamref name="T"

@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class ImageAttributes {
 
   public static final String SERIALIZED_NAME_LANDING_PAGE_URL = "landingPageUrl";
   @SerializedName(SERIALIZED_NAME_LANDING_PAGE_URL)
-  private String landingPageUrl;
+  private URI landingPageUrl;
 
 
   public ImageAttributes urls(List<String> urls) {
@@ -72,7 +73,7 @@ public class ImageAttributes {
   }
 
 
-  public ImageAttributes landingPageUrl(String landingPageUrl) {
+  public ImageAttributes landingPageUrl(URI landingPageUrl) {
     
     this.landingPageUrl = landingPageUrl;
     return this;
@@ -85,12 +86,12 @@ public class ImageAttributes {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Web redirection of the landing page url")
 
-  public String getLandingPageUrl() {
+  public URI getLandingPageUrl() {
     return landingPageUrl;
   }
 
 
-  public void setLandingPageUrl(String landingPageUrl) {
+  public void setLandingPageUrl(URI landingPageUrl) {
     this.landingPageUrl = landingPageUrl;
   }
 

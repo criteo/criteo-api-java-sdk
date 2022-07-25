@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createProductSet**](RecoApi.md#createProductSet) | **POST** /preview/product-sets | 
 [**fetchProductSet**](RecoApi.md#fetchProductSet) | **GET** /preview/product-sets/{product-set-id} | 
-[**fetchProductSets**](RecoApi.md#fetchProductSets) | **GET** /preview/product-sets/partner/{partner-id} | 
+[**fetchProductSets**](RecoApi.md#fetchProductSets) | **GET** /preview/product-sets/dataset/{dataset-id} | 
 [**previewProductSetsPreviewPost**](RecoApi.md#previewProductSetsPreviewPost) | **POST** /preview/product-sets/preview | 
 [**removeProductSet**](RecoApi.md#removeProductSet) | **DELETE** /preview/product-sets/{product-set-id} | 
 
@@ -154,11 +154,11 @@ Name | Type | Description  | Notes
 
 <a name="fetchProductSets"></a>
 # **fetchProductSets**
-> ResourceCollectionOutcomeOfProductSet fetchProductSets(partnerId)
+> ResourceCollectionOutcomeOfProductSet fetchProductSets(datasetId)
 
 
 
-Fetch product sets of a given partner
+Fetch product sets of a given dataset
 
 ### Example
 ```java
@@ -180,9 +180,9 @@ public class Example {
     oauth.setAccessToken("YOUR ACCESS TOKEN");
 
     RecoApi apiInstance = new RecoApi(defaultClient);
-    String partnerId = "partnerId_example"; // String | The ID of the partner that should be used for product set retrieval
+    String datasetId = "datasetId_example"; // String | The ID of the dataset that should be used for product set retrieval
     try {
-      ResourceCollectionOutcomeOfProductSet result = apiInstance.fetchProductSets(partnerId);
+      ResourceCollectionOutcomeOfProductSet result = apiInstance.fetchProductSets(datasetId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling RecoApi#fetchProductSets");
@@ -199,7 +199,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **partnerId** | **String**| The ID of the partner that should be used for product set retrieval |
+ **datasetId** | **String**| The ID of the dataset that should be used for product set retrieval |
 
 ### Return type
 

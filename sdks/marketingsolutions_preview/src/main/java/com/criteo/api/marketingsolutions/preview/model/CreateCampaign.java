@@ -26,9 +26,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * campaign create model
+ * Campaign create model
  */
-@ApiModel(description = "campaign create model")
+@ApiModel(description = "Campaign create model")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateCampaign {
   public static final String SERIALIZED_NAME_NAME = "name";
@@ -42,6 +42,59 @@ public class CreateCampaign {
   public static final String SERIALIZED_NAME_OBJECTIVE = "objective";
   @SerializedName(SERIALIZED_NAME_OBJECTIVE)
   private String objective;
+
+  /**
+   * Goal for the marketing campaign
+   */
+  @JsonAdapter(GoalEnum.Adapter.class)
+  public enum GoalEnum {
+    UNSPECIFIED("Unspecified"),
+    
+    ACQUISITION("Acquisition"),
+    
+    RETENTION("Retention");
+
+    private String value;
+
+    GoalEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static GoalEnum fromValue(String value) {
+      for (GoalEnum b : GoalEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<GoalEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final GoalEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public GoalEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return GoalEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_GOAL = "goal";
+  @SerializedName(SERIALIZED_NAME_GOAL)
+  private GoalEnum goal;
 
   public static final String SERIALIZED_NAME_SPEND_LIMIT = "spendLimit";
   @SerializedName(SERIALIZED_NAME_SPEND_LIMIT)
@@ -78,11 +131,11 @@ public class CreateCampaign {
   }
 
    /**
-   * advertiser id this campaign belongs to
+   * Advertiser id this campaign belongs to
    * @return advertiserId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "advertiser id this campaign belongs to")
+  @ApiModelProperty(value = "Advertiser id this campaign belongs to")
 
   public String getAdvertiserId() {
     return advertiserId;
@@ -114,6 +167,29 @@ public class CreateCampaign {
 
   public void setObjective(String objective) {
     this.objective = objective;
+  }
+
+
+  public CreateCampaign goal(GoalEnum goal) {
+    
+    this.goal = goal;
+    return this;
+  }
+
+   /**
+   * Goal for the marketing campaign
+   * @return goal
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Goal for the marketing campaign")
+
+  public GoalEnum getGoal() {
+    return goal;
+  }
+
+
+  public void setGoal(GoalEnum goal) {
+    this.goal = goal;
   }
 
 
@@ -152,12 +228,13 @@ public class CreateCampaign {
     return Objects.equals(this.name, createCampaign.name) &&
         Objects.equals(this.advertiserId, createCampaign.advertiserId) &&
         Objects.equals(this.objective, createCampaign.objective) &&
+        Objects.equals(this.goal, createCampaign.goal) &&
         Objects.equals(this.spendLimit, createCampaign.spendLimit);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, advertiserId, objective, spendLimit);
+    return Objects.hash(name, advertiserId, objective, goal, spendLimit);
   }
 
   @Override
@@ -167,6 +244,7 @@ public class CreateCampaign {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
     sb.append("    objective: ").append(toIndentedString(objective)).append("\n");
+    sb.append("    goal: ").append(toIndentedString(goal)).append("\n");
     sb.append("    spendLimit: ").append(toIndentedString(spendLimit)).append("\n");
     sb.append("}");
     return sb.toString();

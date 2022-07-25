@@ -33,9 +33,9 @@ import java.util.List;
 @ApiModel(description = "Entity to create a product set")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateProductSetRequest {
-  public static final String SERIALIZED_NAME_PARTNER_ID = "partnerId";
-  @SerializedName(SERIALIZED_NAME_PARTNER_ID)
-  private String partnerId;
+  public static final String SERIALIZED_NAME_DATASET_ID = "datasetId";
+  @SerializedName(SERIALIZED_NAME_DATASET_ID)
+  private String datasetId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -50,26 +50,26 @@ public class CreateProductSetRequest {
   private List<ProductSetRule> rules = null;
 
 
-  public CreateProductSetRequest partnerId(String partnerId) {
+  public CreateProductSetRequest datasetId(String datasetId) {
     
-    this.partnerId = partnerId;
+    this.datasetId = datasetId;
     return this;
   }
 
    /**
-   * Get partnerId
-   * @return partnerId
+   * Get datasetId
+   * @return datasetId
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public String getPartnerId() {
-    return partnerId;
+  public String getDatasetId() {
+    return datasetId;
   }
 
 
-  public void setPartnerId(String partnerId) {
-    this.partnerId = partnerId;
+  public void setDatasetId(String datasetId) {
+    this.datasetId = datasetId;
   }
 
 
@@ -159,7 +159,7 @@ public class CreateProductSetRequest {
       return false;
     }
     CreateProductSetRequest createProductSetRequest = (CreateProductSetRequest) o;
-    return Objects.equals(this.partnerId, createProductSetRequest.partnerId) &&
+    return Objects.equals(this.datasetId, createProductSetRequest.datasetId) &&
         Objects.equals(this.name, createProductSetRequest.name) &&
         Objects.equals(this.isDraft, createProductSetRequest.isDraft) &&
         Objects.equals(this.rules, createProductSetRequest.rules);
@@ -167,14 +167,14 @@ public class CreateProductSetRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(partnerId, name, isDraft, rules);
+    return Objects.hash(datasetId, name, isDraft, rules);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateProductSetRequest {\n");
-    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
+    sb.append("    datasetId: ").append(toIndentedString(datasetId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    isDraft: ").append(toIndentedString(isDraft)).append("\n");
     sb.append("    rules: ").append(toIndentedString(rules)).append("\n");

@@ -53,7 +53,9 @@ public class Ad {
   public enum InventoryTypeEnum {
     NATIVE("Native"),
     
-    DISPLAY("Display");
+    DISPLAY("Display"),
+    
+    VIDEO("Video");
 
     private String value;
 

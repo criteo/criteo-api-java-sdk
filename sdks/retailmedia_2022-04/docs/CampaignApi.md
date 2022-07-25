@@ -4,6 +4,7 @@ All URIs are relative to *https://api.criteo.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createAsset**](CampaignApi.md#createAsset) | **POST** /2022-04/retail-media/assets | 
 [**getApi202110ExternalAccountBalancesByAccountId**](CampaignApi.md#getApi202110ExternalAccountBalancesByAccountId) | **GET** /2022-04/retail-media/accounts/{account-id}/balances | 
 [**getApi202110ExternalAccountCreativesByAccountId**](CampaignApi.md#getApi202110ExternalAccountCreativesByAccountId) | **GET** /2022-04/retail-media/accounts/{account-id}/creatives | 
 [**getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId**](CampaignApi.md#getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId) | **GET** /2022-04/retail-media/auction-line-items/{line-item-id}/targeting/keywords | 
@@ -14,6 +15,8 @@ Method | HTTP request | Description
 [**getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId**](CampaignApi.md#getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId) | **GET** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/audiences | 
 [**getApi202110ExternalPreferredLineItemTargetingStoresByLineItemId**](CampaignApi.md#getApi202110ExternalPreferredLineItemTargetingStoresByLineItemId) | **GET** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/stores | 
 [**getApi202110ExternalRetailerPagesByRetailerId**](CampaignApi.md#getApi202110ExternalRetailerPagesByRetailerId) | **GET** /2022-04/retail-media/retailers/{retailerId}/pages | 
+[**getApi202204ExternalCategorieByCategoryId**](CampaignApi.md#getApi202204ExternalCategorieByCategoryId) | **GET** /2022-04/retail-media/categories/{categoryId} | 
+[**getApi202204ExternalCategories**](CampaignApi.md#getApi202204ExternalCategories) | **GET** /2022-04/retail-media/categories | 
 [**getApiV1ExternalAccountBrandsByAccountId**](CampaignApi.md#getApiV1ExternalAccountBrandsByAccountId) | **GET** /2022-04/retail-media/accounts/{accountId}/brands | 
 [**getApiV1ExternalAccountCampaignsByAccountId**](CampaignApi.md#getApiV1ExternalAccountCampaignsByAccountId) | **GET** /2022-04/retail-media/accounts/{accountId}/campaigns | 
 [**getApiV1ExternalAccountRetailersByAccountId**](CampaignApi.md#getApiV1ExternalAccountRetailersByAccountId) | **GET** /2022-04/retail-media/accounts/{accountId}/retailers | 
@@ -51,6 +54,73 @@ Method | HTTP request | Description
 [**putApiV2ExternalAuctionLineItemByLineItemId**](CampaignApi.md#putApiV2ExternalAuctionLineItemByLineItemId) | **PUT** /2022-04/retail-media/auction-line-items/{line-item-id} | 
 [**putApiV2ExternalPreferredLineItemByLineItemId**](CampaignApi.md#putApiV2ExternalPreferredLineItemByLineItemId) | **PUT** /2022-04/retail-media/preferred-line-items/{line-item-id} | 
 
+
+<a name="createAsset"></a>
+# **createAsset**
+> AssetResponse createAsset(assetFile)
+
+
+
+Creates an asset
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.retailmedia.v2022_04.ApiClient;
+import com.criteo.api.retailmedia.v2022_04.ApiException;
+import com.criteo.api.retailmedia.v2022_04.Configuration;
+import com.criteo.api.retailmedia.v2022_04.auth.*;
+import com.criteo.api.retailmedia.v2022_04.models.*;
+import com.criteo.api.retailmedia.v2022_04.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    File assetFile = new File("null"); // File | The asset binary content
+    try {
+      AssetResponse result = apiInstance.createAsset(assetFile);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#createAsset");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **assetFile** | [**File**](File.md)| The asset binary content | [default to null]
+
+### Return type
+
+[**AssetResponse**](AssetResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Success |  -  |
 
 <a name="getApi202110ExternalAccountBalancesByAccountId"></a>
 # **getApi202110ExternalAccountBalancesByAccountId**
@@ -750,6 +820,148 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Pages fetched successfully |  -  |
+
+<a name="getApi202204ExternalCategorieByCategoryId"></a>
+# **getApi202204ExternalCategorieByCategoryId**
+> Category202204 getApi202204ExternalCategorieByCategoryId(categoryId)
+
+
+
+Endpoint to search for a specific category by categoryId.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.retailmedia.v2022_04.ApiClient;
+import com.criteo.api.retailmedia.v2022_04.ApiException;
+import com.criteo.api.retailmedia.v2022_04.Configuration;
+import com.criteo.api.retailmedia.v2022_04.auth.*;
+import com.criteo.api.retailmedia.v2022_04.models.*;
+import com.criteo.api.retailmedia.v2022_04.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    Integer categoryId = 56; // Integer | ID of the desired category
+    try {
+      Category202204 result = apiInstance.getApi202204ExternalCategorieByCategoryId(categoryId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#getApi202204ExternalCategorieByCategoryId");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **categoryId** | **Integer**| ID of the desired category |
+
+### Return type
+
+[**Category202204**](Category202204.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Retrieval completed and category is returned. |  -  |
+**400** | No IDs were passed in. |  -  |
+**500** | A non-request input based error occurred in the server. |  -  |
+
+<a name="getApi202204ExternalCategories"></a>
+# **getApi202204ExternalCategories**
+> Category202204ListResponse getApi202204ExternalCategories(retailerId, textSubstring, pageIndex, pageSize)
+
+
+
+Endpoint to search categories by text and retailer.
+
+### Example
+```java
+// Import classes:
+import com.criteo.api.retailmedia.v2022_04.ApiClient;
+import com.criteo.api.retailmedia.v2022_04.ApiException;
+import com.criteo.api.retailmedia.v2022_04.Configuration;
+import com.criteo.api.retailmedia.v2022_04.auth.*;
+import com.criteo.api.retailmedia.v2022_04.models.*;
+import com.criteo.api.retailmedia.v2022_04.api.CampaignApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.criteo.com");
+    
+    // Configure OAuth2 access token for authorization: oauth
+    OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+    oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+    CampaignApi apiInstance = new CampaignApi(defaultClient);
+    Integer retailerId = 56; // Integer | The retailer id for which Categories fetched
+    String textSubstring = "textSubstring_example"; // String | Query string to search across Categories
+    Integer pageIndex = 0; // Integer | The start position in the overall list of matches. Must be zero or greater.
+    Integer pageSize = 100; // Integer | The maximum number of results to return with each call. Must be greater than zero.
+    try {
+      Category202204ListResponse result = apiInstance.getApi202204ExternalCategories(retailerId, textSubstring, pageIndex, pageSize);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CampaignApi#getApi202204ExternalCategories");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **retailerId** | **Integer**| The retailer id for which Categories fetched | [optional]
+ **textSubstring** | **String**| Query string to search across Categories | [optional]
+ **pageIndex** | **Integer**| The start position in the overall list of matches. Must be zero or greater. | [optional] [default to 0]
+ **pageSize** | **Integer**| The maximum number of results to return with each call. Must be greater than zero. | [optional] [default to 100]
+
+### Return type
+
+[**Category202204ListResponse**](Category202204ListResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Categories found. |  -  |
 
 <a name="getApiV1ExternalAccountBrandsByAccountId"></a>
 # **getApiV1ExternalAccountBrandsByAccountId**

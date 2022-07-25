@@ -8,7 +8,7 @@ Entity specifying the html of the tag and its size
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**htmlTag** | **String** | Third party html tag |  [optional]
+**htmlTag** | **String** | Html tag |  [optional]
 **size** | [**Size**](Size.md) |  |  [optional]
 
 

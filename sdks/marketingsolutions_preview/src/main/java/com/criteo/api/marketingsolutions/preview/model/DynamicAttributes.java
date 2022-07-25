@@ -15,7 +15,7 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.CreativeLogo;
+import com.criteo.api.marketingsolutions.preview.model.ImageShape;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -35,7 +35,7 @@ import java.util.List;
 public class DynamicAttributes {
   public static final String SERIALIZED_NAME_LOGOS = "logos";
   @SerializedName(SERIALIZED_NAME_LOGOS)
-  private List<CreativeLogo> logos = null;
+  private List<ImageShape> logos = null;
 
   public static final String SERIALIZED_NAME_CREATIVE_BACKGROUND_COLOR = "creativeBackgroundColor";
   @SerializedName(SERIALIZED_NAME_CREATIVE_BACKGROUND_COLOR)
@@ -109,13 +109,13 @@ public class DynamicAttributes {
   private ProductImageDisplayEnum productImageDisplay;
 
 
-  public DynamicAttributes logos(List<CreativeLogo> logos) {
+  public DynamicAttributes logos(List<ImageShape> logos) {
     
     this.logos = logos;
     return this;
   }
 
-  public DynamicAttributes addLogosItem(CreativeLogo logosItem) {
+  public DynamicAttributes addLogosItem(ImageShape logosItem) {
     if (this.logos == null) {
       this.logos = new ArrayList<>();
     }
@@ -130,12 +130,12 @@ public class DynamicAttributes {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Logo images uploaded on demostatic.criteo.com when deploying and then static.criteo.net")
 
-  public List<CreativeLogo> getLogos() {
+  public List<ImageShape> getLogos() {
     return logos;
   }
 
 
-  public void setLogos(List<CreativeLogo> logos) {
+  public void setLogos(List<ImageShape> logos) {
     this.logos = logos;
   }
 

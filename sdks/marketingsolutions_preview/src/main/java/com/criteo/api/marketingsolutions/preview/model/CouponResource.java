@@ -31,6 +31,10 @@ import java.io.IOException;
 @ApiModel(description = "Data model for a Resource")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CouponResource {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private Coupon attributes;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -39,9 +43,28 @@ public class CouponResource {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Coupon attributes;
+
+  public CouponResource attributes(Coupon attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Coupon getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(Coupon attributes) {
+    this.attributes = attributes;
+  }
 
 
   public CouponResource id(String id) {
@@ -90,29 +113,6 @@ public class CouponResource {
   }
 
 
-  public CouponResource attributes(Coupon attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Coupon getAttributes() {
-    return attributes;
-  }
-
-
-  public void setAttributes(Coupon attributes) {
-    this.attributes = attributes;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -122,23 +122,23 @@ public class CouponResource {
       return false;
     }
     CouponResource couponResource = (CouponResource) o;
-    return Objects.equals(this.id, couponResource.id) &&
-        Objects.equals(this.type, couponResource.type) &&
-        Objects.equals(this.attributes, couponResource.attributes);
+    return Objects.equals(this.attributes, couponResource.attributes) &&
+        Objects.equals(this.id, couponResource.id) &&
+        Objects.equals(this.type, couponResource.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, attributes);
+    return Objects.hash(attributes, id, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CouponResource {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

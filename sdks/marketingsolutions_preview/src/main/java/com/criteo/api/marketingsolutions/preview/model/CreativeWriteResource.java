@@ -31,6 +31,10 @@ import java.io.IOException;
 @ApiModel(description = "Data model for a Resource")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreativeWriteResource {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private CreativeWrite attributes;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -39,9 +43,28 @@ public class CreativeWriteResource {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private CreativeWrite attributes;
+
+  public CreativeWriteResource attributes(CreativeWrite attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public CreativeWrite getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(CreativeWrite attributes) {
+    this.attributes = attributes;
+  }
 
 
   public CreativeWriteResource id(String id) {
@@ -90,29 +113,6 @@ public class CreativeWriteResource {
   }
 
 
-  public CreativeWriteResource attributes(CreativeWrite attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public CreativeWrite getAttributes() {
-    return attributes;
-  }
-
-
-  public void setAttributes(CreativeWrite attributes) {
-    this.attributes = attributes;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -122,23 +122,23 @@ public class CreativeWriteResource {
       return false;
     }
     CreativeWriteResource creativeWriteResource = (CreativeWriteResource) o;
-    return Objects.equals(this.id, creativeWriteResource.id) &&
-        Objects.equals(this.type, creativeWriteResource.type) &&
-        Objects.equals(this.attributes, creativeWriteResource.attributes);
+    return Objects.equals(this.attributes, creativeWriteResource.attributes) &&
+        Objects.equals(this.id, creativeWriteResource.id) &&
+        Objects.equals(this.type, creativeWriteResource.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, attributes);
+    return Objects.hash(attributes, id, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreativeWriteResource {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

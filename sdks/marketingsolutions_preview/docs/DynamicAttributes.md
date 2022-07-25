@@ -8,7 +8,7 @@ The attributes specific to Dynamic creatives
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**logos** | [**List&lt;CreativeLogo&gt;**](CreativeLogo.md) | Logo images uploaded on demostatic.criteo.com when deploying and then static.criteo.net |  [optional]
+**logos** | [**List&lt;ImageShape&gt;**](ImageShape.md) | Logo images uploaded on demostatic.criteo.com when deploying and then static.criteo.net |  [optional]
 **creativeBackgroundColor** | **String** | Color of the creative&#39;s background  Valid hexadecimal color (e.g. \&quot;AB00FF\&quot;) |  [optional]
 **bodyTextColor** | **String** | Color of the creative&#39;s body text  Valid hexadecimal color (e.g. \&quot;AB00FF\&quot;) |  [optional]
 **pricesColor** | **String** | Color of the creative&#39;s prices  Valid hexadecimal color (e.g. \&quot;AB00FF\&quot;) |  [optional]
