@@ -9,8 +9,8 @@ import java.lang.*;
 import com.criteo.api.marketingsolutions.preview.ApiClient;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
-import com.criteo.api.marketingsolutions.preview.api.GatewayApi;
 import com.criteo.api.marketingsolutions.preview.ApiResponse;
+import com.criteo.api.marketingsolutions.preview.api.GatewayApi;
 import com.criteo.api.marketingsolutions.preview.model.ApplicationSummaryModelResponse;
 
 public class GatewayApiTest {

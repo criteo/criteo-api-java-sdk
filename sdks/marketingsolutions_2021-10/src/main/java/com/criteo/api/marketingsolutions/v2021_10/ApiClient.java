@@ -61,20 +61,17 @@ import com.criteo.api.marketingsolutions.v2021_10.model.AccessTokenModel;
 public class ApiClient {
 
     private String basePath = "https://api.criteo.com";
-    protected List<ServerConfiguration> servers = new ArrayList<ServerConfiguration>(Arrays.asList(
-        new ServerConfiguration(
-          "https://api.criteo.com",
-          "No description provided",
-          new HashMap<String, ServerVariable>()
-              )
-    ));
-    protected Integer serverIndex = 0;
+    protected List<ServerConfiguration> servers = new ArrayList<ServerConfiguration>();
+    protected Integer serverIndex = null;
     protected Map<String, String> serverVariables = null;
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private Map<String, String> defaultCookieMap = new HashMap<String, String>();
     private String tempFolderPath = null;
 
+    private String clientId;
+    private String clientSecret;
+    private Map<String, String> authParameters;
     private Map<String, Authentication> authentications;
     private TokenInfo tokenInfo;
 
@@ -101,8 +98,6 @@ public class ApiClient {
         // Setup authentications (key: authentication name, value: authentication).
         authentications.put("oauth", new OAuth());
         authentications.put("CriteoHttpBasicAuth", new HttpBasicAuth());
-        // Prevent the authentications from being modified.
-        authentications = Collections.unmodifiableMap(authentications);
     }
 
     /*
@@ -111,52 +106,69 @@ public class ApiClient {
     public ApiClient(String clientId) {
         this(clientId, null, null);
     }
-    
+
     /*
      * Constructor for ApiClient to support access token retry on 401/403 configured with client ID and additional parameters
      */
     public ApiClient(String clientId, Map<String, String> parameters) {
         this(clientId, null, parameters);
     }
-    
+
     /*
      * Constructor for ApiClient to support access token retry on 401/403 configured with client ID, secret, and additional parameters
      */
     public ApiClient(String clientId, String clientSecret, Map<String, String> parameters) {
-        RetryingOAuth retryingOAuth = new RetryingOAuth("https://api.criteo.com/oauth2/token", clientId, OAuthFlow.application, clientSecret, parameters);
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
+        this.authParameters = parameters;
+
+        RetryingOAuth retryingOAuth = createDefaultRetryingOAuth();
         authentications.put("oauth", retryingOAuth);
         HttpBasicAuth httpBasicAuth = new HttpBasicAuth();
         httpBasicAuth.setPassword(clientSecret);
         httpBasicAuth.setUsername(clientId);
         authentications.put("CriteoHttpBasicAuth", httpBasicAuth);
-        
+
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.addNetworkInterceptor(getProgressInterceptor());
         builder.interceptors().add(retryingOAuth);
         httpClient = builder.build();
-        
+
         verifyingSsl = true;
         json = new JSON();
         // Set default User-Agent.
         setUserAgent("OpenAPI-Generator//java");
-
-        // Prevent the authentications from being modified.
-        authentications = Collections.unmodifiableMap(authentications);
     }
-            
+
+    private RetryingOAuth createDefaultRetryingOAuth() {
+        String oauthTokenUrl = StringUtil.join(new String[]{basePath, "oauth2/token"}, "/");
+        RetryingOAuth retryingOAuth = new RetryingOAuth(oauthTokenUrl, clientId, OAuthFlow.application, clientSecret, authParameters);
+        return retryingOAuth;
+    }
+
+    private void resetRetryingOAuth() {
+        Authentication formerOAuth = authentications.get("oauth");
+        if (formerOAuth instanceof RetryingOAuth) {
+            RetryingOAuth newOauth = createDefaultRetryingOAuth();
+            authentications.replace("oauth", newOauth);
+            httpClient.interceptors().remove(formerOAuth);
+            httpClient.interceptors().add(newOauth);
+        }
+    }
+
     private void init() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.addNetworkInterceptor(getProgressInterceptor());
         httpClient = builder.build();
 
-        
+
         verifyingSsl = true;
-        
+
         json = new JSON();
-        
+
         // Set default User-Agent.
         setUserAgent("OpenAPI-Generator//java");
-        
+
         authentications = new HashMap<String, Authentication>();
     }
 
@@ -172,11 +184,15 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g https://api.criteo.com
+     * NOTE: It is recommended to call this method before setAccessToken, setBearerToken, setApiKey or getAuthentication(s)
+     * as it may reset the authentication configuration (by setting a new oauth token base url).
+     *
+     * @param basePath Base path of the URL (e.g https://api.criteo.com )
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {
         this.basePath = basePath;
+        resetRetryingOAuth();
         return this;
     }
 
@@ -345,7 +361,8 @@ public class ApiClient {
      * @return Map of authentication objects
      */
     public Map<String, Authentication> getAuthentications() {
-        return authentications;
+        // Prevent the authentications from being modified.
+        return Collections.unmodifiableMap(authentications);
     }
 
 
@@ -362,9 +379,14 @@ public class ApiClient {
     /**
      * Helper method to set username for the first HTTP basic authentication.
      *
+     * NOTE: It is recommended to call this method before setAccessToken, setBearerToken, setApiKey or getAuthentication(s)
+     * as it may reset the authentication configuration (by setting a new oauth token base url).
+     *
      * @param username Username
      */
     public void setUsername(String username) {
+        this.clientId = username;
+        resetRetryingOAuth();
         for (Authentication auth : authentications.values()) {
             if (auth instanceof HttpBasicAuth) {
                 ((HttpBasicAuth) auth).setUsername(username);
@@ -377,9 +399,14 @@ public class ApiClient {
     /**
      * Helper method to set password for the first HTTP basic authentication.
      *
+     * NOTE: It is recommended to call this method before setAccessToken, setBearerToken, setApiKey or getAuthentication(s)
+     * as it may reset the authentication configuration (by setting a new oauth token base url).
+     *
      * @param password Password
      */
     public void setPassword(String password) {
+        this.clientSecret = password;
+        resetRetryingOAuth();
         for (Authentication auth : authentications.values()) {
             if (auth instanceof HttpBasicAuth) {
                 ((HttpBasicAuth) auth).setPassword(password);
@@ -1432,15 +1459,24 @@ public class ApiClient {
     }
 
     private void refreshTokenIfNotValid() throws ApiException {
-        if (tokenInfo == null || !tokenInfo.isValid()) {
-            HttpBasicAuth auth = (HttpBasicAuth)authentications.get("CriteoHttpBasicAuth");
-            if (auth.getUsername() == null || auth.getPassword() == null) {
-                throw new IllegalArgumentException("username or password is not present.");
-            }
-            AccessTokenModel response = (new OAuthApi(this)).getToken(
-                "client_credentials", auth.getUsername(), auth.getPassword(), null, null, null);
-            tokenInfo = new TokenInfo(response.getExpiresIn() + System.currentTimeMillis() / 1000);
-            this.setApiKey(response.getAccessToken());
+        OAuth oauth = (OAuth) this.getAuthentication("oauth");
+        String accessToken = oauth.getAccessToken();
+
+        if (accessToken != null) {
+            return;
         }
+
+        if (this.tokenInfo != null && this.tokenInfo.isValid()) {
+            return;
+        }
+    
+        HttpBasicAuth auth = (HttpBasicAuth)authentications.get("CriteoHttpBasicAuth");
+        if (auth.getUsername() == null || auth.getPassword() == null) {
+            throw new IllegalArgumentException("username or password is not present.");
+        }
+        AccessTokenModel response = (new OAuthApi(this)).getToken(
+            "client_credentials", auth.getUsername(), auth.getPassword(), null, null, null);
+        tokenInfo = new TokenInfo(response.getExpiresIn() + System.currentTimeMillis() / 1000);
+        this.setApiKey(response.getAccessToken());
     }
 }

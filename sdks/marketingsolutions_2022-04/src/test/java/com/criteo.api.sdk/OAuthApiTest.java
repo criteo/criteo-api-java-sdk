@@ -7,8 +7,8 @@ import static org.junit.Assert.*;
 import com.criteo.api.marketingsolutions.v2022_04.ApiClient;
 import com.criteo.api.marketingsolutions.v2022_04.ApiException;
 import com.criteo.api.marketingsolutions.v2022_04.Configuration;
-import com.criteo.api.marketingsolutions.v2022_04.api.OAuthApi;
 import com.criteo.api.marketingsolutions.v2022_04.ApiResponse;
+import com.criteo.api.marketingsolutions.v2022_04.api.OAuthApi;
 import com.criteo.api.marketingsolutions.v2022_04.model.AccessTokenModel;
 
 public class OAuthApiTest {
