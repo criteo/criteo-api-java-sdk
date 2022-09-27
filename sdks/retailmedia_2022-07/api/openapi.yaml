@@ -1829,7 +1829,7 @@ paths:
   /2022-07/retail-media/preferred-line-items/{line-item-id}:
     get:
       description: Gets the preferred line item for the given line item id
-      operationId: GetApiV2ExternalPreferredLineItemByLineItemId
+      operationId: LineItemsApi_GetApi202110ExternalPreferredLineItemByLineItemId
       parameters:
       - description: The given line item id
         explode: false
@@ -1845,13 +1845,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PreferredLineItemResponse'
+                $ref: '#/components/schemas/PreferredLineItem202110Response'
           description: Success
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PreferredLineItemResponse'
+                $ref: '#/components/schemas/PreferredLineItem202110Response'
           description: Bad Request
       tags:
       - Campaign
@@ -5271,6 +5271,94 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
+    PreferredLineItem202110Response:
+      description: Data model for response resource
+      example:
+        data:
+          attributes:
+            budgetRemaining: 5.962133916683182
+            endDate: 2000-01-23
+            campaignId: campaignId
+            capping:
+              count: 0
+              type: unknown
+            creativeId: creativeId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            pacing: unknown
+            budgetSpent: 1.4658129805029452
+            name: name
+            page:
+              pageType: search
+              searchKeywords:
+              - searchKeywords
+              - searchKeywords
+              categories:
+              - includeChildren: true
+                categoryId: categoryId
+              - includeChildren: true
+                categoryId: categoryId
+            targetRetailerId: targetRetailerId
+            startDate: 2000-01-23
+            status: unknown
+            budget: 6.027456183070403
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfPreferredLineItem202110'
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
     PreferredLineItemResponse:
       description: Data model for response resource
       example:
@@ -5542,94 +5630,6 @@ components:
             $ref: '#/components/schemas/ResourceOfPreferredLineItem202110'
           type: array
           x-nullable: false
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
-    PreferredLineItem202110Response:
-      description: Data model for response resource
-      example:
-        data:
-          attributes:
-            budgetRemaining: 5.962133916683182
-            endDate: 2000-01-23
-            campaignId: campaignId
-            capping:
-              count: 0
-              type: unknown
-            creativeId: creativeId
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            pacing: unknown
-            budgetSpent: 1.4658129805029452
-            name: name
-            page:
-              pageType: search
-              searchKeywords:
-              - searchKeywords
-              - searchKeywords
-              categories:
-              - includeChildren: true
-                categoryId: categoryId
-              - includeChildren: true
-                categoryId: categoryId
-            targetRetailerId: targetRetailerId
-            startDate: 2000-01-23
-            status: unknown
-            budget: 6.027456183070403
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfPreferredLineItem202110'
         warnings:
           items:
             $ref: '#/components/schemas/ProblemDetails'
@@ -6342,6 +6342,49 @@ components:
           $ref: '#/components/schemas/ExternalCommonLineItem'
       type: object
       x-nullable: false
+    ResourceOfPreferredLineItem202110:
+      description: Data model for a Resource
+      example:
+        attributes:
+          budgetRemaining: 5.962133916683182
+          endDate: 2000-01-23
+          campaignId: campaignId
+          capping:
+            count: 0
+            type: unknown
+          creativeId: creativeId
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          pacing: unknown
+          budgetSpent: 1.4658129805029452
+          name: name
+          page:
+            pageType: search
+            searchKeywords:
+            - searchKeywords
+            - searchKeywords
+            categories:
+            - includeChildren: true
+              categoryId: categoryId
+            - includeChildren: true
+              categoryId: categoryId
+          targetRetailerId: targetRetailerId
+          startDate: 2000-01-23
+          status: unknown
+          budget: 6.027456183070403
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      properties:
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          description: Canonical type name of the entity
+          type: string
+        attributes:
+          $ref: '#/components/schemas/ExternalPreferredLineItem202110'
+      type: object
+      x-nullable: false
     ResourceOfPreferredLineItem:
       description: Data model for a Resource
       example:
@@ -6390,49 +6433,6 @@ components:
           type: string
         attributes:
           $ref: '#/components/schemas/ExternalPromotedProduct202110'
-      type: object
-      x-nullable: false
-    ResourceOfPreferredLineItem202110:
-      description: Data model for a Resource
-      example:
-        attributes:
-          budgetRemaining: 5.962133916683182
-          endDate: 2000-01-23
-          campaignId: campaignId
-          capping:
-            count: 0
-            type: unknown
-          creativeId: creativeId
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          pacing: unknown
-          budgetSpent: 1.4658129805029452
-          name: name
-          page:
-            pageType: search
-            searchKeywords:
-            - searchKeywords
-            - searchKeywords
-            categories:
-            - includeChildren: true
-              categoryId: categoryId
-            - includeChildren: true
-              categoryId: categoryId
-          targetRetailerId: targetRetailerId
-          startDate: 2000-01-23
-          status: unknown
-          budget: 6.027456183070403
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        id: id
-        type: type
-      properties:
-        id:
-          description: Id of the entity
-          type: string
-        type:
-          description: Canonical type name of the entity
-          type: string
-        attributes:
-          $ref: '#/components/schemas/ExternalPreferredLineItem202110'
       type: object
       x-nullable: false
     ResourceOfBalance202110:
@@ -7190,125 +7190,6 @@ components:
       - updatedAt
       type: object
       x-nullable: false
-    ExternalPreferredLineItem:
-      description: A Retail Media Preferred Line Item used to hold bid settings for
-        one or many promoted products on a single retailer
-      example:
-        budgetRemaining: 5.962133916683182
-        endDate: 2000-01-23
-        campaignId: campaignId
-        capping:
-          count: 0
-          type: unknown
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        pacing: unknown
-        budgetSpent: 1.4658129805029452
-        name: name
-        targetRetailerId: targetRetailerId
-        startDate: 2000-01-23
-        status: unknown
-        budget: 6.027456183070403
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        name:
-          maxLength: 255
-          minLength: 0
-          type: string
-          x-nullable: false
-        startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          required:
-          - "true"
-          type: string
-        endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          required:
-          - "true"
-          type: string
-        status:
-          enum:
-          - unknown
-          - active
-          - scheduled
-          - draft
-          - paused
-          - budgetHit
-          - ended
-          - archived
-          - noFunds
-          type: string
-          x-nullable: false
-        pacing:
-          enum:
-          - unknown
-          - standard
-          - accelerated
-          type: string
-          x-nullable: false
-        capping:
-          $ref: '#/components/schemas/ExternalLineItemCapping'
-        targetRetailerId:
-          format: long-id
-          type: string
-          x-nullable: false
-        budget:
-          format: decimal
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        campaignId:
-          format: long-id
-          type: string
-          x-nullable: false
-        budgetSpent:
-          format: double
-          type: number
-          x-nullable: false
-        budgetRemaining:
-          format: decimal
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        createdAt:
-          format: date-time
-          type: string
-          x-nullable: false
-        updatedAt:
-          format: date-time
-          type: string
-          x-nullable: false
-      required:
-      - budgetRemaining
-      - campaignId
-      - createdAt
-      - endDate
-      - name
-      - pacing
-      - startDate
-      - status
-      - targetRetailerId
-      - updatedAt
-      type: object
-      x-nullable: false
-    ExternalPromotedProduct202110:
-      description: identifies a promoted product
-      example:
-        bidOverride: 0.8008281904610115
-      properties:
-        bidOverride:
-          format: decimal
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-      type: object
-      x-nullable: false
     ExternalPreferredLineItem202110:
       description: A Retail Media Preferred Line Item used to hold bid settings for
         one or many promoted products on a single retailer
@@ -7427,6 +7308,125 @@ components:
       - status
       - targetRetailerId
       - updatedAt
+      type: object
+      x-nullable: false
+    ExternalPreferredLineItem:
+      description: A Retail Media Preferred Line Item used to hold bid settings for
+        one or many promoted products on a single retailer
+      example:
+        budgetRemaining: 5.962133916683182
+        endDate: 2000-01-23
+        campaignId: campaignId
+        capping:
+          count: 0
+          type: unknown
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        pacing: unknown
+        budgetSpent: 1.4658129805029452
+        name: name
+        targetRetailerId: targetRetailerId
+        startDate: 2000-01-23
+        status: unknown
+        budget: 6.027456183070403
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+          x-nullable: false
+        startDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          required:
+          - "true"
+          type: string
+        endDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          required:
+          - "true"
+          type: string
+        status:
+          enum:
+          - unknown
+          - active
+          - scheduled
+          - draft
+          - paused
+          - budgetHit
+          - ended
+          - archived
+          - noFunds
+          type: string
+          x-nullable: false
+        pacing:
+          enum:
+          - unknown
+          - standard
+          - accelerated
+          type: string
+          x-nullable: false
+        capping:
+          $ref: '#/components/schemas/ExternalLineItemCapping'
+        targetRetailerId:
+          format: long-id
+          type: string
+          x-nullable: false
+        budget:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        campaignId:
+          format: long-id
+          type: string
+          x-nullable: false
+        budgetSpent:
+          format: double
+          type: number
+          x-nullable: false
+        budgetRemaining:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        createdAt:
+          format: date-time
+          type: string
+          x-nullable: false
+        updatedAt:
+          format: date-time
+          type: string
+          x-nullable: false
+      required:
+      - budgetRemaining
+      - campaignId
+      - createdAt
+      - endDate
+      - name
+      - pacing
+      - startDate
+      - status
+      - targetRetailerId
+      - updatedAt
+      type: object
+      x-nullable: false
+    ExternalPromotedProduct202110:
+      description: identifies a promoted product
+      example:
+        bidOverride: 0.8008281904610115
+      properties:
+        bidOverride:
+          format: decimal
+          required:
+          - "false"
+          type: number
+          x-nullable: true
       type: object
       x-nullable: false
     ExternalBalance202110:
@@ -8091,28 +8091,6 @@ components:
       - targetRetailerId
       type: object
       x-nullable: false
-    ExternalLineItemCapping:
-      description: Frequency capping for a preferred line item
-      example:
-        count: 0
-        type: unknown
-      properties:
-        type:
-          enum:
-          - unknown
-          - day
-          - session
-          type: string
-          x-nullable: false
-        count:
-          format: int32
-          type: integer
-          x-nullable: false
-      required:
-      - count
-      - type
-      type: object
-      x-nullable: false
     ExternalLineItemCapping202110:
       description: Frequency capping for a preferred line item
       example:
@@ -8173,6 +8151,28 @@ components:
           x-nullable: false
       required:
       - pageType
+      type: object
+      x-nullable: false
+    ExternalLineItemCapping:
+      description: Frequency capping for a preferred line item
+      example:
+        count: 0
+        type: unknown
+      properties:
+        type:
+          enum:
+          - unknown
+          - day
+          - session
+          type: string
+          x-nullable: false
+        count:
+          format: int32
+          type: integer
+          x-nullable: false
+      required:
+      - count
+      - type
       type: object
       x-nullable: false
     ExternalLineItemPageCategory202110:

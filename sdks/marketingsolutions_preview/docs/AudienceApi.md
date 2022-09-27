@@ -12,20 +12,16 @@ All URIs are relative to *https://api.criteo.com*
 | [**bulkUpdateAudiences**](AudienceApi.md#bulkUpdateAudiences) | **PATCH** /preview/marketing-solutions/audiences |  |
 | [**computeAudienceSegmentsSizes**](AudienceApi.md#computeAudienceSegmentsSizes) | **POST** /preview/marketing-solutions/audience-segments/compute-sizes |  |
 | [**computeAudiencesSizes**](AudienceApi.md#computeAudiencesSizes) | **POST** /preview/marketing-solutions/audiences/compute-sizes |  |
-| [**createAudience**](AudienceApi.md#createAudience) | **POST** /preview/audiences |  |
-| [**deleteIdentifiers**](AudienceApi.md#deleteIdentifiers) | **DELETE** /preview/audiences/{audience-id}/contactlist |  |
+| [**deleteContactListIdentifiers**](AudienceApi.md#deleteContactListIdentifiers) | **DELETE** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list |  |
 | [**estimateAudienceSegmentSize**](AudienceApi.md#estimateAudienceSegmentSize) | **POST** /preview/marketing-solutions/audience-segments/estimate-size |  |
 | [**estimateAudienceSize**](AudienceApi.md#estimateAudienceSize) | **POST** /preview/marketing-solutions/audiences/estimate-size |  |
-| [**getAudiences**](AudienceApi.md#getAudiences) | **GET** /preview/audiences |  |
 | [**getCommerceBrands**](AudienceApi.md#getCommerceBrands) | **GET** /preview/marketing-solutions/audience-segments/commerce-brands |  |
 | [**getCommerceInterests**](AudienceApi.md#getCommerceInterests) | **GET** /preview/marketing-solutions/audience-segments/commerce-interests |  |
 | [**getContactListStatistics**](AudienceApi.md#getContactListStatistics) | **GET** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list |  |
-| [**modifyAudience**](AudienceApi.md#modifyAudience) | **PATCH** /preview/audiences/{audience-id} |  |
-| [**modifyAudienceUsers**](AudienceApi.md#modifyAudienceUsers) | **PATCH** /preview/audiences/{audience-id}/contactlist |  |
 | [**modifyAudienceUsersWithAttributes**](AudienceApi.md#modifyAudienceUsersWithAttributes) | **PATCH** /preview/audiences/{audience-id}/contactlist-attributes |  |
-| [**removeAudience**](AudienceApi.md#removeAudience) | **DELETE** /preview/audiences/{audience-id} |  |
 | [**searchAudienceSegments**](AudienceApi.md#searchAudienceSegments) | **POST** /preview/marketing-solutions/audience-segments/search |  |
 | [**searchAudiences**](AudienceApi.md#searchAudiences) | **POST** /preview/marketing-solutions/audiences/search |  |
+| [**updateContactListIdentifiers**](AudienceApi.md#updateContactListIdentifiers) | **PATCH** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list |  |
 
 
 
@@ -670,91 +666,13 @@ public class Example {
 | **403** | The API client is not authorized to access this resource. |  -  |
 
 
-## createAudience
+## deleteContactListIdentifiers
 
-> NewAudienceResponse createAudience(newAudienceRequest)
-
-
-
-Create an Audience for an Advertiser
-
-### Example
-
-```java
-package com.criteo.api.marketingsolutions.preview;
-
-import com.criteo.api.marketingsolutions.preview.ApiClient;
-import com.criteo.api.marketingsolutions.preview.ApiException;
-import com.criteo.api.marketingsolutions.preview.Configuration;
-import com.criteo.api.marketingsolutions.preview.auth.*;
-import com.criteo.api.marketingsolutions.preview.model.*;
-import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
-
-        AudienceApi apiInstance = new AudienceApi(defaultClient);
-        NewAudienceRequest newAudienceRequest = new NewAudienceRequest(); // NewAudienceRequest | 
-        try {
-            NewAudienceResponse result = apiInstance.createAudience(newAudienceRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AudienceApi#createAudience");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **newAudienceRequest** | [**NewAudienceRequest**](NewAudienceRequest.md)|  | |
-
-### Return type
-
-[**NewAudienceResponse**](NewAudienceResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | The audience was created |  -  |
-| **403** | Forbidden |  -  |
-
-
-## deleteIdentifiers
-
-> DeleteAudienceContactListResponse deleteIdentifiers(audienceId)
+> DeleteAudienceContactListResponse deleteContactListIdentifiers(audienceSegmentId)
 
 
 
-delete all identifiers from an Audience
+Delete all identifiers from a Contact List Audience Segment
 
 ### Example
 
@@ -783,12 +701,12 @@ public class Example {
         defaultClient.setPassword("YOUR CLIENT SECRET");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
-        String audienceId = "audienceId_example"; // String | The id of the audience to amend
+        String audienceSegmentId = "audienceSegmentId_example"; // String | The ID of the Audience Segment to amend
         try {
-            DeleteAudienceContactListResponse result = apiInstance.deleteIdentifiers(audienceId);
+            DeleteAudienceContactListResponse result = apiInstance.deleteContactListIdentifiers(audienceSegmentId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AudienceApi#deleteIdentifiers");
+            System.err.println("Exception when calling AudienceApi#deleteContactListIdentifiers");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -803,7 +721,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **audienceId** | **String**| The id of the audience to amend | |
+| **audienceSegmentId** | **String**| The ID of the Audience Segment to amend | |
 
 ### Return type
 
@@ -822,7 +740,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The contactlist was deleted |  -  |
+| **200** | The Contact List was emptied |  -  |
 | **403** | Forbidden |  -  |
 
 
@@ -984,84 +902,6 @@ public class Example {
 | **400** | Bad request |  -  |
 | **401** | The API client is not properly authenticated. |  -  |
 | **403** | The API client is not authorized to access this resource. |  -  |
-
-
-## getAudiences
-
-> GetAudiencesResponse getAudiences(advertiserId)
-
-
-
-Get a list of all the audiences for the user or for the given advertiser_id
-
-### Example
-
-```java
-package com.criteo.api.marketingsolutions.preview;
-
-import com.criteo.api.marketingsolutions.preview.ApiClient;
-import com.criteo.api.marketingsolutions.preview.ApiException;
-import com.criteo.api.marketingsolutions.preview.Configuration;
-import com.criteo.api.marketingsolutions.preview.auth.*;
-import com.criteo.api.marketingsolutions.preview.model.*;
-import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
-
-        AudienceApi apiInstance = new AudienceApi(defaultClient);
-        String advertiserId = "advertiserId_example"; // String | The advertiser id to get all the audiences for. Mandatory for internal users. For external users,            if you don't provide it, we will take into account the advertisers from your portfolio
-        try {
-            GetAudiencesResponse result = apiInstance.getAudiences(advertiserId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AudienceApi#getAudiences");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **String**| The advertiser id to get all the audiences for. Mandatory for internal users. For external users,            if you don&#39;t provide it, we will take into account the advertisers from your portfolio | [optional] |
-
-### Return type
-
-[**GetAudiencesResponse**](GetAudiencesResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | The list was retrieved. |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## getCommerceBrands
@@ -1305,167 +1145,6 @@ public class Example {
 | **403** | The API client is not authorized to access this resource. |  -  |
 
 
-## modifyAudience
-
-> ReplaceAudienceResponse modifyAudience(audienceId, replaceAudienceRequest)
-
-
-
-Update user audience specified by the audience id
-
-### Example
-
-```java
-package com.criteo.api.marketingsolutions.preview;
-
-import com.criteo.api.marketingsolutions.preview.ApiClient;
-import com.criteo.api.marketingsolutions.preview.ApiException;
-import com.criteo.api.marketingsolutions.preview.Configuration;
-import com.criteo.api.marketingsolutions.preview.auth.*;
-import com.criteo.api.marketingsolutions.preview.model.*;
-import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
-
-        AudienceApi apiInstance = new AudienceApi(defaultClient);
-        String audienceId = "audienceId_example"; // String | The id of the audience to amend
-        ReplaceAudienceRequest replaceAudienceRequest = new ReplaceAudienceRequest(); // ReplaceAudienceRequest | 
-        try {
-            ReplaceAudienceResponse result = apiInstance.modifyAudience(audienceId, replaceAudienceRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AudienceApi#modifyAudience");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **audienceId** | **String**| The id of the audience to amend | |
-| **replaceAudienceRequest** | [**ReplaceAudienceRequest**](ReplaceAudienceRequest.md)|  | |
-
-### Return type
-
-[**ReplaceAudienceResponse**](ReplaceAudienceResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | The audience was updated |  -  |
-| **403** | Forbidden |  -  |
-
-
-## modifyAudienceUsers
-
-> ModifyAudienceResponse modifyAudienceUsers(audienceId, contactlistAmendmentRequest)
-
-
-
-Add/remove users to or from an audience
-
-### Example
-
-```java
-package com.criteo.api.marketingsolutions.preview;
-
-import com.criteo.api.marketingsolutions.preview.ApiClient;
-import com.criteo.api.marketingsolutions.preview.ApiException;
-import com.criteo.api.marketingsolutions.preview.Configuration;
-import com.criteo.api.marketingsolutions.preview.auth.*;
-import com.criteo.api.marketingsolutions.preview.model.*;
-import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
-
-        AudienceApi apiInstance = new AudienceApi(defaultClient);
-        String audienceId = "audienceId_example"; // String | The id of the audience to amend
-        ContactlistAmendmentRequest contactlistAmendmentRequest = new ContactlistAmendmentRequest(); // ContactlistAmendmentRequest | 
-        try {
-            ModifyAudienceResponse result = apiInstance.modifyAudienceUsers(audienceId, contactlistAmendmentRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AudienceApi#modifyAudienceUsers");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **audienceId** | **String**| The id of the audience to amend | |
-| **contactlistAmendmentRequest** | [**ContactlistAmendmentRequest**](ContactlistAmendmentRequest.md)|  | |
-
-### Return type
-
-[**ModifyAudienceResponse**](ModifyAudienceResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Summary of created request |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Audience 123 not found |  -  |
-
-
 ## modifyAudienceUsersWithAttributes
 
 > ModifyAudienceResponse modifyAudienceUsersWithAttributes(audienceId, contactlistWithAttributesAmendmentRequest)
@@ -1544,84 +1223,6 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Summary of created request |  -  |
 | **401** | Not authorized |  -  |
-
-
-## removeAudience
-
-> DeleteAudienceResponse removeAudience(audienceId)
-
-
-
-Delete an audience by id
-
-### Example
-
-```java
-package com.criteo.api.marketingsolutions.preview;
-
-import com.criteo.api.marketingsolutions.preview.ApiClient;
-import com.criteo.api.marketingsolutions.preview.ApiException;
-import com.criteo.api.marketingsolutions.preview.Configuration;
-import com.criteo.api.marketingsolutions.preview.auth.*;
-import com.criteo.api.marketingsolutions.preview.model.*;
-import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
-
-        AudienceApi apiInstance = new AudienceApi(defaultClient);
-        String audienceId = "audienceId_example"; // String | The id of the audience to amend
-        try {
-            DeleteAudienceResponse result = apiInstance.removeAudience(audienceId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AudienceApi#removeAudience");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **audienceId** | **String**| The id of the audience to amend | |
-
-### Return type
-
-[**DeleteAudienceResponse**](DeleteAudienceResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | The audience was deleted |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## searchAudienceSegments
@@ -1790,4 +1391,85 @@ public class Example {
 | **400** | Bad request |  -  |
 | **401** | The API client is not properly authenticated. |  -  |
 | **403** | The API client is not authorized to access this resource. |  -  |
+
+
+## updateContactListIdentifiers
+
+> ModifyAudienceResponse updateContactListIdentifiers(audienceSegmentId, contactlistAmendmentRequest)
+
+
+
+Add/remove identifiers to or from an Contact List Audience Segment
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.criteo.com");
+        
+        // Configure OAuth2, two options:
+        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
+        defaultClient.setUsername("YOUR CLIENT ID");
+        defaultClient.setPassword("YOUR CLIENT SECRET");
+
+        AudienceApi apiInstance = new AudienceApi(defaultClient);
+        String audienceSegmentId = "audienceSegmentId_example"; // String | The ID of the Audience Segment to amend
+        ContactlistAmendmentRequest contactlistAmendmentRequest = new ContactlistAmendmentRequest(); // ContactlistAmendmentRequest | 
+        try {
+            ModifyAudienceResponse result = apiInstance.updateContactListIdentifiers(audienceSegmentId, contactlistAmendmentRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AudienceApi#updateContactListIdentifiers");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **audienceSegmentId** | **String**| The ID of the Audience Segment to amend | |
+| **contactlistAmendmentRequest** | [**ContactlistAmendmentRequest**](ContactlistAmendmentRequest.md)|  | |
+
+### Return type
+
+[**ModifyAudienceResponse**](ModifyAudienceResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Summary of created request |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Audience 123 not found |  -  |
 

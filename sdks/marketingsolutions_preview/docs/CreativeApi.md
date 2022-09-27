@@ -19,7 +19,6 @@ All URIs are relative to *https://api.criteo.com*
 | [**getCouponSupportedSizes**](CreativeApi.md#getCouponSupportedSizes) | **GET** /preview/advertisers/{advertiser-id}/coupons-supported-sizes |  |
 | [**getCoupons**](CreativeApi.md#getCoupons) | **GET** /preview/advertisers/{advertiser-id}/coupons |  |
 | [**getCreative**](CreativeApi.md#getCreative) | **GET** /preview/creatives/{id} |  |
-| [**getCreativePreview**](CreativeApi.md#getCreativePreview) | **GET** /preview/creatives/{id}/preview |  |
 | [**getCreativePreviewPost**](CreativeApi.md#getCreativePreviewPost) | **POST** /preview/creatives/{id}/preview |  |
 | [**getCreatives**](CreativeApi.md#getCreatives) | **GET** /preview/advertisers/{advertiser-id}/creatives |  |
 
@@ -1245,89 +1244,6 @@ public class Example {
 | **400** | The request contained invalid parameters. |  -  |
 | **401** | The request was not properly authorized. |  -  |
 | **500** | A non-request based error occurred on the server. |  -  |
-
-
-## getCreativePreview
-
-> String getCreativePreview(id, width, height)
-
-
-
-Get the preview of a specific Creative
-
-### Example
-
-```java
-package com.criteo.api.marketingsolutions.preview;
-
-import com.criteo.api.marketingsolutions.preview.ApiClient;
-import com.criteo.api.marketingsolutions.preview.ApiException;
-import com.criteo.api.marketingsolutions.preview.Configuration;
-import com.criteo.api.marketingsolutions.preview.auth.*;
-import com.criteo.api.marketingsolutions.preview.model.*;
-import com.criteo.api.marketingsolutions.preview.api.CreativeApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
-
-        CreativeApi apiInstance = new CreativeApi(defaultClient);
-        String id = "id_example"; // String | The Creative identifier to preview.
-        Integer width = 56; // Integer | The width of the Creative to preview.
-        Integer height = 56; // Integer | The height of the Creative to preview.
-        try {
-            String result = apiInstance.getCreativePreview(id, width, height);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CreativeApi#getCreativePreview");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The Creative identifier to preview. | |
-| **width** | **Integer**| The width of the Creative to preview. | [optional] |
-| **height** | **Integer**| The height of the Creative to preview. | [optional] |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: text/html, application/json, text/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | The preview HTML of a specific Creative is returned. |  -  |
-| **400** | The request contained invalid parameters. |  -  |
-| **403** | The request was not properly authorized. |  -  |
 
 
 ## getCreativePreviewPost

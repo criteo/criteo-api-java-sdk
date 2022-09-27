@@ -636,6 +636,20 @@ paths:
           type: integer
         style: simple
         x-nullable: false
+      - description: "Filter to narrow down brands [first-party|third-party|first-and-third-party].\
+          \ Defaults to first-and-third-party"
+        explode: true
+        in: query
+        name: sku-stock-type-filter
+        required: false
+        schema:
+          enum:
+          - first-party
+          - third-party
+          - first-and-third-party
+          type: string
+        style: form
+        x-nullable: false
       responses:
         "200":
           content:
@@ -2748,6 +2762,7 @@ components:
             isInStock: true
             category: category
             categoryId: categoryId
+            isBuybox: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
           type: type
@@ -2770,6 +2785,7 @@ components:
             isInStock: true
             category: category
             categoryId: categoryId
+            isBuybox: true
             updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
           type: type
@@ -3049,6 +3065,7 @@ components:
           isInStock: true
           category: category
           categoryId: categoryId
+          isBuybox: true
           updatedAt: 2000-01-23T04:56:07.000+00:00
         id: id
         type: type
@@ -3288,6 +3305,7 @@ components:
         isInStock: true
         category: category
         categoryId: categoryId
+        isBuybox: true
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         skuKey:
@@ -3316,6 +3334,10 @@ components:
           x-nullable: false
         isSellerSku:
           description: An indication of if the sku is seller sku.
+          type: boolean
+          x-nullable: false
+        isBuybox:
+          description: Whether the Sku is a Buybox Winner.
           type: boolean
           x-nullable: false
         sellerId:

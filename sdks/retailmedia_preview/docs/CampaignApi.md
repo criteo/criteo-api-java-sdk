@@ -1162,7 +1162,7 @@ public class Example {
 
 ## getApiV1ExternalRetailerBrandsByRetailerId
 
-> BrandPreviewListResponse getApiV1ExternalRetailerBrandsByRetailerId(retailerId)
+> BrandPreviewListResponse getApiV1ExternalRetailerBrandsByRetailerId(retailerId, skuStockTypeFilter)
 
 
 
@@ -1196,8 +1196,9 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer retailerId = 56; // Integer | The retailer id for which brands should be fetched.
+        String skuStockTypeFilter = "skuStockTypeFilter_example"; // String | Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party
         try {
-            BrandPreviewListResponse result = apiInstance.getApiV1ExternalRetailerBrandsByRetailerId(retailerId);
+            BrandPreviewListResponse result = apiInstance.getApiV1ExternalRetailerBrandsByRetailerId(retailerId, skuStockTypeFilter);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getApiV1ExternalRetailerBrandsByRetailerId");
@@ -1216,6 +1217,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **retailerId** | **Integer**| The retailer id for which brands should be fetched. | |
+| **skuStockTypeFilter** | **String**| Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party | [optional] [enum: first-party, third-party, first-and-third-party] |
 
 ### Return type
 

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **categoryId** | **String** | The category Id. |  [optional]
 **category** | **String** | The full category breadcrumb in the retailers catalog. |  [optional]
 **isSellerSku** | **Boolean** | An indication of if the sku is seller sku. |  [optional]
+**isBuybox** | **Boolean** | Whether the Sku is a Buybox Winner. |  [optional]
 **sellerId** | **String** | The id of the seller. |  [optional]
 **sellerName** | **String** | The name of the seller. |  [optional]
 **brandId** | **String** | The global brand id associated to the product. | 

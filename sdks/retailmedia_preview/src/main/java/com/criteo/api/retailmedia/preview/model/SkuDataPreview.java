@@ -55,6 +55,10 @@ public class SkuDataPreview {
   @SerializedName(SERIALIZED_NAME_IS_SELLER_SKU)
   private Boolean isSellerSku;
 
+  public static final String SERIALIZED_NAME_IS_BUYBOX = "isBuybox";
+  @SerializedName(SERIALIZED_NAME_IS_BUYBOX)
+  private Boolean isBuybox;
+
   public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
   @SerializedName(SERIALIZED_NAME_SELLER_ID)
   private String sellerId;
@@ -243,6 +247,29 @@ public class SkuDataPreview {
 
   public void setIsSellerSku(Boolean isSellerSku) {
     this.isSellerSku = isSellerSku;
+  }
+
+
+  public SkuDataPreview isBuybox(Boolean isBuybox) {
+    
+    this.isBuybox = isBuybox;
+    return this;
+  }
+
+   /**
+   * Whether the Sku is a Buybox Winner.
+   * @return isBuybox
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Whether the Sku is a Buybox Winner.")
+
+  public Boolean getIsBuybox() {
+    return isBuybox;
+  }
+
+
+  public void setIsBuybox(Boolean isBuybox) {
+    this.isBuybox = isBuybox;
   }
 
 
@@ -560,6 +587,7 @@ public class SkuDataPreview {
         Objects.equals(this.categoryId, skuDataPreview.categoryId) &&
         Objects.equals(this.category, skuDataPreview.category) &&
         Objects.equals(this.isSellerSku, skuDataPreview.isSellerSku) &&
+        Objects.equals(this.isBuybox, skuDataPreview.isBuybox) &&
         Objects.equals(this.sellerId, skuDataPreview.sellerId) &&
         Objects.equals(this.sellerName, skuDataPreview.sellerName) &&
         Objects.equals(this.brandId, skuDataPreview.brandId) &&
@@ -577,7 +605,7 @@ public class SkuDataPreview {
 
   @Override
   public int hashCode() {
-    return Objects.hash(skuKey, name, description, categoryId, category, isSellerSku, sellerId, sellerName, brandId, brandName, retailerId, retailerName, price, isInStock, gtin, mpn, imageUrl, productPage, updatedAt);
+    return Objects.hash(skuKey, name, description, categoryId, category, isSellerSku, isBuybox, sellerId, sellerName, brandId, brandName, retailerId, retailerName, price, isInStock, gtin, mpn, imageUrl, productPage, updatedAt);
   }
 
   @Override
@@ -590,6 +618,7 @@ public class SkuDataPreview {
     sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    isSellerSku: ").append(toIndentedString(isSellerSku)).append("\n");
+    sb.append("    isBuybox: ").append(toIndentedString(isBuybox)).append("\n");
     sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
     sb.append("    sellerName: ").append(toIndentedString(sellerName)).append("\n");
     sb.append("    brandId: ").append(toIndentedString(brandId)).append("\n");

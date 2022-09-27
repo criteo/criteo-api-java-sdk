@@ -42,11 +42,11 @@ public class PatchAdSetDisplayMultiplier {
   }
 
    /**
-   * Any positive decimal value. To remove the impact of the Display Multiplier set it to 1.
+   * Any positive decimal value. To remove the impact of the Display Multiplier set it to 1. At most 4 decimals are supported. Additional decimals are rounded.
    * @return displayMultiplier
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Any positive decimal value. To remove the impact of the Display Multiplier set it to 1.")
+  @ApiModelProperty(value = "Any positive decimal value. To remove the impact of the Display Multiplier set it to 1. At most 4 decimals are supported. Additional decimals are rounded.")
 
   public Double getDisplayMultiplier() {
     return displayMultiplier;

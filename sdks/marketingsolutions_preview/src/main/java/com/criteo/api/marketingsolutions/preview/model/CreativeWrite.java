@@ -38,10 +38,6 @@ public class CreativeWrite {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  public static final String SERIALIZED_NAME_AD_SET_ID = "adSetId";
-  @SerializedName(SERIALIZED_NAME_AD_SET_ID)
-  private String adSetId;
-
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
@@ -94,29 +90,6 @@ public class CreativeWrite {
   }
 
 
-  public CreativeWrite adSetId(String adSetId) {
-    
-    this.adSetId = adSetId;
-    return this;
-  }
-
-   /**
-   * Ad set on which Creative will be applied
-   * @return adSetId
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Ad set on which Creative will be applied")
-
-  public String getAdSetId() {
-    return adSetId;
-  }
-
-
-  public void setAdSetId(String adSetId) {
-    this.adSetId = adSetId;
-  }
-
-
   public CreativeWrite description(String description) {
     
     this.description = description;
@@ -147,11 +120,11 @@ public class CreativeWrite {
   }
 
    /**
-   * The format of the creative  You can use \&quot;Image\&quot;, \&quot; HtmlTag\&quot; or \&quot;Dynamic\&quot;
+   * The format of the creative  You can use \&quot;Image\&quot;, \&quot; HtmlTag\&quot;, \&quot;Dynamic\&quot; or \&quot;Adaptive\&quot;
    * @return format
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The format of the creative  You can use \"Image\", \" HtmlTag\" or \"Dynamic\"")
+  @ApiModelProperty(value = "The format of the creative  You can use \"Image\", \" HtmlTag\", \"Dynamic\" or \"Adaptive\"")
 
   public String getFormat() {
     return format;
@@ -288,7 +261,6 @@ public class CreativeWrite {
     }
     CreativeWrite creativeWrite = (CreativeWrite) o;
     return Objects.equals(this.name, creativeWrite.name) &&
-        Objects.equals(this.adSetId, creativeWrite.adSetId) &&
         Objects.equals(this.description, creativeWrite.description) &&
         Objects.equals(this.format, creativeWrite.format) &&
         Objects.equals(this.datasetId, creativeWrite.datasetId) &&
@@ -300,7 +272,7 @@ public class CreativeWrite {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, adSetId, description, format, datasetId, imageWriteAttributes, htmlTagWriteAttributes, dynamicWriteAttributes, adaptiveWriteAttributes);
+    return Objects.hash(name, description, format, datasetId, imageWriteAttributes, htmlTagWriteAttributes, dynamicWriteAttributes, adaptiveWriteAttributes);
   }
 
   @Override
@@ -308,7 +280,6 @@ public class CreativeWrite {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreativeWrite {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    adSetId: ").append(toIndentedString(adSetId)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    datasetId: ").append(toIndentedString(datasetId)).append("\n");

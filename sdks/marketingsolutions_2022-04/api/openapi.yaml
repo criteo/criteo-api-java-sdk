@@ -4118,7 +4118,8 @@ components:
       properties:
         displayMultiplier:
           description: Any positive decimal value. To remove the impact of the Display
-            Multiplier set it to 1.
+            Multiplier set it to 1. At most 4 decimals are supported. Additional decimals
+            are rounded.
           format: double
           type: number
       type: object
@@ -4128,7 +4129,8 @@ components:
         bidAmount: 0.8008281904610115
       properties:
         bidAmount:
-          description: positive decimal value match bid constraints
+          description: positive decimal value match bid constraints. At most 4 decimals
+            are supported. Additional decimals are rounded.
           format: double
           type: number
       type: object

@@ -42,11 +42,11 @@ public class PatchAdSetCategoryBid {
   }
 
    /**
-   * positive decimal value match bid constraints
+   * positive decimal value match bid constraints. At most 4 decimals are supported. Additional decimals are rounded.
    * @return bidAmount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "positive decimal value match bid constraints")
+  @ApiModelProperty(value = "positive decimal value match bid constraints. At most 4 decimals are supported. Additional decimals are rounded.")
 
   public Double getBidAmount() {
     return bidAmount;

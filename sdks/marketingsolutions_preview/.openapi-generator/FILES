@@ -60,9 +60,7 @@ docs/ApplicationSummaryModel.md
 docs/ApplicationSummaryModelResource.md
 docs/ApplicationSummaryModelResponse.md
 docs/Attribute.md
-docs/Audience.md
 docs/AudienceApi.md
-docs/AudienceAttributes.md
 docs/AudienceBulkCreateInputV1.md
 docs/AudienceBulkDeleteInputV1.md
 docs/AudienceBulkUpdateInputV1.md
@@ -165,6 +163,14 @@ docs/CouponResponse.md
 docs/CouponSupportedSizes.md
 docs/CouponSupportedSizesResource.md
 docs/CouponSupportedSizesResponse.md
+docs/CreateAdSet.md
+docs/CreateAdSetBidding.md
+docs/CreateAdSetBudget.md
+docs/CreateAdSetGeoLocation.md
+docs/CreateAdSetRequest.md
+docs/CreateAdSetResource.md
+docs/CreateAdSetSchedule.md
+docs/CreateAdSetTargeting.md
 docs/CreateCampaign.md
 docs/CreateCampaignRequest.md
 docs/CreateCampaignResource.md
@@ -190,7 +196,6 @@ docs/CustomAttribute.md
 docs/Dataset.md
 docs/DealId.md
 docs/DeleteAudienceContactListResponse.md
-docs/DeleteAudienceResponse.md
 docs/DynamicAttributes.md
 docs/DynamicWriteAttributes.md
 docs/EntityFilter.md
@@ -213,7 +218,6 @@ docs/GenerateTopProductsReportRequest.md
 docs/GenerateTopProductsReportRequestAttributes.md
 docs/GenerateTopProductsReportRequestData.md
 docs/GeoDivisionV1.md
-docs/GetAudiencesResponse.md
 docs/GetPortfolioResponse.md
 docs/HtmlTagAttributes.md
 docs/HtmlTagWriteAttributes.md
@@ -232,10 +236,6 @@ docs/LocationUpdateV1.md
 docs/LocationV1.md
 docs/LoyaltyPoints.md
 docs/ModifyAudienceResponse.md
-docs/NewAudience.md
-docs/NewAudienceAttributes.md
-docs/NewAudienceRequest.md
-docs/NewAudienceResponse.md
 docs/NillableAdSetTargetingRule.md
 docs/NillableDateTime.md
 docs/NillableDecimal.md
@@ -311,9 +311,6 @@ docs/ReadModelAdSetId.md
 docs/ReadModelReadAdSet.md
 docs/RecoApi.md
 docs/RecommendedProduct.md
-docs/ReplaceAudience.md
-docs/ReplaceAudienceRequest.md
-docs/ReplaceAudienceResponse.md
 docs/ReportDataMessage.md
 docs/ReportDetailError.md
 docs/ReportDetailErrors.md
@@ -462,8 +459,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/ApplicationSummary
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ApplicationSummaryModelResource.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ApplicationSummaryModelResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Attribute.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/Audience.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/AudienceAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AudienceBulkCreateInputV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AudienceBulkDeleteInputV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AudienceBulkUpdateInputV1.java
@@ -564,6 +559,14 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/CouponResponse.jav
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CouponSupportedSizes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CouponSupportedSizesResource.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CouponSupportedSizesResponse.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateAdSet.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateAdSetBidding.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateAdSetBudget.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateAdSetGeoLocation.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateAdSetRequest.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateAdSetResource.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateAdSetSchedule.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateAdSetTargeting.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateCampaign.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateCampaignRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateCampaignResource.java
@@ -588,7 +591,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/CustomAttribute.ja
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Dataset.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/DealId.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/DeleteAudienceContactListResponse.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/DeleteAudienceResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/DynamicAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/DynamicWriteAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/EntityFilter.java
@@ -610,7 +612,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateTopProduct
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateTopProductsReportRequestAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateTopProductsReportRequestData.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GeoDivisionV1.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/GetAudiencesResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GetPortfolioResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/HtmlTagAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/HtmlTagWriteAttributes.java
@@ -629,10 +630,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/LocationUpdateV1.j
 src/main/java/com/criteo/api/marketingsolutions/preview/model/LocationV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/LoyaltyPoints.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ModifyAudienceResponse.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/NewAudience.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/NewAudienceAttributes.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/NewAudienceRequest.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/NewAudienceResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableAdSetTargetingRule.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableDateTime.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableDecimal.java
@@ -705,9 +702,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/ReadAdSetSchedule.
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ReadModelAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ReadModelReadAdSet.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/RecommendedProduct.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/ReplaceAudience.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/ReplaceAudienceRequest.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/ReplaceAudienceResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ReportDataMessage.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ReportDetailError.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ReportDetailErrors.java

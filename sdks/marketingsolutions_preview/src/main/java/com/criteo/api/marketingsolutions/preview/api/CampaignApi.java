@@ -43,6 +43,7 @@ import com.criteo.api.marketingsolutions.preview.model.ApiResponseOfTargetingEnt
 import com.criteo.api.marketingsolutions.preview.model.CampaignListResponse;
 import com.criteo.api.marketingsolutions.preview.model.CampaignResponse;
 import com.criteo.api.marketingsolutions.preview.model.CampaignSearchRequest;
+import com.criteo.api.marketingsolutions.preview.model.CreateAdSetRequest;
 import com.criteo.api.marketingsolutions.preview.model.CreateCampaignRequest;
 import com.criteo.api.marketingsolutions.preview.model.OciBrandSafetyResponse;
 import com.criteo.api.marketingsolutions.preview.model.OciBrandSafetyRule;
@@ -91,6 +92,120 @@ public class CampaignApi {
         this.localVarApiClient = apiClient;
     }
 
+    /**
+     * Build call for createAdSet
+     * @param createAdSetRequest the ad sets to create (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAdSetCall(CreateAdSetRequest createAdSetRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = createAdSetRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/ad-sets";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createAdSetValidateBeforeCall(CreateAdSetRequest createAdSetRequest, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = createAdSetCall(createAdSetRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Create the specified ad set
+     * @param createAdSetRequest the ad sets to create (optional)
+     * @return ResponseReadAdSet
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ResponseReadAdSet createAdSet(CreateAdSetRequest createAdSetRequest) throws ApiException {
+        ApiResponse<ResponseReadAdSet> localVarResp = createAdSetWithHttpInfo(createAdSetRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Create the specified ad set
+     * @param createAdSetRequest the ad sets to create (optional)
+     * @return ApiResponse&lt;ResponseReadAdSet&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ResponseReadAdSet> createAdSetWithHttpInfo(CreateAdSetRequest createAdSetRequest) throws ApiException {
+        okhttp3.Call localVarCall = createAdSetValidateBeforeCall(createAdSetRequest, null);
+        Type localVarReturnType = new TypeToken<ResponseReadAdSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Create the specified ad set
+     * @param createAdSetRequest the ad sets to create (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The ad set that has been created and errors / warnings </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createAdSetAsync(CreateAdSetRequest createAdSetRequest, final ApiCallback<ResponseReadAdSet> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createAdSetValidateBeforeCall(createAdSetRequest, _callback);
+        Type localVarReturnType = new TypeToken<ResponseReadAdSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for createCampaign
      * @param createCampaignRequest the campaigns to create (optional)

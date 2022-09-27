@@ -45,6 +45,10 @@ public class OnSiteRecoRequest {
   @SerializedName(SERIALIZED_NAME_USER_EVENTS)
   private List<UserEvent> userEvents = null;
 
+  public static final String SERIALIZED_NAME_PARTNER_ID = "partnerId";
+  @SerializedName(SERIALIZED_NAME_PARTNER_ID)
+  private Integer partnerId;
+
 
   public OnSiteRecoRequest nbRequestedProducts(Integer nbRequestedProducts) {
     
@@ -123,6 +127,29 @@ public class OnSiteRecoRequest {
   }
 
 
+  public OnSiteRecoRequest partnerId(Integer partnerId) {
+    
+    this.partnerId = partnerId;
+    return this;
+  }
+
+   /**
+   * Id of the partner.
+   * @return partnerId
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Id of the partner.")
+
+  public Integer getPartnerId() {
+    return partnerId;
+  }
+
+
+  public void setPartnerId(Integer partnerId) {
+    this.partnerId = partnerId;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -134,12 +161,13 @@ public class OnSiteRecoRequest {
     OnSiteRecoRequest onSiteRecoRequest = (OnSiteRecoRequest) o;
     return Objects.equals(this.nbRequestedProducts, onSiteRecoRequest.nbRequestedProducts) &&
         Objects.equals(this.userId, onSiteRecoRequest.userId) &&
-        Objects.equals(this.userEvents, onSiteRecoRequest.userEvents);
+        Objects.equals(this.userEvents, onSiteRecoRequest.userEvents) &&
+        Objects.equals(this.partnerId, onSiteRecoRequest.partnerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(nbRequestedProducts, userId, userEvents);
+    return Objects.hash(nbRequestedProducts, userId, userEvents, partnerId);
   }
 
   @Override
@@ -149,6 +177,7 @@ public class OnSiteRecoRequest {
     sb.append("    nbRequestedProducts: ").append(toIndentedString(nbRequestedProducts)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    userEvents: ").append(toIndentedString(userEvents)).append("\n");
+    sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

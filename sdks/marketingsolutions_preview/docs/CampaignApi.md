@@ -4,6 +4,7 @@ All URIs are relative to *https://api.criteo.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**createAdSet**](CampaignApi.md#createAdSet) | **POST** /preview/marketing-solutions/ad-sets |  |
 | [**createCampaign**](CampaignApi.md#createCampaign) | **POST** /preview/marketing-solutions/campaigns |  |
 | [**deleteAdvertiserBundleRules**](CampaignApi.md#deleteAdvertiserBundleRules) | **DELETE** /preview/advertisers/{advertiserId}/targeting/bundle-rules |  |
 | [**deleteAdvertiserDomainRules**](CampaignApi.md#deleteAdvertiserDomainRules) | **DELETE** /preview/advertisers/{advertiserId}/targeting/domain-rules |  |
@@ -48,6 +49,85 @@ All URIs are relative to *https://api.criteo.com*
 | [**upsertOCIbrandSafetyRule**](CampaignApi.md#upsertOCIbrandSafetyRule) | **POST** /preview/brand-safety/oci |  |
 | [**upsertOCItargetingRule**](CampaignApi.md#upsertOCItargetingRule) | **POST** /preview/targeting/oci |  |
 
+
+
+## createAdSet
+
+> ResponseReadAdSet createAdSet(createAdSetRequest)
+
+
+
+Create the specified ad set
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.criteo.com");
+        
+        // Configure OAuth2, two options:
+        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
+        defaultClient.setUsername("YOUR CLIENT ID");
+        defaultClient.setPassword("YOUR CLIENT SECRET");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        CreateAdSetRequest createAdSetRequest = new CreateAdSetRequest(); // CreateAdSetRequest | the ad sets to create
+        try {
+            ResponseReadAdSet result = apiInstance.createAdSet(createAdSetRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#createAdSet");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createAdSetRequest** | [**CreateAdSetRequest**](CreateAdSetRequest.md)| the ad sets to create | [optional] |
+
+### Return type
+
+[**ResponseReadAdSet**](ResponseReadAdSet.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The ad set that has been created and errors / warnings |  -  |
+| **400** | Bad Request |  -  |
+| **401** | The API client is not properly authenticated. |  -  |
 
 
 ## createCampaign
