@@ -47,12 +47,12 @@ All URIs are relative to *https://api.criteo.com*
 | [**postApiV1ExternalAccountCampaignsByAccountId**](CampaignApi.md#postApiV1ExternalAccountCampaignsByAccountId) | **POST** /2022-04/retail-media/accounts/{accountId}/campaigns |  |
 | [**postApiV1ExternalAccountCatalogsByAccountId**](CampaignApi.md#postApiV1ExternalAccountCatalogsByAccountId) | **POST** /2022-04/retail-media/accounts/{accountId}/catalogs |  |
 | [**postApiV2ExternalCampaignAuctionLineItemsByCampaignId**](CampaignApi.md#postApiV2ExternalCampaignAuctionLineItemsByCampaignId) | **POST** /2022-04/retail-media/campaigns/{campaign-id}/auction-line-items |  |
+| [**putApi202110ExternalPreferredLineItemByLineItemId**](CampaignApi.md#putApi202110ExternalPreferredLineItemByLineItemId) | **PUT** /2022-04/retail-media/preferred-line-items/{line-item-id} |  |
 | [**putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId) | **PUT** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket |  |
 | [**putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId) | **PUT** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/audiences |  |
 | [**putApi202110ExternalPreferredLineItemTargetingStoresByLineItemId**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingStoresByLineItemId) | **PUT** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/stores |  |
 | [**putApiV1ExternalCampaignByCampaignId**](CampaignApi.md#putApiV1ExternalCampaignByCampaignId) | **PUT** /2022-04/retail-media/campaigns/{campaignId} |  |
 | [**putApiV2ExternalAuctionLineItemByLineItemId**](CampaignApi.md#putApiV2ExternalAuctionLineItemByLineItemId) | **PUT** /2022-04/retail-media/auction-line-items/{line-item-id} |  |
-| [**putApiV2ExternalPreferredLineItemByLineItemId**](CampaignApi.md#putApiV2ExternalPreferredLineItemByLineItemId) | **PUT** /2022-04/retail-media/preferred-line-items/{line-item-id} |  |
 
 
 
@@ -3490,6 +3490,86 @@ public class Example {
 | **400** | Bad Request |  -  |
 
 
+## putApi202110ExternalPreferredLineItemByLineItemId
+
+> PreferredLineItem202110Response putApi202110ExternalPreferredLineItemByLineItemId(lineItemId, preferredLineItemUpdateModel202110Request)
+
+
+
+Updates the preferred line item for the given line item id
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.v2022_04;
+
+import com.criteo.api.retailmedia.v2022_04.ApiClient;
+import com.criteo.api.retailmedia.v2022_04.ApiException;
+import com.criteo.api.retailmedia.v2022_04.Configuration;
+import com.criteo.api.retailmedia.v2022_04.auth.*;
+import com.criteo.api.retailmedia.v2022_04.model.*;
+import com.criteo.api.retailmedia.v2022_04.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.criteo.com");
+        
+        // Configure OAuth2, two options:
+        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
+        defaultClient.setUsername("YOUR CLIENT ID");
+        defaultClient.setPassword("YOUR CLIENT SECRET");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String lineItemId = "lineItemId_example"; // String | The given line item id
+        PreferredLineItemUpdateModel202110Request preferredLineItemUpdateModel202110Request = new PreferredLineItemUpdateModel202110Request(); // PreferredLineItemUpdateModel202110Request | The line item settings to create a line item with
+        try {
+            PreferredLineItem202110Response result = apiInstance.putApi202110ExternalPreferredLineItemByLineItemId(lineItemId, preferredLineItemUpdateModel202110Request);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#putApi202110ExternalPreferredLineItemByLineItemId");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **lineItemId** | **String**| The given line item id | |
+| **preferredLineItemUpdateModel202110Request** | [**PreferredLineItemUpdateModel202110Request**](PreferredLineItemUpdateModel202110Request.md)| The line item settings to create a line item with | [optional] |
+
+### Return type
+
+[**PreferredLineItem202110Response**](PreferredLineItem202110Response.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **400** | Bad Request |  -  |
+
+
 ## putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId
 
 > AddToBasketTarget202110Response putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId(lineItemId, addToBasketTarget202110Request)
@@ -3871,86 +3951,6 @@ public class Example {
 ### Return type
 
 [**AuctionLineItemResponse**](AuctionLineItemResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-
-
-## putApiV2ExternalPreferredLineItemByLineItemId
-
-> PreferredLineItemResponse putApiV2ExternalPreferredLineItemByLineItemId(lineItemId, preferredLineItemUpdateModelRequest)
-
-
-
-Updates the preferred line item for the given line item id
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2022_04;
-
-import com.criteo.api.retailmedia.v2022_04.ApiClient;
-import com.criteo.api.retailmedia.v2022_04.ApiException;
-import com.criteo.api.retailmedia.v2022_04.Configuration;
-import com.criteo.api.retailmedia.v2022_04.auth.*;
-import com.criteo.api.retailmedia.v2022_04.model.*;
-import com.criteo.api.retailmedia.v2022_04.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | The given line item id
-        PreferredLineItemUpdateModelRequest preferredLineItemUpdateModelRequest = new PreferredLineItemUpdateModelRequest(); // PreferredLineItemUpdateModelRequest | The line item settings to create a line item with
-        try {
-            PreferredLineItemResponse result = apiInstance.putApiV2ExternalPreferredLineItemByLineItemId(lineItemId, preferredLineItemUpdateModelRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#putApiV2ExternalPreferredLineItemByLineItemId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| The given line item id | |
-| **preferredLineItemUpdateModelRequest** | [**PreferredLineItemUpdateModelRequest**](PreferredLineItemUpdateModelRequest.md)| The line item settings to create a line item with | [optional] |
-
-### Return type
-
-[**PreferredLineItemResponse**](PreferredLineItemResponse.md)
 
 ### Authorization
 

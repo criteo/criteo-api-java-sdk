@@ -1,10 +1,10 @@
 package com.criteo.marketing.examples;
 
-import com.criteo.marketing.ApiClient;
-import com.criteo.marketing.ApiException;
-import com.criteo.marketing.Configuration;
-import com.criteo.marketing.api.AdvertiserApi;
-import com.criteo.marketing.model.GetPortfolioResponse;
+import com.criteo.api.retailmedia.v2021_10.ApiClient;
+import com.criteo.api.retailmedia.v2021_10.ApiException;
+import com.criteo.api.retailmedia.v2021_10.Configuration;
+import com.criteo.api.retailmedia.v2021_10.api.AdvertiserApi;
+import com.criteo.api.retailmedia.v2021_10.model.GetPortfolioResponse;
 
 
 public class PortfolioApplication {

@@ -258,6 +258,37 @@ paths:
       tags:
       - Campaign
       x-accepts: application/json
+  /2022-04/retail-media/assets:
+    post:
+      description: Creates an asset
+      operationId: CreateAsset
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                AssetFile:
+                  description: The asset binary content
+                  type: file
+              required:
+              - AssetFile
+      responses:
+        "201":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AssetResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AssetResponse'
+          description: Success
+      tags:
+      - Campaign
+      x-contentType: multipart/form-data
+      x-accepts: application/json
   /2022-04/retail-media/accounts/{accountId}/audiences:
     get:
       description: Get a page of audiences for a given account ID
@@ -1858,7 +1889,7 @@ paths:
       x-accepts: application/json
     put:
       description: Updates the preferred line item for the given line item id
-      operationId: PutApiV2ExternalPreferredLineItemByLineItemId
+      operationId: LineItemsApi_PutApi202110ExternalPreferredLineItemByLineItemId
       parameters:
       - description: The given line item id
         explode: false
@@ -1873,7 +1904,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PreferredLineItemUpdateModelRequest'
+              $ref: '#/components/schemas/PreferredLineItemUpdateModel202110Request'
         description: The line item settings to create a line item with
         x-nullable: false
         x-bodyName: lineItem
@@ -1882,13 +1913,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PreferredLineItemResponse'
+                $ref: '#/components/schemas/PreferredLineItem202110Response'
           description: Success
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PreferredLineItemResponse'
+                $ref: '#/components/schemas/PreferredLineItem202110Response'
           description: Bad Request
       tags:
       - Campaign
@@ -2300,37 +2331,6 @@ paths:
       tags:
       - Campaign
       x-contentType: application/json
-      x-accepts: application/json
-  /2022-04/retail-media/assets:
-    post:
-      description: Creates an asset
-      operationId: CreateAsset
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              properties:
-                AssetFile:
-                  description: The asset binary content
-                  type: file
-              required:
-              - AssetFile
-      responses:
-        "201":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AssetResponse'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssetResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AssetResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-contentType: multipart/form-data
       x-accepts: application/json
 components:
   schemas:
@@ -3134,6 +3134,108 @@ components:
       - name
       type: object
       x-nullable: false
+    AssetResponse:
+      description: A class implementing the response of the Criteo API as described
+        in API Guild Guidelines with a single entity as body
+      example:
+        data:
+          attributes:
+            fileExtension: fileExtension
+            fileLocation: fileLocation
+            id: id
+          id: id
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/AssetResource'
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+          uniqueItems: false
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+          uniqueItems: false
+      type: object
+    AssetResource:
+      description: A class that represents an entity in a guild compliant way
+      example:
+        attributes:
+          fileExtension: fileExtension
+          fileLocation: fileLocation
+          id: id
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/Asset'
+        id:
+          type: string
+        type:
+          type: string
+      type: object
+    Asset:
+      description: "Handles pointing towards binary content that advertisers can use\
+        \ later on, for example in their creatives."
+      example:
+        fileExtension: fileExtension
+        fileLocation: fileLocation
+        id: id
+      properties:
+        fileExtension:
+          description: "The file extension that is asset is representing. Example:\
+            \ jpg, png, gif or pdf."
+          type: string
+        fileLocation:
+          description: A url pointing towards the static file the asset represents.
+          type: string
+        id:
+          type: string
+      required:
+      - fileExtension
+      type: object
     GetPageOfAudiencesByAccountIdResponse:
       description: Response for page of audiences by given account
       example:
@@ -5359,83 +5461,6 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
-    PreferredLineItemResponse:
-      description: Data model for response resource
-      example:
-        data:
-          attributes:
-            budgetRemaining: 5.962133916683182
-            endDate: 2000-01-23
-            campaignId: campaignId
-            capping:
-              count: 0
-              type: unknown
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            pacing: unknown
-            budgetSpent: 1.4658129805029452
-            name: name
-            targetRetailerId: targetRetailerId
-            startDate: 2000-01-23
-            status: unknown
-            budget: 6.027456183070403
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfPreferredLineItem'
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
     PromotedProduct202110PagedListResponse:
       description: Data model for a paged list of response resources
       example:
@@ -5820,71 +5845,6 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
-    AssetResponse:
-      description: A class implementing the response of the Criteo API as described
-        in API Guild Guidelines with a single entity as body
-      example:
-        data:
-          attributes:
-            fileExtension: fileExtension
-            fileLocation: fileLocation
-            id: id
-          id: id
-          type: type
-        warnings:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/AssetResource'
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-          uniqueItems: false
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-          uniqueItems: false
-      type: object
     KeywordTarget202110Request:
       description: Data model for a value type input resource
       example:
@@ -6098,7 +6058,7 @@ components:
           $ref: '#/components/schemas/ResourceOfAuctionLineItemUpdateModel'
       type: object
       x-nullable: false
-    PreferredLineItemUpdateModelRequest:
+    PreferredLineItemUpdateModel202110Request:
       description: Data model for an input resource
       example:
         data:
@@ -6109,13 +6069,25 @@ components:
             capping:
               count: 0
               type: unknown
+            page:
+              pageType: search
+              searchKeywords:
+              - searchKeywords
+              - searchKeywords
+              categories:
+              - includeChildren: true
+                categoryId: categoryId
+              - includeChildren: true
+                categoryId: categoryId
             startDate: 2000-01-23
+            creativeId: creativeId
             status: unknown
+            budget: 0.8008281904610115
           id: id
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/ResourceOfPreferredLineItemUpdateModel'
+          $ref: '#/components/schemas/ResourceOfPreferredLineItemUpdateModel202110'
       type: object
       x-nullable: false
     PreferredLineItemCreateModel202110Request:
@@ -6385,38 +6357,6 @@ components:
           $ref: '#/components/schemas/ExternalPreferredLineItem202110'
       type: object
       x-nullable: false
-    ResourceOfPreferredLineItem:
-      description: Data model for a Resource
-      example:
-        attributes:
-          budgetRemaining: 5.962133916683182
-          endDate: 2000-01-23
-          campaignId: campaignId
-          capping:
-            count: 0
-            type: unknown
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          pacing: unknown
-          budgetSpent: 1.4658129805029452
-          name: name
-          targetRetailerId: targetRetailerId
-          startDate: 2000-01-23
-          status: unknown
-          budget: 6.027456183070403
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        id: id
-        type: type
-      properties:
-        id:
-          description: Id of the entity
-          type: string
-        type:
-          description: Canonical type name of the entity
-          type: string
-        attributes:
-          $ref: '#/components/schemas/ExternalPreferredLineItem'
-      type: object
-      x-nullable: false
     ResourceOfPromotedProduct202110:
       description: Data model for a Resource
       example:
@@ -6482,23 +6422,6 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
-    AssetResource:
-      description: A class that represents an entity in a guild compliant way
-      example:
-        attributes:
-          fileExtension: fileExtension
-          fileLocation: fileLocation
-          id: id
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/Asset'
-        id:
-          type: string
-        type:
-          type: string
-      type: object
     ValueTypeResourceOfStoreIdsUpdateModel202110:
       description: Data model for a value type resource
       example:
@@ -6657,7 +6580,7 @@ components:
           $ref: '#/components/schemas/ExternalAuctionLineItemUpdateModel'
       type: object
       x-nullable: false
-    ResourceOfPreferredLineItemUpdateModel:
+    ResourceOfPreferredLineItemUpdateModel202110:
       description: Data model for a Resource
       example:
         attributes:
@@ -6667,8 +6590,20 @@ components:
           capping:
             count: 0
             type: unknown
+          page:
+            pageType: search
+            searchKeywords:
+            - searchKeywords
+            - searchKeywords
+            categories:
+            - includeChildren: true
+              categoryId: categoryId
+            - includeChildren: true
+              categoryId: categoryId
           startDate: 2000-01-23
+          creativeId: creativeId
           status: unknown
+          budget: 0.8008281904610115
         id: id
         type: type
       properties:
@@ -6679,7 +6614,7 @@ components:
           description: Canonical type name of the entity
           type: string
         attributes:
-          $ref: '#/components/schemas/ExternalPreferredLineItemUpdateModel'
+          $ref: '#/components/schemas/ExternalPreferredLineItemUpdateModel202110'
       type: object
       x-nullable: false
     InputResourceOfPreferredLineItemCreateModel202110:
@@ -7310,112 +7245,6 @@ components:
       - updatedAt
       type: object
       x-nullable: false
-    ExternalPreferredLineItem:
-      description: A Retail Media Preferred Line Item used to hold bid settings for
-        one or many promoted products on a single retailer
-      example:
-        budgetRemaining: 5.962133916683182
-        endDate: 2000-01-23
-        campaignId: campaignId
-        capping:
-          count: 0
-          type: unknown
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        pacing: unknown
-        budgetSpent: 1.4658129805029452
-        name: name
-        targetRetailerId: targetRetailerId
-        startDate: 2000-01-23
-        status: unknown
-        budget: 6.027456183070403
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        name:
-          maxLength: 255
-          minLength: 0
-          type: string
-          x-nullable: false
-        startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          required:
-          - "true"
-          type: string
-        endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          required:
-          - "true"
-          type: string
-        status:
-          enum:
-          - unknown
-          - active
-          - scheduled
-          - draft
-          - paused
-          - budgetHit
-          - ended
-          - archived
-          - noFunds
-          type: string
-          x-nullable: false
-        pacing:
-          enum:
-          - unknown
-          - standard
-          - accelerated
-          type: string
-          x-nullable: false
-        capping:
-          $ref: '#/components/schemas/ExternalLineItemCapping'
-        targetRetailerId:
-          format: long-id
-          type: string
-          x-nullable: false
-        budget:
-          format: decimal
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        campaignId:
-          format: long-id
-          type: string
-          x-nullable: false
-        budgetSpent:
-          format: double
-          type: number
-          x-nullable: false
-        budgetRemaining:
-          format: decimal
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        createdAt:
-          format: date-time
-          type: string
-          x-nullable: false
-        updatedAt:
-          format: date-time
-          type: string
-          x-nullable: false
-      required:
-      - budgetRemaining
-      - campaignId
-      - createdAt
-      - endDate
-      - name
-      - pacing
-      - startDate
-      - status
-      - targetRetailerId
-      - updatedAt
-      type: object
-      x-nullable: false
     ExternalPromotedProduct202110:
       description: identifies a promoted product
       example:
@@ -7518,30 +7347,6 @@ components:
       description: Campaigns related to the balance
       type: object
       x-nullable: false
-    Asset:
-      description: "Handles pointing towards binary content that advertisers can use\
-        \ later on, for example in their creatives."
-      example:
-        fileExtension: fileExtension
-        fileLocation: fileLocation
-        id: id
-      properties:
-        fileExtension:
-          description: "The file extension that is asset is representing. Example:\
-            \ jpg, png, gif or pdf."
-          type: string
-        fileLocation:
-          description: A url pointing towards the static file the asset represents.
-          type: string
-        id:
-          type: string
-      required:
-      - fileExtension
-      type: object
-      x-criteo-canonical:
-        infoType: entity
-        name: RetailMediaAsset
-        version: "202110"
     ExternalStoreIdsUpdateModel202110:
       description: Update model for updating store target ids
       example:
@@ -7940,7 +7745,7 @@ components:
       - targetBid
       type: object
       x-nullable: false
-    ExternalPreferredLineItemUpdateModel:
+    ExternalPreferredLineItemUpdateModel202110:
       description: Model used to update a preferred line item
       example:
         pacing: accelerated
@@ -7949,8 +7754,20 @@ components:
         capping:
           count: 0
           type: unknown
+        page:
+          pageType: search
+          searchKeywords:
+          - searchKeywords
+          - searchKeywords
+          categories:
+          - includeChildren: true
+            categoryId: categoryId
+          - includeChildren: true
+            categoryId: categoryId
         startDate: 2000-01-23
+        creativeId: creativeId
         status: unknown
+        budget: 0.8008281904610115
       properties:
         name:
           maxLength: 255
@@ -7993,7 +7810,17 @@ components:
           type: string
           x-nullable: false
         capping:
-          $ref: '#/components/schemas/ExternalLineItemCapping'
+          $ref: '#/components/schemas/ExternalLineItemCapping202110'
+        page:
+          $ref: '#/components/schemas/ExternalLineItemPage202110'
+        budget:
+          format: double
+          type: number
+          x-nullable: false
+        creativeId:
+          format: long-id
+          type: string
+          x-nullable: true
       required:
       - endDate
       - name
@@ -8151,28 +7978,6 @@ components:
           x-nullable: false
       required:
       - pageType
-      type: object
-      x-nullable: false
-    ExternalLineItemCapping:
-      description: Frequency capping for a preferred line item
-      example:
-        count: 0
-        type: unknown
-      properties:
-        type:
-          enum:
-          - unknown
-          - day
-          - session
-          type: string
-          x-nullable: false
-        count:
-          format: int32
-          type: integer
-          x-nullable: false
-      required:
-      - count
-      - type
       type: object
       x-nullable: false
     ExternalLineItemPageCategory202110:

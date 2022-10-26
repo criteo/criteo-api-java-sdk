@@ -105,6 +105,8 @@ gradlew
 gradlew.bat
 pom.xml
 settings.gradle
+src/examples/java/criteo/api/examples/PortfolioApplication.java
+src/examples/java/criteo/api/examples/StatisticsApplication.java
 src/main/AndroidManifest.xml
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/ApiCallback.java
 src/main/java/com/criteo/api/marketingsolutions/v2021_10/ApiClient.java

@@ -4,8 +4,11 @@ All URIs are relative to *https://api.criteo.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId**](CampaignApi.md#deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId) | **DELETE** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
 | [**deleteApiV1ExternalBalanceCampaignsByBalanceId**](CampaignApi.md#deleteApiV1ExternalBalanceCampaignsByBalanceId) | **DELETE** /preview/retail-media/balances/{balanceId}/campaigns |  |
 | [**deleteApiV1ExternalLineItemProductsByLineItemId**](CampaignApi.md#deleteApiV1ExternalLineItemProductsByLineItemId) | **DELETE** /preview/retail-media/line-items/{lineItemId}/products |  |
+| [**getApi202210ExternalLineItemProductButtonsByLineItemId**](CampaignApi.md#getApi202210ExternalLineItemProductButtonsByLineItemId) | **GET** /preview/retail-media/line-items/{line-item-id}/product-buttons |  |
+| [**getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId**](CampaignApi.md#getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId) | **GET** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
 | [**getApiV0ExternalCatalogOutputByCatalogId**](CampaignApi.md#getApiV0ExternalCatalogOutputByCatalogId) | **GET** /preview/retail-media/catalogs/{catalogId}/output |  |
 | [**getApiV0ExternalCatalogStatusByCatalogId**](CampaignApi.md#getApiV0ExternalCatalogStatusByCatalogId) | **GET** /preview/retail-media/catalogs/{catalogId}/status |  |
 | [**getApiV1ExternalAccountBalancesByAccountId**](CampaignApi.md#getApiV1ExternalAccountBalancesByAccountId) | **GET** /preview/retail-media/accounts/{accountId}/balances |  |
@@ -20,16 +23,96 @@ All URIs are relative to *https://api.criteo.com*
 | [**getApiV1ExternalLineItemProductsByLineItemId**](CampaignApi.md#getApiV1ExternalLineItemProductsByLineItemId) | **GET** /preview/retail-media/line-items/{lineItemId}/products |  |
 | [**getApiV1ExternalRetailerBrandsByRetailerId**](CampaignApi.md#getApiV1ExternalRetailerBrandsByRetailerId) | **GET** /preview/retail-media/retailers/{retailerId}/brands |  |
 | [**getApiV1ExternalRetailerByRetailerIdSellerBySeller**](CampaignApi.md#getApiV1ExternalRetailerByRetailerIdSellerBySeller) | **GET** /preview/retail-media/retailers/{retailerId}/sellers/{seller} |  |
+| [**postApi202210ExternalLineItemProductButtonsCreateByLineItemId**](CampaignApi.md#postApi202210ExternalLineItemProductButtonsCreateByLineItemId) | **POST** /preview/retail-media/line-items/{line-item-id}/product-buttons/create |  |
 | [**postApiV0ExternalAccountCatalogsByAccountId**](CampaignApi.md#postApiV0ExternalAccountCatalogsByAccountId) | **POST** /preview/retail-media/accounts/{accountId}/catalogs |  |
 | [**postApiV1ExternalAccountCampaignsByAccountId**](CampaignApi.md#postApiV1ExternalAccountCampaignsByAccountId) | **POST** /preview/retail-media/accounts/{accountId}/campaigns |  |
 | [**postApiV1ExternalCampaignLineItemsByCampaignId**](CampaignApi.md#postApiV1ExternalCampaignLineItemsByCampaignId) | **POST** /preview/retail-media/campaigns/{campaignId}/line-items |  |
 | [**postApiV1ExternalCatalogsSkuRetrieval**](CampaignApi.md#postApiV1ExternalCatalogsSkuRetrieval) | **POST** /preview/retail-media/catalogs/sku-retrieval |  |
 | [**postApiV1ExternalCatalogsSkuSearch**](CampaignApi.md#postApiV1ExternalCatalogsSkuSearch) | **POST** /preview/retail-media/catalogs/sku-search |  |
+| [**putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId**](CampaignApi.md#putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId) | **PUT** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
 | [**putApiV1ExternalBalanceCampaignsByBalanceId**](CampaignApi.md#putApiV1ExternalBalanceCampaignsByBalanceId) | **PUT** /preview/retail-media/balances/{balanceId}/campaigns |  |
 | [**putApiV1ExternalCampaignByCampaignId**](CampaignApi.md#putApiV1ExternalCampaignByCampaignId) | **PUT** /preview/retail-media/campaigns/{campaignId} |  |
 | [**putApiV1ExternalLineItemByLineItemId**](CampaignApi.md#putApiV1ExternalLineItemByLineItemId) | **PUT** /preview/retail-media/line-items/{lineItemId} |  |
 | [**putApiV1ExternalLineItemProductsByLineItemId**](CampaignApi.md#putApiV1ExternalLineItemProductsByLineItemId) | **PUT** /preview/retail-media/line-items/{lineItemId}/products |  |
 
+
+
+## deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId
+
+> deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId(lineItemId, productButtonId)
+
+
+
+Delete a product button
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.criteo.com");
+        
+        // Configure OAuth2, two options:
+        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
+        defaultClient.setUsername("YOUR CLIENT ID");
+        defaultClient.setPassword("YOUR CLIENT SECRET");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String lineItemId = "lineItemId_example"; // String | Long external id of the associated line item
+        String productButtonId = "productButtonId_example"; // String | Sequential id of the product button
+        try {
+            apiInstance.deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId(lineItemId, productButtonId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **lineItemId** | **String**| Long external id of the associated line item | |
+| **productButtonId** | **String**| Sequential id of the product button | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
 
 
 ## deleteApiV1ExternalBalanceCampaignsByBalanceId
@@ -181,6 +264,162 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
+## getApi202210ExternalLineItemProductButtonsByLineItemId
+
+> ProductButtonListResponse getApi202210ExternalLineItemProductButtonsByLineItemId(lineItemId)
+
+
+
+Get all the product buttons associated with a line item
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.criteo.com");
+        
+        // Configure OAuth2, two options:
+        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
+        defaultClient.setUsername("YOUR CLIENT ID");
+        defaultClient.setPassword("YOUR CLIENT SECRET");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String lineItemId = "lineItemId_example"; // String | Long external id of the associated line item
+        try {
+            ProductButtonListResponse result = apiInstance.getApi202210ExternalLineItemProductButtonsByLineItemId(lineItemId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#getApi202210ExternalLineItemProductButtonsByLineItemId");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **lineItemId** | **String**| Long external id of the associated line item | |
+
+### Return type
+
+[**ProductButtonListResponse**](ProductButtonListResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
+## getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId
+
+> ProductButtonResponse getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId(lineItemId, productButtonId)
+
+
+
+Get a single product button
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.criteo.com");
+        
+        // Configure OAuth2, two options:
+        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
+        defaultClient.setUsername("YOUR CLIENT ID");
+        defaultClient.setPassword("YOUR CLIENT SECRET");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String lineItemId = "lineItemId_example"; // String | Long external id of the associated line item
+        String productButtonId = "productButtonId_example"; // String | Sequential id of the product button
+        try {
+            ProductButtonResponse result = apiInstance.getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId(lineItemId, productButtonId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **lineItemId** | **String**| Long external id of the associated line item | |
+| **productButtonId** | **String**| Sequential id of the product button | |
+
+### Return type
+
+[**ProductButtonResponse**](ProductButtonResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -1318,6 +1557,85 @@ public class Example {
 | **200** | Seller found. |  -  |
 
 
+## postApi202210ExternalLineItemProductButtonsCreateByLineItemId
+
+> ProductButtonListResponse postApi202210ExternalLineItemProductButtonsCreateByLineItemId(lineItemId, productButtonListRequest)
+
+
+
+Append new product buttons to a line item
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.criteo.com");
+        
+        // Configure OAuth2, two options:
+        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
+        defaultClient.setUsername("YOUR CLIENT ID");
+        defaultClient.setPassword("YOUR CLIENT SECRET");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String lineItemId = "lineItemId_example"; // String | Long external id of the associated line item
+        ProductButtonListRequest productButtonListRequest = new ProductButtonListRequest(); // ProductButtonListRequest | List of product buttons to append to the specified line item
+        try {
+            ProductButtonListResponse result = apiInstance.postApi202210ExternalLineItemProductButtonsCreateByLineItemId(lineItemId, productButtonListRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#postApi202210ExternalLineItemProductButtonsCreateByLineItemId");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **lineItemId** | **String**| Long external id of the associated line item | |
+| **productButtonListRequest** | [**ProductButtonListRequest**](ProductButtonListRequest.md)| List of product buttons to append to the specified line item | [optional] |
+
+### Return type
+
+[**ProductButtonListResponse**](ProductButtonListResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
 ## postApiV0ExternalAccountCatalogsByAccountId
 
 > JsonApiSingleResponseOfCatalogStatus postApiV0ExternalAccountCatalogsByAccountId(accountId, jsonApiRequestOfCatalogRequestPreview)
@@ -1717,6 +2035,87 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Skus found. |  -  |
+
+
+## putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId
+
+> ProductButtonResponse putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId(lineItemId, productButtonId, productButtonRequest)
+
+
+
+Update a product button
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.criteo.com");
+        
+        // Configure OAuth2, two options:
+        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
+        defaultClient.setUsername("YOUR CLIENT ID");
+        defaultClient.setPassword("YOUR CLIENT SECRET");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String lineItemId = "lineItemId_example"; // String | Long external id of the associated line item
+        String productButtonId = "productButtonId_example"; // String | Sequential id of the product button
+        ProductButtonRequest productButtonRequest = new ProductButtonRequest(); // ProductButtonRequest | Details of the updated product button
+        try {
+            ProductButtonResponse result = apiInstance.putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId(lineItemId, productButtonId, productButtonRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **lineItemId** | **String**| Long external id of the associated line item | |
+| **productButtonId** | **String**| Sequential id of the product button | |
+| **productButtonRequest** | [**ProductButtonRequest**](ProductButtonRequest.md)| Details of the updated product button | [optional] |
+
+### Return type
+
+[**ProductButtonResponse**](ProductButtonResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
 
 
 ## putApiV1ExternalBalanceCampaignsByBalanceId

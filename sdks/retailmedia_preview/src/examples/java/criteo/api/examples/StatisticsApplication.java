@@ -1,12 +1,13 @@
 package com.criteo.marketing.examples;
 
-import com.criteo.marketing.ApiClient;
-import com.criteo.marketing.ApiException;
-import com.criteo.marketing.ApiResponse;
-import com.criteo.marketing.Configuration;
-import com.criteo.marketing.api.AnalyticsApi;
-import com.criteo.marketing.model.StatisticsReportQueryMessage;
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.ApiResponse;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.api.AnalyticsApi;
+import com.criteo.api.retailmedia.preview.model.StatisticsReportQueryMessage;
 import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,8 +23,8 @@ public class StatisticsApplication {
         AnalyticsApi myApi = new AnalyticsApi(client);
         List<StatisticsReportQueryMessage.DimensionsEnum> dimensions = Arrays.asList(StatisticsReportQueryMessage.DimensionsEnum.ADSET);
         List<String> metrics = Arrays.asList("Clicks");
-        OffsetDateTime startDate = OffsetDateTime.parse("2019-01-01");
-        OffsetDateTime endDate = OffsetDateTime.parse("2019-01-31");
+        OffsetDateTime startDate = OffsetDateTime.parse("2022-07-01T00:00:00+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+        OffsetDateTime endDate = OffsetDateTime.parse("2022-07-31T00:00:00+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME);
 
         StatisticsReportQueryMessage statisticsReportQueryMessage = new StatisticsReportQueryMessage();
 

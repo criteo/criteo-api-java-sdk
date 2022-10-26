@@ -528,6 +528,165 @@ paths:
       tags:
       - Campaign
       x-accepts: application/json
+  /2022-01/retail-media/reports/campaigns:
+    post:
+      description: Request a campaign report
+      operationId: requestCampaignReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvelopeReportRequest'
+        description: "// Body of the request\n{\n  \"data\": {\n    \"type\": \"RetailMediaReportRequest\"\
+          ,\n    \"attributes\": {\n      \"reportType\": string, // the name of the\
+          \ report being requested\n      //only one of \"id\" or \"ids\" can be provided\
+          \ for a request\n      \"id\": string, // the campaign id to select\n  \
+          \    \"ids\": Array[string], //the campaign ids to select\n      \"startDate\"\
+          : string, // YYYY-MM-DD format\n      \"endDate\": string, // YYYY-MM-DD\
+          \ format\n      \"timeZone\": string, // examples: 'Europe/London', 'Asia/Tokyo',\
+          \ 'America/New_York'\n      // both attribution windows must be specified\
+          \ when one is specified\n      \"clickAttributionWindow\": \"7D\", \"14D\"\
+          , or \"30D\"  // optional. defaults to campaign's click attribution window\n\
+          \      \"viewAttributionWindow\": \"none\", \"1D\", \"7D\", \"14D\", \"\
+          30D\" // optional. defaults to campaign's view attribution window\n    \
+          \  \"format\": One of \"json\" (default),\"json-compact\",\"json-newline\"\
+          \ or \"csv\" // output format, defaults to json-compact\n    }\n  }\n}"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvelopeReportStatus'
+          description: Returns the status of the report
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+          description: Bad request
+        "401":
+          description: Missing Authorization or token invalid
+        "403":
+          description: Must have access to RetailMedia accounts
+      tags:
+      - Analytics
+      x-contentType: application/json
+      x-accepts: application/json
+  /2022-01/retail-media/reports/line-items:
+    post:
+      description: Request a line item report
+      operationId: requestLineItemReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvelopeReportRequest'
+        description: "// Body of the request\n{\n  \"data\": {\n    \"type\": \"RetailMediaReportRequest\"\
+          ,\n    \"attributes\": {\n      \"reportType\": string, // the name of the\
+          \ report being requested\n      //only one of \"id\" or \"ids\" can be provided\
+          \ for a request\n      \"id\": string, // the line item id to select\n \
+          \     \"ids: Array[string] // the line item ids to select\n      \"startDate\"\
+          : string, // YYYY-MM-DD format\n      \"endDate\": string, // YYYY-MM-DD\
+          \ format\n      \"timeZone\": string, // examples: 'Europe/London', 'Asia/Tokyo',\
+          \ 'America/New_York'\n      // both attribution windows must be specified\
+          \ when one is specified\n      \"clickAttributionWindow\": \"7D\", \"14D\"\
+          , or \"30D\"  // optional. defaults to campaign's click attribution window\n\
+          \      \"viewAttributionWindow\": \"none\", \"1D\", \"7D\", \"14D\", \"\
+          30D\" // optional. defaults to campaign's view attribution window\n    \
+          \  \"format\": One of \"json\" (default),\"json-compact\",\"json-newline\"\
+          \ or \"csv\" // output format, defaults to json-compact\n    }\n  }\n}"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvelopeReportStatus'
+          description: Returns the status of the report
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+          description: Bad request
+        "401":
+          description: Missing Authorization or token invalid
+        "403":
+          description: Must have access to RetailMedia accounts
+      tags:
+      - Analytics
+      x-contentType: application/json
+      x-accepts: application/json
+  /2022-01/retail-media/reports/{reportId}/output:
+    get:
+      description: Request the report output
+      operationId: getReportOutput
+      parameters:
+      - description: report id
+        example: ee439121-13e3-4734-9f67-c504dd921a41
+        explode: false
+        in: path
+        name: reportId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/octet-stream:
+              schema:
+                type: integer
+          description: The output
+          headers:
+            Content-Disposition:
+              description: Returns a filename for the output
+              example: inline; filename=data_<reportId>.csv
+              explode: false
+              required: true
+              schema:
+                type: string
+              style: simple
+        "401":
+          description: Missing Authorization or token invalid
+        "403":
+          description: Must have access to RetailMedia accounts
+        "404":
+          description: ReportId not found
+      tags:
+      - Analytics
+      x-accepts: application/octet-stream
+  /2022-01/retail-media/reports/{reportId}/status:
+    get:
+      description: Get the status of the report
+      operationId: getReportStatus
+      parameters:
+      - description: report id
+        example: ee439121-13e3-4734-9f67-c504dd921a41
+        explode: false
+        in: path
+        name: reportId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvelopeReportStatus'
+          description: Returns the status of the report
+        "401":
+          description: Missing Authorization or token invalid
+        "403":
+          description: Must have access to RetailMedia accounts
+        "404":
+          description: ReportId not found
+      tags:
+      - Analytics
+      x-accepts: application/json
   /2022-01/retail-media/accounts/{accountId}/campaigns:
     get:
       description: Gets page of campaign objects for the given account id
@@ -1427,165 +1586,6 @@ paths:
       tags:
       - Campaign
       x-contentType: application/json
-      x-accepts: application/json
-  /2022-01/retail-media/reports/campaigns:
-    post:
-      description: Request a campaign report
-      operationId: requestCampaignReport
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EnvelopeReportRequest'
-        description: "// Body of the request\n{\n  \"data\": {\n    \"type\": \"RetailMediaReportRequest\"\
-          ,\n    \"attributes\": {\n      \"reportType\": string, // the name of the\
-          \ report being requested\n      //only one of \"id\" or \"ids\" can be provided\
-          \ for a request\n      \"id\": string, // the campaign id to select\n  \
-          \    \"ids\": Array[string], //the campaign ids to select\n      \"startDate\"\
-          : string, // YYYY-MM-DD format\n      \"endDate\": string, // YYYY-MM-DD\
-          \ format\n      \"timeZone\": string, // examples: 'Europe/London', 'Asia/Tokyo',\
-          \ 'America/New_York'\n      // both attribution windows must be specified\
-          \ when one is specified\n      \"clickAttributionWindow\": \"7D\", \"14D\"\
-          , or \"30D\"  // optional. defaults to campaign's click attribution window\n\
-          \      \"viewAttributionWindow\": \"none\", \"1D\", \"7D\", \"14D\", \"\
-          30D\" // optional. defaults to campaign's view attribution window\n    \
-          \  \"format\": One of \"json\" (default),\"json-compact\",\"json-newline\"\
-          \ or \"csv\" // output format, defaults to json-compact\n    }\n  }\n}"
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EnvelopeReportStatus'
-          description: Returns the status of the report
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BadRequest'
-          description: Bad request
-        "401":
-          description: Missing Authorization or token invalid
-        "403":
-          description: Must have access to RetailMedia accounts
-      tags:
-      - Analytics
-      x-contentType: application/json
-      x-accepts: application/json
-  /2022-01/retail-media/reports/line-items:
-    post:
-      description: Request a line item report
-      operationId: requestLineItemReport
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EnvelopeReportRequest'
-        description: "// Body of the request\n{\n  \"data\": {\n    \"type\": \"RetailMediaReportRequest\"\
-          ,\n    \"attributes\": {\n      \"reportType\": string, // the name of the\
-          \ report being requested\n      //only one of \"id\" or \"ids\" can be provided\
-          \ for a request\n      \"id\": string, // the line item id to select\n \
-          \     \"ids: Array[string] // the line item ids to select\n      \"startDate\"\
-          : string, // YYYY-MM-DD format\n      \"endDate\": string, // YYYY-MM-DD\
-          \ format\n      \"timeZone\": string, // examples: 'Europe/London', 'Asia/Tokyo',\
-          \ 'America/New_York'\n      // both attribution windows must be specified\
-          \ when one is specified\n      \"clickAttributionWindow\": \"7D\", \"14D\"\
-          , or \"30D\"  // optional. defaults to campaign's click attribution window\n\
-          \      \"viewAttributionWindow\": \"none\", \"1D\", \"7D\", \"14D\", \"\
-          30D\" // optional. defaults to campaign's view attribution window\n    \
-          \  \"format\": One of \"json\" (default),\"json-compact\",\"json-newline\"\
-          \ or \"csv\" // output format, defaults to json-compact\n    }\n  }\n}"
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EnvelopeReportStatus'
-          description: Returns the status of the report
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BadRequest'
-          description: Bad request
-        "401":
-          description: Missing Authorization or token invalid
-        "403":
-          description: Must have access to RetailMedia accounts
-      tags:
-      - Analytics
-      x-contentType: application/json
-      x-accepts: application/json
-  /2022-01/retail-media/reports/{reportId}/output:
-    get:
-      description: Request the report output
-      operationId: getReportOutput
-      parameters:
-      - description: report id
-        example: ee439121-13e3-4734-9f67-c504dd921a41
-        explode: false
-        in: path
-        name: reportId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/octet-stream:
-              schema:
-                type: integer
-          description: The output
-          headers:
-            Content-Disposition:
-              description: Returns a filename for the output
-              example: inline; filename=data_<reportId>.csv
-              explode: false
-              required: true
-              schema:
-                type: string
-              style: simple
-        "401":
-          description: Missing Authorization or token invalid
-        "403":
-          description: Must have access to RetailMedia accounts
-        "404":
-          description: ReportId not found
-      tags:
-      - Analytics
-      x-accepts: application/octet-stream
-  /2022-01/retail-media/reports/{reportId}/status:
-    get:
-      description: Get the status of the report
-      operationId: getReportStatus
-      parameters:
-      - description: report id
-        example: ee439121-13e3-4734-9f67-c504dd921a41
-        explode: false
-        in: path
-        name: reportId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EnvelopeReportStatus'
-          description: Returns the status of the report
-        "401":
-          description: Missing Authorization or token invalid
-        "403":
-          description: Must have access to RetailMedia accounts
-        "404":
-          description: ReportId not found
-      tags:
-      - Analytics
       x-accepts: application/json
   /2022-01/retail-media/auction-line-items/{line-item-id}/targeting/keywords:
     get:
@@ -3912,6 +3912,295 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
+    EnvelopeReportStatus:
+      description: Standard response envelope
+      example:
+        data:
+          attributes:
+            fileSizeBytes: 0
+            md5Checksum: md5Checksum
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            rowCount: 6
+            message: message
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+            status: pending
+          id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ReportStatus'
+      required:
+      - data
+      type: object
+    BadRequest:
+      description: Bad request errors
+      properties:
+        errors:
+          description: The errors
+          items:
+            $ref: '#/components/schemas/Error'
+          type: array
+      type: object
+    EnvelopeReportRequest:
+      description: Standard response envelope
+      example:
+        data:
+          attributes:
+            reportType: summary
+            clickAttributionWindow: 7D
+            endDate: 2000-01-23
+            format: json
+            viewAttributionWindow: none
+            ids:
+            - ids
+            - ids
+            timeZone: timeZone
+            id: id
+            startDate: 2000-01-23
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ReportRequest'
+      required:
+      - data
+      type: object
+    ReportStatus:
+      description: Report Status
+      example:
+        attributes:
+          fileSizeBytes: 0
+          md5Checksum: md5Checksum
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          rowCount: 6
+          message: message
+          expiresAt: 2000-01-23T04:56:07.000+00:00
+          status: pending
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ReportStatusAttributes'
+        id:
+          description: The reportId
+          type: string
+        type:
+          description: Always "RetailMediaReportStatus"
+          type: string
+      required:
+      - attributes
+      - id
+      - type
+      type: object
+    Error:
+      description: Error
+      properties:
+        code:
+          description: "(REQUIRED) A machine-readable unique error code, expressed\
+            \ as a string value. The format used must be kabab-case."
+          type: string
+        detail:
+          description: (RECOMMENDED) A human-readable explanation specific to this
+            occurrence of the problem.
+          type: string
+        instance:
+          description: (REQUIRED) A URI reference that identifies the specific occurrence
+            of the problem.
+          type: string
+        source:
+          additionalProperties:
+            type: string
+          description: (OPTIONAL) A machine-readable structure to reference to the
+            exact location(s) causing the error(s).
+          type: object
+        stackTrace:
+          description: "(NEVER IN PRODUCTION) A human-readable stacktrace produced\
+            \ by the implementation technology e.g. .Net, Scala, etc"
+          items:
+            type: string
+          type: array
+        title:
+          description: "(RECOMMENDED) A short, human-readable summary of the problem\
+            \ type."
+          type: string
+        traceId:
+          description: (REQUIRED) The Correlation ID provided by the Gateway. It is
+            also a unique identifier for this particular occurrence of the problem.
+          type: string
+        type:
+          description: "Type should be: \"validation\", \"unavailable, \"violation\"\
+            , \"permission\", ..."
+          enum:
+          - access-control
+          - authentication
+          - authorization
+          - availability
+          - deprecation
+          - quota
+          - validation
+          type: string
+      required:
+      - code
+      - instance
+      - traceId
+      - type
+      type: object
+    ReportRequest:
+      description: Report Request
+      example:
+        attributes:
+          reportType: summary
+          clickAttributionWindow: 7D
+          endDate: 2000-01-23
+          format: json
+          viewAttributionWindow: none
+          ids:
+          - ids
+          - ids
+          timeZone: timeZone
+          id: id
+          startDate: 2000-01-23
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ReportRequestAttributes'
+        type:
+          description: Always "RetailMediaReportRequest"
+          type: string
+      required:
+      - attributes
+      - type
+      type: object
+    ReportStatusAttributes:
+      description: Report Status Attributes
+      example:
+        fileSizeBytes: 0
+        md5Checksum: md5Checksum
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        rowCount: 6
+        message: message
+        expiresAt: 2000-01-23T04:56:07.000+00:00
+        status: pending
+      properties:
+        createdAt:
+          description: Timestamp when the report started to execute
+          format: date-time
+          type: string
+        expiresAt:
+          description: Timestamp when the cached report will expire
+          format: date-time
+          type: string
+        fileSizeBytes:
+          description: "Total size of file, only populated on success"
+          format: int64
+          type: integer
+        md5Checksum:
+          description: "The MD5 checksum of the content, only populated on success"
+          type: string
+        message:
+          description: "Failure message, only populated on failure"
+          type: string
+        rowCount:
+          description: "Rows of data in report, only populated on success"
+          format: int64
+          type: integer
+        status:
+          description: "One of \"pending\", \"success\", \"failure\", or \"expired\""
+          enum:
+          - pending
+          - success
+          - failure
+          - expired
+          type: string
+      required:
+      - status
+      type: object
+    MapString:
+      additionalProperties:
+        type: string
+      description: (OPTIONAL) A machine-readable structure to reference to the exact
+        location(s) causing the error(s).
+      type: object
+    ReportRequestAttributes:
+      description: Report Request Attributes
+      example:
+        reportType: summary
+        clickAttributionWindow: 7D
+        endDate: 2000-01-23
+        format: json
+        viewAttributionWindow: none
+        ids:
+        - ids
+        - ids
+        timeZone: timeZone
+        id: id
+        startDate: 2000-01-23
+      properties:
+        clickAttributionWindow:
+          description: "Defaults to value from campaign or one of \"7D\", \"14D\"\
+            , or \"30D\". If specified, viewAttributionWindow must also be specified"
+          enum:
+          - 7D
+          - 14D
+          - 30D
+          type: string
+        endDate:
+          description: "YYYY-MM-DD, must not be before startDate and not more than\
+            \ 100 days later"
+          format: date
+          type: string
+        format:
+          default: json
+          description: "One of \"json\" (default),\"json-compact\",\"json-newline\"\
+            \ or \"csv\""
+          enum:
+          - csv
+          - json
+          - json-compact
+          - json-newline
+          type: string
+        id:
+          description: "The id of the campaign or line item.  Either 'id' or 'ids'\
+            \ must be specified, but not both"
+          type: string
+        ids:
+          description: "The ids of the campaigns or line items.  Either 'id' or 'ids'\
+            \ must be specified, but not both"
+          items:
+            type: string
+          type: array
+        reportType:
+          description: "One of \"summary\", \"keyword\", \"pageType\", \"productCategory\"\
+            , \"product\", or \"attributedTransactions\""
+          enum:
+          - summary
+          - keyword
+          - pageType
+          - productCategory
+          - product
+          - attributedTransactions
+          type: string
+        startDate:
+          description: YYYY-MM-DD
+          format: date
+          type: string
+        timeZone:
+          type: string
+        viewAttributionWindow:
+          description: "Defaults to value from campaign or one of \"none\", \"1D\"\
+            , \"7D\", \"14D\", or \"30D\". If specified, must be less than clickAttributionWindow,\
+            \ which must also be specified."
+          enum:
+          - none
+          - 1D
+          - 7D
+          - 14D
+          - 30D
+          type: string
+      required:
+      - endDate
+      - reportType
+      - startDate
+      type: object
     JsonApiPageResponseOfCampaign:
       description: A wrapper class to return a single page of <typeparamref name="T"
         /> with metadata
@@ -4947,6 +5236,267 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
+    KeywordTarget202110Response:
+      description: Data model for a value type resource outcome
+      example:
+        data:
+          attributes:
+            keywords:
+              key: unknown
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueTypeResourceOfKeywordTarget202110'
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    StoreTarget202110Response:
+      description: Data model for a value type resource outcome
+      example:
+        data:
+          attributes:
+            scope: unknown
+            storeIds:
+            - storeIds
+            - storeIds
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueTypeResourceOfStoreTarget202110'
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    AddToBasketTarget202110Response:
+      description: Data model for a value type resource outcome
+      example:
+        data:
+          attributes:
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            productIds:
+            - productIds
+            - productIds
+            scope: unknown
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueTypeResourceOfAddToBasketTarget202110'
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    AudienceTarget202110Response:
+      description: Data model for a value type resource outcome
+      example:
+        data:
+          attributes:
+            scope: unknown
+            audienceIds:
+            - audienceIds
+            - audienceIds
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueTypeResourceOfAudienceTarget202110'
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
     ExternalPostCampaign:
       description: An object that represents the available options to set when creating
         a Retail Media Campaign
@@ -5135,6 +5685,112 @@ components:
             $ref: '#/components/schemas/ResourceOfBalanceCampaign202110'
           type: array
           x-nullable: false
+      type: object
+      x-nullable: false
+    KeywordTarget202110Request:
+      description: Data model for a value type input resource
+      example:
+        data:
+          attributes:
+            keywords:
+              key: unknown
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueTypeResourceOfKeywordTarget202110'
+      type: object
+      x-nullable: false
+    StoreTarget202110Request:
+      description: Data model for a value type input resource
+      example:
+        data:
+          attributes:
+            scope: unknown
+            storeIds:
+            - storeIds
+            - storeIds
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueTypeResourceOfStoreTarget202110'
+      type: object
+      x-nullable: false
+    StoreIdsUpdateModel202110Request:
+      description: Data model for a value type input resource
+      example:
+        data:
+          attributes:
+            storeIds:
+            - storeIds
+            - storeIds
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueTypeResourceOfStoreIdsUpdateModel202110'
+      type: object
+      x-nullable: false
+    AddToBasketTarget202110Request:
+      description: Data model for a value type input resource
+      example:
+        data:
+          attributes:
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            productIds:
+            - productIds
+            - productIds
+            scope: unknown
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueTypeResourceOfAddToBasketTarget202110'
+      type: object
+      x-nullable: false
+    AddToBasketIdsUpdateModel202110Request:
+      description: Data model for a value type input resource
+      example:
+        data:
+          attributes:
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            productIds:
+            - productIds
+            - productIds
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueTypeResourceOfAddToBasketIdsUpdateModel202110'
+      type: object
+      x-nullable: false
+    AudienceTarget202110Request:
+      description: Data model for a value type input resource
+      example:
+        data:
+          attributes:
+            scope: unknown
+            audienceIds:
+            - audienceIds
+            - audienceIds
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueTypeResourceOfAudienceTarget202110'
+      type: object
+      x-nullable: false
+    AudienceIdsUpdateModel202110Request:
+      description: Data model for a value type input resource
+      example:
+        data:
+          attributes:
+            audienceIds:
+            - audienceIds
+            - audienceIds
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueTypeResourceOfAudienceIdsUpdateModel202110'
       type: object
       x-nullable: false
     JsonApiBodyWithIdOfInt64AndCampaignAndCampaign:
@@ -5349,6 +6005,75 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
+    ValueTypeResourceOfKeywordTarget202110:
+      description: Data model for a value type resource
+      example:
+        attributes:
+          keywords:
+            key: unknown
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalKeywordTarget202110'
+      type: object
+      x-nullable: false
+    ValueTypeResourceOfStoreTarget202110:
+      description: Data model for a value type resource
+      example:
+        attributes:
+          scope: unknown
+          storeIds:
+          - storeIds
+          - storeIds
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalStoreTarget202110'
+      type: object
+      x-nullable: false
+    ValueTypeResourceOfAddToBasketTarget202110:
+      description: Data model for a value type resource
+      example:
+        attributes:
+          categoryIds:
+          - categoryIds
+          - categoryIds
+          productIds:
+          - productIds
+          - productIds
+          scope: unknown
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalAddToBasketTarget202110'
+      type: object
+      x-nullable: false
+    ValueTypeResourceOfAudienceTarget202110:
+      description: Data model for a value type resource
+      example:
+        attributes:
+          scope: unknown
+          audienceIds:
+          - audienceIds
+          - audienceIds
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalAudienceTarget202110'
+      type: object
+      x-nullable: false
     JsonApiBodyWithoutIdOfCampaignAttributesAndCampaign:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with Type, and\r\nAttributes properties"
@@ -5525,6 +6250,57 @@ components:
           x-nullable: false
         attributes:
           $ref: '#/components/schemas/ExternalPreferredLineItemCreateModel202110'
+      type: object
+      x-nullable: false
+    ValueTypeResourceOfStoreIdsUpdateModel202110:
+      description: Data model for a value type resource
+      example:
+        attributes:
+          storeIds:
+          - storeIds
+          - storeIds
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalStoreIdsUpdateModel202110'
+      type: object
+      x-nullable: false
+    ValueTypeResourceOfAddToBasketIdsUpdateModel202110:
+      description: Data model for a value type resource
+      example:
+        attributes:
+          categoryIds:
+          - categoryIds
+          - categoryIds
+          productIds:
+          - productIds
+          - productIds
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalAddToBasketIdsUpdateModel202110'
+      type: object
+      x-nullable: false
+    ValueTypeResourceOfAudienceIdsUpdateModel202110:
+      description: Data model for a value type resource
+      example:
+        attributes:
+          audienceIds:
+          - audienceIds
+          - audienceIds
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalAudienceIdsUpdateModel202110'
       type: object
       x-nullable: false
     ExternalCampaign:
@@ -6109,6 +6885,120 @@ components:
       description: Campaigns related to the balance
       type: object
       x-nullable: false
+    ExternalKeywordTarget202110:
+      description: Identifies keyword targeting for a line item
+      example:
+        keywords:
+          key: unknown
+      properties:
+        keywords:
+          additionalProperties:
+            enum:
+            - unknown
+            - negativeExact
+            - negativeBroad
+            type: string
+            x-nullable: false
+          description: Keywords that targeting specifications exist for
+          type: object
+          x-nullable: false
+      required:
+      - keywords
+      type: object
+      x-nullable: false
+    ExternalStoreTarget202110:
+      description: Identifies store targeting for a line item
+      example:
+        scope: unknown
+        storeIds:
+        - storeIds
+        - storeIds
+      properties:
+        scope:
+          description: Scope of the store target
+          enum:
+          - unknown
+          - include
+          - exclude
+          type: string
+          x-nullable: false
+        storeIds:
+          description: Store ids that should be targeted
+          items:
+            type: string
+            x-nullable: false
+          type: array
+          x-nullable: false
+      required:
+      - scope
+      - storeIds
+      type: object
+      x-nullable: false
+    ExternalAddToBasketTarget202110:
+      description: Identifies add to basket targeting for a line item
+      example:
+        categoryIds:
+        - categoryIds
+        - categoryIds
+        productIds:
+        - productIds
+        - productIds
+        scope: unknown
+      properties:
+        scope:
+          description: Scope of the add to basket target
+          enum:
+          - unknown
+          - include
+          - exclude
+          type: string
+          x-nullable: false
+        productIds:
+          description: Product ids that add to basket should target
+          items:
+            type: string
+            x-nullable: false
+          type: array
+          x-nullable: false
+        categoryIds:
+          description: Category ids that add to basket should target
+          items:
+            type: string
+            x-nullable: false
+          type: array
+          x-nullable: false
+      required:
+      - scope
+      type: object
+      x-nullable: false
+    ExternalAudienceTarget202110:
+      description: Identifies audience targeting for a line item
+      example:
+        scope: unknown
+        audienceIds:
+        - audienceIds
+        - audienceIds
+      properties:
+        scope:
+          description: Scope of the audience target
+          enum:
+          - unknown
+          - include
+          - exclude
+          type: string
+          x-nullable: false
+        audienceIds:
+          description: Audience ids that should be targeted
+          items:
+            format: long-id
+            type: string
+          type: array
+          x-nullable: false
+      required:
+      - audienceIds
+      - scope
+      type: object
+      x-nullable: false
     ExternalCampaignAttributes:
       description: An object that represents the available options to set when creating
         a Retail Media Campaign
@@ -6618,6 +7508,68 @@ components:
       - targetRetailerId
       type: object
       x-nullable: false
+    ExternalStoreIdsUpdateModel202110:
+      description: Update model for updating store target ids
+      example:
+        storeIds:
+        - storeIds
+        - storeIds
+      properties:
+        storeIds:
+          description: Store ids that should be targeted
+          items:
+            type: string
+            x-nullable: false
+          type: array
+          x-nullable: false
+      required:
+      - storeIds
+      type: object
+      x-nullable: false
+    ExternalAddToBasketIdsUpdateModel202110:
+      description: Update model for updating add to basket target ids
+      example:
+        categoryIds:
+        - categoryIds
+        - categoryIds
+        productIds:
+        - productIds
+        - productIds
+      properties:
+        productIds:
+          description: Product ids that add to basket should target
+          items:
+            type: string
+            x-nullable: false
+          type: array
+          x-nullable: false
+        categoryIds:
+          description: Category ids that add to basket should target
+          items:
+            type: string
+            x-nullable: false
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    ExternalAudienceIdsUpdateModel202110:
+      description: Update model for updating audience target ids
+      example:
+        audienceIds:
+        - audienceIds
+        - audienceIds
+      properties:
+        audienceIds:
+          description: Audience ids that should be targeted
+          items:
+            format: long-id
+            type: string
+          type: array
+          x-nullable: false
+      required:
+      - audienceIds
+      type: object
+      x-nullable: false
     ExternalLineItemCapping202110:
       description: Frequency capping for a preferred line item
       example:
@@ -6695,958 +7647,6 @@ components:
           x-nullable: false
       required:
       - categoryId
-      type: object
-      x-nullable: false
-    EnvelopeReportStatus:
-      description: Standard response envelope
-      example:
-        data:
-          attributes:
-            fileSizeBytes: 0
-            md5Checksum: md5Checksum
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            rowCount: 6
-            message: message
-            expiresAt: 2000-01-23T04:56:07.000+00:00
-            status: pending
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ReportStatus'
-      required:
-      - data
-      type: object
-    BadRequest:
-      description: Bad request errors
-      properties:
-        errors:
-          description: The errors
-          items:
-            $ref: '#/components/schemas/Error'
-          type: array
-      type: object
-    EnvelopeReportRequest:
-      description: Standard response envelope
-      example:
-        data:
-          attributes:
-            reportType: summary
-            clickAttributionWindow: 7D
-            endDate: 2000-01-23
-            format: json
-            viewAttributionWindow: none
-            ids:
-            - ids
-            - ids
-            timeZone: timeZone
-            id: id
-            startDate: 2000-01-23
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ReportRequest'
-      required:
-      - data
-      type: object
-    ReportStatus:
-      description: Report Status
-      example:
-        attributes:
-          fileSizeBytes: 0
-          md5Checksum: md5Checksum
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          rowCount: 6
-          message: message
-          expiresAt: 2000-01-23T04:56:07.000+00:00
-          status: pending
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ReportStatusAttributes'
-        id:
-          description: The reportId
-          type: string
-        type:
-          description: Always "RetailMediaReportStatus"
-          type: string
-      required:
-      - attributes
-      - id
-      - type
-      type: object
-    Error:
-      description: Error
-      properties:
-        code:
-          description: "(REQUIRED) A machine-readable unique error code, expressed\
-            \ as a string value. The format used must be kabab-case."
-          type: string
-        detail:
-          description: (RECOMMENDED) A human-readable explanation specific to this
-            occurrence of the problem.
-          type: string
-        instance:
-          description: (REQUIRED) A URI reference that identifies the specific occurrence
-            of the problem.
-          type: string
-        source:
-          additionalProperties:
-            type: string
-          description: (OPTIONAL) A machine-readable structure to reference to the
-            exact location(s) causing the error(s).
-          type: object
-        stackTrace:
-          description: "(NEVER IN PRODUCTION) A human-readable stacktrace produced\
-            \ by the implementation technology e.g. .Net, Scala, etc"
-          items:
-            type: string
-          type: array
-        title:
-          description: "(RECOMMENDED) A short, human-readable summary of the problem\
-            \ type."
-          type: string
-        traceId:
-          description: (REQUIRED) The Correlation ID provided by the Gateway. It is
-            also a unique identifier for this particular occurrence of the problem.
-          type: string
-        type:
-          description: "Type should be: \"validation\", \"unavailable, \"violation\"\
-            , \"permission\", ..."
-          enum:
-          - access-control
-          - authentication
-          - authorization
-          - availability
-          - deprecation
-          - quota
-          - validation
-          type: string
-      required:
-      - code
-      - instance
-      - traceId
-      - type
-      type: object
-    ReportRequest:
-      description: Report Request
-      example:
-        attributes:
-          reportType: summary
-          clickAttributionWindow: 7D
-          endDate: 2000-01-23
-          format: json
-          viewAttributionWindow: none
-          ids:
-          - ids
-          - ids
-          timeZone: timeZone
-          id: id
-          startDate: 2000-01-23
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ReportRequestAttributes'
-        type:
-          description: Always "RetailMediaReportRequest"
-          type: string
-      required:
-      - attributes
-      - type
-      type: object
-    ReportStatusAttributes:
-      description: Report Status Attributes
-      example:
-        fileSizeBytes: 0
-        md5Checksum: md5Checksum
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        rowCount: 6
-        message: message
-        expiresAt: 2000-01-23T04:56:07.000+00:00
-        status: pending
-      properties:
-        createdAt:
-          description: Timestamp when the report started to execute
-          format: date-time
-          type: string
-        expiresAt:
-          description: Timestamp when the cached report will expire
-          format: date-time
-          type: string
-        fileSizeBytes:
-          description: "Total size of file, only populated on success"
-          format: int64
-          type: integer
-        md5Checksum:
-          description: "The MD5 checksum of the content, only populated on success"
-          type: string
-        message:
-          description: "Failure message, only populated on failure"
-          type: string
-        rowCount:
-          description: "Rows of data in report, only populated on success"
-          format: int64
-          type: integer
-        status:
-          description: "One of \"pending\", \"success\", \"failure\", or \"expired\""
-          enum:
-          - pending
-          - success
-          - failure
-          - expired
-          type: string
-      required:
-      - status
-      type: object
-    MapString:
-      additionalProperties:
-        type: string
-      description: (OPTIONAL) A machine-readable structure to reference to the exact
-        location(s) causing the error(s).
-      type: object
-    ReportRequestAttributes:
-      description: Report Request Attributes
-      example:
-        reportType: summary
-        clickAttributionWindow: 7D
-        endDate: 2000-01-23
-        format: json
-        viewAttributionWindow: none
-        ids:
-        - ids
-        - ids
-        timeZone: timeZone
-        id: id
-        startDate: 2000-01-23
-      properties:
-        clickAttributionWindow:
-          description: "Defaults to value from campaign or one of \"7D\", \"14D\"\
-            , or \"30D\". If specified, viewAttributionWindow must also be specified"
-          enum:
-          - 7D
-          - 14D
-          - 30D
-          type: string
-        endDate:
-          description: "YYYY-MM-DD, must not be before startDate and not more than\
-            \ 100 days later"
-          format: date
-          type: string
-        format:
-          default: json
-          description: "One of \"json\" (default),\"json-compact\",\"json-newline\"\
-            \ or \"csv\""
-          enum:
-          - csv
-          - json
-          - json-compact
-          - json-newline
-          type: string
-        id:
-          description: "The id of the campaign or line item.  Either 'id' or 'ids'\
-            \ must be specified, but not both"
-          type: string
-        ids:
-          description: "The ids of the campaigns or line items.  Either 'id' or 'ids'\
-            \ must be specified, but not both"
-          items:
-            type: string
-          type: array
-        reportType:
-          description: "One of \"summary\", \"keyword\", \"pageType\", \"productCategory\"\
-            , \"product\", or \"attributedTransactions\""
-          enum:
-          - summary
-          - keyword
-          - pageType
-          - productCategory
-          - product
-          - attributedTransactions
-          type: string
-        startDate:
-          description: YYYY-MM-DD
-          format: date
-          type: string
-        timeZone:
-          type: string
-        viewAttributionWindow:
-          description: "Defaults to value from campaign or one of \"none\", \"1D\"\
-            , \"7D\", \"14D\", or \"30D\". If specified, must be less than clickAttributionWindow,\
-            \ which must also be specified."
-          enum:
-          - none
-          - 1D
-          - 7D
-          - 14D
-          - 30D
-          type: string
-      required:
-      - endDate
-      - reportType
-      - startDate
-      type: object
-    KeywordTarget202110Response:
-      description: Data model for a value type resource outcome
-      example:
-        data:
-          attributes:
-            keywords:
-              key: unknown
-          type: type
-        warnings:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueTypeResourceOfKeywordTarget202110'
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
-    StoreTarget202110Response:
-      description: Data model for a value type resource outcome
-      example:
-        data:
-          attributes:
-            scope: unknown
-            storeIds:
-            - storeIds
-            - storeIds
-          type: type
-        warnings:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueTypeResourceOfStoreTarget202110'
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
-    AddToBasketTarget202110Response:
-      description: Data model for a value type resource outcome
-      example:
-        data:
-          attributes:
-            categoryIds:
-            - categoryIds
-            - categoryIds
-            productIds:
-            - productIds
-            - productIds
-            scope: unknown
-          type: type
-        warnings:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueTypeResourceOfAddToBasketTarget202110'
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
-    AudienceTarget202110Response:
-      description: Data model for a value type resource outcome
-      example:
-        data:
-          attributes:
-            scope: unknown
-            audienceIds:
-            - audienceIds
-            - audienceIds
-          type: type
-        warnings:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueTypeResourceOfAudienceTarget202110'
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
-    KeywordTarget202110Request:
-      description: Data model for a value type input resource
-      example:
-        data:
-          attributes:
-            keywords:
-              key: unknown
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueTypeResourceOfKeywordTarget202110'
-      type: object
-      x-nullable: false
-    StoreTarget202110Request:
-      description: Data model for a value type input resource
-      example:
-        data:
-          attributes:
-            scope: unknown
-            storeIds:
-            - storeIds
-            - storeIds
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueTypeResourceOfStoreTarget202110'
-      type: object
-      x-nullable: false
-    StoreIdsUpdateModel202110Request:
-      description: Data model for a value type input resource
-      example:
-        data:
-          attributes:
-            storeIds:
-            - storeIds
-            - storeIds
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueTypeResourceOfStoreIdsUpdateModel202110'
-      type: object
-      x-nullable: false
-    AddToBasketTarget202110Request:
-      description: Data model for a value type input resource
-      example:
-        data:
-          attributes:
-            categoryIds:
-            - categoryIds
-            - categoryIds
-            productIds:
-            - productIds
-            - productIds
-            scope: unknown
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueTypeResourceOfAddToBasketTarget202110'
-      type: object
-      x-nullable: false
-    AddToBasketIdsUpdateModel202110Request:
-      description: Data model for a value type input resource
-      example:
-        data:
-          attributes:
-            categoryIds:
-            - categoryIds
-            - categoryIds
-            productIds:
-            - productIds
-            - productIds
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueTypeResourceOfAddToBasketIdsUpdateModel202110'
-      type: object
-      x-nullable: false
-    AudienceTarget202110Request:
-      description: Data model for a value type input resource
-      example:
-        data:
-          attributes:
-            scope: unknown
-            audienceIds:
-            - audienceIds
-            - audienceIds
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueTypeResourceOfAudienceTarget202110'
-      type: object
-      x-nullable: false
-    AudienceIdsUpdateModel202110Request:
-      description: Data model for a value type input resource
-      example:
-        data:
-          attributes:
-            audienceIds:
-            - audienceIds
-            - audienceIds
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueTypeResourceOfAudienceIdsUpdateModel202110'
-      type: object
-      x-nullable: false
-    ValueTypeResourceOfKeywordTarget202110:
-      description: Data model for a value type resource
-      example:
-        attributes:
-          keywords:
-            key: unknown
-        type: type
-      properties:
-        type:
-          type: string
-          x-nullable: false
-        attributes:
-          $ref: '#/components/schemas/ExternalKeywordTarget202110'
-      type: object
-      x-nullable: false
-    ValueTypeResourceOfStoreTarget202110:
-      description: Data model for a value type resource
-      example:
-        attributes:
-          scope: unknown
-          storeIds:
-          - storeIds
-          - storeIds
-        type: type
-      properties:
-        type:
-          type: string
-          x-nullable: false
-        attributes:
-          $ref: '#/components/schemas/ExternalStoreTarget202110'
-      type: object
-      x-nullable: false
-    ValueTypeResourceOfAddToBasketTarget202110:
-      description: Data model for a value type resource
-      example:
-        attributes:
-          categoryIds:
-          - categoryIds
-          - categoryIds
-          productIds:
-          - productIds
-          - productIds
-          scope: unknown
-        type: type
-      properties:
-        type:
-          type: string
-          x-nullable: false
-        attributes:
-          $ref: '#/components/schemas/ExternalAddToBasketTarget202110'
-      type: object
-      x-nullable: false
-    ValueTypeResourceOfAudienceTarget202110:
-      description: Data model for a value type resource
-      example:
-        attributes:
-          scope: unknown
-          audienceIds:
-          - audienceIds
-          - audienceIds
-        type: type
-      properties:
-        type:
-          type: string
-          x-nullable: false
-        attributes:
-          $ref: '#/components/schemas/ExternalAudienceTarget202110'
-      type: object
-      x-nullable: false
-    ValueTypeResourceOfStoreIdsUpdateModel202110:
-      description: Data model for a value type resource
-      example:
-        attributes:
-          storeIds:
-          - storeIds
-          - storeIds
-        type: type
-      properties:
-        type:
-          type: string
-          x-nullable: false
-        attributes:
-          $ref: '#/components/schemas/ExternalStoreIdsUpdateModel202110'
-      type: object
-      x-nullable: false
-    ValueTypeResourceOfAddToBasketIdsUpdateModel202110:
-      description: Data model for a value type resource
-      example:
-        attributes:
-          categoryIds:
-          - categoryIds
-          - categoryIds
-          productIds:
-          - productIds
-          - productIds
-        type: type
-      properties:
-        type:
-          type: string
-          x-nullable: false
-        attributes:
-          $ref: '#/components/schemas/ExternalAddToBasketIdsUpdateModel202110'
-      type: object
-      x-nullable: false
-    ValueTypeResourceOfAudienceIdsUpdateModel202110:
-      description: Data model for a value type resource
-      example:
-        attributes:
-          audienceIds:
-          - audienceIds
-          - audienceIds
-        type: type
-      properties:
-        type:
-          type: string
-          x-nullable: false
-        attributes:
-          $ref: '#/components/schemas/ExternalAudienceIdsUpdateModel202110'
-      type: object
-      x-nullable: false
-    ExternalKeywordTarget202110:
-      description: Identifies keyword targeting for a line item
-      example:
-        keywords:
-          key: unknown
-      properties:
-        keywords:
-          additionalProperties:
-            enum:
-            - unknown
-            - negativeExact
-            - negativeBroad
-            type: string
-            x-nullable: false
-          description: Keywords that targeting specifications exist for
-          type: object
-          x-nullable: false
-      required:
-      - keywords
-      type: object
-      x-nullable: false
-    ExternalStoreTarget202110:
-      description: Identifies store targeting for a line item
-      example:
-        scope: unknown
-        storeIds:
-        - storeIds
-        - storeIds
-      properties:
-        scope:
-          description: Scope of the store target
-          enum:
-          - unknown
-          - include
-          - exclude
-          type: string
-          x-nullable: false
-        storeIds:
-          description: Store ids that should be targeted
-          items:
-            type: string
-            x-nullable: false
-          type: array
-          x-nullable: false
-      required:
-      - scope
-      - storeIds
-      type: object
-      x-nullable: false
-    ExternalAddToBasketTarget202110:
-      description: Identifies add to basket targeting for a line item
-      example:
-        categoryIds:
-        - categoryIds
-        - categoryIds
-        productIds:
-        - productIds
-        - productIds
-        scope: unknown
-      properties:
-        scope:
-          description: Scope of the add to basket target
-          enum:
-          - unknown
-          - include
-          - exclude
-          type: string
-          x-nullable: false
-        productIds:
-          description: Product ids that add to basket should target
-          items:
-            type: string
-            x-nullable: false
-          type: array
-          x-nullable: false
-        categoryIds:
-          description: Category ids that add to basket should target
-          items:
-            type: string
-            x-nullable: false
-          type: array
-          x-nullable: false
-      required:
-      - scope
-      type: object
-      x-nullable: false
-    ExternalAudienceTarget202110:
-      description: Identifies audience targeting for a line item
-      example:
-        scope: unknown
-        audienceIds:
-        - audienceIds
-        - audienceIds
-      properties:
-        scope:
-          description: Scope of the audience target
-          enum:
-          - unknown
-          - include
-          - exclude
-          type: string
-          x-nullable: false
-        audienceIds:
-          description: Audience ids that should be targeted
-          items:
-            format: long-id
-            type: string
-          type: array
-          x-nullable: false
-      required:
-      - audienceIds
-      - scope
-      type: object
-      x-nullable: false
-    ExternalStoreIdsUpdateModel202110:
-      description: Update model for updating store target ids
-      example:
-        storeIds:
-        - storeIds
-        - storeIds
-      properties:
-        storeIds:
-          description: Store ids that should be targeted
-          items:
-            type: string
-            x-nullable: false
-          type: array
-          x-nullable: false
-      required:
-      - storeIds
-      type: object
-      x-nullable: false
-    ExternalAddToBasketIdsUpdateModel202110:
-      description: Update model for updating add to basket target ids
-      example:
-        categoryIds:
-        - categoryIds
-        - categoryIds
-        productIds:
-        - productIds
-        - productIds
-      properties:
-        productIds:
-          description: Product ids that add to basket should target
-          items:
-            type: string
-            x-nullable: false
-          type: array
-          x-nullable: false
-        categoryIds:
-          description: Category ids that add to basket should target
-          items:
-            type: string
-            x-nullable: false
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
-    ExternalAudienceIdsUpdateModel202110:
-      description: Update model for updating audience target ids
-      example:
-        audienceIds:
-        - audienceIds
-        - audienceIds
-      properties:
-        audienceIds:
-          description: Audience ids that should be targeted
-          items:
-            format: long-id
-            type: string
-          type: array
-          x-nullable: false
-      required:
-      - audienceIds
       type: object
       x-nullable: false
   securitySchemes:

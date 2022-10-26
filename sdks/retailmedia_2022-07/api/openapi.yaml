@@ -258,6 +258,37 @@ paths:
       tags:
       - Campaign
       x-accepts: application/json
+  /2022-07/retail-media/assets:
+    post:
+      description: Creates an asset
+      operationId: CreateAsset
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                AssetFile:
+                  description: The asset binary content
+                  type: file
+              required:
+              - AssetFile
+      responses:
+        "201":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AssetResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AssetResponse'
+          description: Success
+      tags:
+      - Campaign
+      x-contentType: multipart/form-data
+      x-accepts: application/json
   /2022-07/retail-media/accounts/{accountId}/audiences:
     get:
       description: Get a page of audiences for a given account ID
@@ -528,6 +559,38 @@ paths:
       tags:
       - Campaign
       x-accepts: application/json
+    post:
+      description: Create a creative for an account
+      operationId: CreativesApi_PostApi202207ExternalAccountCreativesByAccountId
+      parameters:
+      - description: External account id to create a creative for
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreativeCreateModel202207'
+        description: The creative to create
+        x-nullable: false
+        x-bodyName: creative
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Creative202207Response'
+          description: Creatives created
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
   /2022-07/retail-media/categories:
     get:
       description: Endpoint to search categories by text and retailer.
@@ -622,6 +685,144 @@ paths:
           description: A non-request input based error occurred in the server.
       tags:
       - Campaign
+      x-accepts: application/json
+  /2022-07/retail-media/retailers/{retailer-id}/templates:
+    get:
+      description: Get retailer creative templates
+      operationId: CreativesApi_GetApi202207ExternalRetailerTemplatesByRetailerId
+      parameters:
+      - description: External retailer id to retrieve creative templates for
+        explode: false
+        in: path
+        name: retailer-id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateListResponse'
+          description: Templates found
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /2022-07/retail-media/retailers/{retailer-id}/templates/{template-id}:
+    get:
+      description: Gets the template for the specified retailer id and template id
+      operationId: "CreativesApi_GetApi202207ExternalRetailerByRetailerId}Templates{templateId"
+      parameters:
+      - description: Retailer Id
+        explode: false
+        in: path
+        name: retailer-id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+        x-nullable: false
+      - description: Template Id
+        explode: false
+        in: path
+        name: template-id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateResponse'
+          description: Template found for the retailer
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /2022-07/retail-media/accounts/{account-id}/creatives/{creative-id}:
+    get:
+      description: Get the specified creative
+      operationId: "CreativesApi_GetApi202207ExternalAccountByAccountId}Creatives{creativeId"
+      parameters:
+      - description: External account id to retrieve creatives for
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: Creative to get
+        explode: false
+        in: path
+        name: creative-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Creative202207Response'
+          description: Creatives found
+      tags:
+      - Campaign
+      x-accepts: application/json
+    put:
+      description: Update a creative
+      operationId: "CreativesApi_PutApi202207ExternalAccountByAccountId}Creatives{creativeId"
+      parameters:
+      - description: External account id containing the creative
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: Creative to update
+        explode: false
+        in: path
+        name: creative-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreativeUpdateModel202207'
+        description: The creative to create
+        x-nullable: false
+        x-bodyName: creative
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Creative202207Response'
+          description: Success
+        "204":
+          content:
+            application/json: {}
+          description: Creative updated
+      tags:
+      - Campaign
+      x-contentType: application/json
       x-accepts: application/json
   /2022-07/retail-media/reports/campaigns:
     post:
@@ -1858,7 +2059,7 @@ paths:
       x-accepts: application/json
     put:
       description: Updates the preferred line item for the given line item id
-      operationId: PutApiV2ExternalPreferredLineItemByLineItemId
+      operationId: LineItemsApi_PutApi202110ExternalPreferredLineItemByLineItemId
       parameters:
       - description: The given line item id
         explode: false
@@ -1873,7 +2074,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PreferredLineItemUpdateModelRequest'
+              $ref: '#/components/schemas/PreferredLineItemUpdateModel202110Request'
         description: The line item settings to create a line item with
         x-nullable: false
         x-bodyName: lineItem
@@ -1882,13 +2083,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PreferredLineItemResponse'
+                $ref: '#/components/schemas/PreferredLineItem202110Response'
           description: Success
         "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PreferredLineItemResponse'
+                $ref: '#/components/schemas/PreferredLineItem202110Response'
           description: Bad Request
       tags:
       - Campaign
@@ -2300,37 +2501,6 @@ paths:
       tags:
       - Campaign
       x-contentType: application/json
-      x-accepts: application/json
-  /2022-07/retail-media/assets:
-    post:
-      description: Creates an asset
-      operationId: CreateAsset
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              properties:
-                AssetFile:
-                  description: The asset binary content
-                  type: file
-              required:
-              - AssetFile
-      responses:
-        "201":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AssetResponse'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssetResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AssetResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-contentType: multipart/form-data
       x-accepts: application/json
 components:
   schemas:
@@ -3134,6 +3304,108 @@ components:
       - name
       type: object
       x-nullable: false
+    AssetResponse:
+      description: A class implementing the response of the Criteo API as described
+        in API Guild Guidelines with a single entity as body
+      example:
+        data:
+          attributes:
+            fileExtension: fileExtension
+            fileLocation: fileLocation
+            id: id
+          id: id
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/AssetResource'
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+          uniqueItems: false
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+          uniqueItems: false
+      type: object
+    AssetResource:
+      description: A class that represents an entity in a guild compliant way
+      example:
+        attributes:
+          fileExtension: fileExtension
+          fileLocation: fileLocation
+          id: id
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/Asset'
+        id:
+          type: string
+        type:
+          type: string
+      type: object
+    Asset:
+      description: "Handles pointing towards binary content that advertisers can use\
+        \ later on, for example in their creatives."
+      example:
+        fileExtension: fileExtension
+        fileLocation: fileLocation
+        id: id
+      properties:
+        fileExtension:
+          description: "The file extension that is asset is representing. Example:\
+            \ jpg, png, gif or pdf."
+          type: string
+        fileLocation:
+          description: A url pointing towards the static file the asset represents.
+          type: string
+        id:
+          type: string
+      required:
+      - fileExtension
+      type: object
     GetPageOfAudiencesByAccountIdResponse:
       description: Response for page of audiences by given account
       example:
@@ -3753,6 +4025,111 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
+    Creative202207Response:
+      description: Data model for response resource
+      example:
+        data:
+          attributes:
+            templateVariableValues:
+            - colorVariableValue:
+                color: color
+              textVariableValue:
+                text: text
+              filesVariableValue:
+                assetIds:
+                - assetIds
+                - assetIds
+              choiceVariableValue:
+                chosenOptions:
+                - chosenOptions
+                - chosenOptions
+              hyperlinkVariableValue:
+                url: url
+              id: id
+            - colorVariableValue:
+                color: color
+              textVariableValue:
+                text: text
+              filesVariableValue:
+                assetIds:
+                - assetIds
+                - assetIds
+              choiceVariableValue:
+                chosenOptions:
+                - chosenOptions
+                - chosenOptions
+              hyperlinkVariableValue:
+                url: url
+              id: id
+            associatedLineItemIds:
+            - associatedLineItemIds
+            - associatedLineItemIds
+            environments:
+            - Web
+            - Web
+            brandId: 0
+            creativeFormatType: Unknown
+            name: name
+            retailerId: 6
+            status: Ready
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfCreative202207'
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
     Category202204ListResponse:
       description: Data model for a list of response resources
       example:
@@ -3853,6 +4230,472 @@ components:
       - text
       type: object
       x-nullable: false
+    TemplateListResponse:
+      description: Data model for a list of response resources
+      example:
+        data:
+        - attributes:
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            skuCollectionMin: 6
+            allCollectionsMandatory: true
+            displayableSkusMax: 2
+            name: name
+            retailerId: 0
+            skuCollectionMax: 1
+            skuPerCollectionMax: 5
+            sections:
+            - title: title
+              templateVariables:
+              - choiceVariableSpecification:
+                  maxSelected: 7
+                  options:
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  minSelected: 9
+                id: id
+                textVariableSpecification:
+                  maxChars: 3
+                type: Text
+                required: true
+                filesVariablesSpecification:
+                  extensions:
+                  - Unknown
+                  - Unknown
+                  maxFile: 7
+                  minFiles: 4
+                  maxBytes: 2
+              - choiceVariableSpecification:
+                  maxSelected: 7
+                  options:
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  minSelected: 9
+                id: id
+                textVariableSpecification:
+                  maxChars: 3
+                type: Text
+                required: true
+                filesVariablesSpecification:
+                  extensions:
+                  - Unknown
+                  - Unknown
+                  maxFile: 7
+                  minFiles: 4
+                  maxBytes: 2
+            - title: title
+              templateVariables:
+              - choiceVariableSpecification:
+                  maxSelected: 7
+                  options:
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  minSelected: 9
+                id: id
+                textVariableSpecification:
+                  maxChars: 3
+                type: Text
+                required: true
+                filesVariablesSpecification:
+                  extensions:
+                  - Unknown
+                  - Unknown
+                  maxFile: 7
+                  minFiles: 4
+                  maxBytes: 2
+              - choiceVariableSpecification:
+                  maxSelected: 7
+                  options:
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  minSelected: 9
+                id: id
+                textVariableSpecification:
+                  maxChars: 3
+                type: Text
+                required: true
+                filesVariablesSpecification:
+                  extensions:
+                  - Unknown
+                  - Unknown
+                  maxFile: 7
+                  minFiles: 4
+                  maxBytes: 2
+            creativeFormat: Unknown
+            skuPerCollectionMin: 5
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        - attributes:
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            skuCollectionMin: 6
+            allCollectionsMandatory: true
+            displayableSkusMax: 2
+            name: name
+            retailerId: 0
+            skuCollectionMax: 1
+            skuPerCollectionMax: 5
+            sections:
+            - title: title
+              templateVariables:
+              - choiceVariableSpecification:
+                  maxSelected: 7
+                  options:
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  minSelected: 9
+                id: id
+                textVariableSpecification:
+                  maxChars: 3
+                type: Text
+                required: true
+                filesVariablesSpecification:
+                  extensions:
+                  - Unknown
+                  - Unknown
+                  maxFile: 7
+                  minFiles: 4
+                  maxBytes: 2
+              - choiceVariableSpecification:
+                  maxSelected: 7
+                  options:
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  minSelected: 9
+                id: id
+                textVariableSpecification:
+                  maxChars: 3
+                type: Text
+                required: true
+                filesVariablesSpecification:
+                  extensions:
+                  - Unknown
+                  - Unknown
+                  maxFile: 7
+                  minFiles: 4
+                  maxBytes: 2
+            - title: title
+              templateVariables:
+              - choiceVariableSpecification:
+                  maxSelected: 7
+                  options:
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  minSelected: 9
+                id: id
+                textVariableSpecification:
+                  maxChars: 3
+                type: Text
+                required: true
+                filesVariablesSpecification:
+                  extensions:
+                  - Unknown
+                  - Unknown
+                  maxFile: 7
+                  minFiles: 4
+                  maxBytes: 2
+              - choiceVariableSpecification:
+                  maxSelected: 7
+                  options:
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  minSelected: 9
+                id: id
+                textVariableSpecification:
+                  maxChars: 3
+                type: Text
+                required: true
+                filesVariablesSpecification:
+                  extensions:
+                  - Unknown
+                  - Unknown
+                  maxFile: 7
+                  minFiles: 4
+                  maxBytes: 2
+            creativeFormat: Unknown
+            skuPerCollectionMin: 5
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ResourceOfTemplate'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    TemplateResponse:
+      description: Data model for response resource
+      example:
+        data:
+          attributes:
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            skuCollectionMin: 6
+            allCollectionsMandatory: true
+            displayableSkusMax: 2
+            name: name
+            retailerId: 0
+            skuCollectionMax: 1
+            skuPerCollectionMax: 5
+            sections:
+            - title: title
+              templateVariables:
+              - choiceVariableSpecification:
+                  maxSelected: 7
+                  options:
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  minSelected: 9
+                id: id
+                textVariableSpecification:
+                  maxChars: 3
+                type: Text
+                required: true
+                filesVariablesSpecification:
+                  extensions:
+                  - Unknown
+                  - Unknown
+                  maxFile: 7
+                  minFiles: 4
+                  maxBytes: 2
+              - choiceVariableSpecification:
+                  maxSelected: 7
+                  options:
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  minSelected: 9
+                id: id
+                textVariableSpecification:
+                  maxChars: 3
+                type: Text
+                required: true
+                filesVariablesSpecification:
+                  extensions:
+                  - Unknown
+                  - Unknown
+                  maxFile: 7
+                  minFiles: 4
+                  maxBytes: 2
+            - title: title
+              templateVariables:
+              - choiceVariableSpecification:
+                  maxSelected: 7
+                  options:
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  minSelected: 9
+                id: id
+                textVariableSpecification:
+                  maxChars: 3
+                type: Text
+                required: true
+                filesVariablesSpecification:
+                  extensions:
+                  - Unknown
+                  - Unknown
+                  maxFile: 7
+                  minFiles: 4
+                  maxBytes: 2
+              - choiceVariableSpecification:
+                  maxSelected: 7
+                  options:
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  - dependentVariables:
+                    - null
+                    - null
+                    id: id
+                  minSelected: 9
+                id: id
+                textVariableSpecification:
+                  maxChars: 3
+                type: Text
+                required: true
+                filesVariablesSpecification:
+                  extensions:
+                  - Unknown
+                  - Unknown
+                  maxFile: 7
+                  minFiles: 4
+                  maxBytes: 2
+            creativeFormat: Unknown
+            skuPerCollectionMin: 5
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfTemplate'
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
     JsonApiRequestOfCatalogRequest:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with Type, and Attributes properties"
@@ -3867,6 +4710,148 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest'
+      type: object
+      x-nullable: false
+    CreativeCreateModel202207:
+      description: Create model of a creative
+      example:
+        templateVariableValues:
+        - colorVariableValue:
+            color: color
+          textVariableValue:
+            text: text
+          filesVariableValue:
+            assetIds:
+            - assetIds
+            - assetIds
+          choiceVariableValue:
+            chosenOptions:
+            - chosenOptions
+            - chosenOptions
+          hyperlinkVariableValue:
+            url: url
+          id: id
+        - colorVariableValue:
+            color: color
+          textVariableValue:
+            text: text
+          filesVariableValue:
+            assetIds:
+            - assetIds
+            - assetIds
+          choiceVariableValue:
+            chosenOptions:
+            - chosenOptions
+            - chosenOptions
+          hyperlinkVariableValue:
+            url: url
+          id: id
+        brandId: 0
+        name: name
+        retailerId: 6
+        templateId: 1
+      properties:
+        name:
+          description: The name of the creative
+          type: string
+          x-nullable: false
+        brandId:
+          description: The brand associated to the creative
+          format: int64
+          type: integer
+          x-nullable: false
+        retailerId:
+          description: The retailer associated to the creative
+          format: int32
+          type: integer
+          x-nullable: false
+        templateId:
+          description: The creative template used for this creative
+          format: int32
+          type: integer
+          x-nullable: false
+        templateVariableValues:
+          description: The template chosen values
+          items:
+            $ref: '#/components/schemas/TemplateVariableValue'
+          type: array
+          x-nullable: false
+      required:
+      - name
+      - retailerId
+      - templateId
+      - templateVariableValues
+      type: object
+      x-nullable: false
+    CreativeUpdateModel202207:
+      description: Update model of a creative
+      example:
+        templateVariableValues:
+        - colorVariableValue:
+            color: color
+          textVariableValue:
+            text: text
+          filesVariableValue:
+            assetIds:
+            - assetIds
+            - assetIds
+          choiceVariableValue:
+            chosenOptions:
+            - chosenOptions
+            - chosenOptions
+          hyperlinkVariableValue:
+            url: url
+          id: id
+        - colorVariableValue:
+            color: color
+          textVariableValue:
+            text: text
+          filesVariableValue:
+            assetIds:
+            - assetIds
+            - assetIds
+          choiceVariableValue:
+            chosenOptions:
+            - chosenOptions
+            - chosenOptions
+          hyperlinkVariableValue:
+            url: url
+          id: id
+        brandId: 0
+        name: name
+        retailerId: 6
+        templateId: 1
+      properties:
+        name:
+          description: The name of the creative
+          type: string
+          x-nullable: false
+        brandId:
+          description: The brand associated to the creative
+          format: int64
+          type: integer
+          x-nullable: false
+        retailerId:
+          description: The retailer associated to the creative
+          format: int32
+          type: integer
+          x-nullable: false
+        templateId:
+          description: The creative template used for this creative
+          format: int32
+          type: integer
+          x-nullable: false
+        templateVariableValues:
+          description: The template chosen values
+          items:
+            $ref: '#/components/schemas/TemplateVariableValue'
+          type: array
+          x-nullable: false
+      required:
+      - name
+      - retailerId
+      - templateId
+      - templateVariableValues
       type: object
       x-nullable: false
     JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus:
@@ -3984,6 +4969,66 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
+    ResourceOfCreative202207:
+      description: Data model for a Resource
+      example:
+        attributes:
+          templateVariableValues:
+          - colorVariableValue:
+              color: color
+            textVariableValue:
+              text: text
+            filesVariableValue:
+              assetIds:
+              - assetIds
+              - assetIds
+            choiceVariableValue:
+              chosenOptions:
+              - chosenOptions
+              - chosenOptions
+            hyperlinkVariableValue:
+              url: url
+            id: id
+          - colorVariableValue:
+              color: color
+            textVariableValue:
+              text: text
+            filesVariableValue:
+              assetIds:
+              - assetIds
+              - assetIds
+            choiceVariableValue:
+              chosenOptions:
+              - chosenOptions
+              - chosenOptions
+            hyperlinkVariableValue:
+              url: url
+            id: id
+          associatedLineItemIds:
+          - associatedLineItemIds
+          - associatedLineItemIds
+          environments:
+          - Web
+          - Web
+          brandId: 0
+          creativeFormatType: Unknown
+          name: name
+          retailerId: 6
+          status: Ready
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/Creative202207'
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          description: Canonical type name of the entity
+          type: string
+      type: object
+      x-nullable: false
     ResourceOfCategory202204:
       description: Data model for a Resource
       example:
@@ -3996,6 +5041,135 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/Category202204'
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          description: Canonical type name of the entity
+          type: string
+      type: object
+      x-nullable: false
+    ResourceOfTemplate:
+      description: Data model for a Resource
+      example:
+        attributes:
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          skuCollectionMin: 6
+          allCollectionsMandatory: true
+          displayableSkusMax: 2
+          name: name
+          retailerId: 0
+          skuCollectionMax: 1
+          skuPerCollectionMax: 5
+          sections:
+          - title: title
+            templateVariables:
+            - choiceVariableSpecification:
+                maxSelected: 7
+                options:
+                - dependentVariables:
+                  - null
+                  - null
+                  id: id
+                - dependentVariables:
+                  - null
+                  - null
+                  id: id
+                minSelected: 9
+              id: id
+              textVariableSpecification:
+                maxChars: 3
+              type: Text
+              required: true
+              filesVariablesSpecification:
+                extensions:
+                - Unknown
+                - Unknown
+                maxFile: 7
+                minFiles: 4
+                maxBytes: 2
+            - choiceVariableSpecification:
+                maxSelected: 7
+                options:
+                - dependentVariables:
+                  - null
+                  - null
+                  id: id
+                - dependentVariables:
+                  - null
+                  - null
+                  id: id
+                minSelected: 9
+              id: id
+              textVariableSpecification:
+                maxChars: 3
+              type: Text
+              required: true
+              filesVariablesSpecification:
+                extensions:
+                - Unknown
+                - Unknown
+                maxFile: 7
+                minFiles: 4
+                maxBytes: 2
+          - title: title
+            templateVariables:
+            - choiceVariableSpecification:
+                maxSelected: 7
+                options:
+                - dependentVariables:
+                  - null
+                  - null
+                  id: id
+                - dependentVariables:
+                  - null
+                  - null
+                  id: id
+                minSelected: 9
+              id: id
+              textVariableSpecification:
+                maxChars: 3
+              type: Text
+              required: true
+              filesVariablesSpecification:
+                extensions:
+                - Unknown
+                - Unknown
+                maxFile: 7
+                minFiles: 4
+                maxBytes: 2
+            - choiceVariableSpecification:
+                maxSelected: 7
+                options:
+                - dependentVariables:
+                  - null
+                  - null
+                  id: id
+                - dependentVariables:
+                  - null
+                  - null
+                  id: id
+                minSelected: 9
+              id: id
+              textVariableSpecification:
+                maxChars: 3
+              type: Text
+              required: true
+              filesVariablesSpecification:
+                extensions:
+                - Unknown
+                - Unknown
+                maxFile: 7
+                minFiles: 4
+                maxBytes: 2
+          creativeFormat: Unknown
+          skuPerCollectionMin: 5
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/Template'
         id:
           description: Id of the entity
           type: string
@@ -4022,6 +5196,43 @@ components:
           $ref: '#/components/schemas/ExternalCatalogRequest'
       required:
       - type
+      type: object
+      x-nullable: false
+    TemplateVariableValue:
+      description: A value for a variable in a creative template.
+      example:
+        colorVariableValue:
+          color: color
+        textVariableValue:
+          text: text
+        filesVariableValue:
+          assetIds:
+          - assetIds
+          - assetIds
+        choiceVariableValue:
+          chosenOptions:
+          - chosenOptions
+          - chosenOptions
+        hyperlinkVariableValue:
+          url: url
+        id: id
+      properties:
+        id:
+          description: The id of the template variable the value is applied to
+          type: string
+          x-nullable: false
+        textVariableValue:
+          $ref: '#/components/schemas/TextVariableValue'
+        choiceVariableValue:
+          $ref: '#/components/schemas/ChoiceVariableValue'
+        colorVariableValue:
+          $ref: '#/components/schemas/ColorVariableValue'
+        filesVariableValue:
+          $ref: '#/components/schemas/FilesVariableValue'
+        hyperlinkVariableValue:
+          $ref: '#/components/schemas/HyperlinkVariableValue'
+      required:
+      - id
       type: object
       x-nullable: false
     ExternalCatalogStatus:
@@ -4135,6 +5346,326 @@ components:
       - status
       type: object
       x-nullable: false
+    Creative202207:
+      description: A creative entity
+      example:
+        templateVariableValues:
+        - colorVariableValue:
+            color: color
+          textVariableValue:
+            text: text
+          filesVariableValue:
+            assetIds:
+            - assetIds
+            - assetIds
+          choiceVariableValue:
+            chosenOptions:
+            - chosenOptions
+            - chosenOptions
+          hyperlinkVariableValue:
+            url: url
+          id: id
+        - colorVariableValue:
+            color: color
+          textVariableValue:
+            text: text
+          filesVariableValue:
+            assetIds:
+            - assetIds
+            - assetIds
+          choiceVariableValue:
+            chosenOptions:
+            - chosenOptions
+            - chosenOptions
+          hyperlinkVariableValue:
+            url: url
+          id: id
+        associatedLineItemIds:
+        - associatedLineItemIds
+        - associatedLineItemIds
+        environments:
+        - Web
+        - Web
+        brandId: 0
+        creativeFormatType: Unknown
+        name: name
+        retailerId: 6
+        status: Ready
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        name:
+          description: Name
+          type: string
+          x-nullable: false
+        status:
+          description: Creative Status
+          enum:
+          - Ready
+          - In_Use
+          - Archived
+          - Deleted
+          type: string
+          x-nullable: false
+        brandId:
+          description: Brand Id
+          format: int64
+          type: integer
+          x-nullable: true
+        retailerId:
+          description: Retailer Id
+          format: int32
+          type: integer
+          x-nullable: false
+        associatedLineItemIds:
+          description: Associated Line Item Ids
+          items:
+            type: string
+            x-nullable: false
+          type: array
+          x-nullable: false
+        updatedAt:
+          description: Updated at time
+          format: date-time
+          type: string
+          x-nullable: false
+        creativeFormatType:
+          description: Creative format type
+          enum:
+          - Unknown
+          - FlagShip
+          - Showcase
+          - SponsoredProducts
+          - Butterfly
+          - BundleBoost
+          - IAB
+          - CUSTOM
+          - DisplayPanel
+          - DigitalShelfTalker
+          type: string
+          x-nullable: false
+        environments:
+          description: "Environment type (e.g. mobile, web, app)"
+          items:
+            enum:
+            - Web
+            - Mobile
+            - App
+            type: string
+            x-nullable: false
+          type: array
+          x-nullable: false
+        templateVariableValues:
+          description: The template chosen values
+          items:
+            $ref: '#/components/schemas/TemplateVariableValue'
+          type: array
+          x-nullable: false
+      required:
+      - creativeFormatType
+      - environments
+      - name
+      - retailerId
+      - status
+      - templateVariableValues
+      type: object
+      x-nullable: false
+    Template:
+      description: A template for creating creatives.
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        skuCollectionMin: 6
+        allCollectionsMandatory: true
+        displayableSkusMax: 2
+        name: name
+        retailerId: 0
+        skuCollectionMax: 1
+        skuPerCollectionMax: 5
+        sections:
+        - title: title
+          templateVariables:
+          - choiceVariableSpecification:
+              maxSelected: 7
+              options:
+              - dependentVariables:
+                - null
+                - null
+                id: id
+              - dependentVariables:
+                - null
+                - null
+                id: id
+              minSelected: 9
+            id: id
+            textVariableSpecification:
+              maxChars: 3
+            type: Text
+            required: true
+            filesVariablesSpecification:
+              extensions:
+              - Unknown
+              - Unknown
+              maxFile: 7
+              minFiles: 4
+              maxBytes: 2
+          - choiceVariableSpecification:
+              maxSelected: 7
+              options:
+              - dependentVariables:
+                - null
+                - null
+                id: id
+              - dependentVariables:
+                - null
+                - null
+                id: id
+              minSelected: 9
+            id: id
+            textVariableSpecification:
+              maxChars: 3
+            type: Text
+            required: true
+            filesVariablesSpecification:
+              extensions:
+              - Unknown
+              - Unknown
+              maxFile: 7
+              minFiles: 4
+              maxBytes: 2
+        - title: title
+          templateVariables:
+          - choiceVariableSpecification:
+              maxSelected: 7
+              options:
+              - dependentVariables:
+                - null
+                - null
+                id: id
+              - dependentVariables:
+                - null
+                - null
+                id: id
+              minSelected: 9
+            id: id
+            textVariableSpecification:
+              maxChars: 3
+            type: Text
+            required: true
+            filesVariablesSpecification:
+              extensions:
+              - Unknown
+              - Unknown
+              maxFile: 7
+              minFiles: 4
+              maxBytes: 2
+          - choiceVariableSpecification:
+              maxSelected: 7
+              options:
+              - dependentVariables:
+                - null
+                - null
+                id: id
+              - dependentVariables:
+                - null
+                - null
+                id: id
+              minSelected: 9
+            id: id
+            textVariableSpecification:
+              maxChars: 3
+            type: Text
+            required: true
+            filesVariablesSpecification:
+              extensions:
+              - Unknown
+              - Unknown
+              maxFile: 7
+              minFiles: 4
+              maxBytes: 2
+        creativeFormat: Unknown
+        skuPerCollectionMin: 5
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        creativeFormat:
+          description: The kind of creative this template can be used to build.
+          enum:
+          - Unknown
+          - FlagShip
+          - Showcase
+          - SponsoredProducts
+          - Butterfly
+          - BundleBoost
+          - IAB
+          - CUSTOM
+          - DisplayPanel
+          - DigitalShelfTalker
+          type: string
+          x-nullable: false
+        name:
+          description: The name of the template
+          type: string
+          x-nullable: false
+        retailerId:
+          description: The retailer associated to the template
+          format: int32
+          type: integer
+          x-nullable: false
+        skuCollectionMin:
+          description: "TODO: what is it ?"
+          format: int32
+          type: integer
+          x-nullable: false
+        skuCollectionMax:
+          description: "TODO: what is it ?"
+          format: int32
+          type: integer
+          x-nullable: true
+        skuPerCollectionMin:
+          description: "TODO: what is it ?"
+          format: int32
+          type: integer
+          x-nullable: false
+        skuPerCollectionMax:
+          description: "TODO: what is it ?"
+          format: int32
+          type: integer
+          x-nullable: true
+        displayableSkusMax:
+          description: "TODO: what is it ?"
+          format: int32
+          type: integer
+          x-nullable: true
+        allCollectionsMandatory:
+          description: "TODO: what is it ?"
+          type: boolean
+          x-nullable: false
+        createdAt:
+          description: The time at which the template was created
+          format: date-time
+          type: string
+          x-nullable: false
+        updatedAt:
+          description: The time at which the template was updated
+          format: date-time
+          type: string
+          x-nullable: false
+        sections:
+          description: The sections holding various template variables
+          items:
+            $ref: '#/components/schemas/Section'
+          type: array
+          x-nullable: false
+      required:
+      - allCollectionsMandatory
+      - createdAt
+      - creativeFormat
+      - name
+      - retailerId
+      - sections
+      - skuCollectionMin
+      - skuPerCollectionMin
+      - updatedAt
+      type: object
+      x-nullable: false
     ExternalCatalogRequest:
       description: A request for a catalog under the specified format. Currently "json-newline"
         is supported.
@@ -4156,6 +5687,323 @@ components:
             type: string
           type: array
           x-nullable: false
+      type: object
+      x-nullable: false
+    TextVariableValue:
+      description: A value of a template text variable
+      example:
+        text: text
+      properties:
+        text:
+          description: The displayed text
+          type: string
+          x-nullable: false
+      required:
+      - text
+      type: object
+      x-nullable: false
+    ChoiceVariableValue:
+      description: A value of a template choice variable (among different accepted
+        options)
+      example:
+        chosenOptions:
+        - chosenOptions
+        - chosenOptions
+      properties:
+        chosenOptions:
+          description: The chosen options
+          items:
+            type: string
+            x-nullable: false
+          type: array
+          x-nullable: false
+      required:
+      - chosenOptions
+      type: object
+      x-nullable: false
+    ColorVariableValue:
+      description: A value of a template color variable
+      example:
+        color: color
+      properties:
+        color:
+          description: The displayed color (HEX format)
+          pattern: "^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$"
+          type: string
+          x-nullable: false
+      required:
+      - color
+      type: object
+      x-nullable: false
+    FilesVariableValue:
+      description: "A value of a template file variable (one or several files), like\
+        \ images in a creative"
+      example:
+        assetIds:
+        - assetIds
+        - assetIds
+      properties:
+        assetIds:
+          description: The assets representing the images to be displayed
+          items:
+            type: string
+            x-nullable: false
+          minLength: 1
+          type: array
+          x-nullable: false
+      required:
+      - assetIds
+      type: object
+      x-nullable: false
+    HyperlinkVariableValue:
+      description: A value of a template hyperlink variable
+      example:
+        url: url
+      properties:
+        url:
+          description: The url to redirect to
+          type: string
+          x-nullable: false
+      required:
+      - url
+      type: object
+      x-nullable: false
+    Section:
+      description: Section object that hold template variables
+      example:
+        title: title
+        templateVariables:
+        - choiceVariableSpecification:
+            maxSelected: 7
+            options:
+            - dependentVariables:
+              - null
+              - null
+              id: id
+            - dependentVariables:
+              - null
+              - null
+              id: id
+            minSelected: 9
+          id: id
+          textVariableSpecification:
+            maxChars: 3
+          type: Text
+          required: true
+          filesVariablesSpecification:
+            extensions:
+            - Unknown
+            - Unknown
+            maxFile: 7
+            minFiles: 4
+            maxBytes: 2
+        - choiceVariableSpecification:
+            maxSelected: 7
+            options:
+            - dependentVariables:
+              - null
+              - null
+              id: id
+            - dependentVariables:
+              - null
+              - null
+              id: id
+            minSelected: 9
+          id: id
+          textVariableSpecification:
+            maxChars: 3
+          type: Text
+          required: true
+          filesVariablesSpecification:
+            extensions:
+            - Unknown
+            - Unknown
+            maxFile: 7
+            minFiles: 4
+            maxBytes: 2
+      properties:
+        title:
+          type: string
+          x-nullable: false
+        templateVariables:
+          items:
+            $ref: '#/components/schemas/TemplateVariable'
+          type: array
+          x-nullable: false
+      required:
+      - templateVariables
+      - title
+      type: object
+      x-nullable: false
+    TemplateVariable:
+      description: A variable in a creative template
+      example:
+        choiceVariableSpecification:
+          maxSelected: 7
+          options:
+          - dependentVariables:
+            - null
+            - null
+            id: id
+          - dependentVariables:
+            - null
+            - null
+            id: id
+          minSelected: 9
+        id: id
+        textVariableSpecification:
+          maxChars: 3
+        type: Text
+        required: true
+        filesVariablesSpecification:
+          extensions:
+          - Unknown
+          - Unknown
+          maxFile: 7
+          minFiles: 4
+          maxBytes: 2
+      properties:
+        id:
+          description: The id of the variable
+          type: string
+          x-nullable: false
+        required:
+          description: Whether the variable is required
+          type: boolean
+          x-nullable: false
+        type:
+          description: The type of the variable
+          enum:
+          - Text
+          - Choice
+          - Color
+          - Files
+          - Hyperlink
+          type: string
+          x-nullable: false
+        choiceVariableSpecification:
+          $ref: '#/components/schemas/ChoiceVariableSpecification'
+        textVariableSpecification:
+          $ref: '#/components/schemas/TextVariableSpecification'
+        filesVariablesSpecification:
+          $ref: '#/components/schemas/FilesVariablesSpecification'
+      required:
+      - id
+      - required
+      - type
+      type: object
+      x-nullable: false
+    ChoiceVariableSpecification:
+      description: Specification of choice variable
+      example:
+        maxSelected: 7
+        options:
+        - dependentVariables:
+          - null
+          - null
+          id: id
+        - dependentVariables:
+          - null
+          - null
+          id: id
+        minSelected: 9
+      properties:
+        options:
+          description: The available options
+          items:
+            $ref: '#/components/schemas/ChoiceOption'
+          type: array
+          x-nullable: false
+        maxSelected:
+          description: The maximum number of selectable options
+          format: int32
+          type: integer
+          x-nullable: true
+        minSelected:
+          description: The minimum number of selectable options
+          format: int32
+          type: integer
+          x-nullable: true
+      required:
+      - options
+      type: object
+      x-nullable: false
+    TextVariableSpecification:
+      description: Specification of a text variable
+      example:
+        maxChars: 3
+      properties:
+        maxChars:
+          description: The maximum amount of characters accepted for the text
+          format: int32
+          type: integer
+          x-nullable: true
+      type: object
+      x-nullable: false
+    FilesVariablesSpecification:
+      description: Specification of a file variable
+      example:
+        extensions:
+        - Unknown
+        - Unknown
+        maxFile: 7
+        minFiles: 4
+        maxBytes: 2
+      properties:
+        extensions:
+          description: The accepted file extensions
+          items:
+            enum:
+            - Unknown
+            - Jpeg
+            - Png
+            - Gif
+            - Pdf
+            type: string
+            x-nullable: false
+          type: array
+          x-nullable: false
+        maxBytes:
+          description: The maximum amount of bytes per file
+          format: int32
+          type: integer
+          x-nullable: true
+        minFiles:
+          description: The minimum amount of files requires
+          format: int32
+          type: integer
+          x-nullable: true
+        maxFile:
+          description: The maximum amount of files required
+          format: int32
+          type: integer
+          x-nullable: true
+      required:
+      - extensions
+      - minFiles
+      type: object
+      x-nullable: false
+    ChoiceOption:
+      description: An option given in a choice
+      example:
+        dependentVariables:
+        - null
+        - null
+        id: id
+      properties:
+        dependentVariables:
+          description: Template variables unblocked when the option is chosen
+          items:
+            $ref: '#/components/schemas/TemplateVariable'
+          type: array
+          x-nullable: false
+        id:
+          description: The id of the option
+          type: string
+          x-nullable: false
+      required:
+      - dependentVariables
+      - id
       type: object
       x-nullable: false
     EnvelopeReportStatus:
@@ -5359,83 +7207,6 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
-    PreferredLineItemResponse:
-      description: Data model for response resource
-      example:
-        data:
-          attributes:
-            budgetRemaining: 5.962133916683182
-            endDate: 2000-01-23
-            campaignId: campaignId
-            capping:
-              count: 0
-              type: unknown
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            pacing: unknown
-            budgetSpent: 1.4658129805029452
-            name: name
-            targetRetailerId: targetRetailerId
-            startDate: 2000-01-23
-            status: unknown
-            budget: 6.027456183070403
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfPreferredLineItem'
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
     PromotedProduct202110PagedListResponse:
       description: Data model for a paged list of response resources
       example:
@@ -5820,71 +7591,6 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
-    AssetResponse:
-      description: A class implementing the response of the Criteo API as described
-        in API Guild Guidelines with a single entity as body
-      example:
-        data:
-          attributes:
-            fileExtension: fileExtension
-            fileLocation: fileLocation
-            id: id
-          id: id
-          type: type
-        warnings:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/AssetResource'
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-          uniqueItems: false
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-          uniqueItems: false
-      type: object
     KeywordTarget202110Request:
       description: Data model for a value type input resource
       example:
@@ -6098,7 +7804,7 @@ components:
           $ref: '#/components/schemas/ResourceOfAuctionLineItemUpdateModel'
       type: object
       x-nullable: false
-    PreferredLineItemUpdateModelRequest:
+    PreferredLineItemUpdateModel202110Request:
       description: Data model for an input resource
       example:
         data:
@@ -6109,13 +7815,25 @@ components:
             capping:
               count: 0
               type: unknown
+            page:
+              pageType: search
+              searchKeywords:
+              - searchKeywords
+              - searchKeywords
+              categories:
+              - includeChildren: true
+                categoryId: categoryId
+              - includeChildren: true
+                categoryId: categoryId
             startDate: 2000-01-23
+            creativeId: creativeId
             status: unknown
+            budget: 0.8008281904610115
           id: id
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/ResourceOfPreferredLineItemUpdateModel'
+          $ref: '#/components/schemas/ResourceOfPreferredLineItemUpdateModel202110'
       type: object
       x-nullable: false
     PreferredLineItemCreateModel202110Request:
@@ -6385,38 +8103,6 @@ components:
           $ref: '#/components/schemas/ExternalPreferredLineItem202110'
       type: object
       x-nullable: false
-    ResourceOfPreferredLineItem:
-      description: Data model for a Resource
-      example:
-        attributes:
-          budgetRemaining: 5.962133916683182
-          endDate: 2000-01-23
-          campaignId: campaignId
-          capping:
-            count: 0
-            type: unknown
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          pacing: unknown
-          budgetSpent: 1.4658129805029452
-          name: name
-          targetRetailerId: targetRetailerId
-          startDate: 2000-01-23
-          status: unknown
-          budget: 6.027456183070403
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        id: id
-        type: type
-      properties:
-        id:
-          description: Id of the entity
-          type: string
-        type:
-          description: Canonical type name of the entity
-          type: string
-        attributes:
-          $ref: '#/components/schemas/ExternalPreferredLineItem'
-      type: object
-      x-nullable: false
     ResourceOfPromotedProduct202110:
       description: Data model for a Resource
       example:
@@ -6482,23 +8168,6 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
-    AssetResource:
-      description: A class that represents an entity in a guild compliant way
-      example:
-        attributes:
-          fileExtension: fileExtension
-          fileLocation: fileLocation
-          id: id
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/Asset'
-        id:
-          type: string
-        type:
-          type: string
-      type: object
     ValueTypeResourceOfStoreIdsUpdateModel202110:
       description: Data model for a value type resource
       example:
@@ -6657,7 +8326,7 @@ components:
           $ref: '#/components/schemas/ExternalAuctionLineItemUpdateModel'
       type: object
       x-nullable: false
-    ResourceOfPreferredLineItemUpdateModel:
+    ResourceOfPreferredLineItemUpdateModel202110:
       description: Data model for a Resource
       example:
         attributes:
@@ -6667,8 +8336,20 @@ components:
           capping:
             count: 0
             type: unknown
+          page:
+            pageType: search
+            searchKeywords:
+            - searchKeywords
+            - searchKeywords
+            categories:
+            - includeChildren: true
+              categoryId: categoryId
+            - includeChildren: true
+              categoryId: categoryId
           startDate: 2000-01-23
+          creativeId: creativeId
           status: unknown
+          budget: 0.8008281904610115
         id: id
         type: type
       properties:
@@ -6679,7 +8360,7 @@ components:
           description: Canonical type name of the entity
           type: string
         attributes:
-          $ref: '#/components/schemas/ExternalPreferredLineItemUpdateModel'
+          $ref: '#/components/schemas/ExternalPreferredLineItemUpdateModel202110'
       type: object
       x-nullable: false
     InputResourceOfPreferredLineItemCreateModel202110:
@@ -7310,112 +8991,6 @@ components:
       - updatedAt
       type: object
       x-nullable: false
-    ExternalPreferredLineItem:
-      description: A Retail Media Preferred Line Item used to hold bid settings for
-        one or many promoted products on a single retailer
-      example:
-        budgetRemaining: 5.962133916683182
-        endDate: 2000-01-23
-        campaignId: campaignId
-        capping:
-          count: 0
-          type: unknown
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        pacing: unknown
-        budgetSpent: 1.4658129805029452
-        name: name
-        targetRetailerId: targetRetailerId
-        startDate: 2000-01-23
-        status: unknown
-        budget: 6.027456183070403
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        name:
-          maxLength: 255
-          minLength: 0
-          type: string
-          x-nullable: false
-        startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          required:
-          - "true"
-          type: string
-        endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          required:
-          - "true"
-          type: string
-        status:
-          enum:
-          - unknown
-          - active
-          - scheduled
-          - draft
-          - paused
-          - budgetHit
-          - ended
-          - archived
-          - noFunds
-          type: string
-          x-nullable: false
-        pacing:
-          enum:
-          - unknown
-          - standard
-          - accelerated
-          type: string
-          x-nullable: false
-        capping:
-          $ref: '#/components/schemas/ExternalLineItemCapping'
-        targetRetailerId:
-          format: long-id
-          type: string
-          x-nullable: false
-        budget:
-          format: decimal
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        campaignId:
-          format: long-id
-          type: string
-          x-nullable: false
-        budgetSpent:
-          format: double
-          type: number
-          x-nullable: false
-        budgetRemaining:
-          format: decimal
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        createdAt:
-          format: date-time
-          type: string
-          x-nullable: false
-        updatedAt:
-          format: date-time
-          type: string
-          x-nullable: false
-      required:
-      - budgetRemaining
-      - campaignId
-      - createdAt
-      - endDate
-      - name
-      - pacing
-      - startDate
-      - status
-      - targetRetailerId
-      - updatedAt
-      type: object
-      x-nullable: false
     ExternalPromotedProduct202110:
       description: identifies a promoted product
       example:
@@ -7518,30 +9093,6 @@ components:
       description: Campaigns related to the balance
       type: object
       x-nullable: false
-    Asset:
-      description: "Handles pointing towards binary content that advertisers can use\
-        \ later on, for example in their creatives."
-      example:
-        fileExtension: fileExtension
-        fileLocation: fileLocation
-        id: id
-      properties:
-        fileExtension:
-          description: "The file extension that is asset is representing. Example:\
-            \ jpg, png, gif or pdf."
-          type: string
-        fileLocation:
-          description: A url pointing towards the static file the asset represents.
-          type: string
-        id:
-          type: string
-      required:
-      - fileExtension
-      type: object
-      x-criteo-canonical:
-        infoType: entity
-        name: RetailMediaAsset
-        version: "202110"
     ExternalStoreIdsUpdateModel202110:
       description: Update model for updating store target ids
       example:
@@ -7940,7 +9491,7 @@ components:
       - targetBid
       type: object
       x-nullable: false
-    ExternalPreferredLineItemUpdateModel:
+    ExternalPreferredLineItemUpdateModel202110:
       description: Model used to update a preferred line item
       example:
         pacing: accelerated
@@ -7949,8 +9500,20 @@ components:
         capping:
           count: 0
           type: unknown
+        page:
+          pageType: search
+          searchKeywords:
+          - searchKeywords
+          - searchKeywords
+          categories:
+          - includeChildren: true
+            categoryId: categoryId
+          - includeChildren: true
+            categoryId: categoryId
         startDate: 2000-01-23
+        creativeId: creativeId
         status: unknown
+        budget: 0.8008281904610115
       properties:
         name:
           maxLength: 255
@@ -7993,7 +9556,17 @@ components:
           type: string
           x-nullable: false
         capping:
-          $ref: '#/components/schemas/ExternalLineItemCapping'
+          $ref: '#/components/schemas/ExternalLineItemCapping202110'
+        page:
+          $ref: '#/components/schemas/ExternalLineItemPage202110'
+        budget:
+          format: double
+          type: number
+          x-nullable: false
+        creativeId:
+          format: long-id
+          type: string
+          x-nullable: true
       required:
       - endDate
       - name
@@ -8151,28 +9724,6 @@ components:
           x-nullable: false
       required:
       - pageType
-      type: object
-      x-nullable: false
-    ExternalLineItemCapping:
-      description: Frequency capping for a preferred line item
-      example:
-        count: 0
-        type: unknown
-      properties:
-        type:
-          enum:
-          - unknown
-          - day
-          - session
-          type: string
-          x-nullable: false
-        count:
-          format: int32
-          type: integer
-          x-nullable: false
-      required:
-      - count
-      - type
       type: object
       x-nullable: false
     ExternalLineItemPageCategory202110:

@@ -62,8 +62,7 @@ import com.criteo.api.retailmedia.v2022_04.model.KeywordTarget202110Response;
 import com.criteo.api.retailmedia.v2022_04.model.PreferredLineItem202110PagedListResponse;
 import com.criteo.api.retailmedia.v2022_04.model.PreferredLineItem202110Response;
 import com.criteo.api.retailmedia.v2022_04.model.PreferredLineItemCreateModel202110Request;
-import com.criteo.api.retailmedia.v2022_04.model.PreferredLineItemResponse;
-import com.criteo.api.retailmedia.v2022_04.model.PreferredLineItemUpdateModelRequest;
+import com.criteo.api.retailmedia.v2022_04.model.PreferredLineItemUpdateModel202110Request;
 import com.criteo.api.retailmedia.v2022_04.model.PromotedProduct202110ListRequest;
 import com.criteo.api.retailmedia.v2022_04.model.PromotedProduct202110PagedListResponse;
 import com.criteo.api.retailmedia.v2022_04.model.StoreIdsUpdateModel202110Request;
@@ -5331,6 +5330,126 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
+     * Build call for putApi202110ExternalPreferredLineItemByLineItemId
+     * @param lineItemId The given line item id (required)
+     * @param preferredLineItemUpdateModel202110Request The line item settings to create a line item with (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putApi202110ExternalPreferredLineItemByLineItemIdCall(String lineItemId, PreferredLineItemUpdateModel202110Request preferredLineItemUpdateModel202110Request, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = preferredLineItemUpdateModel202110Request;
+
+        // create path and map variables
+        String localVarPath = "/2022-04/retail-media/preferred-line-items/{line-item-id}"
+            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putApi202110ExternalPreferredLineItemByLineItemIdValidateBeforeCall(String lineItemId, PreferredLineItemUpdateModel202110Request preferredLineItemUpdateModel202110Request, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'lineItemId' is set
+        if (lineItemId == null) {
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling putApi202110ExternalPreferredLineItemByLineItemId(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = putApi202110ExternalPreferredLineItemByLineItemIdCall(lineItemId, preferredLineItemUpdateModel202110Request, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Updates the preferred line item for the given line item id
+     * @param lineItemId The given line item id (required)
+     * @param preferredLineItemUpdateModel202110Request The line item settings to create a line item with (optional)
+     * @return PreferredLineItem202110Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+     </table>
+     */
+    public PreferredLineItem202110Response putApi202110ExternalPreferredLineItemByLineItemId(String lineItemId, PreferredLineItemUpdateModel202110Request preferredLineItemUpdateModel202110Request) throws ApiException {
+        ApiResponse<PreferredLineItem202110Response> localVarResp = putApi202110ExternalPreferredLineItemByLineItemIdWithHttpInfo(lineItemId, preferredLineItemUpdateModel202110Request);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Updates the preferred line item for the given line item id
+     * @param lineItemId The given line item id (required)
+     * @param preferredLineItemUpdateModel202110Request The line item settings to create a line item with (optional)
+     * @return ApiResponse&lt;PreferredLineItem202110Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PreferredLineItem202110Response> putApi202110ExternalPreferredLineItemByLineItemIdWithHttpInfo(String lineItemId, PreferredLineItemUpdateModel202110Request preferredLineItemUpdateModel202110Request) throws ApiException {
+        okhttp3.Call localVarCall = putApi202110ExternalPreferredLineItemByLineItemIdValidateBeforeCall(lineItemId, preferredLineItemUpdateModel202110Request, null);
+        Type localVarReturnType = new TypeToken<PreferredLineItem202110Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Updates the preferred line item for the given line item id
+     * @param lineItemId The given line item id (required)
+     * @param preferredLineItemUpdateModel202110Request The line item settings to create a line item with (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putApi202110ExternalPreferredLineItemByLineItemIdAsync(String lineItemId, PreferredLineItemUpdateModel202110Request preferredLineItemUpdateModel202110Request, final ApiCallback<PreferredLineItem202110Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putApi202110ExternalPreferredLineItemByLineItemIdValidateBeforeCall(lineItemId, preferredLineItemUpdateModel202110Request, _callback);
+        Type localVarReturnType = new TypeToken<PreferredLineItem202110Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId
      * @param lineItemId The line item to interact with (required)
      * @param addToBasketTarget202110Request The add to basket target to set the scope for (optional)
@@ -5923,126 +6042,6 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = putApiV2ExternalAuctionLineItemByLineItemIdValidateBeforeCall(lineItemId, auctionLineItemUpdateModelRequest, _callback);
         Type localVarReturnType = new TypeToken<AuctionLineItemResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for putApiV2ExternalPreferredLineItemByLineItemId
-     * @param lineItemId The given line item id (required)
-     * @param preferredLineItemUpdateModelRequest The line item settings to create a line item with (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call putApiV2ExternalPreferredLineItemByLineItemIdCall(String lineItemId, PreferredLineItemUpdateModelRequest preferredLineItemUpdateModelRequest, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = preferredLineItemUpdateModelRequest;
-
-        // create path and map variables
-        String localVarPath = "/2022-04/retail-media/preferred-line-items/{line-item-id}"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call putApiV2ExternalPreferredLineItemByLineItemIdValidateBeforeCall(String lineItemId, PreferredLineItemUpdateModelRequest preferredLineItemUpdateModelRequest, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'lineItemId' is set
-        if (lineItemId == null) {
-            throw new ApiException("Missing the required parameter 'lineItemId' when calling putApiV2ExternalPreferredLineItemByLineItemId(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = putApiV2ExternalPreferredLineItemByLineItemIdCall(lineItemId, preferredLineItemUpdateModelRequest, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * 
-     * Updates the preferred line item for the given line item id
-     * @param lineItemId The given line item id (required)
-     * @param preferredLineItemUpdateModelRequest The line item settings to create a line item with (optional)
-     * @return PreferredLineItemResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public PreferredLineItemResponse putApiV2ExternalPreferredLineItemByLineItemId(String lineItemId, PreferredLineItemUpdateModelRequest preferredLineItemUpdateModelRequest) throws ApiException {
-        ApiResponse<PreferredLineItemResponse> localVarResp = putApiV2ExternalPreferredLineItemByLineItemIdWithHttpInfo(lineItemId, preferredLineItemUpdateModelRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Updates the preferred line item for the given line item id
-     * @param lineItemId The given line item id (required)
-     * @param preferredLineItemUpdateModelRequest The line item settings to create a line item with (optional)
-     * @return ApiResponse&lt;PreferredLineItemResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PreferredLineItemResponse> putApiV2ExternalPreferredLineItemByLineItemIdWithHttpInfo(String lineItemId, PreferredLineItemUpdateModelRequest preferredLineItemUpdateModelRequest) throws ApiException {
-        okhttp3.Call localVarCall = putApiV2ExternalPreferredLineItemByLineItemIdValidateBeforeCall(lineItemId, preferredLineItemUpdateModelRequest, null);
-        Type localVarReturnType = new TypeToken<PreferredLineItemResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Updates the preferred line item for the given line item id
-     * @param lineItemId The given line item id (required)
-     * @param preferredLineItemUpdateModelRequest The line item settings to create a line item with (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call putApiV2ExternalPreferredLineItemByLineItemIdAsync(String lineItemId, PreferredLineItemUpdateModelRequest preferredLineItemUpdateModelRequest, final ApiCallback<PreferredLineItemResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = putApiV2ExternalPreferredLineItemByLineItemIdValidateBeforeCall(lineItemId, preferredLineItemUpdateModelRequest, _callback);
-        Type localVarReturnType = new TypeToken<PreferredLineItemResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
