@@ -5,7 +5,7 @@
     <artifactId>criteo-api-retailmedia-sdk</artifactId>
     <packaging>jar</packaging>
     <name>criteo-api-retailmedia-sdk</name>
-    <version>0.0.221026</version>
+    <version>0.0.221102</version>
     <url>https://github.com/criteo/criteo-api-java-sdk</url>
     <description>JAVA SDK for Criteo API retailmedia for preview version</description>
     <scm>

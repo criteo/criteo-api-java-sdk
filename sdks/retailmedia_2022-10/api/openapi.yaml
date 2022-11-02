@@ -6187,16 +6187,20 @@ components:
           description: "Total size of file, only populated on success"
           format: int64
           type: integer
+          x-nullable: true
         md5Checksum:
           description: "The MD5 checksum of the content, only populated on success"
           type: string
+          x-nullable: true
         message:
           description: "Failure message, only populated on failure"
           type: string
+          x-nullable: true
         rowCount:
           description: "Rows of data in report, only populated on success"
           format: int64
           type: integer
+          x-nullable: true
         status:
           description: "One of \"pending\", \"success\", \"failure\", or \"expired\""
           enum:
