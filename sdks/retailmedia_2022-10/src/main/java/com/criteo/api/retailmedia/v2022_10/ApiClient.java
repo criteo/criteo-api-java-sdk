@@ -1462,11 +1462,7 @@ public class ApiClient {
         OAuth oauth = (OAuth) this.getAuthentication("oauth");
         String accessToken = oauth.getAccessToken();
 
-        if (accessToken != null) {
-            return;
-        }
-
-        if (this.tokenInfo != null && this.tokenInfo.isValid()) {
+        if (accessToken != null && this.tokenInfo != null && this.tokenInfo.isValid()) {
             return;
         }
     
