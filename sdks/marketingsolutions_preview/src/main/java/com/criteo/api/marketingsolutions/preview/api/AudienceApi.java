@@ -49,14 +49,16 @@ import com.criteo.api.marketingsolutions.preview.model.AudienceSegmentSizeEntity
 import com.criteo.api.marketingsolutions.preview.model.AudienceSegmentSizeEstimationV1Response;
 import com.criteo.api.marketingsolutions.preview.model.AudienceSizeEntityV1ListResponse;
 import com.criteo.api.marketingsolutions.preview.model.AudienceSizeEstimationV1Response;
-import com.criteo.api.marketingsolutions.preview.model.CommerceAudienceSegmentBrandEntityV1ListResponse;
-import com.criteo.api.marketingsolutions.preview.model.CommerceAudienceSegmentInterestEntityV1ListResponse;
 import com.criteo.api.marketingsolutions.preview.model.ContactListStatisticsEntityV1Response;
 import com.criteo.api.marketingsolutions.preview.model.ContactlistAmendmentRequest;
 import com.criteo.api.marketingsolutions.preview.model.ContactlistWithAttributesAmendmentRequest;
 import com.criteo.api.marketingsolutions.preview.model.DeleteAudienceContactListResponse;
+import com.criteo.api.marketingsolutions.preview.model.DeleteUserProfileModelListRequest;
 import com.criteo.api.marketingsolutions.preview.model.ErrorCodeResponse;
+import com.criteo.api.marketingsolutions.preview.model.InMarketAudienceSegmentBrandEntityV1ListResponse;
+import com.criteo.api.marketingsolutions.preview.model.InMarketAudienceSegmentInterestEntityV1ListResponse;
 import com.criteo.api.marketingsolutions.preview.model.ModifyAudienceResponse;
+import com.criteo.api.marketingsolutions.preview.model.SetUserProfileModelListRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -1148,6 +1150,122 @@ public class AudienceApi {
         return localVarCall;
     }
     /**
+     * Build call for deleteUserProfiles
+     * @param advertiserId Criteo Advertiser ID of user profiles&#39; owner (required)
+     * @param deleteUserProfileModelListRequest  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteUserProfilesCall(Integer advertiserId, DeleteUserProfileModelListRequest deleteUserProfileModelListRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = deleteUserProfileModelListRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/advertisers/{advertiserId}/user-profiles/delete"
+            .replaceAll("\\{" + "advertiserId" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteUserProfilesValidateBeforeCall(Integer advertiserId, DeleteUserProfileModelListRequest deleteUserProfileModelListRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling deleteUserProfiles(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = deleteUserProfilesCall(advertiserId, deleteUserProfileModelListRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * This endpoint will Delete User Profiles for a given Advertiser.
+     * @param advertiserId Criteo Advertiser ID of user profiles&#39; owner (required)
+     * @param deleteUserProfileModelListRequest  (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteUserProfiles(Integer advertiserId, DeleteUserProfileModelListRequest deleteUserProfileModelListRequest) throws ApiException {
+        deleteUserProfilesWithHttpInfo(advertiserId, deleteUserProfileModelListRequest);
+    }
+
+    /**
+     * 
+     * This endpoint will Delete User Profiles for a given Advertiser.
+     * @param advertiserId Criteo Advertiser ID of user profiles&#39; owner (required)
+     * @param deleteUserProfileModelListRequest  (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteUserProfilesWithHttpInfo(Integer advertiserId, DeleteUserProfileModelListRequest deleteUserProfileModelListRequest) throws ApiException {
+        okhttp3.Call localVarCall = deleteUserProfilesValidateBeforeCall(advertiserId, deleteUserProfileModelListRequest, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * This endpoint will Delete User Profiles for a given Advertiser.
+     * @param advertiserId Criteo Advertiser ID of user profiles&#39; owner (required)
+     * @param deleteUserProfileModelListRequest  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteUserProfilesAsync(Integer advertiserId, DeleteUserProfileModelListRequest deleteUserProfileModelListRequest, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteUserProfilesValidateBeforeCall(advertiserId, deleteUserProfileModelListRequest, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for estimateAudienceSegmentSize
      * @param audienceSegmentEstimateSizeInputV1  (optional)
      * @param _callback Callback for upload/download progress
@@ -1203,7 +1321,7 @@ public class AudienceApi {
 
     /**
      * 
-     * Gets the size estimation of a non existent segment . An error is returned when size calculation is not supported.
+     * Gets the size estimation of a non existent segment. An error is returned when size calculation is not supported.
      * @param audienceSegmentEstimateSizeInputV1  (optional)
      * @return AudienceSegmentSizeEstimationV1Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1223,7 +1341,7 @@ public class AudienceApi {
 
     /**
      * 
-     * Gets the size estimation of a non existent segment . An error is returned when size calculation is not supported.
+     * Gets the size estimation of a non existent segment. An error is returned when size calculation is not supported.
      * @param audienceSegmentEstimateSizeInputV1  (optional)
      * @return ApiResponse&lt;AudienceSegmentSizeEstimationV1Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1244,7 +1362,7 @@ public class AudienceApi {
 
     /**
      *  (asynchronously)
-     * Gets the size estimation of a non existent segment . An error is returned when size calculation is not supported.
+     * Gets the size estimation of a non existent segment. An error is returned when size calculation is not supported.
      * @param audienceSegmentEstimateSizeInputV1  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1384,278 +1502,6 @@ public class AudienceApi {
         return localVarCall;
     }
     /**
-     * Build call for getCommerceBrands
-     * @param advertiserId The advertiser ID. (required)
-     * @param country The ISO 3166-1 alpha-2 country code. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCommerceBrandsCall(String advertiserId, String country, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/preview/marketing-solutions/audience-segments/commerce-brands";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (advertiserId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("advertiser-id", advertiserId));
-        }
-
-        if (country != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("country", country));
-        }
-
-        final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCommerceBrandsValidateBeforeCall(String advertiserId, String country, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'advertiserId' is set
-        if (advertiserId == null) {
-            throw new ApiException("Missing the required parameter 'advertiserId' when calling getCommerceBrands(Async)");
-        }
-        
-        // verify the required parameter 'country' is set
-        if (country == null) {
-            throw new ApiException("Missing the required parameter 'country' when calling getCommerceBrands(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = getCommerceBrandsCall(advertiserId, country, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * 
-     * Returns a list with all available commerce brands that can be used to define a commerce segment.
-     * @param advertiserId The advertiser ID. (required)
-     * @param country The ISO 3166-1 alpha-2 country code. (required)
-     * @return CommerceAudienceSegmentBrandEntityV1ListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
-     </table>
-     */
-    public CommerceAudienceSegmentBrandEntityV1ListResponse getCommerceBrands(String advertiserId, String country) throws ApiException {
-        ApiResponse<CommerceAudienceSegmentBrandEntityV1ListResponse> localVarResp = getCommerceBrandsWithHttpInfo(advertiserId, country);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Returns a list with all available commerce brands that can be used to define a commerce segment.
-     * @param advertiserId The advertiser ID. (required)
-     * @param country The ISO 3166-1 alpha-2 country code. (required)
-     * @return ApiResponse&lt;CommerceAudienceSegmentBrandEntityV1ListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CommerceAudienceSegmentBrandEntityV1ListResponse> getCommerceBrandsWithHttpInfo(String advertiserId, String country) throws ApiException {
-        okhttp3.Call localVarCall = getCommerceBrandsValidateBeforeCall(advertiserId, country, null);
-        Type localVarReturnType = new TypeToken<CommerceAudienceSegmentBrandEntityV1ListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Returns a list with all available commerce brands that can be used to define a commerce segment.
-     * @param advertiserId The advertiser ID. (required)
-     * @param country The ISO 3166-1 alpha-2 country code. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCommerceBrandsAsync(String advertiserId, String country, final ApiCallback<CommerceAudienceSegmentBrandEntityV1ListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getCommerceBrandsValidateBeforeCall(advertiserId, country, _callback);
-        Type localVarReturnType = new TypeToken<CommerceAudienceSegmentBrandEntityV1ListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getCommerceInterests
-     * @param advertiserId The advertiser ID. (required)
-     * @param country The ISO 3166-1 alpha-2 country code. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCommerceInterestsCall(String advertiserId, String country, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/preview/marketing-solutions/audience-segments/commerce-interests";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (advertiserId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("advertiser-id", advertiserId));
-        }
-
-        if (country != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("country", country));
-        }
-
-        final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCommerceInterestsValidateBeforeCall(String advertiserId, String country, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'advertiserId' is set
-        if (advertiserId == null) {
-            throw new ApiException("Missing the required parameter 'advertiserId' when calling getCommerceInterests(Async)");
-        }
-        
-        // verify the required parameter 'country' is set
-        if (country == null) {
-            throw new ApiException("Missing the required parameter 'country' when calling getCommerceInterests(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = getCommerceInterestsCall(advertiserId, country, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * 
-     * Returns a list with all available commerce interests that can be used to define a commerce segment. These commerce interests correspond to the Google product taxonomy.
-     * @param advertiserId The advertiser ID. (required)
-     * @param country The ISO 3166-1 alpha-2 country code. (required)
-     * @return CommerceAudienceSegmentInterestEntityV1ListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
-     </table>
-     */
-    public CommerceAudienceSegmentInterestEntityV1ListResponse getCommerceInterests(String advertiserId, String country) throws ApiException {
-        ApiResponse<CommerceAudienceSegmentInterestEntityV1ListResponse> localVarResp = getCommerceInterestsWithHttpInfo(advertiserId, country);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Returns a list with all available commerce interests that can be used to define a commerce segment. These commerce interests correspond to the Google product taxonomy.
-     * @param advertiserId The advertiser ID. (required)
-     * @param country The ISO 3166-1 alpha-2 country code. (required)
-     * @return ApiResponse&lt;CommerceAudienceSegmentInterestEntityV1ListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CommerceAudienceSegmentInterestEntityV1ListResponse> getCommerceInterestsWithHttpInfo(String advertiserId, String country) throws ApiException {
-        okhttp3.Call localVarCall = getCommerceInterestsValidateBeforeCall(advertiserId, country, null);
-        Type localVarReturnType = new TypeToken<CommerceAudienceSegmentInterestEntityV1ListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Returns a list with all available commerce interests that can be used to define a commerce segment. These commerce interests correspond to the Google product taxonomy.
-     * @param advertiserId The advertiser ID. (required)
-     * @param country The ISO 3166-1 alpha-2 country code. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCommerceInterestsAsync(String advertiserId, String country, final ApiCallback<CommerceAudienceSegmentInterestEntityV1ListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getCommerceInterestsValidateBeforeCall(advertiserId, country, _callback);
-        Type localVarReturnType = new TypeToken<CommerceAudienceSegmentInterestEntityV1ListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for getContactListStatistics
      * @param audienceSegmentId The segment ID. (required)
      * @param _callback Callback for upload/download progress
@@ -1772,6 +1618,278 @@ public class AudienceApi {
 
         okhttp3.Call localVarCall = getContactListStatisticsValidateBeforeCall(audienceSegmentId, _callback);
         Type localVarReturnType = new TypeToken<ContactListStatisticsEntityV1Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getInMarketBrands
+     * @param advertiserId The advertiser ID. (required)
+     * @param country The ISO 3166-1 alpha-2 country code. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getInMarketBrandsCall(String advertiserId, String country, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/audience-segments/in-market-brands";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (advertiserId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("advertiser-id", advertiserId));
+        }
+
+        if (country != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("country", country));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getInMarketBrandsValidateBeforeCall(String advertiserId, String country, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling getInMarketBrands(Async)");
+        }
+        
+        // verify the required parameter 'country' is set
+        if (country == null) {
+            throw new ApiException("Missing the required parameter 'country' when calling getInMarketBrands(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getInMarketBrandsCall(advertiserId, country, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Returns a list with all available in-market brands that can be used to define an in-market segment.
+     * @param advertiserId The advertiser ID. (required)
+     * @param country The ISO 3166-1 alpha-2 country code. (required)
+     * @return InMarketAudienceSegmentBrandEntityV1ListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public InMarketAudienceSegmentBrandEntityV1ListResponse getInMarketBrands(String advertiserId, String country) throws ApiException {
+        ApiResponse<InMarketAudienceSegmentBrandEntityV1ListResponse> localVarResp = getInMarketBrandsWithHttpInfo(advertiserId, country);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Returns a list with all available in-market brands that can be used to define an in-market segment.
+     * @param advertiserId The advertiser ID. (required)
+     * @param country The ISO 3166-1 alpha-2 country code. (required)
+     * @return ApiResponse&lt;InMarketAudienceSegmentBrandEntityV1ListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<InMarketAudienceSegmentBrandEntityV1ListResponse> getInMarketBrandsWithHttpInfo(String advertiserId, String country) throws ApiException {
+        okhttp3.Call localVarCall = getInMarketBrandsValidateBeforeCall(advertiserId, country, null);
+        Type localVarReturnType = new TypeToken<InMarketAudienceSegmentBrandEntityV1ListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Returns a list with all available in-market brands that can be used to define an in-market segment.
+     * @param advertiserId The advertiser ID. (required)
+     * @param country The ISO 3166-1 alpha-2 country code. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getInMarketBrandsAsync(String advertiserId, String country, final ApiCallback<InMarketAudienceSegmentBrandEntityV1ListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getInMarketBrandsValidateBeforeCall(advertiserId, country, _callback);
+        Type localVarReturnType = new TypeToken<InMarketAudienceSegmentBrandEntityV1ListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getInMarketInterests
+     * @param advertiserId The advertiser ID. (required)
+     * @param country The ISO 3166-1 alpha-2 country code. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getInMarketInterestsCall(String advertiserId, String country, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/audience-segments/in-market-interests";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (advertiserId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("advertiser-id", advertiserId));
+        }
+
+        if (country != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("country", country));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getInMarketInterestsValidateBeforeCall(String advertiserId, String country, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling getInMarketInterests(Async)");
+        }
+        
+        // verify the required parameter 'country' is set
+        if (country == null) {
+            throw new ApiException("Missing the required parameter 'country' when calling getInMarketInterests(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getInMarketInterestsCall(advertiserId, country, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Returns a list with all available in-market interests that can be used to define an in-market segment. These in-market interests correspond to the Google product taxonomy.
+     * @param advertiserId The advertiser ID. (required)
+     * @param country The ISO 3166-1 alpha-2 country code. (required)
+     * @return InMarketAudienceSegmentInterestEntityV1ListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public InMarketAudienceSegmentInterestEntityV1ListResponse getInMarketInterests(String advertiserId, String country) throws ApiException {
+        ApiResponse<InMarketAudienceSegmentInterestEntityV1ListResponse> localVarResp = getInMarketInterestsWithHttpInfo(advertiserId, country);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Returns a list with all available in-market interests that can be used to define an in-market segment. These in-market interests correspond to the Google product taxonomy.
+     * @param advertiserId The advertiser ID. (required)
+     * @param country The ISO 3166-1 alpha-2 country code. (required)
+     * @return ApiResponse&lt;InMarketAudienceSegmentInterestEntityV1ListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<InMarketAudienceSegmentInterestEntityV1ListResponse> getInMarketInterestsWithHttpInfo(String advertiserId, String country) throws ApiException {
+        okhttp3.Call localVarCall = getInMarketInterestsValidateBeforeCall(advertiserId, country, null);
+        Type localVarReturnType = new TypeToken<InMarketAudienceSegmentInterestEntityV1ListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Returns a list with all available in-market interests that can be used to define an in-market segment. These in-market interests correspond to the Google product taxonomy.
+     * @param advertiserId The advertiser ID. (required)
+     * @param country The ISO 3166-1 alpha-2 country code. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getInMarketInterestsAsync(String advertiserId, String country, final ApiCallback<InMarketAudienceSegmentInterestEntityV1ListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getInMarketInterestsValidateBeforeCall(advertiserId, country, _callback);
+        Type localVarReturnType = new TypeToken<InMarketAudienceSegmentInterestEntityV1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2166,6 +2284,122 @@ public class AudienceApi {
         okhttp3.Call localVarCall = searchAudiencesValidateBeforeCall(limit, offset, audienceSearchInputV1, _callback);
         Type localVarReturnType = new TypeToken<AudienceEntityV1AudienceSearchMetadataV1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for setUserProfiles
+     * @param advertiserId Criteo Advertiser ID of user profiles&#39; owner (required)
+     * @param setUserProfileModelListRequest  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call setUserProfilesCall(Integer advertiserId, SetUserProfileModelListRequest setUserProfileModelListRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = setUserProfileModelListRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/advertisers/{advertiserId}/user-profiles/set"
+            .replaceAll("\\{" + "advertiserId" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call setUserProfilesValidateBeforeCall(Integer advertiserId, SetUserProfileModelListRequest setUserProfileModelListRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'advertiserId' is set
+        if (advertiserId == null) {
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling setUserProfiles(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = setUserProfilesCall(advertiserId, setUserProfileModelListRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * This endpoint will Set User Profiles for a given Advertiser. If a User Profile does not exist, a new one will be created. If a User Profile exists, it will be replaced.
+     * @param advertiserId Criteo Advertiser ID of user profiles&#39; owner (required)
+     * @param setUserProfileModelListRequest  (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public void setUserProfiles(Integer advertiserId, SetUserProfileModelListRequest setUserProfileModelListRequest) throws ApiException {
+        setUserProfilesWithHttpInfo(advertiserId, setUserProfileModelListRequest);
+    }
+
+    /**
+     * 
+     * This endpoint will Set User Profiles for a given Advertiser. If a User Profile does not exist, a new one will be created. If a User Profile exists, it will be replaced.
+     * @param advertiserId Criteo Advertiser ID of user profiles&#39; owner (required)
+     * @param setUserProfileModelListRequest  (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> setUserProfilesWithHttpInfo(Integer advertiserId, SetUserProfileModelListRequest setUserProfileModelListRequest) throws ApiException {
+        okhttp3.Call localVarCall = setUserProfilesValidateBeforeCall(advertiserId, setUserProfileModelListRequest, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * This endpoint will Set User Profiles for a given Advertiser. If a User Profile does not exist, a new one will be created. If a User Profile exists, it will be replaced.
+     * @param advertiserId Criteo Advertiser ID of user profiles&#39; owner (required)
+     * @param setUserProfileModelListRequest  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call setUserProfilesAsync(Integer advertiserId, SetUserProfileModelListRequest setUserProfileModelListRequest, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = setUserProfilesValidateBeforeCall(advertiserId, setUserProfileModelListRequest, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**

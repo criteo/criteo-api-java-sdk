@@ -26,9 +26,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * A class that represents a ValueType in a guild compliant way
+ * A top-level object that encapsulates a Criteo API response for a single value
  */
-@ApiModel(description = "A class that represents a ValueType in a guild compliant way")
+@ApiModel(description = "A top-level object that encapsulates a Criteo API response for a single value")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AudienceSizeEstimationV1Resource {
   public static final String SERIALIZED_NAME_TYPE = "type";

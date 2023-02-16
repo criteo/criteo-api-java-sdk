@@ -15,7 +15,6 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.GeoDivisionV1;
 import com.criteo.api.marketingsolutions.preview.model.PointOfInterestV1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -34,95 +33,13 @@ import java.util.List;
 @ApiModel(description = "Settings to target users based on their location.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class LocationCreateV1 {
-  /**
-   * Gets or Sets registryType
-   */
-  @JsonAdapter(RegistryTypeEnum.Adapter.class)
-  public enum RegistryTypeEnum {
-    CATALOG("Catalog"),
-    
-    STORE("Store"),
-    
-    POINTOFINTEREST("PointOfInterest"),
-    
-    GEODIVISION("GeoDivision");
-
-    private String value;
-
-    RegistryTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static RegistryTypeEnum fromValue(String value) {
-      for (RegistryTypeEnum b : RegistryTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<RegistryTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final RegistryTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public RegistryTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return RegistryTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_REGISTRY_TYPE = "registryType";
-  @SerializedName(SERIALIZED_NAME_REGISTRY_TYPE)
-  private RegistryTypeEnum registryType;
-
   public static final String SERIALIZED_NAME_POINTS_OF_INTEREST = "pointsOfInterest";
   @SerializedName(SERIALIZED_NAME_POINTS_OF_INTEREST)
   private List<PointOfInterestV1> pointsOfInterest = null;
 
-  public static final String SERIALIZED_NAME_GEO_DIVISIONS = "geoDivisions";
-  @SerializedName(SERIALIZED_NAME_GEO_DIVISIONS)
-  private List<GeoDivisionV1> geoDivisions = null;
-
   public static final String SERIALIZED_NAME_RADIUS_IN_KM = "radiusInKm";
   @SerializedName(SERIALIZED_NAME_RADIUS_IN_KM)
   private Integer radiusInKm;
-
-
-  public LocationCreateV1 registryType(RegistryTypeEnum registryType) {
-    
-    this.registryType = registryType;
-    return this;
-  }
-
-   /**
-   * Get registryType
-   * @return registryType
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public RegistryTypeEnum getRegistryType() {
-    return registryType;
-  }
-
-
-  public void setRegistryType(RegistryTypeEnum registryType) {
-    this.registryType = registryType;
-  }
 
 
   public LocationCreateV1 pointsOfInterest(List<PointOfInterestV1> pointsOfInterest) {
@@ -153,37 +70,6 @@ public class LocationCreateV1 {
 
   public void setPointsOfInterest(List<PointOfInterestV1> pointsOfInterest) {
     this.pointsOfInterest = pointsOfInterest;
-  }
-
-
-  public LocationCreateV1 geoDivisions(List<GeoDivisionV1> geoDivisions) {
-    
-    this.geoDivisions = geoDivisions;
-    return this;
-  }
-
-  public LocationCreateV1 addGeoDivisionsItem(GeoDivisionV1 geoDivisionsItem) {
-    if (this.geoDivisions == null) {
-      this.geoDivisions = new ArrayList<>();
-    }
-    this.geoDivisions.add(geoDivisionsItem);
-    return this;
-  }
-
-   /**
-   * Get geoDivisions
-   * @return geoDivisions
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public List<GeoDivisionV1> getGeoDivisions() {
-    return geoDivisions;
-  }
-
-
-  public void setGeoDivisions(List<GeoDivisionV1> geoDivisions) {
-    this.geoDivisions = geoDivisions;
   }
 
 
@@ -219,24 +105,20 @@ public class LocationCreateV1 {
       return false;
     }
     LocationCreateV1 locationCreateV1 = (LocationCreateV1) o;
-    return Objects.equals(this.registryType, locationCreateV1.registryType) &&
-        Objects.equals(this.pointsOfInterest, locationCreateV1.pointsOfInterest) &&
-        Objects.equals(this.geoDivisions, locationCreateV1.geoDivisions) &&
+    return Objects.equals(this.pointsOfInterest, locationCreateV1.pointsOfInterest) &&
         Objects.equals(this.radiusInKm, locationCreateV1.radiusInKm);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(registryType, pointsOfInterest, geoDivisions, radiusInKm);
+    return Objects.hash(pointsOfInterest, radiusInKm);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LocationCreateV1 {\n");
-    sb.append("    registryType: ").append(toIndentedString(registryType)).append("\n");
     sb.append("    pointsOfInterest: ").append(toIndentedString(pointsOfInterest)).append("\n");
-    sb.append("    geoDivisions: ").append(toIndentedString(geoDivisions)).append("\n");
     sb.append("    radiusInKm: ").append(toIndentedString(radiusInKm)).append("\n");
     sb.append("}");
     return sb.toString();

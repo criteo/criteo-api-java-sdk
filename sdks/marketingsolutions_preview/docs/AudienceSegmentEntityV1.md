@@ -14,12 +14,13 @@ Name | Type | Description | Notes
 **createdAt** | **OffsetDateTime** | ISO-8601 timestamp in UTC of segment creation (read-only) |  [optional]
 **updatedAt** | **OffsetDateTime** | ISO-8601 timestamp in UTC of segment update (read-only) |  [optional]
 **advertiserId** | **String** | Advertiser associated to the segment |  [optional]
-**commerce** | [**CommerceV1**](CommerceV1.md) |  |  [optional]
-**similar** | **Object** | Settings to target similar users to website visitors. |  [optional]
+**inMarket** | [**InMarketV1**](InMarketV1.md) |  |  [optional]
+**prospecting** | **Object** | Settings to target prospecting users to website visitors. |  [optional]
 **contactList** | [**ContactListV1**](ContactListV1.md) |  |  [optional]
 **location** | [**LocationV1**](LocationV1.md) |  |  [optional]
-**prebuilt** | [**PrebuiltV1**](PrebuiltV1.md) |  |  [optional]
+**behavioral** | [**BehavioralV1**](BehavioralV1.md) |  |  [optional]
 **retargeting** | [**RetargetingV1**](RetargetingV1.md) |  |  [optional]
+**lookalike** | [**LookalikeV1**](LookalikeV1.md) |  |  [optional]
 
 
 
@@ -28,12 +29,13 @@ Name | Type | Description | Notes
 Name | Value
 ---- | -----
 UNKNOWN | &quot;Unknown&quot;
-COMMERCE | &quot;Commerce&quot;
-SIMILAR | &quot;Similar&quot;
+INMARKET | &quot;InMarket&quot;
+PROSPECTING | &quot;Prospecting&quot;
 CONTACTLIST | &quot;ContactList&quot;
 LOCATION | &quot;Location&quot;
-PREBUILT | &quot;Prebuilt&quot;
+BEHAVIORAL | &quot;Behavioral&quot;
 RETARGETING | &quot;Retargeting&quot;
+LOOKALIKE | &quot;Lookalike&quot;
 
 
 

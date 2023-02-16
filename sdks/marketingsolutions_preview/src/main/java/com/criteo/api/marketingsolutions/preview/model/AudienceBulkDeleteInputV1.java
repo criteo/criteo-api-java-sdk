@@ -28,9 +28,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Input to delete one or more segments.
+ * Input to delete one or more audiences.
  */
-@ApiModel(description = "Input to delete one or more segments.")
+@ApiModel(description = "Input to delete one or more audiences.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AudienceBulkDeleteInputV1 {
   public static final String SERIALIZED_NAME_DATA = "data";

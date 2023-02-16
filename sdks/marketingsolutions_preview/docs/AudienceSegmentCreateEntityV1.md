@@ -11,11 +11,12 @@ Name | Type | Description | Notes
 **name** | **String** | Name of the segment |  [optional]
 **description** | **String** | Description of the segment |  [optional]
 **advertiserId** | **String** | Advertiser associated to the segment |  [optional]
-**commerce** | [**CommerceCreateV1**](CommerceCreateV1.md) |  |  [optional]
-**similar** | **Object** | Settings to target similar users to website visitors. |  [optional]
+**inMarket** | [**InMarketCreateV1**](InMarketCreateV1.md) |  |  [optional]
+**prospecting** | **Object** | Settings to target prospecting users to website visitors. |  [optional]
 **contactList** | **Object** | Settings to target users with your contact lists. |  [optional]
 **location** | [**LocationCreateV1**](LocationCreateV1.md) |  |  [optional]
 **retargeting** | [**RetargetingCreateV1**](RetargetingCreateV1.md) |  |  [optional]
+**lookalike** | [**LookalikeCreateV1**](LookalikeCreateV1.md) |  |  [optional]
 
 
 

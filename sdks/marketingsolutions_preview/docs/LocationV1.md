@@ -19,10 +19,7 @@ Name | Type | Description | Notes
 Name | Value
 ---- | -----
 UNKNOWN | &quot;Unknown&quot;
-CATALOG | &quot;Catalog&quot;
-STORE | &quot;Store&quot;
 POINTOFINTEREST | &quot;PointOfInterest&quot;
-GEODIVISION | &quot;GeoDivision&quot;
 
 
 

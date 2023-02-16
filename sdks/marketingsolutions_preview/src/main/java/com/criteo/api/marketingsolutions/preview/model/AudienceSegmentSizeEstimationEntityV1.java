@@ -15,7 +15,7 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.CommerceSizeEstimationV1;
+import com.criteo.api.marketingsolutions.preview.model.InMarketSizeEstimationV1;
 import com.criteo.api.marketingsolutions.preview.model.LocationSizeEstimationV1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -36,9 +36,9 @@ public class AudienceSegmentSizeEstimationEntityV1 {
   @SerializedName(SERIALIZED_NAME_ADVERTISER_ID)
   private String advertiserId;
 
-  public static final String SERIALIZED_NAME_COMMERCE = "commerce";
-  @SerializedName(SERIALIZED_NAME_COMMERCE)
-  private CommerceSizeEstimationV1 commerce;
+  public static final String SERIALIZED_NAME_IN_MARKET = "inMarket";
+  @SerializedName(SERIALIZED_NAME_IN_MARKET)
+  private InMarketSizeEstimationV1 inMarket;
 
   public static final String SERIALIZED_NAME_LOCATION = "location";
   @SerializedName(SERIALIZED_NAME_LOCATION)
@@ -68,26 +68,26 @@ public class AudienceSegmentSizeEstimationEntityV1 {
   }
 
 
-  public AudienceSegmentSizeEstimationEntityV1 commerce(CommerceSizeEstimationV1 commerce) {
+  public AudienceSegmentSizeEstimationEntityV1 inMarket(InMarketSizeEstimationV1 inMarket) {
     
-    this.commerce = commerce;
+    this.inMarket = inMarket;
     return this;
   }
 
    /**
-   * Get commerce
-   * @return commerce
+   * Get inMarket
+   * @return inMarket
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public CommerceSizeEstimationV1 getCommerce() {
-    return commerce;
+  public InMarketSizeEstimationV1 getInMarket() {
+    return inMarket;
   }
 
 
-  public void setCommerce(CommerceSizeEstimationV1 commerce) {
-    this.commerce = commerce;
+  public void setInMarket(InMarketSizeEstimationV1 inMarket) {
+    this.inMarket = inMarket;
   }
 
 
@@ -124,13 +124,13 @@ public class AudienceSegmentSizeEstimationEntityV1 {
     }
     AudienceSegmentSizeEstimationEntityV1 audienceSegmentSizeEstimationEntityV1 = (AudienceSegmentSizeEstimationEntityV1) o;
     return Objects.equals(this.advertiserId, audienceSegmentSizeEstimationEntityV1.advertiserId) &&
-        Objects.equals(this.commerce, audienceSegmentSizeEstimationEntityV1.commerce) &&
+        Objects.equals(this.inMarket, audienceSegmentSizeEstimationEntityV1.inMarket) &&
         Objects.equals(this.location, audienceSegmentSizeEstimationEntityV1.location);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(advertiserId, commerce, location);
+    return Objects.hash(advertiserId, inMarket, location);
   }
 
   @Override
@@ -138,7 +138,7 @@ public class AudienceSegmentSizeEstimationEntityV1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceSegmentSizeEstimationEntityV1 {\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
-    sb.append("    commerce: ").append(toIndentedString(commerce)).append("\n");
+    sb.append("    inMarket: ").append(toIndentedString(inMarket)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("}");
     return sb.toString();

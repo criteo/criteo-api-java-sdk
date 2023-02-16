@@ -9,7 +9,7 @@ An error on a batch operation.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**TypeEnum**](#TypeEnum) |  | 
-**message** | **String** |  |  [optional]
+**message** | **String** |  | 
 **isServerRelated** | **Boolean** |  | 
 
 

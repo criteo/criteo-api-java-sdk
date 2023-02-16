@@ -5200,8 +5200,8 @@ public class CampaignApi {
     }
     /**
      * Build call for updateAdSetAudience
-     * @param adSetId Ad set id (required)
-     * @param adSetAudienceLinkInputEntityV1 Audience and ad set to link (optional)
+     * @param adSetId The ad set ID. (required)
+     * @param adSetAudienceLinkInputEntityV1 Ad set-Audience update request. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -5262,8 +5262,8 @@ public class CampaignApi {
     /**
      * 
      * Link or unlink an audience with an ad set
-     * @param adSetId Ad set id (required)
-     * @param adSetAudienceLinkInputEntityV1 Audience and ad set to link (optional)
+     * @param adSetId The ad set ID. (required)
+     * @param adSetAudienceLinkInputEntityV1 Ad set-Audience update request. (optional)
      * @return AdSetAudienceLinkEntityV1Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5283,8 +5283,8 @@ public class CampaignApi {
     /**
      * 
      * Link or unlink an audience with an ad set
-     * @param adSetId Ad set id (required)
-     * @param adSetAudienceLinkInputEntityV1 Audience and ad set to link (optional)
+     * @param adSetId The ad set ID. (required)
+     * @param adSetAudienceLinkInputEntityV1 Ad set-Audience update request. (optional)
      * @return ApiResponse&lt;AdSetAudienceLinkEntityV1Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5305,8 +5305,8 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Link or unlink an audience with an ad set
-     * @param adSetId Ad set id (required)
-     * @param adSetAudienceLinkInputEntityV1 Audience and ad set to link (optional)
+     * @param adSetId The ad set ID. (required)
+     * @param adSetAudienceLinkInputEntityV1 Ad set-Audience update request. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

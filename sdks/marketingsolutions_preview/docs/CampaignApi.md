@@ -3390,8 +3390,8 @@ public class Example {
         defaultClient.setPassword("YOUR CLIENT SECRET");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String adSetId = "adSetId_example"; // String | Ad set id
-        AdSetAudienceLinkInputEntityV1 adSetAudienceLinkInputEntityV1 = new AdSetAudienceLinkInputEntityV1(); // AdSetAudienceLinkInputEntityV1 | Audience and ad set to link
+        String adSetId = "adSetId_example"; // String | The ad set ID.
+        AdSetAudienceLinkInputEntityV1 adSetAudienceLinkInputEntityV1 = new AdSetAudienceLinkInputEntityV1(); // AdSetAudienceLinkInputEntityV1 | Ad set-Audience update request.
         try {
             AdSetAudienceLinkEntityV1Response result = apiInstance.updateAdSetAudience(adSetId, adSetAudienceLinkInputEntityV1);
             System.out.println(result);
@@ -3411,8 +3411,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adSetId** | **String**| Ad set id | |
-| **adSetAudienceLinkInputEntityV1** | [**AdSetAudienceLinkInputEntityV1**](AdSetAudienceLinkInputEntityV1.md)| Audience and ad set to link | [optional] |
+| **adSetId** | **String**| The ad set ID. | |
+| **adSetAudienceLinkInputEntityV1** | [**AdSetAudienceLinkInputEntityV1**](AdSetAudienceLinkInputEntityV1.md)| Ad set-Audience update request. | [optional] |
 
 ### Return type
 

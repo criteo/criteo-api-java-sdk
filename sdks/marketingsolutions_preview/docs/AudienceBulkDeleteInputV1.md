@@ -2,7 +2,7 @@
 
 # AudienceBulkDeleteInputV1
 
-Input to delete one or more segments.
+Input to delete one or more audiences.
 
 ## Properties
 

@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** |  |  [optional]
 **description** | [**NillableString**](NillableString.md) |  |  [optional]
-**commerce** | [**CommerceUpdateV1**](CommerceUpdateV1.md) |  |  [optional]
-**contactList** | **Object** | Settings to target users with your contact lists. |  [optional]
+**inMarket** | [**InMarketUpdateV1**](InMarketUpdateV1.md) |  |  [optional]
 **location** | [**LocationUpdateV1**](LocationUpdateV1.md) |  |  [optional]
 **retargeting** | [**RetargetingUpdateV1**](RetargetingUpdateV1.md) |  |  [optional]
+**lookalike** | [**LookalikeUpdateV1**](LookalikeUpdateV1.md) |  |  [optional]
 
 
 

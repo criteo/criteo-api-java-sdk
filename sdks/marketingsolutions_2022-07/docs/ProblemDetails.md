@@ -8,7 +8,8 @@ Data model for common error or warning
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**traceIdentifier** | **String** |  |  [optional]
+**traceId** | **String** | The request correlation ID this problem comes from. |  [optional]
+**traceIdentifier** | **String** | The request correlation ID this problem comes from. (deprecated, use traceId instead) |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) |  |  [optional]
 **code** | **String** |  |  [optional]
 **instance** | **String** |  |  [optional]

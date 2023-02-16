@@ -151,8 +151,8 @@ public class ReportDetailError {
    * Get message
    * @return message
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
 
   public String getMessage() {
     return message;

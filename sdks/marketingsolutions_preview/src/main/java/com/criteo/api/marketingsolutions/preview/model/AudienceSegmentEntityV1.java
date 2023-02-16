@@ -15,10 +15,11 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.CommerceV1;
+import com.criteo.api.marketingsolutions.preview.model.BehavioralV1;
 import com.criteo.api.marketingsolutions.preview.model.ContactListV1;
+import com.criteo.api.marketingsolutions.preview.model.InMarketV1;
 import com.criteo.api.marketingsolutions.preview.model.LocationV1;
-import com.criteo.api.marketingsolutions.preview.model.PrebuiltV1;
+import com.criteo.api.marketingsolutions.preview.model.LookalikeV1;
 import com.criteo.api.marketingsolutions.preview.model.RetargetingV1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -51,17 +52,19 @@ public class AudienceSegmentEntityV1 {
   public enum TypeEnum {
     UNKNOWN("Unknown"),
     
-    COMMERCE("Commerce"),
+    INMARKET("InMarket"),
     
-    SIMILAR("Similar"),
+    PROSPECTING("Prospecting"),
     
     CONTACTLIST("ContactList"),
     
     LOCATION("Location"),
     
-    PREBUILT("Prebuilt"),
+    BEHAVIORAL("Behavioral"),
     
-    RETARGETING("Retargeting");
+    RETARGETING("Retargeting"),
+    
+    LOOKALIKE("Lookalike");
 
     private String value;
 
@@ -117,13 +120,13 @@ public class AudienceSegmentEntityV1 {
   @SerializedName(SERIALIZED_NAME_ADVERTISER_ID)
   private String advertiserId;
 
-  public static final String SERIALIZED_NAME_COMMERCE = "commerce";
-  @SerializedName(SERIALIZED_NAME_COMMERCE)
-  private CommerceV1 commerce;
+  public static final String SERIALIZED_NAME_IN_MARKET = "inMarket";
+  @SerializedName(SERIALIZED_NAME_IN_MARKET)
+  private InMarketV1 inMarket;
 
-  public static final String SERIALIZED_NAME_SIMILAR = "similar";
-  @SerializedName(SERIALIZED_NAME_SIMILAR)
-  private Object similar;
+  public static final String SERIALIZED_NAME_PROSPECTING = "prospecting";
+  @SerializedName(SERIALIZED_NAME_PROSPECTING)
+  private Object prospecting;
 
   public static final String SERIALIZED_NAME_CONTACT_LIST = "contactList";
   @SerializedName(SERIALIZED_NAME_CONTACT_LIST)
@@ -133,13 +136,17 @@ public class AudienceSegmentEntityV1 {
   @SerializedName(SERIALIZED_NAME_LOCATION)
   private LocationV1 location;
 
-  public static final String SERIALIZED_NAME_PREBUILT = "prebuilt";
-  @SerializedName(SERIALIZED_NAME_PREBUILT)
-  private PrebuiltV1 prebuilt;
+  public static final String SERIALIZED_NAME_BEHAVIORAL = "behavioral";
+  @SerializedName(SERIALIZED_NAME_BEHAVIORAL)
+  private BehavioralV1 behavioral;
 
   public static final String SERIALIZED_NAME_RETARGETING = "retargeting";
   @SerializedName(SERIALIZED_NAME_RETARGETING)
   private RetargetingV1 retargeting;
+
+  public static final String SERIALIZED_NAME_LOOKALIKE = "lookalike";
+  @SerializedName(SERIALIZED_NAME_LOOKALIKE)
+  private LookalikeV1 lookalike;
 
 
   public AudienceSegmentEntityV1 name(String name) {
@@ -280,49 +287,49 @@ public class AudienceSegmentEntityV1 {
   }
 
 
-  public AudienceSegmentEntityV1 commerce(CommerceV1 commerce) {
+  public AudienceSegmentEntityV1 inMarket(InMarketV1 inMarket) {
     
-    this.commerce = commerce;
+    this.inMarket = inMarket;
     return this;
   }
 
    /**
-   * Get commerce
-   * @return commerce
+   * Get inMarket
+   * @return inMarket
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public CommerceV1 getCommerce() {
-    return commerce;
+  public InMarketV1 getInMarket() {
+    return inMarket;
   }
 
 
-  public void setCommerce(CommerceV1 commerce) {
-    this.commerce = commerce;
+  public void setInMarket(InMarketV1 inMarket) {
+    this.inMarket = inMarket;
   }
 
 
-  public AudienceSegmentEntityV1 similar(Object similar) {
+  public AudienceSegmentEntityV1 prospecting(Object prospecting) {
     
-    this.similar = similar;
+    this.prospecting = prospecting;
     return this;
   }
 
    /**
-   * Settings to target similar users to website visitors.
-   * @return similar
+   * Settings to target prospecting users to website visitors.
+   * @return prospecting
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Settings to target similar users to website visitors.")
+  @ApiModelProperty(value = "Settings to target prospecting users to website visitors.")
 
-  public Object getSimilar() {
-    return similar;
+  public Object getProspecting() {
+    return prospecting;
   }
 
 
-  public void setSimilar(Object similar) {
-    this.similar = similar;
+  public void setProspecting(Object prospecting) {
+    this.prospecting = prospecting;
   }
 
 
@@ -372,26 +379,26 @@ public class AudienceSegmentEntityV1 {
   }
 
 
-  public AudienceSegmentEntityV1 prebuilt(PrebuiltV1 prebuilt) {
+  public AudienceSegmentEntityV1 behavioral(BehavioralV1 behavioral) {
     
-    this.prebuilt = prebuilt;
+    this.behavioral = behavioral;
     return this;
   }
 
    /**
-   * Get prebuilt
-   * @return prebuilt
+   * Get behavioral
+   * @return behavioral
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PrebuiltV1 getPrebuilt() {
-    return prebuilt;
+  public BehavioralV1 getBehavioral() {
+    return behavioral;
   }
 
 
-  public void setPrebuilt(PrebuiltV1 prebuilt) {
-    this.prebuilt = prebuilt;
+  public void setBehavioral(BehavioralV1 behavioral) {
+    this.behavioral = behavioral;
   }
 
 
@@ -418,6 +425,29 @@ public class AudienceSegmentEntityV1 {
   }
 
 
+  public AudienceSegmentEntityV1 lookalike(LookalikeV1 lookalike) {
+    
+    this.lookalike = lookalike;
+    return this;
+  }
+
+   /**
+   * Get lookalike
+   * @return lookalike
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public LookalikeV1 getLookalike() {
+    return lookalike;
+  }
+
+
+  public void setLookalike(LookalikeV1 lookalike) {
+    this.lookalike = lookalike;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -433,17 +463,18 @@ public class AudienceSegmentEntityV1 {
         Objects.equals(this.createdAt, audienceSegmentEntityV1.createdAt) &&
         Objects.equals(this.updatedAt, audienceSegmentEntityV1.updatedAt) &&
         Objects.equals(this.advertiserId, audienceSegmentEntityV1.advertiserId) &&
-        Objects.equals(this.commerce, audienceSegmentEntityV1.commerce) &&
-        Objects.equals(this.similar, audienceSegmentEntityV1.similar) &&
+        Objects.equals(this.inMarket, audienceSegmentEntityV1.inMarket) &&
+        Objects.equals(this.prospecting, audienceSegmentEntityV1.prospecting) &&
         Objects.equals(this.contactList, audienceSegmentEntityV1.contactList) &&
         Objects.equals(this.location, audienceSegmentEntityV1.location) &&
-        Objects.equals(this.prebuilt, audienceSegmentEntityV1.prebuilt) &&
-        Objects.equals(this.retargeting, audienceSegmentEntityV1.retargeting);
+        Objects.equals(this.behavioral, audienceSegmentEntityV1.behavioral) &&
+        Objects.equals(this.retargeting, audienceSegmentEntityV1.retargeting) &&
+        Objects.equals(this.lookalike, audienceSegmentEntityV1.lookalike);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, type, createdAt, updatedAt, advertiserId, commerce, similar, contactList, location, prebuilt, retargeting);
+    return Objects.hash(name, description, type, createdAt, updatedAt, advertiserId, inMarket, prospecting, contactList, location, behavioral, retargeting, lookalike);
   }
 
   @Override
@@ -456,12 +487,13 @@ public class AudienceSegmentEntityV1 {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
-    sb.append("    commerce: ").append(toIndentedString(commerce)).append("\n");
-    sb.append("    similar: ").append(toIndentedString(similar)).append("\n");
+    sb.append("    inMarket: ").append(toIndentedString(inMarket)).append("\n");
+    sb.append("    prospecting: ").append(toIndentedString(prospecting)).append("\n");
     sb.append("    contactList: ").append(toIndentedString(contactList)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    prebuilt: ").append(toIndentedString(prebuilt)).append("\n");
+    sb.append("    behavioral: ").append(toIndentedString(behavioral)).append("\n");
     sb.append("    retargeting: ").append(toIndentedString(retargeting)).append("\n");
+    sb.append("    lookalike: ").append(toIndentedString(lookalike)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -47,17 +47,19 @@ public class AudienceSegmentSearchEntityV1 {
   public enum AudienceSegmentTypesEnum {
     UNKNOWN("Unknown"),
     
-    COMMERCE("Commerce"),
+    INMARKET("InMarket"),
     
-    SIMILAR("Similar"),
+    PROSPECTING("Prospecting"),
     
     CONTACTLIST("ContactList"),
     
     LOCATION("Location"),
     
-    PREBUILT("Prebuilt"),
+    BEHAVIORAL("Behavioral"),
     
-    RETARGETING("Retargeting");
+    RETARGETING("Retargeting"),
+    
+    LOOKALIKE("Lookalike");
 
     private String value;
 

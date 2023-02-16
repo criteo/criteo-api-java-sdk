@@ -33,57 +33,6 @@ import java.util.List;
 @ApiModel(description = "Settings to define your audience based on their location.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class LocationSizeEstimationV1 {
-  /**
-   * Gets or Sets registryType
-   */
-  @JsonAdapter(RegistryTypeEnum.Adapter.class)
-  public enum RegistryTypeEnum {
-    STORE("Store"),
-    
-    POINTOFINTEREST("PointOfInterest");
-
-    private String value;
-
-    RegistryTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static RegistryTypeEnum fromValue(String value) {
-      for (RegistryTypeEnum b : RegistryTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<RegistryTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final RegistryTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public RegistryTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return RegistryTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_REGISTRY_TYPE = "registryType";
-  @SerializedName(SERIALIZED_NAME_REGISTRY_TYPE)
-  private RegistryTypeEnum registryType;
-
   public static final String SERIALIZED_NAME_POINTS_OF_INTEREST = "pointsOfInterest";
   @SerializedName(SERIALIZED_NAME_POINTS_OF_INTEREST)
   private List<PointOfInterestV1> pointsOfInterest = null;
@@ -91,29 +40,6 @@ public class LocationSizeEstimationV1 {
   public static final String SERIALIZED_NAME_RADIUS_IN_KM = "radiusInKm";
   @SerializedName(SERIALIZED_NAME_RADIUS_IN_KM)
   private Integer radiusInKm;
-
-
-  public LocationSizeEstimationV1 registryType(RegistryTypeEnum registryType) {
-    
-    this.registryType = registryType;
-    return this;
-  }
-
-   /**
-   * Get registryType
-   * @return registryType
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public RegistryTypeEnum getRegistryType() {
-    return registryType;
-  }
-
-
-  public void setRegistryType(RegistryTypeEnum registryType) {
-    this.registryType = registryType;
-  }
 
 
   public LocationSizeEstimationV1 pointsOfInterest(List<PointOfInterestV1> pointsOfInterest) {
@@ -179,21 +105,19 @@ public class LocationSizeEstimationV1 {
       return false;
     }
     LocationSizeEstimationV1 locationSizeEstimationV1 = (LocationSizeEstimationV1) o;
-    return Objects.equals(this.registryType, locationSizeEstimationV1.registryType) &&
-        Objects.equals(this.pointsOfInterest, locationSizeEstimationV1.pointsOfInterest) &&
+    return Objects.equals(this.pointsOfInterest, locationSizeEstimationV1.pointsOfInterest) &&
         Objects.equals(this.radiusInKm, locationSizeEstimationV1.radiusInKm);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(registryType, pointsOfInterest, radiusInKm);
+    return Objects.hash(pointsOfInterest, radiusInKm);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LocationSizeEstimationV1 {\n");
-    sb.append("    registryType: ").append(toIndentedString(registryType)).append("\n");
     sb.append("    pointsOfInterest: ").append(toIndentedString(pointsOfInterest)).append("\n");
     sb.append("    radiusInKm: ").append(toIndentedString(radiusInKm)).append("\n");
     sb.append("}");

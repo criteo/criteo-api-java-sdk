@@ -240,8 +240,8 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+| **401** | Unauthorized |  -  |
 
 
 ## listIndustries

@@ -5,6 +5,10 @@ All URIs are relative to *https://api.criteo.com*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**getAdsetReport**](AnalyticsApi.md#getAdsetReport) | **POST** /preview/statistics/report |  |
+| [**getAsyncAdsetReport**](AnalyticsApi.md#getAsyncAdsetReport) | **POST** /preview/reports/async-statistics |  |
+| [**getAsyncAudienceReport**](AnalyticsApi.md#getAsyncAudienceReport) | **POST** /preview/reports/async-audience-performance |  |
+| [**getAsyncExportOutput**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /preview/reports/{report-id}/output |  |
+| [**getAsyncExportStatus**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /preview/reports/{report-id}/status |  |
 | [**getCategoriesReport**](AnalyticsApi.md#getCategoriesReport) | **POST** /preview/categories/report |  |
 | [**getCreativesReport**](AnalyticsApi.md#getCreativesReport) | **POST** /preview/reports/creatives |  |
 | [**getPlacementsReport**](AnalyticsApi.md#getPlacementsReport) | **POST** /preview/placements/report |  |
@@ -91,6 +95,319 @@ public class Example {
 | **200** | Success |  -  |
 | **400** | Bad Request |  -  |
 | **403** | Forbidden |  -  |
+
+
+## getAsyncAdsetReport
+
+> MarketingSolutionsReportStatusResponse getAsyncAdsetReport(generateStatisticsReportRequest)
+
+
+
+This Statistics endpoint provides an export Id that let you retrieve data.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.AnalyticsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.criteo.com");
+        
+        // Configure OAuth2, two options:
+        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
+        defaultClient.setUsername("YOUR CLIENT ID");
+        defaultClient.setPassword("YOUR CLIENT SECRET");
+
+        AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
+        GenerateStatisticsReportRequest generateStatisticsReportRequest = new GenerateStatisticsReportRequest(); // GenerateStatisticsReportRequest | 
+        try {
+            MarketingSolutionsReportStatusResponse result = apiInstance.getAsyncAdsetReport(generateStatisticsReportRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AnalyticsApi#getAsyncAdsetReport");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **generateStatisticsReportRequest** | [**GenerateStatisticsReportRequest**](GenerateStatisticsReportRequest.md)|  | [optional] |
+
+### Return type
+
+[**MarketingSolutionsReportStatusResponse**](MarketingSolutionsReportStatusResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **202** | Success |  -  |
+| **400** | Bad Request |  -  |
+| **403** | Forbidden |  -  |
+
+
+## getAsyncAudienceReport
+
+> MarketingSolutionsReportStatusResponse getAsyncAudienceReport(generateAudiencePerformanceReportRequest)
+
+
+
+This Statistics endpoint provides an export Id that lets you retrieve data.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.AnalyticsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.criteo.com");
+        
+        // Configure OAuth2, two options:
+        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
+        defaultClient.setUsername("YOUR CLIENT ID");
+        defaultClient.setPassword("YOUR CLIENT SECRET");
+
+        AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
+        GenerateAudiencePerformanceReportRequest generateAudiencePerformanceReportRequest = new GenerateAudiencePerformanceReportRequest(); // GenerateAudiencePerformanceReportRequest | 
+        try {
+            MarketingSolutionsReportStatusResponse result = apiInstance.getAsyncAudienceReport(generateAudiencePerformanceReportRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AnalyticsApi#getAsyncAudienceReport");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **generateAudiencePerformanceReportRequest** | [**GenerateAudiencePerformanceReportRequest**](GenerateAudiencePerformanceReportRequest.md)|  | [optional] |
+
+### Return type
+
+[**MarketingSolutionsReportStatusResponse**](MarketingSolutionsReportStatusResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **202** | Success |  -  |
+| **400** | Bad Request |  -  |
+| **403** | Forbidden |  -  |
+
+
+## getAsyncExportOutput
+
+> ExportResult getAsyncExportOutput(reportId)
+
+
+
+This endpoint gives you the output of the report.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.AnalyticsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.criteo.com");
+        
+        // Configure OAuth2, two options:
+        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
+        defaultClient.setUsername("YOUR CLIENT ID");
+        defaultClient.setPassword("YOUR CLIENT SECRET");
+
+        AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
+        String reportId = "reportId_example"; // String | Id of the report
+        try {
+            ExportResult result = apiInstance.getAsyncExportOutput(reportId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AnalyticsApi#getAsyncExportOutput");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **reportId** | **String**| Id of the report | |
+
+### Return type
+
+[**ExportResult**](ExportResult.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
+## getAsyncExportStatus
+
+> MarketingSolutionsReportStatusResponse getAsyncExportStatus(reportId)
+
+
+
+This endpoint gives you the status of the report.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.AnalyticsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.criteo.com");
+        
+        // Configure OAuth2, two options:
+        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
+        defaultClient.setUsername("YOUR CLIENT ID");
+        defaultClient.setPassword("YOUR CLIENT SECRET");
+
+        AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
+        String reportId = "reportId_example"; // String | Id of the report
+        try {
+            MarketingSolutionsReportStatusResponse result = apiInstance.getAsyncExportStatus(reportId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AnalyticsApi#getAsyncExportStatus");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **reportId** | **String**| Id of the report | |
+
+### Return type
+
+[**MarketingSolutionsReportStatusResponse**](MarketingSolutionsReportStatusResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **303** | Redirect |  -  |
 
 
 ## getCategoriesReport

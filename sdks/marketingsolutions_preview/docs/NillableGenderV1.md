@@ -16,7 +16,6 @@ Name | Type | Description | Notes
 
 Name | Value
 ---- | -----
-UNKNOWN | &quot;Unknown&quot;
 MALE | &quot;Male&quot;
 FEMALE | &quot;Female&quot;
 

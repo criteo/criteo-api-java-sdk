@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * A class that represents an entity in a guild compliant way
+ * A class that represents a domain entity exposed by an API
  */
-@ApiModel(description = "A class that represents an entity in a guild compliant way")
+@ApiModel(description = "A class that represents a domain entity exposed by an API")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AudienceDeleteEntityV1Resource {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
@@ -50,11 +50,11 @@ public class AudienceDeleteEntityV1Resource {
   }
 
    /**
-   * Audience of people of interest for a marketer.
+   * Audience to delete
    * @return attributes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Audience of people of interest for a marketer.")
+  @ApiModelProperty(value = "Audience to delete")
 
   public Object getAttributes() {
     return attributes;

@@ -155,8 +155,8 @@ public class PlacementsReportQueryMessage {
    * The comma-separated list of advertiser ids.
    * @return advertiserIds
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The comma-separated list of advertiser ids.")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "The comma-separated list of advertiser ids.")
 
   public String getAdvertiserIds() {
     return advertiserIds;

@@ -392,6 +392,371 @@ paths:
       - Audience
       x-contentType: application/json
       x-accepts: application/json
+  /preview/retail-media/v2/accounts/{accountId}/audiences:
+    get:
+      description: Get a page of audiences for a given account ID
+      operationId: GetRetailMediaAudienceV2ListByAccountId
+      parameters:
+      - description: External account ID which owns audience.
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-example: "68004146450571264"
+      - description: "Limits results to the entity IDs specified; parameter key is\
+          \ repeated, eg. limitToId=1&limitToId=2"
+        explode: true
+        in: query
+        name: limitToId
+        required: false
+        schema:
+          items:
+            format: int64
+            type: integer
+          type: array
+        style: form
+      - description: Specifies the maximum number of entities returned in a single
+          page; defaults to 25 entities per page
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-example: 25
+      - description: Returns the specified page of results given a pageSize; pages
+          are 0-indexed
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-example: 0
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetailMediaAudienceV2ListResponse'
+          description: A page of audiences for the supplied account.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonStatusCodeResponse'
+          description: Missing or invalid account ID. - OR - You do not have permission
+            to access this account.
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonStatusCodeResponse'
+          description: The Accept header must contain application/json.
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonStatusCodeResponse'
+          description: The Content-Type header must be application/json if present.
+      tags:
+      - Audience
+      x-accepts: application/json
+    post:
+      description: Create an audience for a given account ID
+      operationId: CreateRetailMediaAudienceV2
+      parameters:
+      - description: ID of the account to which this audience belongs.
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-example: "68004146450571264"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRetailMediaAudienceV2Request'
+        required: true
+        x-bodyName: body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetailMediaAudienceV2Response'
+          description: The audience that was just created.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonStatusCodeResponse'
+          description: "Missing or invalid retailerID field. - OR - Missing or invalid\
+            \ name field. Name should be less than 255 characters. - OR - Missing\
+            \ or invalid userType field. Valid values are: 'buyer', 'viewer'. - OR\
+            \ - The brandIds is not a valid list of IDs or may contain more than 100\
+            \ elements. - OR - The categoryIds is not a valid list of IDs or may contain\
+            \ more than 100 elements. - OR - Missing or invalid lookbackWindow field.\
+            \ Valid values are: P7D, P14D, P30D, P45D, P60D, P90D, P120D, P150D or\
+            \ P180D. - OR - Exactly one of categoryIds or brandIds must be specified,\
+            \ but not both. - OR - The retailer is invalid because it is not live\
+            \ - OR - Missing or invalid userAction field. Valid values are: 'buy',\
+            \ 'view', 'addToCart'."
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonStatusCodeResponse'
+          description: Missing or invalid account ID.
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonStatusCodeResponse'
+          description: The Accept header must contain application/json.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonStatusCodeResponse'
+          description: An audience name should be unique per account.
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonStatusCodeResponse'
+          description: The Content-Type header must be application/json if present.
+      tags:
+      - Audience
+      x-contentType: application/json
+      x-accepts: application/json
+  /preview/retail-media/line-items/{id}/keywords:
+    get:
+      description: Fetch keywords associated with the specified line item
+      operationId: FetchKeywords
+      parameters:
+      - description: Long external id of the associated line item
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RetailMediaExternalv1KeywordsModelResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetailMediaExternalv1KeywordsModelResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RetailMediaExternalv1KeywordsModelResponse'
+          description: Success
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad Request
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /preview/retail-media/line-items/{id}/keywords/add-remove:
+    post:
+      description: Add or Remove keywords from the associated line item in bulk
+      operationId: AddRemoveKeywords
+      parameters:
+      - description: Long external id of the associated line item
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetailMediaExternalv1AddRemoveKeywordsModelRequest'
+        description: Object containing keywords to be added or removed
+        x-bodyName: keywords
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RetailMediaExternalv1ResourceOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetailMediaExternalv1ResourceOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RetailMediaExternalv1ResourceOutcome'
+          description: Success
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad Request
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
+  /preview/retail-media/line-items/{id}/keywords/set-bid:
+    post:
+      description: Set bid overrides for associated keywords to the given line item
+        in bulk
+      operationId: SetKeywordBids
+      parameters:
+      - description: Long external id of the associated line item
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetailMediaExternalv1SetBidsModelRequest'
+        description: Object containing a list of bid overrides for associated keywords
+        x-bodyName: keywords
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RetailMediaExternalv1ResourceOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetailMediaExternalv1ResourceOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RetailMediaExternalv1ResourceOutcome'
+          description: Success
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad Request
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
+  /preview/retail-media/preferred-deal-line-items/{id}/proposal:
+    get:
+      description: Fetch the status of a proposal to modify a Preferred Deal Line
+        Item.
+      operationId: FetchProposal
+      parameters:
+      - description: The external id of a line item.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RetailMediaExternalv1ProposalStatusModelResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetailMediaExternalv1ProposalStatusModelResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RetailMediaExternalv1ProposalStatusModelResponse'
+          description: Success
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad Request
+        "500":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Server Error
+        "403":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Forbidden
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /preview/retail-media/preferred-deal-line-items/{id}/proposal/submit:
+    post:
+      description: Submit a proposal to modify a Preferred Deal Line Item for review.
+      operationId: SubmitProposal
+      parameters:
+      - description: The external id of a line item.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RetailMediaExternalv1ProposalStatusModelResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetailMediaExternalv1ProposalStatusModelResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RetailMediaExternalv1ProposalStatusModelResponse'
+          description: Success
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad Request
+        "500":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Server Error
+        "403":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Forbidden
+      tags:
+      - Campaign
+      x-accepts: application/json
   /preview/retail-media/accounts/{accountId}/catalogs:
     post:
       description: Create a request for a Catalog available to the indicated account.
@@ -493,8 +858,8 @@ paths:
         schema:
           default: 0
           format: int32
-          maximum: 500
-          minimum: 0
+          maximum: 500.0
+          minimum: 0.0
           type: integer
         style: form
         x-nullable: false
@@ -507,8 +872,8 @@ paths:
         schema:
           default: 100
           format: int32
-          maximum: 100
-          minimum: 1
+          maximum: 100.0
+          minimum: 1.0
           type: integer
         style: form
         x-nullable: false
@@ -544,8 +909,8 @@ paths:
         schema:
           default: 0
           format: int32
-          maximum: 500
-          minimum: 0
+          maximum: 500.0
+          minimum: 0.0
           type: integer
         style: form
         x-nullable: false
@@ -558,8 +923,8 @@ paths:
         schema:
           default: 100
           format: int32
-          maximum: 100
-          minimum: 1
+          maximum: 100.0
+          minimum: 1.0
           type: integer
         style: form
         x-nullable: false
@@ -657,6 +1022,236 @@ paths:
               schema:
                 $ref: '#/components/schemas/BrandPreviewListResponse'
           description: Brands found.
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /preview/retail-media/retailers/{retailer-id}/placements:
+    get:
+      description: Gets all placement information for the given retailer
+      operationId: RetailerApi_GetApiV1ExternalRetailerPlacementsByRetailerId
+      parameters:
+      - description: The retailer id for which placements should be fetched.
+        explode: false
+        in: path
+        name: retailer-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlacementPreviewListResponse'
+          description: placements records.
+        "403":
+          content:
+            application/json: {}
+          description: Forbidden
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /preview/retail-media/retailers/{retailer-id}/retailer-cpc-rates:
+    get:
+      description: Gets the minimum cpc bid for a retailer
+      operationId: RetailerApi_GetAipV1ExternalRetailerRetailerCpcRatesByRetailerId
+      parameters:
+      - description: The retailer id
+        explode: false
+        in: path
+        name: retailer-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetailerCpcRateCardPreviewResponse'
+          description: bids found
+        "403":
+          content:
+            application/json: {}
+          description: forbidden
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /preview/retail-media/retailers/{retailer-id}/category-cpc-rates:
+    get:
+      description: Gets the minimum cpc bid for all categories for a retailer
+      operationId: RetailerApi_GetApiV1ExternalRetailerCategoryCpcRatesByRetailerId
+      parameters:
+      - description: The retailer id
+        explode: false
+        in: path
+        name: retailer-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryCpcRateCardPreviewListResponse'
+          description: bids found
+        "403":
+          content:
+            application/json: {}
+          description: forbidden
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/creatives:
+    post:
+      description: Create a creative for an account
+      operationId: CreativesApi_PostApi202210ExternalAccountCreativesByAccountId
+      parameters:
+      - description: External account id to create a creative for
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreativeCreateModel202207'
+        description: The creative to create
+        x-nullable: false
+        x-bodyName: creative
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Creative202210Response'
+          description: Creatives created
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/creatives/{creative-id}:
+    get:
+      description: Get the specified creative
+      operationId: "CreativesApi_GetApi202210ExternalAccountByAccountId}Creatives{creativeId"
+      parameters:
+      - description: External account id to retrieve creatives for
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: Creative to get
+        explode: false
+        in: path
+        name: creative-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Creative202210Response'
+          description: Creatives found
+      tags:
+      - Campaign
+      x-accepts: application/json
+    put:
+      description: Update a creative
+      operationId: "CreativesApi_PutApi202210ExternalAccountByAccountId}Creatives{creativeId"
+      parameters:
+      - description: External account id containing the creative
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: Creative to update
+        explode: false
+        in: path
+        name: creative-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreativeUpdateModel202207'
+        description: The creative to create
+        x-nullable: false
+        x-bodyName: creative
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Creative202210Response'
+          description: Success
+        "204":
+          content:
+            application/json: {}
+          description: Creative updated
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/creatives/search:
+    post:
+      description: Get account creatives
+      operationId: CreativesApi_PostApi202210ExternalAccountCreativesSearchByAccountId
+      parameters:
+      - description: External account id to retrieve creatives for
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: Creatives to filter by
+        explode: true
+        in: query
+        name: creative-ids
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Creative202210ListResponse'
+          description: Creatives found
       tags:
       - Campaign
       x-accepts: application/json
@@ -917,16 +1512,16 @@ paths:
         x-nullable: false
         x-bodyName: campaign
       responses:
+        "201":
+          content:
+            application/json: {}
+          description: Success
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/JsonApiSingleResponseOfCampaign'
           description: OK
-        "201":
-          content:
-            application/json: {}
-          description: Success
       tags:
       - Campaign
       x-contentType: application/json
@@ -1066,16 +1661,16 @@ paths:
         x-nullable: false
         x-bodyName: lineItem
       responses:
+        "201":
+          content:
+            application/json: {}
+          description: Success
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/JsonApiSingleResponseOfLineItem'
           description: OK
-        "201":
-          content:
-            application/json: {}
-          description: Success
       tags:
       - Campaign
       x-contentType: application/json
@@ -1577,6 +2172,71 @@ paths:
       - Campaign
       x-contentType: application/json
       x-accepts: application/json
+  /preview/retail-media/line-items/{line-item-id}/bid-multipliers:
+    get:
+      description: Get bid multipliers by line item
+      operationId: LineItems_GetApi202301ExternalLineItemBidMultipliersByLineItemId
+      parameters:
+      - description: Long external id of the associated line item
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfLineItemBidMultipliers'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfLineItemBidMultipliers'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfLineItemBidMultipliers'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+    put:
+      description: Replace bid multipliers on a line item
+      operationId: LineItems_PutApi202301ExternalLineItemBidMultipliersByLineItemId
+      parameters:
+      - description: Long external id of the associated line item
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LineItemBidMultipliersRequest'
+        x-nullable: false
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LineItemBidMultipliersResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LineItemBidMultipliersResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LineItemBidMultipliersResponse'
+          description: Success
+      tags:
+      - Campaign
+      x-contentType: application/json
+      x-accepts: application/json
 components:
   schemas:
     ApplicationSummaryModelResponse:
@@ -1591,7 +2251,8 @@ components:
             applicationId: 0
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -1600,7 +2261,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -1610,7 +2272,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -1619,7 +2282,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -1663,6 +2327,7 @@ components:
     CommonProblem:
       description: Common problem object. Can be specialized as needed.
       example:
+        traceId: traceId
         traceIdentifier: traceIdentifier
         code: code
         instance: instance
@@ -1673,8 +2338,12 @@ components:
         type: unknown
         title: title
       properties:
-        traceIdentifier:
+        traceId:
           description: The request correlation ID this problem comes from.
+          type: string
+        traceIdentifier:
+          description: "The request correlation ID this problem comes from. (deprecated,\
+            \ use traceId instead)"
           type: string
         type:
           description: The problem's category.
@@ -2554,6 +3223,251 @@ components:
           readOnly: true
           type: array
       type: object
+    RetailMediaAudienceV2ListResponse:
+      description: Array of Audiences Returned as Part of Get RetailMedia Audience
+        Request
+      example:
+        metadata:
+          currentPageSize: 6
+          previousPage: previousPage
+          nextPage: nextPage
+          totalPages: 5
+          totalItemsAcrossAllPages: 0
+          currentPageIndex: 1
+        data:
+        - attributes:
+            customerListDetails:
+              size: "34212"
+            name: Test audience
+            retailerId: "68004146450571264"
+            userBehaviorDetails:
+              inclusiveSegment:
+                userAction: buy
+                categoryIds:
+                - categoryIds
+                - categoryIds
+                minPrice: 0.8008281904610115
+                maxPrice: 6.027456183070403
+                brandIds:
+                - brandIds
+                - brandIds
+                lookbackWindow: P7D
+              exclusiveSegment:
+                userAction: buy
+                categoryIds:
+                - categoryIds
+                - categoryIds
+                minPrice: 0.8008281904610115
+                maxPrice: 6.027456183070403
+                brandIds:
+                - brandIds
+                - brandIds
+                lookbackWindow: P7D
+          id: "314159"
+          type: customerList
+        - attributes:
+            customerListDetails:
+              size: "34212"
+            name: Test audience
+            retailerId: "68004146450571264"
+            userBehaviorDetails:
+              inclusiveSegment:
+                userAction: buy
+                categoryIds:
+                - categoryIds
+                - categoryIds
+                minPrice: 0.8008281904610115
+                maxPrice: 6.027456183070403
+                brandIds:
+                - brandIds
+                - brandIds
+                lookbackWindow: P7D
+              exclusiveSegment:
+                userAction: buy
+                categoryIds:
+                - categoryIds
+                - categoryIds
+                minPrice: 0.8008281904610115
+                maxPrice: 6.027456183070403
+                brandIds:
+                - brandIds
+                - brandIds
+                lookbackWindow: P7D
+          id: "314159"
+          type: customerList
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          description: data
+          items:
+            $ref: '#/components/schemas/RetailMediaAudienceV2'
+          readOnly: true
+          type: array
+        errors:
+          description: errors
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+        warnings:
+          description: warnings
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+        metadata:
+          $ref: '#/components/schemas/PageMetadata'
+      required:
+      - data
+      - metadata
+      type: object
+    CommonStatusCodeResponse:
+      description: Commonly Returned Problem Response
+      properties:
+        errors:
+          description: errors
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+        warnings:
+          description: warnings
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+      type: object
+    RetailMediaAudienceV2Response:
+      description: Response of CreateAudienceRequestV2
+      example:
+        data:
+          attributes:
+            name: Test audience
+            retailerId: "68004146450571264"
+            userBehaviorDetails:
+              inclusiveSegment:
+                userAction: buy
+                categoryIds:
+                - categoryIds
+                - categoryIds
+                minPrice: 0.8008281904610115
+                maxPrice: 6.027456183070403
+                brandIds:
+                - brandIds
+                - brandIds
+                lookbackWindow: P7D
+              exclusiveSegment:
+                userAction: buy
+                categoryIds:
+                - categoryIds
+                - categoryIds
+                minPrice: 0.8008281904610115
+                maxPrice: 6.027456183070403
+                brandIds:
+                - brandIds
+                - brandIds
+                lookbackWindow: P7D
+          id: 314159
+          type: RetailMediaAudience
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/CreateRetailMediaAudienceV2'
+        errors:
+          description: errors
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+        warnings:
+          description: warnings
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+      type: object
     CreateRetailMediaAudienceRequest:
       description: Request to create an audience
       example:
@@ -2573,6 +3487,43 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/CreateRetailMediaAudienceBody'
+      required:
+      - data
+      type: object
+    CreateRetailMediaAudienceV2Request:
+      description: Request to create an audience
+      example:
+        data:
+          attributes:
+            name: Test audience
+            retailerId: "68004146450571264"
+            userBehaviorDetails:
+              inclusiveSegment:
+                userAction: buy
+                categoryIds:
+                - categoryIds
+                - categoryIds
+                minPrice: 0.8008281904610115
+                maxPrice: 6.027456183070403
+                brandIds:
+                - brandIds
+                - brandIds
+                lookbackWindow: P7D
+              exclusiveSegment:
+                userAction: buy
+                categoryIds:
+                - categoryIds
+                - categoryIds
+                minPrice: 0.8008281904610115
+                maxPrice: 6.027456183070403
+                brandIds:
+                - brandIds
+                - brandIds
+                lookbackWindow: P7D
+          type: RetailMediaAudience
+      properties:
+        data:
+          $ref: '#/components/schemas/CreateRetailMediaAudienceV2Data'
       required:
       - data
       type: object
@@ -2651,6 +3602,106 @@ components:
       - id
       - type
       type: object
+    RetailMediaAudienceV2:
+      description: Retail Media audience returned by the Get RetailMedia Audience
+      example:
+        attributes:
+          customerListDetails:
+            size: "34212"
+          name: Test audience
+          retailerId: "68004146450571264"
+          userBehaviorDetails:
+            inclusiveSegment:
+              userAction: buy
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice: 0.8008281904610115
+              maxPrice: 6.027456183070403
+              brandIds:
+              - brandIds
+              - brandIds
+              lookbackWindow: P7D
+            exclusiveSegment:
+              userAction: buy
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice: 0.8008281904610115
+              maxPrice: 6.027456183070403
+              brandIds:
+              - brandIds
+              - brandIds
+              lookbackWindow: P7D
+        id: "314159"
+        type: customerList
+      properties:
+        type:
+          description: Type of the audience
+          enum:
+          - customerList
+          - userBehavior
+          example: customerList
+          type: string
+        id:
+          description: Unique ID of this audience.
+          example: "314159"
+          type: string
+        attributes:
+          $ref: '#/components/schemas/RetailMediaAudienceV2Attributes'
+      required:
+      - attributes
+      - id
+      - type
+      type: object
+    CreateRetailMediaAudienceV2:
+      description: Retail Media audience used in audience creation
+      example:
+        attributes:
+          name: Test audience
+          retailerId: "68004146450571264"
+          userBehaviorDetails:
+            inclusiveSegment:
+              userAction: buy
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice: 0.8008281904610115
+              maxPrice: 6.027456183070403
+              brandIds:
+              - brandIds
+              - brandIds
+              lookbackWindow: P7D
+            exclusiveSegment:
+              userAction: buy
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice: 0.8008281904610115
+              maxPrice: 6.027456183070403
+              brandIds:
+              - brandIds
+              - brandIds
+              lookbackWindow: P7D
+        id: 314159
+        type: RetailMediaAudience
+      properties:
+        type:
+          description: the name of the entity type
+          example: RetailMediaAudience
+          type: string
+        id:
+          description: Unique ID of this audience.
+          example: 314159
+          format: int64
+          type: integer
+        attributes:
+          $ref: '#/components/schemas/CreateRetailMediaAudienceV2Attributes'
+      required:
+      - attributes
+      - id
+      - type
+      type: object
     CreateRetailMediaAudienceBody:
       description: Request body of CreateRetailMediaAudienceRequest
       example:
@@ -2673,6 +3724,47 @@ components:
           type: string
         attributes:
           $ref: '#/components/schemas/CreateRetailMediaAudienceAttributes'
+      required:
+      - attributes
+      - type
+      type: object
+    CreateRetailMediaAudienceV2Data:
+      description: Request body of CreateRetailMediaAudienceV2Request
+      example:
+        attributes:
+          name: Test audience
+          retailerId: "68004146450571264"
+          userBehaviorDetails:
+            inclusiveSegment:
+              userAction: buy
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice: 0.8008281904610115
+              maxPrice: 6.027456183070403
+              brandIds:
+              - brandIds
+              - brandIds
+              lookbackWindow: P7D
+            exclusiveSegment:
+              userAction: buy
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice: 0.8008281904610115
+              maxPrice: 6.027456183070403
+              brandIds:
+              - brandIds
+              - brandIds
+              lookbackWindow: P7D
+        type: RetailMediaAudience
+      properties:
+        type:
+          description: the name of the entity type
+          example: RetailMediaAudience
+          type: string
+        attributes:
+          $ref: '#/components/schemas/CreateRetailMediaAudienceV2Attributes'
       required:
       - attributes
       - type
@@ -2767,6 +3859,97 @@ components:
       - retailerId
       - userType
       type: object
+    RetailMediaAudienceV2Attributes:
+      description: Properties of the returned Audience
+      example:
+        customerListDetails:
+          size: "34212"
+        name: Test audience
+        retailerId: "68004146450571264"
+        userBehaviorDetails:
+          inclusiveSegment:
+            userAction: buy
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            minPrice: 0.8008281904610115
+            maxPrice: 6.027456183070403
+            brandIds:
+            - brandIds
+            - brandIds
+            lookbackWindow: P7D
+          exclusiveSegment:
+            userAction: buy
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            minPrice: 0.8008281904610115
+            maxPrice: 6.027456183070403
+            brandIds:
+            - brandIds
+            - brandIds
+            lookbackWindow: P7D
+      properties:
+        retailerId:
+          description: ID of the retailer associated with this audience
+          example: "68004146450571264"
+          type: string
+        name:
+          description: Name of the audience.
+          example: Test audience
+          type: string
+        userBehaviorDetails:
+          $ref: '#/components/schemas/UserBehaviorDetailsV2'
+        customerListDetails:
+          $ref: '#/components/schemas/CustomerListDetails'
+      required:
+      - name
+      - retailerId
+      type: object
+    CreateRetailMediaAudienceV2Attributes:
+      description: Parameters needed to create an audience
+      example:
+        name: Test audience
+        retailerId: "68004146450571264"
+        userBehaviorDetails:
+          inclusiveSegment:
+            userAction: buy
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            minPrice: 0.8008281904610115
+            maxPrice: 6.027456183070403
+            brandIds:
+            - brandIds
+            - brandIds
+            lookbackWindow: P7D
+          exclusiveSegment:
+            userAction: buy
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            minPrice: 0.8008281904610115
+            maxPrice: 6.027456183070403
+            brandIds:
+            - brandIds
+            - brandIds
+            lookbackWindow: P7D
+      properties:
+        retailerId:
+          description: ID of the retailer associated with this audience
+          example: "68004146450571264"
+          type: string
+        userBehaviorDetails:
+          $ref: '#/components/schemas/UserBehaviorDetailsV2'
+        name:
+          description: Name of the audience.
+          example: Test audience
+          type: string
+      required:
+      - name
+      - retailerId
+      - userBehaviorDetails
+      type: object
     UserBehaviorDetails:
       description: Details about a user behavior retail media audience
       example:
@@ -2827,6 +4010,707 @@ components:
           type: string
       required:
       - size
+      type: object
+    UserBehaviorDetailsV2:
+      description: Details about a user behavior retail media audience
+      example:
+        inclusiveSegment:
+          userAction: buy
+          categoryIds:
+          - categoryIds
+          - categoryIds
+          minPrice: 0.8008281904610115
+          maxPrice: 6.027456183070403
+          brandIds:
+          - brandIds
+          - brandIds
+          lookbackWindow: P7D
+        exclusiveSegment:
+          userAction: buy
+          categoryIds:
+          - categoryIds
+          - categoryIds
+          minPrice: 0.8008281904610115
+          maxPrice: 6.027456183070403
+          brandIds:
+          - brandIds
+          - brandIds
+          lookbackWindow: P7D
+      properties:
+        inclusiveSegment:
+          $ref: '#/components/schemas/CreateUserBehaviorSegmentV2'
+        exclusiveSegment:
+          $ref: '#/components/schemas/CreateUserBehaviorSegmentV2'
+      required:
+      - inclusiveSegment
+      type: object
+    CreateUserBehaviorSegmentV2:
+      description: 'Inclusive and exclusive segments of a user behavior audience '
+      example:
+        userAction: buy
+        categoryIds:
+        - categoryIds
+        - categoryIds
+        minPrice: 0.8008281904610115
+        maxPrice: 6.027456183070403
+        brandIds:
+        - brandIds
+        - brandIds
+        lookbackWindow: P7D
+      properties:
+        userAction:
+          description: Type of shopper activity used to generate the audience.
+          enum:
+          - buy
+          - view
+          - addToCart
+          example: buy
+          type: string
+        lookbackWindow:
+          description: Length of lookback window
+          enum:
+          - P7D
+          - P14D
+          - P30D
+          - P45D
+          - P60D
+          - P90D
+          - P120D
+          - P150D
+          - P180D
+          example: P7D
+          type: string
+        categoryIds:
+          description: The categories to target
+          items:
+            type: string
+          type: array
+        brandIds:
+          description: The brands to target
+          items:
+            type: string
+          type: array
+        minPrice:
+          description: The min price of targeted skus.
+          format: double
+          readOnly: true
+          type: number
+        maxPrice:
+          description: The max price of targeted skus.
+          format: double
+          readOnly: true
+          type: number
+      required:
+      - lookbackWindow
+      - userAction
+      type: object
+    RetailMediaExternalv1KeywordsModelResponse:
+      description: Response object containing keywords associated with a line item
+      example:
+        data:
+          attributes:
+            keywords:
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              matchType: PositiveExactMatch
+              inputKeywords:
+                negativeBroad:
+                - negativeBroad
+                - negativeBroad
+                positiveExact:
+                - positiveExact
+                - positiveExact
+                negativeExact:
+                - negativeExact
+                - negativeExact
+              reviewState: InReview
+              bid: 0.8008281904610115
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+            rank:
+            - rank
+            - rank
+          id: id
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          source:
+            key: source
+          stackTrace: stackTrace
+          detail: detail
+          type: type
+          title: title
+          status: 6
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          source:
+            key: source
+          stackTrace: stackTrace
+          detail: detail
+          type: type
+          title: title
+          status: 6
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          source:
+            key: source
+          stackTrace: stackTrace
+          detail: detail
+          type: type
+          title: title
+          status: 6
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          source:
+            key: source
+          stackTrace: stackTrace
+          detail: detail
+          type: type
+          title: title
+          status: 6
+      properties:
+        data:
+          $ref: '#/components/schemas/RetailMediaExternalv1KeywordsModelResource'
+        errors:
+          items:
+            $ref: '#/components/schemas/RetailMediaExternalv1ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/RetailMediaExternalv1ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+      type: object
+    RetailMediaExternalv1ResourceOutcome:
+      description: A response object containing errors or warnings if required
+      example:
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          source:
+            key: source
+          stackTrace: stackTrace
+          detail: detail
+          type: type
+          title: title
+          status: 6
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          source:
+            key: source
+          stackTrace: stackTrace
+          detail: detail
+          type: type
+          title: title
+          status: 6
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          source:
+            key: source
+          stackTrace: stackTrace
+          detail: detail
+          type: type
+          title: title
+          status: 6
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          source:
+            key: source
+          stackTrace: stackTrace
+          detail: detail
+          type: type
+          title: title
+          status: 6
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/RetailMediaExternalv1ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/RetailMediaExternalv1ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+      type: object
+    RetailMediaExternalv1ProposalStatusModelResponse:
+      description: Wrapper for the proposal status resource
+      example:
+        data:
+          attributes:
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            runnableStatus: NotSubmitted
+            negotiationState: Invalid
+            bookingStatus: NotSubmitted
+            comment: comment
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          source:
+            key: source
+          stackTrace: stackTrace
+          detail: detail
+          type: type
+          title: title
+          status: 6
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          source:
+            key: source
+          stackTrace: stackTrace
+          detail: detail
+          type: type
+          title: title
+          status: 6
+        errors:
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          source:
+            key: source
+          stackTrace: stackTrace
+          detail: detail
+          type: type
+          title: title
+          status: 6
+        - traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          source:
+            key: source
+          stackTrace: stackTrace
+          detail: detail
+          type: type
+          title: title
+          status: 6
+      properties:
+        data:
+          $ref: '#/components/schemas/RetailMediaExternalv1ProposalStatusModelResource'
+        errors:
+          items:
+            $ref: '#/components/schemas/RetailMediaExternalv1ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/RetailMediaExternalv1ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+      type: object
+    RetailMediaExternalv1AddRemoveKeywordsModelRequest:
+      description: Request object to add or remove keywords from a line item
+      example:
+        data:
+          attributes:
+            keywords:
+            - phrase: phrase
+              isDeleted: true
+              matchType: PositiveExactMatch
+            - phrase: phrase
+              isDeleted: true
+              matchType: PositiveExactMatch
+          id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/RetailMediaExternalv1AddRemoveKeywordsModelResource'
+      type: object
+    RetailMediaExternalv1SetBidsModelRequest:
+      description: Request to set bid overrides for specified keywords on a line item
+      example:
+        data:
+          attributes:
+            keywords:
+            - phrase: phrase
+              bid: 0.8008281904610115
+            - phrase: phrase
+              bid: 0.8008281904610115
+          id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/RetailMediaExternalv1SetBidsModelResource'
+      type: object
+    RetailMediaExternalv1KeywordsModelResource:
+      description: Resource wrapper of associated keywords with a line item
+      example:
+        attributes:
+          keywords:
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            matchType: PositiveExactMatch
+            inputKeywords:
+              negativeBroad:
+              - negativeBroad
+              - negativeBroad
+              positiveExact:
+              - positiveExact
+              - positiveExact
+              negativeExact:
+              - negativeExact
+              - negativeExact
+            reviewState: InReview
+            bid: 0.8008281904610115
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          rank:
+          - rank
+          - rank
+        id: id
+        type: type
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/RetailMediaExternalv1KeywordsModel'
+      required:
+      - type
+      type: object
+    RetailMediaExternalv1ProblemDetails:
+      additionalProperties:
+        type: object
+      description: Datamodel for common errors and warnings
+      example:
+        traceIdentifier: traceIdentifier
+        code: code
+        instance: instance
+        source:
+          key: source
+        stackTrace: stackTrace
+        detail: detail
+        type: type
+        title: title
+        status: 6
+      properties:
+        traceIdentifier:
+          type: string
+        code:
+          type: string
+        source:
+          additionalProperties:
+            type: string
+          type: object
+        stackTrace:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          format: int32
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+      type: object
+    RetailMediaExternalv1ProposalStatusModelResource:
+      description: Wrapper for the proposal status
+      example:
+        attributes:
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          runnableStatus: NotSubmitted
+          negotiationState: Invalid
+          bookingStatus: NotSubmitted
+          comment: comment
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/RetailMediaExternalv1ProposalStatusModel'
+      required:
+      - type
+      type: object
+    RetailMediaExternalv1AddRemoveKeywordsModelResource:
+      description: Resource wrapper the keyword add and remove datamodel
+      example:
+        attributes:
+          keywords:
+          - phrase: phrase
+            isDeleted: true
+            matchType: PositiveExactMatch
+          - phrase: phrase
+            isDeleted: true
+            matchType: PositiveExactMatch
+        id: id
+        type: type
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/RetailMediaExternalv1AddRemoveKeywordsModel'
+      required:
+      - type
+      type: object
+    RetailMediaExternalv1SetBidsModelResource:
+      description: Wrapper of the Set Bids datamodel
+      example:
+        attributes:
+          keywords:
+          - phrase: phrase
+            bid: 0.8008281904610115
+          - phrase: phrase
+            bid: 0.8008281904610115
+        id: id
+        type: type
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/RetailMediaExternalv1SetBidsModel'
+      required:
+      - type
+      type: object
+    RetailMediaExternalv1KeywordsModel:
+      description: Datamodel representing keywords associated with a line item
+      example:
+        keywords:
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          matchType: PositiveExactMatch
+          inputKeywords:
+            negativeBroad:
+            - negativeBroad
+            - negativeBroad
+            positiveExact:
+            - positiveExact
+            - positiveExact
+            negativeExact:
+            - negativeExact
+            - negativeExact
+          reviewState: InReview
+          bid: 0.8008281904610115
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        rank:
+        - rank
+        - rank
+      properties:
+        keywords:
+          $ref: '#/components/schemas/RetailMediaExternalv1KeywordDataModel'
+        rank:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+      type: object
+    RetailMediaExternalv1ProposalStatusModel:
+      description: "The proposal status includes the state of the proposal, the status\
+        \ of the booking and approval, as well as any comments explaining why it might\
+        \ have been rejected."
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        runnableStatus: NotSubmitted
+        negotiationState: Invalid
+        bookingStatus: NotSubmitted
+        comment: comment
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        negotiationState:
+          enum:
+          - Invalid
+          - Modified
+          - Submitted
+          - Reviewed
+          - Approved
+          type: string
+        bookingStatus:
+          enum:
+          - NotSubmitted
+          - Submitted
+          - Rejected
+          - Approved
+          type: string
+        runnableStatus:
+          enum:
+          - NotSubmitted
+          - Submitted
+          - Rejected
+          - Approved
+          type: string
+        comment:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - bookingStatus
+      - negotiationState
+      - runnableStatus
+      type: object
+    RetailMediaExternalv1AddRemoveKeywordsModel:
+      description: Data model containing keywords to be added or removed from a line
+        item
+      example:
+        keywords:
+        - phrase: phrase
+          isDeleted: true
+          matchType: PositiveExactMatch
+        - phrase: phrase
+          isDeleted: true
+          matchType: PositiveExactMatch
+      properties:
+        keywords:
+          items:
+            $ref: '#/components/schemas/RetailMediaExternalv1AddRemoveKeywordModel'
+          type: array
+          uniqueItems: false
+      type: object
+    RetailMediaExternalv1SetBidsModel:
+      description: Data model containing keywords and bid overrides to associate to
+        them
+      example:
+        keywords:
+        - phrase: phrase
+          bid: 0.8008281904610115
+        - phrase: phrase
+          bid: 0.8008281904610115
+      properties:
+        keywords:
+          items:
+            $ref: '#/components/schemas/RetailMediaExternalv1SetBidModel'
+          type: array
+          uniqueItems: false
+      type: object
+    RetailMediaExternalv1KeywordDataModel:
+      description: Details for a specific keyword
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        matchType: PositiveExactMatch
+        inputKeywords:
+          negativeBroad:
+          - negativeBroad
+          - negativeBroad
+          positiveExact:
+          - positiveExact
+          - positiveExact
+          negativeExact:
+          - negativeExact
+          - negativeExact
+        reviewState: InReview
+        bid: 0.8008281904610115
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        reviewState:
+          enum:
+          - InReview
+          - Recommended
+          - Approved
+          - AutoApproved
+          - Rejected
+          - AutoRejected
+          type: string
+        matchType:
+          enum:
+          - PositiveExactMatch
+          - NegativeExactMatch
+          - NegativeBroadMatch
+          type: string
+        bid:
+          format: double
+          type: number
+        inputKeywords:
+          $ref: '#/components/schemas/RetailMediaExternalv1InputKeywordsModel'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      type: object
+    RetailMediaExternalv1AddRemoveKeywordModel:
+      description: A single keyword to be added or removed
+      example:
+        phrase: phrase
+        isDeleted: true
+        matchType: PositiveExactMatch
+      properties:
+        phrase:
+          maxLength: 255
+          minLength: 0
+          type: string
+        matchType:
+          enum:
+          - PositiveExactMatch
+          - NegativeExactMatch
+          - NegativeBroadMatch
+          type: string
+        isDeleted:
+          type: boolean
+      type: object
+    RetailMediaExternalv1SetBidModel:
+      description: A single keyword and associated bid override
+      example:
+        phrase: phrase
+        bid: 0.8008281904610115
+      properties:
+        phrase:
+          maxLength: 255
+          minLength: 0
+          type: string
+        bid:
+          format: double
+          type: number
+      type: object
+    RetailMediaExternalv1InputKeywordsModel:
+      description: Input values associated with a keyword
+      example:
+        negativeBroad:
+        - negativeBroad
+        - negativeBroad
+        positiveExact:
+        - positiveExact
+        - positiveExact
+        negativeExact:
+        - negativeExact
+        - negativeExact
+      properties:
+        negativeBroad:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        negativeExact:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        positiveExact:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
       type: object
     JsonApiSingleResponseOfCatalogStatus:
       description: A JSON:API wrapper class to add one JSON:API <typeparamref name="T"
@@ -2949,7 +4833,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2958,7 +4843,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2968,7 +4854,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2977,7 +4864,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3015,7 +4903,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3024,7 +4913,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3034,7 +4924,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3043,7 +4934,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3082,7 +4974,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3091,7 +4984,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3101,7 +4995,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3110,7 +5005,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3123,6 +5019,526 @@ components:
         data:
           items:
             $ref: '#/components/schemas/ResourceOfBrandPreview'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    PlacementPreviewListResponse:
+      description: Data model for a list of response resources
+      example:
+        data:
+        - attributes:
+            pageType: Unknown
+            name: name
+            pageEnvironmentType: Unknown
+            retailerId: retailerId
+          id: id
+          type: type
+        - attributes:
+            pageType: Unknown
+            name: name
+            pageEnvironmentType: Unknown
+            retailerId: retailerId
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ResourceOfPlacementPreview'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    RetailerCpcRateCardPreviewResponse:
+      description: Data model for response resource
+      example:
+        data:
+          attributes:
+            minimumBid: 0.8008281904610115
+            retailerId: retailerId
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfRetailerCpcRateCardPreview'
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    CategoryCpcRateCardPreviewListResponse:
+      description: Data model for a list of response resources
+      example:
+        data:
+        - attributes:
+            minimumBid: 0.8008281904610115
+            retailerId: retailerId
+            categoryId: categoryId
+          id: id
+          type: type
+        - attributes:
+            minimumBid: 0.8008281904610115
+            retailerId: retailerId
+            categoryId: categoryId
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ResourceOfCategoryCpcRateCardPreview'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    Creative202210Response:
+      description: Data model for response resource
+      example:
+        data:
+          attributes:
+            formatId: 5
+            templateVariableValues:
+            - colorVariableValue:
+                color: color
+              textVariableValue:
+                text: text
+              filesVariableValue:
+                assetIds:
+                - assetIds
+                - assetIds
+              choiceVariableValue:
+                chosenOptions:
+                - chosenOptions
+                - chosenOptions
+              hyperlinkVariableValue:
+                url: url
+              id: id
+            - colorVariableValue:
+                color: color
+              textVariableValue:
+                text: text
+              filesVariableValue:
+                assetIds:
+                - assetIds
+                - assetIds
+              choiceVariableValue:
+                chosenOptions:
+                - chosenOptions
+                - chosenOptions
+              hyperlinkVariableValue:
+                url: url
+              id: id
+            templateName: templateName
+            associatedLineItemIds:
+            - associatedLineItemIds
+            - associatedLineItemIds
+            environments:
+            - pageType: Search
+              environments:
+              - Web
+              - Web
+            - pageType: Search
+              environments:
+              - Web
+              - Web
+            brandId: 0
+            creativeFormatType: Unknown
+            name: name
+            retailerId: 6
+            templateId: 1
+            status: Ready
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfCreative202210'
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    Creative202210ListResponse:
+      description: Data model for a list of response resources
+      example:
+        data:
+        - attributes:
+            formatId: 5
+            templateVariableValues:
+            - colorVariableValue:
+                color: color
+              textVariableValue:
+                text: text
+              filesVariableValue:
+                assetIds:
+                - assetIds
+                - assetIds
+              choiceVariableValue:
+                chosenOptions:
+                - chosenOptions
+                - chosenOptions
+              hyperlinkVariableValue:
+                url: url
+              id: id
+            - colorVariableValue:
+                color: color
+              textVariableValue:
+                text: text
+              filesVariableValue:
+                assetIds:
+                - assetIds
+                - assetIds
+              choiceVariableValue:
+                chosenOptions:
+                - chosenOptions
+                - chosenOptions
+              hyperlinkVariableValue:
+                url: url
+              id: id
+            templateName: templateName
+            associatedLineItemIds:
+            - associatedLineItemIds
+            - associatedLineItemIds
+            environments:
+            - pageType: Search
+              environments:
+              - Web
+              - Web
+            - pageType: Search
+              environments:
+              - Web
+              - Web
+            brandId: 0
+            creativeFormatType: Unknown
+            name: name
+            retailerId: 6
+            templateId: 1
+            status: Ready
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        - attributes:
+            formatId: 5
+            templateVariableValues:
+            - colorVariableValue:
+                color: color
+              textVariableValue:
+                text: text
+              filesVariableValue:
+                assetIds:
+                - assetIds
+                - assetIds
+              choiceVariableValue:
+                chosenOptions:
+                - chosenOptions
+                - chosenOptions
+              hyperlinkVariableValue:
+                url: url
+              id: id
+            - colorVariableValue:
+                color: color
+              textVariableValue:
+                text: text
+              filesVariableValue:
+                assetIds:
+                - assetIds
+                - assetIds
+              choiceVariableValue:
+                chosenOptions:
+                - chosenOptions
+                - chosenOptions
+              hyperlinkVariableValue:
+                url: url
+              id: id
+            templateName: templateName
+            associatedLineItemIds:
+            - associatedLineItemIds
+            - associatedLineItemIds
+            environments:
+            - pageType: Search
+              environments:
+              - Web
+              - Web
+            - pageType: Search
+              environments:
+              - Web
+              - Web
+            brandId: 0
+            creativeFormatType: Unknown
+            name: name
+            retailerId: 6
+            templateId: 1
+            status: Ready
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ResourceOfCreative202210'
           type: array
           x-nullable: false
         warnings:
@@ -3171,6 +5587,148 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ResourceOfSkuSearchRequestPreview'
+      type: object
+      x-nullable: false
+    CreativeCreateModel202207:
+      description: Create model of a creative
+      example:
+        templateVariableValues:
+        - colorVariableValue:
+            color: color
+          textVariableValue:
+            text: text
+          filesVariableValue:
+            assetIds:
+            - assetIds
+            - assetIds
+          choiceVariableValue:
+            chosenOptions:
+            - chosenOptions
+            - chosenOptions
+          hyperlinkVariableValue:
+            url: url
+          id: id
+        - colorVariableValue:
+            color: color
+          textVariableValue:
+            text: text
+          filesVariableValue:
+            assetIds:
+            - assetIds
+            - assetIds
+          choiceVariableValue:
+            chosenOptions:
+            - chosenOptions
+            - chosenOptions
+          hyperlinkVariableValue:
+            url: url
+          id: id
+        brandId: 0
+        name: name
+        retailerId: 6
+        templateId: 1
+      properties:
+        name:
+          description: The name of the creative
+          type: string
+          x-nullable: false
+        brandId:
+          description: The brand associated to the creative
+          format: int64
+          type: integer
+          x-nullable: false
+        retailerId:
+          description: The retailer associated to the creative
+          format: int32
+          type: integer
+          x-nullable: false
+        templateId:
+          description: The creative template used for this creative
+          format: int32
+          type: integer
+          x-nullable: false
+        templateVariableValues:
+          description: The template chosen values
+          items:
+            $ref: '#/components/schemas/TemplateVariableValue'
+          type: array
+          x-nullable: false
+      required:
+      - name
+      - retailerId
+      - templateId
+      - templateVariableValues
+      type: object
+      x-nullable: false
+    CreativeUpdateModel202207:
+      description: Update model of a creative
+      example:
+        templateVariableValues:
+        - colorVariableValue:
+            color: color
+          textVariableValue:
+            text: text
+          filesVariableValue:
+            assetIds:
+            - assetIds
+            - assetIds
+          choiceVariableValue:
+            chosenOptions:
+            - chosenOptions
+            - chosenOptions
+          hyperlinkVariableValue:
+            url: url
+          id: id
+        - colorVariableValue:
+            color: color
+          textVariableValue:
+            text: text
+          filesVariableValue:
+            assetIds:
+            - assetIds
+            - assetIds
+          choiceVariableValue:
+            chosenOptions:
+            - chosenOptions
+            - chosenOptions
+          hyperlinkVariableValue:
+            url: url
+          id: id
+        brandId: 0
+        name: name
+        retailerId: 6
+        templateId: 1
+      properties:
+        name:
+          description: The name of the creative
+          type: string
+          x-nullable: false
+        brandId:
+          description: The brand associated to the creative
+          format: int64
+          type: integer
+          x-nullable: false
+        retailerId:
+          description: The retailer associated to the creative
+          format: int32
+          type: integer
+          x-nullable: false
+        templateId:
+          description: The creative template used for this creative
+          format: int32
+          type: integer
+          x-nullable: false
+        templateVariableValues:
+          description: The template chosen values
+          items:
+            $ref: '#/components/schemas/TemplateVariableValue'
+          type: array
+          x-nullable: false
+      required:
+      - name
+      - retailerId
+      - templateId
+      - templateVariableValues
       type: object
       x-nullable: false
     JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus:
@@ -3242,6 +5800,7 @@ components:
     ProblemDetails:
       description: Data model for common error or warning
       example:
+        traceId: traceId
         traceIdentifier: traceIdentifier
         code: code
         instance: instance
@@ -3252,10 +5811,13 @@ components:
         type: unknown
         title: title
       properties:
-        traceIdentifier:
+        traceId:
           description: The request correlation ID this problem comes from.
           type: string
-          x-nullable: false
+        traceIdentifier:
+          description: "The request correlation ID this problem comes from. (deprecated,\
+            \ use traceId instead)"
+          type: string
         type:
           description: The problem's category.
           enum:
@@ -3336,6 +5898,135 @@ components:
           type: string
       type: object
       x-nullable: false
+    ResourceOfPlacementPreview:
+      description: Data model for a Resource
+      example:
+        attributes:
+          pageType: Unknown
+          name: name
+          pageEnvironmentType: Unknown
+          retailerId: retailerId
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/PlacementPreview'
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          description: Canonical type name of the entity
+          type: string
+      type: object
+      x-nullable: false
+    ResourceOfRetailerCpcRateCardPreview:
+      description: Data model for a Resource
+      example:
+        attributes:
+          minimumBid: 0.8008281904610115
+          retailerId: retailerId
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RetailerCpcRateCardPreview'
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          description: Canonical type name of the entity
+          type: string
+      type: object
+      x-nullable: false
+    ResourceOfCategoryCpcRateCardPreview:
+      description: Data model for a Resource
+      example:
+        attributes:
+          minimumBid: 0.8008281904610115
+          retailerId: retailerId
+          categoryId: categoryId
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CategoryCpcRateCardPreview'
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          description: Canonical type name of the entity
+          type: string
+      type: object
+      x-nullable: false
+    ResourceOfCreative202210:
+      description: Data model for a Resource
+      example:
+        attributes:
+          formatId: 5
+          templateVariableValues:
+          - colorVariableValue:
+              color: color
+            textVariableValue:
+              text: text
+            filesVariableValue:
+              assetIds:
+              - assetIds
+              - assetIds
+            choiceVariableValue:
+              chosenOptions:
+              - chosenOptions
+              - chosenOptions
+            hyperlinkVariableValue:
+              url: url
+            id: id
+          - colorVariableValue:
+              color: color
+            textVariableValue:
+              text: text
+            filesVariableValue:
+              assetIds:
+              - assetIds
+              - assetIds
+            choiceVariableValue:
+              chosenOptions:
+              - chosenOptions
+              - chosenOptions
+            hyperlinkVariableValue:
+              url: url
+            id: id
+          templateName: templateName
+          associatedLineItemIds:
+          - associatedLineItemIds
+          - associatedLineItemIds
+          environments:
+          - pageType: Search
+            environments:
+            - Web
+            - Web
+          - pageType: Search
+            environments:
+            - Web
+            - Web
+          brandId: 0
+          creativeFormatType: Unknown
+          name: name
+          retailerId: 6
+          templateId: 1
+          status: Ready
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/Creative202210'
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          description: Canonical type name of the entity
+          type: string
+      type: object
+      x-nullable: false
     JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequestPreview:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with Type, and\r\nAttributes properties"
@@ -3377,6 +6068,43 @@ components:
           type: string
         attributes:
           $ref: '#/components/schemas/SkuSearchRequestPreview'
+      type: object
+      x-nullable: false
+    TemplateVariableValue:
+      description: A value for a variable in a creative template.
+      example:
+        colorVariableValue:
+          color: color
+        textVariableValue:
+          text: text
+        filesVariableValue:
+          assetIds:
+          - assetIds
+          - assetIds
+        choiceVariableValue:
+          chosenOptions:
+          - chosenOptions
+          - chosenOptions
+        hyperlinkVariableValue:
+          url: url
+        id: id
+      properties:
+        id:
+          description: The id of the template variable the value is applied to
+          type: string
+          x-nullable: false
+        textVariableValue:
+          $ref: '#/components/schemas/TextVariableValue'
+        choiceVariableValue:
+          $ref: '#/components/schemas/ChoiceVariableValue'
+        colorVariableValue:
+          $ref: '#/components/schemas/ColorVariableValue'
+        filesVariableValue:
+          $ref: '#/components/schemas/FilesVariableValue'
+        hyperlinkVariableValue:
+          $ref: '#/components/schemas/HyperlinkVariableValue'
+      required:
+      - id
       type: object
       x-nullable: false
     ExternalCatalogStatus:
@@ -3596,6 +6324,243 @@ components:
       - name
       type: object
       x-nullable: false
+    PlacementPreview:
+      description: Ad Placement information on a page
+      example:
+        pageType: Unknown
+        name: name
+        pageEnvironmentType: Unknown
+        retailerId: retailerId
+      properties:
+        name:
+          description: Name of the placement
+          type: string
+          x-nullable: false
+        retailerId:
+          description: Retailer Id
+          type: string
+          x-nullable: false
+        pageType:
+          description: Page Type
+          enum:
+          - Unknown
+          - Search
+          - Home
+          - Browse
+          - Checkout
+          - Category
+          - ProductDetail
+          - Confirmation
+          - Merchandising
+          - Deals
+          type: string
+          x-nullable: false
+        pageEnvironmentType:
+          description: Page Environment
+          enum:
+          - Unknown
+          - Web
+          - Mobile
+          - App
+          type: string
+          x-nullable: false
+      required:
+      - name
+      - pageEnvironmentType
+      - pageType
+      - retailerId
+      type: object
+      x-nullable: false
+    RetailerCpcRateCardPreview:
+      description: Represents the Minimum CPC for a Retailer Id
+      example:
+        minimumBid: 0.8008281904610115
+        retailerId: retailerId
+      properties:
+        retailerId:
+          description: Retailer Id
+          type: string
+          x-nullable: false
+        minimumBid:
+          description: Minimum Bid
+          format: double
+          type: number
+          x-nullable: false
+      required:
+      - minimumBid
+      - retailerId
+      type: object
+      x-nullable: false
+    CategoryCpcRateCardPreview:
+      description: Represents all minimum cpc rates for a retailer and category id
+      example:
+        minimumBid: 0.8008281904610115
+        retailerId: retailerId
+        categoryId: categoryId
+      properties:
+        retailerId:
+          description: Retailer Id
+          type: string
+          x-nullable: false
+        categoryId:
+          description: Category Id
+          type: string
+          x-nullable: false
+        minimumBid:
+          description: minimum cpc bid
+          format: double
+          type: number
+          x-nullable: false
+      required:
+      - categoryId
+      - minimumBid
+      - retailerId
+      type: object
+      x-nullable: false
+    Creative202210:
+      description: A creative entity
+      example:
+        formatId: 5
+        templateVariableValues:
+        - colorVariableValue:
+            color: color
+          textVariableValue:
+            text: text
+          filesVariableValue:
+            assetIds:
+            - assetIds
+            - assetIds
+          choiceVariableValue:
+            chosenOptions:
+            - chosenOptions
+            - chosenOptions
+          hyperlinkVariableValue:
+            url: url
+          id: id
+        - colorVariableValue:
+            color: color
+          textVariableValue:
+            text: text
+          filesVariableValue:
+            assetIds:
+            - assetIds
+            - assetIds
+          choiceVariableValue:
+            chosenOptions:
+            - chosenOptions
+            - chosenOptions
+          hyperlinkVariableValue:
+            url: url
+          id: id
+        templateName: templateName
+        associatedLineItemIds:
+        - associatedLineItemIds
+        - associatedLineItemIds
+        environments:
+        - pageType: Search
+          environments:
+          - Web
+          - Web
+        - pageType: Search
+          environments:
+          - Web
+          - Web
+        brandId: 0
+        creativeFormatType: Unknown
+        name: name
+        retailerId: 6
+        templateId: 1
+        status: Ready
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        name:
+          description: Name
+          type: string
+          x-nullable: false
+        status:
+          description: Creative Status
+          enum:
+          - Ready
+          - In_Use
+          - Archived
+          - Deleted
+          type: string
+          x-nullable: false
+        brandId:
+          description: Brand Id
+          format: int64
+          type: integer
+          x-nullable: true
+        retailerId:
+          description: Retailer Id
+          format: int32
+          type: integer
+          x-nullable: false
+        templateId:
+          description: Template Id
+          format: int32
+          type: integer
+          x-nullable: false
+        templateName:
+          description: Template Name
+          type: string
+          x-nullable: false
+        formatId:
+          description: Format Id
+          format: int32
+          type: integer
+          x-nullable: false
+        associatedLineItemIds:
+          description: Associated Line Item Ids
+          items:
+            type: string
+            x-nullable: false
+          type: array
+          x-nullable: false
+        updatedAt:
+          description: Updated at time
+          format: date-time
+          type: string
+          x-nullable: false
+        creativeFormatType:
+          description: Creative format type
+          enum:
+          - Unknown
+          - FlagShip
+          - Showcase
+          - SponsoredProducts
+          - Butterfly
+          - BundleBoost
+          - IAB
+          - CUSTOM
+          - DisplayPanel
+          - DigitalShelfTalker
+          type: string
+          x-nullable: false
+        environments:
+          description: "Environment type (e.g. mobile, web, app)"
+          items:
+            $ref: '#/components/schemas/PageTypeEnvironment'
+          type: array
+          x-nullable: false
+        templateVariableValues:
+          description: The template chosen values
+          items:
+            $ref: '#/components/schemas/TemplateVariableValue'
+          type: array
+          x-nullable: false
+      required:
+      - creativeFormatType
+      - environments
+      - formatId
+      - name
+      - retailerId
+      - status
+      - templateId
+      - templateName
+      - templateVariableValues
+      type: object
+      x-nullable: false
     ExternalCatalogRequestPreview:
       description: A request for a catalog under the specified format. Currently "json-newline"
         is supported.
@@ -3659,6 +6624,124 @@ components:
       required:
       - queryString
       - retailerId
+      type: object
+      x-nullable: false
+    TextVariableValue:
+      description: A value of a template text variable
+      example:
+        text: text
+      properties:
+        text:
+          description: The displayed text
+          type: string
+          x-nullable: false
+      required:
+      - text
+      type: object
+      x-nullable: false
+    ChoiceVariableValue:
+      description: A value of a template choice variable (among different accepted
+        options)
+      example:
+        chosenOptions:
+        - chosenOptions
+        - chosenOptions
+      properties:
+        chosenOptions:
+          description: The chosen options
+          items:
+            type: string
+            x-nullable: false
+          type: array
+          x-nullable: false
+      required:
+      - chosenOptions
+      type: object
+      x-nullable: false
+    ColorVariableValue:
+      description: A value of a template color variable
+      example:
+        color: color
+      properties:
+        color:
+          description: The displayed color (HEX format)
+          pattern: "^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$"
+          type: string
+          x-nullable: false
+      required:
+      - color
+      type: object
+      x-nullable: false
+    FilesVariableValue:
+      description: "A value of a template file variable (one or several files), like\
+        \ images in a creative"
+      example:
+        assetIds:
+        - assetIds
+        - assetIds
+      properties:
+        assetIds:
+          description: The assets representing the images to be displayed
+          items:
+            type: string
+            x-nullable: false
+          minLength: 1
+          type: array
+          x-nullable: false
+      required:
+      - assetIds
+      type: object
+      x-nullable: false
+    HyperlinkVariableValue:
+      description: A value of a template hyperlink variable
+      example:
+        url: url
+      properties:
+        url:
+          description: The url to redirect to
+          type: string
+          x-nullable: false
+      required:
+      - url
+      type: object
+      x-nullable: false
+    PageTypeEnvironment:
+      description: The PageType-Environment Tuples for creatives
+      example:
+        pageType: Search
+        environments:
+        - Web
+        - Web
+      properties:
+        pageType:
+          description: Creative PageType
+          enum:
+          - Search
+          - Home
+          - Browse
+          - Checkout
+          - Category
+          - ProductDetail
+          - Confirmation
+          - Merchandising
+          - Deals
+          type: string
+          x-nullable: false
+        environments:
+          description: List of environments per PageType
+          items:
+            enum:
+            - Web
+            - Mobile
+            - App
+            - Lockout
+            - Mixed
+            - iOS
+            - Android
+            type: string
+            x-nullable: false
+          type: array
+          x-nullable: false
       type: object
       x-nullable: false
     JsonApiPageResponseOfBalance:
@@ -5610,20 +8693,16 @@ components:
           description: "Total size of file, only populated on success"
           format: int64
           type: integer
-          x-nullable: true
         md5Checksum:
           description: "The MD5 checksum of the content, only populated on success"
           type: string
-          x-nullable: true
         message:
           description: "Failure message, only populated on failure"
           type: string
-          x-nullable: true
         rowCount:
           description: "Rows of data in report, only populated on success"
           format: int64
           type: integer
-          x-nullable: true
         status:
           description: "One of \"pending\", \"success\", \"failure\", or \"expired\""
           enum:
@@ -5737,7 +8816,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -5746,7 +8826,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -5756,7 +8837,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -5765,7 +8847,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -5816,7 +8899,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -5825,7 +8909,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -5835,7 +8920,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -5844,7 +8930,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -5859,6 +8946,150 @@ components:
             $ref: '#/components/schemas/ResourceOfProductButtonResponse'
           type: array
           x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    JsonApiSingleResponseOfLineItemBidMultipliers:
+      description: Data model for the response of a line item bid multiplier
+      example:
+        data:
+          attributes:
+            search: 0.8008281904610115
+            productDetail: 5.962133916683182
+            deals: 7.061401241503109
+            categories: 1.4658129805029452
+            confirmation: 5.637376656633329
+            merchandising: 2.3021358869347655
+            checkout: 9.301444243932576
+            homepage: 6.027456183070403
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersAndLineItemBidMultipliers'
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonError'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonWarning'
+          type: array
+          x-nullable: false
+      required:
+      - data
+      type: object
+      x-nullable: false
+    LineItemBidMultipliersResponse:
+      description: Data model for response resource
+      example:
+        data:
+          attributes:
+            search: 0.8008281904610115
+            productDetail: 5.962133916683182
+            deals: 7.061401241503109
+            categories: 1.4658129805029452
+            confirmation: 5.637376656633329
+            merchandising: 2.3021358869347655
+            checkout: 9.301444243932576
+            homepage: 6.027456183070403
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfLineItemBidMultipliers'
         warnings:
           items:
             $ref: '#/components/schemas/ProblemDetails'
@@ -5921,6 +9152,26 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
+    LineItemBidMultipliersRequest:
+      description: Data model for an input resource
+      example:
+        data:
+          attributes:
+            search: 0.8008281904610115
+            productDetail: 5.962133916683182
+            deals: 7.061401241503109
+            categories: 1.4658129805029452
+            confirmation: 5.637376656633329
+            merchandising: 2.3021358869347655
+            checkout: 9.301444243932576
+            homepage: 6.027456183070403
+          id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfLineItemBidMultipliers'
+      type: object
+      x-nullable: false
     ResourceOfProductButtonResponse:
       description: Data model for an output resource
       example:
@@ -5937,6 +9188,60 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/ExternalProductButtonResponse'
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          description: Canonical type name of the entity
+          type: string
+      type: object
+      x-nullable: false
+    JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersAndLineItemBidMultipliers:
+      description: Response object for line item bid multiplier calls
+      example:
+        attributes:
+          search: 0.8008281904610115
+          productDetail: 5.962133916683182
+          deals: 7.061401241503109
+          categories: 1.4658129805029452
+          confirmation: 5.637376656633329
+          merchandising: 2.3021358869347655
+          checkout: 9.301444243932576
+          homepage: 6.027456183070403
+        id: id
+        type: type
+      properties:
+        id:
+          format: long-id
+          type: string
+          x-nullable: false
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/LineItemBidMultipliers'
+      required:
+      - id
+      - type
+      type: object
+      x-nullable: false
+    ResourceOfLineItemBidMultipliers:
+      description: Data model for a Resource
+      example:
+        attributes:
+          search: 0.8008281904610115
+          productDetail: 5.962133916683182
+          deals: 7.061401241503109
+          categories: 1.4658129805029452
+          confirmation: 5.637376656633329
+          merchandising: 2.3021358869347655
+          checkout: 9.301444243932576
+          homepage: 6.027456183070403
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/LineItemBidMultipliers'
         id:
           description: Id of the entity
           type: string
@@ -6010,6 +9315,52 @@ components:
       - name
       - rank
       - skus
+      type: object
+      x-nullable: false
+    LineItemBidMultipliers:
+      description: Data model representing bid multipliers on a line item
+      example:
+        search: 0.8008281904610115
+        productDetail: 5.962133916683182
+        deals: 7.061401241503109
+        categories: 1.4658129805029452
+        confirmation: 5.637376656633329
+        merchandising: 2.3021358869347655
+        checkout: 9.301444243932576
+        homepage: 6.027456183070403
+      properties:
+        search:
+          format: double
+          type: number
+          x-nullable: false
+        homepage:
+          format: double
+          type: number
+          x-nullable: false
+        categories:
+          format: double
+          type: number
+          x-nullable: false
+        productDetail:
+          format: double
+          type: number
+          x-nullable: false
+        confirmation:
+          format: double
+          type: number
+          x-nullable: false
+        merchandising:
+          format: double
+          type: number
+          x-nullable: false
+        deals:
+          format: double
+          type: number
+          x-nullable: false
+        checkout:
+          format: double
+          type: number
+          x-nullable: false
       type: object
       x-nullable: false
     ExternalProductButtonRequest:

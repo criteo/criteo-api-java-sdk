@@ -46,11 +46,11 @@ public class Price {
   }
 
    /**
-   * The price represented as a number.
+   * The currency of the price.
    * @return currency
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The price represented as a number.")
+  @ApiModelProperty(value = "The currency of the price.")
 
   public String getCurrency() {
     return currency;
@@ -69,11 +69,11 @@ public class Price {
   }
 
    /**
-   * The currency of the price.
+   * The price represented as a number. See JSON&#39;s number specification for more details.
    * @return value
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The currency of the price.")
+  @ApiModelProperty(value = "The price represented as a number. See JSON's number specification for more details.")
 
   public String getValue() {
     return value;

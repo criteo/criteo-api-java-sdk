@@ -48,13 +48,7 @@ public class LocationV1 {
   public enum RegistryTypeEnum {
     UNKNOWN("Unknown"),
     
-    CATALOG("Catalog"),
-    
-    STORE("Store"),
-    
-    POINTOFINTEREST("PointOfInterest"),
-    
-    GEODIVISION("GeoDivision");
+    POINTOFINTEREST("PointOfInterest");
 
     private String value;
 

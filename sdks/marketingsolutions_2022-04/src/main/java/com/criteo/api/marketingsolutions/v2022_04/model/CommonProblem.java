@@ -33,6 +33,10 @@ import java.util.Map;
 @ApiModel(description = "Common problem object. Can be specialized as needed.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CommonProblem {
+  public static final String SERIALIZED_NAME_TRACE_ID = "traceId";
+  @SerializedName(SERIALIZED_NAME_TRACE_ID)
+  private String traceId;
+
   public static final String SERIALIZED_NAME_TRACE_IDENTIFIER = "traceIdentifier";
   @SerializedName(SERIALIZED_NAME_TRACE_IDENTIFIER)
   private String traceIdentifier;
@@ -125,6 +129,29 @@ public class CommonProblem {
   private String stackTrace;
 
 
+  public CommonProblem traceId(String traceId) {
+    
+    this.traceId = traceId;
+    return this;
+  }
+
+   /**
+   * The request correlation ID this problem comes from.
+   * @return traceId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The request correlation ID this problem comes from.")
+
+  public String getTraceId() {
+    return traceId;
+  }
+
+
+  public void setTraceId(String traceId) {
+    this.traceId = traceId;
+  }
+
+
   public CommonProblem traceIdentifier(String traceIdentifier) {
     
     this.traceIdentifier = traceIdentifier;
@@ -132,11 +159,11 @@ public class CommonProblem {
   }
 
    /**
-   * The request correlation ID this problem comes from.
+   * The request correlation ID this problem comes from. (deprecated, use traceId instead)
    * @return traceIdentifier
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The request correlation ID this problem comes from.")
+  @ApiModelProperty(value = "The request correlation ID this problem comes from. (deprecated, use traceId instead)")
 
   public String getTraceIdentifier() {
     return traceIdentifier;
@@ -326,7 +353,8 @@ public class CommonProblem {
       return false;
     }
     CommonProblem commonProblem = (CommonProblem) o;
-    return Objects.equals(this.traceIdentifier, commonProblem.traceIdentifier) &&
+    return Objects.equals(this.traceId, commonProblem.traceId) &&
+        Objects.equals(this.traceIdentifier, commonProblem.traceIdentifier) &&
         Objects.equals(this.type, commonProblem.type) &&
         Objects.equals(this.code, commonProblem.code) &&
         Objects.equals(this.instance, commonProblem.instance) &&
@@ -338,13 +366,14 @@ public class CommonProblem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(traceIdentifier, type, code, instance, title, detail, source, stackTrace);
+    return Objects.hash(traceId, traceIdentifier, type, code, instance, title, detail, source, stackTrace);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CommonProblem {\n");
+    sb.append("    traceId: ").append(toIndentedString(traceId)).append("\n");
     sb.append("    traceIdentifier: ").append(toIndentedString(traceIdentifier)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");

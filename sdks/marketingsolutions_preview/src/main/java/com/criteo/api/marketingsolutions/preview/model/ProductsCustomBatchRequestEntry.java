@@ -26,9 +26,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * A batch entry encoding a single non-batch products request.
+ * A product event for a batch request.
  */
-@ApiModel(description = "A batch entry encoding a single non-batch products request.")
+@ApiModel(description = "A product event for a batch request.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProductsCustomBatchRequestEntry {
   public static final String SERIALIZED_NAME_BATCH_ID = "batchId";

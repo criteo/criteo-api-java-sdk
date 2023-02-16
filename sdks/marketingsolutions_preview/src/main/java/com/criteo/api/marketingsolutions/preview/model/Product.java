@@ -2212,11 +2212,11 @@ public class Product {
   }
 
    /**
-   * The ID of the seller (case sensitive and 50 UTF8 characters max). This information is required by the Criteo Resellers Program.
+   * The ID of the seller (case sensitive and 50 UTF8 characters max). This information is required by the Criteo Offsite Ads.
    * @return sellerId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the seller (case sensitive and 50 UTF8 characters max). This information is required by the Criteo Resellers Program.")
+  @ApiModelProperty(value = "The ID of the seller (case sensitive and 50 UTF8 characters max). This information is required by the Criteo Offsite Ads.")
 
   public String getSellerId() {
     return sellerId;

@@ -71,8 +71,8 @@ public class RecoApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Product set created successfully </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Unable to parse the request parameters </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> Cannot process entity content </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
@@ -126,8 +126,8 @@ public class RecoApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Product set created successfully </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Unable to parse the request parameters </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> Cannot process entity content </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
@@ -147,8 +147,8 @@ public class RecoApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Product set created successfully </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Unable to parse the request parameters </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> Cannot process entity content </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */
@@ -170,8 +170,8 @@ public class RecoApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Product set created successfully </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Unable to parse the request parameters </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> Cannot process entity content </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation forbidden </td><td>  -  </td></tr>
         <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
      </table>
      */

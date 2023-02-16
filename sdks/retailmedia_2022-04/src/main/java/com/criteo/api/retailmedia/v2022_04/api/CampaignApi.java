@@ -4983,8 +4983,8 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postApiV1ExternalAccountCampaignsByAccountIdCall(String accountId, ExternalPostCampaign externalPostCampaign, final ApiCallback _callback) throws ApiException {
@@ -5042,8 +5042,8 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
     public JsonApiSingleResponseOfCampaign postApiV1ExternalAccountCampaignsByAccountId(String accountId, ExternalPostCampaign externalPostCampaign) throws ApiException {
@@ -5061,8 +5061,8 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<JsonApiSingleResponseOfCampaign> postApiV1ExternalAccountCampaignsByAccountIdWithHttpInfo(String accountId, ExternalPostCampaign externalPostCampaign) throws ApiException {
@@ -5082,8 +5082,8 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postApiV1ExternalAccountCampaignsByAccountIdAsync(String accountId, ExternalPostCampaign externalPostCampaign, final ApiCallback<JsonApiSingleResponseOfCampaign> _callback) throws ApiException {

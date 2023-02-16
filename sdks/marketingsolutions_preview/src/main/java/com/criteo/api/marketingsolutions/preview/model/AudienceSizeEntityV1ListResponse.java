@@ -29,9 +29,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A class implementing the response  of the Criteo API as described in API Guild Guidelines with collection of entities as body
+ * A top-level object that encapsulates a Criteo API response for several entities
  */
-@ApiModel(description = "A class implementing the response  of the Criteo API as described in API Guild Guidelines with collection of entities as body")
+@ApiModel(description = "A top-level object that encapsulates a Criteo API response for several entities")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AudienceSizeEntityV1ListResponse {
   public static final String SERIALIZED_NAME_DATA = "data";

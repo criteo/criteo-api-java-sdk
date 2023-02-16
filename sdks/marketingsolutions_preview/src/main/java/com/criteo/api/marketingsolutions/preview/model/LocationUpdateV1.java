@@ -15,7 +15,6 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.GeoDivisionV1;
 import com.criteo.api.marketingsolutions.preview.model.PointOfInterestV1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -38,10 +37,6 @@ public class LocationUpdateV1 {
   @SerializedName(SERIALIZED_NAME_POINTS_OF_INTEREST)
   private List<PointOfInterestV1> pointsOfInterest = null;
 
-  public static final String SERIALIZED_NAME_GEO_DIVISIONS = "geoDivisions";
-  @SerializedName(SERIALIZED_NAME_GEO_DIVISIONS)
-  private List<GeoDivisionV1> geoDivisions = null;
-
   public static final String SERIALIZED_NAME_RADIUS_IN_KM = "radiusInKm";
   @SerializedName(SERIALIZED_NAME_RADIUS_IN_KM)
   private Integer radiusInKm;
@@ -51,13 +46,7 @@ public class LocationUpdateV1 {
    */
   @JsonAdapter(RegistryTypeEnum.Adapter.class)
   public enum RegistryTypeEnum {
-    CATALOG("Catalog"),
-    
-    STORE("Store"),
-    
-    POINTOFINTEREST("PointOfInterest"),
-    
-    GEODIVISION("GeoDivision");
+    POINTOFINTEREST("PointOfInterest");
 
     private String value;
 
@@ -133,37 +122,6 @@ public class LocationUpdateV1 {
   }
 
 
-  public LocationUpdateV1 geoDivisions(List<GeoDivisionV1> geoDivisions) {
-    
-    this.geoDivisions = geoDivisions;
-    return this;
-  }
-
-  public LocationUpdateV1 addGeoDivisionsItem(GeoDivisionV1 geoDivisionsItem) {
-    if (this.geoDivisions == null) {
-      this.geoDivisions = new ArrayList<>();
-    }
-    this.geoDivisions.add(geoDivisionsItem);
-    return this;
-  }
-
-   /**
-   * Get geoDivisions
-   * @return geoDivisions
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public List<GeoDivisionV1> getGeoDivisions() {
-    return geoDivisions;
-  }
-
-
-  public void setGeoDivisions(List<GeoDivisionV1> geoDivisions) {
-    this.geoDivisions = geoDivisions;
-  }
-
-
   public LocationUpdateV1 radiusInKm(Integer radiusInKm) {
     
     this.radiusInKm = radiusInKm;
@@ -220,14 +178,13 @@ public class LocationUpdateV1 {
     }
     LocationUpdateV1 locationUpdateV1 = (LocationUpdateV1) o;
     return Objects.equals(this.pointsOfInterest, locationUpdateV1.pointsOfInterest) &&
-        Objects.equals(this.geoDivisions, locationUpdateV1.geoDivisions) &&
         Objects.equals(this.radiusInKm, locationUpdateV1.radiusInKm) &&
         Objects.equals(this.registryType, locationUpdateV1.registryType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(pointsOfInterest, geoDivisions, radiusInKm, registryType);
+    return Objects.hash(pointsOfInterest, radiusInKm, registryType);
   }
 
   @Override
@@ -235,7 +192,6 @@ public class LocationUpdateV1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class LocationUpdateV1 {\n");
     sb.append("    pointsOfInterest: ").append(toIndentedString(pointsOfInterest)).append("\n");
-    sb.append("    geoDivisions: ").append(toIndentedString(geoDivisions)).append("\n");
     sb.append("    radiusInKm: ").append(toIndentedString(radiusInKm)).append("\n");
     sb.append("    registryType: ").append(toIndentedString(registryType)).append("\n");
     sb.append("}");

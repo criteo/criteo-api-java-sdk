@@ -29,9 +29,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents an API response message containing the usual outcome fields (warnings+errors), and a valueResource data,  i.e. data is not an entity (no id). This can be used for association objects.
+ * A top-level object that encapsulates a Criteo API response for a single value
  */
-@ApiModel(description = "Represents an API response message containing the usual outcome fields (warnings+errors), and a valueResource data,  i.e. data is not an entity (no id). This can be used for association objects.")
+@ApiModel(description = "A top-level object that encapsulates a Criteo API response for a single value")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AudienceSizeEstimationV1Response {
   public static final String SERIALIZED_NAME_DATA = "data";

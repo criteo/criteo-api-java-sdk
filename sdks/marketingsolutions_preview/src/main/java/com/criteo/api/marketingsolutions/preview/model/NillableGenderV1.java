@@ -35,8 +35,6 @@ public class NillableGenderV1 {
    */
   @JsonAdapter(ValueEnum.Adapter.class)
   public enum ValueEnum {
-    UNKNOWN("Unknown"),
-    
     MALE("Male"),
     
     FEMALE("Female");

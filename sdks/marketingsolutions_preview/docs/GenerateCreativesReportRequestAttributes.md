@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | The list of metrics to report. | 
 **dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | The list of dimensions to report. | 
 **timezone** | **String** | The timezone used for the report. Timezone Database format (Tz). |  [optional]
-**adTypes** | **List&lt;String&gt;** | The list of adTypes. |  [optional]
 **adFormats** | **List&lt;String&gt;** | The list of adFormats. |  [optional]
 **displaySizes** | **List&lt;String&gt;** | The list of displaySizes. |  [optional]
 **couponNames** | **List&lt;String&gt;** | The list of coupon names. |  [optional]
@@ -42,7 +41,6 @@ DISPLAYS | &quot;Displays&quot;
 Name | Value
 ---- | -----
 ADFORMAT | &quot;AdFormat&quot;
-ADTYPE | &quot;AdType&quot;
 COUPON | &quot;Coupon&quot;
 COUPONID | &quot;CouponId&quot;
 DISPLAYSIZE | &quot;DisplaySize&quot;

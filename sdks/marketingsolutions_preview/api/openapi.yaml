@@ -921,7 +921,7 @@ paths:
       x-accepts: application/json
   /preview/marketing-solutions/audience-segments/estimate-size:
     post:
-      description: Gets the size estimation of a non existent segment . An error is
+      description: Gets the size estimation of a non existent segment. An error is
         returned when size calculation is not supported.
       operationId: estimateAudienceSegmentSize
       requestBody:
@@ -974,12 +974,12 @@ paths:
       - Audience
       x-contentType: application/json-patch+json
       x-accepts: application/json
-  /preview/marketing-solutions/audience-segments/commerce-interests:
+  /preview/marketing-solutions/audience-segments/in-market-interests:
     get:
-      description: Returns a list with all available commerce interests that can be
-        used to define a commerce segment. These commerce interests correspond to
-        the Google product taxonomy.
-      operationId: getCommerceInterests
+      description: Returns a list with all available in-market interests that can
+        be used to define an in-market segment. These in-market interests correspond
+        to the Google product taxonomy.
+      operationId: getInMarketInterests
       parameters:
       - description: The advertiser ID.
         explode: true
@@ -1002,13 +1002,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CommerceAudienceSegmentInterestEntityV1ListResponse'
+                $ref: '#/components/schemas/InMarketAudienceSegmentInterestEntityV1ListResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/CommerceAudienceSegmentInterestEntityV1ListResponse'
+                $ref: '#/components/schemas/InMarketAudienceSegmentInterestEntityV1ListResponse'
             text/json:
               schema:
-                $ref: '#/components/schemas/CommerceAudienceSegmentInterestEntityV1ListResponse'
+                $ref: '#/components/schemas/InMarketAudienceSegmentInterestEntityV1ListResponse'
           description: Success
         "401":
           content:
@@ -1025,11 +1025,11 @@ paths:
       tags:
       - Audience
       x-accepts: application/json
-  /preview/marketing-solutions/audience-segments/commerce-brands:
+  /preview/marketing-solutions/audience-segments/in-market-brands:
     get:
-      description: Returns a list with all available commerce brands that can be used
-        to define a commerce segment.
-      operationId: getCommerceBrands
+      description: Returns a list with all available in-market brands that can be
+        used to define an in-market segment.
+      operationId: getInMarketBrands
       parameters:
       - description: The advertiser ID.
         explode: true
@@ -1052,13 +1052,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CommerceAudienceSegmentBrandEntityV1ListResponse'
+                $ref: '#/components/schemas/InMarketAudienceSegmentBrandEntityV1ListResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/CommerceAudienceSegmentBrandEntityV1ListResponse'
+                $ref: '#/components/schemas/InMarketAudienceSegmentBrandEntityV1ListResponse'
             text/json:
               schema:
-                $ref: '#/components/schemas/CommerceAudienceSegmentBrandEntityV1ListResponse'
+                $ref: '#/components/schemas/InMarketAudienceSegmentBrandEntityV1ListResponse'
           description: Success
         "401":
           content:
@@ -1080,7 +1080,7 @@ paths:
       description: Link or unlink an audience with an ad set
       operationId: updateAdSetAudience
       parameters:
-      - description: Ad set id
+      - description: The ad set ID.
         explode: false
         in: path
         name: ad-set-id
@@ -1102,7 +1102,7 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/AdSetAudienceLinkInputEntityV1'
-        description: Audience and ad set to link
+        description: Ad set-Audience update request.
         x-bodyName: request
       responses:
         "200":
@@ -2865,7 +2865,7 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
                   traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
@@ -2885,7 +2885,7 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
                   traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
@@ -2945,7 +2945,7 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
                   traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
@@ -2965,7 +2965,7 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
                   traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
@@ -3028,7 +3028,7 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
                   traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
@@ -3048,7 +3048,7 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
                   traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
@@ -3124,7 +3124,7 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
                   traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
@@ -3144,7 +3144,7 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
                   traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
@@ -3205,27 +3205,27 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
                   traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
                   instance: /report
                   title: Start date and end date are required.
               schema:
-                $ref: '#/components/schemas/ProblemDetails'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ProblemDetails'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ProblemDetails'
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Bad Request
         "403":
           content:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
                   traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
@@ -3233,13 +3233,13 @@ paths:
                   title: Insufficient advertiser permission.
                   detail: You do not have the rights to report on this advertiser.
               schema:
-                $ref: '#/components/schemas/ProblemDetails'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ProblemDetails'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ProblemDetails'
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Forbidden
       tags:
       - Analytics
@@ -3286,19 +3286,19 @@ paths:
                 - traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
-                  instance: /report
+                  instance: ""
                   title: Start date and end date are required.
-                  detail: null
-                  source: null
-                  stackTrace: null
+                  detail: ""
+                  source: {}
+                  stackTrace: ""
               schema:
-                $ref: '#/components/schemas/ProblemDetails'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ProblemDetails'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ProblemDetails'
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Bad Request
         "403":
           content:
@@ -3308,19 +3308,19 @@ paths:
                 - traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
-                  instance: /report
+                  instance: ""
                   title: Insufficient advertiser permission.
                   detail: You do not have the rights to report on this advertiser.
-                  source: null
-                  stackTrace: null
+                  source: {}
+                  stackTrace: ""
               schema:
-                $ref: '#/components/schemas/ProblemDetails'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ProblemDetails'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ProblemDetails'
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Forbidden
       tags:
       - Analytics
@@ -3367,19 +3367,19 @@ paths:
                 - traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
-                  instance: /report
+                  instance: ""
                   title: Start date and end date are required.
-                  detail: null
-                  source: null
-                  stackTrace: null
+                  detail: ""
+                  source: {}
+                  stackTrace: ""
               schema:
-                $ref: '#/components/schemas/ProblemDetails'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ProblemDetails'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ProblemDetails'
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Bad Request
         "403":
           content:
@@ -3389,23 +3389,255 @@ paths:
                 - traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
-                  instance: /report
+                  instance: ""
                   title: Insufficient advertiser permission.
                   detail: You do not have the rights to report on this advertiser.
-                  source: null
-                  stackTrace: null
+                  source: {}
+                  stackTrace: ""
               schema:
-                $ref: '#/components/schemas/ProblemDetails'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ProblemDetails'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ProblemDetails'
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Forbidden
       tags:
       - Analytics
       x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /preview/reports/async-statistics:
+    post:
+      description: This Statistics endpoint provides an export Id that let you retrieve
+        data.
+      operationId: GetAsyncAdsetReport
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/GenerateStatisticsReportRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateStatisticsReportRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GenerateStatisticsReportRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GenerateStatisticsReportRequest'
+        x-bodyName: dataMessage
+      responses:
+        "202":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/MarketingSolutionsReportStatusResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarketingSolutionsReportStatusResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MarketingSolutionsReportStatusResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              example:
+                errors:
+                - traceIdentifier: 1234e1717d88aa8a
+                  type: validation
+                  code: required-field
+                  instance: ""
+                  title: Start date and end date are required.
+                  detail: ""
+                  source: {}
+                  stackTrace: ""
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+          description: Bad Request
+        "403":
+          content:
+            application/json:
+              example:
+                errors:
+                - traceIdentifier: 1234e1717d88aa8a
+                  type: access-control
+                  code: insufficient-advertiser-permission
+                  instance: ""
+                  title: Insufficient advertiser permission.
+                  detail: You do not have the rights to report on this advertiser.
+                  source: {}
+                  stackTrace: ""
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+          description: Forbidden
+      tags:
+      - Analytics
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /preview/reports/async-audience-performance:
+    post:
+      description: This Statistics endpoint provides an export Id that lets you retrieve
+        data.
+      operationId: GetAsyncAudienceReport
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/GenerateAudiencePerformanceReportRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateAudiencePerformanceReportRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GenerateAudiencePerformanceReportRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GenerateAudiencePerformanceReportRequest'
+        x-bodyName: dataMessage
+      responses:
+        "202":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/MarketingSolutionsReportStatusResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarketingSolutionsReportStatusResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MarketingSolutionsReportStatusResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              example:
+                errors:
+                - traceIdentifier: 1234e1717d88aa8a
+                  type: validation
+                  code: required-field
+                  instance: ""
+                  title: Start date and end date are required.
+                  detail: ""
+                  source: {}
+                  stackTrace: ""
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+          description: Bad Request
+        "403":
+          content:
+            application/json:
+              example:
+                errors:
+                - traceIdentifier: 1234e1717d88aa8a
+                  type: access-control
+                  code: insufficient-advertiser-permission
+                  instance: ""
+                  title: Insufficient advertiser permission.
+                  detail: You do not have the rights to report on this advertiser.
+                  source: {}
+                  stackTrace: ""
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+          description: Forbidden
+      tags:
+      - Analytics
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /preview/reports/{report-id}/status:
+    get:
+      description: This endpoint gives you the status of the report.
+      operationId: GetAsyncExportStatus
+      parameters:
+      - description: Id of the report
+        explode: false
+        in: path
+        name: report-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/MarketingSolutionsReportStatusResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarketingSolutionsReportStatusResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MarketingSolutionsReportStatusResponse'
+          description: Success
+        "303":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/MarketingSolutionsReportStatusResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarketingSolutionsReportStatusResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MarketingSolutionsReportStatusResponse'
+          description: Redirect
+      tags:
+      - Analytics
+      x-accepts: application/json
+  /preview/reports/{report-id}/output:
+    get:
+      description: This endpoint gives you the output of the report.
+      operationId: GetAsyncExportOutput
+      parameters:
+      - description: Id of the report
+        explode: false
+        in: path
+        name: report-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ExportResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ExportResult'
+          description: Success
+      tags:
+      - Analytics
       x-accepts: application/json
   /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids:
     get:
@@ -3971,20 +4203,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/AdvertiserDatasetListResponse'
           description: Success
-        "401":
-          content:
-            application/json:
-              example:
-                errors:
-                - traceId: cb381a21702b247f
-                  type: authentication
-                  code: invalid
-                  title: Permission Denied; This endpoint expects a user token
-                  detail: Permission Denied; This endpoint expects a user token
-                warnings: []
-            text/plain: {}
-            text/json: {}
-          description: Unauthorized
         "403":
           content:
             application/json:
@@ -4006,6 +4224,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/AdvertiserDatasetListResponse'
           description: Forbidden
+        "401":
+          content:
+            application/json:
+              example:
+                errors:
+                - traceId: cb381a21702b247f
+                  type: authentication
+                  code: invalid
+                  title: Permission Denied; This endpoint expects a user token
+                  detail: Permission Denied; This endpoint expects a user token
+                warnings: []
+            text/plain: {}
+            text/json: {}
+          description: Unauthorized
       tags:
       - Advertiser
       x-accepts: application/json
@@ -4323,18 +4555,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Outcome'
           description: Unable to parse the request parameters
-        "403":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-          description: Operation forbidden
         "422":
           content:
             text/plain:
@@ -4347,6 +4567,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/Outcome'
           description: Cannot process entity content
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Operation forbidden
         "500":
           content:
             text/plain:
@@ -4483,16 +4715,16 @@ paths:
               $ref: '#/components/schemas/OnSiteRecoRequest'
         x-bodyName: request
       responses:
+        "400":
+          content:
+            application/json: {}
+          description: Bad Request
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/OnSiteRecoResponse'
           description: Success
-        "400":
-          content:
-            application/json: {}
-          description: Bad Request
         "401":
           content:
             application/json: {}
@@ -6557,6 +6789,92 @@ paths:
       - Campaign
       x-contentType: application/json-patch+json
       x-accepts: application/json
+  /preview/marketing-solutions/advertisers/{advertiserId}/user-profiles/set:
+    post:
+      description: "This endpoint will Set User Profiles for a given Advertiser. If\
+        \ a User Profile does not exist, a new one will be created. If a User Profile\
+        \ exists, it will be replaced."
+      operationId: SetUserProfiles
+      parameters:
+      - description: Criteo Advertiser ID of user profiles' owner
+        explode: false
+        in: path
+        name: advertiserId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SetUserProfileModelListRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetUserProfileModelListRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SetUserProfileModelListRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SetUserProfileModelListRequest'
+        x-bodyName: setUserProfileModels
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Success
+        "403":
+          content:
+            application/json: {}
+          description: Forbidden
+      tags:
+      - Audience
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /preview/marketing-solutions/advertisers/{advertiserId}/user-profiles/delete:
+    post:
+      description: This endpoint will Delete User Profiles for a given Advertiser.
+      operationId: DeleteUserProfiles
+      parameters:
+      - description: Criteo Advertiser ID of user profiles' owner
+        explode: false
+        in: path
+        name: advertiserId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/DeleteUserProfileModelListRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteUserProfileModelListRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/DeleteUserProfileModelListRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/DeleteUserProfileModelListRequest'
+        x-bodyName: deleteUserProfileModels
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Success
+        "403":
+          content:
+            application/json: {}
+          description: Forbidden
+      tags:
+      - Audience
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
 components:
   schemas:
     ModifyAudienceResponse:
@@ -7013,7 +7331,8 @@ components:
             applicationId: 0
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7022,7 +7341,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7032,7 +7352,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7041,7 +7362,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7085,6 +7407,7 @@ components:
     CommonProblem:
       description: Common problem object. Can be specialized as needed.
       example:
+        traceId: traceId
         traceIdentifier: traceIdentifier
         code: code
         instance: instance
@@ -7095,8 +7418,12 @@ components:
         type: unknown
         title: title
       properties:
-        traceIdentifier:
+        traceId:
           description: The request correlation ID this problem comes from.
+          type: string
+        traceIdentifier:
+          description: "The request correlation ID this problem comes from. (deprecated,\
+            \ use traceId instead)"
           type: string
         type:
           description: The problem's category.
@@ -7155,8 +7482,8 @@ components:
           type: string
       type: object
     AudienceEntityV1AudienceSearchMetadataV1ListResponse:
-      description: A class implementing the response  of the Criteo API as described
-        in API Guild Guidelines with collection of entities as body
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities and metadata
       example:
         data:
         - attributes:
@@ -7204,7 +7531,8 @@ components:
           offset: 1
           limit: 6
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7213,7 +7541,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7223,7 +7552,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7232,7 +7562,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7263,8 +7594,8 @@ components:
           uniqueItems: false
       type: object
     AudienceEntityV1ListResponse:
-      description: A class implementing the response  of the Criteo API as described
-        in API Guild Guidelines with collection of entities as body
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities
       example:
         data:
         - attributes:
@@ -7308,7 +7639,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7317,7 +7649,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7327,7 +7660,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7336,7 +7670,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7365,8 +7700,8 @@ components:
           uniqueItems: false
       type: object
     AudienceIdEntityV1ListResponse:
-      description: A class implementing the response  of the Criteo API as described
-        in API Guild Guidelines with collection of entities as body
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities
       example:
         data:
         - attributes: "{}"
@@ -7376,7 +7711,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7385,7 +7721,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7395,7 +7732,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7404,7 +7742,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7433,8 +7772,8 @@ components:
           uniqueItems: false
       type: object
     AudienceSizeEntityV1ListResponse:
-      description: A class implementing the response  of the Criteo API as described
-        in API Guild Guidelines with collection of entities as body
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities
       example:
         data:
         - attributes:
@@ -7446,7 +7785,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7455,7 +7795,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7465,7 +7806,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7474,7 +7816,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7503,16 +7846,16 @@ components:
           uniqueItems: false
       type: object
     AudienceSizeEstimationV1Response:
-      description: "Represents an API response message containing the usual outcome\
-        \ fields (warnings+errors), and a valueResource data,\r\ni.e. data is not\
-        \ an entity (no id). This can be used for association objects."
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         data:
           attributes:
             size: 0
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7521,7 +7864,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7531,7 +7875,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7540,7 +7885,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7566,19 +7912,28 @@ components:
           uniqueItems: false
       type: object
     AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse:
-      description: A class implementing the response  of the Criteo API as described
-        in API Guild Guidelines with collection of entities as body
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities and metadata
       example:
         data:
         - attributes:
+            prospecting: "{}"
+            description: description
+            retargeting:
+              visitorsType: Unknown
+              daysSinceLastVisitMax: 9
+              daysSinceLastVisitMin: 7
+            type: Unknown
+            lookalike:
+              targetSize: 3
+              seedSegmentId: seedSegmentId
+            advertiserId: advertiserId
             createdAt: 2000-01-23T04:56:07.000+00:00
-            similar: "{}"
             contactList:
               isReadOnly: true
-            prebuilt:
+            behavioral:
               country: country
             name: name
-            description: description
             location:
               registryType: Unknown
               pointsOfInterest:
@@ -7589,12 +7944,7 @@ components:
                 name: name
                 longitude: 5.637376656633329
               radiusInKm: 2
-            retargeting:
-              visitorsType: Unknown
-              daysSinceLastVisitMax: 9
-              daysSinceLastVisitMin: 7
-            type: Unknown
-            commerce:
+            inMarket:
               country: country
               interestIds:
               - interestIds
@@ -7610,18 +7960,26 @@ components:
               - Unknown
               - Unknown
             updatedAt: 2000-01-23T04:56:07.000+00:00
-            advertiserId: advertiserId
           id: id
           type: type
         - attributes:
+            prospecting: "{}"
+            description: description
+            retargeting:
+              visitorsType: Unknown
+              daysSinceLastVisitMax: 9
+              daysSinceLastVisitMin: 7
+            type: Unknown
+            lookalike:
+              targetSize: 3
+              seedSegmentId: seedSegmentId
+            advertiserId: advertiserId
             createdAt: 2000-01-23T04:56:07.000+00:00
-            similar: "{}"
             contactList:
               isReadOnly: true
-            prebuilt:
+            behavioral:
               country: country
             name: name
-            description: description
             location:
               registryType: Unknown
               pointsOfInterest:
@@ -7632,12 +7990,7 @@ components:
                 name: name
                 longitude: 5.637376656633329
               radiusInKm: 2
-            retargeting:
-              visitorsType: Unknown
-              daysSinceLastVisitMax: 9
-              daysSinceLastVisitMin: 7
-            type: Unknown
-            commerce:
+            inMarket:
               country: country
               interestIds:
               - interestIds
@@ -7653,7 +8006,6 @@ components:
               - Unknown
               - Unknown
             updatedAt: 2000-01-23T04:56:07.000+00:00
-            advertiserId: advertiserId
           id: id
           type: type
         meta:
@@ -7661,7 +8013,8 @@ components:
           offset: 1
           limit: 6
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7670,7 +8023,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7680,7 +8034,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7689,7 +8044,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7720,19 +8076,28 @@ components:
           uniqueItems: false
       type: object
     AudienceSegmentEntityV1ListResponse:
-      description: A class implementing the response  of the Criteo API as described
-        in API Guild Guidelines with collection of entities as body
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities
       example:
         data:
         - attributes:
+            prospecting: "{}"
+            description: description
+            retargeting:
+              visitorsType: Unknown
+              daysSinceLastVisitMax: 9
+              daysSinceLastVisitMin: 7
+            type: Unknown
+            lookalike:
+              targetSize: 3
+              seedSegmentId: seedSegmentId
+            advertiserId: advertiserId
             createdAt: 2000-01-23T04:56:07.000+00:00
-            similar: "{}"
             contactList:
               isReadOnly: true
-            prebuilt:
+            behavioral:
               country: country
             name: name
-            description: description
             location:
               registryType: Unknown
               pointsOfInterest:
@@ -7743,12 +8108,7 @@ components:
                 name: name
                 longitude: 5.637376656633329
               radiusInKm: 2
-            retargeting:
-              visitorsType: Unknown
-              daysSinceLastVisitMax: 9
-              daysSinceLastVisitMin: 7
-            type: Unknown
-            commerce:
+            inMarket:
               country: country
               interestIds:
               - interestIds
@@ -7764,18 +8124,26 @@ components:
               - Unknown
               - Unknown
             updatedAt: 2000-01-23T04:56:07.000+00:00
-            advertiserId: advertiserId
           id: id
           type: type
         - attributes:
+            prospecting: "{}"
+            description: description
+            retargeting:
+              visitorsType: Unknown
+              daysSinceLastVisitMax: 9
+              daysSinceLastVisitMin: 7
+            type: Unknown
+            lookalike:
+              targetSize: 3
+              seedSegmentId: seedSegmentId
+            advertiserId: advertiserId
             createdAt: 2000-01-23T04:56:07.000+00:00
-            similar: "{}"
             contactList:
               isReadOnly: true
-            prebuilt:
+            behavioral:
               country: country
             name: name
-            description: description
             location:
               registryType: Unknown
               pointsOfInterest:
@@ -7786,12 +8154,7 @@ components:
                 name: name
                 longitude: 5.637376656633329
               radiusInKm: 2
-            retargeting:
-              visitorsType: Unknown
-              daysSinceLastVisitMax: 9
-              daysSinceLastVisitMin: 7
-            type: Unknown
-            commerce:
+            inMarket:
               country: country
               interestIds:
               - interestIds
@@ -7807,11 +8170,11 @@ components:
               - Unknown
               - Unknown
             updatedAt: 2000-01-23T04:56:07.000+00:00
-            advertiserId: advertiserId
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7820,7 +8183,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7830,7 +8194,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7839,7 +8204,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7868,8 +8234,8 @@ components:
           uniqueItems: false
       type: object
     AudienceSegmentIdEntityV1ListResponse:
-      description: A class implementing the response  of the Criteo API as described
-        in API Guild Guidelines with collection of entities as body
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities
       example:
         data:
         - attributes: "{}"
@@ -7879,7 +8245,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7888,7 +8255,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7898,7 +8266,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7907,7 +8276,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7936,8 +8306,8 @@ components:
           uniqueItems: false
       type: object
     AudienceSegmentSizeEntityV1ListResponse:
-      description: A class implementing the response  of the Criteo API as described
-        in API Guild Guidelines with collection of entities as body
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities
       example:
         data:
         - attributes:
@@ -7949,7 +8319,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7958,7 +8329,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7968,7 +8340,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7977,7 +8350,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8006,16 +8380,16 @@ components:
           uniqueItems: false
       type: object
     AudienceSegmentSizeEstimationV1Response:
-      description: "Represents an API response message containing the usual outcome\
-        \ fields (warnings+errors), and a valueResource data,\r\ni.e. data is not\
-        \ an entity (no id). This can be used for association objects."
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         data:
           attributes:
             size: 0
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8024,7 +8398,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8034,7 +8409,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8043,7 +8419,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8068,9 +8445,9 @@ components:
           type: array
           uniqueItems: false
       type: object
-    CommerceAudienceSegmentInterestEntityV1ListResponse:
-      description: A class implementing the response  of the Criteo API as described
-        in API Guild Guidelines with collection of entities as body
+    InMarketAudienceSegmentInterestEntityV1ListResponse:
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities
       example:
         data:
         - attributes:
@@ -8082,7 +8459,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8091,7 +8469,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8101,7 +8480,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8110,7 +8490,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8122,7 +8503,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/CommerceAudienceSegmentInterestEntityV1Resource'
+            $ref: '#/components/schemas/InMarketAudienceSegmentInterestEntityV1Resource'
           type: array
           uniqueItems: false
         warnings:
@@ -8138,9 +8519,9 @@ components:
           type: array
           uniqueItems: false
       type: object
-    CommerceAudienceSegmentBrandEntityV1ListResponse:
-      description: A class implementing the response  of the Criteo API as described
-        in API Guild Guidelines with collection of entities as body
+    InMarketAudienceSegmentBrandEntityV1ListResponse:
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities
       example:
         data:
         - attributes:
@@ -8154,7 +8535,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8163,7 +8545,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8173,7 +8556,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8182,7 +8566,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8194,7 +8579,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/CommerceAudienceSegmentBrandEntityV1Resource'
+            $ref: '#/components/schemas/InMarketAudienceSegmentBrandEntityV1Resource'
           type: array
           uniqueItems: false
         warnings:
@@ -8211,8 +8596,8 @@ components:
           uniqueItems: false
       type: object
     ContactListStatisticsEntityV1Response:
-      description: A class implementing the response of the Criteo API as described
-        in API Guild Guidelines with a single entity as body
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity
       example:
         data:
           attributes:
@@ -8222,7 +8607,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8231,7 +8617,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8241,7 +8628,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8250,7 +8638,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8276,8 +8665,8 @@ components:
           uniqueItems: false
       type: object
     AdSetAudienceLinkEntityV1Response:
-      description: A class implementing the response of the Criteo API as described
-        in API Guild Guidelines with a single entity as body
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity
       example:
         data:
           attributes:
@@ -8285,7 +8674,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8294,7 +8684,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8304,7 +8695,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8313,7 +8705,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8441,7 +8834,7 @@ components:
           uniqueItems: false
       type: object
     AudienceBulkDeleteInputV1:
-      description: Input to delete one or more segments.
+      description: Input to delete one or more audiences.
       example:
         data:
         - attributes: "{}"
@@ -8518,21 +8911,11 @@ components:
       example:
         data:
         - attributes:
-            similar: "{}"
             contactList: "{}"
+            prospecting: "{}"
             name: name
             description: description
             location:
-              registryType: Catalog
-              geoDivisions:
-              - country: country
-                zipCode: zipCode
-                cityGeoNameId: cityGeoNameId
-                subdivisionCode: subdivisionCode
-              - country: country
-                zipCode: zipCode
-                cityGeoNameId: cityGeoNameId
-                subdivisionCode: subdivisionCode
               pointsOfInterest:
               - latitude: 5.962133916683182
                 name: name
@@ -8545,7 +8928,7 @@ components:
               visitorsType: All
               daysSinceLastVisitMax: 1
               daysSinceLastVisitMin: 6
-            commerce:
+            inMarket:
               country: country
               interestIds:
               - interestIds
@@ -8560,24 +8943,17 @@ components:
               priceRange:
               - Low
               - Low
+            lookalike:
+              targetSize: 5
+              seedSegmentId: seedSegmentId
             advertiserId: advertiserId
           type: type
         - attributes:
-            similar: "{}"
             contactList: "{}"
+            prospecting: "{}"
             name: name
             description: description
             location:
-              registryType: Catalog
-              geoDivisions:
-              - country: country
-                zipCode: zipCode
-                cityGeoNameId: cityGeoNameId
-                subdivisionCode: subdivisionCode
-              - country: country
-                zipCode: zipCode
-                cityGeoNameId: cityGeoNameId
-                subdivisionCode: subdivisionCode
               pointsOfInterest:
               - latitude: 5.962133916683182
                 name: name
@@ -8590,7 +8966,7 @@ components:
               visitorsType: All
               daysSinceLastVisitMax: 1
               daysSinceLastVisitMin: 6
-            commerce:
+            inMarket:
               country: country
               interestIds:
               - interestIds
@@ -8605,6 +8981,9 @@ components:
               priceRange:
               - Low
               - Low
+            lookalike:
+              targetSize: 5
+              seedSegmentId: seedSegmentId
             advertiserId: advertiserId
           type: type
       properties:
@@ -8619,21 +8998,11 @@ components:
       example:
         data:
         - attributes:
-            contactList: "{}"
             name: name
             description:
               value: value
             location:
-              registryType: Catalog
-              geoDivisions:
-              - country: country
-                zipCode: zipCode
-                cityGeoNameId: cityGeoNameId
-                subdivisionCode: subdivisionCode
-              - country: country
-                zipCode: zipCode
-                cityGeoNameId: cityGeoNameId
-                subdivisionCode: subdivisionCode
+              registryType: PointOfInterest
               pointsOfInterest:
               - latitude: 5.962133916683182
                 name: name
@@ -8646,7 +9015,7 @@ components:
               visitorsType: All
               daysSinceLastVisitMax: 1
               daysSinceLastVisitMin: 6
-            commerce:
+            inMarket:
               country: country
               interestIds:
               - interestIds
@@ -8655,31 +9024,23 @@ components:
               - Low
               - Low
               gender:
-                value: Unknown
+                value: Male
               brandIds:
               - brandIds
               - brandIds
               priceRange:
               - Low
               - Low
+            lookalike:
+              targetSize: 5
           id: id
           type: type
         - attributes:
-            contactList: "{}"
             name: name
             description:
               value: value
             location:
-              registryType: Catalog
-              geoDivisions:
-              - country: country
-                zipCode: zipCode
-                cityGeoNameId: cityGeoNameId
-                subdivisionCode: subdivisionCode
-              - country: country
-                zipCode: zipCode
-                cityGeoNameId: cityGeoNameId
-                subdivisionCode: subdivisionCode
+              registryType: PointOfInterest
               pointsOfInterest:
               - latitude: 5.962133916683182
                 name: name
@@ -8692,7 +9053,7 @@ components:
               visitorsType: All
               daysSinceLastVisitMax: 1
               daysSinceLastVisitMin: 6
-            commerce:
+            inMarket:
               country: country
               interestIds:
               - interestIds
@@ -8701,13 +9062,15 @@ components:
               - Low
               - Low
               gender:
-                value: Unknown
+                value: Male
               brandIds:
               - brandIds
               - brandIds
               priceRange:
               - Low
               - Low
+            lookalike:
+              targetSize: 5
           id: id
           type: type
       properties:
@@ -8757,7 +9120,6 @@ components:
         data:
           attributes:
             location:
-              registryType: Store
               pointsOfInterest:
               - latitude: 5.962133916683182
                 name: name
@@ -8766,7 +9128,7 @@ components:
                 name: name
                 longitude: 5.637376656633329
               radiusInKm: 0
-            commerce:
+            inMarket:
               country: country
               interestIds:
               - interestIds
@@ -8820,7 +9182,7 @@ components:
           type: integer
       type: object
     AudienceEntityV1Resource:
-      description: A class that represents an entity in a guild compliant way
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           createdAt: 2000-01-23T04:56:07.000+00:00
@@ -8852,7 +9214,7 @@ components:
           type: string
       type: object
     AudienceIdEntityV1Resource:
-      description: A class that represents an entity in a guild compliant way
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes: "{}"
         id: id
@@ -8872,7 +9234,7 @@ components:
           type: string
       type: object
     AudienceSizeEntityV1Resource:
-      description: A class that represents an entity in a guild compliant way
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           size: 0
@@ -8888,7 +9250,8 @@ components:
           type: string
       type: object
     AudienceSizeEstimationV1Resource:
-      description: A class that represents a ValueType in a guild compliant way
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         attributes:
           size: 0
@@ -8920,17 +9283,26 @@ components:
           type: integer
       type: object
     AudienceSegmentEntityV1Resource:
-      description: A class that represents an entity in a guild compliant way
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
+          prospecting: "{}"
+          description: description
+          retargeting:
+            visitorsType: Unknown
+            daysSinceLastVisitMax: 9
+            daysSinceLastVisitMin: 7
+          type: Unknown
+          lookalike:
+            targetSize: 3
+            seedSegmentId: seedSegmentId
+          advertiserId: advertiserId
           createdAt: 2000-01-23T04:56:07.000+00:00
-          similar: "{}"
           contactList:
             isReadOnly: true
-          prebuilt:
+          behavioral:
             country: country
           name: name
-          description: description
           location:
             registryType: Unknown
             pointsOfInterest:
@@ -8941,12 +9313,7 @@ components:
               name: name
               longitude: 5.637376656633329
             radiusInKm: 2
-          retargeting:
-            visitorsType: Unknown
-            daysSinceLastVisitMax: 9
-            daysSinceLastVisitMin: 7
-          type: Unknown
-          commerce:
+          inMarket:
             country: country
             interestIds:
             - interestIds
@@ -8962,7 +9329,6 @@ components:
             - Unknown
             - Unknown
           updatedAt: 2000-01-23T04:56:07.000+00:00
-          advertiserId: advertiserId
         id: id
         type: type
       properties:
@@ -8975,7 +9341,7 @@ components:
           type: string
       type: object
     AudienceSegmentIdEntityV1Resource:
-      description: A class that represents an entity in a guild compliant way
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes: "{}"
         id: id
@@ -8995,7 +9361,7 @@ components:
           type: string
       type: object
     AudienceSegmentSizeEntityV1Resource:
-      description: A class that represents an entity in a guild compliant way
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           size: 0
@@ -9011,7 +9377,8 @@ components:
           type: string
       type: object
     AudienceSegmentSizeEstimationV1Resource:
-      description: A class that represents a ValueType in a guild compliant way
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         attributes:
           size: 0
@@ -9022,8 +9389,8 @@ components:
         attributes:
           $ref: '#/components/schemas/AudienceSegmentSizeEstimationV1'
       type: object
-    CommerceAudienceSegmentInterestEntityV1Resource:
-      description: A class that represents an entity in a guild compliant way
+    InMarketAudienceSegmentInterestEntityV1Resource:
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           parentId: parentId
@@ -9031,15 +9398,15 @@ components:
         type: type
       properties:
         attributes:
-          $ref: '#/components/schemas/CommerceAudienceSegmentInterestEntityV1'
+          $ref: '#/components/schemas/InMarketAudienceSegmentInterestEntityV1'
         id:
           description: Id of the entity
           type: string
         type:
           type: string
       type: object
-    CommerceAudienceSegmentBrandEntityV1Resource:
-      description: A class that represents an entity in a guild compliant way
+    InMarketAudienceSegmentBrandEntityV1Resource:
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           size: 0
@@ -9048,7 +9415,7 @@ components:
         type: type
       properties:
         attributes:
-          $ref: '#/components/schemas/CommerceAudienceSegmentBrandEntityV1'
+          $ref: '#/components/schemas/InMarketAudienceSegmentBrandEntityV1'
         id:
           description: Id of the entity
           type: string
@@ -9056,7 +9423,7 @@ components:
           type: string
       type: object
     ContactListStatisticsEntityV1Resource:
-      description: A class that represents an entity in a guild compliant way
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           numberOfIdentifiers: 0
@@ -9074,7 +9441,7 @@ components:
           type: string
       type: object
     AdSetAudienceLinkEntityV1Resource:
-      description: A class that represents an entity in a guild compliant way
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           audienceId: audienceId
@@ -9090,7 +9457,8 @@ components:
           type: string
       type: object
     AudienceSearchEntityV1Resource:
-      description: A class that represents a ValueType in a guild compliant way
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         attributes:
           adSetIds:
@@ -9113,7 +9481,8 @@ components:
           $ref: '#/components/schemas/AudienceSearchEntityV1'
       type: object
     AudienceCreateEntityV1Resource:
-      description: A class that represents a ValueType in a guild compliant way
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         attributes:
           name: name
@@ -9136,7 +9505,7 @@ components:
           $ref: '#/components/schemas/AudienceCreateEntityV1'
       type: object
     AudienceUpdateEntityV1Resource:
-      description: A class that represents an entity in a guild compliant way
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           name: name
@@ -9163,14 +9532,14 @@ components:
           type: string
       type: object
     AudienceDeleteEntityV1Resource:
-      description: A class that represents an entity in a guild compliant way
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes: "{}"
         id: id
         type: type
       properties:
         attributes:
-          description: Audience of people of interest for a marketer.
+          description: Audience to delete
           type: object
           x-criteo-canonical:
             infoType: entity
@@ -9183,7 +9552,7 @@ components:
           type: string
       type: object
     AudienceComputeSizeEntityV1Resource:
-      description: A class that represents an entity in a guild compliant way
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes: "{}"
         id: id
@@ -9203,7 +9572,8 @@ components:
           type: string
       type: object
     AudienceEstimateSizeEntityV1Resource:
-      description: A class that represents a ValueType in a guild compliant way
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         attributes:
           algebra:
@@ -9224,7 +9594,8 @@ components:
           $ref: '#/components/schemas/AudienceEstimateSizeEntityV1'
       type: object
     AudienceSegmentSearchEntityV1Resource:
-      description: A class that represents a ValueType in a guild compliant way
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         attributes:
           advertiserIds:
@@ -9244,24 +9615,15 @@ components:
           $ref: '#/components/schemas/AudienceSegmentSearchEntityV1'
       type: object
     AudienceSegmentCreateEntityV1Resource:
-      description: A class that represents a ValueType in a guild compliant way
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         attributes:
-          similar: "{}"
           contactList: "{}"
+          prospecting: "{}"
           name: name
           description: description
           location:
-            registryType: Catalog
-            geoDivisions:
-            - country: country
-              zipCode: zipCode
-              cityGeoNameId: cityGeoNameId
-              subdivisionCode: subdivisionCode
-            - country: country
-              zipCode: zipCode
-              cityGeoNameId: cityGeoNameId
-              subdivisionCode: subdivisionCode
             pointsOfInterest:
             - latitude: 5.962133916683182
               name: name
@@ -9274,7 +9636,7 @@ components:
             visitorsType: All
             daysSinceLastVisitMax: 1
             daysSinceLastVisitMin: 6
-          commerce:
+          inMarket:
             country: country
             interestIds:
             - interestIds
@@ -9289,6 +9651,9 @@ components:
             priceRange:
             - Low
             - Low
+          lookalike:
+            targetSize: 5
+            seedSegmentId: seedSegmentId
           advertiserId: advertiserId
         type: type
       properties:
@@ -9298,24 +9663,14 @@ components:
           $ref: '#/components/schemas/AudienceSegmentCreateEntityV1'
       type: object
     AudienceSegmentUpdateEntityV1Resource:
-      description: A class that represents an entity in a guild compliant way
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
-          contactList: "{}"
           name: name
           description:
             value: value
           location:
-            registryType: Catalog
-            geoDivisions:
-            - country: country
-              zipCode: zipCode
-              cityGeoNameId: cityGeoNameId
-              subdivisionCode: subdivisionCode
-            - country: country
-              zipCode: zipCode
-              cityGeoNameId: cityGeoNameId
-              subdivisionCode: subdivisionCode
+            registryType: PointOfInterest
             pointsOfInterest:
             - latitude: 5.962133916683182
               name: name
@@ -9328,7 +9683,7 @@ components:
             visitorsType: All
             daysSinceLastVisitMax: 1
             daysSinceLastVisitMin: 6
-          commerce:
+          inMarket:
             country: country
             interestIds:
             - interestIds
@@ -9337,13 +9692,15 @@ components:
             - Low
             - Low
             gender:
-              value: Unknown
+              value: Male
             brandIds:
             - brandIds
             - brandIds
             priceRange:
             - Low
             - Low
+          lookalike:
+            targetSize: 5
         id: id
         type: type
       properties:
@@ -9356,7 +9713,7 @@ components:
           type: string
       type: object
     AudienceSegmentDeleteEntityV1Resource:
-      description: A class that represents an entity in a guild compliant way
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes: "{}"
         id: id
@@ -9376,7 +9733,7 @@ components:
           type: string
       type: object
     AudienceSegmentComputeSizeEntityV1Resource:
-      description: A class that represents an entity in a guild compliant way
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes: "{}"
         id: id
@@ -9396,11 +9753,11 @@ components:
           type: string
       type: object
     AudienceSegmentSizeEstimationEntityV1Resource:
-      description: A class that represents a ValueType in a guild compliant way
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         attributes:
           location:
-            registryType: Store
             pointsOfInterest:
             - latitude: 5.962133916683182
               name: name
@@ -9409,7 +9766,7 @@ components:
               name: name
               longitude: 5.637376656633329
             radiusInKm: 0
-          commerce:
+          inMarket:
             country: country
             interestIds:
             - interestIds
@@ -9515,14 +9872,23 @@ components:
     AudienceSegmentEntityV1:
       description: Set of rules that defines specific people to target.
       example:
+        prospecting: "{}"
+        description: description
+        retargeting:
+          visitorsType: Unknown
+          daysSinceLastVisitMax: 9
+          daysSinceLastVisitMin: 7
+        type: Unknown
+        lookalike:
+          targetSize: 3
+          seedSegmentId: seedSegmentId
+        advertiserId: advertiserId
         createdAt: 2000-01-23T04:56:07.000+00:00
-        similar: "{}"
         contactList:
           isReadOnly: true
-        prebuilt:
+        behavioral:
           country: country
         name: name
-        description: description
         location:
           registryType: Unknown
           pointsOfInterest:
@@ -9533,12 +9899,7 @@ components:
             name: name
             longitude: 5.637376656633329
           radiusInKm: 2
-        retargeting:
-          visitorsType: Unknown
-          daysSinceLastVisitMax: 9
-          daysSinceLastVisitMin: 7
-        type: Unknown
-        commerce:
+        inMarket:
           country: country
           interestIds:
           - interestIds
@@ -9554,7 +9915,6 @@ components:
           - Unknown
           - Unknown
         updatedAt: 2000-01-23T04:56:07.000+00:00
-        advertiserId: advertiserId
       properties:
         name:
           description: Name of the segment
@@ -9566,12 +9926,13 @@ components:
           description: Type of segment (read-only)
           enum:
           - Unknown
-          - Commerce
-          - Similar
+          - InMarket
+          - Prospecting
           - ContactList
           - Location
-          - Prebuilt
+          - Behavioral
           - Retargeting
+          - Lookalike
           type: string
         createdAt:
           description: ISO-8601 timestamp in UTC of segment creation (read-only)
@@ -9584,19 +9945,21 @@ components:
         advertiserId:
           description: Advertiser associated to the segment
           type: string
-        commerce:
-          $ref: '#/components/schemas/CommerceV1'
-        similar:
-          description: Settings to target similar users to website visitors.
+        inMarket:
+          $ref: '#/components/schemas/InMarketV1'
+        prospecting:
+          description: Settings to target prospecting users to website visitors.
           type: object
         contactList:
           $ref: '#/components/schemas/ContactListV1'
         location:
           $ref: '#/components/schemas/LocationV1'
-        prebuilt:
-          $ref: '#/components/schemas/PrebuiltV1'
+        behavioral:
+          $ref: '#/components/schemas/BehavioralV1'
         retargeting:
           $ref: '#/components/schemas/RetargetingV1'
+        lookalike:
+          $ref: '#/components/schemas/LookalikeV1'
       type: object
       x-criteo-canonical:
         infoType: entity
@@ -9631,36 +9994,36 @@ components:
           format: int64
           type: integer
       type: object
-    CommerceAudienceSegmentInterestEntityV1:
-      description: Commerce segment interest entity
+    InMarketAudienceSegmentInterestEntityV1:
+      description: In-market segment interest entity
       example:
         parentId: parentId
       properties:
         parentId:
-          description: Id of the parent commerce segment interest
+          description: Id of the parent in-market segment interest
           type: string
       type: object
       x-criteo-canonical:
         infoType: entity
-        name: CommerceAudienceSegmentInterest
+        name: InMarketAudienceSegmentInterest
         version: v1
-    CommerceAudienceSegmentBrandEntityV1:
-      description: Commerce segment brand entity
+    InMarketAudienceSegmentBrandEntityV1:
+      description: In-market segment brand entity
       example:
         size: 0
         name: name
       properties:
         name:
-          description: Name of the commerce segment brand
+          description: Name of the in-market segment brand
           type: string
         size:
-          description: Size of the commerce segment brand
+          description: Size of the in-market segment brand
           format: int32
           type: integer
       type: object
       x-criteo-canonical:
         infoType: entity
-        name: CommerceAudienceSegmentBrand
+        name: InMarketAudienceSegmentBrand
         version: v1
     ContactListStatisticsEntityV1:
       description: Contact list statistics.
@@ -9798,7 +10161,7 @@ components:
         name: Audience
         version: v1
     AudienceDeleteEntityV1:
-      description: Audience of people of interest for a marketer.
+      description: Audience to delete
       type: object
       x-criteo-canonical:
         infoType: entity
@@ -9862,12 +10225,13 @@ components:
           items:
             enum:
             - Unknown
-            - Commerce
-            - Similar
+            - InMarket
+            - Prospecting
             - ContactList
             - Location
-            - Prebuilt
+            - Behavioral
             - Retargeting
+            - Lookalike
             type: string
           type: array
           uniqueItems: false
@@ -9875,21 +10239,11 @@ components:
     AudienceSegmentCreateEntityV1:
       description: Set of rules that defines specific people to target.
       example:
-        similar: "{}"
         contactList: "{}"
+        prospecting: "{}"
         name: name
         description: description
         location:
-          registryType: Catalog
-          geoDivisions:
-          - country: country
-            zipCode: zipCode
-            cityGeoNameId: cityGeoNameId
-            subdivisionCode: subdivisionCode
-          - country: country
-            zipCode: zipCode
-            cityGeoNameId: cityGeoNameId
-            subdivisionCode: subdivisionCode
           pointsOfInterest:
           - latitude: 5.962133916683182
             name: name
@@ -9902,7 +10256,7 @@ components:
           visitorsType: All
           daysSinceLastVisitMax: 1
           daysSinceLastVisitMin: 6
-        commerce:
+        inMarket:
           country: country
           interestIds:
           - interestIds
@@ -9917,6 +10271,9 @@ components:
           priceRange:
           - Low
           - Low
+        lookalike:
+          targetSize: 5
+          seedSegmentId: seedSegmentId
         advertiserId: advertiserId
       properties:
         name:
@@ -9928,10 +10285,10 @@ components:
         advertiserId:
           description: Advertiser associated to the segment
           type: string
-        commerce:
-          $ref: '#/components/schemas/CommerceCreateV1'
-        similar:
-          description: Settings to target similar users to website visitors.
+        inMarket:
+          $ref: '#/components/schemas/InMarketCreateV1'
+        prospecting:
+          description: Settings to target prospecting users to website visitors.
           type: object
         contactList:
           description: Settings to target users with your contact lists.
@@ -9940,25 +10297,17 @@ components:
           $ref: '#/components/schemas/LocationCreateV1'
         retargeting:
           $ref: '#/components/schemas/RetargetingCreateV1'
+        lookalike:
+          $ref: '#/components/schemas/LookalikeCreateV1'
       type: object
     AudienceSegmentUpdateEntityV1:
       description: Set of rules that defines specific people to target.
       example:
-        contactList: "{}"
         name: name
         description:
           value: value
         location:
-          registryType: Catalog
-          geoDivisions:
-          - country: country
-            zipCode: zipCode
-            cityGeoNameId: cityGeoNameId
-            subdivisionCode: subdivisionCode
-          - country: country
-            zipCode: zipCode
-            cityGeoNameId: cityGeoNameId
-            subdivisionCode: subdivisionCode
+          registryType: PointOfInterest
           pointsOfInterest:
           - latitude: 5.962133916683182
             name: name
@@ -9971,7 +10320,7 @@ components:
           visitorsType: All
           daysSinceLastVisitMax: 1
           daysSinceLastVisitMin: 6
-        commerce:
+        inMarket:
           country: country
           interestIds:
           - interestIds
@@ -9980,27 +10329,28 @@ components:
           - Low
           - Low
           gender:
-            value: Unknown
+            value: Male
           brandIds:
           - brandIds
           - brandIds
           priceRange:
           - Low
           - Low
+        lookalike:
+          targetSize: 5
       properties:
         name:
           type: string
         description:
           $ref: '#/components/schemas/NillableString'
-        commerce:
-          $ref: '#/components/schemas/CommerceUpdateV1'
-        contactList:
-          description: Settings to target users with your contact lists.
-          type: object
+        inMarket:
+          $ref: '#/components/schemas/InMarketUpdateV1'
         location:
           $ref: '#/components/schemas/LocationUpdateV1'
         retargeting:
           $ref: '#/components/schemas/RetargetingUpdateV1'
+        lookalike:
+          $ref: '#/components/schemas/LookalikeUpdateV1'
       type: object
       x-criteo-canonical:
         infoType: entity
@@ -10024,7 +10374,6 @@ components:
       description: Set of rules that defines specific people to target.
       example:
         location:
-          registryType: Store
           pointsOfInterest:
           - latitude: 5.962133916683182
             name: name
@@ -10033,7 +10382,7 @@ components:
             name: name
             longitude: 5.637376656633329
           radiusInKm: 0
-        commerce:
+        inMarket:
           country: country
           interestIds:
           - interestIds
@@ -10053,8 +10402,8 @@ components:
         advertiserId:
           description: Advertiser associated to the segment
           type: string
-        commerce:
-          $ref: '#/components/schemas/CommerceSizeEstimationV1'
+        inMarket:
+          $ref: '#/components/schemas/InMarketSizeEstimationV1'
         location:
           $ref: '#/components/schemas/LocationSizeEstimationV1'
       type: object
@@ -10085,7 +10434,7 @@ components:
         audienceSegmentId:
           type: string
       type: object
-    CommerceV1:
+    InMarketV1:
       description: Settings to target users based on high shopping intents and demographics.
       example:
         country: country
@@ -10152,8 +10501,8 @@ components:
           type: array
           uniqueItems: true
       type: object
-    SimilarV1:
-      description: Settings to target similar users to website visitors.
+    ProspectingV1:
+      description: Settings to target prospecting users to website visitors.
       type: object
     ContactListV1:
       description: Settings to target users with your contact lists.
@@ -10193,14 +10542,11 @@ components:
           description: The kind of Location audience
           enum:
           - Unknown
-          - Catalog
-          - Store
           - PointOfInterest
-          - GeoDivision
           type: string
       type: object
-    PrebuiltV1:
-      description: Settings of a prebuilt set of users provided by Criteo.
+    BehavioralV1:
+      description: Settings of a behavioral set of users provided by Criteo.
       example:
         country: country
       properties:
@@ -10230,6 +10576,20 @@ components:
           format: int32
           type: integer
       type: object
+    LookalikeV1:
+      description: Settings to target users that behave like a given seed segment
+      example:
+        targetSize: 3
+        seedSegmentId: seedSegmentId
+      properties:
+        seedSegmentId:
+          description: Segment from which the Lookalike segment will be generated
+          type: string
+        targetSize:
+          description: Desired size of the generated Lookalike segment
+          format: int64
+          type: integer
+      type: object
     NillableString:
       description: Placeholder object for string value  for which "null" is a valid
         business value
@@ -10241,7 +10601,7 @@ components:
             set to "null"
           type: string
       type: object
-    CommerceCreateV1:
+    InMarketCreateV1:
       description: Settings to target users based on high shopping intents and demographics.
       example:
         country: country
@@ -10296,8 +10656,8 @@ components:
           type: array
           uniqueItems: true
       type: object
-    SimilarCreateV1:
-      description: Settings to target similar users to website visitors.
+    ProspectingCreateV1:
+      description: Settings to target prospecting users to website visitors.
       type: object
     ContactListCreateV1:
       description: Settings to target users with your contact lists.
@@ -10305,16 +10665,6 @@ components:
     LocationCreateV1:
       description: Settings to target users based on their location.
       example:
-        registryType: Catalog
-        geoDivisions:
-        - country: country
-          zipCode: zipCode
-          cityGeoNameId: cityGeoNameId
-          subdivisionCode: subdivisionCode
-        - country: country
-          zipCode: zipCode
-          cityGeoNameId: cityGeoNameId
-          subdivisionCode: subdivisionCode
         pointsOfInterest:
         - latitude: 5.962133916683182
           name: name
@@ -10324,21 +10674,9 @@ components:
           longitude: 5.637376656633329
         radiusInKm: 0
       properties:
-        registryType:
-          enum:
-          - Catalog
-          - Store
-          - PointOfInterest
-          - GeoDivision
-          type: string
         pointsOfInterest:
           items:
             $ref: '#/components/schemas/PointOfInterestV1'
-          type: array
-          uniqueItems: false
-        geoDivisions:
-          items:
-            $ref: '#/components/schemas/GeoDivisionV1'
           type: array
           uniqueItems: false
         radiusInKm:
@@ -10366,7 +10704,19 @@ components:
           format: int32
           type: integer
       type: object
-    CommerceUpdateV1:
+    LookalikeCreateV1:
+      description: Settings to target users close to a given seed segment.
+      example:
+        targetSize: 5
+        seedSegmentId: seedSegmentId
+      properties:
+        seedSegmentId:
+          type: string
+        targetSize:
+          format: int64
+          type: integer
+      type: object
+    InMarketUpdateV1:
       description: Settings to target users based on high shopping intents and demographics.
       example:
         country: country
@@ -10377,7 +10727,7 @@ components:
         - Low
         - Low
         gender:
-          value: Unknown
+          value: Male
         brandIds:
         - brandIds
         - brandIds
@@ -10419,22 +10769,10 @@ components:
           type: array
           uniqueItems: true
       type: object
-    ContactListUpdateV1:
-      description: Settings to target users with your contact lists.
-      type: object
     LocationUpdateV1:
       description: Settings to target users based on their location.
       example:
-        registryType: Catalog
-        geoDivisions:
-        - country: country
-          zipCode: zipCode
-          cityGeoNameId: cityGeoNameId
-          subdivisionCode: subdivisionCode
-        - country: country
-          zipCode: zipCode
-          cityGeoNameId: cityGeoNameId
-          subdivisionCode: subdivisionCode
+        registryType: PointOfInterest
         pointsOfInterest:
         - latitude: 5.962133916683182
           name: name
@@ -10449,21 +10787,13 @@ components:
             $ref: '#/components/schemas/PointOfInterestV1'
           type: array
           uniqueItems: false
-        geoDivisions:
-          items:
-            $ref: '#/components/schemas/GeoDivisionV1'
-          type: array
-          uniqueItems: false
         radiusInKm:
           description: Radius in kilometers
           format: int32
           type: integer
         registryType:
           enum:
-          - Catalog
-          - Store
           - PointOfInterest
-          - GeoDivision
           type: string
       type: object
     RetargetingUpdateV1:
@@ -10487,7 +10817,16 @@ components:
           format: int32
           type: integer
       type: object
-    CommerceSizeEstimationV1:
+    LookalikeUpdateV1:
+      description: Settings to target users that behave like a given seed segment
+      example:
+        targetSize: 5
+      properties:
+        targetSize:
+          format: int64
+          type: integer
+      type: object
+    InMarketSizeEstimationV1:
       description: Settings to target users based on high shopping intents and demographics.
       example:
         country: country
@@ -10545,7 +10884,6 @@ components:
     LocationSizeEstimationV1:
       description: Settings to define your audience based on their location.
       example:
-        registryType: Store
         pointsOfInterest:
         - latitude: 5.962133916683182
           name: name
@@ -10555,11 +10893,6 @@ components:
           longitude: 5.637376656633329
         radiusInKm: 0
       properties:
-        registryType:
-          enum:
-          - Store
-          - PointOfInterest
-          type: string
         pointsOfInterest:
           items:
             $ref: '#/components/schemas/PointOfInterestV1'
@@ -10570,7 +10903,8 @@ components:
           type: integer
       type: object
     PointOfInterestV1:
-      description: Named coordinate defined by its latitude and longitude.
+      description: "Named coordinate defined by its latitude and longitude.\r\nLatitude\
+        \ and Longitude are rounded at 5 decimals."
       example:
         latitude: 5.962133916683182
         name: name
@@ -10580,45 +10914,23 @@ components:
           description: Name of the point of interest
           type: string
         latitude:
-          description: ISO-6709 latitude
+          description: ISO-6709 latitude (rounded at 5 decimals)
           format: double
           type: number
         longitude:
-          description: ISO-6709 longitude
+          description: ISO-6709 longitude (rounded at 5 decimals)
           format: double
           type: number
-      type: object
-    GeoDivisionV1:
-      description: Geo area defined by country/zipcode/city/subdivision.
-      example:
-        country: country
-        zipCode: zipCode
-        cityGeoNameId: cityGeoNameId
-        subdivisionCode: subdivisionCode
-      properties:
-        country:
-          description: Country code (iso alpha-2)
-          type: string
-        zipCode:
-          description: ZipCode in the country
-          type: string
-        cityGeoNameId:
-          description: City id defined by GeoName api
-          type: string
-        subdivisionCode:
-          description: Subdivision iso code
-          type: string
       type: object
     NillableGenderV1:
       description: Placeholder object for value for which "null" is a valid business
         value
       example:
-        value: Unknown
+        value: Male
       properties:
         value:
           description: The value. If missing or null the value is set to "null"
           enum:
-          - Unknown
           - Male
           - Female
           type: string
@@ -10677,7 +10989,8 @@ components:
           id: id
           type: ReadAdSet
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -10686,7 +10999,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -10696,7 +11010,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -10705,7 +11020,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -10833,7 +11149,8 @@ components:
           id: id
           type: ReadAdSet
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -10842,7 +11159,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -10852,7 +11170,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -10861,7 +11180,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -10897,7 +11217,8 @@ components:
           id: id
           type: AdSetId
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -10906,7 +11227,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -10916,7 +11238,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -10925,7 +11248,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -10959,7 +11283,8 @@ components:
         - id: id
           type: AdSetId
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -10968,7 +11293,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -10978,7 +11304,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -10987,7 +11314,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11031,7 +11359,8 @@ components:
           id: id
           type: AdSetDisplayMultiplier
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11040,7 +11369,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11050,7 +11380,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11059,7 +11390,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11096,7 +11428,8 @@ components:
         - id: id
           type: AdSetDisplayMultiplier
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11105,7 +11438,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11115,7 +11449,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11124,7 +11459,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11167,7 +11503,8 @@ components:
           id: id
           type: AdSetCategoryBid
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11176,7 +11513,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11186,7 +11524,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11195,7 +11534,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11232,7 +11572,8 @@ components:
         - id: id
           type: AdSetCategoryBid
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11241,7 +11582,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11251,7 +11593,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11260,7 +11603,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11304,7 +11648,8 @@ components:
           id: id
           type: Campaign
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11313,7 +11658,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11323,7 +11669,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11332,7 +11679,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11384,7 +11732,8 @@ components:
           id: id
           type: Campaign
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11393,7 +11742,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11403,7 +11753,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11412,7 +11763,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11450,7 +11802,8 @@ components:
         - id: id
           type: Campaign
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11459,7 +11812,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11469,7 +11823,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11478,7 +11833,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -11852,6 +12208,7 @@ components:
     ProblemDetails:
       description: Data model for common error or warning
       example:
+        traceId: traceId
         traceIdentifier: traceIdentifier
         code: code
         instance: instance
@@ -11862,7 +12219,12 @@ components:
         type: unknown
         title: title
       properties:
+        traceId:
+          description: The request correlation ID this problem comes from.
+          type: string
         traceIdentifier:
+          description: "The request correlation ID this problem comes from. (deprecated,\
+            \ use traceId instead)"
           type: string
         type:
           enum:
@@ -13382,7 +13744,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13391,7 +13754,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13401,7 +13765,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13410,7 +13775,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13527,7 +13893,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13536,7 +13903,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13546,7 +13914,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13555,7 +13924,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13605,7 +13975,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13614,7 +13985,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13624,7 +13996,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13633,7 +14006,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13676,7 +14050,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13685,7 +14060,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13695,7 +14071,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13704,7 +14081,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13788,7 +14166,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13797,7 +14176,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13807,7 +14187,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13816,7 +14197,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13876,7 +14258,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13885,7 +14268,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13895,7 +14279,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13904,7 +14289,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13943,7 +14329,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13952,7 +14339,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13962,7 +14350,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13971,7 +14360,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -15676,6 +16066,16 @@ components:
       required:
       - data
       type: object
+    ProblemsDetails:
+      description: Common problems object
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+      type: object
     ReportDataMessage:
       description: This is the message defining the json report data
       example:
@@ -15698,6 +16098,111 @@ components:
           uniqueItems: false
       required:
       - data
+      type: object
+    MarketingSolutionsReportStatusResponse:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity
+      example:
+        data:
+          attributes:
+            id: id
+            message: message
+            status: Unknown
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/MarketingSolutionsReportStatusResource'
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+      type: object
+    ExportResult:
+      description: Result for an async report request
+      example:
+        data:
+          metadata:
+            columns:
+            - duration: duration
+              role: Dimension
+              timezone: timezone
+              deprecated: true
+              name: name
+              description: description
+              currency: currency
+              title: title
+              type: Boolean
+              relatedTo: AdSetId
+            - duration: duration
+              role: Dimension
+              timezone: timezone
+              deprecated: true
+              name: name
+              description: description
+              currency: currency
+              title: title
+              type: Boolean
+              relatedTo: AdSetId
+            rows: 0
+          data:
+          - - "{}"
+            - "{}"
+          - - "{}"
+            - "{}"
+      properties:
+        data:
+          $ref: '#/components/schemas/ExportResultData'
       type: object
     StatisticsReportQueryMessage:
       description: This is the message defining the query for Adset report
@@ -15739,8 +16244,8 @@ components:
         currency: EUR
         format: csv
         timezone: Europe/Paris
-        startDate: 2021-12-29T00:00:00.0000000+01:00
-        endDate: 2022-01-01T00:00:00.0000000+01:00
+        startDate: 2022-08-29T00:00:00.0000000+00:00
+        endDate: 2022-09-01T00:00:00.0000000+00:00
       properties:
         advertiserIds:
           description: "The comma-separated list of advertiser ids. If empty, all\
@@ -15791,6 +16296,7 @@ components:
             - MarketingObjective
             - ChannelId
             - Channel
+            - Goal
             type: string
           type: array
           uniqueItems: false
@@ -15842,8 +16348,8 @@ components:
             currency: EUR
             format: csv
             timezone: Europe/Paris
-            startDate: 2021-12-29T00:00:00.0000000+01:00
-            endDate: 2021-12-29T00:00:00.0000000+01:00
+            startDate: 2022-08-29T00:00:00.0000000+00:00
+            endDate: 2022-08-29T00:00:00.0000000+00:00
       properties:
         data:
           items:
@@ -15876,8 +16382,8 @@ components:
             disclosed: false
             format: csv
             timezone: Europe/Paris
-            startDate: 2021-12-29T00:00:00.0000000+01:00
-            endDate: 2021-12-29T00:00:00.0000000+01:00
+            startDate: 2022-08-29T00:00:00.0000000+00:00
+            endDate: 2022-08-29T00:00:00.0000000+00:00
       properties:
         data:
           items:
@@ -15891,8 +16397,8 @@ components:
       description: This is the message defining the query for Transparency report
       example:
         shouldDisplayProductIds: false
-        startDate: 2021-12-29T00:00:00.0000000+01:00
-        endDate: 2022-01-01T00:00:00.0000000+01:00
+        startDate: 2022-08-29T00:00:00.0000000+00:00
+        endDate: 2022-09-01T00:00:00.0000000+00:00
       properties:
         shouldDisplayProductIds:
           default: false
@@ -15929,8 +16435,8 @@ components:
             shouldDisplayDomainDimension: true
             format: csv
             timezone: Europe/Paris
-            startDate: 2021-12-29T00:00:00.0000000+01:00
-            endDate: 2021-12-29T00:00:00.0000000+01:00
+            startDate: 2022-08-29T00:00:00.0000000+00:00
+            endDate: 2022-08-29T00:00:00.0000000+00:00
       properties:
         data:
           $ref: '#/components/schemas/GenerateCategoriesReportRequestData'
@@ -15944,8 +16450,8 @@ components:
           type: TopProductsReport
           attributes:
             timezone: Europe/Paris
-            startDate: 2021-12-29T00:00:00.0000000+01:00
-            endDate: 2022-01-01T00:00:00.0000000+01:00
+            startDate: 2022-08-29T00:00:00.0000000+00:00
+            endDate: 2022-09-01T00:00:00.0000000+00:00
             advertiserId: "1234"
             limit: 200
             rankProductsBy: Clicks
@@ -15994,8 +16500,8 @@ components:
         data:
           type: CreativesReport
           attributes:
-            startDate: 2021-12-29T00:00:00.0000000+01:00
-            endDate: 2022-01-01T00:00:00.0000000+01:00
+            startDate: 2022-08-29T00:00:00.0000000+00:00
+            endDate: 2022-09-01T00:00:00.0000000+00:00
             advertiserIds:
             - "6666"
             - "7777"
@@ -16006,7 +16512,6 @@ components:
             dimensions:
             - SizeCategory
             - DisplaySize
-            - AdType
             - AdFormat
             - Coupon
             - CouponId
@@ -16015,12 +16520,9 @@ components:
             - Day
             - Hour
             timezone: Europe/Paris
-            adTypes:
-            - Dynamic
-            - Other types
             adFormats:
-            - Mozaic
-            - Native
+            - Dynamic
+            - Other formats
             displaySizes:
             - LeaderBoard
             - LargeBanner
@@ -16044,6 +16546,97 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/GenerateCreativesReportRequestData'
+      required:
+      - data
+      type: object
+    GenerateStatisticsReportRequest:
+      description: Request for async statistics report
+      example:
+        data:
+          type: StatisticsReport
+          attributes:
+            startDate: 2022-08-29T00:00:00.0000000+00:00
+            endDate: 2022-09-01T00:00:00.0000000+00:00
+            advertiserIds:
+            - "11111"
+            timezone: Europe/Paris
+            dimensions:
+            - CampaignId
+            - Campaign
+            - AdSetId
+            - AdSet
+            - AdvertiserId
+            - Advertiser
+            - AdId
+            - Ad
+            - CouponId
+            - Coupon
+            - CategoryId
+            - Category
+            - Hour
+            - Day
+            - Week
+            - Month
+            - Year
+            - Os
+            - Device
+            - MarketingCampaignGoal
+            - MarketingObjective
+            - MarketingObjectiveId
+            - VideoPlacement
+            - VideoPlaybackMethod
+            - VideoPlayerSize
+            - VideoDurationInSeconds
+            - SSP
+            metrics:
+            - Clicks
+            - Displays
+            - Cpc
+            - Visits
+            currency: EUR
+            adSetIds:
+            - "12345"
+            - "54321"
+            adSetNames:
+            - myAdSet1
+            - myAdSet2
+            adSetStatus:
+            - Active
+      properties:
+        data:
+          $ref: '#/components/schemas/GenerateStatisticsReportRequestData'
+      required:
+      - data
+      type: object
+    GenerateAudiencePerformanceReportRequest:
+      description: Request for async audience performance report
+      example:
+        data:
+          type: AudiencePerformanceReport
+          attributes:
+            startDate: 2022-09-20T00:00:00.0000000+02:00
+            endDate: 2022-09-23T00:00:00.0000000+02:00
+            advertiserIds:
+            - "11111"
+            timezone: Europe/Paris
+            dimension: Top30BrandsByClicks
+            metrics:
+            - Clicks
+            - Displays
+            - Visits
+            currency: EUR
+            adSetIds:
+            - "12345"
+            - "54321"
+            audienceIds:
+            - "12345"
+            - "54321"
+            segmentsIds:
+            - "12345"
+            - "54321"
+      properties:
+        data:
+          $ref: '#/components/schemas/GenerateAudiencePerformanceReportRequestData'
       required:
       - data
       type: object
@@ -16086,6 +16679,66 @@ components:
       required:
       - attributes
       - type
+      type: object
+    MarketingSolutionsReportStatusResource:
+      description: A class that represents a domain entity exposed by an API
+      example:
+        attributes:
+          id: id
+          message: message
+          status: Unknown
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/MarketingSolutionsReportStatus'
+        id:
+          type: string
+        type:
+          type: string
+      type: object
+    ExportResultData:
+      description: Result data for an async report request
+      example:
+        metadata:
+          columns:
+          - duration: duration
+            role: Dimension
+            timezone: timezone
+            deprecated: true
+            name: name
+            description: description
+            currency: currency
+            title: title
+            type: Boolean
+            relatedTo: AdSetId
+          - duration: duration
+            role: Dimension
+            timezone: timezone
+            deprecated: true
+            name: name
+            description: description
+            currency: currency
+            title: title
+            type: Boolean
+            relatedTo: AdSetId
+          rows: 0
+        data:
+        - - "{}"
+          - "{}"
+        - - "{}"
+          - "{}"
+      properties:
+        metadata:
+          $ref: '#/components/schemas/ExportMetaData'
+        data:
+          items:
+            items:
+              type: object
+            type: array
+            uniqueItems: false
+          type: array
+          uniqueItems: false
       type: object
     TransactionsReportQueryEntityMessage:
       description: Contains a query for Transaction report and its type
@@ -16142,6 +16795,28 @@ components:
       - attributes
       - type
       type: object
+    GenerateStatisticsReportRequestData:
+      description: Request data for async statistics report
+      properties:
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/GenerateStatisticsReportRequestAttributes'
+      required:
+      - attributes
+      - type
+      type: object
+    GenerateAudiencePerformanceReportRequestData:
+      description: Request data for async audience performance report
+      properties:
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/GenerateAudiencePerformanceReportRequestAttributes'
+      required:
+      - attributes
+      - type
+      type: object
     TransparencyReportAttributes:
       description: This is the message defining the attribute response for Transparency
         report
@@ -16183,6 +16858,65 @@ components:
             type: object
           type: array
           uniqueItems: false
+      type: object
+    MarketingSolutionsReportStatus:
+      description: Object containing the status of report request and an associated
+        message.
+      example:
+        id: id
+        message: message
+        status: Unknown
+      properties:
+        status:
+          enum:
+          - Unknown
+          - Pending
+          - Done
+          - Failure
+          - Expired
+          type: string
+        message:
+          type: string
+        id:
+          type: string
+      type: object
+      x-criteo-canonical:
+        infoType: entity
+    ExportMetaData:
+      description: "Metadata for an async report request: descriptions of the columns\
+        \ and number of rows returned"
+      example:
+        columns:
+        - duration: duration
+          role: Dimension
+          timezone: timezone
+          deprecated: true
+          name: name
+          description: description
+          currency: currency
+          title: title
+          type: Boolean
+          relatedTo: AdSetId
+        - duration: duration
+          role: Dimension
+          timezone: timezone
+          deprecated: true
+          name: name
+          description: description
+          currency: currency
+          title: title
+          type: Boolean
+          relatedTo: AdSetId
+        rows: 0
+      properties:
+        columns:
+          items:
+            $ref: '#/components/schemas/ExportColumn'
+          type: array
+          uniqueItems: false
+        rows:
+          format: int32
+          type: integer
       type: object
     TransactionsReportQueryMessage:
       description: This is the message defining the query for Transaction report
@@ -16290,6 +17024,7 @@ components:
           format: date-time
           type: string
       required:
+      - advertiserIds
       - currency
       - dimensions
       - endDate
@@ -16487,7 +17222,6 @@ components:
           items:
             enum:
             - AdFormat
-            - AdType
             - Coupon
             - CouponId
             - DisplaySize
@@ -16503,12 +17237,6 @@ components:
           description: The timezone used for the report. Timezone Database format
             (Tz).
           type: string
-        adTypes:
-          description: The list of adTypes.
-          items:
-            type: string
-          type: array
-          uniqueItems: false
         adFormats:
           description: The list of adFormats.
           items:
@@ -16570,6 +17298,400 @@ components:
       - metrics
       - startDate
       type: object
+    GenerateStatisticsReportRequestAttributes:
+      description: Request attributes for async statistics report
+      properties:
+        startDate:
+          description: "Start date of the report. Date component of ISO 8061 format,\
+            \ any time or timezone component is ignored."
+          format: date-time
+          type: string
+        endDate:
+          description: "End date of the report. Date component of ISO 8061 format,\
+            \ any time or timezone component is ignored."
+          format: date-time
+          type: string
+        advertiserIds:
+          description: The of advertiser ids
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        timezone:
+          description: The timezone used for the report. Timezone Database format
+            (Tz).
+          type: string
+        dimensions:
+          description: The dimensions for the report.
+          items:
+            enum:
+            - AdvertiserId
+            - Advertiser
+            - CampaignId
+            - Campaign
+            - AdSetId
+            - AdSet
+            - ChannelId
+            - Channel
+            - CategoryId
+            - Category
+            - Device
+            - Os
+            - AdId
+            - Ad
+            - CouponId
+            - Coupon
+            - Year
+            - Month
+            - Week
+            - Day
+            - Hour
+            - MarketingCampaignGoal
+            - MarketingObjective
+            - MarketingObjectiveId
+            - VideoPlayerSize
+            - VideoPlacement
+            - VideoPlaybackMethod
+            - SSP
+            - VideoDurationInSeconds
+            - MediaType
+            - AdFormat
+            - DisplaySize
+            - VideoPlayerRatio
+            type: string
+          type: array
+          uniqueItems: false
+        metrics:
+          description: The list of metrics to report.
+          items:
+            enum:
+            - Clicks
+            - Displays
+            - AdvertiserCost
+            - SalesPc30dClientAttribution
+            - SalesAllPc30dClientAttribution
+            - SalesClientAttribution
+            - SalesAllClientAttribution
+            - SalesPc30d
+            - SalesAllPc30d
+            - SalesPc1d
+            - SalesAllPc1d
+            - SalesPc7d
+            - SalesAllPc7d
+            - SalesPc7dPv24
+            - SalesAllPc7dPv24
+            - SalesPc7dPv24h
+            - SalesAllPc7dPv24h
+            - SalesPv24h
+            - SalesAllPv24h
+            - SalesPc30Pv24
+            - SalesAllPc30Pv24
+            - SalesPc30dPv24h
+            - SalesAllPc30dPv24h
+            - SalesPiPc
+            - SalesPiPv
+            - SalesPiPcPv
+            - PostInstallSales
+            - SalesOfflinePc
+            - SalesOfflinePv
+            - SalesOfflinePc30d
+            - SalesOfflinePv24h
+            - RevenueGeneratedPc30dClientAttribution
+            - RevenueGeneratedAllPc30dClientAttribution
+            - RevenueGeneratedClientAttribution
+            - RevenueGeneratedAllClientAttribution
+            - RevenueGeneratedPc30d
+            - RevenueGeneratedAllPc30d
+            - RevenueGeneratedPc1d
+            - RevenueGeneratedAllPc1d
+            - RevenueGeneratedPc7d
+            - RevenueGeneratedAllPc7d
+            - RevenueGeneratedPv24h
+            - RevenueGeneratedAllPv24h
+            - RevenueGeneratedPc30Pv24
+            - RevenueGeneratedAllPc30Pv24
+            - RevenueGeneratedPc30dPv24h
+            - RevenueGeneratedAllPc30dPv24h
+            - RevenueGeneratedPc7dPv24h
+            - RevenueGeneratedAllPc7dPv24h
+            - RevenueGeneratedPc7dPv24
+            - RevenueGeneratedAllPc7dPv24
+            - RevenueGeneratedOfflinePc
+            - RevenueGeneratedOfflinePv
+            - RevenueGeneratedOfflinePc30d
+            - RevenueGeneratedOfflinePv24h
+            - ConversionRatePc30dClientAttribution
+            - ConversionRateAllPc30dClientAttribution
+            - ConversionRateClientAttribution
+            - ConversionRateAllClientAttribution
+            - ConversionRatePc30d
+            - ConversionRateAllPc30d
+            - ConversionRatePc1d
+            - ConversionRateAllPc1d
+            - ConversionRatePc7d
+            - ConversionRateAllPc7d
+            - ConversionRatePv24h
+            - ConversionRateAllPv24h
+            - ConversionRatePc30Pv24
+            - ConversionRateAllPc30Pv24
+            - ConversionRatePc30dPv24h
+            - ConversionRateAllPc30dPv24h
+            - ConversionRatePc7dPv24
+            - ConversionRateAllPc7dPv24
+            - ConversionRatePc7dPv24h
+            - ConversionRateAllPc7dPv24h
+            - ConversionRatePiPcPv
+            - PostInstallConversionRate
+            - ECosPc30dClientAttribution
+            - ECosAllPc30dClientAttribution
+            - ECosClientAttribution
+            - ECosAllClientAttribution
+            - ECosPc30d
+            - ECosAllPc30d
+            - ECosPc1d
+            - ECosAllPc1d
+            - ECosPc7d
+            - ECosAllPc7d
+            - ECosPv24h
+            - ECosAllPv24h
+            - ECosPc30Pv24
+            - ECosAllPc30Pv24
+            - ECosPc30dPv24h
+            - ECosAllPc30dPv24h
+            - ECosPc7dPv24h
+            - ECosAllPc7dPv24h
+            - ECosPc7dPv24
+            - ECosAllPc7dPv24
+            - CostPerOrderPc30dClientAttribution
+            - CostPerOrderAllPc30dClientAttribution
+            - CostPerOrderClientAttribution
+            - CostPerOrderAllClientAttribution
+            - CostPerOrderPc30d
+            - CostPerOrderAllPc30d
+            - CostPerOrderPc1d
+            - CostPerOrderAllPc1d
+            - CostPerOrderPc7d
+            - CostPerOrderAllPc7d
+            - CostPerOrderPv24h
+            - CostPerOrderAllPv24h
+            - CostPerOrderPc30Pv24
+            - CostPerOrderAllPc30Pv24
+            - CostPerOrderPc30dPv24h
+            - CostPerOrderAllPc30dPv24h
+            - CostPerOrderPc7dPv24h
+            - CostPerOrderAllPc7dPv24h
+            - CostPerOrderPc7dPv24
+            - CostPerOrderAllPc7dPv24
+            - ExposedUsers
+            - Audience
+            - Reach
+            - AverageCartPc30dClientAttribution
+            - AverageCartAllPc30dClientAttribution
+            - AverageCartClientAttribution
+            - AverageCartAllClientAttribution
+            - AverageCartPc30d
+            - AverageCartAllPc30d
+            - AverageCartPv24h
+            - AverageCartAllPv24h
+            - AverageCartPc1d
+            - AverageCartAllPc1d
+            - AverageCartPc7d
+            - AverageCartAllPc7d
+            - AverageCartPc30Pv24
+            - AverageCartAllPc30Pv24
+            - AverageCartPc30dPv24h
+            - AverageCartAllPc30dPv24h
+            - AverageCartPc7dPv24h
+            - AverageCartAllPc7dPv24h
+            - AverageCartPc7dPv24
+            - AverageCartAllPc7dPv24
+            - ClickThroughRate
+            - ECpc
+            - Cpc
+            - ECpm
+            - ReturnOnAdvertisingSpendingClientAttribution
+            - ReturnOnAdvertisingSpendingAllClientAttribution
+            - AdvertiserValue
+            - AdvertiserAllValue
+            - CostOfAdvertiserValue
+            - CostOfAdvertiserValueAll
+            - AppInstallsPcPv
+            - AppInstalls
+            - QualifiedVisits
+            - Visits
+            - OrderValuePi
+            - PostInstallOrderValue
+            - BounceRate
+            - CostPerInstallPcPv
+            - CostPerInstall
+            - CostPerVisit
+            - InstallRatePcPv
+            - InstallRate
+            - OmniChannelRoasPc30d
+            - OmnichannelRoasAllPc30d
+            - OmniChannelRevenuePc30d
+            - OmnichannelRevenueAllPc30d
+            - OmniChannelSalesPc30d
+            - OmnichannelSalesAllPc30d
+            - OmnichannelRoasAllPv24h
+            - OmnichannelRoasPv24h
+            - OmnichannelRevenueAllPv24h
+            - OmnichannelRevenuePv24h
+            - OmnichannelSalesAllPv24h
+            - OmnichannelSalesPv24h
+            - OmnichannelRoasClientAttribution
+            - OmnichannelRevenueClientAttribution
+            - OmnichannelSalesClientAttribution
+            - RoasAllPc30dClientAttribution
+            - RoasPc30dClientAttribution
+            - RoasAllClientAttribution
+            - RoasClientAttribution
+            - RoasAllPc30d
+            - RoasPc30d
+            - RoasAllPc7d
+            - RoasPc7d
+            - RoasAllPc1d
+            - RoasPc1d
+            - RoasAllPv24h
+            - RoasPv24h
+            - RoasPc30Pv24
+            - RoasAllPc30Pv24
+            - RoasPc30dPv24h
+            - RoasAllPc30dPv24h
+            - RoasPc7dPv24
+            - RoasAllPc7dPv24
+            - RoasPc7dPv24h
+            - RoasAllPc7dPv24h
+            - CostOfSalePi
+            - CostPerOrderPi
+            - PostInstallCostOfSale
+            - PostInstallCostPerOrder
+            - ReturnOnAdvertiserSpendingPi
+            - PostInstallRoas
+            - ReturnOnAdvertiserSpendingOfflinePc
+            - ReturnOnAdvertiserSpendingOfflinePv
+            - RoasOfflinePc30d
+            - RoasOfflinePv24h
+            - PotentialDisplays
+            - OverallCompetitionWin
+            - ViewableDisplays
+            - NonViewableDisplays
+            - UntrackableDisplays
+            - Frequency
+            - InvalidClicks
+            - InvalidDisplays
+            - ResultType
+            - CostPerQualifiedVisit
+            type: string
+          type: array
+          uniqueItems: false
+        currency:
+          description: The currency used for the report. ISO 4217 code (three-letter
+            capitals).
+          type: string
+        adSetIds:
+          description: "The list of adSets ids. If empty, all the adSets will be fetched"
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        adSetNames:
+          description: "The list of adSets names. If empty, all the adSets will be\
+            \ fetched"
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        adSetStatus:
+          description: "The list of adSets status. If empty, all the adSets will be\
+            \ fetched"
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+      required:
+      - dimensions
+      - endDate
+      - metrics
+      - startDate
+      type: object
+    GenerateAudiencePerformanceReportRequestAttributes:
+      description: Request attributes for async audience performance report
+      properties:
+        startDate:
+          description: "Start date of the report. Date component of ISO 8061 format,\
+            \ any time or timezone component is ignored."
+          format: date-time
+          type: string
+        endDate:
+          description: "End date of the report. Date component of ISO 8061 format,\
+            \ any time or timezone component is ignored."
+          format: date-time
+          type: string
+        advertiserId:
+          description: The advertiser id
+          type: string
+        timezone:
+          description: The timezone used for the report. Timezone Database format
+            (Tz).
+          type: string
+        dimension:
+          description: The dimension for the report.
+          enum:
+          - AdvertiserId
+          - Advertiser
+          - Top30BrandsByDisplays
+          - Top30BrandsByClicks
+          - Top30BrandsBySales
+          - Top30InterestsByDisplays
+          - Top30InterestsByClicks
+          - Top30InterestsBySales
+          type: string
+        metrics:
+          description: The list of metrics to report.
+          items:
+            enum:
+            - Clicks
+            - Displays
+            - Visits
+            - Sales
+            - Revenue
+            - CostPerVisit
+            - ExposedUsers
+            type: string
+          type: array
+          uniqueItems: false
+        currency:
+          description: The currency used for the report. ISO 4217 code (three-letter
+            capitals).
+          type: string
+        adSetIds:
+          description: "The list of adSets ids. If empty, all the adSets will be fetched."
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        audienceIds:
+          description: "The list of Audiences ids. If empty, all the Audiences will\
+            \ be fetched"
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        segmentsIds:
+          description: "The list of Segments ids. If empty, all the segments will\
+            \ be fetched"
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+      required:
+      - advertiserId
+      - dimension
+      - endDate
+      - metrics
+      - startDate
+      type: object
     TransparencyReportFile:
       description: This is the message defining the file response for Transparency
         report
@@ -16585,6 +17707,89 @@ components:
       - fileName
       - url
       type: object
+    ExportColumn:
+      description: Description of a column from an async report request
+      example:
+        duration: duration
+        role: Dimension
+        timezone: timezone
+        deprecated: true
+        name: name
+        description: description
+        currency: currency
+        title: title
+        type: Boolean
+        relatedTo: AdSetId
+      properties:
+        name:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        type:
+          enum:
+          - Boolean
+          - Number
+          - Money
+          - String
+          - Date
+          - DateTime
+          - Interval
+          - Duration
+          type: string
+        role:
+          enum:
+          - Dimension
+          - Property
+          - Interval
+          - Metric
+          type: string
+        relatedTo:
+          enum:
+          - AdSetId
+          - AdSet
+          - AdvertiserId
+          - Advertiser
+          - CategoryId
+          - Category
+          - Hour
+          - Day
+          - Week
+          - Month
+          - Year
+          - Os
+          - Device
+          - CampaignId
+          - Campaign
+          - AdId
+          - Ad
+          - CouponId
+          - Coupon
+          - ChannelId
+          - Channel
+          - VideoPlacement
+          - MarketingCampaignGoal
+          - MarketingObjective
+          - MarketingObjectiveId
+          - VideoPlayerSize
+          - VideoPlaybackMethod
+          - SSP
+          - VideoDurationInSeconds
+          - MediaType
+          - AdFormat
+          - DisplaySize
+          - VideoPlayerRatio
+          type: string
+        timezone:
+          type: string
+        duration:
+          type: string
+        currency:
+          type: string
+        deprecated:
+          type: boolean
+      type: object
     AdSetTargetingDealIdsResponse:
       description: "Represents an API response message containing the usual outcome\
         \ fields (warnings+errors), and a valueResource data,\r\ni.e. data is not\
@@ -16599,7 +17804,8 @@ components:
               dealIdentifier: dealIdentifier
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16608,7 +17814,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16618,7 +17825,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16627,7 +17835,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16661,7 +17870,8 @@ components:
           attributes: "{}"
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16670,7 +17880,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16680,7 +17891,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16689,7 +17901,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16723,7 +17936,8 @@ components:
           attributes: "{}"
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16732,7 +17946,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16742,7 +17957,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16751,7 +17967,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16801,7 +18018,8 @@ components:
             - PreRoll
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16810,7 +18028,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16820,7 +18039,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16829,7 +18049,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16863,7 +18084,8 @@ components:
           attributes: "{}"
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16872,7 +18094,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16882,7 +18105,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16891,7 +18115,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16925,7 +18150,8 @@ components:
           attributes: "{}"
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16934,7 +18160,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16944,7 +18171,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16953,7 +18181,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -16992,7 +18221,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -17001,7 +18231,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -17011,7 +18242,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -17020,7 +18252,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -18707,7 +19940,7 @@ components:
       - productId
       type: object
     ProductsCustomBatchRequestEntry:
-      description: A batch entry encoding a single non-batch products request.
+      description: A product event for a batch request.
       example:
         product:
           additionalImageLinks:
@@ -18925,6 +20158,7 @@ components:
           type: boolean
       required:
       - isServerRelated
+      - message
       - type
       type: object
     Product:
@@ -19355,7 +20589,7 @@ components:
           type: string
         sellerId:
           description: The ID of the seller (case sensitive and 50 UTF8 characters
-            max). This information is required by the Criteo Resellers Program.
+            max). This information is required by the Criteo Offsite Ads.
           type: string
       required:
       - channel
@@ -19371,10 +20605,11 @@ components:
         value: value
       properties:
         currency:
-          description: The price represented as a number.
+          description: The currency of the price.
           type: string
         value:
-          description: The currency of the price.
+          description: The price represented as a number. See JSON's number specification
+            for more details.
           type: string
       type: object
     ProductShippingWeight:
@@ -19592,7 +20827,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -19601,7 +20837,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -19611,7 +20848,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -19620,7 +20858,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -19650,7 +20889,8 @@ components:
         Criteo API as described in API Guild Guidelines
       example:
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -19659,7 +20899,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -19669,7 +20910,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -19678,7 +20920,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -19749,7 +20992,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -19758,7 +21002,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -19768,7 +21013,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -19777,7 +21023,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -20783,6 +22030,180 @@ components:
           type: boolean
         active:
           type: boolean
+      type: object
+    SetUserProfileModelListRequest:
+      description: A top-level object that encapsulates a Criteo API request for several
+        values
+      example:
+        data:
+        - attributes:
+            userProfileIdentifiers:
+            - type: type
+              value: value
+            - type: type
+              value: value
+            userProfileId: userProfileId
+            userProfileAttributes:
+            - value: value
+              key: key
+            - value: value
+              key: key
+            userProfileListId: userProfileListId
+          type: type
+        - attributes:
+            userProfileIdentifiers:
+            - type: type
+              value: value
+            - type: type
+              value: value
+            userProfileId: userProfileId
+            userProfileAttributes:
+            - value: value
+              key: key
+            - value: value
+              key: key
+            userProfileListId: userProfileListId
+          type: type
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/SetUserProfileModelResource'
+          type: array
+          uniqueItems: false
+      type: object
+    DeleteUserProfileModelListRequest:
+      description: A top-level object that encapsulates a Criteo API request for several
+        values
+      example:
+        data:
+        - attributes:
+            userProfileId: userProfileId
+            userProfileListId: userProfileListId
+          type: type
+        - attributes:
+            userProfileId: userProfileId
+            userProfileListId: userProfileListId
+          type: type
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/DeleteUserProfileModelResource'
+          type: array
+          uniqueItems: false
+      type: object
+    SetUserProfileModelResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          userProfileIdentifiers:
+          - type: type
+            value: value
+          - type: type
+            value: value
+          userProfileId: userProfileId
+          userProfileAttributes:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          userProfileListId: userProfileListId
+        type: type
+      properties:
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/SetUserProfileModel'
+      type: object
+    DeleteUserProfileModelResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          userProfileId: userProfileId
+          userProfileListId: userProfileListId
+        type: type
+      properties:
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/DeleteUserProfileModel'
+      type: object
+    SetUserProfileModel:
+      description: Used for the /user-profiles/set endpoint. Contains information
+        about the user profile that we add or update
+      example:
+        userProfileIdentifiers:
+        - type: type
+          value: value
+        - type: type
+          value: value
+        userProfileId: userProfileId
+        userProfileAttributes:
+        - value: value
+          key: key
+        - value: value
+          key: key
+        userProfileListId: userProfileListId
+      properties:
+        userProfileId:
+          type: string
+        userProfileListId:
+          type: string
+        userProfileIdentifiers:
+          items:
+            $ref: '#/components/schemas/UserProfileIdentifierModel'
+          type: array
+          uniqueItems: false
+        userProfileAttributes:
+          items:
+            $ref: '#/components/schemas/UserProfileAttributeModel'
+          type: array
+          uniqueItems: false
+      required:
+      - userProfileId
+      type: object
+    DeleteUserProfileModel:
+      description: Used for the /user-profiles/delete endpoint. Contains information
+        about the user profile that we delete
+      example:
+        userProfileId: userProfileId
+        userProfileListId: userProfileListId
+      properties:
+        userProfileId:
+          type: string
+        userProfileListId:
+          type: string
+      required:
+      - userProfileId
+      type: object
+    UserProfileIdentifierModel:
+      description: Identifier of a user profile
+      example:
+        type: type
+        value: value
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+      required:
+      - type
+      - value
+      type: object
+    UserProfileAttributeModel:
+      description: Attributes of a user profile
+      example:
+        value: value
+        key: key
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      required:
+      - key
+      - value
       type: object
     ContactlistOperation_attributes:
       description: the contactlist operation attributes

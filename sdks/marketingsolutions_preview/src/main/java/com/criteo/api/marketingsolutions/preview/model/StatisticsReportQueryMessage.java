@@ -98,7 +98,9 @@ public class StatisticsReportQueryMessage {
     
     CHANNELID("ChannelId"),
     
-    CHANNEL("Channel");
+    CHANNEL("Channel"),
+    
+    GOAL("Goal");
 
     private String value;
 

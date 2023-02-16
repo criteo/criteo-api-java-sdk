@@ -8,7 +8,8 @@ Data model for common error or warning
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**traceIdentifier** | **String** | The request correlation ID this problem comes from. |  [optional]
+**traceId** | **String** | The request correlation ID this problem comes from. |  [optional]
+**traceIdentifier** | **String** | The request correlation ID this problem comes from. (deprecated, use traceId instead) |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) | The problem&#39;s category. |  [optional]
 **code** | **String** | A machine-readable  error code, expressed as a string value. |  [optional]
 **instance** | **String** | A URI that identifies the specific occurrence of the problem. |  [optional]

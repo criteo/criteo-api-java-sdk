@@ -105,8 +105,6 @@ public class GenerateCreativesReportRequestAttributes {
   public enum DimensionsEnum {
     ADFORMAT("AdFormat"),
     
-    ADTYPE("AdType"),
-    
     COUPON("Coupon"),
     
     COUPONID("CouponId"),
@@ -168,10 +166,6 @@ public class GenerateCreativesReportRequestAttributes {
   public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
   @SerializedName(SERIALIZED_NAME_TIMEZONE)
   private String timezone;
-
-  public static final String SERIALIZED_NAME_AD_TYPES = "adTypes";
-  @SerializedName(SERIALIZED_NAME_AD_TYPES)
-  private List<String> adTypes = null;
 
   public static final String SERIALIZED_NAME_AD_FORMATS = "adFormats";
   @SerializedName(SERIALIZED_NAME_AD_FORMATS)
@@ -360,37 +354,6 @@ public class GenerateCreativesReportRequestAttributes {
 
   public void setTimezone(String timezone) {
     this.timezone = timezone;
-  }
-
-
-  public GenerateCreativesReportRequestAttributes adTypes(List<String> adTypes) {
-    
-    this.adTypes = adTypes;
-    return this;
-  }
-
-  public GenerateCreativesReportRequestAttributes addAdTypesItem(String adTypesItem) {
-    if (this.adTypes == null) {
-      this.adTypes = new ArrayList<>();
-    }
-    this.adTypes.add(adTypesItem);
-    return this;
-  }
-
-   /**
-   * The list of adTypes.
-   * @return adTypes
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of adTypes.")
-
-  public List<String> getAdTypes() {
-    return adTypes;
-  }
-
-
-  public void setAdTypes(List<String> adTypes) {
-    this.adTypes = adTypes;
   }
 
 
@@ -688,7 +651,6 @@ public class GenerateCreativesReportRequestAttributes {
         Objects.equals(this.metrics, generateCreativesReportRequestAttributes.metrics) &&
         Objects.equals(this.dimensions, generateCreativesReportRequestAttributes.dimensions) &&
         Objects.equals(this.timezone, generateCreativesReportRequestAttributes.timezone) &&
-        Objects.equals(this.adTypes, generateCreativesReportRequestAttributes.adTypes) &&
         Objects.equals(this.adFormats, generateCreativesReportRequestAttributes.adFormats) &&
         Objects.equals(this.displaySizes, generateCreativesReportRequestAttributes.displaySizes) &&
         Objects.equals(this.couponNames, generateCreativesReportRequestAttributes.couponNames) &&
@@ -702,7 +664,7 @@ public class GenerateCreativesReportRequestAttributes {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, advertiserIds, metrics, dimensions, timezone, adTypes, adFormats, displaySizes, couponNames, couponIds, adNames, adIds, campaignIds, adSetIds, adSetStatus);
+    return Objects.hash(startDate, endDate, advertiserIds, metrics, dimensions, timezone, adFormats, displaySizes, couponNames, couponIds, adNames, adIds, campaignIds, adSetIds, adSetStatus);
   }
 
   @Override
@@ -715,7 +677,6 @@ public class GenerateCreativesReportRequestAttributes {
     sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
-    sb.append("    adTypes: ").append(toIndentedString(adTypes)).append("\n");
     sb.append("    adFormats: ").append(toIndentedString(adFormats)).append("\n");
     sb.append("    displaySizes: ").append(toIndentedString(displaySizes)).append("\n");
     sb.append("    couponNames: ").append(toIndentedString(couponNames)).append("\n");

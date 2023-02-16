@@ -91,7 +91,7 @@ public class Example {
         defaultClient.setPassword("YOUR CLIENT SECRET");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        File assetFile = new File("/path/to/file"); // File | The asset binary content
+        File assetFile = new File("null"); // File | The asset binary content
         try {
             AssetResponse result = apiInstance.createAsset(assetFile);
             System.out.println(result);
@@ -111,7 +111,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **assetFile** | **File**| The asset binary content | |
+| **assetFile** | [**File**](File.md)| The asset binary content | [default to null] |
 
 ### Return type
 
@@ -3327,8 +3327,8 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
 | **201** | Success |  -  |
+| **200** | OK |  -  |
 
 
 ## postApiV1ExternalAccountCatalogsByAccountId

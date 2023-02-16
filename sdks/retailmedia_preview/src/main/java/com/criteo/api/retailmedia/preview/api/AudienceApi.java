@@ -27,9 +27,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.criteo.api.retailmedia.preview.model.CommonStatusCodeResponse;
 import com.criteo.api.retailmedia.preview.model.CreateRetailMediaAudienceRequest;
 import com.criteo.api.retailmedia.preview.model.CreateRetailMediaAudienceResponse;
+import com.criteo.api.retailmedia.preview.model.CreateRetailMediaAudienceV2Request;
 import com.criteo.api.retailmedia.preview.model.GetPageOfAudiencesByAccountIdResponse;
+import com.criteo.api.retailmedia.preview.model.RetailMediaAudienceV2ListResponse;
+import com.criteo.api.retailmedia.preview.model.RetailMediaAudienceV2Response;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -198,6 +202,147 @@ public class AudienceApi {
         return localVarCall;
     }
     /**
+     * Build call for createRetailMediaAudienceV2
+     * @param accountId ID of the account to which this audience belongs. (required)
+     * @param createRetailMediaAudienceV2Request  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The audience that was just created. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Missing or invalid retailerID field. - OR - Missing or invalid name field. Name should be less than 255 characters. - OR - Missing or invalid userType field. Valid values are: &#39;buyer&#39;, &#39;viewer&#39;. - OR - The brandIds is not a valid list of IDs or may contain more than 100 elements. - OR - The categoryIds is not a valid list of IDs or may contain more than 100 elements. - OR - Missing or invalid lookbackWindow field. Valid values are: P7D, P14D, P30D, P45D, P60D, P90D, P120D, P150D or P180D. - OR - Exactly one of categoryIds or brandIds must be specified, but not both. - OR - The retailer is invalid because it is not live - OR - Missing or invalid userAction field. Valid values are: &#39;buy&#39;, &#39;view&#39;, &#39;addToCart&#39;. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Missing or invalid account ID. </td><td>  -  </td></tr>
+        <tr><td> 406 </td><td> The Accept header must contain application/json. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> An audience name should be unique per account. </td><td>  -  </td></tr>
+        <tr><td> 415 </td><td> The Content-Type header must be application/json if present. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createRetailMediaAudienceV2Call(String accountId, CreateRetailMediaAudienceV2Request createRetailMediaAudienceV2Request, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = createRetailMediaAudienceV2Request;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/v2/accounts/{accountId}/audiences"
+            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createRetailMediaAudienceV2ValidateBeforeCall(String accountId, CreateRetailMediaAudienceV2Request createRetailMediaAudienceV2Request, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling createRetailMediaAudienceV2(Async)");
+        }
+        
+        // verify the required parameter 'createRetailMediaAudienceV2Request' is set
+        if (createRetailMediaAudienceV2Request == null) {
+            throw new ApiException("Missing the required parameter 'createRetailMediaAudienceV2Request' when calling createRetailMediaAudienceV2(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createRetailMediaAudienceV2Call(accountId, createRetailMediaAudienceV2Request, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Create an audience for a given account ID
+     * @param accountId ID of the account to which this audience belongs. (required)
+     * @param createRetailMediaAudienceV2Request  (required)
+     * @return RetailMediaAudienceV2Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The audience that was just created. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Missing or invalid retailerID field. - OR - Missing or invalid name field. Name should be less than 255 characters. - OR - Missing or invalid userType field. Valid values are: &#39;buyer&#39;, &#39;viewer&#39;. - OR - The brandIds is not a valid list of IDs or may contain more than 100 elements. - OR - The categoryIds is not a valid list of IDs or may contain more than 100 elements. - OR - Missing or invalid lookbackWindow field. Valid values are: P7D, P14D, P30D, P45D, P60D, P90D, P120D, P150D or P180D. - OR - Exactly one of categoryIds or brandIds must be specified, but not both. - OR - The retailer is invalid because it is not live - OR - Missing or invalid userAction field. Valid values are: &#39;buy&#39;, &#39;view&#39;, &#39;addToCart&#39;. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Missing or invalid account ID. </td><td>  -  </td></tr>
+        <tr><td> 406 </td><td> The Accept header must contain application/json. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> An audience name should be unique per account. </td><td>  -  </td></tr>
+        <tr><td> 415 </td><td> The Content-Type header must be application/json if present. </td><td>  -  </td></tr>
+     </table>
+     */
+    public RetailMediaAudienceV2Response createRetailMediaAudienceV2(String accountId, CreateRetailMediaAudienceV2Request createRetailMediaAudienceV2Request) throws ApiException {
+        ApiResponse<RetailMediaAudienceV2Response> localVarResp = createRetailMediaAudienceV2WithHttpInfo(accountId, createRetailMediaAudienceV2Request);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Create an audience for a given account ID
+     * @param accountId ID of the account to which this audience belongs. (required)
+     * @param createRetailMediaAudienceV2Request  (required)
+     * @return ApiResponse&lt;RetailMediaAudienceV2Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The audience that was just created. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Missing or invalid retailerID field. - OR - Missing or invalid name field. Name should be less than 255 characters. - OR - Missing or invalid userType field. Valid values are: &#39;buyer&#39;, &#39;viewer&#39;. - OR - The brandIds is not a valid list of IDs or may contain more than 100 elements. - OR - The categoryIds is not a valid list of IDs or may contain more than 100 elements. - OR - Missing or invalid lookbackWindow field. Valid values are: P7D, P14D, P30D, P45D, P60D, P90D, P120D, P150D or P180D. - OR - Exactly one of categoryIds or brandIds must be specified, but not both. - OR - The retailer is invalid because it is not live - OR - Missing or invalid userAction field. Valid values are: &#39;buy&#39;, &#39;view&#39;, &#39;addToCart&#39;. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Missing or invalid account ID. </td><td>  -  </td></tr>
+        <tr><td> 406 </td><td> The Accept header must contain application/json. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> An audience name should be unique per account. </td><td>  -  </td></tr>
+        <tr><td> 415 </td><td> The Content-Type header must be application/json if present. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<RetailMediaAudienceV2Response> createRetailMediaAudienceV2WithHttpInfo(String accountId, CreateRetailMediaAudienceV2Request createRetailMediaAudienceV2Request) throws ApiException {
+        okhttp3.Call localVarCall = createRetailMediaAudienceV2ValidateBeforeCall(accountId, createRetailMediaAudienceV2Request, null);
+        Type localVarReturnType = new TypeToken<RetailMediaAudienceV2Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Create an audience for a given account ID
+     * @param accountId ID of the account to which this audience belongs. (required)
+     * @param createRetailMediaAudienceV2Request  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The audience that was just created. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Missing or invalid retailerID field. - OR - Missing or invalid name field. Name should be less than 255 characters. - OR - Missing or invalid userType field. Valid values are: &#39;buyer&#39;, &#39;viewer&#39;. - OR - The brandIds is not a valid list of IDs or may contain more than 100 elements. - OR - The categoryIds is not a valid list of IDs or may contain more than 100 elements. - OR - Missing or invalid lookbackWindow field. Valid values are: P7D, P14D, P30D, P45D, P60D, P90D, P120D, P150D or P180D. - OR - Exactly one of categoryIds or brandIds must be specified, but not both. - OR - The retailer is invalid because it is not live - OR - Missing or invalid userAction field. Valid values are: &#39;buy&#39;, &#39;view&#39;, &#39;addToCart&#39;. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Missing or invalid account ID. </td><td>  -  </td></tr>
+        <tr><td> 406 </td><td> The Accept header must contain application/json. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> An audience name should be unique per account. </td><td>  -  </td></tr>
+        <tr><td> 415 </td><td> The Content-Type header must be application/json if present. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createRetailMediaAudienceV2Async(String accountId, CreateRetailMediaAudienceV2Request createRetailMediaAudienceV2Request, final ApiCallback<RetailMediaAudienceV2Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createRetailMediaAudienceV2ValidateBeforeCall(accountId, createRetailMediaAudienceV2Request, _callback);
+        Type localVarReturnType = new TypeToken<RetailMediaAudienceV2Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getAudiencesByAccountId
      * @param accountId External account ID which owns audience. (required)
      * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
@@ -346,6 +491,154 @@ public class AudienceApi {
 
         okhttp3.Call localVarCall = getAudiencesByAccountIdValidateBeforeCall(accountId, limitToId, pageSize, pageIndex, _callback);
         Type localVarReturnType = new TypeToken<GetPageOfAudiencesByAccountIdResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getRetailMediaAudienceV2ListByAccountId
+     * @param accountId External account ID which owns audience. (required)
+     * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
+     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
+     * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A page of audiences for the supplied account. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Missing or invalid account ID. - OR - You do not have permission to access this account. </td><td>  -  </td></tr>
+        <tr><td> 406 </td><td> The Accept header must contain application/json. </td><td>  -  </td></tr>
+        <tr><td> 415 </td><td> The Content-Type header must be application/json if present. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getRetailMediaAudienceV2ListByAccountIdCall(String accountId, List<Long> limitToId, Integer pageSize, Integer pageIndex, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/v2/accounts/{accountId}/audiences"
+            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limitToId != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "limitToId", limitToId));
+        }
+
+        if (pageSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
+        }
+
+        if (pageIndex != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageIndex", pageIndex));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getRetailMediaAudienceV2ListByAccountIdValidateBeforeCall(String accountId, List<Long> limitToId, Integer pageSize, Integer pageIndex, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling getRetailMediaAudienceV2ListByAccountId(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = getRetailMediaAudienceV2ListByAccountIdCall(accountId, limitToId, pageSize, pageIndex, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Get a page of audiences for a given account ID
+     * @param accountId External account ID which owns audience. (required)
+     * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
+     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
+     * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
+     * @return RetailMediaAudienceV2ListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A page of audiences for the supplied account. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Missing or invalid account ID. - OR - You do not have permission to access this account. </td><td>  -  </td></tr>
+        <tr><td> 406 </td><td> The Accept header must contain application/json. </td><td>  -  </td></tr>
+        <tr><td> 415 </td><td> The Content-Type header must be application/json if present. </td><td>  -  </td></tr>
+     </table>
+     */
+    public RetailMediaAudienceV2ListResponse getRetailMediaAudienceV2ListByAccountId(String accountId, List<Long> limitToId, Integer pageSize, Integer pageIndex) throws ApiException {
+        ApiResponse<RetailMediaAudienceV2ListResponse> localVarResp = getRetailMediaAudienceV2ListByAccountIdWithHttpInfo(accountId, limitToId, pageSize, pageIndex);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get a page of audiences for a given account ID
+     * @param accountId External account ID which owns audience. (required)
+     * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
+     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
+     * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
+     * @return ApiResponse&lt;RetailMediaAudienceV2ListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A page of audiences for the supplied account. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Missing or invalid account ID. - OR - You do not have permission to access this account. </td><td>  -  </td></tr>
+        <tr><td> 406 </td><td> The Accept header must contain application/json. </td><td>  -  </td></tr>
+        <tr><td> 415 </td><td> The Content-Type header must be application/json if present. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<RetailMediaAudienceV2ListResponse> getRetailMediaAudienceV2ListByAccountIdWithHttpInfo(String accountId, List<Long> limitToId, Integer pageSize, Integer pageIndex) throws ApiException {
+        okhttp3.Call localVarCall = getRetailMediaAudienceV2ListByAccountIdValidateBeforeCall(accountId, limitToId, pageSize, pageIndex, null);
+        Type localVarReturnType = new TypeToken<RetailMediaAudienceV2ListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get a page of audiences for a given account ID
+     * @param accountId External account ID which owns audience. (required)
+     * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
+     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
+     * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A page of audiences for the supplied account. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Missing or invalid account ID. - OR - You do not have permission to access this account. </td><td>  -  </td></tr>
+        <tr><td> 406 </td><td> The Accept header must contain application/json. </td><td>  -  </td></tr>
+        <tr><td> 415 </td><td> The Content-Type header must be application/json if present. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getRetailMediaAudienceV2ListByAccountIdAsync(String accountId, List<Long> limitToId, Integer pageSize, Integer pageIndex, final ApiCallback<RetailMediaAudienceV2ListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getRetailMediaAudienceV2ListByAccountIdValidateBeforeCall(accountId, limitToId, pageSize, pageIndex, _callback);
+        Type localVarReturnType = new TypeToken<RetailMediaAudienceV2ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -19,12 +19,13 @@ Name | Type | Description | Notes
 Name | Value
 ---- | -----
 UNKNOWN | &quot;Unknown&quot;
-COMMERCE | &quot;Commerce&quot;
-SIMILAR | &quot;Similar&quot;
+INMARKET | &quot;InMarket&quot;
+PROSPECTING | &quot;Prospecting&quot;
 CONTACTLIST | &quot;ContactList&quot;
 LOCATION | &quot;Location&quot;
-PREBUILT | &quot;Prebuilt&quot;
+BEHAVIORAL | &quot;Behavioral&quot;
 RETARGETING | &quot;Retargeting&quot;
+LOOKALIKE | &quot;Lookalike&quot;
 
 
 

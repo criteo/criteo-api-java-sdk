@@ -1155,7 +1155,7 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
                   traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
@@ -1175,7 +1175,7 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
                   traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
@@ -1235,7 +1235,7 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
                   traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
@@ -1255,7 +1255,7 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
                   traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
@@ -1331,7 +1331,7 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
                   traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
@@ -1351,7 +1351,7 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
                   traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
@@ -1414,7 +1414,7 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
                   traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
@@ -1434,7 +1434,7 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: 00000000-0000-0000-d390-b9c1a03a6663
+                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
                   traceIdentifier: 1234e1717d88aa8a
                   type: access-control
                   code: insufficient-advertiser-permission
@@ -2272,7 +2272,8 @@ components:
             applicationId: 0
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2281,7 +2282,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2291,7 +2293,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2300,7 +2303,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2344,6 +2348,7 @@ components:
     CommonProblem:
       description: Common problem object. Can be specialized as needed.
       example:
+        traceId: traceId
         traceIdentifier: traceIdentifier
         code: code
         instance: instance
@@ -2354,8 +2359,12 @@ components:
         type: unknown
         title: title
       properties:
-        traceIdentifier:
+        traceId:
           description: The request correlation ID this problem comes from.
+          type: string
+        traceIdentifier:
+          description: "The request correlation ID this problem comes from. (deprecated,\
+            \ use traceId instead)"
           type: string
         type:
           description: The problem's category.
@@ -2467,7 +2476,8 @@ components:
           id: id
           type: ReadAdSet
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2476,7 +2486,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2486,7 +2497,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2495,7 +2507,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2623,7 +2636,8 @@ components:
           id: id
           type: ReadAdSet
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2632,7 +2646,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2642,7 +2657,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2651,7 +2667,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2687,7 +2704,8 @@ components:
           id: id
           type: AdSetId
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2696,7 +2714,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2706,7 +2725,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2715,7 +2735,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2749,7 +2770,8 @@ components:
         - id: id
           type: AdSetId
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2758,7 +2780,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2768,7 +2791,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2777,7 +2801,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2822,7 +2847,8 @@ components:
           id: id
           type: Campaign
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2831,7 +2857,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2841,7 +2868,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2850,7 +2878,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2902,7 +2931,8 @@ components:
           id: id
           type: Campaign
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2911,7 +2941,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2921,7 +2952,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2930,7 +2962,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2968,7 +3001,8 @@ components:
         - id: id
           type: Campaign
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2977,7 +3011,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2987,7 +3022,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2996,7 +3032,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3040,7 +3077,8 @@ components:
           id: id
           type: AdSetDisplayMultiplier
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3049,7 +3087,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3059,7 +3098,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3068,7 +3108,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3105,7 +3146,8 @@ components:
         - id: id
           type: AdSetDisplayMultiplier
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3114,7 +3156,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3124,7 +3167,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3133,7 +3177,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3176,7 +3221,8 @@ components:
           id: id
           type: AdSetCategoryBid
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3185,7 +3231,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3195,7 +3242,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3204,7 +3252,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3241,7 +3290,8 @@ components:
         - id: id
           type: AdSetCategoryBid
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3250,7 +3300,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3260,7 +3311,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3269,7 +3321,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3566,6 +3619,7 @@ components:
     ProblemDetails:
       description: Data model for common error or warning
       example:
+        traceId: traceId
         traceIdentifier: traceIdentifier
         code: code
         instance: instance
@@ -3576,7 +3630,12 @@ components:
         type: unknown
         title: title
       properties:
+        traceId:
+          description: The request correlation ID this problem comes from.
+          type: string
         traceIdentifier:
+          description: "The request correlation ID this problem comes from. (deprecated,\
+            \ use traceId instead)"
           type: string
         type:
           enum:
@@ -4674,8 +4733,8 @@ components:
         currency: EUR
         format: csv
         timezone: Europe/Paris
-        startDate: 2021-12-29T00:00:00.0000000+01:00
-        endDate: 2022-01-01T00:00:00.0000000+01:00
+        startDate: 2022-08-29T00:00:00.0000000+00:00
+        endDate: 2022-09-01T00:00:00.0000000+00:00
       properties:
         advertiserIds:
           description: "The comma-separated list of advertiser ids. If empty, all\
@@ -4726,6 +4785,7 @@ components:
             - MarketingObjective
             - ChannelId
             - Channel
+            - Goal
             type: string
           type: array
           uniqueItems: false
@@ -4777,8 +4837,8 @@ components:
             currency: EUR
             format: csv
             timezone: Europe/Paris
-            startDate: 2021-12-29T00:00:00.0000000+01:00
-            endDate: 2021-12-29T00:00:00.0000000+01:00
+            startDate: 2022-08-29T00:00:00.0000000+00:00
+            endDate: 2022-08-29T00:00:00.0000000+00:00
       properties:
         data:
           items:
@@ -4792,8 +4852,8 @@ components:
       description: This is the message defining the query for Transparency report
       example:
         shouldDisplayProductIds: false
-        startDate: 2021-12-29T00:00:00.0000000+01:00
-        endDate: 2022-01-01T00:00:00.0000000+01:00
+        startDate: 2022-08-29T00:00:00.0000000+00:00
+        endDate: 2022-09-01T00:00:00.0000000+00:00
       properties:
         shouldDisplayProductIds:
           default: false
@@ -4836,8 +4896,8 @@ components:
             disclosed: false
             format: csv
             timezone: Europe/Paris
-            startDate: 2021-12-29T00:00:00.0000000+01:00
-            endDate: 2021-12-29T00:00:00.0000000+01:00
+            startDate: 2022-08-29T00:00:00.0000000+00:00
+            endDate: 2022-08-29T00:00:00.0000000+00:00
       properties:
         data:
           items:
@@ -5025,6 +5085,7 @@ components:
           format: date-time
           type: string
       required:
+      - advertiserIds
       - currency
       - dimensions
       - endDate

@@ -269,8 +269,7 @@ paths:
               properties:
                 AssetFile:
                   description: The asset binary content
-                  format: binary
-                  type: string
+                  type: file
               required:
               - AssetFile
       responses:
@@ -625,8 +624,8 @@ paths:
         schema:
           default: 0
           format: int32
-          maximum: 500
-          minimum: 0
+          maximum: 500.0
+          minimum: 0.0
           type: integer
         style: form
         x-nullable: false
@@ -639,8 +638,8 @@ paths:
         schema:
           default: 100
           format: int32
-          maximum: 100
-          minimum: 1
+          maximum: 100.0
+          minimum: 1.0
           type: integer
         style: form
         x-nullable: false
@@ -1682,16 +1681,16 @@ paths:
         x-nullable: false
         x-bodyName: campaign
       responses:
+        "201":
+          content:
+            application/json: {}
+          description: Success
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/JsonApiSingleResponseOfCampaign'
           description: OK
-        "201":
-          content:
-            application/json: {}
-          description: Success
       tags:
       - Campaign
       x-contentType: application/json
@@ -2517,7 +2516,8 @@ components:
             applicationId: 0
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2526,7 +2526,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2536,7 +2537,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2545,7 +2547,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -2589,6 +2592,7 @@ components:
     CommonProblem:
       description: Common problem object. Can be specialized as needed.
       example:
+        traceId: traceId
         traceIdentifier: traceIdentifier
         code: code
         instance: instance
@@ -2599,8 +2603,12 @@ components:
         type: unknown
         title: title
       properties:
-        traceIdentifier:
+        traceId:
           description: The request correlation ID this problem comes from.
+          type: string
+        traceIdentifier:
+          description: "The request correlation ID this problem comes from. (deprecated,\
+            \ use traceId instead)"
           type: string
         type:
           description: The problem's category.
@@ -3317,7 +3325,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3326,7 +3335,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3336,7 +3346,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3345,7 +3356,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3969,7 +3981,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3978,7 +3991,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3988,7 +4002,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3997,7 +4012,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4077,7 +4093,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4086,7 +4103,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4096,7 +4114,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4105,7 +4124,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4148,7 +4168,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4157,7 +4178,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4167,7 +4189,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4176,7 +4199,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4466,7 +4490,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4475,7 +4500,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4485,7 +4511,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4494,7 +4521,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4643,7 +4671,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4652,7 +4681,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4662,7 +4692,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4671,7 +4702,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4912,6 +4944,7 @@ components:
     ProblemDetails:
       description: Data model for common error or warning
       example:
+        traceId: traceId
         traceIdentifier: traceIdentifier
         code: code
         instance: instance
@@ -4922,10 +4955,13 @@ components:
         type: unknown
         title: title
       properties:
-        traceIdentifier:
+        traceId:
           description: The request correlation ID this problem comes from.
           type: string
-          x-nullable: false
+        traceIdentifier:
+          description: "The request correlation ID this problem comes from. (deprecated,\
+            \ use traceId instead)"
+          type: string
         type:
           description: The problem's category.
           enum:
@@ -6188,20 +6224,16 @@ components:
           description: "Total size of file, only populated on success"
           format: int64
           type: integer
-          x-nullable: true
         md5Checksum:
           description: "The MD5 checksum of the content, only populated on success"
           type: string
-          x-nullable: true
         message:
           description: "Failure message, only populated on failure"
           type: string
-          x-nullable: true
         rowCount:
           description: "Rows of data in report, only populated on success"
           format: int64
           type: integer
-          x-nullable: true
         status:
           description: "One of \"pending\", \"success\", \"failure\", or \"expired\""
           enum:
@@ -6309,7 +6341,8 @@ components:
               key: unknown
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6318,7 +6351,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6328,7 +6362,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6337,7 +6372,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6374,7 +6410,8 @@ components:
             - storeIds
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6383,7 +6420,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6393,7 +6431,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6402,7 +6441,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6442,7 +6482,8 @@ components:
             scope: unknown
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6451,7 +6492,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6461,7 +6503,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6470,7 +6513,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6507,7 +6551,8 @@ components:
             - audienceIds
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6516,7 +6561,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6526,7 +6572,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6535,7 +6582,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6811,7 +6859,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6820,7 +6869,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6830,7 +6880,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6839,7 +6890,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6895,7 +6947,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6904,7 +6957,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6914,7 +6968,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6923,7 +6978,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6969,7 +7025,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6978,7 +7035,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6988,7 +7046,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -6997,7 +7056,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7065,7 +7125,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7074,7 +7135,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7084,7 +7146,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7093,7 +7156,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7158,7 +7222,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7167,7 +7232,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7177,7 +7243,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7186,7 +7253,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7232,7 +7300,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7241,7 +7310,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7251,7 +7321,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7260,7 +7331,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7361,7 +7433,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7370,7 +7443,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7380,7 +7454,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7389,7 +7464,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7460,7 +7536,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7469,7 +7546,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7479,7 +7557,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7488,7 +7567,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7537,7 +7617,8 @@ components:
           id: id
           type: type
         warnings:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7546,7 +7627,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7556,7 +7638,8 @@ components:
           type: unknown
           title: title
         errors:
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -7565,7 +7648,8 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
-        - traceIdentifier: traceIdentifier
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail

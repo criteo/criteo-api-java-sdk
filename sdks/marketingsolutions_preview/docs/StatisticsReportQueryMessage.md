@@ -49,6 +49,7 @@ MARKETINGOBJECTIVEID | &quot;MarketingObjectiveId&quot;
 MARKETINGOBJECTIVE | &quot;MarketingObjective&quot;
 CHANNELID | &quot;ChannelId&quot;
 CHANNEL | &quot;Channel&quot;
+GOAL | &quot;Goal&quot;
 
 
 

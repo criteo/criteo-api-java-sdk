@@ -8,7 +8,7 @@ This is the message defining the query for Placements report
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**advertiserIds** | **String** | The comma-separated list of advertiser ids. |  [optional]
+**advertiserIds** | **String** | The comma-separated list of advertiser ids. | 
 **campaignIds** | **String** | The comma-separated list of campaign ids. |  [optional]
 **adsetIds** | **String** | The comma-separated list of adSet ids. |  [optional]
 **environment** | **String** | Type of environment: Web, Android or iOS. |  [optional]

@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Named coordinate defined by its latitude and longitude.
+ * Named coordinate defined by its latitude and longitude.  Latitude and Longitude are rounded at 5 decimals.
  */
-@ApiModel(description = "Named coordinate defined by its latitude and longitude.")
+@ApiModel(description = "Named coordinate defined by its latitude and longitude.  Latitude and Longitude are rounded at 5 decimals.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PointOfInterestV1 {
   public static final String SERIALIZED_NAME_NAME = "name";
@@ -73,11 +73,11 @@ public class PointOfInterestV1 {
   }
 
    /**
-   * ISO-6709 latitude
+   * ISO-6709 latitude (rounded at 5 decimals)
    * @return latitude
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "ISO-6709 latitude")
+  @ApiModelProperty(value = "ISO-6709 latitude (rounded at 5 decimals)")
 
   public Double getLatitude() {
     return latitude;
@@ -96,11 +96,11 @@ public class PointOfInterestV1 {
   }
 
    /**
-   * ISO-6709 longitude
+   * ISO-6709 longitude (rounded at 5 decimals)
    * @return longitude
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "ISO-6709 longitude")
+  @ApiModelProperty(value = "ISO-6709 longitude (rounded at 5 decimals)")
 
   public Double getLongitude() {
     return longitude;

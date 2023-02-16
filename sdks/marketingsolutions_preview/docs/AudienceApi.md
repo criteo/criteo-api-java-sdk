@@ -13,14 +13,16 @@ All URIs are relative to *https://api.criteo.com*
 | [**computeAudienceSegmentsSizes**](AudienceApi.md#computeAudienceSegmentsSizes) | **POST** /preview/marketing-solutions/audience-segments/compute-sizes |  |
 | [**computeAudiencesSizes**](AudienceApi.md#computeAudiencesSizes) | **POST** /preview/marketing-solutions/audiences/compute-sizes |  |
 | [**deleteContactListIdentifiers**](AudienceApi.md#deleteContactListIdentifiers) | **DELETE** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list |  |
+| [**deleteUserProfiles**](AudienceApi.md#deleteUserProfiles) | **POST** /preview/marketing-solutions/advertisers/{advertiserId}/user-profiles/delete |  |
 | [**estimateAudienceSegmentSize**](AudienceApi.md#estimateAudienceSegmentSize) | **POST** /preview/marketing-solutions/audience-segments/estimate-size |  |
 | [**estimateAudienceSize**](AudienceApi.md#estimateAudienceSize) | **POST** /preview/marketing-solutions/audiences/estimate-size |  |
-| [**getCommerceBrands**](AudienceApi.md#getCommerceBrands) | **GET** /preview/marketing-solutions/audience-segments/commerce-brands |  |
-| [**getCommerceInterests**](AudienceApi.md#getCommerceInterests) | **GET** /preview/marketing-solutions/audience-segments/commerce-interests |  |
 | [**getContactListStatistics**](AudienceApi.md#getContactListStatistics) | **GET** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list |  |
+| [**getInMarketBrands**](AudienceApi.md#getInMarketBrands) | **GET** /preview/marketing-solutions/audience-segments/in-market-brands |  |
+| [**getInMarketInterests**](AudienceApi.md#getInMarketInterests) | **GET** /preview/marketing-solutions/audience-segments/in-market-interests |  |
 | [**modifyAudienceUsersWithAttributes**](AudienceApi.md#modifyAudienceUsersWithAttributes) | **PATCH** /preview/audiences/{audience-id}/contactlist-attributes |  |
 | [**searchAudienceSegments**](AudienceApi.md#searchAudienceSegments) | **POST** /preview/marketing-solutions/audience-segments/search |  |
 | [**searchAudiences**](AudienceApi.md#searchAudiences) | **POST** /preview/marketing-solutions/audiences/search |  |
+| [**setUserProfiles**](AudienceApi.md#setUserProfiles) | **POST** /preview/marketing-solutions/advertisers/{advertiserId}/user-profiles/set |  |
 | [**updateContactListIdentifiers**](AudienceApi.md#updateContactListIdentifiers) | **PATCH** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list |  |
 
 
@@ -744,13 +746,92 @@ public class Example {
 | **403** | Forbidden |  -  |
 
 
+## deleteUserProfiles
+
+> deleteUserProfiles(advertiserId, deleteUserProfileModelListRequest)
+
+
+
+This endpoint will Delete User Profiles for a given Advertiser.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.criteo.com");
+        
+        // Configure OAuth2, two options:
+        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
+        defaultClient.setUsername("YOUR CLIENT ID");
+        defaultClient.setPassword("YOUR CLIENT SECRET");
+
+        AudienceApi apiInstance = new AudienceApi(defaultClient);
+        Integer advertiserId = 56; // Integer | Criteo Advertiser ID of user profiles' owner
+        DeleteUserProfileModelListRequest deleteUserProfileModelListRequest = new DeleteUserProfileModelListRequest(); // DeleteUserProfileModelListRequest | 
+        try {
+            apiInstance.deleteUserProfiles(advertiserId, deleteUserProfileModelListRequest);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AudienceApi#deleteUserProfiles");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **advertiserId** | **Integer**| Criteo Advertiser ID of user profiles&#39; owner | |
+| **deleteUserProfileModelListRequest** | [**DeleteUserProfileModelListRequest**](DeleteUserProfileModelListRequest.md)|  | [optional] |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **403** | Forbidden |  -  |
+
+
 ## estimateAudienceSegmentSize
 
 > AudienceSegmentSizeEstimationV1Response estimateAudienceSegmentSize(audienceSegmentEstimateSizeInputV1)
 
 
 
-Gets the size estimation of a non existent segment . An error is returned when size calculation is not supported.
+Gets the size estimation of a non existent segment. An error is returned when size calculation is not supported.
 
 ### Example
 
@@ -904,168 +985,6 @@ public class Example {
 | **403** | The API client is not authorized to access this resource. |  -  |
 
 
-## getCommerceBrands
-
-> CommerceAudienceSegmentBrandEntityV1ListResponse getCommerceBrands(advertiserId, country)
-
-
-
-Returns a list with all available commerce brands that can be used to define a commerce segment.
-
-### Example
-
-```java
-package com.criteo.api.marketingsolutions.preview;
-
-import com.criteo.api.marketingsolutions.preview.ApiClient;
-import com.criteo.api.marketingsolutions.preview.ApiException;
-import com.criteo.api.marketingsolutions.preview.Configuration;
-import com.criteo.api.marketingsolutions.preview.auth.*;
-import com.criteo.api.marketingsolutions.preview.model.*;
-import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
-
-        AudienceApi apiInstance = new AudienceApi(defaultClient);
-        String advertiserId = "advertiserId_example"; // String | The advertiser ID.
-        String country = "country_example"; // String | The ISO 3166-1 alpha-2 country code.
-        try {
-            CommerceAudienceSegmentBrandEntityV1ListResponse result = apiInstance.getCommerceBrands(advertiserId, country);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AudienceApi#getCommerceBrands");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **String**| The advertiser ID. | |
-| **country** | **String**| The ISO 3166-1 alpha-2 country code. | |
-
-### Return type
-
-[**CommerceAudienceSegmentBrandEntityV1ListResponse**](CommerceAudienceSegmentBrandEntityV1ListResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
-
-
-## getCommerceInterests
-
-> CommerceAudienceSegmentInterestEntityV1ListResponse getCommerceInterests(advertiserId, country)
-
-
-
-Returns a list with all available commerce interests that can be used to define a commerce segment. These commerce interests correspond to the Google product taxonomy.
-
-### Example
-
-```java
-package com.criteo.api.marketingsolutions.preview;
-
-import com.criteo.api.marketingsolutions.preview.ApiClient;
-import com.criteo.api.marketingsolutions.preview.ApiException;
-import com.criteo.api.marketingsolutions.preview.Configuration;
-import com.criteo.api.marketingsolutions.preview.auth.*;
-import com.criteo.api.marketingsolutions.preview.model.*;
-import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
-
-        AudienceApi apiInstance = new AudienceApi(defaultClient);
-        String advertiserId = "advertiserId_example"; // String | The advertiser ID.
-        String country = "country_example"; // String | The ISO 3166-1 alpha-2 country code.
-        try {
-            CommerceAudienceSegmentInterestEntityV1ListResponse result = apiInstance.getCommerceInterests(advertiserId, country);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AudienceApi#getCommerceInterests");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **advertiserId** | **String**| The advertiser ID. | |
-| **country** | **String**| The ISO 3166-1 alpha-2 country code. | |
-
-### Return type
-
-[**CommerceAudienceSegmentInterestEntityV1ListResponse**](CommerceAudienceSegmentInterestEntityV1ListResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource. |  -  |
-
-
 ## getContactListStatistics
 
 > ContactListStatisticsEntityV1Response getContactListStatistics(audienceSegmentId)
@@ -1126,6 +1045,168 @@ public class Example {
 ### Return type
 
 [**ContactListStatisticsEntityV1Response**](ContactListStatisticsEntityV1Response.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **401** | The API client is not properly authenticated. |  -  |
+| **403** | The API client is not authorized to access this resource. |  -  |
+
+
+## getInMarketBrands
+
+> InMarketAudienceSegmentBrandEntityV1ListResponse getInMarketBrands(advertiserId, country)
+
+
+
+Returns a list with all available in-market brands that can be used to define an in-market segment.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.criteo.com");
+        
+        // Configure OAuth2, two options:
+        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
+        defaultClient.setUsername("YOUR CLIENT ID");
+        defaultClient.setPassword("YOUR CLIENT SECRET");
+
+        AudienceApi apiInstance = new AudienceApi(defaultClient);
+        String advertiserId = "advertiserId_example"; // String | The advertiser ID.
+        String country = "country_example"; // String | The ISO 3166-1 alpha-2 country code.
+        try {
+            InMarketAudienceSegmentBrandEntityV1ListResponse result = apiInstance.getInMarketBrands(advertiserId, country);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AudienceApi#getInMarketBrands");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **advertiserId** | **String**| The advertiser ID. | |
+| **country** | **String**| The ISO 3166-1 alpha-2 country code. | |
+
+### Return type
+
+[**InMarketAudienceSegmentBrandEntityV1ListResponse**](InMarketAudienceSegmentBrandEntityV1ListResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **401** | The API client is not properly authenticated. |  -  |
+| **403** | The API client is not authorized to access this resource. |  -  |
+
+
+## getInMarketInterests
+
+> InMarketAudienceSegmentInterestEntityV1ListResponse getInMarketInterests(advertiserId, country)
+
+
+
+Returns a list with all available in-market interests that can be used to define an in-market segment. These in-market interests correspond to the Google product taxonomy.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.criteo.com");
+        
+        // Configure OAuth2, two options:
+        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
+        defaultClient.setUsername("YOUR CLIENT ID");
+        defaultClient.setPassword("YOUR CLIENT SECRET");
+
+        AudienceApi apiInstance = new AudienceApi(defaultClient);
+        String advertiserId = "advertiserId_example"; // String | The advertiser ID.
+        String country = "country_example"; // String | The ISO 3166-1 alpha-2 country code.
+        try {
+            InMarketAudienceSegmentInterestEntityV1ListResponse result = apiInstance.getInMarketInterests(advertiserId, country);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AudienceApi#getInMarketInterests");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **advertiserId** | **String**| The advertiser ID. | |
+| **country** | **String**| The ISO 3166-1 alpha-2 country code. | |
+
+### Return type
+
+[**InMarketAudienceSegmentInterestEntityV1ListResponse**](InMarketAudienceSegmentInterestEntityV1ListResponse.md)
 
 ### Authorization
 
@@ -1391,6 +1472,85 @@ public class Example {
 | **400** | Bad request |  -  |
 | **401** | The API client is not properly authenticated. |  -  |
 | **403** | The API client is not authorized to access this resource. |  -  |
+
+
+## setUserProfiles
+
+> setUserProfiles(advertiserId, setUserProfileModelListRequest)
+
+
+
+This endpoint will Set User Profiles for a given Advertiser. If a User Profile does not exist, a new one will be created. If a User Profile exists, it will be replaced.
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.criteo.com");
+        
+        // Configure OAuth2, two options:
+        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
+        defaultClient.setUsername("YOUR CLIENT ID");
+        defaultClient.setPassword("YOUR CLIENT SECRET");
+
+        AudienceApi apiInstance = new AudienceApi(defaultClient);
+        Integer advertiserId = 56; // Integer | Criteo Advertiser ID of user profiles' owner
+        SetUserProfileModelListRequest setUserProfileModelListRequest = new SetUserProfileModelListRequest(); // SetUserProfileModelListRequest | 
+        try {
+            apiInstance.setUserProfiles(advertiserId, setUserProfileModelListRequest);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AudienceApi#setUserProfiles");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **advertiserId** | **Integer**| Criteo Advertiser ID of user profiles&#39; owner | |
+| **setUserProfileModelListRequest** | [**SetUserProfileModelListRequest**](SetUserProfileModelListRequest.md)|  | [optional] |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **403** | Forbidden |  -  |
 
 
 ## updateContactListIdentifiers
