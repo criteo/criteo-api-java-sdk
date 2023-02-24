@@ -269,7 +269,8 @@ paths:
               properties:
                 AssetFile:
                   description: The asset binary content
-                  type: file
+                  format: binary
+                  type: string
               required:
               - AssetFile
       responses:
