@@ -6,11 +6,11 @@ Represents an API response message containing the usual outcome fields (warnings
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**data** | [**AdSetTargetingVideoPositioningSetResultResource**](AdSetTargetingVideoPositioningSetResultResource.md) |  |  [optional]
-**warnings** | [**List&lt;CommonProblem&gt;**](CommonProblem.md) |  |  [optional] [readonly]
-**errors** | [**List&lt;CommonProblem&gt;**](CommonProblem.md) |  |  [optional] [readonly]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**data** | [**AdSetTargetingVideoPositioningSetResultResource**](AdSetTargetingVideoPositioningSetResultResource.md) |  |  [optional] |
+|**warnings** | [**List&lt;CommonProblem&gt;**](CommonProblem.md) |  |  [optional] [readonly] |
+|**errors** | [**List&lt;CommonProblem&gt;**](CommonProblem.md) |  |  [optional] [readonly] |
 
 
 

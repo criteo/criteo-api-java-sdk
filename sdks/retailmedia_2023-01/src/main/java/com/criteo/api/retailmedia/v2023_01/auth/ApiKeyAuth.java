@@ -13,8 +13,10 @@
 
 package com.criteo.api.retailmedia.v2023_01.auth;
 
+import com.criteo.api.retailmedia.v2023_01.ApiException;
 import com.criteo.api.retailmedia.v2023_01.Pair;
 
+import java.net.URI;
 import java.util.Map;
 import java.util.List;
 
@@ -56,7 +58,8 @@ public class ApiKeyAuth implements Authentication {
   }
 
   @Override
-  public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams) {
+  public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams,
+                           String payload, String method, URI uri) throws ApiException {
     if (apiKey == null) {
       return;
     }

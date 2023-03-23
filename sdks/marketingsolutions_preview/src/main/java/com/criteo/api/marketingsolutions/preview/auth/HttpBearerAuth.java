@@ -13,8 +13,10 @@
 
 package com.criteo.api.marketingsolutions.preview.auth;
 
+import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Pair;
 
+import java.net.URI;
 import java.util.Map;
 import java.util.List;
 
@@ -46,8 +48,9 @@ public class HttpBearerAuth implements Authentication {
   }
 
   @Override
-  public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams) {
-    if(bearerToken == null) {
+  public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams,
+                            String payload, String method, URI uri) throws ApiException {
+    if (bearerToken == null) {
       return;
     }
 

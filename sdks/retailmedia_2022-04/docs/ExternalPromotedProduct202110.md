@@ -6,9 +6,9 @@ identifies a promoted product
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**bidOverride** | **BigDecimal** |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**bidOverride** | **BigDecimal** |  |  [optional] |
 
 
 

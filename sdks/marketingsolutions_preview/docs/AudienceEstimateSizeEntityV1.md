@@ -6,10 +6,10 @@ Audience of people of interest for a marketer.
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**advertiserId** | **String** | Advertiser associated to the audience |  [optional]
-**algebra** | [**AlgebraNodeV1**](AlgebraNodeV1.md) |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**advertiserId** | **String** | Advertiser associated to the audience |  [optional] |
+|**algebra** | [**AlgebraNodeV1**](AlgebraNodeV1.md) |  |  [optional] |
 
 
 

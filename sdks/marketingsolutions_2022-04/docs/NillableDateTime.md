@@ -6,9 +6,9 @@ structure that encapsulates an object that have valid business null values. If t
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**value** | **OffsetDateTime** |  | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**value** | **OffsetDateTime** |  |  |
 
 
 

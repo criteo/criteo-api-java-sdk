@@ -1,6 +1,7 @@
 package com.criteo.marketing.examples;
 
 import com.criteo.api.retailmedia.v2023_01.ApiClient;
+import com.criteo.api.retailmedia.v2023_01.ApiClientBuilder;
 import com.criteo.api.retailmedia.v2023_01.ApiException;
 import com.criteo.api.retailmedia.v2023_01.Configuration;
 import com.criteo.api.retailmedia.v2023_01.api.AdvertiserApi;
@@ -9,9 +10,11 @@ import com.criteo.api.retailmedia.v2023_01.model.GetPortfolioResponse;
 
 public class PortfolioApplication {
     public static void main(String[] args) {
-        ApiClient client = Configuration.getDefaultApiClient();
-        client.setUsername("client-id");
-        client.setPassword("client-secret");
+        
+        String clientId = "client-id";
+        String clientSecret = "client-secret";
+
+        ApiClient client = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
 
         // Uncomment the following line to enable debugging logs.
         // client.setDebugging(true);

@@ -79,9 +79,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class CampaignApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public CampaignApi() {
         this(Configuration.getDefaultApiClient());
@@ -99,6 +102,22 @@ public class CampaignApi {
         this.localVarApiClient = apiClient;
     }
 
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
+    }
+
     /**
      * Build call for createAsset
      * @param assetFile The asset binary content (required)
@@ -112,6 +131,19 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call createAssetCall(File assetFile, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -128,7 +160,9 @@ public class CampaignApi {
         }
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -139,23 +173,22 @@ public class CampaignApi {
             "multipart/form-data"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createAssetValidateBeforeCall(File assetFile, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'assetFile' is set
         if (assetFile == null) {
             throw new ApiException("Missing the required parameter 'assetFile' when calling createAsset(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createAssetCall(assetFile, _callback);
-        return localVarCall;
+        return createAssetCall(assetFile, _callback);
 
     }
 
@@ -230,11 +263,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApi202110ExternalAccountBalancesByAccountIdCall(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/accounts/{account-id}/balances"
-            .replaceAll("\\{" + "account-id" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -263,26 +309,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApi202110ExternalAccountBalancesByAccountIdValidateBeforeCall(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getApi202110ExternalAccountBalancesByAccountId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApi202110ExternalAccountBalancesByAccountIdCall(accountId, limitToId, pageIndex, pageSize, _callback);
-        return localVarCall;
+        return getApi202110ExternalAccountBalancesByAccountIdCall(accountId, limitToId, pageIndex, pageSize, _callback);
 
     }
 
@@ -363,11 +407,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApi202110ExternalAccountCreativesByAccountIdCall(String accountId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/accounts/{account-id}/creatives"
-            .replaceAll("\\{" + "account-id" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -384,26 +441,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApi202110ExternalAccountCreativesByAccountIdValidateBeforeCall(String accountId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getApi202110ExternalAccountCreativesByAccountId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApi202110ExternalAccountCreativesByAccountIdCall(accountId, _callback);
-        return localVarCall;
+        return getApi202110ExternalAccountCreativesByAccountIdCall(accountId, _callback);
 
     }
 
@@ -476,11 +531,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemIdCall(String lineItemId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/auction-line-items/{line-item-id}/targeting/keywords"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -497,26 +565,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemIdValidateBeforeCall(String lineItemId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemIdCall(lineItemId, _callback);
-        return localVarCall;
+        return getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemIdCall(lineItemId, _callback);
 
     }
 
@@ -594,11 +660,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApi202110ExternalBalanceCampaignsByBalanceIdCall(String balanceId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/balances/{balance-id}/campaigns"
-            .replaceAll("\\{" + "balance-id" + "\\}", localVarApiClient.escapeString(balanceId.toString()));
+            .replace("{" + "balance-id" + "}", localVarApiClient.escapeString(balanceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -627,26 +706,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApi202110ExternalBalanceCampaignsByBalanceIdValidateBeforeCall(String balanceId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'balanceId' is set
         if (balanceId == null) {
             throw new ApiException("Missing the required parameter 'balanceId' when calling getApi202110ExternalBalanceCampaignsByBalanceId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApi202110ExternalBalanceCampaignsByBalanceIdCall(balanceId, limitToId, pageIndex, pageSize, _callback);
-        return localVarCall;
+        return getApi202110ExternalBalanceCampaignsByBalanceIdCall(balanceId, limitToId, pageIndex, pageSize, _callback);
 
     }
 
@@ -731,11 +808,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApi202110ExternalCampaignPreferredLineItemsByCampaignIdCall(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/campaigns/{campaign-id}/preferred-line-items"
-            .replaceAll("\\{" + "campaign-id" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+            .replace("{" + "campaign-id" + "}", localVarApiClient.escapeString(campaignId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -764,26 +854,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApi202110ExternalCampaignPreferredLineItemsByCampaignIdValidateBeforeCall(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
             throw new ApiException("Missing the required parameter 'campaignId' when calling getApi202110ExternalCampaignPreferredLineItemsByCampaignId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApi202110ExternalCampaignPreferredLineItemsByCampaignIdCall(campaignId, limitToId, pageIndex, pageSize, _callback);
-        return localVarCall;
+        return getApi202110ExternalCampaignPreferredLineItemsByCampaignIdCall(campaignId, limitToId, pageIndex, pageSize, _callback);
 
     }
 
@@ -870,11 +958,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApi202110ExternalLineItemProductsByLineItemIdCall(String lineItemId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/line-items/{line-item-id}/products"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -903,26 +1004,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApi202110ExternalLineItemProductsByLineItemIdValidateBeforeCall(String lineItemId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling getApi202110ExternalLineItemProductsByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApi202110ExternalLineItemProductsByLineItemIdCall(lineItemId, limitToId, pageIndex, pageSize, _callback);
-        return localVarCall;
+        return getApi202110ExternalLineItemProductsByLineItemIdCall(lineItemId, limitToId, pageIndex, pageSize, _callback);
 
     }
 
@@ -1004,11 +1103,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApi202110ExternalPreferredLineItemByLineItemIdCall(String lineItemId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/preferred-line-items/{line-item-id}"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1025,26 +1137,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApi202110ExternalPreferredLineItemByLineItemIdValidateBeforeCall(String lineItemId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling getApi202110ExternalPreferredLineItemByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApi202110ExternalPreferredLineItemByLineItemIdCall(lineItemId, _callback);
-        return localVarCall;
+        return getApi202110ExternalPreferredLineItemByLineItemIdCall(lineItemId, _callback);
 
     }
 
@@ -1120,11 +1230,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemIdCall(String lineItemId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1141,26 +1264,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemIdValidateBeforeCall(String lineItemId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemIdCall(lineItemId, _callback);
-        return localVarCall;
+        return getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemIdCall(lineItemId, _callback);
 
     }
 
@@ -1236,11 +1357,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemIdCall(String lineItemId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1257,26 +1391,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemIdValidateBeforeCall(String lineItemId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemIdCall(lineItemId, _callback);
-        return localVarCall;
+        return getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemIdCall(lineItemId, _callback);
 
     }
 
@@ -1352,11 +1484,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApi202110ExternalPreferredLineItemTargetingStoresByLineItemIdCall(String lineItemId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1373,26 +1518,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApi202110ExternalPreferredLineItemTargetingStoresByLineItemIdValidateBeforeCall(String lineItemId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling getApi202110ExternalPreferredLineItemTargetingStoresByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApi202110ExternalPreferredLineItemTargetingStoresByLineItemIdCall(lineItemId, _callback);
-        return localVarCall;
+        return getApi202110ExternalPreferredLineItemTargetingStoresByLineItemIdCall(lineItemId, _callback);
 
     }
 
@@ -1467,11 +1610,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApi202110ExternalRetailerPagesByRetailerIdCall(Integer retailerId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/retailers/{retailerId}/pages"
-            .replaceAll("\\{" + "retailerId" + "\\}", localVarApiClient.escapeString(retailerId.toString()));
+            .replace("{" + "retailerId" + "}", localVarApiClient.escapeString(retailerId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1488,26 +1644,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApi202110ExternalRetailerPagesByRetailerIdValidateBeforeCall(Integer retailerId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'retailerId' is set
         if (retailerId == null) {
             throw new ApiException("Missing the required parameter 'retailerId' when calling getApi202110ExternalRetailerPagesByRetailerId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApi202110ExternalRetailerPagesByRetailerIdCall(retailerId, _callback);
-        return localVarCall;
+        return getApi202110ExternalRetailerPagesByRetailerIdCall(retailerId, _callback);
 
     }
 
@@ -1581,11 +1735,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApi202204ExternalCategorieByCategoryIdCall(Integer categoryId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/categories/{categoryId}"
-            .replaceAll("\\{" + "categoryId" + "\\}", localVarApiClient.escapeString(categoryId.toString()));
+            .replace("{" + "categoryId" + "}", localVarApiClient.escapeString(categoryId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1602,26 +1769,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApi202204ExternalCategorieByCategoryIdValidateBeforeCall(Integer categoryId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'categoryId' is set
         if (categoryId == null) {
             throw new ApiException("Missing the required parameter 'categoryId' when calling getApi202204ExternalCategorieByCategoryId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApi202204ExternalCategorieByCategoryIdCall(categoryId, _callback);
-        return localVarCall;
+        return getApi202204ExternalCategorieByCategoryIdCall(categoryId, _callback);
 
     }
 
@@ -1702,6 +1867,19 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApi202204ExternalCategoriesCall(Integer retailerId, String textSubstring, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1738,21 +1916,19 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApi202204ExternalCategoriesValidateBeforeCall(Integer retailerId, String textSubstring, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = getApi202204ExternalCategoriesCall(retailerId, textSubstring, pageIndex, pageSize, _callback);
-        return localVarCall;
+        return getApi202204ExternalCategoriesCall(retailerId, textSubstring, pageIndex, pageSize, _callback);
 
     }
 
@@ -1834,12 +2010,25 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApi202207ExternalAccountByAccountIdCreativescreativeIdCall(String accountId, String creativeId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/accounts/{account-id}/creatives/{creative-id}"
-            .replaceAll("\\{" + "account-id" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "creative-id" + "\\}", localVarApiClient.escapeString(creativeId.toString()));
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "creative-id" + "}", localVarApiClient.escapeString(creativeId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1856,31 +2045,29 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApi202207ExternalAccountByAccountIdCreativescreativeIdValidateBeforeCall(String accountId, String creativeId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getApi202207ExternalAccountByAccountIdCreativescreativeId(Async)");
         }
-        
+
         // verify the required parameter 'creativeId' is set
         if (creativeId == null) {
             throw new ApiException("Missing the required parameter 'creativeId' when calling getApi202207ExternalAccountByAccountIdCreativescreativeId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApi202207ExternalAccountByAccountIdCreativescreativeIdCall(accountId, creativeId, _callback);
-        return localVarCall;
+        return getApi202207ExternalAccountByAccountIdCreativescreativeIdCall(accountId, creativeId, _callback);
 
     }
 
@@ -1956,12 +2143,25 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApi202207ExternalRetailerByRetailerIdTemplatestemplateIdCall(Integer retailerId, Integer templateId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/retailers/{retailer-id}/templates/{template-id}"
-            .replaceAll("\\{" + "retailer-id" + "\\}", localVarApiClient.escapeString(retailerId.toString()))
-            .replaceAll("\\{" + "template-id" + "\\}", localVarApiClient.escapeString(templateId.toString()));
+            .replace("{" + "retailer-id" + "}", localVarApiClient.escapeString(retailerId.toString()))
+            .replace("{" + "template-id" + "}", localVarApiClient.escapeString(templateId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1978,31 +2178,29 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApi202207ExternalRetailerByRetailerIdTemplatestemplateIdValidateBeforeCall(Integer retailerId, Integer templateId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'retailerId' is set
         if (retailerId == null) {
             throw new ApiException("Missing the required parameter 'retailerId' when calling getApi202207ExternalRetailerByRetailerIdTemplatestemplateId(Async)");
         }
-        
+
         // verify the required parameter 'templateId' is set
         if (templateId == null) {
             throw new ApiException("Missing the required parameter 'templateId' when calling getApi202207ExternalRetailerByRetailerIdTemplatestemplateId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApi202207ExternalRetailerByRetailerIdTemplatestemplateIdCall(retailerId, templateId, _callback);
-        return localVarCall;
+        return getApi202207ExternalRetailerByRetailerIdTemplatestemplateIdCall(retailerId, templateId, _callback);
 
     }
 
@@ -2077,11 +2275,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApi202207ExternalRetailerTemplatesByRetailerIdCall(Integer retailerId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/retailers/{retailer-id}/templates"
-            .replaceAll("\\{" + "retailer-id" + "\\}", localVarApiClient.escapeString(retailerId.toString()));
+            .replace("{" + "retailer-id" + "}", localVarApiClient.escapeString(retailerId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2098,26 +2309,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApi202207ExternalRetailerTemplatesByRetailerIdValidateBeforeCall(Integer retailerId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'retailerId' is set
         if (retailerId == null) {
             throw new ApiException("Missing the required parameter 'retailerId' when calling getApi202207ExternalRetailerTemplatesByRetailerId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApi202207ExternalRetailerTemplatesByRetailerIdCall(retailerId, _callback);
-        return localVarCall;
+        return getApi202207ExternalRetailerTemplatesByRetailerIdCall(retailerId, _callback);
 
     }
 
@@ -2192,11 +2401,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApiV1ExternalAccountBrandsByAccountIdCall(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/accounts/{accountId}/brands"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2225,26 +2447,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApiV1ExternalAccountBrandsByAccountIdValidateBeforeCall(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getApiV1ExternalAccountBrandsByAccountId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApiV1ExternalAccountBrandsByAccountIdCall(accountId, limitToId, pageIndex, pageSize, _callback);
-        return localVarCall;
+        return getApiV1ExternalAccountBrandsByAccountIdCall(accountId, limitToId, pageIndex, pageSize, _callback);
 
     }
 
@@ -2328,11 +2548,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApiV1ExternalAccountCampaignsByAccountIdCall(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/accounts/{accountId}/campaigns"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2361,26 +2594,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApiV1ExternalAccountCampaignsByAccountIdValidateBeforeCall(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getApiV1ExternalAccountCampaignsByAccountId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApiV1ExternalAccountCampaignsByAccountIdCall(accountId, limitToId, pageIndex, pageSize, _callback);
-        return localVarCall;
+        return getApiV1ExternalAccountCampaignsByAccountIdCall(accountId, limitToId, pageIndex, pageSize, _callback);
 
     }
 
@@ -2464,11 +2695,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApiV1ExternalAccountRetailersByAccountIdCall(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/accounts/{accountId}/retailers"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2497,26 +2741,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApiV1ExternalAccountRetailersByAccountIdValidateBeforeCall(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getApiV1ExternalAccountRetailersByAccountId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApiV1ExternalAccountRetailersByAccountIdCall(accountId, limitToId, pageIndex, pageSize, _callback);
-        return localVarCall;
+        return getApiV1ExternalAccountRetailersByAccountIdCall(accountId, limitToId, pageIndex, pageSize, _callback);
 
     }
 
@@ -2599,6 +2841,19 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApiV1ExternalAccountsCall(List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2631,21 +2886,19 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApiV1ExternalAccountsValidateBeforeCall(List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = getApiV1ExternalAccountsCall(limitToId, pageIndex, pageSize, _callback);
-        return localVarCall;
+        return getApiV1ExternalAccountsCall(limitToId, pageIndex, pageSize, _callback);
 
     }
 
@@ -2723,11 +2976,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApiV1ExternalCampaignByCampaignIdCall(String campaignId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/campaigns/{campaignId}"
-            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+            .replace("{" + "campaignId" + "}", localVarApiClient.escapeString(campaignId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2744,26 +3010,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApiV1ExternalCampaignByCampaignIdValidateBeforeCall(String campaignId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
             throw new ApiException("Missing the required parameter 'campaignId' when calling getApiV1ExternalCampaignByCampaignId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApiV1ExternalCampaignByCampaignIdCall(campaignId, _callback);
-        return localVarCall;
+        return getApiV1ExternalCampaignByCampaignIdCall(campaignId, _callback);
 
     }
 
@@ -2836,11 +3100,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApiV1ExternalCatalogOutputByCatalogIdCall(String catalogId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/catalogs/{catalogId}/output"
-            .replaceAll("\\{" + "catalogId" + "\\}", localVarApiClient.escapeString(catalogId.toString()));
+            .replace("{" + "catalogId" + "}", localVarApiClient.escapeString(catalogId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2849,7 +3126,8 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/x-json-stream", "application/json"
+            "application/x-json-stream",
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2857,26 +3135,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApiV1ExternalCatalogOutputByCatalogIdValidateBeforeCall(String catalogId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'catalogId' is set
         if (catalogId == null) {
             throw new ApiException("Missing the required parameter 'catalogId' when calling getApiV1ExternalCatalogOutputByCatalogId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApiV1ExternalCatalogOutputByCatalogIdCall(catalogId, _callback);
-        return localVarCall;
+        return getApiV1ExternalCatalogOutputByCatalogIdCall(catalogId, _callback);
 
     }
 
@@ -2947,11 +3223,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApiV1ExternalCatalogStatusByCatalogIdCall(String catalogId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/catalogs/{catalogId}/status"
-            .replaceAll("\\{" + "catalogId" + "\\}", localVarApiClient.escapeString(catalogId.toString()));
+            .replace("{" + "catalogId" + "}", localVarApiClient.escapeString(catalogId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2968,26 +3257,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApiV1ExternalCatalogStatusByCatalogIdValidateBeforeCall(String catalogId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'catalogId' is set
         if (catalogId == null) {
             throw new ApiException("Missing the required parameter 'catalogId' when calling getApiV1ExternalCatalogStatusByCatalogId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApiV1ExternalCatalogStatusByCatalogIdCall(catalogId, _callback);
-        return localVarCall;
+        return getApiV1ExternalCatalogStatusByCatalogIdCall(catalogId, _callback);
 
     }
 
@@ -3064,11 +3351,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApiV2ExternalAccountLineItemsByAccountIdCall(String accountId, List<String> limitToCampaignId, String limitToType, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/accounts/{account-id}/line-items"
-            .replaceAll("\\{" + "account-id" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3105,26 +3405,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApiV2ExternalAccountLineItemsByAccountIdValidateBeforeCall(String accountId, List<String> limitToCampaignId, String limitToType, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getApiV2ExternalAccountLineItemsByAccountId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApiV2ExternalAccountLineItemsByAccountIdCall(accountId, limitToCampaignId, limitToType, limitToId, pageIndex, pageSize, _callback);
-        return localVarCall;
+        return getApiV2ExternalAccountLineItemsByAccountIdCall(accountId, limitToCampaignId, limitToType, limitToId, pageIndex, pageSize, _callback);
 
     }
 
@@ -3212,11 +3510,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApiV2ExternalAuctionLineItemByLineItemIdCall(String lineItemId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/auction-line-items/{line-item-id}"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3233,26 +3544,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApiV2ExternalAuctionLineItemByLineItemIdValidateBeforeCall(String lineItemId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling getApiV2ExternalAuctionLineItemByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApiV2ExternalAuctionLineItemByLineItemIdCall(lineItemId, _callback);
-        return localVarCall;
+        return getApiV2ExternalAuctionLineItemByLineItemIdCall(lineItemId, _callback);
 
     }
 
@@ -3331,11 +3640,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApiV2ExternalCampaignAuctionLineItemsByCampaignIdCall(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/campaigns/{campaign-id}/auction-line-items"
-            .replaceAll("\\{" + "campaign-id" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+            .replace("{" + "campaign-id" + "}", localVarApiClient.escapeString(campaignId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3364,26 +3686,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApiV2ExternalCampaignAuctionLineItemsByCampaignIdValidateBeforeCall(String campaignId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
             throw new ApiException("Missing the required parameter 'campaignId' when calling getApiV2ExternalCampaignAuctionLineItemsByCampaignId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApiV2ExternalCampaignAuctionLineItemsByCampaignIdCall(campaignId, limitToId, pageIndex, pageSize, _callback);
-        return localVarCall;
+        return getApiV2ExternalCampaignAuctionLineItemsByCampaignIdCall(campaignId, limitToId, pageIndex, pageSize, _callback);
 
     }
 
@@ -3467,11 +3787,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call getApiV2ExternalLineItemByLineItemIdCall(String lineItemId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/line-items/{line-item-id}"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3488,26 +3821,24 @@ public class CampaignApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getApiV2ExternalLineItemByLineItemIdValidateBeforeCall(String lineItemId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling getApiV2ExternalLineItemByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getApiV2ExternalLineItemByLineItemIdCall(lineItemId, _callback);
-        return localVarCall;
+        return getApiV2ExternalLineItemByLineItemIdCall(lineItemId, _callback);
 
     }
 
@@ -3581,11 +3912,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemIdCall(String lineItemId, KeywordTarget202110Request keywordTarget202110Request, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = keywordTarget202110Request;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/auction-line-items/{line-item-id}/targeting/keywords/append"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3605,23 +3949,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemIdValidateBeforeCall(String lineItemId, KeywordTarget202110Request keywordTarget202110Request, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemIdCall(lineItemId, keywordTarget202110Request, _callback);
-        return localVarCall;
+        return postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemIdCall(lineItemId, keywordTarget202110Request, _callback);
 
     }
 
@@ -3701,11 +4044,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemIdCall(String lineItemId, KeywordTarget202110Request keywordTarget202110Request, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = keywordTarget202110Request;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/auction-line-items/{line-item-id}/targeting/keywords/delete"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3725,23 +4081,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemIdValidateBeforeCall(String lineItemId, KeywordTarget202110Request keywordTarget202110Request, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemIdCall(lineItemId, keywordTarget202110Request, _callback);
-        return localVarCall;
+        return postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemIdCall(lineItemId, keywordTarget202110Request, _callback);
 
     }
 
@@ -3820,11 +4175,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApi202110ExternalBalanceCampaignsAppendByBalanceIdCall(String balanceId, BalanceCampaign202110ListRequest balanceCampaign202110ListRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = balanceCampaign202110ListRequest;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/balances/{balance-id}/campaigns/append"
-            .replaceAll("\\{" + "balance-id" + "\\}", localVarApiClient.escapeString(balanceId.toString()));
+            .replace("{" + "balance-id" + "}", localVarApiClient.escapeString(balanceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3844,23 +4212,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApi202110ExternalBalanceCampaignsAppendByBalanceIdValidateBeforeCall(String balanceId, BalanceCampaign202110ListRequest balanceCampaign202110ListRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'balanceId' is set
         if (balanceId == null) {
             throw new ApiException("Missing the required parameter 'balanceId' when calling postApi202110ExternalBalanceCampaignsAppendByBalanceId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApi202110ExternalBalanceCampaignsAppendByBalanceIdCall(balanceId, balanceCampaign202110ListRequest, _callback);
-        return localVarCall;
+        return postApi202110ExternalBalanceCampaignsAppendByBalanceIdCall(balanceId, balanceCampaign202110ListRequest, _callback);
 
     }
 
@@ -3936,11 +4303,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApi202110ExternalBalanceCampaignsDeleteByBalanceIdCall(String balanceId, BalanceCampaign202110ListRequest balanceCampaign202110ListRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = balanceCampaign202110ListRequest;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/balances/{balance-id}/campaigns/delete"
-            .replaceAll("\\{" + "balance-id" + "\\}", localVarApiClient.escapeString(balanceId.toString()));
+            .replace("{" + "balance-id" + "}", localVarApiClient.escapeString(balanceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3960,23 +4340,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApi202110ExternalBalanceCampaignsDeleteByBalanceIdValidateBeforeCall(String balanceId, BalanceCampaign202110ListRequest balanceCampaign202110ListRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'balanceId' is set
         if (balanceId == null) {
             throw new ApiException("Missing the required parameter 'balanceId' when calling postApi202110ExternalBalanceCampaignsDeleteByBalanceId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApi202110ExternalBalanceCampaignsDeleteByBalanceIdCall(balanceId, balanceCampaign202110ListRequest, _callback);
-        return localVarCall;
+        return postApi202110ExternalBalanceCampaignsDeleteByBalanceIdCall(balanceId, balanceCampaign202110ListRequest, _callback);
 
     }
 
@@ -4053,11 +4432,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApi202110ExternalCampaignPreferredLineItemsByCampaignIdCall(String campaignId, PreferredLineItemCreateModel202110Request preferredLineItemCreateModel202110Request, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = preferredLineItemCreateModel202110Request;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/campaigns/{campaign-id}/preferred-line-items"
-            .replaceAll("\\{" + "campaign-id" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+            .replace("{" + "campaign-id" + "}", localVarApiClient.escapeString(campaignId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4077,23 +4469,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApi202110ExternalCampaignPreferredLineItemsByCampaignIdValidateBeforeCall(String campaignId, PreferredLineItemCreateModel202110Request preferredLineItemCreateModel202110Request, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
             throw new ApiException("Missing the required parameter 'campaignId' when calling postApi202110ExternalCampaignPreferredLineItemsByCampaignId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApi202110ExternalCampaignPreferredLineItemsByCampaignIdCall(campaignId, preferredLineItemCreateModel202110Request, _callback);
-        return localVarCall;
+        return postApi202110ExternalCampaignPreferredLineItemsByCampaignIdCall(campaignId, preferredLineItemCreateModel202110Request, _callback);
 
     }
 
@@ -4172,11 +4563,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApi202110ExternalLineItemProductsAppendByLineItemIdCall(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = promotedProduct202110ListRequest;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/line-items/{line-item-id}/products/append"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4196,23 +4600,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApi202110ExternalLineItemProductsAppendByLineItemIdValidateBeforeCall(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling postApi202110ExternalLineItemProductsAppendByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApi202110ExternalLineItemProductsAppendByLineItemIdCall(lineItemId, promotedProduct202110ListRequest, _callback);
-        return localVarCall;
+        return postApi202110ExternalLineItemProductsAppendByLineItemIdCall(lineItemId, promotedProduct202110ListRequest, _callback);
 
     }
 
@@ -4288,11 +4691,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApi202110ExternalLineItemProductsDeleteByLineItemIdCall(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = promotedProduct202110ListRequest;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/line-items/{line-item-id}/products/delete"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4312,23 +4728,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApi202110ExternalLineItemProductsDeleteByLineItemIdValidateBeforeCall(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling postApi202110ExternalLineItemProductsDeleteByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApi202110ExternalLineItemProductsDeleteByLineItemIdCall(lineItemId, promotedProduct202110ListRequest, _callback);
-        return localVarCall;
+        return postApi202110ExternalLineItemProductsDeleteByLineItemIdCall(lineItemId, promotedProduct202110ListRequest, _callback);
 
     }
 
@@ -4404,11 +4819,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApi202110ExternalLineItemProductsPauseByLineItemIdCall(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = promotedProduct202110ListRequest;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/line-items/{line-item-id}/products/pause"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4417,7 +4845,6 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4428,23 +4855,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApi202110ExternalLineItemProductsPauseByLineItemIdValidateBeforeCall(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling postApi202110ExternalLineItemProductsPauseByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApi202110ExternalLineItemProductsPauseByLineItemIdCall(lineItemId, promotedProduct202110ListRequest, _callback);
-        return localVarCall;
+        return postApi202110ExternalLineItemProductsPauseByLineItemIdCall(lineItemId, promotedProduct202110ListRequest, _callback);
 
     }
 
@@ -4516,11 +4942,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApi202110ExternalLineItemProductsUnpauseByLineItemIdCall(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = promotedProduct202110ListRequest;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/line-items/{line-item-id}/products/unpause"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4529,7 +4968,6 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4540,23 +4978,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApi202110ExternalLineItemProductsUnpauseByLineItemIdValidateBeforeCall(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling postApi202110ExternalLineItemProductsUnpauseByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApi202110ExternalLineItemProductsUnpauseByLineItemIdCall(lineItemId, promotedProduct202110ListRequest, _callback);
-        return localVarCall;
+        return postApi202110ExternalLineItemProductsUnpauseByLineItemIdCall(lineItemId, promotedProduct202110ListRequest, _callback);
 
     }
 
@@ -4629,11 +5066,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemIdCall(String lineItemId, AddToBasketIdsUpdateModel202110Request addToBasketIdsUpdateModel202110Request, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = addToBasketIdsUpdateModel202110Request;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4653,23 +5103,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemIdValidateBeforeCall(String lineItemId, AddToBasketIdsUpdateModel202110Request addToBasketIdsUpdateModel202110Request, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemIdCall(lineItemId, addToBasketIdsUpdateModel202110Request, _callback);
-        return localVarCall;
+        return postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemIdCall(lineItemId, addToBasketIdsUpdateModel202110Request, _callback);
 
     }
 
@@ -4749,11 +5198,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemIdCall(String lineItemId, AddToBasketIdsUpdateModel202110Request addToBasketIdsUpdateModel202110Request, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = addToBasketIdsUpdateModel202110Request;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4773,23 +5235,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemIdValidateBeforeCall(String lineItemId, AddToBasketIdsUpdateModel202110Request addToBasketIdsUpdateModel202110Request, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemIdCall(lineItemId, addToBasketIdsUpdateModel202110Request, _callback);
-        return localVarCall;
+        return postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemIdCall(lineItemId, addToBasketIdsUpdateModel202110Request, _callback);
 
     }
 
@@ -4869,11 +5330,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemIdCall(String lineItemId, AudienceIdsUpdateModel202110Request audienceIdsUpdateModel202110Request, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = audienceIdsUpdateModel202110Request;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4893,23 +5367,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemIdValidateBeforeCall(String lineItemId, AudienceIdsUpdateModel202110Request audienceIdsUpdateModel202110Request, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemIdCall(lineItemId, audienceIdsUpdateModel202110Request, _callback);
-        return localVarCall;
+        return postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemIdCall(lineItemId, audienceIdsUpdateModel202110Request, _callback);
 
     }
 
@@ -4989,11 +5462,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApi202110ExternalPreferredLineItemTargetingAudiencesDeleteByLineItemIdCall(String lineItemId, AudienceIdsUpdateModel202110Request audienceIdsUpdateModel202110Request, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = audienceIdsUpdateModel202110Request;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5013,23 +5499,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApi202110ExternalPreferredLineItemTargetingAudiencesDeleteByLineItemIdValidateBeforeCall(String lineItemId, AudienceIdsUpdateModel202110Request audienceIdsUpdateModel202110Request, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling postApi202110ExternalPreferredLineItemTargetingAudiencesDeleteByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApi202110ExternalPreferredLineItemTargetingAudiencesDeleteByLineItemIdCall(lineItemId, audienceIdsUpdateModel202110Request, _callback);
-        return localVarCall;
+        return postApi202110ExternalPreferredLineItemTargetingAudiencesDeleteByLineItemIdCall(lineItemId, audienceIdsUpdateModel202110Request, _callback);
 
     }
 
@@ -5109,11 +5594,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApi202110ExternalPreferredLineItemTargetingStoresAppendByLineItemIdCall(String lineItemId, StoreIdsUpdateModel202110Request storeIdsUpdateModel202110Request, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = storeIdsUpdateModel202110Request;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5133,23 +5631,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApi202110ExternalPreferredLineItemTargetingStoresAppendByLineItemIdValidateBeforeCall(String lineItemId, StoreIdsUpdateModel202110Request storeIdsUpdateModel202110Request, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling postApi202110ExternalPreferredLineItemTargetingStoresAppendByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApi202110ExternalPreferredLineItemTargetingStoresAppendByLineItemIdCall(lineItemId, storeIdsUpdateModel202110Request, _callback);
-        return localVarCall;
+        return postApi202110ExternalPreferredLineItemTargetingStoresAppendByLineItemIdCall(lineItemId, storeIdsUpdateModel202110Request, _callback);
 
     }
 
@@ -5229,11 +5726,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemIdCall(String lineItemId, StoreIdsUpdateModel202110Request storeIdsUpdateModel202110Request, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = storeIdsUpdateModel202110Request;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5253,23 +5763,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemIdValidateBeforeCall(String lineItemId, StoreIdsUpdateModel202110Request storeIdsUpdateModel202110Request, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemIdCall(lineItemId, storeIdsUpdateModel202110Request, _callback);
-        return localVarCall;
+        return postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemIdCall(lineItemId, storeIdsUpdateModel202110Request, _callback);
 
     }
 
@@ -5348,11 +5857,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApi202207ExternalAccountCreativesByAccountIdCall(String accountId, CreativeCreateModel202207 creativeCreateModel202207, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = creativeCreateModel202207;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/accounts/{account-id}/creatives"
-            .replaceAll("\\{" + "account-id" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5372,23 +5894,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApi202207ExternalAccountCreativesByAccountIdValidateBeforeCall(String accountId, CreativeCreateModel202207 creativeCreateModel202207, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling postApi202207ExternalAccountCreativesByAccountId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApi202207ExternalAccountCreativesByAccountIdCall(accountId, creativeCreateModel202207, _callback);
-        return localVarCall;
+        return postApi202207ExternalAccountCreativesByAccountIdCall(accountId, creativeCreateModel202207, _callback);
 
     }
 
@@ -5465,11 +5986,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApiV1ExternalAccountCampaignsByAccountIdCall(String accountId, ExternalPostCampaign externalPostCampaign, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = externalPostCampaign;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/accounts/{accountId}/campaigns"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5489,23 +6023,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApiV1ExternalAccountCampaignsByAccountIdValidateBeforeCall(String accountId, ExternalPostCampaign externalPostCampaign, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling postApiV1ExternalAccountCampaignsByAccountId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApiV1ExternalAccountCampaignsByAccountIdCall(accountId, externalPostCampaign, _callback);
-        return localVarCall;
+        return postApiV1ExternalAccountCampaignsByAccountIdCall(accountId, externalPostCampaign, _callback);
 
     }
 
@@ -5584,11 +6117,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApiV1ExternalAccountCatalogsByAccountIdCall(String accountId, JsonApiRequestOfCatalogRequest jsonApiRequestOfCatalogRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = jsonApiRequestOfCatalogRequest;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/accounts/{accountId}/catalogs"
-            .replaceAll("\\{" + "accountId" + "\\}", localVarApiClient.escapeString(accountId.toString()));
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5608,23 +6154,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApiV1ExternalAccountCatalogsByAccountIdValidateBeforeCall(String accountId, JsonApiRequestOfCatalogRequest jsonApiRequestOfCatalogRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling postApiV1ExternalAccountCatalogsByAccountId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApiV1ExternalAccountCatalogsByAccountIdCall(accountId, jsonApiRequestOfCatalogRequest, _callback);
-        return localVarCall;
+        return postApiV1ExternalAccountCatalogsByAccountIdCall(accountId, jsonApiRequestOfCatalogRequest, _callback);
 
     }
 
@@ -5701,11 +6246,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call postApiV2ExternalCampaignAuctionLineItemsByCampaignIdCall(String campaignId, AuctionLineItemCreateModelRequest auctionLineItemCreateModelRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = auctionLineItemCreateModelRequest;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/campaigns/{campaign-id}/auction-line-items"
-            .replaceAll("\\{" + "campaign-id" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+            .replace("{" + "campaign-id" + "}", localVarApiClient.escapeString(campaignId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5725,23 +6283,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call postApiV2ExternalCampaignAuctionLineItemsByCampaignIdValidateBeforeCall(String campaignId, AuctionLineItemCreateModelRequest auctionLineItemCreateModelRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
             throw new ApiException("Missing the required parameter 'campaignId' when calling postApiV2ExternalCampaignAuctionLineItemsByCampaignId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = postApiV2ExternalCampaignAuctionLineItemsByCampaignIdCall(campaignId, auctionLineItemCreateModelRequest, _callback);
-        return localVarCall;
+        return postApiV2ExternalCampaignAuctionLineItemsByCampaignIdCall(campaignId, auctionLineItemCreateModelRequest, _callback);
 
     }
 
@@ -5821,11 +6378,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call putApi202110ExternalPreferredLineItemByLineItemIdCall(String lineItemId, PreferredLineItemUpdateModel202110Request preferredLineItemUpdateModel202110Request, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = preferredLineItemUpdateModel202110Request;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/preferred-line-items/{line-item-id}"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5845,23 +6415,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call putApi202110ExternalPreferredLineItemByLineItemIdValidateBeforeCall(String lineItemId, PreferredLineItemUpdateModel202110Request preferredLineItemUpdateModel202110Request, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling putApi202110ExternalPreferredLineItemByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = putApi202110ExternalPreferredLineItemByLineItemIdCall(lineItemId, preferredLineItemUpdateModel202110Request, _callback);
-        return localVarCall;
+        return putApi202110ExternalPreferredLineItemByLineItemIdCall(lineItemId, preferredLineItemUpdateModel202110Request, _callback);
 
     }
 
@@ -5941,11 +6510,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemIdCall(String lineItemId, AddToBasketTarget202110Request addToBasketTarget202110Request, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = addToBasketTarget202110Request;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5965,23 +6547,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemIdValidateBeforeCall(String lineItemId, AddToBasketTarget202110Request addToBasketTarget202110Request, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemIdCall(lineItemId, addToBasketTarget202110Request, _callback);
-        return localVarCall;
+        return putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemIdCall(lineItemId, addToBasketTarget202110Request, _callback);
 
     }
 
@@ -6061,11 +6642,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemIdCall(String lineItemId, AudienceTarget202110Request audienceTarget202110Request, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = audienceTarget202110Request;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -6085,23 +6679,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemIdValidateBeforeCall(String lineItemId, AudienceTarget202110Request audienceTarget202110Request, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemIdCall(lineItemId, audienceTarget202110Request, _callback);
-        return localVarCall;
+        return putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemIdCall(lineItemId, audienceTarget202110Request, _callback);
 
     }
 
@@ -6181,11 +6774,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call putApi202110ExternalPreferredLineItemTargetingStoresByLineItemIdCall(String lineItemId, StoreTarget202110Request storeTarget202110Request, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = storeTarget202110Request;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -6205,23 +6811,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call putApi202110ExternalPreferredLineItemTargetingStoresByLineItemIdValidateBeforeCall(String lineItemId, StoreTarget202110Request storeTarget202110Request, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling putApi202110ExternalPreferredLineItemTargetingStoresByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = putApi202110ExternalPreferredLineItemTargetingStoresByLineItemIdCall(lineItemId, storeTarget202110Request, _callback);
-        return localVarCall;
+        return putApi202110ExternalPreferredLineItemTargetingStoresByLineItemIdCall(lineItemId, storeTarget202110Request, _callback);
 
     }
 
@@ -6302,12 +6907,25 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call putApi202207ExternalAccountByAccountIdCreativescreativeIdCall(String accountId, String creativeId, CreativeUpdateModel202207 creativeUpdateModel202207, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = creativeUpdateModel202207;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/accounts/{account-id}/creatives/{creative-id}"
-            .replaceAll("\\{" + "account-id" + "\\}", localVarApiClient.escapeString(accountId.toString()))
-            .replaceAll("\\{" + "creative-id" + "\\}", localVarApiClient.escapeString(creativeId.toString()));
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "creative-id" + "}", localVarApiClient.escapeString(creativeId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -6327,28 +6945,27 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call putApi202207ExternalAccountByAccountIdCreativescreativeIdValidateBeforeCall(String accountId, String creativeId, CreativeUpdateModel202207 creativeUpdateModel202207, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling putApi202207ExternalAccountByAccountIdCreativescreativeId(Async)");
         }
-        
+
         // verify the required parameter 'creativeId' is set
         if (creativeId == null) {
             throw new ApiException("Missing the required parameter 'creativeId' when calling putApi202207ExternalAccountByAccountIdCreativescreativeId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = putApi202207ExternalAccountByAccountIdCreativescreativeIdCall(accountId, creativeId, creativeUpdateModel202207, _callback);
-        return localVarCall;
+        return putApi202207ExternalAccountByAccountIdCreativescreativeIdCall(accountId, creativeId, creativeUpdateModel202207, _callback);
 
     }
 
@@ -6430,11 +7047,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call putApiV1ExternalCampaignByCampaignIdCall(String campaignId, ExternalPutCampaign externalPutCampaign, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = externalPutCampaign;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/campaigns/{campaignId}"
-            .replaceAll("\\{" + "campaignId" + "\\}", localVarApiClient.escapeString(campaignId.toString()));
+            .replace("{" + "campaignId" + "}", localVarApiClient.escapeString(campaignId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -6454,23 +7084,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call putApiV1ExternalCampaignByCampaignIdValidateBeforeCall(String campaignId, ExternalPutCampaign externalPutCampaign, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'campaignId' is set
         if (campaignId == null) {
             throw new ApiException("Missing the required parameter 'campaignId' when calling putApiV1ExternalCampaignByCampaignId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = putApiV1ExternalCampaignByCampaignIdCall(campaignId, externalPutCampaign, _callback);
-        return localVarCall;
+        return putApiV1ExternalCampaignByCampaignIdCall(campaignId, externalPutCampaign, _callback);
 
     }
 
@@ -6547,11 +7176,24 @@ public class CampaignApi {
      </table>
      */
     public okhttp3.Call putApiV2ExternalAuctionLineItemByLineItemIdCall(String lineItemId, AuctionLineItemUpdateModelRequest auctionLineItemUpdateModelRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = auctionLineItemUpdateModelRequest;
 
         // create path and map variables
         String localVarPath = "/2022-10/retail-media/auction-line-items/{line-item-id}"
-            .replaceAll("\\{" + "line-item-id" + "\\}", localVarApiClient.escapeString(lineItemId.toString()));
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -6571,23 +7213,22 @@ public class CampaignApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call putApiV2ExternalAuctionLineItemByLineItemIdValidateBeforeCall(String lineItemId, AuctionLineItemUpdateModelRequest auctionLineItemUpdateModelRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling putApiV2ExternalAuctionLineItemByLineItemId(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = putApiV2ExternalAuctionLineItemByLineItemIdCall(lineItemId, auctionLineItemUpdateModelRequest, _callback);
-        return localVarCall;
+        return putApiV2ExternalAuctionLineItemByLineItemIdCall(lineItemId, auctionLineItemUpdateModelRequest, _callback);
 
     }
 

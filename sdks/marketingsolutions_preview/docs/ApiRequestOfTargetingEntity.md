@@ -6,9 +6,9 @@ Root object containing the API request
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**data** | [**EntityWrapperOfTargetingEntity**](EntityWrapperOfTargetingEntity.md) |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**data** | [**EntityWrapperOfTargetingEntity**](EntityWrapperOfTargetingEntity.md) |  |  [optional] |
 
 
 

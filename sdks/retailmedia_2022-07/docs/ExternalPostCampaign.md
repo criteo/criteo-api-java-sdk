@@ -6,9 +6,9 @@ An object that represents the available options to set when creating a Retail Me
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**data** | [**JsonApiBodyWithoutIdOfCampaignAttributesAndCampaign**](JsonApiBodyWithoutIdOfCampaignAttributesAndCampaign.md) |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**data** | [**JsonApiBodyWithoutIdOfCampaignAttributesAndCampaign**](JsonApiBodyWithoutIdOfCampaignAttributesAndCampaign.md) |  |  [optional] |
 
 
 

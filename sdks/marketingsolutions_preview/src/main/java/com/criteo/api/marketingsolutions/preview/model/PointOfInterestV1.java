@@ -20,14 +20,32 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
  * Named coordinate defined by its latitude and longitude.  Latitude and Longitude are rounded at 5 decimals.
  */
-@ApiModel(description = "Named coordinate defined by its latitude and longitude.  Latitude and Longitude are rounded at 5 decimals.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PointOfInterestV1 {
   public static final String SERIALIZED_NAME_NAME = "name";
@@ -42,6 +60,8 @@ public class PointOfInterestV1 {
   @SerializedName(SERIALIZED_NAME_LONGITUDE)
   private Double longitude;
 
+  public PointOfInterestV1() {
+  }
 
   public PointOfInterestV1 name(String name) {
     
@@ -54,7 +74,6 @@ public class PointOfInterestV1 {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Name of the point of interest")
 
   public String getName() {
     return name;
@@ -77,7 +96,6 @@ public class PointOfInterestV1 {
    * @return latitude
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "ISO-6709 latitude (rounded at 5 decimals)")
 
   public Double getLatitude() {
     return latitude;
@@ -100,7 +118,6 @@ public class PointOfInterestV1 {
    * @return longitude
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "ISO-6709 longitude (rounded at 5 decimals)")
 
   public Double getLongitude() {
     return longitude;
@@ -109,6 +126,51 @@ public class PointOfInterestV1 {
 
   public void setLongitude(Double longitude) {
     this.longitude = longitude;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the PointOfInterestV1 instance itself
+   */
+  public PointOfInterestV1 putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -123,12 +185,13 @@ public class PointOfInterestV1 {
     PointOfInterestV1 pointOfInterestV1 = (PointOfInterestV1) o;
     return Objects.equals(this.name, pointOfInterestV1.name) &&
         Objects.equals(this.latitude, pointOfInterestV1.latitude) &&
-        Objects.equals(this.longitude, pointOfInterestV1.longitude);
+        Objects.equals(this.longitude, pointOfInterestV1.longitude)&&
+        Objects.equals(this.additionalProperties, pointOfInterestV1.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, latitude, longitude);
+    return Objects.hash(name, latitude, longitude, additionalProperties);
   }
 
   @Override
@@ -138,6 +201,7 @@ public class PointOfInterestV1 {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
     sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -153,5 +217,122 @@ public class PointOfInterestV1 {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("name");
+    openapiFields.add("latitude");
+    openapiFields.add("longitude");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to PointOfInterestV1
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!PointOfInterestV1.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PointOfInterestV1 is not found in the empty JSON string", PointOfInterestV1.openapiRequiredFields.toString()));
+        }
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!PointOfInterestV1.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PointOfInterestV1' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<PointOfInterestV1> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PointOfInterestV1.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<PointOfInterestV1>() {
+           @Override
+           public void write(JsonWriter out, PointOfInterestV1 value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public PointOfInterestV1 read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             PointOfInterestV1 instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of PointOfInterestV1 given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of PointOfInterestV1
+  * @throws IOException if the JSON string is invalid with respect to PointOfInterestV1
+  */
+  public static PointOfInterestV1 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, PointOfInterestV1.class);
+  }
+
+ /**
+  * Convert an instance of PointOfInterestV1 to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

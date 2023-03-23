@@ -21,14 +21,32 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.retailmedia.v2023_01.JSON;
 
 /**
  * Details about a user behavior retail media audience
  */
-@ApiModel(description = "Details about a user behavior retail media audience")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UserBehaviorDetailsV2 {
   public static final String SERIALIZED_NAME_INCLUSIVE_SEGMENT = "inclusiveSegment";
@@ -39,6 +57,8 @@ public class UserBehaviorDetailsV2 {
   @SerializedName(SERIALIZED_NAME_EXCLUSIVE_SEGMENT)
   private CreateUserBehaviorSegmentV2 exclusiveSegment;
 
+  public UserBehaviorDetailsV2() {
+  }
 
   public UserBehaviorDetailsV2 inclusiveSegment(CreateUserBehaviorSegmentV2 inclusiveSegment) {
     
@@ -51,7 +71,6 @@ public class UserBehaviorDetailsV2 {
    * @return inclusiveSegment
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public CreateUserBehaviorSegmentV2 getInclusiveSegment() {
     return inclusiveSegment;
@@ -74,7 +93,6 @@ public class UserBehaviorDetailsV2 {
    * @return exclusiveSegment
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CreateUserBehaviorSegmentV2 getExclusiveSegment() {
     return exclusiveSegment;
@@ -83,6 +101,51 @@ public class UserBehaviorDetailsV2 {
 
   public void setExclusiveSegment(CreateUserBehaviorSegmentV2 exclusiveSegment) {
     this.exclusiveSegment = exclusiveSegment;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the UserBehaviorDetailsV2 instance itself
+   */
+  public UserBehaviorDetailsV2 putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -96,12 +159,13 @@ public class UserBehaviorDetailsV2 {
     }
     UserBehaviorDetailsV2 userBehaviorDetailsV2 = (UserBehaviorDetailsV2) o;
     return Objects.equals(this.inclusiveSegment, userBehaviorDetailsV2.inclusiveSegment) &&
-        Objects.equals(this.exclusiveSegment, userBehaviorDetailsV2.exclusiveSegment);
+        Objects.equals(this.exclusiveSegment, userBehaviorDetailsV2.exclusiveSegment)&&
+        Objects.equals(this.additionalProperties, userBehaviorDetailsV2.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(inclusiveSegment, exclusiveSegment);
+    return Objects.hash(inclusiveSegment, exclusiveSegment, additionalProperties);
   }
 
   @Override
@@ -110,6 +174,7 @@ public class UserBehaviorDetailsV2 {
     sb.append("class UserBehaviorDetailsV2 {\n");
     sb.append("    inclusiveSegment: ").append(toIndentedString(inclusiveSegment)).append("\n");
     sb.append("    exclusiveSegment: ").append(toIndentedString(exclusiveSegment)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -125,5 +190,132 @@ public class UserBehaviorDetailsV2 {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("inclusiveSegment");
+    openapiFields.add("exclusiveSegment");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("inclusiveSegment");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to UserBehaviorDetailsV2
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!UserBehaviorDetailsV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in UserBehaviorDetailsV2 is not found in the empty JSON string", UserBehaviorDetailsV2.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : UserBehaviorDetailsV2.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      // validate the required field `inclusiveSegment`
+      CreateUserBehaviorSegmentV2.validateJsonObject(jsonObj.getAsJsonObject("inclusiveSegment"));
+      // validate the optional field `exclusiveSegment`
+      if (jsonObj.get("exclusiveSegment") != null && !jsonObj.get("exclusiveSegment").isJsonNull()) {
+        CreateUserBehaviorSegmentV2.validateJsonObject(jsonObj.getAsJsonObject("exclusiveSegment"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!UserBehaviorDetailsV2.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'UserBehaviorDetailsV2' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<UserBehaviorDetailsV2> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(UserBehaviorDetailsV2.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<UserBehaviorDetailsV2>() {
+           @Override
+           public void write(JsonWriter out, UserBehaviorDetailsV2 value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public UserBehaviorDetailsV2 read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             UserBehaviorDetailsV2 instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of UserBehaviorDetailsV2 given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of UserBehaviorDetailsV2
+  * @throws IOException if the JSON string is invalid with respect to UserBehaviorDetailsV2
+  */
+  public static UserBehaviorDetailsV2 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, UserBehaviorDetailsV2.class);
+  }
+
+ /**
+  * Convert an instance of UserBehaviorDetailsV2 to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

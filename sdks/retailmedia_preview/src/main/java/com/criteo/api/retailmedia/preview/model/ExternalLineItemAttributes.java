@@ -20,16 +20,34 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.retailmedia.preview.JSON;
+
 /**
  * The attributes of a Retail Media Line Item
  */
-@ApiModel(description = "The attributes of a Retail Media Line Item")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalLineItemAttributes {
   public static final String SERIALIZED_NAME_TARGET_RETAILER_ID = "targetRetailerId";
@@ -192,6 +210,8 @@ public class ExternalLineItemAttributes {
   @SerializedName(SERIALIZED_NAME_BID_STRATEGY)
   private BidStrategyEnum bidStrategy = BidStrategyEnum.CONVERSION;
 
+  public ExternalLineItemAttributes() {
+  }
 
   public ExternalLineItemAttributes targetRetailerId(String targetRetailerId) {
     
@@ -204,7 +224,6 @@ public class ExternalLineItemAttributes {
    * @return targetRetailerId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public String getTargetRetailerId() {
     return targetRetailerId;
@@ -227,7 +246,6 @@ public class ExternalLineItemAttributes {
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public StatusEnum getStatus() {
     return status;
@@ -250,7 +268,6 @@ public class ExternalLineItemAttributes {
    * @return targetBid
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public BigDecimal getTargetBid() {
     return targetBid;
@@ -273,7 +290,6 @@ public class ExternalLineItemAttributes {
    * @return isAutoDailyPacing
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Boolean getIsAutoDailyPacing() {
     return isAutoDailyPacing;
@@ -296,7 +312,6 @@ public class ExternalLineItemAttributes {
    * @return name
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public String getName() {
     return name;
@@ -319,7 +334,6 @@ public class ExternalLineItemAttributes {
    * @return startDate
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Represents the Date as a year, month, and day in the format YYYY-MM-DD")
 
   public LocalDate getStartDate() {
     return startDate;
@@ -342,7 +356,6 @@ public class ExternalLineItemAttributes {
    * @return endDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Represents the Date as a year, month, and day in the format YYYY-MM-DD")
 
   public LocalDate getEndDate() {
     return endDate;
@@ -365,7 +378,6 @@ public class ExternalLineItemAttributes {
    * @return maxBid
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public BigDecimal getMaxBid() {
     return maxBid;
@@ -388,7 +400,6 @@ public class ExternalLineItemAttributes {
    * @return budget
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public BigDecimal getBudget() {
     return budget;
@@ -411,7 +422,6 @@ public class ExternalLineItemAttributes {
    * @return monthlyPacing
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public BigDecimal getMonthlyPacing() {
     return monthlyPacing;
@@ -434,7 +444,6 @@ public class ExternalLineItemAttributes {
    * @return dailyPacing
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public BigDecimal getDailyPacing() {
     return dailyPacing;
@@ -457,7 +466,6 @@ public class ExternalLineItemAttributes {
    * @return bidStrategy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public BidStrategyEnum getBidStrategy() {
     return bidStrategy;
@@ -466,6 +474,51 @@ public class ExternalLineItemAttributes {
 
   public void setBidStrategy(BidStrategyEnum bidStrategy) {
     this.bidStrategy = bidStrategy;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the ExternalLineItemAttributes instance itself
+   */
+  public ExternalLineItemAttributes putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -489,12 +542,13 @@ public class ExternalLineItemAttributes {
         Objects.equals(this.budget, externalLineItemAttributes.budget) &&
         Objects.equals(this.monthlyPacing, externalLineItemAttributes.monthlyPacing) &&
         Objects.equals(this.dailyPacing, externalLineItemAttributes.dailyPacing) &&
-        Objects.equals(this.bidStrategy, externalLineItemAttributes.bidStrategy);
+        Objects.equals(this.bidStrategy, externalLineItemAttributes.bidStrategy)&&
+        Objects.equals(this.additionalProperties, externalLineItemAttributes.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(targetRetailerId, status, targetBid, isAutoDailyPacing, name, startDate, endDate, maxBid, budget, monthlyPacing, dailyPacing, bidStrategy);
+    return Objects.hash(targetRetailerId, status, targetBid, isAutoDailyPacing, name, startDate, endDate, maxBid, budget, monthlyPacing, dailyPacing, bidStrategy, additionalProperties);
   }
 
   @Override
@@ -513,6 +567,7 @@ public class ExternalLineItemAttributes {
     sb.append("    monthlyPacing: ").append(toIndentedString(monthlyPacing)).append("\n");
     sb.append("    dailyPacing: ").append(toIndentedString(dailyPacing)).append("\n");
     sb.append("    bidStrategy: ").append(toIndentedString(bidStrategy)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -528,5 +583,150 @@ public class ExternalLineItemAttributes {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("targetRetailerId");
+    openapiFields.add("status");
+    openapiFields.add("targetBid");
+    openapiFields.add("isAutoDailyPacing");
+    openapiFields.add("name");
+    openapiFields.add("startDate");
+    openapiFields.add("endDate");
+    openapiFields.add("maxBid");
+    openapiFields.add("budget");
+    openapiFields.add("monthlyPacing");
+    openapiFields.add("dailyPacing");
+    openapiFields.add("bidStrategy");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("targetRetailerId");
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("startDate");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ExternalLineItemAttributes
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!ExternalLineItemAttributes.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalLineItemAttributes is not found in the empty JSON string", ExternalLineItemAttributes.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ExternalLineItemAttributes.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("targetRetailerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `targetRetailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("targetRetailerId").toString()));
+      }
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("bidStrategy") != null && !jsonObj.get("bidStrategy").isJsonNull()) && !jsonObj.get("bidStrategy").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `bidStrategy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bidStrategy").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ExternalLineItemAttributes.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ExternalLineItemAttributes' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ExternalLineItemAttributes> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ExternalLineItemAttributes.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ExternalLineItemAttributes>() {
+           @Override
+           public void write(JsonWriter out, ExternalLineItemAttributes value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ExternalLineItemAttributes read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             ExternalLineItemAttributes instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ExternalLineItemAttributes given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ExternalLineItemAttributes
+  * @throws IOException if the JSON string is invalid with respect to ExternalLineItemAttributes
+  */
+  public static ExternalLineItemAttributes fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ExternalLineItemAttributes.class);
+  }
+
+ /**
+  * Convert an instance of ExternalLineItemAttributes to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

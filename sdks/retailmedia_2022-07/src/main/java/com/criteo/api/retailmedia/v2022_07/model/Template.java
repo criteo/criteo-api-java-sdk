@@ -21,17 +21,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.retailmedia.v2022_07.JSON;
+
 /**
  * A template for creating creatives.
  */
-@ApiModel(description = "A template for creating creatives.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Template {
   /**
@@ -145,6 +163,8 @@ public class Template {
   @SerializedName(SERIALIZED_NAME_SECTIONS)
   private List<Section> sections = new ArrayList<>();
 
+  public Template() {
+  }
 
   public Template creativeFormat(CreativeFormatEnum creativeFormat) {
     
@@ -157,7 +177,6 @@ public class Template {
    * @return creativeFormat
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The kind of creative this template can be used to build.")
 
   public CreativeFormatEnum getCreativeFormat() {
     return creativeFormat;
@@ -180,7 +199,6 @@ public class Template {
    * @return name
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The name of the template")
 
   public String getName() {
     return name;
@@ -203,7 +221,6 @@ public class Template {
    * @return retailerId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The retailer associated to the template")
 
   public Integer getRetailerId() {
     return retailerId;
@@ -226,7 +243,6 @@ public class Template {
    * @return skuCollectionMin
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "TODO: what is it ?")
 
   public Integer getSkuCollectionMin() {
     return skuCollectionMin;
@@ -249,7 +265,6 @@ public class Template {
    * @return skuCollectionMax
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "TODO: what is it ?")
 
   public Integer getSkuCollectionMax() {
     return skuCollectionMax;
@@ -272,7 +287,6 @@ public class Template {
    * @return skuPerCollectionMin
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "TODO: what is it ?")
 
   public Integer getSkuPerCollectionMin() {
     return skuPerCollectionMin;
@@ -295,7 +309,6 @@ public class Template {
    * @return skuPerCollectionMax
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "TODO: what is it ?")
 
   public Integer getSkuPerCollectionMax() {
     return skuPerCollectionMax;
@@ -318,7 +331,6 @@ public class Template {
    * @return displayableSkusMax
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "TODO: what is it ?")
 
   public Integer getDisplayableSkusMax() {
     return displayableSkusMax;
@@ -341,7 +353,6 @@ public class Template {
    * @return allCollectionsMandatory
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "TODO: what is it ?")
 
   public Boolean getAllCollectionsMandatory() {
     return allCollectionsMandatory;
@@ -364,7 +375,6 @@ public class Template {
    * @return createdAt
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The time at which the template was created")
 
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -387,7 +397,6 @@ public class Template {
    * @return updatedAt
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The time at which the template was updated")
 
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
@@ -415,7 +424,6 @@ public class Template {
    * @return sections
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The sections holding various template variables")
 
   public List<Section> getSections() {
     return sections;
@@ -424,6 +432,51 @@ public class Template {
 
   public void setSections(List<Section> sections) {
     this.sections = sections;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the Template instance itself
+   */
+  public Template putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -447,12 +500,13 @@ public class Template {
         Objects.equals(this.allCollectionsMandatory, template.allCollectionsMandatory) &&
         Objects.equals(this.createdAt, template.createdAt) &&
         Objects.equals(this.updatedAt, template.updatedAt) &&
-        Objects.equals(this.sections, template.sections);
+        Objects.equals(this.sections, template.sections)&&
+        Objects.equals(this.additionalProperties, template.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeFormat, name, retailerId, skuCollectionMin, skuCollectionMax, skuPerCollectionMin, skuPerCollectionMax, displayableSkusMax, allCollectionsMandatory, createdAt, updatedAt, sections);
+    return Objects.hash(creativeFormat, name, retailerId, skuCollectionMin, skuCollectionMax, skuPerCollectionMin, skuPerCollectionMax, displayableSkusMax, allCollectionsMandatory, createdAt, updatedAt, sections, additionalProperties);
   }
 
   @Override
@@ -471,6 +525,7 @@ public class Template {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    sections: ").append(toIndentedString(sections)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -486,5 +541,160 @@ public class Template {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("creativeFormat");
+    openapiFields.add("name");
+    openapiFields.add("retailerId");
+    openapiFields.add("skuCollectionMin");
+    openapiFields.add("skuCollectionMax");
+    openapiFields.add("skuPerCollectionMin");
+    openapiFields.add("skuPerCollectionMax");
+    openapiFields.add("displayableSkusMax");
+    openapiFields.add("allCollectionsMandatory");
+    openapiFields.add("createdAt");
+    openapiFields.add("updatedAt");
+    openapiFields.add("sections");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("creativeFormat");
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("retailerId");
+    openapiRequiredFields.add("skuCollectionMin");
+    openapiRequiredFields.add("skuPerCollectionMin");
+    openapiRequiredFields.add("allCollectionsMandatory");
+    openapiRequiredFields.add("createdAt");
+    openapiRequiredFields.add("updatedAt");
+    openapiRequiredFields.add("sections");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Template
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!Template.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Template is not found in the empty JSON string", Template.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : Template.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("creativeFormat").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `creativeFormat` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creativeFormat").toString()));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      // ensure the json data is an array
+      if (!jsonObj.get("sections").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sections` to be an array in the JSON string but got `%s`", jsonObj.get("sections").toString()));
+      }
+
+      JsonArray jsonArraysections = jsonObj.getAsJsonArray("sections");
+      // validate the required field `sections` (array)
+      for (int i = 0; i < jsonArraysections.size(); i++) {
+        Section.validateJsonObject(jsonArraysections.get(i).getAsJsonObject());
+      };
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Template.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Template' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Template> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Template.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Template>() {
+           @Override
+           public void write(JsonWriter out, Template value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Template read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             Template instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Template given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Template
+  * @throws IOException if the JSON string is invalid with respect to Template
+  */
+  public static Template fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Template.class);
+  }
+
+ /**
+  * Convert an instance of Template to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

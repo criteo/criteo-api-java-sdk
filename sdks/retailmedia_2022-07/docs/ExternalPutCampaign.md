@@ -6,9 +6,9 @@ An object that represents the available options to set when editing a Retail Med
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**data** | [**JsonApiBodyWithExternalIdOfEditableCampaignAttributesAndCampaign**](JsonApiBodyWithExternalIdOfEditableCampaignAttributesAndCampaign.md) |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**data** | [**JsonApiBodyWithExternalIdOfEditableCampaignAttributesAndCampaign**](JsonApiBodyWithExternalIdOfEditableCampaignAttributesAndCampaign.md) |  |  [optional] |
 
 
 

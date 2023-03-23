@@ -20,16 +20,34 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.retailmedia.v2023_01.JSON;
+
 /**
  * An object that represents the available options to set when editing a Retail Media Campaign
  */
-@ApiModel(description = "An object that represents the available options to set when editing a Retail Media Campaign")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class EditableCampaignAttributesV202301 {
   public static final String SERIALIZED_NAME_NAME = "name";
@@ -284,6 +302,8 @@ public class EditableCampaignAttributesV202301 {
   @SerializedName(SERIALIZED_NAME_VIEW_ATTRIBUTION_SCOPE)
   private ViewAttributionScopeEnum viewAttributionScope;
 
+  public EditableCampaignAttributesV202301() {
+  }
 
   public EditableCampaignAttributesV202301 name(String name) {
     
@@ -296,7 +316,6 @@ public class EditableCampaignAttributesV202301 {
    * @return name
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public String getName() {
     return name;
@@ -319,7 +338,6 @@ public class EditableCampaignAttributesV202301 {
    * @return budget
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public BigDecimal getBudget() {
     return budget;
@@ -342,7 +360,6 @@ public class EditableCampaignAttributesV202301 {
    * @return monthlyPacing
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public BigDecimal getMonthlyPacing() {
     return monthlyPacing;
@@ -365,7 +382,6 @@ public class EditableCampaignAttributesV202301 {
    * @return dailyPacing
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public BigDecimal getDailyPacing() {
     return dailyPacing;
@@ -388,7 +404,6 @@ public class EditableCampaignAttributesV202301 {
    * @return isAutoDailyPacing
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public Boolean getIsAutoDailyPacing() {
     return isAutoDailyPacing;
@@ -411,7 +426,6 @@ public class EditableCampaignAttributesV202301 {
    * @return startDate
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public OffsetDateTime getStartDate() {
     return startDate;
@@ -434,7 +448,6 @@ public class EditableCampaignAttributesV202301 {
    * @return endDate
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public OffsetDateTime getEndDate() {
     return endDate;
@@ -457,7 +470,6 @@ public class EditableCampaignAttributesV202301 {
    * @return clickAttributionWindow
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public ClickAttributionWindowEnum getClickAttributionWindow() {
     return clickAttributionWindow;
@@ -480,7 +492,6 @@ public class EditableCampaignAttributesV202301 {
    * @return viewAttributionWindow
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public ViewAttributionWindowEnum getViewAttributionWindow() {
     return viewAttributionWindow;
@@ -503,7 +514,6 @@ public class EditableCampaignAttributesV202301 {
    * @return clickAttributionScope
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public ClickAttributionScopeEnum getClickAttributionScope() {
     return clickAttributionScope;
@@ -526,7 +536,6 @@ public class EditableCampaignAttributesV202301 {
    * @return viewAttributionScope
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public ViewAttributionScopeEnum getViewAttributionScope() {
     return viewAttributionScope;
@@ -535,6 +544,51 @@ public class EditableCampaignAttributesV202301 {
 
   public void setViewAttributionScope(ViewAttributionScopeEnum viewAttributionScope) {
     this.viewAttributionScope = viewAttributionScope;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the EditableCampaignAttributesV202301 instance itself
+   */
+  public EditableCampaignAttributesV202301 putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -557,12 +611,13 @@ public class EditableCampaignAttributesV202301 {
         Objects.equals(this.clickAttributionWindow, editableCampaignAttributesV202301.clickAttributionWindow) &&
         Objects.equals(this.viewAttributionWindow, editableCampaignAttributesV202301.viewAttributionWindow) &&
         Objects.equals(this.clickAttributionScope, editableCampaignAttributesV202301.clickAttributionScope) &&
-        Objects.equals(this.viewAttributionScope, editableCampaignAttributesV202301.viewAttributionScope);
+        Objects.equals(this.viewAttributionScope, editableCampaignAttributesV202301.viewAttributionScope)&&
+        Objects.equals(this.additionalProperties, editableCampaignAttributesV202301.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, budget, monthlyPacing, dailyPacing, isAutoDailyPacing, startDate, endDate, clickAttributionWindow, viewAttributionWindow, clickAttributionScope, viewAttributionScope);
+    return Objects.hash(name, budget, monthlyPacing, dailyPacing, isAutoDailyPacing, startDate, endDate, clickAttributionWindow, viewAttributionWindow, clickAttributionScope, viewAttributionScope, additionalProperties);
   }
 
   @Override
@@ -580,6 +635,7 @@ public class EditableCampaignAttributesV202301 {
     sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
     sb.append("    clickAttributionScope: ").append(toIndentedString(clickAttributionScope)).append("\n");
     sb.append("    viewAttributionScope: ").append(toIndentedString(viewAttributionScope)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -595,5 +651,155 @@ public class EditableCampaignAttributesV202301 {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("name");
+    openapiFields.add("budget");
+    openapiFields.add("monthlyPacing");
+    openapiFields.add("dailyPacing");
+    openapiFields.add("isAutoDailyPacing");
+    openapiFields.add("startDate");
+    openapiFields.add("endDate");
+    openapiFields.add("clickAttributionWindow");
+    openapiFields.add("viewAttributionWindow");
+    openapiFields.add("clickAttributionScope");
+    openapiFields.add("viewAttributionScope");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("isAutoDailyPacing");
+    openapiRequiredFields.add("startDate");
+    openapiRequiredFields.add("endDate");
+    openapiRequiredFields.add("clickAttributionWindow");
+    openapiRequiredFields.add("viewAttributionWindow");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to EditableCampaignAttributesV202301
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!EditableCampaignAttributesV202301.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in EditableCampaignAttributesV202301 is not found in the empty JSON string", EditableCampaignAttributesV202301.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : EditableCampaignAttributesV202301.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if (!jsonObj.get("clickAttributionWindow").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `clickAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionWindow").toString()));
+      }
+      if (!jsonObj.get("viewAttributionWindow").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `viewAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewAttributionWindow").toString()));
+      }
+      if ((jsonObj.get("clickAttributionScope") != null && !jsonObj.get("clickAttributionScope").isJsonNull()) && !jsonObj.get("clickAttributionScope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `clickAttributionScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionScope").toString()));
+      }
+      if ((jsonObj.get("viewAttributionScope") != null && !jsonObj.get("viewAttributionScope").isJsonNull()) && !jsonObj.get("viewAttributionScope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `viewAttributionScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewAttributionScope").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!EditableCampaignAttributesV202301.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'EditableCampaignAttributesV202301' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<EditableCampaignAttributesV202301> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(EditableCampaignAttributesV202301.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<EditableCampaignAttributesV202301>() {
+           @Override
+           public void write(JsonWriter out, EditableCampaignAttributesV202301 value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public EditableCampaignAttributesV202301 read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             EditableCampaignAttributesV202301 instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of EditableCampaignAttributesV202301 given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of EditableCampaignAttributesV202301
+  * @throws IOException if the JSON string is invalid with respect to EditableCampaignAttributesV202301
+  */
+  public static EditableCampaignAttributesV202301 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, EditableCampaignAttributesV202301.class);
+  }
+
+ /**
+  * Convert an instance of EditableCampaignAttributesV202301 to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

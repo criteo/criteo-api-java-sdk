@@ -24,14 +24,32 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
  * ad set create model
  */
-@ApiModel(description = "ad set create model")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateAdSet {
   public static final String SERIALIZED_NAME_NAME = "name";
@@ -117,6 +135,8 @@ public class CreateAdSet {
   @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
   private MediaTypeEnum mediaType;
 
+  public CreateAdSet() {
+  }
 
   public CreateAdSet name(String name) {
     
@@ -129,7 +149,6 @@ public class CreateAdSet {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Name of the ad set")
 
   public String getName() {
     return name;
@@ -152,7 +171,6 @@ public class CreateAdSet {
    * @return datasetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Dataset id of this ad set")
 
   public String getDatasetId() {
     return datasetId;
@@ -175,7 +193,6 @@ public class CreateAdSet {
    * @return campaignId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Campaign id this ad set belongs to")
 
   public String getCampaignId() {
     return campaignId;
@@ -198,7 +215,6 @@ public class CreateAdSet {
    * @return schedule
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CreateAdSetSchedule getSchedule() {
     return schedule;
@@ -221,7 +237,6 @@ public class CreateAdSet {
    * @return bidding
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CreateAdSetBidding getBidding() {
     return bidding;
@@ -244,7 +259,6 @@ public class CreateAdSet {
    * @return targeting
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CreateAdSetTargeting getTargeting() {
     return targeting;
@@ -267,7 +281,6 @@ public class CreateAdSet {
    * @return budget
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public CreateAdSetBudget getBudget() {
     return budget;
@@ -290,7 +303,6 @@ public class CreateAdSet {
    * @return trackingCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The click tracking code associated to this Ad Set.")
 
   public String getTrackingCode() {
     return trackingCode;
@@ -313,7 +325,6 @@ public class CreateAdSet {
    * @return mediaType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Media type for the ad set")
 
   public MediaTypeEnum getMediaType() {
     return mediaType;
@@ -322,6 +333,51 @@ public class CreateAdSet {
 
   public void setMediaType(MediaTypeEnum mediaType) {
     this.mediaType = mediaType;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the CreateAdSet instance itself
+   */
+  public CreateAdSet putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -342,12 +398,13 @@ public class CreateAdSet {
         Objects.equals(this.targeting, createAdSet.targeting) &&
         Objects.equals(this.budget, createAdSet.budget) &&
         Objects.equals(this.trackingCode, createAdSet.trackingCode) &&
-        Objects.equals(this.mediaType, createAdSet.mediaType);
+        Objects.equals(this.mediaType, createAdSet.mediaType)&&
+        Objects.equals(this.additionalProperties, createAdSet.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, datasetId, campaignId, schedule, bidding, targeting, budget, trackingCode, mediaType);
+    return Objects.hash(name, datasetId, campaignId, schedule, bidding, targeting, budget, trackingCode, mediaType, additionalProperties);
   }
 
   @Override
@@ -363,6 +420,7 @@ public class CreateAdSet {
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
     sb.append("    trackingCode: ").append(toIndentedString(trackingCode)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -378,5 +436,156 @@ public class CreateAdSet {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("name");
+    openapiFields.add("datasetId");
+    openapiFields.add("campaignId");
+    openapiFields.add("schedule");
+    openapiFields.add("bidding");
+    openapiFields.add("targeting");
+    openapiFields.add("budget");
+    openapiFields.add("trackingCode");
+    openapiFields.add("mediaType");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to CreateAdSet
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!CreateAdSet.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateAdSet is not found in the empty JSON string", CreateAdSet.openapiRequiredFields.toString()));
+        }
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("datasetId") != null && !jsonObj.get("datasetId").isJsonNull()) && !jsonObj.get("datasetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `datasetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("datasetId").toString()));
+      }
+      if ((jsonObj.get("campaignId") != null && !jsonObj.get("campaignId").isJsonNull()) && !jsonObj.get("campaignId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
+      }
+      // validate the optional field `schedule`
+      if (jsonObj.get("schedule") != null && !jsonObj.get("schedule").isJsonNull()) {
+        CreateAdSetSchedule.validateJsonObject(jsonObj.getAsJsonObject("schedule"));
+      }
+      // validate the optional field `bidding`
+      if (jsonObj.get("bidding") != null && !jsonObj.get("bidding").isJsonNull()) {
+        CreateAdSetBidding.validateJsonObject(jsonObj.getAsJsonObject("bidding"));
+      }
+      // validate the optional field `targeting`
+      if (jsonObj.get("targeting") != null && !jsonObj.get("targeting").isJsonNull()) {
+        CreateAdSetTargeting.validateJsonObject(jsonObj.getAsJsonObject("targeting"));
+      }
+      // validate the optional field `budget`
+      if (jsonObj.get("budget") != null && !jsonObj.get("budget").isJsonNull()) {
+        CreateAdSetBudget.validateJsonObject(jsonObj.getAsJsonObject("budget"));
+      }
+      if ((jsonObj.get("trackingCode") != null && !jsonObj.get("trackingCode").isJsonNull()) && !jsonObj.get("trackingCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `trackingCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("trackingCode").toString()));
+      }
+      if ((jsonObj.get("mediaType") != null && !jsonObj.get("mediaType").isJsonNull()) && !jsonObj.get("mediaType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `mediaType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mediaType").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CreateAdSet.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CreateAdSet' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CreateAdSet> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CreateAdSet.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CreateAdSet>() {
+           @Override
+           public void write(JsonWriter out, CreateAdSet value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CreateAdSet read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             CreateAdSet instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of CreateAdSet given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CreateAdSet
+  * @throws IOException if the JSON string is invalid with respect to CreateAdSet
+  */
+  public static CreateAdSet fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CreateAdSet.class);
+  }
+
+ /**
+  * Convert an instance of CreateAdSet to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

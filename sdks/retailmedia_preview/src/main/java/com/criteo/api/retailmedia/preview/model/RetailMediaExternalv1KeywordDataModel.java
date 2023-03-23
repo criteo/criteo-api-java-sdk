@@ -21,15 +21,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.retailmedia.preview.JSON;
 
 /**
  * Details for a specific keyword
  */
-@ApiModel(description = "Details for a specific keyword")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RetailMediaExternalv1KeywordDataModel {
   /**
@@ -160,6 +178,8 @@ public class RetailMediaExternalv1KeywordDataModel {
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
+  public RetailMediaExternalv1KeywordDataModel() {
+  }
 
   public RetailMediaExternalv1KeywordDataModel reviewState(ReviewStateEnum reviewState) {
     
@@ -172,7 +192,6 @@ public class RetailMediaExternalv1KeywordDataModel {
    * @return reviewState
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public ReviewStateEnum getReviewState() {
     return reviewState;
@@ -195,7 +214,6 @@ public class RetailMediaExternalv1KeywordDataModel {
    * @return matchType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public MatchTypeEnum getMatchType() {
     return matchType;
@@ -218,7 +236,6 @@ public class RetailMediaExternalv1KeywordDataModel {
    * @return bid
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Double getBid() {
     return bid;
@@ -241,7 +258,6 @@ public class RetailMediaExternalv1KeywordDataModel {
    * @return inputKeywords
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public RetailMediaExternalv1InputKeywordsModel getInputKeywords() {
     return inputKeywords;
@@ -264,7 +280,6 @@ public class RetailMediaExternalv1KeywordDataModel {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getCreatedAt() {
     return createdAt;
@@ -287,7 +302,6 @@ public class RetailMediaExternalv1KeywordDataModel {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
@@ -296,6 +310,51 @@ public class RetailMediaExternalv1KeywordDataModel {
 
   public void setUpdatedAt(OffsetDateTime updatedAt) {
     this.updatedAt = updatedAt;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the RetailMediaExternalv1KeywordDataModel instance itself
+   */
+  public RetailMediaExternalv1KeywordDataModel putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -313,12 +372,13 @@ public class RetailMediaExternalv1KeywordDataModel {
         Objects.equals(this.bid, retailMediaExternalv1KeywordDataModel.bid) &&
         Objects.equals(this.inputKeywords, retailMediaExternalv1KeywordDataModel.inputKeywords) &&
         Objects.equals(this.createdAt, retailMediaExternalv1KeywordDataModel.createdAt) &&
-        Objects.equals(this.updatedAt, retailMediaExternalv1KeywordDataModel.updatedAt);
+        Objects.equals(this.updatedAt, retailMediaExternalv1KeywordDataModel.updatedAt)&&
+        Objects.equals(this.additionalProperties, retailMediaExternalv1KeywordDataModel.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reviewState, matchType, bid, inputKeywords, createdAt, updatedAt);
+    return Objects.hash(reviewState, matchType, bid, inputKeywords, createdAt, updatedAt, additionalProperties);
   }
 
   @Override
@@ -331,6 +391,7 @@ public class RetailMediaExternalv1KeywordDataModel {
     sb.append("    inputKeywords: ").append(toIndentedString(inputKeywords)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -346,5 +407,132 @@ public class RetailMediaExternalv1KeywordDataModel {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("reviewState");
+    openapiFields.add("matchType");
+    openapiFields.add("bid");
+    openapiFields.add("inputKeywords");
+    openapiFields.add("createdAt");
+    openapiFields.add("updatedAt");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to RetailMediaExternalv1KeywordDataModel
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!RetailMediaExternalv1KeywordDataModel.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RetailMediaExternalv1KeywordDataModel is not found in the empty JSON string", RetailMediaExternalv1KeywordDataModel.openapiRequiredFields.toString()));
+        }
+      }
+      if ((jsonObj.get("reviewState") != null && !jsonObj.get("reviewState").isJsonNull()) && !jsonObj.get("reviewState").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reviewState` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reviewState").toString()));
+      }
+      if ((jsonObj.get("matchType") != null && !jsonObj.get("matchType").isJsonNull()) && !jsonObj.get("matchType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `matchType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("matchType").toString()));
+      }
+      // validate the optional field `inputKeywords`
+      if (jsonObj.get("inputKeywords") != null && !jsonObj.get("inputKeywords").isJsonNull()) {
+        RetailMediaExternalv1InputKeywordsModel.validateJsonObject(jsonObj.getAsJsonObject("inputKeywords"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!RetailMediaExternalv1KeywordDataModel.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RetailMediaExternalv1KeywordDataModel' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<RetailMediaExternalv1KeywordDataModel> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RetailMediaExternalv1KeywordDataModel.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<RetailMediaExternalv1KeywordDataModel>() {
+           @Override
+           public void write(JsonWriter out, RetailMediaExternalv1KeywordDataModel value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public RetailMediaExternalv1KeywordDataModel read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             RetailMediaExternalv1KeywordDataModel instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of RetailMediaExternalv1KeywordDataModel given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of RetailMediaExternalv1KeywordDataModel
+  * @throws IOException if the JSON string is invalid with respect to RetailMediaExternalv1KeywordDataModel
+  */
+  public static RetailMediaExternalv1KeywordDataModel fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RetailMediaExternalv1KeywordDataModel.class);
+  }
+
+ /**
+  * Convert an instance of RetailMediaExternalv1KeywordDataModel to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

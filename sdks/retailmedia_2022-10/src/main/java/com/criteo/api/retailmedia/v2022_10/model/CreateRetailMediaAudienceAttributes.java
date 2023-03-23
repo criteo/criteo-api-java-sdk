@@ -20,16 +20,34 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.retailmedia.v2022_10.JSON;
+
 /**
  * Parameters needed to create an audience
  */
-@ApiModel(description = "Parameters needed to create an audience")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateRetailMediaAudienceAttributes {
   /**
@@ -164,6 +182,8 @@ public class CreateRetailMediaAudienceAttributes {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public CreateRetailMediaAudienceAttributes() {
+  }
 
   public CreateRetailMediaAudienceAttributes userType(UserTypeEnum userType) {
     
@@ -176,7 +196,6 @@ public class CreateRetailMediaAudienceAttributes {
    * @return userType
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "viewer", required = true, value = "Type of the user")
 
   public UserTypeEnum getUserType() {
     return userType;
@@ -199,7 +218,6 @@ public class CreateRetailMediaAudienceAttributes {
    * @return lookbackWindow
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "P7D", required = true, value = "Length of lookback window")
 
   public LookbackWindowEnum getLookbackWindow() {
     return lookbackWindow;
@@ -230,7 +248,6 @@ public class CreateRetailMediaAudienceAttributes {
    * @return brandIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The brands to target")
 
   public List<String> getBrandIds() {
     return brandIds;
@@ -261,7 +278,6 @@ public class CreateRetailMediaAudienceAttributes {
    * @return categoryIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The categories to target")
 
   public List<String> getCategoryIds() {
     return categoryIds;
@@ -284,7 +300,6 @@ public class CreateRetailMediaAudienceAttributes {
    * @return retailerId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "68004146450571264", required = true, value = "ID of the retailer associated with this audience")
 
   public String getRetailerId() {
     return retailerId;
@@ -307,7 +322,6 @@ public class CreateRetailMediaAudienceAttributes {
    * @return name
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "Test audience", required = true, value = "Name of the audience.")
 
   public String getName() {
     return name;
@@ -316,6 +330,51 @@ public class CreateRetailMediaAudienceAttributes {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the CreateRetailMediaAudienceAttributes instance itself
+   */
+  public CreateRetailMediaAudienceAttributes putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -333,12 +392,13 @@ public class CreateRetailMediaAudienceAttributes {
         Objects.equals(this.brandIds, createRetailMediaAudienceAttributes.brandIds) &&
         Objects.equals(this.categoryIds, createRetailMediaAudienceAttributes.categoryIds) &&
         Objects.equals(this.retailerId, createRetailMediaAudienceAttributes.retailerId) &&
-        Objects.equals(this.name, createRetailMediaAudienceAttributes.name);
+        Objects.equals(this.name, createRetailMediaAudienceAttributes.name)&&
+        Objects.equals(this.additionalProperties, createRetailMediaAudienceAttributes.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userType, lookbackWindow, brandIds, categoryIds, retailerId, name);
+    return Objects.hash(userType, lookbackWindow, brandIds, categoryIds, retailerId, name, additionalProperties);
   }
 
   @Override
@@ -351,6 +411,7 @@ public class CreateRetailMediaAudienceAttributes {
     sb.append("    categoryIds: ").append(toIndentedString(categoryIds)).append("\n");
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -366,5 +427,153 @@ public class CreateRetailMediaAudienceAttributes {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("userType");
+    openapiFields.add("lookbackWindow");
+    openapiFields.add("brandIds");
+    openapiFields.add("categoryIds");
+    openapiFields.add("retailerId");
+    openapiFields.add("name");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("userType");
+    openapiRequiredFields.add("lookbackWindow");
+    openapiRequiredFields.add("retailerId");
+    openapiRequiredFields.add("name");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to CreateRetailMediaAudienceAttributes
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!CreateRetailMediaAudienceAttributes.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateRetailMediaAudienceAttributes is not found in the empty JSON string", CreateRetailMediaAudienceAttributes.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : CreateRetailMediaAudienceAttributes.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("userType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `userType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userType").toString()));
+      }
+      if (!jsonObj.get("lookbackWindow").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `lookbackWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lookbackWindow").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `brandIds` to be an array in the JSON string but got `%s`", jsonObj.get("brandIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("categoryIds") != null && !jsonObj.get("categoryIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `categoryIds` to be an array in the JSON string but got `%s`", jsonObj.get("categoryIds").toString()));
+      }
+      if (!jsonObj.get("retailerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `retailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerId").toString()));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CreateRetailMediaAudienceAttributes.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CreateRetailMediaAudienceAttributes' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CreateRetailMediaAudienceAttributes> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CreateRetailMediaAudienceAttributes.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CreateRetailMediaAudienceAttributes>() {
+           @Override
+           public void write(JsonWriter out, CreateRetailMediaAudienceAttributes value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CreateRetailMediaAudienceAttributes read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             CreateRetailMediaAudienceAttributes instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of CreateRetailMediaAudienceAttributes given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CreateRetailMediaAudienceAttributes
+  * @throws IOException if the JSON string is invalid with respect to CreateRetailMediaAudienceAttributes
+  */
+  public static CreateRetailMediaAudienceAttributes fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CreateRetailMediaAudienceAttributes.class);
+  }
+
+ /**
+  * Convert an instance of CreateRetailMediaAudienceAttributes to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

@@ -6,18 +6,18 @@ A request for a catalog under the specified format. Currently \"json-newline\" i
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**format** | [**FormatEnum**](#FormatEnum) |  |  [optional]
-**brandIdFilter** | **List&lt;String&gt;** |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**format** | [**FormatEnum**](#FormatEnum) |  |  [optional] |
+|**brandIdFilter** | **List&lt;String&gt;** |  |  [optional] |
 
 
 
 ## Enum: FormatEnum
 
-Name | Value
----- | -----
-JSON_NEWLINE | &quot;json-newline&quot;
+| Name | Value |
+|---- | -----|
+| JSON_NEWLINE | &quot;json-newline&quot; |
 
 
 

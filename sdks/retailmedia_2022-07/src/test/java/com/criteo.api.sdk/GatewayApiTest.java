@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 import java.lang.*;
 
 import com.criteo.api.retailmedia.v2022_07.ApiClient;
+import com.criteo.api.retailmedia.v2022_07.ApiClientBuilder;
 import com.criteo.api.retailmedia.v2022_07.ApiException;
 import com.criteo.api.retailmedia.v2022_07.Configuration;
 import com.criteo.api.retailmedia.v2022_07.ApiResponse;
@@ -26,9 +27,7 @@ public class GatewayApiTest {
         assertNotNull(clientSecret);
         assertNotNull(applicationId);
 
-        client = Configuration.getDefaultApiClient();
-        client.setUsername(clientId);
-        client.setPassword(clientSecret);
+        ApiClient client = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
     }
  
     @Test

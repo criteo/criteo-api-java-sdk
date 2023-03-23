@@ -6,10 +6,10 @@ Update model for updating add to basket target ids
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**productIds** | **List&lt;String&gt;** | Product ids that add to basket should target |  [optional]
-**categoryIds** | **List&lt;String&gt;** | Category ids that add to basket should target |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**productIds** | **List&lt;String&gt;** | Product ids that add to basket should target |  [optional] |
+|**categoryIds** | **List&lt;String&gt;** | Category ids that add to basket should target |  [optional] |
 
 
 

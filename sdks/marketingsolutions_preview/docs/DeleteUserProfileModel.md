@@ -6,10 +6,10 @@ Used for the /user-profiles/delete endpoint. Contains information about the user
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**userProfileId** | **String** |  | 
-**userProfileListId** | **String** |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**userProfileId** | **String** |  |  |
+|**userProfileListId** | **String** |  |  [optional] |
 
 
 

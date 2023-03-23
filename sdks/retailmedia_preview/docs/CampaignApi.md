@@ -1921,7 +1921,7 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer retailerId = 56; // Integer | The retailer id for which brands should be fetched.
-        String skuStockTypeFilter = "skuStockTypeFilter_example"; // String | Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party
+        String skuStockTypeFilter = "first-party"; // String | Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party
         try {
             BrandPreviewListResponse result = apiInstance.getApiV1ExternalRetailerBrandsByRetailerId(retailerId, skuStockTypeFilter);
             System.out.println(result);

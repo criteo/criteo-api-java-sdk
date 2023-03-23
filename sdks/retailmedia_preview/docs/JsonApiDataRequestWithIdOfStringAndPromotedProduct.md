@@ -6,9 +6,9 @@ A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\" /> with 
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**data** | [**List&lt;JsonApiBodyWithIdOfStringAndPromotedProductAndPromotedProduct&gt;**](JsonApiBodyWithIdOfStringAndPromotedProductAndPromotedProduct.md) |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**data** | [**List&lt;JsonApiBodyWithIdOfStringAndPromotedProductAndPromotedProduct&gt;**](JsonApiBodyWithIdOfStringAndPromotedProductAndPromotedProduct.md) |  |  [optional] |
 
 
 

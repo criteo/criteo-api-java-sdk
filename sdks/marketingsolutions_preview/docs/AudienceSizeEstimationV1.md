@@ -6,9 +6,9 @@ Audience size estimation
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**size** | **Long** |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**size** | **Long** |  |  [optional] |
 
 
 

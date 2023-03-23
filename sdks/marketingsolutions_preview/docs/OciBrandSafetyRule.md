@@ -6,10 +6,10 @@ Object represents brand-safety rule based on OCI brand-safety segments. A brand-
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**target** | [**Target**](Target.md) |  |  [optional]
-**blacklisted** | **List&lt;OciBrandSafetySegment&gt;** |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**target** | [**Target**](Target.md) |  |  [optional] |
+|**blacklisted** | **List&lt;OciBrandSafetySegment&gt;** |  |  [optional] |
 
 
 

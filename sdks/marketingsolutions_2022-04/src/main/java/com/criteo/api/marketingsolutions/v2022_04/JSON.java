@@ -24,7 +24,6 @@ import com.google.gson.JsonElement;
 import io.gsonfire.GsonFireBuilder;
 import io.gsonfire.TypeSelector;
 
-import com.criteo.api.marketingsolutions.v2022_04.model.*;
 import okio.ByteString;
 
 import java.io.IOException;
@@ -41,14 +40,20 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.HashMap;
 
+/*
+ * A JSON utility class
+ *
+ * NOTE: in the future, this class may be converted to static, which may break
+ *       backward-compatibility
+ */
 public class JSON {
-    private Gson gson;
-    private boolean isLenientOnJson = false;
-    private DateTypeAdapter dateTypeAdapter = new DateTypeAdapter();
-    private SqlDateTypeAdapter sqlDateTypeAdapter = new SqlDateTypeAdapter();
-    private OffsetDateTimeTypeAdapter offsetDateTimeTypeAdapter = new OffsetDateTimeTypeAdapter();
-    private LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
-    private ByteArrayAdapter byteArrayAdapter = new ByteArrayAdapter();
+    private static Gson gson;
+    private static boolean isLenientOnJson = false;
+    private static DateTypeAdapter dateTypeAdapter = new DateTypeAdapter();
+    private static SqlDateTypeAdapter sqlDateTypeAdapter = new SqlDateTypeAdapter();
+    private static OffsetDateTimeTypeAdapter offsetDateTimeTypeAdapter = new OffsetDateTimeTypeAdapter();
+    private static LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
+    private static ByteArrayAdapter byteArrayAdapter = new ByteArrayAdapter();
 
     @SuppressWarnings("unchecked")
     public static GsonBuilder createGson() {
@@ -81,14 +86,120 @@ public class JSON {
         return clazz;
     }
 
-    public JSON() {
-        gson = createGson()
-            .registerTypeAdapter(Date.class, dateTypeAdapter)
-            .registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter)
-            .registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter)
-            .registerTypeAdapter(LocalDate.class, localDateTypeAdapter)
-            .registerTypeAdapter(byte[].class, byteArrayAdapter)
-            .create();
+    {
+        GsonBuilder gsonBuilder = createGson();
+        gsonBuilder.registerTypeAdapter(Date.class, dateTypeAdapter);
+        gsonBuilder.registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter);
+        gsonBuilder.registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter);
+        gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
+        gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.AccessTokenModel.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.AdSetCategoryBid.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.AdSetCategoryBidListResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.AdSetCategoryBidResource.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.AdSetDeliveryLimitations.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.AdSetDisplayMultiplier.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.AdSetDisplayMultiplierListResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.AdSetDisplayMultiplierResource.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.AdSetFrequencyCapping.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.AdSetGeoLocation.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.AdSetSearchFilter.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.AdSetTargeting.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.AdSetTargetingRule.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ApplicationSummaryModel.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ApplicationSummaryModelResource.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ApplicationSummaryModelResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.Audience.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.AudienceAttributes.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.AudienceError.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.AudienceNameDescription.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.AudienceWarning.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.BasicAudienceDefinition.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.Campaign.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.CampaignListResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.CampaignReadResource.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.CampaignResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.CampaignSearchFilters.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.CampaignSearchRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.CampaignSpendLimit.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.CommonProblem.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ContactlistAmendment.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ContactlistAmendmentAttributes.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ContactlistAmendmentRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ContactlistOperation.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ContactlistOperationAttributes.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.CriteoApiError.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.CriteoApiWarning.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.DeleteAudienceContactListResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.DeleteAudienceResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.EntityOfPortfolioMessage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ErrorCodeResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ErrorMessage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.GetAudiencesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.GetPortfolioResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ModifyAudienceResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.NewAudience.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.NewAudienceAttributes.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.NewAudienceRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.NewAudienceResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.NillableAdSetTargetingRule.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.NillableAdSetTargetingRuleValue.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.NillableDateTime.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.NillableDecimal.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.OAuthErrorModel.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchAdSet.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchAdSetBidding.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchAdSetBudget.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchAdSetCategoryBid.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchAdSetCategoryBidListRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchAdSetCategoryBidResource.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchAdSetCategoryBidResultListResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchAdSetCategoryBidResultResource.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchAdSetDisplayMultiplier.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchAdSetDisplayMultiplierListRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchAdSetDisplayMultiplierResource.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchAdSetDisplayMultiplierResultListResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchAdSetDisplayMultiplierResultResource.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchAdSetScheduling.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchCampaign.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchCampaignListRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchCampaignSpendLimit.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchCampaignWriteResource.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchResultCampaignListResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PatchResultCampaignReadResource.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PlacementsReportQueryDataMessage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PlacementsReportQueryEntityMessage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PlacementsReportQueryMessage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.PortfolioMessage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ProblemDetails.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ReadAdSet.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ReadAdSetBidding.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ReadAdSetBudget.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ReadAdSetSchedule.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ReadModelAdSetId.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ReadModelReadAdSet.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ReplaceAudience.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ReplaceAudienceRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ReplaceAudienceResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.RequestAdSetSearch.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.RequestsAdSetId.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.RequestsPatchAdSet.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ResponseAdSetId.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ResponseReadAdSet.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ResponsesAdSetId.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.ResponsesReadAdSet.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.StatisticsReportQueryMessage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.TransactionsReportQueryDataMessage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.TransactionsReportQueryEntityMessage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.TransactionsReportQueryMessage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.TransparencyQueryMessage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.TransparencyReportAttributes.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.TransparencyReportDataMessage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.TransparencyReportEntityMessage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.TransparencyReportFile.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.WriteModelAdSetId.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.v2022_04.model.WriteModelPatchAdSet.CustomTypeAdapterFactory());
+        gson = gsonBuilder.create();
     }
 
     /**
@@ -96,7 +207,7 @@ public class JSON {
      *
      * @return Gson
      */
-    public Gson getGson() {
+    public static Gson getGson() {
         return gson;
     }
 
@@ -104,16 +215,13 @@ public class JSON {
      * Set Gson.
      *
      * @param gson Gson
-     * @return JSON
      */
-    public JSON setGson(Gson gson) {
-        this.gson = gson;
-        return this;
+    public static void setGson(Gson gson) {
+        JSON.gson = gson;
     }
 
-    public JSON setLenientOnJson(boolean lenientOnJson) {
+    public static void setLenientOnJson(boolean lenientOnJson) {
         isLenientOnJson = lenientOnJson;
-        return this;
     }
 
     /**
@@ -122,7 +230,7 @@ public class JSON {
      * @param obj Object
      * @return String representation of the JSON
      */
-    public String serialize(Object obj) {
+    public static String serialize(Object obj) {
         return gson.toJson(obj);
     }
 
@@ -135,7 +243,7 @@ public class JSON {
      * @return The deserialized Java object
      */
     @SuppressWarnings("unchecked")
-    public <T> T deserialize(String body, Type returnType) {
+    public static <T> T deserialize(String body, Type returnType) {
         try {
             if (isLenientOnJson) {
                 JsonReader jsonReader = new JsonReader(new StringReader(body));
@@ -159,7 +267,7 @@ public class JSON {
     /**
      * Gson TypeAdapter for Byte Array type
      */
-    public class ByteArrayAdapter extends TypeAdapter<byte[]> {
+    public static class ByteArrayAdapter extends TypeAdapter<byte[]> {
 
         @Override
         public void write(JsonWriter out, byte[] value) throws IOException {
@@ -231,7 +339,7 @@ public class JSON {
     /**
      * Gson TypeAdapter for JSR310 LocalDate type
      */
-    public class LocalDateTypeAdapter extends TypeAdapter<LocalDate> {
+    public static class LocalDateTypeAdapter extends TypeAdapter<LocalDate> {
 
         private DateTimeFormatter formatter;
 
@@ -269,14 +377,12 @@ public class JSON {
         }
     }
 
-    public JSON setOffsetDateTimeFormat(DateTimeFormatter dateFormat) {
+    public static void setOffsetDateTimeFormat(DateTimeFormatter dateFormat) {
         offsetDateTimeTypeAdapter.setFormat(dateFormat);
-        return this;
     }
 
-    public JSON setLocalDateFormat(DateTimeFormatter dateFormat) {
+    public static void setLocalDateFormat(DateTimeFormatter dateFormat) {
         localDateTypeAdapter.setFormat(dateFormat);
-        return this;
     }
 
     /**
@@ -390,14 +496,11 @@ public class JSON {
         }
     }
 
-    public JSON setDateFormat(DateFormat dateFormat) {
+    public static void setDateFormat(DateFormat dateFormat) {
         dateTypeAdapter.setFormat(dateFormat);
-        return this;
     }
 
-    public JSON setSqlDateFormat(DateFormat dateFormat) {
+    public static void setSqlDateFormat(DateFormat dateFormat) {
         sqlDateTypeAdapter.setFormat(dateFormat);
-        return this;
     }
-
 }

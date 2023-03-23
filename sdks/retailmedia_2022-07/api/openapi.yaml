@@ -34,23 +34,7 @@ paths:
         content:
           application/x-www-form-urlencoded:
             schema:
-              properties:
-                grant_type:
-                  type: string
-                client_id:
-                  type: string
-                client_secret:
-                  type: string
-                redirect_uri:
-                  type: string
-                code:
-                  type: string
-                refresh_token:
-                  type: string
-              required:
-              - client_id
-              - client_secret
-              - grant_type
+              $ref: '#/components/schemas/GetToken_request'
       responses:
         "200":
           content:
@@ -92,7 +76,7 @@ paths:
         use authorization code
       tags:
       - OAuth
-      x-contentType: application/x-www-form-urlencoded
+      x-content-type: application/x-www-form-urlencoded
       x-accepts: application/json
   /2022-07/retail-media/accounts:
     get:
@@ -266,13 +250,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              properties:
-                AssetFile:
-                  description: The asset binary content
-                  format: binary
-                  type: string
-              required:
-              - AssetFile
+              $ref: '#/components/schemas/CreateAsset_request'
       responses:
         "201":
           content:
@@ -288,7 +266,7 @@ paths:
           description: Success
       tags:
       - Campaign
-      x-contentType: multipart/form-data
+      x-content-type: multipart/form-data
       x-accepts: application/json
   /2022-07/retail-media/accounts/{accountId}/audiences:
     get:
@@ -422,7 +400,7 @@ paths:
           description: The Content-Type header must be application/json if present.
       tags:
       - Audience
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/accounts/{accountId}/catalogs:
     post:
@@ -454,7 +432,7 @@ paths:
           description: Catalog request successfully created
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/catalogs/{catalogId}/status:
     get:
@@ -590,7 +568,7 @@ paths:
           description: Creatives created
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/categories:
     get:
@@ -823,7 +801,7 @@ paths:
           description: Creative updated
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/reports/campaigns:
     post:
@@ -834,20 +812,26 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/EnvelopeReportRequest'
-        description: "// Body of the request\n{\n  \"data\": {\n    \"type\": \"RetailMediaReportRequest\"\
-          ,\n    \"attributes\": {\n      \"reportType\": string, // the name of the\
-          \ report being requested\n      //only one of \"id\" or \"ids\" can be provided\
-          \ for a request\n      \"id\": string, // the campaign id to select\n  \
-          \    \"ids\": Array[string], //the campaign ids to select\n      \"startDate\"\
-          : string, // YYYY-MM-DD format\n      \"endDate\": string, // YYYY-MM-DD\
-          \ format\n      \"timeZone\": string, // examples: 'Europe/London', 'Asia/Tokyo',\
-          \ 'America/New_York'\n      // both attribution windows must be specified\
-          \ when one is specified\n      \"clickAttributionWindow\": \"7D\", \"14D\"\
-          , or \"30D\"  // optional. defaults to campaign's click attribution window\n\
-          \      \"viewAttributionWindow\": \"none\", \"1D\", \"7D\", \"14D\", \"\
-          30D\" // optional. defaults to campaign's view attribution window\n    \
-          \  \"format\": One of \"json\" (default),\"json-compact\",\"json-newline\"\
-          \ or \"csv\" // output format, defaults to json-compact\n    }\n  }\n}"
+        description: |-
+          // Body of the request
+          {
+            "data": {
+              "type": "RetailMediaReportRequest",
+              "attributes": {
+                "reportType": string, // the name of the report being requested
+                //only one of "id" or "ids" can be provided for a request
+                "id": string, // the campaign id to select
+                "ids": Array[string], //the campaign ids to select
+                "startDate": string, // YYYY-MM-DD format
+                "endDate": string, // YYYY-MM-DD format
+                "timeZone": string, // examples: 'Europe/London', 'Asia/Tokyo', 'America/New_York'
+                // both attribution windows must be specified when one is specified
+                "clickAttributionWindow": "7D", "14D", or "30D"  // optional. defaults to campaign's click attribution window
+                "viewAttributionWindow": "none", "1D", "7D", "14D", "30D" // optional. defaults to campaign's view attribution window
+                "format": One of "json" (default),"json-compact","json-newline" or "csv" // output format, defaults to json-compact
+              }
+            }
+          }
         required: true
       responses:
         "200":
@@ -868,7 +852,7 @@ paths:
           description: Must have access to RetailMedia accounts
       tags:
       - Analytics
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/reports/line-items:
     post:
@@ -879,20 +863,26 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/EnvelopeReportRequest'
-        description: "// Body of the request\n{\n  \"data\": {\n    \"type\": \"RetailMediaReportRequest\"\
-          ,\n    \"attributes\": {\n      \"reportType\": string, // the name of the\
-          \ report being requested\n      //only one of \"id\" or \"ids\" can be provided\
-          \ for a request\n      \"id\": string, // the line item id to select\n \
-          \     \"ids: Array[string] // the line item ids to select\n      \"startDate\"\
-          : string, // YYYY-MM-DD format\n      \"endDate\": string, // YYYY-MM-DD\
-          \ format\n      \"timeZone\": string, // examples: 'Europe/London', 'Asia/Tokyo',\
-          \ 'America/New_York'\n      // both attribution windows must be specified\
-          \ when one is specified\n      \"clickAttributionWindow\": \"7D\", \"14D\"\
-          , or \"30D\"  // optional. defaults to campaign's click attribution window\n\
-          \      \"viewAttributionWindow\": \"none\", \"1D\", \"7D\", \"14D\", \"\
-          30D\" // optional. defaults to campaign's view attribution window\n    \
-          \  \"format\": One of \"json\" (default),\"json-compact\",\"json-newline\"\
-          \ or \"csv\" // output format, defaults to json-compact\n    }\n  }\n}"
+        description: |-
+          // Body of the request
+          {
+            "data": {
+              "type": "RetailMediaReportRequest",
+              "attributes": {
+                "reportType": string, // the name of the report being requested
+                //only one of "id" or "ids" can be provided for a request
+                "id": string, // the line item id to select
+                "ids: Array[string] // the line item ids to select
+                "startDate": string, // YYYY-MM-DD format
+                "endDate": string, // YYYY-MM-DD format
+                "timeZone": string, // examples: 'Europe/London', 'Asia/Tokyo', 'America/New_York'
+                // both attribution windows must be specified when one is specified
+                "clickAttributionWindow": "7D", "14D", or "30D"  // optional. defaults to campaign's click attribution window
+                "viewAttributionWindow": "none", "1D", "7D", "14D", "30D" // optional. defaults to campaign's view attribution window
+                "format": One of "json" (default),"json-compact","json-newline" or "csv" // output format, defaults to json-compact
+              }
+            }
+          }
         required: true
       responses:
         "200":
@@ -913,7 +903,7 @@ paths:
           description: Must have access to RetailMedia accounts
       tags:
       - Analytics
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/reports/{reportId}/output:
     get:
@@ -1034,6 +1024,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/KeywordTarget202110Request'
+        description: ""
         x-nullable: false
         x-bodyName: keywordsToAppend
       responses:
@@ -1051,7 +1042,7 @@ paths:
           description: Bad Request
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/auction-line-items/{line-item-id}/targeting/keywords/delete:
     post:
@@ -1073,6 +1064,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/KeywordTarget202110Request'
+        description: ""
         x-nullable: false
         x-bodyName: keywordsToRemove
       responses:
@@ -1090,7 +1082,7 @@ paths:
           description: Bad Request
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores:
     get:
@@ -1159,7 +1151,7 @@ paths:
           description: Bad Request
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append:
     post:
@@ -1199,7 +1191,7 @@ paths:
           description: Bad Request
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete:
     post:
@@ -1239,7 +1231,7 @@ paths:
           description: Bad Request
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket:
     get:
@@ -1309,7 +1301,7 @@ paths:
           description: Bad Request
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append:
     post:
@@ -1350,7 +1342,7 @@ paths:
           description: Bad Request
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete:
     post:
@@ -1391,7 +1383,7 @@ paths:
           description: Bad Request
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences:
     get:
@@ -1460,7 +1452,7 @@ paths:
           description: Bad Request
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append:
     post:
@@ -1500,7 +1492,7 @@ paths:
           description: Bad Request
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete:
     post:
@@ -1541,7 +1533,7 @@ paths:
           description: Bad Request
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/line-items/{line-item-id}/products/pause:
     post:
@@ -1571,7 +1563,7 @@ paths:
           description: Success
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/line-items/{line-item-id}/products/unpause:
     post:
@@ -1601,7 +1593,7 @@ paths:
           description: Success
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/accounts/{accountId}/campaigns:
     get:
@@ -1694,7 +1686,7 @@ paths:
           description: OK
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/campaigns/{campaignId}:
     get:
@@ -1750,7 +1742,7 @@ paths:
           description: Success
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/campaigns/{campaign-id}/auction-line-items:
     get:
@@ -1851,7 +1843,7 @@ paths:
           description: Bad Request
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/line-items/{line-item-id}:
     get:
@@ -2026,7 +2018,7 @@ paths:
           description: Bad Request
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/preferred-line-items/{line-item-id}:
     get:
@@ -2094,7 +2086,7 @@ paths:
           description: Bad Request
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/line-items/{line-item-id}/products:
     get:
@@ -2186,7 +2178,7 @@ paths:
           description: Success
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/line-items/{line-item-id}/products/delete:
     post:
@@ -2208,6 +2200,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PromotedProduct202110ListRequest'
+        description: ""
         x-nullable: false
         x-bodyName: promotedProductsToRemove
       responses:
@@ -2219,7 +2212,7 @@ paths:
           description: Success
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/campaigns/{campaign-id}/preferred-line-items:
     get:
@@ -2321,7 +2314,7 @@ paths:
           description: Bad Request
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/accounts/{account-id}/balances:
     get:
@@ -2468,7 +2461,7 @@ paths:
           description: Success
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-07/retail-media/balances/{balance-id}/campaigns/delete:
     post:
@@ -2501,7 +2494,7 @@ paths:
           description: Success
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
 components:
   schemas:
@@ -9833,6 +9826,32 @@ components:
       - categoryId
       type: object
       x-nullable: false
+    GetToken_request:
+      properties:
+        grant_type:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        redirect_uri:
+          type: string
+        code:
+          type: string
+        refresh_token:
+          type: string
+      required:
+      - client_id
+      - client_secret
+      - grant_type
+    CreateAsset_request:
+      properties:
+        AssetFile:
+          description: The asset binary content
+          format: binary
+          type: string
+      required:
+      - AssetFile
   securitySchemes:
     oauth:
       flows:

@@ -35,9 +35,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class OAuthApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public OAuthApi() {
         this(Configuration.getDefaultApiClient());
@@ -53,6 +56,22 @@ public class OAuthApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
+    }
+
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
     }
 
     /**
@@ -75,6 +94,19 @@ public class OAuthApi {
      </table>
      */
     public okhttp3.Call getTokenCall(String grantType, String clientId, String clientSecret, String redirectUri, String code, String refreshToken, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -111,7 +143,9 @@ public class OAuthApi {
         }
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -122,33 +156,32 @@ public class OAuthApi {
             "application/x-www-form-urlencoded"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getTokenValidateBeforeCall(String grantType, String clientId, String clientSecret, String redirectUri, String code, String refreshToken, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'grantType' is set
         if (grantType == null) {
             throw new ApiException("Missing the required parameter 'grantType' when calling getToken(Async)");
         }
-        
+
         // verify the required parameter 'clientId' is set
         if (clientId == null) {
             throw new ApiException("Missing the required parameter 'clientId' when calling getToken(Async)");
         }
-        
+
         // verify the required parameter 'clientSecret' is set
         if (clientSecret == null) {
             throw new ApiException("Missing the required parameter 'clientSecret' when calling getToken(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getTokenCall(grantType, clientId, clientSecret, redirectUri, code, refreshToken, _callback);
-        return localVarCall;
+        return getTokenCall(grantType, clientId, clientSecret, redirectUri, code, refreshToken, _callback);
 
     }
 

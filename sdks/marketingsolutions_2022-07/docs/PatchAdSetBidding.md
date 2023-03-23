@@ -6,9 +6,9 @@ ad set bidding patch model
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**bidAmount** | [**NillableDecimal**](NillableDecimal.md) |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**bidAmount** | [**NillableDecimal**](NillableDecimal.md) |  |  [optional] |
 
 
 

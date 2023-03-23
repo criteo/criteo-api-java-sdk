@@ -6,10 +6,10 @@ Metadata for an async report request: descriptions of the columns and number of 
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**columns** | [**List&lt;ExportColumn&gt;**](ExportColumn.md) |  |  [optional]
-**rows** | **Integer** |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**columns** | [**List&lt;ExportColumn&gt;**](ExportColumn.md) |  |  [optional] |
+|**rows** | **Integer** |  |  [optional] |
 
 
 

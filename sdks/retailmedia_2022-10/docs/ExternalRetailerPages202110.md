@@ -6,9 +6,9 @@ Wraps a list of valid pages for a retailer
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**pageTypes** | **List&lt;String&gt;** | List of valid pages for a retailer |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**pageTypes** | **List&lt;String&gt;** | List of valid pages for a retailer |  [optional] |
 
 
 

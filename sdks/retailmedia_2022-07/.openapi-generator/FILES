@@ -1,3 +1,4 @@
+.github/workflows/maven.yml
 .gitignore
 .openapi-generator-ignore
 .travis.yml
@@ -169,6 +170,7 @@ src/examples/java/criteo/api/examples/StatisticsApplication.java
 src/main/AndroidManifest.xml
 src/main/java/com/criteo/api/retailmedia/v2022_07/ApiCallback.java
 src/main/java/com/criteo/api/retailmedia/v2022_07/ApiClient.java
+src/main/java/com/criteo/api/retailmedia/v2022_07/ApiClientBuilder.java
 src/main/java/com/criteo/api/retailmedia/v2022_07/ApiException.java
 src/main/java/com/criteo/api/retailmedia/v2022_07/ApiResponse.java
 src/main/java/com/criteo/api/retailmedia/v2022_07/Configuration.java
@@ -193,6 +195,7 @@ src/main/java/com/criteo/api/retailmedia/v2022_07/auth/OAuth.java
 src/main/java/com/criteo/api/retailmedia/v2022_07/auth/OAuthFlow.java
 src/main/java/com/criteo/api/retailmedia/v2022_07/auth/OAuthOkHttpClient.java
 src/main/java/com/criteo/api/retailmedia/v2022_07/auth/RetryingOAuth.java
+src/main/java/com/criteo/api/retailmedia/v2022_07/model/AbstractOpenApiSchema.java
 src/main/java/com/criteo/api/retailmedia/v2022_07/model/AccessTokenModel.java
 src/main/java/com/criteo/api/retailmedia/v2022_07/model/AddToBasketIdsUpdateModel202110Request.java
 src/main/java/com/criteo/api/retailmedia/v2022_07/model/AddToBasketTarget202110Request.java

@@ -44,9 +44,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class CreativeApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public CreativeApi() {
         this(Configuration.getDefaultApiClient());
@@ -62,6 +65,22 @@ public class CreativeApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
+    }
+
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
     }
 
     /**
@@ -81,11 +100,24 @@ public class CreativeApi {
      </table>
      */
     public okhttp3.Call createAdCall(String advertiserId, AdWriteRequest adWriteRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = adWriteRequest;
 
         // create path and map variables
         String localVarPath = "/preview/advertisers/{advertiser-id}/ads"
-            .replaceAll("\\{" + "advertiser-id" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+            .replace("{" + "advertiser-id" + "}", localVarApiClient.escapeString(advertiserId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -94,7 +126,9 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -102,26 +136,28 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createAdValidateBeforeCall(String advertiserId, AdWriteRequest adWriteRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling createAd(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createAdCall(advertiserId, adWriteRequest, _callback);
-        return localVarCall;
+        return createAdCall(advertiserId, adWriteRequest, _callback);
 
     }
 
@@ -208,11 +244,24 @@ public class CreativeApi {
      </table>
      */
     public okhttp3.Call createCouponCall(String advertiserId, CreateCouponRequest createCouponRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = createCouponRequest;
 
         // create path and map variables
         String localVarPath = "/preview/advertisers/{advertiser-id}/coupons"
-            .replaceAll("\\{" + "advertiser-id" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+            .replace("{" + "advertiser-id" + "}", localVarApiClient.escapeString(advertiserId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -221,7 +270,9 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -229,26 +280,28 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createCouponValidateBeforeCall(String advertiserId, CreateCouponRequest createCouponRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling createCoupon(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createCouponCall(advertiserId, createCouponRequest, _callback);
-        return localVarCall;
+        return createCouponCall(advertiserId, createCouponRequest, _callback);
 
     }
 
@@ -333,11 +386,24 @@ public class CreativeApi {
      </table>
      */
     public okhttp3.Call createCreativeCall(String advertiserId, CreativeWriteRequest creativeWriteRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = creativeWriteRequest;
 
         // create path and map variables
         String localVarPath = "/preview/advertisers/{advertiser-id}/creatives"
-            .replaceAll("\\{" + "advertiser-id" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+            .replace("{" + "advertiser-id" + "}", localVarApiClient.escapeString(advertiserId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -346,7 +412,9 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -354,26 +422,28 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createCreativeValidateBeforeCall(String advertiserId, CreativeWriteRequest creativeWriteRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling createCreative(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createCreativeCall(advertiserId, creativeWriteRequest, _callback);
-        return localVarCall;
+        return createCreativeCall(advertiserId, creativeWriteRequest, _callback);
 
     }
 
@@ -460,11 +530,24 @@ public class CreativeApi {
      </table>
      */
     public okhttp3.Call deleteAdCall(Integer id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/preview/ads/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -473,7 +556,6 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -481,26 +563,24 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteAdValidateBeforeCall(Integer id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteAd(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteAdCall(id, _callback);
-        return localVarCall;
+        return deleteAdCall(id, _callback);
 
     }
 
@@ -580,12 +660,25 @@ public class CreativeApi {
      </table>
      */
     public okhttp3.Call deleteCouponCall(String advertiserId, String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/preview/advertisers/{advertiser-id}/coupons/{id}"
-            .replaceAll("\\{" + "advertiser-id" + "\\}", localVarApiClient.escapeString(advertiserId.toString()))
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "advertiser-id" + "}", localVarApiClient.escapeString(advertiserId.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -594,7 +687,6 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -602,31 +694,29 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteCouponValidateBeforeCall(String advertiserId, String id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling deleteCoupon(Async)");
         }
-        
+
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteCoupon(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteCouponCall(advertiserId, id, _callback);
-        return localVarCall;
+        return deleteCouponCall(advertiserId, id, _callback);
 
     }
 
@@ -706,11 +796,24 @@ public class CreativeApi {
      </table>
      */
     public okhttp3.Call deleteCreativeCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/preview/creatives/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -719,7 +822,6 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -727,26 +829,24 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteCreativeValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling deleteCreative(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteCreativeCall(id, _callback);
-        return localVarCall;
+        return deleteCreativeCall(id, _callback);
 
     }
 
@@ -827,12 +927,25 @@ public class CreativeApi {
      </table>
      */
     public okhttp3.Call editCouponCall(String advertiserId, String id, UpdateCouponRequest updateCouponRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = updateCouponRequest;
 
         // create path and map variables
         String localVarPath = "/preview/advertisers/{advertiser-id}/coupons/{id}"
-            .replaceAll("\\{" + "advertiser-id" + "\\}", localVarApiClient.escapeString(advertiserId.toString()))
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "advertiser-id" + "}", localVarApiClient.escapeString(advertiserId.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -841,7 +954,9 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -849,31 +964,33 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call editCouponValidateBeforeCall(String advertiserId, String id, UpdateCouponRequest updateCouponRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling editCoupon(Async)");
         }
-        
+
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling editCoupon(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = editCouponCall(advertiserId, id, updateCouponRequest, _callback);
-        return localVarCall;
+        return editCouponCall(advertiserId, id, updateCouponRequest, _callback);
 
     }
 
@@ -961,11 +1078,24 @@ public class CreativeApi {
      </table>
      */
     public okhttp3.Call editCreativeCall(String id, CreativeWriteRequest creativeWriteRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = creativeWriteRequest;
 
         // create path and map variables
         String localVarPath = "/preview/creatives/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -974,7 +1104,9 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -982,26 +1114,28 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call editCreativeValidateBeforeCall(String id, CreativeWriteRequest creativeWriteRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling editCreative(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = editCreativeCall(id, creativeWriteRequest, _callback);
-        return localVarCall;
+        return editCreativeCall(id, creativeWriteRequest, _callback);
 
     }
 
@@ -1088,11 +1222,24 @@ public class CreativeApi {
      </table>
      */
     public okhttp3.Call getAdCall(Integer id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/preview/ads/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1101,7 +1248,9 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1109,26 +1258,24 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAdValidateBeforeCall(Integer id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getAd(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getAdCall(id, _callback);
-        return localVarCall;
+        return getAdCall(id, _callback);
 
     }
 
@@ -1214,11 +1361,24 @@ public class CreativeApi {
      </table>
      */
     public okhttp3.Call getAdsCall(String advertiserId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/preview/advertisers/{advertiser-id}/ads"
-            .replaceAll("\\{" + "advertiser-id" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+            .replace("{" + "advertiser-id" + "}", localVarApiClient.escapeString(advertiserId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1235,7 +1395,9 @@ public class CreativeApi {
         }
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1243,26 +1405,24 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAdsValidateBeforeCall(String advertiserId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling getAds(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getAdsCall(advertiserId, limit, offset, _callback);
-        return localVarCall;
+        return getAdsCall(advertiserId, limit, offset, _callback);
 
     }
 
@@ -1352,12 +1512,25 @@ public class CreativeApi {
      </table>
      */
     public okhttp3.Call getCouponCall(String advertiserId, String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/preview/advertisers/{advertiser-id}/coupons/{id}"
-            .replaceAll("\\{" + "advertiser-id" + "\\}", localVarApiClient.escapeString(advertiserId.toString()))
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "advertiser-id" + "}", localVarApiClient.escapeString(advertiserId.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1366,7 +1539,9 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1374,31 +1549,29 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCouponValidateBeforeCall(String advertiserId, String id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling getCoupon(Async)");
         }
-        
+
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getCoupon(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getCouponCall(advertiserId, id, _callback);
-        return localVarCall;
+        return getCouponCall(advertiserId, id, _callback);
 
     }
 
@@ -1484,12 +1657,25 @@ public class CreativeApi {
      </table>
      */
     public okhttp3.Call getCouponPreviewCall(String advertiserId, String id, Integer width, Integer height, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/preview/advertisers/{advertiser-id}/coupons/{id}/preview"
-            .replaceAll("\\{" + "advertiser-id" + "\\}", localVarApiClient.escapeString(advertiserId.toString()))
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "advertiser-id" + "}", localVarApiClient.escapeString(advertiserId.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1506,7 +1692,9 @@ public class CreativeApi {
         }
 
         final String[] localVarAccepts = {
-            "text/html", "application/json", "text/json"
+            "text/html",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1514,31 +1702,29 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCouponPreviewValidateBeforeCall(String advertiserId, String id, Integer width, Integer height, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling getCouponPreview(Async)");
         }
-        
+
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getCouponPreview(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getCouponPreviewCall(advertiserId, id, width, height, _callback);
-        return localVarCall;
+        return getCouponPreviewCall(advertiserId, id, width, height, _callback);
 
     }
 
@@ -1628,11 +1814,24 @@ public class CreativeApi {
      </table>
      */
     public okhttp3.Call getCouponSupportedSizesCall(String advertiserId, String adSetId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/preview/advertisers/{advertiser-id}/coupons-supported-sizes"
-            .replaceAll("\\{" + "advertiser-id" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+            .replace("{" + "advertiser-id" + "}", localVarApiClient.escapeString(advertiserId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1645,7 +1844,9 @@ public class CreativeApi {
         }
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1653,26 +1854,24 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCouponSupportedSizesValidateBeforeCall(String advertiserId, String adSetId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling getCouponSupportedSizes(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getCouponSupportedSizesCall(advertiserId, adSetId, _callback);
-        return localVarCall;
+        return getCouponSupportedSizesCall(advertiserId, adSetId, _callback);
 
     }
 
@@ -1757,11 +1956,24 @@ public class CreativeApi {
      </table>
      */
     public okhttp3.Call getCouponsCall(String advertiserId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/preview/advertisers/{advertiser-id}/coupons"
-            .replaceAll("\\{" + "advertiser-id" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+            .replace("{" + "advertiser-id" + "}", localVarApiClient.escapeString(advertiserId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1778,7 +1990,9 @@ public class CreativeApi {
         }
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1786,26 +2000,24 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCouponsValidateBeforeCall(String advertiserId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling getCoupons(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getCouponsCall(advertiserId, limit, offset, _callback);
-        return localVarCall;
+        return getCouponsCall(advertiserId, limit, offset, _callback);
 
     }
 
@@ -1892,11 +2104,24 @@ public class CreativeApi {
      </table>
      */
     public okhttp3.Call getCreativeCall(String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/preview/creatives/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1905,7 +2130,9 @@ public class CreativeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1913,26 +2140,24 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCreativeValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getCreative(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getCreativeCall(id, _callback);
-        return localVarCall;
+        return getCreativeCall(id, _callback);
 
     }
 
@@ -2017,11 +2242,24 @@ public class CreativeApi {
      </table>
      */
     public okhttp3.Call getCreativePreviewPostCall(String id, Integer width, Integer height, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/preview/creatives/{id}/preview"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2038,7 +2276,9 @@ public class CreativeApi {
         }
 
         final String[] localVarAccepts = {
-            "text/html", "application/json", "text/json"
+            "text/html",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2046,26 +2286,24 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCreativePreviewPostValidateBeforeCall(String id, Integer width, Integer height, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getCreativePreviewPost(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getCreativePreviewPostCall(id, width, height, _callback);
-        return localVarCall;
+        return getCreativePreviewPostCall(id, width, height, _callback);
 
     }
 
@@ -2154,11 +2392,24 @@ public class CreativeApi {
      </table>
      */
     public okhttp3.Call getCreativesCall(String advertiserId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/preview/advertisers/{advertiser-id}/creatives"
-            .replaceAll("\\{" + "advertiser-id" + "\\}", localVarApiClient.escapeString(advertiserId.toString()));
+            .replace("{" + "advertiser-id" + "}", localVarApiClient.escapeString(advertiserId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2175,7 +2426,9 @@ public class CreativeApi {
         }
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2183,26 +2436,24 @@ public class CreativeApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCreativesValidateBeforeCall(String advertiserId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling getCreatives(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getCreativesCall(advertiserId, limit, offset, _callback);
-        return localVarCall;
+        return getCreativesCall(advertiserId, limit, offset, _callback);
 
     }
 

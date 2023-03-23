@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.marketingsolutions.preview.JSON;
+
 /**
  * This is the message defining the query for Creatives report
  */
-@ApiModel(description = "This is the message defining the query for Creatives report")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class GenerateCreativesReportRequestAttributes {
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
@@ -203,6 +221,8 @@ public class GenerateCreativesReportRequestAttributes {
   @SerializedName(SERIALIZED_NAME_AD_SET_STATUS)
   private List<String> adSetStatus = null;
 
+  public GenerateCreativesReportRequestAttributes() {
+  }
 
   public GenerateCreativesReportRequestAttributes startDate(OffsetDateTime startDate) {
     
@@ -215,7 +235,6 @@ public class GenerateCreativesReportRequestAttributes {
    * @return startDate
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.")
 
   public OffsetDateTime getStartDate() {
     return startDate;
@@ -238,7 +257,6 @@ public class GenerateCreativesReportRequestAttributes {
    * @return endDate
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.")
 
   public OffsetDateTime getEndDate() {
     return endDate;
@@ -266,7 +284,6 @@ public class GenerateCreativesReportRequestAttributes {
    * @return advertiserIds
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The list of client ids.")
 
   public List<String> getAdvertiserIds() {
     return advertiserIds;
@@ -294,7 +311,6 @@ public class GenerateCreativesReportRequestAttributes {
    * @return metrics
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The list of metrics to report.")
 
   public List<MetricsEnum> getMetrics() {
     return metrics;
@@ -322,7 +338,6 @@ public class GenerateCreativesReportRequestAttributes {
    * @return dimensions
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The list of dimensions to report.")
 
   public List<DimensionsEnum> getDimensions() {
     return dimensions;
@@ -345,7 +360,6 @@ public class GenerateCreativesReportRequestAttributes {
    * @return timezone
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The timezone used for the report. Timezone Database format (Tz).")
 
   public String getTimezone() {
     return timezone;
@@ -376,7 +390,6 @@ public class GenerateCreativesReportRequestAttributes {
    * @return adFormats
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of adFormats.")
 
   public List<String> getAdFormats() {
     return adFormats;
@@ -407,7 +420,6 @@ public class GenerateCreativesReportRequestAttributes {
    * @return displaySizes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of displaySizes.")
 
   public List<String> getDisplaySizes() {
     return displaySizes;
@@ -438,7 +450,6 @@ public class GenerateCreativesReportRequestAttributes {
    * @return couponNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of coupon names.")
 
   public List<String> getCouponNames() {
     return couponNames;
@@ -469,7 +480,6 @@ public class GenerateCreativesReportRequestAttributes {
    * @return couponIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of coupon ids.")
 
   public List<String> getCouponIds() {
     return couponIds;
@@ -500,7 +510,6 @@ public class GenerateCreativesReportRequestAttributes {
    * @return adNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of ad names.")
 
   public List<String> getAdNames() {
     return adNames;
@@ -531,7 +540,6 @@ public class GenerateCreativesReportRequestAttributes {
    * @return adIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of ad ids.")
 
   public List<String> getAdIds() {
     return adIds;
@@ -562,7 +570,6 @@ public class GenerateCreativesReportRequestAttributes {
    * @return campaignIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of campaign ids (marketing campaign ids).")
 
   public List<String> getCampaignIds() {
     return campaignIds;
@@ -593,7 +600,6 @@ public class GenerateCreativesReportRequestAttributes {
    * @return adSetIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of adSet ids (campaign ids).")
 
   public List<String> getAdSetIds() {
     return adSetIds;
@@ -624,7 +630,6 @@ public class GenerateCreativesReportRequestAttributes {
    * @return adSetStatus
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of adSet status (ex: 'Active','NotRunning').")
 
   public List<String> getAdSetStatus() {
     return adSetStatus;
@@ -633,6 +638,51 @@ public class GenerateCreativesReportRequestAttributes {
 
   public void setAdSetStatus(List<String> adSetStatus) {
     this.adSetStatus = adSetStatus;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the GenerateCreativesReportRequestAttributes instance itself
+   */
+  public GenerateCreativesReportRequestAttributes putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -659,12 +709,13 @@ public class GenerateCreativesReportRequestAttributes {
         Objects.equals(this.adIds, generateCreativesReportRequestAttributes.adIds) &&
         Objects.equals(this.campaignIds, generateCreativesReportRequestAttributes.campaignIds) &&
         Objects.equals(this.adSetIds, generateCreativesReportRequestAttributes.adSetIds) &&
-        Objects.equals(this.adSetStatus, generateCreativesReportRequestAttributes.adSetStatus);
+        Objects.equals(this.adSetStatus, generateCreativesReportRequestAttributes.adSetStatus)&&
+        Objects.equals(this.additionalProperties, generateCreativesReportRequestAttributes.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, advertiserIds, metrics, dimensions, timezone, adFormats, displaySizes, couponNames, couponIds, adNames, adIds, campaignIds, adSetIds, adSetStatus);
+    return Objects.hash(startDate, endDate, advertiserIds, metrics, dimensions, timezone, adFormats, displaySizes, couponNames, couponIds, adNames, adIds, campaignIds, adSetIds, adSetStatus, additionalProperties);
   }
 
   @Override
@@ -686,6 +737,7 @@ public class GenerateCreativesReportRequestAttributes {
     sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
     sb.append("    adSetIds: ").append(toIndentedString(adSetIds)).append("\n");
     sb.append("    adSetStatus: ").append(toIndentedString(adSetStatus)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -701,5 +753,200 @@ public class GenerateCreativesReportRequestAttributes {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("startDate");
+    openapiFields.add("endDate");
+    openapiFields.add("advertiserIds");
+    openapiFields.add("metrics");
+    openapiFields.add("dimensions");
+    openapiFields.add("timezone");
+    openapiFields.add("adFormats");
+    openapiFields.add("displaySizes");
+    openapiFields.add("couponNames");
+    openapiFields.add("couponIds");
+    openapiFields.add("adNames");
+    openapiFields.add("adIds");
+    openapiFields.add("campaignIds");
+    openapiFields.add("adSetIds");
+    openapiFields.add("adSetStatus");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("startDate");
+    openapiRequiredFields.add("endDate");
+    openapiRequiredFields.add("advertiserIds");
+    openapiRequiredFields.add("metrics");
+    openapiRequiredFields.add("dimensions");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to GenerateCreativesReportRequestAttributes
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!GenerateCreativesReportRequestAttributes.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in GenerateCreativesReportRequestAttributes is not found in the empty JSON string", GenerateCreativesReportRequestAttributes.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : GenerateCreativesReportRequestAttributes.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("advertiserIds") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("advertiserIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `advertiserIds` to be an array in the JSON string but got `%s`", jsonObj.get("advertiserIds").toString()));
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("metrics") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("metrics").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("dimensions") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("dimensions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `dimensions` to be an array in the JSON string but got `%s`", jsonObj.get("dimensions").toString()));
+      }
+      if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("adFormats") != null && !jsonObj.get("adFormats").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `adFormats` to be an array in the JSON string but got `%s`", jsonObj.get("adFormats").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("displaySizes") != null && !jsonObj.get("displaySizes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `displaySizes` to be an array in the JSON string but got `%s`", jsonObj.get("displaySizes").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("couponNames") != null && !jsonObj.get("couponNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `couponNames` to be an array in the JSON string but got `%s`", jsonObj.get("couponNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("couponIds") != null && !jsonObj.get("couponIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `couponIds` to be an array in the JSON string but got `%s`", jsonObj.get("couponIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("adNames") != null && !jsonObj.get("adNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `adNames` to be an array in the JSON string but got `%s`", jsonObj.get("adNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("adIds") != null && !jsonObj.get("adIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `adIds` to be an array in the JSON string but got `%s`", jsonObj.get("adIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("campaignIds") != null && !jsonObj.get("campaignIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `campaignIds` to be an array in the JSON string but got `%s`", jsonObj.get("campaignIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("adSetIds") != null && !jsonObj.get("adSetIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `adSetIds` to be an array in the JSON string but got `%s`", jsonObj.get("adSetIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("adSetStatus") != null && !jsonObj.get("adSetStatus").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `adSetStatus` to be an array in the JSON string but got `%s`", jsonObj.get("adSetStatus").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!GenerateCreativesReportRequestAttributes.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'GenerateCreativesReportRequestAttributes' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<GenerateCreativesReportRequestAttributes> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(GenerateCreativesReportRequestAttributes.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<GenerateCreativesReportRequestAttributes>() {
+           @Override
+           public void write(JsonWriter out, GenerateCreativesReportRequestAttributes value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public GenerateCreativesReportRequestAttributes read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             GenerateCreativesReportRequestAttributes instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of GenerateCreativesReportRequestAttributes given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of GenerateCreativesReportRequestAttributes
+  * @throws IOException if the JSON string is invalid with respect to GenerateCreativesReportRequestAttributes
+  */
+  public static GenerateCreativesReportRequestAttributes fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, GenerateCreativesReportRequestAttributes.class);
+  }
+
+ /**
+  * Convert an instance of GenerateCreativesReportRequestAttributes to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

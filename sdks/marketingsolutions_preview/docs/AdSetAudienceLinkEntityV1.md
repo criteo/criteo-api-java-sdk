@@ -6,9 +6,9 @@ Link Audience with an ad set
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**audienceId** | **String** |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**audienceId** | **String** |  |  [optional] |
 
 
 

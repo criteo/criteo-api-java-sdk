@@ -43,9 +43,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class AudienceApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public AudienceApi() {
         this(Configuration.getDefaultApiClient());
@@ -63,6 +66,22 @@ public class AudienceApi {
         this.localVarApiClient = apiClient;
     }
 
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
+    }
+
     /**
      * Build call for createAudience
      * @param newAudienceRequest  (required)
@@ -77,6 +96,19 @@ public class AudienceApi {
      </table>
      */
     public okhttp3.Call createAudienceCall(NewAudienceRequest newAudienceRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = newAudienceRequest;
 
         // create path and map variables
@@ -100,23 +132,22 @@ public class AudienceApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createAudienceValidateBeforeCall(NewAudienceRequest newAudienceRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'newAudienceRequest' is set
         if (newAudienceRequest == null) {
             throw new ApiException("Missing the required parameter 'newAudienceRequest' when calling createAudience(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = createAudienceCall(newAudienceRequest, _callback);
-        return localVarCall;
+        return createAudienceCall(newAudienceRequest, _callback);
 
     }
 
@@ -192,11 +223,24 @@ public class AudienceApi {
      </table>
      */
     public okhttp3.Call deleteIdentifiersCall(String audienceId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-07/audiences/{audience-id}/contactlist"
-            .replaceAll("\\{" + "audience-id" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
+            .replace("{" + "audience-id" + "}", localVarApiClient.escapeString(audienceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -213,26 +257,24 @@ public class AudienceApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteIdentifiersValidateBeforeCall(String audienceId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'audienceId' is set
         if (audienceId == null) {
             throw new ApiException("Missing the required parameter 'audienceId' when calling deleteIdentifiers(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = deleteIdentifiersCall(audienceId, _callback);
-        return localVarCall;
+        return deleteIdentifiersCall(audienceId, _callback);
 
     }
 
@@ -308,6 +350,19 @@ public class AudienceApi {
      </table>
      */
     public okhttp3.Call getAudiencesCall(String advertiserId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -332,21 +387,19 @@ public class AudienceApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAudiencesValidateBeforeCall(String advertiserId, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = getAudiencesCall(advertiserId, _callback);
-        return localVarCall;
+        return getAudiencesCall(advertiserId, _callback);
 
     }
 
@@ -423,11 +476,24 @@ public class AudienceApi {
      </table>
      */
     public okhttp3.Call modifyAudienceCall(String audienceId, ReplaceAudienceRequest replaceAudienceRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = replaceAudienceRequest;
 
         // create path and map variables
         String localVarPath = "/2022-07/audiences/{audience-id}"
-            .replaceAll("\\{" + "audience-id" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
+            .replace("{" + "audience-id" + "}", localVarApiClient.escapeString(audienceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -447,28 +513,27 @@ public class AudienceApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call modifyAudienceValidateBeforeCall(String audienceId, ReplaceAudienceRequest replaceAudienceRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'audienceId' is set
         if (audienceId == null) {
             throw new ApiException("Missing the required parameter 'audienceId' when calling modifyAudience(Async)");
         }
-        
+
         // verify the required parameter 'replaceAudienceRequest' is set
         if (replaceAudienceRequest == null) {
             throw new ApiException("Missing the required parameter 'replaceAudienceRequest' when calling modifyAudience(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = modifyAudienceCall(audienceId, replaceAudienceRequest, _callback);
-        return localVarCall;
+        return modifyAudienceCall(audienceId, replaceAudienceRequest, _callback);
 
     }
 
@@ -549,11 +614,24 @@ public class AudienceApi {
      </table>
      */
     public okhttp3.Call modifyAudienceUsersCall(String audienceId, ContactlistAmendmentRequest contactlistAmendmentRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = contactlistAmendmentRequest;
 
         // create path and map variables
         String localVarPath = "/2022-07/audiences/{audience-id}/contactlist"
-            .replaceAll("\\{" + "audience-id" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
+            .replace("{" + "audience-id" + "}", localVarApiClient.escapeString(audienceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -573,28 +651,27 @@ public class AudienceApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call modifyAudienceUsersValidateBeforeCall(String audienceId, ContactlistAmendmentRequest contactlistAmendmentRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'audienceId' is set
         if (audienceId == null) {
             throw new ApiException("Missing the required parameter 'audienceId' when calling modifyAudienceUsers(Async)");
         }
-        
+
         // verify the required parameter 'contactlistAmendmentRequest' is set
         if (contactlistAmendmentRequest == null) {
             throw new ApiException("Missing the required parameter 'contactlistAmendmentRequest' when calling modifyAudienceUsers(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = modifyAudienceUsersCall(audienceId, contactlistAmendmentRequest, _callback);
-        return localVarCall;
+        return modifyAudienceUsersCall(audienceId, contactlistAmendmentRequest, _callback);
 
     }
 
@@ -676,11 +753,24 @@ public class AudienceApi {
      </table>
      */
     public okhttp3.Call removeAudienceCall(String audienceId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2022-07/audiences/{audience-id}"
-            .replaceAll("\\{" + "audience-id" + "\\}", localVarApiClient.escapeString(audienceId.toString()));
+            .replace("{" + "audience-id" + "}", localVarApiClient.escapeString(audienceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -697,26 +787,24 @@ public class AudienceApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call removeAudienceValidateBeforeCall(String audienceId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'audienceId' is set
         if (audienceId == null) {
             throw new ApiException("Missing the required parameter 'audienceId' when calling removeAudience(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = removeAudienceCall(audienceId, _callback);
-        return localVarCall;
+        return removeAudienceCall(audienceId, _callback);
 
     }
 

@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.marketingsolutions.preview.JSON;
+
 /**
  * This is the message defining the query for Categories report
  */
-@ApiModel(description = "This is the message defining the query for Categories report")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class GenerateCategoriesReportRequestAttributes {
   public static final String SERIALIZED_NAME_ADVERTISER_IDS = "advertiserIds";
@@ -73,6 +91,8 @@ public class GenerateCategoriesReportRequestAttributes {
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private OffsetDateTime endDate;
 
+  public GenerateCategoriesReportRequestAttributes() {
+  }
 
   public GenerateCategoriesReportRequestAttributes advertiserIds(List<String> advertiserIds) {
     
@@ -90,7 +110,6 @@ public class GenerateCategoriesReportRequestAttributes {
    * @return advertiserIds
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "List of Advertiser ids.")
 
   public List<String> getAdvertiserIds() {
     return advertiserIds;
@@ -113,7 +132,6 @@ public class GenerateCategoriesReportRequestAttributes {
    * @return campaignId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Report only on the specified Campaign id.")
 
   public String getCampaignId() {
     return campaignId;
@@ -136,7 +154,6 @@ public class GenerateCategoriesReportRequestAttributes {
    * @return adsetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Report only on the specified AdSet id.")
 
   public String getAdsetId() {
     return adsetId;
@@ -159,7 +176,6 @@ public class GenerateCategoriesReportRequestAttributes {
    * @return domain
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Report only on the specified domain.")
 
   public String getDomain() {
     return domain;
@@ -182,7 +198,6 @@ public class GenerateCategoriesReportRequestAttributes {
    * @return category
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Report only on the specified category.")
 
   public String getCategory() {
     return category;
@@ -205,7 +220,6 @@ public class GenerateCategoriesReportRequestAttributes {
    * @return shouldDisplayDomainDimension
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Specify if the domain dimension is displayed in the report.")
 
   public Boolean getShouldDisplayDomainDimension() {
     return shouldDisplayDomainDimension;
@@ -228,7 +242,6 @@ public class GenerateCategoriesReportRequestAttributes {
    * @return format
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The file format of the generated report: csv, xml, excel or json.")
 
   public String getFormat() {
     return format;
@@ -251,7 +264,6 @@ public class GenerateCategoriesReportRequestAttributes {
    * @return timezone
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The timezone used for the report. Timezone Database format (Tz).")
 
   public String getTimezone() {
     return timezone;
@@ -274,7 +286,6 @@ public class GenerateCategoriesReportRequestAttributes {
    * @return startDate
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.")
 
   public OffsetDateTime getStartDate() {
     return startDate;
@@ -297,7 +308,6 @@ public class GenerateCategoriesReportRequestAttributes {
    * @return endDate
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.")
 
   public OffsetDateTime getEndDate() {
     return endDate;
@@ -306,6 +316,51 @@ public class GenerateCategoriesReportRequestAttributes {
 
   public void setEndDate(OffsetDateTime endDate) {
     this.endDate = endDate;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the GenerateCategoriesReportRequestAttributes instance itself
+   */
+  public GenerateCategoriesReportRequestAttributes putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -327,12 +382,13 @@ public class GenerateCategoriesReportRequestAttributes {
         Objects.equals(this.format, generateCategoriesReportRequestAttributes.format) &&
         Objects.equals(this.timezone, generateCategoriesReportRequestAttributes.timezone) &&
         Objects.equals(this.startDate, generateCategoriesReportRequestAttributes.startDate) &&
-        Objects.equals(this.endDate, generateCategoriesReportRequestAttributes.endDate);
+        Objects.equals(this.endDate, generateCategoriesReportRequestAttributes.endDate)&&
+        Objects.equals(this.additionalProperties, generateCategoriesReportRequestAttributes.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(advertiserIds, campaignId, adsetId, domain, category, shouldDisplayDomainDimension, format, timezone, startDate, endDate);
+    return Objects.hash(advertiserIds, campaignId, adsetId, domain, category, shouldDisplayDomainDimension, format, timezone, startDate, endDate, additionalProperties);
   }
 
   @Override
@@ -349,6 +405,7 @@ public class GenerateCategoriesReportRequestAttributes {
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -364,5 +421,161 @@ public class GenerateCategoriesReportRequestAttributes {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("advertiserIds");
+    openapiFields.add("campaignId");
+    openapiFields.add("adsetId");
+    openapiFields.add("domain");
+    openapiFields.add("category");
+    openapiFields.add("shouldDisplayDomainDimension");
+    openapiFields.add("format");
+    openapiFields.add("timezone");
+    openapiFields.add("startDate");
+    openapiFields.add("endDate");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("advertiserIds");
+    openapiRequiredFields.add("format");
+    openapiRequiredFields.add("startDate");
+    openapiRequiredFields.add("endDate");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to GenerateCategoriesReportRequestAttributes
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!GenerateCategoriesReportRequestAttributes.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in GenerateCategoriesReportRequestAttributes is not found in the empty JSON string", GenerateCategoriesReportRequestAttributes.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : GenerateCategoriesReportRequestAttributes.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("advertiserIds") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("advertiserIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `advertiserIds` to be an array in the JSON string but got `%s`", jsonObj.get("advertiserIds").toString()));
+      }
+      if ((jsonObj.get("campaignId") != null && !jsonObj.get("campaignId").isJsonNull()) && !jsonObj.get("campaignId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
+      }
+      if ((jsonObj.get("adsetId") != null && !jsonObj.get("adsetId").isJsonNull()) && !jsonObj.get("adsetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `adsetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adsetId").toString()));
+      }
+      if ((jsonObj.get("domain") != null && !jsonObj.get("domain").isJsonNull()) && !jsonObj.get("domain").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `domain` to be a primitive type in the JSON string but got `%s`", jsonObj.get("domain").toString()));
+      }
+      if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
+      }
+      if (!jsonObj.get("format").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
+      }
+      if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!GenerateCategoriesReportRequestAttributes.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'GenerateCategoriesReportRequestAttributes' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<GenerateCategoriesReportRequestAttributes> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(GenerateCategoriesReportRequestAttributes.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<GenerateCategoriesReportRequestAttributes>() {
+           @Override
+           public void write(JsonWriter out, GenerateCategoriesReportRequestAttributes value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public GenerateCategoriesReportRequestAttributes read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             GenerateCategoriesReportRequestAttributes instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of GenerateCategoriesReportRequestAttributes given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of GenerateCategoriesReportRequestAttributes
+  * @throws IOException if the JSON string is invalid with respect to GenerateCategoriesReportRequestAttributes
+  */
+  public static GenerateCategoriesReportRequestAttributes fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, GenerateCategoriesReportRequestAttributes.class);
+  }
+
+ /**
+  * Convert an instance of GenerateCategoriesReportRequestAttributes to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

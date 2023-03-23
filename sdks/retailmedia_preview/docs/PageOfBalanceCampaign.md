@@ -6,10 +6,10 @@ A wrapper class to return a single page of <typeparamref name=\"T\" /> with meta
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**metadata** | [**PageMetadata**](PageMetadata.md) |  |  [optional]
-**data** | [**List&lt;ExternalBalanceCampaign&gt;**](ExternalBalanceCampaign.md) |  | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**metadata** | [**PageMetadata**](PageMetadata.md) |  |  [optional] |
+|**data** | [**List&lt;ExternalBalanceCampaign&gt;**](ExternalBalanceCampaign.md) |  |  |
 
 
 

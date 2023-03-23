@@ -21,16 +21,34 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.marketingsolutions.preview.JSON;
+
 /**
  * The attributes specific to Dynamic creatives
  */
-@ApiModel(description = "The attributes specific to Dynamic creatives")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DynamicAttributes {
   public static final String SERIALIZED_NAME_LOGOS = "logos";
@@ -108,6 +126,8 @@ public class DynamicAttributes {
   @SerializedName(SERIALIZED_NAME_PRODUCT_IMAGE_DISPLAY)
   private ProductImageDisplayEnum productImageDisplay;
 
+  public DynamicAttributes() {
+  }
 
   public DynamicAttributes logos(List<ImageShape> logos) {
     
@@ -128,7 +148,6 @@ public class DynamicAttributes {
    * @return logos
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Logo images uploaded on demostatic.criteo.com when deploying and then static.criteo.net")
 
   public List<ImageShape> getLogos() {
     return logos;
@@ -151,7 +170,6 @@ public class DynamicAttributes {
    * @return creativeBackgroundColor
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Color of the creative's background  Valid hexadecimal color (e.g. \"AB00FF\")")
 
   public String getCreativeBackgroundColor() {
     return creativeBackgroundColor;
@@ -174,7 +192,6 @@ public class DynamicAttributes {
    * @return bodyTextColor
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Color of the creative's body text  Valid hexadecimal color (e.g. \"AB00FF\")")
 
   public String getBodyTextColor() {
     return bodyTextColor;
@@ -197,7 +214,6 @@ public class DynamicAttributes {
    * @return pricesColor
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Color of the creative's prices  Valid hexadecimal color (e.g. \"AB00FF\")")
 
   public String getPricesColor() {
     return pricesColor;
@@ -220,7 +236,6 @@ public class DynamicAttributes {
    * @return primaryFont
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Font of the primary font  Valid supported font like \"Arial\"")
 
   public String getPrimaryFont() {
     return primaryFont;
@@ -251,7 +266,6 @@ public class DynamicAttributes {
    * @return callsToAction
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A Call-to-Action (CTA) is an action-driven instruction to your audience intended to provoke an immediate  response, such as “Buy now” or “Go!”.")
 
   public List<String> getCallsToAction() {
     return callsToAction;
@@ -274,7 +288,6 @@ public class DynamicAttributes {
    * @return productImageDisplay
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Value can be \"ShowFullImage\" or \"ZoomOnImage\". Choose whether your product catalog images should fit inside the allocated  space (\"ShowFullImage\") or whether they should fill that space (\"ZoomOnImage\"). If you choose ZoomOnImage, there may be some  image cropping.")
 
   public ProductImageDisplayEnum getProductImageDisplay() {
     return productImageDisplay;
@@ -283,6 +296,51 @@ public class DynamicAttributes {
 
   public void setProductImageDisplay(ProductImageDisplayEnum productImageDisplay) {
     this.productImageDisplay = productImageDisplay;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the DynamicAttributes instance itself
+   */
+  public DynamicAttributes putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -301,12 +359,13 @@ public class DynamicAttributes {
         Objects.equals(this.pricesColor, dynamicAttributes.pricesColor) &&
         Objects.equals(this.primaryFont, dynamicAttributes.primaryFont) &&
         Objects.equals(this.callsToAction, dynamicAttributes.callsToAction) &&
-        Objects.equals(this.productImageDisplay, dynamicAttributes.productImageDisplay);
+        Objects.equals(this.productImageDisplay, dynamicAttributes.productImageDisplay)&&
+        Objects.equals(this.additionalProperties, dynamicAttributes.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(logos, creativeBackgroundColor, bodyTextColor, pricesColor, primaryFont, callsToAction, productImageDisplay);
+    return Objects.hash(logos, creativeBackgroundColor, bodyTextColor, pricesColor, primaryFont, callsToAction, productImageDisplay, additionalProperties);
   }
 
   @Override
@@ -320,6 +379,7 @@ public class DynamicAttributes {
     sb.append("    primaryFont: ").append(toIndentedString(primaryFont)).append("\n");
     sb.append("    callsToAction: ").append(toIndentedString(callsToAction)).append("\n");
     sb.append("    productImageDisplay: ").append(toIndentedString(productImageDisplay)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -335,5 +395,156 @@ public class DynamicAttributes {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("logos");
+    openapiFields.add("creativeBackgroundColor");
+    openapiFields.add("bodyTextColor");
+    openapiFields.add("pricesColor");
+    openapiFields.add("primaryFont");
+    openapiFields.add("callsToAction");
+    openapiFields.add("productImageDisplay");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to DynamicAttributes
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!DynamicAttributes.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DynamicAttributes is not found in the empty JSON string", DynamicAttributes.openapiRequiredFields.toString()));
+        }
+      }
+      if (jsonObj.get("logos") != null && !jsonObj.get("logos").isJsonNull()) {
+        JsonArray jsonArraylogos = jsonObj.getAsJsonArray("logos");
+        if (jsonArraylogos != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("logos").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `logos` to be an array in the JSON string but got `%s`", jsonObj.get("logos").toString()));
+          }
+
+          // validate the optional field `logos` (array)
+          for (int i = 0; i < jsonArraylogos.size(); i++) {
+            ImageShape.validateJsonObject(jsonArraylogos.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("creativeBackgroundColor") != null && !jsonObj.get("creativeBackgroundColor").isJsonNull()) && !jsonObj.get("creativeBackgroundColor").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `creativeBackgroundColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creativeBackgroundColor").toString()));
+      }
+      if ((jsonObj.get("bodyTextColor") != null && !jsonObj.get("bodyTextColor").isJsonNull()) && !jsonObj.get("bodyTextColor").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `bodyTextColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bodyTextColor").toString()));
+      }
+      if ((jsonObj.get("pricesColor") != null && !jsonObj.get("pricesColor").isJsonNull()) && !jsonObj.get("pricesColor").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pricesColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pricesColor").toString()));
+      }
+      if ((jsonObj.get("primaryFont") != null && !jsonObj.get("primaryFont").isJsonNull()) && !jsonObj.get("primaryFont").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `primaryFont` to be a primitive type in the JSON string but got `%s`", jsonObj.get("primaryFont").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("callsToAction") != null && !jsonObj.get("callsToAction").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `callsToAction` to be an array in the JSON string but got `%s`", jsonObj.get("callsToAction").toString()));
+      }
+      if ((jsonObj.get("productImageDisplay") != null && !jsonObj.get("productImageDisplay").isJsonNull()) && !jsonObj.get("productImageDisplay").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `productImageDisplay` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productImageDisplay").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!DynamicAttributes.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DynamicAttributes' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<DynamicAttributes> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DynamicAttributes.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<DynamicAttributes>() {
+           @Override
+           public void write(JsonWriter out, DynamicAttributes value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public DynamicAttributes read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             DynamicAttributes instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of DynamicAttributes given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of DynamicAttributes
+  * @throws IOException if the JSON string is invalid with respect to DynamicAttributes
+  */
+  public static DynamicAttributes fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DynamicAttributes.class);
+  }
+
+ /**
+  * Convert an instance of DynamicAttributes to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

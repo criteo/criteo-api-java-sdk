@@ -6,11 +6,11 @@ A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\" /> with 
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **String** |  | 
-**type** | **String** |  | 
-**attributes** | [**EditableCampaignAttributesV202301**](EditableCampaignAttributesV202301.md) |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**id** | **String** |  |  |
+|**type** | **String** |  |  |
+|**attributes** | [**EditableCampaignAttributesV202301**](EditableCampaignAttributesV202301.md) |  |  [optional] |
 
 
 

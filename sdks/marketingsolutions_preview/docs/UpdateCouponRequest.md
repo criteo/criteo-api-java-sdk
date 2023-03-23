@@ -6,9 +6,9 @@ Data model for input resource
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**data** | [**UpdateCouponResource**](UpdateCouponResource.md) |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**data** | [**UpdateCouponResource**](UpdateCouponResource.md) |  |  [optional] |
 
 
 

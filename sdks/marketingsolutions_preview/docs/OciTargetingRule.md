@@ -6,10 +6,10 @@ Object represents targeting rule based on OCI targeting segments. A targeting ru
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**target** | [**Target**](Target.md) |  |  [optional]
-**rule** | [**OciTargetingNode**](OciTargetingNode.md) |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**target** | [**Target**](Target.md) |  |  [optional] |
+|**rule** | [**OciTargetingNode**](OciTargetingNode.md) |  |  [optional] |
 
 
 

@@ -6,9 +6,9 @@ A Retail Media Brand used to represent a collection of products sold under the s
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **String** |  | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**name** | **String** |  |  |
 
 
 

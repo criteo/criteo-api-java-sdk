@@ -197,7 +197,7 @@ paths:
           description: Audience 123 not found
       tags:
       - Audience
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /preview/audiences/{audience-id}/contactlist-attributes:
     patch:
@@ -242,7 +242,7 @@ paths:
           description: Not authorized
       tags:
       - Audience
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /me:
     get:
@@ -336,7 +336,7 @@ paths:
           description: The API client is not authorized to access this resource.
       tags:
       - Audience
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/audiences/create:
     post:
@@ -358,6 +358,7 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceBulkCreateInputV1'
+        description: ""
         x-bodyName: request
       responses:
         "200":
@@ -392,7 +393,7 @@ paths:
           description: The API client is not authorized to access this resource.
       tags:
       - Audience
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/audiences:
     patch:
@@ -414,6 +415,7 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceBulkUpdateInputV1'
+        description: ""
         x-bodyName: request
       responses:
         "200":
@@ -448,7 +450,7 @@ paths:
           description: The API client is not authorized to access this resource.
       tags:
       - Audience
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/audiences/delete:
     post:
@@ -468,6 +470,7 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceBulkDeleteInputV1'
+        description: ""
         x-bodyName: request
       responses:
         "200":
@@ -508,7 +511,7 @@ paths:
           description: The API client is not authorized to access this resource.
       tags:
       - Audience
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/audiences/compute-sizes:
     post:
@@ -529,6 +532,7 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceComputeSizesInputV1'
+        description: ""
         x-bodyName: request
       responses:
         "200":
@@ -563,7 +567,7 @@ paths:
           description: The API client is not authorized to access this resource.
       tags:
       - Audience
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/audiences/estimate-size:
     post:
@@ -584,6 +588,7 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceEstimateSizeInputV1'
+        description: ""
         x-bodyName: request
       responses:
         "200":
@@ -618,7 +623,7 @@ paths:
           description: The API client is not authorized to access this resource.
       tags:
       - Audience
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/audience-segments/search:
     post:
@@ -694,7 +699,7 @@ paths:
           description: The API client is not authorized to access this resource.
       tags:
       - Audience
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/audience-segments/create:
     post:
@@ -750,7 +755,7 @@ paths:
           description: The API client is not authorized to access this resource.
       tags:
       - Audience
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/audience-segments:
     patch:
@@ -807,7 +812,7 @@ paths:
           description: The API client is not authorized to access this resource.
       tags:
       - Audience
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/audience-segments/delete:
     post:
@@ -862,7 +867,7 @@ paths:
           description: The API client is not authorized to access this resource.
       tags:
       - Audience
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/audience-segments/compute-sizes:
     post:
@@ -883,6 +888,7 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceSegmentComputeSizesInputV1'
+        description: ""
         x-bodyName: request
       responses:
         "200":
@@ -917,7 +923,7 @@ paths:
           description: The API client is not authorized to access this resource.
       tags:
       - Audience
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/audience-segments/estimate-size:
     post:
@@ -938,6 +944,7 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/AudienceSegmentEstimateSizeInputV1'
+        description: ""
         x-bodyName: request
       responses:
         "200":
@@ -972,7 +979,7 @@ paths:
           description: The API client is not authorized to access this resource.
       tags:
       - Audience
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/audience-segments/in-market-interests:
     get:
@@ -1137,7 +1144,7 @@ paths:
           description: The API client is not authorized to access this resource.
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/ad-sets/{adSetId}:
     get:
@@ -1233,7 +1240,7 @@ paths:
           description: Forbidden
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/ad-sets:
     patch:
@@ -1283,7 +1290,7 @@ paths:
             the resource does not exist.
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
     post:
       description: Create the specified ad set
@@ -1331,7 +1338,7 @@ paths:
           description: The API client is not properly authenticated.
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/ad-sets/start:
     post:
@@ -1381,7 +1388,7 @@ paths:
           description: The API client is not properly authenticated.
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/ad-sets/stop:
     post:
@@ -1431,7 +1438,7 @@ paths:
           description: The API client is not properly authenticated.
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers:
     get:
@@ -1546,7 +1553,7 @@ paths:
             the resource does not exist.
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/ad-sets/{ad-set-id}/category-bids:
     get:
@@ -1661,7 +1668,7 @@ paths:
             the resource does not exist.
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/campaigns/{campaign-id}:
     get:
@@ -1758,7 +1765,7 @@ paths:
           description: Forbidden
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/campaigns:
     patch:
@@ -1808,7 +1815,7 @@ paths:
             the resource does not exist.
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
     post:
       description: Create the specified campaign
@@ -1856,7 +1863,7 @@ paths:
           description: The API client is not properly authenticated.
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/advertisers/{advertiser-id}/creatives:
     get:
@@ -1984,7 +1991,7 @@ paths:
           description: A non-request based error occurred on the server.
       tags:
       - Creative
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/creatives/{id}:
     delete:
@@ -2117,7 +2124,7 @@ paths:
           description: A non-request based error occurred on the server.
       tags:
       - Creative
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/creatives/{id}/preview:
     post:
@@ -2304,7 +2311,7 @@ paths:
           description: A non-request based error occurred on the server.
       tags:
       - Creative
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/ads/{id}:
     delete:
@@ -2493,7 +2500,7 @@ paths:
           description: The request was not properly authorized.
       tags:
       - Creative
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/advertisers/{advertiser-id}/coupons/{id}:
     delete:
@@ -2636,7 +2643,7 @@ paths:
           description: The request was not properly authorized.
       tags:
       - Creative
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/advertisers/{advertiser-id}/coupons/{id}/preview:
     get:
@@ -2763,23 +2770,7 @@ paths:
         content:
           application/x-www-form-urlencoded:
             schema:
-              properties:
-                grant_type:
-                  type: string
-                client_id:
-                  type: string
-                client_secret:
-                  type: string
-                redirect_uri:
-                  type: string
-                code:
-                  type: string
-                refresh_token:
-                  type: string
-              required:
-              - client_id
-              - client_secret
-              - grant_type
+              $ref: '#/components/schemas/GetToken_request'
       responses:
         "200":
           content:
@@ -2821,7 +2812,7 @@ paths:
         use authorization code
       tags:
       - OAuth
-      x-contentType: application/x-www-form-urlencoded
+      x-content-type: application/x-www-form-urlencoded
       x-accepts: application/json
   /preview/statistics/report:
     post:
@@ -2903,7 +2894,7 @@ paths:
           description: Forbidden
       tags:
       - Analytics
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/transactions/report:
     post:
@@ -2983,7 +2974,7 @@ paths:
           description: Forbidden
       tags:
       - Analytics
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/placements/report:
     post:
@@ -3066,7 +3057,7 @@ paths:
           description: Forbidden
       tags:
       - Analytics
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/log-level/advertisers/{advertiser-id}/report:
     post:
@@ -3162,7 +3153,7 @@ paths:
           description: Forbidden
       tags:
       - Analytics
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/categories/report:
     post:
@@ -3243,7 +3234,7 @@ paths:
           description: Forbidden
       tags:
       - Analytics
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/reports/top-products:
     post:
@@ -3324,7 +3315,7 @@ paths:
           description: Forbidden
       tags:
       - Analytics
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/reports/creatives:
     post:
@@ -3405,7 +3396,7 @@ paths:
           description: Forbidden
       tags:
       - Analytics
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/reports/async-statistics:
     post:
@@ -3486,7 +3477,7 @@ paths:
           description: Forbidden
       tags:
       - Analytics
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/reports/async-audience-performance:
     post:
@@ -3567,7 +3558,7 @@ paths:
           description: Forbidden
       tags:
       - Analytics
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/reports/{report-id}/status:
     get:
@@ -3745,7 +3736,7 @@ paths:
             the resource does not exist.
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids/disable:
     post:
@@ -3902,7 +3893,7 @@ paths:
             the resource does not exist.
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable:
     post:
@@ -4053,6 +4044,7 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/AdvertiserCreationRequest'
+        description: ""
         required: true
         x-bodyName: advertiserCreation
       responses:
@@ -4136,7 +4128,7 @@ paths:
           description: Server Error
       tags:
       - Advertiser
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/industries:
     get:
@@ -4243,10 +4235,10 @@ paths:
       x-accepts: application/json
   /preview/catalog/products/batch:
     post:
-      description: "Used to publish a batch of operations to insert, update and deletes\
-        \ products.\n The batch is processed asynchronously.The response provides\
-        \ an operationToken which can be used to track\n the status of the report\
-        \ of the operation."
+      description: |-
+        Used to publish a batch of operations to insert, update and deletes products.
+         The batch is processed asynchronously.The response provides an operationToken which can be used to track
+         the status of the report of the operation.
       requestBody:
         content:
           application/json:
@@ -4311,7 +4303,7 @@ paths:
             availability\", code=\"service-unavailable\")]"
       tags:
       - Catalog
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /preview/catalog/products/batch/report/{operation-token}:
     get:
@@ -4593,7 +4585,7 @@ paths:
           description: Internal Error
       tags:
       - Reco
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/product-sets/dataset/{dataset-id}:
     get:
@@ -4691,7 +4683,7 @@ paths:
           description: Internal Error
       tags:
       - Reco
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /preview/recommendation/search:
     post:
@@ -4731,7 +4723,7 @@ paths:
           description: Unauthorized
       tags:
       - OnSiteRecommendation
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/brand-safety/oci:
     delete:
@@ -5137,7 +5129,7 @@ paths:
           description: Internal service error
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /preview/targeting/oci:
     delete:
@@ -5551,7 +5543,7 @@ paths:
           description: Internal service error
       tags:
       - Campaign
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /preview/advertisers/{advertiserId}/targeting/bundle-rules:
     delete:
@@ -5636,7 +5628,7 @@ paths:
           description: Forbidden
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
     get:
       description: Returns a list of all targeted bundles for an advertiser.
@@ -5785,7 +5777,7 @@ paths:
           description: Forbidden
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
     put:
       description: "Updates the targeted bundles for an advertiser by adding a list\
@@ -5869,7 +5861,7 @@ paths:
           description: Forbidden
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/advertisers/{advertiserId}/targeting/domain-rules:
     delete:
@@ -5954,7 +5946,7 @@ paths:
           description: Forbidden
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
     get:
       description: Returns a list of all targeted domains for an advertiser.
@@ -6067,7 +6059,7 @@ paths:
           description: Success
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
     put:
       description: "Updates the targeted domains for an advertiser by adding a list\
@@ -6151,7 +6143,7 @@ paths:
           description: Forbidden
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/campaigns/{campaignId}/targeting/bundle-rules:
     delete:
@@ -6236,7 +6228,7 @@ paths:
           description: Forbidden
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
     get:
       description: Returns a list of all targeted bundles for a campaign.
@@ -6385,7 +6377,7 @@ paths:
           description: Forbidden
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
     put:
       description: "Updates the targeted bundles for a campaign by adding a list of\
@@ -6469,7 +6461,7 @@ paths:
           description: Forbidden
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/campaigns/{campaignId}/targeting/domain-rules:
     delete:
@@ -6554,7 +6546,7 @@ paths:
           description: Forbidden
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
     get:
       description: Returns a list of all targeted domains for a campaign.
@@ -6703,7 +6695,7 @@ paths:
           description: Forbidden
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
     put:
       description: "Updates the targeted domains for a campaign by adding a list of\
@@ -6787,7 +6779,7 @@ paths:
           description: Forbidden
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/advertisers/{advertiserId}/user-profiles/set:
     post:
@@ -6831,7 +6823,7 @@ paths:
           description: Forbidden
       tags:
       - Audience
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/marketing-solutions/advertisers/{advertiserId}/user-profiles/delete:
     post:
@@ -6873,7 +6865,7 @@ paths:
           description: Forbidden
       tags:
       - Audience
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
 components:
   schemas:
@@ -10950,11 +10942,11 @@ components:
             targeting:
               geoLocation:
                 zipCodes:
-                  value: ""
+                  value: null
                 countries:
-                  value: ""
+                  value: null
                 subdivisions:
-                  value: ""
+                  value: null
               frequencyCapping:
                 maximumImpressions: 6
                 frequency: hourly
@@ -11061,11 +11053,11 @@ components:
             targeting:
               geoLocation:
                 zipCodes:
-                  value: ""
+                  value: null
                 countries:
-                  value: ""
+                  value: null
                 subdivisions:
-                  value: ""
+                  value: null
               frequencyCapping:
                 maximumImpressions: 6
                 frequency: hourly
@@ -11110,11 +11102,11 @@ components:
             targeting:
               geoLocation:
                 zipCodes:
-                  value: ""
+                  value: null
                 countries:
-                  value: ""
+                  value: null
                 subdivisions:
-                  value: ""
+                  value: null
               frequencyCapping:
                 maximumImpressions: 6
                 frequency: hourly
@@ -11888,11 +11880,11 @@ components:
             targeting:
               geoLocation:
                 zipCodes:
-                  value: ""
+                  value: null
                 countries:
-                  value: ""
+                  value: null
                 subdivisions:
-                  value: ""
+                  value: null
               frequencyCapping:
                 maximumImpressions: 6
                 frequency: hourly
@@ -11928,11 +11920,11 @@ components:
             targeting:
               geoLocation:
                 zipCodes:
-                  value: ""
+                  value: null
                 countries:
-                  value: ""
+                  value: null
                 subdivisions:
-                  value: ""
+                  value: null
               frequencyCapping:
                 maximumImpressions: 6
                 frequency: hourly
@@ -12155,11 +12147,11 @@ components:
           targeting:
             geoLocation:
               zipCodes:
-                value: ""
+                value: null
               countries:
-                value: ""
+                value: null
               subdivisions:
-                value: ""
+                value: null
             frequencyCapping:
               maximumImpressions: 6
               frequency: hourly
@@ -12410,11 +12402,11 @@ components:
           targeting:
             geoLocation:
               zipCodes:
-                value: ""
+                value: null
               countries:
-                value: ""
+                value: null
               subdivisions:
-                value: ""
+                value: null
             frequencyCapping:
               maximumImpressions: 6
               frequency: hourly
@@ -12647,11 +12639,11 @@ components:
         targeting:
           geoLocation:
             zipCodes:
-              value: ""
+              value: null
             countries:
-              value: ""
+              value: null
             subdivisions:
-              value: ""
+              value: null
           frequencyCapping:
             maximumImpressions: 6
             frequency: hourly
@@ -12781,11 +12773,11 @@ components:
         targeting:
           geoLocation:
             zipCodes:
-              value: ""
+              value: null
             countries:
-              value: ""
+              value: null
             subdivisions:
-              value: ""
+              value: null
           frequencyCapping:
             maximumImpressions: 6
             frequency: hourly
@@ -13054,11 +13046,11 @@ components:
       example:
         geoLocation:
           zipCodes:
-            value: ""
+            value: null
           countries:
-            value: ""
+            value: null
           subdivisions:
-            value: ""
+            value: null
         frequencyCapping:
           maximumImpressions: 6
           frequency: hourly
@@ -13477,11 +13469,11 @@ components:
       description: ad set geolocation model
       example:
         zipCodes:
-          value: ""
+          value: null
         countries:
-          value: ""
+          value: null
         subdivisions:
-          value: ""
+          value: null
       properties:
         countries:
           $ref: '#/components/schemas/NillableAdSetTargetingRule'
@@ -13540,12 +13532,10 @@ components:
         \ null values. If the structure is provided (i.e. not null), then the value\
         \ in it, even null, is provided."
       example:
-        value: ""
+        value: null
       properties:
         value:
-          allOf:
-          - $ref: '#/components/schemas/AdSetTargetingRule'
-          x-nullable: true
+          $ref: '#/components/schemas/NillableAdSetTargetingRule_value'
       required:
       - value
       type: object
@@ -19472,8 +19462,9 @@ components:
             isServerRelated: true
       properties:
         status:
-          description: "The status of the operation.\nThe operation is completed when\
-            \ the status is one of (VALIDATED,VALIDATED_WITH_ERRORS,FAILED)"
+          description: |-
+            The status of the operation.
+            The operation is completed when the status is one of (VALIDATED,VALIDATED_WITH_ERRORS,FAILED)
           enum:
           - ACCEPTED
           - IN_PROGRESS
@@ -22205,6 +22196,24 @@ components:
       - key
       - value
       type: object
+    GetToken_request:
+      properties:
+        grant_type:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        redirect_uri:
+          type: string
+        code:
+          type: string
+        refresh_token:
+          type: string
+      required:
+      - client_id
+      - client_secret
+      - grant_type
     ContactlistOperation_attributes:
       description: the contactlist operation attributes
       example:
@@ -22325,6 +22334,10 @@ components:
       - identifiers
       - operation
       type: object
+    NillableAdSetTargetingRule_value:
+      allOf:
+      - $ref: '#/components/schemas/AdSetTargetingRule'
+      x-nullable: true
     OciBrandSafetyResponse_data:
       description: The document's primary data
       example:

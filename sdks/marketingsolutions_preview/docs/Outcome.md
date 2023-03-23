@@ -6,10 +6,10 @@ A class implementing the body of a response without data of the Criteo API as de
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**warnings** | [**List&lt;ProblemDetails&gt;**](ProblemDetails.md) |  |  [optional] [readonly]
-**errors** | [**List&lt;ProblemDetails&gt;**](ProblemDetails.md) |  |  [optional] [readonly]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**warnings** | [**List&lt;ProblemDetails&gt;**](ProblemDetails.md) |  |  [optional] [readonly] |
+|**errors** | [**List&lt;ProblemDetails&gt;**](ProblemDetails.md) |  |  [optional] [readonly] |
 
 
 

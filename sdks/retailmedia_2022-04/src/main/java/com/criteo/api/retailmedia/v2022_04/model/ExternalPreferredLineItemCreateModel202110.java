@@ -22,15 +22,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.LocalDate;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.retailmedia.v2022_04.JSON;
 
 /**
  * Model used to create a preferred line item
  */
-@ApiModel(description = "Model used to create a preferred line item")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalPreferredLineItemCreateModel202110 {
   public static final String SERIALIZED_NAME_NAME = "name";
@@ -183,6 +201,8 @@ public class ExternalPreferredLineItemCreateModel202110 {
   @SerializedName(SERIALIZED_NAME_CREATIVE_ID)
   private String creativeId;
 
+  public ExternalPreferredLineItemCreateModel202110() {
+  }
 
   public ExternalPreferredLineItemCreateModel202110 name(String name) {
     
@@ -195,7 +215,6 @@ public class ExternalPreferredLineItemCreateModel202110 {
    * @return name
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public String getName() {
     return name;
@@ -218,7 +237,6 @@ public class ExternalPreferredLineItemCreateModel202110 {
    * @return startDate
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Represents the Date as a year, month, and day in the format YYYY-MM-DD")
 
   public LocalDate getStartDate() {
     return startDate;
@@ -241,7 +259,6 @@ public class ExternalPreferredLineItemCreateModel202110 {
    * @return endDate
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Represents the Date as a year, month, and day in the format YYYY-MM-DD")
 
   public LocalDate getEndDate() {
     return endDate;
@@ -264,7 +281,6 @@ public class ExternalPreferredLineItemCreateModel202110 {
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public StatusEnum getStatus() {
     return status;
@@ -287,7 +303,6 @@ public class ExternalPreferredLineItemCreateModel202110 {
    * @return pacing
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public PacingEnum getPacing() {
     return pacing;
@@ -310,7 +325,6 @@ public class ExternalPreferredLineItemCreateModel202110 {
    * @return capping
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public ExternalLineItemCapping202110 getCapping() {
     return capping;
@@ -333,7 +347,6 @@ public class ExternalPreferredLineItemCreateModel202110 {
    * @return page
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public ExternalLineItemPage202110 getPage() {
     return page;
@@ -356,7 +369,6 @@ public class ExternalPreferredLineItemCreateModel202110 {
    * @return targetRetailerId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public String getTargetRetailerId() {
     return targetRetailerId;
@@ -379,7 +391,6 @@ public class ExternalPreferredLineItemCreateModel202110 {
    * @return budget
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public Double getBudget() {
     return budget;
@@ -402,7 +413,6 @@ public class ExternalPreferredLineItemCreateModel202110 {
    * @return creativeId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getCreativeId() {
     return creativeId;
@@ -411,6 +421,51 @@ public class ExternalPreferredLineItemCreateModel202110 {
 
   public void setCreativeId(String creativeId) {
     this.creativeId = creativeId;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the ExternalPreferredLineItemCreateModel202110 instance itself
+   */
+  public ExternalPreferredLineItemCreateModel202110 putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -432,12 +487,13 @@ public class ExternalPreferredLineItemCreateModel202110 {
         Objects.equals(this.page, externalPreferredLineItemCreateModel202110.page) &&
         Objects.equals(this.targetRetailerId, externalPreferredLineItemCreateModel202110.targetRetailerId) &&
         Objects.equals(this.budget, externalPreferredLineItemCreateModel202110.budget) &&
-        Objects.equals(this.creativeId, externalPreferredLineItemCreateModel202110.creativeId);
+        Objects.equals(this.creativeId, externalPreferredLineItemCreateModel202110.creativeId)&&
+        Objects.equals(this.additionalProperties, externalPreferredLineItemCreateModel202110.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, startDate, endDate, status, pacing, capping, page, targetRetailerId, budget, creativeId);
+    return Objects.hash(name, startDate, endDate, status, pacing, capping, page, targetRetailerId, budget, creativeId, additionalProperties);
   }
 
   @Override
@@ -454,6 +510,7 @@ public class ExternalPreferredLineItemCreateModel202110 {
     sb.append("    targetRetailerId: ").append(toIndentedString(targetRetailerId)).append("\n");
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
     sb.append("    creativeId: ").append(toIndentedString(creativeId)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -469,5 +526,161 @@ public class ExternalPreferredLineItemCreateModel202110 {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("name");
+    openapiFields.add("startDate");
+    openapiFields.add("endDate");
+    openapiFields.add("status");
+    openapiFields.add("pacing");
+    openapiFields.add("capping");
+    openapiFields.add("page");
+    openapiFields.add("targetRetailerId");
+    openapiFields.add("budget");
+    openapiFields.add("creativeId");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("startDate");
+    openapiRequiredFields.add("endDate");
+    openapiRequiredFields.add("pacing");
+    openapiRequiredFields.add("page");
+    openapiRequiredFields.add("targetRetailerId");
+    openapiRequiredFields.add("budget");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ExternalPreferredLineItemCreateModel202110
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!ExternalPreferredLineItemCreateModel202110.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalPreferredLineItemCreateModel202110 is not found in the empty JSON string", ExternalPreferredLineItemCreateModel202110.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ExternalPreferredLineItemCreateModel202110.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      if (!jsonObj.get("pacing").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pacing` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pacing").toString()));
+      }
+      // validate the optional field `capping`
+      if (jsonObj.get("capping") != null && !jsonObj.get("capping").isJsonNull()) {
+        ExternalLineItemCapping202110.validateJsonObject(jsonObj.getAsJsonObject("capping"));
+      }
+      // validate the required field `page`
+      ExternalLineItemPage202110.validateJsonObject(jsonObj.getAsJsonObject("page"));
+      if (!jsonObj.get("targetRetailerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `targetRetailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("targetRetailerId").toString()));
+      }
+      if ((jsonObj.get("creativeId") != null && !jsonObj.get("creativeId").isJsonNull()) && !jsonObj.get("creativeId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `creativeId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creativeId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ExternalPreferredLineItemCreateModel202110.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ExternalPreferredLineItemCreateModel202110' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ExternalPreferredLineItemCreateModel202110> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ExternalPreferredLineItemCreateModel202110.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ExternalPreferredLineItemCreateModel202110>() {
+           @Override
+           public void write(JsonWriter out, ExternalPreferredLineItemCreateModel202110 value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ExternalPreferredLineItemCreateModel202110 read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             ExternalPreferredLineItemCreateModel202110 instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ExternalPreferredLineItemCreateModel202110 given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ExternalPreferredLineItemCreateModel202110
+  * @throws IOException if the JSON string is invalid with respect to ExternalPreferredLineItemCreateModel202110
+  */
+  public static ExternalPreferredLineItemCreateModel202110 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ExternalPreferredLineItemCreateModel202110.class);
+  }
+
+ /**
+  * Convert an instance of ExternalPreferredLineItemCreateModel202110 to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

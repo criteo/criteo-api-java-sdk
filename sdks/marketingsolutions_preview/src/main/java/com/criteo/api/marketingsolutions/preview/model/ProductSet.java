@@ -21,16 +21,34 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.marketingsolutions.preview.JSON;
+
 /**
  * Encapsulate a group of product
  */
-@ApiModel(description = "Encapsulate a group of product")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProductSet {
   public static final String SERIALIZED_NAME_DATASET_ID = "datasetId";
@@ -120,6 +138,8 @@ public class ProductSet {
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
+  public ProductSet() {
+  }
 
   public ProductSet datasetId(String datasetId) {
     
@@ -132,7 +152,6 @@ public class ProductSet {
    * @return datasetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The dataset to which the product set belong")
 
   public String getDatasetId() {
     return datasetId;
@@ -155,7 +174,6 @@ public class ProductSet {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the product set")
 
   public String getName() {
     return name;
@@ -178,7 +196,6 @@ public class ProductSet {
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The status of the product set")
 
   public StatusEnum getStatus() {
     return status;
@@ -201,7 +218,6 @@ public class ProductSet {
    * @return isEnabled
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "True if the product set is active")
 
   public Boolean getIsEnabled() {
     return isEnabled;
@@ -224,7 +240,6 @@ public class ProductSet {
    * @return numberOfProducts
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The number of product matching the product set")
 
   public Integer getNumberOfProducts() {
     return numberOfProducts;
@@ -247,7 +262,6 @@ public class ProductSet {
    * @return creationDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Optional: The creation date of the product set (UTC time in ISO8601 format). Example: \"02/25/2022 14:51:26\"  Can be null if the value doesn't exist.")
 
   public String getCreationDate() {
     return creationDate;
@@ -278,7 +292,6 @@ public class ProductSet {
    * @return rules
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The rules identifying the product belonging to the set")
 
   public List<ProductSetRule> getRules() {
     return rules;
@@ -301,7 +314,6 @@ public class ProductSet {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getId() {
     return id;
@@ -310,6 +322,51 @@ public class ProductSet {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the ProductSet instance itself
+   */
+  public ProductSet putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -329,12 +386,13 @@ public class ProductSet {
         Objects.equals(this.numberOfProducts, productSet.numberOfProducts) &&
         Objects.equals(this.creationDate, productSet.creationDate) &&
         Objects.equals(this.rules, productSet.rules) &&
-        Objects.equals(this.id, productSet.id);
+        Objects.equals(this.id, productSet.id)&&
+        Objects.equals(this.additionalProperties, productSet.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(datasetId, name, status, isEnabled, numberOfProducts, creationDate, rules, id);
+    return Objects.hash(datasetId, name, status, isEnabled, numberOfProducts, creationDate, rules, id, additionalProperties);
   }
 
   @Override
@@ -349,6 +407,7 @@ public class ProductSet {
     sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
     sb.append("    rules: ").append(toIndentedString(rules)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -364,5 +423,153 @@ public class ProductSet {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("datasetId");
+    openapiFields.add("name");
+    openapiFields.add("status");
+    openapiFields.add("isEnabled");
+    openapiFields.add("numberOfProducts");
+    openapiFields.add("creationDate");
+    openapiFields.add("rules");
+    openapiFields.add("id");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ProductSet
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!ProductSet.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ProductSet is not found in the empty JSON string", ProductSet.openapiRequiredFields.toString()));
+        }
+      }
+      if ((jsonObj.get("datasetId") != null && !jsonObj.get("datasetId").isJsonNull()) && !jsonObj.get("datasetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `datasetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("datasetId").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      if ((jsonObj.get("creationDate") != null && !jsonObj.get("creationDate").isJsonNull()) && !jsonObj.get("creationDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `creationDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creationDate").toString()));
+      }
+      if (jsonObj.get("rules") != null && !jsonObj.get("rules").isJsonNull()) {
+        JsonArray jsonArrayrules = jsonObj.getAsJsonArray("rules");
+        if (jsonArrayrules != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("rules").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `rules` to be an array in the JSON string but got `%s`", jsonObj.get("rules").toString()));
+          }
+
+          // validate the optional field `rules` (array)
+          for (int i = 0; i < jsonArrayrules.size(); i++) {
+            ProductSetRule.validateJsonObject(jsonArrayrules.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ProductSet.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ProductSet' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ProductSet> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ProductSet.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ProductSet>() {
+           @Override
+           public void write(JsonWriter out, ProductSet value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ProductSet read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             ProductSet instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ProductSet given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ProductSet
+  * @throws IOException if the JSON string is invalid with respect to ProductSet
+  */
+  public static ProductSet fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ProductSet.class);
+  }
+
+ /**
+  * Convert an instance of ProductSet to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

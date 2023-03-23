@@ -6,11 +6,11 @@ List of retailer's categories, including the full hierarchy of categories and th
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**text** | **String** | Category Text | 
-**name** | **String** | Category Name | 
-**parentId** | **String** | Category ParentId | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**text** | **String** | Category Text |  |
+|**name** | **String** | Category Name |  |
+|**parentId** | **String** | Category ParentId |  |
 
 
 

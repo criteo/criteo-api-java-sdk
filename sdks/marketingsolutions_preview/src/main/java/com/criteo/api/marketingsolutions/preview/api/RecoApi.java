@@ -40,9 +40,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class RecoApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public RecoApi() {
         this(Configuration.getDefaultApiClient());
@@ -58,6 +61,22 @@ public class RecoApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
+    }
+
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
     }
 
     /**
@@ -77,6 +96,19 @@ public class RecoApi {
      </table>
      */
     public okhttp3.Call createProductSetCall(ValueResourceInputOfCreateProductSetRequest valueResourceInputOfCreateProductSetRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = valueResourceInputOfCreateProductSetRequest;
 
         // create path and map variables
@@ -89,7 +121,9 @@ public class RecoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -97,21 +131,23 @@ public class RecoApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json", "application/json", "text/json", "application/_*+json"
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createProductSetValidateBeforeCall(ValueResourceInputOfCreateProductSetRequest valueResourceInputOfCreateProductSetRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = createProductSetCall(valueResourceInputOfCreateProductSetRequest, _callback);
-        return localVarCall;
+        return createProductSetCall(valueResourceInputOfCreateProductSetRequest, _callback);
 
     }
 
@@ -198,11 +234,24 @@ public class RecoApi {
      </table>
      */
     public okhttp3.Call fetchProductSetCall(String productSetId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/preview/product-sets/{product-set-id}"
-            .replaceAll("\\{" + "product-set-id" + "\\}", localVarApiClient.escapeString(productSetId.toString()));
+            .replace("{" + "product-set-id" + "}", localVarApiClient.escapeString(productSetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -211,7 +260,9 @@ public class RecoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -219,26 +270,24 @@ public class RecoApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call fetchProductSetValidateBeforeCall(String productSetId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'productSetId' is set
         if (productSetId == null) {
             throw new ApiException("Missing the required parameter 'productSetId' when calling fetchProductSet(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = fetchProductSetCall(productSetId, _callback);
-        return localVarCall;
+        return fetchProductSetCall(productSetId, _callback);
 
     }
 
@@ -322,11 +371,24 @@ public class RecoApi {
      </table>
      */
     public okhttp3.Call fetchProductSetsCall(String datasetId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/preview/product-sets/dataset/{dataset-id}"
-            .replaceAll("\\{" + "dataset-id" + "\\}", localVarApiClient.escapeString(datasetId.toString()));
+            .replace("{" + "dataset-id" + "}", localVarApiClient.escapeString(datasetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -335,7 +397,9 @@ public class RecoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -343,26 +407,24 @@ public class RecoApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call fetchProductSetsValidateBeforeCall(String datasetId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'datasetId' is set
         if (datasetId == null) {
             throw new ApiException("Missing the required parameter 'datasetId' when calling fetchProductSets(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = fetchProductSetsCall(datasetId, _callback);
-        return localVarCall;
+        return fetchProductSetsCall(datasetId, _callback);
 
     }
 
@@ -445,6 +507,19 @@ public class RecoApi {
      </table>
      */
     public okhttp3.Call previewProductSetsPreviewPostCall(ProductSetStatisticsQuery productSetStatisticsQuery, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = productSetStatisticsQuery;
 
         // create path and map variables
@@ -468,23 +543,22 @@ public class RecoApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call previewProductSetsPreviewPostValidateBeforeCall(ProductSetStatisticsQuery productSetStatisticsQuery, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'productSetStatisticsQuery' is set
         if (productSetStatisticsQuery == null) {
             throw new ApiException("Missing the required parameter 'productSetStatisticsQuery' when calling previewProductSetsPreviewPost(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = previewProductSetsPreviewPostCall(productSetStatisticsQuery, _callback);
-        return localVarCall;
+        return previewProductSetsPreviewPostCall(productSetStatisticsQuery, _callback);
 
     }
 
@@ -565,11 +639,24 @@ public class RecoApi {
      </table>
      */
     public okhttp3.Call removeProductSetCall(String productSetId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/preview/product-sets/{product-set-id}"
-            .replaceAll("\\{" + "product-set-id" + "\\}", localVarApiClient.escapeString(productSetId.toString()));
+            .replace("{" + "product-set-id" + "}", localVarApiClient.escapeString(productSetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -578,7 +665,9 @@ public class RecoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain", "application/json", "text/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -586,26 +675,24 @@ public class RecoApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call removeProductSetValidateBeforeCall(String productSetId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'productSetId' is set
         if (productSetId == null) {
             throw new ApiException("Missing the required parameter 'productSetId' when calling removeProductSet(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = removeProductSetCall(productSetId, _callback);
-        return localVarCall;
+        return removeProductSetCall(productSetId, _callback);
 
     }
 

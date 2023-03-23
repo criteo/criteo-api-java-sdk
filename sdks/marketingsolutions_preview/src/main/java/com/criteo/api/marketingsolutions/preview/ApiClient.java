@@ -15,8 +15,10 @@ package com.criteo.api.marketingsolutions.preview;
 
 import okhttp3.*;
 import okhttp3.internal.http.HttpMethod;
+import okhttp3.internal.tls.OkHostnameVerifier;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.logging.HttpLoggingInterceptor.Level;
+import okio.Buffer;
 import okio.BufferedSink;
 import okio.Okio;
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest.TokenRequestBuilder;
@@ -28,8 +30,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
+import java.net.URI;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.GeneralSecurityException;
 import java.security.KeyStore;
 import java.security.SecureRandom;
@@ -55,25 +60,27 @@ import com.criteo.api.marketingsolutions.preview.auth.OAuth;
 import com.criteo.api.marketingsolutions.preview.auth.RetryingOAuth;
 import com.criteo.api.marketingsolutions.preview.auth.OAuthFlow;
 
-import com.criteo.api.marketingsolutions.preview.api.OAuthApi;
-import com.criteo.api.marketingsolutions.preview.model.AccessTokenModel;
-
+/**
+ * <p>ApiClient class.</p>
+ */
 public class ApiClient {
 
     private String basePath = "https://api.criteo.com";
-    protected List<ServerConfiguration> servers = new ArrayList<ServerConfiguration>();
-    protected Integer serverIndex = null;
+    protected List<ServerConfiguration> servers = new ArrayList<ServerConfiguration>(Arrays.asList(
+    new ServerConfiguration(
+      "https://api.criteo.com",
+      "No description provided",
+      new HashMap<String, ServerVariable>()
+    )
+  ));
+    protected Integer serverIndex = 0;
     protected Map<String, String> serverVariables = null;
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private Map<String, String> defaultCookieMap = new HashMap<String, String>();
     private String tempFolderPath = null;
 
-    private String clientId;
-    private String clientSecret;
-    private Map<String, String> authParameters;
     private Map<String, Authentication> authentications;
-    private TokenInfo tokenInfo;
 
     private DateFormat dateFormat;
     private DateFormat datetimeFormat;
@@ -89,85 +96,122 @@ public class ApiClient {
 
     private HttpLoggingInterceptor loggingInterceptor;
 
-    /*
+    /**
      * Basic constructor for ApiClient
      */
     public ApiClient() {
         init();
+        initHttpClient();
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications.put("oauth", new OAuth());
-        authentications.put("CriteoHttpBasicAuth", new HttpBasicAuth());
+        // Prevent the authentications from being modified.
+        authentications = Collections.unmodifiableMap(authentications);
     }
 
-    /*
+    /**
+     * Basic constructor with custom OkHttpClient
+     *
+     * @param client a {@link okhttp3.OkHttpClient} object
+     */
+    public ApiClient(OkHttpClient client) {
+        init();
+
+        httpClient = client;
+
+        // Setup authentications (key: authentication name, value: authentication).
+        authentications.put("oauth", new OAuth());
+        // Prevent the authentications from being modified.
+        authentications = Collections.unmodifiableMap(authentications);
+    }
+
+    /**
      * Constructor for ApiClient to support access token retry on 401/403 configured with client ID
+     *
+     * @param clientId client ID
      */
     public ApiClient(String clientId) {
         this(clientId, null, null);
     }
 
-    /*
+    /**
      * Constructor for ApiClient to support access token retry on 401/403 configured with client ID and additional parameters
+     *
+     * @param clientId client ID
+     * @param parameters a {@link java.util.Map} of parameters
      */
     public ApiClient(String clientId, Map<String, String> parameters) {
         this(clientId, null, parameters);
     }
 
-    /*
+    /**
      * Constructor for ApiClient to support access token retry on 401/403 configured with client ID, secret, and additional parameters
+     *
+     * @param clientId client ID
+     * @param clientSecret client secret
+     * @param parameters a {@link java.util.Map} of parameters
      */
     public ApiClient(String clientId, String clientSecret, Map<String, String> parameters) {
-        this.clientId = clientId;
-        this.clientSecret = clientSecret;
-        this.authParameters = parameters;
+        this(null, clientId, clientSecret, parameters);
+    }
 
-        RetryingOAuth retryingOAuth = createDefaultRetryingOAuth();
-        authentications.put("oauth", retryingOAuth);
-        HttpBasicAuth httpBasicAuth = new HttpBasicAuth();
-        httpBasicAuth.setPassword(clientSecret);
-        httpBasicAuth.setUsername(clientId);
-        authentications.put("CriteoHttpBasicAuth", httpBasicAuth);
+    /**
+     * Constructor for ApiClient to support access token retry on 401/403 configured with base path, client ID, secret, and additional parameters
+     *
+     * @param basePath base path
+     * @param clientId client ID
+     * @param clientSecret client secret
+     * @param parameters a {@link java.util.Map} of parameters
+     */
+    public ApiClient(String basePath, String clientId, String clientSecret, Map<String, String> parameters) {
+        init();
+        if (basePath != null) {
+            this.basePath = basePath;
+        }
 
+        String tokenUrl = "https://api.criteo.com/oauth2/token";
+        if (!"".equals(tokenUrl) && !URI.create(tokenUrl).isAbsolute()) {
+            URI uri = URI.create(getBasePath());
+            tokenUrl = uri.getScheme() + ":" +
+                (uri.getAuthority() != null ? "//" + uri.getAuthority() : "") +
+                tokenUrl;
+            if (!URI.create(tokenUrl).isAbsolute()) {
+                throw new IllegalArgumentException("OAuth2 token URL must be an absolute URL");
+            }
+        }
+        RetryingOAuth retryingOAuth = new RetryingOAuth(tokenUrl, clientId, OAuthFlow.APPLICATION, clientSecret, parameters);
+        authentications.put(
+                "oauth",
+                retryingOAuth
+        );
+        initHttpClient(Collections.<Interceptor>singletonList(retryingOAuth));
+        // Setup authentications (key: authentication name, value: authentication).
+
+        // Prevent the authentications from being modified.
+        authentications = Collections.unmodifiableMap(authentications);
+    }
+
+    private void initHttpClient() {
+        initHttpClient(Collections.<Interceptor>emptyList());
+    }
+
+    private void initHttpClient(List<Interceptor> interceptors) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.addNetworkInterceptor(getProgressInterceptor());
-        builder.interceptors().add(retryingOAuth);
-        httpClient = builder.build();
-
-        verifyingSsl = true;
-        json = new JSON();
-        // Set default User-Agent.
-        setUserAgent("OpenAPI-Generator//java");
-    }
-
-    private RetryingOAuth createDefaultRetryingOAuth() {
-        String oauthTokenUrl = StringUtil.join(new String[]{basePath, "oauth2/token"}, "/");
-        RetryingOAuth retryingOAuth = new RetryingOAuth(oauthTokenUrl, clientId, OAuthFlow.application, clientSecret, authParameters);
-        return retryingOAuth;
-    }
-
-    private void resetRetryingOAuth() {
-        Authentication formerOAuth = authentications.get("oauth");
-        if (formerOAuth instanceof RetryingOAuth) {
-            RetryingOAuth newOauth = createDefaultRetryingOAuth();
-            authentications.replace("oauth", newOauth);
-            httpClient.interceptors().remove(formerOAuth);
-            httpClient.interceptors().add(newOauth);
+        for (Interceptor interceptor: interceptors) {
+            builder.addInterceptor(interceptor);
         }
+
+        httpClient = builder.build();
     }
 
     private void init() {
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.addNetworkInterceptor(getProgressInterceptor());
-        httpClient = builder.build();
-
-
         verifyingSsl = true;
 
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("OpenAPI-Generator//java");
+        setUserAgent("OpenAPI-Generator/0.0.230323/java");
 
         authentications = new HashMap<String, Authentication>();
     }
@@ -184,15 +228,11 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * NOTE: It is recommended to call this method before setAccessToken, setBearerToken, setApiKey or getAuthentication(s)
-     * as it may reset the authentication configuration (by setting a new oauth token base url).
-     *
-     * @param basePath Base path of the URL (e.g https://api.criteo.com )
+     * @param basePath Base path of the URL (e.g https://api.criteo.com
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {
         this.basePath = basePath;
-        resetRetryingOAuth();
         return this;
     }
 
@@ -237,7 +277,7 @@ public class ApiClient {
      *
      * @param newHttpClient An instance of OkHttpClient
      * @return Api Client
-     * @throws NullPointerException when newHttpClient is null
+     * @throws java.lang.NullPointerException when newHttpClient is null
      */
     public ApiClient setHttpClient(OkHttpClient newHttpClient) {
         this.httpClient = Objects.requireNonNull(newHttpClient, "HttpClient must not be null!");
@@ -309,6 +349,11 @@ public class ApiClient {
         return this;
     }
 
+    /**
+     * <p>Getter for the field <code>keyManagers</code>.</p>
+     *
+     * @return an array of {@link javax.net.ssl.KeyManager} objects
+     */
     public KeyManager[] getKeyManagers() {
         return keyManagers;
     }
@@ -326,32 +371,67 @@ public class ApiClient {
         return this;
     }
 
+    /**
+     * <p>Getter for the field <code>dateFormat</code>.</p>
+     *
+     * @return a {@link java.text.DateFormat} object
+     */
     public DateFormat getDateFormat() {
         return dateFormat;
     }
 
+    /**
+     * <p>Setter for the field <code>dateFormat</code>.</p>
+     *
+     * @param dateFormat a {@link java.text.DateFormat} object
+     * @return a {@link com.criteo.api.marketingsolutions.preview.ApiClient} object
+     */
     public ApiClient setDateFormat(DateFormat dateFormat) {
-        this.json.setDateFormat(dateFormat);
+        JSON.setDateFormat(dateFormat);
         return this;
     }
 
+    /**
+     * <p>Set SqlDateFormat.</p>
+     *
+     * @param dateFormat a {@link java.text.DateFormat} object
+     * @return a {@link com.criteo.api.marketingsolutions.preview.ApiClient} object
+     */
     public ApiClient setSqlDateFormat(DateFormat dateFormat) {
-        this.json.setSqlDateFormat(dateFormat);
+        JSON.setSqlDateFormat(dateFormat);
         return this;
     }
 
+    /**
+     * <p>Set OffsetDateTimeFormat.</p>
+     *
+     * @param dateFormat a {@link java.time.format.DateTimeFormatter} object
+     * @return a {@link com.criteo.api.marketingsolutions.preview.ApiClient} object
+     */
     public ApiClient setOffsetDateTimeFormat(DateTimeFormatter dateFormat) {
-        this.json.setOffsetDateTimeFormat(dateFormat);
+        JSON.setOffsetDateTimeFormat(dateFormat);
         return this;
     }
 
+    /**
+     * <p>Set LocalDateFormat.</p>
+     *
+     * @param dateFormat a {@link java.time.format.DateTimeFormatter} object
+     * @return a {@link com.criteo.api.marketingsolutions.preview.ApiClient} object
+     */
     public ApiClient setLocalDateFormat(DateTimeFormatter dateFormat) {
-        this.json.setLocalDateFormat(dateFormat);
+        JSON.setLocalDateFormat(dateFormat);
         return this;
     }
 
+    /**
+     * <p>Set LenientOnJson.</p>
+     *
+     * @param lenientOnJson a boolean
+     * @return a {@link com.criteo.api.marketingsolutions.preview.ApiClient} object
+     */
     public ApiClient setLenientOnJson(boolean lenientOnJson) {
-        this.json.setLenientOnJson(lenientOnJson);
+        JSON.setLenientOnJson(lenientOnJson);
         return this;
     }
 
@@ -361,10 +441,8 @@ public class ApiClient {
      * @return Map of authentication objects
      */
     public Map<String, Authentication> getAuthentications() {
-        // Prevent the authentications from being modified.
-        return Collections.unmodifiableMap(authentications);
+        return authentications;
     }
-
 
     /**
      * Get authentication for the given name.
@@ -376,17 +454,13 @@ public class ApiClient {
         return authentications.get(authName);
     }
 
+
     /**
      * Helper method to set username for the first HTTP basic authentication.
-     *
-     * NOTE: It is recommended to call this method before setAccessToken, setBearerToken, setApiKey or getAuthentication(s)
-     * as it may reset the authentication configuration (by setting a new oauth token base url).
      *
      * @param username Username
      */
     public void setUsername(String username) {
-        this.clientId = username;
-        resetRetryingOAuth();
         for (Authentication auth : authentications.values()) {
             if (auth instanceof HttpBasicAuth) {
                 ((HttpBasicAuth) auth).setUsername(username);
@@ -399,14 +473,9 @@ public class ApiClient {
     /**
      * Helper method to set password for the first HTTP basic authentication.
      *
-     * NOTE: It is recommended to call this method before setAccessToken, setBearerToken, setApiKey or getAuthentication(s)
-     * as it may reset the authentication configuration (by setting a new oauth token base url).
-     *
      * @param password Password
      */
     public void setPassword(String password) {
-        this.clientSecret = password;
-        resetRetryingOAuth();
         for (Authentication auth : authentications.values()) {
             if (auth instanceof HttpBasicAuth) {
                 ((HttpBasicAuth) auth).setPassword(password);
@@ -418,12 +487,13 @@ public class ApiClient {
 
     /**
      * Helper method to set API key value for the first API key authentication.
-     * @param apiKey the API key
+     *
+     * @param apiKey API key
      */
     public void setApiKey(String apiKey) {
         for (Authentication auth : authentications.values()) {
-            if (auth instanceof OAuth) {
-                ((OAuth) auth).setAccessToken(apiKey);
+            if (auth instanceof ApiKeyAuth) {
+                ((ApiKeyAuth) auth).setApiKey(apiKey);
                 return;
             }
         }
@@ -432,6 +502,7 @@ public class ApiClient {
 
     /**
      * Helper method to set API key prefix for the first API key authentication.
+     *
      * @param apiKeyPrefix API key prefix
      */
     public void setApiKeyPrefix(String apiKeyPrefix) {
@@ -457,6 +528,18 @@ public class ApiClient {
             }
         }
         throw new RuntimeException("No OAuth2 authentication configured!");
+    }
+
+    /**
+     * Helper method to set credentials for AWSV4 Signature
+     *
+     * @param accessKey Access Key
+     * @param secretKey Secret Key
+     * @param region Region
+     * @param service Service to access to
+     */
+    public void setAWS4Configuration(String accessKey, String secretKey, String region, String service) {
+        throw new RuntimeException("No AWS4 authentication configured!");
     }
 
     /**
@@ -487,7 +570,7 @@ public class ApiClient {
      *
      * @param key The cookie's key
      * @param value The cookie's value
-     * @return API client
+     * @return ApiClient
      */
     public ApiClient addDefaultCookie(String key, String value) {
         defaultCookieMap.put(key, value);
@@ -516,7 +599,9 @@ public class ApiClient {
                 loggingInterceptor.setLevel(Level.BODY);
                 httpClient = httpClient.newBuilder().addInterceptor(loggingInterceptor).build();
             } else {
-                httpClient.interceptors().remove(loggingInterceptor);
+                final OkHttpClient.Builder builder = httpClient.newBuilder();
+                builder.interceptors().remove(loggingInterceptor);
+                httpClient = builder.build();
                 loggingInterceptor = null;
             }
         }
@@ -527,9 +612,9 @@ public class ApiClient {
     /**
      * The path of temporary folder used to store downloaded files from endpoints
      * with file response. The default value is <code>null</code>, i.e. using
-     * the system's default tempopary folder.
+     * the system's default temporary folder.
      *
-     * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/io/File.html#createTempFile">createTempFile</a>
+     * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/nio/file/Files.html#createTempFile(java.lang.String,%20java.lang.String,%20java.nio.file.attribute.FileAttribute...)">createTempFile</a>
      * @return Temporary folder path
      */
     public String getTempFolderPath() {
@@ -559,7 +644,7 @@ public class ApiClient {
     /**
      * Sets the connect timeout (in milliseconds).
      * A value of 0 means no timeout, otherwise values must be between 1 and
-     * {@link Integer#MAX_VALUE}.
+     * {@link java.lang.Integer#MAX_VALUE}.
      *
      * @param connectionTimeout connection timeout in milliseconds
      * @return Api client
@@ -581,7 +666,7 @@ public class ApiClient {
     /**
      * Sets the read timeout (in milliseconds).
      * A value of 0 means no timeout, otherwise values must be between 1 and
-     * {@link Integer#MAX_VALUE}.
+     * {@link java.lang.Integer#MAX_VALUE}.
      *
      * @param readTimeout read timeout in milliseconds
      * @return Api client
@@ -603,7 +688,7 @@ public class ApiClient {
     /**
      * Sets the write timeout (in milliseconds).
      * A value of 0 means no timeout, otherwise values must be between 1 and
-     * {@link Integer#MAX_VALUE}.
+     * {@link java.lang.Integer#MAX_VALUE}.
      *
      * @param writeTimeout connection timeout in milliseconds
      * @return Api client
@@ -639,7 +724,7 @@ public class ApiClient {
             return "";
         } else if (param instanceof Date || param instanceof OffsetDateTime || param instanceof LocalDate) {
             //Serialize to json string and remove the " enclosing characters
-            String jsonStr = json.serialize(param);
+            String jsonStr = JSON.serialize(param);
             return jsonStr.substring(1, jsonStr.length() - 1);
         } else if (param instanceof Collection) {
             StringBuilder b = new StringBuilder();
@@ -647,7 +732,7 @@ public class ApiClient {
                 if (b.length() > 0) {
                     b.append(",");
                 }
-                b.append(String.valueOf(o));
+                b.append(o);
             }
             return b.toString();
         } else {
@@ -815,17 +900,23 @@ public class ApiClient {
      *
      * @param contentTypes The Content-Type array to select from
      * @return The Content-Type header to use. If the given array is empty,
-     *   or matches "any", JSON will be used.
+     *   returns null. If it matches "any", JSON will be used.
      */
     public String selectHeaderContentType(String[] contentTypes) {
-        if (contentTypes.length == 0 || contentTypes[0].equals("*/*")) {
+        if (contentTypes.length == 0) {
+            return null;
+        }
+
+        if (contentTypes[0].equals("*/*")) {
             return "application/json";
         }
+
         for (String contentType : contentTypes) {
             if (isJsonMime(contentType)) {
                 return contentType;
             }
         }
+
         return contentTypes[0];
     }
 
@@ -851,7 +942,7 @@ public class ApiClient {
      * @param response HTTP response
      * @param returnType The type of the Java object
      * @return The deserialized Java object
-     * @throws ApiException If fail to deserialize response body, i.e. cannot read response body
+     * @throws com.criteo.api.marketingsolutions.preview.ApiException If fail to deserialize response body, i.e. cannot read response body
      *   or the Content-Type of the response is not supported.
      */
     @SuppressWarnings("unchecked")
@@ -892,7 +983,7 @@ public class ApiClient {
             contentType = "application/json";
         }
         if (isJsonMime(contentType)) {
-            return json.deserialize(respBody, returnType);
+            return JSON.deserialize(respBody, returnType);
         } else if (returnType.equals(String.class)) {
             // Expecting string, return the raw response body.
             return (T) respBody;
@@ -912,23 +1003,27 @@ public class ApiClient {
      * @param obj The Java object
      * @param contentType The request Content-Type
      * @return The serialized request body
-     * @throws ApiException If fail to serialize the given object
+     * @throws com.criteo.api.marketingsolutions.preview.ApiException If fail to serialize the given object
      */
     public RequestBody serialize(Object obj, String contentType) throws ApiException {
         if (obj instanceof byte[]) {
             // Binary (byte array) body parameter support.
-            return RequestBody.create(MediaType.parse(contentType), (byte[]) obj);
+            return RequestBody.create((byte[]) obj, MediaType.parse(contentType));
         } else if (obj instanceof File) {
             // File body parameter support.
-            return RequestBody.create(MediaType.parse(contentType), (File) obj);
+            return RequestBody.create((File) obj, MediaType.parse(contentType));
+        } else if ("text/plain".equals(contentType) && obj instanceof String) {
+            return RequestBody.create((String) obj, MediaType.parse(contentType));
         } else if (isJsonMime(contentType)) {
             String content;
             if (obj != null) {
-                content = json.serialize(obj);
+                content = JSON.serialize(obj);
             } else {
                 content = null;
             }
-            return RequestBody.create(MediaType.parse(contentType), content);
+            return RequestBody.create(content, MediaType.parse(contentType));
+        } else if (obj instanceof String) {
+            return RequestBody.create((String) obj, MediaType.parse(contentType));
         } else {
             throw new ApiException("Content type \"" + contentType + "\" is not supported");
         }
@@ -938,7 +1033,7 @@ public class ApiClient {
      * Download file from the given response.
      *
      * @param response An instance of the Response object
-     * @throws ApiException If fail to read file content from response and write to disk
+     * @throws com.criteo.api.marketingsolutions.preview.ApiException If fail to read file content from response and write to disk
      * @return Downloaded file
      */
     public File downloadFileFromResponse(Response response) throws ApiException {
@@ -958,7 +1053,7 @@ public class ApiClient {
      *
      * @param response An instance of the Response object
      * @return Prepared file for the download
-     * @throws IOException If fail to prepare file for download
+     * @throws java.io.IOException If fail to prepare file for download
      */
     public File prepareDownloadFile(Response response) throws IOException {
         String filename = null;
@@ -985,15 +1080,15 @@ public class ApiClient {
                 prefix = filename.substring(0, pos) + "-";
                 suffix = filename.substring(pos);
             }
-            // File.createTempFile requires the prefix to be at least three characters long
+            // Files.createTempFile requires the prefix to be at least three characters long
             if (prefix.length() < 3)
                 prefix = "download-";
         }
 
         if (tempFolderPath == null)
-            return File.createTempFile(prefix, suffix);
+            return Files.createTempFile(prefix, suffix).toFile();
         else
-            return File.createTempFile(prefix, suffix, new File(tempFolderPath));
+            return Files.createTempFile(Paths.get(tempFolderPath), prefix, suffix).toFile();
     }
 
     /**
@@ -1002,7 +1097,7 @@ public class ApiClient {
      * @param <T> Type
      * @param call An instance of the Call object
      * @return ApiResponse&lt;T&gt;
-     * @throws ApiException If fail to execute the call
+     * @throws com.criteo.api.marketingsolutions.preview.ApiException If fail to execute the call
      */
     public <T> ApiResponse<T> execute(Call call) throws ApiException {
         return execute(call, null);
@@ -1017,7 +1112,7 @@ public class ApiClient {
      * @return ApiResponse object containing response status, headers and
      *   data, which is a Java object deserialized from response body and would be null
      *   when returnType is null.
-     * @throws ApiException If fail to execute the call
+     * @throws com.criteo.api.marketingsolutions.preview.ApiException If fail to execute the call
      */
     public <T> ApiResponse<T> execute(Call call, Type returnType) throws ApiException {
         try {
@@ -1065,6 +1160,9 @@ public class ApiClient {
                 } catch (ApiException e) {
                     callback.onFailure(e, response.code(), response.headers().toMultimap());
                     return;
+                } catch (Exception e) {
+                    callback.onFailure(new ApiException(e), response.code(), response.headers().toMultimap());
+                    return;
                 }
                 callback.onSuccess(result, response.code(), response.headers().toMultimap());
             }
@@ -1078,8 +1176,8 @@ public class ApiClient {
      * @param response Response
      * @param returnType Return type
      * @return Type
-     * @throws ApiException If the response has an unsuccessful status code or
-     *  fail to deserialize the response body
+     * @throws com.criteo.api.marketingsolutions.preview.ApiException If the response has an unsuccessful status code or
+     *                      fail to deserialize the response body
      */
     public <T> T handleResponse(Response response, Type returnType) throws ApiException {
         if (response.isSuccessful()) {
@@ -1113,6 +1211,7 @@ public class ApiClient {
     /**
      * Build HTTP call with the given options.
      *
+     * @param baseUrl The base URL
      * @param path The sub-path of the HTTP URL
      * @param method The request method, one of "GET", "HEAD", "OPTIONS", "POST", "PUT", "PATCH" and "DELETE"
      * @param queryParams The query parameters
@@ -1124,16 +1223,18 @@ public class ApiClient {
      * @param authNames The authentications to apply
      * @param callback Callback for upload/download progress
      * @return The HTTP call
-     * @throws ApiException If fail to serialize the request body object
+     * @throws com.criteo.api.marketingsolutions.preview.ApiException If fail to serialize the request body object
      */
-    public Call buildCall(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, String> cookieParams, Map<String, Object> formParams, String[] authNames, ApiCallback callback) throws ApiException {
-        Request request = buildRequest(path, method, queryParams, collectionQueryParams, body, headerParams, cookieParams, formParams, authNames, callback);
+    public Call buildCall(String baseUrl, String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, String> cookieParams, Map<String, Object> formParams, String[] authNames, ApiCallback callback) throws ApiException {
+        Request request = buildRequest(baseUrl, path, method, queryParams, collectionQueryParams, body, headerParams, cookieParams, formParams, authNames, callback);
+
         return httpClient.newCall(request);
     }
 
     /**
      * Build an HTTP request with the given options.
      *
+     * @param baseUrl The base URL
      * @param path The sub-path of the HTTP URL
      * @param method The request method, one of "GET", "HEAD", "OPTIONS", "POST", "PUT", "PATCH" and "DELETE"
      * @param queryParams The query parameters
@@ -1145,29 +1246,19 @@ public class ApiClient {
      * @param authNames The authentications to apply
      * @param callback Callback for upload/download progress
      * @return The HTTP request
-     * @throws ApiException If fail to serialize the request body object
+     * @throws com.criteo.api.marketingsolutions.preview.ApiException If fail to serialize the request body object
      */
-    public Request buildRequest(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, String> cookieParams, Map<String, Object> formParams, String[] authNames, ApiCallback callback) throws ApiException {
-        if (!"/oauth2/token".equals(path)) {
-            String explicitUserToken = headerParams.get("Authorization");
-            if (explicitUserToken == null || explicitUserToken.isEmpty()) {
-                refreshTokenIfNotValid();
-            }
-        }
+    public Request buildRequest(String baseUrl, String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, String> cookieParams, Map<String, Object> formParams, String[] authNames, ApiCallback callback) throws ApiException {
+        // aggregate queryParams (non-collection) and collectionQueryParams into allQueryParams
+        List<Pair> allQueryParams = new ArrayList<Pair>(queryParams);
+        allQueryParams.addAll(collectionQueryParams);
 
-        updateParamsForAuth(authNames, queryParams, headerParams, cookieParams);
+        final String url = buildUrl(baseUrl, path, queryParams, collectionQueryParams);
 
-        final String url = buildUrl(path, queryParams, collectionQueryParams);
-        final Request.Builder reqBuilder = new Request.Builder().url(url);
-        processHeaderParams(headerParams, reqBuilder);
-
-        String contentType = (String) headerParams.get("Content-Type");
-        // ensuring a default content type
-        if (contentType == null) {
-            contentType = "application/json";
-        }
-
+        // prepare HTTP request body
         RequestBody reqBody;
+        String contentType = headerParams.get("Content-Type");
+
         if (!HttpMethod.permitsRequestBody(method)) {
             reqBody = null;
         } else if ("application/x-www-form-urlencoded".equals(contentType)) {
@@ -1180,11 +1271,18 @@ public class ApiClient {
                 reqBody = null;
             } else {
                 // use an empty request body (for POST, PUT and PATCH)
-                reqBody = RequestBody.create(MediaType.parse(contentType), "");
+                reqBody = RequestBody.create("", contentType == null ? null : MediaType.parse(contentType));
             }
         } else {
             reqBody = serialize(body, contentType);
         }
+
+        // update parameters with authentication settings
+        updateParamsForAuth(authNames, allQueryParams, headerParams, cookieParams, requestBodyToString(reqBody), method, URI.create(url));
+
+        final Request.Builder reqBuilder = new Request.Builder().url(url);
+        processHeaderParams(headerParams, reqBuilder);
+        processCookieParams(cookieParams, reqBuilder);
 
         // Associate callback with request (if not null) so interceptor can
         // access it when creating ProgressResponseBody
@@ -1205,25 +1303,30 @@ public class ApiClient {
     /**
      * Build full URL by concatenating base path, the given sub path and query parameters.
      *
+     * @param baseUrl The base URL
      * @param path The sub path
      * @param queryParams The query parameters
      * @param collectionQueryParams The collection query parameters
      * @return The full URL
      */
-    public String buildUrl(String path, List<Pair> queryParams, List<Pair> collectionQueryParams) {
-        String baseURL;
-        if (serverIndex != null) {
-            if (serverIndex < 0 || serverIndex >= servers.size()) {
-                throw new ArrayIndexOutOfBoundsException(String.format(
-                    "Invalid index %d when selecting the host settings. Must be less than %d", serverIndex, servers.size()
-                ));
-            }
-            baseURL = servers.get(serverIndex).URL(serverVariables);
-        } else {
-            baseURL = basePath;
-        }
+    public String buildUrl(String baseUrl, String path, List<Pair> queryParams, List<Pair> collectionQueryParams) {
         final StringBuilder url = new StringBuilder();
-        url.append(baseURL).append(path);
+        if (baseUrl != null) {
+            url.append(baseUrl).append(path);
+        } else {
+            String baseURL;
+            if (serverIndex != null) {
+                if (serverIndex < 0 || serverIndex >= servers.size()) {
+                    throw new ArrayIndexOutOfBoundsException(String.format(
+                    "Invalid index %d when selecting the host settings. Must be less than %d", serverIndex, servers.size()
+                    ));
+                }
+                baseURL = servers.get(serverIndex).URL(serverVariables);
+            } else {
+                baseURL = basePath;
+            }
+            url.append(baseURL).append(path);
+        }
 
         if (queryParams != null && !queryParams.isEmpty()) {
             // support (constant) query string in `path`, e.g. "/posts?draft=1"
@@ -1265,8 +1368,8 @@ public class ApiClient {
     /**
      * Set header parameters to the request builder, including default headers.
      *
-     * @param headerParams Header parameters in the ofrm of Map
-     * @param reqBuilder Reqeust.Builder
+     * @param headerParams Header parameters in the form of Map
+     * @param reqBuilder Request.Builder
      */
     public void processHeaderParams(Map<String, String> headerParams, Request.Builder reqBuilder) {
         for (Entry<String, String> param : headerParams.entrySet()) {
@@ -1280,20 +1383,42 @@ public class ApiClient {
     }
 
     /**
+     * Set cookie parameters to the request builder, including default cookies.
+     *
+     * @param cookieParams Cookie parameters in the form of Map
+     * @param reqBuilder Request.Builder
+     */
+    public void processCookieParams(Map<String, String> cookieParams, Request.Builder reqBuilder) {
+        for (Entry<String, String> param : cookieParams.entrySet()) {
+            reqBuilder.addHeader("Cookie", String.format("%s=%s", param.getKey(), param.getValue()));
+        }
+        for (Entry<String, String> param : defaultCookieMap.entrySet()) {
+            if (!cookieParams.containsKey(param.getKey())) {
+                reqBuilder.addHeader("Cookie", String.format("%s=%s", param.getKey(), param.getValue()));
+            }
+        }
+    }
+
+    /**
      * Update query and header parameters based on authentication settings.
      *
      * @param authNames The authentications to apply
      * @param queryParams List of query parameters
      * @param headerParams Map of header parameters
-     * @param cookieParams Cookie parameters
+     * @param cookieParams Map of cookie parameters
+     * @param payload HTTP request body
+     * @param method HTTP method
+     * @param uri URI
+     * @throws com.criteo.api.marketingsolutions.preview.ApiException If fails to update the parameters
      */
-    public void updateParamsForAuth(String[] authNames, List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams) {
+    public void updateParamsForAuth(String[] authNames, List<Pair> queryParams, Map<String, String> headerParams,
+                                    Map<String, String> cookieParams, String payload, String method, URI uri) throws ApiException {
         for (String authName : authNames) {
             Authentication auth = authentications.get(authName);
             if (auth == null) {
                 throw new RuntimeException("Authentication undefined: " + authName);
             }
-            auth.applyToParams(queryParams, headerParams, cookieParams);
+            auth.applyToParams(queryParams, headerParams, cookieParams, payload, method, uri);
         }
     }
 
@@ -1323,12 +1448,18 @@ public class ApiClient {
         for (Entry<String, Object> param : formParams.entrySet()) {
             if (param.getValue() instanceof File) {
                 File file = (File) param.getValue();
-                Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + param.getKey() + "\"; filename=\"" + file.getName() + "\"");
-                MediaType mediaType = MediaType.parse(guessContentTypeFromFile(file));
-                mpBuilder.addPart(partHeaders, RequestBody.create(mediaType, file));
+                addPartToMultiPartBuilder(mpBuilder, param.getKey(), file);
+            } else if (param.getValue() instanceof List) {
+                List list = (List) param.getValue();
+                for (Object item: list) {
+                    if (item instanceof File) {
+                        addPartToMultiPartBuilder(mpBuilder, param.getKey(), (File) item);
+                    } else {
+                        addPartToMultiPartBuilder(mpBuilder, param.getKey(), param.getValue());
+                    }
+                }
             } else {
-                Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + param.getKey() + "\"");
-                mpBuilder.addPart(partHeaders, RequestBody.create(null, parameterToString(param.getValue())));
+                addPartToMultiPartBuilder(mpBuilder, param.getKey(), param.getValue());
             }
         }
         return mpBuilder.build();
@@ -1347,6 +1478,44 @@ public class ApiClient {
         } else {
             return contentType;
         }
+    }
+
+    /**
+     * Add a Content-Disposition Header for the given key and file to the MultipartBody Builder.
+     *
+     * @param mpBuilder MultipartBody.Builder 
+     * @param key The key of the Header element
+     * @param file The file to add to the Header
+     */ 
+    private void addPartToMultiPartBuilder(MultipartBody.Builder mpBuilder, String key, File file) {
+        Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + key + "\"; filename=\"" + file.getName() + "\"");
+        MediaType mediaType = MediaType.parse(guessContentTypeFromFile(file));
+        mpBuilder.addPart(partHeaders, RequestBody.create(file, mediaType));
+    }
+
+    /**
+     * Add a Content-Disposition Header for the given key and complex object to the MultipartBody Builder.
+     *
+     * @param mpBuilder MultipartBody.Builder
+     * @param key The key of the Header element
+     * @param obj The complex object to add to the Header
+     */
+    private void addPartToMultiPartBuilder(MultipartBody.Builder mpBuilder, String key, Object obj) {
+        RequestBody requestBody;
+        if (obj instanceof String) {
+            requestBody = RequestBody.create((String) obj, MediaType.parse("text/plain"));
+        } else {
+            String content;
+            if (obj != null) {
+                content = JSON.serialize(obj);
+            } else {
+                content = null;
+            }
+            requestBody = RequestBody.create(content, MediaType.parse("application/json"));
+        }
+
+        Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + key + "\"");
+        mpBuilder.addPart(partHeaders, requestBody);
     }
 
     /**
@@ -1376,8 +1545,8 @@ public class ApiClient {
      */
     private void applySslSettings() {
         try {
-            TrustManager[] trustManagers = null;
-            HostnameVerifier hostnameVerifier = null;
+            TrustManager[] trustManagers;
+            HostnameVerifier hostnameVerifier;
             if (!verifyingSsl) {
                 trustManagers = new TrustManager[]{
                         new X509TrustManager() {
@@ -1395,40 +1564,42 @@ public class ApiClient {
                             }
                         }
                 };
-                SSLContext sslContext = SSLContext.getInstance("TLS");
                 hostnameVerifier = new HostnameVerifier() {
                     @Override
                     public boolean verify(String hostname, SSLSession session) {
                         return true;
                     }
                 };
-            } else if (sslCaCert != null) {
-                char[] password = null; // Any password will work.
-                CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
-                Collection<? extends Certificate> certificates = certificateFactory.generateCertificates(sslCaCert);
-                if (certificates.isEmpty()) {
-                    throw new IllegalArgumentException("expected non-empty set of trusted certificates");
-                }
-                KeyStore caKeyStore = newEmptyKeyStore(password);
-                int index = 0;
-                for (Certificate certificate : certificates) {
-                    String certificateAlias = "ca" + Integer.toString(index++);
-                    caKeyStore.setCertificateEntry(certificateAlias, certificate);
-                }
-                TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-                trustManagerFactory.init(caKeyStore);
-                trustManagers = trustManagerFactory.getTrustManagers();
-            }
-
-            if (keyManagers != null || trustManagers != null) {
-                SSLContext sslContext = SSLContext.getInstance("TLS");
-                sslContext.init(keyManagers, trustManagers, new SecureRandom());
-                httpClient = httpClient.newBuilder().sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustManagers[0]).build();
             } else {
-                httpClient = httpClient.newBuilder().sslSocketFactory(null, (X509TrustManager) trustManagers[0]).build();
+                TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+
+                if (sslCaCert == null) {
+                    trustManagerFactory.init((KeyStore) null);
+                } else {
+                    char[] password = null; // Any password will work.
+                    CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
+                    Collection<? extends Certificate> certificates = certificateFactory.generateCertificates(sslCaCert);
+                    if (certificates.isEmpty()) {
+                        throw new IllegalArgumentException("expected non-empty set of trusted certificates");
+                    }
+                    KeyStore caKeyStore = newEmptyKeyStore(password);
+                    int index = 0;
+                    for (Certificate certificate : certificates) {
+                        String certificateAlias = "ca" + (index++);
+                        caKeyStore.setCertificateEntry(certificateAlias, certificate);
+                    }
+                    trustManagerFactory.init(caKeyStore);
+                }
+                trustManagers = trustManagerFactory.getTrustManagers();
+                hostnameVerifier = OkHostnameVerifier.INSTANCE;
             }
 
-            httpClient = httpClient.newBuilder().hostnameVerifier(hostnameVerifier).build();
+            SSLContext sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(keyManagers, trustManagers, new SecureRandom());
+            httpClient = httpClient.newBuilder()
+                            .sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustManagers[0])
+                            .hostnameVerifier(hostnameVerifier)
+                            .build();
         } catch (GeneralSecurityException e) {
             throw new RuntimeException(e);
         }
@@ -1444,35 +1615,25 @@ public class ApiClient {
         }
     }
 
-    private static class TokenInfo {
-        private static long DURATION_BEFORE_REFRESH = 15;
-
-        private long expiresOn;
-
-        public TokenInfo(long expiresOn) {
-            this.expiresOn = expiresOn;
+    /**
+     * Convert the HTTP request body to a string.
+     *
+     * @param requestBody The HTTP request object
+     * @return The string representation of the HTTP request body
+     * @throws com.criteo.api.marketingsolutions.preview.ApiException If fail to serialize the request body object into a string
+     */
+    private String requestBodyToString(RequestBody requestBody) throws ApiException {
+        if (requestBody != null) {
+            try {
+                final Buffer buffer = new Buffer();
+                requestBody.writeTo(buffer);
+                return buffer.readUtf8();
+            } catch (final IOException e) {
+                throw new ApiException(e);
+            }
         }
 
-        public boolean isValid() {
-            return expiresOn - (System.currentTimeMillis() / 1000) > DURATION_BEFORE_REFRESH;
-        }
-    }
-
-    private void refreshTokenIfNotValid() throws ApiException {
-        OAuth oauth = (OAuth) this.getAuthentication("oauth");
-        String accessToken = oauth.getAccessToken();
-
-        if (accessToken != null && this.tokenInfo != null && this.tokenInfo.isValid()) {
-            return;
-        }
-    
-        HttpBasicAuth auth = (HttpBasicAuth)authentications.get("CriteoHttpBasicAuth");
-        if (auth.getUsername() == null || auth.getPassword() == null) {
-            throw new IllegalArgumentException("username or password is not present.");
-        }
-        AccessTokenModel response = (new OAuthApi(this)).getToken(
-            "client_credentials", auth.getUsername(), auth.getPassword(), null, null, null);
-        tokenInfo = new TokenInfo(response.getExpiresIn() + System.currentTimeMillis() / 1000);
-        this.setApiKey(response.getAccessToken());
+        // empty http request body
+        return "";
     }
 }

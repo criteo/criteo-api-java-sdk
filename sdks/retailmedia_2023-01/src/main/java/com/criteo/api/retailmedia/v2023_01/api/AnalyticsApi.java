@@ -36,9 +36,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class AnalyticsApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public AnalyticsApi() {
         this(Configuration.getDefaultApiClient());
@@ -54,6 +57,22 @@ public class AnalyticsApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
+    }
+
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
     }
 
     /**
@@ -72,11 +91,24 @@ public class AnalyticsApi {
      </table>
      */
     public okhttp3.Call getReportOutputCall(String reportId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2023-01/retail-media/reports/{reportId}/output"
-            .replaceAll("\\{" + "reportId" + "\\}", localVarApiClient.escapeString(reportId.toString()));
+            .replace("{" + "reportId" + "}", localVarApiClient.escapeString(reportId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -93,26 +125,24 @@ public class AnalyticsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getReportOutputValidateBeforeCall(String reportId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'reportId' is set
         if (reportId == null) {
             throw new ApiException("Missing the required parameter 'reportId' when calling getReportOutput(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getReportOutputCall(reportId, _callback);
-        return localVarCall;
+        return getReportOutputCall(reportId, _callback);
 
     }
 
@@ -196,11 +226,24 @@ public class AnalyticsApi {
      </table>
      */
     public okhttp3.Call getReportStatusCall(String reportId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/2023-01/retail-media/reports/{reportId}/status"
-            .replaceAll("\\{" + "reportId" + "\\}", localVarApiClient.escapeString(reportId.toString()));
+            .replace("{" + "reportId" + "}", localVarApiClient.escapeString(reportId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -217,26 +260,24 @@ public class AnalyticsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getReportStatusValidateBeforeCall(String reportId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'reportId' is set
         if (reportId == null) {
             throw new ApiException("Missing the required parameter 'reportId' when calling getReportStatus(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = getReportStatusCall(reportId, _callback);
-        return localVarCall;
+        return getReportStatusCall(reportId, _callback);
 
     }
 
@@ -320,6 +361,19 @@ public class AnalyticsApi {
      </table>
      */
     public okhttp3.Call requestCampaignReportCall(EnvelopeReportRequest envelopeReportRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = envelopeReportRequest;
 
         // create path and map variables
@@ -343,23 +397,22 @@ public class AnalyticsApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call requestCampaignReportValidateBeforeCall(EnvelopeReportRequest envelopeReportRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'envelopeReportRequest' is set
         if (envelopeReportRequest == null) {
             throw new ApiException("Missing the required parameter 'envelopeReportRequest' when calling requestCampaignReport(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = requestCampaignReportCall(envelopeReportRequest, _callback);
-        return localVarCall;
+        return requestCampaignReportCall(envelopeReportRequest, _callback);
 
     }
 
@@ -443,6 +496,19 @@ public class AnalyticsApi {
      </table>
      */
     public okhttp3.Call requestLineItemReportCall(EnvelopeReportRequest envelopeReportRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = envelopeReportRequest;
 
         // create path and map variables
@@ -466,23 +532,22 @@ public class AnalyticsApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
         String[] localVarAuthNames = new String[] { "oauth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call requestLineItemReportValidateBeforeCall(EnvelopeReportRequest envelopeReportRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'envelopeReportRequest' is set
         if (envelopeReportRequest == null) {
             throw new ApiException("Missing the required parameter 'envelopeReportRequest' when calling requestLineItemReport(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = requestLineItemReportCall(envelopeReportRequest, _callback);
-        return localVarCall;
+        return requestLineItemReportCall(envelopeReportRequest, _callback);
 
     }
 

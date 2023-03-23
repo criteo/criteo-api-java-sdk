@@ -6,9 +6,9 @@ Request for a contactlist amendment
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**data** | [**ContactlistAmendment**](ContactlistAmendment.md) |  | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**data** | [**ContactlistAmendment**](ContactlistAmendment.md) |  |  |
 
 
 

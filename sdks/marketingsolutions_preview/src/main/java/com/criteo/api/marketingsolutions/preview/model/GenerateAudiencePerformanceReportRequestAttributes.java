@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.marketingsolutions.preview.JSON;
+
 /**
  * Request attributes for async audience performance report
  */
-@ApiModel(description = "Request attributes for async audience performance report")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class GenerateAudiencePerformanceReportRequestAttributes {
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
@@ -189,6 +207,8 @@ public class GenerateAudiencePerformanceReportRequestAttributes {
   @SerializedName(SERIALIZED_NAME_SEGMENTS_IDS)
   private List<String> segmentsIds = null;
 
+  public GenerateAudiencePerformanceReportRequestAttributes() {
+  }
 
   public GenerateAudiencePerformanceReportRequestAttributes startDate(OffsetDateTime startDate) {
     
@@ -201,7 +221,6 @@ public class GenerateAudiencePerformanceReportRequestAttributes {
    * @return startDate
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.")
 
   public OffsetDateTime getStartDate() {
     return startDate;
@@ -224,7 +243,6 @@ public class GenerateAudiencePerformanceReportRequestAttributes {
    * @return endDate
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.")
 
   public OffsetDateTime getEndDate() {
     return endDate;
@@ -247,7 +265,6 @@ public class GenerateAudiencePerformanceReportRequestAttributes {
    * @return advertiserId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The advertiser id")
 
   public String getAdvertiserId() {
     return advertiserId;
@@ -270,7 +287,6 @@ public class GenerateAudiencePerformanceReportRequestAttributes {
    * @return timezone
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The timezone used for the report. Timezone Database format (Tz).")
 
   public String getTimezone() {
     return timezone;
@@ -293,7 +309,6 @@ public class GenerateAudiencePerformanceReportRequestAttributes {
    * @return dimension
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The dimension for the report.")
 
   public DimensionEnum getDimension() {
     return dimension;
@@ -321,7 +336,6 @@ public class GenerateAudiencePerformanceReportRequestAttributes {
    * @return metrics
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The list of metrics to report.")
 
   public List<MetricsEnum> getMetrics() {
     return metrics;
@@ -344,7 +358,6 @@ public class GenerateAudiencePerformanceReportRequestAttributes {
    * @return currency
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The currency used for the report. ISO 4217 code (three-letter capitals).")
 
   public String getCurrency() {
     return currency;
@@ -375,7 +388,6 @@ public class GenerateAudiencePerformanceReportRequestAttributes {
    * @return adSetIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of adSets ids. If empty, all the adSets will be fetched.")
 
   public List<String> getAdSetIds() {
     return adSetIds;
@@ -406,7 +418,6 @@ public class GenerateAudiencePerformanceReportRequestAttributes {
    * @return audienceIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of Audiences ids. If empty, all the Audiences will be fetched")
 
   public List<String> getAudienceIds() {
     return audienceIds;
@@ -437,7 +448,6 @@ public class GenerateAudiencePerformanceReportRequestAttributes {
    * @return segmentsIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of Segments ids. If empty, all the segments will be fetched")
 
   public List<String> getSegmentsIds() {
     return segmentsIds;
@@ -446,6 +456,51 @@ public class GenerateAudiencePerformanceReportRequestAttributes {
 
   public void setSegmentsIds(List<String> segmentsIds) {
     this.segmentsIds = segmentsIds;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the GenerateAudiencePerformanceReportRequestAttributes instance itself
+   */
+  public GenerateAudiencePerformanceReportRequestAttributes putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -467,12 +522,13 @@ public class GenerateAudiencePerformanceReportRequestAttributes {
         Objects.equals(this.currency, generateAudiencePerformanceReportRequestAttributes.currency) &&
         Objects.equals(this.adSetIds, generateAudiencePerformanceReportRequestAttributes.adSetIds) &&
         Objects.equals(this.audienceIds, generateAudiencePerformanceReportRequestAttributes.audienceIds) &&
-        Objects.equals(this.segmentsIds, generateAudiencePerformanceReportRequestAttributes.segmentsIds);
+        Objects.equals(this.segmentsIds, generateAudiencePerformanceReportRequestAttributes.segmentsIds)&&
+        Objects.equals(this.additionalProperties, generateAudiencePerformanceReportRequestAttributes.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, advertiserId, timezone, dimension, metrics, currency, adSetIds, audienceIds, segmentsIds);
+    return Objects.hash(startDate, endDate, advertiserId, timezone, dimension, metrics, currency, adSetIds, audienceIds, segmentsIds, additionalProperties);
   }
 
   @Override
@@ -489,6 +545,7 @@ public class GenerateAudiencePerformanceReportRequestAttributes {
     sb.append("    adSetIds: ").append(toIndentedString(adSetIds)).append("\n");
     sb.append("    audienceIds: ").append(toIndentedString(audienceIds)).append("\n");
     sb.append("    segmentsIds: ").append(toIndentedString(segmentsIds)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -504,5 +561,168 @@ public class GenerateAudiencePerformanceReportRequestAttributes {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("startDate");
+    openapiFields.add("endDate");
+    openapiFields.add("advertiserId");
+    openapiFields.add("timezone");
+    openapiFields.add("dimension");
+    openapiFields.add("metrics");
+    openapiFields.add("currency");
+    openapiFields.add("adSetIds");
+    openapiFields.add("audienceIds");
+    openapiFields.add("segmentsIds");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("startDate");
+    openapiRequiredFields.add("endDate");
+    openapiRequiredFields.add("advertiserId");
+    openapiRequiredFields.add("dimension");
+    openapiRequiredFields.add("metrics");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to GenerateAudiencePerformanceReportRequestAttributes
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!GenerateAudiencePerformanceReportRequestAttributes.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in GenerateAudiencePerformanceReportRequestAttributes is not found in the empty JSON string", GenerateAudiencePerformanceReportRequestAttributes.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : GenerateAudiencePerformanceReportRequestAttributes.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("advertiserId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `advertiserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserId").toString()));
+      }
+      if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));
+      }
+      if (!jsonObj.get("dimension").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `dimension` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dimension").toString()));
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("metrics") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("metrics").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));
+      }
+      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("adSetIds") != null && !jsonObj.get("adSetIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `adSetIds` to be an array in the JSON string but got `%s`", jsonObj.get("adSetIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("audienceIds") != null && !jsonObj.get("audienceIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `audienceIds` to be an array in the JSON string but got `%s`", jsonObj.get("audienceIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("segmentsIds") != null && !jsonObj.get("segmentsIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `segmentsIds` to be an array in the JSON string but got `%s`", jsonObj.get("segmentsIds").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!GenerateAudiencePerformanceReportRequestAttributes.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'GenerateAudiencePerformanceReportRequestAttributes' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<GenerateAudiencePerformanceReportRequestAttributes> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(GenerateAudiencePerformanceReportRequestAttributes.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<GenerateAudiencePerformanceReportRequestAttributes>() {
+           @Override
+           public void write(JsonWriter out, GenerateAudiencePerformanceReportRequestAttributes value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public GenerateAudiencePerformanceReportRequestAttributes read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             GenerateAudiencePerformanceReportRequestAttributes instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of GenerateAudiencePerformanceReportRequestAttributes given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of GenerateAudiencePerformanceReportRequestAttributes
+  * @throws IOException if the JSON string is invalid with respect to GenerateAudiencePerformanceReportRequestAttributes
+  */
+  public static GenerateAudiencePerformanceReportRequestAttributes fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, GenerateAudiencePerformanceReportRequestAttributes.class);
+  }
+
+ /**
+  * Convert an instance of GenerateAudiencePerformanceReportRequestAttributes to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

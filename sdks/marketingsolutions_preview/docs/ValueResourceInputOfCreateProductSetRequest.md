@@ -6,9 +6,9 @@ Represents an API request message containing the usual valueResource data field,
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**data** | [**ValueResourceOfCreateProductSetRequest**](ValueResourceOfCreateProductSetRequest.md) |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**data** | [**ValueResourceOfCreateProductSetRequest**](ValueResourceOfCreateProductSetRequest.md) |  |  [optional] |
 
 
 

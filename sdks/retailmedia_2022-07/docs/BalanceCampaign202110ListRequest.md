@@ -6,9 +6,9 @@ A class implementing the request of the Criteo API as described in API Guild Gui
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**data** | [**List&lt;ResourceOfBalanceCampaign202110&gt;**](ResourceOfBalanceCampaign202110.md) |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**data** | [**List&lt;ResourceOfBalanceCampaign202110&gt;**](ResourceOfBalanceCampaign202110.md) |  |  [optional] |
 
 
 

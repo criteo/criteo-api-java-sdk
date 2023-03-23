@@ -20,17 +20,34 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.marketingsolutions.v2022_10.JSON;
 
 /**
  * Criteo API response error
  */
-@ApiModel(description = "Criteo API response error")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CriteoApiError {
   public static final String SERIALIZED_NAME_TRACE_ID = "traceId";
@@ -177,6 +194,8 @@ public class CriteoApiError {
   @SerializedName(SERIALIZED_NAME_SOURCE)
   private Map<String, String> source = null;
 
+  public CriteoApiError() {
+  }
 
   public CriteoApiError traceId(String traceId) {
     
@@ -189,7 +208,6 @@ public class CriteoApiError {
    * @return traceId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The correlation ID provided by the gateway")
 
   public String getTraceId() {
     return traceId;
@@ -212,7 +230,6 @@ public class CriteoApiError {
    * @return type
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "access_control", value = "A machine-readable code specifying error category")
 
   public TypeEnum getType() {
     return type;
@@ -235,7 +252,6 @@ public class CriteoApiError {
    * @return code
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "internal-error", value = "A machine-readable error code string in kabab-case. Unique across Criteo")
 
   public CodeEnum getCode() {
     return code;
@@ -258,7 +274,6 @@ public class CriteoApiError {
    * @return instance
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A URI reference that identifies the specific occurrence of the problem")
 
   public String getInstance() {
     return instance;
@@ -281,7 +296,6 @@ public class CriteoApiError {
    * @return title
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A short, human-readable remarks of the problem type.")
 
   public String getTitle() {
     return title;
@@ -304,7 +318,6 @@ public class CriteoApiError {
    * @return detail
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A human-readable explanation specific to this occurrence of the problem.")
 
   public String getDetail() {
     return detail;
@@ -335,7 +348,6 @@ public class CriteoApiError {
    * @return source
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A machine-readable structure to reference to the exact location(s) causing the error(s).")
 
   public Map<String, String> getSource() {
     return source;
@@ -344,6 +356,51 @@ public class CriteoApiError {
 
   public void setSource(Map<String, String> source) {
     this.source = source;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the CriteoApiError instance itself
+   */
+  public CriteoApiError putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -362,12 +419,13 @@ public class CriteoApiError {
         Objects.equals(this.instance, criteoApiError.instance) &&
         Objects.equals(this.title, criteoApiError.title) &&
         Objects.equals(this.detail, criteoApiError.detail) &&
-        Objects.equals(this.source, criteoApiError.source);
+        Objects.equals(this.source, criteoApiError.source)&&
+        Objects.equals(this.additionalProperties, criteoApiError.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(traceId, type, code, instance, title, detail, source);
+    return Objects.hash(traceId, type, code, instance, title, detail, source, additionalProperties);
   }
 
   @Override
@@ -381,6 +439,7 @@ public class CriteoApiError {
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -396,5 +455,141 @@ public class CriteoApiError {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("traceId");
+    openapiFields.add("type");
+    openapiFields.add("code");
+    openapiFields.add("instance");
+    openapiFields.add("title");
+    openapiFields.add("detail");
+    openapiFields.add("source");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to CriteoApiError
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!CriteoApiError.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CriteoApiError is not found in the empty JSON string", CriteoApiError.openapiRequiredFields.toString()));
+        }
+      }
+      if ((jsonObj.get("traceId") != null && !jsonObj.get("traceId").isJsonNull()) && !jsonObj.get("traceId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `traceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("traceId").toString()));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      }
+      if ((jsonObj.get("instance") != null && !jsonObj.get("instance").isJsonNull()) && !jsonObj.get("instance").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instance").toString()));
+      }
+      if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
+      }
+      if ((jsonObj.get("detail") != null && !jsonObj.get("detail").isJsonNull()) && !jsonObj.get("detail").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `detail` to be a primitive type in the JSON string but got `%s`", jsonObj.get("detail").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CriteoApiError.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CriteoApiError' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CriteoApiError> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CriteoApiError.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CriteoApiError>() {
+           @Override
+           public void write(JsonWriter out, CriteoApiError value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CriteoApiError read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             CriteoApiError instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of CriteoApiError given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CriteoApiError
+  * @throws IOException if the JSON string is invalid with respect to CriteoApiError
+  */
+  public static CriteoApiError fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CriteoApiError.class);
+  }
+
+ /**
+  * Convert an instance of CriteoApiError to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

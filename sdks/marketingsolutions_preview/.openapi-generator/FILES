@@ -1,3 +1,4 @@
+.github/workflows/maven.yml
 .gitignore
 .openapi-generator-ignore
 .travis.yml
@@ -256,6 +257,7 @@ docs/MarketingSolutionsReportStatusResource.md
 docs/MarketingSolutionsReportStatusResponse.md
 docs/ModifyAudienceResponse.md
 docs/NillableAdSetTargetingRule.md
+docs/NillableAdSetTargetingRuleValue.md
 docs/NillableDateTime.md
 docs/NillableDecimal.md
 docs/NillableGenderV1.md
@@ -403,6 +405,7 @@ src/examples/java/criteo/api/examples/StatisticsApplication.java
 src/main/AndroidManifest.xml
 src/main/java/com/criteo/api/marketingsolutions/preview/ApiCallback.java
 src/main/java/com/criteo/api/marketingsolutions/preview/ApiClient.java
+src/main/java/com/criteo/api/marketingsolutions/preview/ApiClientBuilder.java
 src/main/java/com/criteo/api/marketingsolutions/preview/ApiException.java
 src/main/java/com/criteo/api/marketingsolutions/preview/ApiResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/Configuration.java
@@ -432,6 +435,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/auth/OAuth.java
 src/main/java/com/criteo/api/marketingsolutions/preview/auth/OAuthFlow.java
 src/main/java/com/criteo/api/marketingsolutions/preview/auth/OAuthOkHttpClient.java
 src/main/java/com/criteo/api/marketingsolutions/preview/auth/RetryingOAuth.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/AbstractOpenApiSchema.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AccessTokenModel.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Ad.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdListResponse.java
@@ -676,6 +680,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/MarketingSolutions
 src/main/java/com/criteo/api/marketingsolutions/preview/model/MarketingSolutionsReportStatusResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ModifyAudienceResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableAdSetTargetingRule.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableAdSetTargetingRuleValue.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableDateTime.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableDecimal.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableGenderV1.java

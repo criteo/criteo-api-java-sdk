@@ -30,16 +30,34 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.marketingsolutions.preview.JSON;
+
 /**
  * Defines a product to be inserted or updated.
  */
-@ApiModel(description = "Defines a product to be inserted or updated.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Product {
   public static final String SERIALIZED_NAME_ID = "id";
@@ -391,6 +409,8 @@ public class Product {
   @SerializedName(SERIALIZED_NAME_SELLER_ID)
   private String sellerId;
 
+  public Product() {
+  }
 
   public Product id(String id) {
     
@@ -403,7 +423,6 @@ public class Product {
    * @return id
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "A unique identifier for the item. Aka Product ID.")
 
   public String getId() {
     return id;
@@ -426,7 +445,6 @@ public class Product {
    * @return offerId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Not used by Criteo.")
 
   public String getOfferId() {
     return offerId;
@@ -449,7 +467,6 @@ public class Product {
    * @return title
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Title of the item. (500 UTF8 characters max).")
 
   public String getTitle() {
     return title;
@@ -472,7 +489,6 @@ public class Product {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Description of the item. RECOMMENDED. (5000 UTF8 characters max).")
 
   public String getDescription() {
     return description;
@@ -495,7 +511,6 @@ public class Product {
    * @return link
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "URL directly linking to your item's page on your website. (1000 UTF8 characters max).")
 
   public String getLink() {
     return link;
@@ -518,7 +533,6 @@ public class Product {
    * @return imageLink
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "URL of an image of the item. Supported formats: PNG, JPEG, GIF. (2000 UTF8 characters max). ")
 
   public String getImageLink() {
     return imageLink;
@@ -549,7 +563,6 @@ public class Product {
    * @return additionalImageLinks
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Additional URLs of images of the item.")
 
   public List<String> getAdditionalImageLinks() {
     return additionalImageLinks;
@@ -572,7 +585,6 @@ public class Product {
    * @return contentLanguage
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The two-letter ISO 639-1 language code for the item.")
 
   public String getContentLanguage() {
     return contentLanguage;
@@ -595,7 +607,6 @@ public class Product {
    * @return targetCountry
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The CLDR territory code for the item.")
 
   public String getTargetCountry() {
     return targetCountry;
@@ -618,7 +629,6 @@ public class Product {
    * @return channel
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The item's channel (online only).")
 
   public ChannelEnum getChannel() {
     return channel;
@@ -641,7 +651,6 @@ public class Product {
    * @return expirationDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Date on which the item should expire, as specified upon insertion, in ISO 8601 format.")
 
   public String getExpirationDate() {
     return expirationDate;
@@ -664,7 +673,6 @@ public class Product {
    * @return adult
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Set to true if the item is targeted towards adults. RECOMMENDED.")
 
   public Boolean getAdult() {
     return adult;
@@ -687,7 +695,6 @@ public class Product {
    * @return kind
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Identifies what kind of resource this is.")
 
   public String getKind() {
     return kind;
@@ -710,7 +717,6 @@ public class Product {
    * @return brand
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Brand of the item. RECOMMENDED.")
 
   public String getBrand() {
     return brand;
@@ -733,7 +739,6 @@ public class Product {
    * @return color
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Color of the item.")
 
   public String getColor() {
     return color;
@@ -756,7 +761,6 @@ public class Product {
    * @return googleProductCategory
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Google's category of the item (see Google product taxonomy). RECOMMENDED.")
 
   public String getGoogleProductCategory() {
     return googleProductCategory;
@@ -779,7 +783,6 @@ public class Product {
    * @return gtin
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Global Trade Item Number (GTIN) of the item. RECOMMENDED.")
 
   public String getGtin() {
     return gtin;
@@ -802,7 +805,6 @@ public class Product {
    * @return itemGroupId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Shared identifier for all variants of the same product. RECOMMENDED.")
 
   public String getItemGroupId() {
     return itemGroupId;
@@ -825,7 +827,6 @@ public class Product {
    * @return material
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The material of which the item is made.")
 
   public String getMaterial() {
     return material;
@@ -848,7 +849,6 @@ public class Product {
    * @return mpn
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Manufacturer Part Number (MPN) of the item. RECOMMENDED.")
 
   public String getMpn() {
     return mpn;
@@ -871,7 +871,6 @@ public class Product {
    * @return pattern
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The item's pattern (e.g. polka dots).")
 
   public String getPattern() {
     return pattern;
@@ -894,7 +893,6 @@ public class Product {
    * @return price
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Price getPrice() {
     return price;
@@ -917,7 +915,6 @@ public class Product {
    * @return salePrice
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Price getSalePrice() {
     return salePrice;
@@ -940,7 +937,6 @@ public class Product {
    * @return salePriceEffectiveDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Date range during which the item is on sale.")
 
   public String getSalePriceEffectiveDate() {
     return salePriceEffectiveDate;
@@ -971,7 +967,6 @@ public class Product {
    * @return shipping
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Shipping rules.")
 
   public List<ProductShipping> getShipping() {
     return shipping;
@@ -994,7 +989,6 @@ public class Product {
    * @return shippingWeight
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public ProductShippingWeight getShippingWeight() {
     return shippingWeight;
@@ -1025,7 +1019,6 @@ public class Product {
    * @return sizes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Size of the item. RECOMMENDED. Only one value is allowed. For variants with different sizes, insert a separate product for each size with the same itemGroupId value.")
 
   public List<String> getSizes() {
     return sizes;
@@ -1056,7 +1049,6 @@ public class Product {
    * @return taxes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Tax information.")
 
   public List<ProductTax> getTaxes() {
     return taxes;
@@ -1087,7 +1079,6 @@ public class Product {
    * @return customAttributes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A list of custom (merchant-provided) attributes. This is useful for submitting attributes not explicitly exposed by the API. Declaring attributes explicitly exposed by the API using is forbidden")
 
   public List<CustomAttribute> getCustomAttributes() {
     return customAttributes;
@@ -1110,7 +1101,6 @@ public class Product {
    * @return identifierExists
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "False when the item does not have unique product identifiers appropriate to its category, such as GTIN, MPN, and brand. Required according to the Unique Product Identifier Rules for all target countries except for Canada.")
 
   public Boolean getIdentifierExists() {
     return identifierExists;
@@ -1133,7 +1123,6 @@ public class Product {
    * @return installment
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Installment getInstallment() {
     return installment;
@@ -1156,7 +1145,6 @@ public class Product {
    * @return loyaltyPoints
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public LoyaltyPoints getLoyaltyPoints() {
     return loyaltyPoints;
@@ -1179,7 +1167,6 @@ public class Product {
    * @return multipack
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The number of identical products in a merchant-defined multipack. To avoid any overflow issue, pass it as a string.")
 
   public Long getMultipack() {
     return multipack;
@@ -1202,7 +1189,6 @@ public class Product {
    * @return customLabel0
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Custom label 0 for custom grouping of items in a Shopping campaign.")
 
   public String getCustomLabel0() {
     return customLabel0;
@@ -1225,7 +1211,6 @@ public class Product {
    * @return customLabel1
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Custom label 1 for custom grouping of items in a Shopping campaign.")
 
   public String getCustomLabel1() {
     return customLabel1;
@@ -1248,7 +1233,6 @@ public class Product {
    * @return customLabel2
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Custom label 2 for custom grouping of items in a Shopping campaign.")
 
   public String getCustomLabel2() {
     return customLabel2;
@@ -1271,7 +1255,6 @@ public class Product {
    * @return customLabel3
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Custom label 3 for custom grouping of items in a Shopping campaign.")
 
   public String getCustomLabel3() {
     return customLabel3;
@@ -1294,7 +1277,6 @@ public class Product {
    * @return customLabel4
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Custom label 4 for custom grouping of items in a Shopping campaign.")
 
   public String getCustomLabel4() {
     return customLabel4;
@@ -1317,7 +1299,6 @@ public class Product {
    * @return isBundle
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Whether the item is a merchant-defined bundle. A bundle is a custom grouping of different products sold by a merchant for a single price.")
 
   public Boolean getIsBundle() {
     return isBundle;
@@ -1340,7 +1321,6 @@ public class Product {
    * @return mobileLink
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "accounts.link to a mobile-optimized version of the landing page.")
 
   public String getMobileLink() {
     return mobileLink;
@@ -1363,7 +1343,6 @@ public class Product {
    * @return availabilityDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The day a pre-ordered product becomes available for delivery, in ISO 8601 format.")
 
   public String getAvailabilityDate() {
     return availabilityDate;
@@ -1386,7 +1365,6 @@ public class Product {
    * @return shippingLabel
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The shipping label of the product, used to group product in account-level shipping rules.")
 
   public String getShippingLabel() {
     return shippingLabel;
@@ -1409,7 +1387,6 @@ public class Product {
    * @return unitPricingMeasure
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public ProductUnitPricingMeasure getUnitPricingMeasure() {
     return unitPricingMeasure;
@@ -1432,7 +1409,6 @@ public class Product {
    * @return unitPricingBaseMeasure
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public ProductUnitPricingBaseMeasure getUnitPricingBaseMeasure() {
     return unitPricingBaseMeasure;
@@ -1455,7 +1431,6 @@ public class Product {
    * @return shippingLength
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public ProductShippingDimension getShippingLength() {
     return shippingLength;
@@ -1478,7 +1453,6 @@ public class Product {
    * @return shippingWidth
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public ProductShippingDimension getShippingWidth() {
     return shippingWidth;
@@ -1501,7 +1475,6 @@ public class Product {
    * @return shippingHeight
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public ProductShippingDimension getShippingHeight() {
     return shippingHeight;
@@ -1524,7 +1497,6 @@ public class Product {
    * @return displayAdsId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "An identifier for an item for dynamic remarketing campaigns.")
 
   public String getDisplayAdsId() {
     return displayAdsId;
@@ -1555,7 +1527,6 @@ public class Product {
    * @return displayAdsSimilarIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Advertiser-specified recommendations.")
 
   public List<String> getDisplayAdsSimilarIds() {
     return displayAdsSimilarIds;
@@ -1578,7 +1549,6 @@ public class Product {
    * @return displayAdsTitle
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Title of an item for dynamic remarketing campaigns.")
 
   public String getDisplayAdsTitle() {
     return displayAdsTitle;
@@ -1601,7 +1571,6 @@ public class Product {
    * @return displayAdsLink
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "URL directly to your item's landing page for dynamic remarketing campaigns.")
 
   public String getDisplayAdsLink() {
     return displayAdsLink;
@@ -1624,7 +1593,6 @@ public class Product {
    * @return displayAdsValue
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Offer margin for dynamic remarketing campaigns.")
 
   public Double getDisplayAdsValue() {
     return displayAdsValue;
@@ -1647,7 +1615,6 @@ public class Product {
    * @return sellOnGoogleQuantity
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The quantity of the product that is available for selling on Google. Supported only for online products.")
 
   public Long getSellOnGoogleQuantity() {
     return sellOnGoogleQuantity;
@@ -1678,7 +1645,6 @@ public class Product {
    * @return promotionIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The unique ID of a promotion.")
 
   public List<String> getPromotionIds() {
     return promotionIds;
@@ -1701,7 +1667,6 @@ public class Product {
    * @return maxHandlingTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Maximal product handling time (in business days).")
 
   public Long getMaxHandlingTime() {
     return maxHandlingTime;
@@ -1724,7 +1689,6 @@ public class Product {
    * @return minHandlingTime
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Minimal product handling time (in business days).")
 
   public Long getMinHandlingTime() {
     return minHandlingTime;
@@ -1747,7 +1711,6 @@ public class Product {
    * @return costOfGoodsSold
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Price getCostOfGoodsSold() {
     return costOfGoodsSold;
@@ -1770,7 +1733,6 @@ public class Product {
    * @return source
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The source of the offer, i.e., how the offer was created.")
 
   public String getSource() {
     return source;
@@ -1801,7 +1763,6 @@ public class Product {
    * @return includedDestinations
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of destinations to include for this target (corresponds to checked check boxes in Merchant Center). Default destinations are always included unless provided in excludedDestinations.")
 
   public List<String> getIncludedDestinations() {
     return includedDestinations;
@@ -1832,7 +1793,6 @@ public class Product {
    * @return excludedDestinations
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of destinations to exclude for this target (corresponds to unchecked check boxes in Merchant Center).")
 
   public List<String> getExcludedDestinations() {
     return excludedDestinations;
@@ -1855,7 +1815,6 @@ public class Product {
    * @return adsGrouping
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Used to group items in an arbitrary way. Only for CPA%, discouraged otherwise.")
 
   public String getAdsGrouping() {
     return adsGrouping;
@@ -1886,7 +1845,6 @@ public class Product {
    * @return adsLabels
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Similar to adsGrouping, but only works on CPC.")
 
   public List<String> getAdsLabels() {
     return adsLabels;
@@ -1909,7 +1867,6 @@ public class Product {
    * @return adsRedirect
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Allows advertisers to override the item URL when the product is shown within the context of Product Ads.")
 
   public String getAdsRedirect() {
     return adsRedirect;
@@ -1940,7 +1897,6 @@ public class Product {
    * @return productTypes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Categories of the item (formatted as in products data specification).")
 
   public List<String> getProductTypes() {
     return productTypes;
@@ -1963,7 +1919,6 @@ public class Product {
    * @return ageGroup
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Target age group of the item.")
 
   public String getAgeGroup() {
     return ageGroup;
@@ -1986,7 +1941,6 @@ public class Product {
    * @return availability
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Availability status of the item. RECOMMENDED.")
 
   public String getAvailability() {
     return availability;
@@ -2009,7 +1963,6 @@ public class Product {
    * @return condition
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Condition or state of the item.")
 
   public String getCondition() {
     return condition;
@@ -2032,7 +1985,6 @@ public class Product {
    * @return gender
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Target gender of the item.")
 
   public String getGender() {
     return gender;
@@ -2055,7 +2007,6 @@ public class Product {
    * @return sizeSystem
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "System in which the size is specified. Recommended for apparel items.")
 
   public String getSizeSystem() {
     return sizeSystem;
@@ -2078,7 +2029,6 @@ public class Product {
    * @return sizeType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The cut of the item. Recommended for apparel items.")
 
   public String getSizeType() {
     return sizeType;
@@ -2101,7 +2051,6 @@ public class Product {
    * @return energyEfficiencyClass
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The energy efficiency class as defined in EU directive 2010/30/EU.")
 
   public String getEnergyEfficiencyClass() {
     return energyEfficiencyClass;
@@ -2124,7 +2073,6 @@ public class Product {
    * @return minEnergyEfficiencyClass
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The energy efficiency class as defined in EU directive 2010/30/EU.")
 
   public String getMinEnergyEfficiencyClass() {
     return minEnergyEfficiencyClass;
@@ -2147,7 +2095,6 @@ public class Product {
    * @return maxEnergyEfficiencyClass
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The energy efficiency class as defined in EU directive 2010/30/EU.")
 
   public String getMaxEnergyEfficiencyClass() {
     return maxEnergyEfficiencyClass;
@@ -2170,7 +2117,6 @@ public class Product {
    * @return taxCategory
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The tax category of the product, used to configure detailed tax nexus in account-level tax settings.")
 
   public String getTaxCategory() {
     return taxCategory;
@@ -2193,7 +2139,6 @@ public class Product {
    * @return transitTimeLabel
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The transit time label of the product, used to group product in account-level transit time tables.")
 
   public String getTransitTimeLabel() {
     return transitTimeLabel;
@@ -2216,7 +2161,6 @@ public class Product {
    * @return sellerId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the seller (case sensitive and 50 UTF8 characters max). This information is required by the Criteo Offsite Ads.")
 
   public String getSellerId() {
     return sellerId;
@@ -2225,6 +2169,51 @@ public class Product {
 
   public void setSellerId(String sellerId) {
     this.sellerId = sellerId;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the Product instance itself
+   */
+  public Product putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -2312,12 +2301,13 @@ public class Product {
         Objects.equals(this.maxEnergyEfficiencyClass, product.maxEnergyEfficiencyClass) &&
         Objects.equals(this.taxCategory, product.taxCategory) &&
         Objects.equals(this.transitTimeLabel, product.transitTimeLabel) &&
-        Objects.equals(this.sellerId, product.sellerId);
+        Objects.equals(this.sellerId, product.sellerId)&&
+        Objects.equals(this.additionalProperties, product.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, offerId, title, description, link, imageLink, additionalImageLinks, contentLanguage, targetCountry, channel, expirationDate, adult, kind, brand, color, googleProductCategory, gtin, itemGroupId, material, mpn, pattern, price, salePrice, salePriceEffectiveDate, shipping, shippingWeight, sizes, taxes, customAttributes, identifierExists, installment, loyaltyPoints, multipack, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, isBundle, mobileLink, availabilityDate, shippingLabel, unitPricingMeasure, unitPricingBaseMeasure, shippingLength, shippingWidth, shippingHeight, displayAdsId, displayAdsSimilarIds, displayAdsTitle, displayAdsLink, displayAdsValue, sellOnGoogleQuantity, promotionIds, maxHandlingTime, minHandlingTime, costOfGoodsSold, source, includedDestinations, excludedDestinations, adsGrouping, adsLabels, adsRedirect, productTypes, ageGroup, availability, condition, gender, sizeSystem, sizeType, energyEfficiencyClass, minEnergyEfficiencyClass, maxEnergyEfficiencyClass, taxCategory, transitTimeLabel, sellerId);
+    return Objects.hash(id, offerId, title, description, link, imageLink, additionalImageLinks, contentLanguage, targetCountry, channel, expirationDate, adult, kind, brand, color, googleProductCategory, gtin, itemGroupId, material, mpn, pattern, price, salePrice, salePriceEffectiveDate, shipping, shippingWeight, sizes, taxes, customAttributes, identifierExists, installment, loyaltyPoints, multipack, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, isBundle, mobileLink, availabilityDate, shippingLabel, unitPricingMeasure, unitPricingBaseMeasure, shippingLength, shippingWidth, shippingHeight, displayAdsId, displayAdsSimilarIds, displayAdsTitle, displayAdsLink, displayAdsValue, sellOnGoogleQuantity, promotionIds, maxHandlingTime, minHandlingTime, costOfGoodsSold, source, includedDestinations, excludedDestinations, adsGrouping, adsLabels, adsRedirect, productTypes, ageGroup, availability, condition, gender, sizeSystem, sizeType, energyEfficiencyClass, minEnergyEfficiencyClass, maxEnergyEfficiencyClass, taxCategory, transitTimeLabel, sellerId, additionalProperties);
   }
 
   @Override
@@ -2400,6 +2390,7 @@ public class Product {
     sb.append("    taxCategory: ").append(toIndentedString(taxCategory)).append("\n");
     sb.append("    transitTimeLabel: ").append(toIndentedString(transitTimeLabel)).append("\n");
     sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -2415,5 +2406,460 @@ public class Product {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("id");
+    openapiFields.add("offerId");
+    openapiFields.add("title");
+    openapiFields.add("description");
+    openapiFields.add("link");
+    openapiFields.add("imageLink");
+    openapiFields.add("additionalImageLinks");
+    openapiFields.add("contentLanguage");
+    openapiFields.add("targetCountry");
+    openapiFields.add("channel");
+    openapiFields.add("expirationDate");
+    openapiFields.add("adult");
+    openapiFields.add("kind");
+    openapiFields.add("brand");
+    openapiFields.add("color");
+    openapiFields.add("googleProductCategory");
+    openapiFields.add("gtin");
+    openapiFields.add("itemGroupId");
+    openapiFields.add("material");
+    openapiFields.add("mpn");
+    openapiFields.add("pattern");
+    openapiFields.add("price");
+    openapiFields.add("salePrice");
+    openapiFields.add("salePriceEffectiveDate");
+    openapiFields.add("shipping");
+    openapiFields.add("shippingWeight");
+    openapiFields.add("sizes");
+    openapiFields.add("taxes");
+    openapiFields.add("customAttributes");
+    openapiFields.add("identifierExists");
+    openapiFields.add("installment");
+    openapiFields.add("loyaltyPoints");
+    openapiFields.add("multipack");
+    openapiFields.add("customLabel0");
+    openapiFields.add("customLabel1");
+    openapiFields.add("customLabel2");
+    openapiFields.add("customLabel3");
+    openapiFields.add("customLabel4");
+    openapiFields.add("isBundle");
+    openapiFields.add("mobileLink");
+    openapiFields.add("availabilityDate");
+    openapiFields.add("shippingLabel");
+    openapiFields.add("unitPricingMeasure");
+    openapiFields.add("unitPricingBaseMeasure");
+    openapiFields.add("shippingLength");
+    openapiFields.add("shippingWidth");
+    openapiFields.add("shippingHeight");
+    openapiFields.add("displayAdsId");
+    openapiFields.add("displayAdsSimilarIds");
+    openapiFields.add("displayAdsTitle");
+    openapiFields.add("displayAdsLink");
+    openapiFields.add("displayAdsValue");
+    openapiFields.add("sellOnGoogleQuantity");
+    openapiFields.add("promotionIds");
+    openapiFields.add("maxHandlingTime");
+    openapiFields.add("minHandlingTime");
+    openapiFields.add("costOfGoodsSold");
+    openapiFields.add("source");
+    openapiFields.add("includedDestinations");
+    openapiFields.add("excludedDestinations");
+    openapiFields.add("adsGrouping");
+    openapiFields.add("adsLabels");
+    openapiFields.add("adsRedirect");
+    openapiFields.add("productTypes");
+    openapiFields.add("ageGroup");
+    openapiFields.add("availability");
+    openapiFields.add("condition");
+    openapiFields.add("gender");
+    openapiFields.add("sizeSystem");
+    openapiFields.add("sizeType");
+    openapiFields.add("energyEfficiencyClass");
+    openapiFields.add("minEnergyEfficiencyClass");
+    openapiFields.add("maxEnergyEfficiencyClass");
+    openapiFields.add("taxCategory");
+    openapiFields.add("transitTimeLabel");
+    openapiFields.add("sellerId");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("id");
+    openapiRequiredFields.add("title");
+    openapiRequiredFields.add("link");
+    openapiRequiredFields.add("imageLink");
+    openapiRequiredFields.add("channel");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Product
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!Product.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Product is not found in the empty JSON string", Product.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : Product.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("offerId") != null && !jsonObj.get("offerId").isJsonNull()) && !jsonObj.get("offerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `offerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("offerId").toString()));
+      }
+      if (!jsonObj.get("title").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if (!jsonObj.get("link").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("link").toString()));
+      }
+      if (!jsonObj.get("imageLink").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `imageLink` to be a primitive type in the JSON string but got `%s`", jsonObj.get("imageLink").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("additionalImageLinks") != null && !jsonObj.get("additionalImageLinks").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `additionalImageLinks` to be an array in the JSON string but got `%s`", jsonObj.get("additionalImageLinks").toString()));
+      }
+      if ((jsonObj.get("contentLanguage") != null && !jsonObj.get("contentLanguage").isJsonNull()) && !jsonObj.get("contentLanguage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `contentLanguage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("contentLanguage").toString()));
+      }
+      if ((jsonObj.get("targetCountry") != null && !jsonObj.get("targetCountry").isJsonNull()) && !jsonObj.get("targetCountry").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `targetCountry` to be a primitive type in the JSON string but got `%s`", jsonObj.get("targetCountry").toString()));
+      }
+      if (!jsonObj.get("channel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
+      }
+      if ((jsonObj.get("expirationDate") != null && !jsonObj.get("expirationDate").isJsonNull()) && !jsonObj.get("expirationDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `expirationDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("expirationDate").toString()));
+      }
+      if ((jsonObj.get("kind") != null && !jsonObj.get("kind").isJsonNull()) && !jsonObj.get("kind").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `kind` to be a primitive type in the JSON string but got `%s`", jsonObj.get("kind").toString()));
+      }
+      if ((jsonObj.get("brand") != null && !jsonObj.get("brand").isJsonNull()) && !jsonObj.get("brand").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `brand` to be a primitive type in the JSON string but got `%s`", jsonObj.get("brand").toString()));
+      }
+      if ((jsonObj.get("color") != null && !jsonObj.get("color").isJsonNull()) && !jsonObj.get("color").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `color` to be a primitive type in the JSON string but got `%s`", jsonObj.get("color").toString()));
+      }
+      if ((jsonObj.get("googleProductCategory") != null && !jsonObj.get("googleProductCategory").isJsonNull()) && !jsonObj.get("googleProductCategory").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `googleProductCategory` to be a primitive type in the JSON string but got `%s`", jsonObj.get("googleProductCategory").toString()));
+      }
+      if ((jsonObj.get("gtin") != null && !jsonObj.get("gtin").isJsonNull()) && !jsonObj.get("gtin").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `gtin` to be a primitive type in the JSON string but got `%s`", jsonObj.get("gtin").toString()));
+      }
+      if ((jsonObj.get("itemGroupId") != null && !jsonObj.get("itemGroupId").isJsonNull()) && !jsonObj.get("itemGroupId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `itemGroupId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("itemGroupId").toString()));
+      }
+      if ((jsonObj.get("material") != null && !jsonObj.get("material").isJsonNull()) && !jsonObj.get("material").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `material` to be a primitive type in the JSON string but got `%s`", jsonObj.get("material").toString()));
+      }
+      if ((jsonObj.get("mpn") != null && !jsonObj.get("mpn").isJsonNull()) && !jsonObj.get("mpn").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `mpn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mpn").toString()));
+      }
+      if ((jsonObj.get("pattern") != null && !jsonObj.get("pattern").isJsonNull()) && !jsonObj.get("pattern").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pattern` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pattern").toString()));
+      }
+      // validate the optional field `price`
+      if (jsonObj.get("price") != null && !jsonObj.get("price").isJsonNull()) {
+        Price.validateJsonObject(jsonObj.getAsJsonObject("price"));
+      }
+      // validate the optional field `salePrice`
+      if (jsonObj.get("salePrice") != null && !jsonObj.get("salePrice").isJsonNull()) {
+        Price.validateJsonObject(jsonObj.getAsJsonObject("salePrice"));
+      }
+      if ((jsonObj.get("salePriceEffectiveDate") != null && !jsonObj.get("salePriceEffectiveDate").isJsonNull()) && !jsonObj.get("salePriceEffectiveDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `salePriceEffectiveDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("salePriceEffectiveDate").toString()));
+      }
+      if (jsonObj.get("shipping") != null && !jsonObj.get("shipping").isJsonNull()) {
+        JsonArray jsonArrayshipping = jsonObj.getAsJsonArray("shipping");
+        if (jsonArrayshipping != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("shipping").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `shipping` to be an array in the JSON string but got `%s`", jsonObj.get("shipping").toString()));
+          }
+
+          // validate the optional field `shipping` (array)
+          for (int i = 0; i < jsonArrayshipping.size(); i++) {
+            ProductShipping.validateJsonObject(jsonArrayshipping.get(i).getAsJsonObject());
+          };
+        }
+      }
+      // validate the optional field `shippingWeight`
+      if (jsonObj.get("shippingWeight") != null && !jsonObj.get("shippingWeight").isJsonNull()) {
+        ProductShippingWeight.validateJsonObject(jsonObj.getAsJsonObject("shippingWeight"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("sizes") != null && !jsonObj.get("sizes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sizes` to be an array in the JSON string but got `%s`", jsonObj.get("sizes").toString()));
+      }
+      if (jsonObj.get("taxes") != null && !jsonObj.get("taxes").isJsonNull()) {
+        JsonArray jsonArraytaxes = jsonObj.getAsJsonArray("taxes");
+        if (jsonArraytaxes != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("taxes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `taxes` to be an array in the JSON string but got `%s`", jsonObj.get("taxes").toString()));
+          }
+
+          // validate the optional field `taxes` (array)
+          for (int i = 0; i < jsonArraytaxes.size(); i++) {
+            ProductTax.validateJsonObject(jsonArraytaxes.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if (jsonObj.get("customAttributes") != null && !jsonObj.get("customAttributes").isJsonNull()) {
+        JsonArray jsonArraycustomAttributes = jsonObj.getAsJsonArray("customAttributes");
+        if (jsonArraycustomAttributes != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("customAttributes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `customAttributes` to be an array in the JSON string but got `%s`", jsonObj.get("customAttributes").toString()));
+          }
+
+          // validate the optional field `customAttributes` (array)
+          for (int i = 0; i < jsonArraycustomAttributes.size(); i++) {
+            CustomAttribute.validateJsonObject(jsonArraycustomAttributes.get(i).getAsJsonObject());
+          };
+        }
+      }
+      // validate the optional field `installment`
+      if (jsonObj.get("installment") != null && !jsonObj.get("installment").isJsonNull()) {
+        Installment.validateJsonObject(jsonObj.getAsJsonObject("installment"));
+      }
+      // validate the optional field `loyaltyPoints`
+      if (jsonObj.get("loyaltyPoints") != null && !jsonObj.get("loyaltyPoints").isJsonNull()) {
+        LoyaltyPoints.validateJsonObject(jsonObj.getAsJsonObject("loyaltyPoints"));
+      }
+      if ((jsonObj.get("customLabel0") != null && !jsonObj.get("customLabel0").isJsonNull()) && !jsonObj.get("customLabel0").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `customLabel0` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customLabel0").toString()));
+      }
+      if ((jsonObj.get("customLabel1") != null && !jsonObj.get("customLabel1").isJsonNull()) && !jsonObj.get("customLabel1").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `customLabel1` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customLabel1").toString()));
+      }
+      if ((jsonObj.get("customLabel2") != null && !jsonObj.get("customLabel2").isJsonNull()) && !jsonObj.get("customLabel2").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `customLabel2` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customLabel2").toString()));
+      }
+      if ((jsonObj.get("customLabel3") != null && !jsonObj.get("customLabel3").isJsonNull()) && !jsonObj.get("customLabel3").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `customLabel3` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customLabel3").toString()));
+      }
+      if ((jsonObj.get("customLabel4") != null && !jsonObj.get("customLabel4").isJsonNull()) && !jsonObj.get("customLabel4").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `customLabel4` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customLabel4").toString()));
+      }
+      if ((jsonObj.get("mobileLink") != null && !jsonObj.get("mobileLink").isJsonNull()) && !jsonObj.get("mobileLink").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `mobileLink` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mobileLink").toString()));
+      }
+      if ((jsonObj.get("availabilityDate") != null && !jsonObj.get("availabilityDate").isJsonNull()) && !jsonObj.get("availabilityDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `availabilityDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("availabilityDate").toString()));
+      }
+      if ((jsonObj.get("shippingLabel") != null && !jsonObj.get("shippingLabel").isJsonNull()) && !jsonObj.get("shippingLabel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `shippingLabel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shippingLabel").toString()));
+      }
+      // validate the optional field `unitPricingMeasure`
+      if (jsonObj.get("unitPricingMeasure") != null && !jsonObj.get("unitPricingMeasure").isJsonNull()) {
+        ProductUnitPricingMeasure.validateJsonObject(jsonObj.getAsJsonObject("unitPricingMeasure"));
+      }
+      // validate the optional field `unitPricingBaseMeasure`
+      if (jsonObj.get("unitPricingBaseMeasure") != null && !jsonObj.get("unitPricingBaseMeasure").isJsonNull()) {
+        ProductUnitPricingBaseMeasure.validateJsonObject(jsonObj.getAsJsonObject("unitPricingBaseMeasure"));
+      }
+      // validate the optional field `shippingLength`
+      if (jsonObj.get("shippingLength") != null && !jsonObj.get("shippingLength").isJsonNull()) {
+        ProductShippingDimension.validateJsonObject(jsonObj.getAsJsonObject("shippingLength"));
+      }
+      // validate the optional field `shippingWidth`
+      if (jsonObj.get("shippingWidth") != null && !jsonObj.get("shippingWidth").isJsonNull()) {
+        ProductShippingDimension.validateJsonObject(jsonObj.getAsJsonObject("shippingWidth"));
+      }
+      // validate the optional field `shippingHeight`
+      if (jsonObj.get("shippingHeight") != null && !jsonObj.get("shippingHeight").isJsonNull()) {
+        ProductShippingDimension.validateJsonObject(jsonObj.getAsJsonObject("shippingHeight"));
+      }
+      if ((jsonObj.get("displayAdsId") != null && !jsonObj.get("displayAdsId").isJsonNull()) && !jsonObj.get("displayAdsId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `displayAdsId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayAdsId").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("displayAdsSimilarIds") != null && !jsonObj.get("displayAdsSimilarIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `displayAdsSimilarIds` to be an array in the JSON string but got `%s`", jsonObj.get("displayAdsSimilarIds").toString()));
+      }
+      if ((jsonObj.get("displayAdsTitle") != null && !jsonObj.get("displayAdsTitle").isJsonNull()) && !jsonObj.get("displayAdsTitle").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `displayAdsTitle` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayAdsTitle").toString()));
+      }
+      if ((jsonObj.get("displayAdsLink") != null && !jsonObj.get("displayAdsLink").isJsonNull()) && !jsonObj.get("displayAdsLink").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `displayAdsLink` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayAdsLink").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("promotionIds") != null && !jsonObj.get("promotionIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `promotionIds` to be an array in the JSON string but got `%s`", jsonObj.get("promotionIds").toString()));
+      }
+      // validate the optional field `costOfGoodsSold`
+      if (jsonObj.get("costOfGoodsSold") != null && !jsonObj.get("costOfGoodsSold").isJsonNull()) {
+        Price.validateJsonObject(jsonObj.getAsJsonObject("costOfGoodsSold"));
+      }
+      if ((jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) && !jsonObj.get("source").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("includedDestinations") != null && !jsonObj.get("includedDestinations").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `includedDestinations` to be an array in the JSON string but got `%s`", jsonObj.get("includedDestinations").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("excludedDestinations") != null && !jsonObj.get("excludedDestinations").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `excludedDestinations` to be an array in the JSON string but got `%s`", jsonObj.get("excludedDestinations").toString()));
+      }
+      if ((jsonObj.get("adsGrouping") != null && !jsonObj.get("adsGrouping").isJsonNull()) && !jsonObj.get("adsGrouping").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `adsGrouping` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adsGrouping").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("adsLabels") != null && !jsonObj.get("adsLabels").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `adsLabels` to be an array in the JSON string but got `%s`", jsonObj.get("adsLabels").toString()));
+      }
+      if ((jsonObj.get("adsRedirect") != null && !jsonObj.get("adsRedirect").isJsonNull()) && !jsonObj.get("adsRedirect").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `adsRedirect` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adsRedirect").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("productTypes") != null && !jsonObj.get("productTypes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `productTypes` to be an array in the JSON string but got `%s`", jsonObj.get("productTypes").toString()));
+      }
+      if ((jsonObj.get("ageGroup") != null && !jsonObj.get("ageGroup").isJsonNull()) && !jsonObj.get("ageGroup").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ageGroup` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ageGroup").toString()));
+      }
+      if ((jsonObj.get("availability") != null && !jsonObj.get("availability").isJsonNull()) && !jsonObj.get("availability").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `availability` to be a primitive type in the JSON string but got `%s`", jsonObj.get("availability").toString()));
+      }
+      if ((jsonObj.get("condition") != null && !jsonObj.get("condition").isJsonNull()) && !jsonObj.get("condition").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `condition` to be a primitive type in the JSON string but got `%s`", jsonObj.get("condition").toString()));
+      }
+      if ((jsonObj.get("gender") != null && !jsonObj.get("gender").isJsonNull()) && !jsonObj.get("gender").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `gender` to be a primitive type in the JSON string but got `%s`", jsonObj.get("gender").toString()));
+      }
+      if ((jsonObj.get("sizeSystem") != null && !jsonObj.get("sizeSystem").isJsonNull()) && !jsonObj.get("sizeSystem").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sizeSystem` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sizeSystem").toString()));
+      }
+      if ((jsonObj.get("sizeType") != null && !jsonObj.get("sizeType").isJsonNull()) && !jsonObj.get("sizeType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sizeType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sizeType").toString()));
+      }
+      if ((jsonObj.get("energyEfficiencyClass") != null && !jsonObj.get("energyEfficiencyClass").isJsonNull()) && !jsonObj.get("energyEfficiencyClass").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `energyEfficiencyClass` to be a primitive type in the JSON string but got `%s`", jsonObj.get("energyEfficiencyClass").toString()));
+      }
+      if ((jsonObj.get("minEnergyEfficiencyClass") != null && !jsonObj.get("minEnergyEfficiencyClass").isJsonNull()) && !jsonObj.get("minEnergyEfficiencyClass").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `minEnergyEfficiencyClass` to be a primitive type in the JSON string but got `%s`", jsonObj.get("minEnergyEfficiencyClass").toString()));
+      }
+      if ((jsonObj.get("maxEnergyEfficiencyClass") != null && !jsonObj.get("maxEnergyEfficiencyClass").isJsonNull()) && !jsonObj.get("maxEnergyEfficiencyClass").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `maxEnergyEfficiencyClass` to be a primitive type in the JSON string but got `%s`", jsonObj.get("maxEnergyEfficiencyClass").toString()));
+      }
+      if ((jsonObj.get("taxCategory") != null && !jsonObj.get("taxCategory").isJsonNull()) && !jsonObj.get("taxCategory").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `taxCategory` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxCategory").toString()));
+      }
+      if ((jsonObj.get("transitTimeLabel") != null && !jsonObj.get("transitTimeLabel").isJsonNull()) && !jsonObj.get("transitTimeLabel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transitTimeLabel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transitTimeLabel").toString()));
+      }
+      if ((jsonObj.get("sellerId") != null && !jsonObj.get("sellerId").isJsonNull()) && !jsonObj.get("sellerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sellerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sellerId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Product.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Product' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Product> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Product.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Product>() {
+           @Override
+           public void write(JsonWriter out, Product value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Product read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             Product instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Product given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Product
+  * @throws IOException if the JSON string is invalid with respect to Product
+  */
+  public static Product fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Product.class);
+  }
+
+ /**
+  * Convert an instance of Product to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

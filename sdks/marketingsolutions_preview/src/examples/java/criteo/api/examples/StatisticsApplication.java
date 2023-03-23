@@ -1,6 +1,7 @@
 package com.criteo.marketing.examples;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.ApiResponse;
 import com.criteo.api.marketingsolutions.preview.Configuration;
@@ -13,9 +14,10 @@ import java.util.List;
 
 public class StatisticsApplication {
     public static void main(String[] args) {
-        ApiClient client = Configuration.getDefaultApiClient();
-        client.setUsername("client-id");
-        client.setPassword("client-secret");
+        String clientId = "client-id";
+        String clientSecret = "client-secret";
+
+        ApiClient client = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
 
         // Uncomment the following line to enable debugging logs.
         // client.setDebugging(true);

@@ -24,14 +24,32 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
  * A creative is a project with the necessary information to display a creative
  */
-@ApiModel(description = "A creative is a project with the necessary information to display a creative")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Creative {
   public static final String SERIALIZED_NAME_NAME = "name";
@@ -78,6 +96,8 @@ public class Creative {
   @SerializedName(SERIALIZED_NAME_ADAPTIVE_ATTRIBUTES)
   private AdaptiveAttributes adaptiveAttributes;
 
+  public Creative() {
+  }
 
   public Creative name(String name) {
     
@@ -90,7 +110,6 @@ public class Creative {
    * @return name
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The name of the creative")
 
   public String getName() {
     return name;
@@ -113,7 +132,6 @@ public class Creative {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The description of the creative")
 
   public String getDescription() {
     return description;
@@ -136,7 +154,6 @@ public class Creative {
    * @return author
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The login of the person who created this creative (")
 
   public String getAuthor() {
     return author;
@@ -159,7 +176,6 @@ public class Creative {
    * @return status
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The status of the creative")
 
   public String getStatus() {
     return status;
@@ -182,7 +198,6 @@ public class Creative {
    * @return format
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The format of the creative")
 
   public String getFormat() {
     return format;
@@ -205,7 +220,6 @@ public class Creative {
    * @return advertiserId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Advertiser linked to the Creative")
 
   public String getAdvertiserId() {
     return advertiserId;
@@ -228,7 +242,6 @@ public class Creative {
    * @return datasetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Data set id linked to the Creative")
 
   public String getDatasetId() {
     return datasetId;
@@ -251,7 +264,6 @@ public class Creative {
    * @return imageAttributes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public ImageAttributes getImageAttributes() {
     return imageAttributes;
@@ -274,7 +286,6 @@ public class Creative {
    * @return htmlTagAttributes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public HtmlTagAttributes getHtmlTagAttributes() {
     return htmlTagAttributes;
@@ -297,7 +308,6 @@ public class Creative {
    * @return dynamicAttributes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public DynamicAttributes getDynamicAttributes() {
     return dynamicAttributes;
@@ -320,7 +330,6 @@ public class Creative {
    * @return adaptiveAttributes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public AdaptiveAttributes getAdaptiveAttributes() {
     return adaptiveAttributes;
@@ -329,6 +338,51 @@ public class Creative {
 
   public void setAdaptiveAttributes(AdaptiveAttributes adaptiveAttributes) {
     this.adaptiveAttributes = adaptiveAttributes;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the Creative instance itself
+   */
+  public Creative putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -351,12 +405,13 @@ public class Creative {
         Objects.equals(this.imageAttributes, creative.imageAttributes) &&
         Objects.equals(this.htmlTagAttributes, creative.htmlTagAttributes) &&
         Objects.equals(this.dynamicAttributes, creative.dynamicAttributes) &&
-        Objects.equals(this.adaptiveAttributes, creative.adaptiveAttributes);
+        Objects.equals(this.adaptiveAttributes, creative.adaptiveAttributes)&&
+        Objects.equals(this.additionalProperties, creative.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, author, status, format, advertiserId, datasetId, imageAttributes, htmlTagAttributes, dynamicAttributes, adaptiveAttributes);
+    return Objects.hash(name, description, author, status, format, advertiserId, datasetId, imageAttributes, htmlTagAttributes, dynamicAttributes, adaptiveAttributes, additionalProperties);
   }
 
   @Override
@@ -374,6 +429,7 @@ public class Creative {
     sb.append("    htmlTagAttributes: ").append(toIndentedString(htmlTagAttributes)).append("\n");
     sb.append("    dynamicAttributes: ").append(toIndentedString(dynamicAttributes)).append("\n");
     sb.append("    adaptiveAttributes: ").append(toIndentedString(adaptiveAttributes)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -389,5 +445,175 @@ public class Creative {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("name");
+    openapiFields.add("description");
+    openapiFields.add("author");
+    openapiFields.add("status");
+    openapiFields.add("format");
+    openapiFields.add("advertiserId");
+    openapiFields.add("datasetId");
+    openapiFields.add("imageAttributes");
+    openapiFields.add("htmlTagAttributes");
+    openapiFields.add("dynamicAttributes");
+    openapiFields.add("adaptiveAttributes");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("author");
+    openapiRequiredFields.add("status");
+    openapiRequiredFields.add("advertiserId");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Creative
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!Creative.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Creative is not found in the empty JSON string", Creative.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : Creative.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if (!jsonObj.get("author").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `author` to be a primitive type in the JSON string but got `%s`", jsonObj.get("author").toString()));
+      }
+      if (!jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
+      }
+      if (!jsonObj.get("advertiserId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `advertiserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserId").toString()));
+      }
+      if ((jsonObj.get("datasetId") != null && !jsonObj.get("datasetId").isJsonNull()) && !jsonObj.get("datasetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `datasetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("datasetId").toString()));
+      }
+      // validate the optional field `imageAttributes`
+      if (jsonObj.get("imageAttributes") != null && !jsonObj.get("imageAttributes").isJsonNull()) {
+        ImageAttributes.validateJsonObject(jsonObj.getAsJsonObject("imageAttributes"));
+      }
+      // validate the optional field `htmlTagAttributes`
+      if (jsonObj.get("htmlTagAttributes") != null && !jsonObj.get("htmlTagAttributes").isJsonNull()) {
+        HtmlTagAttributes.validateJsonObject(jsonObj.getAsJsonObject("htmlTagAttributes"));
+      }
+      // validate the optional field `dynamicAttributes`
+      if (jsonObj.get("dynamicAttributes") != null && !jsonObj.get("dynamicAttributes").isJsonNull()) {
+        DynamicAttributes.validateJsonObject(jsonObj.getAsJsonObject("dynamicAttributes"));
+      }
+      // validate the optional field `adaptiveAttributes`
+      if (jsonObj.get("adaptiveAttributes") != null && !jsonObj.get("adaptiveAttributes").isJsonNull()) {
+        AdaptiveAttributes.validateJsonObject(jsonObj.getAsJsonObject("adaptiveAttributes"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Creative.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Creative' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Creative> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Creative.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Creative>() {
+           @Override
+           public void write(JsonWriter out, Creative value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Creative read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             Creative instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Creative given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Creative
+  * @throws IOException if the JSON string is invalid with respect to Creative
+  */
+  public static Creative fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Creative.class);
+  }
+
+ /**
+  * Convert an instance of Creative to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

@@ -1770,7 +1770,7 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String accountId = "accountId_example"; // String | The given account id
         List<String> limitToCampaignId = Arrays.asList(); // List<String> | The campaign ids that you would like to limit your result set to
-        String limitToType = "limitToType_example"; // String | The campaign types that you would like to limit your result set to
+        String limitToType = "Unknown"; // String | The campaign types that you would like to limit your result set to
         List<String> limitToId = Arrays.asList(); // List<String> | The ids that you would like to limit your result set to
         Integer pageIndex = 56; // Integer | The 0 indexed page index you would like to receive given the page size
         Integer pageSize = 56; // Integer | The maximum number of items you would like to receive in this request

@@ -6,9 +6,9 @@ Request to create an audience
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**data** | [**CreateRetailMediaAudienceV2Data**](CreateRetailMediaAudienceV2Data.md) |  | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**data** | [**CreateRetailMediaAudienceV2Data**](CreateRetailMediaAudienceV2Data.md) |  |  |
 
 
 

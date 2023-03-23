@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.retailmedia.v2023_01.JSON;
+
 /**
  * Report Request Attributes
  */
-@ApiModel(description = "Report Request Attributes")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReportRequestAttributes {
   /**
@@ -277,6 +295,8 @@ public class ReportRequestAttributes {
   @SerializedName(SERIALIZED_NAME_VIEW_ATTRIBUTION_WINDOW)
   private ViewAttributionWindowEnum viewAttributionWindow;
 
+  public ReportRequestAttributes() {
+  }
 
   public ReportRequestAttributes clickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
     
@@ -289,7 +309,6 @@ public class ReportRequestAttributes {
    * @return clickAttributionWindow
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Defaults to value from campaign or one of \"7D\", \"14D\", or \"30D\". If specified, viewAttributionWindow must also be specified")
 
   public ClickAttributionWindowEnum getClickAttributionWindow() {
     return clickAttributionWindow;
@@ -312,7 +331,6 @@ public class ReportRequestAttributes {
    * @return endDate
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "YYYY-MM-DD, must not be before startDate and not more than 100 days later")
 
   public LocalDate getEndDate() {
     return endDate;
@@ -335,7 +353,6 @@ public class ReportRequestAttributes {
    * @return format
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One of \"json\" (default),\"json-compact\",\"json-newline\" or \"csv\"")
 
   public FormatEnum getFormat() {
     return format;
@@ -358,7 +375,6 @@ public class ReportRequestAttributes {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The id of the campaign or line item.  Either 'id' or 'ids' must be specified, but not both")
 
   public String getId() {
     return id;
@@ -389,7 +405,6 @@ public class ReportRequestAttributes {
    * @return ids
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ids of the campaigns or line items.  Either 'id' or 'ids' must be specified, but not both")
 
   public List<String> getIds() {
     return ids;
@@ -412,7 +427,6 @@ public class ReportRequestAttributes {
    * @return reportType
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "One of \"summary\", \"keyword\", \"pageType\", \"productCategory\", \"product\", or \"attributedTransactions\"")
 
   public ReportTypeEnum getReportType() {
     return reportType;
@@ -435,7 +449,6 @@ public class ReportRequestAttributes {
    * @return startDate
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "YYYY-MM-DD")
 
   public LocalDate getStartDate() {
     return startDate;
@@ -458,7 +471,6 @@ public class ReportRequestAttributes {
    * @return timeZone
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getTimeZone() {
     return timeZone;
@@ -481,7 +493,6 @@ public class ReportRequestAttributes {
    * @return viewAttributionWindow
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Defaults to value from campaign or one of \"none\", \"1D\", \"7D\", \"14D\", or \"30D\". If specified, must be less than clickAttributionWindow, which must also be specified.")
 
   public ViewAttributionWindowEnum getViewAttributionWindow() {
     return viewAttributionWindow;
@@ -490,6 +501,51 @@ public class ReportRequestAttributes {
 
   public void setViewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
     this.viewAttributionWindow = viewAttributionWindow;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the ReportRequestAttributes instance itself
+   */
+  public ReportRequestAttributes putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -510,12 +566,13 @@ public class ReportRequestAttributes {
         Objects.equals(this.reportType, reportRequestAttributes.reportType) &&
         Objects.equals(this.startDate, reportRequestAttributes.startDate) &&
         Objects.equals(this.timeZone, reportRequestAttributes.timeZone) &&
-        Objects.equals(this.viewAttributionWindow, reportRequestAttributes.viewAttributionWindow);
+        Objects.equals(this.viewAttributionWindow, reportRequestAttributes.viewAttributionWindow)&&
+        Objects.equals(this.additionalProperties, reportRequestAttributes.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(clickAttributionWindow, endDate, format, id, ids, reportType, startDate, timeZone, viewAttributionWindow);
+    return Objects.hash(clickAttributionWindow, endDate, format, id, ids, reportType, startDate, timeZone, viewAttributionWindow, additionalProperties);
   }
 
   @Override
@@ -531,6 +588,7 @@ public class ReportRequestAttributes {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    timeZone: ").append(toIndentedString(timeZone)).append("\n");
     sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -546,5 +604,157 @@ public class ReportRequestAttributes {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("clickAttributionWindow");
+    openapiFields.add("endDate");
+    openapiFields.add("format");
+    openapiFields.add("id");
+    openapiFields.add("ids");
+    openapiFields.add("reportType");
+    openapiFields.add("startDate");
+    openapiFields.add("timeZone");
+    openapiFields.add("viewAttributionWindow");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("endDate");
+    openapiRequiredFields.add("reportType");
+    openapiRequiredFields.add("startDate");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ReportRequestAttributes
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!ReportRequestAttributes.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ReportRequestAttributes is not found in the empty JSON string", ReportRequestAttributes.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ReportRequestAttributes.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("clickAttributionWindow") != null && !jsonObj.get("clickAttributionWindow").isJsonNull()) && !jsonObj.get("clickAttributionWindow").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `clickAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionWindow").toString()));
+      }
+      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ids") != null && !jsonObj.get("ids").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ids` to be an array in the JSON string but got `%s`", jsonObj.get("ids").toString()));
+      }
+      if (!jsonObj.get("reportType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reportType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reportType").toString()));
+      }
+      if ((jsonObj.get("timeZone") != null && !jsonObj.get("timeZone").isJsonNull()) && !jsonObj.get("timeZone").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `timeZone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timeZone").toString()));
+      }
+      if ((jsonObj.get("viewAttributionWindow") != null && !jsonObj.get("viewAttributionWindow").isJsonNull()) && !jsonObj.get("viewAttributionWindow").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `viewAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewAttributionWindow").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ReportRequestAttributes.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ReportRequestAttributes' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ReportRequestAttributes> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ReportRequestAttributes.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ReportRequestAttributes>() {
+           @Override
+           public void write(JsonWriter out, ReportRequestAttributes value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ReportRequestAttributes read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             ReportRequestAttributes instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ReportRequestAttributes given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ReportRequestAttributes
+  * @throws IOException if the JSON string is invalid with respect to ReportRequestAttributes
+  */
+  public static ReportRequestAttributes fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ReportRequestAttributes.class);
+  }
+
+ /**
+  * Convert an instance of ReportRequestAttributes to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

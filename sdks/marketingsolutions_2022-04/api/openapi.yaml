@@ -13,9 +13,10 @@ paths:
       description: Get a list of all the audiences for the user or for the given advertiser_id
       operationId: getAudiences
       parameters:
-      - description: "The advertiser id to get all the audiences for.\nMandatory for\
-          \ internal users. For external users,\n           if you don't provide it,\
-          \ we will take into account the advertisers from your portfolio"
+      - description: |-
+          The advertiser id to get all the audiences for.
+          Mandatory for internal users. For external users,
+                     if you don't provide it, we will take into account the advertisers from your portfolio
         explode: true
         in: query
         name: advertiser-id
@@ -128,7 +129,7 @@ paths:
           description: Forbidden
       tags:
       - Audience
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-04/audiences/{audience-id}/contactlist:
     delete:
@@ -278,7 +279,7 @@ paths:
           description: Audience 123 not found
       tags:
       - Audience
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /2022-04/audiences/{audience-id}:
     delete:
@@ -402,7 +403,7 @@ paths:
           description: Forbidden
       tags:
       - Audience
-      x-contentType: application/json
+      x-content-type: application/json
       x-accepts: application/json
   /me:
     get:
@@ -516,7 +517,7 @@ paths:
           description: Forbidden
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /2022-04/marketing-solutions/ad-sets:
     patch:
@@ -566,7 +567,7 @@ paths:
             the resource does not exist.
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /2022-04/marketing-solutions/ad-sets/start:
     post:
@@ -616,7 +617,7 @@ paths:
           description: The API client is not properly authenticated.
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /2022-04/marketing-solutions/ad-sets/stop:
     post:
@@ -666,7 +667,7 @@ paths:
           description: The API client is not properly authenticated.
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /2022-04/marketing-solutions/campaigns/{campaign-id}:
     get:
@@ -763,7 +764,7 @@ paths:
           description: Forbidden
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /2022-04/marketing-solutions/campaigns:
     patch:
@@ -813,7 +814,7 @@ paths:
             the resource does not exist.
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /2022-04/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers:
     get:
@@ -928,7 +929,7 @@ paths:
             the resource does not exist.
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /2022-04/marketing-solutions/ad-sets/{ad-set-id}/category-bids:
     get:
@@ -1043,7 +1044,7 @@ paths:
             the resource does not exist.
       tags:
       - Campaign
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /oauth2/token:
     post:
@@ -1053,23 +1054,7 @@ paths:
         content:
           application/x-www-form-urlencoded:
             schema:
-              properties:
-                grant_type:
-                  type: string
-                client_id:
-                  type: string
-                client_secret:
-                  type: string
-                redirect_uri:
-                  type: string
-                code:
-                  type: string
-                refresh_token:
-                  type: string
-              required:
-              - client_id
-              - client_secret
-              - grant_type
+              $ref: '#/components/schemas/GetToken_request'
       responses:
         "200":
           content:
@@ -1111,7 +1096,7 @@ paths:
         use authorization code
       tags:
       - OAuth
-      x-contentType: application/x-www-form-urlencoded
+      x-content-type: application/x-www-form-urlencoded
       x-accepts: application/json
   /2022-04/statistics/report:
     post:
@@ -1193,7 +1178,7 @@ paths:
           description: Forbidden
       tags:
       - Analytics
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /2022-04/transactions/report:
     post:
@@ -1273,7 +1258,7 @@ paths:
           description: Forbidden
       tags:
       - Analytics
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /2022-04/log-level/advertisers/{advertiser-id}/report:
     post:
@@ -1369,7 +1354,7 @@ paths:
           description: Forbidden
       tags:
       - Analytics
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /2022-04/placements/report:
     post:
@@ -1452,7 +1437,7 @@ paths:
           description: Forbidden
       tags:
       - Analytics
-      x-contentType: application/json-patch+json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /2022-04/advertisers/me:
     get:
@@ -2437,11 +2422,11 @@ components:
             targeting:
               geoLocation:
                 zipCodes:
-                  value: ""
+                  value: null
                 countries:
-                  value: ""
+                  value: null
                 subdivisions:
-                  value: ""
+                  value: null
               frequencyCapping:
                 maximumImpressions: 6
                 frequency: hourly
@@ -2548,11 +2533,11 @@ components:
             targeting:
               geoLocation:
                 zipCodes:
-                  value: ""
+                  value: null
                 countries:
-                  value: ""
+                  value: null
                 subdivisions:
-                  value: ""
+                  value: null
               frequencyCapping:
                 maximumImpressions: 6
                 frequency: hourly
@@ -2597,11 +2582,11 @@ components:
             targeting:
               geoLocation:
                 zipCodes:
-                  value: ""
+                  value: null
                 countries:
-                  value: ""
+                  value: null
                 subdivisions:
-                  value: ""
+                  value: null
               frequencyCapping:
                 maximumImpressions: 6
                 frequency: hourly
@@ -3375,11 +3360,11 @@ components:
             targeting:
               geoLocation:
                 zipCodes:
-                  value: ""
+                  value: null
                 countries:
-                  value: ""
+                  value: null
                 subdivisions:
-                  value: ""
+                  value: null
               frequencyCapping:
                 maximumImpressions: 6
                 frequency: hourly
@@ -3415,11 +3400,11 @@ components:
             targeting:
               geoLocation:
                 zipCodes:
-                  value: ""
+                  value: null
                 countries:
-                  value: ""
+                  value: null
                 subdivisions:
-                  value: ""
+                  value: null
               frequencyCapping:
                 maximumImpressions: 6
                 frequency: hourly
@@ -3566,11 +3551,11 @@ components:
           targeting:
             geoLocation:
               zipCodes:
-                value: ""
+                value: null
               countries:
-                value: ""
+                value: null
               subdivisions:
-                value: ""
+                value: null
             frequencyCapping:
               maximumImpressions: 6
               frequency: hourly
@@ -3821,11 +3806,11 @@ components:
           targeting:
             geoLocation:
               zipCodes:
-                value: ""
+                value: null
               countries:
-                value: ""
+                value: null
               subdivisions:
-                value: ""
+                value: null
             frequencyCapping:
               maximumImpressions: 6
               frequency: hourly
@@ -3976,11 +3961,11 @@ components:
         targeting:
           geoLocation:
             zipCodes:
-              value: ""
+              value: null
             countries:
-              value: ""
+              value: null
             subdivisions:
-              value: ""
+              value: null
           frequencyCapping:
             maximumImpressions: 6
             frequency: hourly
@@ -4110,11 +4095,11 @@ components:
         targeting:
           geoLocation:
             zipCodes:
-              value: ""
+              value: null
             countries:
-              value: ""
+              value: null
             subdivisions:
-              value: ""
+              value: null
           frequencyCapping:
             maximumImpressions: 6
             frequency: hourly
@@ -4273,11 +4258,11 @@ components:
       example:
         geoLocation:
           zipCodes:
-            value: ""
+            value: null
           countries:
-            value: ""
+            value: null
           subdivisions:
-            value: ""
+            value: null
         frequencyCapping:
           maximumImpressions: 6
           frequency: hourly
@@ -4537,11 +4522,11 @@ components:
       description: ad set geolocation model
       example:
         zipCodes:
-          value: ""
+          value: null
         countries:
-          value: ""
+          value: null
         subdivisions:
-          value: ""
+          value: null
       properties:
         countries:
           $ref: '#/components/schemas/NillableAdSetTargetingRule'
@@ -4574,12 +4559,10 @@ components:
         \ null values. If the structure is provided (i.e. not null), then the value\
         \ in it, even null, is provided."
       example:
-        value: ""
+        value: null
       properties:
         value:
-          allOf:
-          - $ref: '#/components/schemas/AdSetTargetingRule'
-          x-nullable: true
+          $ref: '#/components/schemas/NillableAdSetTargetingRule_value'
       required:
       - value
       type: object
@@ -5328,6 +5311,24 @@ components:
         advertiserName:
           type: string
       type: object
+    GetToken_request:
+      properties:
+        grant_type:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        redirect_uri:
+          type: string
+        code:
+          type: string
+        refresh_token:
+          type: string
+      required:
+      - client_id
+      - client_secret
+      - grant_type
     Audience_attributes:
       example:
         nbLinesEmail: 6
@@ -5473,6 +5474,10 @@ components:
       - identifiers
       - operation
       type: object
+    NillableAdSetTargetingRule_value:
+      allOf:
+      - $ref: '#/components/schemas/AdSetTargetingRule'
+      x-nullable: true
   securitySchemes:
     oauth:
       flows:

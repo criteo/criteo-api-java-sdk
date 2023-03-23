@@ -21,16 +21,34 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.marketingsolutions.preview.JSON;
+
 /**
  * ProductSet preview schema
  */
-@ApiModel(description = "ProductSet preview schema")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProductSetPreview {
   public static final String SERIALIZED_NAME_PARTNER_ID = "partnerId";
@@ -41,6 +59,8 @@ public class ProductSetPreview {
   @SerializedName(SERIALIZED_NAME_RULES)
   private List<Rules> rules = new ArrayList<>();
 
+  public ProductSetPreview() {
+  }
 
   public ProductSetPreview partnerId(Integer partnerId) {
     
@@ -53,7 +73,6 @@ public class ProductSetPreview {
    * @return partnerId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "123", required = true, value = "PartnerId")
 
   public Integer getPartnerId() {
     return partnerId;
@@ -81,7 +100,6 @@ public class ProductSetPreview {
    * @return rules
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "ProductSet rules")
 
   public List<Rules> getRules() {
     return rules;
@@ -90,6 +108,51 @@ public class ProductSetPreview {
 
   public void setRules(List<Rules> rules) {
     this.rules = rules;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the ProductSetPreview instance itself
+   */
+  public ProductSetPreview putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -103,12 +166,13 @@ public class ProductSetPreview {
     }
     ProductSetPreview productSetPreview = (ProductSetPreview) o;
     return Objects.equals(this.partnerId, productSetPreview.partnerId) &&
-        Objects.equals(this.rules, productSetPreview.rules);
+        Objects.equals(this.rules, productSetPreview.rules)&&
+        Objects.equals(this.additionalProperties, productSetPreview.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(partnerId, rules);
+    return Objects.hash(partnerId, rules, additionalProperties);
   }
 
   @Override
@@ -117,6 +181,7 @@ public class ProductSetPreview {
     sb.append("class ProductSetPreview {\n");
     sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    rules: ").append(toIndentedString(rules)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -132,5 +197,137 @@ public class ProductSetPreview {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("partnerId");
+    openapiFields.add("rules");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("partnerId");
+    openapiRequiredFields.add("rules");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ProductSetPreview
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!ProductSetPreview.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ProductSetPreview is not found in the empty JSON string", ProductSetPreview.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ProductSetPreview.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      // ensure the json data is an array
+      if (!jsonObj.get("rules").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `rules` to be an array in the JSON string but got `%s`", jsonObj.get("rules").toString()));
+      }
+
+      JsonArray jsonArrayrules = jsonObj.getAsJsonArray("rules");
+      // validate the required field `rules` (array)
+      for (int i = 0; i < jsonArrayrules.size(); i++) {
+        Rules.validateJsonObject(jsonArrayrules.get(i).getAsJsonObject());
+      };
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ProductSetPreview.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ProductSetPreview' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ProductSetPreview> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ProductSetPreview.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ProductSetPreview>() {
+           @Override
+           public void write(JsonWriter out, ProductSetPreview value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ProductSetPreview read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             ProductSetPreview instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ProductSetPreview given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ProductSetPreview
+  * @throws IOException if the JSON string is invalid with respect to ProductSetPreview
+  */
+  public static ProductSetPreview fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ProductSetPreview.class);
+  }
+
+ /**
+  * Convert an instance of ProductSetPreview to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

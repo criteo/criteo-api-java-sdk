@@ -20,19 +20,36 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.retailmedia.preview.JSON;
 
 /**
  * Datamodel for common errors and warnings
  */
-@ApiModel(description = "Datamodel for common errors and warnings")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class RetailMediaExternalv1ProblemDetails extends HashMap<String, Object> {
+public class RetailMediaExternalv1ProblemDetails {
   public static final String SERIALIZED_NAME_TRACE_IDENTIFIER = "traceIdentifier";
   @SerializedName(SERIALIZED_NAME_TRACE_IDENTIFIER)
   private String traceIdentifier;
@@ -69,6 +86,8 @@ public class RetailMediaExternalv1ProblemDetails extends HashMap<String, Object>
   @SerializedName(SERIALIZED_NAME_INSTANCE)
   private String instance;
 
+  public RetailMediaExternalv1ProblemDetails() {
+  }
 
   public RetailMediaExternalv1ProblemDetails traceIdentifier(String traceIdentifier) {
     
@@ -81,7 +100,6 @@ public class RetailMediaExternalv1ProblemDetails extends HashMap<String, Object>
    * @return traceIdentifier
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getTraceIdentifier() {
     return traceIdentifier;
@@ -104,7 +122,6 @@ public class RetailMediaExternalv1ProblemDetails extends HashMap<String, Object>
    * @return code
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getCode() {
     return code;
@@ -135,7 +152,6 @@ public class RetailMediaExternalv1ProblemDetails extends HashMap<String, Object>
    * @return source
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Map<String, String> getSource() {
     return source;
@@ -158,7 +174,6 @@ public class RetailMediaExternalv1ProblemDetails extends HashMap<String, Object>
    * @return stackTrace
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getStackTrace() {
     return stackTrace;
@@ -181,7 +196,6 @@ public class RetailMediaExternalv1ProblemDetails extends HashMap<String, Object>
    * @return type
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getType() {
     return type;
@@ -204,7 +218,6 @@ public class RetailMediaExternalv1ProblemDetails extends HashMap<String, Object>
    * @return title
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getTitle() {
     return title;
@@ -227,7 +240,6 @@ public class RetailMediaExternalv1ProblemDetails extends HashMap<String, Object>
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Integer getStatus() {
     return status;
@@ -250,7 +262,6 @@ public class RetailMediaExternalv1ProblemDetails extends HashMap<String, Object>
    * @return detail
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getDetail() {
     return detail;
@@ -273,7 +284,6 @@ public class RetailMediaExternalv1ProblemDetails extends HashMap<String, Object>
    * @return instance
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public String getInstance() {
     return instance;
@@ -283,6 +293,7 @@ public class RetailMediaExternalv1ProblemDetails extends HashMap<String, Object>
   public void setInstance(String instance) {
     this.instance = instance;
   }
+
 
 
   @Override
@@ -302,20 +313,18 @@ public class RetailMediaExternalv1ProblemDetails extends HashMap<String, Object>
         Objects.equals(this.title, retailMediaExternalv1ProblemDetails.title) &&
         Objects.equals(this.status, retailMediaExternalv1ProblemDetails.status) &&
         Objects.equals(this.detail, retailMediaExternalv1ProblemDetails.detail) &&
-        Objects.equals(this.instance, retailMediaExternalv1ProblemDetails.instance) &&
-        super.equals(o);
+        Objects.equals(this.instance, retailMediaExternalv1ProblemDetails.instance);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(traceIdentifier, code, source, stackTrace, type, title, status, detail, instance, super.hashCode());
+    return Objects.hash(traceIdentifier, code, source, stackTrace, type, title, status, detail, instance);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RetailMediaExternalv1ProblemDetails {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    traceIdentifier: ").append(toIndentedString(traceIdentifier)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
@@ -340,5 +349,117 @@ public class RetailMediaExternalv1ProblemDetails extends HashMap<String, Object>
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("traceIdentifier");
+    openapiFields.add("code");
+    openapiFields.add("source");
+    openapiFields.add("stackTrace");
+    openapiFields.add("type");
+    openapiFields.add("title");
+    openapiFields.add("status");
+    openapiFields.add("detail");
+    openapiFields.add("instance");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to RetailMediaExternalv1ProblemDetails
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!RetailMediaExternalv1ProblemDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RetailMediaExternalv1ProblemDetails is not found in the empty JSON string", RetailMediaExternalv1ProblemDetails.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!RetailMediaExternalv1ProblemDetails.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RetailMediaExternalv1ProblemDetails` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("traceIdentifier") != null && !jsonObj.get("traceIdentifier").isJsonNull()) && !jsonObj.get("traceIdentifier").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `traceIdentifier` to be a primitive type in the JSON string but got `%s`", jsonObj.get("traceIdentifier").toString()));
+      }
+      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      }
+      if ((jsonObj.get("stackTrace") != null && !jsonObj.get("stackTrace").isJsonNull()) && !jsonObj.get("stackTrace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `stackTrace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("stackTrace").toString()));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
+      }
+      if ((jsonObj.get("detail") != null && !jsonObj.get("detail").isJsonNull()) && !jsonObj.get("detail").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `detail` to be a primitive type in the JSON string but got `%s`", jsonObj.get("detail").toString()));
+      }
+      if ((jsonObj.get("instance") != null && !jsonObj.get("instance").isJsonNull()) && !jsonObj.get("instance").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instance").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!RetailMediaExternalv1ProblemDetails.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RetailMediaExternalv1ProblemDetails' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<RetailMediaExternalv1ProblemDetails> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RetailMediaExternalv1ProblemDetails.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<RetailMediaExternalv1ProblemDetails>() {
+           @Override
+           public void write(JsonWriter out, RetailMediaExternalv1ProblemDetails value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public RetailMediaExternalv1ProblemDetails read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of RetailMediaExternalv1ProblemDetails given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of RetailMediaExternalv1ProblemDetails
+  * @throws IOException if the JSON string is invalid with respect to RetailMediaExternalv1ProblemDetails
+  */
+  public static RetailMediaExternalv1ProblemDetails fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RetailMediaExternalv1ProblemDetails.class);
+  }
+
+ /**
+  * Convert an instance of RetailMediaExternalv1ProblemDetails to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

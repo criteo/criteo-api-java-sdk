@@ -1,3 +1,4 @@
+.github/workflows/maven.yml
 .gitignore
 .openapi-generator-ignore
 .travis.yml
@@ -176,6 +177,7 @@ src/examples/java/criteo/api/examples/StatisticsApplication.java
 src/main/AndroidManifest.xml
 src/main/java/com/criteo/api/retailmedia/preview/ApiCallback.java
 src/main/java/com/criteo/api/retailmedia/preview/ApiClient.java
+src/main/java/com/criteo/api/retailmedia/preview/ApiClientBuilder.java
 src/main/java/com/criteo/api/retailmedia/preview/ApiException.java
 src/main/java/com/criteo/api/retailmedia/preview/ApiResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/Configuration.java
@@ -200,6 +202,7 @@ src/main/java/com/criteo/api/retailmedia/preview/auth/OAuth.java
 src/main/java/com/criteo/api/retailmedia/preview/auth/OAuthFlow.java
 src/main/java/com/criteo/api/retailmedia/preview/auth/OAuthOkHttpClient.java
 src/main/java/com/criteo/api/retailmedia/preview/auth/RetryingOAuth.java
+src/main/java/com/criteo/api/retailmedia/preview/model/AbstractOpenApiSchema.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AccessTokenModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ApplicationSummaryModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ApplicationSummaryModelResource.java

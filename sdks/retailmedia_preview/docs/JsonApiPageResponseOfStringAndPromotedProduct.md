@@ -6,12 +6,12 @@ A wrapper class to return a single page of <typeparamref name=\"T\" /> with meta
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**errors** | [**List&lt;CommonError&gt;**](CommonError.md) |  |  [optional]
-**warnings** | [**List&lt;CommonWarning&gt;**](CommonWarning.md) |  |  [optional]
-**metadata** | [**PageMetadata**](PageMetadata.md) |  |  [optional]
-**data** | [**List&lt;JsonApiBodyWithIdOfStringAndPromotedProductAndPromotedProduct&gt;**](JsonApiBodyWithIdOfStringAndPromotedProductAndPromotedProduct.md) |  | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**errors** | [**List&lt;CommonError&gt;**](CommonError.md) |  |  [optional] |
+|**warnings** | [**List&lt;CommonWarning&gt;**](CommonWarning.md) |  |  [optional] |
+|**metadata** | [**PageMetadata**](PageMetadata.md) |  |  [optional] |
+|**data** | [**List&lt;JsonApiBodyWithIdOfStringAndPromotedProductAndPromotedProduct&gt;**](JsonApiBodyWithIdOfStringAndPromotedProductAndPromotedProduct.md) |  |  |
 
 
 

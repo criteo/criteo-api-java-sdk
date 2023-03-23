@@ -6,11 +6,11 @@ A class implementing the response of the Criteo API as described in API Guild Gu
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**data** | [**ResourceOfProductSet**](ResourceOfProductSet.md) |  |  [optional]
-**warnings** | [**List&lt;ProblemDetails&gt;**](ProblemDetails.md) |  |  [optional] [readonly]
-**errors** | [**List&lt;ProblemDetails&gt;**](ProblemDetails.md) |  |  [optional] [readonly]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**data** | [**ResourceOfProductSet**](ResourceOfProductSet.md) |  |  [optional] |
+|**warnings** | [**List&lt;ProblemDetails&gt;**](ProblemDetails.md) |  |  [optional] [readonly] |
+|**errors** | [**List&lt;ProblemDetails&gt;**](ProblemDetails.md) |  |  [optional] [readonly] |
 
 
 

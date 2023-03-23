@@ -20,15 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.criteo.api.retailmedia.preview.JSON;
 
 /**
  * Metadata and usage info of a sku search
  */
-@ApiModel(description = "Metadata and usage info of a sku search")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SkuDataPreview {
   public static final String SERIALIZED_NAME_SKU_KEY = "skuKey";
@@ -111,6 +129,8 @@ public class SkuDataPreview {
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
+  public SkuDataPreview() {
+  }
 
   public SkuDataPreview skuKey(String skuKey) {
     
@@ -123,7 +143,6 @@ public class SkuDataPreview {
    * @return skuKey
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The product SKU Key.")
 
   public String getSkuKey() {
     return skuKey;
@@ -146,7 +165,6 @@ public class SkuDataPreview {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A short product name.")
 
   public String getName() {
     return name;
@@ -169,7 +187,6 @@ public class SkuDataPreview {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A product description.")
 
   public String getDescription() {
     return description;
@@ -192,7 +209,6 @@ public class SkuDataPreview {
    * @return categoryId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The category Id.")
 
   public String getCategoryId() {
     return categoryId;
@@ -215,7 +231,6 @@ public class SkuDataPreview {
    * @return category
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The full category breadcrumb in the retailers catalog.")
 
   public String getCategory() {
     return category;
@@ -238,7 +253,6 @@ public class SkuDataPreview {
    * @return isSellerSku
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "An indication of if the sku is seller sku.")
 
   public Boolean getIsSellerSku() {
     return isSellerSku;
@@ -261,7 +275,6 @@ public class SkuDataPreview {
    * @return isBuybox
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Whether the Sku is a Buybox Winner.")
 
   public Boolean getIsBuybox() {
     return isBuybox;
@@ -284,7 +297,6 @@ public class SkuDataPreview {
    * @return sellerId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The id of the seller.")
 
   public String getSellerId() {
     return sellerId;
@@ -307,7 +319,6 @@ public class SkuDataPreview {
    * @return sellerName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the seller.")
 
   public String getSellerName() {
     return sellerName;
@@ -330,7 +341,6 @@ public class SkuDataPreview {
    * @return brandId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The global brand id associated to the product.")
 
   public String getBrandId() {
     return brandId;
@@ -353,7 +363,6 @@ public class SkuDataPreview {
    * @return brandName
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The name of the global brand.")
 
   public String getBrandName() {
     return brandName;
@@ -376,7 +385,6 @@ public class SkuDataPreview {
    * @return retailerId
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The identifier for the retailer the product is listed by.")
 
   public String getRetailerId() {
     return retailerId;
@@ -399,7 +407,6 @@ public class SkuDataPreview {
    * @return retailerName
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The retailer name.")
 
   public String getRetailerName() {
     return retailerName;
@@ -422,7 +429,6 @@ public class SkuDataPreview {
    * @return price
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The price of the product on the retailer site.")
 
   public Double getPrice() {
     return price;
@@ -445,7 +451,6 @@ public class SkuDataPreview {
    * @return isInStock
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "An indication of if the retailer currently has the product in stock.")
 
   public Boolean getIsInStock() {
     return isInStock;
@@ -468,7 +473,6 @@ public class SkuDataPreview {
    * @return gtin
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A GTIN identifier for the product if available. Covers variations such as EANs and UPCs.")
 
   public String getGtin() {
     return gtin;
@@ -491,7 +495,6 @@ public class SkuDataPreview {
    * @return mpn
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The MPN for the product if available.")
 
   public String getMpn() {
     return mpn;
@@ -514,7 +517,6 @@ public class SkuDataPreview {
    * @return imageUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "An http image resource provided by the retailer.")
 
   public String getImageUrl() {
     return imageUrl;
@@ -537,7 +539,6 @@ public class SkuDataPreview {
    * @return productPage
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "An The product page URL")
 
   public String getProductPage() {
     return productPage;
@@ -560,7 +561,6 @@ public class SkuDataPreview {
    * @return updatedAt
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The last time this product was updated in the Retail Media Catalog. Represented as a UTC ISO8601 string.")
 
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
@@ -569,6 +569,51 @@ public class SkuDataPreview {
 
   public void setUpdatedAt(OffsetDateTime updatedAt) {
     this.updatedAt = updatedAt;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the SkuDataPreview instance itself
+   */
+  public SkuDataPreview putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
   }
 
 
@@ -600,12 +645,13 @@ public class SkuDataPreview {
         Objects.equals(this.mpn, skuDataPreview.mpn) &&
         Objects.equals(this.imageUrl, skuDataPreview.imageUrl) &&
         Objects.equals(this.productPage, skuDataPreview.productPage) &&
-        Objects.equals(this.updatedAt, skuDataPreview.updatedAt);
+        Objects.equals(this.updatedAt, skuDataPreview.updatedAt)&&
+        Objects.equals(this.additionalProperties, skuDataPreview.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(skuKey, name, description, categoryId, category, isSellerSku, isBuybox, sellerId, sellerName, brandId, brandName, retailerId, retailerName, price, isInStock, gtin, mpn, imageUrl, productPage, updatedAt);
+    return Objects.hash(skuKey, name, description, categoryId, category, isSellerSku, isBuybox, sellerId, sellerName, brandId, brandName, retailerId, retailerName, price, isInStock, gtin, mpn, imageUrl, productPage, updatedAt, additionalProperties);
   }
 
   @Override
@@ -632,6 +678,7 @@ public class SkuDataPreview {
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    productPage: ").append(toIndentedString(productPage)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -647,5 +694,196 @@ public class SkuDataPreview {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("skuKey");
+    openapiFields.add("name");
+    openapiFields.add("description");
+    openapiFields.add("categoryId");
+    openapiFields.add("category");
+    openapiFields.add("isSellerSku");
+    openapiFields.add("isBuybox");
+    openapiFields.add("sellerId");
+    openapiFields.add("sellerName");
+    openapiFields.add("brandId");
+    openapiFields.add("brandName");
+    openapiFields.add("retailerId");
+    openapiFields.add("retailerName");
+    openapiFields.add("price");
+    openapiFields.add("isInStock");
+    openapiFields.add("gtin");
+    openapiFields.add("mpn");
+    openapiFields.add("imageUrl");
+    openapiFields.add("productPage");
+    openapiFields.add("updatedAt");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("skuKey");
+    openapiRequiredFields.add("brandId");
+    openapiRequiredFields.add("brandName");
+    openapiRequiredFields.add("retailerId");
+    openapiRequiredFields.add("retailerName");
+    openapiRequiredFields.add("price");
+    openapiRequiredFields.add("isInStock");
+    openapiRequiredFields.add("updatedAt");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to SkuDataPreview
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!SkuDataPreview.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SkuDataPreview is not found in the empty JSON string", SkuDataPreview.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : SkuDataPreview.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("skuKey").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `skuKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("skuKey").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if ((jsonObj.get("categoryId") != null && !jsonObj.get("categoryId").isJsonNull()) && !jsonObj.get("categoryId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `categoryId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("categoryId").toString()));
+      }
+      if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
+      }
+      if ((jsonObj.get("sellerId") != null && !jsonObj.get("sellerId").isJsonNull()) && !jsonObj.get("sellerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sellerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sellerId").toString()));
+      }
+      if ((jsonObj.get("sellerName") != null && !jsonObj.get("sellerName").isJsonNull()) && !jsonObj.get("sellerName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sellerName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sellerName").toString()));
+      }
+      if (!jsonObj.get("brandId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `brandId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("brandId").toString()));
+      }
+      if (!jsonObj.get("brandName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `brandName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("brandName").toString()));
+      }
+      if (!jsonObj.get("retailerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `retailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerId").toString()));
+      }
+      if (!jsonObj.get("retailerName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `retailerName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerName").toString()));
+      }
+      if ((jsonObj.get("gtin") != null && !jsonObj.get("gtin").isJsonNull()) && !jsonObj.get("gtin").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `gtin` to be a primitive type in the JSON string but got `%s`", jsonObj.get("gtin").toString()));
+      }
+      if ((jsonObj.get("mpn") != null && !jsonObj.get("mpn").isJsonNull()) && !jsonObj.get("mpn").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `mpn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mpn").toString()));
+      }
+      if ((jsonObj.get("imageUrl") != null && !jsonObj.get("imageUrl").isJsonNull()) && !jsonObj.get("imageUrl").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `imageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("imageUrl").toString()));
+      }
+      if ((jsonObj.get("productPage") != null && !jsonObj.get("productPage").isJsonNull()) && !jsonObj.get("productPage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `productPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productPage").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!SkuDataPreview.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SkuDataPreview' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<SkuDataPreview> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SkuDataPreview.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<SkuDataPreview>() {
+           @Override
+           public void write(JsonWriter out, SkuDataPreview value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public SkuDataPreview read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             // store additional fields in the deserialized instance
+             SkuDataPreview instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of SkuDataPreview given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of SkuDataPreview
+  * @throws IOException if the JSON string is invalid with respect to SkuDataPreview
+  */
+  public static SkuDataPreview fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SkuDataPreview.class);
+  }
+
+ /**
+  * Convert an instance of SkuDataPreview to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 
