@@ -41,6 +41,7 @@ Creates all segments with a valid configuration, and returns their IDs. For thos
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -49,17 +50,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         AudienceSegmentBulkCreateInputV1 audienceSegmentBulkCreateInputV1 = new AudienceSegmentBulkCreateInputV1(); // AudienceSegmentBulkCreateInputV1 | Segment creation parameter
@@ -121,6 +122,7 @@ Creates all audiences with a valid configuration, and returns their IDs. For tho
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -129,17 +131,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         AudienceBulkCreateInputV1 audienceBulkCreateInputV1 = new AudienceBulkCreateInputV1(); // AudienceBulkCreateInputV1 | 
@@ -201,6 +203,7 @@ Delete the segments associated to the given audience IDs.
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -209,17 +212,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1 = new AudienceSegmentBulkDeleteInputV1(); // AudienceSegmentBulkDeleteInputV1 | Segment delete request.
@@ -281,6 +284,7 @@ Deletes the audiences associated to the given audience IDs.
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -289,17 +293,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         AudienceBulkDeleteInputV1 audienceBulkDeleteInputV1 = new AudienceBulkDeleteInputV1(); // AudienceBulkDeleteInputV1 | 
@@ -362,6 +366,7 @@ Updates the properties of all segments with a valid configuration, and returns t
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -370,17 +375,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         AudienceSegmentBulkUpdateInputV1 audienceSegmentBulkUpdateInputV1 = new AudienceSegmentBulkUpdateInputV1(); // AudienceSegmentBulkUpdateInputV1 | Segment Update request
@@ -442,6 +447,7 @@ Updates the properties of all audiences with a valid configuration, and returns 
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -450,17 +456,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         AudienceBulkUpdateInputV1 audienceBulkUpdateInputV1 = new AudienceBulkUpdateInputV1(); // AudienceBulkUpdateInputV1 | 
@@ -522,6 +528,7 @@ Gets the size of all segments. An error is returned for those whose size calcula
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -530,17 +537,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         AudienceSegmentComputeSizesInputV1 audienceSegmentComputeSizesInputV1 = new AudienceSegmentComputeSizesInputV1(); // AudienceSegmentComputeSizesInputV1 | 
@@ -602,6 +609,7 @@ Gets the size of all audiences. An error is returned for those whose size calcul
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -610,17 +618,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         AudienceComputeSizesInputV1 audienceComputeSizesInputV1 = new AudienceComputeSizesInputV1(); // AudienceComputeSizesInputV1 | 
@@ -682,6 +690,7 @@ Delete all identifiers from a Contact List Audience Segment
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -690,17 +699,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         String audienceSegmentId = "audienceSegmentId_example"; // String | The ID of the Audience Segment to amend
@@ -760,6 +769,7 @@ This endpoint will Delete User Profiles for a given Advertiser.
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -768,17 +778,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         Integer advertiserId = 56; // Integer | Criteo Advertiser ID of user profiles' owner
@@ -839,6 +849,7 @@ Gets the size estimation of a non existent segment. An error is returned when si
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -847,17 +858,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         AudienceSegmentEstimateSizeInputV1 audienceSegmentEstimateSizeInputV1 = new AudienceSegmentEstimateSizeInputV1(); // AudienceSegmentEstimateSizeInputV1 | 
@@ -919,6 +930,7 @@ Gets the size estimation of a non existent audience. An error is returned when s
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -927,17 +939,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         AudienceEstimateSizeInputV1 audienceEstimateSizeInputV1 = new AudienceEstimateSizeInputV1(); // AudienceEstimateSizeInputV1 | 
@@ -999,6 +1011,7 @@ Returns the statistics of a contact list segment.
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -1007,17 +1020,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         Integer audienceSegmentId = 56; // Integer | The segment ID.
@@ -1078,6 +1091,7 @@ Returns a list with all available in-market brands that can be used to define an
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -1086,17 +1100,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         String advertiserId = "advertiserId_example"; // String | The advertiser ID.
@@ -1159,6 +1173,7 @@ Returns a list with all available in-market interests that can be used to define
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -1167,17 +1182,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         String advertiserId = "advertiserId_example"; // String | The advertiser ID.
@@ -1240,6 +1255,7 @@ Add/remove users to or from an audience
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -1248,17 +1264,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         Integer audienceId = 56; // Integer | The id of the audience to amend
@@ -1320,6 +1336,7 @@ Returns a list of segments that match the provided filters. If present, the filt
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -1328,17 +1345,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         Integer limit = 56; // Integer | The number of elements to be returned. The default is 50 and the maximum is 100.
@@ -1404,6 +1421,7 @@ Returns a list of audiences that match the provided filters. If present, the fil
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -1412,17 +1430,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         Integer limit = 56; // Integer | The number of elements to be returned. The default is 50 and the maximum is 100.
@@ -1488,6 +1506,7 @@ This endpoint will Set User Profiles for a given Advertiser. If a User Profile d
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -1496,17 +1515,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         Integer advertiserId = 56; // Integer | Criteo Advertiser ID of user profiles' owner
@@ -1567,6 +1586,7 @@ Add/remove identifiers to or from an Contact List Audience Segment
 package com.criteo.api.marketingsolutions.preview;
 
 import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.preview.ApiException;
 import com.criteo.api.marketingsolutions.preview.Configuration;
 import com.criteo.api.marketingsolutions.preview.auth.*;
@@ -1575,17 +1595,17 @@ import com.criteo.api.marketingsolutions.preview.api.AudienceApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         String audienceSegmentId = "audienceSegmentId_example"; // String | The ID of the Audience Segment to amend

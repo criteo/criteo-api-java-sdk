@@ -33,6 +33,7 @@ Get the data for the specified ad set
 package com.criteo.api.marketingsolutions.v2022_04;
 
 import com.criteo.api.marketingsolutions.v2022_04.ApiClient;
+import com.criteo.api.marketingsolutions.v2022_04.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.v2022_04.ApiException;
 import com.criteo.api.marketingsolutions.v2022_04.Configuration;
 import com.criteo.api.marketingsolutions.v2022_04.auth.*;
@@ -41,17 +42,17 @@ import com.criteo.api.marketingsolutions.v2022_04.api.CampaignApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String adSetId = "adSetId_example"; // String | Id of the ad set
@@ -112,6 +113,7 @@ Get the data for the specified campaign
 package com.criteo.api.marketingsolutions.v2022_04;
 
 import com.criteo.api.marketingsolutions.v2022_04.ApiClient;
+import com.criteo.api.marketingsolutions.v2022_04.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.v2022_04.ApiException;
 import com.criteo.api.marketingsolutions.v2022_04.Configuration;
 import com.criteo.api.marketingsolutions.v2022_04.auth.*;
@@ -120,17 +122,17 @@ import com.criteo.api.marketingsolutions.v2022_04.api.CampaignApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String campaignId = "campaignId_example"; // String | Id of the campaign
@@ -191,6 +193,7 @@ Get the Category Bids for all valid Categories associated to an Ad Set
 package com.criteo.api.marketingsolutions.v2022_04;
 
 import com.criteo.api.marketingsolutions.v2022_04.ApiClient;
+import com.criteo.api.marketingsolutions.v2022_04.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.v2022_04.ApiException;
 import com.criteo.api.marketingsolutions.v2022_04.Configuration;
 import com.criteo.api.marketingsolutions.v2022_04.auth.*;
@@ -199,17 +202,17 @@ import com.criteo.api.marketingsolutions.v2022_04.api.CampaignApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String adSetId = "adSetId_example"; // String | Id of the Ad Set
@@ -271,6 +274,7 @@ Get the Display Multipliers for all valid Categories associated to an Ad Set
 package com.criteo.api.marketingsolutions.v2022_04;
 
 import com.criteo.api.marketingsolutions.v2022_04.ApiClient;
+import com.criteo.api.marketingsolutions.v2022_04.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.v2022_04.ApiException;
 import com.criteo.api.marketingsolutions.v2022_04.Configuration;
 import com.criteo.api.marketingsolutions.v2022_04.auth.*;
@@ -279,17 +283,17 @@ import com.criteo.api.marketingsolutions.v2022_04.api.CampaignApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String adSetId = "adSetId_example"; // String | Id of the Ad Set
@@ -351,6 +355,7 @@ Patch a list of AdSets.
 package com.criteo.api.marketingsolutions.v2022_04;
 
 import com.criteo.api.marketingsolutions.v2022_04.ApiClient;
+import com.criteo.api.marketingsolutions.v2022_04.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.v2022_04.ApiException;
 import com.criteo.api.marketingsolutions.v2022_04.Configuration;
 import com.criteo.api.marketingsolutions.v2022_04.auth.*;
@@ -359,17 +364,17 @@ import com.criteo.api.marketingsolutions.v2022_04.api.CampaignApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         RequestsPatchAdSet requestsPatchAdSet = new RequestsPatchAdSet(); // RequestsPatchAdSet | List of adsets to patch.
@@ -430,6 +435,7 @@ Patch a list of Campaigns.
 package com.criteo.api.marketingsolutions.v2022_04;
 
 import com.criteo.api.marketingsolutions.v2022_04.ApiClient;
+import com.criteo.api.marketingsolutions.v2022_04.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.v2022_04.ApiException;
 import com.criteo.api.marketingsolutions.v2022_04.Configuration;
 import com.criteo.api.marketingsolutions.v2022_04.auth.*;
@@ -438,17 +444,17 @@ import com.criteo.api.marketingsolutions.v2022_04.api.CampaignApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         PatchCampaignListRequest patchCampaignListRequest = new PatchCampaignListRequest(); // PatchCampaignListRequest | List of campaigns to patch.
@@ -509,6 +515,7 @@ Patch Category Bids for one or more Categories in a single request. Partial succ
 package com.criteo.api.marketingsolutions.v2022_04;
 
 import com.criteo.api.marketingsolutions.v2022_04.ApiClient;
+import com.criteo.api.marketingsolutions.v2022_04.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.v2022_04.ApiException;
 import com.criteo.api.marketingsolutions.v2022_04.Configuration;
 import com.criteo.api.marketingsolutions.v2022_04.auth.*;
@@ -517,17 +524,17 @@ import com.criteo.api.marketingsolutions.v2022_04.api.CampaignApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String adSetId = "adSetId_example"; // String | Id of the Ad Set
@@ -591,6 +598,7 @@ Patch Display Multipliers for one or more Categories in a single request. Partia
 package com.criteo.api.marketingsolutions.v2022_04;
 
 import com.criteo.api.marketingsolutions.v2022_04.ApiClient;
+import com.criteo.api.marketingsolutions.v2022_04.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.v2022_04.ApiException;
 import com.criteo.api.marketingsolutions.v2022_04.Configuration;
 import com.criteo.api.marketingsolutions.v2022_04.auth.*;
@@ -599,17 +607,17 @@ import com.criteo.api.marketingsolutions.v2022_04.api.CampaignApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String adSetId = "adSetId_example"; // String | Id of the Ad Set
@@ -673,6 +681,7 @@ Search for ad sets
 package com.criteo.api.marketingsolutions.v2022_04;
 
 import com.criteo.api.marketingsolutions.v2022_04.ApiClient;
+import com.criteo.api.marketingsolutions.v2022_04.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.v2022_04.ApiException;
 import com.criteo.api.marketingsolutions.v2022_04.Configuration;
 import com.criteo.api.marketingsolutions.v2022_04.auth.*;
@@ -681,17 +690,17 @@ import com.criteo.api.marketingsolutions.v2022_04.api.CampaignApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         RequestAdSetSearch requestAdSetSearch = new RequestAdSetSearch(); // RequestAdSetSearch | 
@@ -753,6 +762,7 @@ Search for campaigns
 package com.criteo.api.marketingsolutions.v2022_04;
 
 import com.criteo.api.marketingsolutions.v2022_04.ApiClient;
+import com.criteo.api.marketingsolutions.v2022_04.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.v2022_04.ApiException;
 import com.criteo.api.marketingsolutions.v2022_04.Configuration;
 import com.criteo.api.marketingsolutions.v2022_04.auth.*;
@@ -761,17 +771,17 @@ import com.criteo.api.marketingsolutions.v2022_04.api.CampaignApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         CampaignSearchRequest campaignSearchRequest = new CampaignSearchRequest(); // CampaignSearchRequest | filters on campaigns
@@ -833,6 +843,7 @@ Start the specified list of ad sets
 package com.criteo.api.marketingsolutions.v2022_04;
 
 import com.criteo.api.marketingsolutions.v2022_04.ApiClient;
+import com.criteo.api.marketingsolutions.v2022_04.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.v2022_04.ApiException;
 import com.criteo.api.marketingsolutions.v2022_04.Configuration;
 import com.criteo.api.marketingsolutions.v2022_04.auth.*;
@@ -841,17 +852,17 @@ import com.criteo.api.marketingsolutions.v2022_04.api.CampaignApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         RequestsAdSetId requestsAdSetId = new RequestsAdSetId(); // RequestsAdSetId | All the ad sets to start
@@ -912,6 +923,7 @@ Stop the specified list of ad sets
 package com.criteo.api.marketingsolutions.v2022_04;
 
 import com.criteo.api.marketingsolutions.v2022_04.ApiClient;
+import com.criteo.api.marketingsolutions.v2022_04.ApiClientBuilder;
 import com.criteo.api.marketingsolutions.v2022_04.ApiException;
 import com.criteo.api.marketingsolutions.v2022_04.Configuration;
 import com.criteo.api.marketingsolutions.v2022_04.auth.*;
@@ -920,17 +932,17 @@ import com.criteo.api.marketingsolutions.v2022_04.api.CampaignApi;
 
 public class Example {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.criteo.com");
-        
-        // Configure OAuth2, two options:
-        // 1. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        oauth.setAccessToken("YOUR ACCESS TOKEN");
 
-        // 2. Set your credentials within the ApiClient, refresh token mechanism IS handled for you 💚
-        defaultClient.setUsername("YOUR CLIENT ID");
-        defaultClient.setPassword("YOUR CLIENT SECRET");
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         RequestsAdSetId requestsAdSetId = new RequestsAdSetId(); // RequestsAdSetId | All the ad sets to stop
