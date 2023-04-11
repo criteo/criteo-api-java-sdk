@@ -1046,58 +1046,6 @@ paths:
       - Campaign
       x-content-type: application/json-patch+json
       x-accepts: application/json
-  /oauth2/token:
-    post:
-      description: Creates a token when the supplied client credentials are valid
-      operationId: GetToken
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/GetToken_request'
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AccessTokenModel'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AccessTokenModel'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AccessTokenModel'
-          description: Success
-        "400":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/OAuthErrorModel'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OAuthErrorModel'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/OAuthErrorModel'
-          description: Bad request
-        "401":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/OAuthErrorModel'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OAuthErrorModel'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/OAuthErrorModel'
-          description: Unauthorized
-      summary: Creates a token based either on supplied client credentials or on single
-        use authorization code
-      tags:
-      - OAuth
-      x-content-type: application/x-www-form-urlencoded
-      x-accepts: application/json
   /2022-10/statistics/report:
     post:
       description: "This Statistics endpoint provides adset related data. It is an\
@@ -4583,42 +4531,6 @@ components:
           type: array
           uniqueItems: false
       type: object
-    AccessTokenModel:
-      description: Access Token to be used with other services
-      example:
-        access_token: access_token
-        refresh_token: refresh_token
-        token_type: token_type
-        expires_in: 0
-      properties:
-        access_token:
-          description: The access token issued by the authorization server.
-          type: string
-        token_type:
-          description: The type of the token issued.
-          type: string
-        refresh_token:
-          description: The refresh token issued by the authorization server.
-          type: string
-          x-nullable: true
-        expires_in:
-          description: "The lifetime in seconds of the access token.For example, the\
-            \ value \"3600\" denotes that the access token will expire in one hour\
-            \ from the time the response was generated. If omitted, the authorization\
-            \ server SHOULD provide the expiration time via other means or document\
-            \ the default value."
-          format: int32
-          type: integer
-      type: object
-    OAuthErrorModel:
-      properties:
-        error:
-          type: string
-        error_description:
-          type: string
-        error_uri:
-          type: string
-      type: object
     ErrorMessage:
       description: This is the message defining an error
       properties:
@@ -5311,24 +5223,6 @@ components:
         advertiserName:
           type: string
       type: object
-    GetToken_request:
-      properties:
-        grant_type:
-          type: string
-        client_id:
-          type: string
-        client_secret:
-          type: string
-        redirect_uri:
-          type: string
-        code:
-          type: string
-        refresh_token:
-          type: string
-      required:
-      - client_id
-      - client_secret
-      - grant_type
     Audience_attributes:
       example:
         nbLinesEmail: 6

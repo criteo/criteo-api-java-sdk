@@ -6,7 +6,6 @@ README.md
 api/openapi.yaml
 build.gradle
 build.sbt
-docs/AccessTokenModel.md
 docs/AddToBasketIdsUpdateModel202110Request.md
 docs/AddToBasketTarget202110Request.md
 docs/AddToBasketTarget202110Response.md
@@ -119,8 +118,6 @@ docs/KeywordTarget202110Response.md
 docs/LineItemBidMultipliers.md
 docs/LineItemBidMultipliersRequest.md
 docs/LineItemBidMultipliersResponse.md
-docs/OAuthApi.md
-docs/OAuthErrorModel.md
 docs/PageMetadata.md
 docs/PostCampaignV202301.md
 docs/PreferredLineItem202110PagedListResponse.md
@@ -203,7 +200,6 @@ src/main/java/com/criteo/api/retailmedia/v2023_01/api/AnalyticsApi.java
 src/main/java/com/criteo/api/retailmedia/v2023_01/api/AudienceApi.java
 src/main/java/com/criteo/api/retailmedia/v2023_01/api/CampaignApi.java
 src/main/java/com/criteo/api/retailmedia/v2023_01/api/GatewayApi.java
-src/main/java/com/criteo/api/retailmedia/v2023_01/api/OAuthApi.java
 src/main/java/com/criteo/api/retailmedia/v2023_01/auth/ApiKeyAuth.java
 src/main/java/com/criteo/api/retailmedia/v2023_01/auth/Authentication.java
 src/main/java/com/criteo/api/retailmedia/v2023_01/auth/HttpBasicAuth.java
@@ -213,7 +209,6 @@ src/main/java/com/criteo/api/retailmedia/v2023_01/auth/OAuthFlow.java
 src/main/java/com/criteo/api/retailmedia/v2023_01/auth/OAuthOkHttpClient.java
 src/main/java/com/criteo/api/retailmedia/v2023_01/auth/RetryingOAuth.java
 src/main/java/com/criteo/api/retailmedia/v2023_01/model/AbstractOpenApiSchema.java
-src/main/java/com/criteo/api/retailmedia/v2023_01/model/AccessTokenModel.java
 src/main/java/com/criteo/api/retailmedia/v2023_01/model/AddToBasketIdsUpdateModel202110Request.java
 src/main/java/com/criteo/api/retailmedia/v2023_01/model/AddToBasketTarget202110Request.java
 src/main/java/com/criteo/api/retailmedia/v2023_01/model/AddToBasketTarget202110Response.java
@@ -322,7 +317,6 @@ src/main/java/com/criteo/api/retailmedia/v2023_01/model/KeywordTarget202110Respo
 src/main/java/com/criteo/api/retailmedia/v2023_01/model/LineItemBidMultipliers.java
 src/main/java/com/criteo/api/retailmedia/v2023_01/model/LineItemBidMultipliersRequest.java
 src/main/java/com/criteo/api/retailmedia/v2023_01/model/LineItemBidMultipliersResponse.java
-src/main/java/com/criteo/api/retailmedia/v2023_01/model/OAuthErrorModel.java
 src/main/java/com/criteo/api/retailmedia/v2023_01/model/PageMetadata.java
 src/main/java/com/criteo/api/retailmedia/v2023_01/model/PostCampaignV202301.java
 src/main/java/com/criteo/api/retailmedia/v2023_01/model/PreferredLineItem202110PagedListResponse.java
@@ -377,4 +371,3 @@ src/main/java/com/criteo/api/retailmedia/v2023_01/model/ValueTypeResourceOfKeywo
 src/main/java/com/criteo/api/retailmedia/v2023_01/model/ValueTypeResourceOfStoreIdsUpdateModel202110.java
 src/main/java/com/criteo/api/retailmedia/v2023_01/model/ValueTypeResourceOfStoreTarget202110.java
 src/test/java/com/criteo.api.sdk/GatewayApiTest.java
-src/test/java/com/criteo.api.sdk/OAuthApiTest.java

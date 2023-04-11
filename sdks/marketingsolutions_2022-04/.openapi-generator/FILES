@@ -6,7 +6,6 @@ README.md
 api/openapi.yaml
 build.gradle
 build.sbt
-docs/AccessTokenModel.md
 docs/AdSetCategoryBid.md
 docs/AdSetCategoryBidListResponse.md
 docs/AdSetCategoryBidResource.md
@@ -64,8 +63,6 @@ docs/NillableAdSetTargetingRule.md
 docs/NillableAdSetTargetingRuleValue.md
 docs/NillableDateTime.md
 docs/NillableDecimal.md
-docs/OAuthApi.md
-docs/OAuthErrorModel.md
 docs/PatchAdSet.md
 docs/PatchAdSetBidding.md
 docs/PatchAdSetBudget.md
@@ -148,7 +145,6 @@ src/main/java/com/criteo/api/marketingsolutions/v2022_04/api/AnalyticsApi.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/api/AudienceApi.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/api/CampaignApi.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/api/GatewayApi.java
-src/main/java/com/criteo/api/marketingsolutions/v2022_04/api/OAuthApi.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/auth/ApiKeyAuth.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/auth/Authentication.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/auth/HttpBasicAuth.java
@@ -158,7 +154,6 @@ src/main/java/com/criteo/api/marketingsolutions/v2022_04/auth/OAuthFlow.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/auth/OAuthOkHttpClient.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/auth/RetryingOAuth.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/model/AbstractOpenApiSchema.java
-src/main/java/com/criteo/api/marketingsolutions/v2022_04/model/AccessTokenModel.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/model/AdSetCategoryBid.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/model/AdSetCategoryBidListResponse.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/model/AdSetCategoryBidResource.java
@@ -211,7 +206,6 @@ src/main/java/com/criteo/api/marketingsolutions/v2022_04/model/NillableAdSetTarg
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/model/NillableAdSetTargetingRuleValue.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/model/NillableDateTime.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/model/NillableDecimal.java
-src/main/java/com/criteo/api/marketingsolutions/v2022_04/model/OAuthErrorModel.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/model/PatchAdSet.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/model/PatchAdSetBidding.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/model/PatchAdSetBudget.java
@@ -265,4 +259,3 @@ src/main/java/com/criteo/api/marketingsolutions/v2022_04/model/TransparencyRepor
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/model/WriteModelAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_04/model/WriteModelPatchAdSet.java
 src/test/java/com/criteo.api.sdk/GatewayApiTest.java
-src/test/java/com/criteo.api.sdk/OAuthApiTest.java

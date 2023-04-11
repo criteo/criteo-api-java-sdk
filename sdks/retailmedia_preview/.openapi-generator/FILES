@@ -6,7 +6,6 @@ README.md
 api/openapi.yaml
 build.gradle
 build.sbt
-docs/AccessTokenModel.md
 docs/AnalyticsApi.md
 docs/ApplicationSummaryModel.md
 docs/ApplicationSummaryModelResource.md
@@ -101,8 +100,6 @@ docs/JsonApiSingleResponseOfLineItemBidMultipliers.md
 docs/LineItemBidMultipliers.md
 docs/LineItemBidMultipliersRequest.md
 docs/LineItemBidMultipliersResponse.md
-docs/OAuthApi.md
-docs/OAuthErrorModel.md
 docs/PageMetadata.md
 docs/PageOfBalanceCampaign.md
 docs/PageTypeEnvironment.md
@@ -193,7 +190,6 @@ src/main/java/com/criteo/api/retailmedia/preview/api/AnalyticsApi.java
 src/main/java/com/criteo/api/retailmedia/preview/api/AudienceApi.java
 src/main/java/com/criteo/api/retailmedia/preview/api/CampaignApi.java
 src/main/java/com/criteo/api/retailmedia/preview/api/GatewayApi.java
-src/main/java/com/criteo/api/retailmedia/preview/api/OAuthApi.java
 src/main/java/com/criteo/api/retailmedia/preview/auth/ApiKeyAuth.java
 src/main/java/com/criteo/api/retailmedia/preview/auth/Authentication.java
 src/main/java/com/criteo/api/retailmedia/preview/auth/HttpBasicAuth.java
@@ -203,7 +199,6 @@ src/main/java/com/criteo/api/retailmedia/preview/auth/OAuthFlow.java
 src/main/java/com/criteo/api/retailmedia/preview/auth/OAuthOkHttpClient.java
 src/main/java/com/criteo/api/retailmedia/preview/auth/RetryingOAuth.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AbstractOpenApiSchema.java
-src/main/java/com/criteo/api/retailmedia/preview/model/AccessTokenModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ApplicationSummaryModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ApplicationSummaryModelResource.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ApplicationSummaryModelResponse.java
@@ -294,7 +289,6 @@ src/main/java/com/criteo/api/retailmedia/preview/model/JsonApiSingleResponseOfLi
 src/main/java/com/criteo/api/retailmedia/preview/model/LineItemBidMultipliers.java
 src/main/java/com/criteo/api/retailmedia/preview/model/LineItemBidMultipliersRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/LineItemBidMultipliersResponse.java
-src/main/java/com/criteo/api/retailmedia/preview/model/OAuthErrorModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PageMetadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PageOfBalanceCampaign.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PageTypeEnvironment.java
@@ -357,4 +351,3 @@ src/main/java/com/criteo/api/retailmedia/preview/model/TextVariableValue.java
 src/main/java/com/criteo/api/retailmedia/preview/model/UserBehaviorDetails.java
 src/main/java/com/criteo/api/retailmedia/preview/model/UserBehaviorDetailsV2.java
 src/test/java/com/criteo.api.sdk/GatewayApiTest.java
-src/test/java/com/criteo.api.sdk/OAuthApiTest.java

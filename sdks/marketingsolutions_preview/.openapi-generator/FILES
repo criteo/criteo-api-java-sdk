@@ -6,7 +6,6 @@ README.md
 api/openapi.yaml
 build.gradle
 build.sbt
-docs/AccessTokenModel.md
 docs/Ad.md
 docs/AdListResponse.md
 docs/AdResource.md
@@ -262,8 +261,6 @@ docs/NillableDateTime.md
 docs/NillableDecimal.md
 docs/NillableGenderV1.md
 docs/NillableString.md
-docs/OAuthApi.md
-docs/OAuthErrorModel.md
 docs/OciBrandSafetyResponse.md
 docs/OciBrandSafetyResponseData.md
 docs/OciBrandSafetyRule.md
@@ -424,7 +421,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/api/CampaignApi.java
 src/main/java/com/criteo/api/marketingsolutions/preview/api/CatalogApi.java
 src/main/java/com/criteo/api/marketingsolutions/preview/api/CreativeApi.java
 src/main/java/com/criteo/api/marketingsolutions/preview/api/GatewayApi.java
-src/main/java/com/criteo/api/marketingsolutions/preview/api/OAuthApi.java
 src/main/java/com/criteo/api/marketingsolutions/preview/api/OnSiteRecommendationApi.java
 src/main/java/com/criteo/api/marketingsolutions/preview/api/RecoApi.java
 src/main/java/com/criteo/api/marketingsolutions/preview/auth/ApiKeyAuth.java
@@ -436,7 +432,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/auth/OAuthFlow.java
 src/main/java/com/criteo/api/marketingsolutions/preview/auth/OAuthOkHttpClient.java
 src/main/java/com/criteo/api/marketingsolutions/preview/auth/RetryingOAuth.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AbstractOpenApiSchema.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/AccessTokenModel.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Ad.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdListResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdResource.java
@@ -685,7 +680,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableDateTime.j
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableDecimal.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableGenderV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableString.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/OAuthErrorModel.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/OciBrandSafetyResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/OciBrandSafetyResponseData.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/OciBrandSafetyRule.java
@@ -813,4 +807,3 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/VideoDetail.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/WriteModelAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/WriteModelPatchAdSet.java
 src/test/java/com/criteo.api.sdk/GatewayApiTest.java
-src/test/java/com/criteo.api.sdk/OAuthApiTest.java
