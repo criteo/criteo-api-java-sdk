@@ -50,7 +50,6 @@ docs/DeleteAudienceContactListResponse.md
 docs/DeleteAudienceResponse.md
 docs/EntityOfPortfolioMessage.md
 docs/ErrorCodeResponse.md
-docs/ErrorMessage.md
 docs/GatewayApi.md
 docs/GetAudiencesResponse.md
 docs/GetPortfolioResponse.md
@@ -88,6 +87,7 @@ docs/PlacementsReportQueryEntityMessage.md
 docs/PlacementsReportQueryMessage.md
 docs/PortfolioMessage.md
 docs/ProblemDetails.md
+docs/ProblemsDetails.md
 docs/ReadAdSet.md
 docs/ReadAdSetBidding.md
 docs/ReadAdSetBudget.md
@@ -123,8 +123,6 @@ gradlew
 gradlew.bat
 pom.xml
 settings.gradle
-src/examples/java/criteo/api/examples/PortfolioApplication.java
-src/examples/java/criteo/api/examples/StatisticsApplication.java
 src/main/AndroidManifest.xml
 src/main/java/com/criteo/api/marketingsolutions/v2022_10/ApiCallback.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_10/ApiClient.java
@@ -194,7 +192,6 @@ src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/DeleteAudienceCon
 src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/DeleteAudienceResponse.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/EntityOfPortfolioMessage.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/ErrorCodeResponse.java
-src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/ErrorMessage.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/GetAudiencesResponse.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/GetPortfolioResponse.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/ModifyAudienceResponse.java
@@ -231,6 +228,7 @@ src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/PlacementsReportQ
 src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/PlacementsReportQueryMessage.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/PortfolioMessage.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/ProblemDetails.java
+src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/ProblemsDetails.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/ReadAdSet.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/ReadAdSetBidding.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/ReadAdSetBudget.java
@@ -258,4 +256,5 @@ src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/TransparencyRepor
 src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/TransparencyReportFile.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/WriteModelAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/v2022_10/model/WriteModelPatchAdSet.java
-src/test/java/com/criteo.api.sdk/GatewayApiTest.java
+src/test/java/com/criteo/api/marketingsolutions/v2022_10/ExampleApplication.java
+src/test/java/com/criteo/api/marketingsolutions/v2022_10/GatewayApiTest.java

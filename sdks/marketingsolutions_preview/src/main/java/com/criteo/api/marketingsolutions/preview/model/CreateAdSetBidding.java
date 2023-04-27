@@ -53,76 +53,7 @@ public class CreateAdSetBidding {
   private Double bidAmount;
 
   /**
-   * Gets or Sets bidStrategy
-   */
-  @JsonAdapter(BidStrategyEnum.Adapter.class)
-  public enum BidStrategyEnum {
-    ACTIONS("actions"),
-    
-    CLICKS("clicks"),
-    
-    CONVERSIONS("conversions"),
-    
-    DISPLAYS("displays"),
-    
-    INSTALLS("installs"),
-    
-    REVENUE("revenue"),
-    
-    STORECONVERSIONS("storeConversions"),
-    
-    VALUE("value"),
-    
-    VIEWEDIMPRESSIONS("viewedImpressions"),
-    
-    VISITS("Visits"),
-    
-    COMPLETEDVIDEOVIEWS("completedVideoViews");
-
-    private String value;
-
-    BidStrategyEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static BidStrategyEnum fromValue(String value) {
-      for (BidStrategyEnum b : BidStrategyEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<BidStrategyEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final BidStrategyEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public BidStrategyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return BidStrategyEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_BID_STRATEGY = "bidStrategy";
-  @SerializedName(SERIALIZED_NAME_BID_STRATEGY)
-  private BidStrategyEnum bidStrategy;
-
-  /**
-   * Gets or Sets costController
+   * How spend is controlled
    */
   @JsonAdapter(CostControllerEnum.Adapter.class)
   public enum CostControllerEnum {
@@ -209,28 +140,6 @@ public class CreateAdSetBidding {
   }
 
 
-  public CreateAdSetBidding bidStrategy(BidStrategyEnum bidStrategy) {
-    
-    this.bidStrategy = bidStrategy;
-    return this;
-  }
-
-   /**
-   * Get bidStrategy
-   * @return bidStrategy
-  **/
-  @javax.annotation.Nullable
-
-  public BidStrategyEnum getBidStrategy() {
-    return bidStrategy;
-  }
-
-
-  public void setBidStrategy(BidStrategyEnum bidStrategy) {
-    this.bidStrategy = bidStrategy;
-  }
-
-
   public CreateAdSetBidding costController(CostControllerEnum costController) {
     
     this.costController = costController;
@@ -238,7 +147,7 @@ public class CreateAdSetBidding {
   }
 
    /**
-   * Get costController
+   * How spend is controlled
    * @return costController
   **/
   @javax.annotation.Nullable
@@ -308,14 +217,13 @@ public class CreateAdSetBidding {
     }
     CreateAdSetBidding createAdSetBidding = (CreateAdSetBidding) o;
     return Objects.equals(this.bidAmount, createAdSetBidding.bidAmount) &&
-        Objects.equals(this.bidStrategy, createAdSetBidding.bidStrategy) &&
         Objects.equals(this.costController, createAdSetBidding.costController)&&
         Objects.equals(this.additionalProperties, createAdSetBidding.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bidAmount, bidStrategy, costController, additionalProperties);
+    return Objects.hash(bidAmount, costController, additionalProperties);
   }
 
   @Override
@@ -323,7 +231,6 @@ public class CreateAdSetBidding {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAdSetBidding {\n");
     sb.append("    bidAmount: ").append(toIndentedString(bidAmount)).append("\n");
-    sb.append("    bidStrategy: ").append(toIndentedString(bidStrategy)).append("\n");
     sb.append("    costController: ").append(toIndentedString(costController)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -349,7 +256,6 @@ public class CreateAdSetBidding {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("bidAmount");
-    openapiFields.add("bidStrategy");
     openapiFields.add("costController");
 
     // a set of required properties/fields (JSON key names)
@@ -367,9 +273,6 @@ public class CreateAdSetBidding {
         if (!CreateAdSetBidding.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CreateAdSetBidding is not found in the empty JSON string", CreateAdSetBidding.openapiRequiredFields.toString()));
         }
-      }
-      if ((jsonObj.get("bidStrategy") != null && !jsonObj.get("bidStrategy").isJsonNull()) && !jsonObj.get("bidStrategy").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `bidStrategy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bidStrategy").toString()));
       }
       if ((jsonObj.get("costController") != null && !jsonObj.get("costController").isJsonNull()) && !jsonObj.get("costController").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `costController` to be a primitive type in the JSON string but got `%s`", jsonObj.get("costController").toString()));

@@ -22,11 +22,11 @@ The status of an asynchronous request to generate a catalog
 
 | Name | Value |
 |---- | -----|
-| UNKNOWN | &quot;Unknown&quot; |
-| PENDING | &quot;Pending&quot; |
-| SUCCESS | &quot;Success&quot; |
-| FAILURE | &quot;Failure&quot; |
-| EXPIRED | &quot;Expired&quot; |
+| UNKNOWN | &quot;unknown&quot; |
+| PENDING | &quot;pending&quot; |
+| SUCCESS | &quot;success&quot; |
+| FAILURE | &quot;failure&quot; |
+| EXPIRED | &quot;expired&quot; |
 
 
 

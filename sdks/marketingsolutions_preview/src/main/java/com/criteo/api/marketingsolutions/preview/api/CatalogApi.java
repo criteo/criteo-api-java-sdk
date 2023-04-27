@@ -31,6 +31,7 @@ import com.criteo.api.marketingsolutions.preview.model.BatchAcceptedResponse;
 import com.criteo.api.marketingsolutions.preview.model.FailResponse;
 import com.criteo.api.marketingsolutions.preview.model.ProductsCustomBatchRequest;
 import com.criteo.api.marketingsolutions.preview.model.ReportOkResponse;
+import com.criteo.api.marketingsolutions.preview.model.StatisticsOkResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -136,7 +137,7 @@ public class CatalogApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "oauth" };
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -287,7 +288,7 @@ public class CatalogApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "oauth" };
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -375,6 +376,157 @@ public class CatalogApi {
 
         okhttp3.Call localVarCall = previewCatalogProductsBatchReportOperationTokenGetValidateBeforeCall(operationToken, _callback);
         Type localVarReturnType = new TypeToken<ReportOkResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for previewCatalogStatsMerchantsMerchantIdGet
+     * @param merchantId merchant-id to get (required)
+     * @param lastNumHours the last number of hours (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;service-unavailable\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Allowed error types and errors: [(type&#x3D;\&quot;authentication\&quot;, code&#x3D;\&quot;not-authenticated\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. Allowed error types and errors: [(type&#x3D;\&quot;authorization\&quot;, code&#x3D;\&quot;not-authorized\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;internal-error\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;too-many-requests\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successful response of GET stats request </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call previewCatalogStatsMerchantsMerchantIdGetCall(Integer merchantId, Integer lastNumHours, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/catalog/stats/merchants/{merchant-id}"
+            .replace("{" + "merchant-id" + "}", localVarApiClient.escapeString(merchantId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (lastNumHours != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("lastNumHours", lastNumHours));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call previewCatalogStatsMerchantsMerchantIdGetValidateBeforeCall(Integer merchantId, Integer lastNumHours, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'merchantId' is set
+        if (merchantId == null) {
+            throw new ApiException("Missing the required parameter 'merchantId' when calling previewCatalogStatsMerchantsMerchantIdGet(Async)");
+        }
+
+        return previewCatalogStatsMerchantsMerchantIdGetCall(merchantId, lastNumHours, _callback);
+
+    }
+
+    /**
+     * 
+     * get an stats request
+     * @param merchantId merchant-id to get (required)
+     * @param lastNumHours the last number of hours (optional)
+     * @return StatisticsOkResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;service-unavailable\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Allowed error types and errors: [(type&#x3D;\&quot;authentication\&quot;, code&#x3D;\&quot;not-authenticated\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. Allowed error types and errors: [(type&#x3D;\&quot;authorization\&quot;, code&#x3D;\&quot;not-authorized\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;internal-error\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;too-many-requests\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successful response of GET stats request </td><td>  -  </td></tr>
+     </table>
+     */
+    public StatisticsOkResponse previewCatalogStatsMerchantsMerchantIdGet(Integer merchantId, Integer lastNumHours) throws ApiException {
+        ApiResponse<StatisticsOkResponse> localVarResp = previewCatalogStatsMerchantsMerchantIdGetWithHttpInfo(merchantId, lastNumHours);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * get an stats request
+     * @param merchantId merchant-id to get (required)
+     * @param lastNumHours the last number of hours (optional)
+     * @return ApiResponse&lt;StatisticsOkResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;service-unavailable\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Allowed error types and errors: [(type&#x3D;\&quot;authentication\&quot;, code&#x3D;\&quot;not-authenticated\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. Allowed error types and errors: [(type&#x3D;\&quot;authorization\&quot;, code&#x3D;\&quot;not-authorized\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;internal-error\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;too-many-requests\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successful response of GET stats request </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<StatisticsOkResponse> previewCatalogStatsMerchantsMerchantIdGetWithHttpInfo(Integer merchantId, Integer lastNumHours) throws ApiException {
+        okhttp3.Call localVarCall = previewCatalogStatsMerchantsMerchantIdGetValidateBeforeCall(merchantId, lastNumHours, null);
+        Type localVarReturnType = new TypeToken<StatisticsOkResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * get an stats request
+     * @param merchantId merchant-id to get (required)
+     * @param lastNumHours the last number of hours (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;service-unavailable\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized. Allowed error types and errors: [(type&#x3D;\&quot;authentication\&quot;, code&#x3D;\&quot;not-authenticated\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden. Allowed error types and errors: [(type&#x3D;\&quot;authorization\&quot;, code&#x3D;\&quot;not-authorized\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;internal-error\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests. Allowed error types and errors: [(type&#x3D;\&quot;availability\&quot;, code&#x3D;\&quot;too-many-requests\&quot;)] </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The successful response of GET stats request </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call previewCatalogStatsMerchantsMerchantIdGetAsync(Integer merchantId, Integer lastNumHours, final ApiCallback<StatisticsOkResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = previewCatalogStatsMerchantsMerchantIdGetValidateBeforeCall(merchantId, lastNumHours, _callback);
+        Type localVarReturnType = new TypeToken<StatisticsOkResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

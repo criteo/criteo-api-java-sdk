@@ -14,14 +14,14 @@ All URIs are relative to *https://api.criteo.com*
 | [**deleteOCItargetingRule**](CampaignApi.md#deleteOCItargetingRule) | **DELETE** /preview/targeting/oci |  |
 | [**disableAdSetTargetingDealIds**](CampaignApi.md#disableAdSetTargetingDealIds) | **POST** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids/disable |  |
 | [**disableAdSetTargetingVideoPositioning**](CampaignApi.md#disableAdSetTargetingVideoPositioning) | **POST** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable |  |
-| [**getAdSet**](CampaignApi.md#getAdSet) | **GET** /preview/marketing-solutions/ad-sets/{adSetId} |  |
 | [**getAdSetTargetingDealIds**](CampaignApi.md#getAdSetTargetingDealIds) | **GET** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids |  |
 | [**getAdSetTargetingVideoPositioning**](CampaignApi.md#getAdSetTargetingVideoPositioning) | **GET** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning |  |
+| [**getAdSetV23Q1**](CampaignApi.md#getAdSetV23Q1) | **GET** /preview/marketing-solutions/ad-sets/{ad-set-id} |  |
 | [**getAdvertiserBundleRules**](CampaignApi.md#getAdvertiserBundleRules) | **GET** /preview/advertisers/{advertiserId}/targeting/bundle-rules |  |
 | [**getAdvertiserDomainRules**](CampaignApi.md#getAdvertiserDomainRules) | **GET** /preview/advertisers/{advertiserId}/targeting/domain-rules |  |
-| [**getCampaign**](CampaignApi.md#getCampaign) | **GET** /preview/marketing-solutions/campaigns/{campaign-id} |  |
 | [**getCampaignBundleRules**](CampaignApi.md#getCampaignBundleRules) | **GET** /preview/campaigns/{campaignId}/targeting/bundle-rules |  |
 | [**getCampaignDomainRules**](CampaignApi.md#getCampaignDomainRules) | **GET** /preview/campaigns/{campaignId}/targeting/domain-rules |  |
+| [**getCampaignV23Q1**](CampaignApi.md#getCampaignV23Q1) | **GET** /preview/marketing-solutions/campaigns/{campaign-id} |  |
 | [**getCategoryBidList**](CampaignApi.md#getCategoryBidList) | **GET** /preview/marketing-solutions/ad-sets/{ad-set-id}/category-bids |  |
 | [**getDisplayMultipliers**](CampaignApi.md#getDisplayMultipliers) | **GET** /preview/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers |  |
 | [**getOCIbrandSafetyRule**](CampaignApi.md#getOCIbrandSafetyRule) | **GET** /preview/brand-safety/oci |  |
@@ -39,8 +39,8 @@ All URIs are relative to *https://api.criteo.com*
 | [**putAdvertiserDomainRules**](CampaignApi.md#putAdvertiserDomainRules) | **PUT** /preview/advertisers/{advertiserId}/targeting/domain-rules |  |
 | [**putCampaignBundleRules**](CampaignApi.md#putCampaignBundleRules) | **PUT** /preview/campaigns/{campaignId}/targeting/bundle-rules |  |
 | [**putCampaignDomainRules**](CampaignApi.md#putCampaignDomainRules) | **PUT** /preview/campaigns/{campaignId}/targeting/domain-rules |  |
-| [**searchAdSets**](CampaignApi.md#searchAdSets) | **POST** /preview/marketing-solutions/ad-sets/search |  |
-| [**searchCampaigns**](CampaignApi.md#searchCampaigns) | **POST** /preview/marketing-solutions/campaigns/search |  |
+| [**searchAdSetsV23Q1**](CampaignApi.md#searchAdSetsV23Q1) | **POST** /preview/marketing-solutions/ad-sets/search |  |
+| [**searchCampaignsV23Q1**](CampaignApi.md#searchCampaignsV23Q1) | **POST** /preview/marketing-solutions/campaigns/search |  |
 | [**setAdSetTargetingDealIds**](CampaignApi.md#setAdSetTargetingDealIds) | **PUT** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids |  |
 | [**setAdSetTargetingVideoPositioning**](CampaignApi.md#setAdSetTargetingVideoPositioning) | **PUT** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning |  |
 | [**startAdSets**](CampaignApi.md#startAdSets) | **POST** /preview/marketing-solutions/ad-sets/start |  |
@@ -86,6 +86,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         CreateAdSetRequest createAdSetRequest = new CreateAdSetRequest(); // CreateAdSetRequest | the ad sets to create
         try {
@@ -115,7 +126,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -133,7 +144,7 @@ public class Example {
 
 ## createCampaign
 
-> CampaignResponse createCampaign(createCampaignRequest)
+> CampaignV23Q1Response createCampaign(createCampaignRequest)
 
 
 
@@ -166,10 +177,21 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         CreateCampaignRequest createCampaignRequest = new CreateCampaignRequest(); // CreateCampaignRequest | the campaigns to create
         try {
-            CampaignResponse result = apiInstance.createCampaign(createCampaignRequest);
+            CampaignV23Q1Response result = apiInstance.createCampaign(createCampaignRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#createCampaign");
@@ -191,11 +213,11 @@ public class Example {
 
 ### Return type
 
-[**CampaignResponse**](CampaignResponse.md)
+[**CampaignV23Q1Response**](CampaignV23Q1Response.md)
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -246,6 +268,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer advertiserId = 56; // Integer | The advertiser id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to delete from the list
@@ -277,7 +310,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -329,6 +362,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer advertiserId = 56; // Integer | The advertiser id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to delete from the list
@@ -360,7 +404,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -412,6 +456,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer campaignId = 56; // Integer | The campaign id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to delete from the list
@@ -443,7 +498,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -495,6 +550,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer campaignId = 56; // Integer | The campaign id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to delete from the list
@@ -526,7 +592,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -578,6 +644,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         TargetType targetType = TargetType.fromValue("Campaign"); // TargetType | Defines a target for a rule.
         Integer targetId = 56; // Integer | Unique target identifier.
@@ -608,7 +685,7 @@ null (empty response body)
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -661,6 +738,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         TargetType targetType = TargetType.fromValue("Campaign"); // TargetType | Defines a target for a rule.
         Integer targetId = 56; // Integer | Unique target identifier.
@@ -691,7 +779,7 @@ null (empty response body)
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -744,6 +832,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String adSetId = "adSetId_example"; // String | Id of the Ad Set
         try {
@@ -773,7 +872,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -824,6 +923,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String adSetId = "adSetId_example"; // String | Id of the Ad Set
         try {
@@ -853,7 +963,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -866,86 +976,6 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | the errors/warnings if any |  -  |
 | **400** | Bad Request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
-
-
-## getAdSet
-
-> ResponseReadAdSet getAdSet(adSetId)
-
-
-
-Get the data for the specified ad set
-
-### Example
-
-```java
-package com.criteo.api.marketingsolutions.preview;
-
-import com.criteo.api.marketingsolutions.preview.ApiClient;
-import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
-import com.criteo.api.marketingsolutions.preview.ApiException;
-import com.criteo.api.marketingsolutions.preview.Configuration;
-import com.criteo.api.marketingsolutions.preview.auth.*;
-import com.criteo.api.marketingsolutions.preview.model.*;
-import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String adSetId = "adSetId_example"; // String | Id of the ad set
-        try {
-            ResponseReadAdSet result = apiInstance.getAdSet(adSetId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getAdSet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **adSetId** | **String**| Id of the ad set | |
-
-### Return type
-
-[**ResponseReadAdSet**](ResponseReadAdSet.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | data for the ad set |  -  |
 | **401** | The API client is not properly authenticated. |  -  |
 | **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
@@ -973,6 +1003,17 @@ import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
 
 public class Example {
     public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         // Configure OAuth2, two options:
         // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
@@ -1014,7 +1055,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1065,6 +1106,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String adSetId = "adSetId_example"; // String | Id of the Ad Set
         try {
@@ -1094,7 +1146,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1107,6 +1159,97 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | the Video Positioning Targeting configuration |  -  |
 | **400** | Bad Request |  -  |
+| **401** | The API client is not properly authenticated. |  -  |
+| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
+
+
+## getAdSetV23Q1
+
+> ResponseReadAdSetV23Q1 getAdSetV23Q1(adSetId)
+
+
+
+Get the data for the specified ad set
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String adSetId = "adSetId_example"; // String | Id of the ad set
+        try {
+            ResponseReadAdSetV23Q1 result = apiInstance.getAdSetV23Q1(adSetId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#getAdSetV23Q1");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **adSetId** | **String**| Id of the ad set | |
+
+### Return type
+
+[**ResponseReadAdSetV23Q1**](ResponseReadAdSetV23Q1.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | data for the ad set |  -  |
 | **401** | The API client is not properly authenticated. |  -  |
 | **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
@@ -1134,6 +1277,17 @@ import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
 
 public class Example {
     public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         // Configure OAuth2, two options:
         // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
@@ -1175,7 +1329,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1227,6 +1381,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer advertiserId = 56; // Integer | The advertiser id
         try {
@@ -1256,7 +1421,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1273,13 +1438,13 @@ public class Example {
 | **403** | Forbidden |  -  |
 
 
-## getCampaign
+## getCampaignBundleRules
 
-> CampaignResponse getCampaign(campaignId)
+> ApiResponseOfTargetingEntity getCampaignBundleRules(campaignId)
 
 
 
-Get the data for the specified campaign
+Returns a list of all targeted bundles for a campaign.
 
 ### Example
 
@@ -1307,75 +1472,6 @@ public class Example {
         // ApiClient defaultClient = Configuration.getDefaultApiClient();
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String campaignId = "campaignId_example"; // String | Id of the campaign
-        try {
-            CampaignResponse result = apiInstance.getCampaign(campaignId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getCampaign");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **campaignId** | **String**| Id of the campaign | |
-
-### Return type
-
-[**CampaignResponse**](CampaignResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | data for the campaign |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
-
-
-## getCampaignBundleRules
-
-> ApiResponseOfTargetingEntity getCampaignBundleRules(campaignId)
-
-
-
-Returns a list of all targeted bundles for a campaign.
-
-### Example
-
-```java
-package com.criteo.api.marketingsolutions.preview;
-
-import com.criteo.api.marketingsolutions.preview.ApiClient;
-import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
-import com.criteo.api.marketingsolutions.preview.ApiException;
-import com.criteo.api.marketingsolutions.preview.Configuration;
-import com.criteo.api.marketingsolutions.preview.auth.*;
-import com.criteo.api.marketingsolutions.preview.model.*;
-import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
 
         // Configure OAuth2, two options:
         // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
@@ -1417,7 +1513,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1469,6 +1565,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer campaignId = 56; // Integer | The campaign id
         try {
@@ -1498,7 +1605,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1513,6 +1620,97 @@ public class Example {
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |
+
+
+## getCampaignV23Q1
+
+> CampaignV23Q1Response getCampaignV23Q1(campaignId)
+
+
+
+Get the data for the specified campaign
+
+### Example
+
+```java
+package com.criteo.api.marketingsolutions.preview;
+
+import com.criteo.api.marketingsolutions.preview.ApiClient;
+import com.criteo.api.marketingsolutions.preview.ApiClientBuilder;
+import com.criteo.api.marketingsolutions.preview.ApiException;
+import com.criteo.api.marketingsolutions.preview.Configuration;
+import com.criteo.api.marketingsolutions.preview.auth.*;
+import com.criteo.api.marketingsolutions.preview.model.*;
+import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String campaignId = "campaignId_example"; // String | Id of the campaign
+        try {
+            CampaignV23Q1Response result = apiInstance.getCampaignV23Q1(campaignId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#getCampaignV23Q1");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **campaignId** | **String**| Id of the campaign | |
+
+### Return type
+
+[**CampaignV23Q1Response**](CampaignV23Q1Response.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | data for the campaign |  -  |
+| **401** | The API client is not properly authenticated. |  -  |
+| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## getCategoryBidList
@@ -1538,6 +1736,17 @@ import com.criteo.api.marketingsolutions.preview.api.CampaignApi;
 
 public class Example {
     public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         // Configure OAuth2, two options:
         // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
@@ -1579,7 +1788,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1631,6 +1840,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String adSetId = "adSetId_example"; // String | Id of the Ad Set
         try {
@@ -1660,7 +1880,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1712,6 +1932,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         TargetType targetType = TargetType.fromValue("Campaign"); // TargetType | Defines a target for a rule.
         Integer targetId = 56; // Integer | Unique target identifier.
@@ -1743,7 +1974,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1796,6 +2027,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         TargetType targetType = TargetType.fromValue("Campaign"); // TargetType | Defines a target for a rule.
         Integer targetId = 56; // Integer | Unique target identifier.
@@ -1827,7 +2069,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1880,6 +2122,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         try {
             SupplyVendorListResponse result = apiInstance.getSupplyVendorList();
@@ -1905,7 +2158,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1956,6 +2209,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         RequestsPatchAdSet requestsPatchAdSet = new RequestsPatchAdSet(); // RequestsPatchAdSet | List of adsets to patch.
         try {
@@ -1985,7 +2249,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2036,6 +2300,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         PatchCampaignListRequest patchCampaignListRequest = new PatchCampaignListRequest(); // PatchCampaignListRequest | List of campaigns to patch.
         try {
@@ -2065,7 +2340,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2116,6 +2391,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String adSetId = "adSetId_example"; // String | Id of the Ad Set
         PatchAdSetCategoryBidListRequest patchAdSetCategoryBidListRequest = new PatchAdSetCategoryBidListRequest(); // PatchAdSetCategoryBidListRequest | 
@@ -2147,7 +2433,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2199,6 +2485,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String adSetId = "adSetId_example"; // String | Id of the Ad Set
         PatchAdSetDisplayMultiplierListRequest patchAdSetDisplayMultiplierListRequest = new PatchAdSetDisplayMultiplierListRequest(); // PatchAdSetDisplayMultiplierListRequest | 
@@ -2230,7 +2527,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2282,6 +2579,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer advertiserId = 56; // Integer | The advertiser id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Description of the targeting rule to setup
@@ -2313,7 +2621,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2365,6 +2673,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer advertiserId = 56; // Integer | The advertiser id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Description of the targeting rule to setup
@@ -2396,7 +2715,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2445,6 +2764,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer campaignId = 56; // Integer | The campaign id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Description of the targeting rule to setup
@@ -2476,7 +2806,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2528,6 +2858,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer campaignId = 56; // Integer | The campaign id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Description of the targeting rule to setup
@@ -2559,7 +2900,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2611,6 +2952,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer advertiserId = 56; // Integer | The advertiser id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to add to the existing list
@@ -2642,7 +2994,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2694,6 +3046,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer advertiserId = 56; // Integer | The advertiser id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to add to the existing list
@@ -2725,7 +3088,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2777,6 +3140,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer campaignId = 56; // Integer | The campaign id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to add to the existing list
@@ -2808,7 +3182,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2860,6 +3234,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer campaignId = 56; // Integer | The campaign id
         ApiRequestOfTargetingEntity apiRequestOfTargetingEntity = new ApiRequestOfTargetingEntity(); // ApiRequestOfTargetingEntity | Contains the list of items to add to the existing list
@@ -2891,7 +3276,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2908,9 +3293,9 @@ public class Example {
 | **403** | Forbidden |  -  |
 
 
-## searchAdSets
+## searchAdSetsV23Q1
 
-> ResponsesReadAdSet searchAdSets(requestAdSetSearch)
+> ResponsesReadAdSetV23Q1 searchAdSetsV23Q1(adSetSearchRequestV23Q1)
 
 
 
@@ -2943,13 +3328,24 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        RequestAdSetSearch requestAdSetSearch = new RequestAdSetSearch(); // RequestAdSetSearch | 
+        AdSetSearchRequestV23Q1 adSetSearchRequestV23Q1 = new AdSetSearchRequestV23Q1(); // AdSetSearchRequestV23Q1 | 
         try {
-            ResponsesReadAdSet result = apiInstance.searchAdSets(requestAdSetSearch);
+            ResponsesReadAdSetV23Q1 result = apiInstance.searchAdSetsV23Q1(adSetSearchRequestV23Q1);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#searchAdSets");
+            System.err.println("Exception when calling CampaignApi#searchAdSetsV23Q1");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -2964,15 +3360,15 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **requestAdSetSearch** | [**RequestAdSetSearch**](RequestAdSetSearch.md)|  | [optional] |
+| **adSetSearchRequestV23Q1** | [**AdSetSearchRequestV23Q1**](AdSetSearchRequestV23Q1.md)|  | [optional] |
 
 ### Return type
 
-[**ResponsesReadAdSet**](ResponsesReadAdSet.md)
+[**ResponsesReadAdSetV23Q1**](ResponsesReadAdSetV23Q1.md)
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2986,12 +3382,12 @@ public class Example {
 | **200** | data for the ad sets |  -  |
 | **400** | Bad Request |  -  |
 | **401** | The API client is not properly authenticated. |  -  |
-| **403** | Forbidden |  -  |
+| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
-## searchCampaigns
+## searchCampaignsV23Q1
 
-> CampaignListResponse searchCampaigns(campaignSearchRequest)
+> CampaignV23Q1ListResponse searchCampaignsV23Q1(campaignSearchRequestV23Q1)
 
 
 
@@ -3024,13 +3420,24 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        CampaignSearchRequest campaignSearchRequest = new CampaignSearchRequest(); // CampaignSearchRequest | filters on campaigns
+        CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1 = new CampaignSearchRequestV23Q1(); // CampaignSearchRequestV23Q1 | filters on campaigns
         try {
-            CampaignListResponse result = apiInstance.searchCampaigns(campaignSearchRequest);
+            CampaignV23Q1ListResponse result = apiInstance.searchCampaignsV23Q1(campaignSearchRequestV23Q1);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#searchCampaigns");
+            System.err.println("Exception when calling CampaignApi#searchCampaignsV23Q1");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -3045,15 +3452,15 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignSearchRequest** | [**CampaignSearchRequest**](CampaignSearchRequest.md)| filters on campaigns | [optional] |
+| **campaignSearchRequestV23Q1** | [**CampaignSearchRequestV23Q1**](CampaignSearchRequestV23Q1.md)| filters on campaigns | [optional] |
 
 ### Return type
 
-[**CampaignListResponse**](CampaignListResponse.md)
+[**CampaignV23Q1ListResponse**](CampaignV23Q1ListResponse.md)
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -3105,6 +3512,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String adSetId = "adSetId_example"; // String | Id of the Ad Set
         SetAdSetTargetingDealIdsRequest setAdSetTargetingDealIdsRequest = new SetAdSetTargetingDealIdsRequest(); // SetAdSetTargetingDealIdsRequest | the new Deal Id Targeting configuration
@@ -3136,7 +3554,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -3188,6 +3606,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String adSetId = "adSetId_example"; // String | Id of the Ad Set
         SetAdSetTargetingVideoPositioningRequest setAdSetTargetingVideoPositioningRequest = new SetAdSetTargetingVideoPositioningRequest(); // SetAdSetTargetingVideoPositioningRequest | the new Video Positioning Targeting configuration
@@ -3219,7 +3648,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -3271,6 +3700,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         RequestsAdSetId requestsAdSetId = new RequestsAdSetId(); // RequestsAdSetId | All the ad sets to start
         try {
@@ -3300,7 +3740,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -3351,6 +3791,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         RequestsAdSetId requestsAdSetId = new RequestsAdSetId(); // RequestsAdSetId | All the ad sets to stop
         try {
@@ -3380,7 +3831,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -3431,6 +3882,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String adSetId = "adSetId_example"; // String | The ad set ID.
         AdSetAudienceLinkInputEntityV1 adSetAudienceLinkInputEntityV1 = new AdSetAudienceLinkInputEntityV1(); // AdSetAudienceLinkInputEntityV1 | Ad set-Audience update request.
@@ -3462,7 +3924,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -3514,6 +3976,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         OciBrandSafetyRule ociBrandSafetyRule = new OciBrandSafetyRule(); // OciBrandSafetyRule | OCI brand-safety rule input
         try {
@@ -3543,7 +4016,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -3596,6 +4069,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         OciTargetingRule ociTargetingRule = new OciTargetingRule(); // OciTargetingRule | OCI targeting rule input
         try {
@@ -3625,7 +4109,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 

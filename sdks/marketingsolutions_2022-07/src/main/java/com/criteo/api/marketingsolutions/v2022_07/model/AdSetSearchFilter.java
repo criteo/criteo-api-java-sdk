@@ -80,7 +80,7 @@ public class AdSetSearchFilter {
   }
 
    /**
-   * Get adSetIds
+   * Ad set ids to filter on
    * @return adSetIds
   **/
   @javax.annotation.Nullable
@@ -110,7 +110,7 @@ public class AdSetSearchFilter {
   }
 
    /**
-   * Get advertiserIds
+   * Advertiser ids which ad sets belongs to (indirectly via their marketing campaign)
    * @return advertiserIds
   **/
   @javax.annotation.Nullable
@@ -140,7 +140,7 @@ public class AdSetSearchFilter {
   }
 
    /**
-   * Get campaignIds
+   * Campaign ids to filter on
    * @return campaignIds
   **/
   @javax.annotation.Nullable

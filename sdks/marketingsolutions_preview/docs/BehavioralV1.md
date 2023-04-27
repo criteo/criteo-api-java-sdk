@@ -9,6 +9,21 @@ Settings of a behavioral set of users provided by Criteo.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**country** | **String** | The users&#39; country |  [optional] |
+|**category** | [**CategoryEnum**](#CategoryEnum) | The type of behavioral |  |
+|**startDate** | **OffsetDateTime** | Desired date when the behavioral will start |  [optional] |
+|**endDate** | **OffsetDateTime** | Desired date when the behavioral will end |  [optional] |
+
+
+
+## Enum: CategoryEnum
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;Unknown&quot; |
+| LIFESTYLES | &quot;Lifestyles&quot; |
+| LIFEEVENTS | &quot;LifeEvents&quot; |
+| SEASONAL | &quot;Seasonal&quot; |
+| BUYINGPATTERNS | &quot;BuyingPatterns&quot; |
 
 
 

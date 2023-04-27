@@ -225,7 +225,7 @@ public class ExternalBalance202110 {
    * Get deposited
    * @return deposited
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public BigDecimal getDeposited() {
     return deposited;
@@ -247,7 +247,7 @@ public class ExternalBalance202110 {
    * Get spent
    * @return spent
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public BigDecimal getSpent() {
     return spent;
@@ -269,7 +269,7 @@ public class ExternalBalance202110 {
    * Get remaining
    * @return remaining
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public BigDecimal getRemaining() {
     return remaining;

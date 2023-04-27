@@ -123,7 +123,7 @@ public class ReadAdSetBidding {
   private BidStrategyEnum bidStrategy;
 
   /**
-   * How is spend controlled
+   * How spend is controlled
    */
   @JsonAdapter(CostControllerEnum.Adapter.class)
   public enum CostControllerEnum {
@@ -239,7 +239,7 @@ public class ReadAdSetBidding {
   }
 
    /**
-   * How is spend controlled
+   * How spend is controlled
    * @return costController
   **/
   @javax.annotation.Nullable

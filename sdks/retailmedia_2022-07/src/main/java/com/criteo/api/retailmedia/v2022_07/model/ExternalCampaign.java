@@ -25,6 +25,7 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -342,7 +343,7 @@ public class ExternalCampaign {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return null;
     }
 
     public static class Adapter extends TypeAdapter<ClickAttributionScopeEnum> {
@@ -397,7 +398,7 @@ public class ExternalCampaign {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return null;
     }
 
     public static class Adapter extends TypeAdapter<ViewAttributionScopeEnum> {
@@ -480,7 +481,7 @@ public class ExternalCampaign {
    * Get budgetSpent
    * @return budgetSpent
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public BigDecimal getBudgetSpent() {
     return budgetSpent;
@@ -502,7 +503,7 @@ public class ExternalCampaign {
    * Get budgetRemaining
    * @return budgetRemaining
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public BigDecimal getBudgetRemaining() {
     return budgetRemaining;
@@ -836,9 +837,20 @@ public class ExternalCampaign {
         Objects.equals(this.additionalProperties, externalCampaign.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(accountId, promotedBrandIds, budgetSpent, budgetRemaining, status, createdAt, updatedAt, type, drawableBalanceIds, clickAttributionWindow, viewAttributionWindow, name, budget, clickAttributionScope, viewAttributionScope, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

@@ -57,10 +57,6 @@ public class CreateCampaign {
   @SerializedName(SERIALIZED_NAME_ADVERTISER_ID)
   private String advertiserId;
 
-  public static final String SERIALIZED_NAME_OBJECTIVE = "objective";
-  @SerializedName(SERIALIZED_NAME_OBJECTIVE)
-  private String objective;
-
   /**
    * Goal for the marketing campaign
    */
@@ -165,28 +161,6 @@ public class CreateCampaign {
   }
 
 
-  public CreateCampaign objective(String objective) {
-    
-    this.objective = objective;
-    return this;
-  }
-
-   /**
-   * Campaign&#39;s marketing objective
-   * @return objective
-  **/
-  @javax.annotation.Nullable
-
-  public String getObjective() {
-    return objective;
-  }
-
-
-  public void setObjective(String objective) {
-    this.objective = objective;
-  }
-
-
   public CreateCampaign goal(GoalEnum goal) {
     
     this.goal = goal;
@@ -287,7 +261,6 @@ public class CreateCampaign {
     CreateCampaign createCampaign = (CreateCampaign) o;
     return Objects.equals(this.name, createCampaign.name) &&
         Objects.equals(this.advertiserId, createCampaign.advertiserId) &&
-        Objects.equals(this.objective, createCampaign.objective) &&
         Objects.equals(this.goal, createCampaign.goal) &&
         Objects.equals(this.spendLimit, createCampaign.spendLimit)&&
         Objects.equals(this.additionalProperties, createCampaign.additionalProperties);
@@ -295,7 +268,7 @@ public class CreateCampaign {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, advertiserId, objective, goal, spendLimit, additionalProperties);
+    return Objects.hash(name, advertiserId, goal, spendLimit, additionalProperties);
   }
 
   @Override
@@ -304,7 +277,6 @@ public class CreateCampaign {
     sb.append("class CreateCampaign {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
-    sb.append("    objective: ").append(toIndentedString(objective)).append("\n");
     sb.append("    goal: ").append(toIndentedString(goal)).append("\n");
     sb.append("    spendLimit: ").append(toIndentedString(spendLimit)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -332,7 +304,6 @@ public class CreateCampaign {
     openapiFields = new HashSet<String>();
     openapiFields.add("name");
     openapiFields.add("advertiserId");
-    openapiFields.add("objective");
     openapiFields.add("goal");
     openapiFields.add("spendLimit");
 
@@ -357,9 +328,6 @@ public class CreateCampaign {
       }
       if ((jsonObj.get("advertiserId") != null && !jsonObj.get("advertiserId").isJsonNull()) && !jsonObj.get("advertiserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserId").toString()));
-      }
-      if ((jsonObj.get("objective") != null && !jsonObj.get("objective").isJsonNull()) && !jsonObj.get("objective").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `objective` to be a primitive type in the JSON string but got `%s`", jsonObj.get("objective").toString()));
       }
       if ((jsonObj.get("goal") != null && !jsonObj.get("goal").isJsonNull()) && !jsonObj.get("goal").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `goal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("goal").toString()));

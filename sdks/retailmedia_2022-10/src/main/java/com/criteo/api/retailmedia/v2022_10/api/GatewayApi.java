@@ -102,7 +102,7 @@ public class GatewayApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/me";
+        String localVarPath = "/2022-10/retail-media/me";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -125,7 +125,7 @@ public class GatewayApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "oauth" };
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 

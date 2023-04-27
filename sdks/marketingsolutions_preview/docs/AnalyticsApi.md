@@ -53,6 +53,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         StatisticsReportQueryMessage statisticsReportQueryMessage = new StatisticsReportQueryMessage(); // StatisticsReportQueryMessage | 
         try {
@@ -82,12 +93,12 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
 - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: text/plain, application/json, text/json, text/csv, text/xml, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 
 
 ### HTTP response details
@@ -133,6 +144,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         GenerateStatisticsReportRequest generateStatisticsReportRequest = new GenerateStatisticsReportRequest(); // GenerateStatisticsReportRequest | 
         try {
@@ -162,7 +184,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -213,6 +235,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         GenerateAudiencePerformanceReportRequest generateAudiencePerformanceReportRequest = new GenerateAudiencePerformanceReportRequest(); // GenerateAudiencePerformanceReportRequest | 
         try {
@@ -242,7 +275,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -293,6 +326,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         String reportId = "reportId_example"; // String | Id of the report
         try {
@@ -322,7 +366,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -371,6 +415,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         String reportId = "reportId_example"; // String | Id of the report
         try {
@@ -400,7 +455,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -450,6 +505,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         GenerateCategoriesReportRequest generateCategoriesReportRequest = new GenerateCategoriesReportRequest(); // GenerateCategoriesReportRequest | 
         try {
@@ -479,12 +545,12 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
 - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: text/plain, application/json, text/json, text/csv, text/xml, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 
 
 ### HTTP response details
@@ -530,6 +596,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         GenerateCreativesReportRequest generateCreativesReportRequest = new GenerateCreativesReportRequest(); // GenerateCreativesReportRequest | 
         try {
@@ -559,7 +636,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -610,6 +687,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         PlacementsReportQueryDataMessage placementsReportQueryDataMessage = new PlacementsReportQueryDataMessage(); // PlacementsReportQueryDataMessage | 
         try {
@@ -639,7 +727,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -690,6 +778,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         GenerateTopProductsReportRequest generateTopProductsReportRequest = new GenerateTopProductsReportRequest(); // GenerateTopProductsReportRequest | 
         try {
@@ -719,7 +818,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -770,6 +869,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         TransactionsReportQueryDataMessage transactionsReportQueryDataMessage = new TransactionsReportQueryDataMessage(); // TransactionsReportQueryDataMessage | 
         try {
@@ -799,12 +909,12 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 
 - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: text/plain, application/json, text/json, text/csv, text/xml, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 
 
 ### HTTP response details
@@ -850,6 +960,17 @@ public class Example {
         // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         Integer advertiserId = 56; // Integer | The advertiser id to fetch the transparency data.
         TransparencyQueryMessage transparencyQueryMessage = new TransparencyQueryMessage(); // TransparencyQueryMessage | 
@@ -881,7 +1002,7 @@ public class Example {
 
 ### Authorization
 
-[oauth](../README.md#oauth)
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
 
 ### HTTP request headers
 

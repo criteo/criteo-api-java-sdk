@@ -66,7 +66,7 @@ public class NillableAdSetTargetingRule {
    * Get value
    * @return value
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public NillableAdSetTargetingRuleValue getValue() {
     return value;

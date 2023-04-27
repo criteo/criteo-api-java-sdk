@@ -226,13 +226,15 @@ paths:
             application/json:
               example:
                 data:
-                  operation: ""
-                  requestDate: ""
-                  identifierType: ""
-                  nbValidIdentifiers: 0
-                  nbInvalidIdentifiers: 0
-                  sampleInvalidIdentifiers:
-                  - ""
+                  type: ContactlistAmendment
+                  attributes:
+                    operation: ""
+                    requestDate: 2018-12-10T10:00:50.0000000+00:00
+                    identifierType: ""
+                    nbValidIdentifiers: 0
+                    nbInvalidIdentifiers: 0
+                    sampleInvalidIdentifiers:
+                    - ""
                 errors: []
                 warnings: []
               schema:
@@ -244,7 +246,7 @@ paths:
       - Audience
       x-content-type: application/json
       x-accepts: application/json
-  /me:
+  /preview/marketing-solutions/me:
     get:
       description: Get information about the currently logged application
       operationId: GetCurrentApplication
@@ -1146,15 +1148,15 @@ paths:
       - Campaign
       x-content-type: application/json-patch+json
       x-accepts: application/json
-  /preview/marketing-solutions/ad-sets/{adSetId}:
+  /preview/marketing-solutions/ad-sets/{ad-set-id}:
     get:
       description: Get the data for the specified ad set
-      operationId: GetAdSet
+      operationId: GetAdSetV23Q1
       parameters:
       - description: Id of the ad set
         explode: false
         in: path
-        name: adSetId
+        name: ad-set-id
         required: true
         schema:
           type: string
@@ -1164,13 +1166,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ResponseReadAdSet'
+                $ref: '#/components/schemas/ResponseReadAdSetV23Q1'
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseReadAdSet'
+                $ref: '#/components/schemas/ResponseReadAdSetV23Q1'
             text/json:
               schema:
-                $ref: '#/components/schemas/ResponseReadAdSet'
+                $ref: '#/components/schemas/ResponseReadAdSetV23Q1'
           description: data for the ad set
         "401":
           content:
@@ -1191,34 +1193,34 @@ paths:
   /preview/marketing-solutions/ad-sets/search:
     post:
       description: Search for ad sets
-      operationId: SearchAdSets
+      operationId: SearchAdSetsV23Q1
       requestBody:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/RequestAdSetSearch'
+              $ref: '#/components/schemas/AdSetSearchRequestV23Q1'
           application/json:
             schema:
-              $ref: '#/components/schemas/RequestAdSetSearch'
+              $ref: '#/components/schemas/AdSetSearchRequestV23Q1'
           text/json:
             schema:
-              $ref: '#/components/schemas/RequestAdSetSearch'
+              $ref: '#/components/schemas/AdSetSearchRequestV23Q1'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/RequestAdSetSearch'
+              $ref: '#/components/schemas/AdSetSearchRequestV23Q1'
         x-bodyName: request
       responses:
         "200":
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ResponsesReadAdSet'
+                $ref: '#/components/schemas/ResponsesReadAdSetV23Q1'
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponsesReadAdSet'
+                $ref: '#/components/schemas/ResponsesReadAdSetV23Q1'
             text/json:
               schema:
-                $ref: '#/components/schemas/ResponsesReadAdSet'
+                $ref: '#/components/schemas/ResponsesReadAdSetV23Q1'
           description: data for the ad sets
         "400":
           content:
@@ -1237,7 +1239,8 @@ paths:
             text/plain: {}
             application/json: {}
             text/json: {}
-          description: Forbidden
+          description: The API client is not authorized to access this resource or
+            the resource does not exist.
       tags:
       - Campaign
       x-content-type: application/json-patch+json
@@ -1673,7 +1676,7 @@ paths:
   /preview/marketing-solutions/campaigns/{campaign-id}:
     get:
       description: Get the data for the specified campaign
-      operationId: GetCampaign
+      operationId: GetCampaignV23Q1
       parameters:
       - description: Id of the campaign
         explode: false
@@ -1688,13 +1691,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CampaignResponse'
+                $ref: '#/components/schemas/CampaignV23Q1Response'
             application/json:
               schema:
-                $ref: '#/components/schemas/CampaignResponse'
+                $ref: '#/components/schemas/CampaignV23Q1Response'
             text/json:
               schema:
-                $ref: '#/components/schemas/CampaignResponse'
+                $ref: '#/components/schemas/CampaignV23Q1Response'
           description: data for the campaign
         "401":
           content:
@@ -1715,21 +1718,21 @@ paths:
   /preview/marketing-solutions/campaigns/search:
     post:
       description: Search for campaigns
-      operationId: SearchCampaigns
+      operationId: SearchCampaignsV23Q1
       requestBody:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/CampaignSearchRequest'
+              $ref: '#/components/schemas/CampaignSearchRequestV23Q1'
           application/json:
             schema:
-              $ref: '#/components/schemas/CampaignSearchRequest'
+              $ref: '#/components/schemas/CampaignSearchRequestV23Q1'
           text/json:
             schema:
-              $ref: '#/components/schemas/CampaignSearchRequest'
+              $ref: '#/components/schemas/CampaignSearchRequestV23Q1'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/CampaignSearchRequest'
+              $ref: '#/components/schemas/CampaignSearchRequestV23Q1'
         description: filters on campaigns
         x-bodyName: request
       responses:
@@ -1737,13 +1740,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CampaignListResponse'
+                $ref: '#/components/schemas/CampaignV23Q1ListResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/CampaignListResponse'
+                $ref: '#/components/schemas/CampaignV23Q1ListResponse'
             text/json:
               schema:
-                $ref: '#/components/schemas/CampaignListResponse'
+                $ref: '#/components/schemas/CampaignV23Q1ListResponse'
           description: data for the campaigns
         "400":
           content:
@@ -1841,13 +1844,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CampaignResponse'
+                $ref: '#/components/schemas/CampaignV23Q1Response'
             application/json:
               schema:
-                $ref: '#/components/schemas/CampaignResponse'
+                $ref: '#/components/schemas/CampaignV23Q1Response'
             text/json:
               schema:
-                $ref: '#/components/schemas/CampaignResponse'
+                $ref: '#/components/schemas/CampaignV23Q1Response'
           description: The campaign that has been created and errors / warnings
         "400":
           content:
@@ -2798,6 +2801,18 @@ paths:
               schema:
                 format: byte
                 type: string
+            text/csv:
+              schema:
+                format: byte
+                type: string
+            text/xml:
+              schema:
+                format: byte
+                type: string
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                format: byte
+                type: string
           description: Success
         "400":
           content:
@@ -2811,13 +2826,22 @@ paths:
                   instance: /report
                   title: Start date and end date are required.
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Bad Request
         "403":
           content:
@@ -2832,13 +2856,22 @@ paths:
                   title: Insufficient advertiser permission.
                   detail: You do not have the rights to report on this advertiser.
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Forbidden
       tags:
       - Analytics
@@ -2878,6 +2911,18 @@ paths:
               schema:
                 format: byte
                 type: string
+            text/csv:
+              schema:
+                format: byte
+                type: string
+            text/xml:
+              schema:
+                format: byte
+                type: string
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                format: byte
+                type: string
           description: Success
         "400":
           content:
@@ -2891,13 +2936,22 @@ paths:
                   instance: /report
                   title: Start date and end date are required.
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Bad Request
         "403":
           content:
@@ -2912,13 +2966,22 @@ paths:
                   title: Insufficient advertiser permission.
                   detail: You do not have the rights to report on this advertiser.
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Forbidden
       tags:
       - Analytics
@@ -2974,13 +3037,13 @@ paths:
                   instance: /report
                   title: Start date and end date are required.
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Bad Request
         "403":
           content:
@@ -2995,13 +3058,13 @@ paths:
                   title: Insufficient advertiser permission.
                   detail: You do not have the rights to report on this advertiser.
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Forbidden
       tags:
       - Analytics
@@ -3070,13 +3133,13 @@ paths:
                   instance: /report
                   title: Start date and end date are required.
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Bad Request
         "403":
           content:
@@ -3091,13 +3154,13 @@ paths:
                   title: Insufficient advertiser permission.
                   detail: You do not have the rights to report on this advertiser.
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Forbidden
       tags:
       - Analytics
@@ -3138,6 +3201,18 @@ paths:
               schema:
                 format: byte
                 type: string
+            text/csv:
+              schema:
+                format: byte
+                type: string
+            text/xml:
+              schema:
+                format: byte
+                type: string
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                format: byte
+                type: string
           description: Success
         "400":
           content:
@@ -3156,6 +3231,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemsDetails'
             text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
                 $ref: '#/components/schemas/ProblemsDetails'
           description: Bad Request
@@ -3177,6 +3261,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemsDetails'
             text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
                 $ref: '#/components/schemas/ProblemsDetails'
           description: Forbidden
@@ -4181,6 +4274,73 @@ paths:
       tags:
       - Advertiser
       x-accepts: application/json
+  /preview/catalog/stats/merchants/{merchant-id}:
+    get:
+      description: get an stats request
+      parameters:
+      - description: merchant-id to get
+        explode: false
+        in: path
+        name: merchant-id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - description: the last number of hours
+        explode: true
+        in: query
+        name: lastNumHours
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailResponse'
+          description: "Service Unavailable. Allowed error types and errors: [(type=\"\
+            availability\", code=\"service-unavailable\")]"
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailResponse'
+          description: "Unauthorized. Allowed error types and errors: [(type=\"authentication\"\
+            , code=\"not-authenticated\")]"
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailResponse'
+          description: "Forbidden. Allowed error types and errors: [(type=\"authorization\"\
+            , code=\"not-authorized\")]"
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailResponse'
+          description: "Internal Server Error. Allowed error types and errors: [(type=\"\
+            availability\", code=\"internal-error\")]"
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailResponse'
+          description: "Too Many Requests. Allowed error types and errors: [(type=\"\
+            availability\", code=\"too-many-requests\")]"
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatisticsOkResponse'
+          description: The successful response of GET stats request
+      tags:
+      - Catalog
+      x-accepts: application/json
   /preview/catalog/products/batch:
     post:
       description: |-
@@ -4703,22 +4863,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Bad request error example
                   value:
-                    summary: Bad request error example
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: validation
-                            code: invalid
-                            title: Invalid json
-                            detail: "Invalid json. Path: line 2, position 42."
-                            instance: /v2/brand-safety/oci
-                            traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
+                    errors:
+                    - type: validation
+                      code: invalid
+                      title: Invalid json
+                      detail: "Invalid json. Path: line 2, position 42."
+                      instance: /v2/brand-safety/oci
+                      traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
               schema:
                 $ref: '#/components/schemas/OciBrandSafetyResponse'
           description: Invalid input
@@ -4727,22 +4880,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Unauthorized response.
                   value:
-                    summary: Unauthorized response.
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: authentication
-                            code: not-authenticated
-                            title: Unauthorized request
-                            detail: JWT provided invalid or expired
-                            instance: /v2/brand-safety/oci
-                            traceId: 308125b1-e9a7-4712-b420-cc11e681e337
+                    errors:
+                    - type: authentication
+                      code: not-authenticated
+                      title: Unauthorized request
+                      detail: JWT provided invalid or expired
+                      instance: /v2/brand-safety/oci
+                      traceId: 308125b1-e9a7-4712-b420-cc11e681e337
               schema:
                 $ref: '#/components/schemas/OciBrandSafetyResponse'
           description: Unauthorized
@@ -4751,22 +4897,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Forbidden response.
                   value:
-                    summary: Forbidden response.
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: authorization
-                            code: not-authorized
-                            title: User has no access to the resource
-                            detail: "Invalid json. Path: line 2, position 42."
-                            instance: /v2/brand-safety/oci
-                            traceId: 1a786adf-d06f-4a01-903b-bc37981cdf79
+                    errors:
+                    - type: authorization
+                      code: not-authorized
+                      title: User has no access to the resource
+                      detail: "Invalid json. Path: line 2, position 42."
+                      instance: /v2/brand-safety/oci
+                      traceId: 1a786adf-d06f-4a01-903b-bc37981cdf79
               schema:
                 $ref: '#/components/schemas/OciBrandSafetyResponse'
           description: Forbidden
@@ -4775,22 +4914,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Internal service error response.
                   value:
-                    summary: Internal service error response.
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: availability
-                            code: internal-error
-                            title: Internal service error
-                            detail: An internal error has occurred
-                            instance: /v2/brand-safety/oci
-                            traceId: 6d247cae-7497-4039-9310-69f426566365
+                    errors:
+                    - type: availability
+                      code: internal-error
+                      title: Internal service error
+                      detail: An internal error has occurred
+                      instance: /v2/brand-safety/oci
+                      traceId: 6d247cae-7497-4039-9310-69f426566365
               schema:
                 $ref: '#/components/schemas/OciBrandSafetyResponse'
           description: Internal service error
@@ -4826,22 +4958,18 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Ok response for OCI brand safety endpoints
                   value:
-                    value:
-                      summary: Ok response for OCI brand safety endpoints
-                      value:
-                        data:
-                          id: "42"
-                          type: OciBrandSafetyRule
-                          attributes:
-                            target:
-                              id: 42
-                              type: Campaign
-                            blacklisted:
-                            - gv_adult
-                            - gv_arms
-                        warnings: null
-                        errors: null
+                    data:
+                      id: "42"
+                      type: OciBrandSafetyRule
+                      attributes:
+                        target:
+                          id: 42
+                          type: Campaign
+                        blacklisted:
+                        - gv_adult
+                        - gv_arms
               schema:
                 $ref: '#/components/schemas/OciBrandSafetyResponse'
           description: Rule found
@@ -4850,22 +4978,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Bad request error example
                   value:
-                    summary: Bad request error example
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: validation
-                            code: invalid
-                            title: Invalid json
-                            detail: "Invalid json. Path: line 2, position 42."
-                            instance: /v2/brand-safety/oci
-                            traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
+                    errors:
+                    - type: validation
+                      code: invalid
+                      title: Invalid json
+                      detail: "Invalid json. Path: line 2, position 42."
+                      instance: /v2/brand-safety/oci
+                      traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
               schema:
                 $ref: '#/components/schemas/OciBrandSafetyResponse'
           description: Invalid input
@@ -4874,22 +4995,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Unauthorized response.
                   value:
-                    summary: Unauthorized response.
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: authentication
-                            code: not-authenticated
-                            title: Unauthorized request
-                            detail: JWT provided invalid or expired
-                            instance: /v2/brand-safety/oci
-                            traceId: 308125b1-e9a7-4712-b420-cc11e681e337
+                    errors:
+                    - type: authentication
+                      code: not-authenticated
+                      title: Unauthorized request
+                      detail: JWT provided invalid or expired
+                      instance: /v2/brand-safety/oci
+                      traceId: 308125b1-e9a7-4712-b420-cc11e681e337
               schema:
                 $ref: '#/components/schemas/OciBrandSafetyResponse'
           description: Unauthorized
@@ -4898,22 +5012,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Forbidden response.
                   value:
-                    summary: Forbidden response.
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: authorization
-                            code: not-authorized
-                            title: User has no access to the resource
-                            detail: "Invalid json. Path: line 2, position 42."
-                            instance: /v2/brand-safety/oci
-                            traceId: 1a786adf-d06f-4a01-903b-bc37981cdf79
+                    errors:
+                    - type: authorization
+                      code: not-authorized
+                      title: User has no access to the resource
+                      detail: "Invalid json. Path: line 2, position 42."
+                      instance: /v2/brand-safety/oci
+                      traceId: 1a786adf-d06f-4a01-903b-bc37981cdf79
               schema:
                 $ref: '#/components/schemas/OciBrandSafetyResponse'
           description: Forbidden
@@ -4922,22 +5029,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Internal service error response.
                   value:
-                    summary: Internal service error response.
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: availability
-                            code: internal-error
-                            title: Internal service error
-                            detail: An internal error has occurred
-                            instance: /v2/brand-safety/oci
-                            traceId: 6d247cae-7497-4039-9310-69f426566365
+                    errors:
+                    - type: availability
+                      code: internal-error
+                      title: Internal service error
+                      detail: An internal error has occurred
+                      instance: /v2/brand-safety/oci
+                      traceId: 6d247cae-7497-4039-9310-69f426566365
               schema:
                 $ref: '#/components/schemas/OciBrandSafetyResponse'
           description: Internal service error
@@ -4960,22 +5060,18 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Ok response for OCI brand safety endpoints
                   value:
-                    value:
-                      summary: Ok response for OCI brand safety endpoints
-                      value:
-                        data:
-                          id: "42"
-                          type: OciBrandSafetyRule
-                          attributes:
-                            target:
-                              id: 42
-                              type: Campaign
-                            blacklisted:
-                            - gv_adult
-                            - gv_arms
-                        warnings: null
-                        errors: null
+                    data:
+                      id: "42"
+                      type: OciBrandSafetyRule
+                      attributes:
+                        target:
+                          id: 42
+                          type: Campaign
+                        blacklisted:
+                        - gv_adult
+                        - gv_arms
               schema:
                 $ref: '#/components/schemas/OciBrandSafetyResponse'
           description: Rule created
@@ -4984,22 +5080,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Bad request error example
                   value:
-                    summary: Bad request error example
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: validation
-                            code: invalid
-                            title: Invalid json
-                            detail: "Invalid json. Path: line 2, position 42."
-                            instance: /v2/brand-safety/oci
-                            traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
+                    errors:
+                    - type: validation
+                      code: invalid
+                      title: Invalid json
+                      detail: "Invalid json. Path: line 2, position 42."
+                      instance: /v2/brand-safety/oci
+                      traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
               schema:
                 $ref: '#/components/schemas/OciBrandSafetyResponse'
           description: Invalid input
@@ -5008,22 +5097,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Unauthorized response.
                   value:
-                    summary: Unauthorized response.
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: authentication
-                            code: not-authenticated
-                            title: Unauthorized request
-                            detail: JWT provided invalid or expired
-                            instance: /v2/brand-safety/oci
-                            traceId: 308125b1-e9a7-4712-b420-cc11e681e337
+                    errors:
+                    - type: authentication
+                      code: not-authenticated
+                      title: Unauthorized request
+                      detail: JWT provided invalid or expired
+                      instance: /v2/brand-safety/oci
+                      traceId: 308125b1-e9a7-4712-b420-cc11e681e337
               schema:
                 $ref: '#/components/schemas/OciBrandSafetyResponse'
           description: Unauthorized
@@ -5032,22 +5114,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Forbidden response.
                   value:
-                    summary: Forbidden response.
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: authorization
-                            code: not-authorized
-                            title: User has no access to the resource
-                            detail: "Invalid json. Path: line 2, position 42."
-                            instance: /v2/brand-safety/oci
-                            traceId: 1a786adf-d06f-4a01-903b-bc37981cdf79
+                    errors:
+                    - type: authorization
+                      code: not-authorized
+                      title: User has no access to the resource
+                      detail: "Invalid json. Path: line 2, position 42."
+                      instance: /v2/brand-safety/oci
+                      traceId: 1a786adf-d06f-4a01-903b-bc37981cdf79
               schema:
                 $ref: '#/components/schemas/OciBrandSafetyResponse'
           description: Forbidden
@@ -5056,22 +5131,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Internal service error response.
                   value:
-                    summary: Internal service error response.
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: availability
-                            code: internal-error
-                            title: Internal service error
-                            detail: An internal error has occurred
-                            instance: /v2/brand-safety/oci
-                            traceId: 6d247cae-7497-4039-9310-69f426566365
+                    errors:
+                    - type: availability
+                      code: internal-error
+                      title: Internal service error
+                      detail: An internal error has occurred
+                      instance: /v2/brand-safety/oci
+                      traceId: 6d247cae-7497-4039-9310-69f426566365
               schema:
                 $ref: '#/components/schemas/OciBrandSafetyResponse'
           description: Internal service error
@@ -5109,22 +5177,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Bad request error example
                   value:
-                    summary: Bad request error example
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: validation
-                            code: invalid
-                            title: Invalid json
-                            detail: "Invalid json. Path: line 2, position 42."
-                            instance: /v2/targeting/oci
-                            traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
+                    errors:
+                    - type: validation
+                      code: invalid
+                      title: Invalid json
+                      detail: "Invalid json. Path: line 2, position 42."
+                      instance: /v2/targeting/oci
+                      traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
               schema:
                 $ref: '#/components/schemas/OciTargetingResponse'
           description: Invalid input
@@ -5133,22 +5194,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Unauthorized response.
                   value:
-                    summary: Unauthorized response.
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: authentication
-                            code: not-authenticated
-                            title: Unauthorized request
-                            detail: JWT provided invalid or expired
-                            instance: /v2/targeting/oci
-                            traceId: 308125b1-e9a7-4712-b420-cc11e681e337
+                    errors:
+                    - type: authentication
+                      code: not-authenticated
+                      title: Unauthorized request
+                      detail: JWT provided invalid or expired
+                      instance: /v2/targeting/oci
+                      traceId: 308125b1-e9a7-4712-b420-cc11e681e337
               schema:
                 $ref: '#/components/schemas/OciTargetingResponse'
           description: Unauthorized
@@ -5157,22 +5211,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Forbidden response.
                   value:
-                    summary: Forbidden response.
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: authorization
-                            code: not-authorized
-                            title: User has no access to the resource
-                            detail: "Invalid json. Path: line 2, position 42."
-                            instance: /v2/targeting/oci
-                            traceId: 1a786adf-d06f-4a01-903b-bc37981cdf79
+                    errors:
+                    - type: authorization
+                      code: not-authorized
+                      title: User has no access to the resource
+                      detail: "Invalid json. Path: line 2, position 42."
+                      instance: /v2/targeting/oci
+                      traceId: 1a786adf-d06f-4a01-903b-bc37981cdf79
               schema:
                 $ref: '#/components/schemas/OciTargetingResponse'
           description: Forbidden
@@ -5181,22 +5228,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Internal service error response.
                   value:
-                    summary: Internal service error response.
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: availability
-                            code: internal-error
-                            title: Internal service error
-                            detail: An internal error has occurred
-                            instance: /v2/targeting/oci
-                            traceId: 6d247cae-7497-4039-9310-69f426566365
+                    errors:
+                    - type: availability
+                      code: internal-error
+                      title: Internal service error
+                      detail: An internal error has occurred
+                      instance: /v2/targeting/oci
+                      traceId: 6d247cae-7497-4039-9310-69f426566365
               schema:
                 $ref: '#/components/schemas/OciTargetingResponse'
           description: Internal service error
@@ -5250,8 +5290,6 @@ paths:
                                 value: gs_auto
                               - operator: Value
                                 value: gs_business
-                      warnings: null
-                      errors: null
               schema:
                 $ref: '#/components/schemas/OciTargetingResponse'
           description: Rule found
@@ -5260,22 +5298,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Bad request error example
                   value:
-                    summary: Bad request error example
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: validation
-                            code: invalid
-                            title: Invalid json
-                            detail: "Invalid json. Path: line 2, position 42."
-                            instance: /v2/targeting/oci
-                            traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
+                    errors:
+                    - type: validation
+                      code: invalid
+                      title: Invalid json
+                      detail: "Invalid json. Path: line 2, position 42."
+                      instance: /v2/targeting/oci
+                      traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
               schema:
                 $ref: '#/components/schemas/OciTargetingResponse'
           description: Invalid input
@@ -5284,22 +5315,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Unauthorized response.
                   value:
-                    summary: Unauthorized response.
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: authentication
-                            code: not-authenticated
-                            title: Unauthorized request
-                            detail: JWT provided invalid or expired
-                            instance: /v2/targeting/oci
-                            traceId: 308125b1-e9a7-4712-b420-cc11e681e337
+                    errors:
+                    - type: authentication
+                      code: not-authenticated
+                      title: Unauthorized request
+                      detail: JWT provided invalid or expired
+                      instance: /v2/targeting/oci
+                      traceId: 308125b1-e9a7-4712-b420-cc11e681e337
               schema:
                 $ref: '#/components/schemas/OciTargetingResponse'
           description: Unauthorized
@@ -5308,22 +5332,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Forbidden response.
                   value:
-                    summary: Forbidden response.
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: authorization
-                            code: not-authorized
-                            title: User has no access to the resource
-                            detail: "Invalid json. Path: line 2, position 42."
-                            instance: /v2/targeting/oci
-                            traceId: 1a786adf-d06f-4a01-903b-bc37981cdf79
+                    errors:
+                    - type: authorization
+                      code: not-authorized
+                      title: User has no access to the resource
+                      detail: "Invalid json. Path: line 2, position 42."
+                      instance: /v2/targeting/oci
+                      traceId: 1a786adf-d06f-4a01-903b-bc37981cdf79
               schema:
                 $ref: '#/components/schemas/OciTargetingResponse'
           description: Forbidden
@@ -5332,22 +5349,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Internal service error response.
                   value:
-                    summary: Internal service error response.
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: availability
-                            code: internal-error
-                            title: Internal service error
-                            detail: An internal error has occurred
-                            instance: /v2/targeting/oci
-                            traceId: 6d247cae-7497-4039-9310-69f426566365
+                    errors:
+                    - type: availability
+                      code: internal-error
+                      title: Internal service error
+                      detail: An internal error has occurred
+                      instance: /v2/targeting/oci
+                      traceId: 6d247cae-7497-4039-9310-69f426566365
               schema:
                 $ref: '#/components/schemas/OciTargetingResponse'
           description: Internal service error
@@ -5370,26 +5380,22 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Ok response for OCI targeting endpoints
                   value:
-                    value:
-                      summary: Ok response for OCI targeting endpoints
-                      value:
-                        data:
-                          id: "42"
-                          type: OciTargetingRule
-                          attributes:
-                            target:
-                              id: 42
-                              type: Campaign
-                            rule:
-                              operator: Or
-                              children:
-                              - operator: Value
-                                value: gs_auto
-                              - operator: Value
-                                value: gs_business
-                      warnings: null
-                      errors: null
+                    data:
+                      id: "42"
+                      type: OciTargetingRule
+                      attributes:
+                        target:
+                          id: 42
+                          type: Campaign
+                        rule:
+                          operator: Or
+                          children:
+                          - operator: Value
+                            value: gs_auto
+                          - operator: Value
+                            value: gs_business
               schema:
                 $ref: '#/components/schemas/OciTargetingResponse'
           description: Rule created
@@ -5398,22 +5404,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Bad request error example
                   value:
-                    summary: Bad request error example
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: validation
-                            code: invalid
-                            title: Invalid json
-                            detail: "Invalid json. Path: line 2, position 42."
-                            instance: /v2/targeting/oci
-                            traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
+                    errors:
+                    - type: validation
+                      code: invalid
+                      title: Invalid json
+                      detail: "Invalid json. Path: line 2, position 42."
+                      instance: /v2/targeting/oci
+                      traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
               schema:
                 $ref: '#/components/schemas/OciTargetingResponse'
           description: Invalid input
@@ -5422,22 +5421,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Unauthorized response.
                   value:
-                    summary: Unauthorized response.
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: authentication
-                            code: not-authenticated
-                            title: Unauthorized request
-                            detail: JWT provided invalid or expired
-                            instance: /v2/targeting/oci
-                            traceId: 308125b1-e9a7-4712-b420-cc11e681e337
+                    errors:
+                    - type: authentication
+                      code: not-authenticated
+                      title: Unauthorized request
+                      detail: JWT provided invalid or expired
+                      instance: /v2/targeting/oci
+                      traceId: 308125b1-e9a7-4712-b420-cc11e681e337
               schema:
                 $ref: '#/components/schemas/OciTargetingResponse'
           description: Unauthorized
@@ -5446,22 +5438,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Forbidden response.
                   value:
-                    summary: Forbidden response.
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: authorization
-                            code: not-authorized
-                            title: User has no access to the resource
-                            detail: "Invalid json. Path: line 2, position 42."
-                            instance: /v2/targeting/oci
-                            traceId: 1a786adf-d06f-4a01-903b-bc37981cdf79
+                    errors:
+                    - type: authorization
+                      code: not-authorized
+                      title: User has no access to the resource
+                      detail: "Invalid json. Path: line 2, position 42."
+                      instance: /v2/targeting/oci
+                      traceId: 1a786adf-d06f-4a01-903b-bc37981cdf79
               schema:
                 $ref: '#/components/schemas/OciTargetingResponse'
           description: Forbidden
@@ -5470,22 +5455,15 @@ paths:
             application/json:
               examples:
                 sample:
+                  summary: Internal service error response.
                   value:
-                    summary: Internal service error response.
-                    value:
-                      allOf:
-                      - value:
-                          value:
-                            data: null
-                            warnings: null
-                      - value:
-                          errors:
-                          - type: availability
-                            code: internal-error
-                            title: Internal service error
-                            detail: An internal error has occurred
-                            instance: /v2/targeting/oci
-                            traceId: 6d247cae-7497-4039-9310-69f426566365
+                    errors:
+                    - type: availability
+                      code: internal-error
+                      title: Internal service error
+                      detail: An internal error has occurred
+                      instance: /v2/targeting/oci
+                      traceId: 6d247cae-7497-4039-9310-69f426566365
               schema:
                 $ref: '#/components/schemas/OciTargetingResponse'
           description: Internal service error
@@ -6995,24 +6973,25 @@ components:
       example:
         data:
           type: ContactlistWithUserAttributesAmendment
-          operation: add
-          identifierType: email
-          identifiers:
-          - identifier: example1@gmail.com
-            attributes:
-            - key: age
-              value: "12"
-            - key: country
-              value: FR
-            - key: size
-              value: S
-          - identifier: example2@gmail.com
-            attributes:
-            - key: age
-              value: "43"
-            - key: preferredColor
-              value: yellow
-          internalIdentifiers: false
+          attributes:
+            operation: add
+            identifierType: email
+            identifiers:
+            - identifier: example1@gmail.com
+              attributes:
+              - key: age
+                value: "12"
+              - key: country
+                value: FR
+              - key: size
+                value: S
+            - identifier: example2@gmail.com
+              attributes:
+              - key: age
+                value: "43"
+              - key: preferredColor
+                value: yellow
+            internalIdentifiers: false
       properties:
         data:
           $ref: '#/components/schemas/ContactlistWithAttributesAmendment'
@@ -7873,6 +7852,9 @@ components:
               isReadOnly: true
             behavioral:
               country: country
+              endDate: 2000-01-23T04:56:07.000+00:00
+              category: Unknown
+              startDate: 2000-01-23T04:56:07.000+00:00
             name: name
             location:
               registryType: Unknown
@@ -7919,6 +7901,9 @@ components:
               isReadOnly: true
             behavioral:
               country: country
+              endDate: 2000-01-23T04:56:07.000+00:00
+              category: Unknown
+              startDate: 2000-01-23T04:56:07.000+00:00
             name: name
             location:
               registryType: Unknown
@@ -8037,6 +8022,9 @@ components:
               isReadOnly: true
             behavioral:
               country: country
+              endDate: 2000-01-23T04:56:07.000+00:00
+              category: Unknown
+              startDate: 2000-01-23T04:56:07.000+00:00
             name: name
             location:
               registryType: Unknown
@@ -8083,6 +8071,9 @@ components:
               isReadOnly: true
             behavioral:
               country: country
+              endDate: 2000-01-23T04:56:07.000+00:00
+              category: Unknown
+              startDate: 2000-01-23T04:56:07.000+00:00
             name: name
             location:
               registryType: Unknown
@@ -9242,6 +9233,9 @@ components:
             isReadOnly: true
           behavioral:
             country: country
+            endDate: 2000-01-23T04:56:07.000+00:00
+            category: Unknown
+            startDate: 2000-01-23T04:56:07.000+00:00
           name: name
           location:
             registryType: Unknown
@@ -9828,6 +9822,9 @@ components:
           isReadOnly: true
         behavioral:
           country: country
+          endDate: 2000-01-23T04:56:07.000+00:00
+          category: Unknown
+          startDate: 2000-01-23T04:56:07.000+00:00
         name: name
         location:
           registryType: Unknown
@@ -10489,10 +10486,32 @@ components:
       description: Settings of a behavioral set of users provided by Criteo.
       example:
         country: country
+        endDate: 2000-01-23T04:56:07.000+00:00
+        category: Unknown
+        startDate: 2000-01-23T04:56:07.000+00:00
       properties:
         country:
           description: The users' country
           type: string
+        category:
+          description: The type of behavioral
+          enum:
+          - Unknown
+          - Lifestyles
+          - LifeEvents
+          - Seasonal
+          - BuyingPatterns
+          type: string
+        startDate:
+          description: Desired date when the behavioral will start
+          format: date-time
+          type: string
+        endDate:
+          description: Desired date when the behavioral will end
+          format: date-time
+          type: string
+      required:
+      - category
       type: object
     RetargetingV1:
       description: Settings to target users based on its type and days since last
@@ -10875,6 +10894,381 @@ components:
           - Female
           type: string
       type: object
+    ResponseReadAdSetV23Q1:
+      description: output resource
+      example:
+        data:
+          attributes:
+            schedule:
+              endDate:
+                value: 2000-01-23T04:56:07.000+00:00
+              activationStatus: "on"
+              startDate:
+                value: 2000-01-23T04:56:07.000+00:00
+              deliveryStatus: draft
+            targeting:
+              geoLocation:
+                zipCodes:
+                  value:
+                    values:
+                    - values
+                    - values
+                    operand: undefined
+                countries:
+                  value:
+                    values:
+                    - values
+                    - values
+                    operand: undefined
+                subdivisions:
+                  value:
+                    values:
+                    - values
+                    - values
+                    operand: undefined
+              frequencyCapping:
+                maximumImpressions: 6
+                frequency: hourly
+              deliveryLimitations:
+                operatingSystems:
+                - android
+                - android
+                environments:
+                - web
+                - web
+                devices:
+                - other
+                - other
+            bidding:
+              bidAmount:
+                value: 0.8008281904610115
+              costController: COS
+            campaignId: campaignId
+            name: name
+            datasetId: datasetId
+            mediaType: display
+            destinationEnvironment: undefined
+            advertiserId: advertiserId
+            objective: customAction
+            budget:
+              budgetDeliverySmoothing: accelerated
+              budgetDeliveryWeek: undefined
+              budgetAmount:
+                value: 0.8008281904610115
+              budgetRenewal: undefined
+              budgetStrategy: capped
+          id: id
+          type: ReadAdSetV23Q1
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ReadModelReadAdSetV23Q1'
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+      type: object
+    ResponsesReadAdSetV23Q1:
+      description: List of output resources
+      example:
+        data:
+        - attributes:
+            schedule:
+              endDate:
+                value: 2000-01-23T04:56:07.000+00:00
+              activationStatus: "on"
+              startDate:
+                value: 2000-01-23T04:56:07.000+00:00
+              deliveryStatus: draft
+            targeting:
+              geoLocation:
+                zipCodes:
+                  value:
+                    values:
+                    - values
+                    - values
+                    operand: undefined
+                countries:
+                  value:
+                    values:
+                    - values
+                    - values
+                    operand: undefined
+                subdivisions:
+                  value:
+                    values:
+                    - values
+                    - values
+                    operand: undefined
+              frequencyCapping:
+                maximumImpressions: 6
+                frequency: hourly
+              deliveryLimitations:
+                operatingSystems:
+                - android
+                - android
+                environments:
+                - web
+                - web
+                devices:
+                - other
+                - other
+            bidding:
+              bidAmount:
+                value: 0.8008281904610115
+              costController: COS
+            campaignId: campaignId
+            name: name
+            datasetId: datasetId
+            mediaType: display
+            destinationEnvironment: undefined
+            advertiserId: advertiserId
+            objective: customAction
+            budget:
+              budgetDeliverySmoothing: accelerated
+              budgetDeliveryWeek: undefined
+              budgetAmount:
+                value: 0.8008281904610115
+              budgetRenewal: undefined
+              budgetStrategy: capped
+          id: id
+          type: ReadAdSetV23Q1
+        - attributes:
+            schedule:
+              endDate:
+                value: 2000-01-23T04:56:07.000+00:00
+              activationStatus: "on"
+              startDate:
+                value: 2000-01-23T04:56:07.000+00:00
+              deliveryStatus: draft
+            targeting:
+              geoLocation:
+                zipCodes:
+                  value:
+                    values:
+                    - values
+                    - values
+                    operand: undefined
+                countries:
+                  value:
+                    values:
+                    - values
+                    - values
+                    operand: undefined
+                subdivisions:
+                  value:
+                    values:
+                    - values
+                    - values
+                    operand: undefined
+              frequencyCapping:
+                maximumImpressions: 6
+                frequency: hourly
+              deliveryLimitations:
+                operatingSystems:
+                - android
+                - android
+                environments:
+                - web
+                - web
+                devices:
+                - other
+                - other
+            bidding:
+              bidAmount:
+                value: 0.8008281904610115
+              costController: COS
+            campaignId: campaignId
+            name: name
+            datasetId: datasetId
+            mediaType: display
+            destinationEnvironment: undefined
+            advertiserId: advertiserId
+            objective: customAction
+            budget:
+              budgetDeliverySmoothing: accelerated
+              budgetDeliveryWeek: undefined
+              budgetAmount:
+                value: 0.8008281904610115
+              budgetRenewal: undefined
+              budgetStrategy: capped
+          id: id
+          type: ReadAdSetV23Q1
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ReadModelReadAdSetV23Q1'
+          readOnly: true
+          type: array
+          uniqueItems: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+      type: object
+    ResponseAdSetId:
+      description: output resource
+      example:
+        data:
+          id: id
+          type: AdSetId
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ReadModelAdSetId'
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          uniqueItems: false
+      type: object
     ResponseReadAdSet:
       description: output resource
       example:
@@ -10896,7 +11290,7 @@ components:
                 subdivisions:
                   value: null
               frequencyCapping:
-                maximumImpressions: 6
+                maximumImpressions: 0
                 frequency: hourly
               deliveryLimitations:
                 operatingSystems:
@@ -10973,234 +11367,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ReadModelReadAdSet'
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          uniqueItems: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          uniqueItems: false
-      type: object
-    ResponsesReadAdSet:
-      description: List of output resources
-      example:
-        data:
-        - attributes:
-            schedule:
-              endDate:
-                value: 2000-01-23T04:56:07.000+00:00
-              activationStatus: "on"
-              startDate:
-                value: 2000-01-23T04:56:07.000+00:00
-              deliveryStatus: draft
-            targeting:
-              geoLocation:
-                zipCodes:
-                  value: null
-                countries:
-                  value: null
-                subdivisions:
-                  value: null
-              frequencyCapping:
-                maximumImpressions: 6
-                frequency: hourly
-              deliveryLimitations:
-                operatingSystems:
-                - android
-                - android
-                environments:
-                - web
-                - web
-                devices:
-                - other
-                - other
-            bidding:
-              bidStrategy: actions
-              bidAmount:
-                value: 0.8008281904610115
-              costController: COS
-            campaignId: campaignId
-            name: name
-            datasetId: datasetId
-            mediaType: display
-            destinationEnvironment: undefined
-            advertiserId: advertiserId
-            budget:
-              budgetDeliverySmoothing: accelerated
-              budgetDeliveryWeek: undefined
-              budgetAmount:
-                value: 0.8008281904610115
-              budgetRenewal: undefined
-              budgetStrategy: capped
-          id: id
-          type: ReadAdSet
-        - attributes:
-            schedule:
-              endDate:
-                value: 2000-01-23T04:56:07.000+00:00
-              activationStatus: "on"
-              startDate:
-                value: 2000-01-23T04:56:07.000+00:00
-              deliveryStatus: draft
-            targeting:
-              geoLocation:
-                zipCodes:
-                  value: null
-                countries:
-                  value: null
-                subdivisions:
-                  value: null
-              frequencyCapping:
-                maximumImpressions: 6
-                frequency: hourly
-              deliveryLimitations:
-                operatingSystems:
-                - android
-                - android
-                environments:
-                - web
-                - web
-                devices:
-                - other
-                - other
-            bidding:
-              bidStrategy: actions
-              bidAmount:
-                value: 0.8008281904610115
-              costController: COS
-            campaignId: campaignId
-            name: name
-            datasetId: datasetId
-            mediaType: display
-            destinationEnvironment: undefined
-            advertiserId: advertiserId
-            budget:
-              budgetDeliverySmoothing: accelerated
-              budgetDeliveryWeek: undefined
-              budgetAmount:
-                value: 0.8008281904610115
-              budgetRenewal: undefined
-              budgetStrategy: capped
-          id: id
-          type: ReadAdSet
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ReadModelReadAdSet'
-          readOnly: true
-          type: array
-          uniqueItems: false
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          uniqueItems: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          uniqueItems: false
-      type: object
-    ResponseAdSetId:
-      description: output resource
-      example:
-        data:
-          id: id
-          type: AdSetId
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ReadModelAdSetId'
         warnings:
           items:
             $ref: '#/components/schemas/ProblemDetails'
@@ -11572,11 +11738,12 @@ components:
           type: array
           uniqueItems: false
       type: object
-    CampaignResponse:
-      description: output resource
+    CampaignV23Q1Response:
+      description: Data model for response resource
       example:
         data:
           attributes:
+            goal: unspecified
             name: name
             spendLimit:
               spendLimitRenewal: undefined
@@ -11584,7 +11751,6 @@ components:
                 value: 0.8008281904610115
               spendLimitType: capped
             advertiserId: advertiserId
-            objective: objective
           id: id
           type: Campaign
         warnings:
@@ -11631,7 +11797,7 @@ components:
           title: title
       properties:
         data:
-          $ref: '#/components/schemas/CampaignReadResource'
+          $ref: '#/components/schemas/CampaignV23Q1Resource'
         warnings:
           items:
             $ref: '#/components/schemas/ProblemDetails'
@@ -11645,11 +11811,12 @@ components:
           type: array
           uniqueItems: false
       type: object
-    CampaignListResponse:
-      description: List of output resources
+    CampaignV23Q1ListResponse:
+      description: Data model for a list of response resources
       example:
         data:
         - attributes:
+            goal: unspecified
             name: name
             spendLimit:
               spendLimitRenewal: undefined
@@ -11657,10 +11824,10 @@ components:
                 value: 0.8008281904610115
               spendLimitType: capped
             advertiserId: advertiserId
-            objective: objective
           id: id
           type: Campaign
         - attributes:
+            goal: unspecified
             name: name
             spendLimit:
               spendLimitRenewal: undefined
@@ -11668,7 +11835,6 @@ components:
                 value: 0.8008281904610115
               spendLimitType: capped
             advertiserId: advertiserId
-            objective: objective
           id: id
           type: Campaign
         warnings:
@@ -11716,8 +11882,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/CampaignReadResource'
-          readOnly: true
+            $ref: '#/components/schemas/CampaignV23Q1Resource'
           type: array
           uniqueItems: false
         warnings:
@@ -11803,7 +11968,7 @@ components:
           type: array
           uniqueItems: false
       type: object
-    RequestAdSetSearch:
+    AdSetSearchRequestV23Q1:
       description: request payload of the search endpoint
       example:
         filters:
@@ -11818,7 +11983,7 @@ components:
           - campaignIds
       properties:
         filters:
-          $ref: '#/components/schemas/AdSetSearchFilter'
+          $ref: '#/components/schemas/AdSetSearchFilterV23Q1'
       type: object
     RequestsPatchAdSet:
       description: List of input resources
@@ -11834,7 +11999,7 @@ components:
                 subdivisions:
                   value: null
               frequencyCapping:
-                maximumImpressions: 6
+                maximumImpressions: 0
                 frequency: hourly
               deliveryLimitations:
                 operatingSystems:
@@ -11874,7 +12039,7 @@ components:
                 subdivisions:
                   value: null
               frequencyCapping:
-                maximumImpressions: 6
+                maximumImpressions: 0
                 frequency: hourly
               deliveryLimitations:
                 operatingSystems:
@@ -11937,7 +12102,7 @@ components:
                   - values
                   operand: undefined
               frequencyCapping:
-                maximumImpressions: 6
+                maximumImpressions: 0
                 frequency: hourly
               deliveryLimitations:
                 operatingSystems:
@@ -11950,7 +12115,6 @@ components:
                 - other
                 - other
             bidding:
-              bidStrategy: actions
               bidAmount: 0.8008281904610115
               costController: COS
             campaignId: campaignId
@@ -11958,6 +12122,7 @@ components:
             datasetId: datasetId
             trackingCode: trackingCode
             mediaType: display
+            objective: customAction
             budget:
               budgetDeliverySmoothing: accelerated
               budgetDeliveryWeek: undefined
@@ -12022,7 +12187,7 @@ components:
           type: array
           uniqueItems: false
       type: object
-    CampaignSearchRequest:
+    CampaignSearchRequestV23Q1:
       description: request payload of the search endpoint
       example:
         filters:
@@ -12034,7 +12199,7 @@ components:
           - campaignIds
       properties:
         filters:
-          $ref: '#/components/schemas/CampaignSearchFilters'
+          $ref: '#/components/schemas/CampaignSearchFiltersV23Q1'
       type: object
     CreateCampaignRequest:
       description: Data model for an input resources
@@ -12048,7 +12213,6 @@ components:
               spendLimitAmount: 0.8008281904610115
               spendLimitType: capped
             advertiserId: advertiserId
-            objective: objective
           type: Campaign
       properties:
         data:
@@ -12081,7 +12245,7 @@ components:
           type: array
           uniqueItems: false
       type: object
-    ReadModelReadAdSet:
+    ReadModelReadAdSetV23Q1:
       description: read model data for resources
       example:
         attributes:
@@ -12095,11 +12259,23 @@ components:
           targeting:
             geoLocation:
               zipCodes:
-                value: null
+                value:
+                  values:
+                  - values
+                  - values
+                  operand: undefined
               countries:
-                value: null
+                value:
+                  values:
+                  - values
+                  - values
+                  operand: undefined
               subdivisions:
-                value: null
+                value:
+                  values:
+                  - values
+                  - values
+                  operand: undefined
             frequencyCapping:
               maximumImpressions: 6
               frequency: hourly
@@ -12114,7 +12290,6 @@ components:
               - other
               - other
           bidding:
-            bidStrategy: actions
             bidAmount:
               value: 0.8008281904610115
             costController: COS
@@ -12124,6 +12299,7 @@ components:
           mediaType: display
           destinationEnvironment: undefined
           advertiserId: advertiserId
+          objective: customAction
           budget:
             budgetDeliverySmoothing: accelerated
             budgetDeliveryWeek: undefined
@@ -12132,18 +12308,18 @@ components:
             budgetRenewal: undefined
             budgetStrategy: capped
         id: id
-        type: ReadAdSet
+        type: ReadAdSetV23Q1
       properties:
         id:
           description: Id of the entity
           readOnly: true
           type: string
         type:
-          example: ReadAdSet
+          example: ReadAdSetV23Q1
           readOnly: true
           type: string
         attributes:
-          $ref: '#/components/schemas/ReadAdSet'
+          $ref: '#/components/schemas/ReadAdSetV23Q1'
       type: object
     ProblemDetails:
       description: Data model for common error or warning
@@ -12206,6 +12382,70 @@ components:
           example: AdSetId
           readOnly: true
           type: string
+      type: object
+    ReadModelReadAdSet:
+      description: read model data for resources
+      example:
+        attributes:
+          schedule:
+            endDate:
+              value: 2000-01-23T04:56:07.000+00:00
+            activationStatus: "on"
+            startDate:
+              value: 2000-01-23T04:56:07.000+00:00
+            deliveryStatus: draft
+          targeting:
+            geoLocation:
+              zipCodes:
+                value: null
+              countries:
+                value: null
+              subdivisions:
+                value: null
+            frequencyCapping:
+              maximumImpressions: 0
+              frequency: hourly
+            deliveryLimitations:
+              operatingSystems:
+              - android
+              - android
+              environments:
+              - web
+              - web
+              devices:
+              - other
+              - other
+          bidding:
+            bidStrategy: actions
+            bidAmount:
+              value: 0.8008281904610115
+            costController: COS
+          campaignId: campaignId
+          name: name
+          datasetId: datasetId
+          mediaType: display
+          destinationEnvironment: undefined
+          advertiserId: advertiserId
+          budget:
+            budgetDeliverySmoothing: accelerated
+            budgetDeliveryWeek: undefined
+            budgetAmount:
+              value: 0.8008281904610115
+            budgetRenewal: undefined
+            budgetStrategy: capped
+        id: id
+        type: ReadAdSet
+      properties:
+        id:
+          description: Id of the entity
+          readOnly: true
+          type: string
+        type:
+          example: ReadAdSet
+          readOnly: true
+          type: string
+        attributes:
+          $ref: '#/components/schemas/ReadAdSet'
       type: object
     AdSetDisplayMultiplierResource:
       description: Data model for a Resource
@@ -12273,10 +12513,11 @@ components:
           example: AdSetCategoryBid
           type: string
       type: object
-    CampaignReadResource:
-      description: read model data for resources
+    CampaignV23Q1Resource:
+      description: Data model for a Resource
       example:
         attributes:
+          goal: unspecified
           name: name
           spendLimit:
             spendLimitRenewal: undefined
@@ -12284,20 +12525,18 @@ components:
               value: 0.8008281904610115
             spendLimitType: capped
           advertiserId: advertiserId
-          objective: objective
         id: id
         type: Campaign
       properties:
+        attributes:
+          $ref: '#/components/schemas/CampaignV23Q1'
         id:
           description: Id of the entity
-          readOnly: true
           type: string
         type:
+          description: Canonical type name of the entity
           example: Campaign
-          readOnly: true
           type: string
-        attributes:
-          $ref: '#/components/schemas/Campaign'
       type: object
     PatchResultCampaignReadResource:
       description: read model data for resources
@@ -12314,7 +12553,7 @@ components:
           readOnly: true
           type: string
       type: object
-    AdSetSearchFilter:
+    AdSetSearchFilterV23Q1:
       description: filter on ad set ids
       example:
         adSetIds:
@@ -12328,16 +12567,20 @@ components:
         - campaignIds
       properties:
         adSetIds:
+          description: Ad set ids to filter on
           items:
             type: string
           type: array
           uniqueItems: false
         advertiserIds:
+          description: Advertiser ids which ad sets belongs to (indirectly via their
+            marketing campaign)
           items:
             type: string
           type: array
           uniqueItems: false
         campaignIds:
+          description: Campaign ids to filter on
           items:
             type: string
           type: array
@@ -12356,7 +12599,7 @@ components:
               subdivisions:
                 value: null
             frequencyCapping:
-              maximumImpressions: 6
+              maximumImpressions: 0
               frequency: hourly
             deliveryLimitations:
               operatingSystems:
@@ -12422,7 +12665,7 @@ components:
                 - values
                 operand: undefined
             frequencyCapping:
-              maximumImpressions: 6
+              maximumImpressions: 0
               frequency: hourly
             deliveryLimitations:
               operatingSystems:
@@ -12435,7 +12678,6 @@ components:
               - other
               - other
           bidding:
-            bidStrategy: actions
             bidAmount: 0.8008281904610115
             costController: COS
           campaignId: campaignId
@@ -12443,6 +12685,7 @@ components:
           datasetId: datasetId
           trackingCode: trackingCode
           mediaType: display
+          objective: customAction
           budget:
             budgetDeliverySmoothing: accelerated
             budgetDeliveryWeek: undefined
@@ -12508,7 +12751,7 @@ components:
           example: AdSetCategoryBid
           type: string
       type: object
-    CampaignSearchFilters:
+    CampaignSearchFiltersV23Q1:
       description: filters on campaign
       example:
         advertiserIds:
@@ -12542,7 +12785,6 @@ components:
             spendLimitAmount: 0.8008281904610115
             spendLimitType: capped
           advertiserId: advertiserId
-          objective: objective
         type: Campaign
       properties:
         attributes:
@@ -12574,6 +12816,117 @@ components:
         attributes:
           $ref: '#/components/schemas/PatchCampaign'
       type: object
+    ReadAdSetV23Q1:
+      description: ad set read model
+      example:
+        schedule:
+          endDate:
+            value: 2000-01-23T04:56:07.000+00:00
+          activationStatus: "on"
+          startDate:
+            value: 2000-01-23T04:56:07.000+00:00
+          deliveryStatus: draft
+        targeting:
+          geoLocation:
+            zipCodes:
+              value:
+                values:
+                - values
+                - values
+                operand: undefined
+            countries:
+              value:
+                values:
+                - values
+                - values
+                operand: undefined
+            subdivisions:
+              value:
+                values:
+                - values
+                - values
+                operand: undefined
+          frequencyCapping:
+            maximumImpressions: 6
+            frequency: hourly
+          deliveryLimitations:
+            operatingSystems:
+            - android
+            - android
+            environments:
+            - web
+            - web
+            devices:
+            - other
+            - other
+        bidding:
+          bidAmount:
+            value: 0.8008281904610115
+          costController: COS
+        campaignId: campaignId
+        name: name
+        datasetId: datasetId
+        mediaType: display
+        destinationEnvironment: undefined
+        advertiserId: advertiserId
+        objective: customAction
+        budget:
+          budgetDeliverySmoothing: accelerated
+          budgetDeliveryWeek: undefined
+          budgetAmount:
+            value: 0.8008281904610115
+          budgetRenewal: undefined
+          budgetStrategy: capped
+      properties:
+        name:
+          description: Name of the ad set
+          type: string
+        advertiserId:
+          description: Advertiser id of the campaign this ad set belongs to
+          type: string
+        datasetId:
+          description: Dataset id of this ad set
+          type: string
+        campaignId:
+          description: Campaign id this ad set belongs to
+          type: string
+        destinationEnvironment:
+          description: The environment that an ad click will lead a user to
+          enum:
+          - undefined
+          - web
+          - app
+          type: string
+        objective:
+          description: Objective of the ad set
+          enum:
+          - customAction
+          - clicks
+          - conversions
+          - displays
+          - appPromotion
+          - revenue
+          - storeConversions
+          - value
+          - reach
+          - visits
+          - videoViews
+          type: string
+        schedule:
+          $ref: '#/components/schemas/ReadAdSetScheduleV23Q1'
+        bidding:
+          $ref: '#/components/schemas/ReadAdSetBiddingV23Q1'
+        targeting:
+          $ref: '#/components/schemas/AdSetTargetingV23Q1'
+        budget:
+          $ref: '#/components/schemas/ReadAdSetBudgetV23Q1'
+        mediaType:
+          description: Media type of the ad set
+          enum:
+          - display
+          - video
+          type: string
+      type: object
     ReadAdSet:
       description: ad set read model
       example:
@@ -12593,7 +12946,7 @@ components:
             subdivisions:
               value: null
           frequencyCapping:
-            maximumImpressions: 6
+            maximumImpressions: 0
             frequency: hourly
           deliveryLimitations:
             operatingSystems:
@@ -12687,13 +13040,14 @@ components:
           type: string
         bidAmount:
           description: The Bid amount applied to the given Category associated to
-            an Ad Set.
+            an Ad Set. At most 4 decimals are supported. Additional decimals are rounded.
           format: double
           type: number
       type: object
-    Campaign:
+    CampaignV23Q1:
       description: campaign read model
       example:
+        goal: unspecified
         name: name
         spendLimit:
           spendLimitRenewal: undefined
@@ -12701,7 +13055,6 @@ components:
             value: 0.8008281904610115
           spendLimitType: capped
         advertiserId: advertiserId
-        objective: objective
       properties:
         name:
           description: Name of the campaign
@@ -12709,11 +13062,15 @@ components:
         advertiserId:
           description: Advertiser id of the campaign
           type: string
-        objective:
-          description: Campaign's marketing objective
-          type: string
         spendLimit:
-          $ref: '#/components/schemas/CampaignSpendLimit'
+          $ref: '#/components/schemas/CampaignSpendLimitV23Q1'
+        goal:
+          description: Goal of the campaign
+          enum:
+          - unspecified
+          - acquisition
+          - retention
+          type: string
       type: object
     PatchAdSet:
       description: ad set patch model
@@ -12727,7 +13084,7 @@ components:
             subdivisions:
               value: null
           frequencyCapping:
-            maximumImpressions: 6
+            maximumImpressions: 0
             frequency: hourly
           deliveryLimitations:
             operatingSystems:
@@ -12792,7 +13149,7 @@ components:
               - values
               operand: undefined
           frequencyCapping:
-            maximumImpressions: 6
+            maximumImpressions: 0
             frequency: hourly
           deliveryLimitations:
             operatingSystems:
@@ -12805,7 +13162,6 @@ components:
             - other
             - other
         bidding:
-          bidStrategy: actions
           bidAmount: 0.8008281904610115
           costController: COS
         campaignId: campaignId
@@ -12813,6 +13169,7 @@ components:
         datasetId: datasetId
         trackingCode: trackingCode
         mediaType: display
+        objective: customAction
         budget:
           budgetDeliverySmoothing: accelerated
           budgetDeliveryWeek: undefined
@@ -12828,6 +13185,21 @@ components:
           type: string
         campaignId:
           description: Campaign id this ad set belongs to
+          type: string
+        objective:
+          description: Objective of the ad set
+          enum:
+          - customAction
+          - clicks
+          - conversions
+          - displays
+          - appPromotion
+          - revenue
+          - storeConversions
+          - value
+          - reach
+          - visits
+          - videoViews
           type: string
         schedule:
           $ref: '#/components/schemas/CreateAdSetSchedule'
@@ -12866,8 +13238,8 @@ components:
         bidAmount: 0.8008281904610115
       properties:
         bidAmount:
-          description: positive decimal value match bid constraints. At most 4 decimals
-            are supported. Additional decimals are rounded.
+          description: The Bid amount applied to the given Category associated to
+            an Ad Set. At most 4 decimals are supported. Additional decimals are rounded.
           format: double
           type: number
       type: object
@@ -12881,16 +13253,12 @@ components:
           spendLimitAmount: 0.8008281904610115
           spendLimitType: capped
         advertiserId: advertiserId
-        objective: objective
       properties:
         name:
           description: Name of the campaign
           type: string
         advertiserId:
           description: Advertiser id this campaign belongs to
-          type: string
-        objective:
-          description: Campaign's marketing objective
           type: string
         goal:
           description: Goal for the marketing campaign
@@ -12913,6 +13281,154 @@ components:
       properties:
         spendLimit:
           $ref: '#/components/schemas/PatchCampaignSpendLimit'
+      type: object
+    ReadAdSetScheduleV23Q1:
+      description: ad set schedule read model
+      example:
+        endDate:
+          value: 2000-01-23T04:56:07.000+00:00
+        activationStatus: "on"
+        startDate:
+          value: 2000-01-23T04:56:07.000+00:00
+        deliveryStatus: draft
+      properties:
+        startDate:
+          $ref: '#/components/schemas/NillableDateTime'
+        endDate:
+          $ref: '#/components/schemas/NillableDateTime'
+        activationStatus:
+          description: "Activation status of the ad set, i.e. whether the consumer\
+            \ wants it to deliver"
+          enum:
+          - "on"
+          - "off"
+          type: string
+        deliveryStatus:
+          description: "Delivery status of the delivery of the ad set, i.e. whether\
+            \ the ad set is delivering"
+          enum:
+          - draft
+          - inactive
+          - live
+          - notLive
+          - pausing
+          - paused
+          - scheduled
+          - ended
+          - notDelivering
+          - archived
+          type: string
+      type: object
+    ReadAdSetBiddingV23Q1:
+      description: ad set bidding read model
+      example:
+        bidAmount:
+          value: 0.8008281904610115
+        costController: COS
+      properties:
+        bidAmount:
+          $ref: '#/components/schemas/NillableDecimal'
+        costController:
+          description: How spend is controlled
+          enum:
+          - COS
+          - CPC
+          - CPI
+          - CPM
+          - CPO
+          - CPSV
+          - CPV
+          - dailyBudget
+          - targetCPM
+          type: string
+      type: object
+    AdSetTargetingV23Q1:
+      description: ad set targeting model
+      example:
+        geoLocation:
+          zipCodes:
+            value:
+              values:
+              - values
+              - values
+              operand: undefined
+          countries:
+            value:
+              values:
+              - values
+              - values
+              operand: undefined
+          subdivisions:
+            value:
+              values:
+              - values
+              - values
+              operand: undefined
+        frequencyCapping:
+          maximumImpressions: 6
+          frequency: hourly
+        deliveryLimitations:
+          operatingSystems:
+          - android
+          - android
+          environments:
+          - web
+          - web
+          devices:
+          - other
+          - other
+      properties:
+        deliveryLimitations:
+          $ref: '#/components/schemas/AdSetDeliveryLimitationsV23Q1'
+        geoLocation:
+          $ref: '#/components/schemas/AdSetGeoLocationV23Q1'
+        frequencyCapping:
+          $ref: '#/components/schemas/AdSetFrequencyCappingV23Q1'
+      type: object
+    ReadAdSetBudgetV23Q1:
+      description: ad set budget read model
+      example:
+        budgetDeliverySmoothing: accelerated
+        budgetDeliveryWeek: undefined
+        budgetAmount:
+          value: 0.8008281904610115
+        budgetRenewal: undefined
+        budgetStrategy: capped
+      properties:
+        budgetStrategy:
+          description: Whether your budget is capped or not
+          enum:
+          - capped
+          - uncapped
+          type: string
+        budgetRenewal:
+          description: The pace of the budget renewal
+          enum:
+          - undefined
+          - daily
+          - monthly
+          - lifetime
+          type: string
+        budgetDeliverySmoothing:
+          description: The pace at which the budget can be spent
+          enum:
+          - accelerated
+          - standard
+          type: string
+        budgetDeliveryWeek:
+          description: The delivery week for the budget
+          enum:
+          - undefined
+          - mondayToSunday
+          - tuesdayToMonday
+          - wednesdayToTuesday
+          - thursdayToWednesday
+          - fridayToThursday
+          - saturdayToFriday
+          - sundayToSaturday
+          type: string
+        budgetAmount:
+          $ref: '#/components/schemas/NillableDecimal'
       type: object
     ReadAdSetSchedule:
       description: ad set schedule read model
@@ -12977,7 +13493,7 @@ components:
           - completedVideoViews
           type: string
         costController:
-          description: How is spend controlled
+          description: How spend is controlled
           enum:
           - COS
           - CPC
@@ -13000,7 +13516,7 @@ components:
           subdivisions:
             value: null
         frequencyCapping:
-          maximumImpressions: 6
+          maximumImpressions: 0
           frequency: hourly
         deliveryLimitations:
           operatingSystems:
@@ -13065,7 +13581,7 @@ components:
         budgetAmount:
           $ref: '#/components/schemas/NillableDecimal'
       type: object
-    CampaignSpendLimit:
+    CampaignSpendLimitV23Q1:
       description: campaign spend limit model
       example:
         spendLimitRenewal: undefined
@@ -13173,7 +13689,6 @@ components:
     CreateAdSetBidding:
       description: ad set bidding create model
       example:
-        bidStrategy: actions
         bidAmount: 0.8008281904610115
         costController: COS
       properties:
@@ -13183,21 +13698,8 @@ components:
             4 decimals are supported. Additional decimals are rounded.
           format: double
           type: number
-        bidStrategy:
-          enum:
-          - actions
-          - clicks
-          - conversions
-          - displays
-          - installs
-          - revenue
-          - storeConversions
-          - value
-          - viewedImpressions
-          - Visits
-          - completedVideoViews
-          type: string
         costController:
+          description: How spend is controlled
           enum:
           - COS
           - CPC
@@ -13229,7 +13731,7 @@ components:
             - values
             operand: undefined
         frequencyCapping:
-          maximumImpressions: 6
+          maximumImpressions: 0
           frequency: hourly
         deliveryLimitations:
           operatingSystems:
@@ -13350,6 +13852,7 @@ components:
       properties:
         value:
           format: date-time
+          nullable: true
           type: string
           x-nullable: true
       required:
@@ -13364,10 +13867,103 @@ components:
       properties:
         value:
           format: double
+          nullable: true
           type: number
           x-nullable: true
       required:
       - value
+      type: object
+    AdSetDeliveryLimitationsV23Q1:
+      description: ad set delivery limitations model
+      example:
+        operatingSystems:
+        - android
+        - android
+        environments:
+        - web
+        - web
+        devices:
+        - other
+        - other
+      properties:
+        environments:
+          description: List of environments which the ad set should target
+          items:
+            enum:
+            - web
+            - inApp
+            type: string
+          type: array
+          uniqueItems: false
+        devices:
+          description: List of devices which the ad set should target
+          items:
+            enum:
+            - other
+            - desktop
+            - mobile
+            - tablet
+            type: string
+          type: array
+          uniqueItems: false
+        operatingSystems:
+          description: List of operating systems which the ad set should target
+          items:
+            enum:
+            - android
+            - ios
+            - unknown
+            type: string
+          type: array
+          uniqueItems: false
+      type: object
+    AdSetGeoLocationV23Q1:
+      description: ad set geolocation model
+      example:
+        zipCodes:
+          value:
+            values:
+            - values
+            - values
+            operand: undefined
+        countries:
+          value:
+            values:
+            - values
+            - values
+            operand: undefined
+        subdivisions:
+          value:
+            values:
+            - values
+            - values
+            operand: undefined
+      properties:
+        countries:
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV23Q1'
+        subdivisions:
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV23Q1'
+        zipCodes:
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV23Q1'
+      type: object
+    AdSetFrequencyCappingV23Q1:
+      description: ad set frequency capping model
+      example:
+        maximumImpressions: 6
+        frequency: hourly
+      properties:
+        frequency:
+          description: Period on which impression limitation is calculated
+          enum:
+          - hourly
+          - daily
+          - lifetime
+          - advanced
+          type: string
+        maximumImpressions:
+          description: Maximum impressions for the specified period
+          format: int32
+          type: integer
       type: object
     AdSetDeliveryLimitations:
       description: ad set delivery limitations model
@@ -13433,7 +14029,7 @@ components:
     AdSetFrequencyCapping:
       description: ad set frequency capping model
       example:
-        maximumImpressions: 6
+        maximumImpressions: 0
         frequency: hourly
       properties:
         frequency:
@@ -13475,6 +14071,20 @@ components:
         zipCodes:
           $ref: '#/components/schemas/AdSetTargetingRule'
       type: object
+    NillableAdSetTargetingRuleV23Q1:
+      description: "structure that encapsulates an object that have valid business\
+        \ null values. If the structure is provided (i.e. not null), then the value\
+        \ in it, even null, is provided."
+      example:
+        value:
+          values:
+          - values
+          - values
+          operand: undefined
+      properties:
+        value:
+          $ref: '#/components/schemas/AdSetTargetingRuleV23Q1'
+      type: object
     NillableAdSetTargetingRule:
       description: "structure that encapsulates an object that have valid business\
         \ null values. If the structure is provided (i.e. not null), then the value\
@@ -13488,6 +14098,28 @@ components:
       - value
       type: object
     AdSetTargetingRule:
+      description: ad set targeting rule model
+      example:
+        values:
+        - values
+        - values
+        operand: undefined
+      properties:
+        operand:
+          description: Operand which states how the values should be applied
+          enum:
+          - undefined
+          - in
+          - notIn
+          type: string
+        values:
+          description: List of values to apply
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+      type: object
+    AdSetTargetingRuleV23Q1:
       description: ad set targeting rule model
       example:
         values:
@@ -15911,31 +16543,15 @@ components:
           format: int32
           type: integer
       type: object
-    ErrorMessage:
-      description: This is the message defining an error
+    ProblemsDetails:
+      description: Common problems object
       properties:
-        traceId:
-          format: uuid
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
-          type: string
-        traceIdentifier:
-          readOnly: true
-          type: string
-        type:
-          readOnly: true
-          type: string
-        code:
-          readOnly: true
-          type: string
-        instance:
-          readOnly: true
-          type: string
-        title:
-          readOnly: true
-          type: string
-        detail:
-          readOnly: true
-          type: string
+          type: array
+          uniqueItems: false
       type: object
     TransparencyReportDataMessage:
       description: This is the message defining the response for Transparency report
@@ -15967,16 +16583,6 @@ components:
           uniqueItems: false
       required:
       - data
-      type: object
-    ProblemsDetails:
-      description: Common problems object
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          uniqueItems: false
       type: object
     ReportDataMessage:
       description: This is the message defining the json report data
@@ -16518,8 +17124,7 @@ components:
           attributes:
             startDate: 2022-09-20T00:00:00.0000000+02:00
             endDate: 2022-09-23T00:00:00.0000000+02:00
-            advertiserIds:
-            - "11111"
+            advertiserId: "11111"
             timezone: Europe/Paris
             dimension: Top30BrandsByClicks
             metrics:
@@ -19317,17 +19922,6 @@ components:
         name:
           type: string
       type: object
-    BatchAcceptedResponse:
-      description: A batch was accepted. The report can be accessed using the reporting
-        endpoint.
-      example:
-        operationToken: operationToken
-      properties:
-        operationToken:
-          type: string
-      required:
-      - operationToken
-      type: object
     FailResponse:
       description: Error server response.
       properties:
@@ -19344,6 +19938,325 @@ components:
       required:
       - errors
       - warnings
+      type: object
+    StatisticsOkResponse:
+      description: The statistics reports
+      example:
+        data:
+          statisticsRecordList:
+          - nonDisplayable: 1
+            endDate: 2000-01-23T04:56:07.000+00:00
+            added: 5
+            missingImage: 3
+            displayable: 6
+            missingName: 7
+            missingDescription: 1
+            total: 0
+            blacklisted: 7
+            deleted: 5
+            missingPrice: 4
+            outOfStock: 9
+            missingUrl: 2
+            updated: 2
+            startDate: 2000-01-23T04:56:07.000+00:00
+          - nonDisplayable: 1
+            endDate: 2000-01-23T04:56:07.000+00:00
+            added: 5
+            missingImage: 3
+            displayable: 6
+            missingName: 7
+            missingDescription: 1
+            total: 0
+            blacklisted: 7
+            deleted: 5
+            missingPrice: 4
+            outOfStock: 9
+            missingUrl: 2
+            updated: 2
+            startDate: 2000-01-23T04:56:07.000+00:00
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          type: type
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          type: type
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          type: type
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          type: type
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/StatisticsRecordList'
+        errors:
+          description: errors
+          items:
+            $ref: '#/components/schemas/ProductImporterError'
+          readOnly: true
+          type: array
+        warnings:
+          description: warnings
+          items:
+            $ref: '#/components/schemas/ProductImporterWarning'
+          readOnly: true
+          type: array
+      type: object
+    ProductImporterError:
+      description: Error descriptor.
+      example:
+        traceId: traceId
+        code: code
+        instance: instance
+        detail: detail
+        type: type
+        title: title
+      properties:
+        traceId:
+          description: The MACHINE-READABLE correlation ID provided by the gateway
+          type: string
+        type:
+          description: "A MACHINE-READABLE code specifying error category. This information\
+            \ is used on client side to focus on certain type of error, to either\
+            \ retry some processing or display only certain type of errors."
+          type: string
+        code:
+          description: A MACHINE-READABLE error code string in kebab-case. Unique
+            across Criteo
+          type: string
+        instance:
+          description: A MACHINE-READABLE URI reference that identifies the specific
+            occurrence of the problem. This could be useful when we want to the return
+            the API Endpoint identifying the exact resource related to the error.
+          type: string
+        title:
+          description: "A short, HUMAN-READABLE summary of the problem type. It should\
+            \ not change from occurrence to occurrence of the problem, except for\
+            \ purposes of localization."
+          type: string
+        detail:
+          description: A HUMAN-READABLE detailed explanation specific to this occurrence
+            of the problem. This should not be more that 1 paragraph
+          type: string
+      required:
+      - code
+      - detail
+      - instance
+      - title
+      - traceId
+      - type
+      type: object
+    ProductImporterWarning:
+      description: Warning descriptor.
+      example:
+        traceId: traceId
+        code: code
+        instance: instance
+        detail: detail
+        type: type
+        title: title
+      properties:
+        traceId:
+          description: The MACHINE-READABLE correlation ID provided by the gateway
+          type: string
+        type:
+          description: "A MACHINE-READABLE code specifying error category. This information\
+            \ is used on client side to focus on certain type of error, to either\
+            \ retry some processing or display only certain type of errors."
+          type: string
+        code:
+          description: A MACHINE-READABLE error code string in kebab-case. Unique
+            across Criteo
+          type: string
+        instance:
+          description: A MACHINE-READABLE URI reference that identifies the specific
+            occurrence of the problem. This could be useful when we want to the return
+            the API Endpoint identifying the exact resource related to the error.
+          type: string
+        title:
+          description: "A short, HUMAN-READABLE summary of the problem type. It should\
+            \ not change from occurrence to occurrence of the problem, except for\
+            \ purposes of localization."
+          type: string
+        detail:
+          description: A HUMAN-READABLE detailed explanation specific to this occurrence
+            of the problem. This should not be more that 1 paragraph
+          type: string
+      required:
+      - code
+      - detail
+      - instance
+      - title
+      - traceId
+      - type
+      type: object
+    StatisticsRecordList:
+      description: The list of statistics reports
+      example:
+        statisticsRecordList:
+        - nonDisplayable: 1
+          endDate: 2000-01-23T04:56:07.000+00:00
+          added: 5
+          missingImage: 3
+          displayable: 6
+          missingName: 7
+          missingDescription: 1
+          total: 0
+          blacklisted: 7
+          deleted: 5
+          missingPrice: 4
+          outOfStock: 9
+          missingUrl: 2
+          updated: 2
+          startDate: 2000-01-23T04:56:07.000+00:00
+        - nonDisplayable: 1
+          endDate: 2000-01-23T04:56:07.000+00:00
+          added: 5
+          missingImage: 3
+          displayable: 6
+          missingName: 7
+          missingDescription: 1
+          total: 0
+          blacklisted: 7
+          deleted: 5
+          missingPrice: 4
+          outOfStock: 9
+          missingUrl: 2
+          updated: 2
+          startDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        statisticsRecordList:
+          items:
+            $ref: '#/components/schemas/StatisticsRecord'
+          type: array
+      required:
+      - statisticsRecordList
+      type: object
+    StatisticsRecord:
+      description: The format  statistics report for a period between startDate and
+        endDate
+      example:
+        nonDisplayable: 1
+        endDate: 2000-01-23T04:56:07.000+00:00
+        added: 5
+        missingImage: 3
+        displayable: 6
+        missingName: 7
+        missingDescription: 1
+        total: 0
+        blacklisted: 7
+        deleted: 5
+        missingPrice: 4
+        outOfStock: 9
+        missingUrl: 2
+        updated: 2
+        startDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        startDate:
+          description: Start date of streaming products collection
+          format: date-time
+          type: string
+        endDate:
+          description: End date of streaming products collection
+          format: date-time
+          type: string
+        total:
+          description: The number of total products at endDate moment
+          format: int64
+          type: integer
+        displayable:
+          description: The number of displayable products at endDate moment
+          format: int64
+          type: integer
+        nonDisplayable:
+          description: The number of non displayable products at endDate moment
+          format: int64
+          type: integer
+        added:
+          description: The number of inserted products during the period between startDate
+            and endDate
+          format: int64
+          type: integer
+        deleted:
+          description: The number of deleted products during the period between startDate
+            and endDate
+          format: int64
+          type: integer
+        updated:
+          description: The number of updated products during the period between startDate
+            and endDate
+          format: int64
+          type: integer
+        blacklisted:
+          description: The number of total blacklisted products at endDate moment
+          format: int64
+          type: integer
+        outOfStock:
+          description: The number of total out-of-stock products at endDate moment
+          format: int64
+          type: integer
+        missingImage:
+          description: The number of total missing image products at endDate moment
+          format: int64
+          type: integer
+        missingUrl:
+          description: The number of total missing url products at endDate moment
+          format: int64
+          type: integer
+        missingPrice:
+          description: The number of total missing price products at endDate moment
+          format: int64
+          type: integer
+        missingName:
+          description: The number of total missing name products at endDate moment
+          format: int64
+          type: integer
+        missingDescription:
+          description: The number of total missing description products at endDate
+            moment
+          format: int64
+          type: integer
+      required:
+      - added
+      - blacklisted
+      - deleted
+      - displayable
+      - endDate
+      - missingDescription
+      - missingImage
+      - missingName
+      - missingPrice
+      - missingUrl
+      - nonDisplayable
+      - outOfStock
+      - startDate
+      - total
+      - updated
+      type: object
+    BatchAcceptedResponse:
+      description: A batch was accepted. The report can be accessed using the reporting
+        endpoint.
+      example:
+        operationToken: operationToken
+      properties:
+        operationToken:
+          type: string
+      required:
+      - operationToken
       type: object
     ReportOkResponse:
       description: The report on a given operationToken is ready. The report is available
@@ -19579,6 +20492,7 @@ components:
           merchantId: 6
           feedId: feedId
           batchId: 0
+          itemGroupId: itemGroupId
         - product:
             additionalImageLinks:
             - additionalImageLinks
@@ -19736,6 +20650,7 @@ components:
           merchantId: 6
           feedId: feedId
           batchId: 0
+          itemGroupId: itemGroupId
       properties:
         entries:
           description: The request entries to be processed in the batch.
@@ -19744,80 +20659,6 @@ components:
           type: array
       required:
       - entries
-      type: object
-    ProductImporterError:
-      description: Error descriptor.
-      properties:
-        traceId:
-          description: The MACHINE-READABLE correlation ID provided by the gateway
-          type: string
-        type:
-          description: "A MACHINE-READABLE code specifying error category. This information\
-            \ is used on client side to focus on certain type of error, to either\
-            \ retry some processing or display only certain type of errors."
-          type: string
-        code:
-          description: A MACHINE-READABLE error code string in kebab-case. Unique
-            across Criteo
-          type: string
-        instance:
-          description: A MACHINE-READABLE URI reference that identifies the specific
-            occurrence of the problem. This could be useful when we want to the return
-            the API Endpoint identifying the exact resource related to the error.
-          type: string
-        title:
-          description: "A short, HUMAN-READABLE summary of the problem type. It should\
-            \ not change from occurrence to occurrence of the problem, except for\
-            \ purposes of localization."
-          type: string
-        detail:
-          description: A HUMAN-READABLE detailed explanation specific to this occurrence
-            of the problem. This should not be more that 1 paragraph
-          type: string
-      required:
-      - code
-      - detail
-      - instance
-      - title
-      - traceId
-      - type
-      type: object
-    ProductImporterWarning:
-      description: Warning descriptor.
-      properties:
-        traceId:
-          description: The MACHINE-READABLE correlation ID provided by the gateway
-          type: string
-        type:
-          description: "A MACHINE-READABLE code specifying error category. This information\
-            \ is used on client side to focus on certain type of error, to either\
-            \ retry some processing or display only certain type of errors."
-          type: string
-        code:
-          description: A MACHINE-READABLE error code string in kebab-case. Unique
-            across Criteo
-          type: string
-        instance:
-          description: A MACHINE-READABLE URI reference that identifies the specific
-            occurrence of the problem. This could be useful when we want to the return
-            the API Endpoint identifying the exact resource related to the error.
-          type: string
-        title:
-          description: "A short, HUMAN-READABLE summary of the problem type. It should\
-            \ not change from occurrence to occurrence of the problem, except for\
-            \ purposes of localization."
-          type: string
-        detail:
-          description: A HUMAN-READABLE detailed explanation specific to this occurrence
-            of the problem. This should not be more that 1 paragraph
-          type: string
-      required:
-      - code
-      - detail
-      - instance
-      - title
-      - traceId
-      - type
       type: object
     ReportDetailErrors:
       description: A list of errors on a batch operation.
@@ -20002,6 +20843,7 @@ components:
         merchantId: 6
         feedId: feedId
         batchId: 0
+        itemGroupId: itemGroupId
       properties:
         batchId:
           description: "An entry ID, unique within the batch request."
@@ -20019,6 +20861,10 @@ components:
           type: string
         productId:
           description: The Product ID to delete. Only defined if the method is delete.
+          type: string
+        itemGroupId:
+          description: The itemGroupId of the product to delete. To be defined when
+            the method is delete and the product is a variant.
           type: string
         product:
           $ref: '#/components/schemas/Product'
@@ -21432,7 +22278,8 @@ components:
       description: Recommendation request parameters.
       example:
         nbRequestedProducts: 0
-        partnerId: 1
+        adSetId: 1
+        partnerId: 5
         userEvents:
         - dateTime: 2000-01-23T04:56:07.000+00:00
           productExternalId: productExternalId
@@ -21456,6 +22303,11 @@ components:
           items:
             $ref: '#/components/schemas/UserEvent'
           type: array
+        adSetId:
+          description: Id of the AdSet. This field is optional and is resolved automatically
+            for adsets previously configured.
+          format: int32
+          type: integer
         partnerId:
           description: Id of the partner.
           format: int32
@@ -22231,6 +23083,7 @@ components:
     NillableAdSetTargetingRule_value:
       allOf:
       - $ref: '#/components/schemas/AdSetTargetingRule'
+      nullable: true
       x-nullable: true
     OciBrandSafetyResponse_data:
       description: The document's primary data
@@ -22290,6 +23143,10 @@ components:
   securitySchemes:
     oauth:
       flows:
+        authorizationCode:
+          authorizationUrl: https://api.criteo.com/oauth2
+          scopes: {}
+          tokenUrl: https://api.criteo.com/oauth2/token
         clientCredentials:
           scopes: {}
           tokenUrl: https://api.criteo.com/oauth2/token

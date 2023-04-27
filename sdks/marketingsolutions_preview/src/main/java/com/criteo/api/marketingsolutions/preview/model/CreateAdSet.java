@@ -64,6 +64,75 @@ public class CreateAdSet {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private String campaignId;
 
+  /**
+   * Objective of the ad set
+   */
+  @JsonAdapter(ObjectiveEnum.Adapter.class)
+  public enum ObjectiveEnum {
+    CUSTOMACTION("customAction"),
+    
+    CLICKS("clicks"),
+    
+    CONVERSIONS("conversions"),
+    
+    DISPLAYS("displays"),
+    
+    APPPROMOTION("appPromotion"),
+    
+    REVENUE("revenue"),
+    
+    STORECONVERSIONS("storeConversions"),
+    
+    VALUE("value"),
+    
+    REACH("reach"),
+    
+    VISITS("visits"),
+    
+    VIDEOVIEWS("videoViews");
+
+    private String value;
+
+    ObjectiveEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ObjectiveEnum fromValue(String value) {
+      for (ObjectiveEnum b : ObjectiveEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ObjectiveEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ObjectiveEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ObjectiveEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ObjectiveEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_OBJECTIVE = "objective";
+  @SerializedName(SERIALIZED_NAME_OBJECTIVE)
+  private ObjectiveEnum objective;
+
   public static final String SERIALIZED_NAME_SCHEDULE = "schedule";
   @SerializedName(SERIALIZED_NAME_SCHEDULE)
   private CreateAdSetSchedule schedule;
@@ -201,6 +270,28 @@ public class CreateAdSet {
 
   public void setCampaignId(String campaignId) {
     this.campaignId = campaignId;
+  }
+
+
+  public CreateAdSet objective(ObjectiveEnum objective) {
+    
+    this.objective = objective;
+    return this;
+  }
+
+   /**
+   * Objective of the ad set
+   * @return objective
+  **/
+  @javax.annotation.Nullable
+
+  public ObjectiveEnum getObjective() {
+    return objective;
+  }
+
+
+  public void setObjective(ObjectiveEnum objective) {
+    this.objective = objective;
   }
 
 
@@ -393,6 +484,7 @@ public class CreateAdSet {
     return Objects.equals(this.name, createAdSet.name) &&
         Objects.equals(this.datasetId, createAdSet.datasetId) &&
         Objects.equals(this.campaignId, createAdSet.campaignId) &&
+        Objects.equals(this.objective, createAdSet.objective) &&
         Objects.equals(this.schedule, createAdSet.schedule) &&
         Objects.equals(this.bidding, createAdSet.bidding) &&
         Objects.equals(this.targeting, createAdSet.targeting) &&
@@ -404,7 +496,7 @@ public class CreateAdSet {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, datasetId, campaignId, schedule, bidding, targeting, budget, trackingCode, mediaType, additionalProperties);
+    return Objects.hash(name, datasetId, campaignId, objective, schedule, bidding, targeting, budget, trackingCode, mediaType, additionalProperties);
   }
 
   @Override
@@ -414,6 +506,7 @@ public class CreateAdSet {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    datasetId: ").append(toIndentedString(datasetId)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    objective: ").append(toIndentedString(objective)).append("\n");
     sb.append("    schedule: ").append(toIndentedString(schedule)).append("\n");
     sb.append("    bidding: ").append(toIndentedString(bidding)).append("\n");
     sb.append("    targeting: ").append(toIndentedString(targeting)).append("\n");
@@ -446,6 +539,7 @@ public class CreateAdSet {
     openapiFields.add("name");
     openapiFields.add("datasetId");
     openapiFields.add("campaignId");
+    openapiFields.add("objective");
     openapiFields.add("schedule");
     openapiFields.add("bidding");
     openapiFields.add("targeting");
@@ -477,6 +571,9 @@ public class CreateAdSet {
       }
       if ((jsonObj.get("campaignId") != null && !jsonObj.get("campaignId").isJsonNull()) && !jsonObj.get("campaignId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
+      }
+      if ((jsonObj.get("objective") != null && !jsonObj.get("objective").isJsonNull()) && !jsonObj.get("objective").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `objective` to be a primitive type in the JSON string but got `%s`", jsonObj.get("objective").toString()));
       }
       // validate the optional field `schedule`
       if (jsonObj.get("schedule") != null && !jsonObj.get("schedule").isJsonNull()) {

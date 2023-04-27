@@ -54,15 +54,15 @@ public class ExternalCatalogStatus {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    UNKNOWN("Unknown"),
+    UNKNOWN("unknown"),
     
-    PENDING("Pending"),
+    PENDING("pending"),
     
-    SUCCESS("Success"),
+    SUCCESS("success"),
     
-    FAILURE("Failure"),
+    FAILURE("failure"),
     
-    EXPIRED("Expired");
+    EXPIRED("expired");
 
     private String value;
 
@@ -187,7 +187,7 @@ public class ExternalCatalogStatus {
    * An indication of the number of products contained in this catalog. Available when  this catalog reaches a success status.
    * @return rowCount
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public Integer getRowCount() {
     return rowCount;
@@ -209,7 +209,7 @@ public class ExternalCatalogStatus {
    * The size of this catalog in bytes. Available when this catalog reaches a success status.
    * @return fileSizeBytes
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public Integer getFileSizeBytes() {
     return fileSizeBytes;
@@ -231,7 +231,7 @@ public class ExternalCatalogStatus {
    * An MD5 checksum of the catalog for use in confirming complete and uncorrupted retrieval.  Available when this catalog reaches a success status.
    * @return md5Checksum
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public String getMd5Checksum() {
     return md5Checksum;
@@ -275,7 +275,7 @@ public class ExternalCatalogStatus {
    * An optional information message intended for developer consumption.
    * @return message
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public String getMessage() {
     return message;

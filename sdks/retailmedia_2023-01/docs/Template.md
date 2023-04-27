@@ -10,7 +10,7 @@ A template for creating creatives.
 |------------ | ------------- | ------------- | -------------|
 |**creativeFormat** | [**CreativeFormatEnum**](#CreativeFormatEnum) | The kind of creative this template can be used to build. |  |
 |**name** | **String** | The name of the template |  |
-|**retailerId** | **Integer** | The retailer associated to the template |  |
+|**retailerId** | **Integer** | The retailer associated to the template |  [optional] |
 |**skuCollectionMin** | **Integer** | TODO: what is it ? |  |
 |**skuCollectionMax** | **Integer** | TODO: what is it ? |  [optional] |
 |**skuPerCollectionMin** | **Integer** | TODO: what is it ? |  |

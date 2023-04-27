@@ -65,7 +65,7 @@ public class NillableDecimal {
    * Get value
    * @return value
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public Double getValue() {
     return value;

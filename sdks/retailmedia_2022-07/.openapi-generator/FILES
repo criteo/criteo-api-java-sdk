@@ -162,8 +162,6 @@ gradlew
 gradlew.bat
 pom.xml
 settings.gradle
-src/examples/java/criteo/api/examples/PortfolioApplication.java
-src/examples/java/criteo/api/examples/StatisticsApplication.java
 src/main/AndroidManifest.xml
 src/main/java/com/criteo/api/retailmedia/v2022_07/ApiCallback.java
 src/main/java/com/criteo/api/retailmedia/v2022_07/ApiClient.java
@@ -336,4 +334,5 @@ src/main/java/com/criteo/api/retailmedia/v2022_07/model/ValueTypeResourceOfAudie
 src/main/java/com/criteo/api/retailmedia/v2022_07/model/ValueTypeResourceOfKeywordTarget202110.java
 src/main/java/com/criteo/api/retailmedia/v2022_07/model/ValueTypeResourceOfStoreIdsUpdateModel202110.java
 src/main/java/com/criteo/api/retailmedia/v2022_07/model/ValueTypeResourceOfStoreTarget202110.java
-src/test/java/com/criteo.api.sdk/GatewayApiTest.java
+src/test/java/com/criteo/api/retailmedia/v2022_07/ExampleApplication.java
+src/test/java/com/criteo/api/retailmedia/v2022_07/GatewayApiTest.java

@@ -88,7 +88,7 @@ public class AdSetCategoryBid {
   }
 
    /**
-   * The Bid amount applied to the given Category associated to an Ad Set.
+   * The Bid amount applied to the given Category associated to an Ad Set. At most 4 decimals are supported. Additional decimals are rounded.
    * @return bidAmount
   **/
   @javax.annotation.Nullable

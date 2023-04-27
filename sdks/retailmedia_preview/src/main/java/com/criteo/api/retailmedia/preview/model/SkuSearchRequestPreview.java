@@ -119,6 +119,69 @@ public class SkuSearchRequestPreview {
   @SerializedName(SERIALIZED_NAME_SKU_TYPE)
   private SkuTypeEnum skuType = SkuTypeEnum.BRAND;
 
+  /**
+   * Type of product Ids to search for(SkuKey, SkuId, Gtin, Mpn, Model, ParentId)
+   */
+  @JsonAdapter(ProductIdTypeEnum.Adapter.class)
+  public enum ProductIdTypeEnum {
+    SKUKEY("skuKey"),
+    
+    GTIN("gtin"),
+    
+    MPN("mpn"),
+    
+    MODEL("model"),
+    
+    SKUID("skuId"),
+    
+    PARENTID("parentId");
+
+    private String value;
+
+    ProductIdTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ProductIdTypeEnum fromValue(String value) {
+      for (ProductIdTypeEnum b : ProductIdTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ProductIdTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ProductIdTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ProductIdTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ProductIdTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_PRODUCT_ID_TYPE = "productIdType";
+  @SerializedName(SERIALIZED_NAME_PRODUCT_ID_TYPE)
+  private ProductIdTypeEnum productIdType = ProductIdTypeEnum.SKUKEY;
+
+  public static final String SERIALIZED_NAME_PRODUCT_IDS = "productIds";
+  @SerializedName(SERIALIZED_NAME_PRODUCT_IDS)
+  private List<String> productIds = null;
+
   public SkuSearchRequestPreview() {
   }
 
@@ -247,6 +310,58 @@ public class SkuSearchRequestPreview {
     this.skuType = skuType;
   }
 
+
+  public SkuSearchRequestPreview productIdType(ProductIdTypeEnum productIdType) {
+    
+    this.productIdType = productIdType;
+    return this;
+  }
+
+   /**
+   * Type of product Ids to search for(SkuKey, SkuId, Gtin, Mpn, Model, ParentId)
+   * @return productIdType
+  **/
+  @javax.annotation.Nullable
+
+  public ProductIdTypeEnum getProductIdType() {
+    return productIdType;
+  }
+
+
+  public void setProductIdType(ProductIdTypeEnum productIdType) {
+    this.productIdType = productIdType;
+  }
+
+
+  public SkuSearchRequestPreview productIds(List<String> productIds) {
+    
+    this.productIds = productIds;
+    return this;
+  }
+
+  public SkuSearchRequestPreview addProductIdsItem(String productIdsItem) {
+    if (this.productIds == null) {
+      this.productIds = new ArrayList<>();
+    }
+    this.productIds.add(productIdsItem);
+    return this;
+  }
+
+   /**
+   * A list of product Id&#39;s, if not passed ignore and search by QueryString
+   * @return productIds
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getProductIds() {
+    return productIds;
+  }
+
+
+  public void setProductIds(List<String> productIds) {
+    this.productIds = productIds;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -306,13 +421,15 @@ public class SkuSearchRequestPreview {
         Objects.equals(this.retailerId, skuSearchRequestPreview.retailerId) &&
         Objects.equals(this.sellers, skuSearchRequestPreview.sellers) &&
         Objects.equals(this.brandIds, skuSearchRequestPreview.brandIds) &&
-        Objects.equals(this.skuType, skuSearchRequestPreview.skuType)&&
+        Objects.equals(this.skuType, skuSearchRequestPreview.skuType) &&
+        Objects.equals(this.productIdType, skuSearchRequestPreview.productIdType) &&
+        Objects.equals(this.productIds, skuSearchRequestPreview.productIds)&&
         Objects.equals(this.additionalProperties, skuSearchRequestPreview.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(queryString, retailerId, sellers, brandIds, skuType, additionalProperties);
+    return Objects.hash(queryString, retailerId, sellers, brandIds, skuType, productIdType, productIds, additionalProperties);
   }
 
   @Override
@@ -324,6 +441,8 @@ public class SkuSearchRequestPreview {
     sb.append("    sellers: ").append(toIndentedString(sellers)).append("\n");
     sb.append("    brandIds: ").append(toIndentedString(brandIds)).append("\n");
     sb.append("    skuType: ").append(toIndentedString(skuType)).append("\n");
+    sb.append("    productIdType: ").append(toIndentedString(productIdType)).append("\n");
+    sb.append("    productIds: ").append(toIndentedString(productIds)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -352,6 +471,8 @@ public class SkuSearchRequestPreview {
     openapiFields.add("sellers");
     openapiFields.add("brandIds");
     openapiFields.add("skuType");
+    openapiFields.add("productIdType");
+    openapiFields.add("productIds");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -394,6 +515,13 @@ public class SkuSearchRequestPreview {
       }
       if ((jsonObj.get("skuType") != null && !jsonObj.get("skuType").isJsonNull()) && !jsonObj.get("skuType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `skuType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("skuType").toString()));
+      }
+      if ((jsonObj.get("productIdType") != null && !jsonObj.get("productIdType").isJsonNull()) && !jsonObj.get("productIdType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `productIdType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productIdType").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("productIds") != null && !jsonObj.get("productIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `productIds` to be an array in the JSON string but got `%s`", jsonObj.get("productIds").toString()));
       }
   }
 

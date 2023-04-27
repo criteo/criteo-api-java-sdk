@@ -117,6 +117,14 @@ public class SkuDataPreview {
   @SerializedName(SERIALIZED_NAME_MPN)
   private String mpn;
 
+  public static final String SERIALIZED_NAME_MODEL_NUMBER = "modelNumber";
+  @SerializedName(SERIALIZED_NAME_MODEL_NUMBER)
+  private String modelNumber;
+
+  public static final String SERIALIZED_NAME_PARENT_ID = "parentId";
+  @SerializedName(SERIALIZED_NAME_PARENT_ID)
+  private String parentId;
+
   public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
   @SerializedName(SERIALIZED_NAME_IMAGE_URL)
   private String imageUrl;
@@ -506,6 +514,50 @@ public class SkuDataPreview {
   }
 
 
+  public SkuDataPreview modelNumber(String modelNumber) {
+    
+    this.modelNumber = modelNumber;
+    return this;
+  }
+
+   /**
+   * The Model Number for the product if available.
+   * @return modelNumber
+  **/
+  @javax.annotation.Nullable
+
+  public String getModelNumber() {
+    return modelNumber;
+  }
+
+
+  public void setModelNumber(String modelNumber) {
+    this.modelNumber = modelNumber;
+  }
+
+
+  public SkuDataPreview parentId(String parentId) {
+    
+    this.parentId = parentId;
+    return this;
+  }
+
+   /**
+   * The ParentId for the product if available.
+   * @return parentId
+  **/
+  @javax.annotation.Nullable
+
+  public String getParentId() {
+    return parentId;
+  }
+
+
+  public void setParentId(String parentId) {
+    this.parentId = parentId;
+  }
+
+
   public SkuDataPreview imageUrl(String imageUrl) {
     
     this.imageUrl = imageUrl;
@@ -643,6 +695,8 @@ public class SkuDataPreview {
         Objects.equals(this.isInStock, skuDataPreview.isInStock) &&
         Objects.equals(this.gtin, skuDataPreview.gtin) &&
         Objects.equals(this.mpn, skuDataPreview.mpn) &&
+        Objects.equals(this.modelNumber, skuDataPreview.modelNumber) &&
+        Objects.equals(this.parentId, skuDataPreview.parentId) &&
         Objects.equals(this.imageUrl, skuDataPreview.imageUrl) &&
         Objects.equals(this.productPage, skuDataPreview.productPage) &&
         Objects.equals(this.updatedAt, skuDataPreview.updatedAt)&&
@@ -651,7 +705,7 @@ public class SkuDataPreview {
 
   @Override
   public int hashCode() {
-    return Objects.hash(skuKey, name, description, categoryId, category, isSellerSku, isBuybox, sellerId, sellerName, brandId, brandName, retailerId, retailerName, price, isInStock, gtin, mpn, imageUrl, productPage, updatedAt, additionalProperties);
+    return Objects.hash(skuKey, name, description, categoryId, category, isSellerSku, isBuybox, sellerId, sellerName, brandId, brandName, retailerId, retailerName, price, isInStock, gtin, mpn, modelNumber, parentId, imageUrl, productPage, updatedAt, additionalProperties);
   }
 
   @Override
@@ -675,6 +729,8 @@ public class SkuDataPreview {
     sb.append("    isInStock: ").append(toIndentedString(isInStock)).append("\n");
     sb.append("    gtin: ").append(toIndentedString(gtin)).append("\n");
     sb.append("    mpn: ").append(toIndentedString(mpn)).append("\n");
+    sb.append("    modelNumber: ").append(toIndentedString(modelNumber)).append("\n");
+    sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    productPage: ").append(toIndentedString(productPage)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
@@ -718,6 +774,8 @@ public class SkuDataPreview {
     openapiFields.add("isInStock");
     openapiFields.add("gtin");
     openapiFields.add("mpn");
+    openapiFields.add("modelNumber");
+    openapiFields.add("parentId");
     openapiFields.add("imageUrl");
     openapiFields.add("productPage");
     openapiFields.add("updatedAt");
@@ -791,6 +849,12 @@ public class SkuDataPreview {
       }
       if ((jsonObj.get("mpn") != null && !jsonObj.get("mpn").isJsonNull()) && !jsonObj.get("mpn").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mpn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mpn").toString()));
+      }
+      if ((jsonObj.get("modelNumber") != null && !jsonObj.get("modelNumber").isJsonNull()) && !jsonObj.get("modelNumber").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `modelNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("modelNumber").toString()));
+      }
+      if ((jsonObj.get("parentId") != null && !jsonObj.get("parentId").isJsonNull()) && !jsonObj.get("parentId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `parentId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("parentId").toString()));
       }
       if ((jsonObj.get("imageUrl") != null && !jsonObj.get("imageUrl").isJsonNull()) && !jsonObj.get("imageUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `imageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("imageUrl").toString()));

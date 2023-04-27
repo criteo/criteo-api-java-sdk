@@ -66,7 +66,7 @@ public class NillableDateTime {
    * Get value
    * @return value
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public OffsetDateTime getValue() {
     return value;

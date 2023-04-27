@@ -112,6 +112,10 @@ public class ProductsCustomBatchRequestEntry {
   @SerializedName(SERIALIZED_NAME_PRODUCT_ID)
   private String productId;
 
+  public static final String SERIALIZED_NAME_ITEM_GROUP_ID = "itemGroupId";
+  @SerializedName(SERIALIZED_NAME_ITEM_GROUP_ID)
+  private String itemGroupId;
+
   public static final String SERIALIZED_NAME_PRODUCT = "product";
   @SerializedName(SERIALIZED_NAME_PRODUCT)
   private Product product;
@@ -208,6 +212,28 @@ public class ProductsCustomBatchRequestEntry {
 
   public void setProductId(String productId) {
     this.productId = productId;
+  }
+
+
+  public ProductsCustomBatchRequestEntry itemGroupId(String itemGroupId) {
+    
+    this.itemGroupId = itemGroupId;
+    return this;
+  }
+
+   /**
+   * The itemGroupId of the product to delete. To be defined when the method is delete and the product is a variant.
+   * @return itemGroupId
+  **/
+  @javax.annotation.Nullable
+
+  public String getItemGroupId() {
+    return itemGroupId;
+  }
+
+
+  public void setItemGroupId(String itemGroupId) {
+    this.itemGroupId = itemGroupId;
   }
 
 
@@ -313,6 +339,7 @@ public class ProductsCustomBatchRequestEntry {
         Objects.equals(this.merchantId, productsCustomBatchRequestEntry.merchantId) &&
         Objects.equals(this.method, productsCustomBatchRequestEntry.method) &&
         Objects.equals(this.productId, productsCustomBatchRequestEntry.productId) &&
+        Objects.equals(this.itemGroupId, productsCustomBatchRequestEntry.itemGroupId) &&
         Objects.equals(this.product, productsCustomBatchRequestEntry.product) &&
         Objects.equals(this.feedId, productsCustomBatchRequestEntry.feedId)&&
         Objects.equals(this.additionalProperties, productsCustomBatchRequestEntry.additionalProperties);
@@ -320,7 +347,7 @@ public class ProductsCustomBatchRequestEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(batchId, merchantId, method, productId, product, feedId, additionalProperties);
+    return Objects.hash(batchId, merchantId, method, productId, itemGroupId, product, feedId, additionalProperties);
   }
 
   @Override
@@ -331,6 +358,7 @@ public class ProductsCustomBatchRequestEntry {
     sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
     sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
+    sb.append("    itemGroupId: ").append(toIndentedString(itemGroupId)).append("\n");
     sb.append("    product: ").append(toIndentedString(product)).append("\n");
     sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -360,6 +388,7 @@ public class ProductsCustomBatchRequestEntry {
     openapiFields.add("merchantId");
     openapiFields.add("method");
     openapiFields.add("productId");
+    openapiFields.add("itemGroupId");
     openapiFields.add("product");
     openapiFields.add("feedId");
 
@@ -393,6 +422,9 @@ public class ProductsCustomBatchRequestEntry {
       }
       if ((jsonObj.get("productId") != null && !jsonObj.get("productId").isJsonNull()) && !jsonObj.get("productId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `productId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productId").toString()));
+      }
+      if ((jsonObj.get("itemGroupId") != null && !jsonObj.get("itemGroupId").isJsonNull()) && !jsonObj.get("itemGroupId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `itemGroupId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("itemGroupId").toString()));
       }
       // validate the optional field `product`
       if (jsonObj.get("product") != null && !jsonObj.get("product").isJsonNull()) {

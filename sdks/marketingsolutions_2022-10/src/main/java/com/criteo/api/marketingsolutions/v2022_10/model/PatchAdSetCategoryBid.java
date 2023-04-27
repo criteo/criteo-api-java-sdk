@@ -62,7 +62,7 @@ public class PatchAdSetCategoryBid {
   }
 
    /**
-   * positive decimal value match bid constraints. At most 4 decimals are supported. Additional decimals are rounded.
+   * The Bid amount applied to the given Category associated to an Ad Set. At most 4 decimals are supported. Additional decimals are rounded.
    * @return bidAmount
   **/
   @javax.annotation.Nullable

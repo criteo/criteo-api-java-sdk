@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,6 +53,71 @@ public class BehavioralV1 {
   @SerializedName(SERIALIZED_NAME_COUNTRY)
   private String country;
 
+  /**
+   * The type of behavioral
+   */
+  @JsonAdapter(CategoryEnum.Adapter.class)
+  public enum CategoryEnum {
+    UNKNOWN("Unknown"),
+    
+    LIFESTYLES("Lifestyles"),
+    
+    LIFEEVENTS("LifeEvents"),
+    
+    SEASONAL("Seasonal"),
+    
+    BUYINGPATTERNS("BuyingPatterns");
+
+    private String value;
+
+    CategoryEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static CategoryEnum fromValue(String value) {
+      for (CategoryEnum b : CategoryEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<CategoryEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final CategoryEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public CategoryEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return CategoryEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CATEGORY = "category";
+  @SerializedName(SERIALIZED_NAME_CATEGORY)
+  private CategoryEnum category;
+
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private OffsetDateTime startDate;
+
+  public static final String SERIALIZED_NAME_END_DATE = "endDate";
+  @SerializedName(SERIALIZED_NAME_END_DATE)
+  private OffsetDateTime endDate;
+
   public BehavioralV1() {
   }
 
@@ -74,6 +140,72 @@ public class BehavioralV1 {
 
   public void setCountry(String country) {
     this.country = country;
+  }
+
+
+  public BehavioralV1 category(CategoryEnum category) {
+    
+    this.category = category;
+    return this;
+  }
+
+   /**
+   * The type of behavioral
+   * @return category
+  **/
+  @javax.annotation.Nonnull
+
+  public CategoryEnum getCategory() {
+    return category;
+  }
+
+
+  public void setCategory(CategoryEnum category) {
+    this.category = category;
+  }
+
+
+  public BehavioralV1 startDate(OffsetDateTime startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Desired date when the behavioral will start
+   * @return startDate
+  **/
+  @javax.annotation.Nullable
+
+  public OffsetDateTime getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+
+  public BehavioralV1 endDate(OffsetDateTime endDate) {
+    
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * Desired date when the behavioral will end
+   * @return endDate
+  **/
+  @javax.annotation.Nullable
+
+  public OffsetDateTime getEndDate() {
+    return endDate;
+  }
+
+
+  public void setEndDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
   }
 
   /**
@@ -131,13 +263,16 @@ public class BehavioralV1 {
       return false;
     }
     BehavioralV1 behavioralV1 = (BehavioralV1) o;
-    return Objects.equals(this.country, behavioralV1.country)&&
+    return Objects.equals(this.country, behavioralV1.country) &&
+        Objects.equals(this.category, behavioralV1.category) &&
+        Objects.equals(this.startDate, behavioralV1.startDate) &&
+        Objects.equals(this.endDate, behavioralV1.endDate)&&
         Objects.equals(this.additionalProperties, behavioralV1.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, additionalProperties);
+    return Objects.hash(country, category, startDate, endDate, additionalProperties);
   }
 
   @Override
@@ -145,6 +280,9 @@ public class BehavioralV1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class BehavioralV1 {\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    category: ").append(toIndentedString(category)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -169,9 +307,13 @@ public class BehavioralV1 {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("country");
+    openapiFields.add("category");
+    openapiFields.add("startDate");
+    openapiFields.add("endDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("category");
   }
 
  /**
@@ -186,8 +328,18 @@ public class BehavioralV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in BehavioralV1 is not found in the empty JSON string", BehavioralV1.openapiRequiredFields.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : BehavioralV1.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
       if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
+      }
+      if (!jsonObj.get("category").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
       }
   }
 

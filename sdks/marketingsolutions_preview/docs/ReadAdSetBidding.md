@@ -10,7 +10,7 @@ ad set bidding read model
 |------------ | ------------- | ------------- | -------------|
 |**bidAmount** | [**NillableDecimal**](NillableDecimal.md) |  |  [optional] |
 |**bidStrategy** | [**BidStrategyEnum**](#BidStrategyEnum) | The intended optimization for the Ad Set |  [optional] |
-|**costController** | [**CostControllerEnum**](#CostControllerEnum) | How is spend controlled |  [optional] |
+|**costController** | [**CostControllerEnum**](#CostControllerEnum) | How spend is controlled |  [optional] |
 
 
 

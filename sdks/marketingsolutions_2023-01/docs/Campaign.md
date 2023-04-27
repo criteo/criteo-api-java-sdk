@@ -12,6 +12,17 @@ campaign read model
 |**advertiserId** | **String** | Advertiser id of the campaign |  [optional] |
 |**objective** | **String** | Campaign&#39;s marketing objective |  [optional] |
 |**spendLimit** | [**CampaignSpendLimit**](CampaignSpendLimit.md) |  |  [optional] |
+|**goal** | [**GoalEnum**](#GoalEnum) | Goal of the campaign |  [optional] |
+
+
+
+## Enum: GoalEnum
+
+| Name | Value |
+|---- | -----|
+| UNSPECIFIED | &quot;Unspecified&quot; |
+| ACQUISITION | &quot;Acquisition&quot; |
+| RETENTION | &quot;Retention&quot; |
 
 
 

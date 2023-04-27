@@ -63,6 +63,10 @@ public class OnSiteRecoRequest {
   @SerializedName(SERIALIZED_NAME_USER_EVENTS)
   private List<UserEvent> userEvents = null;
 
+  public static final String SERIALIZED_NAME_AD_SET_ID = "adSetId";
+  @SerializedName(SERIALIZED_NAME_AD_SET_ID)
+  private Integer adSetId;
+
   public static final String SERIALIZED_NAME_PARTNER_ID = "partnerId";
   @SerializedName(SERIALIZED_NAME_PARTNER_ID)
   private Integer partnerId;
@@ -141,6 +145,28 @@ public class OnSiteRecoRequest {
 
   public void setUserEvents(List<UserEvent> userEvents) {
     this.userEvents = userEvents;
+  }
+
+
+  public OnSiteRecoRequest adSetId(Integer adSetId) {
+    
+    this.adSetId = adSetId;
+    return this;
+  }
+
+   /**
+   * Id of the AdSet. This field is optional and is resolved automatically for adsets previously configured.
+   * @return adSetId
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getAdSetId() {
+    return adSetId;
+  }
+
+
+  public void setAdSetId(Integer adSetId) {
+    this.adSetId = adSetId;
   }
 
 
@@ -223,13 +249,14 @@ public class OnSiteRecoRequest {
     return Objects.equals(this.nbRequestedProducts, onSiteRecoRequest.nbRequestedProducts) &&
         Objects.equals(this.userId, onSiteRecoRequest.userId) &&
         Objects.equals(this.userEvents, onSiteRecoRequest.userEvents) &&
+        Objects.equals(this.adSetId, onSiteRecoRequest.adSetId) &&
         Objects.equals(this.partnerId, onSiteRecoRequest.partnerId)&&
         Objects.equals(this.additionalProperties, onSiteRecoRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(nbRequestedProducts, userId, userEvents, partnerId, additionalProperties);
+    return Objects.hash(nbRequestedProducts, userId, userEvents, adSetId, partnerId, additionalProperties);
   }
 
   @Override
@@ -239,6 +266,7 @@ public class OnSiteRecoRequest {
     sb.append("    nbRequestedProducts: ").append(toIndentedString(nbRequestedProducts)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    userEvents: ").append(toIndentedString(userEvents)).append("\n");
+    sb.append("    adSetId: ").append(toIndentedString(adSetId)).append("\n");
     sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -266,6 +294,7 @@ public class OnSiteRecoRequest {
     openapiFields.add("nbRequestedProducts");
     openapiFields.add("userId");
     openapiFields.add("userEvents");
+    openapiFields.add("adSetId");
     openapiFields.add("partnerId");
 
     // a set of required properties/fields (JSON key names)

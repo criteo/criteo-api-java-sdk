@@ -27,8 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.criteo.api.marketingsolutions.v2023_01.model.ErrorMessage;
 import com.criteo.api.marketingsolutions.v2023_01.model.PlacementsReportQueryDataMessage;
+import com.criteo.api.marketingsolutions.v2023_01.model.ProblemsDetails;
 import com.criteo.api.marketingsolutions.v2023_01.model.StatisticsReportQueryMessage;
 import com.criteo.api.marketingsolutions.v2023_01.model.TransactionsReportQueryDataMessage;
 import com.criteo.api.marketingsolutions.v2023_01.model.TransparencyQueryMessage;
@@ -120,7 +120,10 @@ public class AnalyticsApi {
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/csv",
+            "text/xml",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -138,7 +141,7 @@ public class AnalyticsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "oauth" };
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -269,7 +272,7 @@ public class AnalyticsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "oauth" };
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -382,7 +385,10 @@ public class AnalyticsApi {
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/csv",
+            "text/xml",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -400,7 +406,7 @@ public class AnalyticsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "oauth" };
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -533,7 +539,7 @@ public class AnalyticsApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "oauth" };
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 

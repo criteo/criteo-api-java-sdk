@@ -8,7 +8,7 @@ servers:
 security:
 - oauth: []
 paths:
-  /me:
+  /2022-10/retail-media/me:
     get:
       description: Get information about the currently logged application
       operationId: GetCurrentApplication
@@ -922,6 +922,431 @@ paths:
       tags:
       - Analytics
       x-accepts: application/json
+  /2022-10/retail-media/accounts/{accountId}/campaigns:
+    get:
+      description: Gets page of campaign objects for the given account id
+      operationId: CampaignsApi_GetApiV1ExternalAccountCampaignsByAccountId
+      parameters:
+      - description: The given account id
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The ids that you would like to limit your result set to
+        explode: true
+        in: query
+        name: limitToId
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: false
+      - description: The 0 indexed page index you would like to receive given the
+          page size
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      - description: The maximum number of items you would like to receive in this
+          request
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfCampaign'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+    post:
+      description: Creates a new campaign with the specified settings
+      operationId: CampaignsApi_PostApiV1ExternalAccountCampaignsByAccountId
+      parameters:
+      - description: The given account id
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExternalPostCampaign'
+        description: The campaign settings to create a campaign with
+        x-nullable: false
+        x-bodyName: campaign
+      responses:
+        "201":
+          content:
+            application/json: {}
+          description: Success
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfCampaign'
+          description: OK
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /2022-10/retail-media/campaigns/{campaignId}:
+    get:
+      description: Gets the campaign for the given campaign id
+      operationId: CampaignsApi_GetApiV1ExternalCampaignByCampaignId
+      parameters:
+      - description: The given campaign id
+        explode: false
+        in: path
+        name: campaignId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfCampaign'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+    put:
+      description: Updates the campaign for the given campaign id
+      operationId: CampaignsApi_PutApiV1ExternalCampaignByCampaignId
+      parameters:
+      - description: The given campaign id
+        explode: false
+        in: path
+        name: campaignId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExternalPutCampaign'
+        description: The campaign settings to update that campaign with
+        x-nullable: false
+        x-bodyName: campaign
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfCampaign'
+          description: Success
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /2022-10/retail-media/campaigns/{campaign-id}/auction-line-items:
+    get:
+      description: Gets page of auction line item objects for the given campaign id
+      operationId: GetApiV2ExternalCampaignAuctionLineItemsByCampaignId
+      parameters:
+      - description: The given campaign id
+        explode: false
+        in: path
+        name: campaign-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The ids that you would like to limit your result set to
+        explode: true
+        in: query
+        name: limitToId
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: false
+      - description: The 0 indexed page index you would like to receive given the
+          page size
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      - description: The maximum number of items you would like to receive in this
+          request
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuctionLineItemPagedListResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuctionLineItemPagedListResponse'
+          description: Bad Request
+      tags:
+      - Campaign
+      x-accepts: application/json
+    post:
+      description: Creates new auction line item with the specified settings
+      operationId: PostApiV2ExternalCampaignAuctionLineItemsByCampaignId
+      parameters:
+      - description: The given campaign id
+        explode: false
+        in: path
+        name: campaign-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuctionLineItemCreateModelRequest'
+        description: The line item settings to create a line item with
+        x-nullable: false
+        x-bodyName: lineItem
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuctionLineItemResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuctionLineItemResponse'
+          description: Bad Request
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /2022-10/retail-media/line-items/{line-item-id}:
+    get:
+      description: Gets the line item for the given line item id
+      operationId: GetApiV2ExternalLineItemByLineItemId
+      parameters:
+      - description: The given line item id
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonLineItemResponse'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /2022-10/retail-media/accounts/{account-id}/line-items:
+    get:
+      description: Gets page of line item objects for the given account id
+      operationId: GetApiV2ExternalAccountLineItemsByAccountId
+      parameters:
+      - description: The given account id
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The campaign ids that you would like to limit your result set
+          to
+        explode: true
+        in: query
+        name: limitToCampaignId
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: false
+      - description: The campaign types that you would like to limit your result set
+          to
+        explode: true
+        in: query
+        name: limitToType
+        required: false
+        schema:
+          enum:
+          - Unknown
+          - Auction
+          - Preferred
+          type: string
+        style: form
+        x-nullable: true
+      - description: The ids that you would like to limit your result set to
+        explode: true
+        in: query
+        name: limitToId
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: false
+      - description: The 0 indexed page index you would like to receive given the
+          page size
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      - description: The maximum number of items you would like to receive in this
+          request
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonLineItemPagedListResponse'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /2022-10/retail-media/auction-line-items/{line-item-id}:
+    get:
+      description: Gets the auction line item for the given line item id
+      operationId: GetApiV2ExternalAuctionLineItemByLineItemId
+      parameters:
+      - description: The given line item id
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuctionLineItemResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuctionLineItemResponse'
+          description: Bad Request
+      tags:
+      - Campaign
+      x-accepts: application/json
+    put:
+      description: Updates the auction line item for the given line item id
+      operationId: PutApiV2ExternalAuctionLineItemByLineItemId
+      parameters:
+      - description: The given line item id
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuctionLineItemUpdateModelRequest'
+        description: The line item settings to create a line item with
+        x-nullable: false
+        x-bodyName: lineItem
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuctionLineItemResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuctionLineItemResponse'
+          description: Bad Request
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
   /2022-10/retail-media/auction-line-items/{line-item-id}/targeting/keywords:
     get:
       description: This endpoint gets the keyword target on the specified line item.
@@ -1539,431 +1964,6 @@ paths:
       responses:
         "200":
           description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /2022-10/retail-media/accounts/{accountId}/campaigns:
-    get:
-      description: Gets page of campaign objects for the given account id
-      operationId: CampaignsApi_GetApiV1ExternalAccountCampaignsByAccountId
-      parameters:
-      - description: The given account id
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: The ids that you would like to limit your result set to
-        explode: true
-        in: query
-        name: limitToId
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-        x-nullable: false
-      - description: The 0 indexed page index you would like to receive given the
-          page size
-        explode: true
-        in: query
-        name: pageIndex
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      - description: The maximum number of items you would like to receive in this
-          request
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JsonApiPageResponseOfCampaign'
-          description: Success
-      tags:
-      - Campaign
-      x-accepts: application/json
-    post:
-      description: Creates a new campaign with the specified settings
-      operationId: CampaignsApi_PostApiV1ExternalAccountCampaignsByAccountId
-      parameters:
-      - description: The given account id
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExternalPostCampaign'
-        description: The campaign settings to create a campaign with
-        x-nullable: false
-        x-bodyName: campaign
-      responses:
-        "201":
-          content:
-            application/json: {}
-          description: Success
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JsonApiSingleResponseOfCampaign'
-          description: OK
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /2022-10/retail-media/campaigns/{campaignId}:
-    get:
-      description: Gets the campaign for the given campaign id
-      operationId: CampaignsApi_GetApiV1ExternalCampaignByCampaignId
-      parameters:
-      - description: The given campaign id
-        explode: false
-        in: path
-        name: campaignId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JsonApiSingleResponseOfCampaign'
-          description: Success
-      tags:
-      - Campaign
-      x-accepts: application/json
-    put:
-      description: Updates the campaign for the given campaign id
-      operationId: CampaignsApi_PutApiV1ExternalCampaignByCampaignId
-      parameters:
-      - description: The given campaign id
-        explode: false
-        in: path
-        name: campaignId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExternalPutCampaign'
-        description: The campaign settings to update that campaign with
-        x-nullable: false
-        x-bodyName: campaign
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JsonApiSingleResponseOfCampaign'
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /2022-10/retail-media/campaigns/{campaign-id}/auction-line-items:
-    get:
-      description: Gets page of auction line item objects for the given campaign id
-      operationId: GetApiV2ExternalCampaignAuctionLineItemsByCampaignId
-      parameters:
-      - description: The given campaign id
-        explode: false
-        in: path
-        name: campaign-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: The ids that you would like to limit your result set to
-        explode: true
-        in: query
-        name: limitToId
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-        x-nullable: false
-      - description: The 0 indexed page index you would like to receive given the
-          page size
-        explode: true
-        in: query
-        name: pageIndex
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      - description: The maximum number of items you would like to receive in this
-          request
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuctionLineItemPagedListResponse'
-          description: Success
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuctionLineItemPagedListResponse'
-          description: Bad Request
-      tags:
-      - Campaign
-      x-accepts: application/json
-    post:
-      description: Creates new auction line item with the specified settings
-      operationId: PostApiV2ExternalCampaignAuctionLineItemsByCampaignId
-      parameters:
-      - description: The given campaign id
-        explode: false
-        in: path
-        name: campaign-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AuctionLineItemCreateModelRequest'
-        description: The line item settings to create a line item with
-        x-nullable: false
-        x-bodyName: lineItem
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuctionLineItemResponse'
-          description: Success
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuctionLineItemResponse'
-          description: Bad Request
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /2022-10/retail-media/line-items/{line-item-id}:
-    get:
-      description: Gets the line item for the given line item id
-      operationId: GetApiV2ExternalLineItemByLineItemId
-      parameters:
-      - description: The given line item id
-        explode: false
-        in: path
-        name: line-item-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CommonLineItemResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-accepts: application/json
-  /2022-10/retail-media/accounts/{account-id}/line-items:
-    get:
-      description: Gets page of line item objects for the given account id
-      operationId: GetApiV2ExternalAccountLineItemsByAccountId
-      parameters:
-      - description: The given account id
-        explode: false
-        in: path
-        name: account-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: The campaign ids that you would like to limit your result set
-          to
-        explode: true
-        in: query
-        name: limitToCampaignId
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-        x-nullable: false
-      - description: The campaign types that you would like to limit your result set
-          to
-        explode: true
-        in: query
-        name: limitToType
-        required: false
-        schema:
-          enum:
-          - Unknown
-          - Auction
-          - Preferred
-          type: string
-        style: form
-        x-nullable: true
-      - description: The ids that you would like to limit your result set to
-        explode: true
-        in: query
-        name: limitToId
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-        x-nullable: false
-      - description: The 0 indexed page index you would like to receive given the
-          page size
-        explode: true
-        in: query
-        name: pageIndex
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      - description: The maximum number of items you would like to receive in this
-          request
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CommonLineItemPagedListResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-accepts: application/json
-  /2022-10/retail-media/auction-line-items/{line-item-id}:
-    get:
-      description: Gets the auction line item for the given line item id
-      operationId: GetApiV2ExternalAuctionLineItemByLineItemId
-      parameters:
-      - description: The given line item id
-        explode: false
-        in: path
-        name: line-item-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuctionLineItemResponse'
-          description: Success
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuctionLineItemResponse'
-          description: Bad Request
-      tags:
-      - Campaign
-      x-accepts: application/json
-    put:
-      description: Updates the auction line item for the given line item id
-      operationId: PutApiV2ExternalAuctionLineItemByLineItemId
-      parameters:
-      - description: The given line item id
-        explode: false
-        in: path
-        name: line-item-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AuctionLineItemUpdateModelRequest'
-        description: The line item settings to create a line item with
-        x-nullable: false
-        x-bodyName: lineItem
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuctionLineItemResponse'
-          description: Success
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuctionLineItemResponse'
-          description: Bad Request
       tags:
       - Campaign
       x-content-type: application/json
@@ -2882,6 +2882,7 @@ components:
       properties:
         totalItemsAcrossAllPages:
           format: int64
+          nullable: true
           type: integer
           x-nullable: true
         currentPageSize:
@@ -2894,6 +2895,7 @@ components:
           x-nullable: false
         totalPages:
           format: int64
+          nullable: true
           type: integer
           x-nullable: true
         nextPage:
@@ -3149,6 +3151,7 @@ components:
           - unknown
           - brand
           - seller
+          nullable: true
           type: string
           x-nullable: true
         countries:
@@ -3786,7 +3789,7 @@ components:
             currency: currency
             rowCount: 0
             message: message
-            status: Unknown
+            status: unknown
           id: id
           type: type
         warnings:
@@ -4804,7 +4807,7 @@ components:
           currency: currency
           rowCount: 0
           message: message
-          status: Unknown
+          status: unknown
         id: id
         type: type
       properties:
@@ -5187,16 +5190,16 @@ components:
         currency: currency
         rowCount: 0
         message: message
-        status: Unknown
+        status: unknown
       properties:
         status:
           description: An enumeration of the status of the catalog.
           enum:
-          - Unknown
-          - Pending
-          - Success
-          - Failure
-          - Expired
+          - unknown
+          - pending
+          - success
+          - failure
+          - expired
           type: string
           x-nullable: false
         currency:
@@ -5208,20 +5211,23 @@ components:
           description: "An indication of the number of products contained in this\
             \ catalog. Available when\r\nthis catalog reaches a success status."
           format: int32
+          nullable: true
           type: integer
           x-nullable: true
         fileSizeBytes:
           description: The size of this catalog in bytes. Available when this catalog
             reaches a success status.
           format: int32
+          nullable: true
           type: integer
           x-nullable: true
         md5Checksum:
           description: "An MD5 checksum of the catalog for use in confirming complete\
             \ and uncorrupted retrieval.\r\nAvailable when this catalog reaches a\
             \ success status."
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         createdAt:
           description: The time this catalog was created. Represented as a UTC ISO8601
             string.
@@ -5230,8 +5236,9 @@ components:
           x-nullable: false
         message:
           description: An optional information message intended for developer consumption.
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
       required:
       - createdAt
       - currency
@@ -5267,6 +5274,7 @@ components:
           x-nullable: false
         brandId:
           format: int64
+          nullable: true
           type: integer
           x-nullable: true
         retailerId:
@@ -5352,6 +5360,7 @@ components:
         brandId:
           description: Brand Id
           format: int64
+          nullable: true
           type: integer
           x-nullable: true
         retailerId:
@@ -5560,6 +5569,7 @@ components:
         skuCollectionMax:
           description: "TODO: what is it ?"
           format: int32
+          nullable: true
           type: integer
           x-nullable: true
         skuPerCollectionMin:
@@ -5570,11 +5580,13 @@ components:
         skuPerCollectionMax:
           description: "TODO: what is it ?"
           format: int32
+          nullable: true
           type: integer
           x-nullable: true
         displayableSkusMax:
           description: "TODO: what is it ?"
           format: int32
+          nullable: true
           type: integer
           x-nullable: true
         allCollectionsMandatory:
@@ -5602,7 +5614,6 @@ components:
       - createdAt
       - creativeFormat
       - name
-      - retailerId
       - sections
       - skuCollectionMin
       - skuPerCollectionMin
@@ -5860,11 +5871,13 @@ components:
         maxSelected:
           description: The maximum number of selectable options
           format: int32
+          nullable: true
           type: integer
           x-nullable: true
         minSelected:
           description: The minimum number of selectable options
           format: int32
+          nullable: true
           type: integer
           x-nullable: true
       required:
@@ -5879,6 +5892,7 @@ components:
         maxChars:
           description: The maximum amount of characters accepted for the text
           format: int32
+          nullable: true
           type: integer
           x-nullable: true
       type: object
@@ -5909,16 +5923,19 @@ components:
         maxBytes:
           description: The maximum amount of bytes per file
           format: int32
+          nullable: true
           type: integer
           x-nullable: true
         minFiles:
           description: The minimum amount of files requires
           format: int32
+          nullable: true
           type: integer
           x-nullable: true
         maxFile:
           description: The maximum amount of files required
           format: int32
+          nullable: true
           type: integer
           x-nullable: true
       required:
@@ -6238,283 +6255,6 @@ components:
       - reportType
       - startDate
       type: object
-    KeywordTarget202110Response:
-      description: Data model for a value type resource outcome
-      example:
-        data:
-          attributes:
-            keywords:
-              key: unknown
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueTypeResourceOfKeywordTarget202110'
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
-    StoreTarget202110Response:
-      description: Data model for a value type resource outcome
-      example:
-        data:
-          attributes:
-            scope: unknown
-            storeIds:
-            - storeIds
-            - storeIds
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueTypeResourceOfStoreTarget202110'
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
-    AddToBasketTarget202110Response:
-      description: Data model for a value type resource outcome
-      example:
-        data:
-          attributes:
-            categoryIds:
-            - categoryIds
-            - categoryIds
-            productIds:
-            - productIds
-            - productIds
-            scope: unknown
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueTypeResourceOfAddToBasketTarget202110'
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
-    AudienceTarget202110Response:
-      description: Data model for a value type resource outcome
-      example:
-        data:
-          attributes:
-            scope: unknown
-            audienceIds:
-            - audienceIds
-            - audienceIds
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueTypeResourceOfAudienceTarget202110'
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
     JsonApiSingleResponseOfCampaign:
       description: A JSON:API wrapper class to add one JSON:API <typeparamref name="T"
         /> within a data property
@@ -7094,6 +6834,283 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
+    KeywordTarget202110Response:
+      description: Data model for a value type resource outcome
+      example:
+        data:
+          attributes:
+            keywords:
+              key: unknown
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueTypeResourceOfKeywordTarget202110'
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    StoreTarget202110Response:
+      description: Data model for a value type resource outcome
+      example:
+        data:
+          attributes:
+            scope: unknown
+            storeIds:
+            - storeIds
+            - storeIds
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueTypeResourceOfStoreTarget202110'
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    AddToBasketTarget202110Response:
+      description: Data model for a value type resource outcome
+      example:
+        data:
+          attributes:
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            productIds:
+            - productIds
+            - productIds
+            scope: unknown
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueTypeResourceOfAddToBasketTarget202110'
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    AudienceTarget202110Response:
+      description: Data model for a value type resource outcome
+      example:
+        data:
+          attributes:
+            scope: unknown
+            audienceIds:
+            - audienceIds
+            - audienceIds
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueTypeResourceOfAudienceTarget202110'
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
     PreferredLineItem202110Response:
       description: Data model for response resource
       example:
@@ -7586,6 +7603,93 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
+    ExternalPostCampaign:
+      description: An object that represents the available options to set when creating
+        a Retail Media Campaign
+      example:
+        data:
+          attributes:
+            clickAttributionWindow: 30D
+            clickAttributionScope: unknown
+            viewAttributionScope: unknown
+            drawableBalanceIds:
+            - drawableBalanceIds
+            - drawableBalanceIds
+            viewAttributionWindow: none
+            name: name
+            type: auction
+            budget: 0.8008281904610115
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiBodyWithoutIdOfCampaignAttributesAndCampaign'
+      type: object
+      x-nullable: false
+    ExternalPutCampaign:
+      description: An object that represents the available options to set when editing
+        a Retail Media Campaign
+      example:
+        data:
+          attributes:
+            clickAttributionWindow: 7D
+            clickAttributionScope: unknown
+            viewAttributionScope: unknown
+            name: name
+            viewAttributionWindow: none
+            budget: 0.8008281904610115
+          id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiBodyWithExternalIdOfEditableCampaignAttributesAndCampaign'
+      type: object
+      x-nullable: false
+    AuctionLineItemCreateModelRequest:
+      description: Data model for a create input resource
+      example:
+        data:
+          attributes:
+            bidStrategy: conversion
+            endDate: 2000-01-23
+            maxBid: 1.4658129805029452
+            name: name
+            isAutoDailyPacing: false
+            targetRetailerId: targetRetailerId
+            dailyPacing: 5.637376656633329
+            startDate: 2000-01-23
+            targetBid: 6.027456183070403
+            monthlyPacing: 5.962133916683182
+            status: unknown
+            budget: 0.8008281904610115
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/InputResourceOfAuctionLineItemCreateModel'
+      type: object
+      x-nullable: false
+    AuctionLineItemUpdateModelRequest:
+      description: Data model for an input resource
+      example:
+        data:
+          attributes:
+            bidStrategy: conversion
+            endDate: 2000-01-23
+            maxBid: 1.4658129805029452
+            name: name
+            isAutoDailyPacing: true
+            dailyPacing: 5.637376656633329
+            startDate: 2000-01-23
+            targetBid: 6.027456183070403
+            monthlyPacing: 5.962133916683182
+            status: unknown
+            budget: 0.8008281904610115
+          id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfAuctionLineItemUpdateModel'
+      type: object
+      x-nullable: false
     KeywordTarget202110Request:
       description: Data model for a value type input resource
       example:
@@ -7712,93 +7816,6 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
-    ExternalPostCampaign:
-      description: An object that represents the available options to set when creating
-        a Retail Media Campaign
-      example:
-        data:
-          attributes:
-            clickAttributionWindow: 30D
-            clickAttributionScope: unknown
-            viewAttributionScope: unknown
-            drawableBalanceIds:
-            - drawableBalanceIds
-            - drawableBalanceIds
-            viewAttributionWindow: none
-            name: name
-            type: auction
-            budget: 0.8008281904610115
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/JsonApiBodyWithoutIdOfCampaignAttributesAndCampaign'
-      type: object
-      x-nullable: false
-    ExternalPutCampaign:
-      description: An object that represents the available options to set when editing
-        a Retail Media Campaign
-      example:
-        data:
-          attributes:
-            clickAttributionWindow: 7D
-            clickAttributionScope: unknown
-            viewAttributionScope: unknown
-            name: name
-            viewAttributionWindow: none
-            budget: 0.8008281904610115
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/JsonApiBodyWithExternalIdOfEditableCampaignAttributesAndCampaign'
-      type: object
-      x-nullable: false
-    AuctionLineItemCreateModelRequest:
-      description: Data model for a create input resource
-      example:
-        data:
-          attributes:
-            bidStrategy: conversion
-            endDate: 2000-01-23
-            maxBid: 1.4658129805029452
-            name: name
-            isAutoDailyPacing: false
-            targetRetailerId: targetRetailerId
-            dailyPacing: 5.637376656633329
-            startDate: 2000-01-23
-            targetBid: 6.027456183070403
-            monthlyPacing: 5.962133916683182
-            status: unknown
-            budget: 0.8008281904610115
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/InputResourceOfAuctionLineItemCreateModel'
-      type: object
-      x-nullable: false
-    AuctionLineItemUpdateModelRequest:
-      description: Data model for an input resource
-      example:
-        data:
-          attributes:
-            bidStrategy: conversion
-            endDate: 2000-01-23
-            maxBid: 1.4658129805029452
-            name: name
-            isAutoDailyPacing: true
-            dailyPacing: 5.637376656633329
-            startDate: 2000-01-23
-            targetBid: 6.027456183070403
-            monthlyPacing: 5.962133916683182
-            status: unknown
-            budget: 0.8008281904610115
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfAuctionLineItemUpdateModel'
-      type: object
-      x-nullable: false
     PreferredLineItemUpdateModel202110Request:
       description: Data model for an input resource
       example:
@@ -7880,75 +7897,6 @@ components:
             $ref: '#/components/schemas/ResourceOfBalanceCampaign202110'
           type: array
           x-nullable: false
-      type: object
-      x-nullable: false
-    ValueTypeResourceOfKeywordTarget202110:
-      description: Data model for a value type resource
-      example:
-        attributes:
-          keywords:
-            key: unknown
-        type: type
-      properties:
-        type:
-          type: string
-          x-nullable: false
-        attributes:
-          $ref: '#/components/schemas/ExternalKeywordTarget202110'
-      type: object
-      x-nullable: false
-    ValueTypeResourceOfStoreTarget202110:
-      description: Data model for a value type resource
-      example:
-        attributes:
-          scope: unknown
-          storeIds:
-          - storeIds
-          - storeIds
-        type: type
-      properties:
-        type:
-          type: string
-          x-nullable: false
-        attributes:
-          $ref: '#/components/schemas/ExternalStoreTarget202110'
-      type: object
-      x-nullable: false
-    ValueTypeResourceOfAddToBasketTarget202110:
-      description: Data model for a value type resource
-      example:
-        attributes:
-          categoryIds:
-          - categoryIds
-          - categoryIds
-          productIds:
-          - productIds
-          - productIds
-          scope: unknown
-        type: type
-      properties:
-        type:
-          type: string
-          x-nullable: false
-        attributes:
-          $ref: '#/components/schemas/ExternalAddToBasketTarget202110'
-      type: object
-      x-nullable: false
-    ValueTypeResourceOfAudienceTarget202110:
-      description: Data model for a value type resource
-      example:
-        attributes:
-          scope: unknown
-          audienceIds:
-          - audienceIds
-          - audienceIds
-        type: type
-      properties:
-        type:
-          type: string
-          x-nullable: false
-        attributes:
-          $ref: '#/components/schemas/ExternalAudienceTarget202110'
       type: object
       x-nullable: false
     JsonApiBodyWithIdOfInt64AndCampaignAndCampaign:
@@ -8053,6 +8001,75 @@ components:
           type: string
         attributes:
           $ref: '#/components/schemas/ExternalCommonLineItem'
+      type: object
+      x-nullable: false
+    ValueTypeResourceOfKeywordTarget202110:
+      description: Data model for a value type resource
+      example:
+        attributes:
+          keywords:
+            key: unknown
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalKeywordTarget202110'
+      type: object
+      x-nullable: false
+    ValueTypeResourceOfStoreTarget202110:
+      description: Data model for a value type resource
+      example:
+        attributes:
+          scope: unknown
+          storeIds:
+          - storeIds
+          - storeIds
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalStoreTarget202110'
+      type: object
+      x-nullable: false
+    ValueTypeResourceOfAddToBasketTarget202110:
+      description: Data model for a value type resource
+      example:
+        attributes:
+          categoryIds:
+          - categoryIds
+          - categoryIds
+          productIds:
+          - productIds
+          - productIds
+          scope: unknown
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalAddToBasketTarget202110'
+      type: object
+      x-nullable: false
+    ValueTypeResourceOfAudienceTarget202110:
+      description: Data model for a value type resource
+      example:
+        attributes:
+          scope: unknown
+          audienceIds:
+          - audienceIds
+          - audienceIds
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalAudienceTarget202110'
       type: object
       x-nullable: false
     ResourceOfPreferredLineItem202110:
@@ -8163,57 +8180,6 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
-    ValueTypeResourceOfStoreIdsUpdateModel202110:
-      description: Data model for a value type resource
-      example:
-        attributes:
-          storeIds:
-          - storeIds
-          - storeIds
-        type: type
-      properties:
-        type:
-          type: string
-          x-nullable: false
-        attributes:
-          $ref: '#/components/schemas/ExternalStoreIdsUpdateModel202110'
-      type: object
-      x-nullable: false
-    ValueTypeResourceOfAddToBasketIdsUpdateModel202110:
-      description: Data model for a value type resource
-      example:
-        attributes:
-          categoryIds:
-          - categoryIds
-          - categoryIds
-          productIds:
-          - productIds
-          - productIds
-        type: type
-      properties:
-        type:
-          type: string
-          x-nullable: false
-        attributes:
-          $ref: '#/components/schemas/ExternalAddToBasketIdsUpdateModel202110'
-      type: object
-      x-nullable: false
-    ValueTypeResourceOfAudienceIdsUpdateModel202110:
-      description: Data model for a value type resource
-      example:
-        attributes:
-          audienceIds:
-          - audienceIds
-          - audienceIds
-        type: type
-      properties:
-        type:
-          type: string
-          x-nullable: false
-        attributes:
-          $ref: '#/components/schemas/ExternalAudienceIdsUpdateModel202110'
-      type: object
-      x-nullable: false
     JsonApiBodyWithoutIdOfCampaignAttributesAndCampaign:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with Type, and\r\nAttributes properties"
@@ -8321,6 +8287,57 @@ components:
           $ref: '#/components/schemas/ExternalAuctionLineItemUpdateModel'
       type: object
       x-nullable: false
+    ValueTypeResourceOfStoreIdsUpdateModel202110:
+      description: Data model for a value type resource
+      example:
+        attributes:
+          storeIds:
+          - storeIds
+          - storeIds
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalStoreIdsUpdateModel202110'
+      type: object
+      x-nullable: false
+    ValueTypeResourceOfAddToBasketIdsUpdateModel202110:
+      description: Data model for a value type resource
+      example:
+        attributes:
+          categoryIds:
+          - categoryIds
+          - categoryIds
+          productIds:
+          - productIds
+          - productIds
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalAddToBasketIdsUpdateModel202110'
+      type: object
+      x-nullable: false
+    ValueTypeResourceOfAudienceIdsUpdateModel202110:
+      description: Data model for a value type resource
+      example:
+        attributes:
+          audienceIds:
+          - audienceIds
+          - audienceIds
+        type: type
+      properties:
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalAudienceIdsUpdateModel202110'
+      type: object
+      x-nullable: false
     ResourceOfPreferredLineItemUpdateModel202110:
       description: Data model for a Resource
       example:
@@ -8390,6 +8407,379 @@ components:
           x-nullable: false
         attributes:
           $ref: '#/components/schemas/ExternalPreferredLineItemCreateModel202110'
+      type: object
+      x-nullable: false
+    ExternalCampaign:
+      description: A Retail Media Campaign used to represent an advertiser's marketing
+        objective
+      example:
+        budgetRemaining: 6.027456183070403
+        clickAttributionWindow: 30D
+        drawableBalanceIds:
+        - drawableBalanceIds
+        - drawableBalanceIds
+        type: auction
+        accountId: accountId
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        clickAttributionScope: unknown
+        budgetSpent: 0.8008281904610115
+        viewAttributionScope: unknown
+        promotedBrandIds:
+        - promotedBrandIds
+        - promotedBrandIds
+        viewAttributionWindow: none
+        name: name
+        status: unknown
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+        budget: 1.4658129805029452
+      properties:
+        accountId:
+          format: long-id
+          type: string
+          x-nullable: false
+        promotedBrandIds:
+          items:
+            format: long-id
+            type: string
+          type: array
+          x-nullable: false
+        budgetSpent:
+          format: decimal
+          nullable: true
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        budgetRemaining:
+          format: decimal
+          nullable: true
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        status:
+          enum:
+          - unknown
+          - active
+          - inactive
+          type: string
+          x-nullable: false
+        createdAt:
+          format: date-time
+          type: string
+          x-nullable: false
+        updatedAt:
+          format: date-time
+          type: string
+          x-nullable: false
+        type:
+          default: auction
+          enum:
+          - unknown
+          - auction
+          - preferred
+          type: string
+          x-nullable: false
+        drawableBalanceIds:
+          items:
+            format: long-id
+            type: string
+          type: array
+          x-nullable: false
+        clickAttributionWindow:
+          default: 30D
+          enum:
+          - 7D
+          - 14D
+          - 30D
+          - unknown
+          type: string
+          x-nullable: false
+        viewAttributionWindow:
+          default: none
+          enum:
+          - none
+          - 1D
+          - 7D
+          - 14D
+          - 30D
+          - unknown
+          type: string
+          x-nullable: false
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+          x-nullable: false
+        budget:
+          format: decimal
+          nullable: true
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        clickAttributionScope:
+          enum:
+          - unknown
+          - sameSku
+          - sameSkuCategory
+          - sameSkuCategoryBrand
+          nullable: true
+          type: string
+          x-nullable: true
+        viewAttributionScope:
+          enum:
+          - unknown
+          - sameSku
+          - sameSkuCategory
+          - sameSkuCategoryBrand
+          nullable: true
+          type: string
+          x-nullable: true
+      required:
+      - accountId
+      - budgetRemaining
+      - budgetSpent
+      - createdAt
+      - name
+      - promotedBrandIds
+      - updatedAt
+      type: object
+      x-nullable: false
+    ExternalAuctionLineItem:
+      description: A Retail Media Auction Line Item used to hold bid settings for
+        one or many promoted products on a single retailer
+      example:
+        bidStrategy: conversion
+        budgetRemaining: 7.061401241503109
+        endDate: 2000-01-23
+        campaignId: campaignId
+        targetBid: 5.637376656633329
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        budgetSpent: 2.3021358869347655
+        maxBid: 0.8008281904610115
+        name: name
+        isAutoDailyPacing: false
+        targetRetailerId: targetRetailerId
+        dailyPacing: 5.962133916683182
+        startDate: 2000-01-23
+        monthlyPacing: 1.4658129805029452
+        budget: 6.027456183070403
+        status: unknown
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+          x-nullable: false
+        startDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          required:
+          - "true"
+          type: string
+        endDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          type: string
+        maxBid:
+          format: decimal
+          nullable: true
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        budget:
+          format: decimal
+          nullable: true
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        monthlyPacing:
+          format: decimal
+          nullable: true
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        dailyPacing:
+          format: decimal
+          nullable: true
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        bidStrategy:
+          default: conversion
+          enum:
+          - unknown
+          - conversion
+          - clicks
+          - revenue
+          type: string
+          x-nullable: false
+        targetRetailerId:
+          format: long-id
+          type: string
+          x-nullable: false
+        status:
+          enum:
+          - unknown
+          - active
+          - scheduled
+          - draft
+          - paused
+          - budgetHit
+          - ended
+          - archived
+          - noFunds
+          type: string
+          x-nullable: false
+        targetBid:
+          format: decimal
+          nullable: true
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        isAutoDailyPacing:
+          default: false
+          type: boolean
+          x-nullable: false
+        campaignId:
+          format: long-id
+          type: string
+          x-nullable: false
+        budgetSpent:
+          format: double
+          type: number
+          x-nullable: false
+        budgetRemaining:
+          format: decimal
+          nullable: true
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        createdAt:
+          format: date-time
+          type: string
+          x-nullable: false
+        updatedAt:
+          format: date-time
+          type: string
+          x-nullable: false
+      required:
+      - budgetRemaining
+      - campaignId
+      - createdAt
+      - name
+      - startDate
+      - targetRetailerId
+      - updatedAt
+      type: object
+      x-nullable: false
+    ExternalCommonLineItem:
+      description: A common line item to hold line item information shared between
+        preferred and auction line items
+      example:
+        budgetRemaining: 1.4658129805029452
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        endDate: 2000-01-23
+        campaignId: campaignId
+        budgetSpent: 6.027456183070403
+        name: name
+        targetRetailerId: targetRetailerId
+        type: unknown
+        startDate: 2000-01-23
+        status: unknown
+        budget: 0.8008281904610115
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+          x-nullable: false
+        type:
+          enum:
+          - unknown
+          - auction
+          - preferred
+          type: string
+          x-nullable: false
+        startDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          required:
+          - "true"
+          type: string
+        endDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          type: string
+        status:
+          enum:
+          - unknown
+          - active
+          - scheduled
+          - draft
+          - paused
+          - budgetHit
+          - ended
+          - archived
+          - noFunds
+          type: string
+          x-nullable: false
+        targetRetailerId:
+          format: long-id
+          type: string
+          x-nullable: false
+        budget:
+          format: decimal
+          nullable: true
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        campaignId:
+          format: long-id
+          type: string
+          x-nullable: false
+        budgetSpent:
+          format: double
+          type: number
+          x-nullable: false
+        budgetRemaining:
+          format: decimal
+          nullable: true
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        createdAt:
+          format: date-time
+          type: string
+          x-nullable: false
+        updatedAt:
+          format: date-time
+          type: string
+          x-nullable: false
+      required:
+      - budgetRemaining
+      - campaignId
+      - createdAt
+      - name
+      - startDate
+      - targetRetailerId
+      - type
+      - updatedAt
       type: object
       x-nullable: false
     ExternalKeywordTarget202110:
@@ -8506,366 +8896,6 @@ components:
       - scope
       type: object
       x-nullable: false
-    ExternalCampaign:
-      description: A Retail Media Campaign used to represent an advertiser's marketing
-        objective
-      example:
-        budgetRemaining: 6.027456183070403
-        clickAttributionWindow: 30D
-        drawableBalanceIds:
-        - drawableBalanceIds
-        - drawableBalanceIds
-        type: auction
-        accountId: accountId
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        clickAttributionScope: unknown
-        budgetSpent: 0.8008281904610115
-        viewAttributionScope: unknown
-        promotedBrandIds:
-        - promotedBrandIds
-        - promotedBrandIds
-        viewAttributionWindow: none
-        name: name
-        status: unknown
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-        budget: 1.4658129805029452
-      properties:
-        accountId:
-          format: long-id
-          type: string
-          x-nullable: false
-        promotedBrandIds:
-          items:
-            format: long-id
-            type: string
-          type: array
-          x-nullable: false
-        budgetSpent:
-          format: decimal
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        budgetRemaining:
-          format: decimal
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        status:
-          enum:
-          - unknown
-          - active
-          - inactive
-          type: string
-          x-nullable: false
-        createdAt:
-          format: date-time
-          type: string
-          x-nullable: false
-        updatedAt:
-          format: date-time
-          type: string
-          x-nullable: false
-        type:
-          default: auction
-          enum:
-          - unknown
-          - auction
-          - preferred
-          type: string
-          x-nullable: false
-        drawableBalanceIds:
-          items:
-            format: long-id
-            type: string
-          type: array
-          x-nullable: false
-        clickAttributionWindow:
-          default: 30D
-          enum:
-          - 7D
-          - 14D
-          - 30D
-          - unknown
-          type: string
-          x-nullable: false
-        viewAttributionWindow:
-          default: none
-          enum:
-          - none
-          - 1D
-          - 7D
-          - 14D
-          - 30D
-          - unknown
-          type: string
-          x-nullable: false
-        name:
-          maxLength: 255
-          minLength: 0
-          type: string
-          x-nullable: false
-        budget:
-          format: decimal
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        clickAttributionScope:
-          enum:
-          - unknown
-          - sameSku
-          - sameSkuCategory
-          - sameSkuCategoryBrand
-          type: string
-          x-nullable: true
-        viewAttributionScope:
-          enum:
-          - unknown
-          - sameSku
-          - sameSkuCategory
-          - sameSkuCategoryBrand
-          type: string
-          x-nullable: true
-      required:
-      - accountId
-      - budgetRemaining
-      - budgetSpent
-      - createdAt
-      - name
-      - promotedBrandIds
-      - updatedAt
-      type: object
-      x-nullable: false
-    ExternalAuctionLineItem:
-      description: A Retail Media Auction Line Item used to hold bid settings for
-        one or many promoted products on a single retailer
-      example:
-        bidStrategy: conversion
-        budgetRemaining: 7.061401241503109
-        endDate: 2000-01-23
-        campaignId: campaignId
-        targetBid: 5.637376656633329
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        budgetSpent: 2.3021358869347655
-        maxBid: 0.8008281904610115
-        name: name
-        isAutoDailyPacing: false
-        targetRetailerId: targetRetailerId
-        dailyPacing: 5.962133916683182
-        startDate: 2000-01-23
-        monthlyPacing: 1.4658129805029452
-        budget: 6.027456183070403
-        status: unknown
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        name:
-          maxLength: 255
-          minLength: 0
-          type: string
-          x-nullable: false
-        startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          required:
-          - "true"
-          type: string
-        endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-        maxBid:
-          format: decimal
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        budget:
-          format: decimal
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        monthlyPacing:
-          format: decimal
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        dailyPacing:
-          format: decimal
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        bidStrategy:
-          default: conversion
-          enum:
-          - unknown
-          - conversion
-          - clicks
-          - revenue
-          type: string
-          x-nullable: false
-        targetRetailerId:
-          format: long-id
-          type: string
-          x-nullable: false
-        status:
-          enum:
-          - unknown
-          - active
-          - scheduled
-          - draft
-          - paused
-          - budgetHit
-          - ended
-          - archived
-          - noFunds
-          type: string
-          x-nullable: false
-        targetBid:
-          format: decimal
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        isAutoDailyPacing:
-          default: false
-          type: boolean
-          x-nullable: false
-        campaignId:
-          format: long-id
-          type: string
-          x-nullable: false
-        budgetSpent:
-          format: double
-          type: number
-          x-nullable: false
-        budgetRemaining:
-          format: decimal
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        createdAt:
-          format: date-time
-          type: string
-          x-nullable: false
-        updatedAt:
-          format: date-time
-          type: string
-          x-nullable: false
-      required:
-      - budgetRemaining
-      - campaignId
-      - createdAt
-      - name
-      - startDate
-      - targetRetailerId
-      - updatedAt
-      type: object
-      x-nullable: false
-    ExternalCommonLineItem:
-      description: A common line item to hold line item information shared between
-        preferred and auction line items
-      example:
-        budgetRemaining: 1.4658129805029452
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        endDate: 2000-01-23
-        campaignId: campaignId
-        budgetSpent: 6.027456183070403
-        name: name
-        targetRetailerId: targetRetailerId
-        type: unknown
-        startDate: 2000-01-23
-        status: unknown
-        budget: 0.8008281904610115
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        name:
-          maxLength: 255
-          minLength: 0
-          type: string
-          x-nullable: false
-        type:
-          enum:
-          - unknown
-          - auction
-          - preferred
-          type: string
-          x-nullable: false
-        startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          required:
-          - "true"
-          type: string
-        endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-        status:
-          enum:
-          - unknown
-          - active
-          - scheduled
-          - draft
-          - paused
-          - budgetHit
-          - ended
-          - archived
-          - noFunds
-          type: string
-          x-nullable: false
-        targetRetailerId:
-          format: long-id
-          type: string
-          x-nullable: false
-        budget:
-          format: decimal
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        campaignId:
-          format: long-id
-          type: string
-          x-nullable: false
-        budgetSpent:
-          format: double
-          type: number
-          x-nullable: false
-        budgetRemaining:
-          format: decimal
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        createdAt:
-          format: date-time
-          type: string
-          x-nullable: false
-        updatedAt:
-          format: date-time
-          type: string
-          x-nullable: false
-      required:
-      - budgetRemaining
-      - campaignId
-      - createdAt
-      - name
-      - startDate
-      - targetRetailerId
-      - type
-      - updatedAt
-      type: object
-      x-nullable: false
     ExternalPreferredLineItem202110:
       description: A Retail Media Preferred Line Item used to hold bid settings for
         one or many promoted products on a single retailer
@@ -8970,6 +9000,7 @@ components:
           x-nullable: false
         creativeId:
           format: long-id
+          nullable: true
           type: string
           x-nullable: true
       required:
@@ -8993,6 +9024,7 @@ components:
       properties:
         bidOverride:
           format: decimal
+          nullable: true
           required:
           - "false"
           type: number
@@ -9026,18 +9058,21 @@ components:
           x-nullable: false
         deposited:
           format: decimal
+          nullable: true
           required:
           - "false"
           type: number
           x-nullable: true
         spent:
           format: decimal
+          nullable: true
           required:
           - "false"
           type: number
           x-nullable: true
         remaining:
           format: decimal
+          nullable: true
           required:
           - "false"
           type: number
@@ -9086,68 +9121,6 @@ components:
       x-nullable: false
     ExternalBalanceCampaign202110:
       description: Campaigns related to the balance
-      type: object
-      x-nullable: false
-    ExternalStoreIdsUpdateModel202110:
-      description: Update model for updating store target ids
-      example:
-        storeIds:
-        - storeIds
-        - storeIds
-      properties:
-        storeIds:
-          description: Store ids that should be targeted
-          items:
-            type: string
-            x-nullable: false
-          type: array
-          x-nullable: false
-      required:
-      - storeIds
-      type: object
-      x-nullable: false
-    ExternalAddToBasketIdsUpdateModel202110:
-      description: Update model for updating add to basket target ids
-      example:
-        categoryIds:
-        - categoryIds
-        - categoryIds
-        productIds:
-        - productIds
-        - productIds
-      properties:
-        productIds:
-          description: Product ids that add to basket should target
-          items:
-            type: string
-            x-nullable: false
-          type: array
-          x-nullable: false
-        categoryIds:
-          description: Category ids that add to basket should target
-          items:
-            type: string
-            x-nullable: false
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
-    ExternalAudienceIdsUpdateModel202110:
-      description: Update model for updating audience target ids
-      example:
-        audienceIds:
-        - audienceIds
-        - audienceIds
-      properties:
-        audienceIds:
-          description: Audience ids that should be targeted
-          items:
-            format: long-id
-            type: string
-          type: array
-          x-nullable: false
-      required:
-      - audienceIds
       type: object
       x-nullable: false
     ExternalCampaignAttributes:
@@ -9206,6 +9179,7 @@ components:
           x-nullable: false
         budget:
           format: decimal
+          nullable: true
           required:
           - "false"
           type: number
@@ -9216,6 +9190,7 @@ components:
           - sameSku
           - sameSkuCategory
           - sameSkuCategoryBrand
+          nullable: true
           type: string
           x-nullable: true
         viewAttributionScope:
@@ -9224,6 +9199,7 @@ components:
           - sameSku
           - sameSkuCategory
           - sameSkuCategoryBrand
+          nullable: true
           type: string
           x-nullable: true
       required:
@@ -9248,6 +9224,7 @@ components:
           x-nullable: false
         budget:
           format: decimal
+          nullable: true
           required:
           - "false"
           type: number
@@ -9276,6 +9253,7 @@ components:
           - sameSku
           - sameSkuCategory
           - sameSkuCategoryBrand
+          nullable: true
           type: string
           x-nullable: true
         viewAttributionScope:
@@ -9284,6 +9262,7 @@ components:
           - sameSku
           - sameSkuCategory
           - sameSkuCategoryBrand
+          nullable: true
           type: string
           x-nullable: true
       required:
@@ -9344,30 +9323,35 @@ components:
           x-nullable: false
         budget:
           format: decimal
+          nullable: true
           required:
           - "false"
           type: number
           x-nullable: true
         targetBid:
           format: decimal
+          nullable: true
           required:
           - "false"
           type: number
           x-nullable: true
         maxBid:
           format: decimal
+          nullable: true
           required:
           - "false"
           type: number
           x-nullable: true
         monthlyPacing:
           format: decimal
+          nullable: true
           required:
           - "false"
           type: number
           x-nullable: true
         dailyPacing:
           format: decimal
+          nullable: true
           required:
           - "false"
           type: number
@@ -9438,30 +9422,35 @@ components:
           x-nullable: false
         budget:
           format: decimal
+          nullable: true
           required:
           - "false"
           type: number
           x-nullable: true
         targetBid:
           format: decimal
+          nullable: true
           required:
           - "false"
           type: number
           x-nullable: true
         maxBid:
           format: decimal
+          nullable: true
           required:
           - "false"
           type: number
           x-nullable: true
         monthlyPacing:
           format: decimal
+          nullable: true
           required:
           - "false"
           type: number
           x-nullable: true
         dailyPacing:
           format: decimal
+          nullable: true
           required:
           - "false"
           type: number
@@ -9484,6 +9473,68 @@ components:
       - startDate
       - status
       - targetBid
+      type: object
+      x-nullable: false
+    ExternalStoreIdsUpdateModel202110:
+      description: Update model for updating store target ids
+      example:
+        storeIds:
+        - storeIds
+        - storeIds
+      properties:
+        storeIds:
+          description: Store ids that should be targeted
+          items:
+            type: string
+            x-nullable: false
+          type: array
+          x-nullable: false
+      required:
+      - storeIds
+      type: object
+      x-nullable: false
+    ExternalAddToBasketIdsUpdateModel202110:
+      description: Update model for updating add to basket target ids
+      example:
+        categoryIds:
+        - categoryIds
+        - categoryIds
+        productIds:
+        - productIds
+        - productIds
+      properties:
+        productIds:
+          description: Product ids that add to basket should target
+          items:
+            type: string
+            x-nullable: false
+          type: array
+          x-nullable: false
+        categoryIds:
+          description: Category ids that add to basket should target
+          items:
+            type: string
+            x-nullable: false
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    ExternalAudienceIdsUpdateModel202110:
+      description: Update model for updating audience target ids
+      example:
+        audienceIds:
+        - audienceIds
+        - audienceIds
+      properties:
+        audienceIds:
+          description: Audience ids that should be targeted
+          items:
+            format: long-id
+            type: string
+          type: array
+          x-nullable: false
+      required:
+      - audienceIds
       type: object
       x-nullable: false
     ExternalPreferredLineItemUpdateModel202110:
@@ -9560,6 +9611,7 @@ components:
           x-nullable: false
         creativeId:
           format: long-id
+          nullable: true
           type: string
           x-nullable: true
       required:
@@ -9647,6 +9699,7 @@ components:
           x-nullable: false
         creativeId:
           format: long-id
+          nullable: true
           type: string
           x-nullable: true
       required:
@@ -9749,6 +9802,10 @@ components:
   securitySchemes:
     oauth:
       flows:
+        authorizationCode:
+          authorizationUrl: https://api.criteo.com/oauth2
+          scopes: {}
+          tokenUrl: https://api.criteo.com/oauth2/token
         clientCredentials:
           scopes: {}
           tokenUrl: https://api.criteo.com/oauth2/token

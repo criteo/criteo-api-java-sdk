@@ -405,7 +405,7 @@ paths:
       - Audience
       x-content-type: application/json
       x-accepts: application/json
-  /me:
+  /2022-10/marketing-solutions/me:
     get:
       description: Get information about the currently logged application
       operationId: GetCurrentApplication
@@ -1082,6 +1082,18 @@ paths:
               schema:
                 format: byte
                 type: string
+            text/csv:
+              schema:
+                format: byte
+                type: string
+            text/xml:
+              schema:
+                format: byte
+                type: string
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                format: byte
+                type: string
           description: Success
         "400":
           content:
@@ -1095,13 +1107,22 @@ paths:
                   instance: /report
                   title: Start date and end date are required.
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Bad Request
         "403":
           content:
@@ -1116,13 +1137,22 @@ paths:
                   title: Insufficient advertiser permission.
                   detail: You do not have the rights to report on this advertiser.
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Forbidden
       tags:
       - Analytics
@@ -1162,6 +1192,18 @@ paths:
               schema:
                 format: byte
                 type: string
+            text/csv:
+              schema:
+                format: byte
+                type: string
+            text/xml:
+              schema:
+                format: byte
+                type: string
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                format: byte
+                type: string
           description: Success
         "400":
           content:
@@ -1175,13 +1217,22 @@ paths:
                   instance: /report
                   title: Start date and end date are required.
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Bad Request
         "403":
           content:
@@ -1196,13 +1247,22 @@ paths:
                   title: Insufficient advertiser permission.
                   detail: You do not have the rights to report on this advertiser.
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Forbidden
       tags:
       - Analytics
@@ -1271,13 +1331,13 @@ paths:
                   instance: /report
                   title: Start date and end date are required.
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Bad Request
         "403":
           content:
@@ -1292,13 +1352,13 @@ paths:
                   title: Insufficient advertiser permission.
                   detail: You do not have the rights to report on this advertiser.
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Forbidden
       tags:
       - Analytics
@@ -1354,13 +1414,13 @@ paths:
                   instance: /report
                   title: Start date and end date are required.
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Bad Request
         "403":
           content:
@@ -1375,13 +1435,13 @@ paths:
                   title: Insufficient advertiser permission.
                   detail: You do not have the rights to report on this advertiser.
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorMessage'
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Forbidden
       tags:
       - Analytics
@@ -2769,6 +2829,7 @@ components:
       example:
         data:
           attributes:
+            goal: Unspecified
             name: name
             spendLimit:
               spendLimitRenewal: undefined
@@ -2842,6 +2903,7 @@ components:
       example:
         data:
         - attributes:
+            goal: Unspecified
             name: name
             spendLimit:
               spendLimitRenewal: undefined
@@ -2853,6 +2915,7 @@ components:
           id: id
           type: Campaign
         - attributes:
+            goal: Unspecified
             name: name
             spendLimit:
               spendLimitRenewal: undefined
@@ -3615,6 +3678,7 @@ components:
       description: read model data for resources
       example:
         attributes:
+          goal: Unspecified
           name: name
           spendLimit:
             spendLimitRenewal: undefined
@@ -3732,16 +3796,20 @@ components:
         - campaignIds
       properties:
         adSetIds:
+          description: Ad set ids to filter on
           items:
             type: string
           type: array
           uniqueItems: false
         advertiserIds:
+          description: Advertiser ids which ad sets belongs to (indirectly via their
+            marketing campaign)
           items:
             type: string
           type: array
           uniqueItems: false
         campaignIds:
+          description: Campaign ids to filter on
           items:
             type: string
           type: array
@@ -3983,6 +4051,7 @@ components:
     Campaign:
       description: campaign read model
       example:
+        goal: Unspecified
         name: name
         spendLimit:
           spendLimitRenewal: undefined
@@ -4003,6 +4072,13 @@ components:
           type: string
         spendLimit:
           $ref: '#/components/schemas/CampaignSpendLimit'
+        goal:
+          description: Goal of the campaign
+          enum:
+          - Unspecified
+          - Acquisition
+          - Retention
+          type: string
       type: object
     AdSetDisplayMultiplier:
       description: Display Multiplier information about a Category for a given Ad
@@ -4033,7 +4109,7 @@ components:
           type: string
         bidAmount:
           description: The Bid amount applied to the given Category associated to
-            an Ad Set.
+            an Ad Set. At most 4 decimals are supported. Additional decimals are rounded.
           format: double
           type: number
       type: object
@@ -4121,8 +4197,8 @@ components:
         bidAmount: 0.8008281904610115
       properties:
         bidAmount:
-          description: positive decimal value match bid constraints. At most 4 decimals
-            are supported. Additional decimals are rounded.
+          description: The Bid amount applied to the given Category associated to
+            an Ad Set. At most 4 decimals are supported. Additional decimals are rounded.
           format: double
           type: number
       type: object
@@ -4189,7 +4265,7 @@ components:
           - completedVideoViews
           type: string
         costController:
-          description: How is spend controlled
+          description: How spend is controlled
           enum:
           - COS
           - CPC
@@ -4403,6 +4479,7 @@ components:
       properties:
         value:
           format: date-time
+          nullable: true
           type: string
           x-nullable: true
       required:
@@ -4417,6 +4494,7 @@ components:
       properties:
         value:
           format: double
+          nullable: true
           type: number
           x-nullable: true
       required:
@@ -4531,31 +4609,15 @@ components:
           type: array
           uniqueItems: false
       type: object
-    ErrorMessage:
-      description: This is the message defining an error
+    ProblemsDetails:
+      description: Common problems object
       properties:
-        traceId:
-          format: uuid
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
-          type: string
-        traceIdentifier:
-          readOnly: true
-          type: string
-        type:
-          readOnly: true
-          type: string
-        code:
-          readOnly: true
-          type: string
-        instance:
-          readOnly: true
-          type: string
-        title:
-          readOnly: true
-          type: string
-        detail:
-          readOnly: true
-          type: string
+          type: array
+          uniqueItems: false
       type: object
     TransparencyReportDataMessage:
       description: This is the message defining the response for Transparency report
@@ -5371,10 +5433,15 @@ components:
     NillableAdSetTargetingRule_value:
       allOf:
       - $ref: '#/components/schemas/AdSetTargetingRule'
+      nullable: true
       x-nullable: true
   securitySchemes:
     oauth:
       flows:
+        authorizationCode:
+          authorizationUrl: https://api.criteo.com/oauth2
+          scopes: {}
+          tokenUrl: https://api.criteo.com/oauth2/token
         clientCredentials:
           scopes: {}
           tokenUrl: https://api.criteo.com/oauth2/token

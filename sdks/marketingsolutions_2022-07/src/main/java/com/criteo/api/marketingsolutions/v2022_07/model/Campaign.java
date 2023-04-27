@@ -65,6 +65,59 @@ public class Campaign {
   @SerializedName(SERIALIZED_NAME_SPEND_LIMIT)
   private CampaignSpendLimit spendLimit;
 
+  /**
+   * Goal of the campaign
+   */
+  @JsonAdapter(GoalEnum.Adapter.class)
+  public enum GoalEnum {
+    UNSPECIFIED("Unspecified"),
+    
+    ACQUISITION("Acquisition"),
+    
+    RETENTION("Retention");
+
+    private String value;
+
+    GoalEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static GoalEnum fromValue(String value) {
+      for (GoalEnum b : GoalEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<GoalEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final GoalEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public GoalEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return GoalEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_GOAL = "goal";
+  @SerializedName(SERIALIZED_NAME_GOAL)
+  private GoalEnum goal;
+
   public Campaign() {
   }
 
@@ -155,6 +208,28 @@ public class Campaign {
     this.spendLimit = spendLimit;
   }
 
+
+  public Campaign goal(GoalEnum goal) {
+    
+    this.goal = goal;
+    return this;
+  }
+
+   /**
+   * Goal of the campaign
+   * @return goal
+  **/
+  @javax.annotation.Nullable
+
+  public GoalEnum getGoal() {
+    return goal;
+  }
+
+
+  public void setGoal(GoalEnum goal) {
+    this.goal = goal;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -213,13 +288,14 @@ public class Campaign {
     return Objects.equals(this.name, campaign.name) &&
         Objects.equals(this.advertiserId, campaign.advertiserId) &&
         Objects.equals(this.objective, campaign.objective) &&
-        Objects.equals(this.spendLimit, campaign.spendLimit)&&
+        Objects.equals(this.spendLimit, campaign.spendLimit) &&
+        Objects.equals(this.goal, campaign.goal)&&
         Objects.equals(this.additionalProperties, campaign.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, advertiserId, objective, spendLimit, additionalProperties);
+    return Objects.hash(name, advertiserId, objective, spendLimit, goal, additionalProperties);
   }
 
   @Override
@@ -230,6 +306,7 @@ public class Campaign {
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
     sb.append("    objective: ").append(toIndentedString(objective)).append("\n");
     sb.append("    spendLimit: ").append(toIndentedString(spendLimit)).append("\n");
+    sb.append("    goal: ").append(toIndentedString(goal)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -257,6 +334,7 @@ public class Campaign {
     openapiFields.add("advertiserId");
     openapiFields.add("objective");
     openapiFields.add("spendLimit");
+    openapiFields.add("goal");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -286,6 +364,9 @@ public class Campaign {
       // validate the optional field `spendLimit`
       if (jsonObj.get("spendLimit") != null && !jsonObj.get("spendLimit").isJsonNull()) {
         CampaignSpendLimit.validateJsonObject(jsonObj.getAsJsonObject("spendLimit"));
+      }
+      if ((jsonObj.get("goal") != null && !jsonObj.get("goal").isJsonNull()) && !jsonObj.get("goal").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `goal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("goal").toString()));
       }
   }
 
