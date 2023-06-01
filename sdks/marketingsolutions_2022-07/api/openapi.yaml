@@ -4589,8 +4589,6 @@ components:
       properties:
         value:
           $ref: '#/components/schemas/NillableAdSetTargetingRule_value'
-      required:
-      - value
       type: object
     AdSetTargetingRule:
       description: ad set targeting rule model
