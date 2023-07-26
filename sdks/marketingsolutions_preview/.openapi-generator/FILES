@@ -186,7 +186,6 @@ docs/CreativeWrite.md
 docs/CreativeWriteRequest.md
 docs/CreativeWriteResource.md
 docs/CriteoApiError.md
-docs/CriteoApiErrorV2.md
 docs/CriteoApiWarning.md
 docs/CriteoApiWarningV2.md
 docs/CustomAttribute.md
@@ -266,6 +265,7 @@ docs/NillableAdSetTargetingRuleValue.md
 docs/NillableDateTime.md
 docs/NillableDecimal.md
 docs/NillableGenderV1.md
+docs/NillableInt32.md
 docs/NillableString.md
 docs/OciBrandSafetyResponse.md
 docs/OciBrandSafetyResponseData.md
@@ -327,6 +327,9 @@ docs/ProductUnitPricingBaseMeasure.md
 docs/ProductUnitPricingMeasure.md
 docs/ProductsCustomBatchRequest.md
 docs/ProductsCustomBatchRequestEntry.md
+docs/ProspectingCreateV1.md
+docs/ProspectingUpdateV1.md
+docs/ProspectingV1.md
 docs/ReadAdSet.md
 docs/ReadAdSetBidding.md
 docs/ReadAdSetBiddingV23Q1.md
@@ -399,6 +402,7 @@ docs/UserEvent.md
 docs/UserProfileAttributeModel.md
 docs/UserProfileIdentifierModel.md
 docs/ValueResourceInputOfCreateProductSetRequest.md
+docs/ValueResourceOfAdvertiserCreationInput.md
 docs/ValueResourceOfCreateProductSetRequest.md
 docs/VideoDetail.md
 docs/WriteModelAdSetId.md
@@ -618,7 +622,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/CreativeWrite.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CreativeWriteRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CreativeWriteResource.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CriteoApiError.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/CriteoApiErrorV2.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CriteoApiWarning.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CriteoApiWarningV2.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CustomAttribute.java
@@ -697,6 +700,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableAdSetTarge
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableDateTime.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableDecimal.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableGenderV1.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableInt32.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableString.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/OciBrandSafetyResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/OciBrandSafetyResponseData.java
@@ -757,6 +761,9 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductUnitPricing
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductUnitPricingMeasure.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductsCustomBatchRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductsCustomBatchRequestEntry.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ProspectingCreateV1.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ProspectingUpdateV1.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ProspectingV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ReadAdSet.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ReadAdSetBidding.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ReadAdSetBiddingV23Q1.java
@@ -828,6 +835,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/UserEvent.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/UserProfileAttributeModel.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/UserProfileIdentifierModel.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceInputOfCreateProductSetRequest.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfAdvertiserCreationInput.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfCreateProductSetRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/VideoDetail.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/WriteModelAdSetId.java

@@ -56,7 +56,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
-        String accountId = "accountId_example"; // String | ID of the account to which this audience belongs.
+        Long accountId = 56L; // Long | ID of the account to which this audience belongs.
         CreateRetailMediaAudienceRequest createRetailMediaAudienceRequest = new CreateRetailMediaAudienceRequest(); // CreateRetailMediaAudienceRequest | 
         try {
             CreateRetailMediaAudienceResponse result = apiInstance.createAudience(accountId, createRetailMediaAudienceRequest);
@@ -77,7 +77,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| ID of the account to which this audience belongs. | |
+| **accountId** | **Long**| ID of the account to which this audience belongs. | |
 | **createRetailMediaAudienceRequest** | [**CreateRetailMediaAudienceRequest**](CreateRetailMediaAudienceRequest.md)|  | |
 
 ### Return type

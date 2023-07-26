@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -185,7 +185,7 @@ public class InMarketUpdateV1 {
   }
 
    /**
-   * Get country
+   * Reach people of a specific country
    * @return country
   **/
   @javax.annotation.Nullable
@@ -215,7 +215,7 @@ public class InMarketUpdateV1 {
   }
 
    /**
-   * Get buyingPower
+   * Reach people who frequently purchase high price range items to lower price range items
    * @return buyingPower
   **/
   @javax.annotation.Nullable
@@ -267,7 +267,7 @@ public class InMarketUpdateV1 {
   }
 
    /**
-   * Get interestIds
+   * Reach new people based on their interests
    * @return interestIds
   **/
   @javax.annotation.Nullable
@@ -297,7 +297,7 @@ public class InMarketUpdateV1 {
   }
 
    /**
-   * Get brandIds
+   * Choose the brands your segment might be interested in
    * @return brandIds
   **/
   @javax.annotation.Nullable
@@ -327,7 +327,7 @@ public class InMarketUpdateV1 {
   }
 
    /**
-   * Get priceRange
+   * Reach people who’ve shown interest in products within a specific price range
    * @return priceRange
   **/
   @javax.annotation.Nullable

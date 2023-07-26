@@ -58,6 +58,13 @@ Request attributes for async statistics report
 | ADFORMAT | &quot;AdFormat&quot; |
 | DISPLAYSIZE | &quot;DisplaySize&quot; |
 | VIDEOPLAYERRATIO | &quot;VideoPlayerRatio&quot; |
+| COUNTRY | &quot;Country&quot; |
+| REGION | &quot;Region&quot; |
+| POSTALCODE | &quot;PostalCode&quot; |
+| USERBEHAVIOR | &quot;UserBehavior&quot; |
+| ENVIRONMENT | &quot;Environment&quot; |
+| ADCHANNEL | &quot;AdChannel&quot; |
+| ADSOCIALNETWORK | &quot;AdSocialNetwork&quot; |
 
 
 
@@ -282,6 +289,54 @@ Request attributes for async statistics report
 | INVALIDDISPLAYS | &quot;InvalidDisplays&quot; |
 | RESULTTYPE | &quot;ResultType&quot; |
 | COSTPERQUALIFIEDVISIT | &quot;CostPerQualifiedVisit&quot; |
+| COSTPERVISITPV1D | &quot;CostPerVisitPV1D&quot; |
+| VISITSPV1D | &quot;VisitsPV1D&quot; |
+| ASSISTSPC30DCLIENTATTRIBUTION | &quot;AssistsPc30dClientAttribution&quot; |
+| ASSISTSALLPC30DCLIENTATTRIBUTION | &quot;AssistsAllPc30dClientAttribution&quot; |
+| ASSISTSCLIENTATTRIBUTION | &quot;AssistsClientAttribution&quot; |
+| ASSISTSALLCLIENTATTRIBUTION | &quot;AssistsAllClientAttribution&quot; |
+| ASSISTSPC30D | &quot;AssistsPc30d&quot; |
+| ASSISTSALLPC30D | &quot;AssistsAllPc30d&quot; |
+| ASSISTSPC1D | &quot;AssistsPc1d&quot; |
+| ASSISTSALLPC1D | &quot;AssistsAllPc1d&quot; |
+| ASSISTSPC7D | &quot;AssistsPc7d&quot; |
+| ASSISTSALLPC7D | &quot;AssistsAllPc7d&quot; |
+| ASSISTSPC7DPV24 | &quot;AssistsPc7dPv24&quot; |
+| ASSISTSALLPC7DPV24 | &quot;AssistsAllPc7dPv24&quot; |
+| ASSISTSPC7DPV24H | &quot;AssistsPc7dPv24h&quot; |
+| ASSISTSALLPC7DPV24H | &quot;AssistsAllPc7dPv24h&quot; |
+| ASSISTSPV24H | &quot;AssistsPv24h&quot; |
+| ASSISTSALLPV24H | &quot;AssistsAllPv24h&quot; |
+| ASSISTSPC30PV24 | &quot;AssistsPc30Pv24&quot; |
+| ASSISTSALLPC30PV24 | &quot;AssistsAllPc30Pv24&quot; |
+| ASSISTSPC30DPV24H | &quot;AssistsPc30dPv24h&quot; |
+| ASSISTSALLPC30DPV24H | &quot;AssistsAllPc30dPv24h&quot; |
+| ASSISTSPIPC | &quot;AssistsPiPc&quot; |
+| ASSISTSPIPV | &quot;AssistsPiPv&quot; |
+| ASSISTSPIPCPV | &quot;AssistsPiPcPv&quot; |
+| ASSISTSSALESRATIOPC30DCLIENTATTRIBUTION | &quot;AssistsSalesRatioPc30dClientAttribution&quot; |
+| ASSISTSSALESRATIOALLPC30DCLIENTATTRIBUTION | &quot;AssistsSalesRatioAllPc30dClientAttribution&quot; |
+| ASSISTSSALESRATIOCLIENTATTRIBUTION | &quot;AssistsSalesRatioClientAttribution&quot; |
+| ASSISTSSALESRATIOALLCLIENTATTRIBUTION | &quot;AssistsSalesRatioAllClientAttribution&quot; |
+| ASSISTSSALESRATIOPC30D | &quot;AssistsSalesRatioPc30d&quot; |
+| ASSISTSSALESRATIOALLPC30D | &quot;AssistsSalesRatioAllPc30d&quot; |
+| ASSISTSSALESRATIOPC1D | &quot;AssistsSalesRatioPc1d&quot; |
+| ASSISTSSALESRATIOALLPC1D | &quot;AssistsSalesRatioAllPc1d&quot; |
+| ASSISTSSALESRATIOPC7D | &quot;AssistsSalesRatioPc7d&quot; |
+| ASSISTSSALESRATIOALLPC7D | &quot;AssistsSalesRatioAllPc7d&quot; |
+| ASSISTSSALESRATIOPC7DPV24 | &quot;AssistsSalesRatioPc7dPv24&quot; |
+| ASSISTSSALESRATIOALLPC7DPV24 | &quot;AssistsSalesRatioAllPc7dPv24&quot; |
+| ASSISTSSALESRATIOPC7DPV24H | &quot;AssistsSalesRatioPc7dPv24h&quot; |
+| ASSISTSSALESRATIOALLPC7DPV24H | &quot;AssistsSalesRatioAllPc7dPv24h&quot; |
+| ASSISTSSALESRATIOPV24H | &quot;AssistsSalesRatioPv24h&quot; |
+| ASSISTSSALESRATIOALLPV24H | &quot;AssistsSalesRatioAllPv24h&quot; |
+| ASSISTSSALESRATIOPC30PV24 | &quot;AssistsSalesRatioPc30Pv24&quot; |
+| ASSISTSSALESRATIOALLPC30PV24 | &quot;AssistsSalesRatioAllPc30Pv24&quot; |
+| ASSISTSSALESRATIOPC30DPV24H | &quot;AssistsSalesRatioPc30dPv24h&quot; |
+| ASSISTSSALESRATIOALLPC30DPV24H | &quot;AssistsSalesRatioAllPc30dPv24h&quot; |
+| ASSISTSSALESRATIOPIPC | &quot;AssistsSalesRatioPiPc&quot; |
+| ASSISTSSALESRATIOPIPV | &quot;AssistsSalesRatioPiPv&quot; |
+| ASSISTSSALESRATIOPIPCPV | &quot;AssistsSalesRatioPiPcPv&quot; |
 
 
 

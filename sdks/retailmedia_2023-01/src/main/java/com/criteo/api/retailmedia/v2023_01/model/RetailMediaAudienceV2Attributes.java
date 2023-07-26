@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - RetailMedia
  *
  * The version of the OpenAPI document: 2023-01
  * 
@@ -52,7 +52,7 @@ import com.criteo.api.retailmedia.v2023_01.JSON;
 public class RetailMediaAudienceV2Attributes {
   public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
   @SerializedName(SERIALIZED_NAME_RETAILER_ID)
-  private String retailerId;
+  private Long retailerId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -69,7 +69,7 @@ public class RetailMediaAudienceV2Attributes {
   public RetailMediaAudienceV2Attributes() {
   }
 
-  public RetailMediaAudienceV2Attributes retailerId(String retailerId) {
+  public RetailMediaAudienceV2Attributes retailerId(Long retailerId) {
     
     this.retailerId = retailerId;
     return this;
@@ -81,12 +81,12 @@ public class RetailMediaAudienceV2Attributes {
   **/
   @javax.annotation.Nonnull
 
-  public String getRetailerId() {
+  public Long getRetailerId() {
     return retailerId;
   }
 
 
-  public void setRetailerId(String retailerId) {
+  public void setRetailerId(Long retailerId) {
     this.retailerId = retailerId;
   }
 
@@ -283,9 +283,6 @@ public class RetailMediaAudienceV2Attributes {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
-      }
-      if (!jsonObj.get("retailerId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `retailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerId").toString()));
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));

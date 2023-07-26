@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -285,7 +285,7 @@ public class CreateAdSetBudget {
    * Get budgetStrategy
    * @return budgetStrategy
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public BudgetStrategyEnum getBudgetStrategy() {
     return budgetStrategy;
@@ -492,6 +492,7 @@ public class CreateAdSetBudget {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("budgetStrategy");
   }
 
  /**
@@ -506,7 +507,14 @@ public class CreateAdSetBudget {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CreateAdSetBudget is not found in the empty JSON string", CreateAdSetBudget.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("budgetStrategy") != null && !jsonObj.get("budgetStrategy").isJsonNull()) && !jsonObj.get("budgetStrategy").isJsonPrimitive()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : CreateAdSetBudget.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("budgetStrategy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `budgetStrategy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("budgetStrategy").toString()));
       }
       if ((jsonObj.get("budgetRenewal") != null && !jsonObj.get("budgetRenewal").isJsonNull()) && !jsonObj.get("budgetRenewal").isJsonPrimitive()) {

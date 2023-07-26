@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -53,7 +53,7 @@ import com.criteo.api.marketingsolutions.preview.JSON;
 public class ImageWriteAttributes {
   public static final String SERIALIZED_NAME_BASE64_STRINGS = "base64Strings";
   @SerializedName(SERIALIZED_NAME_BASE64_STRINGS)
-  private List<String> base64Strings = null;
+  private List<String> base64Strings = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_LANDING_PAGE_URL = "landingPageUrl";
   @SerializedName(SERIALIZED_NAME_LANDING_PAGE_URL)
@@ -69,9 +69,6 @@ public class ImageWriteAttributes {
   }
 
   public ImageWriteAttributes addBase64StringsItem(String base64StringsItem) {
-    if (this.base64Strings == null) {
-      this.base64Strings = new ArrayList<>();
-    }
     this.base64Strings.add(base64StringsItem);
     return this;
   }
@@ -80,7 +77,7 @@ public class ImageWriteAttributes {
    * Array of images as a base-64 encoded string
    * @return base64Strings
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public List<String> getBase64Strings() {
     return base64Strings;
@@ -102,7 +99,7 @@ public class ImageWriteAttributes {
    * Web redirection of the landing page url
    * @return landingPageUrl
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public URI getLandingPageUrl() {
     return landingPageUrl;
@@ -212,6 +209,8 @@ public class ImageWriteAttributes {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("base64Strings");
+    openapiRequiredFields.add("landingPageUrl");
   }
 
  /**
@@ -226,11 +225,20 @@ public class ImageWriteAttributes {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ImageWriteAttributes is not found in the empty JSON string", ImageWriteAttributes.openapiRequiredFields.toString()));
         }
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("base64Strings") != null && !jsonObj.get("base64Strings").isJsonArray()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ImageWriteAttributes.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("base64Strings") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("base64Strings").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `base64Strings` to be an array in the JSON string but got `%s`", jsonObj.get("base64Strings").toString()));
       }
-      if ((jsonObj.get("landingPageUrl") != null && !jsonObj.get("landingPageUrl").isJsonNull()) && !jsonObj.get("landingPageUrl").isJsonPrimitive()) {
+      if (!jsonObj.get("landingPageUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `landingPageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("landingPageUrl").toString()));
       }
   }

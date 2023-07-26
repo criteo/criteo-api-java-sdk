@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  description: Criteo publicly exposed API
+  description: Criteo API - RetailMedia
   title: Criteo API
   version: 2023-01
 servers:
@@ -299,9 +299,10 @@ paths:
         name: accountId
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
-        x-example: "68004146450571264"
+        x-example: 68004146450571264
       requestBody:
         content:
           application/json:
@@ -361,9 +362,10 @@ paths:
         name: accountId
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
-        x-example: "68004146450571264"
+        x-example: 68004146450571264
       - description: "Limits results to the entity IDs specified; parameter key is\
           \ repeated, eg. limitToId=1&limitToId=2"
         explode: true
@@ -437,9 +439,10 @@ paths:
         name: accountId
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
-        x-example: "68004146450571264"
+        x-example: 68004146450571264
       requestBody:
         content:
           application/json:
@@ -908,26 +911,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/EnvelopeReportRequest'
-        description: |-
-          // Body of the request
-          {
-            "data": {
-              "type": "RetailMediaReportRequest",
-              "attributes": {
-                "reportType": string, // the name of the report being requested
-                //only one of "id" or "ids" can be provided for a request
-                "id": string, // the campaign id to select
-                "ids": Array[string], //the campaign ids to select
-                "startDate": string, // YYYY-MM-DD format
-                "endDate": string, // YYYY-MM-DD format
-                "timeZone": string, // examples: 'Europe/London', 'Asia/Tokyo', 'America/New_York'
-                // both attribution windows must be specified when one is specified
-                "clickAttributionWindow": "7D", "14D", or "30D"  // optional. defaults to campaign's click attribution window
-                "viewAttributionWindow": "none", "1D", "7D", "14D", "30D" // optional. defaults to campaign's view attribution window
-                "format": One of "json" (default),"json-compact","json-newline" or "csv" // output format, defaults to json-compact
-              }
-            }
-          }
+        description: Envelope of the request
         required: true
       responses:
         "200":
@@ -959,26 +943,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/EnvelopeReportRequest'
-        description: |-
-          // Body of the request
-          {
-            "data": {
-              "type": "RetailMediaReportRequest",
-              "attributes": {
-                "reportType": string, // the name of the report being requested
-                //only one of "id" or "ids" can be provided for a request
-                "id": string, // the line item id to select
-                "ids: Array[string] // the line item ids to select
-                "startDate": string, // YYYY-MM-DD format
-                "endDate": string, // YYYY-MM-DD format
-                "timeZone": string, // examples: 'Europe/London', 'Asia/Tokyo', 'America/New_York'
-                // both attribution windows must be specified when one is specified
-                "clickAttributionWindow": "7D", "14D", or "30D"  // optional. defaults to campaign's click attribution window
-                "viewAttributionWindow": "none", "1D", "7D", "14D", "30D" // optional. defaults to campaign's view attribution window
-                "format": One of "json" (default),"json-compact","json-newline" or "csv" // output format, defaults to json-compact
-              }
-            }
-          }
+        description: Envelope of the request
         required: true
       responses:
         "200":
@@ -1007,7 +972,6 @@ paths:
       operationId: getReportOutput
       parameters:
       - description: report id
-        example: ee439121-13e3-4734-9f67-c504dd921a41
         explode: false
         in: path
         name: reportId
@@ -1020,12 +984,11 @@ paths:
           content:
             application/octet-stream:
               schema:
-                type: integer
+                type: string
           description: The output
           headers:
             Content-Disposition:
               description: Returns a filename for the output
-              example: inline; filename=data_<reportId>.csv
               explode: false
               required: true
               schema:
@@ -1046,7 +1009,6 @@ paths:
       operationId: getReportStatus
       parameters:
       - description: report id
-        example: ee439121-13e3-4734-9f67-c504dd921a41
         explode: false
         in: path
         name: reportId
@@ -3660,14 +3622,14 @@ components:
         data:
           attributes:
             categoryIds:
-            - categoryIds
-            - categoryIds
+            - 6
+            - 6
             name: Test audience
             userType: viewer
-            retailerId: "68004146450571264"
+            retailerId: 6841
             brandIds:
-            - brandIds
-            - brandIds
+            - 0
+            - 0
             lookbackWindow: P7D
           id: 314159
           type: RetailMediaAudience
@@ -3741,29 +3703,29 @@ components:
             customerListDetails:
               size: "34212"
             name: Test audience
-            retailerId: "68004146450571264"
+            retailerId: 6041
             userBehaviorDetails:
               inclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - categoryIds
-                - categoryIds
-                minPrice: 0.8008281904610115
-                maxPrice: 6.027456183070403
+                - 0
+                - 0
+                minPrice: 1.4658129805029452
+                maxPrice: 5.962133916683182
                 brandIds:
-                - brandIds
-                - brandIds
+                - 6
+                - 6
                 lookbackWindow: P7D
               exclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - categoryIds
-                - categoryIds
-                minPrice: 0.8008281904610115
-                maxPrice: 6.027456183070403
+                - 0
+                - 0
+                minPrice: 1.4658129805029452
+                maxPrice: 5.962133916683182
                 brandIds:
-                - brandIds
-                - brandIds
+                - 6
+                - 6
                 lookbackWindow: P7D
           id: "314159"
           type: customerList
@@ -3771,29 +3733,29 @@ components:
             customerListDetails:
               size: "34212"
             name: Test audience
-            retailerId: "68004146450571264"
+            retailerId: 6041
             userBehaviorDetails:
               inclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - categoryIds
-                - categoryIds
-                minPrice: 0.8008281904610115
-                maxPrice: 6.027456183070403
+                - 0
+                - 0
+                minPrice: 1.4658129805029452
+                maxPrice: 5.962133916683182
                 brandIds:
-                - brandIds
-                - brandIds
+                - 6
+                - 6
                 lookbackWindow: P7D
               exclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - categoryIds
-                - categoryIds
-                minPrice: 0.8008281904610115
-                maxPrice: 6.027456183070403
+                - 0
+                - 0
+                minPrice: 1.4658129805029452
+                maxPrice: 5.962133916683182
                 brandIds:
-                - brandIds
-                - brandIds
+                - 6
+                - 6
                 lookbackWindow: P7D
           id: "314159"
           type: customerList
@@ -3886,29 +3848,29 @@ components:
         data:
           attributes:
             name: Test audience
-            retailerId: "68004146450571264"
+            retailerId: 6041
             userBehaviorDetails:
               inclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - categoryIds
-                - categoryIds
-                minPrice: 0.8008281904610115
-                maxPrice: 6.027456183070403
+                - 0
+                - 0
+                minPrice: 1.4658129805029452
+                maxPrice: 5.962133916683182
                 brandIds:
-                - brandIds
-                - brandIds
+                - 6
+                - 6
                 lookbackWindow: P7D
               exclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - categoryIds
-                - categoryIds
-                minPrice: 0.8008281904610115
-                maxPrice: 6.027456183070403
+                - 0
+                - 0
+                minPrice: 1.4658129805029452
+                maxPrice: 5.962133916683182
                 brandIds:
-                - brandIds
-                - brandIds
+                - 6
+                - 6
                 lookbackWindow: P7D
           id: 314159
           type: RetailMediaAudience
@@ -3976,14 +3938,14 @@ components:
         data:
           attributes:
             categoryIds:
-            - categoryIds
-            - categoryIds
+            - 6
+            - 6
             name: Test audience
             userType: viewer
-            retailerId: "68004146450571264"
+            retailerId: 6841
             brandIds:
-            - brandIds
-            - brandIds
+            - 0
+            - 0
             lookbackWindow: P7D
           type: RetailMediaAudience
       properties:
@@ -3998,29 +3960,29 @@ components:
         data:
           attributes:
             name: Test audience
-            retailerId: "68004146450571264"
+            retailerId: 6041
             userBehaviorDetails:
               inclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - categoryIds
-                - categoryIds
-                minPrice: 0.8008281904610115
-                maxPrice: 6.027456183070403
+                - 0
+                - 0
+                minPrice: 1.4658129805029452
+                maxPrice: 5.962133916683182
                 brandIds:
-                - brandIds
-                - brandIds
+                - 6
+                - 6
                 lookbackWindow: P7D
               exclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - categoryIds
-                - categoryIds
-                minPrice: 0.8008281904610115
-                maxPrice: 6.027456183070403
+                - 0
+                - 0
+                minPrice: 1.4658129805029452
+                maxPrice: 5.962133916683182
                 brandIds:
-                - brandIds
-                - brandIds
+                - 6
+                - 6
                 lookbackWindow: P7D
           type: RetailMediaAudience
       properties:
@@ -4076,14 +4038,14 @@ components:
       example:
         attributes:
           categoryIds:
-          - categoryIds
-          - categoryIds
+          - 6
+          - 6
           name: Test audience
           userType: viewer
-          retailerId: "68004146450571264"
+          retailerId: 6841
           brandIds:
-          - brandIds
-          - brandIds
+          - 0
+          - 0
           lookbackWindow: P7D
         id: 314159
         type: RetailMediaAudience
@@ -4111,29 +4073,29 @@ components:
           customerListDetails:
             size: "34212"
           name: Test audience
-          retailerId: "68004146450571264"
+          retailerId: 6041
           userBehaviorDetails:
             inclusiveSegment:
               userAction: buy
               categoryIds:
-              - categoryIds
-              - categoryIds
-              minPrice: 0.8008281904610115
-              maxPrice: 6.027456183070403
+              - 0
+              - 0
+              minPrice: 1.4658129805029452
+              maxPrice: 5.962133916683182
               brandIds:
-              - brandIds
-              - brandIds
+              - 6
+              - 6
               lookbackWindow: P7D
             exclusiveSegment:
               userAction: buy
               categoryIds:
-              - categoryIds
-              - categoryIds
-              minPrice: 0.8008281904610115
-              maxPrice: 6.027456183070403
+              - 0
+              - 0
+              minPrice: 1.4658129805029452
+              maxPrice: 5.962133916683182
               brandIds:
-              - brandIds
-              - brandIds
+              - 6
+              - 6
               lookbackWindow: P7D
         id: "314159"
         type: customerList
@@ -4161,29 +4123,29 @@ components:
       example:
         attributes:
           name: Test audience
-          retailerId: "68004146450571264"
+          retailerId: 6041
           userBehaviorDetails:
             inclusiveSegment:
               userAction: buy
               categoryIds:
-              - categoryIds
-              - categoryIds
-              minPrice: 0.8008281904610115
-              maxPrice: 6.027456183070403
+              - 0
+              - 0
+              minPrice: 1.4658129805029452
+              maxPrice: 5.962133916683182
               brandIds:
-              - brandIds
-              - brandIds
+              - 6
+              - 6
               lookbackWindow: P7D
             exclusiveSegment:
               userAction: buy
               categoryIds:
-              - categoryIds
-              - categoryIds
-              minPrice: 0.8008281904610115
-              maxPrice: 6.027456183070403
+              - 0
+              - 0
+              minPrice: 1.4658129805029452
+              maxPrice: 5.962133916683182
               brandIds:
-              - brandIds
-              - brandIds
+              - 6
+              - 6
               lookbackWindow: P7D
         id: 314159
         type: RetailMediaAudience
@@ -4209,14 +4171,14 @@ components:
       example:
         attributes:
           categoryIds:
-          - categoryIds
-          - categoryIds
+          - 6
+          - 6
           name: Test audience
           userType: viewer
-          retailerId: "68004146450571264"
+          retailerId: 6841
           brandIds:
-          - brandIds
-          - brandIds
+          - 0
+          - 0
           lookbackWindow: P7D
         type: RetailMediaAudience
       properties:
@@ -4235,29 +4197,29 @@ components:
       example:
         attributes:
           name: Test audience
-          retailerId: "68004146450571264"
+          retailerId: 6041
           userBehaviorDetails:
             inclusiveSegment:
               userAction: buy
               categoryIds:
-              - categoryIds
-              - categoryIds
-              minPrice: 0.8008281904610115
-              maxPrice: 6.027456183070403
+              - 0
+              - 0
+              minPrice: 1.4658129805029452
+              maxPrice: 5.962133916683182
               brandIds:
-              - brandIds
-              - brandIds
+              - 6
+              - 6
               lookbackWindow: P7D
             exclusiveSegment:
               userAction: buy
               categoryIds:
-              - categoryIds
-              - categoryIds
-              minPrice: 0.8008281904610115
-              maxPrice: 6.027456183070403
+              - 0
+              - 0
+              minPrice: 1.4658129805029452
+              maxPrice: 5.962133916683182
               brandIds:
-              - brandIds
-              - brandIds
+              - 6
+              - 6
               lookbackWindow: P7D
         type: RetailMediaAudience
       properties:
@@ -4306,14 +4268,14 @@ components:
       description: Parameters needed to create an audience
       example:
         categoryIds:
-        - categoryIds
-        - categoryIds
+        - 6
+        - 6
         name: Test audience
         userType: viewer
-        retailerId: "68004146450571264"
+        retailerId: 6841
         brandIds:
-        - brandIds
-        - brandIds
+        - 0
+        - 0
         lookbackWindow: P7D
       properties:
         userType:
@@ -4340,17 +4302,20 @@ components:
         brandIds:
           description: The brands to target
           items:
-            type: string
+            format: int64
+            type: integer
           type: array
         categoryIds:
           description: The categories to target
           items:
-            type: string
+            format: int32
+            type: integer
           type: array
         retailerId:
           description: ID of the retailer associated with this audience
-          example: "68004146450571264"
-          type: string
+          example: 6841
+          format: int64
+          type: integer
         name:
           description: Name of the audience.
           example: Test audience
@@ -4367,35 +4332,36 @@ components:
         customerListDetails:
           size: "34212"
         name: Test audience
-        retailerId: "68004146450571264"
+        retailerId: 6041
         userBehaviorDetails:
           inclusiveSegment:
             userAction: buy
             categoryIds:
-            - categoryIds
-            - categoryIds
-            minPrice: 0.8008281904610115
-            maxPrice: 6.027456183070403
+            - 0
+            - 0
+            minPrice: 1.4658129805029452
+            maxPrice: 5.962133916683182
             brandIds:
-            - brandIds
-            - brandIds
+            - 6
+            - 6
             lookbackWindow: P7D
           exclusiveSegment:
             userAction: buy
             categoryIds:
-            - categoryIds
-            - categoryIds
-            minPrice: 0.8008281904610115
-            maxPrice: 6.027456183070403
+            - 0
+            - 0
+            minPrice: 1.4658129805029452
+            maxPrice: 5.962133916683182
             brandIds:
-            - brandIds
-            - brandIds
+            - 6
+            - 6
             lookbackWindow: P7D
       properties:
         retailerId:
           description: ID of the retailer associated with this audience
-          example: "68004146450571264"
-          type: string
+          example: 6041
+          format: int64
+          type: integer
         name:
           description: Name of the audience.
           example: Test audience
@@ -4412,35 +4378,36 @@ components:
       description: Parameters needed to create an audience
       example:
         name: Test audience
-        retailerId: "68004146450571264"
+        retailerId: 6041
         userBehaviorDetails:
           inclusiveSegment:
             userAction: buy
             categoryIds:
-            - categoryIds
-            - categoryIds
-            minPrice: 0.8008281904610115
-            maxPrice: 6.027456183070403
+            - 0
+            - 0
+            minPrice: 1.4658129805029452
+            maxPrice: 5.962133916683182
             brandIds:
-            - brandIds
-            - brandIds
+            - 6
+            - 6
             lookbackWindow: P7D
           exclusiveSegment:
             userAction: buy
             categoryIds:
-            - categoryIds
-            - categoryIds
-            minPrice: 0.8008281904610115
-            maxPrice: 6.027456183070403
+            - 0
+            - 0
+            minPrice: 1.4658129805029452
+            maxPrice: 5.962133916683182
             brandIds:
-            - brandIds
-            - brandIds
+            - 6
+            - 6
             lookbackWindow: P7D
       properties:
         retailerId:
           description: ID of the retailer associated with this audience
-          example: "68004146450571264"
-          type: string
+          example: 6041
+          format: int64
+          type: integer
         userBehaviorDetails:
           $ref: '#/components/schemas/UserBehaviorDetailsV2'
         name:
@@ -4519,24 +4486,24 @@ components:
         inclusiveSegment:
           userAction: buy
           categoryIds:
-          - categoryIds
-          - categoryIds
-          minPrice: 0.8008281904610115
-          maxPrice: 6.027456183070403
+          - 0
+          - 0
+          minPrice: 1.4658129805029452
+          maxPrice: 5.962133916683182
           brandIds:
-          - brandIds
-          - brandIds
+          - 6
+          - 6
           lookbackWindow: P7D
         exclusiveSegment:
           userAction: buy
           categoryIds:
-          - categoryIds
-          - categoryIds
-          minPrice: 0.8008281904610115
-          maxPrice: 6.027456183070403
+          - 0
+          - 0
+          minPrice: 1.4658129805029452
+          maxPrice: 5.962133916683182
           brandIds:
-          - brandIds
-          - brandIds
+          - 6
+          - 6
           lookbackWindow: P7D
       properties:
         inclusiveSegment:
@@ -4551,13 +4518,13 @@ components:
       example:
         userAction: buy
         categoryIds:
-        - categoryIds
-        - categoryIds
-        minPrice: 0.8008281904610115
-        maxPrice: 6.027456183070403
+        - 0
+        - 0
+        minPrice: 1.4658129805029452
+        maxPrice: 5.962133916683182
         brandIds:
-        - brandIds
-        - brandIds
+        - 6
+        - 6
         lookbackWindow: P7D
       properties:
         userAction:
@@ -4585,12 +4552,14 @@ components:
         categoryIds:
           description: The categories to target
           items:
-            type: string
+            format: int32
+            type: integer
           type: array
         brandIds:
           description: The brands to target
           items:
-            type: string
+            format: int64
+            type: integer
           type: array
         minPrice:
           description: The min price of targeted skus.
@@ -6833,6 +6802,7 @@ components:
             clickAttributionWindow: 7D
             endDate: 2000-01-23
             format: json
+            revenueType: revenueType
             viewAttributionWindow: none
             ids:
             - ids
@@ -6935,6 +6905,7 @@ components:
           clickAttributionWindow: 7D
           endDate: 2000-01-23
           format: json
+          revenueType: revenueType
           viewAttributionWindow: none
           ids:
           - ids
@@ -7010,6 +6981,7 @@ components:
         clickAttributionWindow: 7D
         endDate: 2000-01-23
         format: json
+        revenueType: revenueType
         viewAttributionWindow: none
         ids:
         - ids
@@ -7061,6 +7033,8 @@ components:
           - productCategory
           - product
           - attributedTransactions
+          type: string
+        revenueType:
           type: string
         startDate:
           description: YYYY-MM-DD

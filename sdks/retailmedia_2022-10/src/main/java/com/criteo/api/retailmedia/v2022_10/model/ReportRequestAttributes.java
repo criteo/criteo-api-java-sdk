@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - RetailMedia
  *
  * The version of the OpenAPI document: 2022-10
  * 
@@ -230,6 +230,10 @@ public class ReportRequestAttributes {
   @SerializedName(SERIALIZED_NAME_REPORT_TYPE)
   private ReportTypeEnum reportType;
 
+  public static final String SERIALIZED_NAME_REVENUE_TYPE = "revenueType";
+  @SerializedName(SERIALIZED_NAME_REVENUE_TYPE)
+  private String revenueType;
+
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private LocalDate startDate;
@@ -438,6 +442,28 @@ public class ReportRequestAttributes {
   }
 
 
+  public ReportRequestAttributes revenueType(String revenueType) {
+    
+    this.revenueType = revenueType;
+    return this;
+  }
+
+   /**
+   * Get revenueType
+   * @return revenueType
+  **/
+  @javax.annotation.Nullable
+
+  public String getRevenueType() {
+    return revenueType;
+  }
+
+
+  public void setRevenueType(String revenueType) {
+    this.revenueType = revenueType;
+  }
+
+
   public ReportRequestAttributes startDate(LocalDate startDate) {
     
     this.startDate = startDate;
@@ -564,6 +590,7 @@ public class ReportRequestAttributes {
         Objects.equals(this.id, reportRequestAttributes.id) &&
         Objects.equals(this.ids, reportRequestAttributes.ids) &&
         Objects.equals(this.reportType, reportRequestAttributes.reportType) &&
+        Objects.equals(this.revenueType, reportRequestAttributes.revenueType) &&
         Objects.equals(this.startDate, reportRequestAttributes.startDate) &&
         Objects.equals(this.timeZone, reportRequestAttributes.timeZone) &&
         Objects.equals(this.viewAttributionWindow, reportRequestAttributes.viewAttributionWindow)&&
@@ -572,7 +599,7 @@ public class ReportRequestAttributes {
 
   @Override
   public int hashCode() {
-    return Objects.hash(clickAttributionWindow, endDate, format, id, ids, reportType, startDate, timeZone, viewAttributionWindow, additionalProperties);
+    return Objects.hash(clickAttributionWindow, endDate, format, id, ids, reportType, revenueType, startDate, timeZone, viewAttributionWindow, additionalProperties);
   }
 
   @Override
@@ -585,6 +612,7 @@ public class ReportRequestAttributes {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    ids: ").append(toIndentedString(ids)).append("\n");
     sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
+    sb.append("    revenueType: ").append(toIndentedString(revenueType)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    timeZone: ").append(toIndentedString(timeZone)).append("\n");
     sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
@@ -617,6 +645,7 @@ public class ReportRequestAttributes {
     openapiFields.add("id");
     openapiFields.add("ids");
     openapiFields.add("reportType");
+    openapiFields.add("revenueType");
     openapiFields.add("startDate");
     openapiFields.add("timeZone");
     openapiFields.add("viewAttributionWindow");
@@ -662,6 +691,9 @@ public class ReportRequestAttributes {
       }
       if (!jsonObj.get("reportType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `reportType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reportType").toString()));
+      }
+      if ((jsonObj.get("revenueType") != null && !jsonObj.get("revenueType").isJsonNull()) && !jsonObj.get("revenueType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `revenueType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("revenueType").toString()));
       }
       if ((jsonObj.get("timeZone") != null && !jsonObj.get("timeZone").isJsonNull()) && !jsonObj.get("timeZone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `timeZone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timeZone").toString()));

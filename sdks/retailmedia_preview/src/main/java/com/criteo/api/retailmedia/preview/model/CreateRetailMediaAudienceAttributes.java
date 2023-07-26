@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - RetailMedia
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -168,15 +168,15 @@ public class CreateRetailMediaAudienceAttributes {
 
   public static final String SERIALIZED_NAME_BRAND_IDS = "brandIds";
   @SerializedName(SERIALIZED_NAME_BRAND_IDS)
-  private List<String> brandIds = null;
+  private List<Long> brandIds = null;
 
   public static final String SERIALIZED_NAME_CATEGORY_IDS = "categoryIds";
   @SerializedName(SERIALIZED_NAME_CATEGORY_IDS)
-  private List<String> categoryIds = null;
+  private List<Integer> categoryIds = null;
 
   public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
   @SerializedName(SERIALIZED_NAME_RETAILER_ID)
-  private String retailerId;
+  private Long retailerId;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -229,13 +229,13 @@ public class CreateRetailMediaAudienceAttributes {
   }
 
 
-  public CreateRetailMediaAudienceAttributes brandIds(List<String> brandIds) {
+  public CreateRetailMediaAudienceAttributes brandIds(List<Long> brandIds) {
     
     this.brandIds = brandIds;
     return this;
   }
 
-  public CreateRetailMediaAudienceAttributes addBrandIdsItem(String brandIdsItem) {
+  public CreateRetailMediaAudienceAttributes addBrandIdsItem(Long brandIdsItem) {
     if (this.brandIds == null) {
       this.brandIds = new ArrayList<>();
     }
@@ -249,23 +249,23 @@ public class CreateRetailMediaAudienceAttributes {
   **/
   @javax.annotation.Nullable
 
-  public List<String> getBrandIds() {
+  public List<Long> getBrandIds() {
     return brandIds;
   }
 
 
-  public void setBrandIds(List<String> brandIds) {
+  public void setBrandIds(List<Long> brandIds) {
     this.brandIds = brandIds;
   }
 
 
-  public CreateRetailMediaAudienceAttributes categoryIds(List<String> categoryIds) {
+  public CreateRetailMediaAudienceAttributes categoryIds(List<Integer> categoryIds) {
     
     this.categoryIds = categoryIds;
     return this;
   }
 
-  public CreateRetailMediaAudienceAttributes addCategoryIdsItem(String categoryIdsItem) {
+  public CreateRetailMediaAudienceAttributes addCategoryIdsItem(Integer categoryIdsItem) {
     if (this.categoryIds == null) {
       this.categoryIds = new ArrayList<>();
     }
@@ -279,17 +279,17 @@ public class CreateRetailMediaAudienceAttributes {
   **/
   @javax.annotation.Nullable
 
-  public List<String> getCategoryIds() {
+  public List<Integer> getCategoryIds() {
     return categoryIds;
   }
 
 
-  public void setCategoryIds(List<String> categoryIds) {
+  public void setCategoryIds(List<Integer> categoryIds) {
     this.categoryIds = categoryIds;
   }
 
 
-  public CreateRetailMediaAudienceAttributes retailerId(String retailerId) {
+  public CreateRetailMediaAudienceAttributes retailerId(Long retailerId) {
     
     this.retailerId = retailerId;
     return this;
@@ -301,12 +301,12 @@ public class CreateRetailMediaAudienceAttributes {
   **/
   @javax.annotation.Nonnull
 
-  public String getRetailerId() {
+  public Long getRetailerId() {
     return retailerId;
   }
 
 
-  public void setRetailerId(String retailerId) {
+  public void setRetailerId(Long retailerId) {
     this.retailerId = retailerId;
   }
 
@@ -481,9 +481,6 @@ public class CreateRetailMediaAudienceAttributes {
       // ensure the optional json data is an array if present
       if (jsonObj.get("categoryIds") != null && !jsonObj.get("categoryIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `categoryIds` to be an array in the JSON string but got `%s`", jsonObj.get("categoryIds").toString()));
-      }
-      if (!jsonObj.get("retailerId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `retailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerId").toString()));
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));

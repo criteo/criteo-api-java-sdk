@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -247,7 +247,33 @@ public class ExportColumn {
     
     DISPLAYSIZE("DisplaySize"),
     
-    VIDEOPLAYERRATIO("VideoPlayerRatio");
+    VIDEOPLAYERRATIO("VideoPlayerRatio"),
+    
+    TOP30BRANDSBYDISPLAYS("Top30BrandsByDisplays"),
+    
+    TOP30BRANDSBYCLICKS("Top30BrandsByClicks"),
+    
+    TOP30BRANDSBYSALES("Top30BrandsBySales"),
+    
+    TOP30INTERESTSBYDISPLAYS("Top30InterestsByDisplays"),
+    
+    TOP30INTERESTSBYCLICKS("Top30InterestsByClicks"),
+    
+    TOP30INTERESTSBYSALES("Top30InterestsBySales"),
+    
+    COUNTRY("Country"),
+    
+    REGION("Region"),
+    
+    POSTALCODE("PostalCode"),
+    
+    USERBEHAVIOR("UserBehavior"),
+    
+    ENVIRONMENT("Environment"),
+    
+    ADCHANNEL("AdChannel"),
+    
+    ADSOCIALNETWORK("AdSocialNetwork");
 
     private String value;
 

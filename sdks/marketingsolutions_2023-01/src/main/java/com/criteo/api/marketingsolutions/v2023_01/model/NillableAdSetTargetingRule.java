@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: 2023-01
  * 
@@ -22,7 +22,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -137,20 +136,9 @@ public class NillableAdSetTargetingRule {
         Objects.equals(this.additionalProperties, nillableAdSetTargetingRule.additionalProperties);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(value, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -185,6 +173,7 @@ public class NillableAdSetTargetingRule {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("value");
   }
 
  /**
@@ -199,10 +188,15 @@ public class NillableAdSetTargetingRule {
           throw new IllegalArgumentException(String.format("The required field(s) %s in NillableAdSetTargetingRule is not found in the empty JSON string", NillableAdSetTargetingRule.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `value`
-      if (jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull()) {
-        NillableAdSetTargetingRuleValue.validateJsonObject(jsonObj.getAsJsonObject("value"));
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : NillableAdSetTargetingRule.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
       }
+      // validate the required field `value`
+      NillableAdSetTargetingRuleValue.validateJsonObject(jsonObj.getAsJsonObject("value"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

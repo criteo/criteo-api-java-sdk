@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -62,7 +62,7 @@ public class LookalikeUpdateV1 {
   }
 
    /**
-   * Get targetSize
+   * Desired size of the generated Lookalike segment
    * @return targetSize
   **/
   @javax.annotation.Nullable

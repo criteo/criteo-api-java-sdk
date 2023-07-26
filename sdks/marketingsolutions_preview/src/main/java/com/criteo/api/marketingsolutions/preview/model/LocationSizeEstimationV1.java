@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -53,7 +53,7 @@ import com.criteo.api.marketingsolutions.preview.JSON;
 public class LocationSizeEstimationV1 {
   public static final String SERIALIZED_NAME_POINTS_OF_INTEREST = "pointsOfInterest";
   @SerializedName(SERIALIZED_NAME_POINTS_OF_INTEREST)
-  private List<PointOfInterestV1> pointsOfInterest = null;
+  private List<PointOfInterestV1> pointsOfInterest = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_RADIUS_IN_KM = "radiusInKm";
   @SerializedName(SERIALIZED_NAME_RADIUS_IN_KM)
@@ -69,9 +69,6 @@ public class LocationSizeEstimationV1 {
   }
 
   public LocationSizeEstimationV1 addPointsOfInterestItem(PointOfInterestV1 pointsOfInterestItem) {
-    if (this.pointsOfInterest == null) {
-      this.pointsOfInterest = new ArrayList<>();
-    }
     this.pointsOfInterest.add(pointsOfInterestItem);
     return this;
   }
@@ -80,7 +77,7 @@ public class LocationSizeEstimationV1 {
    * Get pointsOfInterest
    * @return pointsOfInterest
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public List<PointOfInterestV1> getPointsOfInterest() {
     return pointsOfInterest;
@@ -102,7 +99,7 @@ public class LocationSizeEstimationV1 {
    * Get radiusInKm
    * @return radiusInKm
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public Integer getRadiusInKm() {
     return radiusInKm;
@@ -212,6 +209,8 @@ public class LocationSizeEstimationV1 {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("pointsOfInterest");
+    openapiRequiredFields.add("radiusInKm");
   }
 
  /**
@@ -226,20 +225,23 @@ public class LocationSizeEstimationV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in LocationSizeEstimationV1 is not found in the empty JSON string", LocationSizeEstimationV1.openapiRequiredFields.toString()));
         }
       }
-      if (jsonObj.get("pointsOfInterest") != null && !jsonObj.get("pointsOfInterest").isJsonNull()) {
-        JsonArray jsonArraypointsOfInterest = jsonObj.getAsJsonArray("pointsOfInterest");
-        if (jsonArraypointsOfInterest != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("pointsOfInterest").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `pointsOfInterest` to be an array in the JSON string but got `%s`", jsonObj.get("pointsOfInterest").toString()));
-          }
 
-          // validate the optional field `pointsOfInterest` (array)
-          for (int i = 0; i < jsonArraypointsOfInterest.size(); i++) {
-            PointOfInterestV1.validateJsonObject(jsonArraypointsOfInterest.get(i).getAsJsonObject());
-          };
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : LocationSizeEstimationV1.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      // ensure the json data is an array
+      if (!jsonObj.get("pointsOfInterest").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pointsOfInterest` to be an array in the JSON string but got `%s`", jsonObj.get("pointsOfInterest").toString()));
+      }
+
+      JsonArray jsonArraypointsOfInterest = jsonObj.getAsJsonArray("pointsOfInterest");
+      // validate the required field `pointsOfInterest` (array)
+      for (int i = 0; i < jsonArraypointsOfInterest.size(); i++) {
+        PointOfInterestV1.validateJsonObject(jsonArraypointsOfInterest.get(i).getAsJsonObject());
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

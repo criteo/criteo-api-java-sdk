@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -127,7 +127,7 @@ public class CreateCampaign {
    * Name of the campaign
    * @return name
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getName() {
     return name;
@@ -149,7 +149,7 @@ public class CreateCampaign {
    * Advertiser id this campaign belongs to
    * @return advertiserId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getAdvertiserId() {
     return advertiserId;
@@ -171,7 +171,7 @@ public class CreateCampaign {
    * Goal for the marketing campaign
    * @return goal
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public GoalEnum getGoal() {
     return goal;
@@ -193,7 +193,7 @@ public class CreateCampaign {
    * Get spendLimit
    * @return spendLimit
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public CreateCampaignSpendLimit getSpendLimit() {
     return spendLimit;
@@ -309,6 +309,10 @@ public class CreateCampaign {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("advertiserId");
+    openapiRequiredFields.add("goal");
+    openapiRequiredFields.add("spendLimit");
   }
 
  /**
@@ -323,19 +327,24 @@ public class CreateCampaign {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CreateCampaign is not found in the empty JSON string", CreateCampaign.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : CreateCampaign.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("advertiserId") != null && !jsonObj.get("advertiserId").isJsonNull()) && !jsonObj.get("advertiserId").isJsonPrimitive()) {
+      if (!jsonObj.get("advertiserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserId").toString()));
       }
-      if ((jsonObj.get("goal") != null && !jsonObj.get("goal").isJsonNull()) && !jsonObj.get("goal").isJsonPrimitive()) {
+      if (!jsonObj.get("goal").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `goal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("goal").toString()));
       }
-      // validate the optional field `spendLimit`
-      if (jsonObj.get("spendLimit") != null && !jsonObj.get("spendLimit").isJsonNull()) {
-        CreateCampaignSpendLimit.validateJsonObject(jsonObj.getAsJsonObject("spendLimit"));
-      }
+      // validate the required field `spendLimit`
+      CreateCampaignSpendLimit.validateJsonObject(jsonObj.getAsJsonObject("spendLimit"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

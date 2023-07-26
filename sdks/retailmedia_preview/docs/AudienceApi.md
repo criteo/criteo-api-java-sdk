@@ -58,7 +58,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
-        String accountId = "accountId_example"; // String | ID of the account to which this audience belongs.
+        Long accountId = 56L; // Long | ID of the account to which this audience belongs.
         CreateRetailMediaAudienceRequest createRetailMediaAudienceRequest = new CreateRetailMediaAudienceRequest(); // CreateRetailMediaAudienceRequest | 
         try {
             CreateRetailMediaAudienceResponse result = apiInstance.createAudience(accountId, createRetailMediaAudienceRequest);
@@ -79,7 +79,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| ID of the account to which this audience belongs. | |
+| **accountId** | **Long**| ID of the account to which this audience belongs. | |
 | **createRetailMediaAudienceRequest** | [**CreateRetailMediaAudienceRequest**](CreateRetailMediaAudienceRequest.md)|  | |
 
 ### Return type
@@ -154,7 +154,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
-        String accountId = "accountId_example"; // String | ID of the account to which this audience belongs.
+        Long accountId = 56L; // Long | ID of the account to which this audience belongs.
         CreateRetailMediaAudienceV2Request createRetailMediaAudienceV2Request = new CreateRetailMediaAudienceV2Request(); // CreateRetailMediaAudienceV2Request | 
         try {
             RetailMediaAudienceV2Response result = apiInstance.createRetailMediaAudienceV2(accountId, createRetailMediaAudienceV2Request);
@@ -175,7 +175,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| ID of the account to which this audience belongs. | |
+| **accountId** | **Long**| ID of the account to which this audience belongs. | |
 | **createRetailMediaAudienceV2Request** | [**CreateRetailMediaAudienceV2Request**](CreateRetailMediaAudienceV2Request.md)|  | |
 
 ### Return type
@@ -349,7 +349,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
-        String accountId = "accountId_example"; // String | External account ID which owns audience.
+        Long accountId = 56L; // Long | External account ID which owns audience.
         List<Long> limitToId = Arrays.asList(); // List<Long> | Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId=1&limitToId=2
         Integer pageSize = 56; // Integer | Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page
         Integer pageIndex = 56; // Integer | Returns the specified page of results given a pageSize; pages are 0-indexed
@@ -372,7 +372,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| External account ID which owns audience. | |
+| **accountId** | **Long**| External account ID which owns audience. | |
 | **limitToId** | [**List&lt;Long&gt;**](Long.md)| Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 | [optional] |
 | **pageSize** | **Integer**| Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page | [optional] |
 | **pageIndex** | **Integer**| Returns the specified page of results given a pageSize; pages are 0-indexed | [optional] |

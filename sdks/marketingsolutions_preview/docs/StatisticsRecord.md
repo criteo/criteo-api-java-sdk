@@ -11,8 +11,9 @@ The format  statistics report for a period between startDate and endDate
 |**startDate** | **OffsetDateTime** | Start date of streaming products collection |  |
 |**endDate** | **OffsetDateTime** | End date of streaming products collection |  |
 |**total** | **Long** | The number of total products at endDate moment |  |
-|**displayable** | **Long** | The number of displayable products at endDate moment |  |
-|**nonDisplayable** | **Long** | The number of non displayable products at endDate moment |  |
+|**variant** | **Long** | The number of total variant products at endDate moment |  |
+|**displayable** | **Long** | The number of total displayable products at endDate moment |  |
+|**nonDisplayable** | **Long** | The number of total non-displayable products at endDate moment |  |
 |**added** | **Long** | The number of inserted products during the period between startDate and endDate |  |
 |**deleted** | **Long** | The number of deleted products during the period between startDate and endDate |  |
 |**updated** | **Long** | The number of updated products during the period between startDate and endDate |  |

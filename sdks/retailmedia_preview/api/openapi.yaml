@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  description: Criteo publicly exposed API
+  description: Criteo API - RetailMedia
   title: Criteo API
   version: Preview
 servers:
@@ -25,126 +25,6 @@ paths:
           description: Not Found
       tags:
       - Gateway
-      x-accepts: application/json
-  /preview/retail-media/reports/sync/campaigns:
-    post:
-      description: Return a Campaign Report
-      operationId: GetCampaignReports
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/CampaignReportRequest'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CampaignReportRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/CampaignReportRequest'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/CampaignReportRequest'
-        x-bodyName: request
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ReportResponse'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ReportResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ReportResponse'
-          description: Success
-        "400":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ReportOutcome'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ReportOutcome'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ReportOutcome'
-          description: Bad Request
-        "403":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ReportOutcome'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ReportOutcome'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ReportOutcome'
-          description: Forbidden
-      tags:
-      - Analytics
-      x-content-type: application/json-patch+json
-      x-accepts: application/json
-  /preview/retail-media/reports/sync/line-items:
-    post:
-      description: Return a Line Item Report
-      operationId: GetLineItemsReports
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/LineItemReportRequest'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/LineItemReportRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/LineItemReportRequest'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/LineItemReportRequest'
-        x-bodyName: request
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ReportResponse'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ReportResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ReportResponse'
-          description: Success
-        "400":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ReportOutcome'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ReportOutcome'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ReportOutcome'
-          description: Bad Request
-        "403":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ReportOutcome'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ReportOutcome'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ReportOutcome'
-          description: Forbidden
-      tags:
-      - Analytics
-      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/retail-media/accounts:
     get:
@@ -393,9 +273,10 @@ paths:
         name: accountId
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
-        x-example: "68004146450571264"
+        x-example: 68004146450571264
       requestBody:
         content:
           application/json:
@@ -455,9 +336,10 @@ paths:
         name: accountId
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
-        x-example: "68004146450571264"
+        x-example: 68004146450571264
       - description: "Limits results to the entity IDs specified; parameter key is\
           \ repeated, eg. limitToId=1&limitToId=2"
         explode: true
@@ -531,9 +413,10 @@ paths:
         name: accountId
         required: true
         schema:
-          type: string
+          format: int64
+          type: integer
         style: simple
-        x-example: "68004146450571264"
+        x-example: 68004146450571264
       requestBody:
         content:
           application/json:
@@ -924,7 +807,7 @@ paths:
         schema:
           default: 100
           format: int32
-          maximum: 100.0
+          maximum: 1000.0
           minimum: 1.0
           type: integer
         style: form
@@ -1115,7 +998,7 @@ paths:
         schema:
           default: 100
           format: int32
-          maximum: 100.0
+          maximum: 1000.0
           minimum: 1.0
           type: integer
         style: form
@@ -1505,115 +1388,369 @@ paths:
       tags:
       - Campaign
       x-accepts: application/json
-  /preview/retail-media/reports/campaigns:
+  /preview/retail-media/reports/sync/campaigns:
     post:
-      description: Request a campaign report
-      operationId: requestCampaignReport
+      description: Return a Campaign Report
+      operationId: GenerateCampaignReports
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/EnvelopeReportRequest'
-        description: |-
-          // Body of the request
-          {
-            "data": {
-              "type": "RetailMediaReportRequest",
-              "attributes": {
-                "reportType": string, // the name of the report being requested
-                //only one of "id" or "ids" can be provided for a request
-                "id": string, // the campaign id to select
-                "ids": Array[string], //the campaign ids to select
-                "startDate": string, // YYYY-MM-DD format
-                "endDate": string, // YYYY-MM-DD format
-                "timeZone": string, // examples: 'Europe/London', 'Asia/Tokyo', 'America/New_York'
-                // both attribution windows must be specified when one is specified
-                "clickAttributionWindow": "7D", "14D", or "30D"  // optional. defaults to campaign's click attribution window
-                "viewAttributionWindow": "none", "1D", "7D", "14D", "30D" // optional. defaults to campaign's view attribution window
-                "format": One of "json" (default),"json-compact","json-newline" or "csv" // output format, defaults to json-compact
-              }
-            }
-          }
+              $ref: '#/components/schemas/CampaignReportRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CampaignReportRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CampaignReportRequest'
         required: true
+        x-bodyName: request
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvelopeReportStatus'
-          description: Returns the status of the report
+                $ref: '#/components/schemas/ReportResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+          description: Success
         "400":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
             application/json:
               schema:
-                $ref: '#/components/schemas/BadRequest'
-          description: Bad request
-        "401":
-          description: Missing Authorization or token invalid
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Bad Request
         "403":
-          description: Must have access to RetailMedia accounts
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Forbidden
       tags:
       - Analytics
       x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/reports/sync/line-items:
+    post:
+      description: Return a Line Item Report
+      operationId: GenerateLineItemsReports
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LineItemReportRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/LineItemReportRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/LineItemReportRequest'
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+          description: Success
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Bad Request
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Forbidden
+      tags:
+      - Analytics
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/reports/sync/attributed-transactions:
+    post:
+      description: Return an Attributed Transactions Report
+      operationId: GenerateAttributedTransactionsReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AttributedTransactionReportRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AttributedTransactionReportRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AttributedTransactionReportRequest'
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+          description: Success
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Bad Request
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Forbidden
+      tags:
+      - Analytics
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/reports/campaigns:
+    post:
+      description: Return an async Campaign Report
+      operationId: GenerateAsyncCampaignReport
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/AsyncCampaignReportRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AsyncCampaignReportRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AsyncCampaignReportRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AsyncCampaignReportRequest'
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+          description: Success
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Bad Request
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Forbidden
+      tags:
+      - Analytics
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/retail-media/reports/line-items:
     post:
-      description: Request a line item report
-      operationId: requestLineItemReport
+      description: Return an async Line Item Report
+      operationId: GenerateAsyncLineItemsReport
       requestBody:
         content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/AsyncLineItemReportRequest'
           application/json:
             schema:
-              $ref: '#/components/schemas/EnvelopeReportRequest'
-        description: |-
-          // Body of the request
-          {
-            "data": {
-              "type": "RetailMediaReportRequest",
-              "attributes": {
-                "reportType": string, // the name of the report being requested
-                //only one of "id" or "ids" can be provided for a request
-                "id": string, // the line item id to select
-                "ids: Array[string] // the line item ids to select
-                "startDate": string, // YYYY-MM-DD format
-                "endDate": string, // YYYY-MM-DD format
-                "timeZone": string, // examples: 'Europe/London', 'Asia/Tokyo', 'America/New_York'
-                // both attribution windows must be specified when one is specified
-                "clickAttributionWindow": "7D", "14D", or "30D"  // optional. defaults to campaign's click attribution window
-                "viewAttributionWindow": "none", "1D", "7D", "14D", "30D" // optional. defaults to campaign's view attribution window
-                "format": One of "json" (default),"json-compact","json-newline" or "csv" // output format, defaults to json-compact
-              }
-            }
-          }
+              $ref: '#/components/schemas/AsyncLineItemReportRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AsyncLineItemReportRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AsyncLineItemReportRequest'
         required: true
+        x-bodyName: request
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvelopeReportStatus'
-          description: Returns the status of the report
+                $ref: '#/components/schemas/AsyncReportResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+          description: Success
         "400":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
             application/json:
               schema:
-                $ref: '#/components/schemas/BadRequest'
-          description: Bad request
-        "401":
-          description: Missing Authorization or token invalid
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Bad Request
         "403":
-          description: Must have access to RetailMedia accounts
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Forbidden
       tags:
       - Analytics
-      x-content-type: application/json
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /preview/retail-media/reports/revenue:
+    post:
+      description: Return an async Revenue Report
+      operationId: GenerateAsyncRevenueReport
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/AsyncRevenueReportRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AsyncRevenueReportRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AsyncRevenueReportRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AsyncRevenueReportRequest'
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+          description: Success
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Bad Request
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Forbidden
+      tags:
+      - Analytics
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/retail-media/reports/{reportId}/output:
     get:
-      description: Request the report output
-      operationId: getReportOutput
+      description: Return the output of an async report
+      operationId: GetAsyncExportOutput
       parameters:
-      - description: report id
-        example: ee439121-13e3-4734-9f67-c504dd921a41
+      - description: The ID of the report to retrieve
         explode: false
         in: path
         name: reportId
@@ -1624,35 +1761,49 @@ paths:
       responses:
         "200":
           content:
-            application/octet-stream:
-              schema:
-                type: integer
-          description: The output
-          headers:
-            Content-Disposition:
-              description: Returns a filename for the output
-              example: inline; filename=data_<reportId>.csv
-              explode: false
-              required: true
+            text/plain:
               schema:
                 type: string
-              style: simple
-        "401":
-          description: Missing Authorization or token invalid
+            application/json:
+              schema:
+                type: string
+            text/json:
+              schema:
+                type: string
+          description: Success
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Bad Request
         "403":
-          description: Must have access to RetailMedia accounts
-        "404":
-          description: ReportId not found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Forbidden
       tags:
       - Analytics
-      x-accepts: application/octet-stream
+      x-accepts: application/json
   /preview/retail-media/reports/{reportId}/status:
     get:
-      description: Get the status of the report
-      operationId: getReportStatus
+      description: Return the status of an async report
+      operationId: GetAsyncExportStatus
       parameters:
-      - description: report id
-        example: ee439121-13e3-4734-9f67-c504dd921a41
+      - description: The ID of the report to retrieve
         explode: false
         in: path
         name: reportId
@@ -1663,16 +1814,40 @@ paths:
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvelopeReportStatus'
-          description: Returns the status of the report
-        "401":
-          description: Missing Authorization or token invalid
+                $ref: '#/components/schemas/AsyncReportResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+          description: Success
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Bad Request
         "403":
-          description: Must have access to RetailMedia accounts
-        "404":
-          description: ReportId not found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Forbidden
       tags:
       - Analytics
       x-accepts: application/json
@@ -1900,6 +2075,251 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
+  /preview/retail-media/accounts/{accountId}/balances:
+    get:
+      description: Get page of balances for the given accountId.
+      operationId: Balances_GetApiV1ExternalAccountBalancesByAccountId
+      parameters:
+      - description: The account to get page of balances for
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The ids that you would like to limit your result set to
+        explode: true
+        in: query
+        name: limitToId
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: false
+      - description: The 0 indexed page index you would like to receive given the
+          page size
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      - description: The maximum number of items you would like to receive in this
+          request
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 25
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponsePagedListResponse'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+    post:
+      description: Create balance for the given account id
+      operationId: Balances_PostApiV1ExternalAccountBalancesByAccountId
+      parameters:
+      - description: The account to create balances for
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBalanceRequest'
+        x-nullable: false
+        x-bodyName: createBalance
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponse'
+          description: Success
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{accountId}/balances/{balanceId}/add-funds:
+    post:
+      description: Add funds to a balance for the given account id
+      operationId: Balances_PostApiV1ExternalAccountAddFundsByAccountIdAndBalanceId
+      parameters:
+      - description: The account of the balance
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The balance to add funds to
+        explode: false
+        in: path
+        name: balanceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddFundsToBalanceRequest'
+        x-nullable: false
+        x-bodyName: addFundsToBalance
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponse'
+          description: Success
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{accountId}/balances/{balanceId}/change-dates:
+    post:
+      description: Change dates of a balance for the given account id
+      operationId: Balances_PostApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId
+      parameters:
+      - description: The account of the balance
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The balance to change the dates
+        explode: false
+        in: path
+        name: balanceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeDatesOfBalanceRequest'
+        x-nullable: false
+        x-bodyName: changeDatesOfBalance
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponse'
+          description: Success
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{accountId}/balances/{balanceId}:
+    get:
+      description: Get a balance for the given account id and balance id
+      operationId: Balances_GetApiV1ExternalAccountByAccountIdAndBalanceId
+      parameters:
+      - description: The account of the balance
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The balance id
+        explode: false
+        in: path
+        name: balanceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponse'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+    patch:
+      description: Modify a balance for the given account id
+      operationId: Balances_PatchApiV1ExternalAccountByAccountIdAndBalanceId
+      parameters:
+      - description: The account of the balance
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The balance to change the dates
+        explode: false
+        in: path
+        name: balanceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBalanceModelRequest'
+        x-nullable: false
+        x-bodyName: updateBalanceModel
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponse'
+          description: Success
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
 components:
   schemas:
     ApplicationSummaryModelResponse:
@@ -2063,572 +2483,6 @@ components:
           type: string
         criteoService:
           type: string
-      type: object
-    ReportResponse:
-      description: Report response format
-      example:
-        data:
-          attributes:
-          - - "{}"
-            - "{}"
-          - - "{}"
-            - "{}"
-          type: type
-        meta:
-          columns:
-          - duration: duration
-            role: Dimension
-            timezone: timezone
-            deprecated: true
-            name: name
-            description: description
-            currency: currency
-            title: title
-            type: Boolean
-          - duration: duration
-            role: Dimension
-            timezone: timezone
-            deprecated: true
-            name: name
-            description: description
-            currency: currency
-            title: title
-            type: Boolean
-          rows: 0
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        meta:
-          $ref: '#/components/schemas/ExportReportMetaData'
-        data:
-          $ref: '#/components/schemas/ReportDataResponseResource'
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-      type: object
-    ReportOutcome:
-      description: The outcome of an API call.
-      properties:
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-      type: object
-    CampaignReportRequest:
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value
-      example:
-        data:
-          attributes:
-            reportType: summary
-            accountId: accountId
-            clickAttributionWindow: 7D
-            campaignType: sponsoredProducts
-            endDate: 2000-01-23T04:56:07.000+00:00
-            timezone: UTC
-            viewAttributionWindow: none
-            campaignIds:
-            - campaignIds
-            - campaignIds
-            metrics:
-            - impressions
-            - impressions
-            startDate: 2000-01-23T04:56:07.000+00:00
-            dimensions:
-            - date
-            - date
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/CampaignReportResource'
-      type: object
-    LineItemReportRequest:
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value
-      example:
-        data:
-          attributes:
-            reportType: summary
-            accountId: accountId
-            clickAttributionWindow: 7D
-            campaignType: sponsoredProducts
-            lineItemIds:
-            - lineItemIds
-            - lineItemIds
-            endDate: 2000-01-23T04:56:07.000+00:00
-            timezone: UTC
-            viewAttributionWindow: none
-            metrics:
-            - impressions
-            - impressions
-            startDate: 2000-01-23T04:56:07.000+00:00
-            dimensions:
-            - date
-            - date
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/LineItemReportResource'
-      type: object
-    ExportReportMetaData:
-      description: "Metadata for an async report request: descriptions of the columns\
-        \ and number of rows returned"
-      example:
-        columns:
-        - duration: duration
-          role: Dimension
-          timezone: timezone
-          deprecated: true
-          name: name
-          description: description
-          currency: currency
-          title: title
-          type: Boolean
-        - duration: duration
-          role: Dimension
-          timezone: timezone
-          deprecated: true
-          name: name
-          description: description
-          currency: currency
-          title: title
-          type: Boolean
-        rows: 0
-      properties:
-        columns:
-          items:
-            $ref: '#/components/schemas/ExportReportColumn'
-          type: array
-        rows:
-          format: int32
-          type: integer
-      type: object
-    ReportDataResponseResource:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value
-      example:
-        attributes:
-        - - "{}"
-          - "{}"
-        - - "{}"
-          - "{}"
-        type: type
-      properties:
-        type:
-          type: string
-        attributes:
-          description: Data response format
-          items:
-            items:
-              type: object
-            type: array
-          type: array
-      type: object
-    CampaignReportResource:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value
-      example:
-        attributes:
-          reportType: summary
-          accountId: accountId
-          clickAttributionWindow: 7D
-          campaignType: sponsoredProducts
-          endDate: 2000-01-23T04:56:07.000+00:00
-          timezone: UTC
-          viewAttributionWindow: none
-          campaignIds:
-          - campaignIds
-          - campaignIds
-          metrics:
-          - impressions
-          - impressions
-          startDate: 2000-01-23T04:56:07.000+00:00
-          dimensions:
-          - date
-          - date
-        type: type
-      properties:
-        type:
-          type: string
-        attributes:
-          $ref: '#/components/schemas/CampaignReport'
-      type: object
-    LineItemReportResource:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value
-      example:
-        attributes:
-          reportType: summary
-          accountId: accountId
-          clickAttributionWindow: 7D
-          campaignType: sponsoredProducts
-          lineItemIds:
-          - lineItemIds
-          - lineItemIds
-          endDate: 2000-01-23T04:56:07.000+00:00
-          timezone: UTC
-          viewAttributionWindow: none
-          metrics:
-          - impressions
-          - impressions
-          startDate: 2000-01-23T04:56:07.000+00:00
-          dimensions:
-          - date
-          - date
-        type: type
-      properties:
-        type:
-          type: string
-        attributes:
-          $ref: '#/components/schemas/LineItemReport'
-      type: object
-    ExportReportColumn:
-      description: Description of a column from an async report request
-      example:
-        duration: duration
-        role: Dimension
-        timezone: timezone
-        deprecated: true
-        name: name
-        description: description
-        currency: currency
-        title: title
-        type: Boolean
-      properties:
-        name:
-          description: Name of the exported column
-          type: string
-        title:
-          description: Title of the exported column
-          type: string
-        description:
-          description: Description of the exported column
-          type: string
-        type:
-          description: Type of the column
-          enum:
-          - Boolean
-          - Number
-          - Money
-          - String
-          - Date
-          - DateTime
-          - Interval
-          - Duration
-          type: string
-        role:
-          description: Role of the colummn
-          enum:
-          - Dimension
-          - Property
-          - Interval
-          - Metric
-          type: string
-        timezone:
-          description: Timezone of the column
-          type: string
-        duration:
-          description: Duration of the column
-          type: string
-        currency:
-          description: Currency of the column
-          type: string
-        deprecated:
-          description: Flag for deprecated column
-          type: boolean
-      required:
-      - name
-      - role
-      - type
-      type: object
-    CampaignReport:
-      description: Campaign report body request
-      example:
-        reportType: summary
-        accountId: accountId
-        clickAttributionWindow: 7D
-        campaignType: sponsoredProducts
-        endDate: 2000-01-23T04:56:07.000+00:00
-        timezone: UTC
-        viewAttributionWindow: none
-        campaignIds:
-        - campaignIds
-        - campaignIds
-        metrics:
-        - impressions
-        - impressions
-        startDate: 2000-01-23T04:56:07.000+00:00
-        dimensions:
-        - date
-        - date
-      properties:
-        campaignIds:
-          description: List of campaign Ids to filter
-          items:
-            type: string
-          type: array
-        metrics:
-          description: List of Metrics to report on
-          items:
-            enum:
-            - impressions
-            - clicks
-            - spend
-            - attributedSales
-            - attributedUnits
-            - attributedOrders
-            - ctr
-            - cpc
-            - cpo
-            - cpm
-            - roas
-            - uniqueVisitors
-            - frequency
-            type: string
-          type: array
-        dimensions:
-          description: List of dimensions to report on
-          items:
-            enum:
-            - date
-            - campaignId
-            - campaignName
-            - campaignTypeName
-            - advProductCategory
-            - advProductId
-            - advProductName
-            - brandId
-            - brandName
-            type: string
-          type: array
-        accountId:
-          description: Account id to report on
-          type: string
-        reportType:
-          description: "Type of report, if no Dimensions / Metrics are provided fall\
-            \ back to summary reportType"
-          enum:
-          - summary
-          - pageType
-          - keyWord
-          - productCategory
-          - product
-          - attributedTransactions
-          type: string
-        startDate:
-          description: Start date
-          format: date-time
-          type: string
-        endDate:
-          description: End Date
-          format: date-time
-          type: string
-        timezone:
-          default: UTC
-          description: "Time zone : see criteo developer portal for supported time\
-            \ zones"
-          type: string
-        clickAttributionWindow:
-          default: 7D
-          description: Click Attribution Window
-          enum:
-          - 7D
-          - 14D
-          - 30D
-          type: string
-        viewAttributionWindow:
-          default: none
-          description: View Attribution window
-          enum:
-          - 1D
-          - 7D
-          - 14D
-          - 30D
-          - none
-          type: string
-        campaignType:
-          description: Filter the type of campaign to report on
-          enum:
-          - sponsoredProducts
-          - onSiteDisplays
-          type: string
-      required:
-      - accountId
-      - endDate
-      - startDate
-      type: object
-    LineItemReport:
-      description: Line item report body request
-      example:
-        reportType: summary
-        accountId: accountId
-        clickAttributionWindow: 7D
-        campaignType: sponsoredProducts
-        lineItemIds:
-        - lineItemIds
-        - lineItemIds
-        endDate: 2000-01-23T04:56:07.000+00:00
-        timezone: UTC
-        viewAttributionWindow: none
-        metrics:
-        - impressions
-        - impressions
-        startDate: 2000-01-23T04:56:07.000+00:00
-        dimensions:
-        - date
-        - date
-      properties:
-        lineItemIds:
-          description: Line item ids to report on
-          items:
-            type: string
-          type: array
-        metrics:
-          description: List of metrics to report on
-          items:
-            enum:
-            - impressions
-            - clicks
-            - spend
-            - attributedSales
-            - attributedUnits
-            - attributedOrders
-            - ctr
-            - cpc
-            - roas
-            - assistedUnits
-            - assistedSales
-            - uniqueVisitors
-            - frequency
-            type: string
-          type: array
-        dimensions:
-          description: List of dimensions to report on
-          items:
-            enum:
-            - date
-            - campaignId
-            - campaignName
-            - campaignTypeName
-            - advProductCategory
-            - advProductId
-            - advProductName
-            - brandId
-            - brandName
-            - lineItemId
-            - lineItemName
-            - retailerId
-            - retailerName
-            type: string
-          type: array
-        accountId:
-          description: Account id to report on
-          type: string
-        reportType:
-          description: "Type of report, if no Dimensions / Metrics are provided fall\
-            \ back to summary reportType"
-          enum:
-          - summary
-          - pageType
-          - keyword
-          - productCategory
-          - product
-          - attributedTransactions
-          type: string
-        startDate:
-          description: Start date
-          format: date-time
-          type: string
-        endDate:
-          description: End Date
-          format: date-time
-          type: string
-        timezone:
-          default: UTC
-          description: "Time zone : see criteo developer portal for supported time\
-            \ zones"
-          type: string
-        clickAttributionWindow:
-          default: 7D
-          description: Click Attribution Window
-          enum:
-          - 7D
-          - 14D
-          - 30D
-          type: string
-        viewAttributionWindow:
-          default: none
-          description: View Attribution window
-          enum:
-          - 1D
-          - 7D
-          - 14D
-          - 30D
-          - none
-          type: string
-        campaignType:
-          description: Filter the type of campaign to report on
-          enum:
-          - sponsoredProducts
-          - onSiteDisplays
-          type: string
-      required:
-      - accountId
-      - endDate
-      - startDate
       type: object
     JsonApiPageResponseOfAccount:
       description: A wrapper class to return a single page of <typeparamref name="T"
@@ -3354,14 +3208,14 @@ components:
         data:
           attributes:
             categoryIds:
-            - categoryIds
-            - categoryIds
+            - 6
+            - 6
             name: Test audience
             userType: viewer
-            retailerId: "68004146450571264"
+            retailerId: 6841
             brandIds:
-            - brandIds
-            - brandIds
+            - 0
+            - 0
             lookbackWindow: P7D
           id: 314159
           type: RetailMediaAudience
@@ -3435,29 +3289,29 @@ components:
             customerListDetails:
               size: "34212"
             name: Test audience
-            retailerId: "68004146450571264"
+            retailerId: 6041
             userBehaviorDetails:
               inclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - categoryIds
-                - categoryIds
-                minPrice: 0.8008281904610115
-                maxPrice: 6.027456183070403
+                - 0
+                - 0
+                minPrice: 1.4658129805029452
+                maxPrice: 5.962133916683182
                 brandIds:
-                - brandIds
-                - brandIds
+                - 6
+                - 6
                 lookbackWindow: P7D
               exclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - categoryIds
-                - categoryIds
-                minPrice: 0.8008281904610115
-                maxPrice: 6.027456183070403
+                - 0
+                - 0
+                minPrice: 1.4658129805029452
+                maxPrice: 5.962133916683182
                 brandIds:
-                - brandIds
-                - brandIds
+                - 6
+                - 6
                 lookbackWindow: P7D
           id: "314159"
           type: customerList
@@ -3465,29 +3319,29 @@ components:
             customerListDetails:
               size: "34212"
             name: Test audience
-            retailerId: "68004146450571264"
+            retailerId: 6041
             userBehaviorDetails:
               inclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - categoryIds
-                - categoryIds
-                minPrice: 0.8008281904610115
-                maxPrice: 6.027456183070403
+                - 0
+                - 0
+                minPrice: 1.4658129805029452
+                maxPrice: 5.962133916683182
                 brandIds:
-                - brandIds
-                - brandIds
+                - 6
+                - 6
                 lookbackWindow: P7D
               exclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - categoryIds
-                - categoryIds
-                minPrice: 0.8008281904610115
-                maxPrice: 6.027456183070403
+                - 0
+                - 0
+                minPrice: 1.4658129805029452
+                maxPrice: 5.962133916683182
                 brandIds:
-                - brandIds
-                - brandIds
+                - 6
+                - 6
                 lookbackWindow: P7D
           id: "314159"
           type: customerList
@@ -3580,29 +3434,29 @@ components:
         data:
           attributes:
             name: Test audience
-            retailerId: "68004146450571264"
+            retailerId: 6041
             userBehaviorDetails:
               inclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - categoryIds
-                - categoryIds
-                minPrice: 0.8008281904610115
-                maxPrice: 6.027456183070403
+                - 0
+                - 0
+                minPrice: 1.4658129805029452
+                maxPrice: 5.962133916683182
                 brandIds:
-                - brandIds
-                - brandIds
+                - 6
+                - 6
                 lookbackWindow: P7D
               exclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - categoryIds
-                - categoryIds
-                minPrice: 0.8008281904610115
-                maxPrice: 6.027456183070403
+                - 0
+                - 0
+                minPrice: 1.4658129805029452
+                maxPrice: 5.962133916683182
                 brandIds:
-                - brandIds
-                - brandIds
+                - 6
+                - 6
                 lookbackWindow: P7D
           id: 314159
           type: RetailMediaAudience
@@ -3670,14 +3524,14 @@ components:
         data:
           attributes:
             categoryIds:
-            - categoryIds
-            - categoryIds
+            - 6
+            - 6
             name: Test audience
             userType: viewer
-            retailerId: "68004146450571264"
+            retailerId: 6841
             brandIds:
-            - brandIds
-            - brandIds
+            - 0
+            - 0
             lookbackWindow: P7D
           type: RetailMediaAudience
       properties:
@@ -3692,29 +3546,29 @@ components:
         data:
           attributes:
             name: Test audience
-            retailerId: "68004146450571264"
+            retailerId: 6041
             userBehaviorDetails:
               inclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - categoryIds
-                - categoryIds
-                minPrice: 0.8008281904610115
-                maxPrice: 6.027456183070403
+                - 0
+                - 0
+                minPrice: 1.4658129805029452
+                maxPrice: 5.962133916683182
                 brandIds:
-                - brandIds
-                - brandIds
+                - 6
+                - 6
                 lookbackWindow: P7D
               exclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - categoryIds
-                - categoryIds
-                minPrice: 0.8008281904610115
-                maxPrice: 6.027456183070403
+                - 0
+                - 0
+                minPrice: 1.4658129805029452
+                maxPrice: 5.962133916683182
                 brandIds:
-                - brandIds
-                - brandIds
+                - 6
+                - 6
                 lookbackWindow: P7D
           type: RetailMediaAudience
       properties:
@@ -3770,14 +3624,14 @@ components:
       example:
         attributes:
           categoryIds:
-          - categoryIds
-          - categoryIds
+          - 6
+          - 6
           name: Test audience
           userType: viewer
-          retailerId: "68004146450571264"
+          retailerId: 6841
           brandIds:
-          - brandIds
-          - brandIds
+          - 0
+          - 0
           lookbackWindow: P7D
         id: 314159
         type: RetailMediaAudience
@@ -3805,29 +3659,29 @@ components:
           customerListDetails:
             size: "34212"
           name: Test audience
-          retailerId: "68004146450571264"
+          retailerId: 6041
           userBehaviorDetails:
             inclusiveSegment:
               userAction: buy
               categoryIds:
-              - categoryIds
-              - categoryIds
-              minPrice: 0.8008281904610115
-              maxPrice: 6.027456183070403
+              - 0
+              - 0
+              minPrice: 1.4658129805029452
+              maxPrice: 5.962133916683182
               brandIds:
-              - brandIds
-              - brandIds
+              - 6
+              - 6
               lookbackWindow: P7D
             exclusiveSegment:
               userAction: buy
               categoryIds:
-              - categoryIds
-              - categoryIds
-              minPrice: 0.8008281904610115
-              maxPrice: 6.027456183070403
+              - 0
+              - 0
+              minPrice: 1.4658129805029452
+              maxPrice: 5.962133916683182
               brandIds:
-              - brandIds
-              - brandIds
+              - 6
+              - 6
               lookbackWindow: P7D
         id: "314159"
         type: customerList
@@ -3855,29 +3709,29 @@ components:
       example:
         attributes:
           name: Test audience
-          retailerId: "68004146450571264"
+          retailerId: 6041
           userBehaviorDetails:
             inclusiveSegment:
               userAction: buy
               categoryIds:
-              - categoryIds
-              - categoryIds
-              minPrice: 0.8008281904610115
-              maxPrice: 6.027456183070403
+              - 0
+              - 0
+              minPrice: 1.4658129805029452
+              maxPrice: 5.962133916683182
               brandIds:
-              - brandIds
-              - brandIds
+              - 6
+              - 6
               lookbackWindow: P7D
             exclusiveSegment:
               userAction: buy
               categoryIds:
-              - categoryIds
-              - categoryIds
-              minPrice: 0.8008281904610115
-              maxPrice: 6.027456183070403
+              - 0
+              - 0
+              minPrice: 1.4658129805029452
+              maxPrice: 5.962133916683182
               brandIds:
-              - brandIds
-              - brandIds
+              - 6
+              - 6
               lookbackWindow: P7D
         id: 314159
         type: RetailMediaAudience
@@ -3903,14 +3757,14 @@ components:
       example:
         attributes:
           categoryIds:
-          - categoryIds
-          - categoryIds
+          - 6
+          - 6
           name: Test audience
           userType: viewer
-          retailerId: "68004146450571264"
+          retailerId: 6841
           brandIds:
-          - brandIds
-          - brandIds
+          - 0
+          - 0
           lookbackWindow: P7D
         type: RetailMediaAudience
       properties:
@@ -3929,29 +3783,29 @@ components:
       example:
         attributes:
           name: Test audience
-          retailerId: "68004146450571264"
+          retailerId: 6041
           userBehaviorDetails:
             inclusiveSegment:
               userAction: buy
               categoryIds:
-              - categoryIds
-              - categoryIds
-              minPrice: 0.8008281904610115
-              maxPrice: 6.027456183070403
+              - 0
+              - 0
+              minPrice: 1.4658129805029452
+              maxPrice: 5.962133916683182
               brandIds:
-              - brandIds
-              - brandIds
+              - 6
+              - 6
               lookbackWindow: P7D
             exclusiveSegment:
               userAction: buy
               categoryIds:
-              - categoryIds
-              - categoryIds
-              minPrice: 0.8008281904610115
-              maxPrice: 6.027456183070403
+              - 0
+              - 0
+              minPrice: 1.4658129805029452
+              maxPrice: 5.962133916683182
               brandIds:
-              - brandIds
-              - brandIds
+              - 6
+              - 6
               lookbackWindow: P7D
         type: RetailMediaAudience
       properties:
@@ -4000,14 +3854,14 @@ components:
       description: Parameters needed to create an audience
       example:
         categoryIds:
-        - categoryIds
-        - categoryIds
+        - 6
+        - 6
         name: Test audience
         userType: viewer
-        retailerId: "68004146450571264"
+        retailerId: 6841
         brandIds:
-        - brandIds
-        - brandIds
+        - 0
+        - 0
         lookbackWindow: P7D
       properties:
         userType:
@@ -4034,17 +3888,20 @@ components:
         brandIds:
           description: The brands to target
           items:
-            type: string
+            format: int64
+            type: integer
           type: array
         categoryIds:
           description: The categories to target
           items:
-            type: string
+            format: int32
+            type: integer
           type: array
         retailerId:
           description: ID of the retailer associated with this audience
-          example: "68004146450571264"
-          type: string
+          example: 6841
+          format: int64
+          type: integer
         name:
           description: Name of the audience.
           example: Test audience
@@ -4061,35 +3918,36 @@ components:
         customerListDetails:
           size: "34212"
         name: Test audience
-        retailerId: "68004146450571264"
+        retailerId: 6041
         userBehaviorDetails:
           inclusiveSegment:
             userAction: buy
             categoryIds:
-            - categoryIds
-            - categoryIds
-            minPrice: 0.8008281904610115
-            maxPrice: 6.027456183070403
+            - 0
+            - 0
+            minPrice: 1.4658129805029452
+            maxPrice: 5.962133916683182
             brandIds:
-            - brandIds
-            - brandIds
+            - 6
+            - 6
             lookbackWindow: P7D
           exclusiveSegment:
             userAction: buy
             categoryIds:
-            - categoryIds
-            - categoryIds
-            minPrice: 0.8008281904610115
-            maxPrice: 6.027456183070403
+            - 0
+            - 0
+            minPrice: 1.4658129805029452
+            maxPrice: 5.962133916683182
             brandIds:
-            - brandIds
-            - brandIds
+            - 6
+            - 6
             lookbackWindow: P7D
       properties:
         retailerId:
           description: ID of the retailer associated with this audience
-          example: "68004146450571264"
-          type: string
+          example: 6041
+          format: int64
+          type: integer
         name:
           description: Name of the audience.
           example: Test audience
@@ -4106,35 +3964,36 @@ components:
       description: Parameters needed to create an audience
       example:
         name: Test audience
-        retailerId: "68004146450571264"
+        retailerId: 6041
         userBehaviorDetails:
           inclusiveSegment:
             userAction: buy
             categoryIds:
-            - categoryIds
-            - categoryIds
-            minPrice: 0.8008281904610115
-            maxPrice: 6.027456183070403
+            - 0
+            - 0
+            minPrice: 1.4658129805029452
+            maxPrice: 5.962133916683182
             brandIds:
-            - brandIds
-            - brandIds
+            - 6
+            - 6
             lookbackWindow: P7D
           exclusiveSegment:
             userAction: buy
             categoryIds:
-            - categoryIds
-            - categoryIds
-            minPrice: 0.8008281904610115
-            maxPrice: 6.027456183070403
+            - 0
+            - 0
+            minPrice: 1.4658129805029452
+            maxPrice: 5.962133916683182
             brandIds:
-            - brandIds
-            - brandIds
+            - 6
+            - 6
             lookbackWindow: P7D
       properties:
         retailerId:
           description: ID of the retailer associated with this audience
-          example: "68004146450571264"
-          type: string
+          example: 6041
+          format: int64
+          type: integer
         userBehaviorDetails:
           $ref: '#/components/schemas/UserBehaviorDetailsV2'
         name:
@@ -4213,24 +4072,24 @@ components:
         inclusiveSegment:
           userAction: buy
           categoryIds:
-          - categoryIds
-          - categoryIds
-          minPrice: 0.8008281904610115
-          maxPrice: 6.027456183070403
+          - 0
+          - 0
+          minPrice: 1.4658129805029452
+          maxPrice: 5.962133916683182
           brandIds:
-          - brandIds
-          - brandIds
+          - 6
+          - 6
           lookbackWindow: P7D
         exclusiveSegment:
           userAction: buy
           categoryIds:
-          - categoryIds
-          - categoryIds
-          minPrice: 0.8008281904610115
-          maxPrice: 6.027456183070403
+          - 0
+          - 0
+          minPrice: 1.4658129805029452
+          maxPrice: 5.962133916683182
           brandIds:
-          - brandIds
-          - brandIds
+          - 6
+          - 6
           lookbackWindow: P7D
       properties:
         inclusiveSegment:
@@ -4245,13 +4104,13 @@ components:
       example:
         userAction: buy
         categoryIds:
-        - categoryIds
-        - categoryIds
-        minPrice: 0.8008281904610115
-        maxPrice: 6.027456183070403
+        - 0
+        - 0
+        minPrice: 1.4658129805029452
+        maxPrice: 5.962133916683182
         brandIds:
-        - brandIds
-        - brandIds
+        - 6
+        - 6
         lookbackWindow: P7D
       properties:
         userAction:
@@ -4279,12 +4138,14 @@ components:
         categoryIds:
           description: The categories to target
           items:
-            type: string
+            format: int32
+            type: integer
           type: array
         brandIds:
           description: The brands to target
           items:
-            type: string
+            format: int64
+            type: integer
           type: array
         minPrice:
           description: The min price of targeted skus.
@@ -5200,36 +5061,30 @@ components:
         data:
         - attributes:
             gtin: gtin
-            globalCategoryId: globalCategoryId
             price: 0.8008281904610115
             imageUrl: imageUrl
             name: name
             description: description
-            globalBrand:
-              name: name
             mpn: mpn
             isInStock: true
-            retailerCategory:
+            category:
               text: text
-            retailerBrand:
+            brand:
               name: name
             updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
           type: type
         - attributes:
             gtin: gtin
-            globalCategoryId: globalCategoryId
             price: 0.8008281904610115
             imageUrl: imageUrl
             name: name
             description: description
-            globalBrand:
-              name: name
             mpn: mpn
             isInStock: true
-            retailerCategory:
+            category:
               text: text
-            retailerBrand:
+            brand:
               name: name
             updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
@@ -6740,18 +6595,15 @@ components:
       example:
         attributes:
           gtin: gtin
-          globalCategoryId: globalCategoryId
           price: 0.8008281904610115
           imageUrl: imageUrl
           name: name
           description: description
-          globalBrand:
-            name: name
           mpn: mpn
           isInStock: true
-          retailerCategory:
+          category:
             text: text
-          retailerBrand:
+          brand:
             name: name
           updatedAt: 2000-01-23T04:56:07.000+00:00
         id: id
@@ -7439,10 +7291,12 @@ components:
           type: string
           x-nullable: false
         price:
-          description: The price of the product on the retailer site.
+          description: The price of the product on the retailer site. Can be omitted
+            in certain circumstances
           format: double
+          nullable: true
           type: number
-          x-nullable: false
+          x-nullable: true
         isInStock:
           description: An indication of if the retailer currently has the product
             in stock.
@@ -7480,18 +7334,15 @@ components:
       description: Slim  version of Sku Data model
       example:
         gtin: gtin
-        globalCategoryId: globalCategoryId
         price: 0.8008281904610115
         imageUrl: imageUrl
         name: name
         description: description
-        globalBrand:
-          name: name
         mpn: mpn
         isInStock: true
-        retailerCategory:
+        category:
           text: text
-        retailerBrand:
+        brand:
           name: name
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -7507,21 +7358,17 @@ components:
           minLength: 0
           type: string
           x-nullable: false
-        retailerCategory:
-          $ref: '#/components/schemas/RetailerCategory'
-        globalCategoryId:
-          description: The global category Id.
-          type: string
-          x-nullable: false
-        globalBrand:
-          $ref: '#/components/schemas/GlobalBrand'
-        retailerBrand:
-          $ref: '#/components/schemas/RetailerBrand'
+        category:
+          $ref: '#/components/schemas/Category'
+        brand:
+          $ref: '#/components/schemas/Brand'
         price:
-          description: The price of the product on the retailer site.
+          description: The price of the product on the retailer site. Can be omitted
+            in certain circumstances
           format: double
+          nullable: true
           type: number
-          x-nullable: false
+          x-nullable: true
         isInStock:
           description: An indication of if the retailer currently has the product
             in stock.
@@ -8221,7 +8068,7 @@ components:
       - url
       type: object
       x-nullable: false
-    RetailerCategory:
+    Category:
       description: Retailer Category.
       example:
         text: text
@@ -8234,26 +8081,13 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
-    GlobalBrand:
-      description: Global brand of the product.
+    Brand:
+      description: Brand of the product.
       example:
         name: name
       properties:
         name:
-          description: The name of the global brand.
-          maxLength: 120
-          minLength: 0
-          type: string
-          x-nullable: false
-      type: object
-      x-nullable: false
-    RetailerBrand:
-      description: Retailer brand of the product.
-      example:
-        name: name
-      properties:
-        name:
-          description: The name of the retailer brand.
+          description: The name of the brand.
           maxLength: 120
           minLength: 0
           type: string
@@ -8569,293 +8403,1428 @@ components:
       - id
       type: object
       x-nullable: false
-    EnvelopeReportStatus:
-      description: Standard response envelope
+    ReportResponse:
+      description: Report response format
       example:
         data:
           attributes:
-            fileSizeBytes: 0
-            md5Checksum: md5Checksum
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            rowCount: 6
+          - - "{}"
+            - "{}"
+          - - "{}"
+            - "{}"
+          type: type
+        meta:
+          columns:
+          - duration: duration
+            role: Dimension
+            timezone: timezone
+            deprecated: true
+            name: name
+            description: description
+            currency: currency
+            title: title
+            type: Boolean
+          - duration: duration
+            role: Dimension
+            timezone: timezone
+            deprecated: true
+            name: name
+            description: description
+            currency: currency
+            title: title
+            type: Boolean
+          rows: 0
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        meta:
+          $ref: '#/components/schemas/ExportReportMetaData'
+        data:
+          $ref: '#/components/schemas/ReportDataResponseResource'
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+      type: object
+    ReportOutcome:
+      description: The outcome of an API call.
+      properties:
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+      type: object
+    AsyncReportResponse:
+      description: Async Report response format
+      example:
+        data:
+          attributes:
+            fileSizeBytes: 6
+            md5CheckSum: md5CheckSum
+            createdAt: createdAt
+            rowCount: 0
+            id: id
             message: message
-            expiresAt: 2000-01-23T04:56:07.000+00:00
+            expiresAt: expiresAt
             status: pending
           id: id
           type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
       properties:
         data:
-          $ref: '#/components/schemas/ReportStatus'
-      required:
-      - data
-      type: object
-    BadRequest:
-      description: Bad request errors
-      properties:
-        errors:
-          description: The errors
+          $ref: '#/components/schemas/StatusResponseResource'
+        warnings:
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
           type: array
       type: object
-    EnvelopeReportRequest:
-      description: Standard response envelope
+    CampaignReportRequest:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value
       example:
         data:
           attributes:
             reportType: summary
+            accountId: accountId
             clickAttributionWindow: 7D
-            endDate: 2000-01-23
-            format: json
+            campaignType: sponsoredProducts
+            endDate: 2000-01-23T04:56:07.000+00:00
+            timezone: UTC
             viewAttributionWindow: none
-            ids:
-            - ids
-            - ids
-            timeZone: timeZone
-            id: id
-            startDate: 2000-01-23
+            campaignIds:
+            - campaignIds
+            - campaignIds
+            metrics:
+            - impressions
+            - impressions
+            salesChannel: offline
+            startDate: 2000-01-23T04:56:07.000+00:00
+            dimensions:
+            - date
+            - date
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/ReportRequest'
-      required:
-      - data
+          $ref: '#/components/schemas/CampaignReportResource'
       type: object
-    ReportStatus:
-      description: Report Status
+    LineItemReportRequest:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value
+      example:
+        data:
+          attributes:
+            clickAttributionWindow: 7D
+            campaignType: sponsoredProducts
+            lineItemIds:
+            - lineItemIds
+            - lineItemIds
+            endDate: 2000-01-23T04:56:07.000+00:00
+            timezone: timezone
+            salesChannel: offline
+            reportType: summary
+            accountId: accountId
+            viewAttributionWindow: 1D
+            campaignIds:
+            - campaignIds
+            - campaignIds
+            metrics:
+            - impressions
+            - impressions
+            startDate: 2000-01-23T04:56:07.000+00:00
+            dimensions:
+            - date
+            - date
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/LineItemReportResource'
+      type: object
+    AttributedTransactionReportRequest:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value
+      example:
+        data:
+          attributes:
+            accountId: accountId
+            clickAttributionWindow: 7D
+            lineItemIds:
+            - lineItemIds
+            - lineItemIds
+            campaignSubType: auctionAndPreferred
+            endDate: 2000-01-23T04:56:07.000+00:00
+            timezone: UTC
+            soldBy: directSold
+            viewAttributionWindow: none
+            campaignIds:
+            - campaignIds
+            - campaignIds
+            metrics:
+            - attributedUnits
+            - attributedUnits
+            startDate: 2000-01-23T04:56:07.000+00:00
+            dimensions:
+            - campaignName
+            - campaignName
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/AttributedTransactionReportResource'
+      type: object
+    AsyncCampaignReportRequest:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value
+      example:
+        data:
+          attributes:
+            clickAttributionWindow: 7D
+            campaignType: sponsoredProducts
+            endDate: 2000-01-23T04:56:07.000+00:00
+            timezone: timezone
+            format: json
+            salesChannel: offline
+            reportType: summary
+            viewAttributionWindow: 1D
+            ids:
+            - ids
+            - ids
+            metrics:
+            - impressions
+            - impressions
+            id: id
+            startDate: 2000-01-23T04:56:07.000+00:00
+            dimensions:
+            - date
+            - date
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/AsyncCampaignReportResource'
+      type: object
+    AsyncLineItemReportRequest:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value
+      example:
+        data:
+          attributes:
+            clickAttributionWindow: 7D
+            campaignType: sponsoredProducts
+            endDate: 2000-01-23T04:56:07.000+00:00
+            timezone: timezone
+            format: json
+            salesChannel: offline
+            reportType: summary
+            viewAttributionWindow: 1D
+            ids:
+            - ids
+            - ids
+            metrics:
+            - impressions
+            - impressions
+            id: id
+            startDate: 2000-01-23T04:56:07.000+00:00
+            dimensions:
+            - date
+            - date
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/AsyncLineItemReportResource'
+      type: object
+    AsyncRevenueReportRequest:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value
+      example:
+        data:
+          attributes:
+            reportType: advertiser
+            campaignType: sponsoredProducts
+            endDate: 2000-01-23T04:56:07.000+00:00
+            timezone: timezone
+            revenueType: auction
+            format: json
+            ids:
+            - ids
+            - ids
+            id: id
+            metrics:
+            - clicks
+            - clicks
+            salesChannel: offline
+            startDate: 2000-01-23T04:56:07.000+00:00
+            dimensions:
+            - date
+            - date
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/AsyncRevenueReportResource'
+      type: object
+    ExportReportMetaData:
+      description: "Metadata for an async report request: descriptions of the columns\
+        \ and number of rows returned"
+      example:
+        columns:
+        - duration: duration
+          role: Dimension
+          timezone: timezone
+          deprecated: true
+          name: name
+          description: description
+          currency: currency
+          title: title
+          type: Boolean
+        - duration: duration
+          role: Dimension
+          timezone: timezone
+          deprecated: true
+          name: name
+          description: description
+          currency: currency
+          title: title
+          type: Boolean
+        rows: 0
+      properties:
+        columns:
+          items:
+            $ref: '#/components/schemas/ExportReportColumn'
+          type: array
+        rows:
+          format: int32
+          type: integer
+      type: object
+    ReportDataResponseResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         attributes:
-          fileSizeBytes: 0
-          md5Checksum: md5Checksum
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          rowCount: 6
+        - - "{}"
+          - "{}"
+        - - "{}"
+          - "{}"
+        type: type
+      properties:
+        type:
+          type: string
+        attributes:
+          items:
+            items:
+              type: object
+            type: array
+          type: array
+      type: object
+    StatusResponseResource:
+      description: A class that represents a domain entity exposed by an API
+      example:
+        attributes:
+          fileSizeBytes: 6
+          md5CheckSum: md5CheckSum
+          createdAt: createdAt
+          rowCount: 0
+          id: id
           message: message
-          expiresAt: 2000-01-23T04:56:07.000+00:00
+          expiresAt: expiresAt
           status: pending
         id: id
         type: type
       properties:
         attributes:
-          $ref: '#/components/schemas/ReportStatusAttributes'
+          $ref: '#/components/schemas/StatusResponse'
         id:
-          description: The reportId
           type: string
         type:
-          description: Always "RetailMediaReportStatus"
           type: string
-      required:
-      - attributes
-      - id
-      - type
       type: object
-    Error:
-      description: Error
-      properties:
-        code:
-          description: "(REQUIRED) A machine-readable unique error code, expressed\
-            \ as a string value. The format used must be kabab-case."
-          type: string
-        detail:
-          description: (RECOMMENDED) A human-readable explanation specific to this
-            occurrence of the problem.
-          type: string
-        instance:
-          description: (REQUIRED) A URI reference that identifies the specific occurrence
-            of the problem.
-          type: string
-        source:
-          additionalProperties:
-            type: string
-          description: (OPTIONAL) A machine-readable structure to reference to the
-            exact location(s) causing the error(s).
-          type: object
-        stackTrace:
-          description: "(NEVER IN PRODUCTION) A human-readable stacktrace produced\
-            \ by the implementation technology e.g. .Net, Scala, etc"
-          items:
-            type: string
-          type: array
-        title:
-          description: "(RECOMMENDED) A short, human-readable summary of the problem\
-            \ type."
-          type: string
-        traceId:
-          description: (REQUIRED) The Correlation ID provided by the Gateway. It is
-            also a unique identifier for this particular occurrence of the problem.
-          type: string
-        type:
-          description: "Type should be: \"validation\", \"unavailable, \"violation\"\
-            , \"permission\", ..."
-          enum:
-          - access-control
-          - authentication
-          - authorization
-          - availability
-          - deprecation
-          - quota
-          - validation
-          type: string
-      required:
-      - code
-      - instance
-      - traceId
-      - type
-      type: object
-    ReportRequest:
-      description: Report Request
+    CampaignReportResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         attributes:
           reportType: summary
+          accountId: accountId
           clickAttributionWindow: 7D
-          endDate: 2000-01-23
-          format: json
+          campaignType: sponsoredProducts
+          endDate: 2000-01-23T04:56:07.000+00:00
+          timezone: UTC
           viewAttributionWindow: none
+          campaignIds:
+          - campaignIds
+          - campaignIds
+          metrics:
+          - impressions
+          - impressions
+          salesChannel: offline
+          startDate: 2000-01-23T04:56:07.000+00:00
+          dimensions:
+          - date
+          - date
+        type: type
+      properties:
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/CampaignReport'
+      type: object
+    LineItemReportResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          clickAttributionWindow: 7D
+          campaignType: sponsoredProducts
+          lineItemIds:
+          - lineItemIds
+          - lineItemIds
+          endDate: 2000-01-23T04:56:07.000+00:00
+          timezone: timezone
+          salesChannel: offline
+          reportType: summary
+          accountId: accountId
+          viewAttributionWindow: 1D
+          campaignIds:
+          - campaignIds
+          - campaignIds
+          metrics:
+          - impressions
+          - impressions
+          startDate: 2000-01-23T04:56:07.000+00:00
+          dimensions:
+          - date
+          - date
+        type: type
+      properties:
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/LineItemReport'
+      type: object
+    AttributedTransactionReportResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          accountId: accountId
+          clickAttributionWindow: 7D
+          lineItemIds:
+          - lineItemIds
+          - lineItemIds
+          campaignSubType: auctionAndPreferred
+          endDate: 2000-01-23T04:56:07.000+00:00
+          timezone: UTC
+          soldBy: directSold
+          viewAttributionWindow: none
+          campaignIds:
+          - campaignIds
+          - campaignIds
+          metrics:
+          - attributedUnits
+          - attributedUnits
+          startDate: 2000-01-23T04:56:07.000+00:00
+          dimensions:
+          - campaignName
+          - campaignName
+        type: type
+      properties:
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/AttributedTransactionsReport'
+      type: object
+    AsyncCampaignReportResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          clickAttributionWindow: 7D
+          campaignType: sponsoredProducts
+          endDate: 2000-01-23T04:56:07.000+00:00
+          timezone: timezone
+          format: json
+          salesChannel: offline
+          reportType: summary
+          viewAttributionWindow: 1D
           ids:
           - ids
           - ids
-          timeZone: timeZone
+          metrics:
+          - impressions
+          - impressions
           id: id
-          startDate: 2000-01-23
+          startDate: 2000-01-23T04:56:07.000+00:00
+          dimensions:
+          - date
+          - date
         type: type
       properties:
-        attributes:
-          $ref: '#/components/schemas/ReportRequestAttributes'
         type:
-          description: Always "RetailMediaReportRequest"
           type: string
+        attributes:
+          $ref: '#/components/schemas/AsyncCampaignReport'
+      type: object
+    AsyncLineItemReportResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          clickAttributionWindow: 7D
+          campaignType: sponsoredProducts
+          endDate: 2000-01-23T04:56:07.000+00:00
+          timezone: timezone
+          format: json
+          salesChannel: offline
+          reportType: summary
+          viewAttributionWindow: 1D
+          ids:
+          - ids
+          - ids
+          metrics:
+          - impressions
+          - impressions
+          id: id
+          startDate: 2000-01-23T04:56:07.000+00:00
+          dimensions:
+          - date
+          - date
+        type: type
+      properties:
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/AsyncLineItemReport'
+      type: object
+    AsyncRevenueReportResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          reportType: advertiser
+          campaignType: sponsoredProducts
+          endDate: 2000-01-23T04:56:07.000+00:00
+          timezone: timezone
+          revenueType: auction
+          format: json
+          ids:
+          - ids
+          - ids
+          id: id
+          metrics:
+          - clicks
+          - clicks
+          salesChannel: offline
+          startDate: 2000-01-23T04:56:07.000+00:00
+          dimensions:
+          - date
+          - date
+        type: type
+      properties:
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/AsyncRevenueReport'
+      type: object
+    ExportReportColumn:
+      description: Description of a column from an async report request
+      example:
+        duration: duration
+        role: Dimension
+        timezone: timezone
+        deprecated: true
+        name: name
+        description: description
+        currency: currency
+        title: title
+        type: Boolean
+      properties:
+        name:
+          description: Name of the exported column
+          type: string
+        title:
+          description: Title of the exported column
+          type: string
+        description:
+          description: Description of the exported column
+          type: string
+        type:
+          description: Type of the column
+          enum:
+          - Boolean
+          - Number
+          - Money
+          - String
+          - Date
+          - DateTime
+          - Interval
+          - Duration
+          type: string
+        role:
+          description: Role of the colummn
+          enum:
+          - Dimension
+          - Property
+          - Interval
+          - Metric
+          type: string
+        timezone:
+          description: Timezone of the column
+          type: string
+        duration:
+          description: Duration of the column
+          type: string
+        currency:
+          description: Currency of the column
+          type: string
+        deprecated:
+          description: Flag for deprecated column
+          type: boolean
       required:
-      - attributes
+      - name
+      - role
       - type
       type: object
-    ReportStatusAttributes:
-      description: Report Status Attributes
+    StatusResponse:
+      description: Status of an async report request
       example:
-        fileSizeBytes: 0
-        md5Checksum: md5Checksum
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        rowCount: 6
+        fileSizeBytes: 6
+        md5CheckSum: md5CheckSum
+        createdAt: createdAt
+        rowCount: 0
+        id: id
         message: message
-        expiresAt: 2000-01-23T04:56:07.000+00:00
+        expiresAt: expiresAt
         status: pending
       properties:
-        createdAt:
-          description: Timestamp when the report started to execute
-          format: date-time
-          type: string
-        expiresAt:
-          description: Timestamp when the cached report will expire
-          format: date-time
-          type: string
-        fileSizeBytes:
-          description: "Total size of file, only populated on success"
-          format: int64
-          type: integer
-        md5Checksum:
-          description: "The MD5 checksum of the content, only populated on success"
-          type: string
-        message:
-          description: "Failure message, only populated on failure"
-          type: string
-        rowCount:
-          description: "Rows of data in report, only populated on success"
-          format: int64
-          type: integer
         status:
-          description: "One of \"pending\", \"success\", \"failure\", or \"expired\""
           enum:
           - pending
           - success
           - failure
           - expired
           type: string
-      required:
-      - status
+        rowCount:
+          format: int32
+          type: integer
+        fileSizeBytes:
+          format: int32
+          type: integer
+        md5CheckSum:
+          type: string
+        createdAt:
+          type: string
+        expiresAt:
+          type: string
+        message:
+          type: string
+        id:
+          type: string
       type: object
-    MapString:
-      additionalProperties:
-        type: string
-      description: (OPTIONAL) A machine-readable structure to reference to the exact
-        location(s) causing the error(s).
-      type: object
-    ReportRequestAttributes:
-      description: Report Request Attributes
+      x-criteo-canonical:
+        infoType: entity
+    CampaignReport:
+      description: Campaign report body request
       example:
         reportType: summary
+        accountId: accountId
         clickAttributionWindow: 7D
-        endDate: 2000-01-23
-        format: json
+        campaignType: sponsoredProducts
+        endDate: 2000-01-23T04:56:07.000+00:00
+        timezone: UTC
         viewAttributionWindow: none
-        ids:
-        - ids
-        - ids
-        timeZone: timeZone
-        id: id
-        startDate: 2000-01-23
+        campaignIds:
+        - campaignIds
+        - campaignIds
+        metrics:
+        - impressions
+        - impressions
+        salesChannel: offline
+        startDate: 2000-01-23T04:56:07.000+00:00
+        dimensions:
+        - date
+        - date
       properties:
+        reportType:
+          enum:
+          - summary
+          - pageType
+          - keyword
+          - productCategory
+          - product
+          type: string
+        campaignIds:
+          description: List of campaign Ids to filter
+          items:
+            type: string
+          type: array
+        metrics:
+          description: List of Metrics to report on
+          items:
+            enum:
+            - impressions
+            - clicks
+            - spend
+            - attributedSales
+            - attributedUnits
+            - attributedOrders
+            - ctr
+            - cpc
+            - cpo
+            - cpm
+            - roas
+            - uniqueVisitors
+            - frequency
+            type: string
+          type: array
+        dimensions:
+          description: List of dimensions to report on
+          items:
+            enum:
+            - date
+            - campaignId
+            - campaignName
+            - campaignTypeName
+            - advProductCategory
+            - advProductId
+            - advProductName
+            - brandId
+            - brandName
+            - pageTypeName
+            - keyword
+            - salesChannel
+            type: string
+          type: array
+        accountId:
+          description: Account id to report on
+          type: string
+        startDate:
+          description: Start date
+          format: date-time
+          type: string
+        endDate:
+          description: End Date
+          format: date-time
+          type: string
+        timezone:
+          default: UTC
+          description: "Time zone : see criteo developer portal for supported time\
+            \ zones"
+          type: string
         clickAttributionWindow:
-          description: "Defaults to value from campaign or one of \"7D\", \"14D\"\
-            , or \"30D\". If specified, viewAttributionWindow must also be specified"
+          default: 7D
+          description: Click Attribution Window
           enum:
           - 7D
           - 14D
           - 30D
           type: string
-        endDate:
-          description: "YYYY-MM-DD, must not be before startDate and not more than\
-            \ 100 days later"
-          format: date
-          type: string
-        format:
-          default: json
-          description: "One of \"json\" (default),\"json-compact\",\"json-newline\"\
-            \ or \"csv\""
-          enum:
-          - csv
-          - json
-          - json-compact
-          - json-newline
-          type: string
-        id:
-          description: "The id of the campaign or line item.  Either 'id' or 'ids'\
-            \ must be specified, but not both"
-          type: string
-        ids:
-          description: "The ids of the campaigns or line items.  Either 'id' or 'ids'\
-            \ must be specified, but not both"
-          items:
-            type: string
-          type: array
-        reportType:
-          description: "One of \"summary\", \"keyword\", \"pageType\", \"productCategory\"\
-            , \"product\", or \"attributedTransactions\""
-          enum:
-          - summary
-          - keyword
-          - pageType
-          - productCategory
-          - product
-          - attributedTransactions
-          type: string
-        startDate:
-          description: YYYY-MM-DD
-          format: date
-          type: string
-        timeZone:
-          type: string
         viewAttributionWindow:
-          description: "Defaults to value from campaign or one of \"none\", \"1D\"\
-            , \"7D\", \"14D\", or \"30D\". If specified, must be less than clickAttributionWindow,\
-            \ which must also be specified."
+          default: none
+          description: View Attribution window
           enum:
-          - none
           - 1D
           - 7D
           - 14D
           - 30D
+          - none
+          type: string
+        campaignType:
+          description: Filter the type of campaign to report on
+          enum:
+          - sponsoredProducts
+          - onSiteDisplays
+          type: string
+        salesChannel:
+          description: Filter on the channel of sales
+          enum:
+          - offline
+          - online
+          type: string
+      required:
+      - accountId
+      - endDate
+      - startDate
+      type: object
+    LineItemReport:
+      description: Line item report body request
+      example:
+        clickAttributionWindow: 7D
+        campaignType: sponsoredProducts
+        lineItemIds:
+        - lineItemIds
+        - lineItemIds
+        endDate: 2000-01-23T04:56:07.000+00:00
+        timezone: timezone
+        salesChannel: offline
+        reportType: summary
+        accountId: accountId
+        viewAttributionWindow: 1D
+        campaignIds:
+        - campaignIds
+        - campaignIds
+        metrics:
+        - impressions
+        - impressions
+        startDate: 2000-01-23T04:56:07.000+00:00
+        dimensions:
+        - date
+        - date
+      properties:
+        reportType:
+          enum:
+          - summary
+          - pageType
+          - keyword
+          - productCategory
+          - product
+          type: string
+        lineItemIds:
+          items:
+            type: string
+          type: array
+        campaignIds:
+          items:
+            type: string
+          type: array
+        metrics:
+          items:
+            enum:
+            - impressions
+            - clicks
+            - spend
+            - attributedSales
+            - attributedUnits
+            - attributedOrders
+            - ctr
+            - cpc
+            - cpo
+            - roas
+            - assistedUnits
+            - assistedSales
+            - uniqueVisitors
+            - frequency
+            type: string
+          type: array
+        dimensions:
+          description: List of dimensions to report on
+          items:
+            enum:
+            - date
+            - campaignId
+            - campaignName
+            - campaignTypeName
+            - advProductCategory
+            - advProductId
+            - advProductName
+            - brandId
+            - brandName
+            - lineItemId
+            - lineItemName
+            - retailerId
+            - retailerName
+            - keyword
+            - pageTypeName
+            - salesChannel
+            type: string
+          type: array
+        accountId:
+          type: string
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        timezone:
+          type: string
+        clickAttributionWindow:
+          enum:
+          - 7D
+          - 14D
+          - 30D
+          - none
+          type: string
+        viewAttributionWindow:
+          enum:
+          - 1D
+          - 7D
+          - 14D
+          - 30D
+          - none
+          type: string
+        campaignType:
+          enum:
+          - sponsoredProducts
+          - onSiteDisplays
+          type: string
+        salesChannel:
+          enum:
+          - offline
+          - online
+          type: string
+      required:
+      - accountId
+      - endDate
+      - startDate
+      type: object
+    AttributedTransactionsReport:
+      description: Attributed transactions report body request
+      example:
+        accountId: accountId
+        clickAttributionWindow: 7D
+        lineItemIds:
+        - lineItemIds
+        - lineItemIds
+        campaignSubType: auctionAndPreferred
+        endDate: 2000-01-23T04:56:07.000+00:00
+        timezone: UTC
+        soldBy: directSold
+        viewAttributionWindow: none
+        campaignIds:
+        - campaignIds
+        - campaignIds
+        metrics:
+        - attributedUnits
+        - attributedUnits
+        startDate: 2000-01-23T04:56:07.000+00:00
+        dimensions:
+        - campaignName
+        - campaignName
+      properties:
+        campaignIds:
+          description: Campaign ids to report on
+          items:
+            type: string
+          type: array
+        lineItemIds:
+          description: Line item ids to report on
+          items:
+            type: string
+          type: array
+        dimensions:
+          description: List of dimensions to report on
+          items:
+            enum:
+            - campaignName
+            - campaignId
+            - lineItemId
+            - purchasedDate
+            - purchasedHour
+            - advDate
+            - advHour
+            - daysDifference
+            - lineItemName
+            - advProductId
+            - advProductGtin
+            - advProductMpn
+            - advProductName
+            - advProductCategory
+            - purchasedProductId
+            - purchasedProductGtin
+            - purchasedProductMpn
+            - purchasedProductName
+            - purchasedProductCategory
+            - advEngagement
+            - advToPurchasedProductRelationship
+            - salesChannel
+            - pageTypeName
+            - retailerName
+            - keyword
+            - attributionWindow
+            type: string
+          type: array
+        metrics:
+          description: List of metrics to report on
+          items:
+            enum:
+            - attributedUnits
+            - attributedSales
+            type: string
+          type: array
+        soldBy:
+          description: Filter on the type of seller
+          enum:
+          - directSold
+          - indirectSold
+          - privateMarket
+          type: string
+        campaignSubType:
+          description: Filter on the campaign sub type
+          enum:
+          - auctionAndPreferred
+          - lockout
+          type: string
+        accountId:
+          description: Account id to report on
+          type: string
+        startDate:
+          description: Start date
+          format: date-time
+          type: string
+        endDate:
+          description: End Date
+          format: date-time
+          type: string
+        timezone:
+          default: UTC
+          description: "Time zone : see criteo developer portal for supported time\
+            \ zones"
+          type: string
+        clickAttributionWindow:
+          default: 7D
+          description: Click Attribution Window
+          enum:
+          - 7D
+          - 14D
+          - 30D
+          type: string
+        viewAttributionWindow:
+          default: none
+          description: View Attribution window
+          enum:
+          - 1D
+          - 7D
+          - 14D
+          - 30D
+          - none
+          type: string
+      required:
+      - accountId
+      - endDate
+      - startDate
+      type: object
+    AsyncCampaignReport:
+      description: Campaign report body request
+      example:
+        clickAttributionWindow: 7D
+        campaignType: sponsoredProducts
+        endDate: 2000-01-23T04:56:07.000+00:00
+        timezone: timezone
+        format: json
+        salesChannel: offline
+        reportType: summary
+        viewAttributionWindow: 1D
+        ids:
+        - ids
+        - ids
+        metrics:
+        - impressions
+        - impressions
+        id: id
+        startDate: 2000-01-23T04:56:07.000+00:00
+        dimensions:
+        - date
+        - date
+      properties:
+        metrics:
+          items:
+            enum:
+            - impressions
+            - clicks
+            - spend
+            - attributedSales
+            - attributedUnits
+            - attributedOrders
+            - ctr
+            - cpc
+            - cpo
+            - cpm
+            - roas
+            - uniqueVisitors
+            - frequency
+            type: string
+          type: array
+        dimensions:
+          items:
+            enum:
+            - date
+            - campaignId
+            - campaignName
+            - campaignTypeName
+            - advProductCategory
+            - advProductId
+            - advProductName
+            - brandId
+            - brandName
+            - pageTypeName
+            - keyword
+            - salesChannel
+            type: string
+          type: array
+        clickAttributionWindow:
+          enum:
+          - 7D
+          - 14D
+          - 30D
+          - none
+          type: string
+        viewAttributionWindow:
+          enum:
+          - 1D
+          - 7D
+          - 14D
+          - 30D
+          - none
+          type: string
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        timezone:
+          type: string
+        campaignType:
+          enum:
+          - sponsoredProducts
+          - onSiteDisplays
+          type: string
+        salesChannel:
+          enum:
+          - offline
+          - online
+          type: string
+        format:
+          enum:
+          - json
+          - json-compact
+          - json-newline
+          - csv
+          type: string
+        reportType:
+          enum:
+          - summary
+          - pageType
+          - keyword
+          - productCategory
+          - product
+          - attributedTransactions
+          type: string
+        ids:
+          items:
+            type: string
+          type: array
+        id:
           type: string
       required:
       - endDate
-      - reportType
+      - startDate
+      type: object
+    AsyncLineItemReport:
+      description: Line Item report body request
+      example:
+        clickAttributionWindow: 7D
+        campaignType: sponsoredProducts
+        endDate: 2000-01-23T04:56:07.000+00:00
+        timezone: timezone
+        format: json
+        salesChannel: offline
+        reportType: summary
+        viewAttributionWindow: 1D
+        ids:
+        - ids
+        - ids
+        metrics:
+        - impressions
+        - impressions
+        id: id
+        startDate: 2000-01-23T04:56:07.000+00:00
+        dimensions:
+        - date
+        - date
+      properties:
+        metrics:
+          items:
+            enum:
+            - impressions
+            - clicks
+            - spend
+            - attributedSales
+            - attributedUnits
+            - attributedOrders
+            - ctr
+            - cpc
+            - cpo
+            - roas
+            - assistedUnits
+            - assistedSales
+            - uniqueVisitors
+            - frequency
+            type: string
+          type: array
+        dimensions:
+          items:
+            enum:
+            - date
+            - campaignId
+            - campaignName
+            - campaignTypeName
+            - advProductCategory
+            - advProductId
+            - advProductName
+            - brandId
+            - brandName
+            - lineItemId
+            - lineItemName
+            - retailerId
+            - retailerName
+            - keyword
+            - pageTypeName
+            - salesChannel
+            type: string
+          type: array
+        clickAttributionWindow:
+          enum:
+          - 7D
+          - 14D
+          - 30D
+          - none
+          type: string
+        viewAttributionWindow:
+          enum:
+          - 1D
+          - 7D
+          - 14D
+          - 30D
+          - none
+          type: string
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        timezone:
+          type: string
+        campaignType:
+          enum:
+          - sponsoredProducts
+          - onSiteDisplays
+          type: string
+        salesChannel:
+          enum:
+          - offline
+          - online
+          type: string
+        format:
+          enum:
+          - json
+          - json-compact
+          - json-newline
+          - csv
+          type: string
+        reportType:
+          enum:
+          - summary
+          - pageType
+          - keyword
+          - productCategory
+          - product
+          - attributedTransactions
+          type: string
+        ids:
+          items:
+            type: string
+          type: array
+        id:
+          type: string
+      required:
+      - endDate
+      - startDate
+      type: object
+    AsyncRevenueReport:
+      description: Async Revenue report body request
+      example:
+        reportType: advertiser
+        campaignType: sponsoredProducts
+        endDate: 2000-01-23T04:56:07.000+00:00
+        timezone: timezone
+        revenueType: auction
+        format: json
+        ids:
+        - ids
+        - ids
+        id: id
+        metrics:
+        - clicks
+        - clicks
+        salesChannel: offline
+        startDate: 2000-01-23T04:56:07.000+00:00
+        dimensions:
+        - date
+        - date
+      properties:
+        reportType:
+          enum:
+          - advertiser
+          - environment
+          - pageType
+          - pageCategory
+          - brand
+          type: string
+        revenueType:
+          enum:
+          - auction
+          - preferred
+          type: string
+        ids:
+          items:
+            type: string
+          type: array
+        id:
+          type: string
+        metrics:
+          items:
+            enum:
+            - clicks
+            - spend
+            - attributedOrders
+            - attributedSales
+            - attributedUnits
+            - cpc
+            - cpo
+            - roas
+            - openAuctionRevenue
+            - preferredDealsRevenue
+            - avgCpc
+            - avgCpm
+            type: string
+          type: array
+        dimensions:
+          items:
+            enum:
+            - date
+            - accountId
+            - accountName
+            - environment
+            - advProductCategory
+            - brandId
+            - brandName
+            - pageTypeName
+            type: string
+          type: array
+        format:
+          enum:
+          - json
+          - json-compact
+          - json-newline
+          - csv
+          type: string
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        timezone:
+          type: string
+        campaignType:
+          enum:
+          - sponsoredProducts
+          - onSiteDisplays
+          type: string
+        salesChannel:
+          enum:
+          - offline
+          - online
+          type: string
+      required:
+      - endDate
       - startDate
       type: object
     ProductButtonResponse:
@@ -9161,6 +10130,195 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
+    BalanceResponse:
+      description: Data model for response resource
+      example:
+        data:
+          attributes:
+            endDate: 2000-01-23
+            deposited: 0.8008281904610115
+            spent: 6.027456183070403
+            memo: memo
+            spendType: Onsite
+            remaining: 1.4658129805029452
+            salesForceId: salesForceId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            balanceType: unknown
+            name: name
+            poNumber: poNumber
+            startDate: 2000-01-23
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfBalanceResponse'
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
+    BalanceResponsePagedListResponse:
+      description: Data model for a paged list of response resources
+      example:
+        metadata:
+          currentPageSize: 6
+          previousPage: previousPage
+          nextPage: nextPage
+          totalPages: 5
+          totalItemsAcrossAllPages: 0
+          currentPageIndex: 1
+        data:
+        - attributes:
+            endDate: 2000-01-23
+            deposited: 0.8008281904610115
+            spent: 6.027456183070403
+            memo: memo
+            spendType: Onsite
+            remaining: 1.4658129805029452
+            salesForceId: salesForceId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            balanceType: unknown
+            name: name
+            poNumber: poNumber
+            startDate: 2000-01-23
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        - attributes:
+            endDate: 2000-01-23
+            deposited: 0.8008281904610115
+            spent: 6.027456183070403
+            memo: memo
+            spendType: Onsite
+            remaining: 1.4658129805029452
+            salesForceId: salesForceId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            balanceType: unknown
+            name: name
+            poNumber: poNumber
+            startDate: 2000-01-23
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        metadata:
+          $ref: '#/components/schemas/PageMetadata'
+        data:
+          items:
+            $ref: '#/components/schemas/ResourceOfBalanceResponse'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: false
     ProductButtonRequest:
       description: Data model for an input resource
       example:
@@ -9227,6 +10385,74 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ResourceOfLineItemBidMultipliers'
+      type: object
+      x-nullable: false
+    CreateBalanceRequest:
+      description: Data model for an input resource
+      example:
+        data:
+          attributes:
+            salesForceId: salesForceId
+            endDate: 2000-01-23
+            deposited: 0.8008281904610115
+            name: name
+            memo: memo
+            poNumber: poNumber
+            spendType: Onsite
+            startDate: 2000-01-23
+          id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfCreateBalance'
+      type: object
+      x-nullable: false
+    AddFundsToBalanceRequest:
+      description: Data model for an input resource
+      example:
+        data:
+          attributes:
+            deltaAmount: 0.8008281904610115
+            memo: memo
+            poNumber: poNumber
+          id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfAddFundsToBalance'
+      type: object
+      x-nullable: false
+    ChangeDatesOfBalanceRequest:
+      description: Data model for an input resource
+      example:
+        data:
+          attributes:
+            endDate: 2000-01-23
+            memo: memo
+            startDate: 2000-01-23
+          id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfChangeDatesOfBalance'
+      type: object
+      x-nullable: false
+    UpdateBalanceModelRequest:
+      description: Data model for an input resource
+      example:
+        data:
+          attributes:
+            salesForceId: salesForceId
+            endDate: 2000-01-23
+            name: name
+            memo: memo
+            poNumber: poNumber
+            startDate: 2000-01-23
+          id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfUpdateBalanceModel'
       type: object
       x-nullable: false
     ResourceOfProductButtonResponse:
@@ -9307,6 +10533,37 @@ components:
           type: string
       type: object
       x-nullable: false
+    ResourceOfBalanceResponse:
+      description: Data model for a Resource
+      example:
+        attributes:
+          endDate: 2000-01-23
+          deposited: 0.8008281904610115
+          spent: 6.027456183070403
+          memo: memo
+          spendType: Onsite
+          remaining: 1.4658129805029452
+          salesForceId: salesForceId
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          balanceType: unknown
+          name: name
+          poNumber: poNumber
+          startDate: 2000-01-23
+          status: unknown
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ExternalBalanceResponse'
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          description: Canonical type name of the entity
+          type: string
+      type: object
+      x-nullable: false
     ResourceOfProductButtonRequest:
       description: Data model for a Resource
       example:
@@ -9322,6 +10579,94 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/ExternalProductButtonRequest'
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          description: Canonical type name of the entity
+          type: string
+      type: object
+      x-nullable: false
+    ResourceOfCreateBalance:
+      description: Data model for a Resource
+      example:
+        attributes:
+          salesForceId: salesForceId
+          endDate: 2000-01-23
+          deposited: 0.8008281904610115
+          name: name
+          memo: memo
+          poNumber: poNumber
+          spendType: Onsite
+          startDate: 2000-01-23
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ExternalCreateBalance'
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          description: Canonical type name of the entity
+          type: string
+      type: object
+      x-nullable: false
+    ResourceOfAddFundsToBalance:
+      description: Data model for a Resource
+      example:
+        attributes:
+          deltaAmount: 0.8008281904610115
+          memo: memo
+          poNumber: poNumber
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ExternalAddFundsToBalance'
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          description: Canonical type name of the entity
+          type: string
+      type: object
+      x-nullable: false
+    ResourceOfChangeDatesOfBalance:
+      description: Data model for a Resource
+      example:
+        attributes:
+          endDate: 2000-01-23
+          memo: memo
+          startDate: 2000-01-23
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ExternalChangeDatesOfBalance'
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          description: Canonical type name of the entity
+          type: string
+      type: object
+      x-nullable: false
+    ResourceOfUpdateBalanceModel:
+      description: Data model for a Resource
+      example:
+        attributes:
+          salesForceId: salesForceId
+          endDate: 2000-01-23
+          name: name
+          memo: memo
+          poNumber: poNumber
+          startDate: 2000-01-23
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ExternalUpdateBalanceModel'
         id:
           description: Id of the entity
           type: string
@@ -9420,6 +10765,123 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
+    ExternalBalanceResponse:
+      description: A Retail Media Balance used to determine the funds available for
+        any or all campaigns in an account
+      example:
+        endDate: 2000-01-23
+        deposited: 0.8008281904610115
+        spent: 6.027456183070403
+        memo: memo
+        spendType: Onsite
+        remaining: 1.4658129805029452
+        salesForceId: salesForceId
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        balanceType: unknown
+        name: name
+        poNumber: poNumber
+        startDate: 2000-01-23
+        status: unknown
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        name:
+          description: Name of the balance.
+          type: string
+          x-nullable: false
+        poNumber:
+          description: Purchase Order number.
+          type: string
+          x-nullable: false
+        memo:
+          description: Memo
+          type: string
+          x-nullable: false
+        deposited:
+          description: Amount of billable funds allotted to the balance.
+          format: decimal
+          nullable: true
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        spent:
+          format: decimal
+          nullable: true
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        remaining:
+          format: decimal
+          nullable: true
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        startDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          required:
+          - "true"
+          type: string
+        endDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          type: string
+        status:
+          enum:
+          - unknown
+          - scheduled
+          - active
+          - ended
+          type: string
+          x-nullable: false
+        createdAt:
+          format: date-time
+          type: string
+          x-nullable: false
+        updatedAt:
+          format: date-time
+          type: string
+          x-nullable: false
+        balanceType:
+          description: Type of the balance
+          enum:
+          - unknown
+          - capped
+          - uncapped
+          type: string
+          x-nullable: false
+        salesForceId:
+          description: SalesForceId the balance is linked to.
+          type: string
+          x-nullable: false
+        spendType:
+          description: Spend Type of the balance.
+          enum:
+          - Onsite
+          - Offsite
+          type: string
+          x-nullable: false
+      required:
+      - balanceType
+      - createdAt
+      - deposited
+      - endDate
+      - memo
+      - name
+      - poNumber
+      - remaining
+      - salesForceId
+      - spendType
+      - spent
+      - startDate
+      - status
+      - updatedAt
+      type: object
+      x-nullable: false
     ExternalProductButtonRequest:
       description: The Product Button entity used for input
       example:
@@ -9455,6 +10917,166 @@ components:
       - isMandatory
       - name
       - skus
+      type: object
+      x-nullable: false
+    ExternalCreateBalance:
+      description: An object that represents the available options to set when creating
+        a Retail Media Balance
+      example:
+        salesForceId: salesForceId
+        endDate: 2000-01-23
+        deposited: 0.8008281904610115
+        name: name
+        memo: memo
+        poNumber: poNumber
+        spendType: Onsite
+        startDate: 2000-01-23
+      properties:
+        name:
+          description: Name of the balance.
+          type: string
+          x-nullable: false
+        poNumber:
+          description: Purchase Order number.
+          type: string
+          x-nullable: false
+        deposited:
+          description: Amount of billable funds allotted to the balance.
+          format: decimal
+          nullable: true
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        startDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          required:
+          - "true"
+          type: string
+        endDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          type: string
+        spendType:
+          description: Type of the balance spend.
+          enum:
+          - Onsite
+          - Offsite
+          type: string
+          x-nullable: false
+        memo:
+          description: Memo
+          type: string
+          x-nullable: false
+        salesForceId:
+          description: SalesForceId the balance is linked to.
+          type: string
+          x-nullable: false
+      required:
+      - deposited
+      - endDate
+      - memo
+      - name
+      - salesForceId
+      - spendType
+      - startDate
+      type: object
+      x-nullable: false
+    ExternalAddFundsToBalance:
+      description: An object that represents the available options of adding funds
+        to a balance.
+      example:
+        deltaAmount: 0.8008281904610115
+        memo: memo
+        poNumber: poNumber
+      properties:
+        deltaAmount:
+          description: Amount of billable funds to be added / decreased allotted to
+            the balance.
+          format: double
+          type: number
+          x-nullable: false
+        poNumber:
+          description: Purchase Order number.
+          type: string
+          x-nullable: false
+        memo:
+          description: Memo
+          type: string
+          x-nullable: false
+      required:
+      - deltaAmount
+      - memo
+      type: object
+      x-nullable: false
+    ExternalChangeDatesOfBalance:
+      description: An object that represents the available options to modify schedule
+        of a balance.
+      example:
+        endDate: 2000-01-23
+        memo: memo
+        startDate: 2000-01-23
+      properties:
+        startDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          type: string
+        endDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          type: string
+        memo:
+          description: Memo
+          type: string
+          x-nullable: false
+      required:
+      - endDate
+      - memo
+      - startDate
+      type: object
+      x-nullable: false
+    ExternalUpdateBalanceModel:
+      description: An object that represents the available options to set when updating
+        a Retail Media Balance
+      example:
+        salesForceId: salesForceId
+        endDate: 2000-01-23
+        name: name
+        memo: memo
+        poNumber: poNumber
+        startDate: 2000-01-23
+      properties:
+        name:
+          description: Name of the balance.
+          type: string
+          x-nullable: false
+        poNumber:
+          description: Purchase Order number.
+          type: string
+          x-nullable: false
+        salesForceId:
+          description: SalesForceId the balance is linked to.
+          type: string
+          x-nullable: false
+        startDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          type: string
+        endDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          type: string
+        memo:
+          description: Memo
+          type: string
+          x-nullable: false
       type: object
       x-nullable: false
   securitySchemes:

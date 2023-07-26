@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - RetailMedia
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -15,9 +15,8 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.GlobalBrand;
-import com.criteo.api.retailmedia.preview.model.RetailerBrand;
-import com.criteo.api.retailmedia.preview.model.RetailerCategory;
+import com.criteo.api.retailmedia.preview.model.Brand;
+import com.criteo.api.retailmedia.preview.model.Category;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -60,21 +59,13 @@ public class SkuSlimDataV2 {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-  public static final String SERIALIZED_NAME_RETAILER_CATEGORY = "retailerCategory";
-  @SerializedName(SERIALIZED_NAME_RETAILER_CATEGORY)
-  private RetailerCategory retailerCategory;
+  public static final String SERIALIZED_NAME_CATEGORY = "category";
+  @SerializedName(SERIALIZED_NAME_CATEGORY)
+  private Category category;
 
-  public static final String SERIALIZED_NAME_GLOBAL_CATEGORY_ID = "globalCategoryId";
-  @SerializedName(SERIALIZED_NAME_GLOBAL_CATEGORY_ID)
-  private String globalCategoryId;
-
-  public static final String SERIALIZED_NAME_GLOBAL_BRAND = "globalBrand";
-  @SerializedName(SERIALIZED_NAME_GLOBAL_BRAND)
-  private GlobalBrand globalBrand;
-
-  public static final String SERIALIZED_NAME_RETAILER_BRAND = "retailerBrand";
-  @SerializedName(SERIALIZED_NAME_RETAILER_BRAND)
-  private RetailerBrand retailerBrand;
+  public static final String SERIALIZED_NAME_BRAND = "brand";
+  @SerializedName(SERIALIZED_NAME_BRAND)
+  private Brand brand;
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
@@ -147,91 +138,47 @@ public class SkuSlimDataV2 {
   }
 
 
-  public SkuSlimDataV2 retailerCategory(RetailerCategory retailerCategory) {
+  public SkuSlimDataV2 category(Category category) {
     
-    this.retailerCategory = retailerCategory;
+    this.category = category;
     return this;
   }
 
    /**
-   * Get retailerCategory
-   * @return retailerCategory
+   * Get category
+   * @return category
   **/
   @javax.annotation.Nullable
 
-  public RetailerCategory getRetailerCategory() {
-    return retailerCategory;
+  public Category getCategory() {
+    return category;
   }
 
 
-  public void setRetailerCategory(RetailerCategory retailerCategory) {
-    this.retailerCategory = retailerCategory;
+  public void setCategory(Category category) {
+    this.category = category;
   }
 
 
-  public SkuSlimDataV2 globalCategoryId(String globalCategoryId) {
+  public SkuSlimDataV2 brand(Brand brand) {
     
-    this.globalCategoryId = globalCategoryId;
+    this.brand = brand;
     return this;
   }
 
    /**
-   * The global category Id.
-   * @return globalCategoryId
+   * Get brand
+   * @return brand
   **/
   @javax.annotation.Nullable
 
-  public String getGlobalCategoryId() {
-    return globalCategoryId;
+  public Brand getBrand() {
+    return brand;
   }
 
 
-  public void setGlobalCategoryId(String globalCategoryId) {
-    this.globalCategoryId = globalCategoryId;
-  }
-
-
-  public SkuSlimDataV2 globalBrand(GlobalBrand globalBrand) {
-    
-    this.globalBrand = globalBrand;
-    return this;
-  }
-
-   /**
-   * Get globalBrand
-   * @return globalBrand
-  **/
-  @javax.annotation.Nullable
-
-  public GlobalBrand getGlobalBrand() {
-    return globalBrand;
-  }
-
-
-  public void setGlobalBrand(GlobalBrand globalBrand) {
-    this.globalBrand = globalBrand;
-  }
-
-
-  public SkuSlimDataV2 retailerBrand(RetailerBrand retailerBrand) {
-    
-    this.retailerBrand = retailerBrand;
-    return this;
-  }
-
-   /**
-   * Get retailerBrand
-   * @return retailerBrand
-  **/
-  @javax.annotation.Nullable
-
-  public RetailerBrand getRetailerBrand() {
-    return retailerBrand;
-  }
-
-
-  public void setRetailerBrand(RetailerBrand retailerBrand) {
-    this.retailerBrand = retailerBrand;
+  public void setBrand(Brand brand) {
+    this.brand = brand;
   }
 
 
@@ -242,10 +189,10 @@ public class SkuSlimDataV2 {
   }
 
    /**
-   * The price of the product on the retailer site.
+   * The price of the product on the retailer site. Can be omitted in certain circumstances
    * @return price
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public Double getPrice() {
     return price;
@@ -423,10 +370,8 @@ public class SkuSlimDataV2 {
     SkuSlimDataV2 skuSlimDataV2 = (SkuSlimDataV2) o;
     return Objects.equals(this.name, skuSlimDataV2.name) &&
         Objects.equals(this.description, skuSlimDataV2.description) &&
-        Objects.equals(this.retailerCategory, skuSlimDataV2.retailerCategory) &&
-        Objects.equals(this.globalCategoryId, skuSlimDataV2.globalCategoryId) &&
-        Objects.equals(this.globalBrand, skuSlimDataV2.globalBrand) &&
-        Objects.equals(this.retailerBrand, skuSlimDataV2.retailerBrand) &&
+        Objects.equals(this.category, skuSlimDataV2.category) &&
+        Objects.equals(this.brand, skuSlimDataV2.brand) &&
         Objects.equals(this.price, skuSlimDataV2.price) &&
         Objects.equals(this.isInStock, skuSlimDataV2.isInStock) &&
         Objects.equals(this.gtin, skuSlimDataV2.gtin) &&
@@ -438,7 +383,7 @@ public class SkuSlimDataV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, retailerCategory, globalCategoryId, globalBrand, retailerBrand, price, isInStock, gtin, mpn, imageUrl, updatedAt, additionalProperties);
+    return Objects.hash(name, description, category, brand, price, isInStock, gtin, mpn, imageUrl, updatedAt, additionalProperties);
   }
 
   @Override
@@ -447,10 +392,8 @@ public class SkuSlimDataV2 {
     sb.append("class SkuSlimDataV2 {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    retailerCategory: ").append(toIndentedString(retailerCategory)).append("\n");
-    sb.append("    globalCategoryId: ").append(toIndentedString(globalCategoryId)).append("\n");
-    sb.append("    globalBrand: ").append(toIndentedString(globalBrand)).append("\n");
-    sb.append("    retailerBrand: ").append(toIndentedString(retailerBrand)).append("\n");
+    sb.append("    category: ").append(toIndentedString(category)).append("\n");
+    sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    isInStock: ").append(toIndentedString(isInStock)).append("\n");
     sb.append("    gtin: ").append(toIndentedString(gtin)).append("\n");
@@ -482,10 +425,8 @@ public class SkuSlimDataV2 {
     openapiFields = new HashSet<String>();
     openapiFields.add("name");
     openapiFields.add("description");
-    openapiFields.add("retailerCategory");
-    openapiFields.add("globalCategoryId");
-    openapiFields.add("globalBrand");
-    openapiFields.add("retailerBrand");
+    openapiFields.add("category");
+    openapiFields.add("brand");
     openapiFields.add("price");
     openapiFields.add("isInStock");
     openapiFields.add("gtin");
@@ -525,20 +466,13 @@ public class SkuSlimDataV2 {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      // validate the optional field `retailerCategory`
-      if (jsonObj.get("retailerCategory") != null && !jsonObj.get("retailerCategory").isJsonNull()) {
-        RetailerCategory.validateJsonObject(jsonObj.getAsJsonObject("retailerCategory"));
+      // validate the optional field `category`
+      if (jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) {
+        Category.validateJsonObject(jsonObj.getAsJsonObject("category"));
       }
-      if ((jsonObj.get("globalCategoryId") != null && !jsonObj.get("globalCategoryId").isJsonNull()) && !jsonObj.get("globalCategoryId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `globalCategoryId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("globalCategoryId").toString()));
-      }
-      // validate the optional field `globalBrand`
-      if (jsonObj.get("globalBrand") != null && !jsonObj.get("globalBrand").isJsonNull()) {
-        GlobalBrand.validateJsonObject(jsonObj.getAsJsonObject("globalBrand"));
-      }
-      // validate the optional field `retailerBrand`
-      if (jsonObj.get("retailerBrand") != null && !jsonObj.get("retailerBrand").isJsonNull()) {
-        RetailerBrand.validateJsonObject(jsonObj.getAsJsonObject("retailerBrand"));
+      // validate the optional field `brand`
+      if (jsonObj.get("brand") != null && !jsonObj.get("brand").isJsonNull()) {
+        Brand.validateJsonObject(jsonObj.getAsJsonObject("brand"));
       }
       if ((jsonObj.get("gtin") != null && !jsonObj.get("gtin").isJsonNull()) && !jsonObj.get("gtin").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `gtin` to be a primitive type in the JSON string but got `%s`", jsonObj.get("gtin").toString()));

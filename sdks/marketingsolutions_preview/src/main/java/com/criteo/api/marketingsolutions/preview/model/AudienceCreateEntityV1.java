@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -78,7 +78,7 @@ public class AudienceCreateEntityV1 {
    * Name of the audience
    * @return name
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getName() {
     return name;
@@ -122,7 +122,7 @@ public class AudienceCreateEntityV1 {
    * Advertiser associated to the audience
    * @return advertiserId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getAdvertiserId() {
     return advertiserId;
@@ -144,7 +144,7 @@ public class AudienceCreateEntityV1 {
    * Get algebra
    * @return algebra
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public AlgebraNodeV1 getAlgebra() {
     return algebra;
@@ -260,6 +260,9 @@ public class AudienceCreateEntityV1 {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("advertiserId");
+    openapiRequiredFields.add("algebra");
   }
 
  /**
@@ -274,19 +277,24 @@ public class AudienceCreateEntityV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AudienceCreateEntityV1 is not found in the empty JSON string", AudienceCreateEntityV1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : AudienceCreateEntityV1.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if ((jsonObj.get("advertiserId") != null && !jsonObj.get("advertiserId").isJsonNull()) && !jsonObj.get("advertiserId").isJsonPrimitive()) {
+      if (!jsonObj.get("advertiserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserId").toString()));
       }
-      // validate the optional field `algebra`
-      if (jsonObj.get("algebra") != null && !jsonObj.get("algebra").isJsonNull()) {
-        AlgebraNodeV1.validateJsonObject(jsonObj.getAsJsonObject("algebra"));
-      }
+      // validate the required field `algebra`
+      AlgebraNodeV1.validateJsonObject(jsonObj.getAsJsonObject("algebra"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -49,7 +49,7 @@ import com.criteo.api.marketingsolutions.preview.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RetargetingV1 {
   /**
-   * Gets or Sets visitorsType
+   * Types of visitors.
    */
   @JsonAdapter(VisitorsTypeEnum.Adapter.class)
   public enum VisitorsTypeEnum {
@@ -121,7 +121,7 @@ public class RetargetingV1 {
   }
 
    /**
-   * Get visitorsType
+   * Types of visitors.
    * @return visitorsType
   **/
   @javax.annotation.Nullable
@@ -143,7 +143,7 @@ public class RetargetingV1 {
   }
 
    /**
-   * Get daysSinceLastVisitMin
+   * Minimum number of days since last visit to partner.
    * @return daysSinceLastVisitMin
   **/
   @javax.annotation.Nullable
@@ -165,7 +165,7 @@ public class RetargetingV1 {
   }
 
    /**
-   * Get daysSinceLastVisitMax
+   * Maximum number of days since last visit to partner.
    * @return daysSinceLastVisitMax
   **/
   @javax.annotation.Nullable

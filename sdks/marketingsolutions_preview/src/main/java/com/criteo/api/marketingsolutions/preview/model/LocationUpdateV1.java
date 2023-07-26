@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -60,7 +60,7 @@ public class LocationUpdateV1 {
   private Integer radiusInKm;
 
   /**
-   * Gets or Sets registryType
+   * The kind of Location audience
    */
   @JsonAdapter(RegistryTypeEnum.Adapter.class)
   public enum RegistryTypeEnum {
@@ -126,7 +126,7 @@ public class LocationUpdateV1 {
   }
 
    /**
-   * Get pointsOfInterest
+   * Reach users which have been historically located in the given coordinates
    * @return pointsOfInterest
   **/
   @javax.annotation.Nullable
@@ -170,7 +170,7 @@ public class LocationUpdateV1 {
   }
 
    /**
-   * Get registryType
+   * The kind of Location audience
    * @return registryType
   **/
   @javax.annotation.Nullable

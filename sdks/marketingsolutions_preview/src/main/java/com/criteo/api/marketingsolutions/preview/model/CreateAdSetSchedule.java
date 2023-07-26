@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -70,7 +70,7 @@ public class CreateAdSetSchedule {
    * Get startDate
    * @return startDate
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public OffsetDateTime getStartDate() {
     return startDate;
@@ -202,6 +202,7 @@ public class CreateAdSetSchedule {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("startDate");
   }
 
  /**
@@ -214,6 +215,13 @@ public class CreateAdSetSchedule {
       if (jsonObj == null) {
         if (!CreateAdSetSchedule.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in CreateAdSetSchedule is not found in the empty JSON string", CreateAdSetSchedule.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : CreateAdSetSchedule.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
   }

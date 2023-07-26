@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -114,7 +114,7 @@ public class CampaignApi {
 
     /**
      * Build call for createAdSet
-     * @param createAdSetRequest the ad sets to create (optional)
+     * @param createAdSetRequest the ad sets to create (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -178,6 +178,11 @@ public class CampaignApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createAdSetValidateBeforeCall(CreateAdSetRequest createAdSetRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'createAdSetRequest' is set
+        if (createAdSetRequest == null) {
+            throw new ApiException("Missing the required parameter 'createAdSetRequest' when calling createAdSet(Async)");
+        }
+
         return createAdSetCall(createAdSetRequest, _callback);
 
     }
@@ -185,7 +190,7 @@ public class CampaignApi {
     /**
      * 
      * Create the specified ad set
-     * @param createAdSetRequest the ad sets to create (optional)
+     * @param createAdSetRequest the ad sets to create (required)
      * @return ResponseReadAdSet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -204,7 +209,7 @@ public class CampaignApi {
     /**
      * 
      * Create the specified ad set
-     * @param createAdSetRequest the ad sets to create (optional)
+     * @param createAdSetRequest the ad sets to create (required)
      * @return ApiResponse&lt;ResponseReadAdSet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -224,7 +229,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Create the specified ad set
-     * @param createAdSetRequest the ad sets to create (optional)
+     * @param createAdSetRequest the ad sets to create (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -245,7 +250,7 @@ public class CampaignApi {
     }
     /**
      * Build call for createCampaign
-     * @param createCampaignRequest the campaigns to create (optional)
+     * @param createCampaignRequest the campaigns to create (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -309,6 +314,11 @@ public class CampaignApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createCampaignValidateBeforeCall(CreateCampaignRequest createCampaignRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'createCampaignRequest' is set
+        if (createCampaignRequest == null) {
+            throw new ApiException("Missing the required parameter 'createCampaignRequest' when calling createCampaign(Async)");
+        }
+
         return createCampaignCall(createCampaignRequest, _callback);
 
     }
@@ -316,7 +326,7 @@ public class CampaignApi {
     /**
      * 
      * Create the specified campaign
-     * @param createCampaignRequest the campaigns to create (optional)
+     * @param createCampaignRequest the campaigns to create (required)
      * @return CampaignV23Q1Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -335,7 +345,7 @@ public class CampaignApi {
     /**
      * 
      * Create the specified campaign
-     * @param createCampaignRequest the campaigns to create (optional)
+     * @param createCampaignRequest the campaigns to create (required)
      * @return ApiResponse&lt;CampaignV23Q1Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -355,7 +365,7 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Create the specified campaign
-     * @param createCampaignRequest the campaigns to create (optional)
+     * @param createCampaignRequest the campaigns to create (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -5842,7 +5852,7 @@ public class CampaignApi {
     /**
      * Build call for updateAdSetAudience
      * @param adSetId The ad set ID. (required)
-     * @param adSetAudienceLinkInputEntityV1 Ad set-Audience update request. (optional)
+     * @param adSetAudienceLinkInputEntityV1 Ad set-Audience update request. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -5913,6 +5923,11 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'adSetId' when calling updateAdSetAudience(Async)");
         }
 
+        // verify the required parameter 'adSetAudienceLinkInputEntityV1' is set
+        if (adSetAudienceLinkInputEntityV1 == null) {
+            throw new ApiException("Missing the required parameter 'adSetAudienceLinkInputEntityV1' when calling updateAdSetAudience(Async)");
+        }
+
         return updateAdSetAudienceCall(adSetId, adSetAudienceLinkInputEntityV1, _callback);
 
     }
@@ -5921,7 +5936,7 @@ public class CampaignApi {
      * 
      * Link or unlink an audience with an ad set
      * @param adSetId The ad set ID. (required)
-     * @param adSetAudienceLinkInputEntityV1 Ad set-Audience update request. (optional)
+     * @param adSetAudienceLinkInputEntityV1 Ad set-Audience update request. (required)
      * @return AdSetAudienceLinkEntityV1Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5942,7 +5957,7 @@ public class CampaignApi {
      * 
      * Link or unlink an audience with an ad set
      * @param adSetId The ad set ID. (required)
-     * @param adSetAudienceLinkInputEntityV1 Ad set-Audience update request. (optional)
+     * @param adSetAudienceLinkInputEntityV1 Ad set-Audience update request. (required)
      * @return ApiResponse&lt;AdSetAudienceLinkEntityV1Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5964,7 +5979,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Link or unlink an audience with an ad set
      * @param adSetId The ad set ID. (required)
-     * @param adSetAudienceLinkInputEntityV1 Ad set-Audience update request. (optional)
+     * @param adSetAudienceLinkInputEntityV1 Ad set-Audience update request. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

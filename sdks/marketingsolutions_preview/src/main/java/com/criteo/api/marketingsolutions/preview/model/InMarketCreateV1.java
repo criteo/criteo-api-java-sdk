@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -110,7 +110,7 @@ public class InMarketCreateV1 {
   private Set<BuyingPowerEnum> buyingPower = null;
 
   /**
-   * Gets or Sets gender
+   * Reach people who’ve shown interest in products made for a specific gender
    */
   @JsonAdapter(GenderEnum.Adapter.class)
   public enum GenderEnum {
@@ -231,10 +231,10 @@ public class InMarketCreateV1 {
   }
 
    /**
-   * Get country
+   * Reach people of a specific country
    * @return country
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getCountry() {
     return country;
@@ -261,7 +261,7 @@ public class InMarketCreateV1 {
   }
 
    /**
-   * Get buyingPower
+   * Reach people who frequently purchase high price range items to lower price range items
    * @return buyingPower
   **/
   @javax.annotation.Nullable
@@ -283,7 +283,7 @@ public class InMarketCreateV1 {
   }
 
    /**
-   * Get gender
+   * Reach people who’ve shown interest in products made for a specific gender
    * @return gender
   **/
   @javax.annotation.Nullable
@@ -313,7 +313,7 @@ public class InMarketCreateV1 {
   }
 
    /**
-   * Get interestIds
+   * Reach new people based on their interests
    * @return interestIds
   **/
   @javax.annotation.Nullable
@@ -343,7 +343,7 @@ public class InMarketCreateV1 {
   }
 
    /**
-   * Get brandIds
+   * Choose the brands your segment might be interested in
    * @return brandIds
   **/
   @javax.annotation.Nullable
@@ -373,7 +373,7 @@ public class InMarketCreateV1 {
   }
 
    /**
-   * Get priceRange
+   * Reach people who’ve shown interest in products within a specific price range
    * @return priceRange
   **/
   @javax.annotation.Nullable
@@ -498,6 +498,7 @@ public class InMarketCreateV1 {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("country");
   }
 
  /**
@@ -512,7 +513,14 @@ public class InMarketCreateV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in InMarketCreateV1 is not found in the empty JSON string", InMarketCreateV1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : InMarketCreateV1.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("country").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
       }
       // ensure the optional json data is an array if present

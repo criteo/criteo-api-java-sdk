@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -53,7 +53,7 @@ import com.criteo.api.marketingsolutions.preview.JSON;
 public class HtmlTagWriteAttributes {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<Tag> tags = null;
+  private List<Tag> tags = new ArrayList<>();
 
   public HtmlTagWriteAttributes() {
   }
@@ -65,9 +65,6 @@ public class HtmlTagWriteAttributes {
   }
 
   public HtmlTagWriteAttributes addTagsItem(Tag tagsItem) {
-    if (this.tags == null) {
-      this.tags = new ArrayList<>();
-    }
     this.tags.add(tagsItem);
     return this;
   }
@@ -76,7 +73,7 @@ public class HtmlTagWriteAttributes {
    * An array containing the html tags
    * @return tags
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public List<Tag> getTags() {
     return tags;
@@ -183,6 +180,7 @@ public class HtmlTagWriteAttributes {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("tags");
   }
 
  /**
@@ -197,20 +195,23 @@ public class HtmlTagWriteAttributes {
           throw new IllegalArgumentException(String.format("The required field(s) %s in HtmlTagWriteAttributes is not found in the empty JSON string", HtmlTagWriteAttributes.openapiRequiredFields.toString()));
         }
       }
-      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) {
-        JsonArray jsonArraytags = jsonObj.getAsJsonArray("tags");
-        if (jsonArraytags != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("tags").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
-          }
 
-          // validate the optional field `tags` (array)
-          for (int i = 0; i < jsonArraytags.size(); i++) {
-            Tag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
-          };
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : HtmlTagWriteAttributes.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      // ensure the json data is an array
+      if (!jsonObj.get("tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
+      }
+
+      JsonArray jsonArraytags = jsonObj.getAsJsonArray("tags");
+      // validate the required field `tags` (array)
+      for (int i = 0; i < jsonArraytags.size(); i++) {
+        Tag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

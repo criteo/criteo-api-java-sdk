@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -53,7 +53,7 @@ import com.criteo.api.marketingsolutions.preview.JSON;
 public class ContactlistOperationAttributes {
   public static final String SERIALIZED_NAME_CONTACT_LIST_ID = "contactListId";
   @SerializedName(SERIALIZED_NAME_CONTACT_LIST_ID)
-  private String contactListId;
+  private Integer contactListId;
 
   public static final String SERIALIZED_NAME_OPERATION = "operation";
   @SerializedName(SERIALIZED_NAME_OPERATION)
@@ -82,7 +82,7 @@ public class ContactlistOperationAttributes {
   public ContactlistOperationAttributes() {
   }
 
-  public ContactlistOperationAttributes contactListId(String contactListId) {
+  public ContactlistOperationAttributes contactListId(Integer contactListId) {
     
     this.contactListId = contactListId;
     return this;
@@ -94,12 +94,12 @@ public class ContactlistOperationAttributes {
   **/
   @javax.annotation.Nullable
 
-  public String getContactListId() {
+  public Integer getContactListId() {
     return contactListId;
   }
 
 
-  public void setContactListId(String contactListId) {
+  public void setContactListId(Integer contactListId) {
     this.contactListId = contactListId;
   }
 
@@ -378,9 +378,6 @@ public class ContactlistOperationAttributes {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
-      }
-      if ((jsonObj.get("contactListId") != null && !jsonObj.get("contactListId").isJsonNull()) && !jsonObj.get("contactListId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `contactListId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("contactListId").toString()));
       }
       if (!jsonObj.get("operation").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `operation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operation").toString()));

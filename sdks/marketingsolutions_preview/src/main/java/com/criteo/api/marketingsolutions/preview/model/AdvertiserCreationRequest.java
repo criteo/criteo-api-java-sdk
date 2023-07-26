@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -15,7 +15,7 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.AdvertiserCreationInput;
+import com.criteo.api.marketingsolutions.preview.model.ValueResourceOfAdvertiserCreationInput;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -49,107 +49,14 @@ import com.criteo.api.marketingsolutions.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdvertiserCreationRequest {
-  /**
-   * A string containing the entity type
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    CAMPAIGN("campaign"),
-    
-    ADSET("adset"),
-    
-    AD("ad"),
-    
-    ADVERTISER("advertiser"),
-    
-    AGENCY("agency"),
-    
-    AGENCYADVERTISERLINK("agencyAdvertiserLink"),
-    
-    AGENCYADVERTISERTRANSFERREQUEST("AgencyAdvertiserTransferRequest"),
-    
-    PUBLISHER("publisher"),
-    
-    ADDRESS("address"),
-    
-    CLIENT("client"),
-    
-    CONTACT("contact"),
-    
-    INDUSTRY("industry");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private TypeEnum type;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private AdvertiserCreationInput data;
+  private ValueResourceOfAdvertiserCreationInput data;
 
   public AdvertiserCreationRequest() {
   }
 
-  public AdvertiserCreationRequest type(TypeEnum type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * A string containing the entity type
-   * @return type
-  **/
-  @javax.annotation.Nonnull
-
-  public TypeEnum getType() {
-    return type;
-  }
-
-
-  public void setType(TypeEnum type) {
-    this.type = type;
-  }
-
-
-  public AdvertiserCreationRequest data(AdvertiserCreationInput data) {
+  public AdvertiserCreationRequest data(ValueResourceOfAdvertiserCreationInput data) {
     
     this.data = data;
     return this;
@@ -161,12 +68,12 @@ public class AdvertiserCreationRequest {
   **/
   @javax.annotation.Nullable
 
-  public AdvertiserCreationInput getData() {
+  public ValueResourceOfAdvertiserCreationInput getData() {
     return data;
   }
 
 
-  public void setData(AdvertiserCreationInput data) {
+  public void setData(ValueResourceOfAdvertiserCreationInput data) {
     this.data = data;
   }
 
@@ -225,21 +132,19 @@ public class AdvertiserCreationRequest {
       return false;
     }
     AdvertiserCreationRequest advertiserCreationRequest = (AdvertiserCreationRequest) o;
-    return Objects.equals(this.type, advertiserCreationRequest.type) &&
-        Objects.equals(this.data, advertiserCreationRequest.data)&&
+    return Objects.equals(this.data, advertiserCreationRequest.data)&&
         Objects.equals(this.additionalProperties, advertiserCreationRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, data, additionalProperties);
+    return Objects.hash(data, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvertiserCreationRequest {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -264,12 +169,10 @@ public class AdvertiserCreationRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
     openapiFields.add("data");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("type");
   }
 
  /**
@@ -284,19 +187,9 @@ public class AdvertiserCreationRequest {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AdvertiserCreationRequest is not found in the empty JSON string", AdvertiserCreationRequest.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : AdvertiserCreationRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       // validate the optional field `data`
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        AdvertiserCreationInput.validateJsonObject(jsonObj.getAsJsonObject("data"));
+        ValueResourceOfAdvertiserCreationInput.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
   }
 

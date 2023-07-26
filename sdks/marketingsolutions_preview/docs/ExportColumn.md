@@ -84,6 +84,19 @@ Description of a column from an async report request
 | ADFORMAT | &quot;AdFormat&quot; |
 | DISPLAYSIZE | &quot;DisplaySize&quot; |
 | VIDEOPLAYERRATIO | &quot;VideoPlayerRatio&quot; |
+| TOP30BRANDSBYDISPLAYS | &quot;Top30BrandsByDisplays&quot; |
+| TOP30BRANDSBYCLICKS | &quot;Top30BrandsByClicks&quot; |
+| TOP30BRANDSBYSALES | &quot;Top30BrandsBySales&quot; |
+| TOP30INTERESTSBYDISPLAYS | &quot;Top30InterestsByDisplays&quot; |
+| TOP30INTERESTSBYCLICKS | &quot;Top30InterestsByClicks&quot; |
+| TOP30INTERESTSBYSALES | &quot;Top30InterestsBySales&quot; |
+| COUNTRY | &quot;Country&quot; |
+| REGION | &quot;Region&quot; |
+| POSTALCODE | &quot;PostalCode&quot; |
+| USERBEHAVIOR | &quot;UserBehavior&quot; |
+| ENVIRONMENT | &quot;Environment&quot; |
+| ADCHANNEL | &quot;AdChannel&quot; |
+| ADSOCIALNETWORK | &quot;AdSocialNetwork&quot; |
 
 
 

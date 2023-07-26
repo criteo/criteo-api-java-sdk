@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -60,9 +60,60 @@ public class CreativeWrite {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  /**
+   * The format of the creative  You can use \&quot;Image\&quot;, \&quot; HtmlTag\&quot;, \&quot;Dynamic\&quot; or \&quot;Adaptive\&quot;
+   */
+  @JsonAdapter(FormatEnum.Adapter.class)
+  public enum FormatEnum {
+    IMAGE("Image"),
+    
+    HTMLTAG("HtmlTag"),
+    
+    DYNAMIC("Dynamic"),
+    
+    ADAPTIVE("Adaptive");
+
+    private String value;
+
+    FormatEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static FormatEnum fromValue(String value) {
+      for (FormatEnum b : FormatEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<FormatEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final FormatEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public FormatEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return FormatEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_FORMAT = "format";
   @SerializedName(SERIALIZED_NAME_FORMAT)
-  private String format;
+  private FormatEnum format;
 
   public static final String SERIALIZED_NAME_DATASET_ID = "datasetId";
   @SerializedName(SERIALIZED_NAME_DATASET_ID)
@@ -131,7 +182,7 @@ public class CreativeWrite {
   }
 
 
-  public CreativeWrite format(String format) {
+  public CreativeWrite format(FormatEnum format) {
     
     this.format = format;
     return this;
@@ -141,14 +192,14 @@ public class CreativeWrite {
    * The format of the creative  You can use \&quot;Image\&quot;, \&quot; HtmlTag\&quot;, \&quot;Dynamic\&quot; or \&quot;Adaptive\&quot;
    * @return format
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public String getFormat() {
+  public FormatEnum getFormat() {
     return format;
   }
 
 
-  public void setFormat(String format) {
+  public void setFormat(FormatEnum format) {
     this.format = format;
   }
 
@@ -163,7 +214,7 @@ public class CreativeWrite {
    * Dataset linked to the Creative
    * @return datasetId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getDatasetId() {
     return datasetId;
@@ -380,6 +431,8 @@ public class CreativeWrite {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("name");
+    openapiRequiredFields.add("format");
+    openapiRequiredFields.add("datasetId");
   }
 
  /**
@@ -407,10 +460,10 @@ public class CreativeWrite {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
+      if (!jsonObj.get("format").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
       }
-      if ((jsonObj.get("datasetId") != null && !jsonObj.get("datasetId").isJsonNull()) && !jsonObj.get("datasetId").isJsonPrimitive()) {
+      if (!jsonObj.get("datasetId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `datasetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("datasetId").toString()));
       }
       // validate the optional field `imageWriteAttributes`

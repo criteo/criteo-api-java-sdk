@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -217,7 +217,7 @@ public class CreateAdSet {
    * Name of the ad set
    * @return name
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getName() {
     return name;
@@ -239,7 +239,7 @@ public class CreateAdSet {
    * Dataset id of this ad set
    * @return datasetId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getDatasetId() {
     return datasetId;
@@ -261,7 +261,7 @@ public class CreateAdSet {
    * Campaign id this ad set belongs to
    * @return campaignId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getCampaignId() {
     return campaignId;
@@ -283,7 +283,7 @@ public class CreateAdSet {
    * Objective of the ad set
    * @return objective
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public ObjectiveEnum getObjective() {
     return objective;
@@ -305,7 +305,7 @@ public class CreateAdSet {
    * Get schedule
    * @return schedule
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public CreateAdSetSchedule getSchedule() {
     return schedule;
@@ -327,7 +327,7 @@ public class CreateAdSet {
    * Get bidding
    * @return bidding
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public CreateAdSetBidding getBidding() {
     return bidding;
@@ -349,7 +349,7 @@ public class CreateAdSet {
    * Get targeting
    * @return targeting
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public CreateAdSetTargeting getTargeting() {
     return targeting;
@@ -371,7 +371,7 @@ public class CreateAdSet {
    * Get budget
    * @return budget
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public CreateAdSetBudget getBudget() {
     return budget;
@@ -393,7 +393,7 @@ public class CreateAdSet {
    * The click tracking code associated to this Ad Set.
    * @return trackingCode
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getTrackingCode() {
     return trackingCode;
@@ -415,7 +415,7 @@ public class CreateAdSet {
    * Media type for the ad set
    * @return mediaType
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public MediaTypeEnum getMediaType() {
     return mediaType;
@@ -549,6 +549,16 @@ public class CreateAdSet {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("datasetId");
+    openapiRequiredFields.add("campaignId");
+    openapiRequiredFields.add("objective");
+    openapiRequiredFields.add("schedule");
+    openapiRequiredFields.add("bidding");
+    openapiRequiredFields.add("targeting");
+    openapiRequiredFields.add("budget");
+    openapiRequiredFields.add("trackingCode");
+    openapiRequiredFields.add("mediaType");
   }
 
  /**
@@ -563,38 +573,37 @@ public class CreateAdSet {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CreateAdSet is not found in the empty JSON string", CreateAdSet.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : CreateAdSet.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("datasetId") != null && !jsonObj.get("datasetId").isJsonNull()) && !jsonObj.get("datasetId").isJsonPrimitive()) {
+      if (!jsonObj.get("datasetId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `datasetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("datasetId").toString()));
       }
-      if ((jsonObj.get("campaignId") != null && !jsonObj.get("campaignId").isJsonNull()) && !jsonObj.get("campaignId").isJsonPrimitive()) {
+      if (!jsonObj.get("campaignId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
       }
-      if ((jsonObj.get("objective") != null && !jsonObj.get("objective").isJsonNull()) && !jsonObj.get("objective").isJsonPrimitive()) {
+      if (!jsonObj.get("objective").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `objective` to be a primitive type in the JSON string but got `%s`", jsonObj.get("objective").toString()));
       }
-      // validate the optional field `schedule`
-      if (jsonObj.get("schedule") != null && !jsonObj.get("schedule").isJsonNull()) {
-        CreateAdSetSchedule.validateJsonObject(jsonObj.getAsJsonObject("schedule"));
-      }
-      // validate the optional field `bidding`
-      if (jsonObj.get("bidding") != null && !jsonObj.get("bidding").isJsonNull()) {
-        CreateAdSetBidding.validateJsonObject(jsonObj.getAsJsonObject("bidding"));
-      }
-      // validate the optional field `targeting`
-      if (jsonObj.get("targeting") != null && !jsonObj.get("targeting").isJsonNull()) {
-        CreateAdSetTargeting.validateJsonObject(jsonObj.getAsJsonObject("targeting"));
-      }
-      // validate the optional field `budget`
-      if (jsonObj.get("budget") != null && !jsonObj.get("budget").isJsonNull()) {
-        CreateAdSetBudget.validateJsonObject(jsonObj.getAsJsonObject("budget"));
-      }
-      if ((jsonObj.get("trackingCode") != null && !jsonObj.get("trackingCode").isJsonNull()) && !jsonObj.get("trackingCode").isJsonPrimitive()) {
+      // validate the required field `schedule`
+      CreateAdSetSchedule.validateJsonObject(jsonObj.getAsJsonObject("schedule"));
+      // validate the required field `bidding`
+      CreateAdSetBidding.validateJsonObject(jsonObj.getAsJsonObject("bidding"));
+      // validate the required field `targeting`
+      CreateAdSetTargeting.validateJsonObject(jsonObj.getAsJsonObject("targeting"));
+      // validate the required field `budget`
+      CreateAdSetBudget.validateJsonObject(jsonObj.getAsJsonObject("budget"));
+      if (!jsonObj.get("trackingCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `trackingCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("trackingCode").toString()));
       }
-      if ((jsonObj.get("mediaType") != null && !jsonObj.get("mediaType").isJsonNull()) && !jsonObj.get("mediaType").isJsonPrimitive()) {
+      if (!jsonObj.get("mediaType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mediaType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mediaType").toString()));
       }
   }

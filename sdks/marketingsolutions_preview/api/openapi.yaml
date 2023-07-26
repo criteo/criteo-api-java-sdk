@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  description: Criteo publicly exposed API
+  description: Criteo API - MarketingSolutions
   title: Criteo API
   version: Preview
 servers:
@@ -67,7 +67,7 @@ paths:
       x-accepts: application/json
     get:
       description: Returns the statistics of a contact list segment.
-      operationId: getContactListStatistics
+      operationId: getAudienceSegmentContactListStatistics
       parameters:
       - description: The segment ID.
         explode: false
@@ -134,7 +134,7 @@ paths:
                 data:
                   type: ContactlistAmendment
                   attributes:
-                    contactListId: "12"
+                    contactListId: 12
                     operation: add
                     requestDate: 2018-12-10T10:00:50.0000000+00:00
                     identifierType: madid
@@ -211,7 +211,7 @@ paths:
         required: true
         schema:
           format: int32
-          type: integer
+          type: string
         style: simple
       requestBody:
         content:
@@ -228,13 +228,14 @@ paths:
                 data:
                   type: ContactlistAmendment
                   attributes:
-                    operation: ""
+                    contactListId: 12
+                    operation: add
                     requestDate: 2018-12-10T10:00:50.0000000+00:00
-                    identifierType: ""
-                    nbValidIdentifiers: 0
-                    nbInvalidIdentifiers: 0
+                    identifierType: madid
+                    nbValidIdentifiers: 7343
+                    nbInvalidIdentifiers: 13
                     sampleInvalidIdentifiers:
-                    - ""
+                    - InvalidIdentifier
                 errors: []
                 warnings: []
               schema:
@@ -277,7 +278,10 @@ paths:
         name: limit
         required: false
         schema:
+          default: 50
           format: int32
+          maximum: 100
+          minimum: 0
           type: integer
         style: form
       - description: The (zero-based) offset into the collection. The default is 0.
@@ -286,6 +290,7 @@ paths:
         name: offset
         required: false
         schema:
+          default: 0
           format: int32
           type: integer
         style: form
@@ -304,6 +309,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AudienceSearchInputV1'
         description: Audience search filters.
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -361,6 +367,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AudienceBulkCreateInputV1'
         description: ""
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -418,6 +425,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AudienceBulkUpdateInputV1'
         description: ""
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -473,6 +481,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AudienceBulkDeleteInputV1'
         description: ""
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -535,6 +544,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AudienceComputeSizesInputV1'
         description: ""
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -591,6 +601,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AudienceEstimateSizeInputV1'
         description: ""
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -640,7 +651,10 @@ paths:
         name: limit
         required: false
         schema:
+          default: 50
           format: int32
+          maximum: 100
+          minimum: 0
           type: integer
         style: form
       - description: The (zero-based) offset into the collection. The default is 0.
@@ -649,6 +663,7 @@ paths:
         name: offset
         required: false
         schema:
+          default: 0
           format: int32
           type: integer
         style: form
@@ -667,6 +682,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AudienceSegmentSearchInputV1'
         description: Segment search filters.
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -723,6 +739,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AudienceSegmentBulkCreateInputV1'
         description: Segment creation parameter
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -780,6 +797,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AudienceSegmentBulkUpdateInputV1'
         description: Segment Update request
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -819,7 +837,7 @@ paths:
   /preview/marketing-solutions/audience-segments/delete:
     post:
       description: Delete the segments associated to the given audience IDs.
-      operationId: bulkDeleteAudienceSegment
+      operationId: bulkDeleteAudienceSegments
       requestBody:
         content:
           application/json-patch+json:
@@ -835,6 +853,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AudienceSegmentBulkDeleteInputV1'
         description: Segment delete request.
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -891,6 +910,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AudienceSegmentComputeSizesInputV1'
         description: ""
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -947,6 +967,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AudienceSegmentEstimateSizeInputV1'
         description: ""
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -988,7 +1009,7 @@ paths:
       description: Returns a list with all available in-market interests that can
         be used to define an in-market segment. These in-market interests correspond
         to the Google product taxonomy.
-      operationId: getInMarketInterests
+      operationId: getAudienceSegmentsInMarketInterests
       parameters:
       - description: The advertiser ID.
         explode: true
@@ -1038,7 +1059,7 @@ paths:
     get:
       description: Returns a list with all available in-market brands that can be
         used to define an in-market segment.
-      operationId: getInMarketBrands
+      operationId: getAudienceSegmentsInMarketBrands
       parameters:
       - description: The advertiser ID.
         explode: true
@@ -1112,6 +1133,7 @@ paths:
             schema:
               $ref: '#/components/schemas/AdSetAudienceLinkInputEntityV1'
         description: Ad set-Audience update request.
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -1313,6 +1335,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateAdSetRequest'
         description: the ad sets to create
+        required: true
         x-bodyName: adSet
       responses:
         "201":
@@ -1838,6 +1861,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateCampaignRequest'
         description: the campaigns to create
+        required: true
         x-bodyName: marketingCampaign
       responses:
         "201":
@@ -1871,7 +1895,7 @@ paths:
   /preview/advertisers/{advertiser-id}/creatives:
     get:
       description: Get the list of self-services Creatives for a given advertiser
-      operationId: GetCreatives
+      operationId: GetAdvertiserCreatives
       parameters:
       - description: The advertiser identifier.
         explode: false
@@ -1936,7 +1960,7 @@ paths:
       x-accepts: application/json
     post:
       description: Create a Creative
-      operationId: CreateCreative
+      operationId: CreateAdvertiserCreative
       parameters:
       - description: The advertiser identifier.
         explode: false
@@ -1960,6 +1984,7 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/CreativeWriteRequest'
+        required: true
         x-bodyName: request
       responses:
         "201":
@@ -2022,7 +2047,7 @@ paths:
       - Creative
       x-accepts: application/json
     get:
-      description: Get a Creative with its id
+      description: Get a Creative from its id
       operationId: GetCreative
       parameters:
       - description: The creative identifier to retrieve.
@@ -2093,6 +2118,7 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/CreativeWriteRequest'
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -2131,8 +2157,8 @@ paths:
       x-accepts: application/json
   /preview/creatives/{id}/preview:
     post:
-      description: Get the preview of a specific Creative
-      operationId: GetCreativePreviewPost
+      description: Generate a preview of a specific Creative
+      operationId: GenerateCreativePreview
       parameters:
       - description: The Creative identifier to preview.
         explode: false
@@ -2191,7 +2217,7 @@ paths:
   /preview/advertisers/{advertiser-id}/ads:
     get:
       description: Get the list of self-services Ads for a given advertiser
-      operationId: GetAds
+      operationId: GetAdvertiserAds
       parameters:
       - description: The advertiser identifier.
         explode: false
@@ -2256,7 +2282,7 @@ paths:
       x-accepts: application/json
     post:
       description: Create an Ad
-      operationId: CreateAd
+      operationId: CreateAdvertiserAd
       parameters:
       - description: The advertiser identifier.
         explode: false
@@ -2280,6 +2306,7 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/AdWriteRequest'
+        required: true
         x-bodyName: request
       responses:
         "201":
@@ -2343,7 +2370,7 @@ paths:
       - Creative
       x-accepts: application/json
     get:
-      description: Get an Ad with its id
+      description: Get an Ad from its id
       operationId: GetAd
       parameters:
       - description: The ad identifier to retrieve.
@@ -2392,7 +2419,7 @@ paths:
   /preview/advertisers/{advertiser-id}/coupons:
     get:
       description: Get the list of self-services Coupons for a given advertiser
-      operationId: GetCoupons
+      operationId: GetAdvertiserCoupons
       parameters:
       - description: The advertiser identifier.
         explode: false
@@ -2451,7 +2478,7 @@ paths:
       x-accepts: application/json
     post:
       description: Create a Coupon
-      operationId: CreateCoupon
+      operationId: CreateAdvertiserCoupon
       parameters:
       - description: The advertiser identifier.
         explode: false
@@ -2475,6 +2502,7 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/CreateCouponRequest'
+        required: true
         x-bodyName: request
       responses:
         "201":
@@ -2508,7 +2536,7 @@ paths:
   /preview/advertisers/{advertiser-id}/coupons/{id}:
     delete:
       description: Delete a Coupon
-      operationId: DeleteCoupon
+      operationId: DeleteAdvertiserCoupon
       parameters:
       - description: The advertiser identifier.
         explode: false
@@ -2537,8 +2565,8 @@ paths:
       - Creative
       x-accepts: application/json
     get:
-      description: Get a Coupon with its id
-      operationId: GetCoupon
+      description: Get a Coupon from its id
+      operationId: GetAdvertiserCoupon
       parameters:
       - description: The advertiser identifier.
         explode: false
@@ -2586,7 +2614,7 @@ paths:
       x-accepts: application/json
     put:
       description: Edit a specific Coupon
-      operationId: EditCoupon
+      operationId: EditAdvertiserCoupon
       parameters:
       - description: The advertiser identifier.
         explode: false
@@ -2618,6 +2646,7 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/UpdateCouponRequest'
+        required: true
         x-bodyName: request
       responses:
         "200":
@@ -2638,12 +2667,6 @@ paths:
             application/json: {}
             text/json: {}
           description: The request contained invalid parameters.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The request was not properly authorized.
       tags:
       - Creative
       x-content-type: application/json-patch+json
@@ -2651,7 +2674,7 @@ paths:
   /preview/advertisers/{advertiser-id}/coupons/{id}/preview:
     get:
       description: Get the preview of a specific Coupon
-      operationId: GetCouponPreview
+      operationId: GetAdvertiserCouponPreview
       parameters:
       - description: The advertiser identifier.
         explode: false
@@ -2718,7 +2741,7 @@ paths:
   /preview/advertisers/{advertiser-id}/coupons-supported-sizes:
     get:
       description: Get the list of Coupon supported sizes
-      operationId: GetCouponSupportedSizes
+      operationId: GetAdvertiserCouponSupportedSizes
       parameters:
       - description: The advertiser identifier.
         explode: false
@@ -3219,12 +3242,15 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
+                - traceId: 1234e1717d88aa8a
                   traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
-                  instance: /report
+                  instance: ""
                   title: Start date and end date are required.
+                  detail: ""
+                  source: {}
+                  stackTrace: ""
               schema:
                 $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
@@ -3248,13 +3274,15 @@ paths:
             application/json:
               example:
                 errors:
-                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
+                - traceId: 1234e1717d88aa8a
                   traceIdentifier: 1234e1717d88aa8a
-                  type: access-control
-                  code: insufficient-advertiser-permission
-                  instance: /report
-                  title: Insufficient advertiser permission.
-                  detail: You do not have the rights to report on this advertiser.
+                  type: validation
+                  code: required-field
+                  instance: ""
+                  title: Start date and end date are required.
+                  detail: ""
+                  source: {}
+                  stackTrace: ""
               schema:
                 $ref: '#/components/schemas/ProblemsDetails'
             text/plain:
@@ -3315,7 +3343,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceIdentifier: 1234e1717d88aa8a
+                - traceId: 1234e1717d88aa8a
+                  traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
                   instance: ""
@@ -3337,12 +3366,13 @@ paths:
             application/json:
               example:
                 errors:
-                - traceIdentifier: 1234e1717d88aa8a
-                  type: access-control
-                  code: insufficient-advertiser-permission
+                - traceId: 1234e1717d88aa8a
+                  traceIdentifier: 1234e1717d88aa8a
+                  type: validation
+                  code: required-field
                   instance: ""
-                  title: Insufficient advertiser permission.
-                  detail: You do not have the rights to report on this advertiser.
+                  title: Start date and end date are required.
+                  detail: ""
                   source: {}
                   stackTrace: ""
               schema:
@@ -3396,7 +3426,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceIdentifier: 1234e1717d88aa8a
+                - traceId: 1234e1717d88aa8a
+                  traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
                   instance: ""
@@ -3418,12 +3449,13 @@ paths:
             application/json:
               example:
                 errors:
-                - traceIdentifier: 1234e1717d88aa8a
-                  type: access-control
-                  code: insufficient-advertiser-permission
+                - traceId: 1234e1717d88aa8a
+                  traceIdentifier: 1234e1717d88aa8a
+                  type: validation
+                  code: required-field
                   instance: ""
-                  title: Insufficient advertiser permission.
-                  detail: You do not have the rights to report on this advertiser.
+                  title: Start date and end date are required.
+                  detail: ""
                   source: {}
                   stackTrace: ""
               schema:
@@ -3477,7 +3509,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceIdentifier: 1234e1717d88aa8a
+                - traceId: 1234e1717d88aa8a
+                  traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
                   instance: ""
@@ -3499,12 +3532,13 @@ paths:
             application/json:
               example:
                 errors:
-                - traceIdentifier: 1234e1717d88aa8a
-                  type: access-control
-                  code: insufficient-advertiser-permission
+                - traceId: 1234e1717d88aa8a
+                  traceIdentifier: 1234e1717d88aa8a
+                  type: validation
+                  code: required-field
                   instance: ""
-                  title: Insufficient advertiser permission.
-                  detail: You do not have the rights to report on this advertiser.
+                  title: Start date and end date are required.
+                  detail: ""
                   source: {}
                   stackTrace: ""
               schema:
@@ -3558,7 +3592,8 @@ paths:
             application/json:
               example:
                 errors:
-                - traceIdentifier: 1234e1717d88aa8a
+                - traceId: 1234e1717d88aa8a
+                  traceIdentifier: 1234e1717d88aa8a
                   type: validation
                   code: required-field
                   instance: ""
@@ -3580,12 +3615,13 @@ paths:
             application/json:
               example:
                 errors:
-                - traceIdentifier: 1234e1717d88aa8a
-                  type: access-control
-                  code: insufficient-advertiser-permission
+                - traceId: 1234e1717d88aa8a
+                  traceIdentifier: 1234e1717d88aa8a
+                  type: validation
+                  code: required-field
                   instance: ""
-                  title: Insufficient advertiser permission.
-                  detail: You do not have the rights to report on this advertiser.
+                  title: Start date and end date are required.
+                  detail: ""
                   source: {}
                   stackTrace: ""
               schema:
@@ -6800,12 +6836,12 @@ components:
       example:
         data:
           attributes:
-            nbValidIdentifiers: 0
-            nbInvalidIdentifiers: 6
+            nbValidIdentifiers: 6
+            nbInvalidIdentifiers: 1
             sampleInvalidIdentifiers:
             - sampleInvalidIdentifiers
             - sampleInvalidIdentifiers
-            contactListId: contactListId
+            contactListId: 0
             requestDate: 2000-01-23T04:56:07.000+00:00
             identifierType: identifierType
             operation: operation
@@ -6959,7 +6995,6 @@ components:
             - identifiers
             - identifiers
             identifierType: email
-            internalIdentifiers: true
             operation: add
           type: ContactlistAmendment
       properties:
@@ -6991,7 +7026,6 @@ components:
                 value: "43"
               - key: preferredColor
                 value: yellow
-            internalIdentifiers: false
       properties:
         data:
           $ref: '#/components/schemas/ContactlistWithAttributesAmendment'
@@ -7002,12 +7036,12 @@ components:
       description: Response definition of a contactlist operation
       example:
         attributes:
-          nbValidIdentifiers: 0
-          nbInvalidIdentifiers: 6
+          nbValidIdentifiers: 6
+          nbInvalidIdentifiers: 1
           sampleInvalidIdentifiers:
           - sampleInvalidIdentifiers
           - sampleInvalidIdentifiers
-          contactListId: contactListId
+          contactListId: 0
           requestDate: 2000-01-23T04:56:07.000+00:00
           identifierType: identifierType
           operation: operation
@@ -7173,7 +7207,6 @@ components:
           - identifiers
           - identifiers
           identifierType: email
-          internalIdentifiers: true
           operation: add
         type: ContactlistAmendment
       properties:
@@ -7498,19 +7531,16 @@ components:
           items:
             $ref: '#/components/schemas/AudienceEntityV1Resource'
           type: array
-          uniqueItems: false
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     AudienceEntityV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
@@ -7604,19 +7634,16 @@ components:
           items:
             $ref: '#/components/schemas/AudienceEntityV1Resource'
           type: array
-          uniqueItems: false
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     AudienceIdEntityV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
@@ -7676,19 +7703,16 @@ components:
           items:
             $ref: '#/components/schemas/AudienceIdEntityV1Resource'
           type: array
-          uniqueItems: false
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     AudienceSizeEntityV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
@@ -7750,19 +7774,16 @@ components:
           items:
             $ref: '#/components/schemas/AudienceSizeEntityV1Resource'
           type: array
-          uniqueItems: false
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     AudienceSizeEstimationV1Response:
       description: A top-level object that encapsulates a Criteo API response for
@@ -7822,13 +7843,11 @@ components:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
@@ -7836,15 +7855,18 @@ components:
       example:
         data:
         - attributes:
-            prospecting: "{}"
+            prospecting:
+              daysSinceLastVisitMax: 5
+              usersType: Unknown
+              daysSinceLastVisitMin: 5
             description: description
             retargeting:
               visitorsType: Unknown
-              daysSinceLastVisitMax: 9
-              daysSinceLastVisitMin: 7
+              daysSinceLastVisitMax: 2
+              daysSinceLastVisitMin: 3
             type: Unknown
             lookalike:
-              targetSize: 3
+              targetSize: 4
               seedSegmentId: seedSegmentId
             advertiserId: advertiserId
             createdAt: 2000-01-23T04:56:07.000+00:00
@@ -7859,13 +7881,13 @@ components:
             location:
               registryType: Unknown
               pointsOfInterest:
-              - latitude: 5.962133916683182
+              - latitude: 2.3021358869347655
                 name: name
-                longitude: 5.637376656633329
-              - latitude: 5.962133916683182
+                longitude: 7.061401241503109
+              - latitude: 2.3021358869347655
                 name: name
-                longitude: 5.637376656633329
-              radiusInKm: 2
+                longitude: 7.061401241503109
+              radiusInKm: 9
             inMarket:
               country: country
               interestIds:
@@ -7885,15 +7907,18 @@ components:
           id: id
           type: type
         - attributes:
-            prospecting: "{}"
+            prospecting:
+              daysSinceLastVisitMax: 5
+              usersType: Unknown
+              daysSinceLastVisitMin: 5
             description: description
             retargeting:
               visitorsType: Unknown
-              daysSinceLastVisitMax: 9
-              daysSinceLastVisitMin: 7
+              daysSinceLastVisitMax: 2
+              daysSinceLastVisitMin: 3
             type: Unknown
             lookalike:
-              targetSize: 3
+              targetSize: 4
               seedSegmentId: seedSegmentId
             advertiserId: advertiserId
             createdAt: 2000-01-23T04:56:07.000+00:00
@@ -7908,13 +7933,13 @@ components:
             location:
               registryType: Unknown
               pointsOfInterest:
-              - latitude: 5.962133916683182
+              - latitude: 2.3021358869347655
                 name: name
-                longitude: 5.637376656633329
-              - latitude: 5.962133916683182
+                longitude: 7.061401241503109
+              - latitude: 2.3021358869347655
                 name: name
-                longitude: 5.637376656633329
-              radiusInKm: 2
+                longitude: 7.061401241503109
+              radiusInKm: 9
             inMarket:
               country: country
               interestIds:
@@ -7986,19 +8011,16 @@ components:
           items:
             $ref: '#/components/schemas/AudienceSegmentEntityV1Resource'
           type: array
-          uniqueItems: false
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     AudienceSegmentEntityV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
@@ -8006,15 +8028,18 @@ components:
       example:
         data:
         - attributes:
-            prospecting: "{}"
+            prospecting:
+              daysSinceLastVisitMax: 5
+              usersType: Unknown
+              daysSinceLastVisitMin: 5
             description: description
             retargeting:
               visitorsType: Unknown
-              daysSinceLastVisitMax: 9
-              daysSinceLastVisitMin: 7
+              daysSinceLastVisitMax: 2
+              daysSinceLastVisitMin: 3
             type: Unknown
             lookalike:
-              targetSize: 3
+              targetSize: 4
               seedSegmentId: seedSegmentId
             advertiserId: advertiserId
             createdAt: 2000-01-23T04:56:07.000+00:00
@@ -8029,13 +8054,13 @@ components:
             location:
               registryType: Unknown
               pointsOfInterest:
-              - latitude: 5.962133916683182
+              - latitude: 2.3021358869347655
                 name: name
-                longitude: 5.637376656633329
-              - latitude: 5.962133916683182
+                longitude: 7.061401241503109
+              - latitude: 2.3021358869347655
                 name: name
-                longitude: 5.637376656633329
-              radiusInKm: 2
+                longitude: 7.061401241503109
+              radiusInKm: 9
             inMarket:
               country: country
               interestIds:
@@ -8055,15 +8080,18 @@ components:
           id: id
           type: type
         - attributes:
-            prospecting: "{}"
+            prospecting:
+              daysSinceLastVisitMax: 5
+              usersType: Unknown
+              daysSinceLastVisitMin: 5
             description: description
             retargeting:
               visitorsType: Unknown
-              daysSinceLastVisitMax: 9
-              daysSinceLastVisitMin: 7
+              daysSinceLastVisitMax: 2
+              daysSinceLastVisitMin: 3
             type: Unknown
             lookalike:
-              targetSize: 3
+              targetSize: 4
               seedSegmentId: seedSegmentId
             advertiserId: advertiserId
             createdAt: 2000-01-23T04:56:07.000+00:00
@@ -8078,13 +8106,13 @@ components:
             location:
               registryType: Unknown
               pointsOfInterest:
-              - latitude: 5.962133916683182
+              - latitude: 2.3021358869347655
                 name: name
-                longitude: 5.637376656633329
-              - latitude: 5.962133916683182
+                longitude: 7.061401241503109
+              - latitude: 2.3021358869347655
                 name: name
-                longitude: 5.637376656633329
-              radiusInKm: 2
+                longitude: 7.061401241503109
+              radiusInKm: 9
             inMarket:
               country: country
               interestIds:
@@ -8150,19 +8178,16 @@ components:
           items:
             $ref: '#/components/schemas/AudienceSegmentEntityV1Resource'
           type: array
-          uniqueItems: false
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     AudienceSegmentIdEntityV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
@@ -8222,19 +8247,16 @@ components:
           items:
             $ref: '#/components/schemas/AudienceSegmentIdEntityV1Resource'
           type: array
-          uniqueItems: false
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     AudienceSegmentSizeEntityV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
@@ -8296,19 +8318,16 @@ components:
           items:
             $ref: '#/components/schemas/AudienceSegmentSizeEntityV1Resource'
           type: array
-          uniqueItems: false
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     AudienceSegmentSizeEstimationV1Response:
       description: A top-level object that encapsulates a Criteo API response for
@@ -8368,13 +8387,11 @@ components:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     InMarketAudienceSegmentInterestEntityV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
@@ -8436,19 +8453,16 @@ components:
           items:
             $ref: '#/components/schemas/InMarketAudienceSegmentInterestEntityV1Resource'
           type: array
-          uniqueItems: false
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     InMarketAudienceSegmentBrandEntityV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
@@ -8512,19 +8526,16 @@ components:
           items:
             $ref: '#/components/schemas/InMarketAudienceSegmentBrandEntityV1Resource'
           type: array
-          uniqueItems: false
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     ContactListStatisticsEntityV1Response:
       description: A top-level object that encapsulates a Criteo API response for
@@ -8587,13 +8598,11 @@ components:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     AdSetAudienceLinkEntityV1Response:
       description: A top-level object that encapsulates a Criteo API response for
@@ -8654,13 +8663,11 @@ components:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     AudienceSearchInputV1:
       description: Audience search parameter
@@ -8721,7 +8728,6 @@ components:
           items:
             $ref: '#/components/schemas/AudienceCreateEntityV1Resource'
           type: array
-          uniqueItems: false
       type: object
     AudienceBulkUpdateInputV1:
       description: Input to update one or more audiences.
@@ -8762,7 +8768,6 @@ components:
           items:
             $ref: '#/components/schemas/AudienceUpdateEntityV1Resource'
           type: array
-          uniqueItems: false
       type: object
     AudienceBulkDeleteInputV1:
       description: Input to delete one or more audiences.
@@ -8779,7 +8784,6 @@ components:
           items:
             $ref: '#/components/schemas/AudienceDeleteEntityV1Resource'
           type: array
-          uniqueItems: false
       type: object
     AudienceComputeSizesInputV1:
       description: Input to retrieve the size of one or more audiences.
@@ -8796,7 +8800,6 @@ components:
           items:
             $ref: '#/components/schemas/AudienceComputeSizeEntityV1Resource'
           type: array
-          uniqueItems: false
       type: object
     AudienceEstimateSizeInputV1:
       description: Input to estimate the size of an audience.
@@ -8843,22 +8846,25 @@ components:
         data:
         - attributes:
             contactList: "{}"
-            prospecting: "{}"
+            prospecting:
+              daysSinceLastVisitMax: 6
+              usersType: Prospects
+              daysSinceLastVisitMin: 0
             name: name
             description: description
             location:
               pointsOfInterest:
-              - latitude: 5.962133916683182
+              - latitude: 2.3021358869347655
                 name: name
-                longitude: 5.637376656633329
-              - latitude: 5.962133916683182
+                longitude: 7.061401241503109
+              - latitude: 2.3021358869347655
                 name: name
-                longitude: 5.637376656633329
-              radiusInKm: 0
+                longitude: 7.061401241503109
+              radiusInKm: 1
             retargeting:
               visitorsType: All
-              daysSinceLastVisitMax: 1
-              daysSinceLastVisitMin: 6
+              daysSinceLastVisitMax: 5
+              daysSinceLastVisitMin: 5
             inMarket:
               country: country
               interestIds:
@@ -8875,28 +8881,31 @@ components:
               - Low
               - Low
             lookalike:
-              targetSize: 5
+              targetSize: 2
               seedSegmentId: seedSegmentId
             advertiserId: advertiserId
           type: type
         - attributes:
             contactList: "{}"
-            prospecting: "{}"
+            prospecting:
+              daysSinceLastVisitMax: 6
+              usersType: Prospects
+              daysSinceLastVisitMin: 0
             name: name
             description: description
             location:
               pointsOfInterest:
-              - latitude: 5.962133916683182
+              - latitude: 2.3021358869347655
                 name: name
-                longitude: 5.637376656633329
-              - latitude: 5.962133916683182
+                longitude: 7.061401241503109
+              - latitude: 2.3021358869347655
                 name: name
-                longitude: 5.637376656633329
-              radiusInKm: 0
+                longitude: 7.061401241503109
+              radiusInKm: 1
             retargeting:
               visitorsType: All
-              daysSinceLastVisitMax: 1
-              daysSinceLastVisitMin: 6
+              daysSinceLastVisitMax: 5
+              daysSinceLastVisitMin: 5
             inMarket:
               country: country
               interestIds:
@@ -8913,7 +8922,7 @@ components:
               - Low
               - Low
             lookalike:
-              targetSize: 5
+              targetSize: 2
               seedSegmentId: seedSegmentId
             advertiserId: advertiserId
           type: type
@@ -8922,25 +8931,30 @@ components:
           items:
             $ref: '#/components/schemas/AudienceSegmentCreateEntityV1Resource'
           type: array
-          uniqueItems: false
       type: object
     AudienceSegmentBulkUpdateInputV1:
       description: Input to update one or more segments.
       example:
         data:
         - attributes:
+            prospecting:
+              daysSinceLastVisitMax:
+                value: 5
+              usersType: Prospects
+              daysSinceLastVisitMin:
+                value: 5
             name: name
             description:
               value: value
             location:
               registryType: PointOfInterest
               pointsOfInterest:
-              - latitude: 5.962133916683182
+              - latitude: 2.3021358869347655
                 name: name
-                longitude: 5.637376656633329
-              - latitude: 5.962133916683182
+                longitude: 7.061401241503109
+              - latitude: 2.3021358869347655
                 name: name
-                longitude: 5.637376656633329
+                longitude: 7.061401241503109
               radiusInKm: 0
             retargeting:
               visitorsType: All
@@ -8967,18 +8981,24 @@ components:
           id: id
           type: type
         - attributes:
+            prospecting:
+              daysSinceLastVisitMax:
+                value: 5
+              usersType: Prospects
+              daysSinceLastVisitMin:
+                value: 5
             name: name
             description:
               value: value
             location:
               registryType: PointOfInterest
               pointsOfInterest:
-              - latitude: 5.962133916683182
+              - latitude: 2.3021358869347655
                 name: name
-                longitude: 5.637376656633329
-              - latitude: 5.962133916683182
+                longitude: 7.061401241503109
+              - latitude: 2.3021358869347655
                 name: name
-                longitude: 5.637376656633329
+                longitude: 7.061401241503109
               radiusInKm: 0
             retargeting:
               visitorsType: All
@@ -9009,7 +9029,6 @@ components:
           items:
             $ref: '#/components/schemas/AudienceSegmentUpdateEntityV1Resource'
           type: array
-          uniqueItems: false
       type: object
     AudienceSegmentBulkDeleteInputV1:
       description: Input to delete one or more segments.
@@ -9026,7 +9045,6 @@ components:
           items:
             $ref: '#/components/schemas/AudienceSegmentDeleteEntityV1Resource'
           type: array
-          uniqueItems: false
       type: object
     AudienceSegmentComputeSizesInputV1:
       description: Input to retrieve the size of one or more segments.
@@ -9043,21 +9061,20 @@ components:
           items:
             $ref: '#/components/schemas/AudienceSegmentComputeSizeEntityV1Resource'
           type: array
-          uniqueItems: false
       type: object
     AudienceSegmentEstimateSizeInputV1:
-      description: Input to estimate the size of an audience segment.
+      description: Input to estimate the size of an audience segment..
       example:
         data:
           attributes:
             location:
               pointsOfInterest:
-              - latitude: 5.962133916683182
+              - latitude: 2.3021358869347655
                 name: name
-                longitude: 5.637376656633329
-              - latitude: 5.962133916683182
+                longitude: 7.061401241503109
+              - latitude: 2.3021358869347655
                 name: name
-                longitude: 5.637376656633329
+                longitude: 7.061401241503109
               radiusInKm: 0
             inMarket:
               country: country
@@ -9152,7 +9169,7 @@ components:
         type: type
       properties:
         attributes:
-          description: Audience entity only with its ID
+          description: Audience entity with only its ID
           type: object
           x-criteo-canonical:
             infoType: entity
@@ -9217,15 +9234,18 @@ components:
       description: A class that represents a domain entity exposed by an API
       example:
         attributes:
-          prospecting: "{}"
+          prospecting:
+            daysSinceLastVisitMax: 5
+            usersType: Unknown
+            daysSinceLastVisitMin: 5
           description: description
           retargeting:
             visitorsType: Unknown
-            daysSinceLastVisitMax: 9
-            daysSinceLastVisitMin: 7
+            daysSinceLastVisitMax: 2
+            daysSinceLastVisitMin: 3
           type: Unknown
           lookalike:
-            targetSize: 3
+            targetSize: 4
             seedSegmentId: seedSegmentId
           advertiserId: advertiserId
           createdAt: 2000-01-23T04:56:07.000+00:00
@@ -9240,13 +9260,13 @@ components:
           location:
             registryType: Unknown
             pointsOfInterest:
-            - latitude: 5.962133916683182
+            - latitude: 2.3021358869347655
               name: name
-              longitude: 5.637376656633329
-            - latitude: 5.962133916683182
+              longitude: 7.061401241503109
+            - latitude: 2.3021358869347655
               name: name
-              longitude: 5.637376656633329
-            radiusInKm: 2
+              longitude: 7.061401241503109
+            radiusInKm: 9
           inMarket:
             country: country
             interestIds:
@@ -9554,22 +9574,25 @@ components:
       example:
         attributes:
           contactList: "{}"
-          prospecting: "{}"
+          prospecting:
+            daysSinceLastVisitMax: 6
+            usersType: Prospects
+            daysSinceLastVisitMin: 0
           name: name
           description: description
           location:
             pointsOfInterest:
-            - latitude: 5.962133916683182
+            - latitude: 2.3021358869347655
               name: name
-              longitude: 5.637376656633329
-            - latitude: 5.962133916683182
+              longitude: 7.061401241503109
+            - latitude: 2.3021358869347655
               name: name
-              longitude: 5.637376656633329
-            radiusInKm: 0
+              longitude: 7.061401241503109
+            radiusInKm: 1
           retargeting:
             visitorsType: All
-            daysSinceLastVisitMax: 1
-            daysSinceLastVisitMin: 6
+            daysSinceLastVisitMax: 5
+            daysSinceLastVisitMin: 5
           inMarket:
             country: country
             interestIds:
@@ -9586,7 +9609,7 @@ components:
             - Low
             - Low
           lookalike:
-            targetSize: 5
+            targetSize: 2
             seedSegmentId: seedSegmentId
           advertiserId: advertiserId
         type: type
@@ -9600,18 +9623,24 @@ components:
       description: A class that represents a domain entity exposed by an API
       example:
         attributes:
+          prospecting:
+            daysSinceLastVisitMax:
+              value: 5
+            usersType: Prospects
+            daysSinceLastVisitMin:
+              value: 5
           name: name
           description:
             value: value
           location:
             registryType: PointOfInterest
             pointsOfInterest:
-            - latitude: 5.962133916683182
+            - latitude: 2.3021358869347655
               name: name
-              longitude: 5.637376656633329
-            - latitude: 5.962133916683182
+              longitude: 7.061401241503109
+            - latitude: 2.3021358869347655
               name: name
-              longitude: 5.637376656633329
+              longitude: 7.061401241503109
             radiusInKm: 0
           retargeting:
             visitorsType: All
@@ -9693,12 +9722,12 @@ components:
         attributes:
           location:
             pointsOfInterest:
-            - latitude: 5.962133916683182
+            - latitude: 2.3021358869347655
               name: name
-              longitude: 5.637376656633329
-            - latitude: 5.962133916683182
+              longitude: 7.061401241503109
+            - latitude: 2.3021358869347655
               name: name
-              longitude: 5.637376656633329
+              longitude: 7.061401241503109
             radiusInKm: 0
           inMarket:
             country: country
@@ -9775,7 +9804,7 @@ components:
         name: Audience
         version: v1
     AudienceIdEntityV1:
-      description: Audience entity only with its ID
+      description: Audience entity with only its ID
       type: object
       x-criteo-canonical:
         infoType: entity
@@ -9806,15 +9835,18 @@ components:
     AudienceSegmentEntityV1:
       description: Set of rules that defines specific people to target.
       example:
-        prospecting: "{}"
+        prospecting:
+          daysSinceLastVisitMax: 5
+          usersType: Unknown
+          daysSinceLastVisitMin: 5
         description: description
         retargeting:
           visitorsType: Unknown
-          daysSinceLastVisitMax: 9
-          daysSinceLastVisitMin: 7
+          daysSinceLastVisitMax: 2
+          daysSinceLastVisitMin: 3
         type: Unknown
         lookalike:
-          targetSize: 3
+          targetSize: 4
           seedSegmentId: seedSegmentId
         advertiserId: advertiserId
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -9829,13 +9861,13 @@ components:
         location:
           registryType: Unknown
           pointsOfInterest:
-          - latitude: 5.962133916683182
+          - latitude: 2.3021358869347655
             name: name
-            longitude: 5.637376656633329
-          - latitude: 5.962133916683182
+            longitude: 7.061401241503109
+          - latitude: 2.3021358869347655
             name: name
-            longitude: 5.637376656633329
-          radiusInKm: 2
+            longitude: 7.061401241503109
+          radiusInKm: 9
         inMarket:
           country: country
           interestIds:
@@ -9885,8 +9917,7 @@ components:
         inMarket:
           $ref: '#/components/schemas/InMarketV1'
         prospecting:
-          description: Settings to target prospecting users to website visitors.
-          type: object
+          $ref: '#/components/schemas/ProspectingV1'
         contactList:
           $ref: '#/components/schemas/ContactListV1'
         location:
@@ -10021,25 +10052,21 @@ components:
           items:
             type: string
           type: array
-          uniqueItems: false
         advertiserIds:
           description: List of advertiser ids
           items:
             type: string
           type: array
-          uniqueItems: false
         audienceSegmentIds:
           description: List of segment ids (linked to the result audiences)
           items:
             type: string
           type: array
-          uniqueItems: false
         adSetIds:
           description: List of AdSet ids
           items:
             type: string
           type: array
-          uniqueItems: false
       type: object
     AudienceCreateEntityV1:
       description: Audience of people of interest for a marketer.
@@ -10068,6 +10095,10 @@ components:
           type: string
         algebra:
           $ref: '#/components/schemas/AlgebraNodeV1'
+      required:
+      - advertiserId
+      - algebra
+      - name
       type: object
     AudienceUpdateEntityV1:
       description: Audience of people of interest for a marketer.
@@ -10130,6 +10161,9 @@ components:
           type: string
         algebra:
           $ref: '#/components/schemas/AlgebraNodeV1'
+      required:
+      - advertiserId
+      - algebra
       type: object
     AudienceSegmentSearchEntityV1:
       description: "Available filters to perform a search on audience segments. If\
@@ -10150,13 +10184,11 @@ components:
           items:
             type: string
           type: array
-          uniqueItems: false
         advertiserIds:
           description: List of advertiser ids
           items:
             type: string
           type: array
-          uniqueItems: false
         audienceSegmentTypes:
           description: List of segment types
           items:
@@ -10171,28 +10203,30 @@ components:
             - Lookalike
             type: string
           type: array
-          uniqueItems: false
       type: object
     AudienceSegmentCreateEntityV1:
       description: Set of rules that defines specific people to target.
       example:
         contactList: "{}"
-        prospecting: "{}"
+        prospecting:
+          daysSinceLastVisitMax: 6
+          usersType: Prospects
+          daysSinceLastVisitMin: 0
         name: name
         description: description
         location:
           pointsOfInterest:
-          - latitude: 5.962133916683182
+          - latitude: 2.3021358869347655
             name: name
-            longitude: 5.637376656633329
-          - latitude: 5.962133916683182
+            longitude: 7.061401241503109
+          - latitude: 2.3021358869347655
             name: name
-            longitude: 5.637376656633329
-          radiusInKm: 0
+            longitude: 7.061401241503109
+          radiusInKm: 1
         retargeting:
           visitorsType: All
-          daysSinceLastVisitMax: 1
-          daysSinceLastVisitMin: 6
+          daysSinceLastVisitMax: 5
+          daysSinceLastVisitMin: 5
         inMarket:
           country: country
           interestIds:
@@ -10209,7 +10243,7 @@ components:
           - Low
           - Low
         lookalike:
-          targetSize: 5
+          targetSize: 2
           seedSegmentId: seedSegmentId
         advertiserId: advertiserId
       properties:
@@ -10225,8 +10259,7 @@ components:
         inMarket:
           $ref: '#/components/schemas/InMarketCreateV1'
         prospecting:
-          description: Settings to target prospecting users to website visitors.
-          type: object
+          $ref: '#/components/schemas/ProspectingCreateV1'
         contactList:
           description: Settings to target users with your contact lists.
           type: object
@@ -10236,22 +10269,31 @@ components:
           $ref: '#/components/schemas/RetargetingCreateV1'
         lookalike:
           $ref: '#/components/schemas/LookalikeCreateV1'
+      required:
+      - advertiserId
+      - name
       type: object
     AudienceSegmentUpdateEntityV1:
       description: Set of rules that defines specific people to target.
       example:
+        prospecting:
+          daysSinceLastVisitMax:
+            value: 5
+          usersType: Prospects
+          daysSinceLastVisitMin:
+            value: 5
         name: name
         description:
           value: value
         location:
           registryType: PointOfInterest
           pointsOfInterest:
-          - latitude: 5.962133916683182
+          - latitude: 2.3021358869347655
             name: name
-            longitude: 5.637376656633329
-          - latitude: 5.962133916683182
+            longitude: 7.061401241503109
+          - latitude: 2.3021358869347655
             name: name
-            longitude: 5.637376656633329
+            longitude: 7.061401241503109
           radiusInKm: 0
         retargeting:
           visitorsType: All
@@ -10277,6 +10319,7 @@ components:
           targetSize: 5
       properties:
         name:
+          description: Name of the segment
           type: string
         description:
           $ref: '#/components/schemas/NillableString'
@@ -10288,6 +10331,8 @@ components:
           $ref: '#/components/schemas/RetargetingUpdateV1'
         lookalike:
           $ref: '#/components/schemas/LookalikeUpdateV1'
+        prospecting:
+          $ref: '#/components/schemas/ProspectingUpdateV1'
       type: object
       x-criteo-canonical:
         infoType: entity
@@ -10312,12 +10357,12 @@ components:
       example:
         location:
           pointsOfInterest:
-          - latitude: 5.962133916683182
+          - latitude: 2.3021358869347655
             name: name
-            longitude: 5.637376656633329
-          - latitude: 5.962133916683182
+            longitude: 7.061401241503109
+          - latitude: 2.3021358869347655
             name: name
-            longitude: 5.637376656633329
+            longitude: 7.061401241503109
           radiusInKm: 0
         inMarket:
           country: country
@@ -10343,6 +10388,8 @@ components:
           $ref: '#/components/schemas/InMarketSizeEstimationV1'
         location:
           $ref: '#/components/schemas/LocationSizeEstimationV1'
+      required:
+      - advertiserId
       type: object
     AlgebraNodeV1:
       description: Node in the audience algebra definition.
@@ -10360,12 +10407,10 @@ components:
           items:
             $ref: '#/components/schemas/AlgebraNodeV1'
           type: array
-          uniqueItems: false
         or:
           items:
             $ref: '#/components/schemas/AlgebraNodeV1'
           type: array
-          uniqueItems: false
         not:
           $ref: '#/components/schemas/AlgebraNodeV1'
         audienceSegmentId:
@@ -10440,6 +10485,28 @@ components:
       type: object
     ProspectingV1:
       description: Settings to target prospecting users to website visitors.
+      example:
+        daysSinceLastVisitMax: 5
+        usersType: Unknown
+        daysSinceLastVisitMin: 5
+      properties:
+        daysSinceLastVisitMin:
+          description: "When non buyers are included, include users who visited your\
+            \ website before this number of days"
+          format: int32
+          type: integer
+        daysSinceLastVisitMax:
+          description: "When non buyers are included, include users who visited your\
+            \ website after this number of days"
+          format: int32
+          type: integer
+        usersType:
+          description: Type of users to target
+          enum:
+          - Unknown
+          - Prospects
+          - ProspectsOrNonBuyers
+          type: string
       type: object
     ContactListV1:
       description: Settings to target users with your contact lists.
@@ -10455,13 +10522,13 @@ components:
       example:
         registryType: Unknown
         pointsOfInterest:
-        - latitude: 5.962133916683182
+        - latitude: 2.3021358869347655
           name: name
-          longitude: 5.637376656633329
-        - latitude: 5.962133916683182
+          longitude: 7.061401241503109
+        - latitude: 2.3021358869347655
           name: name
-          longitude: 5.637376656633329
-        radiusInKm: 2
+          longitude: 7.061401241503109
+        radiusInKm: 9
       properties:
         pointsOfInterest:
           description: Reach users which have been historically located in the given
@@ -10469,7 +10536,6 @@ components:
           items:
             $ref: '#/components/schemas/PointOfInterestV1'
           type: array
-          uniqueItems: false
         radiusInKm:
           description: The expected maximum distance in kilometers between a user
             and a point of interest
@@ -10518,10 +10584,11 @@ components:
         visit.
       example:
         visitorsType: Unknown
-        daysSinceLastVisitMax: 9
-        daysSinceLastVisitMin: 7
+        daysSinceLastVisitMax: 2
+        daysSinceLastVisitMin: 3
       properties:
         visitorsType:
+          description: Types of visitors.
           enum:
           - Unknown
           - All
@@ -10529,16 +10596,18 @@ components:
           - NonBuyers
           type: string
         daysSinceLastVisitMin:
+          description: Minimum number of days since last visit to partner.
           format: int32
           type: integer
         daysSinceLastVisitMax:
+          description: Maximum number of days since last visit to partner.
           format: int32
           type: integer
       type: object
     LookalikeV1:
       description: Settings to target users that behave like a given seed segment
       example:
-        targetSize: 3
+        targetSize: 4
         seedSegmentId: seedSegmentId
       properties:
         seedSegmentId:
@@ -10579,8 +10648,11 @@ components:
         - Low
       properties:
         country:
+          description: Reach people of a specific country
           type: string
         buyingPower:
+          description: Reach people who frequently purchase high price range items
+            to lower price range items
           items:
             enum:
             - Low
@@ -10591,21 +10663,27 @@ components:
           type: array
           uniqueItems: true
         gender:
+          description: Reach people who’ve shown interest in products made for a specific
+            gender
           enum:
           - Male
           - Female
           type: string
         interestIds:
+          description: Reach new people based on their interests
           items:
             type: string
           type: array
           uniqueItems: true
         brandIds:
+          description: Choose the brands your segment might be interested in
           items:
             type: string
           type: array
           uniqueItems: true
         priceRange:
+          description: Reach people who’ve shown interest in products within a specific
+            price range
           items:
             enum:
             - Low
@@ -10614,9 +10692,34 @@ components:
             type: string
           type: array
           uniqueItems: true
+      required:
+      - country
       type: object
     ProspectingCreateV1:
       description: Settings to target prospecting users to website visitors.
+      example:
+        daysSinceLastVisitMax: 6
+        usersType: Prospects
+        daysSinceLastVisitMin: 0
+      properties:
+        daysSinceLastVisitMin:
+          description: "When non buyers are included, include users who visited your\
+            \ website before this number of days"
+          format: int32
+          type: integer
+        daysSinceLastVisitMax:
+          description: "When non buyers are included, include users who visited your\
+            \ website after this number of days"
+          format: int32
+          type: integer
+        usersType:
+          description: Type of users to target
+          enum:
+          - Prospects
+          - ProspectsOrNonBuyers
+          type: string
+      required:
+      - usersType
       type: object
     ContactListCreateV1:
       description: Settings to target users with your contact lists.
@@ -10625,55 +10728,72 @@ components:
       description: Settings to target users based on their location.
       example:
         pointsOfInterest:
-        - latitude: 5.962133916683182
+        - latitude: 2.3021358869347655
           name: name
-          longitude: 5.637376656633329
-        - latitude: 5.962133916683182
+          longitude: 7.061401241503109
+        - latitude: 2.3021358869347655
           name: name
-          longitude: 5.637376656633329
-        radiusInKm: 0
+          longitude: 7.061401241503109
+        radiusInKm: 1
       properties:
         pointsOfInterest:
+          description: Reach users which have been historically located in the given
+            coordinates
           items:
             $ref: '#/components/schemas/PointOfInterestV1'
           type: array
-          uniqueItems: false
         radiusInKm:
+          description: The expected maximum distance in kilometers between a user
+            and a point of interest
           format: int32
           type: integer
+      required:
+      - pointsOfInterest
+      - radiusInKm
       type: object
     RetargetingCreateV1:
       description: Settings to target users based on its type and days since last
         visit.
       example:
         visitorsType: All
-        daysSinceLastVisitMax: 1
-        daysSinceLastVisitMin: 6
+        daysSinceLastVisitMax: 5
+        daysSinceLastVisitMin: 5
       properties:
         visitorsType:
+          description: Types of visitors.
           enum:
           - All
           - Buyers
           - NonBuyers
           type: string
         daysSinceLastVisitMin:
+          description: Minimum number of days since last visit to partner.
           format: int32
           type: integer
         daysSinceLastVisitMax:
+          description: Maximum number of days since last visit to partner.
           format: int32
           type: integer
+      required:
+      - daysSinceLastVisitMax
+      - daysSinceLastVisitMin
+      - visitorsType
       type: object
     LookalikeCreateV1:
       description: Settings to target users close to a given seed segment.
       example:
-        targetSize: 5
+        targetSize: 2
         seedSegmentId: seedSegmentId
       properties:
         seedSegmentId:
+          description: Segment from which the Lookalike segment will be generated
           type: string
         targetSize:
+          description: Desired size of the generated Lookalike segment
           format: int64
           type: integer
+      required:
+      - seedSegmentId
       type: object
     InMarketUpdateV1:
       description: Settings to target users based on high shopping intents and demographics.
@@ -10695,8 +10815,11 @@ components:
         - Low
       properties:
         country:
+          description: Reach people of a specific country
           type: string
         buyingPower:
+          description: Reach people who frequently purchase high price range items
+            to lower price range items
           items:
             enum:
             - Low
@@ -10709,16 +10832,20 @@ components:
         gender:
           $ref: '#/components/schemas/NillableGenderV1'
         interestIds:
+          description: Reach new people based on their interests
           items:
             type: string
           type: array
           uniqueItems: true
         brandIds:
+          description: Choose the brands your segment might be interested in
           items:
             type: string
           type: array
           uniqueItems: true
         priceRange:
+          description: Reach people who’ve shown interest in products within a specific
+            price range
           items:
             enum:
             - Low
@@ -10733,24 +10860,26 @@ components:
       example:
         registryType: PointOfInterest
         pointsOfInterest:
-        - latitude: 5.962133916683182
+        - latitude: 2.3021358869347655
           name: name
-          longitude: 5.637376656633329
-        - latitude: 5.962133916683182
+          longitude: 7.061401241503109
+        - latitude: 2.3021358869347655
           name: name
-          longitude: 5.637376656633329
+          longitude: 7.061401241503109
         radiusInKm: 0
       properties:
         pointsOfInterest:
+          description: Reach users which have been historically located in the given
+            coordinates
           items:
             $ref: '#/components/schemas/PointOfInterestV1'
           type: array
-          uniqueItems: false
         radiusInKm:
           description: Radius in kilometers
           format: int32
           type: integer
         registryType:
+          description: The kind of Location audience
           enum:
           - PointOfInterest
           type: string
@@ -10764,15 +10893,18 @@ components:
         daysSinceLastVisitMin: 6
       properties:
         visitorsType:
+          description: Types of visitors.
           enum:
           - All
           - Buyers
           - NonBuyers
           type: string
         daysSinceLastVisitMin:
+          description: Minimum number of days since last visit to partner.
           format: int32
           type: integer
         daysSinceLastVisitMax:
+          description: Maximum number of days since last visit to partner.
           format: int32
           type: integer
       type: object
@@ -10782,8 +10914,29 @@ components:
         targetSize: 5
       properties:
         targetSize:
+          description: Desired size of the generated Lookalike segment
           format: int64
           type: integer
+      type: object
+    ProspectingUpdateV1:
+      description: Settings to target prospecting users to website visitors.
+      example:
+        daysSinceLastVisitMax:
+          value: 5
+        usersType: Prospects
+        daysSinceLastVisitMin:
+          value: 5
+      properties:
+        daysSinceLastVisitMin:
+          $ref: '#/components/schemas/NillableInt32'
+        daysSinceLastVisitMax:
+          $ref: '#/components/schemas/NillableInt32'
+        usersType:
+          description: Type of users to target
+          enum:
+          - Prospects
+          - ProspectsOrNonBuyers
+          type: string
       type: object
     InMarketSizeEstimationV1:
       description: Settings to target users based on high shopping intents and demographics.
@@ -10839,35 +10992,39 @@ components:
             type: string
           type: array
           uniqueItems: true
+      required:
+      - country
       type: object
     LocationSizeEstimationV1:
       description: Settings to define your audience based on their location.
       example:
         pointsOfInterest:
-        - latitude: 5.962133916683182
+        - latitude: 2.3021358869347655
           name: name
-          longitude: 5.637376656633329
-        - latitude: 5.962133916683182
+          longitude: 7.061401241503109
+        - latitude: 2.3021358869347655
           name: name
-          longitude: 5.637376656633329
+          longitude: 7.061401241503109
         radiusInKm: 0
       properties:
         pointsOfInterest:
           items:
             $ref: '#/components/schemas/PointOfInterestV1'
           type: array
-          uniqueItems: false
         radiusInKm:
           format: int32
           type: integer
+      required:
+      - pointsOfInterest
+      - radiusInKm
       type: object
     PointOfInterestV1:
       description: "Named coordinate defined by its latitude and longitude.\r\nLatitude\
         \ and Longitude are rounded at 5 decimals."
       example:
-        latitude: 5.962133916683182
+        latitude: 2.3021358869347655
         name: name
-        longitude: 5.637376656633329
+        longitude: 7.061401241503109
       properties:
         name:
           description: Name of the point of interest
@@ -10893,6 +11050,17 @@ components:
           - Male
           - Female
           type: string
+      type: object
+    NillableInt32:
+      description: Placeholder object for value for which "null" is a valid business
+        value
+      example:
+        value: 5
+      properties:
+        value:
+          description: The value. If missing or null the value is set to "null"
+          format: int32
+          type: integer
       type: object
     ResponseReadAdSetV23Q1:
       description: output resource
@@ -13218,6 +13386,17 @@ components:
           - display
           - video
           type: string
+      required:
+      - bidding
+      - budget
+      - campaignId
+      - datasetId
+      - mediaType
+      - name
+      - objective
+      - schedule
+      - targeting
+      - trackingCode
       type: object
     PatchAdSetDisplayMultiplier:
       description: Display Multiplier to update for a given combination of Ad Set
@@ -13269,6 +13448,11 @@ components:
           type: string
         spendLimit:
           $ref: '#/components/schemas/CreateCampaignSpendLimit'
+      required:
+      - advertiserId
+      - goal
+      - name
+      - spendLimit
       type: object
     PatchCampaign:
       description: campaign patch model
@@ -13685,6 +13869,8 @@ components:
         endDate:
           format: date-time
           type: string
+      required:
+      - startDate
       type: object
     CreateAdSetBidding:
       description: ad set bidding create model
@@ -13710,6 +13896,8 @@ components:
           - CPV
           - dailyBudget
           type: string
+      required:
+      - costController
       type: object
     CreateAdSetTargeting:
       description: Targeting configuration of the ad set
@@ -13750,6 +13938,8 @@ components:
           $ref: '#/components/schemas/CreateAdSetGeoLocation'
         frequencyCapping:
           $ref: '#/components/schemas/AdSetFrequencyCapping'
+      required:
+      - frequencyCapping
       type: object
     CreateAdSetBudget:
       description: ad set budget create model
@@ -13791,6 +13981,8 @@ components:
         budgetAmount:
           format: double
           type: number
+      required:
+      - budgetStrategy
       type: object
     CreateCampaignSpendLimit:
       description: campaign spend limit create model
@@ -13817,6 +14009,8 @@ components:
           description: The amount of the spend limit. null if spendLimitType is uncapped.
           format: double
           type: number
+      required:
+      - spendLimitType
       type: object
     PatchCampaignSpendLimit:
       description: campaign spend limit model
@@ -14972,7 +15166,7 @@ components:
                   width: 0
                   height: 6
             name: name
-            format: format
+            format: Image
             imageWriteAttributes:
               base64Strings:
               - base64Strings
@@ -14987,7 +15181,7 @@ components:
               callsToAction:
               - callsToAction
               - callsToAction
-              productImageDisplay: productImageDisplay
+              productImageDisplay: ShowFullImage
             description: description
             datasetId: datasetId
             adaptiveWriteAttributes:
@@ -14996,7 +15190,7 @@ components:
               - videoBase64Strings
               logoBase64String: logoBase64String
               descriptionFont: descriptionFont
-              imageDisplay: imageDisplay
+              imageDisplay: ShowFullImage
               headlineFont: headlineFont
               descriptionText: descriptionText
               imageSetsBase64:
@@ -15009,8 +15203,8 @@ components:
                 - imageBase64Strings
                 headlineText: headlineText
               layouts:
-              - layouts
-              - layouts
+              - Editorial
+              - Editorial
               callsToAction:
               - callsToAction
               - callsToAction
@@ -15034,7 +15228,7 @@ components:
       example:
         data:
           attributes:
-            inventoryType: inventoryType
+            inventoryType: Display
             endDate: endDate
             name: name
             adSetId: adSetId
@@ -15052,7 +15246,7 @@ components:
       example:
         data:
           attributes:
-            showEvery: 1
+            showEvery: 2
             images:
             - slideBase64Strings:
               - slideBase64Strings
@@ -15067,11 +15261,11 @@ components:
             endDate: endDate
             name: name
             adSetId: adSetId
-            format: format
-            rotationsNumber: 5
+            format: FullFrame
+            rotationsNumber: 6
             description: description
             landingPageUrl: landingPageUrl
-            showDuration: 5
+            showDuration: 3
             startDate: startDate
           id: id
           type: type
@@ -15281,7 +15475,7 @@ components:
                 width: 0
                 height: 6
           name: name
-          format: format
+          format: Image
           imageWriteAttributes:
             base64Strings:
             - base64Strings
@@ -15296,7 +15490,7 @@ components:
             callsToAction:
             - callsToAction
             - callsToAction
-            productImageDisplay: productImageDisplay
+            productImageDisplay: ShowFullImage
           description: description
           datasetId: datasetId
           adaptiveWriteAttributes:
@@ -15305,7 +15499,7 @@ components:
             - videoBase64Strings
             logoBase64String: logoBase64String
             descriptionFont: descriptionFont
-            imageDisplay: imageDisplay
+            imageDisplay: ShowFullImage
             headlineFont: headlineFont
             descriptionText: descriptionText
             imageSetsBase64:
@@ -15318,8 +15512,8 @@ components:
               - imageBase64Strings
               headlineText: headlineText
             layouts:
-            - layouts
-            - layouts
+            - Editorial
+            - Editorial
             callsToAction:
             - callsToAction
             - callsToAction
@@ -15346,7 +15540,7 @@ components:
       description: Data model for a Resource
       example:
         attributes:
-          inventoryType: inventoryType
+          inventoryType: Display
           endDate: endDate
           name: name
           adSetId: adSetId
@@ -15367,7 +15561,7 @@ components:
       description: Data model for a Resource
       example:
         attributes:
-          showEvery: 1
+          showEvery: 2
           images:
           - slideBase64Strings:
             - slideBase64Strings
@@ -15382,11 +15576,11 @@ components:
           endDate: endDate
           name: name
           adSetId: adSetId
-          format: format
-          rotationsNumber: 5
+          format: FullFrame
+          rotationsNumber: 6
           description: description
           landingPageUrl: landingPageUrl
-          showDuration: 5
+          showDuration: 3
           startDate: startDate
         id: id
         type: type
@@ -15696,7 +15890,7 @@ components:
               width: 0
               height: 6
         name: name
-        format: format
+        format: Image
         imageWriteAttributes:
           base64Strings:
           - base64Strings
@@ -15711,7 +15905,7 @@ components:
           callsToAction:
           - callsToAction
           - callsToAction
-          productImageDisplay: productImageDisplay
+          productImageDisplay: ShowFullImage
         description: description
         datasetId: datasetId
         adaptiveWriteAttributes:
@@ -15720,7 +15914,7 @@ components:
           - videoBase64Strings
           logoBase64String: logoBase64String
           descriptionFont: descriptionFont
-          imageDisplay: imageDisplay
+          imageDisplay: ShowFullImage
           headlineFont: headlineFont
           descriptionText: descriptionText
           imageSetsBase64:
@@ -15733,8 +15927,8 @@ components:
             - imageBase64Strings
             headlineText: headlineText
           layouts:
-          - layouts
-          - layouts
+          - Editorial
+          - Editorial
           callsToAction:
           - callsToAction
           - callsToAction
@@ -15757,6 +15951,11 @@ components:
         format:
           description: "The format of the creative\r\nYou can use \"Image\", \" HtmlTag\"\
             , \"Dynamic\" or \"Adaptive\""
+          enum:
+          - Image
+          - HtmlTag
+          - Dynamic
+          - Adaptive
           type: string
         datasetId:
           description: Dataset linked to the Creative
@@ -15770,12 +15969,14 @@ components:
         adaptiveWriteAttributes:
           $ref: '#/components/schemas/AdaptiveWriteAttributes'
       required:
+      - datasetId
+      - format
       - name
       type: object
     AdWrite:
       description: Entity to create or update an ad
       example:
-        inventoryType: inventoryType
+        inventoryType: Display
         endDate: endDate
         name: name
         adSetId: adSetId
@@ -15800,6 +16001,9 @@ components:
             values are "Display" and "Native". This is optional since this doesn't
             make sense for every creative type but will throw an error if not set
             for a dynamic creative.
+          enum:
+          - Display
+          - Native
           type: string
         startDate:
           description: "The date when the ad will be launched\r\nString must be in\
@@ -15819,7 +16023,7 @@ components:
     CreateCoupon:
       description: Entity to create a Coupon
       example:
-        showEvery: 1
+        showEvery: 2
         images:
         - slideBase64Strings:
           - slideBase64Strings
@@ -15834,11 +16038,11 @@ components:
         endDate: endDate
         name: name
         adSetId: adSetId
-        format: format
-        rotationsNumber: 5
+        format: FullFrame
+        rotationsNumber: 6
         description: description
         landingPageUrl: landingPageUrl
-        showDuration: 5
+        showDuration: 3
         startDate: startDate
       properties:
         name:
@@ -15865,6 +16069,9 @@ components:
         format:
           description: "Format of the Coupon, it can have two values: \"FullFrame\"\
             \ or \"LogoZone\""
+          enum:
+          - FullFrame
+          - LogoZone
           type: string
         images:
           description: List of slides containing the images as a base-64 encoded string
@@ -15875,14 +16082,20 @@ components:
         showEvery:
           description: Show the Coupon every N seconds (between 1 and 10)
           format: int32
+          maximum: 10
+          minimum: 1
           type: integer
         showDuration:
           description: Show Coupon for a duration of N seconds (between 1 and 5)
           format: int32
+          maximum: 5
+          minimum: 1
           type: integer
         rotationsNumber:
           description: Number of rotations for the Coupons (from 1 to 10 times)
           format: int32
+          maximum: 10
+          minimum: 1
           type: integer
       required:
       - adSetId
@@ -16174,12 +16387,16 @@ components:
           description: Array of images as a base-64 encoded string
           items:
             type: string
+          minItems: 1
           type: array
           uniqueItems: false
         landingPageUrl:
           description: Web redirection of the landing page url
           format: uri
           type: string
+      required:
+      - base64Strings
+      - landingPageUrl
       type: object
     HtmlTagWriteAttributes:
       description: The attributes specific to create or update a HtmlTag creative
@@ -16200,6 +16417,8 @@ components:
             $ref: '#/components/schemas/Tag'
           type: array
           uniqueItems: false
+      required:
+      - tags
       type: object
     DynamicWriteAttributes:
       description: The attributes specific to create or update a Dynamic creative
@@ -16212,21 +16431,21 @@ components:
         callsToAction:
         - callsToAction
         - callsToAction
-        productImageDisplay: productImageDisplay
+        productImageDisplay: ShowFullImage
       properties:
         logoBase64String:
           description: Logo image as a base-64 encoded string
           type: string
         creativeBackgroundColor:
-          description: "Color of the creative's background\r\nValid hexadecimal color\
-            \ (e.g. \"AB00FF\")"
+          description: "Color of the creative's background\r\nValid hexadecimal RGB\
+            \ color (e.g. \"AB00FF\")"
           type: string
         bodyTextColor:
-          description: "Color of the creative's body text\r\nValid hexadecimal color\
-            \ (e.g. \"AB00FF\")"
+          description: "Color of the creative's body text\r\nValid hexadecimal RGB\
+            \ color (e.g. \"AB00FF\")"
           type: string
         pricesColor:
-          description: "Color of the creative's prices\r\nValid hexadecimal color\
+          description: "Color of the creative's prices\r\nValid hexadecimal RGB color\
             \ (e.g. \"AB00FF\")"
           type: string
         primaryFont:
@@ -16238,6 +16457,7 @@ components:
             \ “Buy now” or “Go!”."
           items:
             type: string
+          minItems: 1
           type: array
           uniqueItems: false
         productImageDisplay:
@@ -16246,7 +16466,17 @@ components:
             \nspace (\"ShowFullImage\") or whether they should fill that space (\"\
             ZoomOnImage\"). If you choose ZoomOnImage, there may be some\r\nimage\
             \ cropping."
+          enum:
+          - ShowFullImage
+          - ZoomOnImage
           type: string
+      required:
+      - bodyTextColor
+      - callsToAction
+      - creativeBackgrounColor
+      - logoBase64String
+      - pricesColor
+      - productImageDisplay
       type: object
     AdaptiveWriteAttributes:
       description: The attributes specific to create or update an Adaptive creative
@@ -16256,7 +16486,7 @@ components:
         - videoBase64Strings
         logoBase64String: logoBase64String
         descriptionFont: descriptionFont
-        imageDisplay: imageDisplay
+        imageDisplay: ShowFullImage
         headlineFont: headlineFont
         descriptionText: descriptionText
         imageSetsBase64:
@@ -16269,8 +16499,8 @@ components:
           - imageBase64Strings
           headlineText: headlineText
         layouts:
-        - layouts
-        - layouts
+        - Editorial
+        - Editorial
         callsToAction:
         - callsToAction
         - callsToAction
@@ -16289,7 +16519,12 @@ components:
             \ of the following values: \"Editorial\", “Montage“, \"InBannerVideo\"\
             ."
           items:
+            enum:
+            - Editorial
+            - Montage
+            - InBannerVideo
             type: string
+          minItems: 1
           type: array
           uniqueItems: false
         logoBase64String:
@@ -16313,6 +16548,7 @@ components:
             \ “Buy now” or “Go!”."
           items:
             type: string
+          minItems: 1
           type: array
           uniqueItems: false
         colors:
@@ -16329,6 +16565,9 @@ components:
             \ whether your image set should fit inside the allocated\r\nspace (\"\
             ShowFullImage\") or whether it should fill that space (\"ZoomOnImage\"\
             ). If you choose ZoomOnImage, there may be some\r\nimage cropping."
+          enum:
+          - ShowFullImage
+          - ZoomOnImage
           type: string
         videoBase64Strings:
           description: "Multiple videos potentially in different shapes, each video\
@@ -16522,6 +16761,7 @@ components:
             \ is a base-64 encoded string."
           items:
             type: string
+          minItems: 1
           type: array
           uniqueItems: false
         headlineText:
@@ -16856,8 +17096,8 @@ components:
             currency: EUR
             format: csv
             timezone: Europe/Paris
-            startDate: 2022-08-29T00:00:00.0000000+00:00
-            endDate: 2022-08-29T00:00:00.0000000+00:00
+            startDate: 2023-04-03T00:00:00.0000000+00:00
+            endDate: 2023-04-03T00:00:00.0000000+00:00
       properties:
         data:
           items:
@@ -16905,8 +17145,8 @@ components:
       description: This is the message defining the query for Transparency report
       example:
         shouldDisplayProductIds: false
-        startDate: 2022-08-29T00:00:00.0000000+00:00
-        endDate: 2022-09-01T00:00:00.0000000+00:00
+        startDate: 2023-04-03T00:00:00.0000000+00:00
+        endDate: 2023-04-06T00:00:00.0000000+00:00
       properties:
         shouldDisplayProductIds:
           default: false
@@ -16943,8 +17183,8 @@ components:
             shouldDisplayDomainDimension: true
             format: csv
             timezone: Europe/Paris
-            startDate: 2022-08-29T00:00:00.0000000+00:00
-            endDate: 2022-08-29T00:00:00.0000000+00:00
+            startDate: 2023-04-03T00:00:00.0000000+00:00
+            endDate: 2023-04-03T00:00:00.0000000+00:00
       properties:
         data:
           $ref: '#/components/schemas/GenerateCategoriesReportRequestData'
@@ -17008,8 +17248,8 @@ components:
         data:
           type: CreativesReport
           attributes:
-            startDate: 2022-08-29T00:00:00.0000000+00:00
-            endDate: 2022-09-01T00:00:00.0000000+00:00
+            startDate: 2023-04-03T00:00:00.0000000+00:00
+            endDate: 2023-04-06T00:00:00.0000000+00:00
             advertiserIds:
             - "6666"
             - "7777"
@@ -17063,8 +17303,8 @@ components:
         data:
           type: StatisticsReport
           attributes:
-            startDate: 2022-08-29T00:00:00.0000000+00:00
-            endDate: 2022-09-01T00:00:00.0000000+00:00
+            startDate: 2023-04-03T00:00:00.0000000+00:00
+            endDate: 2023-04-06T00:00:00.0000000+00:00
             advertiserIds:
             - "11111"
             timezone: Europe/Paris
@@ -17122,8 +17362,8 @@ components:
         data:
           type: AudiencePerformanceReport
           attributes:
-            startDate: 2022-09-20T00:00:00.0000000+02:00
-            endDate: 2022-09-23T00:00:00.0000000+02:00
+            startDate: 2023-04-03T00:00:00.0000000+00:00
+            endDate: 2023-04-06T00:00:00.0000000+00:00
             advertiserId: "11111"
             timezone: Europe/Paris
             dimension: Top30BrandsByClicks
@@ -17865,6 +18105,13 @@ components:
             - AdFormat
             - DisplaySize
             - VideoPlayerRatio
+            - Country
+            - Region
+            - PostalCode
+            - UserBehavior
+            - Environment
+            - AdChannel
+            - AdSocialNetwork
             type: string
           type: array
           uniqueItems: false
@@ -18089,6 +18336,54 @@ components:
             - InvalidDisplays
             - ResultType
             - CostPerQualifiedVisit
+            - CostPerVisitPV1D
+            - VisitsPV1D
+            - AssistsPc30dClientAttribution
+            - AssistsAllPc30dClientAttribution
+            - AssistsClientAttribution
+            - AssistsAllClientAttribution
+            - AssistsPc30d
+            - AssistsAllPc30d
+            - AssistsPc1d
+            - AssistsAllPc1d
+            - AssistsPc7d
+            - AssistsAllPc7d
+            - AssistsPc7dPv24
+            - AssistsAllPc7dPv24
+            - AssistsPc7dPv24h
+            - AssistsAllPc7dPv24h
+            - AssistsPv24h
+            - AssistsAllPv24h
+            - AssistsPc30Pv24
+            - AssistsAllPc30Pv24
+            - AssistsPc30dPv24h
+            - AssistsAllPc30dPv24h
+            - AssistsPiPc
+            - AssistsPiPv
+            - AssistsPiPcPv
+            - AssistsSalesRatioPc30dClientAttribution
+            - AssistsSalesRatioAllPc30dClientAttribution
+            - AssistsSalesRatioClientAttribution
+            - AssistsSalesRatioAllClientAttribution
+            - AssistsSalesRatioPc30d
+            - AssistsSalesRatioAllPc30d
+            - AssistsSalesRatioPc1d
+            - AssistsSalesRatioAllPc1d
+            - AssistsSalesRatioPc7d
+            - AssistsSalesRatioAllPc7d
+            - AssistsSalesRatioPc7dPv24
+            - AssistsSalesRatioAllPc7dPv24
+            - AssistsSalesRatioPc7dPv24h
+            - AssistsSalesRatioAllPc7dPv24h
+            - AssistsSalesRatioPv24h
+            - AssistsSalesRatioAllPv24h
+            - AssistsSalesRatioPc30Pv24
+            - AssistsSalesRatioAllPc30Pv24
+            - AssistsSalesRatioPc30dPv24h
+            - AssistsSalesRatioAllPc30dPv24h
+            - AssistsSalesRatioPiPc
+            - AssistsSalesRatioPiPv
+            - AssistsSalesRatioPiPcPv
             type: string
           type: array
           uniqueItems: false
@@ -18180,14 +18475,14 @@ components:
           uniqueItems: false
         audienceIds:
           description: "The list of Audiences ids. If empty, all the Audiences will\
-            \ be fetched"
+            \ be fetched."
           items:
             type: string
           type: array
           uniqueItems: false
         segmentsIds:
           description: "The list of Segments ids. If empty, all the segments will\
-            \ be fetched"
+            \ be fetched."
           items:
             type: string
           type: array
@@ -18287,6 +18582,19 @@ components:
           - AdFormat
           - DisplaySize
           - VideoPlayerRatio
+          - Top30BrandsByDisplays
+          - Top30BrandsByClicks
+          - Top30BrandsBySales
+          - Top30InterestsByDisplays
+          - Top30InterestsByClicks
+          - Top30InterestsBySales
+          - Country
+          - Region
+          - PostalCode
+          - UserBehavior
+          - Environment
+          - AdChannel
+          - AdSocialNetwork
           type: string
         timezone:
           type: string
@@ -19316,20 +19624,24 @@ components:
           title: title
         errors:
         - traceId: traceId
-          code: internal-error
+          traceIdentifier: traceIdentifier
+          code: code
           instance: instance
           detail: detail
           source:
             key: source
-          type: access-control
+          stackTrace: stackTrace
+          type: unknown
           title: title
         - traceId: traceId
-          code: internal-error
+          traceIdentifier: traceIdentifier
+          code: code
           instance: instance
           detail: detail
           source:
             key: source
-          type: access-control
+          stackTrace: stackTrace
+          type: unknown
           title: title
       properties:
         data:
@@ -19338,7 +19650,7 @@ components:
           description: "Error list returned by the Criteo API\r\nFor successful requests\
             \ it is empty"
           items:
-            $ref: '#/components/schemas/CriteoApiErrorV2'
+            $ref: '#/components/schemas/CommonProblem'
           type: array
           uniqueItems: false
         warnings:
@@ -19361,7 +19673,7 @@ components:
           description: "Error list returned by the Criteo API\r\nFor successful requests\
             \ it is empty"
           items:
-            $ref: '#/components/schemas/CriteoApiErrorV2'
+            $ref: '#/components/schemas/CommonProblem'
           type: array
           uniqueItems: false
         warnings:
@@ -19404,20 +19716,24 @@ components:
           title: title
         errors:
         - traceId: traceId
-          code: internal-error
+          traceIdentifier: traceIdentifier
+          code: code
           instance: instance
           detail: detail
           source:
             key: source
-          type: access-control
+          stackTrace: stackTrace
+          type: unknown
           title: title
         - traceId: traceId
-          code: internal-error
+          traceIdentifier: traceIdentifier
+          code: code
           instance: instance
           detail: detail
           source:
             key: source
-          type: access-control
+          stackTrace: stackTrace
+          type: unknown
           title: title
       properties:
         data:
@@ -19430,7 +19746,7 @@ components:
           description: "Error list returned by the Criteo API\r\nFor successful requests\
             \ it is empty"
           items:
-            $ref: '#/components/schemas/CriteoApiErrorV2'
+            $ref: '#/components/schemas/CommonProblem'
           type: array
           uniqueItems: false
         warnings:
@@ -19471,20 +19787,24 @@ components:
           title: title
         errors:
         - traceId: traceId
-          code: internal-error
+          traceIdentifier: traceIdentifier
+          code: code
           instance: instance
           detail: detail
           source:
             key: source
-          type: access-control
+          stackTrace: stackTrace
+          type: unknown
           title: title
         - traceId: traceId
-          code: internal-error
+          traceIdentifier: traceIdentifier
+          code: code
           instance: instance
           detail: detail
           source:
             key: source
-          type: access-control
+          stackTrace: stackTrace
+          type: unknown
           title: title
       properties:
         data:
@@ -19497,7 +19817,7 @@ components:
           description: "Error list returned by the Criteo API\r\nFor successful requests\
             \ it is empty"
           items:
-            $ref: '#/components/schemas/CriteoApiErrorV2'
+            $ref: '#/components/schemas/CommonProblem'
           type: array
           uniqueItems: false
         warnings:
@@ -19514,35 +19834,18 @@ components:
     AdvertiserCreationRequest:
       description: Advertiser Creation Request
       example:
-        type: advertiser
         data:
-          accountName: AdvertiserName
-          websiteUrl: http://website_URL.com
-          countryIsoCode: RO
-          currencyIsoCode: EUR
-          industryId: "200006"
+          type: advertiser
+          attributes:
+            agencyId: agencyId
+            accountName: AdvertiserName
+            websiteUrl: http://website_URL.com
+            countryIsoCode: RO
+            currencyIsoCode: EUR
+            industryId: "200006"
       properties:
-        type:
-          description: A string containing the entity type
-          enum:
-          - campaign
-          - adset
-          - ad
-          - advertiser
-          - agency
-          - agencyAdvertiserLink
-          - AgencyAdvertiserTransferRequest
-          - publisher
-          - address
-          - client
-          - contact
-          - industry
-          example: campaign
-          type: string
         data:
-          $ref: '#/components/schemas/AdvertiserCreationInput'
-      required:
-      - type
+          $ref: '#/components/schemas/ValueResourceOfAdvertiserCreationInput'
       type: object
     EntityOfPortfolioMessage:
       description: Generic Criteo API successful data model
@@ -19731,66 +20034,6 @@ components:
       - id
       - type
       type: object
-    CriteoApiErrorV2:
-      description: Criteo API response error
-      example:
-        traceId: traceId
-        code: internal-error
-        instance: instance
-        detail: detail
-        source:
-          key: source
-        type: access-control
-        title: title
-      properties:
-        traceId:
-          description: The correlation ID provided by the gateway
-          type: string
-        type:
-          description: A machine-readable code specifying error category
-          enum:
-          - access-control
-          - authentication
-          - authorization
-          - availability
-          - deprecation
-          - quota
-          - validation
-          example: access-control
-          type: string
-        code:
-          description: A machine-readable error code string in kabab-case. Unique
-            across Criteo
-          enum:
-          - internal-error
-          - deprecated-field
-          - endpoint-deprecated
-          - required-field
-          - invalid-date-format
-          - invalid
-          - invalid-ranged
-          - invalid-timespan
-          - permission-denied
-          example: internal-error
-          type: string
-        instance:
-          description: A URI reference that identifies the specific occurrence of
-            the problem
-          type: string
-        title:
-          description: "A short, human-readable remarks of the problem type."
-          type: string
-        detail:
-          description: A human-readable explanation specific to this occurrence of
-            the problem.
-          type: string
-        source:
-          additionalProperties:
-            type: string
-          description: A machine-readable structure to reference to the exact location(s)
-            causing the error(s).
-          type: object
-      type: object
     CriteoApiWarningV2:
       description: Criteo API response warning
       example:
@@ -19881,9 +20124,37 @@ components:
       - id
       - type
       type: object
-    AdvertiserCreationInput:
-      description: Infomation for creating an advertiser
+    ValueResourceOfAdvertiserCreationInput:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       properties:
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/AdvertiserCreationInput'
+      type: object
+    PortfolioMessage:
+      description: Class with elementary info about advertiser
+      example:
+        advertiserName: advertiserName
+      properties:
+        advertiserName:
+          type: string
+      type: object
+    Dataset:
+      description: Information about a dataset
+      example:
+        name: name
+      properties:
+        name:
+          type: string
+      type: object
+    AdvertiserCreationInput:
+      description: Information for creating an advertiser
+      properties:
+        agencyId:
+          description: ID of the agency requesting the advertiser creation
+          type: string
         accountName:
           description: The Account Name; This will not be in fact the Advertiser name
           type: string
@@ -19901,26 +20172,11 @@ components:
           type: string
       required:
       - accountName
+      - agencyId
       - countryIsoCode
       - currencyIsoCode
       - industryId
       - websiteUrl
-      type: object
-    PortfolioMessage:
-      description: Class with elementary info about advertiser
-      example:
-        advertiserName: advertiserName
-      properties:
-        advertiserName:
-          type: string
-      type: object
-    Dataset:
-      description: Information about a dataset
-      example:
-        name: name
-      properties:
-        name:
-          type: string
       type: object
     FailResponse:
       description: Error server response.
@@ -19944,35 +20200,37 @@ components:
       example:
         data:
           statisticsRecordList:
-          - nonDisplayable: 1
+          - nonDisplayable: 5
             endDate: 2000-01-23T04:56:07.000+00:00
             added: 5
-            missingImage: 3
-            displayable: 6
-            missingName: 7
+            missingImage: 2
+            displayable: 1
+            missingName: 1
             missingDescription: 1
             total: 0
-            blacklisted: 7
-            deleted: 5
-            missingPrice: 4
-            outOfStock: 9
-            missingUrl: 2
-            updated: 2
+            blacklisted: 9
+            deleted: 2
+            missingPrice: 7
+            variant: 6
+            outOfStock: 3
+            missingUrl: 4
+            updated: 7
             startDate: 2000-01-23T04:56:07.000+00:00
-          - nonDisplayable: 1
+          - nonDisplayable: 5
             endDate: 2000-01-23T04:56:07.000+00:00
             added: 5
-            missingImage: 3
-            displayable: 6
-            missingName: 7
+            missingImage: 2
+            displayable: 1
+            missingName: 1
             missingDescription: 1
             total: 0
-            blacklisted: 7
-            deleted: 5
-            missingPrice: 4
-            outOfStock: 9
-            missingUrl: 2
-            updated: 2
+            blacklisted: 9
+            deleted: 2
+            missingPrice: 7
+            variant: 6
+            outOfStock: 3
+            missingUrl: 4
+            updated: 7
             startDate: 2000-01-23T04:56:07.000+00:00
         warnings:
         - traceId: traceId
@@ -20108,35 +20366,37 @@ components:
       description: The list of statistics reports
       example:
         statisticsRecordList:
-        - nonDisplayable: 1
+        - nonDisplayable: 5
           endDate: 2000-01-23T04:56:07.000+00:00
           added: 5
-          missingImage: 3
-          displayable: 6
-          missingName: 7
+          missingImage: 2
+          displayable: 1
+          missingName: 1
           missingDescription: 1
           total: 0
-          blacklisted: 7
-          deleted: 5
-          missingPrice: 4
-          outOfStock: 9
-          missingUrl: 2
-          updated: 2
+          blacklisted: 9
+          deleted: 2
+          missingPrice: 7
+          variant: 6
+          outOfStock: 3
+          missingUrl: 4
+          updated: 7
           startDate: 2000-01-23T04:56:07.000+00:00
-        - nonDisplayable: 1
+        - nonDisplayable: 5
           endDate: 2000-01-23T04:56:07.000+00:00
           added: 5
-          missingImage: 3
-          displayable: 6
-          missingName: 7
+          missingImage: 2
+          displayable: 1
+          missingName: 1
           missingDescription: 1
           total: 0
-          blacklisted: 7
-          deleted: 5
-          missingPrice: 4
-          outOfStock: 9
-          missingUrl: 2
-          updated: 2
+          blacklisted: 9
+          deleted: 2
+          missingPrice: 7
+          variant: 6
+          outOfStock: 3
+          missingUrl: 4
+          updated: 7
           startDate: 2000-01-23T04:56:07.000+00:00
       properties:
         statisticsRecordList:
@@ -20150,20 +20410,21 @@ components:
       description: The format  statistics report for a period between startDate and
         endDate
       example:
-        nonDisplayable: 1
+        nonDisplayable: 5
         endDate: 2000-01-23T04:56:07.000+00:00
         added: 5
-        missingImage: 3
-        displayable: 6
-        missingName: 7
+        missingImage: 2
+        displayable: 1
+        missingName: 1
         missingDescription: 1
         total: 0
-        blacklisted: 7
-        deleted: 5
-        missingPrice: 4
-        outOfStock: 9
-        missingUrl: 2
-        updated: 2
+        blacklisted: 9
+        deleted: 2
+        missingPrice: 7
+        variant: 6
+        outOfStock: 3
+        missingUrl: 4
+        updated: 7
         startDate: 2000-01-23T04:56:07.000+00:00
       properties:
         startDate:
@@ -20178,12 +20439,16 @@ components:
           description: The number of total products at endDate moment
           format: int64
           type: integer
+        variant:
+          description: The number of total variant products at endDate moment
+          format: int64
+          type: integer
         displayable:
-          description: The number of displayable products at endDate moment
+          description: The number of total displayable products at endDate moment
           format: int64
           type: integer
         nonDisplayable:
-          description: The number of non displayable products at endDate moment
+          description: The number of total non-displayable products at endDate moment
           format: int64
           type: integer
         added:
@@ -20246,6 +20511,7 @@ components:
       - startDate
       - total
       - updated
+      - variant
       type: object
     BatchAcceptedResponse:
       description: A batch was accepted. The report can be accessed using the reporting
@@ -21560,12 +21826,12 @@ components:
             datasetId: datasetId
             numberOfProducts: 0
             rules:
-            - field: Category1
+            - field: OBSOLETE_Extradata
               values:
               - values
               - values
               operator: IsIn
-            - field: Category1
+            - field: OBSOLETE_Extradata
               values:
               - values
               - values
@@ -21704,12 +21970,12 @@ components:
             datasetId: datasetId
             numberOfProducts: 0
             rules:
-            - field: Category1
+            - field: OBSOLETE_Extradata
               values:
               - values
               - values
               operator: IsIn
-            - field: Category1
+            - field: OBSOLETE_Extradata
               values:
               - values
               - values
@@ -21725,12 +21991,12 @@ components:
             datasetId: datasetId
             numberOfProducts: 0
             rules:
-            - field: Category1
+            - field: OBSOLETE_Extradata
               values:
               - values
               - values
               operator: IsIn
-            - field: Category1
+            - field: OBSOLETE_Extradata
               values:
               - values
               - values
@@ -21830,12 +22096,12 @@ components:
           datasetId: datasetId
           numberOfProducts: 0
           rules:
-          - field: Category1
+          - field: OBSOLETE_Extradata
             values:
             - values
             - values
             operator: IsIn
-          - field: Category1
+          - field: OBSOLETE_Extradata
             values:
             - values
             - values
@@ -21869,12 +22135,12 @@ components:
         datasetId: datasetId
         numberOfProducts: 0
         rules:
-        - field: Category1
+        - field: OBSOLETE_Extradata
           values:
           - values
           - values
           operator: IsIn
-        - field: Category1
+        - field: OBSOLETE_Extradata
           values:
           - values
           - values
@@ -21938,7 +22204,7 @@ components:
     ProductSetRule:
       description: Encapsulate a product rule
       example:
-        field: Category1
+        field: OBSOLETE_Extradata
         values:
         - values
         - values
@@ -21957,6 +22223,7 @@ components:
         field:
           description: The field on which we want to apply the rule
           enum:
+          - OBSOLETE_Extradata
           - Category1
           - Category2
           - Category3
@@ -22277,6 +22544,7 @@ components:
     OnSiteRecoRequest:
       description: Recommendation request parameters.
       example:
+        identityType: CtoBundle
         nbRequestedProducts: 0
         adSetId: 1
         partnerId: 5
@@ -22296,6 +22564,14 @@ components:
         userId:
           description: Used to retrieve user events from Criteo trackers. Optional
             if UserEvents are passed.
+          type: string
+        identityType:
+          description: "Type of the user identifier (cto_bundle, Idfa, Gaid...)\r\n\
+            Optional if UserId is not set or if its type is cto_bundle"
+          enum:
+          - CtoBundle
+          - Idfa
+          - Gaid
           type: string
         userEvents:
           description: Used to perform a recommendation without relying on events
@@ -22670,7 +22946,7 @@ components:
       example:
         data:
           attributes:
-            mode: mode
+            mode: BLOCKLIST
             data:
             - active: true
               readOnly: true
@@ -22678,7 +22954,7 @@ components:
             - active: true
               readOnly: true
               value: value
-            type: type
+            type: DOMAIN
           type: type
       properties:
         data:
@@ -22698,7 +22974,7 @@ components:
       example:
         data:
           attributes:
-            mode: mode
+            mode: BLOCKLIST
             data:
             - active: true
               readOnly: true
@@ -22706,7 +22982,7 @@ components:
             - active: true
               readOnly: true
               value: value
-            type: type
+            type: DOMAIN
           type: type
       properties:
         data:
@@ -22716,7 +22992,7 @@ components:
       description: Standard envelope for an entity
       example:
         attributes:
-          mode: mode
+          mode: BLOCKLIST
           data:
           - active: true
             readOnly: true
@@ -22724,7 +23000,7 @@ components:
           - active: true
             readOnly: true
             value: value
-          type: type
+          type: DOMAIN
         type: type
       properties:
         type:
@@ -22749,7 +23025,7 @@ components:
     TargetingEntity:
       description: Represents either an allowlisting or a blocklisting rule
       example:
-        mode: mode
+        mode: BLOCKLIST
         data:
         - active: true
           readOnly: true
@@ -22757,13 +23033,19 @@ components:
         - active: true
           readOnly: true
           value: value
-        type: type
+        type: DOMAIN
       properties:
         type:
-          description: Can be either domain or bundle
+          description: Can be either DOMAIN or BUNDLE
+          enum:
+          - DOMAIN
+          - BUNDLE
           type: string
         mode:
-          description: Can be either blocklist or allowlist
+          description: Can be either BLOCKLIST or ALLOWLIST
+          enum:
+          - BLOCKLIST
+          - ALLOWLIST
           type: string
         data:
           items:
@@ -22963,20 +23245,19 @@ components:
     ContactlistOperation_attributes:
       description: the contactlist operation attributes
       example:
-        nbValidIdentifiers: 0
-        nbInvalidIdentifiers: 6
+        nbValidIdentifiers: 6
+        nbInvalidIdentifiers: 1
         sampleInvalidIdentifiers:
         - sampleInvalidIdentifiers
         - sampleInvalidIdentifiers
-        contactListId: contactListId
+        contactListId: 0
         requestDate: 2000-01-23T04:56:07.000+00:00
         identifierType: identifierType
         operation: operation
       properties:
         contactListId:
           description: the affected user list id
-          format: int32
-          type: string
+          type: integer
         operation:
           description: The action recorded
           type: string
@@ -23009,7 +23290,6 @@ components:
         - identifiers
         - identifiers
         identifierType: email
-        internalIdentifiers: true
         operation: add
       properties:
         operation:
@@ -23025,6 +23305,7 @@ components:
           - madid
           - identityLink
           - gum
+          - customerid
           type: string
         identifiers:
           description: "The users tos add or remove, each in the schema specified"
@@ -23035,9 +23316,6 @@ components:
           description: The Gum caller id of the advertiser patching identifiers of
             type Gum
           type: integer
-        internalIdentifiers:
-          description: The flag to indicate if identifiers are external or internal
-          type: boolean
       required:
       - identifiers
       - operation
@@ -23058,6 +23336,7 @@ components:
           - madid
           - identityLink
           - gum
+          - customerid
           example: email
           type: string
         identifiers:
@@ -23071,10 +23350,6 @@ components:
             type Gum
           readOnly: true
           type: object
-        internalIdentifiers:
-          description: The flag to indicate if identifiers are external or internal
-          readOnly: true
-          type: boolean
       required:
       - identifierType
       - identifiers

@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -113,7 +113,9 @@ public class ContactlistWithAttributesAmendmentAttributes {
     
     IDENTITYLINK("identityLink"),
     
-    GUM("gum");
+    GUM("gum"),
+    
+    CUSTOMERID("customerid");
 
     private String value;
 
@@ -165,21 +167,15 @@ public class ContactlistWithAttributesAmendmentAttributes {
   @SerializedName(SERIALIZED_NAME_GUM_CALLER_ID)
   private Object gumCallerId;
 
-  public static final String SERIALIZED_NAME_INTERNAL_IDENTIFIERS = "internalIdentifiers";
-  @SerializedName(SERIALIZED_NAME_INTERNAL_IDENTIFIERS)
-  private Boolean internalIdentifiers;
-
   public ContactlistWithAttributesAmendmentAttributes() {
   }
 
   
   public ContactlistWithAttributesAmendmentAttributes(
-     Object gumCallerId, 
-     Boolean internalIdentifiers
+     Object gumCallerId
   ) {
     this();
     this.gumCallerId = gumCallerId;
-    this.internalIdentifiers = internalIdentifiers;
   }
 
   public ContactlistWithAttributesAmendmentAttributes operation(OperationEnum operation) {
@@ -265,19 +261,6 @@ public class ContactlistWithAttributesAmendmentAttributes {
 
 
 
-
-   /**
-   * The flag to indicate if identifiers are external or internal
-   * @return internalIdentifiers
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getInternalIdentifiers() {
-    return internalIdentifiers;
-  }
-
-
-
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -336,14 +319,13 @@ public class ContactlistWithAttributesAmendmentAttributes {
     return Objects.equals(this.operation, contactlistWithAttributesAmendmentAttributes.operation) &&
         Objects.equals(this.identifierType, contactlistWithAttributesAmendmentAttributes.identifierType) &&
         Objects.equals(this.identifiers, contactlistWithAttributesAmendmentAttributes.identifiers) &&
-        Objects.equals(this.gumCallerId, contactlistWithAttributesAmendmentAttributes.gumCallerId) &&
-        Objects.equals(this.internalIdentifiers, contactlistWithAttributesAmendmentAttributes.internalIdentifiers)&&
+        Objects.equals(this.gumCallerId, contactlistWithAttributesAmendmentAttributes.gumCallerId)&&
         Objects.equals(this.additionalProperties, contactlistWithAttributesAmendmentAttributes.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(operation, identifierType, identifiers, gumCallerId, internalIdentifiers, additionalProperties);
+    return Objects.hash(operation, identifierType, identifiers, gumCallerId, additionalProperties);
   }
 
   @Override
@@ -354,7 +336,6 @@ public class ContactlistWithAttributesAmendmentAttributes {
     sb.append("    identifierType: ").append(toIndentedString(identifierType)).append("\n");
     sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("    gumCallerId: ").append(toIndentedString(gumCallerId)).append("\n");
-    sb.append("    internalIdentifiers: ").append(toIndentedString(internalIdentifiers)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -382,7 +363,6 @@ public class ContactlistWithAttributesAmendmentAttributes {
     openapiFields.add("identifierType");
     openapiFields.add("identifiers");
     openapiFields.add("gumCallerId");
-    openapiFields.add("internalIdentifiers");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

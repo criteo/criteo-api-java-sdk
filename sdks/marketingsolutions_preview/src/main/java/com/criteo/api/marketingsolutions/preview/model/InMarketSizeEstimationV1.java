@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -234,7 +234,7 @@ public class InMarketSizeEstimationV1 {
    * Get country
    * @return country
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getCountry() {
     return country;
@@ -498,6 +498,7 @@ public class InMarketSizeEstimationV1 {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("country");
   }
 
  /**
@@ -512,7 +513,14 @@ public class InMarketSizeEstimationV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in InMarketSizeEstimationV1 is not found in the empty JSON string", InMarketSizeEstimationV1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : InMarketSizeEstimationV1.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("country").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
       }
       // ensure the optional json data is an array if present

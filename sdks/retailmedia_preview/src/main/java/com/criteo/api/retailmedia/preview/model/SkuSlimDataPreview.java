@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - RetailMedia
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -291,10 +291,10 @@ public class SkuSlimDataPreview {
   }
 
    /**
-   * The price of the product on the retailer site.
+   * The price of the product on the retailer site. Can be omitted in certain circumstances
    * @return price
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public Double getPrice() {
     return price;

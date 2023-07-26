@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -64,9 +64,56 @@ public class AdWrite {
   @SerializedName(SERIALIZED_NAME_AD_SET_ID)
   private String adSetId;
 
+  /**
+   * The inventory the Ad to be created or updated belongs to. Possible values are \&quot;Display\&quot; and \&quot;Native\&quot;. This is optional since this doesn&#39;t make sense for every creative type but will throw an error if not set for a dynamic creative.
+   */
+  @JsonAdapter(InventoryTypeEnum.Adapter.class)
+  public enum InventoryTypeEnum {
+    DISPLAY("Display"),
+    
+    NATIVE("Native");
+
+    private String value;
+
+    InventoryTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static InventoryTypeEnum fromValue(String value) {
+      for (InventoryTypeEnum b : InventoryTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<InventoryTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final InventoryTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public InventoryTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return InventoryTypeEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_INVENTORY_TYPE = "inventoryType";
   @SerializedName(SERIALIZED_NAME_INVENTORY_TYPE)
-  private String inventoryType;
+  private InventoryTypeEnum inventoryType;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -167,7 +214,7 @@ public class AdWrite {
   }
 
 
-  public AdWrite inventoryType(String inventoryType) {
+  public AdWrite inventoryType(InventoryTypeEnum inventoryType) {
     
     this.inventoryType = inventoryType;
     return this;
@@ -179,12 +226,12 @@ public class AdWrite {
   **/
   @javax.annotation.Nullable
 
-  public String getInventoryType() {
+  public InventoryTypeEnum getInventoryType() {
     return inventoryType;
   }
 
 
-  public void setInventoryType(String inventoryType) {
+  public void setInventoryType(InventoryTypeEnum inventoryType) {
     this.inventoryType = inventoryType;
   }
 

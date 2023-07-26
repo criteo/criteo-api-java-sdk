@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -59,6 +59,59 @@ public class OnSiteRecoRequest {
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
 
+  /**
+   * Type of the user identifier (cto_bundle, Idfa, Gaid...)  Optional if UserId is not set or if its type is cto_bundle
+   */
+  @JsonAdapter(IdentityTypeEnum.Adapter.class)
+  public enum IdentityTypeEnum {
+    CTOBUNDLE("CtoBundle"),
+    
+    IDFA("Idfa"),
+    
+    GAID("Gaid");
+
+    private String value;
+
+    IdentityTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static IdentityTypeEnum fromValue(String value) {
+      for (IdentityTypeEnum b : IdentityTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<IdentityTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final IdentityTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public IdentityTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return IdentityTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_IDENTITY_TYPE = "identityType";
+  @SerializedName(SERIALIZED_NAME_IDENTITY_TYPE)
+  private IdentityTypeEnum identityType;
+
   public static final String SERIALIZED_NAME_USER_EVENTS = "userEvents";
   @SerializedName(SERIALIZED_NAME_USER_EVENTS)
   private List<UserEvent> userEvents = null;
@@ -115,6 +168,28 @@ public class OnSiteRecoRequest {
 
   public void setUserId(String userId) {
     this.userId = userId;
+  }
+
+
+  public OnSiteRecoRequest identityType(IdentityTypeEnum identityType) {
+    
+    this.identityType = identityType;
+    return this;
+  }
+
+   /**
+   * Type of the user identifier (cto_bundle, Idfa, Gaid...)  Optional if UserId is not set or if its type is cto_bundle
+   * @return identityType
+  **/
+  @javax.annotation.Nullable
+
+  public IdentityTypeEnum getIdentityType() {
+    return identityType;
+  }
+
+
+  public void setIdentityType(IdentityTypeEnum identityType) {
+    this.identityType = identityType;
   }
 
 
@@ -248,6 +323,7 @@ public class OnSiteRecoRequest {
     OnSiteRecoRequest onSiteRecoRequest = (OnSiteRecoRequest) o;
     return Objects.equals(this.nbRequestedProducts, onSiteRecoRequest.nbRequestedProducts) &&
         Objects.equals(this.userId, onSiteRecoRequest.userId) &&
+        Objects.equals(this.identityType, onSiteRecoRequest.identityType) &&
         Objects.equals(this.userEvents, onSiteRecoRequest.userEvents) &&
         Objects.equals(this.adSetId, onSiteRecoRequest.adSetId) &&
         Objects.equals(this.partnerId, onSiteRecoRequest.partnerId)&&
@@ -256,7 +332,7 @@ public class OnSiteRecoRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(nbRequestedProducts, userId, userEvents, adSetId, partnerId, additionalProperties);
+    return Objects.hash(nbRequestedProducts, userId, identityType, userEvents, adSetId, partnerId, additionalProperties);
   }
 
   @Override
@@ -265,6 +341,7 @@ public class OnSiteRecoRequest {
     sb.append("class OnSiteRecoRequest {\n");
     sb.append("    nbRequestedProducts: ").append(toIndentedString(nbRequestedProducts)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    identityType: ").append(toIndentedString(identityType)).append("\n");
     sb.append("    userEvents: ").append(toIndentedString(userEvents)).append("\n");
     sb.append("    adSetId: ").append(toIndentedString(adSetId)).append("\n");
     sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
@@ -293,6 +370,7 @@ public class OnSiteRecoRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("nbRequestedProducts");
     openapiFields.add("userId");
+    openapiFields.add("identityType");
     openapiFields.add("userEvents");
     openapiFields.add("adSetId");
     openapiFields.add("partnerId");
@@ -324,6 +402,9 @@ public class OnSiteRecoRequest {
       }
       if ((jsonObj.get("userId") != null && !jsonObj.get("userId").isJsonNull()) && !jsonObj.get("userId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `userId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userId").toString()));
+      }
+      if ((jsonObj.get("identityType") != null && !jsonObj.get("identityType").isJsonNull()) && !jsonObj.get("identityType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `identityType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identityType").toString()));
       }
       if (jsonObj.get("userEvents") != null && !jsonObj.get("userEvents").isJsonNull()) {
         JsonArray jsonArrayuserEvents = jsonObj.getAsJsonArray("userEvents");

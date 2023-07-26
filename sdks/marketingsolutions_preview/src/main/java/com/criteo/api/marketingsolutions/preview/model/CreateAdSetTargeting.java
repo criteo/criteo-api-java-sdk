@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -120,7 +120,7 @@ public class CreateAdSetTargeting {
    * Get frequencyCapping
    * @return frequencyCapping
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public AdSetFrequencyCapping getFrequencyCapping() {
     return frequencyCapping;
@@ -233,6 +233,7 @@ public class CreateAdSetTargeting {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("frequencyCapping");
   }
 
  /**
@@ -247,6 +248,13 @@ public class CreateAdSetTargeting {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CreateAdSetTargeting is not found in the empty JSON string", CreateAdSetTargeting.openapiRequiredFields.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : CreateAdSetTargeting.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
       // validate the optional field `deliveryLimitations`
       if (jsonObj.get("deliveryLimitations") != null && !jsonObj.get("deliveryLimitations").isJsonNull()) {
         AdSetDeliveryLimitations.validateJsonObject(jsonObj.getAsJsonObject("deliveryLimitations"));
@@ -255,10 +263,8 @@ public class CreateAdSetTargeting {
       if (jsonObj.get("geoLocation") != null && !jsonObj.get("geoLocation").isJsonNull()) {
         CreateAdSetGeoLocation.validateJsonObject(jsonObj.getAsJsonObject("geoLocation"));
       }
-      // validate the optional field `frequencyCapping`
-      if (jsonObj.get("frequencyCapping") != null && !jsonObj.get("frequencyCapping").isJsonNull()) {
-        AdSetFrequencyCapping.validateJsonObject(jsonObj.getAsJsonObject("frequencyCapping"));
-      }
+      // validate the required field `frequencyCapping`
+      AdSetFrequencyCapping.validateJsonObject(jsonObj.getAsJsonObject("frequencyCapping"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

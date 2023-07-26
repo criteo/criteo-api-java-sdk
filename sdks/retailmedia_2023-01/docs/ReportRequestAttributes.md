@@ -14,6 +14,7 @@ Report Request Attributes
 |**id** | **String** | The id of the campaign or line item.  Either &#39;id&#39; or &#39;ids&#39; must be specified, but not both |  [optional] |
 |**ids** | **List&lt;String&gt;** | The ids of the campaigns or line items.  Either &#39;id&#39; or &#39;ids&#39; must be specified, but not both |  [optional] |
 |**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | One of \&quot;summary\&quot;, \&quot;keyword\&quot;, \&quot;pageType\&quot;, \&quot;productCategory\&quot;, \&quot;product\&quot;, or \&quot;attributedTransactions\&quot; |  |
+|**revenueType** | **String** |  |  [optional] |
 |**startDate** | **LocalDate** | YYYY-MM-DD |  |
 |**timeZone** | **String** |  |  [optional] |
 |**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) | Defaults to value from campaign or one of \&quot;none\&quot;, \&quot;1D\&quot;, \&quot;7D\&quot;, \&quot;14D\&quot;, or \&quot;30D\&quot;. If specified, must be less than clickAttributionWindow, which must also be specified. |  [optional] |

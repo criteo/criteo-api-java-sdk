@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -114,6 +114,8 @@ public class ProductSetRule {
    */
   @JsonAdapter(FieldEnum.Adapter.class)
   public enum FieldEnum {
+    OBSOLETE_EXTRADATA("OBSOLETE_Extradata"),
+    
     CATEGORY1("Category1"),
     
     CATEGORY2("Category2"),

@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -49,7 +49,7 @@ import com.criteo.api.marketingsolutions.preview.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RetargetingCreateV1 {
   /**
-   * Gets or Sets visitorsType
+   * Types of visitors.
    */
   @JsonAdapter(VisitorsTypeEnum.Adapter.class)
   public enum VisitorsTypeEnum {
@@ -119,10 +119,10 @@ public class RetargetingCreateV1 {
   }
 
    /**
-   * Get visitorsType
+   * Types of visitors.
    * @return visitorsType
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public VisitorsTypeEnum getVisitorsType() {
     return visitorsType;
@@ -141,10 +141,10 @@ public class RetargetingCreateV1 {
   }
 
    /**
-   * Get daysSinceLastVisitMin
+   * Minimum number of days since last visit to partner.
    * @return daysSinceLastVisitMin
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public Integer getDaysSinceLastVisitMin() {
     return daysSinceLastVisitMin;
@@ -163,10 +163,10 @@ public class RetargetingCreateV1 {
   }
 
    /**
-   * Get daysSinceLastVisitMax
+   * Maximum number of days since last visit to partner.
    * @return daysSinceLastVisitMax
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public Integer getDaysSinceLastVisitMax() {
     return daysSinceLastVisitMax;
@@ -279,6 +279,9 @@ public class RetargetingCreateV1 {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("visitorsType");
+    openapiRequiredFields.add("daysSinceLastVisitMin");
+    openapiRequiredFields.add("daysSinceLastVisitMax");
   }
 
  /**
@@ -293,7 +296,14 @@ public class RetargetingCreateV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in RetargetingCreateV1 is not found in the empty JSON string", RetargetingCreateV1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("visitorsType") != null && !jsonObj.get("visitorsType").isJsonNull()) && !jsonObj.get("visitorsType").isJsonPrimitive()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : RetargetingCreateV1.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("visitorsType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `visitorsType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("visitorsType").toString()));
       }
   }

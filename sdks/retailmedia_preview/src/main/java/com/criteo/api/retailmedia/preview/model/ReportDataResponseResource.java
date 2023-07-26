@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - RetailMedia
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -98,7 +98,7 @@ public class ReportDataResponseResource {
   }
 
    /**
-   * Data response format
+   * Get attributes
    * @return attributes
   **/
   @javax.annotation.Nullable

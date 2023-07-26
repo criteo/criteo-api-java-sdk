@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -75,7 +75,7 @@ public class AudienceSegmentSizeEstimationEntityV1 {
    * Advertiser associated to the segment
    * @return advertiserId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getAdvertiserId() {
     return advertiserId;
@@ -232,6 +232,7 @@ public class AudienceSegmentSizeEstimationEntityV1 {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("advertiserId");
   }
 
  /**
@@ -246,7 +247,14 @@ public class AudienceSegmentSizeEstimationEntityV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AudienceSegmentSizeEstimationEntityV1 is not found in the empty JSON string", AudienceSegmentSizeEstimationEntityV1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("advertiserId") != null && !jsonObj.get("advertiserId").isJsonNull()) && !jsonObj.get("advertiserId").isJsonPrimitive()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : AudienceSegmentSizeEstimationEntityV1.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("advertiserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserId").toString()));
       }
       // validate the optional field `inMarket`

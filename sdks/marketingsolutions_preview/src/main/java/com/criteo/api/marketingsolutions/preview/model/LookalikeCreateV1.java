@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -66,10 +66,10 @@ public class LookalikeCreateV1 {
   }
 
    /**
-   * Get seedSegmentId
+   * Segment from which the Lookalike segment will be generated
    * @return seedSegmentId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getSeedSegmentId() {
     return seedSegmentId;
@@ -88,7 +88,7 @@ public class LookalikeCreateV1 {
   }
 
    /**
-   * Get targetSize
+   * Desired size of the generated Lookalike segment
    * @return targetSize
   **/
   @javax.annotation.Nullable
@@ -201,6 +201,7 @@ public class LookalikeCreateV1 {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("seedSegmentId");
   }
 
  /**
@@ -215,7 +216,14 @@ public class LookalikeCreateV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in LookalikeCreateV1 is not found in the empty JSON string", LookalikeCreateV1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("seedSegmentId") != null && !jsonObj.get("seedSegmentId").isJsonNull()) && !jsonObj.get("seedSegmentId").isJsonPrimitive()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : LookalikeCreateV1.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("seedSegmentId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `seedSegmentId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("seedSegmentId").toString()));
       }
   }

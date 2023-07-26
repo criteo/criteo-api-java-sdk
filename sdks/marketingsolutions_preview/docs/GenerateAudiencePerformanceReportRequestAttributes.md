@@ -16,8 +16,8 @@ Request attributes for async audience performance report
 |**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | The list of metrics to report. |  |
 |**currency** | **String** | The currency used for the report. ISO 4217 code (three-letter capitals). |  [optional] |
 |**adSetIds** | **List&lt;String&gt;** | The list of adSets ids. If empty, all the adSets will be fetched. |  [optional] |
-|**audienceIds** | **List&lt;String&gt;** | The list of Audiences ids. If empty, all the Audiences will be fetched |  [optional] |
-|**segmentsIds** | **List&lt;String&gt;** | The list of Segments ids. If empty, all the segments will be fetched |  [optional] |
+|**audienceIds** | **List&lt;String&gt;** | The list of Audiences ids. If empty, all the Audiences will be fetched. |  [optional] |
+|**segmentsIds** | **List&lt;String&gt;** | The list of Segments ids. If empty, all the segments will be fetched. |  [optional] |
 
 
 

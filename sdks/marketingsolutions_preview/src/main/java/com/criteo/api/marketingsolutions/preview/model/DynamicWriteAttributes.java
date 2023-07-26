@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -72,11 +72,58 @@ public class DynamicWriteAttributes {
 
   public static final String SERIALIZED_NAME_CALLS_TO_ACTION = "callsToAction";
   @SerializedName(SERIALIZED_NAME_CALLS_TO_ACTION)
-  private List<String> callsToAction = null;
+  private List<String> callsToAction = new ArrayList<>();
+
+  /**
+   * Value can be \&quot;ShowFullImage\&quot; or \&quot;ZoomOnImage\&quot;. Choose whether your product catalog images should fit inside the allocated  space (\&quot;ShowFullImage\&quot;) or whether they should fill that space (\&quot;ZoomOnImage\&quot;). If you choose ZoomOnImage, there may be some  image cropping.
+   */
+  @JsonAdapter(ProductImageDisplayEnum.Adapter.class)
+  public enum ProductImageDisplayEnum {
+    SHOWFULLIMAGE("ShowFullImage"),
+    
+    ZOOMONIMAGE("ZoomOnImage");
+
+    private String value;
+
+    ProductImageDisplayEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ProductImageDisplayEnum fromValue(String value) {
+      for (ProductImageDisplayEnum b : ProductImageDisplayEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ProductImageDisplayEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ProductImageDisplayEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ProductImageDisplayEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ProductImageDisplayEnum.fromValue(value);
+      }
+    }
+  }
 
   public static final String SERIALIZED_NAME_PRODUCT_IMAGE_DISPLAY = "productImageDisplay";
   @SerializedName(SERIALIZED_NAME_PRODUCT_IMAGE_DISPLAY)
-  private String productImageDisplay;
+  private ProductImageDisplayEnum productImageDisplay;
 
   public DynamicWriteAttributes() {
   }
@@ -91,7 +138,7 @@ public class DynamicWriteAttributes {
    * Logo image as a base-64 encoded string
    * @return logoBase64String
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getLogoBase64String() {
     return logoBase64String;
@@ -110,7 +157,7 @@ public class DynamicWriteAttributes {
   }
 
    /**
-   * Color of the creative&#39;s background  Valid hexadecimal color (e.g. \&quot;AB00FF\&quot;)
+   * Color of the creative&#39;s background  Valid hexadecimal RGB color (e.g. \&quot;AB00FF\&quot;)
    * @return creativeBackgroundColor
   **/
   @javax.annotation.Nullable
@@ -132,10 +179,10 @@ public class DynamicWriteAttributes {
   }
 
    /**
-   * Color of the creative&#39;s body text  Valid hexadecimal color (e.g. \&quot;AB00FF\&quot;)
+   * Color of the creative&#39;s body text  Valid hexadecimal RGB color (e.g. \&quot;AB00FF\&quot;)
    * @return bodyTextColor
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getBodyTextColor() {
     return bodyTextColor;
@@ -154,10 +201,10 @@ public class DynamicWriteAttributes {
   }
 
    /**
-   * Color of the creative&#39;s prices  Valid hexadecimal color (e.g. \&quot;AB00FF\&quot;)
+   * Color of the creative&#39;s prices  Valid hexadecimal RGB color (e.g. \&quot;AB00FF\&quot;)
    * @return pricesColor
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getPricesColor() {
     return pricesColor;
@@ -198,9 +245,6 @@ public class DynamicWriteAttributes {
   }
 
   public DynamicWriteAttributes addCallsToActionItem(String callsToActionItem) {
-    if (this.callsToAction == null) {
-      this.callsToAction = new ArrayList<>();
-    }
     this.callsToAction.add(callsToActionItem);
     return this;
   }
@@ -209,7 +253,7 @@ public class DynamicWriteAttributes {
    * A Call-to-Action (CTA) is an action-driven instruction to your audience intended to provoke an immediate  response, such as “Buy now” or “Go!”.
    * @return callsToAction
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public List<String> getCallsToAction() {
     return callsToAction;
@@ -221,7 +265,7 @@ public class DynamicWriteAttributes {
   }
 
 
-  public DynamicWriteAttributes productImageDisplay(String productImageDisplay) {
+  public DynamicWriteAttributes productImageDisplay(ProductImageDisplayEnum productImageDisplay) {
     
     this.productImageDisplay = productImageDisplay;
     return this;
@@ -231,14 +275,14 @@ public class DynamicWriteAttributes {
    * Value can be \&quot;ShowFullImage\&quot; or \&quot;ZoomOnImage\&quot;. Choose whether your product catalog images should fit inside the allocated  space (\&quot;ShowFullImage\&quot;) or whether they should fill that space (\&quot;ZoomOnImage\&quot;). If you choose ZoomOnImage, there may be some  image cropping.
    * @return productImageDisplay
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public String getProductImageDisplay() {
+  public ProductImageDisplayEnum getProductImageDisplay() {
     return productImageDisplay;
   }
 
 
-  public void setProductImageDisplay(String productImageDisplay) {
+  public void setProductImageDisplay(ProductImageDisplayEnum productImageDisplay) {
     this.productImageDisplay = productImageDisplay;
   }
 
@@ -356,6 +400,11 @@ public class DynamicWriteAttributes {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("logoBase64String");
+    openapiRequiredFields.add("bodyTextColor");
+    openapiRequiredFields.add("pricesColor");
+    openapiRequiredFields.add("callsToAction");
+    openapiRequiredFields.add("productImageDisplay");
   }
 
  /**
@@ -370,26 +419,35 @@ public class DynamicWriteAttributes {
           throw new IllegalArgumentException(String.format("The required field(s) %s in DynamicWriteAttributes is not found in the empty JSON string", DynamicWriteAttributes.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("logoBase64String") != null && !jsonObj.get("logoBase64String").isJsonNull()) && !jsonObj.get("logoBase64String").isJsonPrimitive()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : DynamicWriteAttributes.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("logoBase64String").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `logoBase64String` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logoBase64String").toString()));
       }
       if ((jsonObj.get("creativeBackgroundColor") != null && !jsonObj.get("creativeBackgroundColor").isJsonNull()) && !jsonObj.get("creativeBackgroundColor").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `creativeBackgroundColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creativeBackgroundColor").toString()));
       }
-      if ((jsonObj.get("bodyTextColor") != null && !jsonObj.get("bodyTextColor").isJsonNull()) && !jsonObj.get("bodyTextColor").isJsonPrimitive()) {
+      if (!jsonObj.get("bodyTextColor").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `bodyTextColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bodyTextColor").toString()));
       }
-      if ((jsonObj.get("pricesColor") != null && !jsonObj.get("pricesColor").isJsonNull()) && !jsonObj.get("pricesColor").isJsonPrimitive()) {
+      if (!jsonObj.get("pricesColor").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `pricesColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pricesColor").toString()));
       }
       if ((jsonObj.get("primaryFont") != null && !jsonObj.get("primaryFont").isJsonNull()) && !jsonObj.get("primaryFont").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `primaryFont` to be a primitive type in the JSON string but got `%s`", jsonObj.get("primaryFont").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("callsToAction") != null && !jsonObj.get("callsToAction").isJsonArray()) {
+      // ensure the required json array is present
+      if (jsonObj.get("callsToAction") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("callsToAction").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `callsToAction` to be an array in the JSON string but got `%s`", jsonObj.get("callsToAction").toString()));
       }
-      if ((jsonObj.get("productImageDisplay") != null && !jsonObj.get("productImageDisplay").isJsonNull()) && !jsonObj.get("productImageDisplay").isJsonPrimitive()) {
+      if (!jsonObj.get("productImageDisplay").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `productImageDisplay` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productImageDisplay").toString()));
       }
   }

@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - RetailMedia
  *
  * The version of the OpenAPI document: 2022-10
  * 
@@ -93,7 +93,7 @@ public class AudienceApi {
         <tr><td> 415 </td><td> The Content-Type header must be application/json if present. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAudienceCall(String accountId, CreateRetailMediaAudienceRequest createRetailMediaAudienceRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createAudienceCall(Long accountId, CreateRetailMediaAudienceRequest createRetailMediaAudienceRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -140,7 +140,7 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAudienceValidateBeforeCall(String accountId, CreateRetailMediaAudienceRequest createRetailMediaAudienceRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAudienceValidateBeforeCall(Long accountId, CreateRetailMediaAudienceRequest createRetailMediaAudienceRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling createAudience(Async)");
@@ -173,7 +173,7 @@ public class AudienceApi {
         <tr><td> 415 </td><td> The Content-Type header must be application/json if present. </td><td>  -  </td></tr>
      </table>
      */
-    public CreateRetailMediaAudienceResponse createAudience(String accountId, CreateRetailMediaAudienceRequest createRetailMediaAudienceRequest) throws ApiException {
+    public CreateRetailMediaAudienceResponse createAudience(Long accountId, CreateRetailMediaAudienceRequest createRetailMediaAudienceRequest) throws ApiException {
         ApiResponse<CreateRetailMediaAudienceResponse> localVarResp = createAudienceWithHttpInfo(accountId, createRetailMediaAudienceRequest);
         return localVarResp.getData();
     }
@@ -196,7 +196,7 @@ public class AudienceApi {
         <tr><td> 415 </td><td> The Content-Type header must be application/json if present. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateRetailMediaAudienceResponse> createAudienceWithHttpInfo(String accountId, CreateRetailMediaAudienceRequest createRetailMediaAudienceRequest) throws ApiException {
+    public ApiResponse<CreateRetailMediaAudienceResponse> createAudienceWithHttpInfo(Long accountId, CreateRetailMediaAudienceRequest createRetailMediaAudienceRequest) throws ApiException {
         okhttp3.Call localVarCall = createAudienceValidateBeforeCall(accountId, createRetailMediaAudienceRequest, null);
         Type localVarReturnType = new TypeToken<CreateRetailMediaAudienceResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -221,7 +221,7 @@ public class AudienceApi {
         <tr><td> 415 </td><td> The Content-Type header must be application/json if present. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAudienceAsync(String accountId, CreateRetailMediaAudienceRequest createRetailMediaAudienceRequest, final ApiCallback<CreateRetailMediaAudienceResponse> _callback) throws ApiException {
+    public okhttp3.Call createAudienceAsync(Long accountId, CreateRetailMediaAudienceRequest createRetailMediaAudienceRequest, final ApiCallback<CreateRetailMediaAudienceResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createAudienceValidateBeforeCall(accountId, createRetailMediaAudienceRequest, _callback);
         Type localVarReturnType = new TypeToken<CreateRetailMediaAudienceResponse>(){}.getType();

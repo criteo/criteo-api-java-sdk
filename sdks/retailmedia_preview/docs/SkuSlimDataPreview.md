@@ -16,7 +16,7 @@ Slim  version of Sku Data model
 |**globalBrandName** | **String** | The name of the global brand. |  |
 |**retailerBrandId** | **String** | The retailer brand id associated to the product. |  [optional] |
 |**retailerBrandName** | **String** | The name of the retailer brand. |  [optional] |
-|**price** | **Double** | The price of the product on the retailer site. |  |
+|**price** | **Double** | The price of the product on the retailer site. Can be omitted in certain circumstances |  |
 |**isInStock** | **Boolean** | An indication of if the retailer currently has the product in stock. |  |
 |**gtin** | **String** | A GTIN identifier for the product if available. Covers variations such as EANs and UPCs. |  [optional] |
 |**mpn** | **String** | The MPN for the product if available. |  [optional] |

@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  description: Criteo publicly exposed API
+  description: Criteo API - MarketingSolutions
   title: Criteo API
   version: 2022-07
 servers:
@@ -216,7 +216,7 @@ paths:
                 data:
                   type: ContactlistAmendment
                   attributes:
-                    contactListId: "12"
+                    contactListId: 12
                     operation: add
                     requestDate: 2018-12-10T10:00:50.0000000+00:00
                     identifierType: madid
@@ -1736,12 +1736,12 @@ components:
       example:
         data:
           attributes:
-            nbValidIdentifiers: 0
-            nbInvalidIdentifiers: 6
+            nbValidIdentifiers: 6
+            nbInvalidIdentifiers: 1
             sampleInvalidIdentifiers:
             - sampleInvalidIdentifiers
             - sampleInvalidIdentifiers
-            contactListId: contactListId
+            contactListId: 0
             requestDate: 2000-01-23T04:56:07.000+00:00
             identifierType: identifierType
             operation: operation
@@ -1961,7 +1961,6 @@ components:
             - identifiers
             - identifiers
             identifierType: email
-            internalIdentifiers: true
             operation: add
           type: ContactlistAmendment
       properties:
@@ -2160,12 +2159,12 @@ components:
       description: Response definition of a contactlist operation
       example:
         attributes:
-          nbValidIdentifiers: 0
-          nbInvalidIdentifiers: 6
+          nbValidIdentifiers: 6
+          nbInvalidIdentifiers: 1
           sampleInvalidIdentifiers:
           - sampleInvalidIdentifiers
           - sampleInvalidIdentifiers
-          contactListId: contactListId
+          contactListId: 0
           requestDate: 2000-01-23T04:56:07.000+00:00
           identifierType: identifierType
           operation: operation
@@ -2208,7 +2207,6 @@ components:
           - identifiers
           - identifiers
           identifierType: email
-          internalIdentifiers: true
           operation: add
         type: ContactlistAmendment
       properties:
@@ -4589,6 +4587,8 @@ components:
       properties:
         value:
           $ref: '#/components/schemas/NillableAdSetTargetingRule_value'
+      required:
+      - value
       type: object
     AdSetTargetingRule:
       description: ad set targeting rule model
@@ -4792,8 +4792,8 @@ components:
             currency: EUR
             format: csv
             timezone: Europe/Paris
-            startDate: 2022-08-29T00:00:00.0000000+00:00
-            endDate: 2022-08-29T00:00:00.0000000+00:00
+            startDate: 2023-04-03T00:00:00.0000000+00:00
+            endDate: 2023-04-03T00:00:00.0000000+00:00
       properties:
         data:
           items:
@@ -4807,8 +4807,8 @@ components:
       description: This is the message defining the query for Transparency report
       example:
         shouldDisplayProductIds: false
-        startDate: 2022-08-29T00:00:00.0000000+00:00
-        endDate: 2022-09-01T00:00:00.0000000+00:00
+        startDate: 2023-04-03T00:00:00.0000000+00:00
+        endDate: 2023-04-06T00:00:00.0000000+00:00
       properties:
         shouldDisplayProductIds:
           default: false
@@ -5331,20 +5331,19 @@ components:
     ContactlistOperation_attributes:
       description: the contactlist operation attributes
       example:
-        nbValidIdentifiers: 0
-        nbInvalidIdentifiers: 6
+        nbValidIdentifiers: 6
+        nbInvalidIdentifiers: 1
         sampleInvalidIdentifiers:
         - sampleInvalidIdentifiers
         - sampleInvalidIdentifiers
-        contactListId: contactListId
+        contactListId: 0
         requestDate: 2000-01-23T04:56:07.000+00:00
         identifierType: identifierType
         operation: operation
       properties:
         contactListId:
           description: the affected user list id
-          format: int32
-          type: string
+          type: integer
         operation:
           description: The action recorded
           type: string
@@ -5395,7 +5394,6 @@ components:
         - identifiers
         - identifiers
         identifierType: email
-        internalIdentifiers: true
         operation: add
       properties:
         operation:
@@ -5411,6 +5409,7 @@ components:
           - madid
           - identityLink
           - gum
+          - customerid
           type: string
         identifiers:
           description: "The users tos add or remove, each in the schema specified"
@@ -5421,9 +5420,6 @@ components:
           description: The Gum caller id of the advertiser patching identifiers of
             type Gum
           type: integer
-        internalIdentifiers:
-          description: The flag to indicate if identifiers are external or internal
-          type: boolean
       required:
       - identifiers
       - operation

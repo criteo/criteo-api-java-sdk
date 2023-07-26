@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -44,10 +44,14 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * Infomation for creating an advertiser
+ * Information for creating an advertiser
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdvertiserCreationInput {
+  public static final String SERIALIZED_NAME_AGENCY_ID = "agencyId";
+  @SerializedName(SERIALIZED_NAME_AGENCY_ID)
+  private String agencyId;
+
   public static final String SERIALIZED_NAME_ACCOUNT_NAME = "accountName";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_NAME)
   private String accountName;
@@ -70,6 +74,28 @@ public class AdvertiserCreationInput {
 
   public AdvertiserCreationInput() {
   }
+
+  public AdvertiserCreationInput agencyId(String agencyId) {
+    
+    this.agencyId = agencyId;
+    return this;
+  }
+
+   /**
+   * ID of the agency requesting the advertiser creation
+   * @return agencyId
+  **/
+  @javax.annotation.Nonnull
+
+  public String getAgencyId() {
+    return agencyId;
+  }
+
+
+  public void setAgencyId(String agencyId) {
+    this.agencyId = agencyId;
+  }
+
 
   public AdvertiserCreationInput accountName(String accountName) {
     
@@ -235,7 +261,8 @@ public class AdvertiserCreationInput {
       return false;
     }
     AdvertiserCreationInput advertiserCreationInput = (AdvertiserCreationInput) o;
-    return Objects.equals(this.accountName, advertiserCreationInput.accountName) &&
+    return Objects.equals(this.agencyId, advertiserCreationInput.agencyId) &&
+        Objects.equals(this.accountName, advertiserCreationInput.accountName) &&
         Objects.equals(this.websiteUrl, advertiserCreationInput.websiteUrl) &&
         Objects.equals(this.countryIsoCode, advertiserCreationInput.countryIsoCode) &&
         Objects.equals(this.currencyIsoCode, advertiserCreationInput.currencyIsoCode) &&
@@ -245,13 +272,14 @@ public class AdvertiserCreationInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountName, websiteUrl, countryIsoCode, currencyIsoCode, industryId, additionalProperties);
+    return Objects.hash(agencyId, accountName, websiteUrl, countryIsoCode, currencyIsoCode, industryId, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvertiserCreationInput {\n");
+    sb.append("    agencyId: ").append(toIndentedString(agencyId)).append("\n");
     sb.append("    accountName: ").append(toIndentedString(accountName)).append("\n");
     sb.append("    websiteUrl: ").append(toIndentedString(websiteUrl)).append("\n");
     sb.append("    countryIsoCode: ").append(toIndentedString(countryIsoCode)).append("\n");
@@ -280,6 +308,7 @@ public class AdvertiserCreationInput {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("agencyId");
     openapiFields.add("accountName");
     openapiFields.add("websiteUrl");
     openapiFields.add("countryIsoCode");
@@ -288,6 +317,7 @@ public class AdvertiserCreationInput {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("agencyId");
     openapiRequiredFields.add("accountName");
     openapiRequiredFields.add("websiteUrl");
     openapiRequiredFields.add("countryIsoCode");
@@ -313,6 +343,9 @@ public class AdvertiserCreationInput {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
+      }
+      if (!jsonObj.get("agencyId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `agencyId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("agencyId").toString()));
       }
       if (!jsonObj.get("accountName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountName").toString()));

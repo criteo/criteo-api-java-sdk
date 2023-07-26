@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -19,6 +19,7 @@ import com.criteo.api.marketingsolutions.preview.model.InMarketUpdateV1;
 import com.criteo.api.marketingsolutions.preview.model.LocationUpdateV1;
 import com.criteo.api.marketingsolutions.preview.model.LookalikeUpdateV1;
 import com.criteo.api.marketingsolutions.preview.model.NillableString;
+import com.criteo.api.marketingsolutions.preview.model.ProspectingUpdateV1;
 import com.criteo.api.marketingsolutions.preview.model.RetargetingUpdateV1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -77,6 +78,10 @@ public class AudienceSegmentUpdateEntityV1 {
   @SerializedName(SERIALIZED_NAME_LOOKALIKE)
   private LookalikeUpdateV1 lookalike;
 
+  public static final String SERIALIZED_NAME_PROSPECTING = "prospecting";
+  @SerializedName(SERIALIZED_NAME_PROSPECTING)
+  private ProspectingUpdateV1 prospecting;
+
   public AudienceSegmentUpdateEntityV1() {
   }
 
@@ -87,7 +92,7 @@ public class AudienceSegmentUpdateEntityV1 {
   }
 
    /**
-   * Get name
+   * Name of the segment
    * @return name
   **/
   @javax.annotation.Nullable
@@ -211,6 +216,28 @@ public class AudienceSegmentUpdateEntityV1 {
     this.lookalike = lookalike;
   }
 
+
+  public AudienceSegmentUpdateEntityV1 prospecting(ProspectingUpdateV1 prospecting) {
+    
+    this.prospecting = prospecting;
+    return this;
+  }
+
+   /**
+   * Get prospecting
+   * @return prospecting
+  **/
+  @javax.annotation.Nullable
+
+  public ProspectingUpdateV1 getProspecting() {
+    return prospecting;
+  }
+
+
+  public void setProspecting(ProspectingUpdateV1 prospecting) {
+    this.prospecting = prospecting;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -271,13 +298,14 @@ public class AudienceSegmentUpdateEntityV1 {
         Objects.equals(this.inMarket, audienceSegmentUpdateEntityV1.inMarket) &&
         Objects.equals(this.location, audienceSegmentUpdateEntityV1.location) &&
         Objects.equals(this.retargeting, audienceSegmentUpdateEntityV1.retargeting) &&
-        Objects.equals(this.lookalike, audienceSegmentUpdateEntityV1.lookalike)&&
+        Objects.equals(this.lookalike, audienceSegmentUpdateEntityV1.lookalike) &&
+        Objects.equals(this.prospecting, audienceSegmentUpdateEntityV1.prospecting)&&
         Objects.equals(this.additionalProperties, audienceSegmentUpdateEntityV1.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, inMarket, location, retargeting, lookalike, additionalProperties);
+    return Objects.hash(name, description, inMarket, location, retargeting, lookalike, prospecting, additionalProperties);
   }
 
   @Override
@@ -290,6 +318,7 @@ public class AudienceSegmentUpdateEntityV1 {
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    retargeting: ").append(toIndentedString(retargeting)).append("\n");
     sb.append("    lookalike: ").append(toIndentedString(lookalike)).append("\n");
+    sb.append("    prospecting: ").append(toIndentedString(prospecting)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -319,6 +348,7 @@ public class AudienceSegmentUpdateEntityV1 {
     openapiFields.add("location");
     openapiFields.add("retargeting");
     openapiFields.add("lookalike");
+    openapiFields.add("prospecting");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -358,6 +388,10 @@ public class AudienceSegmentUpdateEntityV1 {
       // validate the optional field `lookalike`
       if (jsonObj.get("lookalike") != null && !jsonObj.get("lookalike").isJsonNull()) {
         LookalikeUpdateV1.validateJsonObject(jsonObj.getAsJsonObject("lookalike"));
+      }
+      // validate the optional field `prospecting`
+      if (jsonObj.get("prospecting") != null && !jsonObj.get("prospecting").isJsonNull()) {
+        ProspectingUpdateV1.validateJsonObject(jsonObj.getAsJsonObject("prospecting"));
       }
   }
 

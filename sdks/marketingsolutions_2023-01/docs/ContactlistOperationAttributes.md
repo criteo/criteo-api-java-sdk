@@ -8,7 +8,7 @@ the contactlist operation attributes
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**contactListId** | **String** | the affected user list id |  [optional] |
+|**contactListId** | **Integer** | the affected user list id |  [optional] |
 |**operation** | **String** | The action recorded |  |
 |**requestDate** | **OffsetDateTime** | When the action was recorded |  [optional] |
 |**identifierType** | **String** | The schema specified for of the identifiers |  [optional] |

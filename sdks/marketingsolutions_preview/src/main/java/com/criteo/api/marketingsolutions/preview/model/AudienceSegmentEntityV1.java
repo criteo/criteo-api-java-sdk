@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -20,6 +20,7 @@ import com.criteo.api.marketingsolutions.preview.model.ContactListV1;
 import com.criteo.api.marketingsolutions.preview.model.InMarketV1;
 import com.criteo.api.marketingsolutions.preview.model.LocationV1;
 import com.criteo.api.marketingsolutions.preview.model.LookalikeV1;
+import com.criteo.api.marketingsolutions.preview.model.ProspectingV1;
 import com.criteo.api.marketingsolutions.preview.model.RetargetingV1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -144,7 +145,7 @@ public class AudienceSegmentEntityV1 {
 
   public static final String SERIALIZED_NAME_PROSPECTING = "prospecting";
   @SerializedName(SERIALIZED_NAME_PROSPECTING)
-  private Object prospecting;
+  private ProspectingV1 prospecting;
 
   public static final String SERIALIZED_NAME_CONTACT_LIST = "contactList";
   @SerializedName(SERIALIZED_NAME_CONTACT_LIST)
@@ -323,24 +324,24 @@ public class AudienceSegmentEntityV1 {
   }
 
 
-  public AudienceSegmentEntityV1 prospecting(Object prospecting) {
+  public AudienceSegmentEntityV1 prospecting(ProspectingV1 prospecting) {
     
     this.prospecting = prospecting;
     return this;
   }
 
    /**
-   * Settings to target prospecting users to website visitors.
+   * Get prospecting
    * @return prospecting
   **/
   @javax.annotation.Nullable
 
-  public Object getProspecting() {
+  public ProspectingV1 getProspecting() {
     return prospecting;
   }
 
 
-  public void setProspecting(Object prospecting) {
+  public void setProspecting(ProspectingV1 prospecting) {
     this.prospecting = prospecting;
   }
 
@@ -615,6 +616,10 @@ public class AudienceSegmentEntityV1 {
       // validate the optional field `inMarket`
       if (jsonObj.get("inMarket") != null && !jsonObj.get("inMarket").isJsonNull()) {
         InMarketV1.validateJsonObject(jsonObj.getAsJsonObject("inMarket"));
+      }
+      // validate the optional field `prospecting`
+      if (jsonObj.get("prospecting") != null && !jsonObj.get("prospecting").isJsonNull()) {
+        ProspectingV1.validateJsonObject(jsonObj.getAsJsonObject("prospecting"));
       }
       // validate the optional field `contactList`
       if (jsonObj.get("contactList") != null && !jsonObj.get("contactList").isJsonNull()) {

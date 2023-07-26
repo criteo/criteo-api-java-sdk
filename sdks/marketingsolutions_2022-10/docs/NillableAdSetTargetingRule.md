@@ -8,7 +8,7 @@ structure that encapsulates an object that have valid business null values. If t
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**value** | [**NillableAdSetTargetingRuleValue**](NillableAdSetTargetingRuleValue.md) |  |  [optional] |
+|**value** | [**NillableAdSetTargetingRuleValue**](NillableAdSetTargetingRuleValue.md) |  |  |
 
 
 

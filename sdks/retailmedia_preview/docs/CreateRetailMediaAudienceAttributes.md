@@ -10,9 +10,9 @@ Parameters needed to create an audience
 |------------ | ------------- | ------------- | -------------|
 |**userType** | [**UserTypeEnum**](#UserTypeEnum) | Type of the user |  |
 |**lookbackWindow** | [**LookbackWindowEnum**](#LookbackWindowEnum) | Length of lookback window |  |
-|**brandIds** | **List&lt;String&gt;** | The brands to target |  [optional] |
-|**categoryIds** | **List&lt;String&gt;** | The categories to target |  [optional] |
-|**retailerId** | **String** | ID of the retailer associated with this audience |  |
+|**brandIds** | **List&lt;Long&gt;** | The brands to target |  [optional] |
+|**categoryIds** | **List&lt;Integer&gt;** | The categories to target |  [optional] |
+|**retailerId** | **Long** | ID of the retailer associated with this audience |  |
 |**name** | **String** | Name of the audience. |  |
 
 

@@ -10,8 +10,8 @@ Inclusive and exclusive segments of a user behavior audience
 |------------ | ------------- | ------------- | -------------|
 |**userAction** | [**UserActionEnum**](#UserActionEnum) | Type of shopper activity used to generate the audience. |  |
 |**lookbackWindow** | [**LookbackWindowEnum**](#LookbackWindowEnum) | Length of lookback window |  |
-|**categoryIds** | **List&lt;String&gt;** | The categories to target |  [optional] |
-|**brandIds** | **List&lt;String&gt;** | The brands to target |  [optional] |
+|**categoryIds** | **List&lt;Integer&gt;** | The categories to target |  [optional] |
+|**brandIds** | **List&lt;Long&gt;** | The brands to target |  [optional] |
 |**minPrice** | **Double** | The min price of targeted skus. |  [optional] [readonly] |
 |**maxPrice** | **Double** | The max price of targeted skus. |  [optional] [readonly] |
 

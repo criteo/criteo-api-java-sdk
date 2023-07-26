@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -136,7 +136,21 @@ public class GenerateStatisticsReportRequestAttributes {
     
     DISPLAYSIZE("DisplaySize"),
     
-    VIDEOPLAYERRATIO("VideoPlayerRatio");
+    VIDEOPLAYERRATIO("VideoPlayerRatio"),
+    
+    COUNTRY("Country"),
+    
+    REGION("Region"),
+    
+    POSTALCODE("PostalCode"),
+    
+    USERBEHAVIOR("UserBehavior"),
+    
+    ENVIRONMENT("Environment"),
+    
+    ADCHANNEL("AdChannel"),
+    
+    ADSOCIALNETWORK("AdSocialNetwork");
 
     private String value;
 
@@ -617,7 +631,103 @@ public class GenerateStatisticsReportRequestAttributes {
     
     RESULTTYPE("ResultType"),
     
-    COSTPERQUALIFIEDVISIT("CostPerQualifiedVisit");
+    COSTPERQUALIFIEDVISIT("CostPerQualifiedVisit"),
+    
+    COSTPERVISITPV1D("CostPerVisitPV1D"),
+    
+    VISITSPV1D("VisitsPV1D"),
+    
+    ASSISTSPC30DCLIENTATTRIBUTION("AssistsPc30dClientAttribution"),
+    
+    ASSISTSALLPC30DCLIENTATTRIBUTION("AssistsAllPc30dClientAttribution"),
+    
+    ASSISTSCLIENTATTRIBUTION("AssistsClientAttribution"),
+    
+    ASSISTSALLCLIENTATTRIBUTION("AssistsAllClientAttribution"),
+    
+    ASSISTSPC30D("AssistsPc30d"),
+    
+    ASSISTSALLPC30D("AssistsAllPc30d"),
+    
+    ASSISTSPC1D("AssistsPc1d"),
+    
+    ASSISTSALLPC1D("AssistsAllPc1d"),
+    
+    ASSISTSPC7D("AssistsPc7d"),
+    
+    ASSISTSALLPC7D("AssistsAllPc7d"),
+    
+    ASSISTSPC7DPV24("AssistsPc7dPv24"),
+    
+    ASSISTSALLPC7DPV24("AssistsAllPc7dPv24"),
+    
+    ASSISTSPC7DPV24H("AssistsPc7dPv24h"),
+    
+    ASSISTSALLPC7DPV24H("AssistsAllPc7dPv24h"),
+    
+    ASSISTSPV24H("AssistsPv24h"),
+    
+    ASSISTSALLPV24H("AssistsAllPv24h"),
+    
+    ASSISTSPC30PV24("AssistsPc30Pv24"),
+    
+    ASSISTSALLPC30PV24("AssistsAllPc30Pv24"),
+    
+    ASSISTSPC30DPV24H("AssistsPc30dPv24h"),
+    
+    ASSISTSALLPC30DPV24H("AssistsAllPc30dPv24h"),
+    
+    ASSISTSPIPC("AssistsPiPc"),
+    
+    ASSISTSPIPV("AssistsPiPv"),
+    
+    ASSISTSPIPCPV("AssistsPiPcPv"),
+    
+    ASSISTSSALESRATIOPC30DCLIENTATTRIBUTION("AssistsSalesRatioPc30dClientAttribution"),
+    
+    ASSISTSSALESRATIOALLPC30DCLIENTATTRIBUTION("AssistsSalesRatioAllPc30dClientAttribution"),
+    
+    ASSISTSSALESRATIOCLIENTATTRIBUTION("AssistsSalesRatioClientAttribution"),
+    
+    ASSISTSSALESRATIOALLCLIENTATTRIBUTION("AssistsSalesRatioAllClientAttribution"),
+    
+    ASSISTSSALESRATIOPC30D("AssistsSalesRatioPc30d"),
+    
+    ASSISTSSALESRATIOALLPC30D("AssistsSalesRatioAllPc30d"),
+    
+    ASSISTSSALESRATIOPC1D("AssistsSalesRatioPc1d"),
+    
+    ASSISTSSALESRATIOALLPC1D("AssistsSalesRatioAllPc1d"),
+    
+    ASSISTSSALESRATIOPC7D("AssistsSalesRatioPc7d"),
+    
+    ASSISTSSALESRATIOALLPC7D("AssistsSalesRatioAllPc7d"),
+    
+    ASSISTSSALESRATIOPC7DPV24("AssistsSalesRatioPc7dPv24"),
+    
+    ASSISTSSALESRATIOALLPC7DPV24("AssistsSalesRatioAllPc7dPv24"),
+    
+    ASSISTSSALESRATIOPC7DPV24H("AssistsSalesRatioPc7dPv24h"),
+    
+    ASSISTSSALESRATIOALLPC7DPV24H("AssistsSalesRatioAllPc7dPv24h"),
+    
+    ASSISTSSALESRATIOPV24H("AssistsSalesRatioPv24h"),
+    
+    ASSISTSSALESRATIOALLPV24H("AssistsSalesRatioAllPv24h"),
+    
+    ASSISTSSALESRATIOPC30PV24("AssistsSalesRatioPc30Pv24"),
+    
+    ASSISTSSALESRATIOALLPC30PV24("AssistsSalesRatioAllPc30Pv24"),
+    
+    ASSISTSSALESRATIOPC30DPV24H("AssistsSalesRatioPc30dPv24h"),
+    
+    ASSISTSSALESRATIOALLPC30DPV24H("AssistsSalesRatioAllPc30dPv24h"),
+    
+    ASSISTSSALESRATIOPIPC("AssistsSalesRatioPiPc"),
+    
+    ASSISTSSALESRATIOPIPV("AssistsSalesRatioPiPv"),
+    
+    ASSISTSSALESRATIOPIPCPV("AssistsSalesRatioPiPcPv");
 
     private String value;
 

@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -171,7 +171,7 @@ public class CreateCampaignSpendLimit {
    * Whether your spend limit is capped or not
    * @return spendLimitType
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public SpendLimitTypeEnum getSpendLimitType() {
     return spendLimitType;
@@ -328,6 +328,7 @@ public class CreateCampaignSpendLimit {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("spendLimitType");
   }
 
  /**
@@ -342,7 +343,14 @@ public class CreateCampaignSpendLimit {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CreateCampaignSpendLimit is not found in the empty JSON string", CreateCampaignSpendLimit.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("spendLimitType") != null && !jsonObj.get("spendLimitType").isJsonNull()) && !jsonObj.get("spendLimitType").isJsonPrimitive()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : CreateCampaignSpendLimit.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("spendLimitType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `spendLimitType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("spendLimitType").toString()));
       }
       if ((jsonObj.get("spendLimitRenewal") != null && !jsonObj.get("spendLimitRenewal").isJsonNull()) && !jsonObj.get("spendLimitRenewal").isJsonPrimitive()) {

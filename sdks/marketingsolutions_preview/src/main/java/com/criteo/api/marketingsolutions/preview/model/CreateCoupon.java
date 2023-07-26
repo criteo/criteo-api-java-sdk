@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -75,9 +75,56 @@ public class CreateCoupon {
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private String endDate;
 
+  /**
+   * Format of the Coupon, it can have two values: \&quot;FullFrame\&quot; or \&quot;LogoZone\&quot;
+   */
+  @JsonAdapter(FormatEnum.Adapter.class)
+  public enum FormatEnum {
+    FULLFRAME("FullFrame"),
+    
+    LOGOZONE("LogoZone");
+
+    private String value;
+
+    FormatEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static FormatEnum fromValue(String value) {
+      for (FormatEnum b : FormatEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<FormatEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final FormatEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public FormatEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return FormatEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_FORMAT = "format";
   @SerializedName(SERIALIZED_NAME_FORMAT)
-  private String format;
+  private FormatEnum format;
 
   public static final String SERIALIZED_NAME_IMAGES = "images";
   @SerializedName(SERIALIZED_NAME_IMAGES)
@@ -230,7 +277,7 @@ public class CreateCoupon {
   }
 
 
-  public CreateCoupon format(String format) {
+  public CreateCoupon format(FormatEnum format) {
     
     this.format = format;
     return this;
@@ -242,12 +289,12 @@ public class CreateCoupon {
   **/
   @javax.annotation.Nonnull
 
-  public String getFormat() {
+  public FormatEnum getFormat() {
     return format;
   }
 
 
-  public void setFormat(String format) {
+  public void setFormat(FormatEnum format) {
     this.format = format;
   }
 
@@ -287,6 +334,8 @@ public class CreateCoupon {
 
    /**
    * Show the Coupon every N seconds (between 1 and 10)
+   * minimum: 1
+   * maximum: 10
    * @return showEvery
   **/
   @javax.annotation.Nonnull
@@ -309,6 +358,8 @@ public class CreateCoupon {
 
    /**
    * Show Coupon for a duration of N seconds (between 1 and 5)
+   * minimum: 1
+   * maximum: 5
    * @return showDuration
   **/
   @javax.annotation.Nonnull
@@ -331,6 +382,8 @@ public class CreateCoupon {
 
    /**
    * Number of rotations for the Coupons (from 1 to 10 times)
+   * minimum: 1
+   * maximum: 10
    * @return rotationsNumber
   **/
   @javax.annotation.Nonnull

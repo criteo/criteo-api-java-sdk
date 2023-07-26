@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -15,7 +15,7 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.CriteoApiErrorV2;
+import com.criteo.api.marketingsolutions.preview.model.CommonProblem;
 import com.criteo.api.marketingsolutions.preview.model.CriteoApiWarningV2;
 import com.criteo.api.marketingsolutions.preview.model.EntityV2OfObject;
 import com.google.gson.TypeAdapter;
@@ -59,7 +59,7 @@ public class ListAvailableIndustriesResponse {
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
-  private List<CriteoApiErrorV2> errors = null;
+  private List<CommonProblem> errors = null;
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
@@ -98,13 +98,13 @@ public class ListAvailableIndustriesResponse {
   }
 
 
-  public ListAvailableIndustriesResponse errors(List<CriteoApiErrorV2> errors) {
+  public ListAvailableIndustriesResponse errors(List<CommonProblem> errors) {
     
     this.errors = errors;
     return this;
   }
 
-  public ListAvailableIndustriesResponse addErrorsItem(CriteoApiErrorV2 errorsItem) {
+  public ListAvailableIndustriesResponse addErrorsItem(CommonProblem errorsItem) {
     if (this.errors == null) {
       this.errors = new ArrayList<>();
     }
@@ -118,12 +118,12 @@ public class ListAvailableIndustriesResponse {
   **/
   @javax.annotation.Nullable
 
-  public List<CriteoApiErrorV2> getErrors() {
+  public List<CommonProblem> getErrors() {
     return errors;
   }
 
 
-  public void setErrors(List<CriteoApiErrorV2> errors) {
+  public void setErrors(List<CommonProblem> errors) {
     this.errors = errors;
   }
 
@@ -297,7 +297,7 @@ public class ListAvailableIndustriesResponse {
 
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
-            CriteoApiErrorV2.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+            CommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
           };
         }
       }

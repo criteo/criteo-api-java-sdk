@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -60,6 +60,10 @@ public class StatisticsRecord {
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   private Long total;
+
+  public static final String SERIALIZED_NAME_VARIANT = "variant";
+  @SerializedName(SERIALIZED_NAME_VARIANT)
+  private Long variant;
 
   public static final String SERIALIZED_NAME_DISPLAYABLE = "displayable";
   @SerializedName(SERIALIZED_NAME_DISPLAYABLE)
@@ -178,6 +182,28 @@ public class StatisticsRecord {
   }
 
 
+  public StatisticsRecord variant(Long variant) {
+    
+    this.variant = variant;
+    return this;
+  }
+
+   /**
+   * The number of total variant products at endDate moment
+   * @return variant
+  **/
+  @javax.annotation.Nonnull
+
+  public Long getVariant() {
+    return variant;
+  }
+
+
+  public void setVariant(Long variant) {
+    this.variant = variant;
+  }
+
+
   public StatisticsRecord displayable(Long displayable) {
     
     this.displayable = displayable;
@@ -185,7 +211,7 @@ public class StatisticsRecord {
   }
 
    /**
-   * The number of displayable products at endDate moment
+   * The number of total displayable products at endDate moment
    * @return displayable
   **/
   @javax.annotation.Nonnull
@@ -207,7 +233,7 @@ public class StatisticsRecord {
   }
 
    /**
-   * The number of non displayable products at endDate moment
+   * The number of total non-displayable products at endDate moment
    * @return nonDisplayable
   **/
   @javax.annotation.Nonnull
@@ -499,6 +525,7 @@ public class StatisticsRecord {
     return Objects.equals(this.startDate, statisticsRecord.startDate) &&
         Objects.equals(this.endDate, statisticsRecord.endDate) &&
         Objects.equals(this.total, statisticsRecord.total) &&
+        Objects.equals(this.variant, statisticsRecord.variant) &&
         Objects.equals(this.displayable, statisticsRecord.displayable) &&
         Objects.equals(this.nonDisplayable, statisticsRecord.nonDisplayable) &&
         Objects.equals(this.added, statisticsRecord.added) &&
@@ -516,7 +543,7 @@ public class StatisticsRecord {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, total, displayable, nonDisplayable, added, deleted, updated, blacklisted, outOfStock, missingImage, missingUrl, missingPrice, missingName, missingDescription, additionalProperties);
+    return Objects.hash(startDate, endDate, total, variant, displayable, nonDisplayable, added, deleted, updated, blacklisted, outOfStock, missingImage, missingUrl, missingPrice, missingName, missingDescription, additionalProperties);
   }
 
   @Override
@@ -526,6 +553,7 @@ public class StatisticsRecord {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
+    sb.append("    variant: ").append(toIndentedString(variant)).append("\n");
     sb.append("    displayable: ").append(toIndentedString(displayable)).append("\n");
     sb.append("    nonDisplayable: ").append(toIndentedString(nonDisplayable)).append("\n");
     sb.append("    added: ").append(toIndentedString(added)).append("\n");
@@ -564,6 +592,7 @@ public class StatisticsRecord {
     openapiFields.add("startDate");
     openapiFields.add("endDate");
     openapiFields.add("total");
+    openapiFields.add("variant");
     openapiFields.add("displayable");
     openapiFields.add("nonDisplayable");
     openapiFields.add("added");
@@ -582,6 +611,7 @@ public class StatisticsRecord {
     openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("endDate");
     openapiRequiredFields.add("total");
+    openapiRequiredFields.add("variant");
     openapiRequiredFields.add("displayable");
     openapiRequiredFields.add("nonDisplayable");
     openapiRequiredFields.add("added");

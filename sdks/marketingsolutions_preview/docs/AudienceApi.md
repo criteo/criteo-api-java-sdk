@@ -6,7 +6,7 @@ All URIs are relative to *https://api.criteo.com*
 |------------- | ------------- | -------------|
 | [**bulkCreateAudienceSegments**](AudienceApi.md#bulkCreateAudienceSegments) | **POST** /preview/marketing-solutions/audience-segments/create |  |
 | [**bulkCreateAudiences**](AudienceApi.md#bulkCreateAudiences) | **POST** /preview/marketing-solutions/audiences/create |  |
-| [**bulkDeleteAudienceSegment**](AudienceApi.md#bulkDeleteAudienceSegment) | **POST** /preview/marketing-solutions/audience-segments/delete |  |
+| [**bulkDeleteAudienceSegments**](AudienceApi.md#bulkDeleteAudienceSegments) | **POST** /preview/marketing-solutions/audience-segments/delete |  |
 | [**bulkDeleteAudiences**](AudienceApi.md#bulkDeleteAudiences) | **POST** /preview/marketing-solutions/audiences/delete |  |
 | [**bulkUpdateAudienceSegments**](AudienceApi.md#bulkUpdateAudienceSegments) | **PATCH** /preview/marketing-solutions/audience-segments |  |
 | [**bulkUpdateAudiences**](AudienceApi.md#bulkUpdateAudiences) | **PATCH** /preview/marketing-solutions/audiences |  |
@@ -16,9 +16,9 @@ All URIs are relative to *https://api.criteo.com*
 | [**deleteUserProfiles**](AudienceApi.md#deleteUserProfiles) | **POST** /preview/marketing-solutions/advertisers/{advertiserId}/user-profiles/delete |  |
 | [**estimateAudienceSegmentSize**](AudienceApi.md#estimateAudienceSegmentSize) | **POST** /preview/marketing-solutions/audience-segments/estimate-size |  |
 | [**estimateAudienceSize**](AudienceApi.md#estimateAudienceSize) | **POST** /preview/marketing-solutions/audiences/estimate-size |  |
-| [**getContactListStatistics**](AudienceApi.md#getContactListStatistics) | **GET** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list |  |
-| [**getInMarketBrands**](AudienceApi.md#getInMarketBrands) | **GET** /preview/marketing-solutions/audience-segments/in-market-brands |  |
-| [**getInMarketInterests**](AudienceApi.md#getInMarketInterests) | **GET** /preview/marketing-solutions/audience-segments/in-market-interests |  |
+| [**getAudienceSegmentContactListStatistics**](AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list |  |
+| [**getAudienceSegmentsInMarketBrands**](AudienceApi.md#getAudienceSegmentsInMarketBrands) | **GET** /preview/marketing-solutions/audience-segments/in-market-brands |  |
+| [**getAudienceSegmentsInMarketInterests**](AudienceApi.md#getAudienceSegmentsInMarketInterests) | **GET** /preview/marketing-solutions/audience-segments/in-market-interests |  |
 | [**modifyAudienceUsersWithAttributes**](AudienceApi.md#modifyAudienceUsersWithAttributes) | **PATCH** /preview/audiences/{audience-id}/contactlist-attributes |  |
 | [**searchAudienceSegments**](AudienceApi.md#searchAudienceSegments) | **POST** /preview/marketing-solutions/audience-segments/search |  |
 | [**searchAudiences**](AudienceApi.md#searchAudiences) | **POST** /preview/marketing-solutions/audiences/search |  |
@@ -94,7 +94,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **audienceSegmentBulkCreateInputV1** | [**AudienceSegmentBulkCreateInputV1**](AudienceSegmentBulkCreateInputV1.md)| Segment creation parameter | [optional] |
+| **audienceSegmentBulkCreateInputV1** | [**AudienceSegmentBulkCreateInputV1**](AudienceSegmentBulkCreateInputV1.md)| Segment creation parameter | |
 
 ### Return type
 
@@ -186,7 +186,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **audienceBulkCreateInputV1** | [**AudienceBulkCreateInputV1**](AudienceBulkCreateInputV1.md)|  | [optional] |
+| **audienceBulkCreateInputV1** | [**AudienceBulkCreateInputV1**](AudienceBulkCreateInputV1.md)|  | |
 
 ### Return type
 
@@ -211,9 +211,9 @@ public class Example {
 | **403** | The API client is not authorized to access this resource. |  -  |
 
 
-## bulkDeleteAudienceSegment
+## bulkDeleteAudienceSegments
 
-> AudienceSegmentIdEntityV1ListResponse bulkDeleteAudienceSegment(audienceSegmentBulkDeleteInputV1)
+> AudienceSegmentIdEntityV1ListResponse bulkDeleteAudienceSegments(audienceSegmentBulkDeleteInputV1)
 
 
 
@@ -260,10 +260,10 @@ public class Example {
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1 = new AudienceSegmentBulkDeleteInputV1(); // AudienceSegmentBulkDeleteInputV1 | Segment delete request.
         try {
-            AudienceSegmentIdEntityV1ListResponse result = apiInstance.bulkDeleteAudienceSegment(audienceSegmentBulkDeleteInputV1);
+            AudienceSegmentIdEntityV1ListResponse result = apiInstance.bulkDeleteAudienceSegments(audienceSegmentBulkDeleteInputV1);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AudienceApi#bulkDeleteAudienceSegment");
+            System.err.println("Exception when calling AudienceApi#bulkDeleteAudienceSegments");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -278,7 +278,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **audienceSegmentBulkDeleteInputV1** | [**AudienceSegmentBulkDeleteInputV1**](AudienceSegmentBulkDeleteInputV1.md)| Segment delete request. | [optional] |
+| **audienceSegmentBulkDeleteInputV1** | [**AudienceSegmentBulkDeleteInputV1**](AudienceSegmentBulkDeleteInputV1.md)| Segment delete request. | |
 
 ### Return type
 
@@ -370,7 +370,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **audienceBulkDeleteInputV1** | [**AudienceBulkDeleteInputV1**](AudienceBulkDeleteInputV1.md)|  | [optional] |
+| **audienceBulkDeleteInputV1** | [**AudienceBulkDeleteInputV1**](AudienceBulkDeleteInputV1.md)|  | |
 
 ### Return type
 
@@ -463,7 +463,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **audienceSegmentBulkUpdateInputV1** | [**AudienceSegmentBulkUpdateInputV1**](AudienceSegmentBulkUpdateInputV1.md)| Segment Update request | [optional] |
+| **audienceSegmentBulkUpdateInputV1** | [**AudienceSegmentBulkUpdateInputV1**](AudienceSegmentBulkUpdateInputV1.md)| Segment Update request | |
 
 ### Return type
 
@@ -555,7 +555,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **audienceBulkUpdateInputV1** | [**AudienceBulkUpdateInputV1**](AudienceBulkUpdateInputV1.md)|  | [optional] |
+| **audienceBulkUpdateInputV1** | [**AudienceBulkUpdateInputV1**](AudienceBulkUpdateInputV1.md)|  | |
 
 ### Return type
 
@@ -647,7 +647,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **audienceSegmentComputeSizesInputV1** | [**AudienceSegmentComputeSizesInputV1**](AudienceSegmentComputeSizesInputV1.md)|  | [optional] |
+| **audienceSegmentComputeSizesInputV1** | [**AudienceSegmentComputeSizesInputV1**](AudienceSegmentComputeSizesInputV1.md)|  | |
 
 ### Return type
 
@@ -739,7 +739,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **audienceComputeSizesInputV1** | [**AudienceComputeSizesInputV1**](AudienceComputeSizesInputV1.md)|  | [optional] |
+| **audienceComputeSizesInputV1** | [**AudienceComputeSizesInputV1**](AudienceComputeSizesInputV1.md)|  | |
 
 ### Return type
 
@@ -1012,7 +1012,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **audienceSegmentEstimateSizeInputV1** | [**AudienceSegmentEstimateSizeInputV1**](AudienceSegmentEstimateSizeInputV1.md)|  | [optional] |
+| **audienceSegmentEstimateSizeInputV1** | [**AudienceSegmentEstimateSizeInputV1**](AudienceSegmentEstimateSizeInputV1.md)|  | |
 
 ### Return type
 
@@ -1104,7 +1104,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **audienceEstimateSizeInputV1** | [**AudienceEstimateSizeInputV1**](AudienceEstimateSizeInputV1.md)|  | [optional] |
+| **audienceEstimateSizeInputV1** | [**AudienceEstimateSizeInputV1**](AudienceEstimateSizeInputV1.md)|  | |
 
 ### Return type
 
@@ -1129,9 +1129,9 @@ public class Example {
 | **403** | The API client is not authorized to access this resource. |  -  |
 
 
-## getContactListStatistics
+## getAudienceSegmentContactListStatistics
 
-> ContactListStatisticsEntityV1Response getContactListStatistics(audienceSegmentId)
+> ContactListStatisticsEntityV1Response getAudienceSegmentContactListStatistics(audienceSegmentId)
 
 
 
@@ -1178,10 +1178,10 @@ public class Example {
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         Integer audienceSegmentId = 56; // Integer | The segment ID.
         try {
-            ContactListStatisticsEntityV1Response result = apiInstance.getContactListStatistics(audienceSegmentId);
+            ContactListStatisticsEntityV1Response result = apiInstance.getAudienceSegmentContactListStatistics(audienceSegmentId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AudienceApi#getContactListStatistics");
+            System.err.println("Exception when calling AudienceApi#getAudienceSegmentContactListStatistics");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1220,9 +1220,9 @@ public class Example {
 | **403** | The API client is not authorized to access this resource. |  -  |
 
 
-## getInMarketBrands
+## getAudienceSegmentsInMarketBrands
 
-> InMarketAudienceSegmentBrandEntityV1ListResponse getInMarketBrands(advertiserId, country)
+> InMarketAudienceSegmentBrandEntityV1ListResponse getAudienceSegmentsInMarketBrands(advertiserId, country)
 
 
 
@@ -1270,10 +1270,10 @@ public class Example {
         String advertiserId = "advertiserId_example"; // String | The advertiser ID.
         String country = "country_example"; // String | The ISO 3166-1 alpha-2 country code.
         try {
-            InMarketAudienceSegmentBrandEntityV1ListResponse result = apiInstance.getInMarketBrands(advertiserId, country);
+            InMarketAudienceSegmentBrandEntityV1ListResponse result = apiInstance.getAudienceSegmentsInMarketBrands(advertiserId, country);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AudienceApi#getInMarketBrands");
+            System.err.println("Exception when calling AudienceApi#getAudienceSegmentsInMarketBrands");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1313,9 +1313,9 @@ public class Example {
 | **403** | The API client is not authorized to access this resource. |  -  |
 
 
-## getInMarketInterests
+## getAudienceSegmentsInMarketInterests
 
-> InMarketAudienceSegmentInterestEntityV1ListResponse getInMarketInterests(advertiserId, country)
+> InMarketAudienceSegmentInterestEntityV1ListResponse getAudienceSegmentsInMarketInterests(advertiserId, country)
 
 
 
@@ -1363,10 +1363,10 @@ public class Example {
         String advertiserId = "advertiserId_example"; // String | The advertiser ID.
         String country = "country_example"; // String | The ISO 3166-1 alpha-2 country code.
         try {
-            InMarketAudienceSegmentInterestEntityV1ListResponse result = apiInstance.getInMarketInterests(advertiserId, country);
+            InMarketAudienceSegmentInterestEntityV1ListResponse result = apiInstance.getAudienceSegmentsInMarketInterests(advertiserId, country);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AudienceApi#getInMarketInterests");
+            System.err.println("Exception when calling AudienceApi#getAudienceSegmentsInMarketInterests");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1453,7 +1453,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
-        Integer audienceId = 56; // Integer | The id of the audience to amend
+        String audienceId = "audienceId_example"; // String | The id of the audience to amend
         ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest = new ContactlistWithAttributesAmendmentRequest(); // ContactlistWithAttributesAmendmentRequest | 
         try {
             ModifyAudienceResponse result = apiInstance.modifyAudienceUsersWithAttributes(audienceId, contactlistWithAttributesAmendmentRequest);
@@ -1474,7 +1474,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **audienceId** | **Integer**| The id of the audience to amend | |
+| **audienceId** | **String**| The id of the audience to amend | |
 | **contactlistWithAttributesAmendmentRequest** | [**ContactlistWithAttributesAmendmentRequest**](ContactlistWithAttributesAmendmentRequest.md)|  | |
 
 ### Return type
@@ -1500,7 +1500,7 @@ public class Example {
 
 ## searchAudienceSegments
 
-> AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse searchAudienceSegments(limit, offset, audienceSegmentSearchInputV1)
+> AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse searchAudienceSegments(audienceSegmentSearchInputV1, limit, offset)
 
 
 
@@ -1545,11 +1545,11 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
-        Integer limit = 56; // Integer | The number of elements to be returned. The default is 50 and the maximum is 100.
-        Integer offset = 56; // Integer | The (zero-based) offset into the collection. The default is 0.
         AudienceSegmentSearchInputV1 audienceSegmentSearchInputV1 = new AudienceSegmentSearchInputV1(); // AudienceSegmentSearchInputV1 | Segment search filters.
+        Integer limit = 50; // Integer | The number of elements to be returned. The default is 50 and the maximum is 100.
+        Integer offset = 0; // Integer | The (zero-based) offset into the collection. The default is 0.
         try {
-            AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse result = apiInstance.searchAudienceSegments(limit, offset, audienceSegmentSearchInputV1);
+            AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse result = apiInstance.searchAudienceSegments(audienceSegmentSearchInputV1, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AudienceApi#searchAudienceSegments");
@@ -1567,9 +1567,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| The number of elements to be returned. The default is 50 and the maximum is 100. | [optional] |
-| **offset** | **Integer**| The (zero-based) offset into the collection. The default is 0. | [optional] |
-| **audienceSegmentSearchInputV1** | [**AudienceSegmentSearchInputV1**](AudienceSegmentSearchInputV1.md)| Segment search filters. | [optional] |
+| **audienceSegmentSearchInputV1** | [**AudienceSegmentSearchInputV1**](AudienceSegmentSearchInputV1.md)| Segment search filters. | |
+| **limit** | **Integer**| The number of elements to be returned. The default is 50 and the maximum is 100. | [optional] [default to 50] |
+| **offset** | **Integer**| The (zero-based) offset into the collection. The default is 0. | [optional] [default to 0] |
 
 ### Return type
 
@@ -1596,7 +1596,7 @@ public class Example {
 
 ## searchAudiences
 
-> AudienceEntityV1AudienceSearchMetadataV1ListResponse searchAudiences(limit, offset, audienceSearchInputV1)
+> AudienceEntityV1AudienceSearchMetadataV1ListResponse searchAudiences(audienceSearchInputV1, limit, offset)
 
 
 
@@ -1641,11 +1641,11 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
-        Integer limit = 56; // Integer | The number of elements to be returned. The default is 50 and the maximum is 100.
-        Integer offset = 56; // Integer | The (zero-based) offset into the collection. The default is 0.
         AudienceSearchInputV1 audienceSearchInputV1 = new AudienceSearchInputV1(); // AudienceSearchInputV1 | Audience search filters.
+        Integer limit = 50; // Integer | The number of elements to be returned. The default is 50 and the maximum is 100.
+        Integer offset = 0; // Integer | The (zero-based) offset into the collection. The default is 0.
         try {
-            AudienceEntityV1AudienceSearchMetadataV1ListResponse result = apiInstance.searchAudiences(limit, offset, audienceSearchInputV1);
+            AudienceEntityV1AudienceSearchMetadataV1ListResponse result = apiInstance.searchAudiences(audienceSearchInputV1, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AudienceApi#searchAudiences");
@@ -1663,9 +1663,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| The number of elements to be returned. The default is 50 and the maximum is 100. | [optional] |
-| **offset** | **Integer**| The (zero-based) offset into the collection. The default is 0. | [optional] |
-| **audienceSearchInputV1** | [**AudienceSearchInputV1**](AudienceSearchInputV1.md)| Audience search filters. | [optional] |
+| **audienceSearchInputV1** | [**AudienceSearchInputV1**](AudienceSearchInputV1.md)| Audience search filters. | |
+| **limit** | **Integer**| The number of elements to be returned. The default is 50 and the maximum is 100. | [optional] [default to 50] |
+| **offset** | **Integer**| The (zero-based) offset into the collection. The default is 0. | [optional] [default to 0] |
 
 ### Return type
 

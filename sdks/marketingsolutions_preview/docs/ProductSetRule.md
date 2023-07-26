@@ -31,6 +31,7 @@ Encapsulate a product rule
 
 | Name | Value |
 |---- | -----|
+| OBSOLETE_EXTRADATA | &quot;OBSOLETE_Extradata&quot; |
 | CATEGORY1 | &quot;Category1&quot; |
 | CATEGORY2 | &quot;Category2&quot; |
 | CATEGORY3 | &quot;Category3&quot; |

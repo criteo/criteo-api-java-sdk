@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -70,7 +70,7 @@ public class AudienceIdEntityV1Resource {
   }
 
    /**
-   * Audience entity only with its ID
+   * Audience entity with only its ID
    * @return attributes
   **/
   @javax.annotation.Nullable

@@ -12,7 +12,6 @@ the name of the entity type
 |**identifierType** | [**IdentifierTypeEnum**](#IdentifierTypeEnum) | What type of identifiers are used |  |
 |**identifiers** | [**List&lt;UserDef&gt;**](UserDef.md) | The users to add or remove, each in the schema specified, defined with attributes |  |
 |**gumCallerId** | **Object** | The Gum caller id of the advertiser patching identifiers of type Gum |  [optional] [readonly] |
-|**internalIdentifiers** | **Boolean** | The flag to indicate if identifiers are external or internal |  [optional] [readonly] |
 
 
 
@@ -33,6 +32,7 @@ the name of the entity type
 | MADID | &quot;madid&quot; |
 | IDENTITYLINK | &quot;identityLink&quot; |
 | GUM | &quot;gum&quot; |
+| CUSTOMERID | &quot;customerid&quot; |
 
 
 

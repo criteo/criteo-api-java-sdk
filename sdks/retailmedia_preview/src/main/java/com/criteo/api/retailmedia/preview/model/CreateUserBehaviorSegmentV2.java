@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - RetailMedia
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -170,11 +170,11 @@ public class CreateUserBehaviorSegmentV2 {
 
   public static final String SERIALIZED_NAME_CATEGORY_IDS = "categoryIds";
   @SerializedName(SERIALIZED_NAME_CATEGORY_IDS)
-  private List<String> categoryIds = null;
+  private List<Integer> categoryIds = null;
 
   public static final String SERIALIZED_NAME_BRAND_IDS = "brandIds";
   @SerializedName(SERIALIZED_NAME_BRAND_IDS)
-  private List<String> brandIds = null;
+  private List<Long> brandIds = null;
 
   public static final String SERIALIZED_NAME_MIN_PRICE = "minPrice";
   @SerializedName(SERIALIZED_NAME_MIN_PRICE)
@@ -241,13 +241,13 @@ public class CreateUserBehaviorSegmentV2 {
   }
 
 
-  public CreateUserBehaviorSegmentV2 categoryIds(List<String> categoryIds) {
+  public CreateUserBehaviorSegmentV2 categoryIds(List<Integer> categoryIds) {
     
     this.categoryIds = categoryIds;
     return this;
   }
 
-  public CreateUserBehaviorSegmentV2 addCategoryIdsItem(String categoryIdsItem) {
+  public CreateUserBehaviorSegmentV2 addCategoryIdsItem(Integer categoryIdsItem) {
     if (this.categoryIds == null) {
       this.categoryIds = new ArrayList<>();
     }
@@ -261,23 +261,23 @@ public class CreateUserBehaviorSegmentV2 {
   **/
   @javax.annotation.Nullable
 
-  public List<String> getCategoryIds() {
+  public List<Integer> getCategoryIds() {
     return categoryIds;
   }
 
 
-  public void setCategoryIds(List<String> categoryIds) {
+  public void setCategoryIds(List<Integer> categoryIds) {
     this.categoryIds = categoryIds;
   }
 
 
-  public CreateUserBehaviorSegmentV2 brandIds(List<String> brandIds) {
+  public CreateUserBehaviorSegmentV2 brandIds(List<Long> brandIds) {
     
     this.brandIds = brandIds;
     return this;
   }
 
-  public CreateUserBehaviorSegmentV2 addBrandIdsItem(String brandIdsItem) {
+  public CreateUserBehaviorSegmentV2 addBrandIdsItem(Long brandIdsItem) {
     if (this.brandIds == null) {
       this.brandIds = new ArrayList<>();
     }
@@ -291,12 +291,12 @@ public class CreateUserBehaviorSegmentV2 {
   **/
   @javax.annotation.Nullable
 
-  public List<String> getBrandIds() {
+  public List<Long> getBrandIds() {
     return brandIds;
   }
 
 
-  public void setBrandIds(List<String> brandIds) {
+  public void setBrandIds(List<Long> brandIds) {
     this.brandIds = brandIds;
   }
 

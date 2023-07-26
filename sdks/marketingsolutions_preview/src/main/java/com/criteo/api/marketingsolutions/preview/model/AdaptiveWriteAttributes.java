@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -53,9 +53,58 @@ import com.criteo.api.marketingsolutions.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdaptiveWriteAttributes {
+  /**
+   * Gets or Sets layouts
+   */
+  @JsonAdapter(LayoutsEnum.Adapter.class)
+  public enum LayoutsEnum {
+    EDITORIAL("Editorial"),
+    
+    MONTAGE("Montage"),
+    
+    INBANNERVIDEO("InBannerVideo");
+
+    private String value;
+
+    LayoutsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static LayoutsEnum fromValue(String value) {
+      for (LayoutsEnum b : LayoutsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<LayoutsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final LayoutsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public LayoutsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return LayoutsEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_LAYOUTS = "layouts";
   @SerializedName(SERIALIZED_NAME_LAYOUTS)
-  private List<String> layouts = new ArrayList<>();
+  private List<LayoutsEnum> layouts = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_LOGO_BASE64_STRING = "logoBase64String";
   @SerializedName(SERIALIZED_NAME_LOGO_BASE64_STRING)
@@ -89,9 +138,56 @@ public class AdaptiveWriteAttributes {
   @SerializedName(SERIALIZED_NAME_IMAGE_SETS_BASE64)
   private List<ImageSetBase64> imageSetsBase64 = null;
 
+  /**
+   * Value can be \&quot;ShowFullImage\&quot; or \&quot;ZoomOnImage\&quot;. Choose whether your image set should fit inside the allocated  space (\&quot;ShowFullImage\&quot;) or whether it should fill that space (\&quot;ZoomOnImage\&quot;). If you choose ZoomOnImage, there may be some  image cropping.
+   */
+  @JsonAdapter(ImageDisplayEnum.Adapter.class)
+  public enum ImageDisplayEnum {
+    SHOWFULLIMAGE("ShowFullImage"),
+    
+    ZOOMONIMAGE("ZoomOnImage");
+
+    private String value;
+
+    ImageDisplayEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ImageDisplayEnum fromValue(String value) {
+      for (ImageDisplayEnum b : ImageDisplayEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ImageDisplayEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ImageDisplayEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ImageDisplayEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ImageDisplayEnum.fromValue(value);
+      }
+    }
+  }
+
   public static final String SERIALIZED_NAME_IMAGE_DISPLAY = "imageDisplay";
   @SerializedName(SERIALIZED_NAME_IMAGE_DISPLAY)
-  private String imageDisplay;
+  private ImageDisplayEnum imageDisplay;
 
   public static final String SERIALIZED_NAME_VIDEO_BASE64_STRINGS = "videoBase64Strings";
   @SerializedName(SERIALIZED_NAME_VIDEO_BASE64_STRINGS)
@@ -104,13 +200,13 @@ public class AdaptiveWriteAttributes {
   public AdaptiveWriteAttributes() {
   }
 
-  public AdaptiveWriteAttributes layouts(List<String> layouts) {
+  public AdaptiveWriteAttributes layouts(List<LayoutsEnum> layouts) {
     
     this.layouts = layouts;
     return this;
   }
 
-  public AdaptiveWriteAttributes addLayoutsItem(String layoutsItem) {
+  public AdaptiveWriteAttributes addLayoutsItem(LayoutsEnum layoutsItem) {
     this.layouts.add(layoutsItem);
     return this;
   }
@@ -121,12 +217,12 @@ public class AdaptiveWriteAttributes {
   **/
   @javax.annotation.Nonnull
 
-  public List<String> getLayouts() {
+  public List<LayoutsEnum> getLayouts() {
     return layouts;
   }
 
 
-  public void setLayouts(List<String> layouts) {
+  public void setLayouts(List<LayoutsEnum> layouts) {
     this.layouts = layouts;
   }
 
@@ -320,7 +416,7 @@ public class AdaptiveWriteAttributes {
   }
 
 
-  public AdaptiveWriteAttributes imageDisplay(String imageDisplay) {
+  public AdaptiveWriteAttributes imageDisplay(ImageDisplayEnum imageDisplay) {
     
     this.imageDisplay = imageDisplay;
     return this;
@@ -332,12 +428,12 @@ public class AdaptiveWriteAttributes {
   **/
   @javax.annotation.Nullable
 
-  public String getImageDisplay() {
+  public ImageDisplayEnum getImageDisplay() {
     return imageDisplay;
   }
 
 
-  public void setImageDisplay(String imageDisplay) {
+  public void setImageDisplay(ImageDisplayEnum imageDisplay) {
     this.imageDisplay = imageDisplay;
   }
 

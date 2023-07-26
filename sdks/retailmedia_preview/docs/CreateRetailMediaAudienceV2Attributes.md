@@ -8,7 +8,7 @@ Parameters needed to create an audience
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**retailerId** | **String** | ID of the retailer associated with this audience |  |
+|**retailerId** | **Long** | ID of the retailer associated with this audience |  |
 |**userBehaviorDetails** | [**UserBehaviorDetailsV2**](UserBehaviorDetailsV2.md) |  |  |
 |**name** | **String** | Name of the audience. |  |
 

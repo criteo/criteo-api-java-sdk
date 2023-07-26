@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -18,6 +18,7 @@ import java.util.Arrays;
 import com.criteo.api.marketingsolutions.preview.model.InMarketCreateV1;
 import com.criteo.api.marketingsolutions.preview.model.LocationCreateV1;
 import com.criteo.api.marketingsolutions.preview.model.LookalikeCreateV1;
+import com.criteo.api.marketingsolutions.preview.model.ProspectingCreateV1;
 import com.criteo.api.marketingsolutions.preview.model.RetargetingCreateV1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -70,7 +71,7 @@ public class AudienceSegmentCreateEntityV1 {
 
   public static final String SERIALIZED_NAME_PROSPECTING = "prospecting";
   @SerializedName(SERIALIZED_NAME_PROSPECTING)
-  private Object prospecting;
+  private ProspectingCreateV1 prospecting;
 
   public static final String SERIALIZED_NAME_CONTACT_LIST = "contactList";
   @SerializedName(SERIALIZED_NAME_CONTACT_LIST)
@@ -101,7 +102,7 @@ public class AudienceSegmentCreateEntityV1 {
    * Name of the segment
    * @return name
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getName() {
     return name;
@@ -145,7 +146,7 @@ public class AudienceSegmentCreateEntityV1 {
    * Advertiser associated to the segment
    * @return advertiserId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getAdvertiserId() {
     return advertiserId;
@@ -179,24 +180,24 @@ public class AudienceSegmentCreateEntityV1 {
   }
 
 
-  public AudienceSegmentCreateEntityV1 prospecting(Object prospecting) {
+  public AudienceSegmentCreateEntityV1 prospecting(ProspectingCreateV1 prospecting) {
     
     this.prospecting = prospecting;
     return this;
   }
 
    /**
-   * Settings to target prospecting users to website visitors.
+   * Get prospecting
    * @return prospecting
   **/
   @javax.annotation.Nullable
 
-  public Object getProspecting() {
+  public ProspectingCreateV1 getProspecting() {
     return prospecting;
   }
 
 
-  public void setProspecting(Object prospecting) {
+  public void setProspecting(ProspectingCreateV1 prospecting) {
     this.prospecting = prospecting;
   }
 
@@ -408,6 +409,8 @@ public class AudienceSegmentCreateEntityV1 {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("advertiserId");
   }
 
  /**
@@ -422,18 +425,29 @@ public class AudienceSegmentCreateEntityV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AudienceSegmentCreateEntityV1 is not found in the empty JSON string", AudienceSegmentCreateEntityV1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : AudienceSegmentCreateEntityV1.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if ((jsonObj.get("advertiserId") != null && !jsonObj.get("advertiserId").isJsonNull()) && !jsonObj.get("advertiserId").isJsonPrimitive()) {
+      if (!jsonObj.get("advertiserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserId").toString()));
       }
       // validate the optional field `inMarket`
       if (jsonObj.get("inMarket") != null && !jsonObj.get("inMarket").isJsonNull()) {
         InMarketCreateV1.validateJsonObject(jsonObj.getAsJsonObject("inMarket"));
+      }
+      // validate the optional field `prospecting`
+      if (jsonObj.get("prospecting") != null && !jsonObj.get("prospecting").isJsonNull()) {
+        ProspectingCreateV1.validateJsonObject(jsonObj.getAsJsonObject("prospecting"));
       }
       // validate the optional field `location`
       if (jsonObj.get("location") != null && !jsonObj.get("location").isJsonNull()) {

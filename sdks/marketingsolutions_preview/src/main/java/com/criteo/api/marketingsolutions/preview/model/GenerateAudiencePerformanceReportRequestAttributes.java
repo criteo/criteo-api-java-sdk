@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -414,7 +414,7 @@ public class GenerateAudiencePerformanceReportRequestAttributes {
   }
 
    /**
-   * The list of Audiences ids. If empty, all the Audiences will be fetched
+   * The list of Audiences ids. If empty, all the Audiences will be fetched.
    * @return audienceIds
   **/
   @javax.annotation.Nullable
@@ -444,7 +444,7 @@ public class GenerateAudiencePerformanceReportRequestAttributes {
   }
 
    /**
-   * The list of Segments ids. If empty, all the segments will be fetched
+   * The list of Segments ids. If empty, all the segments will be fetched.
    * @return segmentsIds
   **/
   @javax.annotation.Nullable

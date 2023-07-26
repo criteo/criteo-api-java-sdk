@@ -1,6 +1,6 @@
 /*
  * Criteo API
- * Criteo publicly exposed API
+ * Criteo API - MarketingSolutions
  *
  * The version of the OpenAPI document: Preview
  * 
@@ -106,7 +106,7 @@ public class AudienceApi {
 
     /**
      * Build call for bulkCreateAudienceSegments
-     * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (optional)
+     * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -171,6 +171,11 @@ public class AudienceApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call bulkCreateAudienceSegmentsValidateBeforeCall(AudienceSegmentBulkCreateInputV1 audienceSegmentBulkCreateInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceSegmentBulkCreateInputV1' is set
+        if (audienceSegmentBulkCreateInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'audienceSegmentBulkCreateInputV1' when calling bulkCreateAudienceSegments(Async)");
+        }
+
         return bulkCreateAudienceSegmentsCall(audienceSegmentBulkCreateInputV1, _callback);
 
     }
@@ -178,7 +183,7 @@ public class AudienceApi {
     /**
      * 
      * Creates all segments with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
-     * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (optional)
+     * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (required)
      * @return AudienceSegmentEntityV1ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -198,7 +203,7 @@ public class AudienceApi {
     /**
      * 
      * Creates all segments with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
-     * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (optional)
+     * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (required)
      * @return ApiResponse&lt;AudienceSegmentEntityV1ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -219,7 +224,7 @@ public class AudienceApi {
     /**
      *  (asynchronously)
      * Creates all segments with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
-     * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (optional)
+     * @param audienceSegmentBulkCreateInputV1 Segment creation parameter (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -241,7 +246,7 @@ public class AudienceApi {
     }
     /**
      * Build call for bulkCreateAudiences
-     * @param audienceBulkCreateInputV1  (optional)
+     * @param audienceBulkCreateInputV1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -306,6 +311,11 @@ public class AudienceApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call bulkCreateAudiencesValidateBeforeCall(AudienceBulkCreateInputV1 audienceBulkCreateInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceBulkCreateInputV1' is set
+        if (audienceBulkCreateInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'audienceBulkCreateInputV1' when calling bulkCreateAudiences(Async)");
+        }
+
         return bulkCreateAudiencesCall(audienceBulkCreateInputV1, _callback);
 
     }
@@ -313,7 +323,7 @@ public class AudienceApi {
     /**
      * 
      * Creates all audiences with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
-     * @param audienceBulkCreateInputV1  (optional)
+     * @param audienceBulkCreateInputV1  (required)
      * @return AudienceEntityV1ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -333,7 +343,7 @@ public class AudienceApi {
     /**
      * 
      * Creates all audiences with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
-     * @param audienceBulkCreateInputV1  (optional)
+     * @param audienceBulkCreateInputV1  (required)
      * @return ApiResponse&lt;AudienceEntityV1ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -354,7 +364,7 @@ public class AudienceApi {
     /**
      *  (asynchronously)
      * Creates all audiences with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
-     * @param audienceBulkCreateInputV1  (optional)
+     * @param audienceBulkCreateInputV1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -375,8 +385,8 @@ public class AudienceApi {
         return localVarCall;
     }
     /**
-     * Build call for bulkDeleteAudienceSegment
-     * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (optional)
+     * Build call for bulkDeleteAudienceSegments
+     * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -389,7 +399,7 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bulkDeleteAudienceSegmentCall(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call bulkDeleteAudienceSegmentsCall(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -440,15 +450,20 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bulkDeleteAudienceSegmentValidateBeforeCall(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
-        return bulkDeleteAudienceSegmentCall(audienceSegmentBulkDeleteInputV1, _callback);
+    private okhttp3.Call bulkDeleteAudienceSegmentsValidateBeforeCall(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceSegmentBulkDeleteInputV1' is set
+        if (audienceSegmentBulkDeleteInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'audienceSegmentBulkDeleteInputV1' when calling bulkDeleteAudienceSegments(Async)");
+        }
+
+        return bulkDeleteAudienceSegmentsCall(audienceSegmentBulkDeleteInputV1, _callback);
 
     }
 
     /**
      * 
      * Delete the segments associated to the given audience IDs.
-     * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (optional)
+     * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (required)
      * @return AudienceSegmentIdEntityV1ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -460,15 +475,15 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public AudienceSegmentIdEntityV1ListResponse bulkDeleteAudienceSegment(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1) throws ApiException {
-        ApiResponse<AudienceSegmentIdEntityV1ListResponse> localVarResp = bulkDeleteAudienceSegmentWithHttpInfo(audienceSegmentBulkDeleteInputV1);
+    public AudienceSegmentIdEntityV1ListResponse bulkDeleteAudienceSegments(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1) throws ApiException {
+        ApiResponse<AudienceSegmentIdEntityV1ListResponse> localVarResp = bulkDeleteAudienceSegmentsWithHttpInfo(audienceSegmentBulkDeleteInputV1);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Delete the segments associated to the given audience IDs.
-     * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (optional)
+     * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (required)
      * @return ApiResponse&lt;AudienceSegmentIdEntityV1ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -480,8 +495,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AudienceSegmentIdEntityV1ListResponse> bulkDeleteAudienceSegmentWithHttpInfo(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1) throws ApiException {
-        okhttp3.Call localVarCall = bulkDeleteAudienceSegmentValidateBeforeCall(audienceSegmentBulkDeleteInputV1, null);
+    public ApiResponse<AudienceSegmentIdEntityV1ListResponse> bulkDeleteAudienceSegmentsWithHttpInfo(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1) throws ApiException {
+        okhttp3.Call localVarCall = bulkDeleteAudienceSegmentsValidateBeforeCall(audienceSegmentBulkDeleteInputV1, null);
         Type localVarReturnType = new TypeToken<AudienceSegmentIdEntityV1ListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -489,7 +504,7 @@ public class AudienceApi {
     /**
      *  (asynchronously)
      * Delete the segments associated to the given audience IDs.
-     * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (optional)
+     * @param audienceSegmentBulkDeleteInputV1 Segment delete request. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -502,16 +517,16 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bulkDeleteAudienceSegmentAsync(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1, final ApiCallback<AudienceSegmentIdEntityV1ListResponse> _callback) throws ApiException {
+    public okhttp3.Call bulkDeleteAudienceSegmentsAsync(AudienceSegmentBulkDeleteInputV1 audienceSegmentBulkDeleteInputV1, final ApiCallback<AudienceSegmentIdEntityV1ListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = bulkDeleteAudienceSegmentValidateBeforeCall(audienceSegmentBulkDeleteInputV1, _callback);
+        okhttp3.Call localVarCall = bulkDeleteAudienceSegmentsValidateBeforeCall(audienceSegmentBulkDeleteInputV1, _callback);
         Type localVarReturnType = new TypeToken<AudienceSegmentIdEntityV1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for bulkDeleteAudiences
-     * @param audienceBulkDeleteInputV1  (optional)
+     * @param audienceBulkDeleteInputV1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -577,6 +592,11 @@ public class AudienceApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call bulkDeleteAudiencesValidateBeforeCall(AudienceBulkDeleteInputV1 audienceBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceBulkDeleteInputV1' is set
+        if (audienceBulkDeleteInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'audienceBulkDeleteInputV1' when calling bulkDeleteAudiences(Async)");
+        }
+
         return bulkDeleteAudiencesCall(audienceBulkDeleteInputV1, _callback);
 
     }
@@ -584,7 +604,7 @@ public class AudienceApi {
     /**
      * 
      * Deletes the audiences associated to the given audience IDs.
-     * @param audienceBulkDeleteInputV1  (optional)
+     * @param audienceBulkDeleteInputV1  (required)
      * @return AudienceIdEntityV1ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -605,7 +625,7 @@ public class AudienceApi {
     /**
      * 
      * Deletes the audiences associated to the given audience IDs.
-     * @param audienceBulkDeleteInputV1  (optional)
+     * @param audienceBulkDeleteInputV1  (required)
      * @return ApiResponse&lt;AudienceIdEntityV1ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -627,7 +647,7 @@ public class AudienceApi {
     /**
      *  (asynchronously)
      * Deletes the audiences associated to the given audience IDs.
-     * @param audienceBulkDeleteInputV1  (optional)
+     * @param audienceBulkDeleteInputV1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -650,7 +670,7 @@ public class AudienceApi {
     }
     /**
      * Build call for bulkUpdateAudienceSegments
-     * @param audienceSegmentBulkUpdateInputV1 Segment Update request (optional)
+     * @param audienceSegmentBulkUpdateInputV1 Segment Update request (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -715,6 +735,11 @@ public class AudienceApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call bulkUpdateAudienceSegmentsValidateBeforeCall(AudienceSegmentBulkUpdateInputV1 audienceSegmentBulkUpdateInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceSegmentBulkUpdateInputV1' is set
+        if (audienceSegmentBulkUpdateInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'audienceSegmentBulkUpdateInputV1' when calling bulkUpdateAudienceSegments(Async)");
+        }
+
         return bulkUpdateAudienceSegmentsCall(audienceSegmentBulkUpdateInputV1, _callback);
 
     }
@@ -722,7 +747,7 @@ public class AudienceApi {
     /**
      * 
      * Updates the properties of all segments with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
-     * @param audienceSegmentBulkUpdateInputV1 Segment Update request (optional)
+     * @param audienceSegmentBulkUpdateInputV1 Segment Update request (required)
      * @return AudienceSegmentEntityV1ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -742,7 +767,7 @@ public class AudienceApi {
     /**
      * 
      * Updates the properties of all segments with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
-     * @param audienceSegmentBulkUpdateInputV1 Segment Update request (optional)
+     * @param audienceSegmentBulkUpdateInputV1 Segment Update request (required)
      * @return ApiResponse&lt;AudienceSegmentEntityV1ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -763,7 +788,7 @@ public class AudienceApi {
     /**
      *  (asynchronously)
      * Updates the properties of all segments with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
-     * @param audienceSegmentBulkUpdateInputV1 Segment Update request (optional)
+     * @param audienceSegmentBulkUpdateInputV1 Segment Update request (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -785,7 +810,7 @@ public class AudienceApi {
     }
     /**
      * Build call for bulkUpdateAudiences
-     * @param audienceBulkUpdateInputV1  (optional)
+     * @param audienceBulkUpdateInputV1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -850,6 +875,11 @@ public class AudienceApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call bulkUpdateAudiencesValidateBeforeCall(AudienceBulkUpdateInputV1 audienceBulkUpdateInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceBulkUpdateInputV1' is set
+        if (audienceBulkUpdateInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'audienceBulkUpdateInputV1' when calling bulkUpdateAudiences(Async)");
+        }
+
         return bulkUpdateAudiencesCall(audienceBulkUpdateInputV1, _callback);
 
     }
@@ -857,7 +887,7 @@ public class AudienceApi {
     /**
      * 
      * Updates the properties of all audiences with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
-     * @param audienceBulkUpdateInputV1  (optional)
+     * @param audienceBulkUpdateInputV1  (required)
      * @return AudienceEntityV1ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -877,7 +907,7 @@ public class AudienceApi {
     /**
      * 
      * Updates the properties of all audiences with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
-     * @param audienceBulkUpdateInputV1  (optional)
+     * @param audienceBulkUpdateInputV1  (required)
      * @return ApiResponse&lt;AudienceEntityV1ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -898,7 +928,7 @@ public class AudienceApi {
     /**
      *  (asynchronously)
      * Updates the properties of all audiences with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
-     * @param audienceBulkUpdateInputV1  (optional)
+     * @param audienceBulkUpdateInputV1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -920,7 +950,7 @@ public class AudienceApi {
     }
     /**
      * Build call for computeAudienceSegmentsSizes
-     * @param audienceSegmentComputeSizesInputV1  (optional)
+     * @param audienceSegmentComputeSizesInputV1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -985,6 +1015,11 @@ public class AudienceApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call computeAudienceSegmentsSizesValidateBeforeCall(AudienceSegmentComputeSizesInputV1 audienceSegmentComputeSizesInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceSegmentComputeSizesInputV1' is set
+        if (audienceSegmentComputeSizesInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'audienceSegmentComputeSizesInputV1' when calling computeAudienceSegmentsSizes(Async)");
+        }
+
         return computeAudienceSegmentsSizesCall(audienceSegmentComputeSizesInputV1, _callback);
 
     }
@@ -992,7 +1027,7 @@ public class AudienceApi {
     /**
      * 
      * Gets the size of all segments. An error is returned for those whose size calculation is not supported.
-     * @param audienceSegmentComputeSizesInputV1  (optional)
+     * @param audienceSegmentComputeSizesInputV1  (required)
      * @return AudienceSegmentSizeEntityV1ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1012,7 +1047,7 @@ public class AudienceApi {
     /**
      * 
      * Gets the size of all segments. An error is returned for those whose size calculation is not supported.
-     * @param audienceSegmentComputeSizesInputV1  (optional)
+     * @param audienceSegmentComputeSizesInputV1  (required)
      * @return ApiResponse&lt;AudienceSegmentSizeEntityV1ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1033,7 +1068,7 @@ public class AudienceApi {
     /**
      *  (asynchronously)
      * Gets the size of all segments. An error is returned for those whose size calculation is not supported.
-     * @param audienceSegmentComputeSizesInputV1  (optional)
+     * @param audienceSegmentComputeSizesInputV1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1055,7 +1090,7 @@ public class AudienceApi {
     }
     /**
      * Build call for computeAudiencesSizes
-     * @param audienceComputeSizesInputV1  (optional)
+     * @param audienceComputeSizesInputV1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1120,6 +1155,11 @@ public class AudienceApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call computeAudiencesSizesValidateBeforeCall(AudienceComputeSizesInputV1 audienceComputeSizesInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceComputeSizesInputV1' is set
+        if (audienceComputeSizesInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'audienceComputeSizesInputV1' when calling computeAudiencesSizes(Async)");
+        }
+
         return computeAudiencesSizesCall(audienceComputeSizesInputV1, _callback);
 
     }
@@ -1127,7 +1167,7 @@ public class AudienceApi {
     /**
      * 
      * Gets the size of all audiences. An error is returned for those whose size calculation is not supported.
-     * @param audienceComputeSizesInputV1  (optional)
+     * @param audienceComputeSizesInputV1  (required)
      * @return AudienceSizeEntityV1ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1147,7 +1187,7 @@ public class AudienceApi {
     /**
      * 
      * Gets the size of all audiences. An error is returned for those whose size calculation is not supported.
-     * @param audienceComputeSizesInputV1  (optional)
+     * @param audienceComputeSizesInputV1  (required)
      * @return ApiResponse&lt;AudienceSizeEntityV1ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1168,7 +1208,7 @@ public class AudienceApi {
     /**
      *  (asynchronously)
      * Gets the size of all audiences. An error is returned for those whose size calculation is not supported.
-     * @param audienceComputeSizesInputV1  (optional)
+     * @param audienceComputeSizesInputV1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1448,7 +1488,7 @@ public class AudienceApi {
     }
     /**
      * Build call for estimateAudienceSegmentSize
-     * @param audienceSegmentEstimateSizeInputV1  (optional)
+     * @param audienceSegmentEstimateSizeInputV1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1513,6 +1553,11 @@ public class AudienceApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call estimateAudienceSegmentSizeValidateBeforeCall(AudienceSegmentEstimateSizeInputV1 audienceSegmentEstimateSizeInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceSegmentEstimateSizeInputV1' is set
+        if (audienceSegmentEstimateSizeInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'audienceSegmentEstimateSizeInputV1' when calling estimateAudienceSegmentSize(Async)");
+        }
+
         return estimateAudienceSegmentSizeCall(audienceSegmentEstimateSizeInputV1, _callback);
 
     }
@@ -1520,7 +1565,7 @@ public class AudienceApi {
     /**
      * 
      * Gets the size estimation of a non existent segment. An error is returned when size calculation is not supported.
-     * @param audienceSegmentEstimateSizeInputV1  (optional)
+     * @param audienceSegmentEstimateSizeInputV1  (required)
      * @return AudienceSegmentSizeEstimationV1Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1540,7 +1585,7 @@ public class AudienceApi {
     /**
      * 
      * Gets the size estimation of a non existent segment. An error is returned when size calculation is not supported.
-     * @param audienceSegmentEstimateSizeInputV1  (optional)
+     * @param audienceSegmentEstimateSizeInputV1  (required)
      * @return ApiResponse&lt;AudienceSegmentSizeEstimationV1Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1561,7 +1606,7 @@ public class AudienceApi {
     /**
      *  (asynchronously)
      * Gets the size estimation of a non existent segment. An error is returned when size calculation is not supported.
-     * @param audienceSegmentEstimateSizeInputV1  (optional)
+     * @param audienceSegmentEstimateSizeInputV1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1583,7 +1628,7 @@ public class AudienceApi {
     }
     /**
      * Build call for estimateAudienceSize
-     * @param audienceEstimateSizeInputV1  (optional)
+     * @param audienceEstimateSizeInputV1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1648,6 +1693,11 @@ public class AudienceApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call estimateAudienceSizeValidateBeforeCall(AudienceEstimateSizeInputV1 audienceEstimateSizeInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceEstimateSizeInputV1' is set
+        if (audienceEstimateSizeInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'audienceEstimateSizeInputV1' when calling estimateAudienceSize(Async)");
+        }
+
         return estimateAudienceSizeCall(audienceEstimateSizeInputV1, _callback);
 
     }
@@ -1655,7 +1705,7 @@ public class AudienceApi {
     /**
      * 
      * Gets the size estimation of a non existent audience. An error is returned when size calculation is not supported.
-     * @param audienceEstimateSizeInputV1  (optional)
+     * @param audienceEstimateSizeInputV1  (required)
      * @return AudienceSizeEstimationV1Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1675,7 +1725,7 @@ public class AudienceApi {
     /**
      * 
      * Gets the size estimation of a non existent audience. An error is returned when size calculation is not supported.
-     * @param audienceEstimateSizeInputV1  (optional)
+     * @param audienceEstimateSizeInputV1  (required)
      * @return ApiResponse&lt;AudienceSizeEstimationV1Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1696,7 +1746,7 @@ public class AudienceApi {
     /**
      *  (asynchronously)
      * Gets the size estimation of a non existent audience. An error is returned when size calculation is not supported.
-     * @param audienceEstimateSizeInputV1  (optional)
+     * @param audienceEstimateSizeInputV1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1717,7 +1767,7 @@ public class AudienceApi {
         return localVarCall;
     }
     /**
-     * Build call for getContactListStatistics
+     * Build call for getAudienceSegmentContactListStatistics
      * @param audienceSegmentId The segment ID. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1730,7 +1780,7 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getContactListStatisticsCall(Integer audienceSegmentId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAudienceSegmentContactListStatisticsCall(Integer audienceSegmentId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1778,13 +1828,13 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getContactListStatisticsValidateBeforeCall(Integer audienceSegmentId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAudienceSegmentContactListStatisticsValidateBeforeCall(Integer audienceSegmentId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'audienceSegmentId' is set
         if (audienceSegmentId == null) {
-            throw new ApiException("Missing the required parameter 'audienceSegmentId' when calling getContactListStatistics(Async)");
+            throw new ApiException("Missing the required parameter 'audienceSegmentId' when calling getAudienceSegmentContactListStatistics(Async)");
         }
 
-        return getContactListStatisticsCall(audienceSegmentId, _callback);
+        return getAudienceSegmentContactListStatisticsCall(audienceSegmentId, _callback);
 
     }
 
@@ -1802,8 +1852,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public ContactListStatisticsEntityV1Response getContactListStatistics(Integer audienceSegmentId) throws ApiException {
-        ApiResponse<ContactListStatisticsEntityV1Response> localVarResp = getContactListStatisticsWithHttpInfo(audienceSegmentId);
+    public ContactListStatisticsEntityV1Response getAudienceSegmentContactListStatistics(Integer audienceSegmentId) throws ApiException {
+        ApiResponse<ContactListStatisticsEntityV1Response> localVarResp = getAudienceSegmentContactListStatisticsWithHttpInfo(audienceSegmentId);
         return localVarResp.getData();
     }
 
@@ -1821,8 +1871,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ContactListStatisticsEntityV1Response> getContactListStatisticsWithHttpInfo(Integer audienceSegmentId) throws ApiException {
-        okhttp3.Call localVarCall = getContactListStatisticsValidateBeforeCall(audienceSegmentId, null);
+    public ApiResponse<ContactListStatisticsEntityV1Response> getAudienceSegmentContactListStatisticsWithHttpInfo(Integer audienceSegmentId) throws ApiException {
+        okhttp3.Call localVarCall = getAudienceSegmentContactListStatisticsValidateBeforeCall(audienceSegmentId, null);
         Type localVarReturnType = new TypeToken<ContactListStatisticsEntityV1Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1842,15 +1892,15 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getContactListStatisticsAsync(Integer audienceSegmentId, final ApiCallback<ContactListStatisticsEntityV1Response> _callback) throws ApiException {
+    public okhttp3.Call getAudienceSegmentContactListStatisticsAsync(Integer audienceSegmentId, final ApiCallback<ContactListStatisticsEntityV1Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getContactListStatisticsValidateBeforeCall(audienceSegmentId, _callback);
+        okhttp3.Call localVarCall = getAudienceSegmentContactListStatisticsValidateBeforeCall(audienceSegmentId, _callback);
         Type localVarReturnType = new TypeToken<ContactListStatisticsEntityV1Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getInMarketBrands
+     * Build call for getAudienceSegmentsInMarketBrands
      * @param advertiserId The advertiser ID. (required)
      * @param country The ISO 3166-1 alpha-2 country code. (required)
      * @param _callback Callback for upload/download progress
@@ -1864,7 +1914,7 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInMarketBrandsCall(String advertiserId, String country, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAudienceSegmentsInMarketBrandsCall(String advertiserId, String country, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1919,18 +1969,18 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInMarketBrandsValidateBeforeCall(String advertiserId, String country, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAudienceSegmentsInMarketBrandsValidateBeforeCall(String advertiserId, String country, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
-            throw new ApiException("Missing the required parameter 'advertiserId' when calling getInMarketBrands(Async)");
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling getAudienceSegmentsInMarketBrands(Async)");
         }
 
         // verify the required parameter 'country' is set
         if (country == null) {
-            throw new ApiException("Missing the required parameter 'country' when calling getInMarketBrands(Async)");
+            throw new ApiException("Missing the required parameter 'country' when calling getAudienceSegmentsInMarketBrands(Async)");
         }
 
-        return getInMarketBrandsCall(advertiserId, country, _callback);
+        return getAudienceSegmentsInMarketBrandsCall(advertiserId, country, _callback);
 
     }
 
@@ -1949,8 +1999,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public InMarketAudienceSegmentBrandEntityV1ListResponse getInMarketBrands(String advertiserId, String country) throws ApiException {
-        ApiResponse<InMarketAudienceSegmentBrandEntityV1ListResponse> localVarResp = getInMarketBrandsWithHttpInfo(advertiserId, country);
+    public InMarketAudienceSegmentBrandEntityV1ListResponse getAudienceSegmentsInMarketBrands(String advertiserId, String country) throws ApiException {
+        ApiResponse<InMarketAudienceSegmentBrandEntityV1ListResponse> localVarResp = getAudienceSegmentsInMarketBrandsWithHttpInfo(advertiserId, country);
         return localVarResp.getData();
     }
 
@@ -1969,8 +2019,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InMarketAudienceSegmentBrandEntityV1ListResponse> getInMarketBrandsWithHttpInfo(String advertiserId, String country) throws ApiException {
-        okhttp3.Call localVarCall = getInMarketBrandsValidateBeforeCall(advertiserId, country, null);
+    public ApiResponse<InMarketAudienceSegmentBrandEntityV1ListResponse> getAudienceSegmentsInMarketBrandsWithHttpInfo(String advertiserId, String country) throws ApiException {
+        okhttp3.Call localVarCall = getAudienceSegmentsInMarketBrandsValidateBeforeCall(advertiserId, country, null);
         Type localVarReturnType = new TypeToken<InMarketAudienceSegmentBrandEntityV1ListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1991,15 +2041,15 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInMarketBrandsAsync(String advertiserId, String country, final ApiCallback<InMarketAudienceSegmentBrandEntityV1ListResponse> _callback) throws ApiException {
+    public okhttp3.Call getAudienceSegmentsInMarketBrandsAsync(String advertiserId, String country, final ApiCallback<InMarketAudienceSegmentBrandEntityV1ListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInMarketBrandsValidateBeforeCall(advertiserId, country, _callback);
+        okhttp3.Call localVarCall = getAudienceSegmentsInMarketBrandsValidateBeforeCall(advertiserId, country, _callback);
         Type localVarReturnType = new TypeToken<InMarketAudienceSegmentBrandEntityV1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getInMarketInterests
+     * Build call for getAudienceSegmentsInMarketInterests
      * @param advertiserId The advertiser ID. (required)
      * @param country The ISO 3166-1 alpha-2 country code. (required)
      * @param _callback Callback for upload/download progress
@@ -2013,7 +2063,7 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInMarketInterestsCall(String advertiserId, String country, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAudienceSegmentsInMarketInterestsCall(String advertiserId, String country, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2068,18 +2118,18 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInMarketInterestsValidateBeforeCall(String advertiserId, String country, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAudienceSegmentsInMarketInterestsValidateBeforeCall(String advertiserId, String country, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
-            throw new ApiException("Missing the required parameter 'advertiserId' when calling getInMarketInterests(Async)");
+            throw new ApiException("Missing the required parameter 'advertiserId' when calling getAudienceSegmentsInMarketInterests(Async)");
         }
 
         // verify the required parameter 'country' is set
         if (country == null) {
-            throw new ApiException("Missing the required parameter 'country' when calling getInMarketInterests(Async)");
+            throw new ApiException("Missing the required parameter 'country' when calling getAudienceSegmentsInMarketInterests(Async)");
         }
 
-        return getInMarketInterestsCall(advertiserId, country, _callback);
+        return getAudienceSegmentsInMarketInterestsCall(advertiserId, country, _callback);
 
     }
 
@@ -2098,8 +2148,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public InMarketAudienceSegmentInterestEntityV1ListResponse getInMarketInterests(String advertiserId, String country) throws ApiException {
-        ApiResponse<InMarketAudienceSegmentInterestEntityV1ListResponse> localVarResp = getInMarketInterestsWithHttpInfo(advertiserId, country);
+    public InMarketAudienceSegmentInterestEntityV1ListResponse getAudienceSegmentsInMarketInterests(String advertiserId, String country) throws ApiException {
+        ApiResponse<InMarketAudienceSegmentInterestEntityV1ListResponse> localVarResp = getAudienceSegmentsInMarketInterestsWithHttpInfo(advertiserId, country);
         return localVarResp.getData();
     }
 
@@ -2118,8 +2168,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InMarketAudienceSegmentInterestEntityV1ListResponse> getInMarketInterestsWithHttpInfo(String advertiserId, String country) throws ApiException {
-        okhttp3.Call localVarCall = getInMarketInterestsValidateBeforeCall(advertiserId, country, null);
+    public ApiResponse<InMarketAudienceSegmentInterestEntityV1ListResponse> getAudienceSegmentsInMarketInterestsWithHttpInfo(String advertiserId, String country) throws ApiException {
+        okhttp3.Call localVarCall = getAudienceSegmentsInMarketInterestsValidateBeforeCall(advertiserId, country, null);
         Type localVarReturnType = new TypeToken<InMarketAudienceSegmentInterestEntityV1ListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2140,9 +2190,9 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInMarketInterestsAsync(String advertiserId, String country, final ApiCallback<InMarketAudienceSegmentInterestEntityV1ListResponse> _callback) throws ApiException {
+    public okhttp3.Call getAudienceSegmentsInMarketInterestsAsync(String advertiserId, String country, final ApiCallback<InMarketAudienceSegmentInterestEntityV1ListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInMarketInterestsValidateBeforeCall(advertiserId, country, _callback);
+        okhttp3.Call localVarCall = getAudienceSegmentsInMarketInterestsValidateBeforeCall(advertiserId, country, _callback);
         Type localVarReturnType = new TypeToken<InMarketAudienceSegmentInterestEntityV1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2161,7 +2211,7 @@ public class AudienceApi {
         <tr><td> 401 </td><td> Not authorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call modifyAudienceUsersWithAttributesCall(Integer audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call modifyAudienceUsersWithAttributesCall(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2208,7 +2258,7 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call modifyAudienceUsersWithAttributesValidateBeforeCall(Integer audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call modifyAudienceUsersWithAttributesValidateBeforeCall(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'audienceId' is set
         if (audienceId == null) {
             throw new ApiException("Missing the required parameter 'audienceId' when calling modifyAudienceUsersWithAttributes(Async)");
@@ -2237,7 +2287,7 @@ public class AudienceApi {
         <tr><td> 401 </td><td> Not authorized </td><td>  -  </td></tr>
      </table>
      */
-    public ModifyAudienceResponse modifyAudienceUsersWithAttributes(Integer audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest) throws ApiException {
+    public ModifyAudienceResponse modifyAudienceUsersWithAttributes(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest) throws ApiException {
         ApiResponse<ModifyAudienceResponse> localVarResp = modifyAudienceUsersWithAttributesWithHttpInfo(audienceId, contactlistWithAttributesAmendmentRequest);
         return localVarResp.getData();
     }
@@ -2256,7 +2306,7 @@ public class AudienceApi {
         <tr><td> 401 </td><td> Not authorized </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ModifyAudienceResponse> modifyAudienceUsersWithAttributesWithHttpInfo(Integer audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest) throws ApiException {
+    public ApiResponse<ModifyAudienceResponse> modifyAudienceUsersWithAttributesWithHttpInfo(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest) throws ApiException {
         okhttp3.Call localVarCall = modifyAudienceUsersWithAttributesValidateBeforeCall(audienceId, contactlistWithAttributesAmendmentRequest, null);
         Type localVarReturnType = new TypeToken<ModifyAudienceResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2277,7 +2327,7 @@ public class AudienceApi {
         <tr><td> 401 </td><td> Not authorized </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call modifyAudienceUsersWithAttributesAsync(Integer audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest, final ApiCallback<ModifyAudienceResponse> _callback) throws ApiException {
+    public okhttp3.Call modifyAudienceUsersWithAttributesAsync(String audienceId, ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest, final ApiCallback<ModifyAudienceResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = modifyAudienceUsersWithAttributesValidateBeforeCall(audienceId, contactlistWithAttributesAmendmentRequest, _callback);
         Type localVarReturnType = new TypeToken<ModifyAudienceResponse>(){}.getType();
@@ -2286,9 +2336,9 @@ public class AudienceApi {
     }
     /**
      * Build call for searchAudienceSegments
-     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional)
-     * @param offset The (zero-based) offset into the collection. The default is 0. (optional)
-     * @param audienceSegmentSearchInputV1 Segment search filters. (optional)
+     * @param audienceSegmentSearchInputV1 Segment search filters. (required)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2301,7 +2351,7 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAudienceSegmentsCall(Integer limit, Integer offset, AudienceSegmentSearchInputV1 audienceSegmentSearchInputV1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchAudienceSegmentsCall(AudienceSegmentSearchInputV1 audienceSegmentSearchInputV1, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2360,17 +2410,22 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchAudienceSegmentsValidateBeforeCall(Integer limit, Integer offset, AudienceSegmentSearchInputV1 audienceSegmentSearchInputV1, final ApiCallback _callback) throws ApiException {
-        return searchAudienceSegmentsCall(limit, offset, audienceSegmentSearchInputV1, _callback);
+    private okhttp3.Call searchAudienceSegmentsValidateBeforeCall(AudienceSegmentSearchInputV1 audienceSegmentSearchInputV1, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceSegmentSearchInputV1' is set
+        if (audienceSegmentSearchInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'audienceSegmentSearchInputV1' when calling searchAudienceSegments(Async)");
+        }
+
+        return searchAudienceSegmentsCall(audienceSegmentSearchInputV1, limit, offset, _callback);
 
     }
 
     /**
      * 
      * Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
-     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional)
-     * @param offset The (zero-based) offset into the collection. The default is 0. (optional)
-     * @param audienceSegmentSearchInputV1 Segment search filters. (optional)
+     * @param audienceSegmentSearchInputV1 Segment search filters. (required)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @return AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2382,17 +2437,17 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse searchAudienceSegments(Integer limit, Integer offset, AudienceSegmentSearchInputV1 audienceSegmentSearchInputV1) throws ApiException {
-        ApiResponse<AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse> localVarResp = searchAudienceSegmentsWithHttpInfo(limit, offset, audienceSegmentSearchInputV1);
+    public AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse searchAudienceSegments(AudienceSegmentSearchInputV1 audienceSegmentSearchInputV1, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse> localVarResp = searchAudienceSegmentsWithHttpInfo(audienceSegmentSearchInputV1, limit, offset);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
-     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional)
-     * @param offset The (zero-based) offset into the collection. The default is 0. (optional)
-     * @param audienceSegmentSearchInputV1 Segment search filters. (optional)
+     * @param audienceSegmentSearchInputV1 Segment search filters. (required)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @return ApiResponse&lt;AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2404,8 +2459,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse> searchAudienceSegmentsWithHttpInfo(Integer limit, Integer offset, AudienceSegmentSearchInputV1 audienceSegmentSearchInputV1) throws ApiException {
-        okhttp3.Call localVarCall = searchAudienceSegmentsValidateBeforeCall(limit, offset, audienceSegmentSearchInputV1, null);
+    public ApiResponse<AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse> searchAudienceSegmentsWithHttpInfo(AudienceSegmentSearchInputV1 audienceSegmentSearchInputV1, Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = searchAudienceSegmentsValidateBeforeCall(audienceSegmentSearchInputV1, limit, offset, null);
         Type localVarReturnType = new TypeToken<AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2413,9 +2468,9 @@ public class AudienceApi {
     /**
      *  (asynchronously)
      * Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
-     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional)
-     * @param offset The (zero-based) offset into the collection. The default is 0. (optional)
-     * @param audienceSegmentSearchInputV1 Segment search filters. (optional)
+     * @param audienceSegmentSearchInputV1 Segment search filters. (required)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2428,18 +2483,18 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAudienceSegmentsAsync(Integer limit, Integer offset, AudienceSegmentSearchInputV1 audienceSegmentSearchInputV1, final ApiCallback<AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse> _callback) throws ApiException {
+    public okhttp3.Call searchAudienceSegmentsAsync(AudienceSegmentSearchInputV1 audienceSegmentSearchInputV1, Integer limit, Integer offset, final ApiCallback<AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchAudienceSegmentsValidateBeforeCall(limit, offset, audienceSegmentSearchInputV1, _callback);
+        okhttp3.Call localVarCall = searchAudienceSegmentsValidateBeforeCall(audienceSegmentSearchInputV1, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for searchAudiences
-     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional)
-     * @param offset The (zero-based) offset into the collection. The default is 0. (optional)
-     * @param audienceSearchInputV1 Audience search filters. (optional)
+     * @param audienceSearchInputV1 Audience search filters. (required)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2452,7 +2507,7 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAudiencesCall(Integer limit, Integer offset, AudienceSearchInputV1 audienceSearchInputV1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchAudiencesCall(AudienceSearchInputV1 audienceSearchInputV1, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2511,17 +2566,22 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchAudiencesValidateBeforeCall(Integer limit, Integer offset, AudienceSearchInputV1 audienceSearchInputV1, final ApiCallback _callback) throws ApiException {
-        return searchAudiencesCall(limit, offset, audienceSearchInputV1, _callback);
+    private okhttp3.Call searchAudiencesValidateBeforeCall(AudienceSearchInputV1 audienceSearchInputV1, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceSearchInputV1' is set
+        if (audienceSearchInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'audienceSearchInputV1' when calling searchAudiences(Async)");
+        }
+
+        return searchAudiencesCall(audienceSearchInputV1, limit, offset, _callback);
 
     }
 
     /**
      * 
      * Returns a list of audiences that match the provided filters. If present, the filters are AND&#39;ed together when applied.
-     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional)
-     * @param offset The (zero-based) offset into the collection. The default is 0. (optional)
-     * @param audienceSearchInputV1 Audience search filters. (optional)
+     * @param audienceSearchInputV1 Audience search filters. (required)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @return AudienceEntityV1AudienceSearchMetadataV1ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2533,17 +2593,17 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public AudienceEntityV1AudienceSearchMetadataV1ListResponse searchAudiences(Integer limit, Integer offset, AudienceSearchInputV1 audienceSearchInputV1) throws ApiException {
-        ApiResponse<AudienceEntityV1AudienceSearchMetadataV1ListResponse> localVarResp = searchAudiencesWithHttpInfo(limit, offset, audienceSearchInputV1);
+    public AudienceEntityV1AudienceSearchMetadataV1ListResponse searchAudiences(AudienceSearchInputV1 audienceSearchInputV1, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<AudienceEntityV1AudienceSearchMetadataV1ListResponse> localVarResp = searchAudiencesWithHttpInfo(audienceSearchInputV1, limit, offset);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Returns a list of audiences that match the provided filters. If present, the filters are AND&#39;ed together when applied.
-     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional)
-     * @param offset The (zero-based) offset into the collection. The default is 0. (optional)
-     * @param audienceSearchInputV1 Audience search filters. (optional)
+     * @param audienceSearchInputV1 Audience search filters. (required)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @return ApiResponse&lt;AudienceEntityV1AudienceSearchMetadataV1ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2555,8 +2615,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AudienceEntityV1AudienceSearchMetadataV1ListResponse> searchAudiencesWithHttpInfo(Integer limit, Integer offset, AudienceSearchInputV1 audienceSearchInputV1) throws ApiException {
-        okhttp3.Call localVarCall = searchAudiencesValidateBeforeCall(limit, offset, audienceSearchInputV1, null);
+    public ApiResponse<AudienceEntityV1AudienceSearchMetadataV1ListResponse> searchAudiencesWithHttpInfo(AudienceSearchInputV1 audienceSearchInputV1, Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = searchAudiencesValidateBeforeCall(audienceSearchInputV1, limit, offset, null);
         Type localVarReturnType = new TypeToken<AudienceEntityV1AudienceSearchMetadataV1ListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2564,9 +2624,9 @@ public class AudienceApi {
     /**
      *  (asynchronously)
      * Returns a list of audiences that match the provided filters. If present, the filters are AND&#39;ed together when applied.
-     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional)
-     * @param offset The (zero-based) offset into the collection. The default is 0. (optional)
-     * @param audienceSearchInputV1 Audience search filters. (optional)
+     * @param audienceSearchInputV1 Audience search filters. (required)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2579,9 +2639,9 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAudiencesAsync(Integer limit, Integer offset, AudienceSearchInputV1 audienceSearchInputV1, final ApiCallback<AudienceEntityV1AudienceSearchMetadataV1ListResponse> _callback) throws ApiException {
+    public okhttp3.Call searchAudiencesAsync(AudienceSearchInputV1 audienceSearchInputV1, Integer limit, Integer offset, final ApiCallback<AudienceEntityV1AudienceSearchMetadataV1ListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchAudiencesValidateBeforeCall(limit, offset, audienceSearchInputV1, _callback);
+        okhttp3.Call localVarCall = searchAudiencesValidateBeforeCall(audienceSearchInputV1, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<AudienceEntityV1AudienceSearchMetadataV1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
