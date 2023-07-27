@@ -3,7 +3,7 @@ echo "Looping through generated Java SDKs..."
 DID_FAIL=false
 
 for dir in ./sdks/*;
-    do (
+    do
         if [ -d "$dir" ];
             then
                 echo "$dir"
@@ -18,7 +18,6 @@ for dir in ./sdks/*;
                     DID_FAIL=true
                 fi
         fi
-    );
 done
 
 if [[ $DID_FAIL == true ]]
