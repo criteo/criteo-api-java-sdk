@@ -1,14 +1,15 @@
 echo "Looping through generated Java SDKs..."
 
+ORIGINAL_TOP_DIR=$(pwd)
 DID_FAIL=false
 
-for dir in ./sdks/*;
+for dir in $ORIGINAL_TOP_DIR/sdks/*;
     do
+        echo "Inspecting candidate sub directory: $dir"
         if [ -d "$dir" ];
             then
-                echo "$dir"
                 cd "$dir"
-                echo "Publishing this SDK to Maven Central."
+                echo "Publishing SDK to Maven Central for $dir."
                 chmod +x gradlew
                 # Use this instead to only upload to the staging repo
                 #./gradlew publishToSonatype closeSonatypeStagingRepository; gradlew_return_code=$?
@@ -17,6 +18,8 @@ for dir in ./sdks/*;
                     echo "Publication failed"
                     DID_FAIL=true
                 fi
+                echo "Moving back to $ORIGINAL_TOP_DIR"
+                cd $ORIGINAL_TOP_DIR
         fi
 done
 
