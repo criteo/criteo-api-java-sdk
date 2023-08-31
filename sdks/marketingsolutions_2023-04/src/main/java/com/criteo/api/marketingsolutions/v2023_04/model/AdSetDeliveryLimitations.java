@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -220,7 +221,7 @@ public class AdSetDeliveryLimitations {
 
   public AdSetDeliveryLimitations addEnvironmentsItem(EnvironmentsEnum environmentsItem) {
     if (this.environments == null) {
-      this.environments = new ArrayList<>();
+      this.environments = null;
     }
     this.environments.add(environmentsItem);
     return this;
@@ -250,7 +251,7 @@ public class AdSetDeliveryLimitations {
 
   public AdSetDeliveryLimitations addDevicesItem(DevicesEnum devicesItem) {
     if (this.devices == null) {
-      this.devices = new ArrayList<>();
+      this.devices = null;
     }
     this.devices.add(devicesItem);
     return this;
@@ -280,7 +281,7 @@ public class AdSetDeliveryLimitations {
 
   public AdSetDeliveryLimitations addOperatingSystemsItem(OperatingSystemsEnum operatingSystemsItem) {
     if (this.operatingSystems == null) {
-      this.operatingSystems = new ArrayList<>();
+      this.operatingSystems = null;
     }
     this.operatingSystems.add(operatingSystemsItem);
     return this;
@@ -362,9 +363,20 @@ public class AdSetDeliveryLimitations {
         Objects.equals(this.additionalProperties, adSetDeliveryLimitations.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(environments, devices, operatingSystems, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

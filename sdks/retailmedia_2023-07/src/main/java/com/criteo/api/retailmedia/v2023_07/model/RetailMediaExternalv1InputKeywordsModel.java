@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -73,7 +74,7 @@ public class RetailMediaExternalv1InputKeywordsModel {
 
   public RetailMediaExternalv1InputKeywordsModel addNegativeBroadItem(String negativeBroadItem) {
     if (this.negativeBroad == null) {
-      this.negativeBroad = new ArrayList<>();
+      this.negativeBroad = null;
     }
     this.negativeBroad.add(negativeBroadItem);
     return this;
@@ -103,7 +104,7 @@ public class RetailMediaExternalv1InputKeywordsModel {
 
   public RetailMediaExternalv1InputKeywordsModel addNegativeExactItem(String negativeExactItem) {
     if (this.negativeExact == null) {
-      this.negativeExact = new ArrayList<>();
+      this.negativeExact = null;
     }
     this.negativeExact.add(negativeExactItem);
     return this;
@@ -133,7 +134,7 @@ public class RetailMediaExternalv1InputKeywordsModel {
 
   public RetailMediaExternalv1InputKeywordsModel addPositiveExactItem(String positiveExactItem) {
     if (this.positiveExact == null) {
-      this.positiveExact = new ArrayList<>();
+      this.positiveExact = null;
     }
     this.positiveExact.add(positiveExactItem);
     return this;
@@ -215,9 +216,20 @@ public class RetailMediaExternalv1InputKeywordsModel {
         Objects.equals(this.additionalProperties, retailMediaExternalv1InputKeywordsModel.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(negativeBroad, negativeExact, positiveExact, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

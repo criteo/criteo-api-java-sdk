@@ -16,6 +16,12 @@ docs/ApplicationSummaryModelResponse.md
 docs/Asset.md
 docs/AssetResource.md
 docs/AssetResponse.md
+docs/AsyncCampaignReport.md
+docs/AsyncCampaignReportRequest.md
+docs/AsyncCampaignReportResource.md
+docs/AsyncLineItemReport.md
+docs/AsyncLineItemReportRequest.md
+docs/AsyncLineItemReportResource.md
 docs/AsyncReportResponse.md
 docs/AuctionLineItemCreateModelRequest.md
 docs/AuctionLineItemPagedListResponse.md
@@ -30,9 +36,6 @@ docs/BalanceCampaign202110ListRequest.md
 docs/BalanceCampaign202110PagedListResponse.md
 docs/CampaignApi.md
 docs/CampaignAttributesV202301.md
-docs/CampaignReport.md
-docs/CampaignReportRequest.md
-docs/CampaignReportResource.md
 docs/CampaignV202301.md
 docs/Category202204.md
 docs/Category202204ListResponse.md
@@ -65,8 +68,6 @@ docs/CreativeCreateModel202207.md
 docs/CreativeUpdateModel202207.md
 docs/CustomerListDetails.md
 docs/EditableCampaignAttributesV202301.md
-docs/ExportReportColumn.md
-docs/ExportReportMetaData.md
 docs/ExternalAccount.md
 docs/ExternalAddToBasketIdsUpdateModel202110.md
 docs/ExternalAddToBasketTarget202110.md
@@ -121,9 +122,6 @@ docs/KeywordTarget202110Response.md
 docs/LineItemBidMultipliers.md
 docs/LineItemBidMultipliersRequest.md
 docs/LineItemBidMultipliersResponse.md
-docs/LineItemReport.md
-docs/LineItemReportRequest.md
-docs/LineItemReportResource.md
 docs/PageMetadata.md
 docs/PageTypeEnvironment.md
 docs/PostCampaignV202301.md
@@ -135,9 +133,7 @@ docs/ProblemDetails.md
 docs/PromotedProduct202110ListRequest.md
 docs/PromotedProduct202110PagedListResponse.md
 docs/PutCampaignV202301.md
-docs/ReportDataResponseResource.md
 docs/ReportOutcome.md
-docs/ReportResponse.md
 docs/ResourceOfAuctionLineItem.md
 docs/ResourceOfAuctionLineItemUpdateModel.md
 docs/ResourceOfBalance202110.md
@@ -242,6 +238,12 @@ src/main/java/com/criteo/api/retailmedia/v2023_07/model/ApplicationSummaryModelR
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/Asset.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/AssetResource.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/AssetResponse.java
+src/main/java/com/criteo/api/retailmedia/v2023_07/model/AsyncCampaignReport.java
+src/main/java/com/criteo/api/retailmedia/v2023_07/model/AsyncCampaignReportRequest.java
+src/main/java/com/criteo/api/retailmedia/v2023_07/model/AsyncCampaignReportResource.java
+src/main/java/com/criteo/api/retailmedia/v2023_07/model/AsyncLineItemReport.java
+src/main/java/com/criteo/api/retailmedia/v2023_07/model/AsyncLineItemReportRequest.java
+src/main/java/com/criteo/api/retailmedia/v2023_07/model/AsyncLineItemReportResource.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/AsyncReportResponse.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/AuctionLineItemCreateModelRequest.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/AuctionLineItemPagedListResponse.java
@@ -254,9 +256,6 @@ src/main/java/com/criteo/api/retailmedia/v2023_07/model/Balance202110PagedListRe
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/BalanceCampaign202110ListRequest.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/BalanceCampaign202110PagedListResponse.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/CampaignAttributesV202301.java
-src/main/java/com/criteo/api/retailmedia/v2023_07/model/CampaignReport.java
-src/main/java/com/criteo/api/retailmedia/v2023_07/model/CampaignReportRequest.java
-src/main/java/com/criteo/api/retailmedia/v2023_07/model/CampaignReportResource.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/CampaignV202301.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/Category202204.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/Category202204ListResponse.java
@@ -289,8 +288,6 @@ src/main/java/com/criteo/api/retailmedia/v2023_07/model/CreativeCreateModel20220
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/CreativeUpdateModel202207.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/CustomerListDetails.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/EditableCampaignAttributesV202301.java
-src/main/java/com/criteo/api/retailmedia/v2023_07/model/ExportReportColumn.java
-src/main/java/com/criteo/api/retailmedia/v2023_07/model/ExportReportMetaData.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/ExternalAccount.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/ExternalAddToBasketIdsUpdateModel202110.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/ExternalAddToBasketTarget202110.java
@@ -344,9 +341,6 @@ src/main/java/com/criteo/api/retailmedia/v2023_07/model/KeywordTarget202110Respo
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/LineItemBidMultipliers.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/LineItemBidMultipliersRequest.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/LineItemBidMultipliersResponse.java
-src/main/java/com/criteo/api/retailmedia/v2023_07/model/LineItemReport.java
-src/main/java/com/criteo/api/retailmedia/v2023_07/model/LineItemReportRequest.java
-src/main/java/com/criteo/api/retailmedia/v2023_07/model/LineItemReportResource.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/PageMetadata.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/PageTypeEnvironment.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/PostCampaignV202301.java
@@ -358,9 +352,7 @@ src/main/java/com/criteo/api/retailmedia/v2023_07/model/ProblemDetails.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/PromotedProduct202110ListRequest.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/PromotedProduct202110PagedListResponse.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/PutCampaignV202301.java
-src/main/java/com/criteo/api/retailmedia/v2023_07/model/ReportDataResponseResource.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/ReportOutcome.java
-src/main/java/com/criteo/api/retailmedia/v2023_07/model/ReportResponse.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/ResourceOfAuctionLineItem.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/ResourceOfAuctionLineItemUpdateModel.java
 src/main/java/com/criteo/api/retailmedia/v2023_07/model/ResourceOfBalance202110.java

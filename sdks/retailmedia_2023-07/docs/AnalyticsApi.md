@@ -4,20 +4,20 @@ All URIs are relative to *https://api.criteo.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**generateCampaignReports**](AnalyticsApi.md#generateCampaignReports) | **POST** /2023-07/retail-media/reports/campaigns |  |
-| [**generateLineItemsReports**](AnalyticsApi.md#generateLineItemsReports) | **POST** /2023-07/retail-media/reports/line-items |  |
+| [**generateAsyncCampaignReport**](AnalyticsApi.md#generateAsyncCampaignReport) | **POST** /2023-07/retail-media/reports/campaigns |  |
+| [**generateAsyncLineItemsReport**](AnalyticsApi.md#generateAsyncLineItemsReport) | **POST** /2023-07/retail-media/reports/line-items |  |
 | [**getAsyncExportOutput**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /2023-07/retail-media/reports/{reportId}/output |  |
 | [**getAsyncExportStatus**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /2023-07/retail-media/reports/{reportId}/status |  |
 
 
 
-## generateCampaignReports
+## generateAsyncCampaignReport
 
-> ReportResponse generateCampaignReports(campaignReportRequest)
+> AsyncReportResponse generateAsyncCampaignReport(asyncCampaignReportRequest)
 
 
 
-Return a Campaign Report
+Return an async Campaign Report
 
 ### Example
 
@@ -58,12 +58,12 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
-        CampaignReportRequest campaignReportRequest = new CampaignReportRequest(); // CampaignReportRequest | 
+        AsyncCampaignReportRequest asyncCampaignReportRequest = new AsyncCampaignReportRequest(); // AsyncCampaignReportRequest | 
         try {
-            ReportResponse result = apiInstance.generateCampaignReports(campaignReportRequest);
+            AsyncReportResponse result = apiInstance.generateAsyncCampaignReport(asyncCampaignReportRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AnalyticsApi#generateCampaignReports");
+            System.err.println("Exception when calling AnalyticsApi#generateAsyncCampaignReport");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -78,11 +78,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **campaignReportRequest** | [**CampaignReportRequest**](CampaignReportRequest.md)|  | |
+| **asyncCampaignReportRequest** | [**AsyncCampaignReportRequest**](AsyncCampaignReportRequest.md)|  | |
 
 ### Return type
 
-[**ReportResponse**](ReportResponse.md)
+[**AsyncReportResponse**](AsyncReportResponse.md)
 
 ### Authorization
 
@@ -90,7 +90,7 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, text/json, application/*+json
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
 - **Accept**: text/plain, application/json, text/json
 
 
@@ -102,13 +102,13 @@ public class Example {
 | **403** | Forbidden |  -  |
 
 
-## generateLineItemsReports
+## generateAsyncLineItemsReport
 
-> ReportResponse generateLineItemsReports(lineItemReportRequest)
+> AsyncReportResponse generateAsyncLineItemsReport(asyncLineItemReportRequest)
 
 
 
-Return a Line Item Report
+Return an async Line Item Report
 
 ### Example
 
@@ -149,12 +149,12 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
-        LineItemReportRequest lineItemReportRequest = new LineItemReportRequest(); // LineItemReportRequest | 
+        AsyncLineItemReportRequest asyncLineItemReportRequest = new AsyncLineItemReportRequest(); // AsyncLineItemReportRequest | 
         try {
-            ReportResponse result = apiInstance.generateLineItemsReports(lineItemReportRequest);
+            AsyncReportResponse result = apiInstance.generateAsyncLineItemsReport(asyncLineItemReportRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AnalyticsApi#generateLineItemsReports");
+            System.err.println("Exception when calling AnalyticsApi#generateAsyncLineItemsReport");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -169,11 +169,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **lineItemReportRequest** | [**LineItemReportRequest**](LineItemReportRequest.md)|  | |
+| **asyncLineItemReportRequest** | [**AsyncLineItemReportRequest**](AsyncLineItemReportRequest.md)|  | |
 
 ### Return type
 
-[**ReportResponse**](ReportResponse.md)
+[**AsyncReportResponse**](AsyncReportResponse.md)
 
 ### Authorization
 
@@ -181,7 +181,7 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, text/json, application/*+json
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
 - **Accept**: text/plain, application/json, text/json
 
 

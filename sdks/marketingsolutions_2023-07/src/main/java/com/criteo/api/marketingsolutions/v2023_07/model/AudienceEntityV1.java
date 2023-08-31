@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -201,7 +202,7 @@ public class AudienceEntityV1 {
 
   public AudienceEntityV1 addAdSetIdsItem(String adSetIdsItem) {
     if (this.adSetIds == null) {
-      this.adSetIds = new LinkedHashSet<>();
+      this.adSetIds = null;
     }
     this.adSetIds.add(adSetIdsItem);
     return this;
@@ -309,9 +310,20 @@ public class AudienceEntityV1 {
         Objects.equals(this.additionalProperties, audienceEntityV1.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(name, description, createdAt, updatedAt, advertiserId, adSetIds, algebra, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

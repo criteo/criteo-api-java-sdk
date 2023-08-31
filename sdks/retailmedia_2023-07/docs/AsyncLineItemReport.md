@@ -1,37 +1,26 @@
 
 
-# CampaignReport
+# AsyncLineItemReport
 
-Campaign report body request
+Line Item report body request
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) |  |  [optional] |
+|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) |  |  [optional] |
+|**clickAttributionWindow** | [**ClickAttributionWindowEnum**](#ClickAttributionWindowEnum) |  |  [optional] |
+|**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) |  |  [optional] |
+|**startDate** | **OffsetDateTime** |  |  |
+|**endDate** | **OffsetDateTime** |  |  |
+|**timezone** | **String** |  |  [optional] |
+|**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) |  |  [optional] |
+|**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) |  |  [optional] |
+|**format** | [**FormatEnum**](#FormatEnum) |  |  [optional] |
 |**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) |  |  [optional] |
-|**campaignIds** | **List&lt;String&gt;** | List of campaign Ids to filter |  [optional] |
-|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of Metrics to report on |  [optional] |
-|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  [optional] |
-|**accountId** | **String** | Account id to report on |  |
-|**startDate** | **OffsetDateTime** | Start date |  |
-|**endDate** | **OffsetDateTime** | End Date |  |
-|**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
-|**clickAttributionWindow** | [**ClickAttributionWindowEnum**](#ClickAttributionWindowEnum) | Click Attribution Window |  [optional] |
-|**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) | View Attribution window |  [optional] |
-|**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Filter the type of campaign to report on |  [optional] |
-|**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on the channel of sales |  [optional] |
-
-
-
-## Enum: ReportTypeEnum
-
-| Name | Value |
-|---- | -----|
-| SUMMARY | &quot;summary&quot; |
-| PAGETYPE | &quot;pageType&quot; |
-| KEYWORD | &quot;keyword&quot; |
-| PRODUCTCATEGORY | &quot;productCategory&quot; |
-| PRODUCT | &quot;product&quot; |
+|**ids** | **List&lt;String&gt;** |  |  [optional] |
+|**id** | **String** |  |  [optional] |
 
 
 
@@ -48,8 +37,9 @@ Campaign report body request
 | CTR | &quot;ctr&quot; |
 | CPC | &quot;cpc&quot; |
 | CPO | &quot;cpo&quot; |
-| CPM | &quot;cpm&quot; |
 | ROAS | &quot;roas&quot; |
+| ASSISTEDUNITS | &quot;assistedUnits&quot; |
+| ASSISTEDSALES | &quot;assistedSales&quot; |
 | UNIQUEVISITORS | &quot;uniqueVisitors&quot; |
 | FREQUENCY | &quot;frequency&quot; |
 
@@ -68,8 +58,12 @@ Campaign report body request
 | ADVPRODUCTNAME | &quot;advProductName&quot; |
 | BRANDID | &quot;brandId&quot; |
 | BRANDNAME | &quot;brandName&quot; |
-| PAGETYPENAME | &quot;pageTypeName&quot; |
+| LINEITEMID | &quot;lineItemId&quot; |
+| LINEITEMNAME | &quot;lineItemName&quot; |
+| RETAILERID | &quot;retailerId&quot; |
+| RETAILERNAME | &quot;retailerName&quot; |
 | KEYWORD | &quot;keyword&quot; |
+| PAGETYPENAME | &quot;pageTypeName&quot; |
 | SALESCHANNEL | &quot;salesChannel&quot; |
 
 
@@ -81,6 +75,7 @@ Campaign report body request
 | _7D | &quot;7D&quot; |
 | _14D | &quot;14D&quot; |
 | _30D | &quot;30D&quot; |
+| NONE | &quot;none&quot; |
 
 
 
@@ -111,6 +106,30 @@ Campaign report body request
 |---- | -----|
 | OFFLINE | &quot;offline&quot; |
 | ONLINE | &quot;online&quot; |
+
+
+
+## Enum: FormatEnum
+
+| Name | Value |
+|---- | -----|
+| JSON | &quot;json&quot; |
+| JSON_COMPACT | &quot;json-compact&quot; |
+| JSON_NEWLINE | &quot;json-newline&quot; |
+| CSV | &quot;csv&quot; |
+
+
+
+## Enum: ReportTypeEnum
+
+| Name | Value |
+|---- | -----|
+| SUMMARY | &quot;summary&quot; |
+| PAGETYPE | &quot;pageType&quot; |
+| KEYWORD | &quot;keyword&quot; |
+| PRODUCTCATEGORY | &quot;productCategory&quot; |
+| PRODUCT | &quot;product&quot; |
+| ATTRIBUTEDTRANSACTIONS | &quot;attributedTransactions&quot; |
 
 
 

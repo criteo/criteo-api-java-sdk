@@ -27,11 +27,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.criteo.api.retailmedia.v2023_07.model.AsyncCampaignReportRequest;
+import com.criteo.api.retailmedia.v2023_07.model.AsyncLineItemReportRequest;
 import com.criteo.api.retailmedia.v2023_07.model.AsyncReportResponse;
-import com.criteo.api.retailmedia.v2023_07.model.CampaignReportRequest;
-import com.criteo.api.retailmedia.v2023_07.model.LineItemReportRequest;
 import com.criteo.api.retailmedia.v2023_07.model.ReportOutcome;
-import com.criteo.api.retailmedia.v2023_07.model.ReportResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -78,8 +77,8 @@ public class AnalyticsApi {
     }
 
     /**
-     * Build call for generateCampaignReports
-     * @param campaignReportRequest  (required)
+     * Build call for generateAsyncCampaignReport
+     * @param asyncCampaignReportRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -91,7 +90,7 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateCampaignReportsCall(CampaignReportRequest campaignReportRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call generateAsyncCampaignReportCall(AsyncCampaignReportRequest asyncCampaignReportRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -105,7 +104,7 @@ public class AnalyticsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = campaignReportRequest;
+        Object localVarPostBody = asyncCampaignReportRequest;
 
         // create path and map variables
         String localVarPath = "/2023-07/retail-media/reports/campaigns";
@@ -127,6 +126,7 @@ public class AnalyticsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json-patch+json",
             "application/json",
             "text/json",
             "application/*+json"
@@ -141,21 +141,21 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call generateCampaignReportsValidateBeforeCall(CampaignReportRequest campaignReportRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'campaignReportRequest' is set
-        if (campaignReportRequest == null) {
-            throw new ApiException("Missing the required parameter 'campaignReportRequest' when calling generateCampaignReports(Async)");
+    private okhttp3.Call generateAsyncCampaignReportValidateBeforeCall(AsyncCampaignReportRequest asyncCampaignReportRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'asyncCampaignReportRequest' is set
+        if (asyncCampaignReportRequest == null) {
+            throw new ApiException("Missing the required parameter 'asyncCampaignReportRequest' when calling generateAsyncCampaignReport(Async)");
         }
 
-        return generateCampaignReportsCall(campaignReportRequest, _callback);
+        return generateAsyncCampaignReportCall(asyncCampaignReportRequest, _callback);
 
     }
 
     /**
      * 
-     * Return a Campaign Report
-     * @param campaignReportRequest  (required)
-     * @return ReportResponse
+     * Return an async Campaign Report
+     * @param asyncCampaignReportRequest  (required)
+     * @return AsyncReportResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -165,16 +165,16 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ReportResponse generateCampaignReports(CampaignReportRequest campaignReportRequest) throws ApiException {
-        ApiResponse<ReportResponse> localVarResp = generateCampaignReportsWithHttpInfo(campaignReportRequest);
+    public AsyncReportResponse generateAsyncCampaignReport(AsyncCampaignReportRequest asyncCampaignReportRequest) throws ApiException {
+        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncCampaignReportWithHttpInfo(asyncCampaignReportRequest);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Return a Campaign Report
-     * @param campaignReportRequest  (required)
-     * @return ApiResponse&lt;ReportResponse&gt;
+     * Return an async Campaign Report
+     * @param asyncCampaignReportRequest  (required)
+     * @return ApiResponse&lt;AsyncReportResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -184,16 +184,16 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReportResponse> generateCampaignReportsWithHttpInfo(CampaignReportRequest campaignReportRequest) throws ApiException {
-        okhttp3.Call localVarCall = generateCampaignReportsValidateBeforeCall(campaignReportRequest, null);
-        Type localVarReturnType = new TypeToken<ReportResponse>(){}.getType();
+    public ApiResponse<AsyncReportResponse> generateAsyncCampaignReportWithHttpInfo(AsyncCampaignReportRequest asyncCampaignReportRequest) throws ApiException {
+        okhttp3.Call localVarCall = generateAsyncCampaignReportValidateBeforeCall(asyncCampaignReportRequest, null);
+        Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Return a Campaign Report
-     * @param campaignReportRequest  (required)
+     * Return an async Campaign Report
+     * @param asyncCampaignReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -205,16 +205,16 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateCampaignReportsAsync(CampaignReportRequest campaignReportRequest, final ApiCallback<ReportResponse> _callback) throws ApiException {
+    public okhttp3.Call generateAsyncCampaignReportAsync(AsyncCampaignReportRequest asyncCampaignReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = generateCampaignReportsValidateBeforeCall(campaignReportRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReportResponse>(){}.getType();
+        okhttp3.Call localVarCall = generateAsyncCampaignReportValidateBeforeCall(asyncCampaignReportRequest, _callback);
+        Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for generateLineItemsReports
-     * @param lineItemReportRequest  (required)
+     * Build call for generateAsyncLineItemsReport
+     * @param asyncLineItemReportRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -226,7 +226,7 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateLineItemsReportsCall(LineItemReportRequest lineItemReportRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call generateAsyncLineItemsReportCall(AsyncLineItemReportRequest asyncLineItemReportRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -240,7 +240,7 @@ public class AnalyticsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = lineItemReportRequest;
+        Object localVarPostBody = asyncLineItemReportRequest;
 
         // create path and map variables
         String localVarPath = "/2023-07/retail-media/reports/line-items";
@@ -262,6 +262,7 @@ public class AnalyticsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json-patch+json",
             "application/json",
             "text/json",
             "application/*+json"
@@ -276,21 +277,21 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call generateLineItemsReportsValidateBeforeCall(LineItemReportRequest lineItemReportRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'lineItemReportRequest' is set
-        if (lineItemReportRequest == null) {
-            throw new ApiException("Missing the required parameter 'lineItemReportRequest' when calling generateLineItemsReports(Async)");
+    private okhttp3.Call generateAsyncLineItemsReportValidateBeforeCall(AsyncLineItemReportRequest asyncLineItemReportRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'asyncLineItemReportRequest' is set
+        if (asyncLineItemReportRequest == null) {
+            throw new ApiException("Missing the required parameter 'asyncLineItemReportRequest' when calling generateAsyncLineItemsReport(Async)");
         }
 
-        return generateLineItemsReportsCall(lineItemReportRequest, _callback);
+        return generateAsyncLineItemsReportCall(asyncLineItemReportRequest, _callback);
 
     }
 
     /**
      * 
-     * Return a Line Item Report
-     * @param lineItemReportRequest  (required)
-     * @return ReportResponse
+     * Return an async Line Item Report
+     * @param asyncLineItemReportRequest  (required)
+     * @return AsyncReportResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -300,16 +301,16 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ReportResponse generateLineItemsReports(LineItemReportRequest lineItemReportRequest) throws ApiException {
-        ApiResponse<ReportResponse> localVarResp = generateLineItemsReportsWithHttpInfo(lineItemReportRequest);
+    public AsyncReportResponse generateAsyncLineItemsReport(AsyncLineItemReportRequest asyncLineItemReportRequest) throws ApiException {
+        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncLineItemsReportWithHttpInfo(asyncLineItemReportRequest);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Return a Line Item Report
-     * @param lineItemReportRequest  (required)
-     * @return ApiResponse&lt;ReportResponse&gt;
+     * Return an async Line Item Report
+     * @param asyncLineItemReportRequest  (required)
+     * @return ApiResponse&lt;AsyncReportResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -319,16 +320,16 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReportResponse> generateLineItemsReportsWithHttpInfo(LineItemReportRequest lineItemReportRequest) throws ApiException {
-        okhttp3.Call localVarCall = generateLineItemsReportsValidateBeforeCall(lineItemReportRequest, null);
-        Type localVarReturnType = new TypeToken<ReportResponse>(){}.getType();
+    public ApiResponse<AsyncReportResponse> generateAsyncLineItemsReportWithHttpInfo(AsyncLineItemReportRequest asyncLineItemReportRequest) throws ApiException {
+        okhttp3.Call localVarCall = generateAsyncLineItemsReportValidateBeforeCall(asyncLineItemReportRequest, null);
+        Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Return a Line Item Report
-     * @param lineItemReportRequest  (required)
+     * Return an async Line Item Report
+     * @param asyncLineItemReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -340,10 +341,10 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call generateLineItemsReportsAsync(LineItemReportRequest lineItemReportRequest, final ApiCallback<ReportResponse> _callback) throws ApiException {
+    public okhttp3.Call generateAsyncLineItemsReportAsync(AsyncLineItemReportRequest asyncLineItemReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = generateLineItemsReportsValidateBeforeCall(lineItemReportRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReportResponse>(){}.getType();
+        okhttp3.Call localVarCall = generateAsyncLineItemsReportValidateBeforeCall(asyncLineItemReportRequest, _callback);
+        Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

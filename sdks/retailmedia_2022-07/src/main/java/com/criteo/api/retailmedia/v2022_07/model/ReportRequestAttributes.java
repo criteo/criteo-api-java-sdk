@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -83,7 +84,7 @@ public class ReportRequestAttributes {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return null;
     }
 
     public static class Adapter extends TypeAdapter<ClickAttributionWindowEnum> {
@@ -142,7 +143,7 @@ public class ReportRequestAttributes {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return null;
     }
 
     public static class Adapter extends TypeAdapter<FormatEnum> {
@@ -278,7 +279,7 @@ public class ReportRequestAttributes {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return null;
     }
 
     public static class Adapter extends TypeAdapter<ViewAttributionWindowEnum> {
@@ -398,7 +399,7 @@ public class ReportRequestAttributes {
 
   public ReportRequestAttributes addIdsItem(String idsItem) {
     if (this.ids == null) {
-      this.ids = new ArrayList<>();
+      this.ids = null;
     }
     this.ids.add(idsItem);
     return this;
@@ -597,9 +598,20 @@ public class ReportRequestAttributes {
         Objects.equals(this.additionalProperties, reportRequestAttributes.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(clickAttributionWindow, endDate, format, id, ids, reportType, revenueType, startDate, timeZone, viewAttributionWindow, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

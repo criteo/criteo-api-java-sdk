@@ -25,6 +25,7 @@ An object that represents the available options to set when creating a Retail Me
 |---- | -----|
 | ONSITE | &quot;Onsite&quot; |
 | OFFSITE | &quot;Offsite&quot; |
+| OFFSITEAWARENESS | &quot;OffsiteAwareness&quot; |
 
 
 

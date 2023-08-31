@@ -52,6 +52,7 @@ A Retail Media Balance used to determine the funds available for any or all camp
 |---- | -----|
 | ONSITE | &quot;Onsite&quot; |
 | OFFSITE | &quot;Offsite&quot; |
+| OFFSITEAWARENESS | &quot;OffsiteAwareness&quot; |
 
 
 

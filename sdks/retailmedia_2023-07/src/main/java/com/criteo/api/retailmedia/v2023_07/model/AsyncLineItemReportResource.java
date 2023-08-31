@@ -15,13 +15,14 @@ package com.criteo.api.retailmedia.v2023_07.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.v2023_07.model.LineItemReport;
+import com.criteo.api.retailmedia.v2023_07.model.AsyncLineItemReport;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,19 +49,19 @@ import com.criteo.api.retailmedia.v2023_07.JSON;
  * A top-level object that encapsulates a Criteo API response for a single value
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class LineItemReportResource {
+public class AsyncLineItemReportResource {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private LineItemReport attributes;
+  private AsyncLineItemReport attributes;
 
-  public LineItemReportResource() {
+  public AsyncLineItemReportResource() {
   }
 
-  public LineItemReportResource type(String type) {
+  public AsyncLineItemReportResource type(String type) {
     
     this.type = type;
     return this;
@@ -82,7 +83,7 @@ public class LineItemReportResource {
   }
 
 
-  public LineItemReportResource attributes(LineItemReport attributes) {
+  public AsyncLineItemReportResource attributes(AsyncLineItemReport attributes) {
     
     this.attributes = attributes;
     return this;
@@ -94,12 +95,12 @@ public class LineItemReportResource {
   **/
   @javax.annotation.Nullable
 
-  public LineItemReport getAttributes() {
+  public AsyncLineItemReport getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(LineItemReport attributes) {
+  public void setAttributes(AsyncLineItemReport attributes) {
     this.attributes = attributes;
   }
 
@@ -116,9 +117,9 @@ public class LineItemReportResource {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the LineItemReportResource instance itself
+   * @return the AsyncLineItemReportResource instance itself
    */
-  public LineItemReportResource putAdditionalProperty(String key, Object value) {
+  public AsyncLineItemReportResource putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -157,10 +158,14 @@ public class LineItemReportResource {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LineItemReportResource lineItemReportResource = (LineItemReportResource) o;
-    return Objects.equals(this.type, lineItemReportResource.type) &&
-        Objects.equals(this.attributes, lineItemReportResource.attributes)&&
-        Objects.equals(this.additionalProperties, lineItemReportResource.additionalProperties);
+    AsyncLineItemReportResource asyncLineItemReportResource = (AsyncLineItemReportResource) o;
+    return Objects.equals(this.type, asyncLineItemReportResource.type) &&
+        Objects.equals(this.attributes, asyncLineItemReportResource.attributes)&&
+        Objects.equals(this.additionalProperties, asyncLineItemReportResource.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
@@ -168,10 +173,17 @@ public class LineItemReportResource {
     return Objects.hash(type, attributes, additionalProperties);
   }
 
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+  }
+
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LineItemReportResource {\n");
+    sb.append("class AsyncLineItemReportResource {\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -208,12 +220,12 @@ public class LineItemReportResource {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to LineItemReportResource
+  * @throws IOException if the JSON Object is invalid with respect to AsyncLineItemReportResource
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!LineItemReportResource.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LineItemReportResource is not found in the empty JSON string", LineItemReportResource.openapiRequiredFields.toString()));
+        if (!AsyncLineItemReportResource.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AsyncLineItemReportResource is not found in the empty JSON string", AsyncLineItemReportResource.openapiRequiredFields.toString()));
         }
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
@@ -221,7 +233,7 @@ public class LineItemReportResource {
       }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        LineItemReport.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+        AsyncLineItemReport.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
   }
 
@@ -229,16 +241,16 @@ public class LineItemReportResource {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!LineItemReportResource.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'LineItemReportResource' and its subtypes
+       if (!AsyncLineItemReportResource.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AsyncLineItemReportResource' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<LineItemReportResource> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(LineItemReportResource.class));
+       final TypeAdapter<AsyncLineItemReportResource> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AsyncLineItemReportResource.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<LineItemReportResource>() {
+       return (TypeAdapter<T>) new TypeAdapter<AsyncLineItemReportResource>() {
            @Override
-           public void write(JsonWriter out, LineItemReportResource value) throws IOException {
+           public void write(JsonWriter out, AsyncLineItemReportResource value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -261,11 +273,11 @@ public class LineItemReportResource {
            }
 
            @Override
-           public LineItemReportResource read(JsonReader in) throws IOException {
+           public AsyncLineItemReportResource read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             LineItemReportResource instance = thisAdapter.fromJsonTree(jsonObj);
+             AsyncLineItemReportResource instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -292,18 +304,18 @@ public class LineItemReportResource {
   }
 
  /**
-  * Create an instance of LineItemReportResource given an JSON string
+  * Create an instance of AsyncLineItemReportResource given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of LineItemReportResource
-  * @throws IOException if the JSON string is invalid with respect to LineItemReportResource
+  * @return An instance of AsyncLineItemReportResource
+  * @throws IOException if the JSON string is invalid with respect to AsyncLineItemReportResource
   */
-  public static LineItemReportResource fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, LineItemReportResource.class);
+  public static AsyncLineItemReportResource fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AsyncLineItemReportResource.class);
   }
 
  /**
-  * Convert an instance of LineItemReportResource to an JSON string
+  * Convert an instance of AsyncLineItemReportResource to an JSON string
   *
   * @return JSON string
   */

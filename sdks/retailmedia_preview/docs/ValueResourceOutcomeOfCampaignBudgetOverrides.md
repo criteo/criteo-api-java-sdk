@@ -1,15 +1,14 @@
 
 
-# ReportResponse
+# ValueResourceOutcomeOfCampaignBudgetOverrides
 
-Report response format
+A top-level object that encapsulates a Criteo API response for a single value.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**meta** | [**ExportReportMetaData**](ExportReportMetaData.md) |  |  [optional] |
-|**data** | [**ReportDataResponseResource**](ReportDataResponseResource.md) |  |  [optional] |
+|**data** | [**ValueResourceOfCampaignBudgetOverrides**](ValueResourceOfCampaignBudgetOverrides.md) |  |  [optional] |
 |**warnings** | [**List&lt;CommonProblem&gt;**](CommonProblem.md) |  |  [optional] [readonly] |
 |**errors** | [**List&lt;CommonProblem&gt;**](CommonProblem.md) |  |  [optional] [readonly] |
 

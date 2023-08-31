@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -248,7 +249,7 @@ public class Error {
 
   public Error addStackTraceItem(String stackTraceItem) {
     if (this.stackTrace == null) {
-      this.stackTrace = new ArrayList<>();
+      this.stackTrace = null;
     }
     this.stackTrace.add(stackTraceItem);
     return this;
@@ -401,9 +402,20 @@ public class Error {
         Objects.equals(this.additionalProperties, error.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(code, detail, instance, source, stackTrace, title, traceId, type, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

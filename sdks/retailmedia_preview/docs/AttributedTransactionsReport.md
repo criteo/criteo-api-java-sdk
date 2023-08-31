@@ -12,8 +12,6 @@ Attributed transactions report body request
 |**lineItemIds** | **List&lt;String&gt;** | Line item ids to report on |  [optional] |
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  [optional] |
 |**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  [optional] |
-|**soldBy** | [**SoldByEnum**](#SoldByEnum) | Filter on the type of seller |  [optional] |
-|**campaignSubType** | [**CampaignSubTypeEnum**](#CampaignSubTypeEnum) | Filter on the campaign sub type |  [optional] |
 |**accountId** | **String** | Account id to report on |  |
 |**startDate** | **OffsetDateTime** | Start date |  |
 |**endDate** | **OffsetDateTime** | End Date |  |
@@ -62,25 +60,6 @@ Attributed transactions report body request
 |---- | -----|
 | ATTRIBUTEDUNITS | &quot;attributedUnits&quot; |
 | ATTRIBUTEDSALES | &quot;attributedSales&quot; |
-
-
-
-## Enum: SoldByEnum
-
-| Name | Value |
-|---- | -----|
-| DIRECTSOLD | &quot;directSold&quot; |
-| INDIRECTSOLD | &quot;indirectSold&quot; |
-| PRIVATEMARKET | &quot;privateMarket&quot; |
-
-
-
-## Enum: CampaignSubTypeEnum
-
-| Name | Value |
-|---- | -----|
-| AUCTIONANDPREFERRED | &quot;auctionAndPreferred&quot; |
-| LOCKOUT | &quot;lockout&quot; |
 
 
 

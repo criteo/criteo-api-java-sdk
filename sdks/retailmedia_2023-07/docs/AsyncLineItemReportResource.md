@@ -1,6 +1,6 @@
 
 
-# LineItemReportResource
+# AsyncLineItemReportResource
 
 A top-level object that encapsulates a Criteo API response for a single value
 
@@ -9,7 +9,7 @@ A top-level object that encapsulates a Criteo API response for a single value
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**type** | **String** |  |  [optional] |
-|**attributes** | [**LineItemReport**](LineItemReport.md) |  |  [optional] |
+|**attributes** | [**AsyncLineItemReport**](AsyncLineItemReport.md) |  |  [optional] |
 
 
 

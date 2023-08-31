@@ -20,6 +20,8 @@ Async Revenue report body request
 |**timezone** | **String** |  |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) |  |  [optional] |
 |**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) |  |  [optional] |
+|**soldBy** | [**SoldByEnum**](#SoldByEnum) | Filter on the type of seller |  [optional] |
+|**campaignSubType** | [**CampaignSubTypeEnum**](#CampaignSubTypeEnum) | Filter on the campaign sub type |  [optional] |
 
 
 
@@ -104,6 +106,25 @@ Async Revenue report body request
 |---- | -----|
 | OFFLINE | &quot;offline&quot; |
 | ONLINE | &quot;online&quot; |
+
+
+
+## Enum: SoldByEnum
+
+| Name | Value |
+|---- | -----|
+| DIRECTSOLD | &quot;directSold&quot; |
+| INDIRECTSOLD | &quot;indirectSold&quot; |
+| PRIVATEMARKET | &quot;privateMarket&quot; |
+
+
+
+## Enum: CampaignSubTypeEnum
+
+| Name | Value |
+|---- | -----|
+| AUCTIONANDPREFERRED | &quot;auctionAndPreferred&quot; |
+| LOCKOUT | &quot;lockout&quot; |
 
 
 

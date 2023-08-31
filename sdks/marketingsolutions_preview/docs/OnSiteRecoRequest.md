@@ -13,6 +13,7 @@ Recommendation request parameters.
 |**identityType** | [**IdentityTypeEnum**](#IdentityTypeEnum) | Type of the user identifier (cto_bundle, Idfa, Gaid...)  Optional if UserId is not set or if its type is cto_bundle |  [optional] |
 |**userEvents** | [**List&lt;UserEvent&gt;**](UserEvent.md) | Used to perform a recommendation without relying on events stored for a UserId. Optional if UserId is passed. |  [optional] |
 |**adSetId** | **Integer** | Id of the AdSet. This field is optional and is resolved automatically for adsets previously configured. |  [optional] |
+|**adId** | **Integer** | Id of the Ad. This field is optional, it allows to setup Reco controls at Ad level. |  [optional] |
 |**partnerId** | **Integer** | Id of the partner. |  |
 
 

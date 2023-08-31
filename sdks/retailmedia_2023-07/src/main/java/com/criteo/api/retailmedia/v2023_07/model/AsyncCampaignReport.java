@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,75 +48,10 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2023_07.JSON;
 
 /**
- * Line item report body request
+ * Campaign report body request
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class LineItemReport {
-  /**
-   * Gets or Sets reportType
-   */
-  @JsonAdapter(ReportTypeEnum.Adapter.class)
-  public enum ReportTypeEnum {
-    SUMMARY("summary"),
-    
-    PAGETYPE("pageType"),
-    
-    KEYWORD("keyword"),
-    
-    PRODUCTCATEGORY("productCategory"),
-    
-    PRODUCT("product");
-
-    private String value;
-
-    ReportTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ReportTypeEnum fromValue(String value) {
-      for (ReportTypeEnum b : ReportTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ReportTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ReportTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ReportTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ReportTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_REPORT_TYPE = "reportType";
-  @SerializedName(SERIALIZED_NAME_REPORT_TYPE)
-  private ReportTypeEnum reportType;
-
-  public static final String SERIALIZED_NAME_LINE_ITEM_IDS = "lineItemIds";
-  @SerializedName(SERIALIZED_NAME_LINE_ITEM_IDS)
-  private List<String> lineItemIds = null;
-
-  public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
-  private List<String> campaignIds = null;
-
+public class AsyncCampaignReport {
   /**
    * Gets or Sets metrics
    */
@@ -139,11 +75,9 @@ public class LineItemReport {
     
     CPO("cpo"),
     
+    CPM("cpm"),
+    
     ROAS("roas"),
-    
-    ASSISTEDUNITS("assistedUnits"),
-    
-    ASSISTEDSALES("assistedSales"),
     
     UNIQUEVISITORS("uniqueVisitors"),
     
@@ -214,17 +148,9 @@ public class LineItemReport {
     
     BRANDNAME("brandName"),
     
-    LINEITEMID("lineItemId"),
-    
-    LINEITEMNAME("lineItemName"),
-    
-    RETAILERID("retailerId"),
-    
-    RETAILERNAME("retailerName"),
+    PAGETYPENAME("pageTypeName"),
     
     KEYWORD("keyword"),
-    
-    PAGETYPENAME("pageTypeName"),
     
     SALESCHANNEL("salesChannel");
 
@@ -270,22 +196,6 @@ public class LineItemReport {
   @SerializedName(SERIALIZED_NAME_DIMENSIONS)
   private List<DimensionsEnum> dimensions = null;
 
-  public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
-  @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private String accountId;
-
-  public static final String SERIALIZED_NAME_START_DATE = "startDate";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private OffsetDateTime startDate;
-
-  public static final String SERIALIZED_NAME_END_DATE = "endDate";
-  @SerializedName(SERIALIZED_NAME_END_DATE)
-  private OffsetDateTime endDate;
-
-  public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
-  @SerializedName(SERIALIZED_NAME_TIMEZONE)
-  private String timezone;
-
   /**
    * Gets or Sets clickAttributionWindow
    */
@@ -320,7 +230,7 @@ public class LineItemReport {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return null;
     }
 
     public static class Adapter extends TypeAdapter<ClickAttributionWindowEnum> {
@@ -377,7 +287,7 @@ public class LineItemReport {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return null;
     }
 
     public static class Adapter extends TypeAdapter<ViewAttributionWindowEnum> {
@@ -397,6 +307,18 @@ public class LineItemReport {
   public static final String SERIALIZED_NAME_VIEW_ATTRIBUTION_WINDOW = "viewAttributionWindow";
   @SerializedName(SERIALIZED_NAME_VIEW_ATTRIBUTION_WINDOW)
   private ViewAttributionWindowEnum viewAttributionWindow;
+
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private OffsetDateTime startDate;
+
+  public static final String SERIALIZED_NAME_END_DATE = "endDate";
+  @SerializedName(SERIALIZED_NAME_END_DATE)
+  private OffsetDateTime endDate;
+
+  public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
+  @SerializedName(SERIALIZED_NAME_TIMEZONE)
+  private String timezone;
 
   /**
    * Gets or Sets campaignType
@@ -428,7 +350,7 @@ public class LineItemReport {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return null;
     }
 
     public static class Adapter extends TypeAdapter<CampaignTypeEnum> {
@@ -479,7 +401,7 @@ public class LineItemReport {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return null;
     }
 
     public static class Adapter extends TypeAdapter<SalesChannelEnum> {
@@ -500,100 +422,140 @@ public class LineItemReport {
   @SerializedName(SERIALIZED_NAME_SALES_CHANNEL)
   private SalesChannelEnum salesChannel;
 
-  public LineItemReport() {
-  }
-
-  public LineItemReport reportType(ReportTypeEnum reportType) {
+  /**
+   * Gets or Sets format
+   */
+  @JsonAdapter(FormatEnum.Adapter.class)
+  public enum FormatEnum {
+    JSON("json"),
     
-    this.reportType = reportType;
-    return this;
-  }
-
-   /**
-   * Get reportType
-   * @return reportType
-  **/
-  @javax.annotation.Nullable
-
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-
-
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
-
-
-  public LineItemReport lineItemIds(List<String> lineItemIds) {
+    JSON_COMPACT("json-compact"),
     
-    this.lineItemIds = lineItemIds;
-    return this;
-  }
+    JSON_NEWLINE("json-newline"),
+    
+    CSV("csv");
 
-  public LineItemReport addLineItemIdsItem(String lineItemIdsItem) {
-    if (this.lineItemIds == null) {
-      this.lineItemIds = new ArrayList<>();
+    private String value;
+
+    FormatEnum(String value) {
+      this.value = value;
     }
-    this.lineItemIds.add(lineItemIdsItem);
-    return this;
-  }
 
-   /**
-   * Get lineItemIds
-   * @return lineItemIds
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getLineItemIds() {
-    return lineItemIds;
-  }
-
-
-  public void setLineItemIds(List<String> lineItemIds) {
-    this.lineItemIds = lineItemIds;
-  }
-
-
-  public LineItemReport campaignIds(List<String> campaignIds) {
-    
-    this.campaignIds = campaignIds;
-    return this;
-  }
-
-  public LineItemReport addCampaignIdsItem(String campaignIdsItem) {
-    if (this.campaignIds == null) {
-      this.campaignIds = new ArrayList<>();
+    public String getValue() {
+      return value;
     }
-    this.campaignIds.add(campaignIdsItem);
-    return this;
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static FormatEnum fromValue(String value) {
+      for (FormatEnum b : FormatEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<FormatEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final FormatEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public FormatEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return FormatEnum.fromValue(value);
+      }
+    }
   }
 
-   /**
-   * Get campaignIds
-   * @return campaignIds
-  **/
-  @javax.annotation.Nullable
+  public static final String SERIALIZED_NAME_FORMAT = "format";
+  @SerializedName(SERIALIZED_NAME_FORMAT)
+  private FormatEnum format;
 
-  public List<String> getCampaignIds() {
-    return campaignIds;
+  /**
+   * Gets or Sets reportType
+   */
+  @JsonAdapter(ReportTypeEnum.Adapter.class)
+  public enum ReportTypeEnum {
+    SUMMARY("summary"),
+    
+    PAGETYPE("pageType"),
+    
+    KEYWORD("keyword"),
+    
+    PRODUCTCATEGORY("productCategory"),
+    
+    PRODUCT("product"),
+    
+    ATTRIBUTEDTRANSACTIONS("attributedTransactions");
+
+    private String value;
+
+    ReportTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ReportTypeEnum fromValue(String value) {
+      for (ReportTypeEnum b : ReportTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<ReportTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ReportTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ReportTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ReportTypeEnum.fromValue(value);
+      }
+    }
   }
 
+  public static final String SERIALIZED_NAME_REPORT_TYPE = "reportType";
+  @SerializedName(SERIALIZED_NAME_REPORT_TYPE)
+  private ReportTypeEnum reportType;
 
-  public void setCampaignIds(List<String> campaignIds) {
-    this.campaignIds = campaignIds;
+  public static final String SERIALIZED_NAME_IDS = "ids";
+  @SerializedName(SERIALIZED_NAME_IDS)
+  private List<String> ids = null;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
+  public AsyncCampaignReport() {
   }
 
-
-  public LineItemReport metrics(List<MetricsEnum> metrics) {
+  public AsyncCampaignReport metrics(List<MetricsEnum> metrics) {
     
     this.metrics = metrics;
     return this;
   }
 
-  public LineItemReport addMetricsItem(MetricsEnum metricsItem) {
+  public AsyncCampaignReport addMetricsItem(MetricsEnum metricsItem) {
     if (this.metrics == null) {
-      this.metrics = new ArrayList<>();
+      this.metrics = null;
     }
     this.metrics.add(metricsItem);
     return this;
@@ -615,22 +577,22 @@ public class LineItemReport {
   }
 
 
-  public LineItemReport dimensions(List<DimensionsEnum> dimensions) {
+  public AsyncCampaignReport dimensions(List<DimensionsEnum> dimensions) {
     
     this.dimensions = dimensions;
     return this;
   }
 
-  public LineItemReport addDimensionsItem(DimensionsEnum dimensionsItem) {
+  public AsyncCampaignReport addDimensionsItem(DimensionsEnum dimensionsItem) {
     if (this.dimensions == null) {
-      this.dimensions = new ArrayList<>();
+      this.dimensions = null;
     }
     this.dimensions.add(dimensionsItem);
     return this;
   }
 
    /**
-   * List of dimensions to report on
+   * Get dimensions
    * @return dimensions
   **/
   @javax.annotation.Nullable
@@ -645,95 +607,7 @@ public class LineItemReport {
   }
 
 
-  public LineItemReport accountId(String accountId) {
-    
-    this.accountId = accountId;
-    return this;
-  }
-
-   /**
-   * Get accountId
-   * @return accountId
-  **/
-  @javax.annotation.Nonnull
-
-  public String getAccountId() {
-    return accountId;
-  }
-
-
-  public void setAccountId(String accountId) {
-    this.accountId = accountId;
-  }
-
-
-  public LineItemReport startDate(OffsetDateTime startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * Get startDate
-   * @return startDate
-  **/
-  @javax.annotation.Nonnull
-
-  public OffsetDateTime getStartDate() {
-    return startDate;
-  }
-
-
-  public void setStartDate(OffsetDateTime startDate) {
-    this.startDate = startDate;
-  }
-
-
-  public LineItemReport endDate(OffsetDateTime endDate) {
-    
-    this.endDate = endDate;
-    return this;
-  }
-
-   /**
-   * Get endDate
-   * @return endDate
-  **/
-  @javax.annotation.Nonnull
-
-  public OffsetDateTime getEndDate() {
-    return endDate;
-  }
-
-
-  public void setEndDate(OffsetDateTime endDate) {
-    this.endDate = endDate;
-  }
-
-
-  public LineItemReport timezone(String timezone) {
-    
-    this.timezone = timezone;
-    return this;
-  }
-
-   /**
-   * Get timezone
-   * @return timezone
-  **/
-  @javax.annotation.Nullable
-
-  public String getTimezone() {
-    return timezone;
-  }
-
-
-  public void setTimezone(String timezone) {
-    this.timezone = timezone;
-  }
-
-
-  public LineItemReport clickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
+  public AsyncCampaignReport clickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
     
     this.clickAttributionWindow = clickAttributionWindow;
     return this;
@@ -755,7 +629,7 @@ public class LineItemReport {
   }
 
 
-  public LineItemReport viewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
+  public AsyncCampaignReport viewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
     
     this.viewAttributionWindow = viewAttributionWindow;
     return this;
@@ -777,7 +651,73 @@ public class LineItemReport {
   }
 
 
-  public LineItemReport campaignType(CampaignTypeEnum campaignType) {
+  public AsyncCampaignReport startDate(OffsetDateTime startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Get startDate
+   * @return startDate
+  **/
+  @javax.annotation.Nonnull
+
+  public OffsetDateTime getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+
+  public AsyncCampaignReport endDate(OffsetDateTime endDate) {
+    
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * Get endDate
+   * @return endDate
+  **/
+  @javax.annotation.Nonnull
+
+  public OffsetDateTime getEndDate() {
+    return endDate;
+  }
+
+
+  public void setEndDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
+  }
+
+
+  public AsyncCampaignReport timezone(String timezone) {
+    
+    this.timezone = timezone;
+    return this;
+  }
+
+   /**
+   * Get timezone
+   * @return timezone
+  **/
+  @javax.annotation.Nullable
+
+  public String getTimezone() {
+    return timezone;
+  }
+
+
+  public void setTimezone(String timezone) {
+    this.timezone = timezone;
+  }
+
+
+  public AsyncCampaignReport campaignType(CampaignTypeEnum campaignType) {
     
     this.campaignType = campaignType;
     return this;
@@ -799,7 +739,7 @@ public class LineItemReport {
   }
 
 
-  public LineItemReport salesChannel(SalesChannelEnum salesChannel) {
+  public AsyncCampaignReport salesChannel(SalesChannelEnum salesChannel) {
     
     this.salesChannel = salesChannel;
     return this;
@@ -820,6 +760,102 @@ public class LineItemReport {
     this.salesChannel = salesChannel;
   }
 
+
+  public AsyncCampaignReport format(FormatEnum format) {
+    
+    this.format = format;
+    return this;
+  }
+
+   /**
+   * Get format
+   * @return format
+  **/
+  @javax.annotation.Nullable
+
+  public FormatEnum getFormat() {
+    return format;
+  }
+
+
+  public void setFormat(FormatEnum format) {
+    this.format = format;
+  }
+
+
+  public AsyncCampaignReport reportType(ReportTypeEnum reportType) {
+    
+    this.reportType = reportType;
+    return this;
+  }
+
+   /**
+   * Get reportType
+   * @return reportType
+  **/
+  @javax.annotation.Nullable
+
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+
+
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+
+  public AsyncCampaignReport ids(List<String> ids) {
+    
+    this.ids = ids;
+    return this;
+  }
+
+  public AsyncCampaignReport addIdsItem(String idsItem) {
+    if (this.ids == null) {
+      this.ids = null;
+    }
+    this.ids.add(idsItem);
+    return this;
+  }
+
+   /**
+   * Get ids
+   * @return ids
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getIds() {
+    return ids;
+  }
+
+
+  public void setIds(List<String> ids) {
+    this.ids = ids;
+  }
+
+
+  public AsyncCampaignReport id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -833,9 +869,9 @@ public class LineItemReport {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the LineItemReport instance itself
+   * @return the AsyncCampaignReport instance itself
    */
-  public LineItemReport putAdditionalProperty(String key, Object value) {
+  public AsyncCampaignReport putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -874,45 +910,56 @@ public class LineItemReport {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LineItemReport lineItemReport = (LineItemReport) o;
-    return Objects.equals(this.reportType, lineItemReport.reportType) &&
-        Objects.equals(this.lineItemIds, lineItemReport.lineItemIds) &&
-        Objects.equals(this.campaignIds, lineItemReport.campaignIds) &&
-        Objects.equals(this.metrics, lineItemReport.metrics) &&
-        Objects.equals(this.dimensions, lineItemReport.dimensions) &&
-        Objects.equals(this.accountId, lineItemReport.accountId) &&
-        Objects.equals(this.startDate, lineItemReport.startDate) &&
-        Objects.equals(this.endDate, lineItemReport.endDate) &&
-        Objects.equals(this.timezone, lineItemReport.timezone) &&
-        Objects.equals(this.clickAttributionWindow, lineItemReport.clickAttributionWindow) &&
-        Objects.equals(this.viewAttributionWindow, lineItemReport.viewAttributionWindow) &&
-        Objects.equals(this.campaignType, lineItemReport.campaignType) &&
-        Objects.equals(this.salesChannel, lineItemReport.salesChannel)&&
-        Objects.equals(this.additionalProperties, lineItemReport.additionalProperties);
+    AsyncCampaignReport asyncCampaignReport = (AsyncCampaignReport) o;
+    return Objects.equals(this.metrics, asyncCampaignReport.metrics) &&
+        Objects.equals(this.dimensions, asyncCampaignReport.dimensions) &&
+        Objects.equals(this.clickAttributionWindow, asyncCampaignReport.clickAttributionWindow) &&
+        Objects.equals(this.viewAttributionWindow, asyncCampaignReport.viewAttributionWindow) &&
+        Objects.equals(this.startDate, asyncCampaignReport.startDate) &&
+        Objects.equals(this.endDate, asyncCampaignReport.endDate) &&
+        Objects.equals(this.timezone, asyncCampaignReport.timezone) &&
+        Objects.equals(this.campaignType, asyncCampaignReport.campaignType) &&
+        Objects.equals(this.salesChannel, asyncCampaignReport.salesChannel) &&
+        Objects.equals(this.format, asyncCampaignReport.format) &&
+        Objects.equals(this.reportType, asyncCampaignReport.reportType) &&
+        Objects.equals(this.ids, asyncCampaignReport.ids) &&
+        Objects.equals(this.id, asyncCampaignReport.id)&&
+        Objects.equals(this.additionalProperties, asyncCampaignReport.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, lineItemIds, campaignIds, metrics, dimensions, accountId, startDate, endDate, timezone, clickAttributionWindow, viewAttributionWindow, campaignType, salesChannel, additionalProperties);
+    return Objects.hash(metrics, dimensions, clickAttributionWindow, viewAttributionWindow, startDate, endDate, timezone, campaignType, salesChannel, format, reportType, ids, id, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LineItemReport {\n");
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
-    sb.append("    lineItemIds: ").append(toIndentedString(lineItemIds)).append("\n");
-    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
+    sb.append("class AsyncCampaignReport {\n");
     sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
-    sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
+    sb.append("    clickAttributionWindow: ").append(toIndentedString(clickAttributionWindow)).append("\n");
+    sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
-    sb.append("    clickAttributionWindow: ").append(toIndentedString(clickAttributionWindow)).append("\n");
-    sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    salesChannel: ").append(toIndentedString(salesChannel)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
+    sb.append("    ids: ").append(toIndentedString(ids)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -936,23 +983,22 @@ public class LineItemReport {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("reportType");
-    openapiFields.add("lineItemIds");
-    openapiFields.add("campaignIds");
     openapiFields.add("metrics");
     openapiFields.add("dimensions");
-    openapiFields.add("accountId");
+    openapiFields.add("clickAttributionWindow");
+    openapiFields.add("viewAttributionWindow");
     openapiFields.add("startDate");
     openapiFields.add("endDate");
     openapiFields.add("timezone");
-    openapiFields.add("clickAttributionWindow");
-    openapiFields.add("viewAttributionWindow");
     openapiFields.add("campaignType");
     openapiFields.add("salesChannel");
+    openapiFields.add("format");
+    openapiFields.add("reportType");
+    openapiFields.add("ids");
+    openapiFields.add("id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("accountId");
     openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("endDate");
   }
@@ -961,31 +1007,20 @@ public class LineItemReport {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to LineItemReport
+  * @throws IOException if the JSON Object is invalid with respect to AsyncCampaignReport
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!LineItemReport.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LineItemReport is not found in the empty JSON string", LineItemReport.openapiRequiredFields.toString()));
+        if (!AsyncCampaignReport.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AsyncCampaignReport is not found in the empty JSON string", AsyncCampaignReport.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LineItemReport.openapiRequiredFields) {
+      for (String requiredField : AsyncCampaignReport.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
-      }
-      if ((jsonObj.get("reportType") != null && !jsonObj.get("reportType").isJsonNull()) && !jsonObj.get("reportType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `reportType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reportType").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("lineItemIds") != null && !jsonObj.get("lineItemIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lineItemIds` to be an array in the JSON string but got `%s`", jsonObj.get("lineItemIds").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("campaignIds") != null && !jsonObj.get("campaignIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaignIds` to be an array in the JSON string but got `%s`", jsonObj.get("campaignIds").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("metrics") != null && !jsonObj.get("metrics").isJsonArray()) {
@@ -995,17 +1030,14 @@ public class LineItemReport {
       if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `dimensions` to be an array in the JSON string but got `%s`", jsonObj.get("dimensions").toString()));
       }
-      if (!jsonObj.get("accountId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
-      }
-      if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));
-      }
       if ((jsonObj.get("clickAttributionWindow") != null && !jsonObj.get("clickAttributionWindow").isJsonNull()) && !jsonObj.get("clickAttributionWindow").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `clickAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionWindow").toString()));
       }
       if ((jsonObj.get("viewAttributionWindow") != null && !jsonObj.get("viewAttributionWindow").isJsonNull()) && !jsonObj.get("viewAttributionWindow").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `viewAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewAttributionWindow").toString()));
+      }
+      if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));
       }
       if ((jsonObj.get("campaignType") != null && !jsonObj.get("campaignType").isJsonNull()) && !jsonObj.get("campaignType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignType").toString()));
@@ -1013,22 +1045,35 @@ public class LineItemReport {
       if ((jsonObj.get("salesChannel") != null && !jsonObj.get("salesChannel").isJsonNull()) && !jsonObj.get("salesChannel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `salesChannel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("salesChannel").toString()));
       }
+      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
+      }
+      if ((jsonObj.get("reportType") != null && !jsonObj.get("reportType").isJsonNull()) && !jsonObj.get("reportType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reportType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reportType").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ids") != null && !jsonObj.get("ids").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ids` to be an array in the JSON string but got `%s`", jsonObj.get("ids").toString()));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!LineItemReport.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'LineItemReport' and its subtypes
+       if (!AsyncCampaignReport.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AsyncCampaignReport' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<LineItemReport> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(LineItemReport.class));
+       final TypeAdapter<AsyncCampaignReport> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AsyncCampaignReport.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<LineItemReport>() {
+       return (TypeAdapter<T>) new TypeAdapter<AsyncCampaignReport>() {
            @Override
-           public void write(JsonWriter out, LineItemReport value) throws IOException {
+           public void write(JsonWriter out, AsyncCampaignReport value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -1051,11 +1096,11 @@ public class LineItemReport {
            }
 
            @Override
-           public LineItemReport read(JsonReader in) throws IOException {
+           public AsyncCampaignReport read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             LineItemReport instance = thisAdapter.fromJsonTree(jsonObj);
+             AsyncCampaignReport instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -1082,18 +1127,18 @@ public class LineItemReport {
   }
 
  /**
-  * Create an instance of LineItemReport given an JSON string
+  * Create an instance of AsyncCampaignReport given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of LineItemReport
-  * @throws IOException if the JSON string is invalid with respect to LineItemReport
+  * @return An instance of AsyncCampaignReport
+  * @throws IOException if the JSON string is invalid with respect to AsyncCampaignReport
   */
-  public static LineItemReport fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, LineItemReport.class);
+  public static AsyncCampaignReport fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AsyncCampaignReport.class);
   }
 
  /**
-  * Convert an instance of LineItemReport to an JSON string
+  * Convert an instance of AsyncCampaignReport to an JSON string
   *
   * @return JSON string
   */

@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.v2023_07.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.v2023_07.model.CampaignReport;
+import com.criteo.api.retailmedia.v2023_07.model.AsyncCampaignReportResource;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -45,62 +45,36 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2023_07.JSON;
 
 /**
- * A top-level object that encapsulates a Criteo API response for a single value
+ * A top-level object that encapsulates a Criteo API request for a single value
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class CampaignReportResource {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
+public class AsyncCampaignReportRequest {
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private AsyncCampaignReportResource data;
 
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private CampaignReport attributes;
-
-  public CampaignReportResource() {
+  public AsyncCampaignReportRequest() {
   }
 
-  public CampaignReportResource type(String type) {
+  public AsyncCampaignReportRequest data(AsyncCampaignReportResource data) {
     
-    this.type = type;
+    this.data = data;
     return this;
   }
 
    /**
-   * Get type
-   * @return type
+   * Get data
+   * @return data
   **/
   @javax.annotation.Nullable
 
-  public String getType() {
-    return type;
+  public AsyncCampaignReportResource getData() {
+    return data;
   }
 
 
-  public void setType(String type) {
-    this.type = type;
-  }
-
-
-  public CampaignReportResource attributes(CampaignReport attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @javax.annotation.Nullable
-
-  public CampaignReport getAttributes() {
-    return attributes;
-  }
-
-
-  public void setAttributes(CampaignReport attributes) {
-    this.attributes = attributes;
+  public void setData(AsyncCampaignReportResource data) {
+    this.data = data;
   }
 
   /**
@@ -116,9 +90,9 @@ public class CampaignReportResource {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the CampaignReportResource instance itself
+   * @return the AsyncCampaignReportRequest instance itself
    */
-  public CampaignReportResource putAdditionalProperty(String key, Object value) {
+  public AsyncCampaignReportRequest putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -157,23 +131,21 @@ public class CampaignReportResource {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CampaignReportResource campaignReportResource = (CampaignReportResource) o;
-    return Objects.equals(this.type, campaignReportResource.type) &&
-        Objects.equals(this.attributes, campaignReportResource.attributes)&&
-        Objects.equals(this.additionalProperties, campaignReportResource.additionalProperties);
+    AsyncCampaignReportRequest asyncCampaignReportRequest = (AsyncCampaignReportRequest) o;
+    return Objects.equals(this.data, asyncCampaignReportRequest.data)&&
+        Objects.equals(this.additionalProperties, asyncCampaignReportRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes, additionalProperties);
+    return Objects.hash(data, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CampaignReportResource {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("class AsyncCampaignReportRequest {\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -197,8 +169,7 @@ public class CampaignReportResource {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
-    openapiFields.add("attributes");
+    openapiFields.add("data");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -208,20 +179,17 @@ public class CampaignReportResource {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CampaignReportResource
+  * @throws IOException if the JSON Object is invalid with respect to AsyncCampaignReportRequest
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!CampaignReportResource.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignReportResource is not found in the empty JSON string", CampaignReportResource.openapiRequiredFields.toString()));
+        if (!AsyncCampaignReportRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AsyncCampaignReportRequest is not found in the empty JSON string", AsyncCampaignReportRequest.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        CampaignReport.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      // validate the optional field `data`
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        AsyncCampaignReportResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
   }
 
@@ -229,16 +197,16 @@ public class CampaignReportResource {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CampaignReportResource.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CampaignReportResource' and its subtypes
+       if (!AsyncCampaignReportRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AsyncCampaignReportRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CampaignReportResource> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CampaignReportResource.class));
+       final TypeAdapter<AsyncCampaignReportRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AsyncCampaignReportRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CampaignReportResource>() {
+       return (TypeAdapter<T>) new TypeAdapter<AsyncCampaignReportRequest>() {
            @Override
-           public void write(JsonWriter out, CampaignReportResource value) throws IOException {
+           public void write(JsonWriter out, AsyncCampaignReportRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -261,11 +229,11 @@ public class CampaignReportResource {
            }
 
            @Override
-           public CampaignReportResource read(JsonReader in) throws IOException {
+           public AsyncCampaignReportRequest read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             CampaignReportResource instance = thisAdapter.fromJsonTree(jsonObj);
+             AsyncCampaignReportRequest instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -292,18 +260,18 @@ public class CampaignReportResource {
   }
 
  /**
-  * Create an instance of CampaignReportResource given an JSON string
+  * Create an instance of AsyncCampaignReportRequest given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of CampaignReportResource
-  * @throws IOException if the JSON string is invalid with respect to CampaignReportResource
+  * @return An instance of AsyncCampaignReportRequest
+  * @throws IOException if the JSON string is invalid with respect to AsyncCampaignReportRequest
   */
-  public static CampaignReportResource fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CampaignReportResource.class);
+  public static AsyncCampaignReportRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AsyncCampaignReportRequest.class);
   }
 
  /**
-  * Convert an instance of CampaignReportResource to an JSON string
+  * Convert an instance of AsyncCampaignReportRequest to an JSON string
   *
   * @return JSON string
   */

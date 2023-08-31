@@ -24,6 +24,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -92,7 +93,7 @@ public class RetailMediaExternalv1KeywordsModel {
 
   public RetailMediaExternalv1KeywordsModel addRankItem(String rankItem) {
     if (this.rank == null) {
-      this.rank = new ArrayList<>();
+      this.rank = null;
     }
     this.rank.add(rankItem);
     return this;
@@ -173,9 +174,20 @@ public class RetailMediaExternalv1KeywordsModel {
         Objects.equals(this.additionalProperties, retailMediaExternalv1KeywordsModel.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(keywords, rank, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

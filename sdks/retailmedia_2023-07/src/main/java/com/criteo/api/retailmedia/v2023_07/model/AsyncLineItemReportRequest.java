@@ -15,17 +15,13 @@ package com.criteo.api.retailmedia.v2023_07.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.v2023_07.model.CommonProblem;
-import com.criteo.api.retailmedia.v2023_07.model.ExportReportMetaData;
-import com.criteo.api.retailmedia.v2023_07.model.ReportDataResponseResource;
+import com.criteo.api.retailmedia.v2023_07.model.AsyncLineItemReportResource;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,62 +45,18 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2023_07.JSON;
 
 /**
- * Report response format
+ * A top-level object that encapsulates a Criteo API request for a single value
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ReportResponse {
-  public static final String SERIALIZED_NAME_META = "meta";
-  @SerializedName(SERIALIZED_NAME_META)
-  private ExportReportMetaData meta;
-
+public class AsyncLineItemReportRequest {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private ReportDataResponseResource data;
+  private AsyncLineItemReportResource data;
 
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<CommonProblem> warnings = null;
-
-  public static final String SERIALIZED_NAME_ERRORS = "errors";
-  @SerializedName(SERIALIZED_NAME_ERRORS)
-  private List<CommonProblem> errors = null;
-
-  public ReportResponse() {
+  public AsyncLineItemReportRequest() {
   }
 
-  
-  public ReportResponse(
-     List<CommonProblem> warnings, 
-     List<CommonProblem> errors
-  ) {
-    this();
-    this.warnings = warnings;
-    this.errors = errors;
-  }
-
-  public ReportResponse meta(ExportReportMetaData meta) {
-    
-    this.meta = meta;
-    return this;
-  }
-
-   /**
-   * Get meta
-   * @return meta
-  **/
-  @javax.annotation.Nullable
-
-  public ExportReportMetaData getMeta() {
-    return meta;
-  }
-
-
-  public void setMeta(ExportReportMetaData meta) {
-    this.meta = meta;
-  }
-
-
-  public ReportResponse data(ReportDataResponseResource data) {
+  public AsyncLineItemReportRequest data(AsyncLineItemReportResource data) {
     
     this.data = data;
     return this;
@@ -116,40 +68,14 @@ public class ReportResponse {
   **/
   @javax.annotation.Nullable
 
-  public ReportDataResponseResource getData() {
+  public AsyncLineItemReportResource getData() {
     return data;
   }
 
 
-  public void setData(ReportDataResponseResource data) {
+  public void setData(AsyncLineItemReportResource data) {
     this.data = data;
   }
-
-
-   /**
-   * Get warnings
-   * @return warnings
-  **/
-  @javax.annotation.Nullable
-
-  public List<CommonProblem> getWarnings() {
-    return warnings;
-  }
-
-
-
-
-   /**
-   * Get errors
-   * @return errors
-  **/
-  @javax.annotation.Nullable
-
-  public List<CommonProblem> getErrors() {
-    return errors;
-  }
-
-
 
   /**
    * A container for additional, undeclared properties.
@@ -164,9 +90,9 @@ public class ReportResponse {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ReportResponse instance itself
+   * @return the AsyncLineItemReportRequest instance itself
    */
-  public ReportResponse putAdditionalProperty(String key, Object value) {
+  public AsyncLineItemReportRequest putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -205,27 +131,21 @@ public class ReportResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ReportResponse reportResponse = (ReportResponse) o;
-    return Objects.equals(this.meta, reportResponse.meta) &&
-        Objects.equals(this.data, reportResponse.data) &&
-        Objects.equals(this.warnings, reportResponse.warnings) &&
-        Objects.equals(this.errors, reportResponse.errors)&&
-        Objects.equals(this.additionalProperties, reportResponse.additionalProperties);
+    AsyncLineItemReportRequest asyncLineItemReportRequest = (AsyncLineItemReportRequest) o;
+    return Objects.equals(this.data, asyncLineItemReportRequest.data)&&
+        Objects.equals(this.additionalProperties, asyncLineItemReportRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(meta, data, warnings, errors, additionalProperties);
+    return Objects.hash(data, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ReportResponse {\n");
-    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
+    sb.append("class AsyncLineItemReportRequest {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -249,10 +169,7 @@ public class ReportResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("meta");
     openapiFields.add("data");
-    openapiFields.add("warnings");
-    openapiFields.add("errors");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -262,49 +179,17 @@ public class ReportResponse {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ReportResponse
+  * @throws IOException if the JSON Object is invalid with respect to AsyncLineItemReportRequest
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ReportResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ReportResponse is not found in the empty JSON string", ReportResponse.openapiRequiredFields.toString()));
+        if (!AsyncLineItemReportRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AsyncLineItemReportRequest is not found in the empty JSON string", AsyncLineItemReportRequest.openapiRequiredFields.toString()));
         }
-      }
-      // validate the optional field `meta`
-      if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
-        ExportReportMetaData.validateJsonObject(jsonObj.getAsJsonObject("meta"));
       }
       // validate the optional field `data`
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        ReportDataResponseResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
-      }
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
-        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
-        if (jsonArraywarnings != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("warnings").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-          }
-
-          // validate the optional field `warnings` (array)
-          for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
-          };
-        }
-      }
-      if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
-        JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
-        if (jsonArrayerrors != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("errors").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
-          }
-
-          // validate the optional field `errors` (array)
-          for (int i = 0; i < jsonArrayerrors.size(); i++) {
-            CommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
-          };
-        }
+        AsyncLineItemReportResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
   }
 
@@ -312,16 +197,16 @@ public class ReportResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ReportResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ReportResponse' and its subtypes
+       if (!AsyncLineItemReportRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AsyncLineItemReportRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ReportResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ReportResponse.class));
+       final TypeAdapter<AsyncLineItemReportRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AsyncLineItemReportRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ReportResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<AsyncLineItemReportRequest>() {
            @Override
-           public void write(JsonWriter out, ReportResponse value) throws IOException {
+           public void write(JsonWriter out, AsyncLineItemReportRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -344,11 +229,11 @@ public class ReportResponse {
            }
 
            @Override
-           public ReportResponse read(JsonReader in) throws IOException {
+           public AsyncLineItemReportRequest read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             ReportResponse instance = thisAdapter.fromJsonTree(jsonObj);
+             AsyncLineItemReportRequest instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -375,18 +260,18 @@ public class ReportResponse {
   }
 
  /**
-  * Create an instance of ReportResponse given an JSON string
+  * Create an instance of AsyncLineItemReportRequest given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ReportResponse
-  * @throws IOException if the JSON string is invalid with respect to ReportResponse
+  * @return An instance of AsyncLineItemReportRequest
+  * @throws IOException if the JSON string is invalid with respect to AsyncLineItemReportRequest
   */
-  public static ReportResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ReportResponse.class);
+  public static AsyncLineItemReportRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AsyncLineItemReportRequest.class);
   }
 
  /**
-  * Convert an instance of ReportResponse to an JSON string
+  * Convert an instance of AsyncLineItemReportRequest to an JSON string
   *
   * @return JSON string
   */

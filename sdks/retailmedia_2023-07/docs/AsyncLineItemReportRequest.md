@@ -1,6 +1,6 @@
 
 
-# CampaignReportRequest
+# AsyncLineItemReportRequest
 
 A top-level object that encapsulates a Criteo API request for a single value
 
@@ -8,7 +8,7 @@ A top-level object that encapsulates a Criteo API request for a single value
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**CampaignReportResource**](CampaignReportResource.md) |  |  [optional] |
+|**data** | [**AsyncLineItemReportResource**](AsyncLineItemReportResource.md) |  |  [optional] |
 
 
 

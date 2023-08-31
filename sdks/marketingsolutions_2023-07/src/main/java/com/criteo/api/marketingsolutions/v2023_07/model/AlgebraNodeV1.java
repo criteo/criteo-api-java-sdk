@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -77,7 +78,7 @@ public class AlgebraNodeV1 {
 
   public AlgebraNodeV1 addAndItem(AlgebraNodeV1 andItem) {
     if (this.and == null) {
-      this.and = new ArrayList<>();
+      this.and = null;
     }
     this.and.add(andItem);
     return this;
@@ -107,7 +108,7 @@ public class AlgebraNodeV1 {
 
   public AlgebraNodeV1 addOrItem(AlgebraNodeV1 orItem) {
     if (this.or == null) {
-      this.or = new ArrayList<>();
+      this.or = null;
     }
     this.or.add(orItem);
     return this;
@@ -234,9 +235,20 @@ public class AlgebraNodeV1 {
         Objects.equals(this.additionalProperties, algebraNodeV1.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(and, or, not, audienceSegmentId, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
