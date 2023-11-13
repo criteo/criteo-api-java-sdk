@@ -14,6 +14,7 @@ Represents a recommended product.
 |**name** | **String** | Product name. |  [optional] |
 |**description** | **String** | Product description. |  [optional] |
 |**price** | **Double** | Product price. |  [optional] |
+|**retailprice** | **Double** | Product retail price. |  [optional] |
 |**googleCategory** | **String** | Product google category. |  [optional] |
 
 

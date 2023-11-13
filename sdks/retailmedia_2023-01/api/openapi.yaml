@@ -904,74 +904,132 @@ paths:
       x-accepts: application/json
   /2023-01/retail-media/reports/campaigns:
     post:
-      description: Request a campaign report
-      operationId: requestCampaignReport
+      description: Return an asynchronous Campaigns Report
+      operationId: GenerateAsyncCampaignsReport
       requestBody:
         content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/AsyncCampaignsReportRequest'
           application/json:
             schema:
-              $ref: '#/components/schemas/EnvelopeReportRequest'
-        description: Envelope of the request
+              $ref: '#/components/schemas/AsyncCampaignsReportRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AsyncCampaignsReportRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AsyncCampaignsReportRequest'
         required: true
+        x-bodyName: request
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvelopeReportStatus'
-          description: Returns the status of the report
+                $ref: '#/components/schemas/AsyncReportResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+          description: Success
         "400":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
             application/json:
               schema:
-                $ref: '#/components/schemas/BadRequest'
-          description: Bad request
-        "401":
-          description: Missing Authorization or token invalid
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Bad Request
         "403":
-          description: Must have access to RetailMedia accounts
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Forbidden
       tags:
       - Analytics
-      x-content-type: application/json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /2023-01/retail-media/reports/line-items:
     post:
-      description: Request a line item report
-      operationId: requestLineItemReport
+      description: Returns an asynchronous Line Items Report
+      operationId: GenerateAsyncLineItemsReport
       requestBody:
         content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/AsyncLineItemsReportRequest'
           application/json:
             schema:
-              $ref: '#/components/schemas/EnvelopeReportRequest'
-        description: Envelope of the request
+              $ref: '#/components/schemas/AsyncLineItemsReportRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AsyncLineItemsReportRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AsyncLineItemsReportRequest'
         required: true
+        x-bodyName: request
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvelopeReportStatus'
-          description: Returns the status of the report
+                $ref: '#/components/schemas/AsyncReportResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+          description: Success
         "400":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
             application/json:
               schema:
-                $ref: '#/components/schemas/BadRequest'
-          description: Bad request
-        "401":
-          description: Missing Authorization or token invalid
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Bad Request
         "403":
-          description: Must have access to RetailMedia accounts
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Forbidden
       tags:
       - Analytics
-      x-content-type: application/json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /2023-01/retail-media/reports/{reportId}/output:
     get:
-      description: Request the report output
-      operationId: getReportOutput
+      description: Returns the output of an async report
+      operationId: GetAsyncExportOutput
       parameters:
-      - description: report id
+      - description: The ID of the report to retrieve
         explode: false
         in: path
         name: reportId
@@ -982,53 +1040,93 @@ paths:
       responses:
         "200":
           content:
-            application/octet-stream:
+            text/plain:
               schema:
                 type: string
-          description: The output
-          headers:
-            Content-Disposition:
-              description: Returns a filename for the output
-              explode: false
-              required: true
-              schema:
-                type: string
-              style: simple
-        "401":
-          description: Missing Authorization or token invalid
-        "403":
-          description: Must have access to RetailMedia accounts
-        "404":
-          description: ReportId not found
-      tags:
-      - Analytics
-      x-accepts: application/octet-stream
-  /2023-01/retail-media/reports/{reportId}/status:
-    get:
-      description: Get the status of the report
-      operationId: getReportStatus
-      parameters:
-      - description: report id
-        explode: false
-        in: path
-        name: reportId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvelopeReportStatus'
-          description: Returns the status of the report
-        "401":
-          description: Missing Authorization or token invalid
+                type: string
+            text/json:
+              schema:
+                type: string
+          description: Success
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Bad Request
         "403":
-          description: Must have access to RetailMedia accounts
-        "404":
-          description: ReportId not found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Forbidden
+      tags:
+      - Analytics
+      x-accepts: application/json
+  /2023-01/retail-media/reports/{reportId}/status:
+    get:
+      description: Returns the status of an async report
+      operationId: GetAsyncExportStatus
+      parameters:
+      - description: The ID of the report to retrieve
+        explode: false
+        in: path
+        name: reportId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+          description: Success
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Bad Request
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Forbidden
       tags:
       - Analytics
       x-accepts: application/json
@@ -6813,315 +6911,602 @@ components:
       - id
       type: object
       x-nullable: false
-    EnvelopeReportStatus:
-      description: Standard response envelope
+    AsyncReportResponse:
+      description: Async Report response format
       example:
         data:
           attributes:
-            fileSizeBytes: 0
-            md5Checksum: md5Checksum
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            rowCount: 6
+            fileSizeBytes: 6
+            md5CheckSum: md5CheckSum
+            createdAt: createdAt
+            rowCount: 0
+            id: id
             message: message
-            expiresAt: 2000-01-23T04:56:07.000+00:00
+            expiresAt: expiresAt
             status: pending
           id: id
           type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
       properties:
         data:
-          $ref: '#/components/schemas/ReportStatus'
-      required:
-      - data
-      type: object
-    BadRequest:
-      description: Bad request errors
-      properties:
-        errors:
-          description: The errors
+          $ref: '#/components/schemas/StatusResponseResource'
+        warnings:
           items:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
+          readOnly: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
           type: array
       type: object
-    EnvelopeReportRequest:
-      description: Standard response envelope
+    ReportOutcome:
+      description: The outcome of an API call.
+      properties:
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    AsyncCampaignsReportRequest:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value
       example:
         data:
           attributes:
+            campaignType: sponsoredProducts
+            clickAttributionWindow: none
+            endDate: 2000-01-23T04:56:07.000+00:00
+            timezone: UTC
+            format: json-compact
+            salesChannel: offline
             reportType: summary
-            clickAttributionWindow: 7D
-            endDate: 2000-01-23
-            format: json
-            revenueType: revenueType
             viewAttributionWindow: none
             ids:
             - ids
             - ids
-            timeZone: timeZone
+            metrics:
+            - impressions
+            - impressions
             id: id
-            startDate: 2000-01-23
+            startDate: 2000-01-23T04:56:07.000+00:00
+            dimensions:
+            - date
+            - date
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/ReportRequest'
-      required:
-      - data
+          $ref: '#/components/schemas/AsyncCampaignsReportResource'
       type: object
-    ReportStatus:
-      description: Report Status
+    AsyncLineItemsReportRequest:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value
+      example:
+        data:
+          attributes:
+            campaignType: sponsoredProducts
+            clickAttributionWindow: none
+            endDate: 2000-01-23T04:56:07.000+00:00
+            timezone: UTC
+            format: json-compact
+            salesChannel: offline
+            reportType: summary
+            viewAttributionWindow: none
+            ids:
+            - ids
+            - ids
+            metrics:
+            - impressions
+            - impressions
+            id: id
+            startDate: 2000-01-23T04:56:07.000+00:00
+            dimensions:
+            - date
+            - date
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/AsyncLineItemsReportResource'
+      type: object
+    StatusResponseResource:
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
-          fileSizeBytes: 0
-          md5Checksum: md5Checksum
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          rowCount: 6
+          fileSizeBytes: 6
+          md5CheckSum: md5CheckSum
+          createdAt: createdAt
+          rowCount: 0
+          id: id
           message: message
-          expiresAt: 2000-01-23T04:56:07.000+00:00
+          expiresAt: expiresAt
           status: pending
         id: id
         type: type
       properties:
         attributes:
-          $ref: '#/components/schemas/ReportStatusAttributes'
+          $ref: '#/components/schemas/StatusResponse'
         id:
-          description: The reportId
+          nullable: true
           type: string
         type:
-          description: Always "RetailMediaReportStatus"
+          nullable: true
           type: string
-      required:
-      - attributes
-      - id
-      - type
       type: object
-    Error:
-      description: Error
-      properties:
-        code:
-          description: "(REQUIRED) A machine-readable unique error code, expressed\
-            \ as a string value. The format used must be kabab-case."
-          type: string
-        detail:
-          description: (RECOMMENDED) A human-readable explanation specific to this
-            occurrence of the problem.
-          nullable: true
-          type: string
-        instance:
-          description: (REQUIRED) A URI reference that identifies the specific occurrence
-            of the problem.
-          type: string
-        source:
-          additionalProperties:
-            type: string
-          description: (OPTIONAL) A machine-readable structure to reference to the
-            exact location(s) causing the error(s).
-          type: object
-        stackTrace:
-          description: "(NEVER IN PRODUCTION) A human-readable stacktrace produced\
-            \ by the implementation technology e.g. .Net, Scala, etc"
-          items:
-            type: string
-          nullable: true
-          type: array
-        title:
-          description: "(RECOMMENDED) A short, human-readable summary of the problem\
-            \ type."
-          nullable: true
-          type: string
-        traceId:
-          description: (REQUIRED) The Correlation ID provided by the Gateway. It is
-            also a unique identifier for this particular occurrence of the problem.
-          type: string
-        type:
-          description: "Type should be: \"validation\", \"unavailable, \"violation\"\
-            , \"permission\", ..."
-          enum:
-          - access-control
-          - authentication
-          - authorization
-          - availability
-          - deprecation
-          - quota
-          - validation
-          type: string
-      required:
-      - code
-      - instance
-      - traceId
-      - type
-      type: object
-    ReportRequest:
-      description: Report Request
+    AsyncCampaignsReportResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         attributes:
+          campaignType: sponsoredProducts
+          clickAttributionWindow: none
+          endDate: 2000-01-23T04:56:07.000+00:00
+          timezone: UTC
+          format: json-compact
+          salesChannel: offline
           reportType: summary
-          clickAttributionWindow: 7D
-          endDate: 2000-01-23
-          format: json
-          revenueType: revenueType
           viewAttributionWindow: none
           ids:
           - ids
           - ids
-          timeZone: timeZone
+          metrics:
+          - impressions
+          - impressions
           id: id
-          startDate: 2000-01-23
+          startDate: 2000-01-23T04:56:07.000+00:00
+          dimensions:
+          - date
+          - date
         type: type
       properties:
-        attributes:
-          $ref: '#/components/schemas/ReportRequestAttributes'
         type:
-          description: Always "RetailMediaReportRequest"
+          nullable: true
           type: string
-      required:
-      - attributes
-      - type
+        attributes:
+          $ref: '#/components/schemas/AsyncCampaignsReport'
       type: object
-    ReportStatusAttributes:
-      description: Report Status Attributes
+    AsyncLineItemsReportResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
-        fileSizeBytes: 0
-        md5Checksum: md5Checksum
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        rowCount: 6
+        attributes:
+          campaignType: sponsoredProducts
+          clickAttributionWindow: none
+          endDate: 2000-01-23T04:56:07.000+00:00
+          timezone: UTC
+          format: json-compact
+          salesChannel: offline
+          reportType: summary
+          viewAttributionWindow: none
+          ids:
+          - ids
+          - ids
+          metrics:
+          - impressions
+          - impressions
+          id: id
+          startDate: 2000-01-23T04:56:07.000+00:00
+          dimensions:
+          - date
+          - date
+        type: type
+      properties:
+        type:
+          nullable: true
+          type: string
+        attributes:
+          $ref: '#/components/schemas/AsyncLineItemsReport'
+      type: object
+    StatusResponse:
+      description: Status of an async report request
+      example:
+        fileSizeBytes: 6
+        md5CheckSum: md5CheckSum
+        createdAt: createdAt
+        rowCount: 0
+        id: id
         message: message
-        expiresAt: 2000-01-23T04:56:07.000+00:00
+        expiresAt: expiresAt
         status: pending
       properties:
-        createdAt:
-          description: Timestamp when the report started to execute
-          format: date-time
-          nullable: true
-          type: string
-        expiresAt:
-          description: Timestamp when the cached report will expire
-          format: date-time
-          nullable: true
-          type: string
-        fileSizeBytes:
-          description: "Total size of file, only populated on success"
-          format: int64
-          nullable: true
-          type: integer
-        md5Checksum:
-          description: "The MD5 checksum of the content, only populated on success"
-          nullable: true
-          type: string
-        message:
-          description: "Failure message, only populated on failure"
-          nullable: true
-          type: string
-        rowCount:
-          description: "Rows of data in report, only populated on success"
-          format: int64
-          nullable: true
-          type: integer
         status:
-          description: "One of \"pending\", \"success\", \"failure\", or \"expired\""
           enum:
           - pending
           - success
           - failure
           - expired
+          nullable: true
           type: string
-      required:
-      - status
+        rowCount:
+          format: int32
+          nullable: true
+          type: integer
+        fileSizeBytes:
+          format: int32
+          nullable: true
+          type: integer
+        md5CheckSum:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+        expiresAt:
+          nullable: true
+          type: string
+        message:
+          nullable: true
+          type: string
+        id:
+          nullable: true
+          type: string
       type: object
-    MapString:
-      additionalProperties:
-        type: string
-      description: (OPTIONAL) A machine-readable structure to reference to the exact
-        location(s) causing the error(s).
-      type: object
-    ReportRequestAttributes:
-      description: Report Request Attributes
+      x-criteo-canonical:
+        infoType: entity
+    AsyncCampaignsReport:
+      description: Campaign report body request
       example:
+        campaignType: sponsoredProducts
+        clickAttributionWindow: none
+        endDate: 2000-01-23T04:56:07.000+00:00
+        timezone: UTC
+        format: json-compact
+        salesChannel: offline
         reportType: summary
-        clickAttributionWindow: 7D
-        endDate: 2000-01-23
-        format: json
-        revenueType: revenueType
         viewAttributionWindow: none
         ids:
         - ids
         - ids
-        timeZone: timeZone
+        metrics:
+        - impressions
+        - impressions
         id: id
-        startDate: 2000-01-23
+        startDate: 2000-01-23T04:56:07.000+00:00
+        dimensions:
+        - date
+        - date
       properties:
+        metrics:
+          description: List of metrics to report on
+          items:
+            enum:
+            - impressions
+            - clicks
+            - spend
+            - attributedSales
+            - attributedUnits
+            - attributedOrders
+            - ctr
+            - cpc
+            - cpo
+            - cpm
+            - roas
+            - uniqueVisitors
+            - frequency
+            - assistedUnits
+            - assistedSales
+            type: string
+          nullable: true
+          type: array
+        dimensions:
+          description: List of dimensions to report on
+          items:
+            enum:
+            - date
+            - hour
+            - campaignId
+            - campaignName
+            - campaignTypeName
+            - advProductCategory
+            - advProductId
+            - advProductName
+            - brandId
+            - brandName
+            - pageTypeName
+            - environment
+            - keyword
+            - salesChannel
+            - retailerId
+            - retailerName
+            type: string
+          nullable: true
+          type: array
+        campaignType:
+          description: "Filter the type of campaigns to report on: sponsoredProducts\
+            \ or onSiteDisplays"
+          enum:
+          - sponsoredProducts
+          - onSiteDisplays
+          nullable: true
+          type: string
+        salesChannel:
+          description: "Filter on specific sales channel: offline or online"
+          enum:
+          - offline
+          - online
+          nullable: true
+          type: string
+        format:
+          default: json-compact
+          description: Format of the output
+          enum:
+          - json
+          - json-compact
+          - json-newline
+          - csv
+          nullable: true
+          type: string
+        reportType:
+          default: summary
+          description: "Type of report, if no dimensions/metrics are provided, falls\
+            \ back to summary reportType"
+          enum:
+          - summary
+          - pageType
+          - keyword
+          - productCategory
+          - product
+          - attributedTransactions
+          - environment
+          - servedCategory
+          nullable: true
+          type: string
         clickAttributionWindow:
-          description: "Defaults to value from campaign or one of \"7D\", \"14D\"\
-            , or \"30D\". If specified, viewAttributionWindow must also be specified"
+          default: none
+          description: Click attribution window
           enum:
           - 7D
           - 14D
           - 30D
-          nullable: true
-          type: string
-        endDate:
-          description: "YYYY-MM-DD, must not be before startDate and not more than\
-            \ 100 days later"
-          format: date
-          type: string
-        format:
-          default: json
-          description: "One of \"json\" (default),\"json-compact\",\"json-newline\"\
-            \ or \"csv\""
-          enum:
-          - csv
-          - json
-          - json-compact
-          - json-newline
-          nullable: true
-          type: string
-        id:
-          description: "The id of the campaign or line item.  Either 'id' or 'ids'\
-            \ must be specified, but not both"
-          nullable: true
-          type: string
-        ids:
-          description: "The ids of the campaigns or line items.  Either 'id' or 'ids'\
-            \ must be specified, but not both"
-          items:
-            type: string
-          nullable: true
-          type: array
-        reportType:
-          description: "One of \"summary\", \"keyword\", \"pageType\", \"productCategory\"\
-            , \"product\", or \"attributedTransactions\""
-          enum:
-          - summary
-          - keyword
-          - pageType
-          - productCategory
-          - product
-          - attributedTransactions
-          type: string
-        revenueType:
-          nullable: true
-          type: string
-        startDate:
-          description: YYYY-MM-DD
-          format: date
-          type: string
-        timeZone:
+          - none
           nullable: true
           type: string
         viewAttributionWindow:
-          description: "Defaults to value from campaign or one of \"none\", \"1D\"\
-            , \"7D\", \"14D\", or \"30D\". If specified, must be less than clickAttributionWindow,\
-            \ which must also be specified."
+          default: none
+          description: View attribution window
           enum:
-          - none
           - 1D
           - 7D
           - 14D
           - 30D
+          - none
+          nullable: true
+          type: string
+        ids:
+          description: Ids to report on
+          items:
+            type: string
+          nullable: true
+          type: array
+        id:
+          description: Id to report on
+          nullable: true
+          type: string
+        startDate:
+          description: Start date
+          format: date-time
+          type: string
+        endDate:
+          description: End date
+          format: date-time
+          type: string
+        timezone:
+          default: UTC
+          description: "Time zone : see criteo developer portal for supported time\
+            \ zones"
           nullable: true
           type: string
       required:
       - endDate
-      - reportType
+      - startDate
+      type: object
+    AsyncLineItemsReport:
+      description: Line Items report body request
+      example:
+        campaignType: sponsoredProducts
+        clickAttributionWindow: none
+        endDate: 2000-01-23T04:56:07.000+00:00
+        timezone: UTC
+        format: json-compact
+        salesChannel: offline
+        reportType: summary
+        viewAttributionWindow: none
+        ids:
+        - ids
+        - ids
+        metrics:
+        - impressions
+        - impressions
+        id: id
+        startDate: 2000-01-23T04:56:07.000+00:00
+        dimensions:
+        - date
+        - date
+      properties:
+        metrics:
+          description: List of metrics to report on
+          items:
+            enum:
+            - impressions
+            - clicks
+            - spend
+            - attributedSales
+            - attributedUnits
+            - attributedOrders
+            - ctr
+            - cpc
+            - cpo
+            - roas
+            - assistedUnits
+            - assistedSales
+            - uniqueVisitors
+            - frequency
+            type: string
+          nullable: true
+          type: array
+        dimensions:
+          description: List of dimensions to report on
+          items:
+            enum:
+            - date
+            - hour
+            - campaignId
+            - campaignName
+            - campaignTypeName
+            - advProductCategory
+            - advProductId
+            - advProductName
+            - brandId
+            - brandName
+            - lineItemId
+            - lineItemName
+            - retailerId
+            - retailerName
+            - keyword
+            - pageTypeName
+            - salesChannel
+            - environment
+            type: string
+          nullable: true
+          type: array
+        campaignType:
+          description: "Filter the type of campaigns to report on: sponsoredProducts\
+            \ or onSiteDisplays"
+          enum:
+          - sponsoredProducts
+          - onSiteDisplays
+          nullable: true
+          type: string
+        salesChannel:
+          description: "Filter on specific sales channel: offline or online"
+          enum:
+          - offline
+          - online
+          nullable: true
+          type: string
+        format:
+          default: json-compact
+          description: Format of the output
+          enum:
+          - json
+          - json-compact
+          - json-newline
+          - csv
+          nullable: true
+          type: string
+        reportType:
+          default: summary
+          description: "Type of report, if no dimensions/metrics are provided, falls\
+            \ back to summary reportType"
+          enum:
+          - summary
+          - pageType
+          - keyword
+          - productCategory
+          - product
+          - attributedTransactions
+          - environment
+          - servedCategory
+          nullable: true
+          type: string
+        clickAttributionWindow:
+          default: none
+          description: Click attribution window
+          enum:
+          - 7D
+          - 14D
+          - 30D
+          - none
+          nullable: true
+          type: string
+        viewAttributionWindow:
+          default: none
+          description: View attribution window
+          enum:
+          - 1D
+          - 7D
+          - 14D
+          - 30D
+          - none
+          nullable: true
+          type: string
+        ids:
+          description: Ids to report on
+          items:
+            type: string
+          nullable: true
+          type: array
+        id:
+          description: Id to report on
+          nullable: true
+          type: string
+        startDate:
+          description: Start date
+          format: date-time
+          type: string
+        endDate:
+          description: End date
+          format: date-time
+          type: string
+        timezone:
+          default: UTC
+          description: "Time zone : see criteo developer portal for supported time\
+            \ zones"
+          nullable: true
+          type: string
+      required:
+      - endDate
       - startDate
       type: object
     Balance202110PagedListResponse:
@@ -9608,11 +9993,14 @@ components:
           required:
           - "true"
           type: string
+          x-nullable: false
         endDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
+          nullable: true
           type: string
+          x-nullable: true
         status:
           enum:
           - unknown
@@ -9632,7 +10020,6 @@ components:
       required:
       - createdAt
       - deposited
-      - endDate
       - memo
       - name
       - poNumber

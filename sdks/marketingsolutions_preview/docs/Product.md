@@ -83,7 +83,11 @@ Defines a product to be inserted or updated.
 |**maxEnergyEfficiencyClass** | **String** | The energy efficiency class as defined in EU directive 2010/30/EU. |  [optional] |
 |**taxCategory** | **String** | The tax category of the product, used to configure detailed tax nexus in account-level tax settings. |  [optional] |
 |**transitTimeLabel** | **String** | The transit time label of the product, used to group product in account-level transit time tables. |  [optional] |
-|**sellerId** | **String** | The ID of the seller (case sensitive and 50 UTF8 characters max). This information is required by the Criteo Offsite Ads. |  [optional] |
+|**sellerId** | **String** | Deprecated field. It should be replaced by externalSellerId. The external ID of the seller (case sensitive and 50 UTF8 characters max). This information is required by the Criteo Offsite Ads. |  [optional] |
+|**externalSellerId** | **String** | The external id of the seller (case sensitive and 50 UTF8 characters max). This information is required by the Criteo Offsite Ads. |  [optional] |
+|**externalSellerName** | **String** | The external name of the seller (case sensitive and 750 UTF8 characters max). This information is required by the Criteo Offsite Ads. |  [optional] |
+|**numberOfReviews** | **Integer** | The number of reviews for the product. This information is required by the Criteo Offsite Ads. |  [optional] |
+|**productRating** | **String** | The rating of the product. This information is required by the Criteo Offsite Ads. |  [optional] |
 
 
 

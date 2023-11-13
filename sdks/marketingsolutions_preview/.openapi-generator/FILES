@@ -275,7 +275,6 @@ docs/OciTargetingNode.md
 docs/OciTargetingResponse.md
 docs/OciTargetingResponseData.md
 docs/OciTargetingRule.md
-docs/OkResponse.md
 docs/OnSiteRecoRequest.md
 docs/OnSiteRecoResponse.md
 docs/OnSiteRecommendationApi.md
@@ -305,9 +304,6 @@ docs/PlacementsReportQueryEntityMessage.md
 docs/PlacementsReportQueryMessage.md
 docs/PointOfInterestV1.md
 docs/PortfolioMessage.md
-docs/PreviewError.md
-docs/PreviewFailResponse.md
-docs/PreviewWarning.md
 docs/Price.md
 docs/ProblemDetails.md
 docs/ProblemsDetails.md
@@ -315,10 +311,7 @@ docs/Product.md
 docs/ProductImporterError.md
 docs/ProductImporterWarning.md
 docs/ProductSet.md
-docs/ProductSetPreview.md
 docs/ProductSetRule.md
-docs/ProductSetStatistics.md
-docs/ProductSetStatisticsQuery.md
 docs/ProductShipping.md
 docs/ProductShippingDimension.md
 docs/ProductShippingWeight.md
@@ -361,7 +354,6 @@ docs/ResponsesReadAdSetV23Q1.md
 docs/RetargetingCreateV1.md
 docs/RetargetingUpdateV1.md
 docs/RetargetingV1.md
-docs/Rules.md
 docs/SetAdSetTargetingDealIds.md
 docs/SetAdSetTargetingDealIdsRequest.md
 docs/SetAdSetTargetingDealIdsResource.md
@@ -398,7 +390,6 @@ docs/UpdateCoupon.md
 docs/UpdateCouponRequest.md
 docs/UpdateCouponResource.md
 docs/UserDef.md
-docs/UserEvent.md
 docs/UserProfileAttributeModel.md
 docs/UserProfileIdentifierModel.md
 docs/ValueResourceInputOfCreateProductSetRequest.md
@@ -710,7 +701,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/OciTargetingNode.j
 src/main/java/com/criteo/api/marketingsolutions/preview/model/OciTargetingResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/OciTargetingResponseData.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/OciTargetingRule.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/OkResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/OnSiteRecoRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/OnSiteRecoResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Outcome.java
@@ -739,9 +729,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/PlacementsReportQu
 src/main/java/com/criteo/api/marketingsolutions/preview/model/PlacementsReportQueryMessage.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/PointOfInterestV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/PortfolioMessage.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/PreviewError.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/PreviewFailResponse.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/PreviewWarning.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Price.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProblemDetails.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProblemsDetails.java
@@ -749,10 +736,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/Product.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductImporterError.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductImporterWarning.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductSet.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductSetPreview.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductSetRule.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductSetStatistics.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductSetStatisticsQuery.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductShipping.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductShippingDimension.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductShippingWeight.java
@@ -794,7 +778,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/ResponsesReadAdSet
 src/main/java/com/criteo/api/marketingsolutions/preview/model/RetargetingCreateV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/RetargetingUpdateV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/RetargetingV1.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/Rules.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/SetAdSetTargetingDealIds.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/SetAdSetTargetingDealIdsRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/SetAdSetTargetingDealIdsResource.java
@@ -831,7 +814,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/UpdateCoupon.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/UpdateCouponRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/UpdateCouponResource.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/UserDef.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/UserEvent.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/UserProfileAttributeModel.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/UserProfileIdentifierModel.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceInputOfCreateProductSetRequest.java

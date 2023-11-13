@@ -109,7 +109,7 @@ public class Example {
 
 
 
-delete all identifiers from an Audience
+Delete all identifiers from a contact list audience-segment.
 
 ### Example
 
@@ -381,7 +381,7 @@ public class Example {
 
 
 
-Add/remove users to or from an audience
+Add/remove users to or from a contact list audience-segment.
 
 ### Example
 

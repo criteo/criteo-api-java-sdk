@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: Criteo API - RetailMedia
   title: Criteo API
-  version: preview
+  version: Preview
 servers:
 - url: https://api.criteo.com
 security:
@@ -263,68 +263,6 @@ paths:
       tags:
       - Audience
       x-accepts: application/json
-    post:
-      description: Create an audience for a given account ID
-      operationId: AudienceApi_CreateAudience
-      parameters:
-      - description: ID of the account to which this audience belongs.
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
-        x-example: 68004146450571264
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateRetailMediaAudienceRequest'
-        required: true
-        x-bodyName: body
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateRetailMediaAudienceResponse'
-          description: The audience that was just created.
-        "400":
-          content:
-            application/json: {}
-          description: "Missing or invalid account ID. - OR - Missing or invalid retailerID\
-            \ field. - OR - Missing or invalid name field. Name should be less than\
-            \ 255 characters. - OR - Missing or invalid userType field. Valid values\
-            \ are: 'buy', 'view'. - OR - The retailerTaxonomyIds is not a valid list\
-            \ of IDs or may contain more than 100 elements. - OR - Missing or invalid\
-            \ lookbackDays field.\_ Valid values are:\_7, 14,\_ 30, 45, 60, 90, 120,\
-            \ 150 or 180. - OR - Exactly one of retailerTaxonomyIds or globalBrandIds\
-            \ must be specified, but not both. - OR - The retailer is invalid because\
-            \ it is not live - OR - The globalBrandIds is not a valid list of IDs\
-            \ or may contain more than 100 elements."
-        "404":
-          content:
-            application/json: {}
-          description: The audience was not found. - OR - You do not have permission
-            to access these global brands.
-        "406":
-          content:
-            application/json: {}
-          description: The Accept header must contain application/json.
-        "409":
-          content:
-            application/json: {}
-          description: An audience name should be unique per account.
-        "415":
-          content:
-            application/json: {}
-          description: The Content-Type header must be application/json if present.
-      tags:
-      - Audience
-      x-content-type: application/json
-      x-accepts: application/json
   /preview/retail-media/v2/accounts/{accountId}/audiences:
     get:
       description: Get a page of audiences for a given account ID
@@ -402,78 +340,6 @@ paths:
           description: The Content-Type header must be application/json if present.
       tags:
       - Audience
-      x-accepts: application/json
-    post:
-      description: Create an audience for a given account ID
-      operationId: CreateRetailMediaAudienceV2
-      parameters:
-      - description: ID of the account to which this audience belongs.
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
-        x-example: 68004146450571264
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateRetailMediaAudienceV2Request'
-        required: true
-        x-bodyName: body
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RetailMediaAudienceV2Response'
-          description: The audience that was just created.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CommonStatusCodeResponse'
-          description: "Missing or invalid retailerID field. - OR - Missing or invalid\
-            \ name field. Name should be less than 255 characters. - OR - Missing\
-            \ or invalid userType field. Valid values are: 'buyer', 'viewer'. - OR\
-            \ - The brandIds is not a valid list of IDs or may contain more than 100\
-            \ elements. - OR - The categoryIds is not a valid list of IDs or may contain\
-            \ more than 100 elements. - OR - Missing or invalid lookbackWindow field.\
-            \ Valid values are: P7D, P14D, P30D, P45D, P60D, P90D, P120D, P150D or\
-            \ P180D. - OR - Exactly one of categoryIds or brandIds must be specified,\
-            \ but not both. - OR - The retailer is invalid because it is not live\
-            \ - OR - Missing or invalid userAction field. Valid values are: 'buy',\
-            \ 'view', 'addToCart'."
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CommonStatusCodeResponse'
-          description: Missing or invalid account ID.
-        "406":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CommonStatusCodeResponse'
-          description: The Accept header must contain application/json.
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CommonStatusCodeResponse'
-          description: An audience name should be unique per account.
-        "415":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CommonStatusCodeResponse'
-          description: The Content-Type header must be application/json if present.
-      tags:
-      - Audience
-      x-content-type: application/json
       x-accepts: application/json
   /preview/retail-media/line-items/{id}/keywords:
     get:
@@ -1390,22 +1256,22 @@ paths:
       x-accepts: application/json
   /preview/retail-media/reports/campaigns:
     post:
-      description: Return an async Campaign Report
-      operationId: GenerateAsyncCampaignReport
+      description: Return an asynchronous Campaigns Report
+      operationId: GenerateAsyncCampaignsReport
       requestBody:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/AsyncCampaignReportRequest'
+              $ref: '#/components/schemas/AsyncCampaignsReportRequest'
           application/json:
             schema:
-              $ref: '#/components/schemas/AsyncCampaignReportRequest'
+              $ref: '#/components/schemas/AsyncCampaignsReportRequest'
           text/json:
             schema:
-              $ref: '#/components/schemas/AsyncCampaignReportRequest'
+              $ref: '#/components/schemas/AsyncCampaignsReportRequest'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/AsyncCampaignReportRequest'
+              $ref: '#/components/schemas/AsyncCampaignsReportRequest'
         required: true
         x-bodyName: request
       responses:
@@ -1451,83 +1317,22 @@ paths:
       x-accepts: application/json
   /preview/retail-media/reports/line-items:
     post:
-      description: Return an async Line Item Report
+      description: Returns an asynchronous Line Items Report
       operationId: GenerateAsyncLineItemsReport
       requestBody:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/AsyncLineItemReportRequest'
+              $ref: '#/components/schemas/AsyncLineItemsReportRequest'
           application/json:
             schema:
-              $ref: '#/components/schemas/AsyncLineItemReportRequest'
+              $ref: '#/components/schemas/AsyncLineItemsReportRequest'
           text/json:
             schema:
-              $ref: '#/components/schemas/AsyncLineItemReportRequest'
+              $ref: '#/components/schemas/AsyncLineItemsReportRequest'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/AsyncLineItemReportRequest'
-        required: true
-        x-bodyName: request
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/AsyncReportResponse'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AsyncReportResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/AsyncReportResponse'
-          description: Success
-        "400":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ReportOutcome'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ReportOutcome'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ReportOutcome'
-          description: Bad Request
-        "403":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ReportOutcome'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ReportOutcome'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ReportOutcome'
-          description: Forbidden
-      tags:
-      - Analytics
-      x-content-type: application/json-patch+json
-      x-accepts: application/json
-  /preview/retail-media/reports/revenue:
-    post:
-      description: Return an async Revenue Report
-      operationId: GenerateAsyncRevenueReport
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/AsyncRevenueReportRequest'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AsyncRevenueReportRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/AsyncRevenueReportRequest'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/AsyncRevenueReportRequest'
+              $ref: '#/components/schemas/AsyncLineItemsReportRequest'
         required: true
         x-bodyName: request
       responses:
@@ -1573,19 +1378,22 @@ paths:
       x-accepts: application/json
   /preview/retail-media/reports/sync/attributed-transactions:
     post:
-      description: Return an Attributed Transactions Report
-      operationId: GenerateAttributedTransactionsReport
+      description: Returns a synchronous Attributed Transactions Report
+      operationId: GenerateSyncAttributedTransactionsReport
       requestBody:
         content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SyncAttributedTransactionsReportRequest'
           application/json:
             schema:
-              $ref: '#/components/schemas/AttributedTransactionReportRequest'
+              $ref: '#/components/schemas/SyncAttributedTransactionsReportRequest'
           text/json:
             schema:
-              $ref: '#/components/schemas/AttributedTransactionReportRequest'
+              $ref: '#/components/schemas/SyncAttributedTransactionsReportRequest'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/AttributedTransactionReportRequest'
+              $ref: '#/components/schemas/SyncAttributedTransactionsReportRequest'
         required: true
         x-bodyName: request
       responses:
@@ -1627,23 +1435,26 @@ paths:
           description: Forbidden
       tags:
       - Analytics
-      x-content-type: application/json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/retail-media/reports/sync/campaigns:
     post:
-      description: Return a Campaign Report
-      operationId: GenerateCampaignReports
+      description: Returns a synchronous Campaigns Report
+      operationId: GenerateSyncCampaignsReport
       requestBody:
         content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SyncCampaignsReportRequest'
           application/json:
             schema:
-              $ref: '#/components/schemas/CampaignReportRequest'
+              $ref: '#/components/schemas/SyncCampaignsReportRequest'
           text/json:
             schema:
-              $ref: '#/components/schemas/CampaignReportRequest'
+              $ref: '#/components/schemas/SyncCampaignsReportRequest'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/CampaignReportRequest'
+              $ref: '#/components/schemas/SyncCampaignsReportRequest'
         required: true
         x-bodyName: request
       responses:
@@ -1685,23 +1496,26 @@ paths:
           description: Forbidden
       tags:
       - Analytics
-      x-content-type: application/json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/retail-media/reports/sync/line-items:
     post:
-      description: Return a Line Item Report
-      operationId: GenerateLineItemsReports
+      description: Returns a synchronous Line Items Report
+      operationId: GenerateSyncLineItemsReport
       requestBody:
         content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SyncLineItemsReportRequest'
           application/json:
             schema:
-              $ref: '#/components/schemas/LineItemReportRequest'
+              $ref: '#/components/schemas/SyncLineItemsReportRequest'
           text/json:
             schema:
-              $ref: '#/components/schemas/LineItemReportRequest'
+              $ref: '#/components/schemas/SyncLineItemsReportRequest'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/LineItemReportRequest'
+              $ref: '#/components/schemas/SyncLineItemsReportRequest'
         required: true
         x-bodyName: request
       responses:
@@ -1743,11 +1557,11 @@ paths:
           description: Forbidden
       tags:
       - Analytics
-      x-content-type: application/json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/retail-media/reports/{reportId}/output:
     get:
-      description: Return the output of an async report
+      description: Returns the output of an async report
       operationId: GetAsyncExportOutput
       parameters:
       - description: The ID of the report to retrieve
@@ -1800,7 +1614,7 @@ paths:
       x-accepts: application/json
   /preview/retail-media/reports/{reportId}/status:
     get:
-      description: Return the status of an async report
+      description: Returns the status of an async report
       operationId: GetAsyncExportStatus
       parameters:
       - description: The ID of the report to retrieve
@@ -1876,6 +1690,46 @@ paths:
       tags:
       - Campaign
       x-accepts: application/json
+    put:
+      description: Update campaign budget overrides by given external campaign id
+        and new campaign budget overrides settings.
+      operationId: UpdateCampaignBudgetOverrides
+      parameters:
+      - description: External campaign id.
+        explode: false
+        in: path
+        name: campaignId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfCampaignBudgetOverrides'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfCampaignBudgetOverrides'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfCampaignBudgetOverrides'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfCampaignBudgetOverrides'
+        description: New campaign budget overrides settings value resource input.
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeOfCampaignBudgetOverrides'
+          description: Success
+      tags:
+      - Campaign
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /preview/retail-media/catalogs/sku/search/accounts/{accountId}/retailers/{retailerId}/by-id:
     post:
       description: Gets a list of SKUs based on a privided list of Product Ids
@@ -1887,6 +1741,7 @@ paths:
         name: accountId
         required: true
         schema:
+          pattern: ^\d+$
           type: string
         style: simple
       - description: retailer id
@@ -1896,6 +1751,8 @@ paths:
         required: true
         schema:
           format: int32
+          maximum: 2147483647
+          minimum: 1
           type: integer
         style: simple
       - description: "skip a number of matches before retrning results, used with\
@@ -1907,6 +1764,8 @@ paths:
         schema:
           default: 0
           format: int32
+          maximum: 2147483647
+          minimum: 0
           type: integer
         style: form
       - description: max number of results to return
@@ -1917,6 +1776,8 @@ paths:
         schema:
           default: 100
           format: int32
+          maximum: 2147483647
+          minimum: 1
           type: integer
         style: form
       requestBody:
@@ -1942,13 +1803,13 @@ paths:
                 $ref: '#/components/schemas/ResourceCollectionOutcomeOfSkuSearchResult'
           description: Success
       tags:
-      - Analytics
+      - Campaign
       x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/retail-media/line-items/{externalLineItemId}/keywords/recommended:
     get:
       description: Retrieves a collection of recommended keywords for a line item
-      operationId: GetSuggestedKeywords
+      operationId: GetRecommendedKeywords
       parameters:
       - description: The external line item identifier
         explode: false
@@ -1963,255 +1824,73 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValueResourceOutcomeOfSuggestedKeywordsResult'
+                $ref: '#/components/schemas/ValueResourceOutcomeOfRecommendedKeywordsResult'
           description: Success
       tags:
       - Campaign
       x-accepts: application/json
-  /preview/retail-media/accounts/{accountId}/balances:
+  /preview/retail-media/line-items/{lineItemId}/line-item-budget-overrides:
     get:
-      description: Get page of balances for the given accountId.
-      operationId: Balances_GetApiV1ExternalAccountBalancesByAccountId
+      description: Gets a collection of monthly and daily budget overrides for the
+        provided line item.
+      operationId: GetLineItemBudgetOverrides
       parameters:
-      - description: The account to get page of balances for
+      - description: The line item id to get budget overrides for.
         explode: false
         in: path
-        name: accountId
+        name: lineItemId
         required: true
         schema:
           type: string
         style: simple
-        x-nullable: false
-      - description: The ids that you would like to limit your result set to
-        explode: true
-        in: query
-        name: limitToId
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-        x-nullable: false
-      - description: The 0 indexed page index you would like to receive given the
-          page size
-        explode: true
-        in: query
-        name: pageIndex
-        required: false
-        schema:
-          default: 0
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      - description: The maximum number of items you would like to receive in this
-          request
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          default: 25
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BalanceResponsePagedListResponse'
+                $ref: '#/components/schemas/ValueResourceOutcomeOfLineItemBudgetOverrides'
           description: Success
       tags:
       - Campaign
       x-accepts: application/json
-    post:
-      description: Create balance for the given account id
-      operationId: Balances_PostApiV1ExternalAccountBalancesByAccountId
+    put:
+      description: Update line item budget overrides by given external line item id
+        and new line item budget overrides settings.
+      operationId: UpdateLineItemBudgetOverrides
       parameters:
-      - description: The account to create balances for
+      - description: Line item external id.
         explode: false
         in: path
-        name: accountId
+        name: lineItemId
         required: true
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfLineItemBudgetOverrides'
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateBalanceRequest'
-        x-nullable: false
-        x-bodyName: createBalance
+              $ref: '#/components/schemas/ValueResourceInputOfLineItemBudgetOverrides'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfLineItemBudgetOverrides'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfLineItemBudgetOverrides'
+        description: New line item budget overrides settings value resource input.
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BalanceResponse'
+                $ref: '#/components/schemas/ValueResourceOutcomeOfLineItemBudgetOverrides'
           description: Success
       tags:
       - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/accounts/{accountId}/balances/{balanceId}:
-    get:
-      description: Get a balance for the given account id and balance id
-      operationId: Balances_GetApiV1ExternalAccountByAccountIdAndBalanceId
-      parameters:
-      - description: The account of the balance
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: The balance id
-        explode: false
-        in: path
-        name: balanceId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-accepts: application/json
-    patch:
-      description: Modify a balance for the given account id
-      operationId: Balances_PatchApiV1ExternalAccountByAccountIdAndBalanceId
-      parameters:
-      - description: The account of the balance
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: The balance to change the dates
-        explode: false
-        in: path
-        name: balanceId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateBalanceModelRequest'
-        x-nullable: false
-        x-bodyName: updateBalanceModel
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/accounts/{accountId}/balances/{balanceId}/add-funds:
-    post:
-      description: Add funds to a balance for the given account id
-      operationId: Balances_PostApiV1ExternalAccountAddFundsByAccountIdAndBalanceId
-      parameters:
-      - description: The account of the balance
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: The balance to add funds to
-        explode: false
-        in: path
-        name: balanceId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AddFundsToBalanceRequest'
-        x-nullable: false
-        x-bodyName: addFundsToBalance
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/accounts/{accountId}/balances/{balanceId}/change-dates:
-    post:
-      description: Change dates of a balance for the given account id
-      operationId: Balances_PostApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId
-      parameters:
-      - description: The account of the balance
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: The balance to change the dates
-        explode: false
-        in: path
-        name: balanceId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ChangeDatesOfBalanceRequest'
-        x-nullable: false
-        x-bodyName: changeDatesOfBalance
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/retail-media/line-items/{line-item-id}/bid-multipliers:
     get:
@@ -2391,7 +2070,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProductButtonResponse'
+                $ref: '#/components/schemas/ProductButtonListResponse'
           description: Success
       tags:
       - Campaign
@@ -2431,7 +2110,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProductButtonResponse'
+                $ref: '#/components/schemas/ProductButtonListResponse'
           description: Success
       tags:
       - Campaign
@@ -3338,79 +3017,6 @@ components:
       - data
       - metadata
       type: object
-    CreateRetailMediaAudienceResponse:
-      description: Response of CreateAudienceRequest
-      example:
-        data:
-          attributes:
-            categoryIds:
-            - 6
-            - 6
-            name: Test audience
-            userType: viewer
-            retailerId: 6841
-            brandIds:
-            - 0
-            - 0
-            lookbackWindow: P7D
-          id: 314159
-          type: RetailMediaAudience
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/CreateRetailMediaAudience'
-        errors:
-          description: errors
-          items:
-            $ref: '#/components/schemas/CommonError'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: warnings
-          items:
-            $ref: '#/components/schemas/CommonWarning'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
     RetailMediaAudienceV2ListResponse:
       description: Array of Audiences Returned as Part of Get RetailMedia Audience
         Request
@@ -3570,157 +3176,6 @@ components:
           readOnly: true
           type: array
       type: object
-    RetailMediaAudienceV2Response:
-      description: Response of CreateAudienceRequestV2
-      example:
-        data:
-          attributes:
-            name: Test audience
-            retailerId: 6041
-            userBehaviorDetails:
-              inclusiveSegment:
-                userAction: buy
-                categoryIds:
-                - 0
-                - 0
-                minPrice: 1.4658129805029452
-                maxPrice: 5.962133916683182
-                brandIds:
-                - 6
-                - 6
-                lookbackWindow: P7D
-              exclusiveSegment:
-                userAction: buy
-                categoryIds:
-                - 0
-                - 0
-                minPrice: 1.4658129805029452
-                maxPrice: 5.962133916683182
-                brandIds:
-                - 6
-                - 6
-                lookbackWindow: P7D
-          id: 314159
-          type: RetailMediaAudience
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/CreateRetailMediaAudienceV2'
-        errors:
-          description: errors
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: warnings
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
-    CreateRetailMediaAudienceRequest:
-      description: Request to create an audience
-      example:
-        data:
-          attributes:
-            categoryIds:
-            - 6
-            - 6
-            name: Test audience
-            userType: viewer
-            retailerId: 6841
-            brandIds:
-            - 0
-            - 0
-            lookbackWindow: P7D
-          type: RetailMediaAudience
-      properties:
-        data:
-          $ref: '#/components/schemas/CreateRetailMediaAudienceBody'
-      required:
-      - data
-      type: object
-    CreateRetailMediaAudienceV2Request:
-      description: Request to create an audience
-      example:
-        data:
-          attributes:
-            name: Test audience
-            retailerId: 6041
-            userBehaviorDetails:
-              inclusiveSegment:
-                userAction: buy
-                categoryIds:
-                - 0
-                - 0
-                minPrice: 1.4658129805029452
-                maxPrice: 5.962133916683182
-                brandIds:
-                - 6
-                - 6
-                lookbackWindow: P7D
-              exclusiveSegment:
-                userAction: buy
-                categoryIds:
-                - 0
-                - 0
-                minPrice: 1.4658129805029452
-                maxPrice: 5.962133916683182
-                brandIds:
-                - 6
-                - 6
-                lookbackWindow: P7D
-          type: RetailMediaAudience
-      properties:
-        data:
-          $ref: '#/components/schemas/CreateRetailMediaAudienceV2Data'
-      required:
-      - data
-      type: object
     RetailMediaAudience:
       description: All the information about a retail media audience
       example:
@@ -3760,39 +3215,6 @@ components:
       required:
       - attributes
       - audienceType
-      - id
-      - type
-      type: object
-    CreateRetailMediaAudience:
-      description: Retail Media audience used in audience creation
-      example:
-        attributes:
-          categoryIds:
-          - 6
-          - 6
-          name: Test audience
-          userType: viewer
-          retailerId: 6841
-          brandIds:
-          - 0
-          - 0
-          lookbackWindow: P7D
-        id: 314159
-        type: RetailMediaAudience
-      properties:
-        type:
-          description: the name of the entity type
-          example: RetailMediaAudience
-          type: string
-        id:
-          description: Unique ID of this audience.
-          example: 314159
-          format: int64
-          type: integer
-        attributes:
-          $ref: '#/components/schemas/CreateRetailMediaAudienceAttributes'
-      required:
-      - attributes
       - id
       - type
       type: object
@@ -3848,121 +3270,6 @@ components:
       - id
       - type
       type: object
-    CreateRetailMediaAudienceV2:
-      description: Retail Media audience used in audience creation
-      example:
-        attributes:
-          name: Test audience
-          retailerId: 6041
-          userBehaviorDetails:
-            inclusiveSegment:
-              userAction: buy
-              categoryIds:
-              - 0
-              - 0
-              minPrice: 1.4658129805029452
-              maxPrice: 5.962133916683182
-              brandIds:
-              - 6
-              - 6
-              lookbackWindow: P7D
-            exclusiveSegment:
-              userAction: buy
-              categoryIds:
-              - 0
-              - 0
-              minPrice: 1.4658129805029452
-              maxPrice: 5.962133916683182
-              brandIds:
-              - 6
-              - 6
-              lookbackWindow: P7D
-        id: 314159
-        type: RetailMediaAudience
-      properties:
-        type:
-          description: the name of the entity type
-          example: RetailMediaAudience
-          type: string
-        id:
-          description: Unique ID of this audience.
-          example: 314159
-          format: int64
-          type: integer
-        attributes:
-          $ref: '#/components/schemas/CreateRetailMediaAudienceV2Attributes'
-      required:
-      - attributes
-      - id
-      - type
-      type: object
-    CreateRetailMediaAudienceBody:
-      description: Request body of CreateRetailMediaAudienceRequest
-      example:
-        attributes:
-          categoryIds:
-          - 6
-          - 6
-          name: Test audience
-          userType: viewer
-          retailerId: 6841
-          brandIds:
-          - 0
-          - 0
-          lookbackWindow: P7D
-        type: RetailMediaAudience
-      properties:
-        type:
-          description: the name of the entity type
-          example: RetailMediaAudience
-          type: string
-        attributes:
-          $ref: '#/components/schemas/CreateRetailMediaAudienceAttributes'
-      required:
-      - attributes
-      - type
-      type: object
-    CreateRetailMediaAudienceV2Data:
-      description: Request body of CreateRetailMediaAudienceV2Request
-      example:
-        attributes:
-          name: Test audience
-          retailerId: 6041
-          userBehaviorDetails:
-            inclusiveSegment:
-              userAction: buy
-              categoryIds:
-              - 0
-              - 0
-              minPrice: 1.4658129805029452
-              maxPrice: 5.962133916683182
-              brandIds:
-              - 6
-              - 6
-              lookbackWindow: P7D
-            exclusiveSegment:
-              userAction: buy
-              categoryIds:
-              - 0
-              - 0
-              minPrice: 1.4658129805029452
-              maxPrice: 5.962133916683182
-              brandIds:
-              - 6
-              - 6
-              lookbackWindow: P7D
-        type: RetailMediaAudience
-      properties:
-        type:
-          description: the name of the entity type
-          example: RetailMediaAudience
-          type: string
-        attributes:
-          $ref: '#/components/schemas/CreateRetailMediaAudienceV2Attributes'
-      required:
-      - attributes
-      - type
-      type: object
     RetailMediaAudienceAttributes:
       description: Fields of a retail media audience
       example:
@@ -3993,70 +3300,6 @@ components:
       required:
       - name
       - retailerId
-      type: object
-    CreateRetailMediaAudienceAttributes:
-      description: Parameters needed to create an audience
-      example:
-        categoryIds:
-        - 6
-        - 6
-        name: Test audience
-        userType: viewer
-        retailerId: 6841
-        brandIds:
-        - 0
-        - 0
-        lookbackWindow: P7D
-      properties:
-        userType:
-          description: Type of the user
-          enum:
-          - viewer
-          - buyer
-          example: viewer
-          type: string
-        lookbackWindow:
-          description: Length of lookback window
-          enum:
-          - P7D
-          - P14D
-          - P30D
-          - P45D
-          - P60D
-          - P90D
-          - P120D
-          - P150D
-          - P180D
-          example: P7D
-          type: string
-        brandIds:
-          description: The brands to target
-          items:
-            format: int64
-            type: integer
-          nullable: true
-          type: array
-        categoryIds:
-          description: The categories to target
-          items:
-            format: int32
-            type: integer
-          nullable: true
-          type: array
-        retailerId:
-          description: ID of the retailer associated with this audience
-          example: 6841
-          format: int64
-          type: integer
-        name:
-          description: Name of the audience.
-          example: Test audience
-          type: string
-      required:
-      - lookbackWindow
-      - name
-      - retailerId
-      - userType
       type: object
     RetailMediaAudienceV2Attributes:
       description: Properties of the returned Audience
@@ -4105,51 +3348,6 @@ components:
       required:
       - name
       - retailerId
-      type: object
-    CreateRetailMediaAudienceV2Attributes:
-      description: Parameters needed to create an audience
-      example:
-        name: Test audience
-        retailerId: 6041
-        userBehaviorDetails:
-          inclusiveSegment:
-            userAction: buy
-            categoryIds:
-            - 0
-            - 0
-            minPrice: 1.4658129805029452
-            maxPrice: 5.962133916683182
-            brandIds:
-            - 6
-            - 6
-            lookbackWindow: P7D
-          exclusiveSegment:
-            userAction: buy
-            categoryIds:
-            - 0
-            - 0
-            minPrice: 1.4658129805029452
-            maxPrice: 5.962133916683182
-            brandIds:
-            - 6
-            - 6
-            lookbackWindow: P7D
-      properties:
-        retailerId:
-          description: ID of the retailer associated with this audience
-          example: 6041
-          format: int64
-          type: integer
-        userBehaviorDetails:
-          $ref: '#/components/schemas/UserBehaviorDetailsV2'
-        name:
-          description: Name of the audience.
-          example: Test audience
-          type: string
-      required:
-      - name
-      - retailerId
-      - userBehaviorDetails
       type: object
     UserBehaviorDetails:
       description: Details about a user behavior retail media audience
@@ -8797,20 +7995,20 @@ components:
           readOnly: true
           type: array
       type: object
-    AsyncCampaignReportRequest:
+    AsyncCampaignsReportRequest:
       description: A top-level object that encapsulates a Criteo API request for a
         single value
       example:
         data:
           attributes:
-            clickAttributionWindow: 7D
             campaignType: sponsoredProducts
+            clickAttributionWindow: none
             endDate: 2000-01-23T04:56:07.000+00:00
-            timezone: timezone
-            format: json
+            timezone: UTC
+            format: json-compact
             salesChannel: offline
             reportType: summary
-            viewAttributionWindow: 1D
+            viewAttributionWindow: none
             ids:
             - ids
             - ids
@@ -8825,22 +8023,22 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/AsyncCampaignReportResource'
+          $ref: '#/components/schemas/AsyncCampaignsReportResource'
       type: object
-    AsyncLineItemReportRequest:
+    AsyncLineItemsReportRequest:
       description: A top-level object that encapsulates a Criteo API request for a
         single value
       example:
         data:
           attributes:
-            clickAttributionWindow: 7D
             campaignType: sponsoredProducts
+            clickAttributionWindow: none
             endDate: 2000-01-23T04:56:07.000+00:00
-            timezone: timezone
-            format: json
+            timezone: UTC
+            format: json-compact
             salesChannel: offline
             reportType: summary
-            viewAttributionWindow: 1D
+            viewAttributionWindow: none
             ids:
             - ids
             - ids
@@ -8855,47 +8053,17 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/AsyncLineItemReportResource'
+          $ref: '#/components/schemas/AsyncLineItemsReportResource'
       type: object
-    AsyncRevenueReportRequest:
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value
-      example:
-        data:
-          attributes:
-            campaignType: sponsoredProducts
-            endDate: 2000-01-23T04:56:07.000+00:00
-            campaignSubType: auctionAndPreferred
-            timezone: timezone
-            soldBy: directSold
-            revenueType: auction
-            format: json
-            salesChannel: offline
-            reportType: advertiser
-            ids:
-            - ids
-            - ids
-            id: id
-            metrics:
-            - clicks
-            - clicks
-            startDate: 2000-01-23T04:56:07.000+00:00
-            dimensions:
-            - date
-            - date
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/AsyncRevenueReportResource'
-      type: object
-    AttributedTransactionReportRequest:
+    SyncAttributedTransactionsReportRequest:
       description: A top-level object that encapsulates a Criteo API request for a
         single value
       example:
         data:
           attributes:
             accountId: accountId
-            clickAttributionWindow: 7D
+            clickAttributionWindow: none
+            campaignType: sponsoredProducts
             lineItemIds:
             - lineItemIds
             - lineItemIds
@@ -8908,6 +8076,7 @@ components:
             metrics:
             - attributedUnits
             - attributedUnits
+            salesChannel: offline
             startDate: 2000-01-23T04:56:07.000+00:00
             dimensions:
             - campaignName
@@ -8915,9 +8084,9 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/AttributedTransactionReportResource'
+          $ref: '#/components/schemas/SyncAttributedTransactionsReportResource'
       type: object
-    CampaignReportRequest:
+    SyncCampaignsReportRequest:
       description: A top-level object that encapsulates a Criteo API request for a
         single value
       example:
@@ -8925,7 +8094,7 @@ components:
           attributes:
             reportType: summary
             accountId: accountId
-            clickAttributionWindow: 7D
+            clickAttributionWindow: none
             campaignType: sponsoredProducts
             endDate: 2000-01-23T04:56:07.000+00:00
             timezone: UTC
@@ -8944,25 +8113,25 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/CampaignReportResource'
+          $ref: '#/components/schemas/SyncCampaignsReportResource'
       type: object
-    LineItemReportRequest:
+    SyncLineItemsReportRequest:
       description: A top-level object that encapsulates a Criteo API request for a
         single value
       example:
         data:
           attributes:
-            clickAttributionWindow: 7D
+            clickAttributionWindow: none
             campaignType: sponsoredProducts
             lineItemIds:
             - lineItemIds
             - lineItemIds
             endDate: 2000-01-23T04:56:07.000+00:00
-            timezone: timezone
+            timezone: UTC
             salesChannel: offline
             reportType: summary
             accountId: accountId
-            viewAttributionWindow: 1D
+            viewAttributionWindow: none
             campaignIds:
             - campaignIds
             - campaignIds
@@ -8976,7 +8145,7 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/LineItemReportResource'
+          $ref: '#/components/schemas/SyncLineItemsReportResource'
       type: object
     StatusResponseResource:
       description: A class that represents a domain entity exposed by an API
@@ -9052,6 +8221,7 @@ components:
           nullable: true
           type: string
         attributes:
+          description: Data response format
           items:
             items:
               type: object
@@ -9059,19 +8229,19 @@ components:
           nullable: true
           type: array
       type: object
-    AsyncCampaignReportResource:
+    AsyncCampaignsReportResource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
       example:
         attributes:
-          clickAttributionWindow: 7D
           campaignType: sponsoredProducts
+          clickAttributionWindow: none
           endDate: 2000-01-23T04:56:07.000+00:00
-          timezone: timezone
-          format: json
+          timezone: UTC
+          format: json-compact
           salesChannel: offline
           reportType: summary
-          viewAttributionWindow: 1D
+          viewAttributionWindow: none
           ids:
           - ids
           - ids
@@ -9089,21 +8259,21 @@ components:
           nullable: true
           type: string
         attributes:
-          $ref: '#/components/schemas/AsyncCampaignReport'
+          $ref: '#/components/schemas/AsyncCampaignsReport'
       type: object
-    AsyncLineItemReportResource:
+    AsyncLineItemsReportResource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
       example:
         attributes:
-          clickAttributionWindow: 7D
           campaignType: sponsoredProducts
+          clickAttributionWindow: none
           endDate: 2000-01-23T04:56:07.000+00:00
-          timezone: timezone
-          format: json
+          timezone: UTC
+          format: json-compact
           salesChannel: offline
           reportType: summary
-          viewAttributionWindow: 1D
+          viewAttributionWindow: none
           ids:
           - ids
           - ids
@@ -9121,48 +8291,16 @@ components:
           nullable: true
           type: string
         attributes:
-          $ref: '#/components/schemas/AsyncLineItemReport'
+          $ref: '#/components/schemas/AsyncLineItemsReport'
       type: object
-    AsyncRevenueReportResource:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value
-      example:
-        attributes:
-          campaignType: sponsoredProducts
-          endDate: 2000-01-23T04:56:07.000+00:00
-          campaignSubType: auctionAndPreferred
-          timezone: timezone
-          soldBy: directSold
-          revenueType: auction
-          format: json
-          salesChannel: offline
-          reportType: advertiser
-          ids:
-          - ids
-          - ids
-          id: id
-          metrics:
-          - clicks
-          - clicks
-          startDate: 2000-01-23T04:56:07.000+00:00
-          dimensions:
-          - date
-          - date
-        type: type
-      properties:
-        type:
-          nullable: true
-          type: string
-        attributes:
-          $ref: '#/components/schemas/AsyncRevenueReport'
-      type: object
-    AttributedTransactionReportResource:
+    SyncAttributedTransactionsReportResource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
       example:
         attributes:
           accountId: accountId
-          clickAttributionWindow: 7D
+          clickAttributionWindow: none
+          campaignType: sponsoredProducts
           lineItemIds:
           - lineItemIds
           - lineItemIds
@@ -9175,6 +8313,7 @@ components:
           metrics:
           - attributedUnits
           - attributedUnits
+          salesChannel: offline
           startDate: 2000-01-23T04:56:07.000+00:00
           dimensions:
           - campaignName
@@ -9185,16 +8324,16 @@ components:
           nullable: true
           type: string
         attributes:
-          $ref: '#/components/schemas/AttributedTransactionsReport'
+          $ref: '#/components/schemas/SyncAttributedTransactionsReport'
       type: object
-    CampaignReportResource:
+    SyncCampaignsReportResource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
       example:
         attributes:
           reportType: summary
           accountId: accountId
-          clickAttributionWindow: 7D
+          clickAttributionWindow: none
           campaignType: sponsoredProducts
           endDate: 2000-01-23T04:56:07.000+00:00
           timezone: UTC
@@ -9216,24 +8355,24 @@ components:
           nullable: true
           type: string
         attributes:
-          $ref: '#/components/schemas/CampaignReport'
+          $ref: '#/components/schemas/SyncCampaignsReport'
       type: object
-    LineItemReportResource:
+    SyncLineItemsReportResource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
       example:
         attributes:
-          clickAttributionWindow: 7D
+          clickAttributionWindow: none
           campaignType: sponsoredProducts
           lineItemIds:
           - lineItemIds
           - lineItemIds
           endDate: 2000-01-23T04:56:07.000+00:00
-          timezone: timezone
+          timezone: UTC
           salesChannel: offline
           reportType: summary
           accountId: accountId
-          viewAttributionWindow: 1D
+          viewAttributionWindow: none
           campaignIds:
           - campaignIds
           - campaignIds
@@ -9250,7 +8389,7 @@ components:
           nullable: true
           type: string
         attributes:
-          $ref: '#/components/schemas/LineItemReport'
+          $ref: '#/components/schemas/SyncLineItemsReport'
       type: object
     StatusResponse:
       description: Status of an async report request
@@ -9363,17 +8502,17 @@ components:
       - role
       - type
       type: object
-    AsyncCampaignReport:
+    AsyncCampaignsReport:
       description: Campaign report body request
       example:
-        clickAttributionWindow: 7D
         campaignType: sponsoredProducts
+        clickAttributionWindow: none
         endDate: 2000-01-23T04:56:07.000+00:00
-        timezone: timezone
-        format: json
+        timezone: UTC
+        format: json-compact
         salesChannel: offline
         reportType: summary
-        viewAttributionWindow: 1D
+        viewAttributionWindow: none
         ids:
         - ids
         - ids
@@ -9387,6 +8526,7 @@ components:
         - date
       properties:
         metrics:
+          description: List of metrics to report on
           items:
             enum:
             - impressions
@@ -9402,13 +8542,17 @@ components:
             - roas
             - uniqueVisitors
             - frequency
+            - assistedUnits
+            - assistedSales
             type: string
           nullable: true
           type: array
         dimensions:
+          description: List of dimensions to report on
           items:
             enum:
             - date
+            - hour
             - campaignId
             - campaignName
             - campaignTypeName
@@ -9418,50 +8562,32 @@ components:
             - brandId
             - brandName
             - pageTypeName
+            - environment
             - keyword
             - salesChannel
+            - retailerId
+            - retailerName
             type: string
           nullable: true
           type: array
-        clickAttributionWindow:
-          enum:
-          - 7D
-          - 14D
-          - 30D
-          - none
-          nullable: true
-          type: string
-        viewAttributionWindow:
-          enum:
-          - 1D
-          - 7D
-          - 14D
-          - 30D
-          - none
-          nullable: true
-          type: string
-        startDate:
-          format: date-time
-          type: string
-        endDate:
-          format: date-time
-          type: string
-        timezone:
-          nullable: true
-          type: string
         campaignType:
+          description: "Filter the type of campaigns to report on: sponsoredProducts\
+            \ or onSiteDisplays"
           enum:
           - sponsoredProducts
           - onSiteDisplays
           nullable: true
           type: string
         salesChannel:
+          description: "Filter on specific sales channel: offline or online"
           enum:
           - offline
           - online
           nullable: true
           type: string
         format:
+          default: json-compact
+          description: Format of the output
           enum:
           - json
           - json-compact
@@ -9470,6 +8596,9 @@ components:
           nullable: true
           type: string
         reportType:
+          default: summary
+          description: "Type of report, if no dimensions/metrics are provided, falls\
+            \ back to summary reportType"
           enum:
           - summary
           - pageType
@@ -9477,31 +8606,70 @@ components:
           - productCategory
           - product
           - attributedTransactions
+          - environment
+          - servedCategory
+          nullable: true
+          type: string
+        clickAttributionWindow:
+          default: none
+          description: Click attribution window
+          enum:
+          - 7D
+          - 14D
+          - 30D
+          - none
+          nullable: true
+          type: string
+        viewAttributionWindow:
+          default: none
+          description: View attribution window
+          enum:
+          - 1D
+          - 7D
+          - 14D
+          - 30D
+          - none
           nullable: true
           type: string
         ids:
+          description: Ids to report on
           items:
             type: string
           nullable: true
           type: array
         id:
+          description: Id to report on
+          nullable: true
+          type: string
+        startDate:
+          description: Start date
+          format: date-time
+          type: string
+        endDate:
+          description: End date
+          format: date-time
+          type: string
+        timezone:
+          default: UTC
+          description: "Time zone : see criteo developer portal for supported time\
+            \ zones"
           nullable: true
           type: string
       required:
       - endDate
       - startDate
       type: object
-    AsyncLineItemReport:
-      description: Line Item report body request
+    AsyncLineItemsReport:
+      description: Line Items report body request
       example:
-        clickAttributionWindow: 7D
         campaignType: sponsoredProducts
+        clickAttributionWindow: none
         endDate: 2000-01-23T04:56:07.000+00:00
-        timezone: timezone
-        format: json
+        timezone: UTC
+        format: json-compact
         salesChannel: offline
         reportType: summary
-        viewAttributionWindow: 1D
+        viewAttributionWindow: none
         ids:
         - ids
         - ids
@@ -9515,6 +8683,7 @@ components:
         - date
       properties:
         metrics:
+          description: List of metrics to report on
           items:
             enum:
             - impressions
@@ -9535,9 +8704,11 @@ components:
           nullable: true
           type: array
         dimensions:
+          description: List of dimensions to report on
           items:
             enum:
             - date
+            - hour
             - campaignId
             - campaignName
             - campaignTypeName
@@ -9553,10 +8724,53 @@ components:
             - keyword
             - pageTypeName
             - salesChannel
+            - environment
             type: string
           nullable: true
           type: array
+        campaignType:
+          description: "Filter the type of campaigns to report on: sponsoredProducts\
+            \ or onSiteDisplays"
+          enum:
+          - sponsoredProducts
+          - onSiteDisplays
+          nullable: true
+          type: string
+        salesChannel:
+          description: "Filter on specific sales channel: offline or online"
+          enum:
+          - offline
+          - online
+          nullable: true
+          type: string
+        format:
+          default: json-compact
+          description: Format of the output
+          enum:
+          - json
+          - json-compact
+          - json-newline
+          - csv
+          nullable: true
+          type: string
+        reportType:
+          default: summary
+          description: "Type of report, if no dimensions/metrics are provided, falls\
+            \ back to summary reportType"
+          enum:
+          - summary
+          - pageType
+          - keyword
+          - productCategory
+          - product
+          - attributedTransactions
+          - environment
+          - servedCategory
+          nullable: true
+          type: string
         clickAttributionWindow:
+          default: none
+          description: Click attribution window
           enum:
           - 7D
           - 14D
@@ -9565,6 +8779,8 @@ components:
           nullable: true
           type: string
         viewAttributionWindow:
+          default: none
+          description: View attribution window
           enum:
           - 1D
           - 7D
@@ -9573,189 +8789,40 @@ components:
           - none
           nullable: true
           type: string
-        startDate:
-          format: date-time
-          type: string
-        endDate:
-          format: date-time
-          type: string
-        timezone:
-          nullable: true
-          type: string
-        campaignType:
-          enum:
-          - sponsoredProducts
-          - onSiteDisplays
-          nullable: true
-          type: string
-        salesChannel:
-          enum:
-          - offline
-          - online
-          nullable: true
-          type: string
-        format:
-          enum:
-          - json
-          - json-compact
-          - json-newline
-          - csv
-          nullable: true
-          type: string
-        reportType:
-          enum:
-          - summary
-          - pageType
-          - keyword
-          - productCategory
-          - product
-          - attributedTransactions
-          nullable: true
-          type: string
         ids:
+          description: Ids to report on
           items:
             type: string
           nullable: true
           type: array
         id:
+          description: Id to report on
+          nullable: true
+          type: string
+        startDate:
+          description: Start date
+          format: date-time
+          type: string
+        endDate:
+          description: End date
+          format: date-time
+          type: string
+        timezone:
+          default: UTC
+          description: "Time zone : see criteo developer portal for supported time\
+            \ zones"
           nullable: true
           type: string
       required:
       - endDate
       - startDate
       type: object
-    AsyncRevenueReport:
-      description: Async Revenue report body request
-      example:
-        campaignType: sponsoredProducts
-        endDate: 2000-01-23T04:56:07.000+00:00
-        campaignSubType: auctionAndPreferred
-        timezone: timezone
-        soldBy: directSold
-        revenueType: auction
-        format: json
-        salesChannel: offline
-        reportType: advertiser
-        ids:
-        - ids
-        - ids
-        id: id
-        metrics:
-        - clicks
-        - clicks
-        startDate: 2000-01-23T04:56:07.000+00:00
-        dimensions:
-        - date
-        - date
-      properties:
-        reportType:
-          enum:
-          - advertiser
-          - environment
-          - pageType
-          - pageCategory
-          - brand
-          nullable: true
-          type: string
-        revenueType:
-          enum:
-          - auction
-          - preferred
-          nullable: true
-          type: string
-        ids:
-          items:
-            type: string
-          nullable: true
-          type: array
-        id:
-          nullable: true
-          type: string
-        metrics:
-          items:
-            enum:
-            - clicks
-            - spend
-            - attributedOrders
-            - attributedSales
-            - attributedUnits
-            - cpc
-            - cpo
-            - roas
-            - openAuctionRevenue
-            - preferredDealsRevenue
-            - avgCpc
-            - avgCpm
-            type: string
-          nullable: true
-          type: array
-        dimensions:
-          items:
-            enum:
-            - date
-            - accountId
-            - accountName
-            - environment
-            - advProductCategory
-            - brandId
-            - brandName
-            - pageTypeName
-            type: string
-          nullable: true
-          type: array
-        format:
-          enum:
-          - json
-          - json-compact
-          - json-newline
-          - csv
-          nullable: true
-          type: string
-        startDate:
-          format: date-time
-          type: string
-        endDate:
-          format: date-time
-          type: string
-        timezone:
-          nullable: true
-          type: string
-        campaignType:
-          enum:
-          - sponsoredProducts
-          - onSiteDisplays
-          nullable: true
-          type: string
-        salesChannel:
-          enum:
-          - offline
-          - online
-          nullable: true
-          type: string
-        soldBy:
-          description: Filter on the type of seller
-          enum:
-          - directSold
-          - indirectSold
-          - privateMarket
-          nullable: true
-          type: string
-        campaignSubType:
-          description: Filter on the campaign sub type
-          enum:
-          - auctionAndPreferred
-          - lockout
-          nullable: true
-          type: string
-      required:
-      - endDate
-      - startDate
-      type: object
-    AttributedTransactionsReport:
+    SyncAttributedTransactionsReport:
       description: Attributed transactions report body request
       example:
         accountId: accountId
-        clickAttributionWindow: 7D
+        clickAttributionWindow: none
+        campaignType: sponsoredProducts
         lineItemIds:
         - lineItemIds
         - lineItemIds
@@ -9768,6 +8835,7 @@ components:
         metrics:
         - attributedUnits
         - attributedUnits
+        salesChannel: offline
         startDate: 2000-01-23T04:56:07.000+00:00
         dimensions:
         - campaignName
@@ -9830,32 +8898,19 @@ components:
         accountId:
           description: Account id to report on
           type: string
-        startDate:
-          description: Start date
-          format: date-time
-          type: string
-        endDate:
-          description: End Date
-          format: date-time
-          type: string
-        timezone:
-          default: UTC
-          description: "Time zone : see criteo developer portal for supported time\
-            \ zones"
-          nullable: true
-          type: string
         clickAttributionWindow:
-          default: 7D
-          description: Click Attribution Window
+          default: none
+          description: Click attribution window
           enum:
           - 7D
           - 14D
           - 30D
+          - none
           nullable: true
           type: string
         viewAttributionWindow:
           default: none
-          description: View Attribution window
+          description: View attribution window
           enum:
           - 1D
           - 7D
@@ -9864,17 +8919,46 @@ components:
           - none
           nullable: true
           type: string
+        campaignType:
+          description: "Filter the type of campaigns to report on: sponsoredProducts\
+            \ or onSiteDisplays"
+          enum:
+          - sponsoredProducts
+          - onSiteDisplays
+          nullable: true
+          type: string
+        salesChannel:
+          description: "Filter on specific sales channel: offline or online"
+          enum:
+          - offline
+          - online
+          nullable: true
+          type: string
+        startDate:
+          description: Start date
+          format: date-time
+          type: string
+        endDate:
+          description: End date
+          format: date-time
+          type: string
+        timezone:
+          default: UTC
+          description: "Time zone : see criteo developer portal for supported time\
+            \ zones"
+          nullable: true
+          type: string
       required:
       - accountId
       - endDate
       - startDate
       type: object
-    CampaignReport:
+    SyncCampaignsReport:
       description: Campaign report body request
       example:
         reportType: summary
         accountId: accountId
-        clickAttributionWindow: 7D
+        clickAttributionWindow: none
         campaignType: sponsoredProducts
         endDate: 2000-01-23T04:56:07.000+00:00
         timezone: UTC
@@ -9892,12 +8976,17 @@ components:
         - date
       properties:
         reportType:
+          default: summary
+          description: "Type of report, if no dimensions/metrics are provided, falls\
+            \ back to summary reportType"
           enum:
           - summary
           - pageType
           - keyword
           - productCategory
           - product
+          - environment
+          - servedCategory
           nullable: true
           type: string
         campaignIds:
@@ -9923,6 +9012,8 @@ components:
             - roas
             - uniqueVisitors
             - frequency
+            - assistedUnits
+            - assistedSales
             type: string
           nullable: true
           type: array
@@ -9931,6 +9022,7 @@ components:
           items:
             enum:
             - date
+            - hour
             - campaignId
             - campaignName
             - campaignTypeName
@@ -9940,40 +9032,30 @@ components:
             - brandId
             - brandName
             - pageTypeName
+            - environment
             - keyword
             - salesChannel
+            - retailerId
+            - retailerName
             type: string
           nullable: true
           type: array
         accountId:
           description: Account id to report on
           type: string
-        startDate:
-          description: Start date
-          format: date-time
-          type: string
-        endDate:
-          description: End Date
-          format: date-time
-          type: string
-        timezone:
-          default: UTC
-          description: "Time zone : see criteo developer portal for supported time\
-            \ zones"
-          nullable: true
-          type: string
         clickAttributionWindow:
-          default: 7D
-          description: Click Attribution Window
+          default: none
+          description: Click attribution window
           enum:
           - 7D
           - 14D
           - 30D
+          - none
           nullable: true
           type: string
         viewAttributionWindow:
           default: none
-          description: View Attribution window
+          description: View attribution window
           enum:
           - 1D
           - 7D
@@ -9983,17 +9065,32 @@ components:
           nullable: true
           type: string
         campaignType:
-          description: Filter the type of campaign to report on
+          description: "Filter the type of campaigns to report on: sponsoredProducts\
+            \ or onSiteDisplays"
           enum:
           - sponsoredProducts
           - onSiteDisplays
           nullable: true
           type: string
         salesChannel:
-          description: Filter on the channel of sales
+          description: "Filter on specific sales channel: offline or online"
           enum:
           - offline
           - online
+          nullable: true
+          type: string
+        startDate:
+          description: Start date
+          format: date-time
+          type: string
+        endDate:
+          description: End date
+          format: date-time
+          type: string
+        timezone:
+          default: UTC
+          description: "Time zone : see criteo developer portal for supported time\
+            \ zones"
           nullable: true
           type: string
       required:
@@ -10001,20 +9098,20 @@ components:
       - endDate
       - startDate
       type: object
-    LineItemReport:
-      description: Line item report body request
+    SyncLineItemsReport:
+      description: Line Items report body request
       example:
-        clickAttributionWindow: 7D
+        clickAttributionWindow: none
         campaignType: sponsoredProducts
         lineItemIds:
         - lineItemIds
         - lineItemIds
         endDate: 2000-01-23T04:56:07.000+00:00
-        timezone: timezone
+        timezone: UTC
         salesChannel: offline
         reportType: summary
         accountId: accountId
-        viewAttributionWindow: 1D
+        viewAttributionWindow: none
         campaignIds:
         - campaignIds
         - campaignIds
@@ -10027,25 +9124,33 @@ components:
         - date
       properties:
         reportType:
+          default: summary
+          description: "Type of report, if no dimensions/metrics are provided, falls\
+            \ back to summary reportType"
           enum:
           - summary
           - pageType
           - keyword
           - productCategory
           - product
+          - environment
+          - servedCategory
           nullable: true
           type: string
         lineItemIds:
+          description: Line item ids to report on
           items:
             type: string
           nullable: true
           type: array
         campaignIds:
+          description: Campaign ids to report on
           items:
             type: string
           nullable: true
           type: array
         metrics:
+          description: List of metrics to report on
           items:
             enum:
             - impressions
@@ -10070,6 +9175,7 @@ components:
           items:
             enum:
             - date
+            - hour
             - campaignId
             - campaignName
             - campaignTypeName
@@ -10085,21 +9191,16 @@ components:
             - keyword
             - pageTypeName
             - salesChannel
+            - environment
             type: string
           nullable: true
           type: array
         accountId:
-          type: string
-        startDate:
-          format: date-time
-          type: string
-        endDate:
-          format: date-time
-          type: string
-        timezone:
-          nullable: true
+          description: Account id to report on
           type: string
         clickAttributionWindow:
+          default: none
+          description: Click attribution window
           enum:
           - 7D
           - 14D
@@ -10108,6 +9209,8 @@ components:
           nullable: true
           type: string
         viewAttributionWindow:
+          default: none
+          description: View attribution window
           enum:
           - 1D
           - 7D
@@ -10117,15 +9220,32 @@ components:
           nullable: true
           type: string
         campaignType:
+          description: "Filter the type of campaigns to report on: sponsoredProducts\
+            \ or onSiteDisplays"
           enum:
           - sponsoredProducts
           - onSiteDisplays
           nullable: true
           type: string
         salesChannel:
+          description: "Filter on specific sales channel: offline or online"
           enum:
           - offline
           - online
+          nullable: true
+          type: string
+        startDate:
+          description: Start date
+          format: date-time
+          type: string
+        endDate:
+          description: End date
+          format: date-time
+          type: string
+        timezone:
+          default: UTC
+          description: "Time zone : see criteo developer portal for supported time\
+            \ zones"
           nullable: true
           type: string
       required:
@@ -10320,7 +9440,7 @@ components:
           readOnly: true
           type: array
       type: object
-    ValueResourceOutcomeOfSuggestedKeywordsResult:
+    ValueResourceOutcomeOfRecommendedKeywordsResult:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
         a single value.
@@ -10392,7 +9512,7 @@ components:
           title: title
       properties:
         data:
-          $ref: '#/components/schemas/ValueResourceOfSuggestedKeywordsResult'
+          $ref: '#/components/schemas/ValueResourceOfRecommendedKeywordsResult'
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
@@ -10405,6 +9525,120 @@ components:
           nullable: true
           readOnly: true
           type: array
+      type: object
+    ValueResourceOutcomeOfLineItemBudgetOverrides:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value.
+      example:
+        data:
+          attributes:
+            monthlyLineItemBudgetOverrides:
+            - duration: duration
+              maxMonthlySpend: 0.8008281904610115
+              startMonth: 2000-01-23T04:56:07.000+00:00
+              status: Expired
+            - duration: duration
+              maxMonthlySpend: 0.8008281904610115
+              startMonth: 2000-01-23T04:56:07.000+00:00
+              status: Expired
+            dailyLineItemBudgetOverrides:
+            - duration: duration
+              maxDailySpend: 6.027456183070403
+              startDate: 2000-01-23T04:56:07.000+00:00
+              status: Expired
+            - duration: duration
+              maxDailySpend: 6.027456183070403
+              startDate: 2000-01-23T04:56:07.000+00:00
+              status: Expired
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfLineItemBudgetOverrides'
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    ValueResourceInputOfCampaignBudgetOverrides:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value.
+      example:
+        data:
+          attributes:
+            monthlyBudgetOverrides:
+            - duration: duration
+              maxMonthlySpend: 0.8008281904610115
+              startMonth: 2000-01-23T04:56:07.000+00:00
+              status: Expired
+            - duration: duration
+              maxMonthlySpend: 0.8008281904610115
+              startMonth: 2000-01-23T04:56:07.000+00:00
+              status: Expired
+            dailyBudgetOverrides:
+            - duration: duration
+              maxDailySpend: 6.027456183070403
+              startDate: 2000-01-23T04:56:07.000+00:00
+              status: Expired
+            - duration: duration
+              maxDailySpend: 6.027456183070403
+              startDate: 2000-01-23T04:56:07.000+00:00
+              status: Expired
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfCampaignBudgetOverrides'
       type: object
     SkuSearchRequest:
       additionalProperties: false
@@ -10421,6 +9655,36 @@ components:
           $ref: '#/components/schemas/SkuSearchRequestBody'
       required:
       - data
+      type: object
+    ValueResourceInputOfLineItemBudgetOverrides:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value.
+      example:
+        data:
+          attributes:
+            monthlyLineItemBudgetOverrides:
+            - duration: duration
+              maxMonthlySpend: 0.8008281904610115
+              startMonth: 2000-01-23T04:56:07.000+00:00
+              status: Expired
+            - duration: duration
+              maxMonthlySpend: 0.8008281904610115
+              startMonth: 2000-01-23T04:56:07.000+00:00
+              status: Expired
+            dailyLineItemBudgetOverrides:
+            - duration: duration
+              maxDailySpend: 6.027456183070403
+              startDate: 2000-01-23T04:56:07.000+00:00
+              status: Expired
+            - duration: duration
+              maxDailySpend: 6.027456183070403
+              startDate: 2000-01-23T04:56:07.000+00:00
+              status: Expired
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfLineItemBudgetOverrides'
       type: object
     ValueResourceOfCampaignBudgetOverrides:
       additionalProperties: false
@@ -10487,7 +9751,7 @@ components:
           nullable: true
           type: string
       type: object
-    ValueResourceOfSuggestedKeywordsResult:
+    ValueResourceOfRecommendedKeywordsResult:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
         a single value.
@@ -10519,7 +9783,39 @@ components:
           nullable: true
           type: string
         attributes:
-          $ref: '#/components/schemas/SuggestedKeywordsResult'
+          $ref: '#/components/schemas/RecommendedKeywordsResult'
+      type: object
+    ValueResourceOfLineItemBudgetOverrides:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value.
+      example:
+        attributes:
+          monthlyLineItemBudgetOverrides:
+          - duration: duration
+            maxMonthlySpend: 0.8008281904610115
+            startMonth: 2000-01-23T04:56:07.000+00:00
+            status: Expired
+          - duration: duration
+            maxMonthlySpend: 0.8008281904610115
+            startMonth: 2000-01-23T04:56:07.000+00:00
+            status: Expired
+          dailyLineItemBudgetOverrides:
+          - duration: duration
+            maxDailySpend: 6.027456183070403
+            startDate: 2000-01-23T04:56:07.000+00:00
+            status: Expired
+          - duration: duration
+            maxDailySpend: 6.027456183070403
+            startDate: 2000-01-23T04:56:07.000+00:00
+            status: Expired
+        type: type
+      properties:
+        type:
+          nullable: true
+          type: string
+        attributes:
+          $ref: '#/components/schemas/LineItemBudgetOverrides'
       type: object
     SkuSearchRequestBody:
       additionalProperties: false
@@ -10673,9 +9969,9 @@ components:
           nullable: true
           type: string
       type: object
-    SuggestedKeywordsResult:
+    RecommendedKeywordsResult:
       additionalProperties: false
-      description: Response model for suggested keywords
+      description: Response model for recommended keywords
       example:
         keywords:
           key:
@@ -10711,6 +10007,45 @@ components:
           nullable: true
           type: array
       type: object
+    LineItemBudgetOverrides:
+      additionalProperties: false
+      description: Line item budget overrides including Monthly and Daily budget overrides.
+      example:
+        monthlyLineItemBudgetOverrides:
+        - duration: duration
+          maxMonthlySpend: 0.8008281904610115
+          startMonth: 2000-01-23T04:56:07.000+00:00
+          status: Expired
+        - duration: duration
+          maxMonthlySpend: 0.8008281904610115
+          startMonth: 2000-01-23T04:56:07.000+00:00
+          status: Expired
+        dailyLineItemBudgetOverrides:
+        - duration: duration
+          maxDailySpend: 6.027456183070403
+          startDate: 2000-01-23T04:56:07.000+00:00
+          status: Expired
+        - duration: duration
+          maxDailySpend: 6.027456183070403
+          startDate: 2000-01-23T04:56:07.000+00:00
+          status: Expired
+      properties:
+        monthlyLineItemBudgetOverrides:
+          description: "Line item budget override monthly part, chronological order\
+            \ restricted."
+          items:
+            $ref: '#/components/schemas/MonthlyLineItemBudegetOverride'
+          type: array
+        dailyLineItemBudgetOverrides:
+          description: "Line item budget override daily part, chronological order\
+            \ restricted."
+          items:
+            $ref: '#/components/schemas/DailyLineItemBudgetOverride'
+          type: array
+      required:
+      - dailyLineItemBudgetOverrides
+      - monthlyLineItemBudgetOverrides
+      type: object
     CampaignMonthlyBudgetOverride:
       additionalProperties: false
       description: Campaign monthly budget override.
@@ -10728,8 +10063,8 @@ components:
           nullable: true
           type: string
         duration:
-          description: "Monthly budget override duration, e.g. \"1M\". Must be ending\
-            \ with \"M\"."
+          description: "The number of MONTHs that the override is active from StartMonth,\
+            \ e.g. \"1M\". Must end with 'M' or 'm'."
           type: string
         maxMonthlySpend:
           description: Monthly budget override maximum monthly spend amount.
@@ -10764,8 +10099,8 @@ components:
           nullable: true
           type: string
         duration:
-          description: "Daily budget override duration, e.g. \"1D\". Must be ending\
-            \ with D."
+          description: "The number of DAYs that the override is active from StartDate,\
+            \ e.g. \"1D\". Must end with 'D' or 'd'."
           type: string
         maxDailySpend:
           description: Daily budget override maximum daily spend amount.
@@ -10844,6 +10179,78 @@ components:
           nullable: true
           type: string
       type: object
+    MonthlyLineItemBudegetOverride:
+      additionalProperties: false
+      description: The details for a monthly budget override
+      example:
+        duration: duration
+        maxMonthlySpend: 0.8008281904610115
+        startMonth: 2000-01-23T04:56:07.000+00:00
+        status: Expired
+      properties:
+        startMonth:
+          description: "Monthly budget override start month, format \"yyyy-MM\". If\
+            \ it is null, the StartMonth would be the following month of the last\
+            \ item in the override sequence."
+          format: date-time
+          nullable: true
+          type: string
+        duration:
+          description: "The number of MONTHs that the override is active from StartMonth,\
+            \ e.g. \"1M\". Must end with 'M' or 'm'."
+          type: string
+        maxMonthlySpend:
+          description: Monthly budget override maximum monthly spend amount.
+          format: double
+          type: number
+        status:
+          description: Monthly budget override computed status.
+          enum:
+          - Expired
+          - Active
+          - Upcoming
+          nullable: true
+          type: string
+      required:
+      - duration
+      - maxMonthlySpend
+      type: object
+    DailyLineItemBudgetOverride:
+      additionalProperties: false
+      description: The details for a daily budget override
+      example:
+        duration: duration
+        maxDailySpend: 6.027456183070403
+        startDate: 2000-01-23T04:56:07.000+00:00
+        status: Expired
+      properties:
+        startDate:
+          description: "Daily budget override start date, format \"yyyy-MM-dd\". If\
+            \ it is null, the StartDate would be the following date of the last item\
+            \ in the override sequence."
+          format: date-time
+          nullable: true
+          type: string
+        duration:
+          description: "The number of DAYs that the override is active from StartDate,\
+            \ e.g. \"1D\". Must end with 'D' or 'd'."
+          type: string
+        maxDailySpend:
+          description: Daily budget override maximum daily spend amount.
+          format: double
+          nullable: true
+          type: number
+        status:
+          description: Daily budget override computed status.
+          enum:
+          - Expired
+          - Active
+          - Upcoming
+          nullable: true
+          type: string
+      required:
+      - duration
+      type: object
     InputKeywords:
       additionalProperties: false
       description: Keywords submitted by the user binned by type after some cleanup
@@ -10878,195 +10285,6 @@ components:
           nullable: true
           type: array
       type: object
-    BalanceResponsePagedListResponse:
-      description: Data model for a paged list of response resources
-      example:
-        metadata:
-          currentPageSize: 6
-          previousPage: previousPage
-          nextPage: nextPage
-          totalPages: 5
-          totalItemsAcrossAllPages: 0
-          currentPageIndex: 1
-        data:
-        - attributes:
-            endDate: 2000-01-23
-            deposited: 0.8008281904610115
-            spent: 6.027456183070403
-            memo: memo
-            spendType: Onsite
-            remaining: 1.4658129805029452
-            salesForceId: salesForceId
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            balanceType: unknown
-            name: name
-            poNumber: poNumber
-            startDate: 2000-01-23
-            status: unknown
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        - attributes:
-            endDate: 2000-01-23
-            deposited: 0.8008281904610115
-            spent: 6.027456183070403
-            memo: memo
-            spendType: Onsite
-            remaining: 1.4658129805029452
-            salesForceId: salesForceId
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            balanceType: unknown
-            name: name
-            poNumber: poNumber
-            startDate: 2000-01-23
-            status: unknown
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        metadata:
-          $ref: '#/components/schemas/PageMetadata'
-        data:
-          items:
-            $ref: '#/components/schemas/ResourceOfBalanceResponse'
-          type: array
-          x-nullable: false
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-          x-nullable: false
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
-    BalanceResponse:
-      description: Data model for response resource
-      example:
-        data:
-          attributes:
-            endDate: 2000-01-23
-            deposited: 0.8008281904610115
-            spent: 6.027456183070403
-            memo: memo
-            spendType: Onsite
-            remaining: 1.4658129805029452
-            salesForceId: salesForceId
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            balanceType: unknown
-            name: name
-            poNumber: poNumber
-            startDate: 2000-01-23
-            status: unknown
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfBalanceResponse'
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-          x-nullable: false
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
     JsonApiSingleResponseOfLineItemBidMultipliers:
       description: Data model for the response of a line item bid multiplier
       example:
@@ -11297,147 +10515,6 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
-    ProductButtonResponse:
-      description: Data model for response resource
-      example:
-        data:
-          attributes:
-            skus:
-            - skus
-            - skus
-            backgroundImage: backgroundImage
-            name: name
-            rank: 0
-            isMandatory: 6
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfProductButtonResponse'
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
-    CreateBalanceRequest:
-      description: Data model for an input resource
-      example:
-        data:
-          attributes:
-            salesForceId: salesForceId
-            endDate: 2000-01-23
-            deposited: 0.8008281904610115
-            name: name
-            memo: memo
-            poNumber: poNumber
-            spendType: Onsite
-            startDate: 2000-01-23
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfCreateBalance'
-      type: object
-      x-nullable: false
-    UpdateBalanceModelRequest:
-      description: Data model for an input resource
-      example:
-        data:
-          attributes:
-            salesForceId: salesForceId
-            endDate: 2000-01-23
-            name: name
-            memo: memo
-            poNumber: poNumber
-            startDate: 2000-01-23
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfUpdateBalanceModel'
-      type: object
-      x-nullable: false
-    AddFundsToBalanceRequest:
-      description: Data model for an input resource
-      example:
-        data:
-          attributes:
-            deltaAmount: 0.8008281904610115
-            memo: memo
-            poNumber: poNumber
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfAddFundsToBalance'
-      type: object
-      x-nullable: false
-    ChangeDatesOfBalanceRequest:
-      description: Data model for an input resource
-      example:
-        data:
-          attributes:
-            endDate: 2000-01-23
-            memo: memo
-            startDate: 2000-01-23
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfChangeDatesOfBalance'
-      type: object
-      x-nullable: false
     LineItemBidMultipliersRequest:
       description: Data model for an input resource
       example:
@@ -11504,39 +10581,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ResourceOfProductButtonRequest'
-      type: object
-      x-nullable: false
-    ResourceOfBalanceResponse:
-      description: Data model for a Resource
-      example:
-        attributes:
-          endDate: 2000-01-23
-          deposited: 0.8008281904610115
-          spent: 6.027456183070403
-          memo: memo
-          spendType: Onsite
-          remaining: 1.4658129805029452
-          salesForceId: salesForceId
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          balanceType: unknown
-          name: name
-          poNumber: poNumber
-          startDate: 2000-01-23
-          status: unknown
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ExternalBalanceResponse'
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-        type:
-          description: Canonical type name of the entity
-          nullable: true
-          type: string
       type: object
       x-nullable: false
     JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersAndLineItemBidMultipliers:
@@ -11621,102 +10665,6 @@ components:
           type: string
       type: object
       x-nullable: false
-    ResourceOfCreateBalance:
-      description: Data model for a Resource
-      example:
-        attributes:
-          salesForceId: salesForceId
-          endDate: 2000-01-23
-          deposited: 0.8008281904610115
-          name: name
-          memo: memo
-          poNumber: poNumber
-          spendType: Onsite
-          startDate: 2000-01-23
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ExternalCreateBalance'
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-        type:
-          description: Canonical type name of the entity
-          nullable: true
-          type: string
-      type: object
-      x-nullable: false
-    ResourceOfUpdateBalanceModel:
-      description: Data model for a Resource
-      example:
-        attributes:
-          salesForceId: salesForceId
-          endDate: 2000-01-23
-          name: name
-          memo: memo
-          poNumber: poNumber
-          startDate: 2000-01-23
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ExternalUpdateBalanceModel'
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-        type:
-          description: Canonical type name of the entity
-          nullable: true
-          type: string
-      type: object
-      x-nullable: false
-    ResourceOfAddFundsToBalance:
-      description: Data model for a Resource
-      example:
-        attributes:
-          deltaAmount: 0.8008281904610115
-          memo: memo
-          poNumber: poNumber
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ExternalAddFundsToBalance'
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-        type:
-          description: Canonical type name of the entity
-          nullable: true
-          type: string
-      type: object
-      x-nullable: false
-    ResourceOfChangeDatesOfBalance:
-      description: Data model for a Resource
-      example:
-        attributes:
-          endDate: 2000-01-23
-          memo: memo
-          startDate: 2000-01-23
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ExternalChangeDatesOfBalance'
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-        type:
-          description: Canonical type name of the entity
-          nullable: true
-          type: string
-      type: object
-      x-nullable: false
     ResourceOfProductButtonRequest:
       description: Data model for a Resource
       example:
@@ -11740,124 +10688,6 @@ components:
           description: Canonical type name of the entity
           nullable: true
           type: string
-      type: object
-      x-nullable: false
-    ExternalBalanceResponse:
-      description: A Retail Media Balance used to determine the funds available for
-        any or all campaigns in an account
-      example:
-        endDate: 2000-01-23
-        deposited: 0.8008281904610115
-        spent: 6.027456183070403
-        memo: memo
-        spendType: Onsite
-        remaining: 1.4658129805029452
-        salesForceId: salesForceId
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        balanceType: unknown
-        name: name
-        poNumber: poNumber
-        startDate: 2000-01-23
-        status: unknown
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        name:
-          description: Name of the balance.
-          type: string
-          x-nullable: false
-        poNumber:
-          description: Purchase Order number.
-          type: string
-          x-nullable: false
-        memo:
-          description: Memo
-          type: string
-          x-nullable: false
-        deposited:
-          description: Amount of billable funds allotted to the balance.
-          format: decimal
-          nullable: true
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        spent:
-          format: decimal
-          nullable: true
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        remaining:
-          format: decimal
-          nullable: true
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          required:
-          - "true"
-          type: string
-        endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-        status:
-          enum:
-          - unknown
-          - scheduled
-          - active
-          - ended
-          type: string
-          x-nullable: false
-        createdAt:
-          format: date-time
-          type: string
-          x-nullable: false
-        updatedAt:
-          format: date-time
-          type: string
-          x-nullable: false
-        balanceType:
-          description: Type of the balance
-          enum:
-          - unknown
-          - capped
-          - uncapped
-          type: string
-          x-nullable: false
-        salesForceId:
-          description: SalesForceId the balance is linked to.
-          type: string
-          x-nullable: false
-        spendType:
-          description: Spend Type of the balance.
-          enum:
-          - Onsite
-          - Offsite
-          - OffsiteAwareness
-          type: string
-          x-nullable: false
-      required:
-      - balanceType
-      - createdAt
-      - deposited
-      - endDate
-      - memo
-      - name
-      - poNumber
-      - remaining
-      - salesForceId
-      - spendType
-      - spent
-      - startDate
-      - status
-      - updatedAt
       type: object
       x-nullable: false
     LineItemBidMultipliers:
@@ -11948,169 +10778,6 @@ components:
       - name
       - rank
       - skus
-      type: object
-      x-nullable: false
-    ExternalCreateBalance:
-      description: An object that represents the available options to set when creating
-        a Retail Media Balance
-      example:
-        salesForceId: salesForceId
-        endDate: 2000-01-23
-        deposited: 0.8008281904610115
-        name: name
-        memo: memo
-        poNumber: poNumber
-        spendType: Onsite
-        startDate: 2000-01-23
-      properties:
-        name:
-          description: Name of the balance.
-          type: string
-          x-nullable: false
-        poNumber:
-          description: Purchase Order number.
-          type: string
-          x-nullable: false
-        deposited:
-          description: Amount of billable funds allotted to the balance.
-          format: decimal
-          nullable: true
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          required:
-          - "true"
-          type: string
-        endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-        spendType:
-          description: Type of the balance spend.
-          enum:
-          - Onsite
-          - Offsite
-          - OffsiteAwareness
-          type: string
-          x-nullable: false
-        memo:
-          description: Memo
-          type: string
-          x-nullable: false
-        salesForceId:
-          description: SalesForceId the balance is linked to.
-          type: string
-          x-nullable: false
-      required:
-      - deposited
-      - endDate
-      - memo
-      - name
-      - salesForceId
-      - spendType
-      - startDate
-      type: object
-      x-nullable: false
-    ExternalUpdateBalanceModel:
-      description: An object that represents the available options to set when updating
-        a Retail Media Balance
-      example:
-        salesForceId: salesForceId
-        endDate: 2000-01-23
-        name: name
-        memo: memo
-        poNumber: poNumber
-        startDate: 2000-01-23
-      properties:
-        name:
-          description: Name of the balance.
-          type: string
-          x-nullable: false
-        poNumber:
-          description: Purchase Order number.
-          type: string
-          x-nullable: false
-        salesForceId:
-          description: SalesForceId the balance is linked to.
-          type: string
-          x-nullable: false
-        startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          nullable: true
-          type: string
-        endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          nullable: true
-          type: string
-        memo:
-          description: Memo
-          type: string
-          x-nullable: false
-      type: object
-      x-nullable: false
-    ExternalAddFundsToBalance:
-      description: An object that represents the available options of adding funds
-        to a balance.
-      example:
-        deltaAmount: 0.8008281904610115
-        memo: memo
-        poNumber: poNumber
-      properties:
-        deltaAmount:
-          description: Amount of billable funds to be added / decreased allotted to
-            the balance.
-          format: double
-          type: number
-          x-nullable: false
-        poNumber:
-          description: Purchase Order number.
-          type: string
-          x-nullable: false
-        memo:
-          description: Memo
-          type: string
-          x-nullable: false
-      required:
-      - deltaAmount
-      - memo
-      type: object
-      x-nullable: false
-    ExternalChangeDatesOfBalance:
-      description: An object that represents the available options to modify schedule
-        of a balance.
-      example:
-        endDate: 2000-01-23
-        memo: memo
-        startDate: 2000-01-23
-      properties:
-        startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-        endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-        memo:
-          description: Memo
-          type: string
-          x-nullable: false
-      required:
-      - endDate
-      - memo
-      - startDate
       type: object
       x-nullable: false
     ExternalProductButtonRequest:

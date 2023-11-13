@@ -1156,22 +1156,22 @@ paths:
       x-accepts: application/json
   /2023-07/retail-media/reports/campaigns:
     post:
-      description: Return an async Campaign Report
-      operationId: GenerateAsyncCampaignReport
+      description: Return an asynchronous Campaigns Report
+      operationId: GenerateAsyncCampaignsReport
       requestBody:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/AsyncCampaignReportRequest'
+              $ref: '#/components/schemas/AsyncCampaignsReportRequest'
           application/json:
             schema:
-              $ref: '#/components/schemas/AsyncCampaignReportRequest'
+              $ref: '#/components/schemas/AsyncCampaignsReportRequest'
           text/json:
             schema:
-              $ref: '#/components/schemas/AsyncCampaignReportRequest'
+              $ref: '#/components/schemas/AsyncCampaignsReportRequest'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/AsyncCampaignReportRequest'
+              $ref: '#/components/schemas/AsyncCampaignsReportRequest'
         required: true
         x-bodyName: request
       responses:
@@ -1217,22 +1217,22 @@ paths:
       x-accepts: application/json
   /2023-07/retail-media/reports/line-items:
     post:
-      description: Return an async Line Item Report
+      description: Returns an asynchronous Line Items Report
       operationId: GenerateAsyncLineItemsReport
       requestBody:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/AsyncLineItemReportRequest'
+              $ref: '#/components/schemas/AsyncLineItemsReportRequest'
           application/json:
             schema:
-              $ref: '#/components/schemas/AsyncLineItemReportRequest'
+              $ref: '#/components/schemas/AsyncLineItemsReportRequest'
           text/json:
             schema:
-              $ref: '#/components/schemas/AsyncLineItemReportRequest'
+              $ref: '#/components/schemas/AsyncLineItemsReportRequest'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/AsyncLineItemReportRequest'
+              $ref: '#/components/schemas/AsyncLineItemsReportRequest'
         required: true
         x-bodyName: request
       responses:
@@ -1278,7 +1278,7 @@ paths:
       x-accepts: application/json
   /2023-07/retail-media/reports/{reportId}/output:
     get:
-      description: Return the output of an async report
+      description: Returns the output of an async report
       operationId: GetAsyncExportOutput
       parameters:
       - description: The ID of the report to retrieve
@@ -1331,7 +1331,7 @@ paths:
       x-accepts: application/json
   /2023-07/retail-media/reports/{reportId}/status:
     get:
-      description: Return the status of an async report
+      description: Returns the status of an async report
       operationId: GetAsyncExportStatus
       parameters:
       - description: The ID of the report to retrieve
@@ -8152,20 +8152,20 @@ components:
           readOnly: true
           type: array
       type: object
-    AsyncCampaignReportRequest:
+    AsyncCampaignsReportRequest:
       description: A top-level object that encapsulates a Criteo API request for a
         single value
       example:
         data:
           attributes:
-            clickAttributionWindow: 7D
             campaignType: sponsoredProducts
+            clickAttributionWindow: none
             endDate: 2000-01-23T04:56:07.000+00:00
-            timezone: timezone
-            format: json
+            timezone: UTC
+            format: json-compact
             salesChannel: offline
             reportType: summary
-            viewAttributionWindow: 1D
+            viewAttributionWindow: none
             ids:
             - ids
             - ids
@@ -8180,22 +8180,22 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/AsyncCampaignReportResource'
+          $ref: '#/components/schemas/AsyncCampaignsReportResource'
       type: object
-    AsyncLineItemReportRequest:
+    AsyncLineItemsReportRequest:
       description: A top-level object that encapsulates a Criteo API request for a
         single value
       example:
         data:
           attributes:
-            clickAttributionWindow: 7D
             campaignType: sponsoredProducts
+            clickAttributionWindow: none
             endDate: 2000-01-23T04:56:07.000+00:00
-            timezone: timezone
-            format: json
+            timezone: UTC
+            format: json-compact
             salesChannel: offline
             reportType: summary
-            viewAttributionWindow: 1D
+            viewAttributionWindow: none
             ids:
             - ids
             - ids
@@ -8210,7 +8210,7 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/AsyncLineItemReportResource'
+          $ref: '#/components/schemas/AsyncLineItemsReportResource'
       type: object
     StatusResponseResource:
       description: A class that represents a domain entity exposed by an API
@@ -8236,19 +8236,19 @@ components:
           nullable: true
           type: string
       type: object
-    AsyncCampaignReportResource:
+    AsyncCampaignsReportResource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
       example:
         attributes:
-          clickAttributionWindow: 7D
           campaignType: sponsoredProducts
+          clickAttributionWindow: none
           endDate: 2000-01-23T04:56:07.000+00:00
-          timezone: timezone
-          format: json
+          timezone: UTC
+          format: json-compact
           salesChannel: offline
           reportType: summary
-          viewAttributionWindow: 1D
+          viewAttributionWindow: none
           ids:
           - ids
           - ids
@@ -8266,21 +8266,21 @@ components:
           nullable: true
           type: string
         attributes:
-          $ref: '#/components/schemas/AsyncCampaignReport'
+          $ref: '#/components/schemas/AsyncCampaignsReport'
       type: object
-    AsyncLineItemReportResource:
+    AsyncLineItemsReportResource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
       example:
         attributes:
-          clickAttributionWindow: 7D
           campaignType: sponsoredProducts
+          clickAttributionWindow: none
           endDate: 2000-01-23T04:56:07.000+00:00
-          timezone: timezone
-          format: json
+          timezone: UTC
+          format: json-compact
           salesChannel: offline
           reportType: summary
-          viewAttributionWindow: 1D
+          viewAttributionWindow: none
           ids:
           - ids
           - ids
@@ -8298,7 +8298,7 @@ components:
           nullable: true
           type: string
         attributes:
-          $ref: '#/components/schemas/AsyncLineItemReport'
+          $ref: '#/components/schemas/AsyncLineItemsReport'
       type: object
     StatusResponse:
       description: Status of an async report request
@@ -8346,17 +8346,17 @@ components:
       type: object
       x-criteo-canonical:
         infoType: entity
-    AsyncCampaignReport:
+    AsyncCampaignsReport:
       description: Campaign report body request
       example:
-        clickAttributionWindow: 7D
         campaignType: sponsoredProducts
+        clickAttributionWindow: none
         endDate: 2000-01-23T04:56:07.000+00:00
-        timezone: timezone
-        format: json
+        timezone: UTC
+        format: json-compact
         salesChannel: offline
         reportType: summary
-        viewAttributionWindow: 1D
+        viewAttributionWindow: none
         ids:
         - ids
         - ids
@@ -8370,6 +8370,7 @@ components:
         - date
       properties:
         metrics:
+          description: List of metrics to report on
           items:
             enum:
             - impressions
@@ -8385,13 +8386,17 @@ components:
             - roas
             - uniqueVisitors
             - frequency
+            - assistedUnits
+            - assistedSales
             type: string
           nullable: true
           type: array
         dimensions:
+          description: List of dimensions to report on
           items:
             enum:
             - date
+            - hour
             - campaignId
             - campaignName
             - campaignTypeName
@@ -8401,50 +8406,32 @@ components:
             - brandId
             - brandName
             - pageTypeName
+            - environment
             - keyword
             - salesChannel
+            - retailerId
+            - retailerName
             type: string
           nullable: true
           type: array
-        clickAttributionWindow:
-          enum:
-          - 7D
-          - 14D
-          - 30D
-          - none
-          nullable: true
-          type: string
-        viewAttributionWindow:
-          enum:
-          - 1D
-          - 7D
-          - 14D
-          - 30D
-          - none
-          nullable: true
-          type: string
-        startDate:
-          format: date-time
-          type: string
-        endDate:
-          format: date-time
-          type: string
-        timezone:
-          nullable: true
-          type: string
         campaignType:
+          description: "Filter the type of campaigns to report on: sponsoredProducts\
+            \ or onSiteDisplays"
           enum:
           - sponsoredProducts
           - onSiteDisplays
           nullable: true
           type: string
         salesChannel:
+          description: "Filter on specific sales channel: offline or online"
           enum:
           - offline
           - online
           nullable: true
           type: string
         format:
+          default: json-compact
+          description: Format of the output
           enum:
           - json
           - json-compact
@@ -8453,6 +8440,9 @@ components:
           nullable: true
           type: string
         reportType:
+          default: summary
+          description: "Type of report, if no dimensions/metrics are provided, falls\
+            \ back to summary reportType"
           enum:
           - summary
           - pageType
@@ -8460,31 +8450,70 @@ components:
           - productCategory
           - product
           - attributedTransactions
+          - environment
+          - servedCategory
+          nullable: true
+          type: string
+        clickAttributionWindow:
+          default: none
+          description: Click attribution window
+          enum:
+          - 7D
+          - 14D
+          - 30D
+          - none
+          nullable: true
+          type: string
+        viewAttributionWindow:
+          default: none
+          description: View attribution window
+          enum:
+          - 1D
+          - 7D
+          - 14D
+          - 30D
+          - none
           nullable: true
           type: string
         ids:
+          description: Ids to report on
           items:
             type: string
           nullable: true
           type: array
         id:
+          description: Id to report on
+          nullable: true
+          type: string
+        startDate:
+          description: Start date
+          format: date-time
+          type: string
+        endDate:
+          description: End date
+          format: date-time
+          type: string
+        timezone:
+          default: UTC
+          description: "Time zone : see criteo developer portal for supported time\
+            \ zones"
           nullable: true
           type: string
       required:
       - endDate
       - startDate
       type: object
-    AsyncLineItemReport:
-      description: Line Item report body request
+    AsyncLineItemsReport:
+      description: Line Items report body request
       example:
-        clickAttributionWindow: 7D
         campaignType: sponsoredProducts
+        clickAttributionWindow: none
         endDate: 2000-01-23T04:56:07.000+00:00
-        timezone: timezone
-        format: json
+        timezone: UTC
+        format: json-compact
         salesChannel: offline
         reportType: summary
-        viewAttributionWindow: 1D
+        viewAttributionWindow: none
         ids:
         - ids
         - ids
@@ -8498,6 +8527,7 @@ components:
         - date
       properties:
         metrics:
+          description: List of metrics to report on
           items:
             enum:
             - impressions
@@ -8518,9 +8548,11 @@ components:
           nullable: true
           type: array
         dimensions:
+          description: List of dimensions to report on
           items:
             enum:
             - date
+            - hour
             - campaignId
             - campaignName
             - campaignTypeName
@@ -8536,48 +8568,28 @@ components:
             - keyword
             - pageTypeName
             - salesChannel
+            - environment
             type: string
           nullable: true
           type: array
-        clickAttributionWindow:
-          enum:
-          - 7D
-          - 14D
-          - 30D
-          - none
-          nullable: true
-          type: string
-        viewAttributionWindow:
-          enum:
-          - 1D
-          - 7D
-          - 14D
-          - 30D
-          - none
-          nullable: true
-          type: string
-        startDate:
-          format: date-time
-          type: string
-        endDate:
-          format: date-time
-          type: string
-        timezone:
-          nullable: true
-          type: string
         campaignType:
+          description: "Filter the type of campaigns to report on: sponsoredProducts\
+            \ or onSiteDisplays"
           enum:
           - sponsoredProducts
           - onSiteDisplays
           nullable: true
           type: string
         salesChannel:
+          description: "Filter on specific sales channel: offline or online"
           enum:
           - offline
           - online
           nullable: true
           type: string
         format:
+          default: json-compact
+          description: Format of the output
           enum:
           - json
           - json-compact
@@ -8586,6 +8598,9 @@ components:
           nullable: true
           type: string
         reportType:
+          default: summary
+          description: "Type of report, if no dimensions/metrics are provided, falls\
+            \ back to summary reportType"
           enum:
           - summary
           - pageType
@@ -8593,14 +8608,53 @@ components:
           - productCategory
           - product
           - attributedTransactions
+          - environment
+          - servedCategory
+          nullable: true
+          type: string
+        clickAttributionWindow:
+          default: none
+          description: Click attribution window
+          enum:
+          - 7D
+          - 14D
+          - 30D
+          - none
+          nullable: true
+          type: string
+        viewAttributionWindow:
+          default: none
+          description: View attribution window
+          enum:
+          - 1D
+          - 7D
+          - 14D
+          - 30D
+          - none
           nullable: true
           type: string
         ids:
+          description: Ids to report on
           items:
             type: string
           nullable: true
           type: array
         id:
+          description: Id to report on
+          nullable: true
+          type: string
+        startDate:
+          description: Start date
+          format: date-time
+          type: string
+        endDate:
+          description: End date
+          format: date-time
+          type: string
+        timezone:
+          default: UTC
+          description: "Time zone : see criteo developer portal for supported time\
+            \ zones"
           nullable: true
           type: string
       required:
@@ -11091,11 +11145,14 @@ components:
           required:
           - "true"
           type: string
+          x-nullable: false
         endDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
+          nullable: true
           type: string
+          x-nullable: true
         status:
           enum:
           - unknown
@@ -11115,7 +11172,6 @@ components:
       required:
       - createdAt
       - deposited
-      - endDate
       - memo
       - name
       - poNumber

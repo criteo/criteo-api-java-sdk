@@ -27,10 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.criteo.api.marketingsolutions.preview.model.OkResponse;
 import com.criteo.api.marketingsolutions.preview.model.Outcome;
-import com.criteo.api.marketingsolutions.preview.model.PreviewFailResponse;
-import com.criteo.api.marketingsolutions.preview.model.ProductSetStatisticsQuery;
 import com.criteo.api.marketingsolutions.preview.model.ResourceCollectionOutcomeOfProductSet;
 import com.criteo.api.marketingsolutions.preview.model.ResourceOutcomeOfProductSet;
 import com.criteo.api.marketingsolutions.preview.model.ValueResourceInputOfCreateProductSetRequest;
@@ -489,137 +486,6 @@ public class RecoApi {
 
         okhttp3.Call localVarCall = fetchProductSetsValidateBeforeCall(datasetId, _callback);
         Type localVarReturnType = new TypeToken<ResourceCollectionOutcomeOfProductSet>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for previewProductSetsPreviewPost
-     * @param productSetStatisticsQuery  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authorization Error </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call previewProductSetsPreviewPostCall(ProductSetStatisticsQuery productSetStatisticsQuery, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = productSetStatisticsQuery;
-
-        // create path and map variables
-        String localVarPath = "/preview/product-sets/preview";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call previewProductSetsPreviewPostValidateBeforeCall(ProductSetStatisticsQuery productSetStatisticsQuery, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'productSetStatisticsQuery' is set
-        if (productSetStatisticsQuery == null) {
-            throw new ApiException("Missing the required parameter 'productSetStatisticsQuery' when calling previewProductSetsPreviewPost(Async)");
-        }
-
-        return previewProductSetsPreviewPostCall(productSetStatisticsQuery, _callback);
-
-    }
-
-    /**
-     * 
-     * Display a preview of product set rules
-     * @param productSetStatisticsQuery  (required)
-     * @return OkResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authorization Error </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public OkResponse previewProductSetsPreviewPost(ProductSetStatisticsQuery productSetStatisticsQuery) throws ApiException {
-        ApiResponse<OkResponse> localVarResp = previewProductSetsPreviewPostWithHttpInfo(productSetStatisticsQuery);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Display a preview of product set rules
-     * @param productSetStatisticsQuery  (required)
-     * @return ApiResponse&lt;OkResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authorization Error </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<OkResponse> previewProductSetsPreviewPostWithHttpInfo(ProductSetStatisticsQuery productSetStatisticsQuery) throws ApiException {
-        okhttp3.Call localVarCall = previewProductSetsPreviewPostValidateBeforeCall(productSetStatisticsQuery, null);
-        Type localVarReturnType = new TypeToken<OkResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Display a preview of product set rules
-     * @param productSetStatisticsQuery  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authorization Error </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call previewProductSetsPreviewPostAsync(ProductSetStatisticsQuery productSetStatisticsQuery, final ApiCallback<OkResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = previewProductSetsPreviewPostValidateBeforeCall(productSetStatisticsQuery, _callback);
-        Type localVarReturnType = new TypeToken<OkResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

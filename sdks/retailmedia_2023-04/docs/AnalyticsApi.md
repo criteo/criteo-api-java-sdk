@@ -4,20 +4,20 @@ All URIs are relative to *https://api.criteo.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getReportOutput**](AnalyticsApi.md#getReportOutput) | **GET** /2023-04/retail-media/reports/{reportId}/output |  |
-| [**getReportStatus**](AnalyticsApi.md#getReportStatus) | **GET** /2023-04/retail-media/reports/{reportId}/status |  |
-| [**requestCampaignReport**](AnalyticsApi.md#requestCampaignReport) | **POST** /2023-04/retail-media/reports/campaigns |  |
-| [**requestLineItemReport**](AnalyticsApi.md#requestLineItemReport) | **POST** /2023-04/retail-media/reports/line-items |  |
+| [**generateAsyncCampaignsReport**](AnalyticsApi.md#generateAsyncCampaignsReport) | **POST** /2023-04/retail-media/reports/campaigns |  |
+| [**generateAsyncLineItemsReport**](AnalyticsApi.md#generateAsyncLineItemsReport) | **POST** /2023-04/retail-media/reports/line-items |  |
+| [**getAsyncExportOutput**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /2023-04/retail-media/reports/{reportId}/output |  |
+| [**getAsyncExportStatus**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /2023-04/retail-media/reports/{reportId}/status |  |
 
 
 
-## getReportOutput
+## generateAsyncCampaignsReport
 
-> String getReportOutput(reportId)
+> AsyncReportResponse generateAsyncCampaignsReport(asyncCampaignsReportRequest)
 
 
 
-Request the report output
+Return an asynchronous Campaigns Report
 
 ### Example
 
@@ -58,12 +58,12 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
-        String reportId = "reportId_example"; // String | report id
+        AsyncCampaignsReportRequest asyncCampaignsReportRequest = new AsyncCampaignsReportRequest(); // AsyncCampaignsReportRequest | 
         try {
-            String result = apiInstance.getReportOutput(reportId);
+            AsyncReportResponse result = apiInstance.generateAsyncCampaignsReport(asyncCampaignsReportRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AnalyticsApi#getReportOutput");
+            System.err.println("Exception when calling AnalyticsApi#generateAsyncCampaignsReport");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -78,7 +78,189 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **reportId** | **String**| report id | |
+| **asyncCampaignsReportRequest** | [**AsyncCampaignsReportRequest**](AsyncCampaignsReportRequest.md)|  | |
+
+### Return type
+
+[**AsyncReportResponse**](AsyncReportResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **400** | Bad Request |  -  |
+| **403** | Forbidden |  -  |
+
+
+## generateAsyncLineItemsReport
+
+> AsyncReportResponse generateAsyncLineItemsReport(asyncLineItemsReportRequest)
+
+
+
+Returns an asynchronous Line Items Report
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.v2023_04;
+
+import com.criteo.api.retailmedia.v2023_04.ApiClient;
+import com.criteo.api.retailmedia.v2023_04.ApiClientBuilder;
+import com.criteo.api.retailmedia.v2023_04.ApiException;
+import com.criteo.api.retailmedia.v2023_04.Configuration;
+import com.criteo.api.retailmedia.v2023_04.auth.*;
+import com.criteo.api.retailmedia.v2023_04.model.*;
+import com.criteo.api.retailmedia.v2023_04.api.AnalyticsApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
+        AsyncLineItemsReportRequest asyncLineItemsReportRequest = new AsyncLineItemsReportRequest(); // AsyncLineItemsReportRequest | 
+        try {
+            AsyncReportResponse result = apiInstance.generateAsyncLineItemsReport(asyncLineItemsReportRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AnalyticsApi#generateAsyncLineItemsReport");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asyncLineItemsReportRequest** | [**AsyncLineItemsReportRequest**](AsyncLineItemsReportRequest.md)|  | |
+
+### Return type
+
+[**AsyncReportResponse**](AsyncReportResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **400** | Bad Request |  -  |
+| **403** | Forbidden |  -  |
+
+
+## getAsyncExportOutput
+
+> String getAsyncExportOutput(reportId)
+
+
+
+Returns the output of an async report
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.v2023_04;
+
+import com.criteo.api.retailmedia.v2023_04.ApiClient;
+import com.criteo.api.retailmedia.v2023_04.ApiClientBuilder;
+import com.criteo.api.retailmedia.v2023_04.ApiException;
+import com.criteo.api.retailmedia.v2023_04.Configuration;
+import com.criteo.api.retailmedia.v2023_04.auth.*;
+import com.criteo.api.retailmedia.v2023_04.model.*;
+import com.criteo.api.retailmedia.v2023_04.api.AnalyticsApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
+        String reportId = "reportId_example"; // String | The ID of the report to retrieve
+        try {
+            String result = apiInstance.getAsyncExportOutput(reportId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AnalyticsApi#getAsyncExportOutput");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **reportId** | **String**| The ID of the report to retrieve | |
 
 ### Return type
 
@@ -91,25 +273,24 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/octet-stream
+- **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The output |  * Content-Disposition - Returns a filename for the output <br>  |
-| **401** | Missing Authorization or token invalid |  -  |
-| **403** | Must have access to RetailMedia accounts |  -  |
-| **404** | ReportId not found |  -  |
+| **200** | Success |  -  |
+| **400** | Bad Request |  -  |
+| **403** | Forbidden |  -  |
 
 
-## getReportStatus
+## getAsyncExportStatus
 
-> EnvelopeReportStatus getReportStatus(reportId)
+> AsyncReportResponse getAsyncExportStatus(reportId)
 
 
 
-Get the status of the report
+Returns the status of an async report
 
 ### Example
 
@@ -150,12 +331,12 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
-        String reportId = "reportId_example"; // String | report id
+        String reportId = "reportId_example"; // String | The ID of the report to retrieve
         try {
-            EnvelopeReportStatus result = apiInstance.getReportStatus(reportId);
+            AsyncReportResponse result = apiInstance.getAsyncExportStatus(reportId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AnalyticsApi#getReportStatus");
+            System.err.println("Exception when calling AnalyticsApi#getAsyncExportStatus");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -170,11 +351,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **reportId** | **String**| report id | |
+| **reportId** | **String**| The ID of the report to retrieve | |
 
 ### Return type
 
-[**EnvelopeReportStatus**](EnvelopeReportStatus.md)
+[**AsyncReportResponse**](AsyncReportResponse.md)
 
 ### Authorization
 
@@ -183,198 +364,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Returns the status of the report |  -  |
-| **401** | Missing Authorization or token invalid |  -  |
-| **403** | Must have access to RetailMedia accounts |  -  |
-| **404** | ReportId not found |  -  |
-
-
-## requestCampaignReport
-
-> EnvelopeReportStatus requestCampaignReport(envelopeReportRequest)
-
-
-
-Request a campaign report
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2023_04;
-
-import com.criteo.api.retailmedia.v2023_04.ApiClient;
-import com.criteo.api.retailmedia.v2023_04.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2023_04.ApiException;
-import com.criteo.api.retailmedia.v2023_04.Configuration;
-import com.criteo.api.retailmedia.v2023_04.auth.*;
-import com.criteo.api.retailmedia.v2023_04.model.*;
-import com.criteo.api.retailmedia.v2023_04.api.AnalyticsApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
-        EnvelopeReportRequest envelopeReportRequest = new EnvelopeReportRequest(); // EnvelopeReportRequest | Envelope of the request
-        try {
-            EnvelopeReportStatus result = apiInstance.requestCampaignReport(envelopeReportRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AnalyticsApi#requestCampaignReport");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **envelopeReportRequest** | [**EnvelopeReportRequest**](EnvelopeReportRequest.md)| Envelope of the request | |
-
-### Return type
-
-[**EnvelopeReportStatus**](EnvelopeReportStatus.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Returns the status of the report |  -  |
-| **400** | Bad request |  -  |
-| **401** | Missing Authorization or token invalid |  -  |
-| **403** | Must have access to RetailMedia accounts |  -  |
-
-
-## requestLineItemReport
-
-> EnvelopeReportStatus requestLineItemReport(envelopeReportRequest)
-
-
-
-Request a line item report
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2023_04;
-
-import com.criteo.api.retailmedia.v2023_04.ApiClient;
-import com.criteo.api.retailmedia.v2023_04.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2023_04.ApiException;
-import com.criteo.api.retailmedia.v2023_04.Configuration;
-import com.criteo.api.retailmedia.v2023_04.auth.*;
-import com.criteo.api.retailmedia.v2023_04.model.*;
-import com.criteo.api.retailmedia.v2023_04.api.AnalyticsApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
-        EnvelopeReportRequest envelopeReportRequest = new EnvelopeReportRequest(); // EnvelopeReportRequest | Envelope of the request
-        try {
-            EnvelopeReportStatus result = apiInstance.requestLineItemReport(envelopeReportRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AnalyticsApi#requestLineItemReport");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **envelopeReportRequest** | [**EnvelopeReportRequest**](EnvelopeReportRequest.md)| Envelope of the request | |
-
-### Return type
-
-[**EnvelopeReportStatus**](EnvelopeReportStatus.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Returns the status of the report |  -  |
-| **400** | Bad request |  -  |
-| **401** | Missing Authorization or token invalid |  -  |
-| **403** | Must have access to RetailMedia accounts |  -  |
+| **200** | Success |  -  |
+| **400** | Bad Request |  -  |
+| **403** | Forbidden |  -  |
 

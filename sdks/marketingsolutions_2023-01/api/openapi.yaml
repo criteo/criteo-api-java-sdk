@@ -257,7 +257,7 @@ paths:
       x-accepts: application/json
   /2023-01/audiences/{audience-id}/contactlist:
     delete:
-      description: delete all identifiers from an Audience
+      description: Delete all identifiers from a contact list audience-segment.
       operationId: deleteIdentifiers
       parameters:
       - description: The id of the audience to amend
@@ -313,7 +313,7 @@ paths:
       - Audience
       x-accepts: application/json
     patch:
-      description: Add/remove users to or from an audience
+      description: Add/remove users to or from a contact list audience-segment.
       operationId: modifyAudienceUsers
       parameters:
       - description: The id of the audience to amend

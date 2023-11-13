@@ -770,7 +770,7 @@ public class Example {
 
 
 
-Delete all identifiers from a Contact List Audience Segment
+Delete all identifiers from a contact list audience-segment.
 
 ### Example
 
@@ -811,7 +811,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
-        String audienceSegmentId = "audienceSegmentId_example"; // String | The ID of the Audience Segment to amend
+        String audienceSegmentId = "audienceSegmentId_example"; // String | The id of the contact list audience-segment to amend
         try {
             DeleteAudienceContactListResponse result = apiInstance.deleteContactListIdentifiers(audienceSegmentId);
             System.out.println(result);
@@ -831,7 +831,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **audienceSegmentId** | **String**| The ID of the Audience Segment to amend | |
+| **audienceSegmentId** | **String**| The id of the contact list audience-segment to amend | |
 
 ### Return type
 
@@ -1412,7 +1412,7 @@ public class Example {
 
 
 
-Add/remove users to or from an audience
+Add/remove identifiers to or from a contact list.
 
 ### Example
 
@@ -1453,7 +1453,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
-        String audienceId = "audienceId_example"; // String | The id of the audience to amend
+        String audienceId = "audienceId_example"; // String | The id of the contact list audience-segment to amend
         ContactlistWithAttributesAmendmentRequest contactlistWithAttributesAmendmentRequest = new ContactlistWithAttributesAmendmentRequest(); // ContactlistWithAttributesAmendmentRequest | 
         try {
             ModifyAudienceResponse result = apiInstance.modifyAudienceUsersWithAttributes(audienceId, contactlistWithAttributesAmendmentRequest);
@@ -1474,7 +1474,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **audienceId** | **String**| The id of the audience to amend | |
+| **audienceId** | **String**| The id of the contact list audience-segment to amend | |
 | **contactlistWithAttributesAmendmentRequest** | [**ContactlistWithAttributesAmendmentRequest**](ContactlistWithAttributesAmendmentRequest.md)|  | |
 
 ### Return type
@@ -1787,7 +1787,7 @@ null (empty response body)
 
 
 
-Add/remove identifiers to or from an Contact List Audience Segment
+Add/remove identifiers to or from a contact list audience-segment.
 
 ### Example
 
@@ -1828,7 +1828,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
-        String audienceSegmentId = "audienceSegmentId_example"; // String | The ID of the Audience Segment to amend
+        String audienceSegmentId = "audienceSegmentId_example"; // String | The id of the contact list audience-segment to amend
         ContactlistAmendmentRequest contactlistAmendmentRequest = new ContactlistAmendmentRequest(); // ContactlistAmendmentRequest | 
         try {
             ModifyAudienceResponse result = apiInstance.updateContactListIdentifiers(audienceSegmentId, contactlistAmendmentRequest);
@@ -1849,7 +1849,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **audienceSegmentId** | **String**| The ID of the Audience Segment to amend | |
+| **audienceSegmentId** | **String**| The id of the contact list audience-segment to amend | |
 | **contactlistAmendmentRequest** | [**ContactlistAmendmentRequest**](ContactlistAmendmentRequest.md)|  | |
 
 ### Return type

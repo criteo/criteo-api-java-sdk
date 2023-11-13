@@ -15,7 +15,7 @@ A Retail Media Balance used to determine the funds available for any or all camp
 |**spent** | **BigDecimal** |  |  |
 |**remaining** | **BigDecimal** |  |  |
 |**startDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
-|**endDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
+|**endDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  [optional] |
 |**status** | [**StatusEnum**](#StatusEnum) |  |  |
 |**createdAt** | **OffsetDateTime** |  |  |
 |**updatedAt** | **OffsetDateTime** |  |  |

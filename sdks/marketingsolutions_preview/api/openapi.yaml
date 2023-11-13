@@ -10,10 +10,10 @@ security:
 paths:
   /preview/audiences/{audience-id}/contactlist-attributes:
     patch:
-      description: Add/remove users to or from an audience
+      description: Add/remove identifiers to or from a contact list.
       operationId: modifyAudienceUsersWithAttributes
       parameters:
-      - description: The id of the audience to amend
+      - description: The id of the contact list audience-segment to amend
         explode: false
         in: path
         name: audience-id
@@ -58,10 +58,10 @@ paths:
       x-accepts: application/json
   /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list:
     delete:
-      description: Delete all identifiers from a Contact List Audience Segment
+      description: Delete all identifiers from a contact list audience-segment.
       operationId: deleteContactListIdentifiers
       parameters:
-      - description: The ID of the Audience Segment to amend
+      - description: The id of the contact list audience-segment to amend
         explode: false
         in: path
         name: audience-segment-id
@@ -155,10 +155,10 @@ paths:
       - Audience
       x-accepts: application/json
     patch:
-      description: Add/remove identifiers to or from an Contact List Audience Segment
+      description: Add/remove identifiers to or from a contact list audience-segment.
       operationId: updateContactListIdentifiers
       parameters:
-      - description: The ID of the Audience Segment to amend
+      - description: The id of the contact list audience-segment to amend
         explode: false
         in: path
         name: audience-segment-id
@@ -4795,39 +4795,6 @@ paths:
           description: Internal Error
       tags:
       - Reco
-      x-accepts: application/json
-  /preview/product-sets/preview:
-    post:
-      description: Display a preview of product set rules
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProductSetStatisticsQuery'
-        required: true
-        x-bodyName: body
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OkResponse'
-          description: Success
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PreviewFailResponse'
-          description: Authorization Error
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PreviewFailResponse'
-          description: Internal Error
-      tags:
-      - Reco
-      x-content-type: application/json
       x-accepts: application/json
   /preview/recommendation/search:
     post:
@@ -21225,6 +21192,7 @@ components:
             - includedDestinations
             - includedDestinations
             transitTimeLabel: transitTimeLabel
+            numberOfReviews: 1
             customLabel3: customLabel3
             channel: online
             taxes:
@@ -21242,6 +21210,7 @@ components:
               taxShip: true
             availabilityDate: availabilityDate
             source: source
+            externalSellerId: externalSellerId
             loyaltyPoints:
               name: name
               pointsValue: 9
@@ -21284,6 +21253,7 @@ components:
             - displayAdsSimilarIds
             - displayAdsSimilarIds
             id: id
+            productRating: productRating
             brand: brand
             sizeType: sizeType
             sizeSystem: sizeSystem
@@ -21302,6 +21272,7 @@ components:
             targetCountry: targetCountry
             taxCategory: taxCategory
             condition: condition
+            externalSellerName: externalSellerName
             minEnergyEfficiencyClass: minEnergyEfficiencyClass
             installment:
               amount:
@@ -21383,6 +21354,7 @@ components:
             - includedDestinations
             - includedDestinations
             transitTimeLabel: transitTimeLabel
+            numberOfReviews: 1
             customLabel3: customLabel3
             channel: online
             taxes:
@@ -21400,6 +21372,7 @@ components:
               taxShip: true
             availabilityDate: availabilityDate
             source: source
+            externalSellerId: externalSellerId
             loyaltyPoints:
               name: name
               pointsValue: 9
@@ -21442,6 +21415,7 @@ components:
             - displayAdsSimilarIds
             - displayAdsSimilarIds
             id: id
+            productRating: productRating
             brand: brand
             sizeType: sizeType
             sizeSystem: sizeSystem
@@ -21460,6 +21434,7 @@ components:
             targetCountry: targetCountry
             taxCategory: taxCategory
             condition: condition
+            externalSellerName: externalSellerName
             minEnergyEfficiencyClass: minEnergyEfficiencyClass
             installment:
               amount:
@@ -21576,6 +21551,7 @@ components:
           - includedDestinations
           - includedDestinations
           transitTimeLabel: transitTimeLabel
+          numberOfReviews: 1
           customLabel3: customLabel3
           channel: online
           taxes:
@@ -21593,6 +21569,7 @@ components:
             taxShip: true
           availabilityDate: availabilityDate
           source: source
+          externalSellerId: externalSellerId
           loyaltyPoints:
             name: name
             pointsValue: 9
@@ -21635,6 +21612,7 @@ components:
           - displayAdsSimilarIds
           - displayAdsSimilarIds
           id: id
+          productRating: productRating
           brand: brand
           sizeType: sizeType
           sizeSystem: sizeSystem
@@ -21653,6 +21631,7 @@ components:
           targetCountry: targetCountry
           taxCategory: taxCategory
           condition: condition
+          externalSellerName: externalSellerName
           minEnergyEfficiencyClass: minEnergyEfficiencyClass
           installment:
             amount:
@@ -21806,6 +21785,7 @@ components:
         - includedDestinations
         - includedDestinations
         transitTimeLabel: transitTimeLabel
+        numberOfReviews: 1
         customLabel3: customLabel3
         channel: online
         taxes:
@@ -21823,6 +21803,7 @@ components:
           taxShip: true
         availabilityDate: availabilityDate
         source: source
+        externalSellerId: externalSellerId
         loyaltyPoints:
           name: name
           pointsValue: 9
@@ -21865,6 +21846,7 @@ components:
         - displayAdsSimilarIds
         - displayAdsSimilarIds
         id: id
+        productRating: productRating
         brand: brand
         sizeType: sizeType
         sizeSystem: sizeSystem
@@ -21883,6 +21865,7 @@ components:
         targetCountry: targetCountry
         taxCategory: taxCategory
         condition: condition
+        externalSellerName: externalSellerName
         minEnergyEfficiencyClass: minEnergyEfficiencyClass
         installment:
           amount:
@@ -22280,8 +22263,30 @@ components:
           nullable: true
           type: string
         sellerId:
-          description: The ID of the seller (case sensitive and 50 UTF8 characters
+          description: Deprecated field. It should be replaced by externalSellerId.
+            The external ID of the seller (case sensitive and 50 UTF8 characters max).
+            This information is required by the Criteo Offsite Ads.
+          nullable: true
+          type: string
+        externalSellerId:
+          description: The external id of the seller (case sensitive and 50 UTF8 characters
             max). This information is required by the Criteo Offsite Ads.
+          nullable: true
+          type: string
+        externalSellerName:
+          description: The external name of the seller (case sensitive and 750 UTF8
+            characters max). This information is required by the Criteo Offsite Ads.
+          nullable: true
+          type: string
+        numberOfReviews:
+          description: The number of reviews for the product. This information is
+            required by the Criteo Offsite Ads.
+          format: int32
+          nullable: true
+          type: integer
+        productRating:
+          description: The rating of the product. This information is required by
+            the Criteo Offsite Ads.
           nullable: true
           type: string
       required:
@@ -22972,271 +22977,6 @@ components:
           type: array
           uniqueItems: false
       type: object
-    OkResponse:
-      description: Successful server response.
-      example:
-        data:
-          sampleProducts:
-          - sampleProducts
-          - sampleProducts
-          productCount: 0
-          totalProductCount: 6
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          type: type
-          title: title
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          type: type
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ProductSetStatistics'
-        warnings:
-          description: List of warnings
-          items:
-            $ref: '#/components/schemas/PreviewWarning'
-          type: array
-      required:
-      - data
-      - warnings
-      type: object
-    PreviewFailResponse:
-      description: Error server response.
-      properties:
-        errors:
-          description: List of errors
-          items:
-            $ref: '#/components/schemas/PreviewError'
-          type: array
-        warnings:
-          description: List of warnings
-          items:
-            $ref: '#/components/schemas/PreviewWarning'
-          type: array
-      required:
-      - errors
-      - warnings
-      type: object
-    ProductSetStatisticsQuery:
-      description: ProductSet statistics preview request
-      example:
-        productSampleCount: 5
-        productSet:
-          rules:
-          - field: Brand
-            values:
-            - values
-            - values
-            operator: IsIn
-          - field: Brand
-            values:
-            - values
-            - values
-            operator: IsIn
-          partnerId: 123
-      properties:
-        productSet:
-          $ref: '#/components/schemas/ProductSetPreview'
-        productSampleCount:
-          description: The size of the products sample
-          example: 5
-          format: int32
-          type: integer
-      required:
-      - productSampleCount
-      - productSet
-      type: object
-    ProductSetStatistics:
-      description: ProductSet statistics preview response
-      example:
-        sampleProducts:
-        - sampleProducts
-        - sampleProducts
-        productCount: 0
-        totalProductCount: 6
-      properties:
-        productCount:
-          description: Number of products in the product set
-          format: int64
-          type: integer
-        totalProductCount:
-          description: Number of products in the partner's catalog
-          format: int64
-          type: integer
-        sampleProducts:
-          description: A sample of products (hashed external id) contained in the
-            product set
-          items:
-            type: string
-          type: array
-      required:
-      - productCount
-      - sampleProducts
-      - totalProductCount
-      type: object
-    PreviewWarning:
-      description: Warning descriptor.
-      example:
-        traceId: traceId
-        code: code
-        instance: instance
-        detail: detail
-        type: type
-        title: title
-      properties:
-        traceId:
-          description: The MACHINE-READABLE correlation ID provided by the gateway
-          type: string
-        type:
-          description: "A MACHINE-READABLE code specifying error category. This information\
-            \ is used on client side to focus on certain type of error, to either\
-            \ retry some processing or display only certain type of errors."
-          type: string
-        code:
-          description: A MACHINE-READABLE error code string in kebab-case. Unique
-            across Criteo
-          type: string
-        instance:
-          description: A MACHINE-READABLE URI reference that identifies the specific
-            occurrence of the problem. This could be useful when we want to the return
-            the API Endpoint identifying the exact resource related to the error.
-          type: string
-        title:
-          description: "A short, HUMAN-READABLE summary of the problem type. It should\
-            \ not change from occurrence to occurrence of the problem, except for\
-            \ purposes of localization."
-          type: string
-        detail:
-          description: A HUMAN-READABLE detailed explanation specific to this occurrence
-            of the problem. This should not be more that 1 paragraph
-          type: string
-      required:
-      - code
-      - detail
-      - instance
-      - title
-      - traceId
-      - type
-      type: object
-    PreviewError:
-      description: Error descriptor.
-      properties:
-        traceId:
-          description: The MACHINE-READABLE correlation ID provided by the gateway
-          type: string
-        type:
-          description: "A MACHINE-READABLE code specifying error category. This information\
-            \ is used on client side to focus on certain type of error, to either\
-            \ retry some processing or display only certain type of errors."
-          type: string
-        code:
-          description: A MACHINE-READABLE error code string in kebab-case. Unique
-            across Criteo
-          type: string
-        instance:
-          description: A MACHINE-READABLE URI reference that identifies the specific
-            occurrence of the problem. This could be useful when we want to the return
-            the API Endpoint identifying the exact resource related to the error.
-          type: string
-        title:
-          description: "A short, HUMAN-READABLE summary of the problem type. It should\
-            \ not change from occurrence to occurrence of the problem, except for\
-            \ purposes of localization."
-          type: string
-        detail:
-          description: A HUMAN-READABLE detailed explanation specific to this occurrence
-            of the problem. This should not be more that 1 paragraph
-          type: string
-      required:
-      - code
-      - detail
-      - instance
-      - title
-      - traceId
-      - type
-      type: object
-    ProductSetPreview:
-      description: ProductSet preview schema
-      example:
-        rules:
-        - field: Brand
-          values:
-          - values
-          - values
-          operator: IsIn
-        - field: Brand
-          values:
-          - values
-          - values
-          operator: IsIn
-        partnerId: 123
-      properties:
-        partnerId:
-          description: PartnerId
-          example: 123
-          format: int32
-          type: integer
-        rules:
-          description: ProductSet rules
-          items:
-            $ref: '#/components/schemas/Rules'
-          type: array
-      required:
-      - partnerId
-      - rules
-      type: object
-    Rules:
-      description: ProductSet rule
-      example:
-        field: Brand
-        values:
-        - values
-        - values
-        operator: IsIn
-      properties:
-        field:
-          enum:
-          - Brand
-          - Category1
-          - Category2
-          - Category3
-          - CustomLabel0
-          - CustomLabel1
-          - CustomLabel2
-          - CustomLabel3
-          - CustomLabel4
-          - ExternalItemId
-          - RetailPrice
-          - SalePrice
-          example: Brand
-          type: string
-        operator:
-          enum:
-          - Between
-          - EqualTo
-          - GreaterThan
-          - IsIn
-          - IsNotIn
-          - LessThan
-          - NotBetween
-          - NotEqualTo
-          example: IsIn
-          type: string
-        values:
-          items:
-            type: string
-          nullable: true
-          type: array
-      required:
-      - field
-      - operator
-      type: object
     OnSiteRecoResponse:
       description: Recommendation response.
       example:
@@ -23246,6 +22986,7 @@ components:
           price: 0.8008281904610115
           imageUrl: imageUrl
           name: name
+          retailprice: 6.027456183070403
           googleCategory: googleCategory
           description: description
         - clickUrl: clickUrl
@@ -23253,11 +22994,12 @@ components:
           price: 0.8008281904610115
           imageUrl: imageUrl
           name: name
+          retailprice: 6.027456183070403
           googleCategory: googleCategory
           description: description
         extraInfos:
-        - 6
-        - 6
+        - 1
+        - 1
       properties:
         products:
           description: Recommended products
@@ -23276,18 +23018,11 @@ components:
     OnSiteRecoRequest:
       description: Recommendation request parameters.
       example:
-        adId: 5
+        adId: 1
         identityType: CtoBundle
         nbRequestedProducts: 0
-        adSetId: 1
+        adSetId: 6
         partnerId: 5
-        userEvents:
-        - dateTime: 2000-01-23T04:56:07.000+00:00
-          productExternalId: productExternalId
-          type: 6
-        - dateTime: 2000-01-23T04:56:07.000+00:00
-          productExternalId: productExternalId
-          type: 6
         userId: userId
       properties:
         nbRequestedProducts:
@@ -23295,26 +23030,18 @@ components:
           format: int32
           type: integer
         userId:
-          description: Used to retrieve user events from Criteo trackers. Optional
-            if UserEvents are passed.
+          description: Used to retrieve user events from Criteo trackers.
           nullable: true
           type: string
         identityType:
-          description: "Type of the user identifier (cto_bundle, Idfa, Gaid...)\r\n\
-            Optional if UserId is not set or if its type is cto_bundle"
+          description: "Type of the user identifier (CtoBundle, Idfa, Gaid...)\r\n\
+            Optional if its type is CtoBundle"
           enum:
           - CtoBundle
           - Idfa
           - Gaid
           nullable: true
           type: string
-        userEvents:
-          description: Used to perform a recommendation without relying on events
-            stored for a UserId. Optional if UserId is passed.
-          items:
-            $ref: '#/components/schemas/UserEvent'
-          nullable: true
-          type: array
         adSetId:
           description: Id of the AdSet. This field is optional and is resolved automatically
             for adsets previously configured.
@@ -23343,6 +23070,7 @@ components:
         price: 0.8008281904610115
         imageUrl: imageUrl
         name: name
+        retailprice: 6.027456183070403
         googleCategory: googleCategory
         description: description
       properties:
@@ -23372,39 +23100,15 @@ components:
           format: double
           nullable: true
           type: number
+        retailprice:
+          description: Product retail price.
+          format: double
+          nullable: true
+          type: number
         googleCategory:
           description: Product google category.
           nullable: true
           type: string
-      type: object
-    UserEvent:
-      description: Represents an event where user has interacted with a product.
-      example:
-        dateTime: 2000-01-23T04:56:07.000+00:00
-        productExternalId: productExternalId
-        type: 6
-      properties:
-        productExternalId:
-          description: Product external id.
-          type: string
-        type:
-          description: "Event type e.g. page view, sale..."
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          format: int32
-          type: integer
-        dateTime:
-          description: "Event date (format : 2012-04-23T18:25:43.511Z)"
-          format: date-time
-          type: string
-      required:
-      - dateTime
-      - productExternalId
-      - type
       type: object
     TargetType:
       description: Defines a target for a rule

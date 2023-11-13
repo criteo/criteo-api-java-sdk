@@ -280,7 +280,7 @@ public class AudienceApi {
 
     /**
      * 
-     * delete all identifiers from an Audience
+     * Delete all identifiers from a contact list audience-segment.
      * @param audienceId The id of the audience to amend (required)
      * @return DeleteAudienceContactListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -298,7 +298,7 @@ public class AudienceApi {
 
     /**
      * 
-     * delete all identifiers from an Audience
+     * Delete all identifiers from a contact list audience-segment.
      * @param audienceId The id of the audience to amend (required)
      * @return ApiResponse&lt;DeleteAudienceContactListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -317,7 +317,7 @@ public class AudienceApi {
 
     /**
      *  (asynchronously)
-     * delete all identifiers from an Audience
+     * Delete all identifiers from a contact list audience-segment.
      * @param audienceId The id of the audience to amend (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -677,7 +677,7 @@ public class AudienceApi {
 
     /**
      * 
-     * Add/remove users to or from an audience
+     * Add/remove users to or from a contact list audience-segment.
      * @param audienceId The id of the audience to amend (required)
      * @param contactlistAmendmentRequest  (required)
      * @return ModifyAudienceResponse
@@ -697,7 +697,7 @@ public class AudienceApi {
 
     /**
      * 
-     * Add/remove users to or from an audience
+     * Add/remove users to or from a contact list audience-segment.
      * @param audienceId The id of the audience to amend (required)
      * @param contactlistAmendmentRequest  (required)
      * @return ApiResponse&lt;ModifyAudienceResponse&gt;
@@ -718,7 +718,7 @@ public class AudienceApi {
 
     /**
      *  (asynchronously)
-     * Add/remove users to or from an audience
+     * Add/remove users to or from a contact list audience-segment.
      * @param audienceId The id of the audience to amend (required)
      * @param contactlistAmendmentRequest  (required)
      * @param _callback The callback to be executed when the API call finishes

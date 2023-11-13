@@ -410,6 +410,22 @@ public class Product {
   @SerializedName(SERIALIZED_NAME_SELLER_ID)
   private String sellerId;
 
+  public static final String SERIALIZED_NAME_EXTERNAL_SELLER_ID = "externalSellerId";
+  @SerializedName(SERIALIZED_NAME_EXTERNAL_SELLER_ID)
+  private String externalSellerId;
+
+  public static final String SERIALIZED_NAME_EXTERNAL_SELLER_NAME = "externalSellerName";
+  @SerializedName(SERIALIZED_NAME_EXTERNAL_SELLER_NAME)
+  private String externalSellerName;
+
+  public static final String SERIALIZED_NAME_NUMBER_OF_REVIEWS = "numberOfReviews";
+  @SerializedName(SERIALIZED_NAME_NUMBER_OF_REVIEWS)
+  private Integer numberOfReviews;
+
+  public static final String SERIALIZED_NAME_PRODUCT_RATING = "productRating";
+  @SerializedName(SERIALIZED_NAME_PRODUCT_RATING)
+  private String productRating;
+
   public Product() {
   }
 
@@ -2158,7 +2174,7 @@ public class Product {
   }
 
    /**
-   * The ID of the seller (case sensitive and 50 UTF8 characters max). This information is required by the Criteo Offsite Ads.
+   * Deprecated field. It should be replaced by externalSellerId. The external ID of the seller (case sensitive and 50 UTF8 characters max). This information is required by the Criteo Offsite Ads.
    * @return sellerId
   **/
   @javax.annotation.Nullable
@@ -2170,6 +2186,94 @@ public class Product {
 
   public void setSellerId(String sellerId) {
     this.sellerId = sellerId;
+  }
+
+
+  public Product externalSellerId(String externalSellerId) {
+    
+    this.externalSellerId = externalSellerId;
+    return this;
+  }
+
+   /**
+   * The external id of the seller (case sensitive and 50 UTF8 characters max). This information is required by the Criteo Offsite Ads.
+   * @return externalSellerId
+  **/
+  @javax.annotation.Nullable
+
+  public String getExternalSellerId() {
+    return externalSellerId;
+  }
+
+
+  public void setExternalSellerId(String externalSellerId) {
+    this.externalSellerId = externalSellerId;
+  }
+
+
+  public Product externalSellerName(String externalSellerName) {
+    
+    this.externalSellerName = externalSellerName;
+    return this;
+  }
+
+   /**
+   * The external name of the seller (case sensitive and 750 UTF8 characters max). This information is required by the Criteo Offsite Ads.
+   * @return externalSellerName
+  **/
+  @javax.annotation.Nullable
+
+  public String getExternalSellerName() {
+    return externalSellerName;
+  }
+
+
+  public void setExternalSellerName(String externalSellerName) {
+    this.externalSellerName = externalSellerName;
+  }
+
+
+  public Product numberOfReviews(Integer numberOfReviews) {
+    
+    this.numberOfReviews = numberOfReviews;
+    return this;
+  }
+
+   /**
+   * The number of reviews for the product. This information is required by the Criteo Offsite Ads.
+   * @return numberOfReviews
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getNumberOfReviews() {
+    return numberOfReviews;
+  }
+
+
+  public void setNumberOfReviews(Integer numberOfReviews) {
+    this.numberOfReviews = numberOfReviews;
+  }
+
+
+  public Product productRating(String productRating) {
+    
+    this.productRating = productRating;
+    return this;
+  }
+
+   /**
+   * The rating of the product. This information is required by the Criteo Offsite Ads.
+   * @return productRating
+  **/
+  @javax.annotation.Nullable
+
+  public String getProductRating() {
+    return productRating;
+  }
+
+
+  public void setProductRating(String productRating) {
+    this.productRating = productRating;
   }
 
   /**
@@ -2302,7 +2406,11 @@ public class Product {
         Objects.equals(this.maxEnergyEfficiencyClass, product.maxEnergyEfficiencyClass) &&
         Objects.equals(this.taxCategory, product.taxCategory) &&
         Objects.equals(this.transitTimeLabel, product.transitTimeLabel) &&
-        Objects.equals(this.sellerId, product.sellerId)&&
+        Objects.equals(this.sellerId, product.sellerId) &&
+        Objects.equals(this.externalSellerId, product.externalSellerId) &&
+        Objects.equals(this.externalSellerName, product.externalSellerName) &&
+        Objects.equals(this.numberOfReviews, product.numberOfReviews) &&
+        Objects.equals(this.productRating, product.productRating)&&
         Objects.equals(this.additionalProperties, product.additionalProperties);
   }
 
@@ -2312,7 +2420,7 @@ public class Product {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, offerId, title, description, link, imageLink, additionalImageLinks, contentLanguage, targetCountry, channel, expirationDate, adult, kind, brand, color, googleProductCategory, gtin, itemGroupId, material, mpn, pattern, price, salePrice, salePriceEffectiveDate, shipping, shippingWeight, sizes, taxes, customAttributes, identifierExists, installment, loyaltyPoints, multipack, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, isBundle, mobileLink, availabilityDate, shippingLabel, unitPricingMeasure, unitPricingBaseMeasure, shippingLength, shippingWidth, shippingHeight, displayAdsId, displayAdsSimilarIds, displayAdsTitle, displayAdsLink, displayAdsValue, sellOnGoogleQuantity, promotionIds, maxHandlingTime, minHandlingTime, costOfGoodsSold, source, includedDestinations, excludedDestinations, adsGrouping, adsLabels, adsRedirect, productTypes, ageGroup, availability, condition, gender, sizeSystem, sizeType, energyEfficiencyClass, minEnergyEfficiencyClass, maxEnergyEfficiencyClass, taxCategory, transitTimeLabel, sellerId, additionalProperties);
+    return Objects.hash(id, offerId, title, description, link, imageLink, additionalImageLinks, contentLanguage, targetCountry, channel, expirationDate, adult, kind, brand, color, googleProductCategory, gtin, itemGroupId, material, mpn, pattern, price, salePrice, salePriceEffectiveDate, shipping, shippingWeight, sizes, taxes, customAttributes, identifierExists, installment, loyaltyPoints, multipack, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, isBundle, mobileLink, availabilityDate, shippingLabel, unitPricingMeasure, unitPricingBaseMeasure, shippingLength, shippingWidth, shippingHeight, displayAdsId, displayAdsSimilarIds, displayAdsTitle, displayAdsLink, displayAdsValue, sellOnGoogleQuantity, promotionIds, maxHandlingTime, minHandlingTime, costOfGoodsSold, source, includedDestinations, excludedDestinations, adsGrouping, adsLabels, adsRedirect, productTypes, ageGroup, availability, condition, gender, sizeSystem, sizeType, energyEfficiencyClass, minEnergyEfficiencyClass, maxEnergyEfficiencyClass, taxCategory, transitTimeLabel, sellerId, externalSellerId, externalSellerName, numberOfReviews, productRating, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -2402,6 +2510,10 @@ public class Product {
     sb.append("    taxCategory: ").append(toIndentedString(taxCategory)).append("\n");
     sb.append("    transitTimeLabel: ").append(toIndentedString(transitTimeLabel)).append("\n");
     sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
+    sb.append("    externalSellerId: ").append(toIndentedString(externalSellerId)).append("\n");
+    sb.append("    externalSellerName: ").append(toIndentedString(externalSellerName)).append("\n");
+    sb.append("    numberOfReviews: ").append(toIndentedString(numberOfReviews)).append("\n");
+    sb.append("    productRating: ").append(toIndentedString(productRating)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -2501,6 +2613,10 @@ public class Product {
     openapiFields.add("taxCategory");
     openapiFields.add("transitTimeLabel");
     openapiFields.add("sellerId");
+    openapiFields.add("externalSellerId");
+    openapiFields.add("externalSellerName");
+    openapiFields.add("numberOfReviews");
+    openapiFields.add("productRating");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -2785,6 +2901,15 @@ public class Product {
       }
       if ((jsonObj.get("sellerId") != null && !jsonObj.get("sellerId").isJsonNull()) && !jsonObj.get("sellerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sellerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sellerId").toString()));
+      }
+      if ((jsonObj.get("externalSellerId") != null && !jsonObj.get("externalSellerId").isJsonNull()) && !jsonObj.get("externalSellerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `externalSellerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("externalSellerId").toString()));
+      }
+      if ((jsonObj.get("externalSellerName") != null && !jsonObj.get("externalSellerName").isJsonNull()) && !jsonObj.get("externalSellerName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `externalSellerName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("externalSellerName").toString()));
+      }
+      if ((jsonObj.get("productRating") != null && !jsonObj.get("productRating").isJsonNull()) && !jsonObj.get("productRating").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `productRating` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productRating").toString()));
       }
   }
 

@@ -4,20 +4,20 @@ All URIs are relative to *https://api.criteo.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**generateAsyncCampaignReport**](AnalyticsApi.md#generateAsyncCampaignReport) | **POST** /2023-07/retail-media/reports/campaigns |  |
+| [**generateAsyncCampaignsReport**](AnalyticsApi.md#generateAsyncCampaignsReport) | **POST** /2023-07/retail-media/reports/campaigns |  |
 | [**generateAsyncLineItemsReport**](AnalyticsApi.md#generateAsyncLineItemsReport) | **POST** /2023-07/retail-media/reports/line-items |  |
 | [**getAsyncExportOutput**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /2023-07/retail-media/reports/{reportId}/output |  |
 | [**getAsyncExportStatus**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /2023-07/retail-media/reports/{reportId}/status |  |
 
 
 
-## generateAsyncCampaignReport
+## generateAsyncCampaignsReport
 
-> AsyncReportResponse generateAsyncCampaignReport(asyncCampaignReportRequest)
+> AsyncReportResponse generateAsyncCampaignsReport(asyncCampaignsReportRequest)
 
 
 
-Return an async Campaign Report
+Return an asynchronous Campaigns Report
 
 ### Example
 
@@ -58,12 +58,12 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
-        AsyncCampaignReportRequest asyncCampaignReportRequest = new AsyncCampaignReportRequest(); // AsyncCampaignReportRequest | 
+        AsyncCampaignsReportRequest asyncCampaignsReportRequest = new AsyncCampaignsReportRequest(); // AsyncCampaignsReportRequest | 
         try {
-            AsyncReportResponse result = apiInstance.generateAsyncCampaignReport(asyncCampaignReportRequest);
+            AsyncReportResponse result = apiInstance.generateAsyncCampaignsReport(asyncCampaignsReportRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AnalyticsApi#generateAsyncCampaignReport");
+            System.err.println("Exception when calling AnalyticsApi#generateAsyncCampaignsReport");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -78,7 +78,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asyncCampaignReportRequest** | [**AsyncCampaignReportRequest**](AsyncCampaignReportRequest.md)|  | |
+| **asyncCampaignsReportRequest** | [**AsyncCampaignsReportRequest**](AsyncCampaignsReportRequest.md)|  | |
 
 ### Return type
 
@@ -104,11 +104,11 @@ public class Example {
 
 ## generateAsyncLineItemsReport
 
-> AsyncReportResponse generateAsyncLineItemsReport(asyncLineItemReportRequest)
+> AsyncReportResponse generateAsyncLineItemsReport(asyncLineItemsReportRequest)
 
 
 
-Return an async Line Item Report
+Returns an asynchronous Line Items Report
 
 ### Example
 
@@ -149,9 +149,9 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
-        AsyncLineItemReportRequest asyncLineItemReportRequest = new AsyncLineItemReportRequest(); // AsyncLineItemReportRequest | 
+        AsyncLineItemsReportRequest asyncLineItemsReportRequest = new AsyncLineItemsReportRequest(); // AsyncLineItemsReportRequest | 
         try {
-            AsyncReportResponse result = apiInstance.generateAsyncLineItemsReport(asyncLineItemReportRequest);
+            AsyncReportResponse result = apiInstance.generateAsyncLineItemsReport(asyncLineItemsReportRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalyticsApi#generateAsyncLineItemsReport");
@@ -169,7 +169,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asyncLineItemReportRequest** | [**AsyncLineItemReportRequest**](AsyncLineItemReportRequest.md)|  | |
+| **asyncLineItemsReportRequest** | [**AsyncLineItemsReportRequest**](AsyncLineItemsReportRequest.md)|  | |
 
 ### Return type
 
@@ -199,7 +199,7 @@ public class Example {
 
 
 
-Return the output of an async report
+Returns the output of an async report
 
 ### Example
 
@@ -290,7 +290,7 @@ public class Example {
 
 
 
-Return the status of an async report
+Returns the status of an async report
 
 ### Example
 

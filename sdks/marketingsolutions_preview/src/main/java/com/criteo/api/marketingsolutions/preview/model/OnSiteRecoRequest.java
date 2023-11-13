@@ -15,15 +15,12 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.UserEvent;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -61,7 +58,7 @@ public class OnSiteRecoRequest {
   private String userId;
 
   /**
-   * Type of the user identifier (cto_bundle, Idfa, Gaid...)  Optional if UserId is not set or if its type is cto_bundle
+   * Type of the user identifier (CtoBundle, Idfa, Gaid...)  Optional if its type is CtoBundle
    */
   @JsonAdapter(IdentityTypeEnum.Adapter.class)
   public enum IdentityTypeEnum {
@@ -113,10 +110,6 @@ public class OnSiteRecoRequest {
   @SerializedName(SERIALIZED_NAME_IDENTITY_TYPE)
   private IdentityTypeEnum identityType;
 
-  public static final String SERIALIZED_NAME_USER_EVENTS = "userEvents";
-  @SerializedName(SERIALIZED_NAME_USER_EVENTS)
-  private List<UserEvent> userEvents = null;
-
   public static final String SERIALIZED_NAME_AD_SET_ID = "adSetId";
   @SerializedName(SERIALIZED_NAME_AD_SET_ID)
   private Integer adSetId;
@@ -161,7 +154,7 @@ public class OnSiteRecoRequest {
   }
 
    /**
-   * Used to retrieve user events from Criteo trackers. Optional if UserEvents are passed.
+   * Used to retrieve user events from Criteo trackers.
    * @return userId
   **/
   @javax.annotation.Nullable
@@ -183,7 +176,7 @@ public class OnSiteRecoRequest {
   }
 
    /**
-   * Type of the user identifier (cto_bundle, Idfa, Gaid...)  Optional if UserId is not set or if its type is cto_bundle
+   * Type of the user identifier (CtoBundle, Idfa, Gaid...)  Optional if its type is CtoBundle
    * @return identityType
   **/
   @javax.annotation.Nullable
@@ -195,36 +188,6 @@ public class OnSiteRecoRequest {
 
   public void setIdentityType(IdentityTypeEnum identityType) {
     this.identityType = identityType;
-  }
-
-
-  public OnSiteRecoRequest userEvents(List<UserEvent> userEvents) {
-    
-    this.userEvents = userEvents;
-    return this;
-  }
-
-  public OnSiteRecoRequest addUserEventsItem(UserEvent userEventsItem) {
-    if (this.userEvents == null) {
-      this.userEvents = null;
-    }
-    this.userEvents.add(userEventsItem);
-    return this;
-  }
-
-   /**
-   * Used to perform a recommendation without relying on events stored for a UserId. Optional if UserId is passed.
-   * @return userEvents
-  **/
-  @javax.annotation.Nullable
-
-  public List<UserEvent> getUserEvents() {
-    return userEvents;
-  }
-
-
-  public void setUserEvents(List<UserEvent> userEvents) {
-    this.userEvents = userEvents;
   }
 
 
@@ -351,7 +314,6 @@ public class OnSiteRecoRequest {
     return Objects.equals(this.nbRequestedProducts, onSiteRecoRequest.nbRequestedProducts) &&
         Objects.equals(this.userId, onSiteRecoRequest.userId) &&
         Objects.equals(this.identityType, onSiteRecoRequest.identityType) &&
-        Objects.equals(this.userEvents, onSiteRecoRequest.userEvents) &&
         Objects.equals(this.adSetId, onSiteRecoRequest.adSetId) &&
         Objects.equals(this.adId, onSiteRecoRequest.adId) &&
         Objects.equals(this.partnerId, onSiteRecoRequest.partnerId)&&
@@ -364,7 +326,7 @@ public class OnSiteRecoRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(nbRequestedProducts, userId, identityType, userEvents, adSetId, adId, partnerId, additionalProperties);
+    return Objects.hash(nbRequestedProducts, userId, identityType, adSetId, adId, partnerId, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -381,7 +343,6 @@ public class OnSiteRecoRequest {
     sb.append("    nbRequestedProducts: ").append(toIndentedString(nbRequestedProducts)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    identityType: ").append(toIndentedString(identityType)).append("\n");
-    sb.append("    userEvents: ").append(toIndentedString(userEvents)).append("\n");
     sb.append("    adSetId: ").append(toIndentedString(adSetId)).append("\n");
     sb.append("    adId: ").append(toIndentedString(adId)).append("\n");
     sb.append("    partnerId: ").append(toIndentedString(partnerId)).append("\n");
@@ -411,7 +372,6 @@ public class OnSiteRecoRequest {
     openapiFields.add("nbRequestedProducts");
     openapiFields.add("userId");
     openapiFields.add("identityType");
-    openapiFields.add("userEvents");
     openapiFields.add("adSetId");
     openapiFields.add("adId");
     openapiFields.add("partnerId");
@@ -446,20 +406,6 @@ public class OnSiteRecoRequest {
       }
       if ((jsonObj.get("identityType") != null && !jsonObj.get("identityType").isJsonNull()) && !jsonObj.get("identityType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `identityType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identityType").toString()));
-      }
-      if (jsonObj.get("userEvents") != null && !jsonObj.get("userEvents").isJsonNull()) {
-        JsonArray jsonArrayuserEvents = jsonObj.getAsJsonArray("userEvents");
-        if (jsonArrayuserEvents != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("userEvents").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `userEvents` to be an array in the JSON string but got `%s`", jsonObj.get("userEvents").toString()));
-          }
-
-          // validate the optional field `userEvents` (array)
-          for (int i = 0; i < jsonArrayuserEvents.size(); i++) {
-            UserEvent.validateJsonObject(jsonArrayuserEvents.get(i).getAsJsonObject());
-          };
-        }
       }
   }
 

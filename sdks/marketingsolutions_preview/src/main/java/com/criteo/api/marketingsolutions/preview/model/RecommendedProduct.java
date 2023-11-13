@@ -73,6 +73,10 @@ public class RecommendedProduct {
   @SerializedName(SERIALIZED_NAME_PRICE)
   private Double price;
 
+  public static final String SERIALIZED_NAME_RETAILPRICE = "retailprice";
+  @SerializedName(SERIALIZED_NAME_RETAILPRICE)
+  private Double retailprice;
+
   public static final String SERIALIZED_NAME_GOOGLE_CATEGORY = "googleCategory";
   @SerializedName(SERIALIZED_NAME_GOOGLE_CATEGORY)
   private String googleCategory;
@@ -212,6 +216,28 @@ public class RecommendedProduct {
   }
 
 
+  public RecommendedProduct retailprice(Double retailprice) {
+    
+    this.retailprice = retailprice;
+    return this;
+  }
+
+   /**
+   * Product retail price.
+   * @return retailprice
+  **/
+  @javax.annotation.Nullable
+
+  public Double getRetailprice() {
+    return retailprice;
+  }
+
+
+  public void setRetailprice(Double retailprice) {
+    this.retailprice = retailprice;
+  }
+
+
   public RecommendedProduct googleCategory(String googleCategory) {
     
     this.googleCategory = googleCategory;
@@ -294,6 +320,7 @@ public class RecommendedProduct {
         Objects.equals(this.name, recommendedProduct.name) &&
         Objects.equals(this.description, recommendedProduct.description) &&
         Objects.equals(this.price, recommendedProduct.price) &&
+        Objects.equals(this.retailprice, recommendedProduct.retailprice) &&
         Objects.equals(this.googleCategory, recommendedProduct.googleCategory)&&
         Objects.equals(this.additionalProperties, recommendedProduct.additionalProperties);
   }
@@ -304,7 +331,7 @@ public class RecommendedProduct {
 
   @Override
   public int hashCode() {
-    return Objects.hash(productExternalId, clickUrl, imageUrl, name, description, price, googleCategory, additionalProperties);
+    return Objects.hash(productExternalId, clickUrl, imageUrl, name, description, price, retailprice, googleCategory, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -324,6 +351,7 @@ public class RecommendedProduct {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
+    sb.append("    retailprice: ").append(toIndentedString(retailprice)).append("\n");
     sb.append("    googleCategory: ").append(toIndentedString(googleCategory)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -354,6 +382,7 @@ public class RecommendedProduct {
     openapiFields.add("name");
     openapiFields.add("description");
     openapiFields.add("price");
+    openapiFields.add("retailprice");
     openapiFields.add("googleCategory");
 
     // a set of required properties/fields (JSON key names)
