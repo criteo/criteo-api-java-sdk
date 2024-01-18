@@ -41,7 +41,6 @@ import com.criteo.api.marketingsolutions.v2023_04.model.PatchResultCampaignListR
 import com.criteo.api.marketingsolutions.v2023_04.model.RequestAdSetSearch;
 import com.criteo.api.marketingsolutions.v2023_04.model.RequestsAdSetId;
 import com.criteo.api.marketingsolutions.v2023_04.model.RequestsPatchAdSet;
-import com.criteo.api.marketingsolutions.v2023_04.model.ResponseAdSetId;
 import com.criteo.api.marketingsolutions.v2023_04.model.ResponseReadAdSet;
 import com.criteo.api.marketingsolutions.v2023_04.model.ResponsesAdSetId;
 import com.criteo.api.marketingsolutions.v2023_04.model.ResponsesReadAdSet;
@@ -103,7 +102,9 @@ public class CampaignApi {
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getAdSetCall(String adSetId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -151,6 +152,7 @@ public class CampaignApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getAdSetValidateBeforeCall(String adSetId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adSetId' is set
@@ -175,7 +177,9 @@ public class CampaignApi {
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ResponseReadAdSet getAdSet(String adSetId) throws ApiException {
         ApiResponse<ResponseReadAdSet> localVarResp = getAdSetWithHttpInfo(adSetId);
         return localVarResp.getData();
@@ -194,7 +198,9 @@ public class CampaignApi {
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<ResponseReadAdSet> getAdSetWithHttpInfo(String adSetId) throws ApiException {
         okhttp3.Call localVarCall = getAdSetValidateBeforeCall(adSetId, null);
         Type localVarReturnType = new TypeToken<ResponseReadAdSet>(){}.getType();
@@ -215,7 +221,9 @@ public class CampaignApi {
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getAdSetAsync(String adSetId, final ApiCallback<ResponseReadAdSet> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAdSetValidateBeforeCall(adSetId, _callback);
@@ -236,7 +244,9 @@ public class CampaignApi {
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getCampaignCall(String campaignId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -284,6 +294,7 @@ public class CampaignApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getCampaignValidateBeforeCall(String campaignId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'campaignId' is set
@@ -308,7 +319,9 @@ public class CampaignApi {
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public CampaignResponse getCampaign(String campaignId) throws ApiException {
         ApiResponse<CampaignResponse> localVarResp = getCampaignWithHttpInfo(campaignId);
         return localVarResp.getData();
@@ -327,7 +340,9 @@ public class CampaignApi {
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<CampaignResponse> getCampaignWithHttpInfo(String campaignId) throws ApiException {
         okhttp3.Call localVarCall = getCampaignValidateBeforeCall(campaignId, null);
         Type localVarReturnType = new TypeToken<CampaignResponse>(){}.getType();
@@ -348,7 +363,9 @@ public class CampaignApi {
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getCampaignAsync(String campaignId, final ApiCallback<CampaignResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCampaignValidateBeforeCall(campaignId, _callback);
@@ -366,8 +383,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -439,8 +456,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -459,8 +476,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -481,8 +498,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -503,8 +520,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -576,8 +593,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -596,8 +613,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -618,8 +635,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -704,7 +721,7 @@ public class CampaignApi {
      * 
      * Patch a list of AdSets.
      * @param requestsPatchAdSet List of adsets to patch. (optional)
-     * @return ResponseAdSetId
+     * @return ResponsesAdSetId
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -714,8 +731,8 @@ public class CampaignApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ResponseAdSetId patchAdSets(RequestsPatchAdSet requestsPatchAdSet) throws ApiException {
-        ApiResponse<ResponseAdSetId> localVarResp = patchAdSetsWithHttpInfo(requestsPatchAdSet);
+    public ResponsesAdSetId patchAdSets(RequestsPatchAdSet requestsPatchAdSet) throws ApiException {
+        ApiResponse<ResponsesAdSetId> localVarResp = patchAdSetsWithHttpInfo(requestsPatchAdSet);
         return localVarResp.getData();
     }
 
@@ -723,7 +740,7 @@ public class CampaignApi {
      * 
      * Patch a list of AdSets.
      * @param requestsPatchAdSet List of adsets to patch. (optional)
-     * @return ApiResponse&lt;ResponseAdSetId&gt;
+     * @return ApiResponse&lt;ResponsesAdSetId&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -733,9 +750,9 @@ public class CampaignApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResponseAdSetId> patchAdSetsWithHttpInfo(RequestsPatchAdSet requestsPatchAdSet) throws ApiException {
+    public ApiResponse<ResponsesAdSetId> patchAdSetsWithHttpInfo(RequestsPatchAdSet requestsPatchAdSet) throws ApiException {
         okhttp3.Call localVarCall = patchAdSetsValidateBeforeCall(requestsPatchAdSet, null);
-        Type localVarReturnType = new TypeToken<ResponseAdSetId>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResponsesAdSetId>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -754,10 +771,10 @@ public class CampaignApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchAdSetsAsync(RequestsPatchAdSet requestsPatchAdSet, final ApiCallback<ResponseAdSetId> _callback) throws ApiException {
+    public okhttp3.Call patchAdSetsAsync(RequestsPatchAdSet requestsPatchAdSet, final ApiCallback<ResponsesAdSetId> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = patchAdSetsValidateBeforeCall(requestsPatchAdSet, _callback);
-        Type localVarReturnType = new TypeToken<ResponseAdSetId>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResponsesAdSetId>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -903,8 +920,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -981,8 +998,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -1002,8 +1019,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -1025,8 +1042,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -1048,8 +1065,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -1126,8 +1143,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -1147,8 +1164,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -1170,8 +1187,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -1193,10 +1210,12 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call searchAdSetsCall(RequestAdSetSearch requestAdSetSearch, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -1247,6 +1266,7 @@ public class CampaignApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call searchAdSetsValidateBeforeCall(RequestAdSetSearch requestAdSetSearch, final ApiCallback _callback) throws ApiException {
         return searchAdSetsCall(requestAdSetSearch, _callback);
@@ -1264,10 +1284,12 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ResponsesReadAdSet searchAdSets(RequestAdSetSearch requestAdSetSearch) throws ApiException {
         ApiResponse<ResponsesReadAdSet> localVarResp = searchAdSetsWithHttpInfo(requestAdSetSearch);
         return localVarResp.getData();
@@ -1284,10 +1306,12 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<ResponsesReadAdSet> searchAdSetsWithHttpInfo(RequestAdSetSearch requestAdSetSearch) throws ApiException {
         okhttp3.Call localVarCall = searchAdSetsValidateBeforeCall(requestAdSetSearch, null);
         Type localVarReturnType = new TypeToken<ResponsesReadAdSet>(){}.getType();
@@ -1306,10 +1330,12 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call searchAdSetsAsync(RequestAdSetSearch requestAdSetSearch, final ApiCallback<ResponsesReadAdSet> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = searchAdSetsValidateBeforeCall(requestAdSetSearch, _callback);
@@ -1328,10 +1354,12 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call searchCampaignsCall(CampaignSearchRequest campaignSearchRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -1382,6 +1410,7 @@ public class CampaignApi {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call searchCampaignsValidateBeforeCall(CampaignSearchRequest campaignSearchRequest, final ApiCallback _callback) throws ApiException {
         return searchCampaignsCall(campaignSearchRequest, _callback);
@@ -1399,10 +1428,12 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public CampaignListResponse searchCampaigns(CampaignSearchRequest campaignSearchRequest) throws ApiException {
         ApiResponse<CampaignListResponse> localVarResp = searchCampaignsWithHttpInfo(campaignSearchRequest);
         return localVarResp.getData();
@@ -1419,10 +1450,12 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<CampaignListResponse> searchCampaignsWithHttpInfo(CampaignSearchRequest campaignSearchRequest) throws ApiException {
         okhttp3.Call localVarCall = searchCampaignsValidateBeforeCall(campaignSearchRequest, null);
         Type localVarReturnType = new TypeToken<CampaignListResponse>(){}.getType();
@@ -1441,10 +1474,12 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call searchCampaignsAsync(CampaignSearchRequest campaignSearchRequest, final ApiCallback<CampaignListResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = searchCampaignsValidateBeforeCall(campaignSearchRequest, _callback);

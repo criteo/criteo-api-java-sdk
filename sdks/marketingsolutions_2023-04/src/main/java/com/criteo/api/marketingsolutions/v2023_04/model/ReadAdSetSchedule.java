@@ -59,7 +59,7 @@ public class ReadAdSetSchedule {
   private NillableDateTime endDate;
 
   /**
-   * Activation status of the ad set, i.e. whether the consumer wants it to deliver
+   * Gets or Sets activationStatus
    */
   @JsonAdapter(ActivationStatusEnum.Adapter.class)
   public enum ActivationStatusEnum {
@@ -110,7 +110,7 @@ public class ReadAdSetSchedule {
   private ActivationStatusEnum activationStatus;
 
   /**
-   * Delivery status of the delivery of the ad set, i.e. whether the ad set is delivering
+   * Gets or Sets deliveryStatus
    */
   @JsonAdapter(DeliveryStatusEnum.Adapter.class)
   public enum DeliveryStatusEnum {
@@ -230,7 +230,7 @@ public class ReadAdSetSchedule {
   }
 
    /**
-   * Activation status of the ad set, i.e. whether the consumer wants it to deliver
+   * Get activationStatus
    * @return activationStatus
   **/
   @javax.annotation.Nullable
@@ -252,7 +252,7 @@ public class ReadAdSetSchedule {
   }
 
    /**
-   * Delivery status of the delivery of the ad set, i.e. whether the ad set is delivering
+   * Get deliveryStatus
    * @return deliveryStatus
   **/
   @javax.annotation.Nullable

@@ -9,8 +9,8 @@ output resource
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**data** | [**ReadModelReadAdSet**](ReadModelReadAdSet.md) |  |  [optional] |
-|**warnings** | [**List&lt;ProblemDetails&gt;**](ProblemDetails.md) |  |  [optional] [readonly] |
-|**errors** | [**List&lt;ProblemDetails&gt;**](ProblemDetails.md) |  |  [optional] [readonly] |
+|**warnings** | [**List&lt;CommonProblem&gt;**](CommonProblem.md) |  |  [optional] [readonly] |
+|**errors** | [**List&lt;CommonProblem&gt;**](CommonProblem.md) |  |  [optional] [readonly] |
 
 
 

@@ -35,7 +35,6 @@ docs/AudienceApi.md
 docs/AudienceIdsUpdateModel202110Request.md
 docs/AudienceTarget202110Request.md
 docs/AudienceTarget202110Response.md
-docs/Balance202110PagedListResponse.md
 docs/BalanceCampaign202110ListRequest.md
 docs/BalanceCampaign202110PagedListResponse.md
 docs/BalanceResponse.md
@@ -85,7 +84,6 @@ docs/ExternalAuctionLineItemCreateModel.md
 docs/ExternalAuctionLineItemUpdateModel.md
 docs/ExternalAudienceIdsUpdateModel202110.md
 docs/ExternalAudienceTarget202110.md
-docs/ExternalBalance202110.md
 docs/ExternalBalanceResponse.md
 docs/ExternalBrand.md
 docs/ExternalCatalogRequest.md
@@ -150,7 +148,6 @@ docs/ReportOutcome.md
 docs/ResourceOfAddFundsToBalance.md
 docs/ResourceOfAuctionLineItem.md
 docs/ResourceOfAuctionLineItemUpdateModel.md
-docs/ResourceOfBalance202110.md
 docs/ResourceOfBalanceCampaign202110.md
 docs/ResourceOfBalanceResponse.md
 docs/ResourceOfCategory202204.md
@@ -275,7 +272,6 @@ src/main/java/com/criteo/api/retailmedia/v2023_10/model/AuctionLineItemUpdateMod
 src/main/java/com/criteo/api/retailmedia/v2023_10/model/AudienceIdsUpdateModel202110Request.java
 src/main/java/com/criteo/api/retailmedia/v2023_10/model/AudienceTarget202110Request.java
 src/main/java/com/criteo/api/retailmedia/v2023_10/model/AudienceTarget202110Response.java
-src/main/java/com/criteo/api/retailmedia/v2023_10/model/Balance202110PagedListResponse.java
 src/main/java/com/criteo/api/retailmedia/v2023_10/model/BalanceCampaign202110ListRequest.java
 src/main/java/com/criteo/api/retailmedia/v2023_10/model/BalanceCampaign202110PagedListResponse.java
 src/main/java/com/criteo/api/retailmedia/v2023_10/model/BalanceResponse.java
@@ -324,7 +320,6 @@ src/main/java/com/criteo/api/retailmedia/v2023_10/model/ExternalAuctionLineItemC
 src/main/java/com/criteo/api/retailmedia/v2023_10/model/ExternalAuctionLineItemUpdateModel.java
 src/main/java/com/criteo/api/retailmedia/v2023_10/model/ExternalAudienceIdsUpdateModel202110.java
 src/main/java/com/criteo/api/retailmedia/v2023_10/model/ExternalAudienceTarget202110.java
-src/main/java/com/criteo/api/retailmedia/v2023_10/model/ExternalBalance202110.java
 src/main/java/com/criteo/api/retailmedia/v2023_10/model/ExternalBalanceResponse.java
 src/main/java/com/criteo/api/retailmedia/v2023_10/model/ExternalBrand.java
 src/main/java/com/criteo/api/retailmedia/v2023_10/model/ExternalCatalogRequest.java
@@ -388,7 +383,6 @@ src/main/java/com/criteo/api/retailmedia/v2023_10/model/ReportOutcome.java
 src/main/java/com/criteo/api/retailmedia/v2023_10/model/ResourceOfAddFundsToBalance.java
 src/main/java/com/criteo/api/retailmedia/v2023_10/model/ResourceOfAuctionLineItem.java
 src/main/java/com/criteo/api/retailmedia/v2023_10/model/ResourceOfAuctionLineItemUpdateModel.java
-src/main/java/com/criteo/api/retailmedia/v2023_10/model/ResourceOfBalance202110.java
 src/main/java/com/criteo/api/retailmedia/v2023_10/model/ResourceOfBalanceCampaign202110.java
 src/main/java/com/criteo/api/retailmedia/v2023_10/model/ResourceOfBalanceResponse.java
 src/main/java/com/criteo/api/retailmedia/v2023_10/model/ResourceOfCategory202204.java

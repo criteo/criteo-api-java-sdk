@@ -70,7 +70,7 @@ public class ReadAdSetV23Q1 {
   private String campaignId;
 
   /**
-   * The environment that an ad click will lead a user to
+   * Gets or Sets destinationEnvironment
    */
   @JsonAdapter(DestinationEnvironmentEnum.Adapter.class)
   public enum DestinationEnvironmentEnum {
@@ -123,7 +123,7 @@ public class ReadAdSetV23Q1 {
   private DestinationEnvironmentEnum destinationEnvironment;
 
   /**
-   * Objective of the ad set
+   * Gets or Sets objective
    */
   @JsonAdapter(ObjectiveEnum.Adapter.class)
   public enum ObjectiveEnum {
@@ -208,7 +208,7 @@ public class ReadAdSetV23Q1 {
   private ReadAdSetBudgetV23Q1 budget;
 
   /**
-   * Media type of the ad set
+   * Gets or Sets mediaType
    */
   @JsonAdapter(MediaTypeEnum.Adapter.class)
   public enum MediaTypeEnum {
@@ -258,6 +258,57 @@ public class ReadAdSetV23Q1 {
   @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
   private MediaTypeEnum mediaType;
 
+  /**
+   * Gets or Sets videoChannel
+   */
+  @JsonAdapter(VideoChannelEnum.Adapter.class)
+  public enum VideoChannelEnum {
+    OLV("olv"),
+    
+    CTV("ctv");
+
+    private String value;
+
+    VideoChannelEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static VideoChannelEnum fromValue(String value) {
+      for (VideoChannelEnum b : VideoChannelEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<VideoChannelEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final VideoChannelEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public VideoChannelEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return VideoChannelEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_VIDEO_CHANNEL = "videoChannel";
+  @SerializedName(SERIALIZED_NAME_VIDEO_CHANNEL)
+  private VideoChannelEnum videoChannel;
+
   public ReadAdSetV23Q1() {
   }
 
@@ -268,7 +319,7 @@ public class ReadAdSetV23Q1 {
   }
 
    /**
-   * Name of the ad set
+   * Get name
    * @return name
   **/
   @javax.annotation.Nullable
@@ -290,7 +341,7 @@ public class ReadAdSetV23Q1 {
   }
 
    /**
-   * Advertiser id of the campaign this ad set belongs to
+   * Get advertiserId
    * @return advertiserId
   **/
   @javax.annotation.Nullable
@@ -312,7 +363,7 @@ public class ReadAdSetV23Q1 {
   }
 
    /**
-   * Dataset id of this ad set
+   * Get datasetId
    * @return datasetId
   **/
   @javax.annotation.Nullable
@@ -334,7 +385,7 @@ public class ReadAdSetV23Q1 {
   }
 
    /**
-   * Campaign id this ad set belongs to
+   * Get campaignId
    * @return campaignId
   **/
   @javax.annotation.Nullable
@@ -356,7 +407,7 @@ public class ReadAdSetV23Q1 {
   }
 
    /**
-   * The environment that an ad click will lead a user to
+   * Get destinationEnvironment
    * @return destinationEnvironment
   **/
   @javax.annotation.Nullable
@@ -378,7 +429,7 @@ public class ReadAdSetV23Q1 {
   }
 
    /**
-   * Objective of the ad set
+   * Get objective
    * @return objective
   **/
   @javax.annotation.Nullable
@@ -488,7 +539,7 @@ public class ReadAdSetV23Q1 {
   }
 
    /**
-   * Media type of the ad set
+   * Get mediaType
    * @return mediaType
   **/
   @javax.annotation.Nullable
@@ -500,6 +551,28 @@ public class ReadAdSetV23Q1 {
 
   public void setMediaType(MediaTypeEnum mediaType) {
     this.mediaType = mediaType;
+  }
+
+
+  public ReadAdSetV23Q1 videoChannel(VideoChannelEnum videoChannel) {
+    
+    this.videoChannel = videoChannel;
+    return this;
+  }
+
+   /**
+   * Get videoChannel
+   * @return videoChannel
+  **/
+  @javax.annotation.Nullable
+
+  public VideoChannelEnum getVideoChannel() {
+    return videoChannel;
+  }
+
+
+  public void setVideoChannel(VideoChannelEnum videoChannel) {
+    this.videoChannel = videoChannel;
   }
 
   /**
@@ -567,7 +640,8 @@ public class ReadAdSetV23Q1 {
         Objects.equals(this.bidding, readAdSetV23Q1.bidding) &&
         Objects.equals(this.targeting, readAdSetV23Q1.targeting) &&
         Objects.equals(this.budget, readAdSetV23Q1.budget) &&
-        Objects.equals(this.mediaType, readAdSetV23Q1.mediaType)&&
+        Objects.equals(this.mediaType, readAdSetV23Q1.mediaType) &&
+        Objects.equals(this.videoChannel, readAdSetV23Q1.videoChannel)&&
         Objects.equals(this.additionalProperties, readAdSetV23Q1.additionalProperties);
   }
 
@@ -577,7 +651,7 @@ public class ReadAdSetV23Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, advertiserId, datasetId, campaignId, destinationEnvironment, objective, schedule, bidding, targeting, budget, mediaType, additionalProperties);
+    return Objects.hash(name, advertiserId, datasetId, campaignId, destinationEnvironment, objective, schedule, bidding, targeting, budget, mediaType, videoChannel, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -602,6 +676,7 @@ public class ReadAdSetV23Q1 {
     sb.append("    targeting: ").append(toIndentedString(targeting)).append("\n");
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
+    sb.append("    videoChannel: ").append(toIndentedString(videoChannel)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -636,6 +711,7 @@ public class ReadAdSetV23Q1 {
     openapiFields.add("targeting");
     openapiFields.add("budget");
     openapiFields.add("mediaType");
+    openapiFields.add("videoChannel");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -689,6 +765,9 @@ public class ReadAdSetV23Q1 {
       }
       if ((jsonObj.get("mediaType") != null && !jsonObj.get("mediaType").isJsonNull()) && !jsonObj.get("mediaType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mediaType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mediaType").toString()));
+      }
+      if ((jsonObj.get("videoChannel") != null && !jsonObj.get("videoChannel").isJsonNull()) && !jsonObj.get("videoChannel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `videoChannel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("videoChannel").toString()));
       }
   }
 

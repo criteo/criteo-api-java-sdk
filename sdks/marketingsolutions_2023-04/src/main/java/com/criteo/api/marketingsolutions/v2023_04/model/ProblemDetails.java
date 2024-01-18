@@ -47,7 +47,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2023_04.JSON;
 
 /**
- * Data model for common error or warning
+ * Common problem object.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProblemDetails {
@@ -60,7 +60,7 @@ public class ProblemDetails {
   private String traceIdentifier;
 
   /**
-   * Gets or Sets type
+   * The problem&#39;s category.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -200,7 +200,7 @@ public class ProblemDetails {
   }
 
    /**
-   * Get type
+   * The problem&#39;s category.
    * @return type
   **/
   @javax.annotation.Nullable
@@ -222,7 +222,7 @@ public class ProblemDetails {
   }
 
    /**
-   * Get code
+   * A machine-readable error code, expressed as a string value.
    * @return code
   **/
   @javax.annotation.Nullable
@@ -244,7 +244,7 @@ public class ProblemDetails {
   }
 
    /**
-   * Get instance
+   * A URI that identifies the specific occurrence of the problem.
    * @return instance
   **/
   @javax.annotation.Nullable
@@ -266,7 +266,7 @@ public class ProblemDetails {
   }
 
    /**
-   * Get title
+   * A short human-readable description of the problem type
    * @return title
   **/
   @javax.annotation.Nullable
@@ -288,7 +288,7 @@ public class ProblemDetails {
   }
 
    /**
-   * Get detail
+   * A human-readable explanation specific to this occurrence of the problem
    * @return detail
   **/
   @javax.annotation.Nullable
@@ -318,7 +318,7 @@ public class ProblemDetails {
   }
 
    /**
-   * Get source
+   * A machine-readable structure to reference to the exact location(s) causing the error(s)
    * @return source
   **/
   @javax.annotation.Nullable

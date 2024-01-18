@@ -228,7 +228,7 @@ public class AdSetDeliveryLimitations {
   }
 
    /**
-   * List of environments which the ad set should target
+   * Get environments
    * @return environments
   **/
   @javax.annotation.Nullable
@@ -258,7 +258,7 @@ public class AdSetDeliveryLimitations {
   }
 
    /**
-   * List of devices which the ad set should target
+   * Get devices
    * @return devices
   **/
   @javax.annotation.Nullable
@@ -288,7 +288,7 @@ public class AdSetDeliveryLimitations {
   }
 
    /**
-   * List of operating systems which the ad set should target
+   * Get operatingSystems
    * @return operatingSystems
   **/
   @javax.annotation.Nullable

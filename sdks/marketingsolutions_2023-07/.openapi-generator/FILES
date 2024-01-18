@@ -247,7 +247,6 @@ docs/ReplaceAudienceResponse.md
 docs/RequestAdSetSearch.md
 docs/RequestsAdSetId.md
 docs/RequestsPatchAdSet.md
-docs/ResponseAdSetId.md
 docs/ResponseReadAdSet.md
 docs/ResponsesAdSetId.md
 docs/ResponsesReadAdSet.md
@@ -544,7 +543,6 @@ src/main/java/com/criteo/api/marketingsolutions/v2023_07/model/ReplaceAudienceRe
 src/main/java/com/criteo/api/marketingsolutions/v2023_07/model/RequestAdSetSearch.java
 src/main/java/com/criteo/api/marketingsolutions/v2023_07/model/RequestsAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/v2023_07/model/RequestsPatchAdSet.java
-src/main/java/com/criteo/api/marketingsolutions/v2023_07/model/ResponseAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/v2023_07/model/ResponseReadAdSet.java
 src/main/java/com/criteo/api/marketingsolutions/v2023_07/model/ResponsesAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/v2023_07/model/ResponsesReadAdSet.java

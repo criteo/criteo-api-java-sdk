@@ -467,7 +467,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
-| **303** | Redirect |  -  |
 
 
 ## getCategoriesReport

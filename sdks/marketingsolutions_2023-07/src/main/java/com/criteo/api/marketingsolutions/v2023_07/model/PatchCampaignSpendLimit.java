@@ -51,7 +51,7 @@ import com.criteo.api.marketingsolutions.v2023_07.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PatchCampaignSpendLimit {
   /**
-   * Whether your spend limit is capped or not
+   * Gets or Sets spendLimitType
    */
   @JsonAdapter(SpendLimitTypeEnum.Adapter.class)
   public enum SpendLimitTypeEnum {
@@ -102,7 +102,7 @@ public class PatchCampaignSpendLimit {
   private SpendLimitTypeEnum spendLimitType;
 
   /**
-   * The pace of the spend limit renewal
+   * Gets or Sets spendLimitRenewal
    */
   @JsonAdapter(SpendLimitRenewalEnum.Adapter.class)
   public enum SpendLimitRenewalEnum {
@@ -170,7 +170,7 @@ public class PatchCampaignSpendLimit {
   }
 
    /**
-   * Whether your spend limit is capped or not
+   * Get spendLimitType
    * @return spendLimitType
   **/
   @javax.annotation.Nullable
@@ -192,7 +192,7 @@ public class PatchCampaignSpendLimit {
   }
 
    /**
-   * The pace of the spend limit renewal
+   * Get spendLimitRenewal
    * @return spendLimitRenewal
   **/
   @javax.annotation.Nullable

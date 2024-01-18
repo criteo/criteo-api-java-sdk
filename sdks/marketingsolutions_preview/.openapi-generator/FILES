@@ -261,6 +261,7 @@ docs/MarketingSolutionsReportStatusResponse.md
 docs/ModifyAudienceResponse.md
 docs/NillableAdSetTargetingRule.md
 docs/NillableAdSetTargetingRuleV23Q1.md
+docs/NillableAdSetTargetingRuleV23Q1Value.md
 docs/NillableAdSetTargetingRuleValue.md
 docs/NillableDateTime.md
 docs/NillableDecimal.md
@@ -346,7 +347,6 @@ docs/RequestsPatchAdSet.md
 docs/ResourceCollectionOutcomeOfProductSet.md
 docs/ResourceOfProductSet.md
 docs/ResourceOutcomeOfProductSet.md
-docs/ResponseAdSetId.md
 docs/ResponseReadAdSet.md
 docs/ResponseReadAdSetV23Q1.md
 docs/ResponsesAdSetId.md
@@ -687,6 +687,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/MarketingSolutions
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ModifyAudienceResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableAdSetTargetingRule.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableAdSetTargetingRuleV23Q1.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableAdSetTargetingRuleV23Q1Value.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableAdSetTargetingRuleValue.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableDateTime.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableDecimal.java
@@ -770,7 +771,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/RequestsPatchAdSet
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ResourceCollectionOutcomeOfProductSet.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ResourceOfProductSet.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ResourceOutcomeOfProductSet.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/ResponseAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ResponseReadAdSet.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ResponseReadAdSetV23Q1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ResponsesAdSetId.java

@@ -8,8 +8,8 @@ ad set frequency capping model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**frequency** | [**FrequencyEnum**](#FrequencyEnum) | Period on which impression limitation is calculated |  [optional] |
-|**maximumImpressions** | **Integer** | Maximum impressions for the specified period |  [optional] |
+|**frequency** | [**FrequencyEnum**](#FrequencyEnum) |  |  [optional] |
+|**maximumImpressions** | **Integer** |  |  [optional] |
 
 
 

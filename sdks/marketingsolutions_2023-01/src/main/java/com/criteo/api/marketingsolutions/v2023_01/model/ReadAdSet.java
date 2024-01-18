@@ -70,7 +70,7 @@ public class ReadAdSet {
   private String campaignId;
 
   /**
-   * The environment that an ad click will lead a user to
+   * Gets or Sets destinationEnvironment
    */
   @JsonAdapter(DestinationEnvironmentEnum.Adapter.class)
   public enum DestinationEnvironmentEnum {
@@ -139,7 +139,7 @@ public class ReadAdSet {
   private ReadAdSetBudget budget;
 
   /**
-   * Media type for the ad set
+   * Gets or Sets mediaType
    */
   @JsonAdapter(MediaTypeEnum.Adapter.class)
   public enum MediaTypeEnum {
@@ -199,7 +199,7 @@ public class ReadAdSet {
   }
 
    /**
-   * Name of the ad set
+   * Get name
    * @return name
   **/
   @javax.annotation.Nullable
@@ -221,7 +221,7 @@ public class ReadAdSet {
   }
 
    /**
-   * Advertiser id of the campaign this ad set belongs to
+   * Get advertiserId
    * @return advertiserId
   **/
   @javax.annotation.Nullable
@@ -243,7 +243,7 @@ public class ReadAdSet {
   }
 
    /**
-   * Dataset id of this ad set
+   * Get datasetId
    * @return datasetId
   **/
   @javax.annotation.Nullable
@@ -265,7 +265,7 @@ public class ReadAdSet {
   }
 
    /**
-   * Campaign id this ad set belongs to
+   * Get campaignId
    * @return campaignId
   **/
   @javax.annotation.Nullable
@@ -287,7 +287,7 @@ public class ReadAdSet {
   }
 
    /**
-   * The environment that an ad click will lead a user to
+   * Get destinationEnvironment
    * @return destinationEnvironment
   **/
   @javax.annotation.Nullable
@@ -397,7 +397,7 @@ public class ReadAdSet {
   }
 
    /**
-   * Media type for the ad set
+   * Get mediaType
    * @return mediaType
   **/
   @javax.annotation.Nullable

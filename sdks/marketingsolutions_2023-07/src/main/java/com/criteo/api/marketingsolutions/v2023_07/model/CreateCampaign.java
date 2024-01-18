@@ -127,7 +127,7 @@ public class CreateCampaign {
    * Name of the campaign
    * @return name
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public String getName() {
     return name;
@@ -149,7 +149,7 @@ public class CreateCampaign {
    * Advertiser id this campaign belongs to
    * @return advertiserId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public String getAdvertiserId() {
     return advertiserId;

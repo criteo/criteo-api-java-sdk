@@ -8,7 +8,6 @@ All URIs are relative to *https://api.criteo.com*
 | [**createAsset**](CampaignApi.md#createAsset) | **POST** /2023-10/retail-media/assets |  |
 | [**fetchKeywords**](CampaignApi.md#fetchKeywords) | **GET** /2023-10/retail-media/line-items/{id}/keywords |  |
 | [**fetchProposal**](CampaignApi.md#fetchProposal) | **GET** /2023-10/retail-media/preferred-deal-line-items/{id}/proposal |  |
-| [**getApi202110ExternalAccountBalancesByAccountId**](CampaignApi.md#getApi202110ExternalAccountBalancesByAccountId) | **GET** /2023-10/retail-media/accounts/{account-id}/balances |  |
 | [**getApi202110ExternalAccountCreativesByAccountId**](CampaignApi.md#getApi202110ExternalAccountCreativesByAccountId) | **GET** /2023-10/retail-media/accounts/{account-id}/creatives |  |
 | [**getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId**](CampaignApi.md#getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId) | **GET** /2023-10/retail-media/auction-line-items/{line-item-id}/targeting/keywords |  |
 | [**getApi202110ExternalBalanceCampaignsByBalanceId**](CampaignApi.md#getApi202110ExternalBalanceCampaignsByBalanceId) | **GET** /2023-10/retail-media/balances/{balance-id}/campaigns |  |
@@ -24,12 +23,12 @@ All URIs are relative to *https://api.criteo.com*
 | [**getApi202207ExternalRetailerByRetailerIdTemplatestemplateId**](CampaignApi.md#getApi202207ExternalRetailerByRetailerIdTemplatestemplateId) | **GET** /2023-10/retail-media/retailers/{retailer-id}/templates/{template-id} |  |
 | [**getApi202207ExternalRetailerTemplatesByRetailerId**](CampaignApi.md#getApi202207ExternalRetailerTemplatesByRetailerId) | **GET** /2023-10/retail-media/retailers/{retailer-id}/templates |  |
 | [**getApi202210ExternalAccountByAccountIdCreativescreativeId**](CampaignApi.md#getApi202210ExternalAccountByAccountIdCreativescreativeId) | **GET** /2023-10/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
-| [**getApi202301ExternalAccountCampaignsByAccountId**](CampaignApi.md#getApi202301ExternalAccountCampaignsByAccountId) | **GET** /2023-10/retail-media/accounts/{accountId}/campaigns |  |
+| [**getApi202301ExternalAccountCampaignsByAccountId**](CampaignApi.md#getApi202301ExternalAccountCampaignsByAccountId) | **GET** /2023-10/retail-media/accounts/{account-id}/campaigns |  |
 | [**getApi202301ExternalCampaignByCampaignId**](CampaignApi.md#getApi202301ExternalCampaignByCampaignId) | **GET** /2023-10/retail-media/campaigns/{campaignId} |  |
 | [**getApi202301ExternalLineItemBidMultipliersByLineItemId**](CampaignApi.md#getApi202301ExternalLineItemBidMultipliersByLineItemId) | **GET** /2023-10/retail-media/line-items/{line-item-id}/bid-multipliers |  |
-| [**getApiV1ExternalAccountBalancesByAccountId**](CampaignApi.md#getApiV1ExternalAccountBalancesByAccountId) | **GET** /2023-10/retail-media/accounts/{accountId}/balances |  |
+| [**getApiV1ExternalAccountBalancesByAccountId**](CampaignApi.md#getApiV1ExternalAccountBalancesByAccountId) | **GET** /2023-10/retail-media/accounts/{account-id}/balances |  |
 | [**getApiV1ExternalAccountBrandsByAccountId**](CampaignApi.md#getApiV1ExternalAccountBrandsByAccountId) | **GET** /2023-10/retail-media/accounts/{accountId}/brands |  |
-| [**getApiV1ExternalAccountByAccountIdAndBalanceId**](CampaignApi.md#getApiV1ExternalAccountByAccountIdAndBalanceId) | **GET** /2023-10/retail-media/accounts/{accountId}/balances/{balanceId} |  |
+| [**getApiV1ExternalAccountByAccountIdAndBalanceId**](CampaignApi.md#getApiV1ExternalAccountByAccountIdAndBalanceId) | **GET** /2023-10/retail-media/accounts/{account-id}/balances/{balanceId} |  |
 | [**getApiV1ExternalAccountRetailersByAccountId**](CampaignApi.md#getApiV1ExternalAccountRetailersByAccountId) | **GET** /2023-10/retail-media/accounts/{accountId}/retailers |  |
 | [**getApiV1ExternalAccounts**](CampaignApi.md#getApiV1ExternalAccounts) | **GET** /2023-10/retail-media/accounts |  |
 | [**getApiV1ExternalCatalogOutputByCatalogId**](CampaignApi.md#getApiV1ExternalCatalogOutputByCatalogId) | **GET** /2023-10/retail-media/catalogs/{catalogId}/output |  |
@@ -38,7 +37,7 @@ All URIs are relative to *https://api.criteo.com*
 | [**getApiV2ExternalAuctionLineItemByLineItemId**](CampaignApi.md#getApiV2ExternalAuctionLineItemByLineItemId) | **GET** /2023-10/retail-media/auction-line-items/{line-item-id} |  |
 | [**getApiV2ExternalCampaignAuctionLineItemsByCampaignId**](CampaignApi.md#getApiV2ExternalCampaignAuctionLineItemsByCampaignId) | **GET** /2023-10/retail-media/campaigns/{campaign-id}/auction-line-items |  |
 | [**getApiV2ExternalLineItemByLineItemId**](CampaignApi.md#getApiV2ExternalLineItemByLineItemId) | **GET** /2023-10/retail-media/line-items/{line-item-id} |  |
-| [**patchApiV1ExternalAccountByAccountIdAndBalanceId**](CampaignApi.md#patchApiV1ExternalAccountByAccountIdAndBalanceId) | **PATCH** /2023-10/retail-media/accounts/{accountId}/balances/{balanceId} |  |
+| [**patchApiV1ExternalAccountByAccountIdAndBalanceId**](CampaignApi.md#patchApiV1ExternalAccountByAccountIdAndBalanceId) | **PATCH** /2023-10/retail-media/accounts/{account-id}/balances/{balanceId} |  |
 | [**postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId**](CampaignApi.md#postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId) | **POST** /2023-10/retail-media/auction-line-items/{line-item-id}/targeting/keywords/append |  |
 | [**postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId**](CampaignApi.md#postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId) | **POST** /2023-10/retail-media/auction-line-items/{line-item-id}/targeting/keywords/delete |  |
 | [**postApi202110ExternalBalanceCampaignsAppendByBalanceId**](CampaignApi.md#postApi202110ExternalBalanceCampaignsAppendByBalanceId) | **POST** /2023-10/retail-media/balances/{balance-id}/campaigns/append |  |
@@ -56,11 +55,11 @@ All URIs are relative to *https://api.criteo.com*
 | [**postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemId**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemId) | **POST** /2023-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete |  |
 | [**postApi202210ExternalAccountCreativesByAccountId**](CampaignApi.md#postApi202210ExternalAccountCreativesByAccountId) | **POST** /2023-10/retail-media/accounts/{account-id}/creatives |  |
 | [**postApi202210ExternalAccountCreativesSearchByAccountId**](CampaignApi.md#postApi202210ExternalAccountCreativesSearchByAccountId) | **POST** /2023-10/retail-media/accounts/{account-id}/creatives/search |  |
-| [**postApi202301ExternalAccountCampaignsByAccountId**](CampaignApi.md#postApi202301ExternalAccountCampaignsByAccountId) | **POST** /2023-10/retail-media/accounts/{accountId}/campaigns |  |
-| [**postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId**](CampaignApi.md#postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId) | **POST** /2023-10/retail-media/accounts/{accountId}/balances/{balanceId}/add-funds |  |
-| [**postApiV1ExternalAccountBalancesByAccountId**](CampaignApi.md#postApiV1ExternalAccountBalancesByAccountId) | **POST** /2023-10/retail-media/accounts/{accountId}/balances |  |
+| [**postApi202301ExternalAccountCampaignsByAccountId**](CampaignApi.md#postApi202301ExternalAccountCampaignsByAccountId) | **POST** /2023-10/retail-media/accounts/{account-id}/campaigns |  |
+| [**postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId**](CampaignApi.md#postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId) | **POST** /2023-10/retail-media/accounts/{account-id}/balances/{balanceId}/add-funds |  |
+| [**postApiV1ExternalAccountBalancesByAccountId**](CampaignApi.md#postApiV1ExternalAccountBalancesByAccountId) | **POST** /2023-10/retail-media/accounts/{account-id}/balances |  |
 | [**postApiV1ExternalAccountCatalogsByAccountId**](CampaignApi.md#postApiV1ExternalAccountCatalogsByAccountId) | **POST** /2023-10/retail-media/accounts/{accountId}/catalogs |  |
-| [**postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId**](CampaignApi.md#postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId) | **POST** /2023-10/retail-media/accounts/{accountId}/balances/{balanceId}/change-dates |  |
+| [**postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId**](CampaignApi.md#postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId) | **POST** /2023-10/retail-media/accounts/{account-id}/balances/{balanceId}/change-dates |  |
 | [**postApiV2ExternalCampaignAuctionLineItemsByCampaignId**](CampaignApi.md#postApiV2ExternalCampaignAuctionLineItemsByCampaignId) | **POST** /2023-10/retail-media/campaigns/{campaign-id}/auction-line-items |  |
 | [**putApi202110ExternalPreferredLineItemByLineItemId**](CampaignApi.md#putApi202110ExternalPreferredLineItemByLineItemId) | **PUT** /2023-10/retail-media/preferred-line-items/{line-item-id} |  |
 | [**putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId) | **PUT** /2023-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket |  |
@@ -436,101 +435,6 @@ public class Example {
 | **400** | Bad Request |  -  |
 | **500** | Server Error |  -  |
 | **403** | Forbidden |  -  |
-
-
-## getApi202110ExternalAccountBalancesByAccountId
-
-> Balance202110PagedListResponse getApi202110ExternalAccountBalancesByAccountId(accountId, limitToId, pageIndex, pageSize)
-
-
-
-Gets page of balance objects for the given account id
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2023_10;
-
-import com.criteo.api.retailmedia.v2023_10.ApiClient;
-import com.criteo.api.retailmedia.v2023_10.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2023_10.ApiException;
-import com.criteo.api.retailmedia.v2023_10.Configuration;
-import com.criteo.api.retailmedia.v2023_10.auth.*;
-import com.criteo.api.retailmedia.v2023_10.model.*;
-import com.criteo.api.retailmedia.v2023_10.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String accountId = "accountId_example"; // String | The account to get balances for
-        List<String> limitToId = Arrays.asList(); // List<String> | The ids that you would like to limit your result set to
-        Integer pageIndex = 56; // Integer | The 0 indexed page index you would like to receive given the page size
-        Integer pageSize = 56; // Integer | The maximum number of items you would like to receive in this request
-        try {
-            Balance202110PagedListResponse result = apiInstance.getApi202110ExternalAccountBalancesByAccountId(accountId, limitToId, pageIndex, pageSize);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getApi202110ExternalAccountBalancesByAccountId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The account to get balances for | |
-| **limitToId** | [**List&lt;String&gt;**](String.md)| The ids that you would like to limit your result set to | [optional] |
-| **pageIndex** | **Integer**| The 0 indexed page index you would like to receive given the page size | [optional] |
-| **pageSize** | **Integer**| The maximum number of items you would like to receive in this request | [optional] |
-
-### Return type
-
-[**Balance202110PagedListResponse**](Balance202110PagedListResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
 
 
 ## getApi202110ExternalAccountCreativesByAccountId

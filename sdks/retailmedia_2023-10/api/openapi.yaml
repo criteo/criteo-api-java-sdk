@@ -1445,10 +1445,10 @@ paths:
       x-accepts: application/json
   /2023-10/retail-media/accounts/{account-id}/balances:
     get:
-      description: Gets page of balance objects for the given account id
-      operationId: BalancesApi_GetApi202110ExternalAccountBalancesByAccountId
+      description: Get page of balances for the given accountId.
+      operationId: Balances_GetApiV1ExternalAccountBalancesByAccountId
       parameters:
-      - description: The account to get balances for
+      - description: The account to get page of balances for
         explode: false
         in: path
         name: account-id
@@ -1475,6 +1475,7 @@ paths:
         name: pageIndex
         required: false
         schema:
+          default: 0
           format: int32
           type: integer
         style: form
@@ -1486,6 +1487,7 @@ paths:
         name: pageSize
         required: false
         schema:
+          default: 25
           format: int32
           type: integer
         style: form
@@ -1495,10 +1497,293 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Balance202110PagedListResponse'
+                $ref: '#/components/schemas/BalanceResponsePagedListResponse'
           description: Success
       tags:
       - Campaign
+      x-accepts: application/json
+    post:
+      description: Create balance for the given account id
+      operationId: Balances_PostApiV1ExternalAccountBalancesByAccountId
+      parameters:
+      - description: The account to create balances for
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBalanceRequest'
+        x-nullable: false
+        x-bodyName: createBalance
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponse'
+          description: Success
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /2023-10/retail-media/accounts/{account-id}/balances/{balanceId}:
+    get:
+      description: Get a balance for the given account id and balance id
+      operationId: Balances_GetApiV1ExternalAccountByAccountIdAndBalanceId
+      parameters:
+      - description: The account of the balance
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The balance id
+        explode: false
+        in: path
+        name: balanceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponse'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+    patch:
+      description: Modify a balance for the given account id
+      operationId: Balances_PatchApiV1ExternalAccountByAccountIdAndBalanceId
+      parameters:
+      - description: The account of the balance
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The balance to change the dates
+        explode: false
+        in: path
+        name: balanceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBalanceModelRequest'
+        x-nullable: false
+        x-bodyName: updateBalanceModel
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponse'
+          description: Success
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /2023-10/retail-media/accounts/{account-id}/balances/{balanceId}/add-funds:
+    post:
+      description: Add funds to a balance for the given account id
+      operationId: Balances_PostApiV1ExternalAccountAddFundsByAccountIdAndBalanceId
+      parameters:
+      - description: The account of the balance
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The balance to add funds to
+        explode: false
+        in: path
+        name: balanceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddFundsToBalanceRequest'
+        x-nullable: false
+        x-bodyName: addFundsToBalance
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponse'
+          description: Success
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /2023-10/retail-media/accounts/{account-id}/balances/{balanceId}/change-dates:
+    post:
+      description: Change dates of a balance for the given account id
+      operationId: Balances_PostApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId
+      parameters:
+      - description: The account of the balance
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The balance to change the dates
+        explode: false
+        in: path
+        name: balanceId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeDatesOfBalanceRequest'
+        x-nullable: false
+        x-bodyName: changeDatesOfBalance
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponse'
+          description: Success
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /2023-10/retail-media/accounts/{account-id}/campaigns:
+    get:
+      description: "Get all the editable and creatable campaign attributes including\
+        \ all types of budgets for each campaigns in relation to the account id, limited\
+        \ by the campaign ids."
+      operationId: Campaigns_GetApi202301ExternalAccountCampaignsByAccountId
+      parameters:
+      - description: The account to request the campaign for.
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The ids that you would like to limit your result set to
+        explode: true
+        in: query
+        name: limitToId
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: false
+      - description: The 0 indexed page index you would like to receive given the
+          page size
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      - description: The maximum number of items you would like to receive in this
+          request
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 25
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfCampaignV202301'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+    post:
+      description: Create a campaign and assign budgets for the given account id with
+        creatable campaign attributes given in request body constrained by business
+        validation. The validation error includes details and source of errors. Pacing
+        can be adjusted and affected by the status of the campaign and the days left
+        on the campaign if auto daily pacing is enabled.
+      operationId: Campaigns_PostApi202301ExternalAccountCampaignsByAccountId
+      parameters:
+      - description: The account to request the campaign for.
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostCampaignV202301'
+        description: Creatable campaign attributes
+        x-nullable: false
+        x-bodyName: campaign
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfCampaignV202301'
+          description: Success
+      tags:
+      - Campaign
+      x-content-type: application/json
       x-accepts: application/json
   /2023-10/retail-media/accounts/{account-id}/line-items:
     get:
@@ -1582,348 +1867,6 @@ paths:
           description: Success
       tags:
       - Campaign
-      x-accepts: application/json
-  /2023-10/retail-media/accounts/{accountId}/balances:
-    get:
-      description: Get page of balances for the given accountId.
-      operationId: Balances_GetApiV1ExternalAccountBalancesByAccountId
-      parameters:
-      - description: The account to get page of balances for
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: The ids that you would like to limit your result set to
-        explode: true
-        in: query
-        name: limitToId
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-        x-nullable: false
-      - description: The 0 indexed page index you would like to receive given the
-          page size
-        explode: true
-        in: query
-        name: pageIndex
-        required: false
-        schema:
-          default: 0
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      - description: The maximum number of items you would like to receive in this
-          request
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          default: 25
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponsePagedListResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-accepts: application/json
-    post:
-      description: Create balance for the given account id
-      operationId: Balances_PostApiV1ExternalAccountBalancesByAccountId
-      parameters:
-      - description: The account to create balances for
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateBalanceRequest'
-        x-nullable: false
-        x-bodyName: createBalance
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /2023-10/retail-media/accounts/{accountId}/balances/{balanceId}:
-    get:
-      description: Get a balance for the given account id and balance id
-      operationId: Balances_GetApiV1ExternalAccountByAccountIdAndBalanceId
-      parameters:
-      - description: The account of the balance
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: The balance id
-        explode: false
-        in: path
-        name: balanceId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-accepts: application/json
-    patch:
-      description: Modify a balance for the given account id
-      operationId: Balances_PatchApiV1ExternalAccountByAccountIdAndBalanceId
-      parameters:
-      - description: The account of the balance
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: The balance to change the dates
-        explode: false
-        in: path
-        name: balanceId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateBalanceModelRequest'
-        x-nullable: false
-        x-bodyName: updateBalanceModel
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /2023-10/retail-media/accounts/{accountId}/balances/{balanceId}/add-funds:
-    post:
-      description: Add funds to a balance for the given account id
-      operationId: Balances_PostApiV1ExternalAccountAddFundsByAccountIdAndBalanceId
-      parameters:
-      - description: The account of the balance
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: The balance to add funds to
-        explode: false
-        in: path
-        name: balanceId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AddFundsToBalanceRequest'
-        x-nullable: false
-        x-bodyName: addFundsToBalance
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /2023-10/retail-media/accounts/{accountId}/balances/{balanceId}/change-dates:
-    post:
-      description: Change dates of a balance for the given account id
-      operationId: Balances_PostApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId
-      parameters:
-      - description: The account of the balance
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: The balance to change the dates
-        explode: false
-        in: path
-        name: balanceId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ChangeDatesOfBalanceRequest'
-        x-nullable: false
-        x-bodyName: changeDatesOfBalance
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /2023-10/retail-media/accounts/{accountId}/campaigns:
-    get:
-      description: "Get all the editable and creatable campaign attributes including\
-        \ all types of budgets for each campaigns in relation to the account id, limited\
-        \ by the campaign ids."
-      operationId: Campaigns_GetApi202301ExternalAccountCampaignsByAccountId
-      parameters:
-      - description: The account to request the campaign for.
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: The ids that you would like to limit your result set to
-        explode: true
-        in: query
-        name: limitToId
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-        x-nullable: false
-      - description: The 0 indexed page index you would like to receive given the
-          page size
-        explode: true
-        in: query
-        name: pageIndex
-        required: false
-        schema:
-          default: 0
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      - description: The maximum number of items you would like to receive in this
-          request
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          default: 25
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JsonApiPageResponseOfCampaignV202301'
-          description: Success
-      tags:
-      - Campaign
-      x-accepts: application/json
-    post:
-      description: Create a campaign and assign budgets for the given account id with
-        creatable campaign attributes given in request body constrained by business
-        validation. The validation error includes details and source of errors. Pacing
-        can be adjusted and affected by the status of the campaign and the days left
-        on the campaign if auto daily pacing is enabled.
-      operationId: Campaigns_PostApi202301ExternalAccountCampaignsByAccountId
-      parameters:
-      - description: The account to request the campaign for.
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PostCampaignV202301'
-        description: Creatable campaign attributes
-        x-nullable: false
-        x-bodyName: campaign
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JsonApiSingleResponseOfCampaignV202301'
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json
       x-accepts: application/json
   /2023-10/retail-media/auction-line-items/{line-item-id}:
     get:
@@ -9207,214 +9150,6 @@ components:
       - endDate
       - startDate
       type: object
-    Balance202110PagedListResponse:
-      description: Data model for a paged list of response resources
-      example:
-        metadata:
-          currentPageSize: 6
-          previousPage: previousPage
-          nextPage: nextPage
-          totalPages: 5
-          totalItemsAcrossAllPages: 0
-          currentPageIndex: 1
-        data:
-        - attributes:
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            endDate: 2000-01-23
-            deposited: 0.8008281904610115
-            spent: 6.027456183070403
-            name: name
-            memo: memo
-            poNumber: poNumber
-            remaining: 1.4658129805029452
-            startDate: 2000-01-23
-            status: unknown
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        - attributes:
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            endDate: 2000-01-23
-            deposited: 0.8008281904610115
-            spent: 6.027456183070403
-            name: name
-            memo: memo
-            poNumber: poNumber
-            remaining: 1.4658129805029452
-            startDate: 2000-01-23
-            status: unknown
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        metadata:
-          $ref: '#/components/schemas/PageMetadata'
-        data:
-          items:
-            $ref: '#/components/schemas/ResourceOfBalance202110'
-          type: array
-          x-nullable: false
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
-    CommonLineItemPagedListResponse:
-      description: Data model for a paged list of response resources
-      example:
-        metadata:
-          currentPageSize: 6
-          previousPage: previousPage
-          nextPage: nextPage
-          totalPages: 5
-          totalItemsAcrossAllPages: 0
-          currentPageIndex: 1
-        data:
-        - attributes:
-            budgetRemaining: 1.4658129805029452
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            endDate: 2000-01-23
-            campaignId: campaignId
-            budgetSpent: 6.027456183070403
-            name: name
-            targetRetailerId: targetRetailerId
-            type: unknown
-            startDate: 2000-01-23
-            status: unknown
-            budget: 0.8008281904610115
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        - attributes:
-            budgetRemaining: 1.4658129805029452
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            endDate: 2000-01-23
-            campaignId: campaignId
-            budgetSpent: 6.027456183070403
-            name: name
-            targetRetailerId: targetRetailerId
-            type: unknown
-            startDate: 2000-01-23
-            status: unknown
-            budget: 0.8008281904610115
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        metadata:
-          $ref: '#/components/schemas/PageMetadata'
-        data:
-          items:
-            $ref: '#/components/schemas/ResourceOfCommonLineItem'
-          type: array
-          x-nullable: false
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
     BalanceResponsePagedListResponse:
       description: Data model for a paged list of response resources
       example:
@@ -9816,6 +9551,111 @@ components:
           x-nullable: false
       required:
       - data
+      type: object
+      x-nullable: false
+    CommonLineItemPagedListResponse:
+      description: Data model for a paged list of response resources
+      example:
+        metadata:
+          currentPageSize: 6
+          previousPage: previousPage
+          nextPage: nextPage
+          totalPages: 5
+          totalItemsAcrossAllPages: 0
+          currentPageIndex: 1
+        data:
+        - attributes:
+            budgetRemaining: 1.4658129805029452
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            endDate: 2000-01-23
+            campaignId: campaignId
+            budgetSpent: 6.027456183070403
+            name: name
+            targetRetailerId: targetRetailerId
+            type: unknown
+            startDate: 2000-01-23
+            status: unknown
+            budget: 0.8008281904610115
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        - attributes:
+            budgetRemaining: 1.4658129805029452
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            endDate: 2000-01-23
+            campaignId: campaignId
+            budgetSpent: 6.027456183070403
+            name: name
+            targetRetailerId: targetRetailerId
+            type: unknown
+            startDate: 2000-01-23
+            status: unknown
+            budget: 0.8008281904610115
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        metadata:
+          $ref: '#/components/schemas/PageMetadata'
+        data:
+          items:
+            $ref: '#/components/schemas/ResourceOfCommonLineItem'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          readOnly: true
+          type: array
+          x-nullable: false
       type: object
       x-nullable: false
     AuctionLineItemResponse:
@@ -11298,67 +11138,6 @@ components:
           $ref: '#/components/schemas/ValueTypeResourceOfStoreIdsUpdateModel202110'
       type: object
       x-nullable: false
-    ResourceOfBalance202110:
-      description: A class that represents an entity in a guild compliant way
-      example:
-        attributes:
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          endDate: 2000-01-23
-          deposited: 0.8008281904610115
-          spent: 6.027456183070403
-          name: name
-          memo: memo
-          poNumber: poNumber
-          remaining: 1.4658129805029452
-          startDate: 2000-01-23
-          status: unknown
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        id: id
-        type: type
-      properties:
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-        type:
-          description: Canonical type name of the entity
-          nullable: true
-          type: string
-        attributes:
-          $ref: '#/components/schemas/ExternalBalance202110'
-      type: object
-      x-nullable: false
-    ResourceOfCommonLineItem:
-      description: Data model for a Resource
-      example:
-        attributes:
-          budgetRemaining: 1.4658129805029452
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          endDate: 2000-01-23
-          campaignId: campaignId
-          budgetSpent: 6.027456183070403
-          name: name
-          targetRetailerId: targetRetailerId
-          type: unknown
-          startDate: 2000-01-23
-          status: unknown
-          budget: 0.8008281904610115
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        id: id
-        type: type
-      properties:
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-        type:
-          description: Canonical type name of the entity
-          nullable: true
-          type: string
-        attributes:
-          $ref: '#/components/schemas/ExternalCommonLineItem'
-      type: object
-      x-nullable: false
     ResourceOfBalanceResponse:
       description: Data model for a Resource
       example:
@@ -11436,6 +11215,37 @@ components:
       required:
       - id
       - type
+      type: object
+      x-nullable: false
+    ResourceOfCommonLineItem:
+      description: Data model for a Resource
+      example:
+        attributes:
+          budgetRemaining: 1.4658129805029452
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          endDate: 2000-01-23
+          campaignId: campaignId
+          budgetSpent: 6.027456183070403
+          name: name
+          targetRetailerId: targetRetailerId
+          type: unknown
+          startDate: 2000-01-23
+          status: unknown
+          budget: 0.8008281904610115
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      properties:
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
+        type:
+          description: Canonical type name of the entity
+          nullable: true
+          type: string
+        attributes:
+          $ref: '#/components/schemas/ExternalCommonLineItem'
       type: object
       x-nullable: false
     ResourceOfAuctionLineItem:
@@ -12024,196 +11834,6 @@ components:
           $ref: '#/components/schemas/ExternalStoreIdsUpdateModel202110'
       type: object
       x-nullable: false
-    ExternalBalance202110:
-      description: A Retail Media Balance used to determine the funds available for
-        any or all campaigns in an account
-      example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        endDate: 2000-01-23
-        deposited: 0.8008281904610115
-        spent: 6.027456183070403
-        name: name
-        memo: memo
-        poNumber: poNumber
-        remaining: 1.4658129805029452
-        startDate: 2000-01-23
-        status: unknown
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        name:
-          type: string
-          x-nullable: false
-        poNumber:
-          type: string
-          x-nullable: false
-        memo:
-          type: string
-          x-nullable: false
-        deposited:
-          format: decimal
-          nullable: true
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        spent:
-          format: decimal
-          nullable: true
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        remaining:
-          format: decimal
-          nullable: true
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          required:
-          - "true"
-          type: string
-          x-nullable: false
-        endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          nullable: true
-          type: string
-          x-nullable: true
-        status:
-          enum:
-          - unknown
-          - scheduled
-          - active
-          - ended
-          type: string
-          x-nullable: false
-        createdAt:
-          format: date-time
-          type: string
-          x-nullable: false
-        updatedAt:
-          format: date-time
-          type: string
-          x-nullable: false
-      required:
-      - createdAt
-      - deposited
-      - memo
-      - name
-      - poNumber
-      - remaining
-      - spent
-      - startDate
-      - status
-      - updatedAt
-      type: object
-      x-nullable: false
-    ExternalCommonLineItem:
-      description: A common line item to hold line item information shared between
-        preferred and auction line items
-      example:
-        budgetRemaining: 1.4658129805029452
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        endDate: 2000-01-23
-        campaignId: campaignId
-        budgetSpent: 6.027456183070403
-        name: name
-        targetRetailerId: targetRetailerId
-        type: unknown
-        startDate: 2000-01-23
-        status: unknown
-        budget: 0.8008281904610115
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        name:
-          maxLength: 255
-          minLength: 0
-          type: string
-          x-nullable: false
-        type:
-          enum:
-          - unknown
-          - auction
-          - preferred
-          type: string
-          x-nullable: false
-        startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          required:
-          - "true"
-          type: string
-        endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          nullable: true
-          type: string
-        status:
-          enum:
-          - unknown
-          - active
-          - scheduled
-          - draft
-          - paused
-          - budgetHit
-          - ended
-          - archived
-          - noFunds
-          type: string
-          x-nullable: false
-        targetRetailerId:
-          format: long-id
-          type: string
-          x-nullable: false
-        budget:
-          format: decimal
-          nullable: true
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        campaignId:
-          format: long-id
-          type: string
-          x-nullable: false
-        budgetSpent:
-          format: double
-          type: number
-          x-nullable: false
-        budgetRemaining:
-          format: decimal
-          nullable: true
-          required:
-          - "false"
-          type: number
-          x-nullable: true
-        createdAt:
-          format: date-time
-          type: string
-          x-nullable: false
-        updatedAt:
-          format: date-time
-          type: string
-          x-nullable: false
-      required:
-      - budgetRemaining
-      - campaignId
-      - createdAt
-      - name
-      - startDate
-      - targetRetailerId
-      - type
-      - updatedAt
-      type: object
-      x-nullable: false
     ExternalBalanceResponse:
       description: A Retail Media Balance used to determine the funds available for
         any or all campaigns in an account
@@ -12503,6 +12123,106 @@ components:
       - name
       - promotedBrandIds
       - startDate
+      - updatedAt
+      type: object
+      x-nullable: false
+    ExternalCommonLineItem:
+      description: A common line item to hold line item information shared between
+        preferred and auction line items
+      example:
+        budgetRemaining: 1.4658129805029452
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        endDate: 2000-01-23
+        campaignId: campaignId
+        budgetSpent: 6.027456183070403
+        name: name
+        targetRetailerId: targetRetailerId
+        type: unknown
+        startDate: 2000-01-23
+        status: unknown
+        budget: 0.8008281904610115
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+          x-nullable: false
+        type:
+          enum:
+          - unknown
+          - auction
+          - preferred
+          type: string
+          x-nullable: false
+        startDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          required:
+          - "true"
+          type: string
+        endDate:
+          description: "Represents the Date as a year, month, and day in the format\
+            \ YYYY-MM-DD"
+          format: date
+          nullable: true
+          type: string
+        status:
+          enum:
+          - unknown
+          - active
+          - scheduled
+          - draft
+          - paused
+          - budgetHit
+          - ended
+          - archived
+          - noFunds
+          type: string
+          x-nullable: false
+        targetRetailerId:
+          format: long-id
+          type: string
+          x-nullable: false
+        budget:
+          format: decimal
+          nullable: true
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        campaignId:
+          format: long-id
+          type: string
+          x-nullable: false
+        budgetSpent:
+          format: double
+          type: number
+          x-nullable: false
+        budgetRemaining:
+          format: decimal
+          nullable: true
+          required:
+          - "false"
+          type: number
+          x-nullable: true
+        createdAt:
+          format: date-time
+          type: string
+          x-nullable: false
+        updatedAt:
+          format: date-time
+          type: string
+          x-nullable: false
+      required:
+      - budgetRemaining
+      - campaignId
+      - createdAt
+      - name
+      - startDate
+      - targetRetailerId
+      - type
       - updatedAt
       type: object
       x-nullable: false

@@ -617,7 +617,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 303 </td><td> Redirect </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAsyncExportStatusCall(String reportId, final ApiCallback _callback) throws ApiException {
@@ -688,7 +687,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 303 </td><td> Redirect </td><td>  -  </td></tr>
      </table>
      */
     public MarketingSolutionsReportStatusResponse getAsyncExportStatus(String reportId) throws ApiException {
@@ -706,7 +704,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 303 </td><td> Redirect </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<MarketingSolutionsReportStatusResponse> getAsyncExportStatusWithHttpInfo(String reportId) throws ApiException {
@@ -726,7 +723,6 @@ public class AnalyticsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 303 </td><td> Redirect </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAsyncExportStatusAsync(String reportId, final ApiCallback<MarketingSolutionsReportStatusResponse> _callback) throws ApiException {

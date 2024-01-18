@@ -8,11 +8,11 @@ campaign read model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** | Name of the campaign |  [optional] |
-|**advertiserId** | **String** | Advertiser id of the campaign |  [optional] |
-|**objective** | **String** | Campaign&#39;s marketing objective |  [optional] |
+|**name** | **String** |  |  [optional] |
+|**advertiserId** | **String** |  |  [optional] |
+|**objective** | **String** |  |  [optional] |
 |**spendLimit** | [**CampaignSpendLimit**](CampaignSpendLimit.md) |  |  [optional] |
-|**goal** | [**GoalEnum**](#GoalEnum) | Goal of the campaign |  [optional] |
+|**goal** | [**GoalEnum**](#GoalEnum) |  |  [optional] |
 
 
 

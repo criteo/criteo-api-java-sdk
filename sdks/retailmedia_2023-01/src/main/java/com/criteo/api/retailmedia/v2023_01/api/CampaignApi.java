@@ -2420,8 +2420,8 @@ public class CampaignApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/2023-01/retail-media/accounts/{accountId}/campaigns"
-            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
+        String localVarPath = "/2023-01/retail-media/accounts/{account-id}/campaigns"
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -6129,8 +6129,8 @@ public class CampaignApi {
         Object localVarPostBody = postCampaignV202301;
 
         // create path and map variables
-        String localVarPath = "/2023-01/retail-media/accounts/{accountId}/campaigns"
-            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
+        String localVarPath = "/2023-01/retail-media/accounts/{account-id}/campaigns"
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

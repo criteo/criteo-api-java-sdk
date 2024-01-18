@@ -51,7 +51,7 @@ import com.criteo.api.marketingsolutions.v2023_10.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PatchAdSetBudget {
   /**
-   * Whether your budget is capped or not
+   * Gets or Sets budgetStrategy
    */
   @JsonAdapter(BudgetStrategyEnum.Adapter.class)
   public enum BudgetStrategyEnum {
@@ -102,7 +102,7 @@ public class PatchAdSetBudget {
   private BudgetStrategyEnum budgetStrategy;
 
   /**
-   * The pace of the budget renewal
+   * Gets or Sets budgetRenewal
    */
   @JsonAdapter(BudgetRenewalEnum.Adapter.class)
   public enum BudgetRenewalEnum {
@@ -157,7 +157,7 @@ public class PatchAdSetBudget {
   private BudgetRenewalEnum budgetRenewal;
 
   /**
-   * The pace at which the budget can be spent
+   * Gets or Sets budgetDeliverySmoothing
    */
   @JsonAdapter(BudgetDeliverySmoothingEnum.Adapter.class)
   public enum BudgetDeliverySmoothingEnum {
@@ -208,7 +208,7 @@ public class PatchAdSetBudget {
   private BudgetDeliverySmoothingEnum budgetDeliverySmoothing;
 
   /**
-   * The delivery week for the budget
+   * Gets or Sets budgetDeliveryWeek
    */
   @JsonAdapter(BudgetDeliveryWeekEnum.Adapter.class)
   public enum BudgetDeliveryWeekEnum {
@@ -284,7 +284,7 @@ public class PatchAdSetBudget {
   }
 
    /**
-   * Whether your budget is capped or not
+   * Get budgetStrategy
    * @return budgetStrategy
   **/
   @javax.annotation.Nullable
@@ -306,7 +306,7 @@ public class PatchAdSetBudget {
   }
 
    /**
-   * The pace of the budget renewal
+   * Get budgetRenewal
    * @return budgetRenewal
   **/
   @javax.annotation.Nullable
@@ -328,7 +328,7 @@ public class PatchAdSetBudget {
   }
 
    /**
-   * The pace at which the budget can be spent
+   * Get budgetDeliverySmoothing
    * @return budgetDeliverySmoothing
   **/
   @javax.annotation.Nullable
@@ -350,7 +350,7 @@ public class PatchAdSetBudget {
   }
 
    /**
-   * The delivery week for the budget
+   * Get budgetDeliveryWeek
    * @return budgetDeliveryWeek
   **/
   @javax.annotation.Nullable

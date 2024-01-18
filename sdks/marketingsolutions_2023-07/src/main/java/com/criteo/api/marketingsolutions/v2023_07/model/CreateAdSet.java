@@ -217,7 +217,7 @@ public class CreateAdSet {
    * Name of the ad set
    * @return name
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public String getName() {
     return name;
@@ -239,7 +239,7 @@ public class CreateAdSet {
    * Dataset id of this ad set
    * @return datasetId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public String getDatasetId() {
     return datasetId;
@@ -261,7 +261,7 @@ public class CreateAdSet {
    * Campaign id this ad set belongs to
    * @return campaignId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public String getCampaignId() {
     return campaignId;
@@ -393,7 +393,7 @@ public class CreateAdSet {
    * The click tracking code associated to this Ad Set.
    * @return trackingCode
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public String getTrackingCode() {
     return trackingCode;

@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**operand** | [**OperandEnum**](#OperandEnum) | Operand which states how the values should be applied |  [optional] |
-|**values** | **List&lt;String&gt;** | List of values to apply |  [optional] |
+|**operand** | [**OperandEnum**](#OperandEnum) |  |  [optional] |
+|**values** | **List&lt;String&gt;** |  |  [optional] |
 
 
 

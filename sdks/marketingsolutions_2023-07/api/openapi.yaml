@@ -1395,13 +1395,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ResponseAdSetId'
+                $ref: '#/components/schemas/ResponsesAdSetId'
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseAdSetId'
+                $ref: '#/components/schemas/ResponsesAdSetId'
             text/json:
               schema:
-                $ref: '#/components/schemas/ResponseAdSetId'
+                $ref: '#/components/schemas/ResponsesAdSetId'
           description: List of patched adSets.
         "401":
           content:
@@ -1471,6 +1471,7 @@ paths:
       x-accepts: application/json
   /2023-07/marketing-solutions/ad-sets/search:
     post:
+      deprecated: true
       description: Search for ad sets
       operationId: SearchAdSets
       requestBody:
@@ -1507,18 +1508,18 @@ paths:
             application/json: {}
             text/json: {}
           description: Bad Request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
         "403":
           content:
             text/plain: {}
             application/json: {}
             text/json: {}
           description: Forbidden
+        "401":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not properly authenticated.
       tags:
       - Campaign
       x-content-type: application/json-patch+json
@@ -1651,18 +1652,18 @@ paths:
                 $ref: '#/components/schemas/AdSetCategoryBidListResponse'
           description: List of Category Bids for all valid Categories associated to
             an Ad Set.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad Request
         "401":
           content:
             text/plain: {}
             application/json: {}
             text/json: {}
           description: The API client is not properly authenticated.
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad Request
         "403":
           content:
             text/plain: {}
@@ -1715,18 +1716,18 @@ paths:
                 $ref: '#/components/schemas/PatchAdSetCategoryBidResultListResponse'
           description: List of updated Category Bids for given Categories associated
             to an Ad Set.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad Request
         "401":
           content:
             text/plain: {}
             application/json: {}
             text/json: {}
           description: The API client is not properly authenticated.
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad Request
         "403":
           content:
             text/plain: {}
@@ -1766,18 +1767,18 @@ paths:
                 $ref: '#/components/schemas/AdSetDisplayMultiplierListResponse'
           description: List of Display Multipliers for all valid Categories associated
             to an Ad Set.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad Request
         "401":
           content:
             text/plain: {}
             application/json: {}
             text/json: {}
           description: The API client is not properly authenticated.
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad Request
         "403":
           content:
             text/plain: {}
@@ -1830,18 +1831,18 @@ paths:
                 $ref: '#/components/schemas/PatchAdSetDisplayMultiplierResultListResponse'
           description: List of updated Display Multipliers for given Categories associated
             to an Ad Set.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad Request
         "401":
           content:
             text/plain: {}
             application/json: {}
             text/json: {}
           description: The API client is not properly authenticated.
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad Request
         "403":
           content:
             text/plain: {}
@@ -1855,6 +1856,7 @@ paths:
       x-accepts: application/json
   /2023-07/marketing-solutions/ad-sets/{adSetId}:
     get:
+      deprecated: true
       description: Get the data for the specified ad set
       operationId: GetAdSet
       parameters:
@@ -1996,6 +1998,7 @@ paths:
       x-accepts: application/json
   /2023-07/marketing-solutions/campaigns/search:
     post:
+      deprecated: true
       description: Search for campaigns
       operationId: SearchCampaigns
       requestBody:
@@ -2033,24 +2036,25 @@ paths:
             application/json: {}
             text/json: {}
           description: Bad Request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
         "403":
           content:
             text/plain: {}
             application/json: {}
             text/json: {}
           description: Forbidden
+        "401":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not properly authenticated.
       tags:
       - Campaign
       x-content-type: application/json-patch+json
       x-accepts: application/json
   /2023-07/marketing-solutions/campaigns/{campaign-id}:
     get:
+      deprecated: true
       description: Get the data for the specified campaign
       operationId: GetCampaign
       parameters:
@@ -8194,11 +8198,13 @@ components:
           nullable: true
           type: integer
       type: object
-    ResponseAdSetId:
-      description: output resource
+    ResponsesAdSetId:
+      description: List of output resources
       example:
         data:
-          id: id
+        - id: id
+          type: AdSetId
+        - id: id
           type: AdSetId
         warnings:
         - traceId: traceId
@@ -8244,21 +8250,26 @@ components:
           title: title
       properties:
         data:
-          $ref: '#/components/schemas/ReadModelAdSetId'
+          items:
+            $ref: '#/components/schemas/ReadModelAdSetId'
+          nullable: true
+          readOnly: true
+          type: array
+          x-nullable: true
         warnings:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     ResponseReadAdSet:
       description: output resource
@@ -8360,18 +8371,18 @@ components:
           $ref: '#/components/schemas/ReadModelReadAdSet'
         warnings:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     ResponsesReadAdSet:
       description: List of output resources
@@ -8524,94 +8535,21 @@ components:
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         warnings:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
-      type: object
-    ResponsesAdSetId:
-      description: List of output resources
-      example:
-        data:
-        - id: id
-          type: AdSetId
-        - id: id
-          type: AdSetId
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ReadModelAdSetId'
-          nullable: true
-          readOnly: true
-          type: array
-          uniqueItems: false
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          nullable: true
-          readOnly: true
-          type: array
-          uniqueItems: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          nullable: true
-          readOnly: true
-          type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     AdSetCategoryBidListResponse:
       description: Data model for a list of response resources
@@ -8675,21 +8613,21 @@ components:
             $ref: '#/components/schemas/AdSetCategoryBidResource'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         warnings:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     PatchAdSetCategoryBidResultListResponse:
       description: Data model for a list of response resources
@@ -8747,21 +8685,21 @@ components:
             $ref: '#/components/schemas/PatchAdSetCategoryBidResultResource'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         warnings:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     AdSetDisplayMultiplierListResponse:
       description: Data model for a list of response resources
@@ -8825,21 +8763,21 @@ components:
             $ref: '#/components/schemas/AdSetDisplayMultiplierResource'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         warnings:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     PatchAdSetDisplayMultiplierResultListResponse:
       description: Data model for a list of response resources
@@ -8897,21 +8835,21 @@ components:
             $ref: '#/components/schemas/PatchAdSetDisplayMultiplierResultResource'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         warnings:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     PatchResultCampaignListResponse:
       description: List of output resources
@@ -8970,21 +8908,21 @@ components:
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         warnings:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     CampaignV23Q1Response:
       description: Data model for response resource
@@ -9048,18 +8986,18 @@ components:
           $ref: '#/components/schemas/CampaignV23Q1Resource'
         warnings:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     CampaignListResponse:
       description: List of output resources
@@ -9138,21 +9076,21 @@ components:
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         warnings:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     CampaignResponse:
       description: output resource
@@ -9217,18 +9155,18 @@ components:
           $ref: '#/components/schemas/CampaignReadResource'
         warnings:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     RequestsPatchAdSet:
       description: List of input resources
@@ -9320,7 +9258,7 @@ components:
             $ref: '#/components/schemas/WriteModelPatchAdSet'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     CreateAdSetRequest:
       description: Data model for an input resources
@@ -9411,7 +9349,7 @@ components:
             $ref: '#/components/schemas/WriteModelAdSetId'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     PatchAdSetCategoryBidListRequest:
       description: Data model for a list of input resources
@@ -9431,7 +9369,7 @@ components:
             $ref: '#/components/schemas/PatchAdSetCategoryBidResource'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     PatchAdSetDisplayMultiplierListRequest:
       description: Data model for a list of input resources
@@ -9451,7 +9389,7 @@ components:
             $ref: '#/components/schemas/PatchAdSetDisplayMultiplierResource'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     PatchCampaignListRequest:
       description: List of input resources
@@ -9479,7 +9417,7 @@ components:
             $ref: '#/components/schemas/PatchCampaignWriteResource'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     CreateCampaignRequest:
       description: Data model for an input resources
@@ -9523,67 +9461,13 @@ components:
           nullable: true
           readOnly: true
           type: string
+          x-nullable: true
         type:
           example: AdSetId
           nullable: true
           readOnly: true
           type: string
-      type: object
-    ProblemDetails:
-      description: Data model for common error or warning
-      example:
-        traceId: traceId
-        traceIdentifier: traceIdentifier
-        code: code
-        instance: instance
-        detail: detail
-        source:
-          key: source
-        stackTrace: stackTrace
-        type: unknown
-        title: title
-      properties:
-        traceId:
-          description: The request correlation ID this problem comes from.
-          nullable: true
-          type: string
-        traceIdentifier:
-          description: "The request correlation ID this problem comes from. (deprecated,\
-            \ use traceId instead)"
-          nullable: true
-          type: string
-        type:
-          enum:
-          - unknown
-          - access-control
-          - authentication
-          - authorization
-          - availability
-          - deprecation
-          - quota
-          - validation
-          nullable: true
-          type: string
-        code:
-          nullable: true
-          type: string
-        instance:
-          nullable: true
-          type: string
-        title:
-          nullable: true
-          type: string
-        detail:
-          nullable: true
-          type: string
-        source:
-          additionalProperties:
-            type: string
-          nullable: true
-          type: object
-        stackTrace:
-          nullable: true
-          type: string
+          x-nullable: true
       type: object
     ReadModelReadAdSet:
       description: read model data for resources
@@ -9643,11 +9527,13 @@ components:
           nullable: true
           readOnly: true
           type: string
+          x-nullable: true
         type:
           example: ReadAdSet
           nullable: true
           readOnly: true
           type: string
+          x-nullable: true
         attributes:
           $ref: '#/components/schemas/ReadAdSet'
       type: object
@@ -9736,11 +9622,13 @@ components:
           nullable: true
           readOnly: true
           type: string
+          x-nullable: true
         type:
           example: Campaign
           nullable: true
           readOnly: true
           type: string
+          x-nullable: true
       type: object
     CampaignV23Q1Resource:
       description: Data model for a Resource
@@ -9790,11 +9678,13 @@ components:
           nullable: true
           readOnly: true
           type: string
+          x-nullable: true
         type:
           example: Campaign
           nullable: true
           readOnly: true
           type: string
+          x-nullable: true
         attributes:
           $ref: '#/components/schemas/Campaign'
       type: object
@@ -9846,11 +9736,13 @@ components:
           description: Id of the entity
           nullable: true
           type: string
+          x-nullable: true
         type:
           description: Canonical type name of the entity
           example: PatchAdSet
           nullable: true
           type: string
+          x-nullable: true
         attributes:
           $ref: '#/components/schemas/PatchAdSet'
       type: object
@@ -9930,27 +9822,23 @@ components:
         - campaignIds
       properties:
         adSetIds:
-          description: Ad set ids to filter on
           items:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         advertiserIds:
-          description: Advertiser ids which ad sets belongs to (indirectly via their
-            marketing campaign)
           items:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         campaignIds:
-          description: Campaign ids to filter on
           items:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     WriteModelAdSetId:
       description: write model data for resources
@@ -9962,11 +9850,13 @@ components:
           description: Id of the entity
           nullable: true
           type: string
+          x-nullable: true
         type:
           description: Canonical type name of the entity
           example: AdSetId
           nullable: true
           type: string
+          x-nullable: true
       type: object
     PatchAdSetCategoryBidResource:
       description: Data model for a Resource
@@ -10024,11 +9914,13 @@ components:
           description: Id of the entity
           nullable: true
           type: string
+          x-nullable: true
         type:
           description: Canonical type name of the entity
           example: Campaign
           nullable: true
           type: string
+          x-nullable: true
         attributes:
           $ref: '#/components/schemas/PatchCampaign'
       type: object
@@ -10064,19 +9956,17 @@ components:
         - campaignIds
       properties:
         campaignIds:
-          description: Campaign ids to filter on
           items:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         advertiserIds:
-          description: Advertiser ids to which campaigns are linked to
           items:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     ReadAdSet:
       description: ad set read model
@@ -10129,23 +10019,22 @@ components:
           budgetStrategy: capped
       properties:
         name:
-          description: Name of the ad set
           nullable: true
           type: string
+          x-nullable: true
         advertiserId:
-          description: Advertiser id of the campaign this ad set belongs to
           nullable: true
           type: string
+          x-nullable: true
         datasetId:
-          description: Dataset id of this ad set
           nullable: true
           type: string
+          x-nullable: true
         campaignId:
-          description: Campaign id this ad set belongs to
           nullable: true
           type: string
+          x-nullable: true
         destinationEnvironment:
-          description: The environment that an ad click will lead a user to
           enum:
           - undefined
           - web
@@ -10161,12 +10050,12 @@ components:
         budget:
           $ref: '#/components/schemas/ReadAdSetBudget'
         mediaType:
-          description: Media type for the ad set
           enum:
           - display
           - video
           nullable: true
           type: string
+          x-nullable: true
       type: object
     AdSetCategoryBid:
       description: Category Bid information about a Category for a given Ad Set.
@@ -10179,6 +10068,7 @@ components:
             applied.
           nullable: true
           type: string
+          x-nullable: true
         bidAmount:
           description: The Bid amount applied to the given Category associated to
             an Ad Set. At most 4 decimals are supported. Additional decimals are rounded.
@@ -10198,6 +10088,7 @@ components:
             Multiplier has been applied.
           nullable: true
           type: string
+          x-nullable: true
         displayMultiplier:
           description: The Display Multiplier applied to the given Category associated
             to an Ad Set.
@@ -10218,17 +10109,16 @@ components:
         advertiserId: advertiserId
       properties:
         name:
-          description: Name of the campaign
           nullable: true
           type: string
+          x-nullable: true
         advertiserId:
-          description: Advertiser id of the campaign
           nullable: true
           type: string
+          x-nullable: true
         spendLimit:
           $ref: '#/components/schemas/CampaignSpendLimitV23Q1'
         goal:
-          description: Goal of the campaign
           enum:
           - unspecified
           - acquisition
@@ -10250,21 +10140,20 @@ components:
         objective: objective
       properties:
         name:
-          description: Name of the campaign
           nullable: true
           type: string
+          x-nullable: true
         advertiserId:
-          description: Advertiser id of the campaign
           nullable: true
           type: string
+          x-nullable: true
         objective:
-          description: Campaign's marketing objective
           nullable: true
           type: string
+          x-nullable: true
         spendLimit:
           $ref: '#/components/schemas/CampaignSpendLimit'
         goal:
-          description: Goal of the campaign
           enum:
           - Unspecified
           - Acquisition
@@ -10314,9 +10203,9 @@ components:
           budgetStrategy: capped
       properties:
         name:
-          description: Name of the ad set
           nullable: true
           type: string
+          x-nullable: true
         scheduling:
           $ref: '#/components/schemas/PatchAdSetScheduling'
         bidding:
@@ -10380,13 +10269,19 @@ components:
       properties:
         name:
           description: Name of the ad set
+          nullable: true
           type: string
+          x-nullable: true
         datasetId:
           description: Dataset id of this ad set
+          nullable: true
           type: string
+          x-nullable: true
         campaignId:
           description: Campaign id this ad set belongs to
+          nullable: true
           type: string
+          x-nullable: true
         objective:
           description: Objective of the ad set
           enum:
@@ -10412,7 +10307,9 @@ components:
           $ref: '#/components/schemas/CreateAdSetBudget'
         trackingCode:
           description: The click tracking code associated to this Ad Set.
+          nullable: true
           type: string
+          x-nullable: true
         mediaType:
           description: Media type for the ad set
           enum:
@@ -10482,10 +10379,14 @@ components:
       properties:
         name:
           description: Name of the campaign
+          nullable: true
           type: string
+          x-nullable: true
         advertiserId:
           description: Advertiser id this campaign belongs to
+          nullable: true
           type: string
+          x-nullable: true
         goal:
           description: Goal for the marketing campaign
           enum:
@@ -10516,16 +10417,12 @@ components:
         endDate:
           $ref: '#/components/schemas/NillableDateTime'
         activationStatus:
-          description: "Activation status of the ad set, i.e. whether the consumer\
-            \ wants it to deliver"
           enum:
           - "on"
           - "off"
           nullable: true
           type: string
         deliveryStatus:
-          description: "Delivery status of the delivery of the ad set, i.e. whether\
-            \ the ad set is delivering"
           enum:
           - draft
           - inactive
@@ -10622,14 +10519,12 @@ components:
         budgetStrategy: capped
       properties:
         budgetStrategy:
-          description: Whether your budget is capped or not
           enum:
           - capped
           - uncapped
           nullable: true
           type: string
         budgetRenewal:
-          description: The pace of the budget renewal
           enum:
           - undefined
           - daily
@@ -10638,14 +10533,13 @@ components:
           nullable: true
           type: string
         budgetDeliverySmoothing:
-          description: The pace at which the budget can be spent
           enum:
           - accelerated
           - standard
           nullable: true
           type: string
+          x-nullable: true
         budgetDeliveryWeek:
-          description: The delivery week for the budget
           enum:
           - undefined
           - mondayToSunday
@@ -10669,14 +10563,12 @@ components:
         spendLimitType: capped
       properties:
         spendLimitType:
-          description: Whether your spend limit is capped or not
           enum:
           - capped
           - uncapped
           nullable: true
           type: string
         spendLimitRenewal:
-          description: The pace of the spend limit renewal
           enum:
           - undefined
           - daily
@@ -10696,14 +10588,12 @@ components:
         spendLimitType: capped
       properties:
         spendLimitType:
-          description: Whether your spend limit is capped or not
           enum:
           - capped
           - uncapped
           nullable: true
           type: string
         spendLimitRenewal:
-          description: The pace of the spend limit renewal
           enum:
           - undefined
           - daily
@@ -10747,14 +10637,13 @@ components:
         budgetStrategy: capped
       properties:
         budgetStrategy:
-          description: Whether your budget is capped or not
           enum:
           - capped
           - uncapped
           nullable: true
           type: string
+          x-nullable: true
         budgetRenewal:
-          description: The pace of the budget renewal
           enum:
           - undefined
           - daily
@@ -10762,15 +10651,15 @@ components:
           - lifetime
           nullable: true
           type: string
+          x-nullable: true
         budgetDeliverySmoothing:
-          description: The pace at which the budget can be spent
           enum:
           - accelerated
           - standard
           nullable: true
           type: string
+          x-nullable: true
         budgetDeliveryWeek:
-          description: The delivery week for the budget
           enum:
           - undefined
           - mondayToSunday
@@ -10782,6 +10671,7 @@ components:
           - sundayToSaturday
           nullable: true
           type: string
+          x-nullable: true
         budgetAmount:
           $ref: '#/components/schemas/NillableDecimal'
       type: object
@@ -10798,6 +10688,7 @@ components:
           format: date-time
           nullable: true
           type: string
+          x-nullable: true
       required:
       - startDate
       type: object
@@ -10814,6 +10705,7 @@ components:
           format: double
           nullable: true
           type: number
+          x-nullable: true
         costController:
           description: How spend is controlled
           enum:
@@ -10915,6 +10807,7 @@ components:
           format: double
           nullable: true
           type: number
+          x-nullable: true
       required:
       - budgetStrategy
       type: object
@@ -10927,14 +10820,13 @@ components:
         spendLimitType: capped
       properties:
         spendLimitType:
-          description: Whether your spend limit is capped or not
           enum:
           - capped
           - uncapped
           nullable: true
           type: string
+          x-nullable: true
         spendLimitRenewal:
-          description: The pace of the spend limit renewal
           enum:
           - undefined
           - daily
@@ -10942,6 +10834,7 @@ components:
           - lifetime
           nullable: true
           type: string
+          x-nullable: true
         spendLimitAmount:
           $ref: '#/components/schemas/NillableDecimal'
       type: object
@@ -10972,6 +10865,7 @@ components:
           format: double
           nullable: true
           type: number
+          x-nullable: true
       required:
       - spendLimitType
       type: object
@@ -10987,8 +10881,6 @@ components:
           nullable: true
           type: string
           x-nullable: true
-      required:
-      - value
       type: object
     NillableDecimal:
       description: "structure that encapsulates an object that have valid business\
@@ -10996,15 +10888,15 @@ components:
         \ in it, even null, is provided."
       example:
         value: 0.8008281904610115
+      nullable: true
       properties:
         value:
           format: double
           nullable: true
           type: number
           x-nullable: true
-      required:
-      - value
       type: object
+      x-nullable: true
     AdSetDeliveryLimitations:
       description: ad set delivery limitations model
       example:
@@ -11019,7 +10911,6 @@ components:
         - other
       properties:
         environments:
-          description: List of environments which the ad set should target
           items:
             enum:
             - web
@@ -11027,9 +10918,8 @@ components:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         devices:
-          description: List of devices which the ad set should target
           items:
             enum:
             - other
@@ -11039,9 +10929,8 @@ components:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         operatingSystems:
-          description: List of operating systems which the ad set should target
           items:
             enum:
             - android
@@ -11050,7 +10939,7 @@ components:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     AdSetGeoLocation:
       description: ad set geolocation model
@@ -11076,7 +10965,6 @@ components:
         frequency: hourly
       properties:
         frequency:
-          description: Period on which impression limitation is calculated
           enum:
           - hourly
           - daily
@@ -11085,7 +10973,6 @@ components:
           nullable: true
           type: string
         maximumImpressions:
-          description: Maximum impressions for the specified period
           format: int32
           nullable: true
           type: integer
@@ -11125,8 +11012,6 @@ components:
       properties:
         value:
           $ref: '#/components/schemas/NillableAdSetTargetingRule_value'
-      required:
-      - value
       type: object
     AdSetTargetingRule:
       description: ad set targeting rule model
@@ -11137,7 +11022,6 @@ components:
         operand: undefined
       properties:
         operand:
-          description: Operand which states how the values should be applied
           enum:
           - undefined
           - in
@@ -11145,12 +11029,11 @@ components:
           nullable: true
           type: string
         values:
-          description: List of values to apply
           items:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     AdResponse:
       description: Data model for response resource
@@ -13980,6 +13863,59 @@ components:
       - attributes
       - type
       type: object
+    ProblemDetails:
+      description: Common problem object.
+      properties:
+        traceId:
+          description: The request correlation ID this problem comes from.
+          nullable: true
+          type: string
+        traceIdentifier:
+          description: "The request correlation ID this problem comes from. (deprecated,\
+            \ use traceId instead)"
+          nullable: true
+          type: string
+        type:
+          description: The problem's category.
+          enum:
+          - unknown
+          - access-control
+          - authentication
+          - authorization
+          - availability
+          - deprecation
+          - quota
+          - validation
+          nullable: true
+          type: string
+        code:
+          description: "A machine-readable error code, expressed as a string value."
+          nullable: true
+          type: string
+        instance:
+          description: A URI that identifies the specific occurrence of the problem.
+          nullable: true
+          type: string
+        title:
+          description: A short human-readable description of the problem type
+          nullable: true
+          type: string
+        detail:
+          description: A human-readable explanation specific to this occurrence of
+            the problem
+          nullable: true
+          type: string
+        source:
+          additionalProperties:
+            type: string
+          description: A machine-readable structure to reference to the exact location(s)
+            causing the error(s)
+          nullable: true
+          type: object
+        stackTrace:
+          nullable: true
+          type: string
+      type: object
     PlacementsReportQueryEntityMessage:
       description: Contains a query for Transaction report and its type
       properties:
@@ -14566,6 +14502,7 @@ components:
       allOf:
       - $ref: '#/components/schemas/AdSetTargetingRule'
       nullable: true
+      type: object
       x-nullable: true
   securitySchemes:
     oauth:

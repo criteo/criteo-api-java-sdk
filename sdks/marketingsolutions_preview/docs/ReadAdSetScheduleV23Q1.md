@@ -10,8 +10,8 @@ ad set schedule read model
 |------------ | ------------- | ------------- | -------------|
 |**startDate** | [**NillableDateTime**](NillableDateTime.md) |  |  [optional] |
 |**endDate** | [**NillableDateTime**](NillableDateTime.md) |  |  [optional] |
-|**activationStatus** | [**ActivationStatusEnum**](#ActivationStatusEnum) | Activation status of the ad set, i.e. whether the consumer wants it to deliver |  [optional] |
-|**deliveryStatus** | [**DeliveryStatusEnum**](#DeliveryStatusEnum) | Delivery status of the delivery of the ad set, i.e. whether the ad set is delivering |  [optional] |
+|**activationStatus** | [**ActivationStatusEnum**](#ActivationStatusEnum) |  |  [optional] |
+|**deliveryStatus** | [**DeliveryStatusEnum**](#DeliveryStatusEnum) |  |  [optional] |
 
 
 

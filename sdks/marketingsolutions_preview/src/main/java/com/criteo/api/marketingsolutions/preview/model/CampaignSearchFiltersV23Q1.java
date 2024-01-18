@@ -77,7 +77,7 @@ public class CampaignSearchFiltersV23Q1 {
   }
 
    /**
-   * Campaign ids to filter on
+   * Get campaignIds
    * @return campaignIds
   **/
   @javax.annotation.Nullable
@@ -107,7 +107,7 @@ public class CampaignSearchFiltersV23Q1 {
   }
 
    /**
-   * Advertiser ids to which campaigns are linked to
+   * Get advertiserIds
    * @return advertiserIds
   **/
   @javax.annotation.Nullable

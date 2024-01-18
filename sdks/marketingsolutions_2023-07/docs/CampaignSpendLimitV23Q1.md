@@ -8,8 +8,8 @@ campaign spend limit model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**spendLimitType** | [**SpendLimitTypeEnum**](#SpendLimitTypeEnum) | Whether your spend limit is capped or not |  [optional] |
-|**spendLimitRenewal** | [**SpendLimitRenewalEnum**](#SpendLimitRenewalEnum) | The pace of the spend limit renewal |  [optional] |
+|**spendLimitType** | [**SpendLimitTypeEnum**](#SpendLimitTypeEnum) |  |  [optional] |
+|**spendLimitRenewal** | [**SpendLimitRenewalEnum**](#SpendLimitRenewalEnum) |  |  [optional] |
 |**spendLimitAmount** | [**NillableDecimal**](NillableDecimal.md) |  |  [optional] |
 
 

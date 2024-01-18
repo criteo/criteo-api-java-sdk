@@ -8,17 +8,18 @@ ad set read model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** | Name of the ad set |  [optional] |
-|**advertiserId** | **String** | Advertiser id of the campaign this ad set belongs to |  [optional] |
-|**datasetId** | **String** | Dataset id of this ad set |  [optional] |
-|**campaignId** | **String** | Campaign id this ad set belongs to |  [optional] |
-|**destinationEnvironment** | [**DestinationEnvironmentEnum**](#DestinationEnvironmentEnum) | The environment that an ad click will lead a user to |  [optional] |
-|**objective** | [**ObjectiveEnum**](#ObjectiveEnum) | Objective of the ad set |  [optional] |
+|**name** | **String** |  |  [optional] |
+|**advertiserId** | **String** |  |  [optional] |
+|**datasetId** | **String** |  |  [optional] |
+|**campaignId** | **String** |  |  [optional] |
+|**destinationEnvironment** | [**DestinationEnvironmentEnum**](#DestinationEnvironmentEnum) |  |  [optional] |
+|**objective** | [**ObjectiveEnum**](#ObjectiveEnum) |  |  [optional] |
 |**schedule** | [**ReadAdSetScheduleV23Q1**](ReadAdSetScheduleV23Q1.md) |  |  [optional] |
 |**bidding** | [**ReadAdSetBiddingV23Q1**](ReadAdSetBiddingV23Q1.md) |  |  [optional] |
 |**targeting** | [**AdSetTargetingV23Q1**](AdSetTargetingV23Q1.md) |  |  [optional] |
 |**budget** | [**ReadAdSetBudgetV23Q1**](ReadAdSetBudgetV23Q1.md) |  |  [optional] |
-|**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) | Media type of the ad set |  [optional] |
+|**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) |  |  [optional] |
+|**videoChannel** | [**VideoChannelEnum**](#VideoChannelEnum) |  |  [optional] |
 
 
 
@@ -56,6 +57,15 @@ ad set read model
 |---- | -----|
 | DISPLAY | &quot;display&quot; |
 | VIDEO | &quot;video&quot; |
+
+
+
+## Enum: VideoChannelEnum
+
+| Name | Value |
+|---- | -----|
+| OLV | &quot;olv&quot; |
+| CTV | &quot;ctv&quot; |
 
 
 

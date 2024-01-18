@@ -15,8 +15,6 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.ProblemDetails;
-import com.criteo.api.marketingsolutions.preview.model.ReadModelAdSetId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -49,81 +47,120 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.preview.JSON;
 
 /**
- * output resource
+ * NillableAdSetTargetingRuleV23Q1Value
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ResponseAdSetId {
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private ReadModelAdSetId data;
-
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<ProblemDetails> warnings = null;
-
-  public static final String SERIALIZED_NAME_ERRORS = "errors";
-  @SerializedName(SERIALIZED_NAME_ERRORS)
-  private List<ProblemDetails> errors = null;
-
-  public ResponseAdSetId() {
-  }
-
-  
-  public ResponseAdSetId(
-     List<ProblemDetails> warnings, 
-     List<ProblemDetails> errors
-  ) {
-    this();
-    this.warnings = warnings;
-    this.errors = errors;
-  }
-
-  public ResponseAdSetId data(ReadModelAdSetId data) {
+public class NillableAdSetTargetingRuleV23Q1Value {
+  /**
+   * Gets or Sets operand
+   */
+  @JsonAdapter(OperandEnum.Adapter.class)
+  public enum OperandEnum {
+    UNDEFINED("undefined"),
     
-    this.data = data;
+    IN("in"),
+    
+    NOTIN("notIn");
+
+    private String value;
+
+    OperandEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static OperandEnum fromValue(String value) {
+      for (OperandEnum b : OperandEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<OperandEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final OperandEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public OperandEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return OperandEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_OPERAND = "operand";
+  @SerializedName(SERIALIZED_NAME_OPERAND)
+  private OperandEnum operand;
+
+  public static final String SERIALIZED_NAME_VALUES = "values";
+  @SerializedName(SERIALIZED_NAME_VALUES)
+  private List<String> values = null;
+
+  public NillableAdSetTargetingRuleV23Q1Value() {
+  }
+
+  public NillableAdSetTargetingRuleV23Q1Value operand(OperandEnum operand) {
+    
+    this.operand = operand;
     return this;
   }
 
    /**
-   * Get data
-   * @return data
+   * Get operand
+   * @return operand
   **/
   @javax.annotation.Nullable
 
-  public ReadModelAdSetId getData() {
-    return data;
+  public OperandEnum getOperand() {
+    return operand;
   }
 
 
-  public void setData(ReadModelAdSetId data) {
-    this.data = data;
+  public void setOperand(OperandEnum operand) {
+    this.operand = operand;
   }
 
+
+  public NillableAdSetTargetingRuleV23Q1Value values(List<String> values) {
+    
+    this.values = values;
+    return this;
+  }
+
+  public NillableAdSetTargetingRuleV23Q1Value addValuesItem(String valuesItem) {
+    if (this.values == null) {
+      this.values = null;
+    }
+    this.values.add(valuesItem);
+    return this;
+  }
 
    /**
-   * Get warnings
-   * @return warnings
+   * Get values
+   * @return values
   **/
   @javax.annotation.Nullable
 
-  public List<ProblemDetails> getWarnings() {
-    return warnings;
+  public List<String> getValues() {
+    return values;
   }
 
 
-
-
-   /**
-   * Get errors
-   * @return errors
-  **/
-  @javax.annotation.Nullable
-
-  public List<ProblemDetails> getErrors() {
-    return errors;
+  public void setValues(List<String> values) {
+    this.values = values;
   }
-
-
 
   /**
    * A container for additional, undeclared properties.
@@ -138,9 +175,9 @@ public class ResponseAdSetId {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ResponseAdSetId instance itself
+   * @return the NillableAdSetTargetingRuleV23Q1Value instance itself
    */
-  public ResponseAdSetId putAdditionalProperty(String key, Object value) {
+  public NillableAdSetTargetingRuleV23Q1Value putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -179,11 +216,10 @@ public class ResponseAdSetId {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ResponseAdSetId responseAdSetId = (ResponseAdSetId) o;
-    return Objects.equals(this.data, responseAdSetId.data) &&
-        Objects.equals(this.warnings, responseAdSetId.warnings) &&
-        Objects.equals(this.errors, responseAdSetId.errors)&&
-        Objects.equals(this.additionalProperties, responseAdSetId.additionalProperties);
+    NillableAdSetTargetingRuleV23Q1Value nillableAdSetTargetingRuleV23Q1Value = (NillableAdSetTargetingRuleV23Q1Value) o;
+    return Objects.equals(this.operand, nillableAdSetTargetingRuleV23Q1Value.operand) &&
+        Objects.equals(this.values, nillableAdSetTargetingRuleV23Q1Value.values)&&
+        Objects.equals(this.additionalProperties, nillableAdSetTargetingRuleV23Q1Value.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -192,7 +228,7 @@ public class ResponseAdSetId {
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, warnings, errors, additionalProperties);
+    return Objects.hash(operand, values, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -205,10 +241,9 @@ public class ResponseAdSetId {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ResponseAdSetId {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("class NillableAdSetTargetingRuleV23Q1Value {\n");
+    sb.append("    operand: ").append(toIndentedString(operand)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -232,9 +267,8 @@ public class ResponseAdSetId {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("data");
-    openapiFields.add("warnings");
-    openapiFields.add("errors");
+    openapiFields.add("operand");
+    openapiFields.add("values");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -244,45 +278,20 @@ public class ResponseAdSetId {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ResponseAdSetId
+  * @throws IOException if the JSON Object is invalid with respect to NillableAdSetTargetingRuleV23Q1Value
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ResponseAdSetId.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ResponseAdSetId is not found in the empty JSON string", ResponseAdSetId.openapiRequiredFields.toString()));
+        if (!NillableAdSetTargetingRuleV23Q1Value.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in NillableAdSetTargetingRuleV23Q1Value is not found in the empty JSON string", NillableAdSetTargetingRuleV23Q1Value.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `data`
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        ReadModelAdSetId.validateJsonObject(jsonObj.getAsJsonObject("data"));
+      if ((jsonObj.get("operand") != null && !jsonObj.get("operand").isJsonNull()) && !jsonObj.get("operand").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `operand` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operand").toString()));
       }
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
-        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
-        if (jsonArraywarnings != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("warnings").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-          }
-
-          // validate the optional field `warnings` (array)
-          for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            ProblemDetails.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
-          };
-        }
-      }
-      if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
-        JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
-        if (jsonArrayerrors != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("errors").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
-          }
-
-          // validate the optional field `errors` (array)
-          for (int i = 0; i < jsonArrayerrors.size(); i++) {
-            ProblemDetails.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
-          };
-        }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("values") != null && !jsonObj.get("values").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `values` to be an array in the JSON string but got `%s`", jsonObj.get("values").toString()));
       }
   }
 
@@ -290,16 +299,16 @@ public class ResponseAdSetId {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ResponseAdSetId.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ResponseAdSetId' and its subtypes
+       if (!NillableAdSetTargetingRuleV23Q1Value.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'NillableAdSetTargetingRuleV23Q1Value' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ResponseAdSetId> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ResponseAdSetId.class));
+       final TypeAdapter<NillableAdSetTargetingRuleV23Q1Value> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(NillableAdSetTargetingRuleV23Q1Value.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ResponseAdSetId>() {
+       return (TypeAdapter<T>) new TypeAdapter<NillableAdSetTargetingRuleV23Q1Value>() {
            @Override
-           public void write(JsonWriter out, ResponseAdSetId value) throws IOException {
+           public void write(JsonWriter out, NillableAdSetTargetingRuleV23Q1Value value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -322,11 +331,11 @@ public class ResponseAdSetId {
            }
 
            @Override
-           public ResponseAdSetId read(JsonReader in) throws IOException {
+           public NillableAdSetTargetingRuleV23Q1Value read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             ResponseAdSetId instance = thisAdapter.fromJsonTree(jsonObj);
+             NillableAdSetTargetingRuleV23Q1Value instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -353,18 +362,18 @@ public class ResponseAdSetId {
   }
 
  /**
-  * Create an instance of ResponseAdSetId given an JSON string
+  * Create an instance of NillableAdSetTargetingRuleV23Q1Value given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ResponseAdSetId
-  * @throws IOException if the JSON string is invalid with respect to ResponseAdSetId
+  * @return An instance of NillableAdSetTargetingRuleV23Q1Value
+  * @throws IOException if the JSON string is invalid with respect to NillableAdSetTargetingRuleV23Q1Value
   */
-  public static ResponseAdSetId fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ResponseAdSetId.class);
+  public static NillableAdSetTargetingRuleV23Q1Value fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, NillableAdSetTargetingRuleV23Q1Value.class);
   }
 
  /**
-  * Convert an instance of ResponseAdSetId to an JSON string
+  * Convert an instance of NillableAdSetTargetingRuleV23Q1Value to an JSON string
   *
   * @return JSON string
   */

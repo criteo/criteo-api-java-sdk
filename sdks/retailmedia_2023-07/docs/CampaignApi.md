@@ -24,7 +24,7 @@ All URIs are relative to *https://api.criteo.com*
 | [**getApi202207ExternalRetailerByRetailerIdTemplatestemplateId**](CampaignApi.md#getApi202207ExternalRetailerByRetailerIdTemplatestemplateId) | **GET** /2023-07/retail-media/retailers/{retailer-id}/templates/{template-id} |  |
 | [**getApi202207ExternalRetailerTemplatesByRetailerId**](CampaignApi.md#getApi202207ExternalRetailerTemplatesByRetailerId) | **GET** /2023-07/retail-media/retailers/{retailer-id}/templates |  |
 | [**getApi202210ExternalAccountByAccountIdCreativescreativeId**](CampaignApi.md#getApi202210ExternalAccountByAccountIdCreativescreativeId) | **GET** /2023-07/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
-| [**getApi202301ExternalAccountCampaignsByAccountId**](CampaignApi.md#getApi202301ExternalAccountCampaignsByAccountId) | **GET** /2023-07/retail-media/accounts/{accountId}/campaigns |  |
+| [**getApi202301ExternalAccountCampaignsByAccountId**](CampaignApi.md#getApi202301ExternalAccountCampaignsByAccountId) | **GET** /2023-07/retail-media/accounts/{account-id}/campaigns |  |
 | [**getApi202301ExternalCampaignByCampaignId**](CampaignApi.md#getApi202301ExternalCampaignByCampaignId) | **GET** /2023-07/retail-media/campaigns/{campaignId} |  |
 | [**getApi202301ExternalLineItemBidMultipliersByLineItemId**](CampaignApi.md#getApi202301ExternalLineItemBidMultipliersByLineItemId) | **GET** /2023-07/retail-media/line-items/{line-item-id}/bid-multipliers |  |
 | [**getApiV1ExternalAccountBrandsByAccountId**](CampaignApi.md#getApiV1ExternalAccountBrandsByAccountId) | **GET** /2023-07/retail-media/accounts/{accountId}/brands |  |
@@ -53,7 +53,7 @@ All URIs are relative to *https://api.criteo.com*
 | [**postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemId**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemId) | **POST** /2023-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete |  |
 | [**postApi202210ExternalAccountCreativesByAccountId**](CampaignApi.md#postApi202210ExternalAccountCreativesByAccountId) | **POST** /2023-07/retail-media/accounts/{account-id}/creatives |  |
 | [**postApi202210ExternalAccountCreativesSearchByAccountId**](CampaignApi.md#postApi202210ExternalAccountCreativesSearchByAccountId) | **POST** /2023-07/retail-media/accounts/{account-id}/creatives/search |  |
-| [**postApi202301ExternalAccountCampaignsByAccountId**](CampaignApi.md#postApi202301ExternalAccountCampaignsByAccountId) | **POST** /2023-07/retail-media/accounts/{accountId}/campaigns |  |
+| [**postApi202301ExternalAccountCampaignsByAccountId**](CampaignApi.md#postApi202301ExternalAccountCampaignsByAccountId) | **POST** /2023-07/retail-media/accounts/{account-id}/campaigns |  |
 | [**postApiV1ExternalAccountCatalogsByAccountId**](CampaignApi.md#postApiV1ExternalAccountCatalogsByAccountId) | **POST** /2023-07/retail-media/accounts/{accountId}/catalogs |  |
 | [**postApiV2ExternalCampaignAuctionLineItemsByCampaignId**](CampaignApi.md#postApiV2ExternalCampaignAuctionLineItemsByCampaignId) | **POST** /2023-07/retail-media/campaigns/{campaign-id}/auction-line-items |  |
 | [**putApi202110ExternalPreferredLineItemByLineItemId**](CampaignApi.md#putApi202110ExternalPreferredLineItemByLineItemId) | **PUT** /2023-07/retail-media/preferred-line-items/{line-item-id} |  |

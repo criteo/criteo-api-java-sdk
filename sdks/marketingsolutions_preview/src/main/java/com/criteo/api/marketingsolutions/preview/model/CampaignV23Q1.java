@@ -63,7 +63,7 @@ public class CampaignV23Q1 {
   private CampaignSpendLimitV23Q1 spendLimit;
 
   /**
-   * Goal of the campaign
+   * Gets or Sets goal
    */
   @JsonAdapter(GoalEnum.Adapter.class)
   public enum GoalEnum {
@@ -125,7 +125,7 @@ public class CampaignV23Q1 {
   }
 
    /**
-   * Name of the campaign
+   * Get name
    * @return name
   **/
   @javax.annotation.Nullable
@@ -147,7 +147,7 @@ public class CampaignV23Q1 {
   }
 
    /**
-   * Advertiser id of the campaign
+   * Get advertiserId
    * @return advertiserId
   **/
   @javax.annotation.Nullable
@@ -191,7 +191,7 @@ public class CampaignV23Q1 {
   }
 
    /**
-   * Goal of the campaign
+   * Get goal
    * @return goal
   **/
   @javax.annotation.Nullable

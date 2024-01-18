@@ -8,16 +8,16 @@ ad set read model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** | Name of the ad set |  [optional] |
-|**advertiserId** | **String** | Advertiser id of the campaign this ad set belongs to |  [optional] |
-|**datasetId** | **String** | Dataset id of this ad set |  [optional] |
-|**campaignId** | **String** | Campaign id this ad set belongs to |  [optional] |
-|**destinationEnvironment** | [**DestinationEnvironmentEnum**](#DestinationEnvironmentEnum) | The environment that an ad click will lead a user to |  [optional] |
+|**name** | **String** |  |  [optional] |
+|**advertiserId** | **String** |  |  [optional] |
+|**datasetId** | **String** |  |  [optional] |
+|**campaignId** | **String** |  |  [optional] |
+|**destinationEnvironment** | [**DestinationEnvironmentEnum**](#DestinationEnvironmentEnum) |  |  [optional] |
 |**schedule** | [**ReadAdSetSchedule**](ReadAdSetSchedule.md) |  |  [optional] |
 |**bidding** | [**ReadAdSetBidding**](ReadAdSetBidding.md) |  |  [optional] |
 |**targeting** | [**AdSetTargeting**](AdSetTargeting.md) |  |  [optional] |
 |**budget** | [**ReadAdSetBudget**](ReadAdSetBudget.md) |  |  [optional] |
-|**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) | Media type for the ad set |  [optional] |
+|**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) |  |  [optional] |
 
 
 

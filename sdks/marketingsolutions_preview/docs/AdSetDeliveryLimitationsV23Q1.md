@@ -8,9 +8,9 @@ ad set delivery limitations model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**environments** | [**List&lt;EnvironmentsEnum&gt;**](#List&lt;EnvironmentsEnum&gt;) | List of environments which the ad set should target |  [optional] |
-|**devices** | [**List&lt;DevicesEnum&gt;**](#List&lt;DevicesEnum&gt;) | List of devices which the ad set should target |  [optional] |
-|**operatingSystems** | [**List&lt;OperatingSystemsEnum&gt;**](#List&lt;OperatingSystemsEnum&gt;) | List of operating systems which the ad set should target |  [optional] |
+|**environments** | [**List&lt;EnvironmentsEnum&gt;**](#List&lt;EnvironmentsEnum&gt;) |  |  [optional] |
+|**devices** | [**List&lt;DevicesEnum&gt;**](#List&lt;DevicesEnum&gt;) |  |  [optional] |
+|**operatingSystems** | [**List&lt;OperatingSystemsEnum&gt;**](#List&lt;OperatingSystemsEnum&gt;) |  |  [optional] |
 
 
 

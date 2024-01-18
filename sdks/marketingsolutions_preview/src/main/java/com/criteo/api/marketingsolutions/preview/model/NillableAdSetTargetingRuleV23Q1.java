@@ -15,13 +15,14 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.AdSetTargetingRuleV23Q1;
+import com.criteo.api.marketingsolutions.preview.model.NillableAdSetTargetingRuleV23Q1Value;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,12 +52,12 @@ import com.criteo.api.marketingsolutions.preview.JSON;
 public class NillableAdSetTargetingRuleV23Q1 {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
-  private AdSetTargetingRuleV23Q1 value;
+  private NillableAdSetTargetingRuleV23Q1Value value;
 
   public NillableAdSetTargetingRuleV23Q1() {
   }
 
-  public NillableAdSetTargetingRuleV23Q1 value(AdSetTargetingRuleV23Q1 value) {
+  public NillableAdSetTargetingRuleV23Q1 value(NillableAdSetTargetingRuleV23Q1Value value) {
     
     this.value = value;
     return this;
@@ -68,12 +69,12 @@ public class NillableAdSetTargetingRuleV23Q1 {
   **/
   @javax.annotation.Nullable
 
-  public AdSetTargetingRuleV23Q1 getValue() {
+  public NillableAdSetTargetingRuleV23Q1Value getValue() {
     return value;
   }
 
 
-  public void setValue(AdSetTargetingRuleV23Q1 value) {
+  public void setValue(NillableAdSetTargetingRuleV23Q1Value value) {
     this.value = value;
   }
 
@@ -136,9 +137,20 @@ public class NillableAdSetTargetingRuleV23Q1 {
         Objects.equals(this.additionalProperties, nillableAdSetTargetingRuleV23Q1.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(value, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -189,7 +201,7 @@ public class NillableAdSetTargetingRuleV23Q1 {
       }
       // validate the optional field `value`
       if (jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull()) {
-        AdSetTargetingRuleV23Q1.validateJsonObject(jsonObj.getAsJsonObject("value"));
+        NillableAdSetTargetingRuleV23Q1Value.validateJsonObject(jsonObj.getAsJsonObject("value"));
       }
   }
 

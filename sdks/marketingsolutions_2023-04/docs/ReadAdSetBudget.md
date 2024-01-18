@@ -8,10 +8,10 @@ ad set budget read model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**budgetStrategy** | [**BudgetStrategyEnum**](#BudgetStrategyEnum) | Whether your budget is capped or not |  [optional] |
-|**budgetRenewal** | [**BudgetRenewalEnum**](#BudgetRenewalEnum) | The pace of the budget renewal |  [optional] |
-|**budgetDeliverySmoothing** | [**BudgetDeliverySmoothingEnum**](#BudgetDeliverySmoothingEnum) | The pace at which the budget can be spent |  [optional] |
-|**budgetDeliveryWeek** | [**BudgetDeliveryWeekEnum**](#BudgetDeliveryWeekEnum) | The delivery week for the budget |  [optional] |
+|**budgetStrategy** | [**BudgetStrategyEnum**](#BudgetStrategyEnum) |  |  [optional] |
+|**budgetRenewal** | [**BudgetRenewalEnum**](#BudgetRenewalEnum) |  |  [optional] |
+|**budgetDeliverySmoothing** | [**BudgetDeliverySmoothingEnum**](#BudgetDeliverySmoothingEnum) |  |  [optional] |
+|**budgetDeliveryWeek** | [**BudgetDeliveryWeekEnum**](#BudgetDeliveryWeekEnum) |  |  [optional] |
 |**budgetAmount** | [**NillableDecimal**](NillableDecimal.md) |  |  [optional] |
 
 

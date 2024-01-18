@@ -236,7 +236,6 @@ docs/ReadModelReadAdSet.md
 docs/RequestAdSetSearch.md
 docs/RequestsAdSetId.md
 docs/RequestsPatchAdSet.md
-docs/ResponseAdSetId.md
 docs/ResponseReadAdSet.md
 docs/ResponsesAdSetId.md
 docs/ResponsesReadAdSet.md
@@ -522,7 +521,6 @@ src/main/java/com/criteo/api/marketingsolutions/v2023_10/model/ReadModelReadAdSe
 src/main/java/com/criteo/api/marketingsolutions/v2023_10/model/RequestAdSetSearch.java
 src/main/java/com/criteo/api/marketingsolutions/v2023_10/model/RequestsAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/v2023_10/model/RequestsPatchAdSet.java
-src/main/java/com/criteo/api/marketingsolutions/v2023_10/model/ResponseAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/v2023_10/model/ResponseReadAdSet.java
 src/main/java/com/criteo/api/marketingsolutions/v2023_10/model/ResponsesAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/v2023_10/model/ResponsesReadAdSet.java

@@ -50,7 +50,7 @@ import com.criteo.api.marketingsolutions.preview.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdSetFrequencyCappingV23Q1 {
   /**
-   * Period on which impression limitation is calculated
+   * Gets or Sets frequency
    */
   @JsonAdapter(FrequencyEnum.Adapter.class)
   public enum FrequencyEnum {
@@ -118,7 +118,7 @@ public class AdSetFrequencyCappingV23Q1 {
   }
 
    /**
-   * Period on which impression limitation is calculated
+   * Get frequency
    * @return frequency
   **/
   @javax.annotation.Nullable
@@ -140,7 +140,7 @@ public class AdSetFrequencyCappingV23Q1 {
   }
 
    /**
-   * Maximum impressions for the specified period
+   * Get maximumImpressions
    * @return maximumImpressions
   **/
   @javax.annotation.Nullable

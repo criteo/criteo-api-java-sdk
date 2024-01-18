@@ -9,8 +9,8 @@ Data model for a list of response resources
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**data** | [**List&lt;AdSetDisplayMultiplierResource&gt;**](AdSetDisplayMultiplierResource.md) |  |  [optional] |
-|**warnings** | [**List&lt;ProblemDetails&gt;**](ProblemDetails.md) |  |  [optional] [readonly] |
-|**errors** | [**List&lt;ProblemDetails&gt;**](ProblemDetails.md) |  |  [optional] [readonly] |
+|**warnings** | [**List&lt;CommonProblem&gt;**](CommonProblem.md) |  |  [optional] [readonly] |
+|**errors** | [**List&lt;CommonProblem&gt;**](CommonProblem.md) |  |  [optional] [readonly] |
 
 
 

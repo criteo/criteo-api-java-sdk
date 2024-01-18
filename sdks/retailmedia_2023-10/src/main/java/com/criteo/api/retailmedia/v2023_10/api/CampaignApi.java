@@ -39,7 +39,6 @@ import com.criteo.api.retailmedia.v2023_10.model.AuctionLineItemUpdateModelReque
 import com.criteo.api.retailmedia.v2023_10.model.AudienceIdsUpdateModel202110Request;
 import com.criteo.api.retailmedia.v2023_10.model.AudienceTarget202110Request;
 import com.criteo.api.retailmedia.v2023_10.model.AudienceTarget202110Response;
-import com.criteo.api.retailmedia.v2023_10.model.Balance202110PagedListResponse;
 import com.criteo.api.retailmedia.v2023_10.model.BalanceCampaign202110ListRequest;
 import com.criteo.api.retailmedia.v2023_10.model.BalanceCampaign202110PagedListResponse;
 import com.criteo.api.retailmedia.v2023_10.model.BalanceResponse;
@@ -659,153 +658,6 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = fetchProposalValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<RetailMediaExternalv1ProposalStatusModelResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getApi202110ExternalAccountBalancesByAccountId
-     * @param accountId The account to get balances for (required)
-     * @param limitToId The ids that you would like to limit your result set to (optional)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional)
-     * @param pageSize The maximum number of items you would like to receive in this request (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getApi202110ExternalAccountBalancesByAccountIdCall(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/2023-10/retail-media/accounts/{account-id}/balances"
-            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (limitToId != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "limitToId", limitToId));
-        }
-
-        if (pageIndex != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageIndex", pageIndex));
-        }
-
-        if (pageSize != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getApi202110ExternalAccountBalancesByAccountIdValidateBeforeCall(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'accountId' is set
-        if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling getApi202110ExternalAccountBalancesByAccountId(Async)");
-        }
-
-        return getApi202110ExternalAccountBalancesByAccountIdCall(accountId, limitToId, pageIndex, pageSize, _callback);
-
-    }
-
-    /**
-     * 
-     * Gets page of balance objects for the given account id
-     * @param accountId The account to get balances for (required)
-     * @param limitToId The ids that you would like to limit your result set to (optional)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional)
-     * @param pageSize The maximum number of items you would like to receive in this request (optional)
-     * @return Balance202110PagedListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public Balance202110PagedListResponse getApi202110ExternalAccountBalancesByAccountId(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
-        ApiResponse<Balance202110PagedListResponse> localVarResp = getApi202110ExternalAccountBalancesByAccountIdWithHttpInfo(accountId, limitToId, pageIndex, pageSize);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Gets page of balance objects for the given account id
-     * @param accountId The account to get balances for (required)
-     * @param limitToId The ids that you would like to limit your result set to (optional)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional)
-     * @param pageSize The maximum number of items you would like to receive in this request (optional)
-     * @return ApiResponse&lt;Balance202110PagedListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Balance202110PagedListResponse> getApi202110ExternalAccountBalancesByAccountIdWithHttpInfo(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
-        okhttp3.Call localVarCall = getApi202110ExternalAccountBalancesByAccountIdValidateBeforeCall(accountId, limitToId, pageIndex, pageSize, null);
-        Type localVarReturnType = new TypeToken<Balance202110PagedListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Gets page of balance objects for the given account id
-     * @param accountId The account to get balances for (required)
-     * @param limitToId The ids that you would like to limit your result set to (optional)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional)
-     * @param pageSize The maximum number of items you would like to receive in this request (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getApi202110ExternalAccountBalancesByAccountIdAsync(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback<Balance202110PagedListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getApi202110ExternalAccountBalancesByAccountIdValidateBeforeCall(accountId, limitToId, pageIndex, pageSize, _callback);
-        Type localVarReturnType = new TypeToken<Balance202110PagedListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2832,8 +2684,8 @@ public class CampaignApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/2023-10/retail-media/accounts/{accountId}/campaigns"
-            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
+        String localVarPath = "/2023-10/retail-media/accounts/{account-id}/campaigns"
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3227,8 +3079,8 @@ public class CampaignApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/2023-10/retail-media/accounts/{accountId}/balances"
-            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
+        String localVarPath = "/2023-10/retail-media/accounts/{account-id}/balances"
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3519,8 +3371,8 @@ public class CampaignApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/2023-10/retail-media/accounts/{accountId}/balances/{balanceId}"
-            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+        String localVarPath = "/2023-10/retail-media/accounts/{account-id}/balances/{balanceId}"
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()))
             .replace("{" + "balanceId" + "}", localVarApiClient.escapeString(balanceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -4748,8 +4600,8 @@ public class CampaignApi {
         Object localVarPostBody = updateBalanceModelRequest;
 
         // create path and map variables
-        String localVarPath = "/2023-10/retail-media/accounts/{accountId}/balances/{balanceId}"
-            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+        String localVarPath = "/2023-10/retail-media/accounts/{account-id}/balances/{balanceId}"
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()))
             .replace("{" + "balanceId" + "}", localVarApiClient.escapeString(balanceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -7090,8 +6942,8 @@ public class CampaignApi {
         Object localVarPostBody = postCampaignV202301;
 
         // create path and map variables
-        String localVarPath = "/2023-10/retail-media/accounts/{accountId}/campaigns"
-            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
+        String localVarPath = "/2023-10/retail-media/accounts/{account-id}/campaigns"
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -7219,8 +7071,8 @@ public class CampaignApi {
         Object localVarPostBody = addFundsToBalanceRequest;
 
         // create path and map variables
-        String localVarPath = "/2023-10/retail-media/accounts/{accountId}/balances/{balanceId}/add-funds"
-            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+        String localVarPath = "/2023-10/retail-media/accounts/{account-id}/balances/{balanceId}/add-funds"
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()))
             .replace("{" + "balanceId" + "}", localVarApiClient.escapeString(balanceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -7356,8 +7208,8 @@ public class CampaignApi {
         Object localVarPostBody = createBalanceRequest;
 
         // create path and map variables
-        String localVarPath = "/2023-10/retail-media/accounts/{accountId}/balances"
-            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
+        String localVarPath = "/2023-10/retail-media/accounts/{account-id}/balances"
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -7613,8 +7465,8 @@ public class CampaignApi {
         Object localVarPostBody = changeDatesOfBalanceRequest;
 
         // create path and map variables
-        String localVarPath = "/2023-10/retail-media/accounts/{accountId}/balances/{balanceId}/change-dates"
-            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()))
+        String localVarPath = "/2023-10/retail-media/accounts/{account-id}/balances/{balanceId}/change-dates"
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()))
             .replace("{" + "balanceId" + "}", localVarApiClient.escapeString(balanceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

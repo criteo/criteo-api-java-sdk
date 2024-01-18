@@ -83,7 +83,7 @@ public class PatchAdSet {
   }
 
    /**
-   * Name of the ad set
+   * Get name
    * @return name
   **/
   @javax.annotation.Nullable

@@ -473,8 +473,8 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of Category Bids for all valid Categories associated to an Ad Set. |  -  |
-| **400** | Bad Request |  -  |
 | **401** | The API client is not properly authenticated. |  -  |
+| **400** | Bad Request |  -  |
 | **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
@@ -565,14 +565,14 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of Display Multipliers for all valid Categories associated to an Ad Set. |  -  |
-| **400** | Bad Request |  -  |
 | **401** | The API client is not properly authenticated. |  -  |
+| **400** | Bad Request |  -  |
 | **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## patchAdSets
 
-> ResponseAdSetId patchAdSets(requestsPatchAdSet)
+> ResponsesAdSetId patchAdSets(requestsPatchAdSet)
 
 
 
@@ -619,7 +619,7 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         RequestsPatchAdSet requestsPatchAdSet = new RequestsPatchAdSet(); // RequestsPatchAdSet | List of adsets to patch.
         try {
-            ResponseAdSetId result = apiInstance.patchAdSets(requestsPatchAdSet);
+            ResponsesAdSetId result = apiInstance.patchAdSets(requestsPatchAdSet);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#patchAdSets");
@@ -641,7 +641,7 @@ public class Example {
 
 ### Return type
 
-[**ResponseAdSetId**](ResponseAdSetId.md)
+[**ResponsesAdSetId**](ResponsesAdSetId.md)
 
 ### Authorization
 
@@ -841,8 +841,8 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of updated Category Bids for given Categories associated to an Ad Set. |  -  |
-| **400** | Bad Request |  -  |
 | **401** | The API client is not properly authenticated. |  -  |
+| **400** | Bad Request |  -  |
 | **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
@@ -935,8 +935,8 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of updated Display Multipliers for given Categories associated to an Ad Set. |  -  |
-| **400** | Bad Request |  -  |
 | **401** | The API client is not properly authenticated. |  -  |
+| **400** | Bad Request |  -  |
 | **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
@@ -1028,8 +1028,8 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | data for the ad sets |  -  |
 | **400** | Bad Request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
 | **403** | Forbidden |  -  |
+| **401** | The API client is not properly authenticated. |  -  |
 
 
 ## searchCampaigns
@@ -1120,8 +1120,8 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | data for the campaigns |  -  |
 | **400** | Bad Request |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
 | **403** | Forbidden |  -  |
+| **401** | The API client is not properly authenticated. |  -  |
 
 
 ## startAdSets

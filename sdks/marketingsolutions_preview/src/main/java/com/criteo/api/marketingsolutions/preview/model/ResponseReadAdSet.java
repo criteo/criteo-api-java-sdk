@@ -15,7 +15,7 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.ProblemDetails;
+import com.criteo.api.marketingsolutions.preview.model.CommonProblem;
 import com.criteo.api.marketingsolutions.preview.model.ReadModelReadAdSet;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -59,19 +59,19 @@ public class ResponseReadAdSet {
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<ProblemDetails> warnings = null;
+  private List<CommonProblem> warnings = null;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
-  private List<ProblemDetails> errors = null;
+  private List<CommonProblem> errors = null;
 
   public ResponseReadAdSet() {
   }
 
   
   public ResponseReadAdSet(
-     List<ProblemDetails> warnings, 
-     List<ProblemDetails> errors
+     List<CommonProblem> warnings, 
+     List<CommonProblem> errors
   ) {
     this();
     this.warnings = warnings;
@@ -106,7 +106,7 @@ public class ResponseReadAdSet {
   **/
   @javax.annotation.Nullable
 
-  public List<ProblemDetails> getWarnings() {
+  public List<CommonProblem> getWarnings() {
     return warnings;
   }
 
@@ -119,7 +119,7 @@ public class ResponseReadAdSet {
   **/
   @javax.annotation.Nullable
 
-  public List<ProblemDetails> getErrors() {
+  public List<CommonProblem> getErrors() {
     return errors;
   }
 
@@ -266,7 +266,7 @@ public class ResponseReadAdSet {
 
           // validate the optional field `warnings` (array)
           for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            ProblemDetails.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
+            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }
@@ -280,7 +280,7 @@ public class ResponseReadAdSet {
 
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
-            ProblemDetails.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+            CommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
           };
         }
       }

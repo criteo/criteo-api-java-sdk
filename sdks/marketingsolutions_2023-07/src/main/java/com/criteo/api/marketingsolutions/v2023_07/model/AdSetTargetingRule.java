@@ -52,7 +52,7 @@ import com.criteo.api.marketingsolutions.v2023_07.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdSetTargetingRule {
   /**
-   * Operand which states how the values should be applied
+   * Gets or Sets operand
    */
   @JsonAdapter(OperandEnum.Adapter.class)
   public enum OperandEnum {
@@ -118,7 +118,7 @@ public class AdSetTargetingRule {
   }
 
    /**
-   * Operand which states how the values should be applied
+   * Get operand
    * @return operand
   **/
   @javax.annotation.Nullable
@@ -148,7 +148,7 @@ public class AdSetTargetingRule {
   }
 
    /**
-   * List of values to apply
+   * Get values
    * @return values
   **/
   @javax.annotation.Nullable
