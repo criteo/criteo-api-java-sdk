@@ -15,6 +15,7 @@ A Retail Media Account used to launch campaigns and line items
 |**currency** | **String** |  |  |
 |**parentAccountLabel** | **String** |  |  |
 |**timeZone** | **String** |  |  |
+|**companyName** | **String** |  |  [optional] |
 
 
 

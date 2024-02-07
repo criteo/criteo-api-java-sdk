@@ -55,6 +55,10 @@ public class RetailMediaAccount {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_COMPANY_NAME = "companyName";
+  @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
+  private String companyName;
+
   /**
    * Type for the account
    */
@@ -199,6 +203,28 @@ public class RetailMediaAccount {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+
+  public RetailMediaAccount companyName(String companyName) {
+    
+    this.companyName = companyName;
+    return this;
+  }
+
+   /**
+   * Display name for reporting the owning entity of ads for the Digital Services Act in the European Union
+   * @return companyName
+  **/
+  @javax.annotation.Nullable
+
+  public String getCompanyName() {
+    return companyName;
+  }
+
+
+  public void setCompanyName(String companyName) {
+    this.companyName = companyName;
   }
 
 
@@ -353,6 +379,7 @@ public class RetailMediaAccount {
     }
     RetailMediaAccount retailMediaAccount = (RetailMediaAccount) o;
     return Objects.equals(this.name, retailMediaAccount.name) &&
+        Objects.equals(this.companyName, retailMediaAccount.companyName) &&
         Objects.equals(this.type, retailMediaAccount.type) &&
         Objects.equals(this.subType, retailMediaAccount.subType) &&
         Objects.equals(this.countryIds, retailMediaAccount.countryIds) &&
@@ -367,7 +394,7 @@ public class RetailMediaAccount {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, subType, countryIds, currencyId, parentAccountLabel, timeZone);
+    return Objects.hash(name, companyName, type, subType, countryIds, currencyId, parentAccountLabel, timeZone);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -382,6 +409,7 @@ public class RetailMediaAccount {
     StringBuilder sb = new StringBuilder();
     sb.append("class RetailMediaAccount {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    subType: ").append(toIndentedString(subType)).append("\n");
     sb.append("    countryIds: ").append(toIndentedString(countryIds)).append("\n");
@@ -411,6 +439,7 @@ public class RetailMediaAccount {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("name");
+    openapiFields.add("companyName");
     openapiFields.add("type");
     openapiFields.add("subType");
     openapiFields.add("countryIds");
@@ -444,6 +473,9 @@ public class RetailMediaAccount {
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) && !jsonObj.get("companyName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

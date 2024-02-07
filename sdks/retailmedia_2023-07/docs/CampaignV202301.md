@@ -28,6 +28,7 @@ A Retail Media Campaign used to represent an advertiser's marketing objective
 |**endDate** | **OffsetDateTime** |  |  |
 |**clickAttributionScope** | [**ClickAttributionScopeEnum**](#ClickAttributionScopeEnum) |  |  [optional] |
 |**viewAttributionScope** | [**ViewAttributionScopeEnum**](#ViewAttributionScopeEnum) |  |  [optional] |
+|**companyName** | **String** |  |  [optional] |
 
 
 

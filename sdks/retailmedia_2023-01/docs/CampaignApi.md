@@ -18,7 +18,6 @@ All URIs are relative to *https://api.criteo.com*
 | [**getApi202110ExternalRetailerPagesByRetailerId**](CampaignApi.md#getApi202110ExternalRetailerPagesByRetailerId) | **GET** /2023-01/retail-media/retailers/{retailerId}/pages |  |
 | [**getApi202204ExternalCategorieByCategoryId**](CampaignApi.md#getApi202204ExternalCategorieByCategoryId) | **GET** /2023-01/retail-media/categories/{categoryId} |  |
 | [**getApi202204ExternalCategories**](CampaignApi.md#getApi202204ExternalCategories) | **GET** /2023-01/retail-media/categories |  |
-| [**getApi202207ExternalAccountByAccountIdCreativescreativeId**](CampaignApi.md#getApi202207ExternalAccountByAccountIdCreativescreativeId) | **GET** /2023-01/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
 | [**getApi202207ExternalRetailerByRetailerIdTemplatestemplateId**](CampaignApi.md#getApi202207ExternalRetailerByRetailerIdTemplatestemplateId) | **GET** /2023-01/retail-media/retailers/{retailer-id}/templates/{template-id} |  |
 | [**getApi202207ExternalRetailerTemplatesByRetailerId**](CampaignApi.md#getApi202207ExternalRetailerTemplatesByRetailerId) | **GET** /2023-01/retail-media/retailers/{retailer-id}/templates |  |
 | [**getApi202301ExternalAccountCampaignsByAccountId**](CampaignApi.md#getApi202301ExternalAccountCampaignsByAccountId) | **GET** /2023-01/retail-media/accounts/{account-id}/campaigns |  |
@@ -48,7 +47,6 @@ All URIs are relative to *https://api.criteo.com*
 | [**postApi202110ExternalPreferredLineItemTargetingAudiencesDeleteByLineItemId**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAudiencesDeleteByLineItemId) | **POST** /2023-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete |  |
 | [**postApi202110ExternalPreferredLineItemTargetingStoresAppendByLineItemId**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingStoresAppendByLineItemId) | **POST** /2023-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append |  |
 | [**postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemId**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemId) | **POST** /2023-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete |  |
-| [**postApi202207ExternalAccountCreativesByAccountId**](CampaignApi.md#postApi202207ExternalAccountCreativesByAccountId) | **POST** /2023-01/retail-media/accounts/{account-id}/creatives |  |
 | [**postApi202301ExternalAccountCampaignsByAccountId**](CampaignApi.md#postApi202301ExternalAccountCampaignsByAccountId) | **POST** /2023-01/retail-media/accounts/{account-id}/campaigns |  |
 | [**postApiV1ExternalAccountCatalogsByAccountId**](CampaignApi.md#postApiV1ExternalAccountCatalogsByAccountId) | **POST** /2023-01/retail-media/accounts/{accountId}/catalogs |  |
 | [**postApiV2ExternalCampaignAuctionLineItemsByCampaignId**](CampaignApi.md#postApiV2ExternalCampaignAuctionLineItemsByCampaignId) | **POST** /2023-01/retail-media/campaigns/{campaign-id}/auction-line-items |  |
@@ -56,7 +54,6 @@ All URIs are relative to *https://api.criteo.com*
 | [**putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId) | **PUT** /2023-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket |  |
 | [**putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId) | **PUT** /2023-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences |  |
 | [**putApi202110ExternalPreferredLineItemTargetingStoresByLineItemId**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingStoresByLineItemId) | **PUT** /2023-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores |  |
-| [**putApi202207ExternalAccountByAccountIdCreativescreativeId**](CampaignApi.md#putApi202207ExternalAccountByAccountIdCreativescreativeId) | **PUT** /2023-01/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
 | [**putApi202301ExternalCampaignByCampaignId**](CampaignApi.md#putApi202301ExternalCampaignByCampaignId) | **PUT** /2023-01/retail-media/campaigns/{campaignId} |  |
 | [**putApi202301ExternalLineItemBidMultipliersByLineItemId**](CampaignApi.md#putApi202301ExternalLineItemBidMultipliersByLineItemId) | **PUT** /2023-01/retail-media/line-items/{line-item-id}/bid-multipliers |  |
 | [**putApiV2ExternalAuctionLineItemByLineItemId**](CampaignApi.md#putApiV2ExternalAuctionLineItemByLineItemId) | **PUT** /2023-01/retail-media/auction-line-items/{line-item-id} |  |
@@ -1345,97 +1342,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Categories found. |  -  |
-
-
-## getApi202207ExternalAccountByAccountIdCreativescreativeId
-
-> Creative202207Response getApi202207ExternalAccountByAccountIdCreativescreativeId(accountId, creativeId)
-
-
-
-Get the specified creative
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2023_01;
-
-import com.criteo.api.retailmedia.v2023_01.ApiClient;
-import com.criteo.api.retailmedia.v2023_01.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2023_01.ApiException;
-import com.criteo.api.retailmedia.v2023_01.Configuration;
-import com.criteo.api.retailmedia.v2023_01.auth.*;
-import com.criteo.api.retailmedia.v2023_01.model.*;
-import com.criteo.api.retailmedia.v2023_01.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String accountId = "accountId_example"; // String | External account id to retrieve creatives for
-        String creativeId = "creativeId_example"; // String | Creative to get
-        try {
-            Creative202207Response result = apiInstance.getApi202207ExternalAccountByAccountIdCreativescreativeId(accountId, creativeId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getApi202207ExternalAccountByAccountIdCreativescreativeId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| External account id to retrieve creatives for | |
-| **creativeId** | **String**| Creative to get | |
-
-### Return type
-
-[**Creative202207Response**](Creative202207Response.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Creatives found |  -  |
 
 
 ## getApi202207ExternalRetailerByRetailerIdTemplatestemplateId
@@ -4098,97 +4004,6 @@ public class Example {
 | **400** | Bad Request |  -  |
 
 
-## postApi202207ExternalAccountCreativesByAccountId
-
-> Creative202207Response postApi202207ExternalAccountCreativesByAccountId(accountId, creativeCreateModel202207)
-
-
-
-Create a creative for an account
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2023_01;
-
-import com.criteo.api.retailmedia.v2023_01.ApiClient;
-import com.criteo.api.retailmedia.v2023_01.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2023_01.ApiException;
-import com.criteo.api.retailmedia.v2023_01.Configuration;
-import com.criteo.api.retailmedia.v2023_01.auth.*;
-import com.criteo.api.retailmedia.v2023_01.model.*;
-import com.criteo.api.retailmedia.v2023_01.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String accountId = "accountId_example"; // String | External account id to create a creative for
-        CreativeCreateModel202207 creativeCreateModel202207 = new CreativeCreateModel202207(); // CreativeCreateModel202207 | The creative to create
-        try {
-            Creative202207Response result = apiInstance.postApi202207ExternalAccountCreativesByAccountId(accountId, creativeCreateModel202207);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#postApi202207ExternalAccountCreativesByAccountId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| External account id to create a creative for | |
-| **creativeCreateModel202207** | [**CreativeCreateModel202207**](CreativeCreateModel202207.md)| The creative to create | [optional] |
-
-### Return type
-
-[**Creative202207Response**](Creative202207Response.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Creatives created |  -  |
-
-
 ## postApi202301ExternalAccountCampaignsByAccountId
 
 > JsonApiSingleResponseOfCampaignV202301 postApi202301ExternalAccountCampaignsByAccountId(accountId, postCampaignV202301)
@@ -4829,100 +4644,6 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
 | **400** | Bad Request |  -  |
-
-
-## putApi202207ExternalAccountByAccountIdCreativescreativeId
-
-> Creative202207Response putApi202207ExternalAccountByAccountIdCreativescreativeId(accountId, creativeId, creativeUpdateModel202207)
-
-
-
-Update a creative
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2023_01;
-
-import com.criteo.api.retailmedia.v2023_01.ApiClient;
-import com.criteo.api.retailmedia.v2023_01.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2023_01.ApiException;
-import com.criteo.api.retailmedia.v2023_01.Configuration;
-import com.criteo.api.retailmedia.v2023_01.auth.*;
-import com.criteo.api.retailmedia.v2023_01.model.*;
-import com.criteo.api.retailmedia.v2023_01.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String accountId = "accountId_example"; // String | External account id containing the creative
-        String creativeId = "creativeId_example"; // String | Creative to update
-        CreativeUpdateModel202207 creativeUpdateModel202207 = new CreativeUpdateModel202207(); // CreativeUpdateModel202207 | The creative to create
-        try {
-            Creative202207Response result = apiInstance.putApi202207ExternalAccountByAccountIdCreativescreativeId(accountId, creativeId, creativeUpdateModel202207);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#putApi202207ExternalAccountByAccountIdCreativescreativeId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| External account id containing the creative | |
-| **creativeId** | **String**| Creative to update | |
-| **creativeUpdateModel202207** | [**CreativeUpdateModel202207**](CreativeUpdateModel202207.md)| The creative to create | [optional] |
-
-### Return type
-
-[**Creative202207Response**](Creative202207Response.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **204** | Creative updated |  -  |
 
 
 ## putApi202301ExternalCampaignByCampaignId

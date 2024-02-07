@@ -55,6 +55,10 @@ public class RetailMediaBrandAccountCreation {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_COMPANY_NAME = "companyName";
+  @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
+  private String companyName;
+
   public static final String SERIALIZED_NAME_BRANDS = "brands";
   @SerializedName(SERIALIZED_NAME_BRANDS)
   private List<Integer> brands = null;
@@ -81,6 +85,28 @@ public class RetailMediaBrandAccountCreation {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+
+  public RetailMediaBrandAccountCreation companyName(String companyName) {
+    
+    this.companyName = companyName;
+    return this;
+  }
+
+   /**
+   * Display name for reporting the owning entity of ads for the Digital Services Act in the European Union
+   * @return companyName
+  **/
+  @javax.annotation.Nullable
+
+  public String getCompanyName() {
+    return companyName;
+  }
+
+
+  public void setCompanyName(String companyName) {
+    this.companyName = companyName;
   }
 
 
@@ -125,6 +151,7 @@ public class RetailMediaBrandAccountCreation {
     }
     RetailMediaBrandAccountCreation retailMediaBrandAccountCreation = (RetailMediaBrandAccountCreation) o;
     return Objects.equals(this.name, retailMediaBrandAccountCreation.name) &&
+        Objects.equals(this.companyName, retailMediaBrandAccountCreation.companyName) &&
         Objects.equals(this.brands, retailMediaBrandAccountCreation.brands);
   }
 
@@ -134,7 +161,7 @@ public class RetailMediaBrandAccountCreation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, brands);
+    return Objects.hash(name, companyName, brands);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -149,6 +176,7 @@ public class RetailMediaBrandAccountCreation {
     StringBuilder sb = new StringBuilder();
     sb.append("class RetailMediaBrandAccountCreation {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
     sb.append("    brands: ").append(toIndentedString(brands)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -173,6 +201,7 @@ public class RetailMediaBrandAccountCreation {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("name");
+    openapiFields.add("companyName");
     openapiFields.add("brands");
 
     // a set of required properties/fields (JSON key names)
@@ -201,6 +230,9 @@ public class RetailMediaBrandAccountCreation {
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) && !jsonObj.get("companyName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("brands") != null && !jsonObj.get("brands").isJsonArray()) {

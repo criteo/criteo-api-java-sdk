@@ -19,6 +19,7 @@ An object that represents the available options to set when editing a Retail Med
 |**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) |  |  |
 |**clickAttributionScope** | [**ClickAttributionScopeEnum**](#ClickAttributionScopeEnum) |  |  [optional] |
 |**viewAttributionScope** | [**ViewAttributionScopeEnum**](#ViewAttributionScopeEnum) |  |  [optional] |
+|**companyName** | **String** |  |  [optional] |
 
 
 

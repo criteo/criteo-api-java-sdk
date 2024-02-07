@@ -177,6 +177,10 @@ public class ExternalAccount {
   @SerializedName(SERIALIZED_NAME_TIME_ZONE)
   private String timeZone;
 
+  public static final String SERIALIZED_NAME_COMPANY_NAME = "companyName";
+  @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
+  private String companyName;
+
   public ExternalAccount() {
   }
 
@@ -338,6 +342,28 @@ public class ExternalAccount {
     this.timeZone = timeZone;
   }
 
+
+  public ExternalAccount companyName(String companyName) {
+    
+    this.companyName = companyName;
+    return this;
+  }
+
+   /**
+   * Get companyName
+   * @return companyName
+  **/
+  @javax.annotation.Nullable
+
+  public String getCompanyName() {
+    return companyName;
+  }
+
+
+  public void setCompanyName(String companyName) {
+    this.companyName = companyName;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -399,7 +425,8 @@ public class ExternalAccount {
         Objects.equals(this.countries, externalAccount.countries) &&
         Objects.equals(this.currency, externalAccount.currency) &&
         Objects.equals(this.parentAccountLabel, externalAccount.parentAccountLabel) &&
-        Objects.equals(this.timeZone, externalAccount.timeZone)&&
+        Objects.equals(this.timeZone, externalAccount.timeZone) &&
+        Objects.equals(this.companyName, externalAccount.companyName)&&
         Objects.equals(this.additionalProperties, externalAccount.additionalProperties);
   }
 
@@ -409,7 +436,7 @@ public class ExternalAccount {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, subtype, countries, currency, parentAccountLabel, timeZone, additionalProperties);
+    return Objects.hash(name, type, subtype, countries, currency, parentAccountLabel, timeZone, companyName, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -430,6 +457,7 @@ public class ExternalAccount {
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    parentAccountLabel: ").append(toIndentedString(parentAccountLabel)).append("\n");
     sb.append("    timeZone: ").append(toIndentedString(timeZone)).append("\n");
+    sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -460,6 +488,7 @@ public class ExternalAccount {
     openapiFields.add("currency");
     openapiFields.add("parentAccountLabel");
     openapiFields.add("timeZone");
+    openapiFields.add("companyName");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -513,6 +542,9 @@ public class ExternalAccount {
       }
       if (!jsonObj.get("timeZone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `timeZone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timeZone").toString()));
+      }
+      if ((jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) && !jsonObj.get("companyName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
       }
   }
 

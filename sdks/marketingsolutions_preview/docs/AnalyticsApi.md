@@ -20,7 +20,7 @@ All URIs are relative to *https://api.criteo.com*
 
 ## getAdsetReport
 
-> byte[] getAdsetReport(statisticsReportQueryMessage)
+> File getAdsetReport(statisticsReportQueryMessage)
 
 
 
@@ -67,7 +67,7 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         StatisticsReportQueryMessage statisticsReportQueryMessage = new StatisticsReportQueryMessage(); // StatisticsReportQueryMessage | 
         try {
-            byte[] result = apiInstance.getAdsetReport(statisticsReportQueryMessage);
+            File result = apiInstance.getAdsetReport(statisticsReportQueryMessage);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalyticsApi#getAdsetReport");
@@ -89,7 +89,7 @@ public class Example {
 
 ### Return type
 
-**byte[]**
+[**File**](File.md)
 
 ### Authorization
 
@@ -471,7 +471,7 @@ public class Example {
 
 ## getCategoriesReport
 
-> byte[] getCategoriesReport(generateCategoriesReportRequest)
+> File getCategoriesReport(generateCategoriesReportRequest)
 
 
 
@@ -518,7 +518,7 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         GenerateCategoriesReportRequest generateCategoriesReportRequest = new GenerateCategoriesReportRequest(); // GenerateCategoriesReportRequest | 
         try {
-            byte[] result = apiInstance.getCategoriesReport(generateCategoriesReportRequest);
+            File result = apiInstance.getCategoriesReport(generateCategoriesReportRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalyticsApi#getCategoriesReport");
@@ -540,7 +540,7 @@ public class Example {
 
 ### Return type
 
-**byte[]**
+[**File**](File.md)
 
 ### Authorization
 
@@ -653,7 +653,7 @@ public class Example {
 
 ## getPlacementsReport
 
-> byte[] getPlacementsReport(placementsReportQueryDataMessage)
+> File getPlacementsReport(placementsReportQueryDataMessage)
 
 
 
@@ -700,7 +700,7 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         PlacementsReportQueryDataMessage placementsReportQueryDataMessage = new PlacementsReportQueryDataMessage(); // PlacementsReportQueryDataMessage | 
         try {
-            byte[] result = apiInstance.getPlacementsReport(placementsReportQueryDataMessage);
+            File result = apiInstance.getPlacementsReport(placementsReportQueryDataMessage);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalyticsApi#getPlacementsReport");
@@ -722,7 +722,7 @@ public class Example {
 
 ### Return type
 
-**byte[]**
+[**File**](File.md)
 
 ### Authorization
 
@@ -731,7 +731,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: text/plain, application/json, text/json, text/csv, text/xml, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 
 
 ### HTTP response details
@@ -835,7 +835,7 @@ public class Example {
 
 ## getTransactionsReport
 
-> byte[] getTransactionsReport(transactionsReportQueryDataMessage)
+> File getTransactionsReport(transactionsReportQueryDataMessage)
 
 
 
@@ -882,7 +882,7 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         TransactionsReportQueryDataMessage transactionsReportQueryDataMessage = new TransactionsReportQueryDataMessage(); // TransactionsReportQueryDataMessage | 
         try {
-            byte[] result = apiInstance.getTransactionsReport(transactionsReportQueryDataMessage);
+            File result = apiInstance.getTransactionsReport(transactionsReportQueryDataMessage);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalyticsApi#getTransactionsReport");
@@ -904,7 +904,7 @@ public class Example {
 
 ### Return type
 
-**byte[]**
+[**File**](File.md)
 
 ### Authorization
 

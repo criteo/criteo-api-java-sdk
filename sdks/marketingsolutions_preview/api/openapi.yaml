@@ -1173,21 +1173,21 @@ paths:
   /preview/marketing-solutions/ad-sets:
     patch:
       description: Patch a list of AdSets.
-      operationId: PatchAdSets
+      operationId: PatchAdSetsV24Q1
       requestBody:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/RequestsPatchAdSet'
+              $ref: '#/components/schemas/RequestsPatchAdSetV24Q1'
           application/json:
             schema:
-              $ref: '#/components/schemas/RequestsPatchAdSet'
+              $ref: '#/components/schemas/RequestsPatchAdSetV24Q1'
           text/json:
             schema:
-              $ref: '#/components/schemas/RequestsPatchAdSet'
+              $ref: '#/components/schemas/RequestsPatchAdSetV24Q1'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/RequestsPatchAdSet'
+              $ref: '#/components/schemas/RequestsPatchAdSetV24Q1'
         description: List of adsets to patch.
         x-bodyName: adSets
       responses:
@@ -1195,13 +1195,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ResponsesAdSetId'
+                $ref: '#/components/schemas/ResponsesAdSetIdV24Q1'
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponsesAdSetId'
+                $ref: '#/components/schemas/ResponsesAdSetIdV24Q1'
             text/json:
               schema:
-                $ref: '#/components/schemas/ResponsesAdSetId'
+                $ref: '#/components/schemas/ResponsesAdSetIdV24Q1'
           description: List of patched adSets.
         "401":
           content:
@@ -1222,21 +1222,21 @@ paths:
       x-accepts: application/json
     post:
       description: Create the specified ad set
-      operationId: CreateAdSet
+      operationId: CreateAdSetV24Q1
       requestBody:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/CreateAdSetRequest'
+              $ref: '#/components/schemas/CreateAdSetV24Q1Request'
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateAdSetRequest'
+              $ref: '#/components/schemas/CreateAdSetV24Q1Request'
           text/json:
             schema:
-              $ref: '#/components/schemas/CreateAdSetRequest'
+              $ref: '#/components/schemas/CreateAdSetV24Q1Request'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/CreateAdSetRequest'
+              $ref: '#/components/schemas/CreateAdSetV24Q1Request'
         description: the ad sets to create
         required: true
         x-bodyName: adSet
@@ -1245,13 +1245,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ResponseReadAdSet'
+                $ref: '#/components/schemas/ResponseReadAdSetV24Q1'
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseReadAdSet'
+                $ref: '#/components/schemas/ResponseReadAdSetV24Q1'
             text/json:
               schema:
-                $ref: '#/components/schemas/ResponseReadAdSet'
+                $ref: '#/components/schemas/ResponseReadAdSetV24Q1'
           description: The ad set that has been created and errors / warnings
         "400":
           content:
@@ -1272,34 +1272,34 @@ paths:
   /preview/marketing-solutions/ad-sets/search:
     post:
       description: Search for ad sets
-      operationId: SearchAdSetsV23Q1
+      operationId: SearchAdSetsV24Q1
       requestBody:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/AdSetSearchRequestV23Q1'
+              $ref: '#/components/schemas/AdSetSearchRequestV24Q1'
           application/json:
             schema:
-              $ref: '#/components/schemas/AdSetSearchRequestV23Q1'
+              $ref: '#/components/schemas/AdSetSearchRequestV24Q1'
           text/json:
             schema:
-              $ref: '#/components/schemas/AdSetSearchRequestV23Q1'
+              $ref: '#/components/schemas/AdSetSearchRequestV24Q1'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/AdSetSearchRequestV23Q1'
+              $ref: '#/components/schemas/AdSetSearchRequestV24Q1'
         x-bodyName: request
       responses:
         "200":
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ResponsesReadAdSetV23Q1'
+                $ref: '#/components/schemas/ResponsesReadAdSetV24Q1'
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponsesReadAdSetV23Q1'
+                $ref: '#/components/schemas/ResponsesReadAdSetV24Q1'
             text/json:
               schema:
-                $ref: '#/components/schemas/ResponsesReadAdSetV23Q1'
+                $ref: '#/components/schemas/ResponsesReadAdSetV24Q1'
           description: data for the ad sets
         "400":
           content:
@@ -1427,7 +1427,7 @@ paths:
   /preview/marketing-solutions/ad-sets/{ad-set-id}:
     get:
       description: Get the data for the specified ad set
-      operationId: GetAdSetV23Q1
+      operationId: GetAdSetV24Q1
       parameters:
       - description: Id of the ad set
         explode: false
@@ -1442,13 +1442,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ResponseReadAdSetV23Q1'
+                $ref: '#/components/schemas/ResponseReadAdSetV24Q1'
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseReadAdSetV23Q1'
+                $ref: '#/components/schemas/ResponseReadAdSetV24Q1'
             text/json:
               schema:
-                $ref: '#/components/schemas/ResponseReadAdSetV23Q1'
+                $ref: '#/components/schemas/ResponseReadAdSetV24Q1'
           description: data for the ad set
         "401":
           content:
@@ -2813,27 +2813,27 @@ paths:
           content:
             text/plain:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/csv:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/xml:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
-                format: byte
+                format: binary
                 type: string
           description: Success
         "400":
@@ -3027,15 +3027,27 @@ paths:
           content:
             text/plain:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/json:
               schema:
-                format: byte
+                format: binary
+                type: string
+            text/csv:
+              schema:
+                format: binary
+                type: string
+            text/xml:
+              schema:
+                format: binary
+                type: string
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                format: binary
                 type: string
           description: Success
         "400":
@@ -3057,6 +3069,15 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ProblemsDetails'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Bad Request
         "403":
           content:
@@ -3076,6 +3097,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemsDetails'
             text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
                 $ref: '#/components/schemas/ProblemsDetails'
           description: Forbidden
@@ -3499,27 +3529,27 @@ paths:
           content:
             text/plain:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/csv:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/xml:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
-                format: byte
+                format: binary
                 type: string
           description: Success
         "400":
@@ -3609,27 +3639,27 @@ paths:
           content:
             text/plain:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/csv:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/xml:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
-                format: byte
+                format: binary
                 type: string
           description: Success
         "400":
@@ -11228,6 +11258,361 @@ components:
           nullable: true
           type: integer
       type: object
+    ResponsesAdSetIdV24Q1:
+      description: List of output resources
+      example:
+        data:
+        - attributes: "{}"
+          id: id
+          type: AdSetIdV24Q1
+        - attributes: "{}"
+          id: id
+          type: AdSetIdV24Q1
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ReadModelAdSetIdV24Q1'
+          nullable: true
+          readOnly: true
+          type: array
+          x-nullable: true
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-nullable: true
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-nullable: true
+      type: object
+    ResponseReadAdSetV24Q1:
+      description: output resource
+      example:
+        data:
+          attributes:
+            schedule:
+              endDate:
+                value: 2000-01-23T04:56:07.000+00:00
+              activationStatus: "on"
+              startDate:
+                value: 2000-01-23T04:56:07.000+00:00
+              deliveryStatus: draft
+            targeting:
+              geoLocation:
+                zipCodes:
+                  value: null
+                countries:
+                  value: null
+                subdivisions:
+                  value: null
+              frequencyCapping:
+                maximumImpressions: 6
+                frequency: hourly
+              deliveryLimitations:
+                operatingSystems:
+                - android
+                - android
+                environments:
+                - web
+                - web
+                devices:
+                - other
+                - other
+            bidding:
+              bidAmount: 0.8008281904610115
+              costController: COS
+            campaignId: campaignId
+            name: name
+            datasetId: datasetId
+            mediaType: display
+            destinationEnvironment: undefined
+            videoChannel: olv
+            advertiserId: advertiserId
+            objective: customAction
+            budget:
+              budgetDeliverySmoothing: accelerated
+              budgetDeliveryWeek: undefined
+              budgetAmount:
+                value: 1.4658129805029452
+              budgetRenewal: undefined
+              budgetStrategy: capped
+          id: id
+          type: ReadAdSetV24Q1
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ReadModelReadAdSetV24Q1'
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-nullable: true
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-nullable: true
+      type: object
+    ResponsesReadAdSetV24Q1:
+      description: List of output resources
+      example:
+        data:
+        - attributes:
+            schedule:
+              endDate:
+                value: 2000-01-23T04:56:07.000+00:00
+              activationStatus: "on"
+              startDate:
+                value: 2000-01-23T04:56:07.000+00:00
+              deliveryStatus: draft
+            targeting:
+              geoLocation:
+                zipCodes:
+                  value: null
+                countries:
+                  value: null
+                subdivisions:
+                  value: null
+              frequencyCapping:
+                maximumImpressions: 6
+                frequency: hourly
+              deliveryLimitations:
+                operatingSystems:
+                - android
+                - android
+                environments:
+                - web
+                - web
+                devices:
+                - other
+                - other
+            bidding:
+              bidAmount: 0.8008281904610115
+              costController: COS
+            campaignId: campaignId
+            name: name
+            datasetId: datasetId
+            mediaType: display
+            destinationEnvironment: undefined
+            videoChannel: olv
+            advertiserId: advertiserId
+            objective: customAction
+            budget:
+              budgetDeliverySmoothing: accelerated
+              budgetDeliveryWeek: undefined
+              budgetAmount:
+                value: 1.4658129805029452
+              budgetRenewal: undefined
+              budgetStrategy: capped
+          id: id
+          type: ReadAdSetV24Q1
+        - attributes:
+            schedule:
+              endDate:
+                value: 2000-01-23T04:56:07.000+00:00
+              activationStatus: "on"
+              startDate:
+                value: 2000-01-23T04:56:07.000+00:00
+              deliveryStatus: draft
+            targeting:
+              geoLocation:
+                zipCodes:
+                  value: null
+                countries:
+                  value: null
+                subdivisions:
+                  value: null
+              frequencyCapping:
+                maximumImpressions: 6
+                frequency: hourly
+              deliveryLimitations:
+                operatingSystems:
+                - android
+                - android
+                environments:
+                - web
+                - web
+                devices:
+                - other
+                - other
+            bidding:
+              bidAmount: 0.8008281904610115
+              costController: COS
+            campaignId: campaignId
+            name: name
+            datasetId: datasetId
+            mediaType: display
+            destinationEnvironment: undefined
+            videoChannel: olv
+            advertiserId: advertiserId
+            objective: customAction
+            budget:
+              budgetDeliverySmoothing: accelerated
+              budgetDeliveryWeek: undefined
+              budgetAmount:
+                value: 1.4658129805029452
+              budgetRenewal: undefined
+              budgetStrategy: capped
+          id: id
+          type: ReadAdSetV24Q1
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ReadModelReadAdSetV24Q1'
+          nullable: true
+          readOnly: true
+          type: array
+          x-nullable: true
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-nullable: true
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-nullable: true
+      type: object
     ResponsesAdSetId:
       description: List of output resources
       example:
@@ -11286,402 +11671,6 @@ components:
           readOnly: true
           type: array
           x-nullable: true
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-          x-nullable: true
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-          x-nullable: true
-      type: object
-    ResponseReadAdSet:
-      description: output resource
-      example:
-        data:
-          attributes:
-            schedule:
-              endDate:
-                value: 2000-01-23T04:56:07.000+00:00
-              activationStatus: "on"
-              startDate:
-                value: 2000-01-23T04:56:07.000+00:00
-              deliveryStatus: draft
-            targeting:
-              geoLocation:
-                zipCodes:
-                  value: null
-                countries:
-                  value: null
-                subdivisions:
-                  value: null
-              frequencyCapping:
-                maximumImpressions: 6
-                frequency: hourly
-              deliveryLimitations:
-                operatingSystems:
-                - android
-                - android
-                environments:
-                - web
-                - web
-                devices:
-                - other
-                - other
-            bidding:
-              bidStrategy: actions
-              bidAmount:
-                value: 0.8008281904610115
-              costController: COS
-            campaignId: campaignId
-            name: name
-            datasetId: datasetId
-            mediaType: display
-            destinationEnvironment: undefined
-            advertiserId: advertiserId
-            budget:
-              budgetDeliverySmoothing: accelerated
-              budgetDeliveryWeek: undefined
-              budgetAmount:
-                value: 0.8008281904610115
-              budgetRenewal: undefined
-              budgetStrategy: capped
-          id: id
-          type: ReadAdSet
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ReadModelReadAdSet'
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-          x-nullable: true
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-          x-nullable: true
-      type: object
-    ResponsesReadAdSetV23Q1:
-      description: List of output resources
-      example:
-        data:
-        - attributes:
-            schedule:
-              endDate:
-                value: 2000-01-23T04:56:07.000+00:00
-              activationStatus: "on"
-              startDate:
-                value: 2000-01-23T04:56:07.000+00:00
-              deliveryStatus: draft
-            targeting:
-              geoLocation:
-                zipCodes:
-                  value: null
-                countries:
-                  value: null
-                subdivisions:
-                  value: null
-              frequencyCapping:
-                maximumImpressions: 0
-                frequency: hourly
-              deliveryLimitations:
-                operatingSystems:
-                - android
-                - android
-                environments:
-                - web
-                - web
-                devices:
-                - other
-                - other
-            bidding:
-              bidAmount:
-                value: 0.8008281904610115
-              costController: COS
-            campaignId: campaignId
-            name: name
-            datasetId: datasetId
-            mediaType: display
-            destinationEnvironment: undefined
-            videoChannel: olv
-            advertiserId: advertiserId
-            objective: customAction
-            budget:
-              budgetDeliverySmoothing: accelerated
-              budgetDeliveryWeek: undefined
-              budgetAmount:
-                value: 0.8008281904610115
-              budgetRenewal: undefined
-              budgetStrategy: capped
-          id: id
-          type: ReadAdSetV23Q1
-        - attributes:
-            schedule:
-              endDate:
-                value: 2000-01-23T04:56:07.000+00:00
-              activationStatus: "on"
-              startDate:
-                value: 2000-01-23T04:56:07.000+00:00
-              deliveryStatus: draft
-            targeting:
-              geoLocation:
-                zipCodes:
-                  value: null
-                countries:
-                  value: null
-                subdivisions:
-                  value: null
-              frequencyCapping:
-                maximumImpressions: 0
-                frequency: hourly
-              deliveryLimitations:
-                operatingSystems:
-                - android
-                - android
-                environments:
-                - web
-                - web
-                devices:
-                - other
-                - other
-            bidding:
-              bidAmount:
-                value: 0.8008281904610115
-              costController: COS
-            campaignId: campaignId
-            name: name
-            datasetId: datasetId
-            mediaType: display
-            destinationEnvironment: undefined
-            videoChannel: olv
-            advertiserId: advertiserId
-            objective: customAction
-            budget:
-              budgetDeliverySmoothing: accelerated
-              budgetDeliveryWeek: undefined
-              budgetAmount:
-                value: 0.8008281904610115
-              budgetRenewal: undefined
-              budgetStrategy: capped
-          id: id
-          type: ReadAdSetV23Q1
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ReadModelReadAdSetV23Q1'
-          nullable: true
-          readOnly: true
-          type: array
-          x-nullable: true
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-          x-nullable: true
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-          x-nullable: true
-      type: object
-    ResponseReadAdSetV23Q1:
-      description: output resource
-      example:
-        data:
-          attributes:
-            schedule:
-              endDate:
-                value: 2000-01-23T04:56:07.000+00:00
-              activationStatus: "on"
-              startDate:
-                value: 2000-01-23T04:56:07.000+00:00
-              deliveryStatus: draft
-            targeting:
-              geoLocation:
-                zipCodes:
-                  value: null
-                countries:
-                  value: null
-                subdivisions:
-                  value: null
-              frequencyCapping:
-                maximumImpressions: 0
-                frequency: hourly
-              deliveryLimitations:
-                operatingSystems:
-                - android
-                - android
-                environments:
-                - web
-                - web
-                devices:
-                - other
-                - other
-            bidding:
-              bidAmount:
-                value: 0.8008281904610115
-              costController: COS
-            campaignId: campaignId
-            name: name
-            datasetId: datasetId
-            mediaType: display
-            destinationEnvironment: undefined
-            videoChannel: olv
-            advertiserId: advertiserId
-            objective: customAction
-            budget:
-              budgetDeliverySmoothing: accelerated
-              budgetDeliveryWeek: undefined
-              budgetAmount:
-                value: 0.8008281904610115
-              budgetRenewal: undefined
-              budgetStrategy: capped
-          id: id
-          type: ReadAdSetV23Q1
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ReadModelReadAdSetV23Q1'
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
@@ -12080,7 +12069,7 @@ components:
             spendLimit:
               spendLimitRenewal: undefined
               spendLimitAmount:
-                value: 0.8008281904610115
+                value: 1.4658129805029452
               spendLimitType: capped
             advertiserId: advertiserId
           id: id
@@ -12155,7 +12144,7 @@ components:
             spendLimit:
               spendLimitRenewal: undefined
               spendLimitAmount:
-                value: 0.8008281904610115
+                value: 1.4658129805029452
               spendLimitType: capped
             advertiserId: advertiserId
           id: id
@@ -12166,7 +12155,7 @@ components:
             spendLimit:
               spendLimitRenewal: undefined
               spendLimitAmount:
-                value: 0.8008281904610115
+                value: 1.4658129805029452
               spendLimitType: capped
             advertiserId: advertiserId
           id: id
@@ -12235,7 +12224,7 @@ components:
           type: array
           x-nullable: true
       type: object
-    RequestsPatchAdSet:
+    RequestsPatchAdSetV24Q1:
       description: List of input resources
       example:
         data:
@@ -12263,7 +12252,7 @@ components:
                 - other
             bidding:
               bidAmount:
-                value: 0.8008281904610115
+                value: 1.4658129805029452
             name: name
             scheduling:
               endDate:
@@ -12274,11 +12263,11 @@ components:
               budgetDeliverySmoothing: accelerated
               budgetDeliveryWeek: undefined
               budgetAmount:
-                value: 0.8008281904610115
+                value: 1.4658129805029452
               budgetRenewal: undefined
               budgetStrategy: capped
           id: id
-          type: PatchAdSet
+          type: PatchAdSetV24Q1
         - attributes:
             targeting:
               geoLocation:
@@ -12303,7 +12292,7 @@ components:
                 - other
             bidding:
               bidAmount:
-                value: 0.8008281904610115
+                value: 1.4658129805029452
             name: name
             scheduling:
               endDate:
@@ -12314,20 +12303,20 @@ components:
               budgetDeliverySmoothing: accelerated
               budgetDeliveryWeek: undefined
               budgetAmount:
-                value: 0.8008281904610115
+                value: 1.4658129805029452
               budgetRenewal: undefined
               budgetStrategy: capped
           id: id
-          type: PatchAdSet
+          type: PatchAdSetV24Q1
       properties:
         data:
           items:
-            $ref: '#/components/schemas/WriteModelPatchAdSet'
+            $ref: '#/components/schemas/WriteModelPatchAdSetV24Q1'
           nullable: true
           type: array
           x-nullable: true
       type: object
-    CreateAdSetRequest:
+    CreateAdSetV24Q1Request:
       description: Data model for an input resources
       example:
         data:
@@ -12383,9 +12372,9 @@ components:
           type: AdSet
       properties:
         data:
-          $ref: '#/components/schemas/CreateAdSetResource'
+          $ref: '#/components/schemas/CreateAdSetV24Q1Resource'
       type: object
-    AdSetSearchRequestV23Q1:
+    AdSetSearchRequestV24Q1:
       description: request payload of the search endpoint
       example:
         filters:
@@ -12400,7 +12389,7 @@ components:
           - campaignIds
       properties:
         filters:
-          $ref: '#/components/schemas/AdSetSearchFilterV23Q1'
+          $ref: '#/components/schemas/AdSetSearchFilterV24Q1'
       type: object
     RequestsAdSetId:
       description: List of input resources
@@ -12466,7 +12455,7 @@ components:
             spendLimit:
               spendLimitRenewal: undefined
               spendLimitAmount:
-                value: 0.8008281904610115
+                value: 1.4658129805029452
               spendLimitType: capped
           id: id
           type: Campaign
@@ -12474,7 +12463,7 @@ components:
             spendLimit:
               spendLimitRenewal: undefined
               spendLimitAmount:
-                value: 0.8008281904610115
+                value: 1.4658129805029452
               spendLimitType: capped
           id: id
           type: Campaign
@@ -12517,11 +12506,12 @@ components:
         filters:
           $ref: '#/components/schemas/CampaignSearchFiltersV23Q1'
       type: object
-    ReadModelAdSetId:
+    ReadModelAdSetIdV24Q1:
       description: read model data for resources
       example:
+        attributes: "{}"
         id: id
-        type: AdSetId
+        type: AdSetIdV24Q1
       properties:
         id:
           description: Id of the entity
@@ -12530,13 +12520,16 @@ components:
           type: string
           x-nullable: true
         type:
-          example: AdSetId
+          example: AdSetIdV24Q1
           nullable: true
           readOnly: true
           type: string
           x-nullable: true
+        attributes:
+          description: ad set id model
+          type: object
       type: object
-    ReadModelReadAdSet:
+    ReadModelReadAdSetV24Q1:
       description: read model data for resources
       example:
         attributes:
@@ -12569,76 +12562,7 @@ components:
               - other
               - other
           bidding:
-            bidStrategy: actions
-            bidAmount:
-              value: 0.8008281904610115
-            costController: COS
-          campaignId: campaignId
-          name: name
-          datasetId: datasetId
-          mediaType: display
-          destinationEnvironment: undefined
-          advertiserId: advertiserId
-          budget:
-            budgetDeliverySmoothing: accelerated
-            budgetDeliveryWeek: undefined
-            budgetAmount:
-              value: 0.8008281904610115
-            budgetRenewal: undefined
-            budgetStrategy: capped
-        id: id
-        type: ReadAdSet
-      properties:
-        id:
-          description: Id of the entity
-          nullable: true
-          readOnly: true
-          type: string
-          x-nullable: true
-        type:
-          example: ReadAdSet
-          nullable: true
-          readOnly: true
-          type: string
-          x-nullable: true
-        attributes:
-          $ref: '#/components/schemas/ReadAdSet'
-      type: object
-    ReadModelReadAdSetV23Q1:
-      description: read model data for resources
-      example:
-        attributes:
-          schedule:
-            endDate:
-              value: 2000-01-23T04:56:07.000+00:00
-            activationStatus: "on"
-            startDate:
-              value: 2000-01-23T04:56:07.000+00:00
-            deliveryStatus: draft
-          targeting:
-            geoLocation:
-              zipCodes:
-                value: null
-              countries:
-                value: null
-              subdivisions:
-                value: null
-            frequencyCapping:
-              maximumImpressions: 0
-              frequency: hourly
-            deliveryLimitations:
-              operatingSystems:
-              - android
-              - android
-              environments:
-              - web
-              - web
-              devices:
-              - other
-              - other
-          bidding:
-            bidAmount:
-              value: 0.8008281904610115
+            bidAmount: 0.8008281904610115
             costController: COS
           campaignId: campaignId
           name: name
@@ -12652,11 +12576,11 @@ components:
             budgetDeliverySmoothing: accelerated
             budgetDeliveryWeek: undefined
             budgetAmount:
-              value: 0.8008281904610115
+              value: 1.4658129805029452
             budgetRenewal: undefined
             budgetStrategy: capped
         id: id
-        type: ReadAdSetV23Q1
+        type: ReadAdSetV24Q1
       properties:
         id:
           description: Id of the entity
@@ -12665,13 +12589,32 @@ components:
           type: string
           x-nullable: true
         type:
-          example: ReadAdSetV23Q1
+          example: ReadAdSetV24Q1
           nullable: true
           readOnly: true
           type: string
           x-nullable: true
         attributes:
-          $ref: '#/components/schemas/ReadAdSetV23Q1'
+          $ref: '#/components/schemas/ReadAdSetV24Q1'
+      type: object
+    ReadModelAdSetId:
+      description: read model data for resources
+      example:
+        id: id
+        type: AdSetId
+      properties:
+        id:
+          description: Id of the entity
+          nullable: true
+          readOnly: true
+          type: string
+          x-nullable: true
+        type:
+          example: AdSetId
+          nullable: true
+          readOnly: true
+          type: string
+          x-nullable: true
       type: object
     AdSetCategoryBidResource:
       description: Data model for a Resource
@@ -12775,7 +12718,7 @@ components:
           spendLimit:
             spendLimitRenewal: undefined
             spendLimitAmount:
-              value: 0.8008281904610115
+              value: 1.4658129805029452
             spendLimitType: capped
           advertiserId: advertiserId
         id: id
@@ -12793,7 +12736,7 @@ components:
           nullable: true
           type: string
       type: object
-    WriteModelPatchAdSet:
+    WriteModelPatchAdSetV24Q1:
       description: write model data for resources
       example:
         attributes:
@@ -12820,7 +12763,7 @@ components:
               - other
           bidding:
             bidAmount:
-              value: 0.8008281904610115
+              value: 1.4658129805029452
           name: name
           scheduling:
             endDate:
@@ -12831,11 +12774,11 @@ components:
             budgetDeliverySmoothing: accelerated
             budgetDeliveryWeek: undefined
             budgetAmount:
-              value: 0.8008281904610115
+              value: 1.4658129805029452
             budgetRenewal: undefined
             budgetStrategy: capped
         id: id
-        type: PatchAdSet
+        type: PatchAdSetV24Q1
       properties:
         id:
           description: Id of the entity
@@ -12844,14 +12787,14 @@ components:
           x-nullable: true
         type:
           description: Canonical type name of the entity
-          example: PatchAdSet
+          example: PatchAdSetV24Q1
           nullable: true
           type: string
           x-nullable: true
         attributes:
-          $ref: '#/components/schemas/PatchAdSet'
+          $ref: '#/components/schemas/PatchAdSetV24Q1'
       type: object
-    CreateAdSetResource:
+    CreateAdSetV24Q1Resource:
       description: Data model for a Resource
       example:
         attributes:
@@ -12906,14 +12849,14 @@ components:
         type: AdSet
       properties:
         attributes:
-          $ref: '#/components/schemas/CreateAdSet'
+          $ref: '#/components/schemas/CreateAdSetV24Q1'
         type:
           description: Canonical type name of the entity
           example: AdSet
           nullable: true
           type: string
       type: object
-    AdSetSearchFilterV23Q1:
+    AdSetSearchFilterV24Q1:
       description: filter on ad set ids
       example:
         adSetIds:
@@ -13010,7 +12953,7 @@ components:
           spendLimit:
             spendLimitRenewal: undefined
             spendLimitAmount:
-              value: 0.8008281904610115
+              value: 1.4658129805029452
             spendLimitType: capped
         id: id
         type: Campaign
@@ -13073,7 +13016,10 @@ components:
           type: array
           x-nullable: true
       type: object
-    ReadAdSet:
+    AdSetIdV24Q1:
+      description: ad set id model
+      type: object
+    ReadAdSetV24Q1:
       description: ad set read model
       example:
         schedule:
@@ -13105,97 +13051,7 @@ components:
             - other
             - other
         bidding:
-          bidStrategy: actions
-          bidAmount:
-            value: 0.8008281904610115
-          costController: COS
-        campaignId: campaignId
-        name: name
-        datasetId: datasetId
-        mediaType: display
-        destinationEnvironment: undefined
-        advertiserId: advertiserId
-        budget:
-          budgetDeliverySmoothing: accelerated
-          budgetDeliveryWeek: undefined
-          budgetAmount:
-            value: 0.8008281904610115
-          budgetRenewal: undefined
-          budgetStrategy: capped
-      properties:
-        name:
-          nullable: true
-          type: string
-          x-nullable: true
-        advertiserId:
-          nullable: true
-          type: string
-          x-nullable: true
-        datasetId:
-          nullable: true
-          type: string
-          x-nullable: true
-        campaignId:
-          nullable: true
-          type: string
-          x-nullable: true
-        destinationEnvironment:
-          enum:
-          - undefined
-          - web
-          - app
-          nullable: true
-          type: string
-        schedule:
-          $ref: '#/components/schemas/ReadAdSetSchedule'
-        bidding:
-          $ref: '#/components/schemas/ReadAdSetBidding'
-        targeting:
-          $ref: '#/components/schemas/AdSetTargeting'
-        budget:
-          $ref: '#/components/schemas/ReadAdSetBudget'
-        mediaType:
-          enum:
-          - display
-          - video
-          nullable: true
-          type: string
-          x-nullable: true
-      type: object
-    ReadAdSetV23Q1:
-      description: ad set read model
-      example:
-        schedule:
-          endDate:
-            value: 2000-01-23T04:56:07.000+00:00
-          activationStatus: "on"
-          startDate:
-            value: 2000-01-23T04:56:07.000+00:00
-          deliveryStatus: draft
-        targeting:
-          geoLocation:
-            zipCodes:
-              value: null
-            countries:
-              value: null
-            subdivisions:
-              value: null
-          frequencyCapping:
-            maximumImpressions: 0
-            frequency: hourly
-          deliveryLimitations:
-            operatingSystems:
-            - android
-            - android
-            environments:
-            - web
-            - web
-            devices:
-            - other
-            - other
-        bidding:
-          bidAmount:
-            value: 0.8008281904610115
+          bidAmount: 0.8008281904610115
           costController: COS
         campaignId: campaignId
         name: name
@@ -13209,7 +13065,7 @@ components:
           budgetDeliverySmoothing: accelerated
           budgetDeliveryWeek: undefined
           budgetAmount:
-            value: 0.8008281904610115
+            value: 1.4658129805029452
           budgetRenewal: undefined
           budgetStrategy: capped
       properties:
@@ -13252,13 +13108,13 @@ components:
           nullable: true
           type: string
         schedule:
-          $ref: '#/components/schemas/ReadAdSetScheduleV23Q1'
+          $ref: '#/components/schemas/ReadAdSetScheduleV24Q1'
         bidding:
-          $ref: '#/components/schemas/ReadAdSetBiddingV23Q1'
+          $ref: '#/components/schemas/ReadAdSetBiddingV24Q1'
         targeting:
-          $ref: '#/components/schemas/AdSetTargetingV23Q1'
+          $ref: '#/components/schemas/AdSetTargetingV24Q1'
         budget:
-          $ref: '#/components/schemas/ReadAdSetBudgetV23Q1'
+          $ref: '#/components/schemas/ReadAdSetBudgetV24Q1'
         mediaType:
           enum:
           - display
@@ -13321,7 +13177,7 @@ components:
         spendLimit:
           spendLimitRenewal: undefined
           spendLimitAmount:
-            value: 0.8008281904610115
+            value: 1.4658129805029452
           spendLimitType: capped
         advertiserId: advertiserId
       properties:
@@ -13343,7 +13199,7 @@ components:
           nullable: true
           type: string
       type: object
-    PatchAdSet:
+    PatchAdSetV24Q1:
       description: ad set patch model
       example:
         targeting:
@@ -13369,7 +13225,7 @@ components:
             - other
         bidding:
           bidAmount:
-            value: 0.8008281904610115
+            value: 1.4658129805029452
         name: name
         scheduling:
           endDate:
@@ -13380,7 +13236,7 @@ components:
           budgetDeliverySmoothing: accelerated
           budgetDeliveryWeek: undefined
           budgetAmount:
-            value: 0.8008281904610115
+            value: 1.4658129805029452
           budgetRenewal: undefined
           budgetStrategy: capped
       properties:
@@ -13389,15 +13245,15 @@ components:
           type: string
           x-nullable: true
         scheduling:
-          $ref: '#/components/schemas/PatchAdSetScheduling'
+          $ref: '#/components/schemas/PatchAdSetSchedulingV24Q1'
         bidding:
-          $ref: '#/components/schemas/PatchAdSetBidding'
+          $ref: '#/components/schemas/PatchAdSetBiddingV24Q1'
         targeting:
-          $ref: '#/components/schemas/AdSetTargeting'
+          $ref: '#/components/schemas/AdSetTargetingV24Q1'
         budget:
-          $ref: '#/components/schemas/PatchAdSetBudget'
+          $ref: '#/components/schemas/PatchAdSetBudgetV24Q1'
       type: object
-    CreateAdSet:
+    CreateAdSetV24Q1:
       description: ad set create model
       example:
         schedule:
@@ -13480,13 +13336,13 @@ components:
           - videoViews
           type: string
         schedule:
-          $ref: '#/components/schemas/CreateAdSetSchedule'
+          $ref: '#/components/schemas/CreateAdSetScheduleV24Q1'
         bidding:
-          $ref: '#/components/schemas/CreateAdSetBidding'
+          $ref: '#/components/schemas/CreateAdSetBiddingV24Q1'
         targeting:
-          $ref: '#/components/schemas/CreateAdSetTargeting'
+          $ref: '#/components/schemas/CreateAdSetTargetingV24Q1'
         budget:
-          $ref: '#/components/schemas/CreateAdSetBudget'
+          $ref: '#/components/schemas/CreateAdSetBudgetV24Q1'
         trackingCode:
           description: The click tracking code associated to this Ad Set.
           nullable: true
@@ -13542,7 +13398,7 @@ components:
         spendLimit:
           spendLimitRenewal: undefined
           spendLimitAmount:
-            value: 0.8008281904610115
+            value: 1.4658129805029452
           spendLimitType: capped
       properties:
         spendLimit:
@@ -13584,7 +13440,7 @@ components:
       - name
       - spendLimit
       type: object
-    ReadAdSetSchedule:
+    ReadAdSetScheduleV24Q1:
       description: ad set schedule read model
       example:
         endDate:
@@ -13619,32 +13475,20 @@ components:
           nullable: true
           type: string
       type: object
-    ReadAdSetBidding:
+    ReadAdSetBiddingV24Q1:
       description: ad set bidding read model
       example:
-        bidStrategy: actions
-        bidAmount:
-          value: 0.8008281904610115
+        bidAmount: 0.8008281904610115
         costController: COS
       properties:
         bidAmount:
-          $ref: '#/components/schemas/NillableDecimal'
-        bidStrategy:
-          description: The intended optimization for the Ad Set
-          enum:
-          - actions
-          - clicks
-          - conversions
-          - displays
-          - installs
-          - revenue
-          - storeConversions
-          - value
-          - viewedImpressions
-          - Visits
-          - completedVideoViews
+          description: Decimal value target relating to the `adSetObjective` specified.
+            May be `null` for objectives that do not require a target value. At most
+            4 decimals are supported. Additional decimals are rounded.
+          format: double
           nullable: true
-          type: string
+          type: number
+          x-nullable: true
         costController:
           description: How spend is controlled
           enum:
@@ -13656,10 +13500,11 @@ components:
           - CPSV
           - CPV
           - dailyBudget
+          - targetCPM
           nullable: true
           type: string
       type: object
-    AdSetTargeting:
+    AdSetTargetingV24Q1:
       description: ad set targeting model
       example:
         geoLocation:
@@ -13684,19 +13529,19 @@ components:
           - other
       properties:
         deliveryLimitations:
-          $ref: '#/components/schemas/AdSetDeliveryLimitations'
+          $ref: '#/components/schemas/AdSetDeliveryLimitationsV24Q1'
         geoLocation:
-          $ref: '#/components/schemas/AdSetGeoLocation'
+          $ref: '#/components/schemas/AdSetGeoLocationV24Q1'
         frequencyCapping:
-          $ref: '#/components/schemas/AdSetFrequencyCapping'
+          $ref: '#/components/schemas/AdSetFrequencyCappingV24Q1'
       type: object
-    ReadAdSetBudget:
+    ReadAdSetBudgetV24Q1:
       description: ad set budget read model
       example:
         budgetDeliverySmoothing: accelerated
         budgetDeliveryWeek: undefined
         budgetAmount:
-          value: 0.8008281904610115
+          value: 1.4658129805029452
         budgetRenewal: undefined
         budgetStrategy: capped
       properties:
@@ -13712,142 +13557,7 @@ components:
           - daily
           - monthly
           - lifetime
-          nullable: true
-          type: string
-        budgetDeliverySmoothing:
-          enum:
-          - accelerated
-          - standard
-          nullable: true
-          type: string
-          x-nullable: true
-        budgetDeliveryWeek:
-          enum:
-          - undefined
-          - mondayToSunday
-          - tuesdayToMonday
-          - wednesdayToTuesday
-          - thursdayToWednesday
-          - fridayToThursday
-          - saturdayToFriday
-          - sundayToSaturday
-          nullable: true
-          type: string
-        budgetAmount:
-          $ref: '#/components/schemas/NillableDecimal'
-      type: object
-    ReadAdSetScheduleV23Q1:
-      description: ad set schedule read model
-      example:
-        endDate:
-          value: 2000-01-23T04:56:07.000+00:00
-        activationStatus: "on"
-        startDate:
-          value: 2000-01-23T04:56:07.000+00:00
-        deliveryStatus: draft
-      properties:
-        startDate:
-          $ref: '#/components/schemas/NillableDateTime'
-        endDate:
-          $ref: '#/components/schemas/NillableDateTime'
-        activationStatus:
-          enum:
-          - "on"
-          - "off"
-          nullable: true
-          type: string
-        deliveryStatus:
-          enum:
-          - draft
-          - inactive
-          - live
-          - notLive
-          - pausing
-          - paused
-          - scheduled
-          - ended
-          - notDelivering
-          - archived
-          nullable: true
-          type: string
-      type: object
-    ReadAdSetBiddingV23Q1:
-      description: ad set bidding read model
-      example:
-        bidAmount:
-          value: 0.8008281904610115
-        costController: COS
-      properties:
-        bidAmount:
-          $ref: '#/components/schemas/NillableDecimal'
-        costController:
-          description: How spend is controlled
-          enum:
-          - COS
-          - CPC
-          - CPI
-          - CPM
-          - CPO
-          - CPSV
-          - CPV
-          - dailyBudget
-          - targetCPM
-          nullable: true
-          type: string
-      type: object
-    AdSetTargetingV23Q1:
-      description: ad set targeting model
-      example:
-        geoLocation:
-          zipCodes:
-            value: null
-          countries:
-            value: null
-          subdivisions:
-            value: null
-        frequencyCapping:
-          maximumImpressions: 0
-          frequency: hourly
-        deliveryLimitations:
-          operatingSystems:
-          - android
-          - android
-          environments:
-          - web
-          - web
-          devices:
-          - other
-          - other
-      properties:
-        deliveryLimitations:
-          $ref: '#/components/schemas/AdSetDeliveryLimitationsV23Q1'
-        geoLocation:
-          $ref: '#/components/schemas/AdSetGeoLocationV23Q1'
-        frequencyCapping:
-          $ref: '#/components/schemas/AdSetFrequencyCappingV23Q1'
-      type: object
-    ReadAdSetBudgetV23Q1:
-      description: ad set budget read model
-      example:
-        budgetDeliverySmoothing: accelerated
-        budgetDeliveryWeek: undefined
-        budgetAmount:
-          value: 0.8008281904610115
-        budgetRenewal: undefined
-        budgetStrategy: capped
-      properties:
-        budgetStrategy:
-          enum:
-          - capped
-          - uncapped
-          nullable: true
-          type: string
-        budgetRenewal:
-          enum:
-          - undefined
-          - daily
-          - monthly
-          - lifetime
+          - weekly
           nullable: true
           type: string
         budgetDeliverySmoothing:
@@ -13877,7 +13587,7 @@ components:
       example:
         spendLimitRenewal: undefined
         spendLimitAmount:
-          value: 0.8008281904610115
+          value: 1.4658129805029452
         spendLimitType: capped
       properties:
         spendLimitType:
@@ -13897,7 +13607,7 @@ components:
         spendLimitAmount:
           $ref: '#/components/schemas/NillableDecimal'
       type: object
-    PatchAdSetScheduling:
+    PatchAdSetSchedulingV24Q1:
       description: ad set schedule patch model
       example:
         endDate:
@@ -13910,22 +13620,22 @@ components:
         endDate:
           $ref: '#/components/schemas/NillableDateTime'
       type: object
-    PatchAdSetBidding:
+    PatchAdSetBiddingV24Q1:
       description: ad set bidding patch model
       example:
         bidAmount:
-          value: 0.8008281904610115
+          value: 1.4658129805029452
       properties:
         bidAmount:
           $ref: '#/components/schemas/NillableDecimal'
       type: object
-    PatchAdSetBudget:
+    PatchAdSetBudgetV24Q1:
       description: ad set budget patch model
       example:
         budgetDeliverySmoothing: accelerated
         budgetDeliveryWeek: undefined
         budgetAmount:
-          value: 0.8008281904610115
+          value: 1.4658129805029452
         budgetRenewal: undefined
         budgetStrategy: capped
       properties:
@@ -13942,6 +13652,7 @@ components:
           - daily
           - monthly
           - lifetime
+          - weekly
           nullable: true
           type: string
           x-nullable: true
@@ -13968,7 +13679,7 @@ components:
         budgetAmount:
           $ref: '#/components/schemas/NillableDecimal'
       type: object
-    CreateAdSetSchedule:
+    CreateAdSetScheduleV24Q1:
       description: ad set schedule create model
       example:
         endDate: 2000-01-23T04:56:07.000+00:00
@@ -13985,7 +13696,7 @@ components:
       required:
       - startDate
       type: object
-    CreateAdSetBidding:
+    CreateAdSetBiddingV24Q1:
       description: ad set bidding create model
       example:
         bidAmount: 0.8008281904610115
@@ -14010,11 +13721,12 @@ components:
           - CPSV
           - CPV
           - dailyBudget
+          - targetCPM
           type: string
       required:
       - costController
       type: object
-    CreateAdSetTargeting:
+    CreateAdSetTargetingV24Q1:
       description: Targeting configuration of the ad set
       example:
         geoLocation:
@@ -14048,15 +13760,15 @@ components:
           - other
       properties:
         deliveryLimitations:
-          $ref: '#/components/schemas/AdSetDeliveryLimitations'
+          $ref: '#/components/schemas/AdSetDeliveryLimitationsV24Q1'
         geoLocation:
-          $ref: '#/components/schemas/CreateAdSetGeoLocation'
+          $ref: '#/components/schemas/CreateAdSetGeoLocationV24Q1'
         frequencyCapping:
-          $ref: '#/components/schemas/AdSetFrequencyCapping'
+          $ref: '#/components/schemas/AdSetFrequencyCappingV24Q1'
       required:
       - frequencyCapping
       type: object
-    CreateAdSetBudget:
+    CreateAdSetBudgetV24Q1:
       description: ad set budget create model
       example:
         budgetDeliverySmoothing: accelerated
@@ -14076,6 +13788,7 @@ components:
           - daily
           - monthly
           - lifetime
+          - weekly
           nullable: true
           type: string
         budgetDeliverySmoothing:
@@ -14109,7 +13822,7 @@ components:
       example:
         spendLimitRenewal: undefined
         spendLimitAmount:
-          value: 0.8008281904610115
+          value: 1.4658129805029452
         spendLimitType: capped
       properties:
         spendLimitType:
@@ -14175,22 +13888,7 @@ components:
           type: string
           x-nullable: true
       type: object
-    NillableDecimal:
-      description: "structure that encapsulates an object that have valid business\
-        \ null values. If the structure is provided (i.e. not null), then the value\
-        \ in it, even null, is provided."
-      example:
-        value: 0.8008281904610115
-      nullable: true
-      properties:
-        value:
-          format: double
-          nullable: true
-          type: number
-          x-nullable: true
-      type: object
-      x-nullable: true
-    AdSetDeliveryLimitations:
+    AdSetDeliveryLimitationsV24Q1:
       description: ad set delivery limitations model
       example:
         operatingSystems:
@@ -14234,7 +13932,7 @@ components:
           type: array
           x-nullable: true
       type: object
-    AdSetGeoLocation:
+    AdSetGeoLocationV24Q1:
       description: ad set geolocation model
       example:
         zipCodes:
@@ -14245,13 +13943,13 @@ components:
           value: null
       properties:
         countries:
-          $ref: '#/components/schemas/NillableAdSetTargetingRule'
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q1'
         subdivisions:
-          $ref: '#/components/schemas/NillableAdSetTargetingRule'
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q1'
         zipCodes:
-          $ref: '#/components/schemas/NillableAdSetTargetingRule'
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q1'
       type: object
-    AdSetFrequencyCapping:
+    AdSetFrequencyCappingV24Q1:
       description: ad set frequency capping model
       example:
         maximumImpressions: 6
@@ -14270,87 +13968,22 @@ components:
           nullable: true
           type: integer
       type: object
-    AdSetDeliveryLimitationsV23Q1:
-      description: ad set delivery limitations model
+    NillableDecimal:
+      description: "structure that encapsulates an object that have valid business\
+        \ null values. If the structure is provided (i.e. not null), then the value\
+        \ in it, even null, is provided."
       example:
-        operatingSystems:
-        - android
-        - android
-        environments:
-        - web
-        - web
-        devices:
-        - other
-        - other
+        value: 1.4658129805029452
+      nullable: true
       properties:
-        environments:
-          items:
-            enum:
-            - web
-            - inApp
-            type: string
+        value:
+          format: double
           nullable: true
-          type: array
-          x-nullable: true
-        devices:
-          items:
-            enum:
-            - other
-            - desktop
-            - mobile
-            - tablet
-            type: string
-          nullable: true
-          type: array
-          x-nullable: true
-        operatingSystems:
-          items:
-            enum:
-            - android
-            - ios
-            - unknown
-            type: string
-          nullable: true
-          type: array
+          type: number
           x-nullable: true
       type: object
-    AdSetGeoLocationV23Q1:
-      description: ad set geolocation model
-      example:
-        zipCodes:
-          value: null
-        countries:
-          value: null
-        subdivisions:
-          value: null
-      properties:
-        countries:
-          $ref: '#/components/schemas/NillableAdSetTargetingRuleV23Q1'
-        subdivisions:
-          $ref: '#/components/schemas/NillableAdSetTargetingRuleV23Q1'
-        zipCodes:
-          $ref: '#/components/schemas/NillableAdSetTargetingRuleV23Q1'
-      type: object
-    AdSetFrequencyCappingV23Q1:
-      description: ad set frequency capping model
-      example:
-        maximumImpressions: 0
-        frequency: hourly
-      properties:
-        frequency:
-          enum:
-          - hourly
-          - daily
-          - lifetime
-          - advanced
-          nullable: true
-          type: string
-        maximumImpressions:
-          format: int32
-          nullable: true
-          type: integer
-      type: object
-    CreateAdSetGeoLocation:
+      x-nullable: true
+    CreateAdSetGeoLocationV24Q1:
       description: Geolocation configuration of the ad set
       example:
         zipCodes:
@@ -14370,13 +14003,13 @@ components:
           operand: undefined
       properties:
         countries:
-          $ref: '#/components/schemas/AdSetTargetingRule'
+          $ref: '#/components/schemas/AdSetTargetingRuleV24Q1'
         subdivisions:
-          $ref: '#/components/schemas/AdSetTargetingRule'
+          $ref: '#/components/schemas/AdSetTargetingRuleV24Q1'
         zipCodes:
-          $ref: '#/components/schemas/AdSetTargetingRule'
+          $ref: '#/components/schemas/AdSetTargetingRuleV24Q1'
       type: object
-    NillableAdSetTargetingRule:
+    NillableAdSetTargetingRuleV24Q1:
       description: "structure that encapsulates an object that have valid business\
         \ null values. If the structure is provided (i.e. not null), then the value\
         \ in it, even null, is provided."
@@ -14384,42 +14017,15 @@ components:
         value: null
       properties:
         value:
-          $ref: '#/components/schemas/NillableAdSetTargetingRule_value'
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q1_value'
       type: object
-    NillableAdSetTargetingRuleV23Q1:
-      description: "structure that encapsulates an object that have valid business\
-        \ null values. If the structure is provided (i.e. not null), then the value\
-        \ in it, even null, is provided."
-      example:
-        value: null
-      properties:
-        value:
-          $ref: '#/components/schemas/NillableAdSetTargetingRuleV23Q1_value'
-      type: object
-    AdSetTargetingRule:
+    AdSetTargetingRuleV24Q1:
       description: ad set targeting rule model
       example:
         values:
         - values
         - values
         operand: undefined
-      properties:
-        operand:
-          enum:
-          - undefined
-          - in
-          - notIn
-          nullable: true
-          type: string
-        values:
-          items:
-            type: string
-          nullable: true
-          type: array
-          x-nullable: true
-      type: object
-    AdSetTargetingRuleV23Q1:
-      description: ad set targeting rule model
       properties:
         operand:
           enum:
@@ -23686,15 +23292,9 @@ components:
       - identifiers
       - operation
       type: object
-    NillableAdSetTargetingRule_value:
+    NillableAdSetTargetingRuleV24Q1_value:
       allOf:
-      - $ref: '#/components/schemas/AdSetTargetingRule'
-      nullable: true
-      type: object
-      x-nullable: true
-    NillableAdSetTargetingRuleV23Q1_value:
-      allOf:
-      - $ref: '#/components/schemas/AdSetTargetingRuleV23Q1'
+      - $ref: '#/components/schemas/AdSetTargetingRuleV24Q1'
       nullable: true
       type: object
       x-nullable: true

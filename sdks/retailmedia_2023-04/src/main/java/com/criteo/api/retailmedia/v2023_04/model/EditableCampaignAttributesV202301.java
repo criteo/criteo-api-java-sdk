@@ -303,6 +303,10 @@ public class EditableCampaignAttributesV202301 {
   @SerializedName(SERIALIZED_NAME_VIEW_ATTRIBUTION_SCOPE)
   private ViewAttributionScopeEnum viewAttributionScope;
 
+  public static final String SERIALIZED_NAME_COMPANY_NAME = "companyName";
+  @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
+  private String companyName;
+
   public EditableCampaignAttributesV202301() {
   }
 
@@ -547,6 +551,28 @@ public class EditableCampaignAttributesV202301 {
     this.viewAttributionScope = viewAttributionScope;
   }
 
+
+  public EditableCampaignAttributesV202301 companyName(String companyName) {
+    
+    this.companyName = companyName;
+    return this;
+  }
+
+   /**
+   * Get companyName
+   * @return companyName
+  **/
+  @javax.annotation.Nullable
+
+  public String getCompanyName() {
+    return companyName;
+  }
+
+
+  public void setCompanyName(String companyName) {
+    this.companyName = companyName;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -612,7 +638,8 @@ public class EditableCampaignAttributesV202301 {
         Objects.equals(this.clickAttributionWindow, editableCampaignAttributesV202301.clickAttributionWindow) &&
         Objects.equals(this.viewAttributionWindow, editableCampaignAttributesV202301.viewAttributionWindow) &&
         Objects.equals(this.clickAttributionScope, editableCampaignAttributesV202301.clickAttributionScope) &&
-        Objects.equals(this.viewAttributionScope, editableCampaignAttributesV202301.viewAttributionScope)&&
+        Objects.equals(this.viewAttributionScope, editableCampaignAttributesV202301.viewAttributionScope) &&
+        Objects.equals(this.companyName, editableCampaignAttributesV202301.companyName)&&
         Objects.equals(this.additionalProperties, editableCampaignAttributesV202301.additionalProperties);
   }
 
@@ -622,7 +649,7 @@ public class EditableCampaignAttributesV202301 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, budget, monthlyPacing, dailyPacing, isAutoDailyPacing, startDate, endDate, clickAttributionWindow, viewAttributionWindow, clickAttributionScope, viewAttributionScope, additionalProperties);
+    return Objects.hash(name, budget, monthlyPacing, dailyPacing, isAutoDailyPacing, startDate, endDate, clickAttributionWindow, viewAttributionWindow, clickAttributionScope, viewAttributionScope, companyName, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -647,6 +674,7 @@ public class EditableCampaignAttributesV202301 {
     sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
     sb.append("    clickAttributionScope: ").append(toIndentedString(clickAttributionScope)).append("\n");
     sb.append("    viewAttributionScope: ").append(toIndentedString(viewAttributionScope)).append("\n");
+    sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -681,6 +709,7 @@ public class EditableCampaignAttributesV202301 {
     openapiFields.add("viewAttributionWindow");
     openapiFields.add("clickAttributionScope");
     openapiFields.add("viewAttributionScope");
+    openapiFields.add("companyName");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -725,6 +754,9 @@ public class EditableCampaignAttributesV202301 {
       }
       if ((jsonObj.get("viewAttributionScope") != null && !jsonObj.get("viewAttributionScope").isJsonNull()) && !jsonObj.get("viewAttributionScope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `viewAttributionScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewAttributionScope").toString()));
+      }
+      if ((jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) && !jsonObj.get("companyName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
       }
   }
 

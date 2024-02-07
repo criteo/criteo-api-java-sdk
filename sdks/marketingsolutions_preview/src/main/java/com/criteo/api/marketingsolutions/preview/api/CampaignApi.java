@@ -31,7 +31,7 @@ import com.criteo.api.marketingsolutions.preview.model.AdSetAudienceLinkEntityV1
 import com.criteo.api.marketingsolutions.preview.model.AdSetAudienceLinkInputEntityV1;
 import com.criteo.api.marketingsolutions.preview.model.AdSetCategoryBidListResponse;
 import com.criteo.api.marketingsolutions.preview.model.AdSetDisplayMultiplierListResponse;
-import com.criteo.api.marketingsolutions.preview.model.AdSetSearchRequestV23Q1;
+import com.criteo.api.marketingsolutions.preview.model.AdSetSearchRequestV24Q1;
 import com.criteo.api.marketingsolutions.preview.model.AdSetTargetingDealIdsDisableResultResponse;
 import com.criteo.api.marketingsolutions.preview.model.AdSetTargetingDealIdsResponse;
 import com.criteo.api.marketingsolutions.preview.model.AdSetTargetingDealIdsSetResultResponse;
@@ -44,7 +44,7 @@ import com.criteo.api.marketingsolutions.preview.model.ApiResponseOfTargetingEnt
 import com.criteo.api.marketingsolutions.preview.model.CampaignSearchRequestV23Q1;
 import com.criteo.api.marketingsolutions.preview.model.CampaignV23Q1ListResponse;
 import com.criteo.api.marketingsolutions.preview.model.CampaignV23Q1Response;
-import com.criteo.api.marketingsolutions.preview.model.CreateAdSetRequest;
+import com.criteo.api.marketingsolutions.preview.model.CreateAdSetV24Q1Request;
 import com.criteo.api.marketingsolutions.preview.model.CreateCampaignRequest;
 import com.criteo.api.marketingsolutions.preview.model.OciBrandSafetyResponse;
 import com.criteo.api.marketingsolutions.preview.model.OciBrandSafetyRule;
@@ -57,11 +57,11 @@ import com.criteo.api.marketingsolutions.preview.model.PatchAdSetDisplayMultipli
 import com.criteo.api.marketingsolutions.preview.model.PatchCampaignListRequest;
 import com.criteo.api.marketingsolutions.preview.model.PatchResultCampaignListResponse;
 import com.criteo.api.marketingsolutions.preview.model.RequestsAdSetId;
-import com.criteo.api.marketingsolutions.preview.model.RequestsPatchAdSet;
-import com.criteo.api.marketingsolutions.preview.model.ResponseReadAdSet;
-import com.criteo.api.marketingsolutions.preview.model.ResponseReadAdSetV23Q1;
+import com.criteo.api.marketingsolutions.preview.model.RequestsPatchAdSetV24Q1;
+import com.criteo.api.marketingsolutions.preview.model.ResponseReadAdSetV24Q1;
 import com.criteo.api.marketingsolutions.preview.model.ResponsesAdSetId;
-import com.criteo.api.marketingsolutions.preview.model.ResponsesReadAdSetV23Q1;
+import com.criteo.api.marketingsolutions.preview.model.ResponsesAdSetIdV24Q1;
+import com.criteo.api.marketingsolutions.preview.model.ResponsesReadAdSetV24Q1;
 import com.criteo.api.marketingsolutions.preview.model.SetAdSetTargetingDealIdsRequest;
 import com.criteo.api.marketingsolutions.preview.model.SetAdSetTargetingVideoPositioningRequest;
 import com.criteo.api.marketingsolutions.preview.model.SupplyVendorListResponse;
@@ -112,8 +112,8 @@ public class CampaignApi {
     }
 
     /**
-     * Build call for createAdSet
-     * @param createAdSetRequest the ad sets to create (required)
+     * Build call for createAdSetV24Q1
+     * @param createAdSetV24Q1Request the ad sets to create (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -125,7 +125,7 @@ public class CampaignApi {
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAdSetCall(CreateAdSetRequest createAdSetRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createAdSetV24Q1Call(CreateAdSetV24Q1Request createAdSetV24Q1Request, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -139,7 +139,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = createAdSetRequest;
+        Object localVarPostBody = createAdSetV24Q1Request;
 
         // create path and map variables
         String localVarPath = "/preview/marketing-solutions/ad-sets";
@@ -176,21 +176,21 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAdSetValidateBeforeCall(CreateAdSetRequest createAdSetRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'createAdSetRequest' is set
-        if (createAdSetRequest == null) {
-            throw new ApiException("Missing the required parameter 'createAdSetRequest' when calling createAdSet(Async)");
+    private okhttp3.Call createAdSetV24Q1ValidateBeforeCall(CreateAdSetV24Q1Request createAdSetV24Q1Request, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'createAdSetV24Q1Request' is set
+        if (createAdSetV24Q1Request == null) {
+            throw new ApiException("Missing the required parameter 'createAdSetV24Q1Request' when calling createAdSetV24Q1(Async)");
         }
 
-        return createAdSetCall(createAdSetRequest, _callback);
+        return createAdSetV24Q1Call(createAdSetV24Q1Request, _callback);
 
     }
 
     /**
      * 
      * Create the specified ad set
-     * @param createAdSetRequest the ad sets to create (required)
-     * @return ResponseReadAdSet
+     * @param createAdSetV24Q1Request the ad sets to create (required)
+     * @return ResponseReadAdSetV24Q1
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -200,16 +200,16 @@ public class CampaignApi {
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
-    public ResponseReadAdSet createAdSet(CreateAdSetRequest createAdSetRequest) throws ApiException {
-        ApiResponse<ResponseReadAdSet> localVarResp = createAdSetWithHttpInfo(createAdSetRequest);
+    public ResponseReadAdSetV24Q1 createAdSetV24Q1(CreateAdSetV24Q1Request createAdSetV24Q1Request) throws ApiException {
+        ApiResponse<ResponseReadAdSetV24Q1> localVarResp = createAdSetV24Q1WithHttpInfo(createAdSetV24Q1Request);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Create the specified ad set
-     * @param createAdSetRequest the ad sets to create (required)
-     * @return ApiResponse&lt;ResponseReadAdSet&gt;
+     * @param createAdSetV24Q1Request the ad sets to create (required)
+     * @return ApiResponse&lt;ResponseReadAdSetV24Q1&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -219,16 +219,16 @@ public class CampaignApi {
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResponseReadAdSet> createAdSetWithHttpInfo(CreateAdSetRequest createAdSetRequest) throws ApiException {
-        okhttp3.Call localVarCall = createAdSetValidateBeforeCall(createAdSetRequest, null);
-        Type localVarReturnType = new TypeToken<ResponseReadAdSet>(){}.getType();
+    public ApiResponse<ResponseReadAdSetV24Q1> createAdSetV24Q1WithHttpInfo(CreateAdSetV24Q1Request createAdSetV24Q1Request) throws ApiException {
+        okhttp3.Call localVarCall = createAdSetV24Q1ValidateBeforeCall(createAdSetV24Q1Request, null);
+        Type localVarReturnType = new TypeToken<ResponseReadAdSetV24Q1>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
      * Create the specified ad set
-     * @param createAdSetRequest the ad sets to create (required)
+     * @param createAdSetV24Q1Request the ad sets to create (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -240,10 +240,10 @@ public class CampaignApi {
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAdSetAsync(CreateAdSetRequest createAdSetRequest, final ApiCallback<ResponseReadAdSet> _callback) throws ApiException {
+    public okhttp3.Call createAdSetV24Q1Async(CreateAdSetV24Q1Request createAdSetV24Q1Request, final ApiCallback<ResponseReadAdSetV24Q1> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createAdSetValidateBeforeCall(createAdSetRequest, _callback);
-        Type localVarReturnType = new TypeToken<ResponseReadAdSet>(){}.getType();
+        okhttp3.Call localVarCall = createAdSetV24Q1ValidateBeforeCall(createAdSetV24Q1Request, _callback);
+        Type localVarReturnType = new TypeToken<ResponseReadAdSetV24Q1>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1806,7 +1806,7 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for getAdSetV23Q1
+     * Build call for getAdSetV24Q1
      * @param adSetId Id of the ad set (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1819,7 +1819,7 @@ public class CampaignApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdSetV23Q1Call(String adSetId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAdSetV24Q1Call(String adSetId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1867,13 +1867,13 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAdSetV23Q1ValidateBeforeCall(String adSetId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAdSetV24Q1ValidateBeforeCall(String adSetId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adSetId' is set
         if (adSetId == null) {
-            throw new ApiException("Missing the required parameter 'adSetId' when calling getAdSetV23Q1(Async)");
+            throw new ApiException("Missing the required parameter 'adSetId' when calling getAdSetV24Q1(Async)");
         }
 
-        return getAdSetV23Q1Call(adSetId, _callback);
+        return getAdSetV24Q1Call(adSetId, _callback);
 
     }
 
@@ -1881,7 +1881,7 @@ public class CampaignApi {
      * 
      * Get the data for the specified ad set
      * @param adSetId Id of the ad set (required)
-     * @return ResponseReadAdSetV23Q1
+     * @return ResponseReadAdSetV24Q1
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1891,8 +1891,8 @@ public class CampaignApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ResponseReadAdSetV23Q1 getAdSetV23Q1(String adSetId) throws ApiException {
-        ApiResponse<ResponseReadAdSetV23Q1> localVarResp = getAdSetV23Q1WithHttpInfo(adSetId);
+    public ResponseReadAdSetV24Q1 getAdSetV24Q1(String adSetId) throws ApiException {
+        ApiResponse<ResponseReadAdSetV24Q1> localVarResp = getAdSetV24Q1WithHttpInfo(adSetId);
         return localVarResp.getData();
     }
 
@@ -1900,7 +1900,7 @@ public class CampaignApi {
      * 
      * Get the data for the specified ad set
      * @param adSetId Id of the ad set (required)
-     * @return ApiResponse&lt;ResponseReadAdSetV23Q1&gt;
+     * @return ApiResponse&lt;ResponseReadAdSetV24Q1&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1910,9 +1910,9 @@ public class CampaignApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResponseReadAdSetV23Q1> getAdSetV23Q1WithHttpInfo(String adSetId) throws ApiException {
-        okhttp3.Call localVarCall = getAdSetV23Q1ValidateBeforeCall(adSetId, null);
-        Type localVarReturnType = new TypeToken<ResponseReadAdSetV23Q1>(){}.getType();
+    public ApiResponse<ResponseReadAdSetV24Q1> getAdSetV24Q1WithHttpInfo(String adSetId) throws ApiException {
+        okhttp3.Call localVarCall = getAdSetV24Q1ValidateBeforeCall(adSetId, null);
+        Type localVarReturnType = new TypeToken<ResponseReadAdSetV24Q1>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1931,10 +1931,10 @@ public class CampaignApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdSetV23Q1Async(String adSetId, final ApiCallback<ResponseReadAdSetV23Q1> _callback) throws ApiException {
+    public okhttp3.Call getAdSetV24Q1Async(String adSetId, final ApiCallback<ResponseReadAdSetV24Q1> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAdSetV23Q1ValidateBeforeCall(adSetId, _callback);
-        Type localVarReturnType = new TypeToken<ResponseReadAdSetV23Q1>(){}.getType();
+        okhttp3.Call localVarCall = getAdSetV24Q1ValidateBeforeCall(adSetId, _callback);
+        Type localVarReturnType = new TypeToken<ResponseReadAdSetV24Q1>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3327,8 +3327,8 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for patchAdSets
-     * @param requestsPatchAdSet List of adsets to patch. (optional)
+     * Build call for patchAdSetsV24Q1
+     * @param requestsPatchAdSetV24Q1 List of adsets to patch. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3340,7 +3340,7 @@ public class CampaignApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchAdSetsCall(RequestsPatchAdSet requestsPatchAdSet, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchAdSetsV24Q1Call(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3354,7 +3354,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = requestsPatchAdSet;
+        Object localVarPostBody = requestsPatchAdSetV24Q1;
 
         // create path and map variables
         String localVarPath = "/preview/marketing-solutions/ad-sets";
@@ -3391,16 +3391,16 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchAdSetsValidateBeforeCall(RequestsPatchAdSet requestsPatchAdSet, final ApiCallback _callback) throws ApiException {
-        return patchAdSetsCall(requestsPatchAdSet, _callback);
+    private okhttp3.Call patchAdSetsV24Q1ValidateBeforeCall(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1, final ApiCallback _callback) throws ApiException {
+        return patchAdSetsV24Q1Call(requestsPatchAdSetV24Q1, _callback);
 
     }
 
     /**
      * 
      * Patch a list of AdSets.
-     * @param requestsPatchAdSet List of adsets to patch. (optional)
-     * @return ResponsesAdSetId
+     * @param requestsPatchAdSetV24Q1 List of adsets to patch. (optional)
+     * @return ResponsesAdSetIdV24Q1
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3410,16 +3410,16 @@ public class CampaignApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ResponsesAdSetId patchAdSets(RequestsPatchAdSet requestsPatchAdSet) throws ApiException {
-        ApiResponse<ResponsesAdSetId> localVarResp = patchAdSetsWithHttpInfo(requestsPatchAdSet);
+    public ResponsesAdSetIdV24Q1 patchAdSetsV24Q1(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1) throws ApiException {
+        ApiResponse<ResponsesAdSetIdV24Q1> localVarResp = patchAdSetsV24Q1WithHttpInfo(requestsPatchAdSetV24Q1);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Patch a list of AdSets.
-     * @param requestsPatchAdSet List of adsets to patch. (optional)
-     * @return ApiResponse&lt;ResponsesAdSetId&gt;
+     * @param requestsPatchAdSetV24Q1 List of adsets to patch. (optional)
+     * @return ApiResponse&lt;ResponsesAdSetIdV24Q1&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3429,16 +3429,16 @@ public class CampaignApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResponsesAdSetId> patchAdSetsWithHttpInfo(RequestsPatchAdSet requestsPatchAdSet) throws ApiException {
-        okhttp3.Call localVarCall = patchAdSetsValidateBeforeCall(requestsPatchAdSet, null);
-        Type localVarReturnType = new TypeToken<ResponsesAdSetId>(){}.getType();
+    public ApiResponse<ResponsesAdSetIdV24Q1> patchAdSetsV24Q1WithHttpInfo(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1) throws ApiException {
+        okhttp3.Call localVarCall = patchAdSetsV24Q1ValidateBeforeCall(requestsPatchAdSetV24Q1, null);
+        Type localVarReturnType = new TypeToken<ResponsesAdSetIdV24Q1>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
      * Patch a list of AdSets.
-     * @param requestsPatchAdSet List of adsets to patch. (optional)
+     * @param requestsPatchAdSetV24Q1 List of adsets to patch. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3450,10 +3450,10 @@ public class CampaignApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchAdSetsAsync(RequestsPatchAdSet requestsPatchAdSet, final ApiCallback<ResponsesAdSetId> _callback) throws ApiException {
+    public okhttp3.Call patchAdSetsV24Q1Async(RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1, final ApiCallback<ResponsesAdSetIdV24Q1> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchAdSetsValidateBeforeCall(requestsPatchAdSet, _callback);
-        Type localVarReturnType = new TypeToken<ResponsesAdSetId>(){}.getType();
+        okhttp3.Call localVarCall = patchAdSetsV24Q1ValidateBeforeCall(requestsPatchAdSetV24Q1, _callback);
+        Type localVarReturnType = new TypeToken<ResponsesAdSetIdV24Q1>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -5027,8 +5027,8 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for searchAdSetsV23Q1
-     * @param adSetSearchRequestV23Q1  (optional)
+     * Build call for searchAdSetsV24Q1
+     * @param adSetSearchRequestV24Q1  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -5041,7 +5041,7 @@ public class CampaignApi {
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAdSetsV23Q1Call(AdSetSearchRequestV23Q1 adSetSearchRequestV23Q1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchAdSetsV24Q1Call(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5055,7 +5055,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = adSetSearchRequestV23Q1;
+        Object localVarPostBody = adSetSearchRequestV24Q1;
 
         // create path and map variables
         String localVarPath = "/preview/marketing-solutions/ad-sets/search";
@@ -5092,16 +5092,16 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchAdSetsV23Q1ValidateBeforeCall(AdSetSearchRequestV23Q1 adSetSearchRequestV23Q1, final ApiCallback _callback) throws ApiException {
-        return searchAdSetsV23Q1Call(adSetSearchRequestV23Q1, _callback);
+    private okhttp3.Call searchAdSetsV24Q1ValidateBeforeCall(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1, final ApiCallback _callback) throws ApiException {
+        return searchAdSetsV24Q1Call(adSetSearchRequestV24Q1, _callback);
 
     }
 
     /**
      * 
      * Search for ad sets
-     * @param adSetSearchRequestV23Q1  (optional)
-     * @return ResponsesReadAdSetV23Q1
+     * @param adSetSearchRequestV24Q1  (optional)
+     * @return ResponsesReadAdSetV24Q1
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -5112,16 +5112,16 @@ public class CampaignApi {
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
-    public ResponsesReadAdSetV23Q1 searchAdSetsV23Q1(AdSetSearchRequestV23Q1 adSetSearchRequestV23Q1) throws ApiException {
-        ApiResponse<ResponsesReadAdSetV23Q1> localVarResp = searchAdSetsV23Q1WithHttpInfo(adSetSearchRequestV23Q1);
+    public ResponsesReadAdSetV24Q1 searchAdSetsV24Q1(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1) throws ApiException {
+        ApiResponse<ResponsesReadAdSetV24Q1> localVarResp = searchAdSetsV24Q1WithHttpInfo(adSetSearchRequestV24Q1);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Search for ad sets
-     * @param adSetSearchRequestV23Q1  (optional)
-     * @return ApiResponse&lt;ResponsesReadAdSetV23Q1&gt;
+     * @param adSetSearchRequestV24Q1  (optional)
+     * @return ApiResponse&lt;ResponsesReadAdSetV24Q1&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -5132,16 +5132,16 @@ public class CampaignApi {
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResponsesReadAdSetV23Q1> searchAdSetsV23Q1WithHttpInfo(AdSetSearchRequestV23Q1 adSetSearchRequestV23Q1) throws ApiException {
-        okhttp3.Call localVarCall = searchAdSetsV23Q1ValidateBeforeCall(adSetSearchRequestV23Q1, null);
-        Type localVarReturnType = new TypeToken<ResponsesReadAdSetV23Q1>(){}.getType();
+    public ApiResponse<ResponsesReadAdSetV24Q1> searchAdSetsV24Q1WithHttpInfo(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1) throws ApiException {
+        okhttp3.Call localVarCall = searchAdSetsV24Q1ValidateBeforeCall(adSetSearchRequestV24Q1, null);
+        Type localVarReturnType = new TypeToken<ResponsesReadAdSetV24Q1>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
      * Search for ad sets
-     * @param adSetSearchRequestV23Q1  (optional)
+     * @param adSetSearchRequestV24Q1  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -5154,10 +5154,10 @@ public class CampaignApi {
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAdSetsV23Q1Async(AdSetSearchRequestV23Q1 adSetSearchRequestV23Q1, final ApiCallback<ResponsesReadAdSetV23Q1> _callback) throws ApiException {
+    public okhttp3.Call searchAdSetsV24Q1Async(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1, final ApiCallback<ResponsesReadAdSetV24Q1> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchAdSetsV23Q1ValidateBeforeCall(adSetSearchRequestV23Q1, _callback);
-        Type localVarReturnType = new TypeToken<ResponsesReadAdSetV23Q1>(){}.getType();
+        okhttp3.Call localVarCall = searchAdSetsV24Q1ValidateBeforeCall(adSetSearchRequestV24Q1, _callback);
+        Type localVarReturnType = new TypeToken<ResponsesReadAdSetV24Q1>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

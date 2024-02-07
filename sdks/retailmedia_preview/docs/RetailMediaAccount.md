@@ -9,6 +9,7 @@ The details for a newly created account
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**name** | **String** | account name |  [optional] |
+|**companyName** | **String** | Display name for reporting the owning entity of ads for the Digital Services Act in the European Union |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) | Type for the account |  [optional] |
 |**subType** | [**SubTypeEnum**](#SubTypeEnum) | subtype for the account |  [optional] |
 |**countryIds** | **List&lt;Integer&gt;** | list of countries associated with the account |  [optional] |

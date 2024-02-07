@@ -52,7 +52,7 @@ import com.criteo.api.retailmedia.preview.JSON;
 public class RmLegacyAudienceGetEntityV2 {
   public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
   @SerializedName(SERIALIZED_NAME_RETAILER_ID)
-  private Long retailerId;
+  private String retailerId;
 
   public static final String SERIALIZED_NAME_USER_BEHAVIOR_DETAILS = "userBehaviorDetails";
   @SerializedName(SERIALIZED_NAME_USER_BEHAVIOR_DETAILS)
@@ -69,7 +69,7 @@ public class RmLegacyAudienceGetEntityV2 {
   public RmLegacyAudienceGetEntityV2() {
   }
 
-  public RmLegacyAudienceGetEntityV2 retailerId(Long retailerId) {
+  public RmLegacyAudienceGetEntityV2 retailerId(String retailerId) {
     
     this.retailerId = retailerId;
     return this;
@@ -81,12 +81,12 @@ public class RmLegacyAudienceGetEntityV2 {
   **/
   @javax.annotation.Nonnull
 
-  public Long getRetailerId() {
+  public String getRetailerId() {
     return retailerId;
   }
 
 
-  public void setRetailerId(Long retailerId) {
+  public void setRetailerId(String retailerId) {
     this.retailerId = retailerId;
   }
 
@@ -283,6 +283,9 @@ public class RmLegacyAudienceGetEntityV2 {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
+      }
+      if (!jsonObj.get("retailerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `retailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerId").toString()));
       }
       // validate the optional field `userBehaviorDetails`
       if (jsonObj.get("userBehaviorDetails") != null && !jsonObj.get("userBehaviorDetails").isJsonNull()) {

@@ -218,80 +218,8 @@ paths:
       x-accepts: application/json
   /2023-07/retail-media/accounts/{accountId}/audiences:
     get:
-      description: Get a page of audiences for a given account ID
-      operationId: AudienceApi_GetAudiencesByAccountId
-      parameters:
-      - description: External account ID which owns audience.
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-example: "68004146450571264"
-      - description: "Limits results to the entity IDs specified; parameter key is\
-          \ repeated, eg. limitToId=1&limitToId=2"
-        explode: true
-        in: query
-        name: limitToId
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-      - description: Specifies the maximum number of entities returned in a single
-          page; defaults to 25 entities per page
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-        x-example: 25
-      - description: Returns the specified page of results given a pageSize; pages
-          are 0-indexed
-        explode: true
-        in: query
-        name: pageIndex
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-        x-example: 0
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPageOfAudiencesByAccountIdResponse'
-          description: A page of audiences for the supplied account.
-        "400":
-          content:
-            application/json: {}
-          description: Missing or invalid account ID.
-        "404":
-          content:
-            application/json: {}
-          description: The audience was not found.
-        "406":
-          content:
-            application/json: {}
-          description: The Accept header must contain application/json.
-        "415":
-          content:
-            application/json: {}
-          description: The Content-Type header must be application/json if present.
-      tags:
-      - Audience
-      x-accepts: application/json
-    post:
-      description: Create an audience for a given account ID
-      operationId: AudienceApi_CreateAudience
+      description: Get a page of Audiences. (deprecated Public API)
+      operationId: LegacyGetAudienceV1
       parameters:
       - description: ID of the account to which this audience belongs.
         explode: false
@@ -302,70 +230,6 @@ paths:
           format: int64
           type: integer
         style: simple
-        x-example: 68004146450571264
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateRetailMediaAudienceRequest'
-        required: true
-        x-bodyName: body
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateRetailMediaAudienceResponse'
-          description: The audience that was just created.
-        "400":
-          content:
-            application/json: {}
-          description: "Missing or invalid account ID. - OR - Missing or invalid retailerID\
-            \ field. - OR - Missing or invalid name field. Name should be less than\
-            \ 255 characters. - OR - Missing or invalid userType field. Valid values\
-            \ are: 'buy', 'view'. - OR - The retailerTaxonomyIds is not a valid list\
-            \ of IDs or may contain more than 100 elements. - OR - Missing or invalid\
-            \ lookbackDays field.\_ Valid values are:\_7, 14,\_ 30, 45, 60, 90, 120,\
-            \ 150 or 180. - OR - Exactly one of retailerTaxonomyIds or globalBrandIds\
-            \ must be specified, but not both. - OR - The retailer is invalid because\
-            \ it is not live - OR - The globalBrandIds is not a valid list of IDs\
-            \ or may contain more than 100 elements."
-        "404":
-          content:
-            application/json: {}
-          description: The audience was not found. - OR - You do not have permission
-            to access these global brands.
-        "406":
-          content:
-            application/json: {}
-          description: The Accept header must contain application/json.
-        "409":
-          content:
-            application/json: {}
-          description: An audience name should be unique per account.
-        "415":
-          content:
-            application/json: {}
-          description: The Content-Type header must be application/json if present.
-      tags:
-      - Audience
-      x-content-type: application/json
-      x-accepts: application/json
-  /2023-07/retail-media/v2/accounts/{accountId}/audiences:
-    get:
-      description: Get a page of audiences for a given account ID
-      operationId: GetRetailMediaAudienceV2ListByAccountId
-      parameters:
-      - description: External account ID which owns audience.
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
-        x-example: 68004146450571264
       - description: "Limits results to the entity IDs specified; parameter key is\
           \ repeated, eg. limitToId=1&limitToId=2"
         explode: true
@@ -374,12 +238,12 @@ paths:
         required: false
         schema:
           items:
-            format: int64
+            format: int32
             type: integer
           type: array
         style: form
       - description: Specifies the maximum number of entities returned in a single
-          page; defaults to 25 entities per page
+          page; defaults to 25 entities per page.
         explode: true
         in: query
         name: pageSize
@@ -388,9 +252,8 @@ paths:
           format: int32
           type: integer
         style: form
-        x-example: 25
       - description: Returns the specified page of results given a pageSize; pages
-          are 0-indexed
+          are 0-indexed.
         explode: true
         in: query
         name: pageIndex
@@ -399,39 +262,45 @@ paths:
           format: int32
           type: integer
         style: form
-        x-example: 0
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RmLegacyAudienceGetEntityV1ListResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/RetailMediaAudienceV2ListResponse'
-          description: A page of audiences for the supplied account.
+                $ref: '#/components/schemas/RmLegacyAudienceGetEntityV1ListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RmLegacyAudienceGetEntityV1ListResponse'
+          description: A page of audiences for the supplied account or shared by related
+            retailers.
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad request
+        "401":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not properly authenticated.
         "403":
           content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CommonStatusCodeResponse'
-          description: Missing or invalid account ID. - OR - You do not have permission
-            to access this account.
-        "406":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CommonStatusCodeResponse'
-          description: The Accept header must contain application/json.
-        "415":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CommonStatusCodeResponse'
-          description: The Content-Type header must be application/json if present.
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not authorized to access this resource.
       tags:
       - Audience
       x-accepts: application/json
     post:
-      description: Create an audience for a given account ID
-      operationId: CreateRetailMediaAudienceV2
+      deprecated: true
+      description: Create an Audience (deprecated Public API)
+      operationId: LegacyCreateAudienceV1
       parameters:
       - description: ID of the account to which this audience belongs.
         explode: false
@@ -442,64 +311,216 @@ paths:
           format: int64
           type: integer
         style: simple
-        x-example: 68004146450571264
       requestBody:
         content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RmLegacyAudienceCreateInputEntityV1'
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateRetailMediaAudienceV2Request'
+              $ref: '#/components/schemas/RmLegacyAudienceCreateInputEntityV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RmLegacyAudienceCreateInputEntityV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RmLegacyAudienceCreateInputEntityV1'
+        description: Audience creation request.
         required: true
         x-bodyName: body
       responses:
-        "201":
+        "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RmLegacyAudienceCreateEntityV1Response'
             application/json:
               schema:
-                $ref: '#/components/schemas/RetailMediaAudienceV2Response'
+                $ref: '#/components/schemas/RmLegacyAudienceCreateEntityV1Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RmLegacyAudienceCreateEntityV1Response'
+          description: Success
+        "201":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
           description: The audience that was just created.
         "400":
           content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CommonStatusCodeResponse'
-          description: "Missing or invalid retailerID field. - OR - Missing or invalid\
-            \ name field. Name should be less than 255 characters. - OR - Missing\
-            \ or invalid userType field. Valid values are: 'buyer', 'viewer'. - OR\
-            \ - The brandIds is not a valid list of IDs or may contain more than 100\
-            \ elements. - OR - The categoryIds is not a valid list of IDs or may contain\
-            \ more than 100 elements. - OR - Missing or invalid lookbackWindow field.\
-            \ Valid values are: P7D, P14D, P30D, P45D, P60D, P90D, P120D, P150D or\
-            \ P180D. - OR - Exactly one of categoryIds or brandIds must be specified,\
-            \ but not both. - OR - The retailer is invalid because it is not live\
-            \ - OR - Missing or invalid userAction field. Valid values are: 'buy',\
-            \ 'view', 'addToCart'."
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad request
+        "401":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not properly authenticated.
         "403":
           content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CommonStatusCodeResponse'
-          description: Missing or invalid account ID.
-        "406":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CommonStatusCodeResponse'
-          description: The Accept header must contain application/json.
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CommonStatusCodeResponse'
-          description: An audience name should be unique per account.
-        "415":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CommonStatusCodeResponse'
-          description: The Content-Type header must be application/json if present.
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not authorized to access this resource.
       tags:
       - Audience
-      x-content-type: application/json
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /2023-07/retail-media/v2/accounts/{accountId}/audiences:
+    get:
+      description: Get a page of Audiences. (deprecated Public API)
+      operationId: LegacyGetAudienceV2
+      parameters:
+      - description: ID of the account to which this audience belongs.
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      - description: "Limits results to the entity IDs specified; parameter key is\
+          \ repeated, eg. limitToId=1&limitToId=2"
+        explode: true
+        in: query
+        name: limitToId
+        required: false
+        schema:
+          items:
+            format: int32
+            type: integer
+          type: array
+        style: form
+      - description: Specifies the maximum number of entities returned in a single
+          page; defaults to 25 entities per page.
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - description: Returns the specified page of results given a pageSize; pages
+          are 0-indexed.
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RmLegacyAudienceGetEntityV2ListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RmLegacyAudienceGetEntityV2ListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RmLegacyAudienceGetEntityV2ListResponse'
+          description: A page of audiences for the supplied account or shared by related
+            retailers.
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad request
+        "401":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not properly authenticated.
+        "403":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not authorized to access this resource.
+      tags:
+      - Audience
+      x-accepts: application/json
+    post:
+      deprecated: true
+      description: Create an Audience (deprecated Public API)
+      operationId: LegacyUpdateAudienceV2
+      parameters:
+      - description: ID of the account to which this audience belongs.
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RmLegacyAudienceCreateInputEntityV2'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RmLegacyAudienceCreateInputEntityV2'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RmLegacyAudienceCreateInputEntityV2'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RmLegacyAudienceCreateInputEntityV2'
+        description: Audience creation request.
+        required: true
+        x-bodyName: body
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RmLegacyAudienceCreateEntityV2Response'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RmLegacyAudienceCreateEntityV2Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RmLegacyAudienceCreateEntityV2Response'
+          description: Success
+        "201":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The audience that was just created.
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad request
+        "401":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not properly authenticated.
+        "403":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not authorized to access this resource.
+      tags:
+      - Audience
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /2023-07/retail-media/line-items/{id}/keywords:
     get:
@@ -3174,6 +3195,7 @@ components:
         - attributes:
             subtype: unknown
             parentAccountLabel: parentAccountLabel
+            companyName: companyName
             name: name
             timeZone: timeZone
             currency: currency
@@ -3186,6 +3208,7 @@ components:
         - attributes:
             subtype: unknown
             parentAccountLabel: parentAccountLabel
+            companyName: companyName
             name: name
             timeZone: timeZone
             currency: currency
@@ -3599,6 +3622,7 @@ components:
         attributes:
           subtype: unknown
           parentAccountLabel: parentAccountLabel
+          companyName: companyName
           name: name
           timeZone: timeZone
           currency: currency
@@ -3677,6 +3701,7 @@ components:
       example:
         subtype: unknown
         parentAccountLabel: parentAccountLabel
+        companyName: companyName
         name: name
         timeZone: timeZone
         currency: currency
@@ -3722,6 +3747,9 @@ components:
         timeZone:
           type: string
           x-nullable: false
+        companyName:
+          nullable: true
+          type: string
       required:
       - countries
       - currency
@@ -3885,49 +3913,45 @@ components:
       required:
       - fileExtension
       type: object
-    GetPageOfAudiencesByAccountIdResponse:
-      description: Response for page of audiences by given account
+    RmLegacyAudienceGetEntityV1ListResponse:
+      description: List of responses
       example:
-        metadata:
-          currentPageSize: 6
-          previousPage: previousPage
-          nextPage: nextPage
-          totalPages: 5
-          totalItemsAcrossAllPages: 0
-          currentPageIndex: 1
         data:
         - attributes:
             customerListDetails:
-              size: "34212"
-            name: Test audience
-            retailerId: "68004146450571264"
+              size: size
+              isShared: true
+            name: name
+            retailerId: retailerId
             userBehaviorDetails:
               targetIds:
               - targetIds
               - targetIds
-              targetType: category
+              targetType: brand
               userType: viewer
               lookbackWindow: P7D
-          id: "314159"
+          id: id
           audienceType: customerList
-          type: RetailMediaAudienceSummary
+          type: type
         - attributes:
             customerListDetails:
-              size: "34212"
-            name: Test audience
-            retailerId: "68004146450571264"
+              size: size
+              isShared: true
+            name: name
+            retailerId: retailerId
             userBehaviorDetails:
               targetIds:
               - targetIds
               - targetIds
-              targetType: category
+              targetType: brand
               userType: viewer
               lookbackWindow: P7D
-          id: "314159"
+          id: id
           audienceType: customerList
-          type: RetailMediaAudienceSummary
+          type: type
         warnings:
         - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3937,6 +3961,7 @@ components:
           type: unknown
           title: title
         - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3947,6 +3972,7 @@ components:
           title: title
         errors:
         - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3956,6 +3982,7 @@ components:
           type: unknown
           title: title
         - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -3966,50 +3993,44 @@ components:
           title: title
       properties:
         data:
-          description: data
           items:
-            $ref: '#/components/schemas/RetailMediaAudience'
+            $ref: '#/components/schemas/RmLegacyAudienceGetEntityV1Resource'
+          nullable: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
           readOnly: true
           type: array
         errors:
-          description: errors
           items:
-            $ref: '#/components/schemas/CommonError'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-        warnings:
-          description: warnings
-          items:
-            $ref: '#/components/schemas/CommonWarning'
-          nullable: true
-          readOnly: true
-          type: array
-        metadata:
-          $ref: '#/components/schemas/PageMetadata'
-      required:
-      - data
-      - metadata
       type: object
-    CreateRetailMediaAudienceResponse:
-      description: Response of CreateAudienceRequest
+    RmLegacyAudienceCreateEntityV1Response:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity
       example:
         data:
           attributes:
             categoryIds:
             - 6
             - 6
-            name: Test audience
+            name: name
             userType: viewer
-            retailerId: 6841
+            retailerId: 1
             brandIds:
             - 0
             - 0
             lookbackWindow: P7D
-          id: 314159
-          type: RetailMediaAudience
+          id: id
+          type: type
         warnings:
         - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4019,6 +4040,7 @@ components:
           type: unknown
           title: title
         - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4029,6 +4051,7 @@ components:
           title: title
         errors:
         - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4038,6 +4061,7 @@ components:
           type: unknown
           title: title
         - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -4048,39 +4072,31 @@ components:
           title: title
       properties:
         data:
-          $ref: '#/components/schemas/CreateRetailMediaAudience'
-        errors:
-          description: errors
+          $ref: '#/components/schemas/RmLegacyAudienceCreateEntityV1Resource'
+        warnings:
           items:
-            $ref: '#/components/schemas/CommonError'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-        warnings:
-          description: warnings
+        errors:
           items:
-            $ref: '#/components/schemas/CommonWarning'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
       type: object
-    RetailMediaAudienceV2ListResponse:
-      description: Array of Audiences Returned as Part of Get RetailMedia Audience
-        Request
+    RmLegacyAudienceGetEntityV2ListResponse:
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities
       example:
-        metadata:
-          currentPageSize: 6
-          previousPage: previousPage
-          nextPage: nextPage
-          totalPages: 5
-          totalItemsAcrossAllPages: 0
-          currentPageIndex: 1
         data:
         - attributes:
             customerListDetails:
-              size: "34212"
-            name: Test audience
-            retailerId: 6041
+              size: size
+              isShared: true
+            name: name
+            retailerId: retailerId
             userBehaviorDetails:
               inclusiveSegment:
                 userAction: buy
@@ -4104,13 +4120,14 @@ components:
                 - 6
                 - 6
                 lookbackWindow: P7D
-          id: "314159"
-          type: customerList
+          id: id
+          type: type
         - attributes:
             customerListDetails:
-              size: "34212"
-            name: Test audience
-            retailerId: 6041
+              size: size
+              isShared: true
+            name: name
+            retailerId: retailerId
             userBehaviorDetails:
               inclusiveSegment:
                 userAction: buy
@@ -4134,8 +4151,8 @@ components:
                 - 6
                 - 6
                 lookbackWindow: P7D
-          id: "314159"
-          type: customerList
+          id: id
+          type: type
         warnings:
         - traceId: traceId
           traceIdentifier: traceIdentifier
@@ -4180,81 +4197,52 @@ components:
           title: title
       properties:
         data:
-          description: data
           items:
-            $ref: '#/components/schemas/RetailMediaAudienceV2'
+            $ref: '#/components/schemas/RmLegacyAudienceGetEntityV2Resource'
+          nullable: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
           readOnly: true
           type: array
         errors:
-          description: errors
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: warnings
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        metadata:
-          $ref: '#/components/schemas/PageMetadata'
-      required:
-      - data
-      - metadata
-      type: object
-    CommonStatusCodeResponse:
-      description: Commonly Returned Problem Response
-      properties:
-        errors:
-          description: errors
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: warnings
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
       type: object
-    RetailMediaAudienceV2Response:
-      description: Response of CreateAudienceRequestV2
+    RmLegacyAudienceCreateEntityV2Response:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity
       example:
         data:
           attributes:
-            name: Test audience
-            retailerId: 6041
+            name: name
+            retailerId: 0
             userBehaviorDetails:
               inclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - 0
-                - 0
-                minPrice: 1.4658129805029452
-                maxPrice: 5.962133916683182
+                - 6
+                - 6
                 brandIds:
-                - 6
-                - 6
+                - 1
+                - 1
                 lookbackWindow: P7D
               exclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - 0
-                - 0
-                minPrice: 1.4658129805029452
-                maxPrice: 5.962133916683182
+                - 6
+                - 6
                 brandIds:
-                - 6
-                - 6
+                - 1
+                - 1
                 lookbackWindow: P7D
-          id: 314159
-          type: RetailMediaAudience
+          id: id
+          type: type
         warnings:
         - traceId: traceId
           traceIdentifier: traceIdentifier
@@ -4299,164 +4287,144 @@ components:
           title: title
       properties:
         data:
-          $ref: '#/components/schemas/CreateRetailMediaAudienceV2'
-        errors:
-          description: errors
+          $ref: '#/components/schemas/RmLegacyAudienceCreateEntityV2Resource'
+        warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-        warnings:
-          description: warnings
+        errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
       type: object
-    CreateRetailMediaAudienceRequest:
-      description: Request to create an audience
+    RmLegacyAudienceCreateInputEntityV1:
+      description: Input to create audience.
       example:
         data:
           attributes:
             categoryIds:
             - 6
             - 6
-            name: Test audience
+            name: name
             userType: viewer
-            retailerId: 6841
+            retailerId: 1
             brandIds:
             - 0
             - 0
             lookbackWindow: P7D
-          type: RetailMediaAudience
+          id: id
+          type: type
       properties:
         data:
-          $ref: '#/components/schemas/CreateRetailMediaAudienceBody'
-      required:
-      - data
+          $ref: '#/components/schemas/RmLegacyAudienceCreateEntityV1Resource'
       type: object
-    CreateRetailMediaAudienceV2Request:
-      description: Request to create an audience
+    RmLegacyAudienceCreateInputEntityV2:
+      description: Input to create audience.
       example:
         data:
           attributes:
-            name: Test audience
-            retailerId: 6041
+            name: name
+            retailerId: 0
             userBehaviorDetails:
               inclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - 0
-                - 0
-                minPrice: 1.4658129805029452
-                maxPrice: 5.962133916683182
+                - 6
+                - 6
                 brandIds:
-                - 6
-                - 6
+                - 1
+                - 1
                 lookbackWindow: P7D
               exclusiveSegment:
                 userAction: buy
                 categoryIds:
-                - 0
-                - 0
-                minPrice: 1.4658129805029452
-                maxPrice: 5.962133916683182
+                - 6
+                - 6
                 brandIds:
-                - 6
-                - 6
+                - 1
+                - 1
                 lookbackWindow: P7D
-          type: RetailMediaAudience
+          id: id
+          type: type
       properties:
         data:
-          $ref: '#/components/schemas/CreateRetailMediaAudienceV2Data'
-      required:
-      - data
+          $ref: '#/components/schemas/RmLegacyAudienceCreateEntityV2Resource'
       type: object
-    RetailMediaAudience:
-      description: All the information about a retail media audience
+    RmLegacyAudienceGetEntityV1Resource:
+      description: Legacy resource
       example:
         attributes:
           customerListDetails:
-            size: "34212"
-          name: Test audience
-          retailerId: "68004146450571264"
+            size: size
+            isShared: true
+          name: name
+          retailerId: retailerId
           userBehaviorDetails:
             targetIds:
             - targetIds
             - targetIds
-            targetType: category
+            targetType: brand
             userType: viewer
             lookbackWindow: P7D
-        id: "314159"
+        id: id
         audienceType: customerList
-        type: RetailMediaAudienceSummary
+        type: type
       properties:
+        attributes:
+          $ref: '#/components/schemas/RmLegacyAudienceGetEntityV1'
+        id:
+          nullable: true
+          type: string
         audienceType:
-          description: Type of the audience
           enum:
           - customerList
           - userBehavior
-          example: customerList
-          type: string
-        id:
-          description: Unique ID of this audience.
-          example: "314159"
+          nullable: true
           type: string
         type:
-          description: Name of the entity i.e. RetailMediaAudienceSummary
-          example: RetailMediaAudienceSummary
+          nullable: true
           type: string
-        attributes:
-          $ref: '#/components/schemas/RetailMediaAudienceAttributes'
-      required:
-      - attributes
-      - audienceType
-      - id
-      - type
       type: object
-    CreateRetailMediaAudience:
-      description: Retail Media audience used in audience creation
+    RmLegacyAudienceCreateEntityV1Resource:
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           categoryIds:
           - 6
           - 6
-          name: Test audience
+          name: name
           userType: viewer
-          retailerId: 6841
+          retailerId: 1
           brandIds:
           - 0
           - 0
           lookbackWindow: P7D
-        id: 314159
-        type: RetailMediaAudience
+        id: id
+        type: type
       properties:
-        type:
-          description: the name of the entity type
-          example: RetailMediaAudience
-          type: string
-        id:
-          description: Unique ID of this audience.
-          example: 314159
-          format: int64
-          type: integer
         attributes:
-          $ref: '#/components/schemas/CreateRetailMediaAudienceAttributes'
-      required:
-      - attributes
-      - id
-      - type
+          $ref: '#/components/schemas/RmLegacyAudienceCreateEntityV1'
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
       type: object
-    RetailMediaAudienceV2:
-      description: Retail Media audience returned by the Get RetailMedia Audience
+    RmLegacyAudienceGetEntityV2Resource:
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           customerListDetails:
-            size: "34212"
-          name: Test audience
-          retailerId: 6041
+            size: size
+            isShared: true
+          name: name
+          retailerId: retailerId
           userBehaviorDetails:
             inclusiveSegment:
               userAction: buy
@@ -4480,182 +4448,100 @@ components:
               - 6
               - 6
               lookbackWindow: P7D
-        id: "314159"
-        type: customerList
+        id: id
+        type: type
       properties:
-        type:
-          description: Type of the audience
-          enum:
-          - customerList
-          - userBehavior
-          example: customerList
-          type: string
+        attributes:
+          $ref: '#/components/schemas/RmLegacyAudienceGetEntityV2'
         id:
-          description: Unique ID of this audience.
-          example: "314159"
+          description: Id of the entity
+          nullable: true
           type: string
-        attributes:
-          $ref: '#/components/schemas/RetailMediaAudienceV2Attributes'
-      required:
-      - attributes
-      - id
-      - type
+        type:
+          nullable: true
+          type: string
       type: object
-    CreateRetailMediaAudienceV2:
-      description: Retail Media audience used in audience creation
+    RmLegacyAudienceCreateEntityV2Resource:
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
-          name: Test audience
-          retailerId: 6041
+          name: name
+          retailerId: 0
           userBehaviorDetails:
             inclusiveSegment:
               userAction: buy
               categoryIds:
-              - 0
-              - 0
-              minPrice: 1.4658129805029452
-              maxPrice: 5.962133916683182
+              - 6
+              - 6
               brandIds:
-              - 6
-              - 6
+              - 1
+              - 1
               lookbackWindow: P7D
             exclusiveSegment:
               userAction: buy
               categoryIds:
-              - 0
-              - 0
-              minPrice: 1.4658129805029452
-              maxPrice: 5.962133916683182
+              - 6
+              - 6
               brandIds:
-              - 6
-              - 6
+              - 1
+              - 1
               lookbackWindow: P7D
-        id: 314159
-        type: RetailMediaAudience
+        id: id
+        type: type
       properties:
-        type:
-          description: the name of the entity type
-          example: RetailMediaAudience
-          type: string
+        attributes:
+          $ref: '#/components/schemas/RmLegacyAudienceCreateEntityV2'
         id:
-          description: Unique ID of this audience.
-          example: 314159
-          format: int64
-          type: integer
-        attributes:
-          $ref: '#/components/schemas/CreateRetailMediaAudienceV2Attributes'
-      required:
-      - attributes
-      - id
-      - type
-      type: object
-    CreateRetailMediaAudienceBody:
-      description: Request body of CreateRetailMediaAudienceRequest
-      example:
-        attributes:
-          categoryIds:
-          - 6
-          - 6
-          name: Test audience
-          userType: viewer
-          retailerId: 6841
-          brandIds:
-          - 0
-          - 0
-          lookbackWindow: P7D
-        type: RetailMediaAudience
-      properties:
-        type:
-          description: the name of the entity type
-          example: RetailMediaAudience
+          description: Id of the entity
+          nullable: true
           type: string
-        attributes:
-          $ref: '#/components/schemas/CreateRetailMediaAudienceAttributes'
-      required:
-      - attributes
-      - type
-      type: object
-    CreateRetailMediaAudienceV2Data:
-      description: Request body of CreateRetailMediaAudienceV2Request
-      example:
-        attributes:
-          name: Test audience
-          retailerId: 6041
-          userBehaviorDetails:
-            inclusiveSegment:
-              userAction: buy
-              categoryIds:
-              - 0
-              - 0
-              minPrice: 1.4658129805029452
-              maxPrice: 5.962133916683182
-              brandIds:
-              - 6
-              - 6
-              lookbackWindow: P7D
-            exclusiveSegment:
-              userAction: buy
-              categoryIds:
-              - 0
-              - 0
-              minPrice: 1.4658129805029452
-              maxPrice: 5.962133916683182
-              brandIds:
-              - 6
-              - 6
-              lookbackWindow: P7D
-        type: RetailMediaAudience
-      properties:
         type:
-          description: the name of the entity type
-          example: RetailMediaAudience
+          nullable: true
           type: string
-        attributes:
-          $ref: '#/components/schemas/CreateRetailMediaAudienceV2Attributes'
-      required:
-      - attributes
-      - type
       type: object
-    RetailMediaAudienceAttributes:
-      description: Fields of a retail media audience
+    RmLegacyAudienceGetEntityV1:
+      description: Audience definition of people of interest for a marketer.
       example:
         customerListDetails:
-          size: "34212"
-        name: Test audience
-        retailerId: "68004146450571264"
+          size: size
+          isShared: true
+        name: name
+        retailerId: retailerId
         userBehaviorDetails:
           targetIds:
           - targetIds
           - targetIds
-          targetType: category
+          targetType: brand
           userType: viewer
           lookbackWindow: P7D
       properties:
+        name:
+          description: Name of the audience
+          type: string
         retailerId:
           description: ID of the retailer associated with this audience
-          example: "68004146450571264"
-          type: string
-        name:
-          description: Name of the audience.
-          example: Test audience
           type: string
         userBehaviorDetails:
-          $ref: '#/components/schemas/UserBehaviorDetails'
+          $ref: '#/components/schemas/RmLegacySegmentUserBehaviorV1'
         customerListDetails:
-          $ref: '#/components/schemas/CustomerListDetails'
+          $ref: '#/components/schemas/RmLegacySegmentCustomerList'
       required:
       - name
       - retailerId
       type: object
-    CreateRetailMediaAudienceAttributes:
-      description: Parameters needed to create an audience
+      x-criteo-canonical:
+        infoType: entity
+        name: RetailMediaAudienceSummary
+        version: v1
+    RmLegacyAudienceCreateEntityV1:
+      description: Audience definition
       example:
         categoryIds:
         - 6
         - 6
-        name: Test audience
+        name: name
         userType: viewer
-        retailerId: 6841
+        retailerId: 1
         brandIds:
         - 0
         - 0
@@ -4666,7 +4552,7 @@ components:
           enum:
           - viewer
           - buyer
-          example: viewer
+          - addToCarter
           type: string
         lookbackWindow:
           description: Length of lookback window
@@ -4680,7 +4566,6 @@ components:
           - P120D
           - P150D
           - P180D
-          example: P7D
           type: string
         brandIds:
           description: The brands to target
@@ -4689,6 +4574,7 @@ components:
             type: integer
           nullable: true
           type: array
+          uniqueItems: true
         categoryIds:
           description: The categories to target
           items:
@@ -4696,14 +4582,13 @@ components:
             type: integer
           nullable: true
           type: array
+          uniqueItems: true
         retailerId:
           description: ID of the retailer associated with this audience
-          example: 6841
           format: int64
           type: integer
         name:
-          description: Name of the audience.
-          example: Test audience
+          description: Name of the audience
           type: string
       required:
       - lookbackWindow
@@ -4711,13 +4596,18 @@ components:
       - retailerId
       - userType
       type: object
-    RetailMediaAudienceV2Attributes:
-      description: Properties of the returned Audience
+      x-criteo-canonical:
+        infoType: entity
+        name: RetailMediaAudience
+        version: v1
+    RmLegacyAudienceGetEntityV2:
+      description: Audience definition of people of interest for a marketer
       example:
         customerListDetails:
-          size: "34212"
-        name: Test audience
-        retailerId: 6041
+          size: size
+          isShared: true
+        name: name
+        retailerId: retailerId
         userBehaviorDetails:
           inclusiveSegment:
             userAction: buy
@@ -4744,88 +4634,82 @@ components:
       properties:
         retailerId:
           description: ID of the retailer associated with this audience
-          example: 6041
-          format: int64
-          type: integer
-        name:
-          description: Name of the audience.
-          example: Test audience
           type: string
         userBehaviorDetails:
-          $ref: '#/components/schemas/UserBehaviorDetailsV2'
+          $ref: '#/components/schemas/RmLegacyAudienceUserBehaviorDetailsV2'
         customerListDetails:
-          $ref: '#/components/schemas/CustomerListDetails'
+          $ref: '#/components/schemas/RmLegacySegmentCustomerList'
+        name:
+          description: Name of the audience
+          type: string
       required:
       - name
       - retailerId
       type: object
-    CreateRetailMediaAudienceV2Attributes:
-      description: Parameters needed to create an audience
+      x-criteo-canonical:
+        infoType: entity
+        name: RetailMediaAudience
+        version: v1
+    RmLegacyAudienceCreateEntityV2:
+      description: Audience definition
       example:
-        name: Test audience
-        retailerId: 6041
+        name: name
+        retailerId: 0
         userBehaviorDetails:
           inclusiveSegment:
             userAction: buy
             categoryIds:
-            - 0
-            - 0
-            minPrice: 1.4658129805029452
-            maxPrice: 5.962133916683182
+            - 6
+            - 6
             brandIds:
-            - 6
-            - 6
+            - 1
+            - 1
             lookbackWindow: P7D
           exclusiveSegment:
             userAction: buy
             categoryIds:
-            - 0
-            - 0
-            minPrice: 1.4658129805029452
-            maxPrice: 5.962133916683182
+            - 6
+            - 6
             brandIds:
-            - 6
-            - 6
+            - 1
+            - 1
             lookbackWindow: P7D
       properties:
         retailerId:
           description: ID of the retailer associated with this audience
-          example: 6041
           format: int64
           type: integer
         userBehaviorDetails:
-          $ref: '#/components/schemas/UserBehaviorDetailsV2'
+          $ref: '#/components/schemas/RmLegacyAudienceUserBehaviorCreateV2'
         name:
-          description: Name of the audience.
-          example: Test audience
+          description: Name of the audience
           type: string
       required:
       - name
       - retailerId
       - userBehaviorDetails
       type: object
-    UserBehaviorDetails:
-      description: Details about a user behavior retail media audience
+      x-criteo-canonical:
+        infoType: entity
+        name: RetailMediaAudience
+        version: v1
+    RmLegacySegmentUserBehaviorV1:
+      description: Audience definition of people based on what they visited
       example:
         targetIds:
         - targetIds
         - targetIds
-        targetType: category
+        targetType: brand
         userType: viewer
         lookbackWindow: P7D
       properties:
-        targetType:
-          description: Type of target
+        userType:
+          description: Type of shopper activity used to generate the audience.
           enum:
-          - brand
-          - category
-          example: category
+          - viewer
+          - buyer
+          - addToCarter
           type: string
-        targetIds:
-          description: ist of ids for the target type
-          items:
-            type: string
-          type: array
         lookbackWindow:
           description: Length of lookback window
           enum:
@@ -4838,35 +4722,43 @@ components:
           - P120D
           - P150D
           - P180D
-          example: P7D
           type: string
-        userType:
-          description: Type of the user
+        targetType:
+          description: Type of target
           enum:
-          - viewer
-          - buyer
-          example: viewer
+          - brand
+          - category
+          nullable: true
           type: string
+        targetIds:
+          description: The categories to target
+          items:
+            type: string
+          nullable: true
+          type: array
+          uniqueItems: true
       required:
       - lookbackWindow
-      - targetIds
-      - targetType
       - userType
       type: object
-    CustomerListDetails:
-      description: Details of a customer list audience
+    RmLegacySegmentCustomerList:
+      description: Audience definition of people based on a customer list
       example:
-        size: "34212"
+        size: size
+        isShared: true
       properties:
         size:
           description: Number of users in the customer list audience.
-          example: "34212"
           type: string
+        isShared:
+          description: Indicate if the audience is shared.
+          type: boolean
       required:
+      - isShared
       - size
       type: object
-    UserBehaviorDetailsV2:
-      description: Details about a user behavior retail media audience
+    RmLegacyAudienceUserBehaviorDetailsV2:
+      description: User Behavior Details.
       example:
         inclusiveSegment:
           userAction: buy
@@ -4892,14 +4784,43 @@ components:
           lookbackWindow: P7D
       properties:
         inclusiveSegment:
-          $ref: '#/components/schemas/CreateUserBehaviorSegmentV2'
+          $ref: '#/components/schemas/RmLegacySegmentUserBehaviorV2'
         exclusiveSegment:
-          $ref: '#/components/schemas/CreateUserBehaviorSegmentV2'
+          $ref: '#/components/schemas/RmLegacySegmentUserBehaviorV2'
       required:
       - inclusiveSegment
       type: object
-    CreateUserBehaviorSegmentV2:
-      description: 'Inclusive and exclusive segments of a user behavior audience '
+    RmLegacyAudienceUserBehaviorCreateV2:
+      description: User Behavior to include and optionally exclude.
+      example:
+        inclusiveSegment:
+          userAction: buy
+          categoryIds:
+          - 6
+          - 6
+          brandIds:
+          - 1
+          - 1
+          lookbackWindow: P7D
+        exclusiveSegment:
+          userAction: buy
+          categoryIds:
+          - 6
+          - 6
+          brandIds:
+          - 1
+          - 1
+          lookbackWindow: P7D
+      properties:
+        inclusiveSegment:
+          $ref: '#/components/schemas/RmLegacySegmentUserBehaviorCreateV2'
+        exclusiveSegment:
+          $ref: '#/components/schemas/RmLegacySegmentUserBehaviorCreateV2'
+      required:
+      - inclusiveSegment
+      type: object
+    RmLegacySegmentUserBehaviorV2:
+      description: Audience definition of people based on what they visited
       example:
         userAction: buy
         categoryIds:
@@ -4918,7 +4839,6 @@ components:
           - buy
           - view
           - addToCart
-          example: buy
           type: string
         lookbackWindow:
           description: Length of lookback window
@@ -4932,7 +4852,6 @@ components:
           - P120D
           - P150D
           - P180D
-          example: P7D
           type: string
         categoryIds:
           description: The categories to target
@@ -4941,6 +4860,7 @@ components:
             type: integer
           nullable: true
           type: array
+          uniqueItems: true
         brandIds:
           description: The brands to target
           items:
@@ -4948,18 +4868,69 @@ components:
             type: integer
           nullable: true
           type: array
+          uniqueItems: true
         minPrice:
           description: The min price of targeted skus.
           format: double
           nullable: true
-          readOnly: true
           type: number
         maxPrice:
           description: The max price of targeted skus.
           format: double
           nullable: true
-          readOnly: true
           type: number
+      required:
+      - lookbackWindow
+      - userAction
+      type: object
+    RmLegacySegmentUserBehaviorCreateV2:
+      description: User Behavior Details.
+      example:
+        userAction: buy
+        categoryIds:
+        - 6
+        - 6
+        brandIds:
+        - 1
+        - 1
+        lookbackWindow: P7D
+      properties:
+        userAction:
+          description: Type of shopper activity used to generate the audience.
+          enum:
+          - buy
+          - view
+          - addToCart
+          type: string
+        lookbackWindow:
+          description: Length of lookback window
+          enum:
+          - P7D
+          - P14D
+          - P30D
+          - P45D
+          - P60D
+          - P90D
+          - P120D
+          - P150D
+          - P180D
+          type: string
+        categoryIds:
+          description: The categories to target
+          items:
+            format: int32
+            type: integer
+          nullable: true
+          type: array
+          uniqueItems: true
+        brandIds:
+          description: The brands to target
+          items:
+            format: int64
+            type: integer
+          nullable: true
+          type: array
+          uniqueItems: true
       required:
       - lookbackWindow
       - userAction
@@ -8780,6 +8751,7 @@ components:
             budgetRemaining: 6.027456183070403
             clickAttributionWindow: 30D
             endDate: 2000-01-23T04:56:07.000+00:00
+            companyName: companyName
             drawableBalanceIds:
             - drawableBalanceIds
             - drawableBalanceIds
@@ -8807,6 +8779,7 @@ components:
             budgetRemaining: 6.027456183070403
             clickAttributionWindow: 30D
             endDate: 2000-01-23T04:56:07.000+00:00
+            companyName: companyName
             drawableBalanceIds:
             - drawableBalanceIds
             - drawableBalanceIds
@@ -8900,6 +8873,7 @@ components:
             budgetRemaining: 6.027456183070403
             clickAttributionWindow: 30D
             endDate: 2000-01-23T04:56:07.000+00:00
+            companyName: companyName
             drawableBalanceIds:
             - drawableBalanceIds
             - drawableBalanceIds
@@ -10177,6 +10151,7 @@ components:
           attributes:
             clickAttributionWindow: 30D
             endDate: 2000-01-23T04:56:07.000+00:00
+            companyName: companyName
             drawableBalanceIds:
             - drawableBalanceIds
             - drawableBalanceIds
@@ -10316,6 +10291,7 @@ components:
             endDate: 2000-01-23T04:56:07.000+00:00
             clickAttributionScope: unknown
             viewAttributionScope: unknown
+            companyName: companyName
             name: name
             viewAttributionWindow: None
             isAutoDailyPacing: true
@@ -10533,6 +10509,7 @@ components:
           budgetRemaining: 6.027456183070403
           clickAttributionWindow: 30D
           endDate: 2000-01-23T04:56:07.000+00:00
+          companyName: companyName
           drawableBalanceIds:
           - drawableBalanceIds
           - drawableBalanceIds
@@ -10856,6 +10833,7 @@ components:
         attributes:
           clickAttributionWindow: 30D
           endDate: 2000-01-23T04:56:07.000+00:00
+          companyName: companyName
           drawableBalanceIds:
           - drawableBalanceIds
           - drawableBalanceIds
@@ -10978,6 +10956,7 @@ components:
           endDate: 2000-01-23T04:56:07.000+00:00
           clickAttributionScope: unknown
           viewAttributionScope: unknown
+          companyName: companyName
           name: name
           viewAttributionWindow: None
           isAutoDailyPacing: true
@@ -11189,6 +11168,7 @@ components:
         budgetRemaining: 6.027456183070403
         clickAttributionWindow: 30D
         endDate: 2000-01-23T04:56:07.000+00:00
+        companyName: companyName
         drawableBalanceIds:
         - drawableBalanceIds
         - drawableBalanceIds
@@ -11340,6 +11320,10 @@ components:
           - sameSku
           - sameSkuCategory
           - sameSkuCategoryBrand
+          nullable: true
+          type: string
+          x-nullable: true
+        companyName:
           nullable: true
           type: string
           x-nullable: true
@@ -11899,6 +11883,7 @@ components:
       example:
         clickAttributionWindow: 30D
         endDate: 2000-01-23T04:56:07.000+00:00
+        companyName: companyName
         drawableBalanceIds:
         - drawableBalanceIds
         - drawableBalanceIds
@@ -12001,6 +11986,10 @@ components:
           - sameSku
           - sameSkuCategory
           - sameSkuCategoryBrand
+          nullable: true
+          type: string
+          x-nullable: true
+        companyName:
           nullable: true
           type: string
           x-nullable: true
@@ -12316,6 +12305,7 @@ components:
         endDate: 2000-01-23T04:56:07.000+00:00
         clickAttributionScope: unknown
         viewAttributionScope: unknown
+        companyName: companyName
         name: name
         viewAttributionWindow: None
         isAutoDailyPacing: true
@@ -12396,6 +12386,10 @@ components:
           - sameSku
           - sameSkuCategory
           - sameSkuCategoryBrand
+          nullable: true
+          type: string
+          x-nullable: true
+        companyName:
           nullable: true
           type: string
           x-nullable: true

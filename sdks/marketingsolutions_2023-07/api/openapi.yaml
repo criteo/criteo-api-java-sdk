@@ -3114,15 +3114,27 @@ paths:
           content:
             text/plain:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/json:
               schema:
-                format: byte
+                format: binary
+                type: string
+            text/csv:
+              schema:
+                format: binary
+                type: string
+            text/xml:
+              schema:
+                format: binary
+                type: string
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                format: binary
                 type: string
           description: Success
         "400":
@@ -3144,6 +3156,15 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ProblemsDetails'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
           description: Bad Request
         "403":
           content:
@@ -3163,6 +3184,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemsDetails'
             text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemsDetails'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
                 $ref: '#/components/schemas/ProblemsDetails'
           description: Forbidden
@@ -3196,27 +3226,27 @@ paths:
           content:
             text/plain:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/csv:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/xml:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
-                format: byte
+                format: binary
                 type: string
           description: Success
         "400":
@@ -3306,27 +3336,27 @@ paths:
           content:
             text/plain:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/csv:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/xml:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
-                format: byte
+                format: binary
                 type: string
           description: Success
         "400":
