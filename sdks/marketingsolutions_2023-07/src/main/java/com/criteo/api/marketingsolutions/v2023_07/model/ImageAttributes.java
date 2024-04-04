@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -58,7 +57,7 @@ public class ImageAttributes {
 
   public static final String SERIALIZED_NAME_LANDING_PAGE_URL = "landingPageUrl";
   @SerializedName(SERIALIZED_NAME_LANDING_PAGE_URL)
-  private URI landingPageUrl;
+  private String landingPageUrl;
 
   public ImageAttributes() {
   }
@@ -93,7 +92,7 @@ public class ImageAttributes {
   }
 
 
-  public ImageAttributes landingPageUrl(URI landingPageUrl) {
+  public ImageAttributes landingPageUrl(String landingPageUrl) {
     
     this.landingPageUrl = landingPageUrl;
     return this;
@@ -105,12 +104,12 @@ public class ImageAttributes {
   **/
   @javax.annotation.Nullable
 
-  public URI getLandingPageUrl() {
+  public String getLandingPageUrl() {
     return landingPageUrl;
   }
 
 
-  public void setLandingPageUrl(URI landingPageUrl) {
+  public void setLandingPageUrl(String landingPageUrl) {
     this.landingPageUrl = landingPageUrl;
   }
 

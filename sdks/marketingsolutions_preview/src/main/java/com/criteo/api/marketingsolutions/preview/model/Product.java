@@ -362,6 +362,10 @@ public class Product {
   @SerializedName(SERIALIZED_NAME_PRODUCT_TYPES)
   private List<String> productTypes = null;
 
+  public static final String SERIALIZED_NAME_PRODUCT_TYPE_KEYS = "productTypeKeys";
+  @SerializedName(SERIALIZED_NAME_PRODUCT_TYPE_KEYS)
+  private List<String> productTypeKeys = null;
+
   public static final String SERIALIZED_NAME_AGE_GROUP = "ageGroup";
   @SerializedName(SERIALIZED_NAME_AGE_GROUP)
   private String ageGroup;
@@ -436,7 +440,7 @@ public class Product {
   }
 
    /**
-   * A unique identifier for the item. Aka Product ID.
+   * A unique identifier for the item. Aka Product ID. Don’t use casing to make IDs unique.
    * @return id
   **/
   @javax.annotation.Nonnull
@@ -818,7 +822,7 @@ public class Product {
   }
 
    /**
-   * Shared identifier for all variants of the same product. RECOMMENDED.
+   * Shared identifier for all variants of the same product. RECOMMENDED. Don’t use casing to make IDs unique. (50 characters max)
    * @return itemGroupId
   **/
   @javax.annotation.Nullable
@@ -1925,6 +1929,36 @@ public class Product {
   }
 
 
+  public Product productTypeKeys(List<String> productTypeKeys) {
+    
+    this.productTypeKeys = productTypeKeys;
+    return this;
+  }
+
+  public Product addProductTypeKeysItem(String productTypeKeysItem) {
+    if (this.productTypeKeys == null) {
+      this.productTypeKeys = null;
+    }
+    this.productTypeKeys.add(productTypeKeysItem);
+    return this;
+  }
+
+   /**
+   * Category keys of the item (formatted as in productTypes).
+   * @return productTypeKeys
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getProductTypeKeys() {
+    return productTypeKeys;
+  }
+
+
+  public void setProductTypeKeys(List<String> productTypeKeys) {
+    this.productTypeKeys = productTypeKeys;
+  }
+
+
   public Product ageGroup(String ageGroup) {
     
     this.ageGroup = ageGroup;
@@ -2174,7 +2208,7 @@ public class Product {
   }
 
    /**
-   * Deprecated field. It should be replaced by externalSellerId. The external ID of the seller (case sensitive and 50 UTF8 characters max). This information is required by the Criteo Offsite Ads.
+   * (Deprecated Field) The external ID of the seller (case sensitive and 50 UTF8 characters max). This information is required by the Criteo Offsite Ads.
    * @return sellerId
   **/
   @javax.annotation.Nullable
@@ -2218,7 +2252,7 @@ public class Product {
   }
 
    /**
-   * The external name of the seller (case sensitive and 750 UTF8 characters max). This information is required by the Criteo Offsite Ads.
+   * The external name of the seller (case sensitive and 50 UTF8 characters max). This information is required by the Criteo Offsite Ads.
    * @return externalSellerName
   **/
   @javax.annotation.Nullable
@@ -2240,7 +2274,7 @@ public class Product {
   }
 
    /**
-   * The number of reviews for the product. This information is required by the Criteo Offsite Ads.
+   * The number of customer reviews for the product
    * @return numberOfReviews
   **/
   @javax.annotation.Nullable
@@ -2262,7 +2296,7 @@ public class Product {
   }
 
    /**
-   * The rating of the product. This information is required by the Criteo Offsite Ads.
+   * The product rating for the product
    * @return productRating
   **/
   @javax.annotation.Nullable
@@ -2395,6 +2429,7 @@ public class Product {
         Objects.equals(this.adsLabels, product.adsLabels) &&
         Objects.equals(this.adsRedirect, product.adsRedirect) &&
         Objects.equals(this.productTypes, product.productTypes) &&
+        Objects.equals(this.productTypeKeys, product.productTypeKeys) &&
         Objects.equals(this.ageGroup, product.ageGroup) &&
         Objects.equals(this.availability, product.availability) &&
         Objects.equals(this.condition, product.condition) &&
@@ -2420,7 +2455,7 @@ public class Product {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, offerId, title, description, link, imageLink, additionalImageLinks, contentLanguage, targetCountry, channel, expirationDate, adult, kind, brand, color, googleProductCategory, gtin, itemGroupId, material, mpn, pattern, price, salePrice, salePriceEffectiveDate, shipping, shippingWeight, sizes, taxes, customAttributes, identifierExists, installment, loyaltyPoints, multipack, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, isBundle, mobileLink, availabilityDate, shippingLabel, unitPricingMeasure, unitPricingBaseMeasure, shippingLength, shippingWidth, shippingHeight, displayAdsId, displayAdsSimilarIds, displayAdsTitle, displayAdsLink, displayAdsValue, sellOnGoogleQuantity, promotionIds, maxHandlingTime, minHandlingTime, costOfGoodsSold, source, includedDestinations, excludedDestinations, adsGrouping, adsLabels, adsRedirect, productTypes, ageGroup, availability, condition, gender, sizeSystem, sizeType, energyEfficiencyClass, minEnergyEfficiencyClass, maxEnergyEfficiencyClass, taxCategory, transitTimeLabel, sellerId, externalSellerId, externalSellerName, numberOfReviews, productRating, additionalProperties);
+    return Objects.hash(id, offerId, title, description, link, imageLink, additionalImageLinks, contentLanguage, targetCountry, channel, expirationDate, adult, kind, brand, color, googleProductCategory, gtin, itemGroupId, material, mpn, pattern, price, salePrice, salePriceEffectiveDate, shipping, shippingWeight, sizes, taxes, customAttributes, identifierExists, installment, loyaltyPoints, multipack, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, isBundle, mobileLink, availabilityDate, shippingLabel, unitPricingMeasure, unitPricingBaseMeasure, shippingLength, shippingWidth, shippingHeight, displayAdsId, displayAdsSimilarIds, displayAdsTitle, displayAdsLink, displayAdsValue, sellOnGoogleQuantity, promotionIds, maxHandlingTime, minHandlingTime, costOfGoodsSold, source, includedDestinations, excludedDestinations, adsGrouping, adsLabels, adsRedirect, productTypes, productTypeKeys, ageGroup, availability, condition, gender, sizeSystem, sizeType, energyEfficiencyClass, minEnergyEfficiencyClass, maxEnergyEfficiencyClass, taxCategory, transitTimeLabel, sellerId, externalSellerId, externalSellerName, numberOfReviews, productRating, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -2498,6 +2533,7 @@ public class Product {
     sb.append("    adsLabels: ").append(toIndentedString(adsLabels)).append("\n");
     sb.append("    adsRedirect: ").append(toIndentedString(adsRedirect)).append("\n");
     sb.append("    productTypes: ").append(toIndentedString(productTypes)).append("\n");
+    sb.append("    productTypeKeys: ").append(toIndentedString(productTypeKeys)).append("\n");
     sb.append("    ageGroup: ").append(toIndentedString(ageGroup)).append("\n");
     sb.append("    availability: ").append(toIndentedString(availability)).append("\n");
     sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
@@ -2601,6 +2637,7 @@ public class Product {
     openapiFields.add("adsLabels");
     openapiFields.add("adsRedirect");
     openapiFields.add("productTypes");
+    openapiFields.add("productTypeKeys");
     openapiFields.add("ageGroup");
     openapiFields.add("availability");
     openapiFields.add("condition");
@@ -2865,6 +2902,10 @@ public class Product {
       // ensure the optional json data is an array if present
       if (jsonObj.get("productTypes") != null && !jsonObj.get("productTypes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `productTypes` to be an array in the JSON string but got `%s`", jsonObj.get("productTypes").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("productTypeKeys") != null && !jsonObj.get("productTypeKeys").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `productTypeKeys` to be an array in the JSON string but got `%s`", jsonObj.get("productTypeKeys").toString()));
       }
       if ((jsonObj.get("ageGroup") != null && !jsonObj.get("ageGroup").isJsonNull()) && !jsonObj.get("ageGroup").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ageGroup` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ageGroup").toString()));

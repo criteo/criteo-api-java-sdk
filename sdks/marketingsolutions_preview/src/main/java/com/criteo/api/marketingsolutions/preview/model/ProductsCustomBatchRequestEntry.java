@@ -223,7 +223,7 @@ public class ProductsCustomBatchRequestEntry {
   }
 
    /**
-   * The itemGroupId of the product to delete. To be defined when the method is delete and the product is a variant.
+   * Deprecated (providing this information is no more needed, this field will be removed in next release). The itemGroupId of the product to delete. To be defined when the method is delete and the product is a variant.
    * @return itemGroupId
   **/
   @javax.annotation.Nullable

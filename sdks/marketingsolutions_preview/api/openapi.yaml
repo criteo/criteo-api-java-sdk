@@ -11380,8 +11380,7 @@ components:
             budget:
               budgetDeliverySmoothing: accelerated
               budgetDeliveryWeek: undefined
-              budgetAmount:
-                value: 1.4658129805029452
+              budgetAmount: 1.4658129805029452
               budgetRenewal: undefined
               budgetStrategy: capped
           id: id
@@ -11493,8 +11492,7 @@ components:
             budget:
               budgetDeliverySmoothing: accelerated
               budgetDeliveryWeek: undefined
-              budgetAmount:
-                value: 1.4658129805029452
+              budgetAmount: 1.4658129805029452
               budgetRenewal: undefined
               budgetStrategy: capped
           id: id
@@ -11542,8 +11540,7 @@ components:
             budget:
               budgetDeliverySmoothing: accelerated
               budgetDeliveryWeek: undefined
-              budgetAmount:
-                value: 1.4658129805029452
+              budgetAmount: 1.4658129805029452
               budgetRenewal: undefined
               budgetStrategy: capped
           id: id
@@ -12069,7 +12066,7 @@ components:
             spendLimit:
               spendLimitRenewal: undefined
               spendLimitAmount:
-                value: 1.4658129805029452
+                value: 0.8008281904610115
               spendLimitType: capped
             advertiserId: advertiserId
           id: id
@@ -12144,7 +12141,7 @@ components:
             spendLimit:
               spendLimitRenewal: undefined
               spendLimitAmount:
-                value: 1.4658129805029452
+                value: 0.8008281904610115
               spendLimitType: capped
             advertiserId: advertiserId
           id: id
@@ -12155,7 +12152,7 @@ components:
             spendLimit:
               spendLimitRenewal: undefined
               spendLimitAmount:
-                value: 1.4658129805029452
+                value: 0.8008281904610115
               spendLimitType: capped
             advertiserId: advertiserId
           id: id
@@ -12252,7 +12249,7 @@ components:
                 - other
             bidding:
               bidAmount:
-                value: 1.4658129805029452
+                value: 0.8008281904610115
             name: name
             scheduling:
               endDate:
@@ -12263,7 +12260,7 @@ components:
               budgetDeliverySmoothing: accelerated
               budgetDeliveryWeek: undefined
               budgetAmount:
-                value: 1.4658129805029452
+                value: 0.8008281904610115
               budgetRenewal: undefined
               budgetStrategy: capped
           id: id
@@ -12292,7 +12289,7 @@ components:
                 - other
             bidding:
               bidAmount:
-                value: 1.4658129805029452
+                value: 0.8008281904610115
             name: name
             scheduling:
               endDate:
@@ -12303,7 +12300,7 @@ components:
               budgetDeliverySmoothing: accelerated
               budgetDeliveryWeek: undefined
               budgetAmount:
-                value: 1.4658129805029452
+                value: 0.8008281904610115
               budgetRenewal: undefined
               budgetStrategy: capped
           id: id
@@ -12455,7 +12452,7 @@ components:
             spendLimit:
               spendLimitRenewal: undefined
               spendLimitAmount:
-                value: 1.4658129805029452
+                value: 0.8008281904610115
               spendLimitType: capped
           id: id
           type: Campaign
@@ -12463,7 +12460,7 @@ components:
             spendLimit:
               spendLimitRenewal: undefined
               spendLimitAmount:
-                value: 1.4658129805029452
+                value: 0.8008281904610115
               spendLimitType: capped
           id: id
           type: Campaign
@@ -12575,8 +12572,7 @@ components:
           budget:
             budgetDeliverySmoothing: accelerated
             budgetDeliveryWeek: undefined
-            budgetAmount:
-              value: 1.4658129805029452
+            budgetAmount: 1.4658129805029452
             budgetRenewal: undefined
             budgetStrategy: capped
         id: id
@@ -12718,7 +12714,7 @@ components:
           spendLimit:
             spendLimitRenewal: undefined
             spendLimitAmount:
-              value: 1.4658129805029452
+              value: 0.8008281904610115
             spendLimitType: capped
           advertiserId: advertiserId
         id: id
@@ -12763,7 +12759,7 @@ components:
               - other
           bidding:
             bidAmount:
-              value: 1.4658129805029452
+              value: 0.8008281904610115
           name: name
           scheduling:
             endDate:
@@ -12774,7 +12770,7 @@ components:
             budgetDeliverySmoothing: accelerated
             budgetDeliveryWeek: undefined
             budgetAmount:
-              value: 1.4658129805029452
+              value: 0.8008281904610115
             budgetRenewal: undefined
             budgetStrategy: capped
         id: id
@@ -12953,7 +12949,7 @@ components:
           spendLimit:
             spendLimitRenewal: undefined
             spendLimitAmount:
-              value: 1.4658129805029452
+              value: 0.8008281904610115
             spendLimitType: capped
         id: id
         type: Campaign
@@ -13064,8 +13060,7 @@ components:
         budget:
           budgetDeliverySmoothing: accelerated
           budgetDeliveryWeek: undefined
-          budgetAmount:
-            value: 1.4658129805029452
+          budgetAmount: 1.4658129805029452
           budgetRenewal: undefined
           budgetStrategy: capped
       properties:
@@ -13177,7 +13172,7 @@ components:
         spendLimit:
           spendLimitRenewal: undefined
           spendLimitAmount:
-            value: 1.4658129805029452
+            value: 0.8008281904610115
           spendLimitType: capped
         advertiserId: advertiserId
       properties:
@@ -13225,7 +13220,7 @@ components:
             - other
         bidding:
           bidAmount:
-            value: 1.4658129805029452
+            value: 0.8008281904610115
         name: name
         scheduling:
           endDate:
@@ -13236,7 +13231,7 @@ components:
           budgetDeliverySmoothing: accelerated
           budgetDeliveryWeek: undefined
           budgetAmount:
-            value: 1.4658129805029452
+            value: 0.8008281904610115
           budgetRenewal: undefined
           budgetStrategy: capped
       properties:
@@ -13398,7 +13393,7 @@ components:
         spendLimit:
           spendLimitRenewal: undefined
           spendLimitAmount:
-            value: 1.4658129805029452
+            value: 0.8008281904610115
           spendLimitType: capped
       properties:
         spendLimit:
@@ -13540,8 +13535,7 @@ components:
       example:
         budgetDeliverySmoothing: accelerated
         budgetDeliveryWeek: undefined
-        budgetAmount:
-          value: 1.4658129805029452
+        budgetAmount: 1.4658129805029452
         budgetRenewal: undefined
         budgetStrategy: capped
       properties:
@@ -13580,14 +13574,17 @@ components:
           nullable: true
           type: string
         budgetAmount:
-          $ref: '#/components/schemas/NillableDecimal'
+          format: double
+          nullable: true
+          type: number
+          x-nullable: true
       type: object
     CampaignSpendLimitV23Q1:
       description: campaign spend limit model
       example:
         spendLimitRenewal: undefined
         spendLimitAmount:
-          value: 1.4658129805029452
+          value: 0.8008281904610115
         spendLimitType: capped
       properties:
         spendLimitType:
@@ -13624,7 +13621,7 @@ components:
       description: ad set bidding patch model
       example:
         bidAmount:
-          value: 1.4658129805029452
+          value: 0.8008281904610115
       properties:
         bidAmount:
           $ref: '#/components/schemas/NillableDecimal'
@@ -13635,7 +13632,7 @@ components:
         budgetDeliverySmoothing: accelerated
         budgetDeliveryWeek: undefined
         budgetAmount:
-          value: 1.4658129805029452
+          value: 0.8008281904610115
         budgetRenewal: undefined
         budgetStrategy: capped
       properties:
@@ -13822,7 +13819,7 @@ components:
       example:
         spendLimitRenewal: undefined
         spendLimitAmount:
-          value: 1.4658129805029452
+          value: 0.8008281904610115
         spendLimitType: capped
       properties:
         spendLimitType:
@@ -13973,7 +13970,7 @@ components:
         \ null values. If the structure is provided (i.e. not null), then the value\
         \ in it, even null, is provided."
       example:
-        value: 1.4658129805029452
+        value: 0.8008281904610115
       nullable: true
       properties:
         value:
@@ -14557,7 +14554,7 @@ components:
               urls:
               - urls
               - urls
-              landingPageUrl: https://openapi-generator.tech
+              landingPageUrl: landingPageUrl
             author: author
             name: name
             format: format
@@ -14641,7 +14638,7 @@ components:
               urls:
               - urls
               - urls
-              landingPageUrl: https://openapi-generator.tech
+              landingPageUrl: landingPageUrl
             author: author
             name: name
             format: format
@@ -14793,7 +14790,7 @@ components:
               urls:
               - urls
               - urls
-              landingPageUrl: https://openapi-generator.tech
+              landingPageUrl: landingPageUrl
             author: author
             name: name
             format: format
@@ -15161,7 +15158,7 @@ components:
             urls:
             - urls
             - urls
-            landingPageUrl: https://openapi-generator.tech
+            landingPageUrl: landingPageUrl
           author: author
           name: name
           format: format
@@ -15584,7 +15581,7 @@ components:
           urls:
           - urls
           - urls
-          landingPageUrl: https://openapi-generator.tech
+          landingPageUrl: landingPageUrl
         author: author
         name: name
         format: format
@@ -15932,7 +15929,7 @@ components:
         urls:
         - urls
         - urls
-        landingPageUrl: https://openapi-generator.tech
+        landingPageUrl: landingPageUrl
       properties:
         urls:
           description: Array of images uploaded on demostatic.criteo.com when deploying
@@ -15944,7 +15941,6 @@ components:
           uniqueItems: false
         landingPageUrl:
           description: Web redirection of the landing page url
-          format: uri
           nullable: true
           type: string
       type: object
@@ -20717,6 +20713,9 @@ components:
             condition: condition
             externalSellerName: externalSellerName
             minEnergyEfficiencyClass: minEnergyEfficiencyClass
+            productTypeKeys:
+            - productTypeKeys
+            - productTypeKeys
             installment:
               amount:
                 currency: currency
@@ -20879,6 +20878,9 @@ components:
             condition: condition
             externalSellerName: externalSellerName
             minEnergyEfficiencyClass: minEnergyEfficiencyClass
+            productTypeKeys:
+            - productTypeKeys
+            - productTypeKeys
             installment:
               amount:
                 currency: currency
@@ -21076,6 +21078,9 @@ components:
           condition: condition
           externalSellerName: externalSellerName
           minEnergyEfficiencyClass: minEnergyEfficiencyClass
+          productTypeKeys:
+          - productTypeKeys
+          - productTypeKeys
           installment:
             amount:
               currency: currency
@@ -21167,8 +21172,10 @@ components:
           nullable: true
           type: string
         itemGroupId:
-          description: The itemGroupId of the product to delete. To be defined when
-            the method is delete and the product is a variant.
+          description: "Deprecated (providing this information is no more needed,\
+            \ this field will be removed in next release). The itemGroupId of the\
+            \ product to delete. To be defined when the method is delete and the product\
+            \ is a variant."
           nullable: true
           type: string
         product:
@@ -21310,6 +21317,9 @@ components:
         condition: condition
         externalSellerName: externalSellerName
         minEnergyEfficiencyClass: minEnergyEfficiencyClass
+        productTypeKeys:
+        - productTypeKeys
+        - productTypeKeys
         installment:
           amount:
             currency: currency
@@ -21376,7 +21386,8 @@ components:
           value: 4.145608029883936
       properties:
         id:
-          description: A unique identifier for the item. Aka Product ID.
+          description: A unique identifier for the item. Aka Product ID. Don’t use
+            casing to make IDs unique.
           type: string
         offerId:
           description: Not used by Criteo.
@@ -21449,6 +21460,7 @@ components:
           type: string
         itemGroupId:
           description: Shared identifier for all variants of the same product. RECOMMENDED.
+            Don’t use casing to make IDs unique. (50 characters max)
           nullable: true
           type: string
         material:
@@ -21658,6 +21670,12 @@ components:
             type: string
           nullable: true
           type: array
+        productTypeKeys:
+          description: Category keys of the item (formatted as in productTypes).
+          items:
+            type: string
+          nullable: true
+          type: array
         ageGroup:
           description: Target age group of the item.
           nullable: true
@@ -21706,9 +21724,9 @@ components:
           nullable: true
           type: string
         sellerId:
-          description: Deprecated field. It should be replaced by externalSellerId.
-            The external ID of the seller (case sensitive and 50 UTF8 characters max).
-            This information is required by the Criteo Offsite Ads.
+          description: (Deprecated Field) The external ID of the seller (case sensitive
+            and 50 UTF8 characters max). This information is required by the Criteo
+            Offsite Ads.
           nullable: true
           type: string
         externalSellerId:
@@ -21717,19 +21735,17 @@ components:
           nullable: true
           type: string
         externalSellerName:
-          description: The external name of the seller (case sensitive and 750 UTF8
+          description: The external name of the seller (case sensitive and 50 UTF8
             characters max). This information is required by the Criteo Offsite Ads.
           nullable: true
           type: string
         numberOfReviews:
-          description: The number of reviews for the product. This information is
-            required by the Criteo Offsite Ads.
+          description: The number of customer reviews for the product
           format: int32
           nullable: true
           type: integer
         productRating:
-          description: The rating of the product. This information is required by
-            the Criteo Offsite Ads.
+          description: The product rating for the product
           nullable: true
           type: string
       required:
@@ -22432,6 +22448,7 @@ components:
           retailprice: 6.027456183070403
           googleCategory: googleCategory
           description: description
+          alternativeClickUrl: alternativeClickUrl
         - clickUrl: clickUrl
           productExternalId: productExternalId
           price: 0.8008281904610115
@@ -22440,6 +22457,7 @@ components:
           retailprice: 6.027456183070403
           googleCategory: googleCategory
           description: description
+          alternativeClickUrl: alternativeClickUrl
         extraInfos:
         - 1
         - 1
@@ -22516,6 +22534,7 @@ components:
         retailprice: 6.027456183070403
         googleCategory: googleCategory
         description: description
+        alternativeClickUrl: alternativeClickUrl
       properties:
         productExternalId:
           description: Product external id. Same id than what is used in user events.
@@ -22523,7 +22542,12 @@ components:
           type: string
         clickUrl:
           description: Url leading to product details page and also used to track
-            user click.
+            user click. It's relying on the default product URL field in the catalog.
+          nullable: true
+          type: string
+        alternativeClickUrl:
+          description: Url leading to product details page and also used to track
+            user click. It's relying on a custom product URL field in the catalog.
           nullable: true
           type: string
         imageUrl:

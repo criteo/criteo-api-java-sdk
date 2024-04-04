@@ -12,7 +12,7 @@ ad set budget read model
 |**budgetRenewal** | [**BudgetRenewalEnum**](#BudgetRenewalEnum) |  |  [optional] |
 |**budgetDeliverySmoothing** | [**BudgetDeliverySmoothingEnum**](#BudgetDeliverySmoothingEnum) |  |  [optional] |
 |**budgetDeliveryWeek** | [**BudgetDeliveryWeekEnum**](#BudgetDeliveryWeekEnum) |  |  [optional] |
-|**budgetAmount** | [**NillableDecimal**](NillableDecimal.md) |  |  [optional] |
+|**budgetAmount** | **Double** |  |  [optional] |
 
 
 

@@ -9,15 +9,15 @@ Line Items report body request
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report, if no dimensions/metrics are provided, falls back to summary reportType |  [optional] |
-|**lineItemIds** | **List&lt;String&gt;** | Line item ids to report on |  [optional] |
-|**campaignIds** | **List&lt;String&gt;** | Campaign ids to report on |  [optional] |
-|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  [optional] |
-|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  [optional] |
+|**lineItemIds** | **List&lt;String&gt;** | Line Item ids to filter |  [optional] |
+|**campaignIds** | **List&lt;String&gt;** | Campaign ids to filter |  [optional] |
 |**accountId** | **String** | Account id to report on |  |
 |**clickAttributionWindow** | [**ClickAttributionWindowEnum**](#ClickAttributionWindowEnum) | Click attribution window |  [optional] |
 |**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) | View attribution window |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays |  [optional] |
 |**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
+|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  [optional] |
+|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  [optional] |
 |**startDate** | **OffsetDateTime** | Start date |  |
 |**endDate** | **OffsetDateTime** | End date |  |
 |**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
@@ -35,52 +35,6 @@ Line Items report body request
 | PRODUCT | &quot;product&quot; |
 | ENVIRONMENT | &quot;environment&quot; |
 | SERVEDCATEGORY | &quot;servedCategory&quot; |
-
-
-
-## Enum: List&lt;MetricsEnum&gt;
-
-| Name | Value |
-|---- | -----|
-| IMPRESSIONS | &quot;impressions&quot; |
-| CLICKS | &quot;clicks&quot; |
-| SPEND | &quot;spend&quot; |
-| ATTRIBUTEDSALES | &quot;attributedSales&quot; |
-| ATTRIBUTEDUNITS | &quot;attributedUnits&quot; |
-| ATTRIBUTEDORDERS | &quot;attributedOrders&quot; |
-| CTR | &quot;ctr&quot; |
-| CPC | &quot;cpc&quot; |
-| CPO | &quot;cpo&quot; |
-| ROAS | &quot;roas&quot; |
-| ASSISTEDUNITS | &quot;assistedUnits&quot; |
-| ASSISTEDSALES | &quot;assistedSales&quot; |
-| UNIQUEVISITORS | &quot;uniqueVisitors&quot; |
-| FREQUENCY | &quot;frequency&quot; |
-
-
-
-## Enum: List&lt;DimensionsEnum&gt;
-
-| Name | Value |
-|---- | -----|
-| DATE | &quot;date&quot; |
-| HOUR | &quot;hour&quot; |
-| CAMPAIGNID | &quot;campaignId&quot; |
-| CAMPAIGNNAME | &quot;campaignName&quot; |
-| CAMPAIGNTYPENAME | &quot;campaignTypeName&quot; |
-| ADVPRODUCTCATEGORY | &quot;advProductCategory&quot; |
-| ADVPRODUCTID | &quot;advProductId&quot; |
-| ADVPRODUCTNAME | &quot;advProductName&quot; |
-| BRANDID | &quot;brandId&quot; |
-| BRANDNAME | &quot;brandName&quot; |
-| LINEITEMID | &quot;lineItemId&quot; |
-| LINEITEMNAME | &quot;lineItemName&quot; |
-| RETAILERID | &quot;retailerId&quot; |
-| RETAILERNAME | &quot;retailerName&quot; |
-| KEYWORD | &quot;keyword&quot; |
-| PAGETYPENAME | &quot;pageTypeName&quot; |
-| SALESCHANNEL | &quot;salesChannel&quot; |
-| ENVIRONMENT | &quot;environment&quot; |
 
 
 
@@ -122,6 +76,55 @@ Line Items report body request
 |---- | -----|
 | OFFLINE | &quot;offline&quot; |
 | ONLINE | &quot;online&quot; |
+
+
+
+## Enum: List&lt;DimensionsEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| DATE | &quot;date&quot; |
+| HOUR | &quot;hour&quot; |
+| ACCOUNTID | &quot;accountId&quot; |
+| ACCOUNTNAME | &quot;accountName&quot; |
+| CAMPAIGNID | &quot;campaignId&quot; |
+| CAMPAIGNNAME | &quot;campaignName&quot; |
+| CAMPAIGNTYPENAME | &quot;campaignTypeName&quot; |
+| ADVPRODUCTCATEGORY | &quot;advProductCategory&quot; |
+| ADVPRODUCTID | &quot;advProductId&quot; |
+| ADVPRODUCTNAME | &quot;advProductName&quot; |
+| BRANDID | &quot;brandId&quot; |
+| BRANDNAME | &quot;brandName&quot; |
+| LINEITEMID | &quot;lineItemId&quot; |
+| LINEITEMNAME | &quot;lineItemName&quot; |
+| RETAILERID | &quot;retailerId&quot; |
+| RETAILERNAME | &quot;retailerName&quot; |
+| KEYWORD | &quot;keyword&quot; |
+| PAGETYPENAME | &quot;pageTypeName&quot; |
+| SALESCHANNEL | &quot;salesChannel&quot; |
+| ENVIRONMENT | &quot;environment&quot; |
+
+
+
+## Enum: List&lt;MetricsEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| IMPRESSIONS | &quot;impressions&quot; |
+| CLICKS | &quot;clicks&quot; |
+| SPEND | &quot;spend&quot; |
+| ATTRIBUTEDSALES | &quot;attributedSales&quot; |
+| ATTRIBUTEDUNITS | &quot;attributedUnits&quot; |
+| ATTRIBUTEDORDERS | &quot;attributedOrders&quot; |
+| ASSISTEDSALES | &quot;assistedSales&quot; |
+| ASSISTEDUNITS | &quot;assistedUnits&quot; |
+| CTR | &quot;ctr&quot; |
+| CPC | &quot;cpc&quot; |
+| CPO | &quot;cpo&quot; |
+| CPM | &quot;cpm&quot; |
+| ROAS | &quot;roas&quot; |
+| UNIQUEVISITORS | &quot;uniqueVisitors&quot; |
+| FREQUENCY | &quot;frequency&quot; |
 
 
 

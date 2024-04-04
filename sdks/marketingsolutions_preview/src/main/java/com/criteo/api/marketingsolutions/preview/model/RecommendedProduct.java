@@ -57,6 +57,10 @@ public class RecommendedProduct {
   @SerializedName(SERIALIZED_NAME_CLICK_URL)
   private String clickUrl;
 
+  public static final String SERIALIZED_NAME_ALTERNATIVE_CLICK_URL = "alternativeClickUrl";
+  @SerializedName(SERIALIZED_NAME_ALTERNATIVE_CLICK_URL)
+  private String alternativeClickUrl;
+
   public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
   @SerializedName(SERIALIZED_NAME_IMAGE_URL)
   private String imageUrl;
@@ -113,7 +117,7 @@ public class RecommendedProduct {
   }
 
    /**
-   * Url leading to product details page and also used to track user click.
+   * Url leading to product details page and also used to track user click. It&#39;s relying on the default product URL field in the catalog.
    * @return clickUrl
   **/
   @javax.annotation.Nullable
@@ -125,6 +129,28 @@ public class RecommendedProduct {
 
   public void setClickUrl(String clickUrl) {
     this.clickUrl = clickUrl;
+  }
+
+
+  public RecommendedProduct alternativeClickUrl(String alternativeClickUrl) {
+    
+    this.alternativeClickUrl = alternativeClickUrl;
+    return this;
+  }
+
+   /**
+   * Url leading to product details page and also used to track user click. It&#39;s relying on a custom product URL field in the catalog.
+   * @return alternativeClickUrl
+  **/
+  @javax.annotation.Nullable
+
+  public String getAlternativeClickUrl() {
+    return alternativeClickUrl;
+  }
+
+
+  public void setAlternativeClickUrl(String alternativeClickUrl) {
+    this.alternativeClickUrl = alternativeClickUrl;
   }
 
 
@@ -316,6 +342,7 @@ public class RecommendedProduct {
     RecommendedProduct recommendedProduct = (RecommendedProduct) o;
     return Objects.equals(this.productExternalId, recommendedProduct.productExternalId) &&
         Objects.equals(this.clickUrl, recommendedProduct.clickUrl) &&
+        Objects.equals(this.alternativeClickUrl, recommendedProduct.alternativeClickUrl) &&
         Objects.equals(this.imageUrl, recommendedProduct.imageUrl) &&
         Objects.equals(this.name, recommendedProduct.name) &&
         Objects.equals(this.description, recommendedProduct.description) &&
@@ -331,7 +358,7 @@ public class RecommendedProduct {
 
   @Override
   public int hashCode() {
-    return Objects.hash(productExternalId, clickUrl, imageUrl, name, description, price, retailprice, googleCategory, additionalProperties);
+    return Objects.hash(productExternalId, clickUrl, alternativeClickUrl, imageUrl, name, description, price, retailprice, googleCategory, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -347,6 +374,7 @@ public class RecommendedProduct {
     sb.append("class RecommendedProduct {\n");
     sb.append("    productExternalId: ").append(toIndentedString(productExternalId)).append("\n");
     sb.append("    clickUrl: ").append(toIndentedString(clickUrl)).append("\n");
+    sb.append("    alternativeClickUrl: ").append(toIndentedString(alternativeClickUrl)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -378,6 +406,7 @@ public class RecommendedProduct {
     openapiFields = new HashSet<String>();
     openapiFields.add("productExternalId");
     openapiFields.add("clickUrl");
+    openapiFields.add("alternativeClickUrl");
     openapiFields.add("imageUrl");
     openapiFields.add("name");
     openapiFields.add("description");
@@ -406,6 +435,9 @@ public class RecommendedProduct {
       }
       if ((jsonObj.get("clickUrl") != null && !jsonObj.get("clickUrl").isJsonNull()) && !jsonObj.get("clickUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `clickUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickUrl").toString()));
+      }
+      if ((jsonObj.get("alternativeClickUrl") != null && !jsonObj.get("alternativeClickUrl").isJsonNull()) && !jsonObj.get("alternativeClickUrl").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `alternativeClickUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("alternativeClickUrl").toString()));
       }
       if ((jsonObj.get("imageUrl") != null && !jsonObj.get("imageUrl").isJsonNull()) && !jsonObj.get("imageUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `imageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("imageUrl").toString()));

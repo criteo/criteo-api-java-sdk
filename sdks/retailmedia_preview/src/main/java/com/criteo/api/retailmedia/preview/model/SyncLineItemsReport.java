@@ -121,164 +121,6 @@ public class SyncLineItemsReport {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
   private List<String> campaignIds = null;
 
-  /**
-   * Gets or Sets metrics
-   */
-  @JsonAdapter(MetricsEnum.Adapter.class)
-  public enum MetricsEnum {
-    IMPRESSIONS("impressions"),
-    
-    CLICKS("clicks"),
-    
-    SPEND("spend"),
-    
-    ATTRIBUTEDSALES("attributedSales"),
-    
-    ATTRIBUTEDUNITS("attributedUnits"),
-    
-    ATTRIBUTEDORDERS("attributedOrders"),
-    
-    CTR("ctr"),
-    
-    CPC("cpc"),
-    
-    CPO("cpo"),
-    
-    ROAS("roas"),
-    
-    ASSISTEDUNITS("assistedUnits"),
-    
-    ASSISTEDSALES("assistedSales"),
-    
-    UNIQUEVISITORS("uniqueVisitors"),
-    
-    FREQUENCY("frequency");
-
-    private String value;
-
-    MetricsEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static MetricsEnum fromValue(String value) {
-      for (MetricsEnum b : MetricsEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<MetricsEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final MetricsEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public MetricsEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return MetricsEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_METRICS = "metrics";
-  @SerializedName(SERIALIZED_NAME_METRICS)
-  private List<MetricsEnum> metrics = null;
-
-  /**
-   * Gets or Sets dimensions
-   */
-  @JsonAdapter(DimensionsEnum.Adapter.class)
-  public enum DimensionsEnum {
-    DATE("date"),
-    
-    HOUR("hour"),
-    
-    CAMPAIGNID("campaignId"),
-    
-    CAMPAIGNNAME("campaignName"),
-    
-    CAMPAIGNTYPENAME("campaignTypeName"),
-    
-    ADVPRODUCTCATEGORY("advProductCategory"),
-    
-    ADVPRODUCTID("advProductId"),
-    
-    ADVPRODUCTNAME("advProductName"),
-    
-    BRANDID("brandId"),
-    
-    BRANDNAME("brandName"),
-    
-    LINEITEMID("lineItemId"),
-    
-    LINEITEMNAME("lineItemName"),
-    
-    RETAILERID("retailerId"),
-    
-    RETAILERNAME("retailerName"),
-    
-    KEYWORD("keyword"),
-    
-    PAGETYPENAME("pageTypeName"),
-    
-    SALESCHANNEL("salesChannel"),
-    
-    ENVIRONMENT("environment");
-
-    private String value;
-
-    DimensionsEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static DimensionsEnum fromValue(String value) {
-      for (DimensionsEnum b : DimensionsEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<DimensionsEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final DimensionsEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public DimensionsEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return DimensionsEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_DIMENSIONS = "dimensions";
-  @SerializedName(SERIALIZED_NAME_DIMENSIONS)
-  private List<DimensionsEnum> dimensions = null;
-
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
   private String accountId;
@@ -497,6 +339,170 @@ public class SyncLineItemsReport {
   @SerializedName(SERIALIZED_NAME_SALES_CHANNEL)
   private SalesChannelEnum salesChannel;
 
+  /**
+   * Gets or Sets dimensions
+   */
+  @JsonAdapter(DimensionsEnum.Adapter.class)
+  public enum DimensionsEnum {
+    DATE("date"),
+    
+    HOUR("hour"),
+    
+    ACCOUNTID("accountId"),
+    
+    ACCOUNTNAME("accountName"),
+    
+    CAMPAIGNID("campaignId"),
+    
+    CAMPAIGNNAME("campaignName"),
+    
+    CAMPAIGNTYPENAME("campaignTypeName"),
+    
+    ADVPRODUCTCATEGORY("advProductCategory"),
+    
+    ADVPRODUCTID("advProductId"),
+    
+    ADVPRODUCTNAME("advProductName"),
+    
+    BRANDID("brandId"),
+    
+    BRANDNAME("brandName"),
+    
+    LINEITEMID("lineItemId"),
+    
+    LINEITEMNAME("lineItemName"),
+    
+    RETAILERID("retailerId"),
+    
+    RETAILERNAME("retailerName"),
+    
+    KEYWORD("keyword"),
+    
+    PAGETYPENAME("pageTypeName"),
+    
+    SALESCHANNEL("salesChannel"),
+    
+    ENVIRONMENT("environment");
+
+    private String value;
+
+    DimensionsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static DimensionsEnum fromValue(String value) {
+      for (DimensionsEnum b : DimensionsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<DimensionsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final DimensionsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public DimensionsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return DimensionsEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_DIMENSIONS = "dimensions";
+  @SerializedName(SERIALIZED_NAME_DIMENSIONS)
+  private List<DimensionsEnum> dimensions = null;
+
+  /**
+   * Gets or Sets metrics
+   */
+  @JsonAdapter(MetricsEnum.Adapter.class)
+  public enum MetricsEnum {
+    IMPRESSIONS("impressions"),
+    
+    CLICKS("clicks"),
+    
+    SPEND("spend"),
+    
+    ATTRIBUTEDSALES("attributedSales"),
+    
+    ATTRIBUTEDUNITS("attributedUnits"),
+    
+    ATTRIBUTEDORDERS("attributedOrders"),
+    
+    ASSISTEDSALES("assistedSales"),
+    
+    ASSISTEDUNITS("assistedUnits"),
+    
+    CTR("ctr"),
+    
+    CPC("cpc"),
+    
+    CPO("cpo"),
+    
+    CPM("cpm"),
+    
+    ROAS("roas"),
+    
+    UNIQUEVISITORS("uniqueVisitors"),
+    
+    FREQUENCY("frequency");
+
+    private String value;
+
+    MetricsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static MetricsEnum fromValue(String value) {
+      for (MetricsEnum b : MetricsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<MetricsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final MetricsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public MetricsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return MetricsEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_METRICS = "metrics";
+  @SerializedName(SERIALIZED_NAME_METRICS)
+  private List<MetricsEnum> metrics = null;
+
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private OffsetDateTime startDate;
@@ -549,7 +555,7 @@ public class SyncLineItemsReport {
   }
 
    /**
-   * Line item ids to report on
+   * Line Item ids to filter
    * @return lineItemIds
   **/
   @javax.annotation.Nullable
@@ -579,7 +585,7 @@ public class SyncLineItemsReport {
   }
 
    /**
-   * Campaign ids to report on
+   * Campaign ids to filter
    * @return campaignIds
   **/
   @javax.annotation.Nullable
@@ -591,66 +597,6 @@ public class SyncLineItemsReport {
 
   public void setCampaignIds(List<String> campaignIds) {
     this.campaignIds = campaignIds;
-  }
-
-
-  public SyncLineItemsReport metrics(List<MetricsEnum> metrics) {
-    
-    this.metrics = metrics;
-    return this;
-  }
-
-  public SyncLineItemsReport addMetricsItem(MetricsEnum metricsItem) {
-    if (this.metrics == null) {
-      this.metrics = null;
-    }
-    this.metrics.add(metricsItem);
-    return this;
-  }
-
-   /**
-   * List of metrics to report on
-   * @return metrics
-  **/
-  @javax.annotation.Nullable
-
-  public List<MetricsEnum> getMetrics() {
-    return metrics;
-  }
-
-
-  public void setMetrics(List<MetricsEnum> metrics) {
-    this.metrics = metrics;
-  }
-
-
-  public SyncLineItemsReport dimensions(List<DimensionsEnum> dimensions) {
-    
-    this.dimensions = dimensions;
-    return this;
-  }
-
-  public SyncLineItemsReport addDimensionsItem(DimensionsEnum dimensionsItem) {
-    if (this.dimensions == null) {
-      this.dimensions = null;
-    }
-    this.dimensions.add(dimensionsItem);
-    return this;
-  }
-
-   /**
-   * List of dimensions to report on
-   * @return dimensions
-  **/
-  @javax.annotation.Nullable
-
-  public List<DimensionsEnum> getDimensions() {
-    return dimensions;
-  }
-
-
-  public void setDimensions(List<DimensionsEnum> dimensions) {
-    this.dimensions = dimensions;
   }
 
 
@@ -761,6 +707,66 @@ public class SyncLineItemsReport {
 
   public void setSalesChannel(SalesChannelEnum salesChannel) {
     this.salesChannel = salesChannel;
+  }
+
+
+  public SyncLineItemsReport dimensions(List<DimensionsEnum> dimensions) {
+    
+    this.dimensions = dimensions;
+    return this;
+  }
+
+  public SyncLineItemsReport addDimensionsItem(DimensionsEnum dimensionsItem) {
+    if (this.dimensions == null) {
+      this.dimensions = null;
+    }
+    this.dimensions.add(dimensionsItem);
+    return this;
+  }
+
+   /**
+   * List of dimensions to report on
+   * @return dimensions
+  **/
+  @javax.annotation.Nullable
+
+  public List<DimensionsEnum> getDimensions() {
+    return dimensions;
+  }
+
+
+  public void setDimensions(List<DimensionsEnum> dimensions) {
+    this.dimensions = dimensions;
+  }
+
+
+  public SyncLineItemsReport metrics(List<MetricsEnum> metrics) {
+    
+    this.metrics = metrics;
+    return this;
+  }
+
+  public SyncLineItemsReport addMetricsItem(MetricsEnum metricsItem) {
+    if (this.metrics == null) {
+      this.metrics = null;
+    }
+    this.metrics.add(metricsItem);
+    return this;
+  }
+
+   /**
+   * List of metrics to report on
+   * @return metrics
+  **/
+  @javax.annotation.Nullable
+
+  public List<MetricsEnum> getMetrics() {
+    return metrics;
+  }
+
+
+  public void setMetrics(List<MetricsEnum> metrics) {
+    this.metrics = metrics;
   }
 
 
@@ -887,13 +893,13 @@ public class SyncLineItemsReport {
     return Objects.equals(this.reportType, syncLineItemsReport.reportType) &&
         Objects.equals(this.lineItemIds, syncLineItemsReport.lineItemIds) &&
         Objects.equals(this.campaignIds, syncLineItemsReport.campaignIds) &&
-        Objects.equals(this.metrics, syncLineItemsReport.metrics) &&
-        Objects.equals(this.dimensions, syncLineItemsReport.dimensions) &&
         Objects.equals(this.accountId, syncLineItemsReport.accountId) &&
         Objects.equals(this.clickAttributionWindow, syncLineItemsReport.clickAttributionWindow) &&
         Objects.equals(this.viewAttributionWindow, syncLineItemsReport.viewAttributionWindow) &&
         Objects.equals(this.campaignType, syncLineItemsReport.campaignType) &&
         Objects.equals(this.salesChannel, syncLineItemsReport.salesChannel) &&
+        Objects.equals(this.dimensions, syncLineItemsReport.dimensions) &&
+        Objects.equals(this.metrics, syncLineItemsReport.metrics) &&
         Objects.equals(this.startDate, syncLineItemsReport.startDate) &&
         Objects.equals(this.endDate, syncLineItemsReport.endDate) &&
         Objects.equals(this.timezone, syncLineItemsReport.timezone)&&
@@ -906,7 +912,7 @@ public class SyncLineItemsReport {
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, lineItemIds, campaignIds, metrics, dimensions, accountId, clickAttributionWindow, viewAttributionWindow, campaignType, salesChannel, startDate, endDate, timezone, additionalProperties);
+    return Objects.hash(reportType, lineItemIds, campaignIds, accountId, clickAttributionWindow, viewAttributionWindow, campaignType, salesChannel, dimensions, metrics, startDate, endDate, timezone, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -923,13 +929,13 @@ public class SyncLineItemsReport {
     sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    lineItemIds: ").append(toIndentedString(lineItemIds)).append("\n");
     sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
-    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
-    sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
     sb.append("    clickAttributionWindow: ").append(toIndentedString(clickAttributionWindow)).append("\n");
     sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    salesChannel: ").append(toIndentedString(salesChannel)).append("\n");
+    sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
+    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
@@ -959,13 +965,13 @@ public class SyncLineItemsReport {
     openapiFields.add("reportType");
     openapiFields.add("lineItemIds");
     openapiFields.add("campaignIds");
-    openapiFields.add("metrics");
-    openapiFields.add("dimensions");
     openapiFields.add("accountId");
     openapiFields.add("clickAttributionWindow");
     openapiFields.add("viewAttributionWindow");
     openapiFields.add("campaignType");
     openapiFields.add("salesChannel");
+    openapiFields.add("dimensions");
+    openapiFields.add("metrics");
     openapiFields.add("startDate");
     openapiFields.add("endDate");
     openapiFields.add("timezone");
@@ -1007,14 +1013,6 @@ public class SyncLineItemsReport {
       if (jsonObj.get("campaignIds") != null && !jsonObj.get("campaignIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignIds` to be an array in the JSON string but got `%s`", jsonObj.get("campaignIds").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("metrics") != null && !jsonObj.get("metrics").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `dimensions` to be an array in the JSON string but got `%s`", jsonObj.get("dimensions").toString()));
-      }
       if (!jsonObj.get("accountId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
       }
@@ -1029,6 +1027,14 @@ public class SyncLineItemsReport {
       }
       if ((jsonObj.get("salesChannel") != null && !jsonObj.get("salesChannel").isJsonNull()) && !jsonObj.get("salesChannel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `salesChannel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("salesChannel").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `dimensions` to be an array in the JSON string but got `%s`", jsonObj.get("dimensions").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("metrics") != null && !jsonObj.get("metrics").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));
       }
       if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));

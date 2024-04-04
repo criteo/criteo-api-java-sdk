@@ -61,7 +61,7 @@ public class RetailMediaBrandAccountCreation {
 
   public static final String SERIALIZED_NAME_BRANDS = "brands";
   @SerializedName(SERIALIZED_NAME_BRANDS)
-  private List<Integer> brands = null;
+  private List<Long> brands = null;
 
   public RetailMediaBrandAccountCreation() {
   }
@@ -110,13 +110,13 @@ public class RetailMediaBrandAccountCreation {
   }
 
 
-  public RetailMediaBrandAccountCreation brands(List<Integer> brands) {
+  public RetailMediaBrandAccountCreation brands(List<Long> brands) {
     
     this.brands = brands;
     return this;
   }
 
-  public RetailMediaBrandAccountCreation addBrandsItem(Integer brandsItem) {
+  public RetailMediaBrandAccountCreation addBrandsItem(Long brandsItem) {
     if (this.brands == null) {
       this.brands = null;
     }
@@ -130,12 +130,12 @@ public class RetailMediaBrandAccountCreation {
   **/
   @javax.annotation.Nullable
 
-  public List<Integer> getBrands() {
+  public List<Long> getBrands() {
     return brands;
   }
 
 
-  public void setBrands(List<Integer> brands) {
+  public void setBrands(List<Long> brands) {
     this.brands = brands;
   }
 

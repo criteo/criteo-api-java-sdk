@@ -125,7 +125,7 @@ public class ExportReportColumn {
   private TypeEnum type;
 
   /**
-   * Role of the colummn
+   * Role of the column
    */
   @JsonAdapter(RoleEnum.Adapter.class)
   public enum RoleEnum {
@@ -293,7 +293,7 @@ public class ExportReportColumn {
   }
 
    /**
-   * Role of the colummn
+   * Role of the column
    * @return role
   **/
   @javax.annotation.Nonnull

@@ -12,7 +12,7 @@ Description of a column from an async report request
 |**title** | **String** | Title of the exported column |  [optional] |
 |**description** | **String** | Description of the exported column |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) | Type of the column |  |
-|**role** | [**RoleEnum**](#RoleEnum) | Role of the colummn |  |
+|**role** | [**RoleEnum**](#RoleEnum) | Role of the column |  |
 |**timezone** | **String** | Timezone of the column |  [optional] |
 |**duration** | **String** | Duration of the column |  [optional] |
 |**currency** | **String** | Currency of the column |  [optional] |

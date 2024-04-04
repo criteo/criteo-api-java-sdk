@@ -11335,7 +11335,7 @@ components:
               urls:
               - urls
               - urls
-              landingPageUrl: https://openapi-generator.tech
+              landingPageUrl: landingPageUrl
             author: author
             name: name
             format: format
@@ -11419,7 +11419,7 @@ components:
               urls:
               - urls
               - urls
-              landingPageUrl: https://openapi-generator.tech
+              landingPageUrl: landingPageUrl
             author: author
             name: name
             format: format
@@ -11571,7 +11571,7 @@ components:
               urls:
               - urls
               - urls
-              landingPageUrl: https://openapi-generator.tech
+              landingPageUrl: landingPageUrl
             author: author
             name: name
             format: format
@@ -11939,7 +11939,7 @@ components:
             urls:
             - urls
             - urls
-            landingPageUrl: https://openapi-generator.tech
+            landingPageUrl: landingPageUrl
           author: author
           name: name
           format: format
@@ -12362,7 +12362,7 @@ components:
           urls:
           - urls
           - urls
-          landingPageUrl: https://openapi-generator.tech
+          landingPageUrl: landingPageUrl
         author: author
         name: name
         format: format
@@ -12710,7 +12710,7 @@ components:
         urls:
         - urls
         - urls
-        landingPageUrl: https://openapi-generator.tech
+        landingPageUrl: landingPageUrl
       properties:
         urls:
           description: Array of images uploaded on demostatic.criteo.com when deploying
@@ -12722,7 +12722,6 @@ components:
           uniqueItems: false
         landingPageUrl:
           description: Web redirection of the landing page url
-          format: uri
           nullable: true
           type: string
       type: object

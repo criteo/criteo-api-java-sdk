@@ -15,7 +15,6 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.NillableDecimal;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -274,7 +273,7 @@ public class ReadAdSetBudgetV24Q1 {
 
   public static final String SERIALIZED_NAME_BUDGET_AMOUNT = "budgetAmount";
   @SerializedName(SERIALIZED_NAME_BUDGET_AMOUNT)
-  private NillableDecimal budgetAmount;
+  private Double budgetAmount;
 
   public ReadAdSetBudgetV24Q1() {
   }
@@ -367,7 +366,7 @@ public class ReadAdSetBudgetV24Q1 {
   }
 
 
-  public ReadAdSetBudgetV24Q1 budgetAmount(NillableDecimal budgetAmount) {
+  public ReadAdSetBudgetV24Q1 budgetAmount(Double budgetAmount) {
     
     this.budgetAmount = budgetAmount;
     return this;
@@ -379,12 +378,12 @@ public class ReadAdSetBudgetV24Q1 {
   **/
   @javax.annotation.Nullable
 
-  public NillableDecimal getBudgetAmount() {
+  public Double getBudgetAmount() {
     return budgetAmount;
   }
 
 
-  public void setBudgetAmount(NillableDecimal budgetAmount) {
+  public void setBudgetAmount(Double budgetAmount) {
     this.budgetAmount = budgetAmount;
   }
 
@@ -532,10 +531,6 @@ public class ReadAdSetBudgetV24Q1 {
       }
       if ((jsonObj.get("budgetDeliveryWeek") != null && !jsonObj.get("budgetDeliveryWeek").isJsonNull()) && !jsonObj.get("budgetDeliveryWeek").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `budgetDeliveryWeek` to be a primitive type in the JSON string but got `%s`", jsonObj.get("budgetDeliveryWeek").toString()));
-      }
-      // validate the optional field `budgetAmount`
-      if (jsonObj.get("budgetAmount") != null && !jsonObj.get("budgetAmount").isJsonNull()) {
-        NillableDecimal.validateJsonObject(jsonObj.getAsJsonObject("budgetAmount"));
       }
   }
 

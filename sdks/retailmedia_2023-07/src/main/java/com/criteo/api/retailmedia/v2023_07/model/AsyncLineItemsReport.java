@@ -48,167 +48,17 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2023_07.JSON;
 
 /**
- * Line Items report body request
+ * Async Line Items report body request
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AsyncLineItemsReport {
-  /**
-   * Gets or Sets metrics
-   */
-  @JsonAdapter(MetricsEnum.Adapter.class)
-  public enum MetricsEnum {
-    IMPRESSIONS("impressions"),
-    
-    CLICKS("clicks"),
-    
-    SPEND("spend"),
-    
-    ATTRIBUTEDSALES("attributedSales"),
-    
-    ATTRIBUTEDUNITS("attributedUnits"),
-    
-    ATTRIBUTEDORDERS("attributedOrders"),
-    
-    CTR("ctr"),
-    
-    CPC("cpc"),
-    
-    CPO("cpo"),
-    
-    ROAS("roas"),
-    
-    ASSISTEDUNITS("assistedUnits"),
-    
-    ASSISTEDSALES("assistedSales"),
-    
-    UNIQUEVISITORS("uniqueVisitors"),
-    
-    FREQUENCY("frequency");
+  public static final String SERIALIZED_NAME_IDS = "ids";
+  @SerializedName(SERIALIZED_NAME_IDS)
+  private List<String> ids = null;
 
-    private String value;
-
-    MetricsEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static MetricsEnum fromValue(String value) {
-      for (MetricsEnum b : MetricsEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<MetricsEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final MetricsEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public MetricsEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return MetricsEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_METRICS = "metrics";
-  @SerializedName(SERIALIZED_NAME_METRICS)
-  private List<MetricsEnum> metrics = null;
-
-  /**
-   * Gets or Sets dimensions
-   */
-  @JsonAdapter(DimensionsEnum.Adapter.class)
-  public enum DimensionsEnum {
-    DATE("date"),
-    
-    HOUR("hour"),
-    
-    CAMPAIGNID("campaignId"),
-    
-    CAMPAIGNNAME("campaignName"),
-    
-    CAMPAIGNTYPENAME("campaignTypeName"),
-    
-    ADVPRODUCTCATEGORY("advProductCategory"),
-    
-    ADVPRODUCTID("advProductId"),
-    
-    ADVPRODUCTNAME("advProductName"),
-    
-    BRANDID("brandId"),
-    
-    BRANDNAME("brandName"),
-    
-    LINEITEMID("lineItemId"),
-    
-    LINEITEMNAME("lineItemName"),
-    
-    RETAILERID("retailerId"),
-    
-    RETAILERNAME("retailerName"),
-    
-    KEYWORD("keyword"),
-    
-    PAGETYPENAME("pageTypeName"),
-    
-    SALESCHANNEL("salesChannel"),
-    
-    ENVIRONMENT("environment");
-
-    private String value;
-
-    DimensionsEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static DimensionsEnum fromValue(String value) {
-      for (DimensionsEnum b : DimensionsEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<DimensionsEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final DimensionsEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public DimensionsEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return DimensionsEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_DIMENSIONS = "dimensions";
-  @SerializedName(SERIALIZED_NAME_DIMENSIONS)
-  private List<DimensionsEnum> dimensions = null;
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
 
   /**
    * Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays
@@ -542,13 +392,169 @@ public class AsyncLineItemsReport {
   @SerializedName(SERIALIZED_NAME_VIEW_ATTRIBUTION_WINDOW)
   private ViewAttributionWindowEnum viewAttributionWindow = ViewAttributionWindowEnum.NONE;
 
-  public static final String SERIALIZED_NAME_IDS = "ids";
-  @SerializedName(SERIALIZED_NAME_IDS)
-  private List<String> ids = null;
+  /**
+   * Gets or Sets dimensions
+   */
+  @JsonAdapter(DimensionsEnum.Adapter.class)
+  public enum DimensionsEnum {
+    DATE("date"),
+    
+    HOUR("hour"),
+    
+    ACCOUNTID("accountId"),
+    
+    ACCOUNTNAME("accountName"),
+    
+    CAMPAIGNID("campaignId"),
+    
+    CAMPAIGNNAME("campaignName"),
+    
+    CAMPAIGNTYPENAME("campaignTypeName"),
+    
+    ADVPRODUCTCATEGORY("advProductCategory"),
+    
+    ADVPRODUCTID("advProductId"),
+    
+    ADVPRODUCTNAME("advProductName"),
+    
+    BRANDID("brandId"),
+    
+    BRANDNAME("brandName"),
+    
+    LINEITEMID("lineItemId"),
+    
+    LINEITEMNAME("lineItemName"),
+    
+    RETAILERID("retailerId"),
+    
+    RETAILERNAME("retailerName"),
+    
+    KEYWORD("keyword"),
+    
+    PAGETYPENAME("pageTypeName"),
+    
+    SALESCHANNEL("salesChannel"),
+    
+    ENVIRONMENT("environment");
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
+    private String value;
+
+    DimensionsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static DimensionsEnum fromValue(String value) {
+      for (DimensionsEnum b : DimensionsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<DimensionsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final DimensionsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public DimensionsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return DimensionsEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_DIMENSIONS = "dimensions";
+  @SerializedName(SERIALIZED_NAME_DIMENSIONS)
+  private List<DimensionsEnum> dimensions = null;
+
+  /**
+   * Gets or Sets metrics
+   */
+  @JsonAdapter(MetricsEnum.Adapter.class)
+  public enum MetricsEnum {
+    IMPRESSIONS("impressions"),
+    
+    CLICKS("clicks"),
+    
+    SPEND("spend"),
+    
+    ATTRIBUTEDSALES("attributedSales"),
+    
+    ATTRIBUTEDUNITS("attributedUnits"),
+    
+    ATTRIBUTEDORDERS("attributedOrders"),
+    
+    ASSISTEDSALES("assistedSales"),
+    
+    ASSISTEDUNITS("assistedUnits"),
+    
+    CTR("ctr"),
+    
+    CPC("cpc"),
+    
+    CPO("cpo"),
+    
+    CPM("cpm"),
+    
+    ROAS("roas"),
+    
+    UNIQUEVISITORS("uniqueVisitors"),
+    
+    FREQUENCY("frequency");
+
+    private String value;
+
+    MetricsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static MetricsEnum fromValue(String value) {
+      for (MetricsEnum b : MetricsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<MetricsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final MetricsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public MetricsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return MetricsEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_METRICS = "metrics";
+  @SerializedName(SERIALIZED_NAME_METRICS)
+  private List<MetricsEnum> metrics = null;
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -565,63 +571,55 @@ public class AsyncLineItemsReport {
   public AsyncLineItemsReport() {
   }
 
-  public AsyncLineItemsReport metrics(List<MetricsEnum> metrics) {
+  public AsyncLineItemsReport ids(List<String> ids) {
     
-    this.metrics = metrics;
+    this.ids = ids;
     return this;
   }
 
-  public AsyncLineItemsReport addMetricsItem(MetricsEnum metricsItem) {
-    if (this.metrics == null) {
-      this.metrics = null;
+  public AsyncLineItemsReport addIdsItem(String idsItem) {
+    if (this.ids == null) {
+      this.ids = null;
     }
-    this.metrics.add(metricsItem);
+    this.ids.add(idsItem);
     return this;
   }
 
    /**
-   * List of metrics to report on
-   * @return metrics
+   * Line Item ids to report on
+   * @return ids
   **/
   @javax.annotation.Nullable
 
-  public List<MetricsEnum> getMetrics() {
-    return metrics;
+  public List<String> getIds() {
+    return ids;
   }
 
 
-  public void setMetrics(List<MetricsEnum> metrics) {
-    this.metrics = metrics;
+  public void setIds(List<String> ids) {
+    this.ids = ids;
   }
 
 
-  public AsyncLineItemsReport dimensions(List<DimensionsEnum> dimensions) {
+  public AsyncLineItemsReport id(String id) {
     
-    this.dimensions = dimensions;
-    return this;
-  }
-
-  public AsyncLineItemsReport addDimensionsItem(DimensionsEnum dimensionsItem) {
-    if (this.dimensions == null) {
-      this.dimensions = null;
-    }
-    this.dimensions.add(dimensionsItem);
+    this.id = id;
     return this;
   }
 
    /**
-   * List of dimensions to report on
-   * @return dimensions
+   * Line Item id to report on
+   * @return id
   **/
   @javax.annotation.Nullable
 
-  public List<DimensionsEnum> getDimensions() {
-    return dimensions;
+  public String getId() {
+    return id;
   }
 
 
-  public void setDimensions(List<DimensionsEnum> dimensions) {
-    this.dimensions = dimensions;
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -757,55 +755,63 @@ public class AsyncLineItemsReport {
   }
 
 
-  public AsyncLineItemsReport ids(List<String> ids) {
+  public AsyncLineItemsReport dimensions(List<DimensionsEnum> dimensions) {
     
-    this.ids = ids;
+    this.dimensions = dimensions;
     return this;
   }
 
-  public AsyncLineItemsReport addIdsItem(String idsItem) {
-    if (this.ids == null) {
-      this.ids = null;
+  public AsyncLineItemsReport addDimensionsItem(DimensionsEnum dimensionsItem) {
+    if (this.dimensions == null) {
+      this.dimensions = null;
     }
-    this.ids.add(idsItem);
+    this.dimensions.add(dimensionsItem);
     return this;
   }
 
    /**
-   * Ids to report on
-   * @return ids
+   * List of dimensions to report on
+   * @return dimensions
   **/
   @javax.annotation.Nullable
 
-  public List<String> getIds() {
-    return ids;
+  public List<DimensionsEnum> getDimensions() {
+    return dimensions;
   }
 
 
-  public void setIds(List<String> ids) {
-    this.ids = ids;
+  public void setDimensions(List<DimensionsEnum> dimensions) {
+    this.dimensions = dimensions;
   }
 
 
-  public AsyncLineItemsReport id(String id) {
+  public AsyncLineItemsReport metrics(List<MetricsEnum> metrics) {
     
-    this.id = id;
+    this.metrics = metrics;
+    return this;
+  }
+
+  public AsyncLineItemsReport addMetricsItem(MetricsEnum metricsItem) {
+    if (this.metrics == null) {
+      this.metrics = null;
+    }
+    this.metrics.add(metricsItem);
     return this;
   }
 
    /**
-   * Id to report on
-   * @return id
+   * List of metrics to report on
+   * @return metrics
   **/
   @javax.annotation.Nullable
 
-  public String getId() {
-    return id;
+  public List<MetricsEnum> getMetrics() {
+    return metrics;
   }
 
 
-  public void setId(String id) {
-    this.id = id;
+  public void setMetrics(List<MetricsEnum> metrics) {
+    this.metrics = metrics;
   }
 
 
@@ -929,16 +935,16 @@ public class AsyncLineItemsReport {
       return false;
     }
     AsyncLineItemsReport asyncLineItemsReport = (AsyncLineItemsReport) o;
-    return Objects.equals(this.metrics, asyncLineItemsReport.metrics) &&
-        Objects.equals(this.dimensions, asyncLineItemsReport.dimensions) &&
+    return Objects.equals(this.ids, asyncLineItemsReport.ids) &&
+        Objects.equals(this.id, asyncLineItemsReport.id) &&
         Objects.equals(this.campaignType, asyncLineItemsReport.campaignType) &&
         Objects.equals(this.salesChannel, asyncLineItemsReport.salesChannel) &&
         Objects.equals(this.format, asyncLineItemsReport.format) &&
         Objects.equals(this.reportType, asyncLineItemsReport.reportType) &&
         Objects.equals(this.clickAttributionWindow, asyncLineItemsReport.clickAttributionWindow) &&
         Objects.equals(this.viewAttributionWindow, asyncLineItemsReport.viewAttributionWindow) &&
-        Objects.equals(this.ids, asyncLineItemsReport.ids) &&
-        Objects.equals(this.id, asyncLineItemsReport.id) &&
+        Objects.equals(this.dimensions, asyncLineItemsReport.dimensions) &&
+        Objects.equals(this.metrics, asyncLineItemsReport.metrics) &&
         Objects.equals(this.startDate, asyncLineItemsReport.startDate) &&
         Objects.equals(this.endDate, asyncLineItemsReport.endDate) &&
         Objects.equals(this.timezone, asyncLineItemsReport.timezone)&&
@@ -951,7 +957,7 @@ public class AsyncLineItemsReport {
 
   @Override
   public int hashCode() {
-    return Objects.hash(metrics, dimensions, campaignType, salesChannel, format, reportType, clickAttributionWindow, viewAttributionWindow, ids, id, startDate, endDate, timezone, additionalProperties);
+    return Objects.hash(ids, id, campaignType, salesChannel, format, reportType, clickAttributionWindow, viewAttributionWindow, dimensions, metrics, startDate, endDate, timezone, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -965,16 +971,16 @@ public class AsyncLineItemsReport {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AsyncLineItemsReport {\n");
-    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
-    sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
+    sb.append("    ids: ").append(toIndentedString(ids)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    salesChannel: ").append(toIndentedString(salesChannel)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    clickAttributionWindow: ").append(toIndentedString(clickAttributionWindow)).append("\n");
     sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
-    sb.append("    ids: ").append(toIndentedString(ids)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
+    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
@@ -1001,16 +1007,16 @@ public class AsyncLineItemsReport {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("metrics");
-    openapiFields.add("dimensions");
+    openapiFields.add("ids");
+    openapiFields.add("id");
     openapiFields.add("campaignType");
     openapiFields.add("salesChannel");
     openapiFields.add("format");
     openapiFields.add("reportType");
     openapiFields.add("clickAttributionWindow");
     openapiFields.add("viewAttributionWindow");
-    openapiFields.add("ids");
-    openapiFields.add("id");
+    openapiFields.add("dimensions");
+    openapiFields.add("metrics");
     openapiFields.add("startDate");
     openapiFields.add("endDate");
     openapiFields.add("timezone");
@@ -1041,12 +1047,11 @@ public class AsyncLineItemsReport {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("metrics") != null && !jsonObj.get("metrics").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));
+      if (jsonObj.get("ids") != null && !jsonObj.get("ids").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ids` to be an array in the JSON string but got `%s`", jsonObj.get("ids").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `dimensions` to be an array in the JSON string but got `%s`", jsonObj.get("dimensions").toString()));
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("campaignType") != null && !jsonObj.get("campaignType").isJsonNull()) && !jsonObj.get("campaignType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignType").toString()));
@@ -1067,11 +1072,12 @@ public class AsyncLineItemsReport {
         throw new IllegalArgumentException(String.format("Expected the field `viewAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewAttributionWindow").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("ids") != null && !jsonObj.get("ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ids` to be an array in the JSON string but got `%s`", jsonObj.get("ids").toString()));
+      if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `dimensions` to be an array in the JSON string but got `%s`", jsonObj.get("dimensions").toString()));
       }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("metrics") != null && !jsonObj.get("metrics").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));
       }
       if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));

@@ -8517,10 +8517,10 @@ components:
             ids:
             - ids
             - ids
+            id: id
             metrics:
             - impressions
             - impressions
-            id: id
             startDate: 2000-01-23T04:56:07.000+00:00
             dimensions:
             - date
@@ -8547,10 +8547,10 @@ components:
             ids:
             - ids
             - ids
+            id: id
             metrics:
             - impressions
             - impressions
-            id: id
             startDate: 2000-01-23T04:56:07.000+00:00
             dimensions:
             - date
@@ -8582,8 +8582,8 @@ components:
             - ids
             id: id
             metrics:
-            - clicks
-            - clicks
+            - impressions
+            - impressions
             startDate: 2000-01-23T04:56:07.000+00:00
             dimensions:
             - date
@@ -8633,10 +8633,10 @@ components:
           ids:
           - ids
           - ids
+          id: id
           metrics:
           - impressions
           - impressions
-          id: id
           startDate: 2000-01-23T04:56:07.000+00:00
           dimensions:
           - date
@@ -8665,10 +8665,10 @@ components:
           ids:
           - ids
           - ids
+          id: id
           metrics:
           - impressions
           - impressions
-          id: id
           startDate: 2000-01-23T04:56:07.000+00:00
           dimensions:
           - date
@@ -8702,8 +8702,8 @@ components:
           - ids
           id: id
           metrics:
-          - clicks
-          - clicks
+          - impressions
+          - impressions
           startDate: 2000-01-23T04:56:07.000+00:00
           dimensions:
           - date
@@ -8763,7 +8763,7 @@ components:
       x-criteo-canonical:
         infoType: entity
     AsyncCampaignsReport:
-      description: Campaign report body request
+      description: Async Campaigns report body request
       example:
         campaignType: sponsoredProducts
         clickAttributionWindow: none
@@ -8776,60 +8776,25 @@ components:
         ids:
         - ids
         - ids
+        id: id
         metrics:
         - impressions
         - impressions
-        id: id
         startDate: 2000-01-23T04:56:07.000+00:00
         dimensions:
         - date
         - date
       properties:
-        metrics:
-          description: List of metrics to report on
+        ids:
+          description: Campaign ids to report on
           items:
-            enum:
-            - impressions
-            - clicks
-            - spend
-            - attributedSales
-            - attributedUnits
-            - attributedOrders
-            - ctr
-            - cpc
-            - cpo
-            - cpm
-            - roas
-            - uniqueVisitors
-            - frequency
-            - assistedUnits
-            - assistedSales
             type: string
           nullable: true
           type: array
-        dimensions:
-          description: List of dimensions to report on
-          items:
-            enum:
-            - date
-            - hour
-            - campaignId
-            - campaignName
-            - campaignTypeName
-            - advProductCategory
-            - advProductId
-            - advProductName
-            - brandId
-            - brandName
-            - pageTypeName
-            - environment
-            - keyword
-            - salesChannel
-            - retailerId
-            - retailerName
-            type: string
+        id:
+          description: Campaign id to report on
           nullable: true
-          type: array
+          type: string
         campaignType:
           description: "Filter the type of campaigns to report on: sponsoredProducts\
             \ or onSiteDisplays"
@@ -8891,84 +8856,14 @@ components:
           - none
           nullable: true
           type: string
-        ids:
-          description: Ids to report on
-          items:
-            type: string
-          nullable: true
-          type: array
-        id:
-          description: Id to report on
-          nullable: true
-          type: string
-        startDate:
-          description: Start date
-          format: date-time
-          type: string
-        endDate:
-          description: End date
-          format: date-time
-          type: string
-        timezone:
-          default: UTC
-          description: "Time zone : see criteo developer portal for supported time\
-            \ zones"
-          nullable: true
-          type: string
-      required:
-      - endDate
-      - startDate
-      type: object
-    AsyncLineItemsReport:
-      description: Line Items report body request
-      example:
-        campaignType: sponsoredProducts
-        clickAttributionWindow: none
-        endDate: 2000-01-23T04:56:07.000+00:00
-        timezone: UTC
-        format: json-compact
-        salesChannel: offline
-        reportType: summary
-        viewAttributionWindow: none
-        ids:
-        - ids
-        - ids
-        metrics:
-        - impressions
-        - impressions
-        id: id
-        startDate: 2000-01-23T04:56:07.000+00:00
-        dimensions:
-        - date
-        - date
-      properties:
-        metrics:
-          description: List of metrics to report on
-          items:
-            enum:
-            - impressions
-            - clicks
-            - spend
-            - attributedSales
-            - attributedUnits
-            - attributedOrders
-            - ctr
-            - cpc
-            - cpo
-            - roas
-            - assistedUnits
-            - assistedSales
-            - uniqueVisitors
-            - frequency
-            type: string
-          nullable: true
-          type: array
         dimensions:
           description: List of dimensions to report on
           items:
             enum:
             - date
             - hour
+            - accountId
+            - accountName
             - campaignId
             - campaignName
             - campaignTypeName
@@ -8988,6 +8883,79 @@ components:
             type: string
           nullable: true
           type: array
+        metrics:
+          description: List of metrics to report on
+          items:
+            enum:
+            - impressions
+            - clicks
+            - spend
+            - attributedSales
+            - attributedUnits
+            - attributedOrders
+            - assistedSales
+            - assistedUnits
+            - ctr
+            - cpc
+            - cpo
+            - cpm
+            - roas
+            - uniqueVisitors
+            - frequency
+            type: string
+          nullable: true
+          type: array
+        startDate:
+          description: Start date
+          format: date-time
+          type: string
+        endDate:
+          description: End date
+          format: date-time
+          type: string
+        timezone:
+          default: UTC
+          description: "Time zone : see criteo developer portal for supported time\
+            \ zones"
+          nullable: true
+          type: string
+      required:
+      - endDate
+      - startDate
+      type: object
+    AsyncLineItemsReport:
+      description: Async Line Items report body request
+      example:
+        campaignType: sponsoredProducts
+        clickAttributionWindow: none
+        endDate: 2000-01-23T04:56:07.000+00:00
+        timezone: UTC
+        format: json-compact
+        salesChannel: offline
+        reportType: summary
+        viewAttributionWindow: none
+        ids:
+        - ids
+        - ids
+        id: id
+        metrics:
+        - impressions
+        - impressions
+        startDate: 2000-01-23T04:56:07.000+00:00
+        dimensions:
+        - date
+        - date
+      properties:
+        ids:
+          description: Line Item ids to report on
+          items:
+            type: string
+          nullable: true
+          type: array
+        id:
+          description: Line Item id to report on
+          nullable: true
+          type: string
         campaignType:
           description: "Filter the type of campaigns to report on: sponsoredProducts\
             \ or onSiteDisplays"
@@ -9049,16 +9017,55 @@ components:
           - none
           nullable: true
           type: string
-        ids:
-          description: Ids to report on
+        dimensions:
+          description: List of dimensions to report on
           items:
+            enum:
+            - date
+            - hour
+            - accountId
+            - accountName
+            - campaignId
+            - campaignName
+            - campaignTypeName
+            - advProductCategory
+            - advProductId
+            - advProductName
+            - brandId
+            - brandName
+            - lineItemId
+            - lineItemName
+            - retailerId
+            - retailerName
+            - keyword
+            - pageTypeName
+            - salesChannel
+            - environment
             type: string
           nullable: true
           type: array
-        id:
-          description: Id to report on
+        metrics:
+          description: List of metrics to report on
+          items:
+            enum:
+            - impressions
+            - clicks
+            - spend
+            - attributedSales
+            - attributedUnits
+            - attributedOrders
+            - assistedSales
+            - assistedUnits
+            - ctr
+            - cpc
+            - cpo
+            - cpm
+            - roas
+            - uniqueVisitors
+            - frequency
+            type: string
           nullable: true
-          type: string
+          type: array
         startDate:
           description: Start date
           format: date-time
@@ -9096,13 +9103,23 @@ components:
         - ids
         id: id
         metrics:
-        - clicks
-        - clicks
+        - impressions
+        - impressions
         startDate: 2000-01-23T04:56:07.000+00:00
         dimensions:
         - date
         - date
       properties:
+        ids:
+          description: Campaign ids to report on
+          items:
+            type: string
+          nullable: true
+          type: array
+        id:
+          description: Campaign id to report on
+          nullable: true
+          type: string
         reportType:
           description: Type of report
           enum:
@@ -9120,56 +9137,6 @@ components:
           - preferred
           nullable: true
           type: string
-        ids:
-          description: List of campaign Ids to filter
-          items:
-            type: string
-          nullable: true
-          type: array
-        id:
-          description: List of campaign Id to filter
-          nullable: true
-          type: string
-        metrics:
-          description: List of Metrics to report on
-          items:
-            enum:
-            - clicks
-            - spend
-            - attributedOrders
-            - attributedSales
-            - attributedUnits
-            - cpc
-            - cpo
-            - roas
-            - openAuctionRevenue
-            - preferredDealsRevenue
-            - avgCpc
-            - avgCpm
-            type: string
-          nullable: true
-          type: array
-        dimensions:
-          description: List of dimensions to report on
-          items:
-            enum:
-            - date
-            - campaignId
-            - campaignName
-            - accountId
-            - accountName
-            - environment
-            - advProductCategory
-            - brandId
-            - brandName
-            - pageTypeName
-            - advProductName
-            - advProductGtin
-            - advProductMpn
-            - advProductId
-            type: string
-          nullable: true
-          type: array
         format:
           description: Format of the output
           enum:
@@ -9231,6 +9198,45 @@ components:
           - online
           nullable: true
           type: string
+        dimensions:
+          description: List of dimensions to report on
+          items:
+            enum:
+            - date
+            - campaignId
+            - campaignName
+            - accountId
+            - accountName
+            - environment
+            - advProductCategory
+            - brandId
+            - brandName
+            - pageTypeName
+            - advProductName
+            - advProductGtin
+            - advProductMpn
+            - advProductId
+            type: string
+          nullable: true
+          type: array
+        metrics:
+          description: List of metrics to report on
+          items:
+            enum:
+            - impressions
+            - clicks
+            - spend
+            - sales
+            - units
+            - cpo
+            - roas
+            - openAuctionRevenue
+            - preferredDealsRevenue
+            - avgCpc
+            - avgCpm
+            type: string
+          nullable: true
+          type: array
         startDate:
           description: Start date
           format: date-time

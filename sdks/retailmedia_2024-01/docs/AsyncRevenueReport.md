@@ -8,12 +8,10 @@ Async Revenue report body request
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**ids** | **List&lt;String&gt;** | Campaign ids to report on |  [optional] |
+|**id** | **String** | Campaign id to report on |  [optional] |
 |**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report |  [optional] |
 |**revenueType** | [**RevenueTypeEnum**](#RevenueTypeEnum) | Type of revenue |  [optional] |
-|**ids** | **List&lt;String&gt;** | List of campaign Ids to filter |  [optional] |
-|**id** | **String** | List of campaign Id to filter |  [optional] |
-|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of Metrics to report on |  [optional] |
-|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  [optional] |
 |**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
 |**soldBy** | [**SoldByEnum**](#SoldByEnum) | Filter on the seller: indirect, direct or private market |  [optional] |
 |**campaignSubType** | [**CampaignSubTypeEnum**](#CampaignSubTypeEnum) | Filter on campaign subType : Auction and Preferred Deals or Lockout campaign |  [optional] |
@@ -21,6 +19,8 @@ Async Revenue report body request
 |**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) | View attribution window |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays |  [optional] |
 |**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
+|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  [optional] |
+|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  [optional] |
 |**startDate** | **OffsetDateTime** | Start date |  |
 |**endDate** | **OffsetDateTime** | End date |  |
 |**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
@@ -45,46 +45,6 @@ Async Revenue report body request
 |---- | -----|
 | AUCTION | &quot;auction&quot; |
 | PREFERRED | &quot;preferred&quot; |
-
-
-
-## Enum: List&lt;MetricsEnum&gt;
-
-| Name | Value |
-|---- | -----|
-| CLICKS | &quot;clicks&quot; |
-| SPEND | &quot;spend&quot; |
-| ATTRIBUTEDORDERS | &quot;attributedOrders&quot; |
-| ATTRIBUTEDSALES | &quot;attributedSales&quot; |
-| ATTRIBUTEDUNITS | &quot;attributedUnits&quot; |
-| CPC | &quot;cpc&quot; |
-| CPO | &quot;cpo&quot; |
-| ROAS | &quot;roas&quot; |
-| OPENAUCTIONREVENUE | &quot;openAuctionRevenue&quot; |
-| PREFERREDDEALSREVENUE | &quot;preferredDealsRevenue&quot; |
-| AVGCPC | &quot;avgCpc&quot; |
-| AVGCPM | &quot;avgCpm&quot; |
-
-
-
-## Enum: List&lt;DimensionsEnum&gt;
-
-| Name | Value |
-|---- | -----|
-| DATE | &quot;date&quot; |
-| CAMPAIGNID | &quot;campaignId&quot; |
-| CAMPAIGNNAME | &quot;campaignName&quot; |
-| ACCOUNTID | &quot;accountId&quot; |
-| ACCOUNTNAME | &quot;accountName&quot; |
-| ENVIRONMENT | &quot;environment&quot; |
-| ADVPRODUCTCATEGORY | &quot;advProductCategory&quot; |
-| BRANDID | &quot;brandId&quot; |
-| BRANDNAME | &quot;brandName&quot; |
-| PAGETYPENAME | &quot;pageTypeName&quot; |
-| ADVPRODUCTNAME | &quot;advProductName&quot; |
-| ADVPRODUCTGTIN | &quot;advProductGtin&quot; |
-| ADVPRODUCTMPN | &quot;advProductMpn&quot; |
-| ADVPRODUCTID | &quot;advProductId&quot; |
 
 
 
@@ -156,6 +116,45 @@ Async Revenue report body request
 |---- | -----|
 | OFFLINE | &quot;offline&quot; |
 | ONLINE | &quot;online&quot; |
+
+
+
+## Enum: List&lt;DimensionsEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| DATE | &quot;date&quot; |
+| CAMPAIGNID | &quot;campaignId&quot; |
+| CAMPAIGNNAME | &quot;campaignName&quot; |
+| ACCOUNTID | &quot;accountId&quot; |
+| ACCOUNTNAME | &quot;accountName&quot; |
+| ENVIRONMENT | &quot;environment&quot; |
+| ADVPRODUCTCATEGORY | &quot;advProductCategory&quot; |
+| BRANDID | &quot;brandId&quot; |
+| BRANDNAME | &quot;brandName&quot; |
+| PAGETYPENAME | &quot;pageTypeName&quot; |
+| ADVPRODUCTNAME | &quot;advProductName&quot; |
+| ADVPRODUCTGTIN | &quot;advProductGtin&quot; |
+| ADVPRODUCTMPN | &quot;advProductMpn&quot; |
+| ADVPRODUCTID | &quot;advProductId&quot; |
+
+
+
+## Enum: List&lt;MetricsEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| IMPRESSIONS | &quot;impressions&quot; |
+| CLICKS | &quot;clicks&quot; |
+| SPEND | &quot;spend&quot; |
+| SALES | &quot;sales&quot; |
+| UNITS | &quot;units&quot; |
+| CPO | &quot;cpo&quot; |
+| ROAS | &quot;roas&quot; |
+| OPENAUCTIONREVENUE | &quot;openAuctionRevenue&quot; |
+| PREFERREDDEALSREVENUE | &quot;preferredDealsRevenue&quot; |
+| AVGCPC | &quot;avgCpc&quot; |
+| AVGCPM | &quot;avgCpm&quot; |
 
 
 
