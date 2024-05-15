@@ -42,10 +42,10 @@ Line Items report body request
 
 | Name | Value |
 |---- | -----|
+| NONE | &quot;none&quot; |
 | _7D | &quot;7D&quot; |
 | _14D | &quot;14D&quot; |
 | _30D | &quot;30D&quot; |
-| NONE | &quot;none&quot; |
 
 
 
@@ -53,11 +53,11 @@ Line Items report body request
 
 | Name | Value |
 |---- | -----|
+| NONE | &quot;none&quot; |
 | _1D | &quot;1D&quot; |
 | _7D | &quot;7D&quot; |
 | _14D | &quot;14D&quot; |
 | _30D | &quot;30D&quot; |
-| NONE | &quot;none&quot; |
 
 
 
@@ -65,6 +65,7 @@ Line Items report body request
 
 | Name | Value |
 |---- | -----|
+| ALL | &quot;all&quot; |
 | SPONSOREDPRODUCTS | &quot;sponsoredProducts&quot; |
 | ONSITEDISPLAYS | &quot;onSiteDisplays&quot; |
 
@@ -74,6 +75,7 @@ Line Items report body request
 
 | Name | Value |
 |---- | -----|
+| ALL | &quot;all&quot; |
 | OFFLINE | &quot;offline&quot; |
 | ONLINE | &quot;online&quot; |
 
@@ -90,19 +92,20 @@ Line Items report body request
 | CAMPAIGNID | &quot;campaignId&quot; |
 | CAMPAIGNNAME | &quot;campaignName&quot; |
 | CAMPAIGNTYPENAME | &quot;campaignTypeName&quot; |
-| ADVPRODUCTCATEGORY | &quot;advProductCategory&quot; |
-| ADVPRODUCTID | &quot;advProductId&quot; |
-| ADVPRODUCTNAME | &quot;advProductName&quot; |
-| BRANDID | &quot;brandId&quot; |
-| BRANDNAME | &quot;brandName&quot; |
 | LINEITEMID | &quot;lineItemId&quot; |
 | LINEITEMNAME | &quot;lineItemName&quot; |
 | RETAILERID | &quot;retailerId&quot; |
 | RETAILERNAME | &quot;retailerName&quot; |
-| KEYWORD | &quot;keyword&quot; |
-| PAGETYPENAME | &quot;pageTypeName&quot; |
+| BRANDID | &quot;brandId&quot; |
+| BRANDNAME | &quot;brandName&quot; |
+| ADVPRODUCTCATEGORY | &quot;advProductCategory&quot; |
+| ADVPRODUCTID | &quot;advProductId&quot; |
+| ADVPRODUCTNAME | &quot;advProductName&quot; |
 | SALESCHANNEL | &quot;salesChannel&quot; |
 | ENVIRONMENT | &quot;environment&quot; |
+| PAGETYPENAME | &quot;pageTypeName&quot; |
+| KEYWORD | &quot;keyword&quot; |
+| SEARCHTERM | &quot;searchTerm&quot; |
 
 
 
@@ -123,6 +126,14 @@ Line Items report body request
 | CPO | &quot;cpo&quot; |
 | CPM | &quot;cpm&quot; |
 | ROAS | &quot;roas&quot; |
+| VIDEOVIEWS | &quot;videoViews&quot; |
+| VIDEOSSTARTED | &quot;videosStarted&quot; |
+| VIDEOSPLAYEDTO25 | &quot;videosPlayedTo25&quot; |
+| VIDEOSPLAYEDTO50 | &quot;videosPlayedTo50&quot; |
+| VIDEOSPLAYEDTO75 | &quot;videosPlayedTo75&quot; |
+| VIDEOSPLAYEDTO100 | &quot;videosPlayedTo100&quot; |
+| VIDEOPLAYINGRATE | &quot;videoPlayingRate&quot; |
+| VIDEOCOMPLETIONRATE | &quot;videoCompletionRate&quot; |
 | UNIQUEVISITORS | &quot;uniqueVisitors&quot; |
 | FREQUENCY | &quot;frequency&quot; |
 

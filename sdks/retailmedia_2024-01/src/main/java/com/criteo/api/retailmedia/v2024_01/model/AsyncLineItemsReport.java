@@ -65,6 +65,8 @@ public class AsyncLineItemsReport {
    */
   @JsonAdapter(CampaignTypeEnum.Adapter.class)
   public enum CampaignTypeEnum {
+    ALL("all"),
+    
     SPONSOREDPRODUCTS("sponsoredProducts"),
     
     ONSITEDISPLAYS("onSiteDisplays");
@@ -109,13 +111,15 @@ public class AsyncLineItemsReport {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_TYPE = "campaignType";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_TYPE)
-  private CampaignTypeEnum campaignType;
+  private CampaignTypeEnum campaignType = CampaignTypeEnum.ALL;
 
   /**
    * Filter on specific sales channel: offline or online
    */
   @JsonAdapter(SalesChannelEnum.Adapter.class)
   public enum SalesChannelEnum {
+    ALL("all"),
+    
     OFFLINE("offline"),
     
     ONLINE("online");
@@ -160,7 +164,7 @@ public class AsyncLineItemsReport {
 
   public static final String SERIALIZED_NAME_SALES_CHANNEL = "salesChannel";
   @SerializedName(SERIALIZED_NAME_SALES_CHANNEL)
-  private SalesChannelEnum salesChannel;
+  private SalesChannelEnum salesChannel = SalesChannelEnum.ALL;
 
   /**
    * Format of the output
@@ -285,13 +289,13 @@ public class AsyncLineItemsReport {
    */
   @JsonAdapter(ClickAttributionWindowEnum.Adapter.class)
   public enum ClickAttributionWindowEnum {
+    NONE("none"),
+    
     _7D("7D"),
     
     _14D("14D"),
     
-    _30D("30D"),
-    
-    NONE("none");
+    _30D("30D");
 
     private String value;
 
@@ -340,15 +344,15 @@ public class AsyncLineItemsReport {
    */
   @JsonAdapter(ViewAttributionWindowEnum.Adapter.class)
   public enum ViewAttributionWindowEnum {
+    NONE("none"),
+    
     _1D("1D"),
     
     _7D("7D"),
     
     _14D("14D"),
     
-    _30D("30D"),
-    
-    NONE("none");
+    _30D("30D");
 
     private String value;
 
@@ -411,16 +415,6 @@ public class AsyncLineItemsReport {
     
     CAMPAIGNTYPENAME("campaignTypeName"),
     
-    ADVPRODUCTCATEGORY("advProductCategory"),
-    
-    ADVPRODUCTID("advProductId"),
-    
-    ADVPRODUCTNAME("advProductName"),
-    
-    BRANDID("brandId"),
-    
-    BRANDNAME("brandName"),
-    
     LINEITEMID("lineItemId"),
     
     LINEITEMNAME("lineItemName"),
@@ -429,13 +423,25 @@ public class AsyncLineItemsReport {
     
     RETAILERNAME("retailerName"),
     
-    KEYWORD("keyword"),
+    BRANDID("brandId"),
     
-    PAGETYPENAME("pageTypeName"),
+    BRANDNAME("brandName"),
+    
+    ADVPRODUCTCATEGORY("advProductCategory"),
+    
+    ADVPRODUCTID("advProductId"),
+    
+    ADVPRODUCTNAME("advProductName"),
     
     SALESCHANNEL("salesChannel"),
     
-    ENVIRONMENT("environment");
+    ENVIRONMENT("environment"),
+    
+    PAGETYPENAME("pageTypeName"),
+    
+    KEYWORD("keyword"),
+    
+    SEARCHTERM("searchTerm");
 
     private String value;
 
@@ -509,6 +515,22 @@ public class AsyncLineItemsReport {
     CPM("cpm"),
     
     ROAS("roas"),
+    
+    VIDEOVIEWS("videoViews"),
+    
+    VIDEOSSTARTED("videosStarted"),
+    
+    VIDEOSPLAYEDTO25("videosPlayedTo25"),
+    
+    VIDEOSPLAYEDTO50("videosPlayedTo50"),
+    
+    VIDEOSPLAYEDTO75("videosPlayedTo75"),
+    
+    VIDEOSPLAYEDTO100("videosPlayedTo100"),
+    
+    VIDEOPLAYINGRATE("videoPlayingRate"),
+    
+    VIDEOCOMPLETIONRATE("videoCompletionRate"),
     
     UNIQUEVISITORS("uniqueVisitors"),
     

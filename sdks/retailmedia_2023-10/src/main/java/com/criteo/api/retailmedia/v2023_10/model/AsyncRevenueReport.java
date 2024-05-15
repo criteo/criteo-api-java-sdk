@@ -169,6 +169,169 @@ public class AsyncRevenueReport {
   private RevenueTypeEnum revenueType;
 
   /**
+   * Filter on the seller: Indirect Sold, Direct Sold or Private Market
+   */
+  @JsonAdapter(SoldByEnum.Adapter.class)
+  public enum SoldByEnum {
+    DIRECTSOLD("directSold"),
+    
+    INDIRECTSOLD("indirectSold"),
+    
+    PRIVATEMARKET("privateMarket");
+
+    private String value;
+
+    SoldByEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static SoldByEnum fromValue(String value) {
+      for (SoldByEnum b : SoldByEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<SoldByEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SoldByEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SoldByEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return SoldByEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_SOLD_BY = "soldBy";
+  @SerializedName(SERIALIZED_NAME_SOLD_BY)
+  private SoldByEnum soldBy;
+
+  /**
+   * Filter on buy type: Auction, Preferred Deals or Sponsorship
+   */
+  @JsonAdapter(BuyTypeEnum.Adapter.class)
+  public enum BuyTypeEnum {
+    AUCTION("auction"),
+    
+    PREFERREDDEALS("preferredDeals"),
+    
+    SPONSORSHIP("sponsorship");
+
+    private String value;
+
+    BuyTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static BuyTypeEnum fromValue(String value) {
+      for (BuyTypeEnum b : BuyTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<BuyTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final BuyTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public BuyTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return BuyTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_BUY_TYPE = "buyType";
+  @SerializedName(SERIALIZED_NAME_BUY_TYPE)
+  private BuyTypeEnum buyType;
+
+  /**
+   * Gets or Sets skuRelations
+   */
+  @JsonAdapter(SkuRelationsEnum.Adapter.class)
+  public enum SkuRelationsEnum {
+    SAMESKU("sameSku"),
+    
+    SAMEPARENTSKU("sameParentSku"),
+    
+    SAMECATEGORY("sameCategory"),
+    
+    SAMEBRAND("sameBrand"),
+    
+    SAMESELLER("sameSeller");
+
+    private String value;
+
+    SkuRelationsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static SkuRelationsEnum fromValue(String value) {
+      for (SkuRelationsEnum b : SkuRelationsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<SkuRelationsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SkuRelationsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SkuRelationsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return SkuRelationsEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_SKU_RELATIONS = "skuRelations";
+  @SerializedName(SERIALIZED_NAME_SKU_RELATIONS)
+  private List<SkuRelationsEnum> skuRelations = null;
+
+  /**
    * Format of the output
    */
   @JsonAdapter(FormatEnum.Adapter.class)
@@ -224,19 +387,19 @@ public class AsyncRevenueReport {
   private FormatEnum format;
 
   /**
-   * Filter on the seller: indirect, direct or private market
+   * Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays
    */
-  @JsonAdapter(SoldByEnum.Adapter.class)
-  public enum SoldByEnum {
-    DIRECTSOLD("directSold"),
+  @JsonAdapter(CampaignTypeEnum.Adapter.class)
+  public enum CampaignTypeEnum {
+    ALL("all"),
     
-    INDIRECTSOLD("indirectSold"),
+    SPONSOREDPRODUCTS("sponsoredProducts"),
     
-    PRIVATEMARKET("privateMarket");
+    ONSITEDISPLAYS("onSiteDisplays");
 
     private String value;
 
-    SoldByEnum(String value) {
+    CampaignTypeEnum(String value) {
       this.value = value;
     }
 
@@ -249,8 +412,8 @@ public class AsyncRevenueReport {
       return String.valueOf(value);
     }
 
-    public static SoldByEnum fromValue(String value) {
-      for (SoldByEnum b : SoldByEnum.values()) {
+    public static CampaignTypeEnum fromValue(String value) {
+      for (CampaignTypeEnum b : CampaignTypeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -258,36 +421,38 @@ public class AsyncRevenueReport {
       return null;
     }
 
-    public static class Adapter extends TypeAdapter<SoldByEnum> {
+    public static class Adapter extends TypeAdapter<CampaignTypeEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final SoldByEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final CampaignTypeEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public SoldByEnum read(final JsonReader jsonReader) throws IOException {
+      public CampaignTypeEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return SoldByEnum.fromValue(value);
+        return CampaignTypeEnum.fromValue(value);
       }
     }
   }
 
-  public static final String SERIALIZED_NAME_SOLD_BY = "soldBy";
-  @SerializedName(SERIALIZED_NAME_SOLD_BY)
-  private SoldByEnum soldBy;
+  public static final String SERIALIZED_NAME_CAMPAIGN_TYPE = "campaignType";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_TYPE)
+  private CampaignTypeEnum campaignType = CampaignTypeEnum.ALL;
 
   /**
-   * Filter on campaign subType : Auction and Preferred Deals or Lockout campaign
+   * Filter on specific sales channel: offline or online
    */
-  @JsonAdapter(CampaignSubTypeEnum.Adapter.class)
-  public enum CampaignSubTypeEnum {
-    AUCTIONANDPREFERRED("auctionAndPreferred"),
+  @JsonAdapter(SalesChannelEnum.Adapter.class)
+  public enum SalesChannelEnum {
+    ALL("all"),
     
-    LOCKOUT("lockout");
+    OFFLINE("offline"),
+    
+    ONLINE("online");
 
     private String value;
 
-    CampaignSubTypeEnum(String value) {
+    SalesChannelEnum(String value) {
       this.value = value;
     }
 
@@ -300,8 +465,8 @@ public class AsyncRevenueReport {
       return String.valueOf(value);
     }
 
-    public static CampaignSubTypeEnum fromValue(String value) {
-      for (CampaignSubTypeEnum b : CampaignSubTypeEnum.values()) {
+    public static SalesChannelEnum fromValue(String value) {
+      for (SalesChannelEnum b : SalesChannelEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -309,36 +474,36 @@ public class AsyncRevenueReport {
       return null;
     }
 
-    public static class Adapter extends TypeAdapter<CampaignSubTypeEnum> {
+    public static class Adapter extends TypeAdapter<SalesChannelEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final CampaignSubTypeEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final SalesChannelEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public CampaignSubTypeEnum read(final JsonReader jsonReader) throws IOException {
+      public SalesChannelEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return CampaignSubTypeEnum.fromValue(value);
+        return SalesChannelEnum.fromValue(value);
       }
     }
   }
 
-  public static final String SERIALIZED_NAME_CAMPAIGN_SUB_TYPE = "campaignSubType";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_SUB_TYPE)
-  private CampaignSubTypeEnum campaignSubType;
+  public static final String SERIALIZED_NAME_SALES_CHANNEL = "salesChannel";
+  @SerializedName(SERIALIZED_NAME_SALES_CHANNEL)
+  private SalesChannelEnum salesChannel = SalesChannelEnum.ALL;
 
   /**
    * Click attribution window
    */
   @JsonAdapter(ClickAttributionWindowEnum.Adapter.class)
   public enum ClickAttributionWindowEnum {
+    NONE("none"),
+    
     _7D("7D"),
     
     _14D("14D"),
     
-    _30D("30D"),
-    
-    NONE("none");
+    _30D("30D");
 
     private String value;
 
@@ -387,15 +552,15 @@ public class AsyncRevenueReport {
    */
   @JsonAdapter(ViewAttributionWindowEnum.Adapter.class)
   public enum ViewAttributionWindowEnum {
+    NONE("none"),
+    
     _1D("1D"),
     
     _7D("7D"),
     
     _14D("14D"),
     
-    _30D("30D"),
-    
-    NONE("none");
+    _30D("30D");
 
     private String value;
 
@@ -440,131 +605,61 @@ public class AsyncRevenueReport {
   private ViewAttributionWindowEnum viewAttributionWindow = ViewAttributionWindowEnum.NONE;
 
   /**
-   * Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays
-   */
-  @JsonAdapter(CampaignTypeEnum.Adapter.class)
-  public enum CampaignTypeEnum {
-    SPONSOREDPRODUCTS("sponsoredProducts"),
-    
-    ONSITEDISPLAYS("onSiteDisplays");
-
-    private String value;
-
-    CampaignTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static CampaignTypeEnum fromValue(String value) {
-      for (CampaignTypeEnum b : CampaignTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<CampaignTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final CampaignTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public CampaignTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return CampaignTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_CAMPAIGN_TYPE = "campaignType";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_TYPE)
-  private CampaignTypeEnum campaignType;
-
-  /**
-   * Filter on specific sales channel: offline or online
-   */
-  @JsonAdapter(SalesChannelEnum.Adapter.class)
-  public enum SalesChannelEnum {
-    OFFLINE("offline"),
-    
-    ONLINE("online");
-
-    private String value;
-
-    SalesChannelEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SalesChannelEnum fromValue(String value) {
-      for (SalesChannelEnum b : SalesChannelEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<SalesChannelEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SalesChannelEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SalesChannelEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SalesChannelEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_SALES_CHANNEL = "salesChannel";
-  @SerializedName(SERIALIZED_NAME_SALES_CHANNEL)
-  private SalesChannelEnum salesChannel;
-
-  /**
    * Gets or Sets dimensions
    */
   @JsonAdapter(DimensionsEnum.Adapter.class)
   public enum DimensionsEnum {
     DATE("date"),
     
-    CAMPAIGNID("campaignId"),
+    HOUR("hour"),
     
-    CAMPAIGNNAME("campaignName"),
+    PARENTACCOUNT("parentAccount"),
     
     ACCOUNTID("accountId"),
     
     ACCOUNTNAME("accountName"),
     
-    ENVIRONMENT("environment"),
+    ACCOUNTTYPENAME("accountTypeName"),
     
-    ADVPRODUCTCATEGORY("advProductCategory"),
+    CAMPAIGNID("campaignId"),
+    
+    CAMPAIGNNAME("campaignName"),
+    
+    CAMPAIGNTYPENAME("campaignTypeName"),
+    
+    CAMPAIGNSTARTDATE("campaignStartDate"),
+    
+    CAMPAIGNENDDATE("campaignEndDate"),
+    
+    LINEITEMID("lineItemId"),
+    
+    LINEITEMNAME("lineItemName"),
+    
+    LINEITEMSTARTDATE("lineItemStartDate"),
+    
+    LINEITEMENDDATE("lineItemEndDate"),
+    
+    LINEITEMSTATUS("lineItemStatus"),
+    
+    RETAILERID("retailerId"),
+    
+    RETAILERNAME("retailerName"),
     
     BRANDID("brandId"),
     
     BRANDNAME("brandName"),
     
+    PLACEMENTID("placementId"),
+    
+    PLACEMENTNAME("placementName"),
+    
     PAGETYPENAME("pageTypeName"),
+    
+    ENVIRONMENT("environment"),
+    
+    PAGECATEGORY("pageCategory"),
+    
+    ADVPRODUCTID("advProductId"),
     
     ADVPRODUCTNAME("advProductName"),
     
@@ -572,7 +667,51 @@ public class AsyncRevenueReport {
     
     ADVPRODUCTMPN("advProductMpn"),
     
-    ADVPRODUCTID("advProductId");
+    SOLDBY("soldBy"),
+    
+    SALECHANNEL("saleChannel"),
+    
+    ATTRIBUTIONSETTINGS("attributionSettings"),
+    
+    ACTIVITYTYPE("activityType"),
+    
+    KEYWORD("keyword"),
+    
+    SKURELATION("skuRelation"),
+    
+    RETAILERCATEGORYID("retailerCategoryId"),
+    
+    RETAILERCATEGORYNAME("retailerCategoryName"),
+    
+    TAXONOMYBREADCRUMB("taxonomyBreadcrumb"),
+    
+    TAXONOMY1ID("taxonomy1Id"),
+    
+    TAXONOMY1NAME("taxonomy1Name"),
+    
+    TAXONOMY2ID("taxonomy2Id"),
+    
+    TAXONOMY2NAME("taxonomy2Name"),
+    
+    TAXONOMY3ID("taxonomy3Id"),
+    
+    TAXONOMY3NAME("taxonomy3Name"),
+    
+    TAXONOMY4ID("taxonomy4Id"),
+    
+    TAXONOMY4NAME("taxonomy4Name"),
+    
+    TAXONOMY5ID("taxonomy5Id"),
+    
+    TAXONOMY5NAME("taxonomy5Name"),
+    
+    TAXONOMY6ID("taxonomy6Id"),
+    
+    TAXONOMY6NAME("taxonomy6Name"),
+    
+    TAXONOMY7ID("taxonomy7Id"),
+    
+    TAXONOMY7NAME("taxonomy7Name");
 
     private String value;
 
@@ -621,27 +760,71 @@ public class AsyncRevenueReport {
    */
   @JsonAdapter(MetricsEnum.Adapter.class)
   public enum MetricsEnum {
+    NUMBEROFCAMPAIGNS("numberOfCampaigns"),
+    
+    NUMBEROFLINEITEMS("numberOfLineItems"),
+    
+    NUMBEROFSKUS("numberOfSkus"),
+    
+    SKUPRICE("skuPrice"),
+    
+    PAGEVIEWS("pageViews"),
+    
     IMPRESSIONS("impressions"),
     
-    CLICKS("clicks"),
+    PRODUCTCLICKS("productClicks"),
     
-    SPEND("spend"),
+    PLACEMENTCLICKS("placementClicks"),
+    
+    CLICKS("clicks"),
     
     SALES("sales"),
     
     UNITS("units"),
     
-    CPO("cpo"),
+    TRANSACTIONS("transactions"),
     
-    ROAS("roas"),
+    ASSISTEDSALES("assistedSales"),
+    
+    ASSISTEDUNITS("assistedUnits"),
     
     OPENAUCTIONREVENUE("openAuctionRevenue"),
     
     PREFERREDDEALSREVENUE("preferredDealsRevenue"),
     
-    AVGCPC("avgCpc"),
+    CTR("ctr"),
     
-    AVGCPM("avgCpm");
+    CR("cr"),
+    
+    CPC("cpc"),
+    
+    CPM("cpm"),
+    
+    ROAS("roas"),
+    
+    WORKINGMEDIA("workingMedia"),
+    
+    NETREVENUE("netRevenue"),
+    
+    VIDEOVIEWS("videoViews"),
+    
+    VIDEOSSTARTED("videosStarted"),
+    
+    VIDEOSPLAYEDTO25("videosPlayedTo25"),
+    
+    VIDEOSPLAYEDTO50("videosPlayedTo50"),
+    
+    VIDEOSPLAYEDTO75("videosPlayedTo75"),
+    
+    VIDEOSPLAYEDTO100("videosPlayedTo100"),
+    
+    VIDEOPLAYINGRATE("videoPlayingRate"),
+    
+    VIDEOCOMPLETIONRATE("videoCompletionRate"),
+    
+    UNIQUEVISITORS("uniqueVisitors"),
+    
+    FREQUENCY("frequency");
 
     private String value;
 
@@ -796,6 +979,80 @@ public class AsyncRevenueReport {
   }
 
 
+  public AsyncRevenueReport soldBy(SoldByEnum soldBy) {
+    
+    this.soldBy = soldBy;
+    return this;
+  }
+
+   /**
+   * Filter on the seller: Indirect Sold, Direct Sold or Private Market
+   * @return soldBy
+  **/
+  @javax.annotation.Nullable
+
+  public SoldByEnum getSoldBy() {
+    return soldBy;
+  }
+
+
+  public void setSoldBy(SoldByEnum soldBy) {
+    this.soldBy = soldBy;
+  }
+
+
+  public AsyncRevenueReport buyType(BuyTypeEnum buyType) {
+    
+    this.buyType = buyType;
+    return this;
+  }
+
+   /**
+   * Filter on buy type: Auction, Preferred Deals or Sponsorship
+   * @return buyType
+  **/
+  @javax.annotation.Nullable
+
+  public BuyTypeEnum getBuyType() {
+    return buyType;
+  }
+
+
+  public void setBuyType(BuyTypeEnum buyType) {
+    this.buyType = buyType;
+  }
+
+
+  public AsyncRevenueReport skuRelations(List<SkuRelationsEnum> skuRelations) {
+    
+    this.skuRelations = skuRelations;
+    return this;
+  }
+
+  public AsyncRevenueReport addSkuRelationsItem(SkuRelationsEnum skuRelationsItem) {
+    if (this.skuRelations == null) {
+      this.skuRelations = null;
+    }
+    this.skuRelations.add(skuRelationsItem);
+    return this;
+  }
+
+   /**
+   * Filter on sku relations: Same SKU, Same Parent SKU, Same Category, Same Brand or Same Seller
+   * @return skuRelations
+  **/
+  @javax.annotation.Nullable
+
+  public List<SkuRelationsEnum> getSkuRelations() {
+    return skuRelations;
+  }
+
+
+  public void setSkuRelations(List<SkuRelationsEnum> skuRelations) {
+    this.skuRelations = skuRelations;
+  }
+
+
   public AsyncRevenueReport format(FormatEnum format) {
     
     this.format = format;
@@ -815,94 +1072,6 @@ public class AsyncRevenueReport {
 
   public void setFormat(FormatEnum format) {
     this.format = format;
-  }
-
-
-  public AsyncRevenueReport soldBy(SoldByEnum soldBy) {
-    
-    this.soldBy = soldBy;
-    return this;
-  }
-
-   /**
-   * Filter on the seller: indirect, direct or private market
-   * @return soldBy
-  **/
-  @javax.annotation.Nullable
-
-  public SoldByEnum getSoldBy() {
-    return soldBy;
-  }
-
-
-  public void setSoldBy(SoldByEnum soldBy) {
-    this.soldBy = soldBy;
-  }
-
-
-  public AsyncRevenueReport campaignSubType(CampaignSubTypeEnum campaignSubType) {
-    
-    this.campaignSubType = campaignSubType;
-    return this;
-  }
-
-   /**
-   * Filter on campaign subType : Auction and Preferred Deals or Lockout campaign
-   * @return campaignSubType
-  **/
-  @javax.annotation.Nullable
-
-  public CampaignSubTypeEnum getCampaignSubType() {
-    return campaignSubType;
-  }
-
-
-  public void setCampaignSubType(CampaignSubTypeEnum campaignSubType) {
-    this.campaignSubType = campaignSubType;
-  }
-
-
-  public AsyncRevenueReport clickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
-    
-    this.clickAttributionWindow = clickAttributionWindow;
-    return this;
-  }
-
-   /**
-   * Click attribution window
-   * @return clickAttributionWindow
-  **/
-  @javax.annotation.Nullable
-
-  public ClickAttributionWindowEnum getClickAttributionWindow() {
-    return clickAttributionWindow;
-  }
-
-
-  public void setClickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
-    this.clickAttributionWindow = clickAttributionWindow;
-  }
-
-
-  public AsyncRevenueReport viewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
-    
-    this.viewAttributionWindow = viewAttributionWindow;
-    return this;
-  }
-
-   /**
-   * View attribution window
-   * @return viewAttributionWindow
-  **/
-  @javax.annotation.Nullable
-
-  public ViewAttributionWindowEnum getViewAttributionWindow() {
-    return viewAttributionWindow;
-  }
-
-
-  public void setViewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
-    this.viewAttributionWindow = viewAttributionWindow;
   }
 
 
@@ -947,6 +1116,50 @@ public class AsyncRevenueReport {
 
   public void setSalesChannel(SalesChannelEnum salesChannel) {
     this.salesChannel = salesChannel;
+  }
+
+
+  public AsyncRevenueReport clickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
+    
+    this.clickAttributionWindow = clickAttributionWindow;
+    return this;
+  }
+
+   /**
+   * Click attribution window
+   * @return clickAttributionWindow
+  **/
+  @javax.annotation.Nullable
+
+  public ClickAttributionWindowEnum getClickAttributionWindow() {
+    return clickAttributionWindow;
+  }
+
+
+  public void setClickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
+    this.clickAttributionWindow = clickAttributionWindow;
+  }
+
+
+  public AsyncRevenueReport viewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
+    
+    this.viewAttributionWindow = viewAttributionWindow;
+    return this;
+  }
+
+   /**
+   * View attribution window
+   * @return viewAttributionWindow
+  **/
+  @javax.annotation.Nullable
+
+  public ViewAttributionWindowEnum getViewAttributionWindow() {
+    return viewAttributionWindow;
+  }
+
+
+  public void setViewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
+    this.viewAttributionWindow = viewAttributionWindow;
   }
 
 
@@ -1134,13 +1347,14 @@ public class AsyncRevenueReport {
         Objects.equals(this.id, asyncRevenueReport.id) &&
         Objects.equals(this.reportType, asyncRevenueReport.reportType) &&
         Objects.equals(this.revenueType, asyncRevenueReport.revenueType) &&
-        Objects.equals(this.format, asyncRevenueReport.format) &&
         Objects.equals(this.soldBy, asyncRevenueReport.soldBy) &&
-        Objects.equals(this.campaignSubType, asyncRevenueReport.campaignSubType) &&
-        Objects.equals(this.clickAttributionWindow, asyncRevenueReport.clickAttributionWindow) &&
-        Objects.equals(this.viewAttributionWindow, asyncRevenueReport.viewAttributionWindow) &&
+        Objects.equals(this.buyType, asyncRevenueReport.buyType) &&
+        Objects.equals(this.skuRelations, asyncRevenueReport.skuRelations) &&
+        Objects.equals(this.format, asyncRevenueReport.format) &&
         Objects.equals(this.campaignType, asyncRevenueReport.campaignType) &&
         Objects.equals(this.salesChannel, asyncRevenueReport.salesChannel) &&
+        Objects.equals(this.clickAttributionWindow, asyncRevenueReport.clickAttributionWindow) &&
+        Objects.equals(this.viewAttributionWindow, asyncRevenueReport.viewAttributionWindow) &&
         Objects.equals(this.dimensions, asyncRevenueReport.dimensions) &&
         Objects.equals(this.metrics, asyncRevenueReport.metrics) &&
         Objects.equals(this.startDate, asyncRevenueReport.startDate) &&
@@ -1155,7 +1369,7 @@ public class AsyncRevenueReport {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ids, id, reportType, revenueType, format, soldBy, campaignSubType, clickAttributionWindow, viewAttributionWindow, campaignType, salesChannel, dimensions, metrics, startDate, endDate, timezone, additionalProperties);
+    return Objects.hash(ids, id, reportType, revenueType, soldBy, buyType, skuRelations, format, campaignType, salesChannel, clickAttributionWindow, viewAttributionWindow, dimensions, metrics, startDate, endDate, timezone, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1173,13 +1387,14 @@ public class AsyncRevenueReport {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    revenueType: ").append(toIndentedString(revenueType)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    soldBy: ").append(toIndentedString(soldBy)).append("\n");
-    sb.append("    campaignSubType: ").append(toIndentedString(campaignSubType)).append("\n");
-    sb.append("    clickAttributionWindow: ").append(toIndentedString(clickAttributionWindow)).append("\n");
-    sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
+    sb.append("    buyType: ").append(toIndentedString(buyType)).append("\n");
+    sb.append("    skuRelations: ").append(toIndentedString(skuRelations)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    salesChannel: ").append(toIndentedString(salesChannel)).append("\n");
+    sb.append("    clickAttributionWindow: ").append(toIndentedString(clickAttributionWindow)).append("\n");
+    sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
     sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
@@ -1212,13 +1427,14 @@ public class AsyncRevenueReport {
     openapiFields.add("id");
     openapiFields.add("reportType");
     openapiFields.add("revenueType");
-    openapiFields.add("format");
     openapiFields.add("soldBy");
-    openapiFields.add("campaignSubType");
-    openapiFields.add("clickAttributionWindow");
-    openapiFields.add("viewAttributionWindow");
+    openapiFields.add("buyType");
+    openapiFields.add("skuRelations");
+    openapiFields.add("format");
     openapiFields.add("campaignType");
     openapiFields.add("salesChannel");
+    openapiFields.add("clickAttributionWindow");
+    openapiFields.add("viewAttributionWindow");
     openapiFields.add("dimensions");
     openapiFields.add("metrics");
     openapiFields.add("startDate");
@@ -1263,26 +1479,30 @@ public class AsyncRevenueReport {
       if ((jsonObj.get("revenueType") != null && !jsonObj.get("revenueType").isJsonNull()) && !jsonObj.get("revenueType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `revenueType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("revenueType").toString()));
       }
-      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
-      }
       if ((jsonObj.get("soldBy") != null && !jsonObj.get("soldBy").isJsonNull()) && !jsonObj.get("soldBy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `soldBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("soldBy").toString()));
       }
-      if ((jsonObj.get("campaignSubType") != null && !jsonObj.get("campaignSubType").isJsonNull()) && !jsonObj.get("campaignSubType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaignSubType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignSubType").toString()));
+      if ((jsonObj.get("buyType") != null && !jsonObj.get("buyType").isJsonNull()) && !jsonObj.get("buyType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `buyType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("buyType").toString()));
       }
-      if ((jsonObj.get("clickAttributionWindow") != null && !jsonObj.get("clickAttributionWindow").isJsonNull()) && !jsonObj.get("clickAttributionWindow").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `clickAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionWindow").toString()));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("skuRelations") != null && !jsonObj.get("skuRelations").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `skuRelations` to be an array in the JSON string but got `%s`", jsonObj.get("skuRelations").toString()));
       }
-      if ((jsonObj.get("viewAttributionWindow") != null && !jsonObj.get("viewAttributionWindow").isJsonNull()) && !jsonObj.get("viewAttributionWindow").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `viewAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewAttributionWindow").toString()));
+      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
       }
       if ((jsonObj.get("campaignType") != null && !jsonObj.get("campaignType").isJsonNull()) && !jsonObj.get("campaignType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignType").toString()));
       }
       if ((jsonObj.get("salesChannel") != null && !jsonObj.get("salesChannel").isJsonNull()) && !jsonObj.get("salesChannel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `salesChannel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("salesChannel").toString()));
+      }
+      if ((jsonObj.get("clickAttributionWindow") != null && !jsonObj.get("clickAttributionWindow").isJsonNull()) && !jsonObj.get("clickAttributionWindow").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `clickAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionWindow").toString()));
+      }
+      if ((jsonObj.get("viewAttributionWindow") != null && !jsonObj.get("viewAttributionWindow").isJsonNull()) && !jsonObj.get("viewAttributionWindow").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `viewAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewAttributionWindow").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonArray()) {

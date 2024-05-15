@@ -57,67 +57,6 @@ public class AsyncAccountsReport {
   private List<String> accountIds = new ArrayList<>();
 
   /**
-   * Type of report, if no dimensions/metrics are provided, falls back to summary reportType
-   */
-  @JsonAdapter(ReportTypeEnum.Adapter.class)
-  public enum ReportTypeEnum {
-    SUMMARY("summary"),
-    
-    PAGETYPE("pageType"),
-    
-    KEYWORD("keyword"),
-    
-    PRODUCTCATEGORY("productCategory"),
-    
-    PRODUCT("product"),
-    
-    ENVIRONMENT("environment"),
-    
-    SERVEDCATEGORY("servedCategory");
-
-    private String value;
-
-    ReportTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ReportTypeEnum fromValue(String value) {
-      for (ReportTypeEnum b : ReportTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<ReportTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ReportTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ReportTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ReportTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_REPORT_TYPE = "reportType";
-  @SerializedName(SERIALIZED_NAME_REPORT_TYPE)
-  private ReportTypeEnum reportType = ReportTypeEnum.SUMMARY;
-
-  /**
    * Level of aggregation, if no dimensions/metrics are provided, falls back to campaign aggregationLevel
    */
   @JsonAdapter(AggregationLevelEnum.Adapter.class)
@@ -173,6 +112,8 @@ public class AsyncAccountsReport {
    */
   @JsonAdapter(CampaignTypeEnum.Adapter.class)
   public enum CampaignTypeEnum {
+    ALL("all"),
+    
     SPONSOREDPRODUCTS("sponsoredProducts"),
     
     ONSITEDISPLAYS("onSiteDisplays");
@@ -217,13 +158,15 @@ public class AsyncAccountsReport {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_TYPE = "campaignType";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_TYPE)
-  private CampaignTypeEnum campaignType;
+  private CampaignTypeEnum campaignType = CampaignTypeEnum.ALL;
 
   /**
    * Filter on specific sales channel: offline or online
    */
   @JsonAdapter(SalesChannelEnum.Adapter.class)
   public enum SalesChannelEnum {
+    ALL("all"),
+    
     OFFLINE("offline"),
     
     ONLINE("online");
@@ -268,7 +211,7 @@ public class AsyncAccountsReport {
 
   public static final String SERIALIZED_NAME_SALES_CHANNEL = "salesChannel";
   @SerializedName(SERIALIZED_NAME_SALES_CHANNEL)
-  private SalesChannelEnum salesChannel;
+  private SalesChannelEnum salesChannel = SalesChannelEnum.ALL;
 
   /**
    * Format of the output
@@ -326,17 +269,80 @@ public class AsyncAccountsReport {
   private FormatEnum format = FormatEnum.JSON_COMPACT;
 
   /**
+   * Type of report, if no dimensions/metrics are provided, falls back to summary reportType
+   */
+  @JsonAdapter(ReportTypeEnum.Adapter.class)
+  public enum ReportTypeEnum {
+    SUMMARY("summary"),
+    
+    PAGETYPE("pageType"),
+    
+    KEYWORD("keyword"),
+    
+    PRODUCTCATEGORY("productCategory"),
+    
+    PRODUCT("product"),
+    
+    ATTRIBUTEDTRANSACTIONS("attributedTransactions"),
+    
+    ENVIRONMENT("environment"),
+    
+    SERVEDCATEGORY("servedCategory");
+
+    private String value;
+
+    ReportTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ReportTypeEnum fromValue(String value) {
+      for (ReportTypeEnum b : ReportTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<ReportTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ReportTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ReportTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ReportTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_REPORT_TYPE = "reportType";
+  @SerializedName(SERIALIZED_NAME_REPORT_TYPE)
+  private ReportTypeEnum reportType = ReportTypeEnum.SUMMARY;
+
+  /**
    * Click attribution window
    */
   @JsonAdapter(ClickAttributionWindowEnum.Adapter.class)
   public enum ClickAttributionWindowEnum {
+    NONE("none"),
+    
     _7D("7D"),
     
     _14D("14D"),
     
-    _30D("30D"),
-    
-    NONE("none");
+    _30D("30D");
 
     private String value;
 
@@ -385,15 +391,15 @@ public class AsyncAccountsReport {
    */
   @JsonAdapter(ViewAttributionWindowEnum.Adapter.class)
   public enum ViewAttributionWindowEnum {
+    NONE("none"),
+    
     _1D("1D"),
     
     _7D("7D"),
     
     _14D("14D"),
     
-    _30D("30D"),
-    
-    NONE("none");
+    _30D("30D");
 
     private String value;
 
@@ -456,16 +462,6 @@ public class AsyncAccountsReport {
     
     CAMPAIGNTYPENAME("campaignTypeName"),
     
-    ADVPRODUCTCATEGORY("advProductCategory"),
-    
-    ADVPRODUCTID("advProductId"),
-    
-    ADVPRODUCTNAME("advProductName"),
-    
-    BRANDID("brandId"),
-    
-    BRANDNAME("brandName"),
-    
     LINEITEMID("lineItemId"),
     
     LINEITEMNAME("lineItemName"),
@@ -474,13 +470,25 @@ public class AsyncAccountsReport {
     
     RETAILERNAME("retailerName"),
     
-    KEYWORD("keyword"),
+    BRANDID("brandId"),
     
-    PAGETYPENAME("pageTypeName"),
+    BRANDNAME("brandName"),
+    
+    ADVPRODUCTCATEGORY("advProductCategory"),
+    
+    ADVPRODUCTID("advProductId"),
+    
+    ADVPRODUCTNAME("advProductName"),
     
     SALESCHANNEL("salesChannel"),
     
-    ENVIRONMENT("environment");
+    ENVIRONMENT("environment"),
+    
+    PAGETYPENAME("pageTypeName"),
+    
+    KEYWORD("keyword"),
+    
+    SEARCHTERM("searchTerm");
 
     private String value;
 
@@ -554,6 +562,22 @@ public class AsyncAccountsReport {
     CPM("cpm"),
     
     ROAS("roas"),
+    
+    VIDEOVIEWS("videoViews"),
+    
+    VIDEOSSTARTED("videosStarted"),
+    
+    VIDEOSPLAYEDTO25("videosPlayedTo25"),
+    
+    VIDEOSPLAYEDTO50("videosPlayedTo50"),
+    
+    VIDEOSPLAYEDTO75("videosPlayedTo75"),
+    
+    VIDEOSPLAYEDTO100("videosPlayedTo100"),
+    
+    VIDEOPLAYINGRATE("videoPlayingRate"),
+    
+    VIDEOCOMPLETIONRATE("videoCompletionRate"),
     
     UNIQUEVISITORS("uniqueVisitors"),
     
@@ -643,28 +667,6 @@ public class AsyncAccountsReport {
   }
 
 
-  public AsyncAccountsReport reportType(ReportTypeEnum reportType) {
-    
-    this.reportType = reportType;
-    return this;
-  }
-
-   /**
-   * Type of report, if no dimensions/metrics are provided, falls back to summary reportType
-   * @return reportType
-  **/
-  @javax.annotation.Nullable
-
-  public ReportTypeEnum getReportType() {
-    return reportType;
-  }
-
-
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
-
-
   public AsyncAccountsReport aggregationLevel(AggregationLevelEnum aggregationLevel) {
     
     this.aggregationLevel = aggregationLevel;
@@ -750,6 +752,28 @@ public class AsyncAccountsReport {
 
   public void setFormat(FormatEnum format) {
     this.format = format;
+  }
+
+
+  public AsyncAccountsReport reportType(ReportTypeEnum reportType) {
+    
+    this.reportType = reportType;
+    return this;
+  }
+
+   /**
+   * Type of report, if no dimensions/metrics are provided, falls back to summary reportType
+   * @return reportType
+  **/
+  @javax.annotation.Nullable
+
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+
+
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
   }
 
 
@@ -978,11 +1002,11 @@ public class AsyncAccountsReport {
     }
     AsyncAccountsReport asyncAccountsReport = (AsyncAccountsReport) o;
     return Objects.equals(this.accountIds, asyncAccountsReport.accountIds) &&
-        Objects.equals(this.reportType, asyncAccountsReport.reportType) &&
         Objects.equals(this.aggregationLevel, asyncAccountsReport.aggregationLevel) &&
         Objects.equals(this.campaignType, asyncAccountsReport.campaignType) &&
         Objects.equals(this.salesChannel, asyncAccountsReport.salesChannel) &&
         Objects.equals(this.format, asyncAccountsReport.format) &&
+        Objects.equals(this.reportType, asyncAccountsReport.reportType) &&
         Objects.equals(this.clickAttributionWindow, asyncAccountsReport.clickAttributionWindow) &&
         Objects.equals(this.viewAttributionWindow, asyncAccountsReport.viewAttributionWindow) &&
         Objects.equals(this.dimensions, asyncAccountsReport.dimensions) &&
@@ -999,7 +1023,7 @@ public class AsyncAccountsReport {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountIds, reportType, aggregationLevel, campaignType, salesChannel, format, clickAttributionWindow, viewAttributionWindow, dimensions, metrics, startDate, endDate, timezone, additionalProperties);
+    return Objects.hash(accountIds, aggregationLevel, campaignType, salesChannel, format, reportType, clickAttributionWindow, viewAttributionWindow, dimensions, metrics, startDate, endDate, timezone, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1014,11 +1038,11 @@ public class AsyncAccountsReport {
     StringBuilder sb = new StringBuilder();
     sb.append("class AsyncAccountsReport {\n");
     sb.append("    accountIds: ").append(toIndentedString(accountIds)).append("\n");
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    aggregationLevel: ").append(toIndentedString(aggregationLevel)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    salesChannel: ").append(toIndentedString(salesChannel)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    clickAttributionWindow: ").append(toIndentedString(clickAttributionWindow)).append("\n");
     sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
@@ -1050,11 +1074,11 @@ public class AsyncAccountsReport {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("accountIds");
-    openapiFields.add("reportType");
     openapiFields.add("aggregationLevel");
     openapiFields.add("campaignType");
     openapiFields.add("salesChannel");
     openapiFields.add("format");
+    openapiFields.add("reportType");
     openapiFields.add("clickAttributionWindow");
     openapiFields.add("viewAttributionWindow");
     openapiFields.add("dimensions");
@@ -1095,9 +1119,6 @@ public class AsyncAccountsReport {
       } else if (!jsonObj.get("accountIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountIds` to be an array in the JSON string but got `%s`", jsonObj.get("accountIds").toString()));
       }
-      if ((jsonObj.get("reportType") != null && !jsonObj.get("reportType").isJsonNull()) && !jsonObj.get("reportType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `reportType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reportType").toString()));
-      }
       if ((jsonObj.get("aggregationLevel") != null && !jsonObj.get("aggregationLevel").isJsonNull()) && !jsonObj.get("aggregationLevel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `aggregationLevel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("aggregationLevel").toString()));
       }
@@ -1109,6 +1130,9 @@ public class AsyncAccountsReport {
       }
       if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
+      }
+      if ((jsonObj.get("reportType") != null && !jsonObj.get("reportType").isJsonNull()) && !jsonObj.get("reportType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reportType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reportType").toString()));
       }
       if ((jsonObj.get("clickAttributionWindow") != null && !jsonObj.get("clickAttributionWindow").isJsonNull()) && !jsonObj.get("clickAttributionWindow").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `clickAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionWindow").toString()));

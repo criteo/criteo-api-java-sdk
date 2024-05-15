@@ -46,7 +46,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2024_01.JSON;
 
 /**
- * Legacy resource
+ * A class that represents a domain entity exposed by an API
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RmLegacyAudienceGetEntityV1Resource {

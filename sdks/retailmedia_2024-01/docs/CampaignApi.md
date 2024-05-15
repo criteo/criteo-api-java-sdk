@@ -80,11 +80,11 @@ All URIs are relative to *https://api.criteo.com*
 
 ## addRemoveKeywords
 
-> RetailMediaExternalv1ResourceOutcome addRemoveKeywords(id, retailMediaExternalv1AddRemoveKeywordsModelRequest)
+> ResourceOutcome addRemoveKeywords(id, addRemoveKeywordsModelRequest)
 
 
 
-Add or Remove keywords from the associated line item in bulk
+Add or Remove keywords from the line item in bulk
 
 ### Example
 
@@ -125,10 +125,10 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String id = "id_example"; // String | Long external id of the associated line item
-        RetailMediaExternalv1AddRemoveKeywordsModelRequest retailMediaExternalv1AddRemoveKeywordsModelRequest = new RetailMediaExternalv1AddRemoveKeywordsModelRequest(); // RetailMediaExternalv1AddRemoveKeywordsModelRequest | Object containing keywords to be added or removed
+        String id = "id_example"; // String | ID of the line item
+        AddRemoveKeywordsModelRequest addRemoveKeywordsModelRequest = new AddRemoveKeywordsModelRequest(); // AddRemoveKeywordsModelRequest | 
         try {
-            RetailMediaExternalv1ResourceOutcome result = apiInstance.addRemoveKeywords(id, retailMediaExternalv1AddRemoveKeywordsModelRequest);
+            ResourceOutcome result = apiInstance.addRemoveKeywords(id, addRemoveKeywordsModelRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#addRemoveKeywords");
@@ -146,12 +146,12 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Long external id of the associated line item | |
-| **retailMediaExternalv1AddRemoveKeywordsModelRequest** | [**RetailMediaExternalv1AddRemoveKeywordsModelRequest**](RetailMediaExternalv1AddRemoveKeywordsModelRequest.md)| Object containing keywords to be added or removed | [optional] |
+| **id** | **String**| ID of the line item | |
+| **addRemoveKeywordsModelRequest** | [**AddRemoveKeywordsModelRequest**](AddRemoveKeywordsModelRequest.md)|  | [optional] |
 
 ### Return type
 
-[**RetailMediaExternalv1ResourceOutcome**](RetailMediaExternalv1ResourceOutcome.md)
+[**ResourceOutcome**](ResourceOutcome.md)
 
 ### Authorization
 
@@ -160,7 +160,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
@@ -261,7 +261,7 @@ public class Example {
 
 ## fetchKeywords
 
-> RetailMediaExternalv1KeywordsModelResponse fetchKeywords(id)
+> KeywordsModelResponse fetchKeywords(id)
 
 
 
@@ -306,9 +306,9 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String id = "id_example"; // String | Long external id of the associated line item
+        String id = "id_example"; // String | ID of the line item
         try {
-            RetailMediaExternalv1KeywordsModelResponse result = apiInstance.fetchKeywords(id);
+            KeywordsModelResponse result = apiInstance.fetchKeywords(id);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#fetchKeywords");
@@ -326,11 +326,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Long external id of the associated line item | |
+| **id** | **String**| ID of the line item | |
 
 ### Return type
 
-[**RetailMediaExternalv1KeywordsModelResponse**](RetailMediaExternalv1KeywordsModelResponse.md)
+[**KeywordsModelResponse**](KeywordsModelResponse.md)
 
 ### Authorization
 
@@ -339,7 +339,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
@@ -351,11 +351,11 @@ public class Example {
 
 ## fetchProposal
 
-> RetailMediaExternalv1ProposalStatusModelResponse fetchProposal(id)
+> ProposalStatusModelResponse fetchProposal(id)
 
 
 
-Fetch the status of a proposal to modify a Preferred Deal Line Item.
+Includes the state of the proposal, the status of the booking and approval, as well as any comments explaining why it might have been rejected.
 
 ### Example
 
@@ -396,9 +396,9 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String id = "id_example"; // String | The external id of a line item.
+        String id = "id_example"; // String | ID of the line item
         try {
-            RetailMediaExternalv1ProposalStatusModelResponse result = apiInstance.fetchProposal(id);
+            ProposalStatusModelResponse result = apiInstance.fetchProposal(id);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#fetchProposal");
@@ -416,11 +416,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The external id of a line item. | |
+| **id** | **String**| ID of the line item | |
 
 ### Return type
 
-[**RetailMediaExternalv1ProposalStatusModelResponse**](RetailMediaExternalv1ProposalStatusModelResponse.md)
+[**ProposalStatusModelResponse**](ProposalStatusModelResponse.md)
 
 ### Authorization
 
@@ -429,7 +429,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
@@ -437,7 +437,6 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
 | **400** | Bad Request |  -  |
-| **500** | Server Error |  -  |
 | **403** | Forbidden |  -  |
 
 
@@ -6220,7 +6219,7 @@ public class Example {
 
 ## setKeywordBids
 
-> RetailMediaExternalv1ResourceOutcome setKeywordBids(id, retailMediaExternalv1SetBidsModelRequest)
+> ResourceOutcome setKeywordBids(id, setBidsModelRequest)
 
 
 
@@ -6265,10 +6264,10 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String id = "id_example"; // String | Long external id of the associated line item
-        RetailMediaExternalv1SetBidsModelRequest retailMediaExternalv1SetBidsModelRequest = new RetailMediaExternalv1SetBidsModelRequest(); // RetailMediaExternalv1SetBidsModelRequest | Object containing a list of bid overrides for associated keywords
+        String id = "id_example"; // String | ID of the line item
+        SetBidsModelRequest setBidsModelRequest = new SetBidsModelRequest(); // SetBidsModelRequest | 
         try {
-            RetailMediaExternalv1ResourceOutcome result = apiInstance.setKeywordBids(id, retailMediaExternalv1SetBidsModelRequest);
+            ResourceOutcome result = apiInstance.setKeywordBids(id, setBidsModelRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#setKeywordBids");
@@ -6286,12 +6285,12 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Long external id of the associated line item | |
-| **retailMediaExternalv1SetBidsModelRequest** | [**RetailMediaExternalv1SetBidsModelRequest**](RetailMediaExternalv1SetBidsModelRequest.md)| Object containing a list of bid overrides for associated keywords | [optional] |
+| **id** | **String**| ID of the line item | |
+| **setBidsModelRequest** | [**SetBidsModelRequest**](SetBidsModelRequest.md)|  | [optional] |
 
 ### Return type
 
-[**RetailMediaExternalv1ResourceOutcome**](RetailMediaExternalv1ResourceOutcome.md)
+[**ResourceOutcome**](ResourceOutcome.md)
 
 ### Authorization
 
@@ -6300,7 +6299,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
@@ -6312,11 +6311,11 @@ public class Example {
 
 ## submitProposal
 
-> RetailMediaExternalv1ProposalStatusModelResponse submitProposal(id)
+> ProposalStatusModelResponse submitProposal(id)
 
 
 
-Submit a proposal to modify a Preferred Deal Line Item for review.
+Only the components of the Line Item that are in a valid state will be reviewed.
 
 ### Example
 
@@ -6357,9 +6356,9 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String id = "id_example"; // String | The external id of a line item.
+        String id = "id_example"; // String | ID of the line item
         try {
-            RetailMediaExternalv1ProposalStatusModelResponse result = apiInstance.submitProposal(id);
+            ProposalStatusModelResponse result = apiInstance.submitProposal(id);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#submitProposal");
@@ -6377,11 +6376,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The external id of a line item. | |
+| **id** | **String**| ID of the line item | |
 
 ### Return type
 
-[**RetailMediaExternalv1ProposalStatusModelResponse**](RetailMediaExternalv1ProposalStatusModelResponse.md)
+[**ProposalStatusModelResponse**](ProposalStatusModelResponse.md)
 
 ### Authorization
 
@@ -6390,7 +6389,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
+- **Accept**: application/json
 
 
 ### HTTP response details
@@ -6398,7 +6397,6 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
 | **400** | Bad Request |  -  |
-| **500** | Server Error |  -  |
 | **403** | Forbidden |  -  |
 
 

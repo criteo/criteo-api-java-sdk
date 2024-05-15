@@ -69,13 +69,13 @@ public class SyncAttributedTransactionsReport {
    */
   @JsonAdapter(ClickAttributionWindowEnum.Adapter.class)
   public enum ClickAttributionWindowEnum {
+    NONE("none"),
+    
     _7D("7D"),
     
     _14D("14D"),
     
-    _30D("30D"),
-    
-    NONE("none");
+    _30D("30D");
 
     private String value;
 
@@ -124,15 +124,15 @@ public class SyncAttributedTransactionsReport {
    */
   @JsonAdapter(ViewAttributionWindowEnum.Adapter.class)
   public enum ViewAttributionWindowEnum {
+    NONE("none"),
+    
     _1D("1D"),
     
     _7D("7D"),
     
     _14D("14D"),
     
-    _30D("30D"),
-    
-    NONE("none");
+    _30D("30D");
 
     private String value;
 
@@ -181,6 +181,8 @@ public class SyncAttributedTransactionsReport {
    */
   @JsonAdapter(CampaignTypeEnum.Adapter.class)
   public enum CampaignTypeEnum {
+    ALL("all"),
+    
     SPONSOREDPRODUCTS("sponsoredProducts"),
     
     ONSITEDISPLAYS("onSiteDisplays");
@@ -225,13 +227,15 @@ public class SyncAttributedTransactionsReport {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_TYPE = "campaignType";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_TYPE)
-  private CampaignTypeEnum campaignType;
+  private CampaignTypeEnum campaignType = CampaignTypeEnum.ALL;
 
   /**
    * Filter on specific sales channel: offline or online
    */
   @JsonAdapter(SalesChannelEnum.Adapter.class)
   public enum SalesChannelEnum {
+    ALL("all"),
+    
     OFFLINE("offline"),
     
     ONLINE("online");
@@ -276,19 +280,13 @@ public class SyncAttributedTransactionsReport {
 
   public static final String SERIALIZED_NAME_SALES_CHANNEL = "salesChannel";
   @SerializedName(SERIALIZED_NAME_SALES_CHANNEL)
-  private SalesChannelEnum salesChannel;
+  private SalesChannelEnum salesChannel = SalesChannelEnum.ALL;
 
   /**
    * Gets or Sets dimensions
    */
   @JsonAdapter(DimensionsEnum.Adapter.class)
   public enum DimensionsEnum {
-    CAMPAIGNNAME("campaignName"),
-    
-    CAMPAIGNID("campaignId"),
-    
-    LINEITEMID("lineItemId"),
-    
     PURCHASEDDATE("purchasedDate"),
     
     PURCHASEDHOUR("purchasedHour"),
@@ -298,6 +296,12 @@ public class SyncAttributedTransactionsReport {
     ADVHOUR("advHour"),
     
     DAYSDIFFERENCE("daysDifference"),
+    
+    CAMPAIGNID("campaignId"),
+    
+    CAMPAIGNNAME("campaignName"),
+    
+    LINEITEMID("lineItemId"),
     
     LINEITEMNAME("lineItemName"),
     
@@ -327,9 +331,9 @@ public class SyncAttributedTransactionsReport {
     
     SALESCHANNEL("salesChannel"),
     
-    PAGETYPENAME("pageTypeName"),
-    
     RETAILERNAME("retailerName"),
+    
+    PAGETYPENAME("pageTypeName"),
     
     KEYWORD("keyword"),
     

@@ -28,6 +28,7 @@ import java.io.IOException;
 
 
 import com.criteo.api.retailmedia.v2023_10.model.AddFundsToBalanceRequest;
+import com.criteo.api.retailmedia.v2023_10.model.AddRemoveKeywordsModelRequest;
 import com.criteo.api.retailmedia.v2023_10.model.AddToBasketIdsUpdateModel202110Request;
 import com.criteo.api.retailmedia.v2023_10.model.AddToBasketTarget202110Request;
 import com.criteo.api.retailmedia.v2023_10.model.AddToBasketTarget202110Response;
@@ -66,6 +67,7 @@ import com.criteo.api.retailmedia.v2023_10.model.JsonApiSingleResponseOfCatalogS
 import com.criteo.api.retailmedia.v2023_10.model.JsonApiSingleResponseOfLineItemBidMultipliers;
 import com.criteo.api.retailmedia.v2023_10.model.KeywordTarget202110Request;
 import com.criteo.api.retailmedia.v2023_10.model.KeywordTarget202110Response;
+import com.criteo.api.retailmedia.v2023_10.model.KeywordsModelResponse;
 import com.criteo.api.retailmedia.v2023_10.model.LineItemBidMultipliersRequest;
 import com.criteo.api.retailmedia.v2023_10.model.LineItemBidMultipliersResponse;
 import com.criteo.api.retailmedia.v2023_10.model.PostCampaignV202301;
@@ -75,12 +77,10 @@ import com.criteo.api.retailmedia.v2023_10.model.PreferredLineItemCreateModel202
 import com.criteo.api.retailmedia.v2023_10.model.PreferredLineItemUpdateModel202110Request;
 import com.criteo.api.retailmedia.v2023_10.model.PromotedProduct202110ListRequest;
 import com.criteo.api.retailmedia.v2023_10.model.PromotedProduct202110PagedListResponse;
+import com.criteo.api.retailmedia.v2023_10.model.ProposalStatusModelResponse;
 import com.criteo.api.retailmedia.v2023_10.model.PutCampaignV202301;
-import com.criteo.api.retailmedia.v2023_10.model.RetailMediaExternalv1AddRemoveKeywordsModelRequest;
-import com.criteo.api.retailmedia.v2023_10.model.RetailMediaExternalv1KeywordsModelResponse;
-import com.criteo.api.retailmedia.v2023_10.model.RetailMediaExternalv1ProposalStatusModelResponse;
-import com.criteo.api.retailmedia.v2023_10.model.RetailMediaExternalv1ResourceOutcome;
-import com.criteo.api.retailmedia.v2023_10.model.RetailMediaExternalv1SetBidsModelRequest;
+import com.criteo.api.retailmedia.v2023_10.model.ResourceOutcome;
+import com.criteo.api.retailmedia.v2023_10.model.SetBidsModelRequest;
 import com.criteo.api.retailmedia.v2023_10.model.StoreIdsUpdateModel202110Request;
 import com.criteo.api.retailmedia.v2023_10.model.StoreTarget202110Request;
 import com.criteo.api.retailmedia.v2023_10.model.StoreTarget202110Response;
@@ -134,8 +134,8 @@ public class CampaignApi {
 
     /**
      * Build call for addRemoveKeywords
-     * @param id Long external id of the associated line item (required)
-     * @param retailMediaExternalv1AddRemoveKeywordsModelRequest Object containing keywords to be added or removed (optional)
+     * @param id ID of the line item (required)
+     * @param addRemoveKeywordsModelRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -146,7 +146,7 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addRemoveKeywordsCall(String id, RetailMediaExternalv1AddRemoveKeywordsModelRequest retailMediaExternalv1AddRemoveKeywordsModelRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call addRemoveKeywordsCall(String id, AddRemoveKeywordsModelRequest addRemoveKeywordsModelRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -160,7 +160,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = retailMediaExternalv1AddRemoveKeywordsModelRequest;
+        Object localVarPostBody = addRemoveKeywordsModelRequest;
 
         // create path and map variables
         String localVarPath = "/2023-10/retail-media/line-items/{id}/keywords/add-remove"
@@ -173,9 +173,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -195,22 +193,22 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addRemoveKeywordsValidateBeforeCall(String id, RetailMediaExternalv1AddRemoveKeywordsModelRequest retailMediaExternalv1AddRemoveKeywordsModelRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call addRemoveKeywordsValidateBeforeCall(String id, AddRemoveKeywordsModelRequest addRemoveKeywordsModelRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling addRemoveKeywords(Async)");
         }
 
-        return addRemoveKeywordsCall(id, retailMediaExternalv1AddRemoveKeywordsModelRequest, _callback);
+        return addRemoveKeywordsCall(id, addRemoveKeywordsModelRequest, _callback);
 
     }
 
     /**
      * 
-     * Add or Remove keywords from the associated line item in bulk
-     * @param id Long external id of the associated line item (required)
-     * @param retailMediaExternalv1AddRemoveKeywordsModelRequest Object containing keywords to be added or removed (optional)
-     * @return RetailMediaExternalv1ResourceOutcome
+     * Add or Remove keywords from the line item in bulk
+     * @param id ID of the line item (required)
+     * @param addRemoveKeywordsModelRequest  (optional)
+     * @return ResourceOutcome
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -219,17 +217,17 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public RetailMediaExternalv1ResourceOutcome addRemoveKeywords(String id, RetailMediaExternalv1AddRemoveKeywordsModelRequest retailMediaExternalv1AddRemoveKeywordsModelRequest) throws ApiException {
-        ApiResponse<RetailMediaExternalv1ResourceOutcome> localVarResp = addRemoveKeywordsWithHttpInfo(id, retailMediaExternalv1AddRemoveKeywordsModelRequest);
+    public ResourceOutcome addRemoveKeywords(String id, AddRemoveKeywordsModelRequest addRemoveKeywordsModelRequest) throws ApiException {
+        ApiResponse<ResourceOutcome> localVarResp = addRemoveKeywordsWithHttpInfo(id, addRemoveKeywordsModelRequest);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Add or Remove keywords from the associated line item in bulk
-     * @param id Long external id of the associated line item (required)
-     * @param retailMediaExternalv1AddRemoveKeywordsModelRequest Object containing keywords to be added or removed (optional)
-     * @return ApiResponse&lt;RetailMediaExternalv1ResourceOutcome&gt;
+     * Add or Remove keywords from the line item in bulk
+     * @param id ID of the line item (required)
+     * @param addRemoveKeywordsModelRequest  (optional)
+     * @return ApiResponse&lt;ResourceOutcome&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -238,17 +236,17 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RetailMediaExternalv1ResourceOutcome> addRemoveKeywordsWithHttpInfo(String id, RetailMediaExternalv1AddRemoveKeywordsModelRequest retailMediaExternalv1AddRemoveKeywordsModelRequest) throws ApiException {
-        okhttp3.Call localVarCall = addRemoveKeywordsValidateBeforeCall(id, retailMediaExternalv1AddRemoveKeywordsModelRequest, null);
-        Type localVarReturnType = new TypeToken<RetailMediaExternalv1ResourceOutcome>(){}.getType();
+    public ApiResponse<ResourceOutcome> addRemoveKeywordsWithHttpInfo(String id, AddRemoveKeywordsModelRequest addRemoveKeywordsModelRequest) throws ApiException {
+        okhttp3.Call localVarCall = addRemoveKeywordsValidateBeforeCall(id, addRemoveKeywordsModelRequest, null);
+        Type localVarReturnType = new TypeToken<ResourceOutcome>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Add or Remove keywords from the associated line item in bulk
-     * @param id Long external id of the associated line item (required)
-     * @param retailMediaExternalv1AddRemoveKeywordsModelRequest Object containing keywords to be added or removed (optional)
+     * Add or Remove keywords from the line item in bulk
+     * @param id ID of the line item (required)
+     * @param addRemoveKeywordsModelRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -259,10 +257,10 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addRemoveKeywordsAsync(String id, RetailMediaExternalv1AddRemoveKeywordsModelRequest retailMediaExternalv1AddRemoveKeywordsModelRequest, final ApiCallback<RetailMediaExternalv1ResourceOutcome> _callback) throws ApiException {
+    public okhttp3.Call addRemoveKeywordsAsync(String id, AddRemoveKeywordsModelRequest addRemoveKeywordsModelRequest, final ApiCallback<ResourceOutcome> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = addRemoveKeywordsValidateBeforeCall(id, retailMediaExternalv1AddRemoveKeywordsModelRequest, _callback);
-        Type localVarReturnType = new TypeToken<RetailMediaExternalv1ResourceOutcome>(){}.getType();
+        okhttp3.Call localVarCall = addRemoveKeywordsValidateBeforeCall(id, addRemoveKeywordsModelRequest, _callback);
+        Type localVarReturnType = new TypeToken<ResourceOutcome>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -397,7 +395,7 @@ public class CampaignApi {
     }
     /**
      * Build call for fetchKeywords
-     * @param id Long external id of the associated line item (required)
+     * @param id ID of the line item (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -435,9 +433,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -469,8 +465,8 @@ public class CampaignApi {
     /**
      * 
      * Fetch keywords associated with the specified line item
-     * @param id Long external id of the associated line item (required)
-     * @return RetailMediaExternalv1KeywordsModelResponse
+     * @param id ID of the line item (required)
+     * @return KeywordsModelResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -479,16 +475,16 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public RetailMediaExternalv1KeywordsModelResponse fetchKeywords(String id) throws ApiException {
-        ApiResponse<RetailMediaExternalv1KeywordsModelResponse> localVarResp = fetchKeywordsWithHttpInfo(id);
+    public KeywordsModelResponse fetchKeywords(String id) throws ApiException {
+        ApiResponse<KeywordsModelResponse> localVarResp = fetchKeywordsWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Fetch keywords associated with the specified line item
-     * @param id Long external id of the associated line item (required)
-     * @return ApiResponse&lt;RetailMediaExternalv1KeywordsModelResponse&gt;
+     * @param id ID of the line item (required)
+     * @return ApiResponse&lt;KeywordsModelResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -497,16 +493,16 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RetailMediaExternalv1KeywordsModelResponse> fetchKeywordsWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<KeywordsModelResponse> fetchKeywordsWithHttpInfo(String id) throws ApiException {
         okhttp3.Call localVarCall = fetchKeywordsValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<RetailMediaExternalv1KeywordsModelResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<KeywordsModelResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
      * Fetch keywords associated with the specified line item
-     * @param id Long external id of the associated line item (required)
+     * @param id ID of the line item (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -517,16 +513,16 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call fetchKeywordsAsync(String id, final ApiCallback<RetailMediaExternalv1KeywordsModelResponse> _callback) throws ApiException {
+    public okhttp3.Call fetchKeywordsAsync(String id, final ApiCallback<KeywordsModelResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = fetchKeywordsValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<RetailMediaExternalv1KeywordsModelResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<KeywordsModelResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for fetchProposal
-     * @param id The external id of a line item. (required)
+     * @param id ID of the line item (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -535,7 +531,6 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
@@ -566,9 +561,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -599,49 +592,47 @@ public class CampaignApi {
 
     /**
      * 
-     * Fetch the status of a proposal to modify a Preferred Deal Line Item.
-     * @param id The external id of a line item. (required)
-     * @return RetailMediaExternalv1ProposalStatusModelResponse
+     * Includes the state of the proposal, the status of the booking and approval, as well as any comments explaining why it might have been rejected.
+     * @param id ID of the line item (required)
+     * @return ProposalStatusModelResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public RetailMediaExternalv1ProposalStatusModelResponse fetchProposal(String id) throws ApiException {
-        ApiResponse<RetailMediaExternalv1ProposalStatusModelResponse> localVarResp = fetchProposalWithHttpInfo(id);
+    public ProposalStatusModelResponse fetchProposal(String id) throws ApiException {
+        ApiResponse<ProposalStatusModelResponse> localVarResp = fetchProposalWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Fetch the status of a proposal to modify a Preferred Deal Line Item.
-     * @param id The external id of a line item. (required)
-     * @return ApiResponse&lt;RetailMediaExternalv1ProposalStatusModelResponse&gt;
+     * Includes the state of the proposal, the status of the booking and approval, as well as any comments explaining why it might have been rejected.
+     * @param id ID of the line item (required)
+     * @return ApiResponse&lt;ProposalStatusModelResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RetailMediaExternalv1ProposalStatusModelResponse> fetchProposalWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<ProposalStatusModelResponse> fetchProposalWithHttpInfo(String id) throws ApiException {
         okhttp3.Call localVarCall = fetchProposalValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<RetailMediaExternalv1ProposalStatusModelResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProposalStatusModelResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Fetch the status of a proposal to modify a Preferred Deal Line Item.
-     * @param id The external id of a line item. (required)
+     * Includes the state of the proposal, the status of the booking and approval, as well as any comments explaining why it might have been rejected.
+     * @param id ID of the line item (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -650,14 +641,13 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call fetchProposalAsync(String id, final ApiCallback<RetailMediaExternalv1ProposalStatusModelResponse> _callback) throws ApiException {
+    public okhttp3.Call fetchProposalAsync(String id, final ApiCallback<ProposalStatusModelResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = fetchProposalValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<RetailMediaExternalv1ProposalStatusModelResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProposalStatusModelResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -8766,8 +8756,8 @@ public class CampaignApi {
     }
     /**
      * Build call for setKeywordBids
-     * @param id Long external id of the associated line item (required)
-     * @param retailMediaExternalv1SetBidsModelRequest Object containing a list of bid overrides for associated keywords (optional)
+     * @param id ID of the line item (required)
+     * @param setBidsModelRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -8778,7 +8768,7 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setKeywordBidsCall(String id, RetailMediaExternalv1SetBidsModelRequest retailMediaExternalv1SetBidsModelRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call setKeywordBidsCall(String id, SetBidsModelRequest setBidsModelRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8792,7 +8782,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = retailMediaExternalv1SetBidsModelRequest;
+        Object localVarPostBody = setBidsModelRequest;
 
         // create path and map variables
         String localVarPath = "/2023-10/retail-media/line-items/{id}/keywords/set-bid"
@@ -8805,9 +8795,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -8827,22 +8815,22 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setKeywordBidsValidateBeforeCall(String id, RetailMediaExternalv1SetBidsModelRequest retailMediaExternalv1SetBidsModelRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call setKeywordBidsValidateBeforeCall(String id, SetBidsModelRequest setBidsModelRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling setKeywordBids(Async)");
         }
 
-        return setKeywordBidsCall(id, retailMediaExternalv1SetBidsModelRequest, _callback);
+        return setKeywordBidsCall(id, setBidsModelRequest, _callback);
 
     }
 
     /**
      * 
      * Set bid overrides for associated keywords to the given line item in bulk
-     * @param id Long external id of the associated line item (required)
-     * @param retailMediaExternalv1SetBidsModelRequest Object containing a list of bid overrides for associated keywords (optional)
-     * @return RetailMediaExternalv1ResourceOutcome
+     * @param id ID of the line item (required)
+     * @param setBidsModelRequest  (optional)
+     * @return ResourceOutcome
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -8851,17 +8839,17 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public RetailMediaExternalv1ResourceOutcome setKeywordBids(String id, RetailMediaExternalv1SetBidsModelRequest retailMediaExternalv1SetBidsModelRequest) throws ApiException {
-        ApiResponse<RetailMediaExternalv1ResourceOutcome> localVarResp = setKeywordBidsWithHttpInfo(id, retailMediaExternalv1SetBidsModelRequest);
+    public ResourceOutcome setKeywordBids(String id, SetBidsModelRequest setBidsModelRequest) throws ApiException {
+        ApiResponse<ResourceOutcome> localVarResp = setKeywordBidsWithHttpInfo(id, setBidsModelRequest);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Set bid overrides for associated keywords to the given line item in bulk
-     * @param id Long external id of the associated line item (required)
-     * @param retailMediaExternalv1SetBidsModelRequest Object containing a list of bid overrides for associated keywords (optional)
-     * @return ApiResponse&lt;RetailMediaExternalv1ResourceOutcome&gt;
+     * @param id ID of the line item (required)
+     * @param setBidsModelRequest  (optional)
+     * @return ApiResponse&lt;ResourceOutcome&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -8870,17 +8858,17 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RetailMediaExternalv1ResourceOutcome> setKeywordBidsWithHttpInfo(String id, RetailMediaExternalv1SetBidsModelRequest retailMediaExternalv1SetBidsModelRequest) throws ApiException {
-        okhttp3.Call localVarCall = setKeywordBidsValidateBeforeCall(id, retailMediaExternalv1SetBidsModelRequest, null);
-        Type localVarReturnType = new TypeToken<RetailMediaExternalv1ResourceOutcome>(){}.getType();
+    public ApiResponse<ResourceOutcome> setKeywordBidsWithHttpInfo(String id, SetBidsModelRequest setBidsModelRequest) throws ApiException {
+        okhttp3.Call localVarCall = setKeywordBidsValidateBeforeCall(id, setBidsModelRequest, null);
+        Type localVarReturnType = new TypeToken<ResourceOutcome>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
      * Set bid overrides for associated keywords to the given line item in bulk
-     * @param id Long external id of the associated line item (required)
-     * @param retailMediaExternalv1SetBidsModelRequest Object containing a list of bid overrides for associated keywords (optional)
+     * @param id ID of the line item (required)
+     * @param setBidsModelRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -8891,16 +8879,16 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call setKeywordBidsAsync(String id, RetailMediaExternalv1SetBidsModelRequest retailMediaExternalv1SetBidsModelRequest, final ApiCallback<RetailMediaExternalv1ResourceOutcome> _callback) throws ApiException {
+    public okhttp3.Call setKeywordBidsAsync(String id, SetBidsModelRequest setBidsModelRequest, final ApiCallback<ResourceOutcome> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = setKeywordBidsValidateBeforeCall(id, retailMediaExternalv1SetBidsModelRequest, _callback);
-        Type localVarReturnType = new TypeToken<RetailMediaExternalv1ResourceOutcome>(){}.getType();
+        okhttp3.Call localVarCall = setKeywordBidsValidateBeforeCall(id, setBidsModelRequest, _callback);
+        Type localVarReturnType = new TypeToken<ResourceOutcome>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for submitProposal
-     * @param id The external id of a line item. (required)
+     * @param id ID of the line item (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -8909,7 +8897,6 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
@@ -8940,9 +8927,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -8973,49 +8958,47 @@ public class CampaignApi {
 
     /**
      * 
-     * Submit a proposal to modify a Preferred Deal Line Item for review.
-     * @param id The external id of a line item. (required)
-     * @return RetailMediaExternalv1ProposalStatusModelResponse
+     * Only the components of the Line Item that are in a valid state will be reviewed.
+     * @param id ID of the line item (required)
+     * @return ProposalStatusModelResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public RetailMediaExternalv1ProposalStatusModelResponse submitProposal(String id) throws ApiException {
-        ApiResponse<RetailMediaExternalv1ProposalStatusModelResponse> localVarResp = submitProposalWithHttpInfo(id);
+    public ProposalStatusModelResponse submitProposal(String id) throws ApiException {
+        ApiResponse<ProposalStatusModelResponse> localVarResp = submitProposalWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Submit a proposal to modify a Preferred Deal Line Item for review.
-     * @param id The external id of a line item. (required)
-     * @return ApiResponse&lt;RetailMediaExternalv1ProposalStatusModelResponse&gt;
+     * Only the components of the Line Item that are in a valid state will be reviewed.
+     * @param id ID of the line item (required)
+     * @return ApiResponse&lt;ProposalStatusModelResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RetailMediaExternalv1ProposalStatusModelResponse> submitProposalWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<ProposalStatusModelResponse> submitProposalWithHttpInfo(String id) throws ApiException {
         okhttp3.Call localVarCall = submitProposalValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<RetailMediaExternalv1ProposalStatusModelResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProposalStatusModelResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Submit a proposal to modify a Preferred Deal Line Item for review.
-     * @param id The external id of a line item. (required)
+     * Only the components of the Line Item that are in a valid state will be reviewed.
+     * @param id ID of the line item (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -9024,14 +9007,13 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call submitProposalAsync(String id, final ApiCallback<RetailMediaExternalv1ProposalStatusModelResponse> _callback) throws ApiException {
+    public okhttp3.Call submitProposalAsync(String id, final ApiCallback<ProposalStatusModelResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = submitProposalValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<RetailMediaExternalv1ProposalStatusModelResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProposalStatusModelResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

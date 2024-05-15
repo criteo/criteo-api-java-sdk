@@ -27,10 +27,10 @@ Attributed Transactions report body request
 
 | Name | Value |
 |---- | -----|
+| NONE | &quot;none&quot; |
 | _7D | &quot;7D&quot; |
 | _14D | &quot;14D&quot; |
 | _30D | &quot;30D&quot; |
-| NONE | &quot;none&quot; |
 
 
 
@@ -38,11 +38,11 @@ Attributed Transactions report body request
 
 | Name | Value |
 |---- | -----|
+| NONE | &quot;none&quot; |
 | _1D | &quot;1D&quot; |
 | _7D | &quot;7D&quot; |
 | _14D | &quot;14D&quot; |
 | _30D | &quot;30D&quot; |
-| NONE | &quot;none&quot; |
 
 
 
@@ -50,6 +50,7 @@ Attributed Transactions report body request
 
 | Name | Value |
 |---- | -----|
+| ALL | &quot;all&quot; |
 | SPONSOREDPRODUCTS | &quot;sponsoredProducts&quot; |
 | ONSITEDISPLAYS | &quot;onSiteDisplays&quot; |
 
@@ -59,6 +60,7 @@ Attributed Transactions report body request
 
 | Name | Value |
 |---- | -----|
+| ALL | &quot;all&quot; |
 | OFFLINE | &quot;offline&quot; |
 | ONLINE | &quot;online&quot; |
 
@@ -68,14 +70,14 @@ Attributed Transactions report body request
 
 | Name | Value |
 |---- | -----|
-| CAMPAIGNNAME | &quot;campaignName&quot; |
-| CAMPAIGNID | &quot;campaignId&quot; |
-| LINEITEMID | &quot;lineItemId&quot; |
 | PURCHASEDDATE | &quot;purchasedDate&quot; |
 | PURCHASEDHOUR | &quot;purchasedHour&quot; |
 | ADVDATE | &quot;advDate&quot; |
 | ADVHOUR | &quot;advHour&quot; |
 | DAYSDIFFERENCE | &quot;daysDifference&quot; |
+| CAMPAIGNID | &quot;campaignId&quot; |
+| CAMPAIGNNAME | &quot;campaignName&quot; |
+| LINEITEMID | &quot;lineItemId&quot; |
 | LINEITEMNAME | &quot;lineItemName&quot; |
 | ADVPRODUCTID | &quot;advProductId&quot; |
 | ADVPRODUCTGTIN | &quot;advProductGtin&quot; |
@@ -90,8 +92,8 @@ Attributed Transactions report body request
 | ADVENGAGEMENT | &quot;advEngagement&quot; |
 | ADVTOPURCHASEDPRODUCTRELATIONSHIP | &quot;advToPurchasedProductRelationship&quot; |
 | SALESCHANNEL | &quot;salesChannel&quot; |
-| PAGETYPENAME | &quot;pageTypeName&quot; |
 | RETAILERNAME | &quot;retailerName&quot; |
+| PAGETYPENAME | &quot;pageTypeName&quot; |
 | KEYWORD | &quot;keyword&quot; |
 | ATTRIBUTIONWINDOW | &quot;attributionWindow&quot; |
 

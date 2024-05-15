@@ -167,11 +167,11 @@ public class RetailMediaAccount {
 
   public static final String SERIALIZED_NAME_COUNTRY_IDS = "countryIds";
   @SerializedName(SERIALIZED_NAME_COUNTRY_IDS)
-  private List<Integer> countryIds = null;
+  private List<String> countryIds = null;
 
   public static final String SERIALIZED_NAME_CURRENCY_ID = "currencyId";
   @SerializedName(SERIALIZED_NAME_CURRENCY_ID)
-  private Integer currencyId;
+  private String currencyId;
 
   public static final String SERIALIZED_NAME_PARENT_ACCOUNT_LABEL = "parentAccountLabel";
   @SerializedName(SERIALIZED_NAME_PARENT_ACCOUNT_LABEL)
@@ -272,13 +272,13 @@ public class RetailMediaAccount {
   }
 
 
-  public RetailMediaAccount countryIds(List<Integer> countryIds) {
+  public RetailMediaAccount countryIds(List<String> countryIds) {
     
     this.countryIds = countryIds;
     return this;
   }
 
-  public RetailMediaAccount addCountryIdsItem(Integer countryIdsItem) {
+  public RetailMediaAccount addCountryIdsItem(String countryIdsItem) {
     if (this.countryIds == null) {
       this.countryIds = null;
     }
@@ -292,17 +292,17 @@ public class RetailMediaAccount {
   **/
   @javax.annotation.Nullable
 
-  public List<Integer> getCountryIds() {
+  public List<String> getCountryIds() {
     return countryIds;
   }
 
 
-  public void setCountryIds(List<Integer> countryIds) {
+  public void setCountryIds(List<String> countryIds) {
     this.countryIds = countryIds;
   }
 
 
-  public RetailMediaAccount currencyId(Integer currencyId) {
+  public RetailMediaAccount currencyId(String currencyId) {
     
     this.currencyId = currencyId;
     return this;
@@ -314,12 +314,12 @@ public class RetailMediaAccount {
   **/
   @javax.annotation.Nullable
 
-  public Integer getCurrencyId() {
+  public String getCurrencyId() {
     return currencyId;
   }
 
 
-  public void setCurrencyId(Integer currencyId) {
+  public void setCurrencyId(String currencyId) {
     this.currencyId = currencyId;
   }
 
@@ -486,6 +486,9 @@ public class RetailMediaAccount {
       // ensure the optional json data is an array if present
       if (jsonObj.get("countryIds") != null && !jsonObj.get("countryIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `countryIds` to be an array in the JSON string but got `%s`", jsonObj.get("countryIds").toString()));
+      }
+      if ((jsonObj.get("currencyId") != null && !jsonObj.get("currencyId").isJsonNull()) && !jsonObj.get("currencyId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `currencyId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currencyId").toString()));
       }
       if ((jsonObj.get("parentAccountLabel") != null && !jsonObj.get("parentAccountLabel").isJsonNull()) && !jsonObj.get("parentAccountLabel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `parentAccountLabel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("parentAccountLabel").toString()));

@@ -9,11 +9,11 @@ Async Accounts report body request
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**accountIds** | **List&lt;String&gt;** | Account Ids to report on |  |
-|**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report, if no dimensions/metrics are provided, falls back to summary reportType |  [optional] |
 |**aggregationLevel** | [**AggregationLevelEnum**](#AggregationLevelEnum) | Level of aggregation, if no dimensions/metrics are provided, falls back to campaign aggregationLevel |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays |  [optional] |
 |**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
 |**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
+|**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report, if no dimensions/metrics are provided, falls back to summary reportType |  [optional] |
 |**clickAttributionWindow** | [**ClickAttributionWindowEnum**](#ClickAttributionWindowEnum) | Click attribution window |  [optional] |
 |**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) | View attribution window |  [optional] |
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  [optional] |
@@ -21,20 +21,6 @@ Async Accounts report body request
 |**startDate** | **OffsetDateTime** | Start date |  |
 |**endDate** | **OffsetDateTime** | End date |  |
 |**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
-
-
-
-## Enum: ReportTypeEnum
-
-| Name | Value |
-|---- | -----|
-| SUMMARY | &quot;summary&quot; |
-| PAGETYPE | &quot;pageType&quot; |
-| KEYWORD | &quot;keyword&quot; |
-| PRODUCTCATEGORY | &quot;productCategory&quot; |
-| PRODUCT | &quot;product&quot; |
-| ENVIRONMENT | &quot;environment&quot; |
-| SERVEDCATEGORY | &quot;servedCategory&quot; |
 
 
 
@@ -51,6 +37,7 @@ Async Accounts report body request
 
 | Name | Value |
 |---- | -----|
+| ALL | &quot;all&quot; |
 | SPONSOREDPRODUCTS | &quot;sponsoredProducts&quot; |
 | ONSITEDISPLAYS | &quot;onSiteDisplays&quot; |
 
@@ -60,6 +47,7 @@ Async Accounts report body request
 
 | Name | Value |
 |---- | -----|
+| ALL | &quot;all&quot; |
 | OFFLINE | &quot;offline&quot; |
 | ONLINE | &quot;online&quot; |
 
@@ -76,14 +64,29 @@ Async Accounts report body request
 
 
 
+## Enum: ReportTypeEnum
+
+| Name | Value |
+|---- | -----|
+| SUMMARY | &quot;summary&quot; |
+| PAGETYPE | &quot;pageType&quot; |
+| KEYWORD | &quot;keyword&quot; |
+| PRODUCTCATEGORY | &quot;productCategory&quot; |
+| PRODUCT | &quot;product&quot; |
+| ATTRIBUTEDTRANSACTIONS | &quot;attributedTransactions&quot; |
+| ENVIRONMENT | &quot;environment&quot; |
+| SERVEDCATEGORY | &quot;servedCategory&quot; |
+
+
+
 ## Enum: ClickAttributionWindowEnum
 
 | Name | Value |
 |---- | -----|
+| NONE | &quot;none&quot; |
 | _7D | &quot;7D&quot; |
 | _14D | &quot;14D&quot; |
 | _30D | &quot;30D&quot; |
-| NONE | &quot;none&quot; |
 
 
 
@@ -91,11 +94,11 @@ Async Accounts report body request
 
 | Name | Value |
 |---- | -----|
+| NONE | &quot;none&quot; |
 | _1D | &quot;1D&quot; |
 | _7D | &quot;7D&quot; |
 | _14D | &quot;14D&quot; |
 | _30D | &quot;30D&quot; |
-| NONE | &quot;none&quot; |
 
 
 
@@ -110,19 +113,20 @@ Async Accounts report body request
 | CAMPAIGNID | &quot;campaignId&quot; |
 | CAMPAIGNNAME | &quot;campaignName&quot; |
 | CAMPAIGNTYPENAME | &quot;campaignTypeName&quot; |
-| ADVPRODUCTCATEGORY | &quot;advProductCategory&quot; |
-| ADVPRODUCTID | &quot;advProductId&quot; |
-| ADVPRODUCTNAME | &quot;advProductName&quot; |
-| BRANDID | &quot;brandId&quot; |
-| BRANDNAME | &quot;brandName&quot; |
 | LINEITEMID | &quot;lineItemId&quot; |
 | LINEITEMNAME | &quot;lineItemName&quot; |
 | RETAILERID | &quot;retailerId&quot; |
 | RETAILERNAME | &quot;retailerName&quot; |
-| KEYWORD | &quot;keyword&quot; |
-| PAGETYPENAME | &quot;pageTypeName&quot; |
+| BRANDID | &quot;brandId&quot; |
+| BRANDNAME | &quot;brandName&quot; |
+| ADVPRODUCTCATEGORY | &quot;advProductCategory&quot; |
+| ADVPRODUCTID | &quot;advProductId&quot; |
+| ADVPRODUCTNAME | &quot;advProductName&quot; |
 | SALESCHANNEL | &quot;salesChannel&quot; |
 | ENVIRONMENT | &quot;environment&quot; |
+| PAGETYPENAME | &quot;pageTypeName&quot; |
+| KEYWORD | &quot;keyword&quot; |
+| SEARCHTERM | &quot;searchTerm&quot; |
 
 
 
@@ -143,6 +147,14 @@ Async Accounts report body request
 | CPO | &quot;cpo&quot; |
 | CPM | &quot;cpm&quot; |
 | ROAS | &quot;roas&quot; |
+| VIDEOVIEWS | &quot;videoViews&quot; |
+| VIDEOSSTARTED | &quot;videosStarted&quot; |
+| VIDEOSPLAYEDTO25 | &quot;videosPlayedTo25&quot; |
+| VIDEOSPLAYEDTO50 | &quot;videosPlayedTo50&quot; |
+| VIDEOSPLAYEDTO75 | &quot;videosPlayedTo75&quot; |
+| VIDEOSPLAYEDTO100 | &quot;videosPlayedTo100&quot; |
+| VIDEOPLAYINGRATE | &quot;videoPlayingRate&quot; |
+| VIDEOCOMPLETIONRATE | &quot;videoCompletionRate&quot; |
 | UNIQUEVISITORS | &quot;uniqueVisitors&quot; |
 | FREQUENCY | &quot;frequency&quot; |
 
