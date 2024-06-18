@@ -3684,7 +3684,6 @@ public class CampaignApi {
      * 
      * Output the indicated catalog. Catalogs are only available for retrieval when their associated status request  is at a Success status.  Produces application/x-json-stream of v2021_07 CatalogProduct json objects.
      * @param catalogId A catalog ID returned from an account catalog request. (required)
-     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3693,16 +3692,15 @@ public class CampaignApi {
         <tr><td> 400 </td><td> The indicated catalog is not available for retrieval, wait for a success status. </td><td>  -  </td></tr>
      </table>
      */
-    public File getApiV1ExternalCatalogOutputByCatalogId(String catalogId) throws ApiException {
-        ApiResponse<File> localVarResp = getApiV1ExternalCatalogOutputByCatalogIdWithHttpInfo(catalogId);
-        return localVarResp.getData();
+    public void getApiV1ExternalCatalogOutputByCatalogId(String catalogId) throws ApiException {
+        getApiV1ExternalCatalogOutputByCatalogIdWithHttpInfo(catalogId);
     }
 
     /**
      * 
      * Output the indicated catalog. Catalogs are only available for retrieval when their associated status request  is at a Success status.  Produces application/x-json-stream of v2021_07 CatalogProduct json objects.
      * @param catalogId A catalog ID returned from an account catalog request. (required)
-     * @return ApiResponse&lt;File&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3711,10 +3709,9 @@ public class CampaignApi {
         <tr><td> 400 </td><td> The indicated catalog is not available for retrieval, wait for a success status. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<File> getApiV1ExternalCatalogOutputByCatalogIdWithHttpInfo(String catalogId) throws ApiException {
+    public ApiResponse<Void> getApiV1ExternalCatalogOutputByCatalogIdWithHttpInfo(String catalogId) throws ApiException {
         okhttp3.Call localVarCall = getApiV1ExternalCatalogOutputByCatalogIdValidateBeforeCall(catalogId, null);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -3731,11 +3728,10 @@ public class CampaignApi {
         <tr><td> 400 </td><td> The indicated catalog is not available for retrieval, wait for a success status. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApiV1ExternalCatalogOutputByCatalogIdAsync(String catalogId, final ApiCallback<File> _callback) throws ApiException {
+    public okhttp3.Call getApiV1ExternalCatalogOutputByCatalogIdAsync(String catalogId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getApiV1ExternalCatalogOutputByCatalogIdValidateBeforeCall(catalogId, _callback);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**

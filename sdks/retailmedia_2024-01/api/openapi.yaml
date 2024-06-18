@@ -915,10 +915,7 @@ paths:
       responses:
         "200":
           content:
-            application/x-json-stream:
-              schema:
-                format: binary
-                type: string
+            application/x-json-stream: {}
             application/json: {}
           description: Catalog download initiated.
         "400":
