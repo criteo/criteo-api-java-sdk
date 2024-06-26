@@ -2551,7 +2551,7 @@ public class Example {
 
 ## getApiV1ExternalCatalogOutputByCatalogId
 
-> getApiV1ExternalCatalogOutputByCatalogId(catalogId)
+> File getApiV1ExternalCatalogOutputByCatalogId(catalogId)
 
 
 
@@ -2598,7 +2598,8 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String catalogId = "catalogId_example"; // String | A catalog ID returned from an account catalog request.
         try {
-            apiInstance.getApiV1ExternalCatalogOutputByCatalogId(catalogId);
+            File result = apiInstance.getApiV1ExternalCatalogOutputByCatalogId(catalogId);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getApiV1ExternalCatalogOutputByCatalogId");
             System.err.println("Status code: " + e.getCode());
@@ -2619,7 +2620,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**File**](File.md)
 
 ### Authorization
 
