@@ -46,7 +46,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2024_04.JSON;
 
 /**
- * A class that represents a ValueType in a guild compliant way
+ * A top-level object that encapsulates a Criteo API response for a single value
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ApplicationSummaryModelResource {

@@ -140,7 +140,7 @@ public class SkuSlimDataPreview {
    * The category Id.
    * @return categoryId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getCategoryId() {
     return categoryId;
@@ -550,6 +550,7 @@ public class SkuSlimDataPreview {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("categoryId");
     openapiRequiredFields.add("globalBrandId");
     openapiRequiredFields.add("globalBrandName");
     openapiRequiredFields.add("price");
@@ -579,7 +580,7 @@ public class SkuSlimDataPreview {
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("categoryId") != null && !jsonObj.get("categoryId").isJsonNull()) && !jsonObj.get("categoryId").isJsonPrimitive()) {
+      if (!jsonObj.get("categoryId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `categoryId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("categoryId").toString()));
       }
       if ((jsonObj.get("globalCategoryId") != null && !jsonObj.get("globalCategoryId").isJsonNull()) && !jsonObj.get("globalCategoryId").isJsonPrimitive()) {

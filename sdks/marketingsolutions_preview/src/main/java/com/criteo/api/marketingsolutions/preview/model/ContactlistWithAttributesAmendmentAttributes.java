@@ -116,7 +116,9 @@ public class ContactlistWithAttributesAmendmentAttributes {
     
     GUM("gum"),
     
-    CUSTOMERID("customerid");
+    CUSTOMERID("customerid"),
+    
+    PHONENUMBER("phoneNumber");
 
     private String value;
 

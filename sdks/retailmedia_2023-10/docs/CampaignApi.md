@@ -10,7 +10,6 @@ All URIs are relative to *https://api.criteo.com*
 | [**fetchProposal**](CampaignApi.md#fetchProposal) | **GET** /2023-10/retail-media/preferred-deal-line-items/{id}/proposal |  |
 | [**getApi202110ExternalAccountCreativesByAccountId**](CampaignApi.md#getApi202110ExternalAccountCreativesByAccountId) | **GET** /2023-10/retail-media/accounts/{account-id}/creatives |  |
 | [**getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId**](CampaignApi.md#getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId) | **GET** /2023-10/retail-media/auction-line-items/{line-item-id}/targeting/keywords |  |
-| [**getApi202110ExternalBalanceCampaignsByBalanceId**](CampaignApi.md#getApi202110ExternalBalanceCampaignsByBalanceId) | **GET** /2023-10/retail-media/balances/{balance-id}/campaigns |  |
 | [**getApi202110ExternalCampaignPreferredLineItemsByCampaignId**](CampaignApi.md#getApi202110ExternalCampaignPreferredLineItemsByCampaignId) | **GET** /2023-10/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
 | [**getApi202110ExternalLineItemProductsByLineItemId**](CampaignApi.md#getApi202110ExternalLineItemProductsByLineItemId) | **GET** /2023-10/retail-media/line-items/{line-item-id}/products |  |
 | [**getApi202110ExternalPreferredLineItemByLineItemId**](CampaignApi.md#getApi202110ExternalPreferredLineItemByLineItemId) | **GET** /2023-10/retail-media/preferred-line-items/{line-item-id} |  |
@@ -26,18 +25,14 @@ All URIs are relative to *https://api.criteo.com*
 | [**getApi202301ExternalAccountCampaignsByAccountId**](CampaignApi.md#getApi202301ExternalAccountCampaignsByAccountId) | **GET** /2023-10/retail-media/accounts/{account-id}/campaigns |  |
 | [**getApi202301ExternalCampaignByCampaignId**](CampaignApi.md#getApi202301ExternalCampaignByCampaignId) | **GET** /2023-10/retail-media/campaigns/{campaignId} |  |
 | [**getApi202301ExternalLineItemBidMultipliersByLineItemId**](CampaignApi.md#getApi202301ExternalLineItemBidMultipliersByLineItemId) | **GET** /2023-10/retail-media/line-items/{line-item-id}/bid-multipliers |  |
-| [**getApiV1ExternalAccountBalancesByAccountId**](CampaignApi.md#getApiV1ExternalAccountBalancesByAccountId) | **GET** /2023-10/retail-media/accounts/{account-id}/balances |  |
 | [**getApiV1ExternalAccountBrandsByAccountId**](CampaignApi.md#getApiV1ExternalAccountBrandsByAccountId) | **GET** /2023-10/retail-media/accounts/{accountId}/brands |  |
-| [**getApiV1ExternalAccountByAccountIdAndBalanceId**](CampaignApi.md#getApiV1ExternalAccountByAccountIdAndBalanceId) | **GET** /2023-10/retail-media/accounts/{account-id}/balances/{balanceId} |  |
 | [**getApiV1ExternalAccountRetailersByAccountId**](CampaignApi.md#getApiV1ExternalAccountRetailersByAccountId) | **GET** /2023-10/retail-media/accounts/{accountId}/retailers |  |
-| [**getApiV1ExternalAccounts**](CampaignApi.md#getApiV1ExternalAccounts) | **GET** /2023-10/retail-media/accounts |  |
 | [**getApiV1ExternalCatalogOutputByCatalogId**](CampaignApi.md#getApiV1ExternalCatalogOutputByCatalogId) | **GET** /2023-10/retail-media/catalogs/{catalogId}/output |  |
 | [**getApiV1ExternalCatalogStatusByCatalogId**](CampaignApi.md#getApiV1ExternalCatalogStatusByCatalogId) | **GET** /2023-10/retail-media/catalogs/{catalogId}/status |  |
 | [**getApiV2ExternalAccountLineItemsByAccountId**](CampaignApi.md#getApiV2ExternalAccountLineItemsByAccountId) | **GET** /2023-10/retail-media/accounts/{account-id}/line-items |  |
 | [**getApiV2ExternalAuctionLineItemByLineItemId**](CampaignApi.md#getApiV2ExternalAuctionLineItemByLineItemId) | **GET** /2023-10/retail-media/auction-line-items/{line-item-id} |  |
 | [**getApiV2ExternalCampaignAuctionLineItemsByCampaignId**](CampaignApi.md#getApiV2ExternalCampaignAuctionLineItemsByCampaignId) | **GET** /2023-10/retail-media/campaigns/{campaign-id}/auction-line-items |  |
 | [**getApiV2ExternalLineItemByLineItemId**](CampaignApi.md#getApiV2ExternalLineItemByLineItemId) | **GET** /2023-10/retail-media/line-items/{line-item-id} |  |
-| [**patchApiV1ExternalAccountByAccountIdAndBalanceId**](CampaignApi.md#patchApiV1ExternalAccountByAccountIdAndBalanceId) | **PATCH** /2023-10/retail-media/accounts/{account-id}/balances/{balanceId} |  |
 | [**postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId**](CampaignApi.md#postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId) | **POST** /2023-10/retail-media/auction-line-items/{line-item-id}/targeting/keywords/append |  |
 | [**postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId**](CampaignApi.md#postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId) | **POST** /2023-10/retail-media/auction-line-items/{line-item-id}/targeting/keywords/delete |  |
 | [**postApi202110ExternalBalanceCampaignsAppendByBalanceId**](CampaignApi.md#postApi202110ExternalBalanceCampaignsAppendByBalanceId) | **POST** /2023-10/retail-media/balances/{balance-id}/campaigns/append |  |
@@ -56,10 +51,7 @@ All URIs are relative to *https://api.criteo.com*
 | [**postApi202210ExternalAccountCreativesByAccountId**](CampaignApi.md#postApi202210ExternalAccountCreativesByAccountId) | **POST** /2023-10/retail-media/accounts/{account-id}/creatives |  |
 | [**postApi202210ExternalAccountCreativesSearchByAccountId**](CampaignApi.md#postApi202210ExternalAccountCreativesSearchByAccountId) | **POST** /2023-10/retail-media/accounts/{account-id}/creatives/search |  |
 | [**postApi202301ExternalAccountCampaignsByAccountId**](CampaignApi.md#postApi202301ExternalAccountCampaignsByAccountId) | **POST** /2023-10/retail-media/accounts/{account-id}/campaigns |  |
-| [**postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId**](CampaignApi.md#postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId) | **POST** /2023-10/retail-media/accounts/{account-id}/balances/{balanceId}/add-funds |  |
-| [**postApiV1ExternalAccountBalancesByAccountId**](CampaignApi.md#postApiV1ExternalAccountBalancesByAccountId) | **POST** /2023-10/retail-media/accounts/{account-id}/balances |  |
 | [**postApiV1ExternalAccountCatalogsByAccountId**](CampaignApi.md#postApiV1ExternalAccountCatalogsByAccountId) | **POST** /2023-10/retail-media/accounts/{accountId}/catalogs |  |
-| [**postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId**](CampaignApi.md#postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId) | **POST** /2023-10/retail-media/accounts/{account-id}/balances/{balanceId}/change-dates |  |
 | [**postApiV2ExternalCampaignAuctionLineItemsByCampaignId**](CampaignApi.md#postApiV2ExternalCampaignAuctionLineItemsByCampaignId) | **POST** /2023-10/retail-media/campaigns/{campaign-id}/auction-line-items |  |
 | [**putApi202110ExternalPreferredLineItemByLineItemId**](CampaignApi.md#putApi202110ExternalPreferredLineItemByLineItemId) | **PUT** /2023-10/retail-media/preferred-line-items/{line-item-id} |  |
 | [**putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId) | **PUT** /2023-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket |  |
@@ -613,101 +605,6 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
 | **400** | Bad Request |  -  |
-
-
-## getApi202110ExternalBalanceCampaignsByBalanceId
-
-> BalanceCampaign202110PagedListResponse getApi202110ExternalBalanceCampaignsByBalanceId(balanceId, limitToId, pageIndex, pageSize)
-
-
-
-Gets page of campaigns for the given balanceId
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2023_10;
-
-import com.criteo.api.retailmedia.v2023_10.ApiClient;
-import com.criteo.api.retailmedia.v2023_10.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2023_10.ApiException;
-import com.criteo.api.retailmedia.v2023_10.Configuration;
-import com.criteo.api.retailmedia.v2023_10.auth.*;
-import com.criteo.api.retailmedia.v2023_10.model.*;
-import com.criteo.api.retailmedia.v2023_10.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String balanceId = "balanceId_example"; // String | The balance to get campaigns from
-        List<String> limitToId = Arrays.asList(); // List<String> | The ids that you would like to limit your result set to
-        Integer pageIndex = 56; // Integer | The 0 indexed page index you would like to receive given the page size
-        Integer pageSize = 56; // Integer | The maximum number of items you would like to receive in this request
-        try {
-            BalanceCampaign202110PagedListResponse result = apiInstance.getApi202110ExternalBalanceCampaignsByBalanceId(balanceId, limitToId, pageIndex, pageSize);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getApi202110ExternalBalanceCampaignsByBalanceId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **balanceId** | **String**| The balance to get campaigns from | |
-| **limitToId** | [**List&lt;String&gt;**](String.md)| The ids that you would like to limit your result set to | [optional] |
-| **pageIndex** | **Integer**| The 0 indexed page index you would like to receive given the page size | [optional] |
-| **pageSize** | **Integer**| The maximum number of items you would like to receive in this request | [optional] |
-
-### Return type
-
-[**BalanceCampaign202110PagedListResponse**](BalanceCampaign202110PagedListResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
 
 
 ## getApi202110ExternalCampaignPreferredLineItemsByCampaignId
@@ -2080,101 +1977,6 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## getApiV1ExternalAccountBalancesByAccountId
-
-> BalanceResponsePagedListResponse getApiV1ExternalAccountBalancesByAccountId(accountId, limitToId, pageIndex, pageSize)
-
-
-
-Get page of balances for the given accountId.
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2023_10;
-
-import com.criteo.api.retailmedia.v2023_10.ApiClient;
-import com.criteo.api.retailmedia.v2023_10.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2023_10.ApiException;
-import com.criteo.api.retailmedia.v2023_10.Configuration;
-import com.criteo.api.retailmedia.v2023_10.auth.*;
-import com.criteo.api.retailmedia.v2023_10.model.*;
-import com.criteo.api.retailmedia.v2023_10.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String accountId = "accountId_example"; // String | The account to get page of balances for
-        List<String> limitToId = Arrays.asList(); // List<String> | The ids that you would like to limit your result set to
-        Integer pageIndex = 0; // Integer | The 0 indexed page index you would like to receive given the page size
-        Integer pageSize = 25; // Integer | The maximum number of items you would like to receive in this request
-        try {
-            BalanceResponsePagedListResponse result = apiInstance.getApiV1ExternalAccountBalancesByAccountId(accountId, limitToId, pageIndex, pageSize);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getApiV1ExternalAccountBalancesByAccountId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The account to get page of balances for | |
-| **limitToId** | [**List&lt;String&gt;**](String.md)| The ids that you would like to limit your result set to | [optional] |
-| **pageIndex** | **Integer**| The 0 indexed page index you would like to receive given the page size | [optional] [default to 0] |
-| **pageSize** | **Integer**| The maximum number of items you would like to receive in this request | [optional] [default to 25] |
-
-### Return type
-
-[**BalanceResponsePagedListResponse**](BalanceResponsePagedListResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
 ## getApiV1ExternalAccountBrandsByAccountId
 
 > JsonApiPageResponseOfBrand getApiV1ExternalAccountBrandsByAccountId(accountId, limitToId, pageIndex, pageSize)
@@ -2224,8 +2026,8 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String accountId = "accountId_example"; // String | The given account id
         List<String> limitToId = Arrays.asList(); // List<String> | The ids that you would like to limit your result set to
-        Integer pageIndex = 56; // Integer | The 0 indexed page index you would like to receive given the page size
-        Integer pageSize = 56; // Integer | The maximum number of items you would like to receive in this request
+        Integer pageIndex = 0; // Integer | The 0 indexed page index you would like to receive given the page size
+        Integer pageSize = 25; // Integer | The maximum number of items you would like to receive in this request
         try {
             JsonApiPageResponseOfBrand result = apiInstance.getApiV1ExternalAccountBrandsByAccountId(accountId, limitToId, pageIndex, pageSize);
             System.out.println(result);
@@ -2247,8 +2049,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| The given account id | |
 | **limitToId** | [**List&lt;String&gt;**](String.md)| The ids that you would like to limit your result set to | [optional] |
-| **pageIndex** | **Integer**| The 0 indexed page index you would like to receive given the page size | [optional] |
-| **pageSize** | **Integer**| The maximum number of items you would like to receive in this request | [optional] |
+| **pageIndex** | **Integer**| The 0 indexed page index you would like to receive given the page size | [optional] [default to 0] |
+| **pageSize** | **Integer**| The maximum number of items you would like to receive in this request | [optional] [default to 25] |
 
 ### Return type
 
@@ -2261,98 +2063,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
-## getApiV1ExternalAccountByAccountIdAndBalanceId
-
-> BalanceResponse getApiV1ExternalAccountByAccountIdAndBalanceId(accountId, balanceId)
-
-
-
-Get a balance for the given account id and balance id
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2023_10;
-
-import com.criteo.api.retailmedia.v2023_10.ApiClient;
-import com.criteo.api.retailmedia.v2023_10.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2023_10.ApiException;
-import com.criteo.api.retailmedia.v2023_10.Configuration;
-import com.criteo.api.retailmedia.v2023_10.auth.*;
-import com.criteo.api.retailmedia.v2023_10.model.*;
-import com.criteo.api.retailmedia.v2023_10.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String accountId = "accountId_example"; // String | The account of the balance
-        String balanceId = "balanceId_example"; // String | The balance id
-        try {
-            BalanceResponse result = apiInstance.getApiV1ExternalAccountByAccountIdAndBalanceId(accountId, balanceId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getApiV1ExternalAccountByAccountIdAndBalanceId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The account of the balance | |
-| **balanceId** | **String**| The balance id | |
-
-### Return type
-
-[**BalanceResponse**](BalanceResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -2410,8 +2121,8 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String accountId = "accountId_example"; // String | The given account id
         List<String> limitToId = Arrays.asList(); // List<String> | The ids that you would like to limit your result set to
-        Integer pageIndex = 56; // Integer | The 0 indexed page index you would like to receive given the page size
-        Integer pageSize = 56; // Integer | The maximum number of items you would like to receive in this request
+        Integer pageIndex = 0; // Integer | The 0 indexed page index you would like to receive given the page size
+        Integer pageSize = 25; // Integer | The maximum number of items you would like to receive in this request
         try {
             JsonApiPageResponseOfRetailer result = apiInstance.getApiV1ExternalAccountRetailersByAccountId(accountId, limitToId, pageIndex, pageSize);
             System.out.println(result);
@@ -2433,8 +2144,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| The given account id | |
 | **limitToId** | [**List&lt;String&gt;**](String.md)| The ids that you would like to limit your result set to | [optional] |
-| **pageIndex** | **Integer**| The 0 indexed page index you would like to receive given the page size | [optional] |
-| **pageSize** | **Integer**| The maximum number of items you would like to receive in this request | [optional] |
+| **pageIndex** | **Integer**| The 0 indexed page index you would like to receive given the page size | [optional] [default to 0] |
+| **pageSize** | **Integer**| The maximum number of items you would like to receive in this request | [optional] [default to 25] |
 
 ### Return type
 
@@ -2447,100 +2158,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
-## getApiV1ExternalAccounts
-
-> JsonApiPageResponseOfAccount getApiV1ExternalAccounts(limitToId, pageIndex, pageSize)
-
-
-
-Gets page of account objects that the current user can access
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2023_10;
-
-import com.criteo.api.retailmedia.v2023_10.ApiClient;
-import com.criteo.api.retailmedia.v2023_10.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2023_10.ApiException;
-import com.criteo.api.retailmedia.v2023_10.Configuration;
-import com.criteo.api.retailmedia.v2023_10.auth.*;
-import com.criteo.api.retailmedia.v2023_10.model.*;
-import com.criteo.api.retailmedia.v2023_10.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        List<String> limitToId = Arrays.asList(); // List<String> | The ids that you would like to limit your result set to
-        Integer pageIndex = 56; // Integer | The 0 indexed page index you would like to receive given the page size
-        Integer pageSize = 56; // Integer | The maximum number of items you would like to receive in this request
-        try {
-            JsonApiPageResponseOfAccount result = apiInstance.getApiV1ExternalAccounts(limitToId, pageIndex, pageSize);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getApiV1ExternalAccounts");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **limitToId** | [**List&lt;String&gt;**](String.md)| The ids that you would like to limit your result set to | [optional] |
-| **pageIndex** | **Integer**| The 0 indexed page index you would like to receive given the page size | [optional] |
-| **pageSize** | **Integer**| The maximum number of items you would like to receive in this request | [optional] |
-
-### Return type
-
-[**JsonApiPageResponseOfAccount**](JsonApiPageResponseOfAccount.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -3093,99 +2711,6 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
-## patchApiV1ExternalAccountByAccountIdAndBalanceId
-
-> BalanceResponse patchApiV1ExternalAccountByAccountIdAndBalanceId(accountId, balanceId, updateBalanceModelRequest)
-
-
-
-Modify a balance for the given account id
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2023_10;
-
-import com.criteo.api.retailmedia.v2023_10.ApiClient;
-import com.criteo.api.retailmedia.v2023_10.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2023_10.ApiException;
-import com.criteo.api.retailmedia.v2023_10.Configuration;
-import com.criteo.api.retailmedia.v2023_10.auth.*;
-import com.criteo.api.retailmedia.v2023_10.model.*;
-import com.criteo.api.retailmedia.v2023_10.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String accountId = "accountId_example"; // String | The account of the balance
-        String balanceId = "balanceId_example"; // String | The balance to change the dates
-        UpdateBalanceModelRequest updateBalanceModelRequest = new UpdateBalanceModelRequest(); // UpdateBalanceModelRequest | 
-        try {
-            BalanceResponse result = apiInstance.patchApiV1ExternalAccountByAccountIdAndBalanceId(accountId, balanceId, updateBalanceModelRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#patchApiV1ExternalAccountByAccountIdAndBalanceId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The account of the balance | |
-| **balanceId** | **String**| The balance to change the dates | |
-| **updateBalanceModelRequest** | [**UpdateBalanceModelRequest**](UpdateBalanceModelRequest.md)|  | [optional] |
-
-### Return type
-
-[**BalanceResponse**](BalanceResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -4840,190 +4365,6 @@ public class Example {
 | **201** | Success |  -  |
 
 
-## postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId
-
-> BalanceResponse postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId(accountId, balanceId, addFundsToBalanceRequest)
-
-
-
-Add funds to a balance for the given account id
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2023_10;
-
-import com.criteo.api.retailmedia.v2023_10.ApiClient;
-import com.criteo.api.retailmedia.v2023_10.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2023_10.ApiException;
-import com.criteo.api.retailmedia.v2023_10.Configuration;
-import com.criteo.api.retailmedia.v2023_10.auth.*;
-import com.criteo.api.retailmedia.v2023_10.model.*;
-import com.criteo.api.retailmedia.v2023_10.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String accountId = "accountId_example"; // String | The account of the balance
-        String balanceId = "balanceId_example"; // String | The balance to add funds to
-        AddFundsToBalanceRequest addFundsToBalanceRequest = new AddFundsToBalanceRequest(); // AddFundsToBalanceRequest | 
-        try {
-            BalanceResponse result = apiInstance.postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId(accountId, balanceId, addFundsToBalanceRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The account of the balance | |
-| **balanceId** | **String**| The balance to add funds to | |
-| **addFundsToBalanceRequest** | [**AddFundsToBalanceRequest**](AddFundsToBalanceRequest.md)|  | [optional] |
-
-### Return type
-
-[**BalanceResponse**](BalanceResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
-## postApiV1ExternalAccountBalancesByAccountId
-
-> BalanceResponse postApiV1ExternalAccountBalancesByAccountId(accountId, createBalanceRequest)
-
-
-
-Create balance for the given account id
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2023_10;
-
-import com.criteo.api.retailmedia.v2023_10.ApiClient;
-import com.criteo.api.retailmedia.v2023_10.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2023_10.ApiException;
-import com.criteo.api.retailmedia.v2023_10.Configuration;
-import com.criteo.api.retailmedia.v2023_10.auth.*;
-import com.criteo.api.retailmedia.v2023_10.model.*;
-import com.criteo.api.retailmedia.v2023_10.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String accountId = "accountId_example"; // String | The account to create balances for
-        CreateBalanceRequest createBalanceRequest = new CreateBalanceRequest(); // CreateBalanceRequest | 
-        try {
-            BalanceResponse result = apiInstance.postApiV1ExternalAccountBalancesByAccountId(accountId, createBalanceRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#postApiV1ExternalAccountBalancesByAccountId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The account to create balances for | |
-| **createBalanceRequest** | [**CreateBalanceRequest**](CreateBalanceRequest.md)|  | [optional] |
-
-### Return type
-
-[**BalanceResponse**](BalanceResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Success |  -  |
-
-
 ## postApiV1ExternalAccountCatalogsByAccountId
 
 > JsonApiSingleResponseOfCatalogStatus postApiV1ExternalAccountCatalogsByAccountId(accountId, jsonApiRequestOfCatalogRequest)
@@ -5113,99 +4454,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Catalog request successfully created |  -  |
-
-
-## postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId
-
-> BalanceResponse postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId(accountId, balanceId, changeDatesOfBalanceRequest)
-
-
-
-Change dates of a balance for the given account id
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2023_10;
-
-import com.criteo.api.retailmedia.v2023_10.ApiClient;
-import com.criteo.api.retailmedia.v2023_10.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2023_10.ApiException;
-import com.criteo.api.retailmedia.v2023_10.Configuration;
-import com.criteo.api.retailmedia.v2023_10.auth.*;
-import com.criteo.api.retailmedia.v2023_10.model.*;
-import com.criteo.api.retailmedia.v2023_10.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String accountId = "accountId_example"; // String | The account of the balance
-        String balanceId = "balanceId_example"; // String | The balance to change the dates
-        ChangeDatesOfBalanceRequest changeDatesOfBalanceRequest = new ChangeDatesOfBalanceRequest(); // ChangeDatesOfBalanceRequest | 
-        try {
-            BalanceResponse result = apiInstance.postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId(accountId, balanceId, changeDatesOfBalanceRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The account of the balance | |
-| **balanceId** | **String**| The balance to change the dates | |
-| **changeDatesOfBalanceRequest** | [**ChangeDatesOfBalanceRequest**](ChangeDatesOfBalanceRequest.md)|  | [optional] |
-
-### Return type
-
-[**BalanceResponse**](BalanceResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
 
 
 ## postApiV2ExternalCampaignAuctionLineItemsByCampaignId

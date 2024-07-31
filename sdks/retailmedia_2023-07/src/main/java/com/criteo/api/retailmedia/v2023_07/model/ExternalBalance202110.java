@@ -147,6 +147,61 @@ public class ExternalBalance202110 {
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
+  /**
+   * Billing type for Private Market.
+   */
+  @JsonAdapter(PrivateMarketBillingTypeEnum.Adapter.class)
+  public enum PrivateMarketBillingTypeEnum {
+    NOTAPPLICABLE("NotApplicable"),
+    
+    BILLBYRETAILER("BillByRetailer"),
+    
+    BILLBYCRITEO("BillByCriteo"),
+    
+    UNKNOWN("Unknown");
+
+    private String value;
+
+    PrivateMarketBillingTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PrivateMarketBillingTypeEnum fromValue(String value) {
+      for (PrivateMarketBillingTypeEnum b : PrivateMarketBillingTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<PrivateMarketBillingTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PrivateMarketBillingTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PrivateMarketBillingTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return PrivateMarketBillingTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_PRIVATE_MARKET_BILLING_TYPE = "privateMarketBillingType";
+  @SerializedName(SERIALIZED_NAME_PRIVATE_MARKET_BILLING_TYPE)
+  private PrivateMarketBillingTypeEnum privateMarketBillingType;
+
   public ExternalBalance202110() {
   }
 
@@ -391,6 +446,28 @@ public class ExternalBalance202110 {
     this.updatedAt = updatedAt;
   }
 
+
+  public ExternalBalance202110 privateMarketBillingType(PrivateMarketBillingTypeEnum privateMarketBillingType) {
+    
+    this.privateMarketBillingType = privateMarketBillingType;
+    return this;
+  }
+
+   /**
+   * Billing type for Private Market.
+   * @return privateMarketBillingType
+  **/
+  @javax.annotation.Nonnull
+
+  public PrivateMarketBillingTypeEnum getPrivateMarketBillingType() {
+    return privateMarketBillingType;
+  }
+
+
+  public void setPrivateMarketBillingType(PrivateMarketBillingTypeEnum privateMarketBillingType) {
+    this.privateMarketBillingType = privateMarketBillingType;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -456,7 +533,8 @@ public class ExternalBalance202110 {
         Objects.equals(this.endDate, externalBalance202110.endDate) &&
         Objects.equals(this.status, externalBalance202110.status) &&
         Objects.equals(this.createdAt, externalBalance202110.createdAt) &&
-        Objects.equals(this.updatedAt, externalBalance202110.updatedAt)&&
+        Objects.equals(this.updatedAt, externalBalance202110.updatedAt) &&
+        Objects.equals(this.privateMarketBillingType, externalBalance202110.privateMarketBillingType)&&
         Objects.equals(this.additionalProperties, externalBalance202110.additionalProperties);
   }
 
@@ -466,7 +544,7 @@ public class ExternalBalance202110 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, poNumber, memo, deposited, spent, remaining, startDate, endDate, status, createdAt, updatedAt, additionalProperties);
+    return Objects.hash(name, poNumber, memo, deposited, spent, remaining, startDate, endDate, status, createdAt, updatedAt, privateMarketBillingType, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -491,6 +569,7 @@ public class ExternalBalance202110 {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    privateMarketBillingType: ").append(toIndentedString(privateMarketBillingType)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -525,6 +604,7 @@ public class ExternalBalance202110 {
     openapiFields.add("status");
     openapiFields.add("createdAt");
     openapiFields.add("updatedAt");
+    openapiFields.add("privateMarketBillingType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -538,6 +618,7 @@ public class ExternalBalance202110 {
     openapiRequiredFields.add("status");
     openapiRequiredFields.add("createdAt");
     openapiRequiredFields.add("updatedAt");
+    openapiRequiredFields.add("privateMarketBillingType");
   }
 
  /**
@@ -570,6 +651,9 @@ public class ExternalBalance202110 {
       }
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      if (!jsonObj.get("privateMarketBillingType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `privateMarketBillingType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("privateMarketBillingType").toString()));
       }
   }
 

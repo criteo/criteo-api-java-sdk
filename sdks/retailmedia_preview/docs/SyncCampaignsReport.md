@@ -103,6 +103,8 @@ Campaigns report body request
 | SALESCHANNEL | &quot;salesChannel&quot; |
 | ENVIRONMENT | &quot;environment&quot; |
 | PAGETYPENAME | &quot;pageTypeName&quot; |
+| PAGECATEGORY | &quot;pageCategory&quot; |
+| TAXONOMYBREADCRUMB | &quot;taxonomyBreadcrumb&quot; |
 | KEYWORD | &quot;keyword&quot; |
 | SEARCHTERM | &quot;searchTerm&quot; |
 

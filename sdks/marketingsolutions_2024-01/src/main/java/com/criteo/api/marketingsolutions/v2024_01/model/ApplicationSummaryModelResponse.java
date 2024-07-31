@@ -49,7 +49,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2024_01.JSON;
 
 /**
- * Response of ApplicationSummaryModel
+ * A top-level object that encapsulates a Criteo API response for a single value
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ApplicationSummaryModelResponse {

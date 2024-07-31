@@ -8,12 +8,13 @@ Async Revenue report body request
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**ids** | **List&lt;String&gt;** | Campaign ids to report on |  [optional] |
-|**id** | **String** | Campaign id to report on |  [optional] |
+|**ids** | **List&lt;String&gt;** | Supply account ids to report on |  [optional] |
+|**id** | **String** | Supply account id to report on |  [optional] |
 |**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report |  [optional] |
 |**revenueType** | [**RevenueTypeEnum**](#RevenueTypeEnum) | Type of revenue |  [optional] |
 |**soldBy** | [**SoldByEnum**](#SoldByEnum) | Filter on the seller: Indirect Sold, Direct Sold or Private Market |  [optional] |
 |**buyType** | [**BuyTypeEnum**](#BuyTypeEnum) | Filter on buy type: Auction, Preferred Deals or Sponsorship |  [optional] |
+|**advertiserTypes** | [**List&lt;AdvertiserTypesEnum&gt;**](#List&lt;AdvertiserTypesEnum&gt;) | Filter on the type of advertiser: retailer, brand, seller |  [optional] |
 |**skuRelations** | [**List&lt;SkuRelationsEnum&gt;**](#List&lt;SkuRelationsEnum&gt;) | Filter on sku relations: Same SKU, Same Parent SKU, Same Category, Same Brand or Same Seller |  [optional] |
 |**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays |  [optional] |
@@ -66,6 +67,16 @@ Async Revenue report body request
 | AUCTION | &quot;auction&quot; |
 | PREFERREDDEALS | &quot;preferredDeals&quot; |
 | SPONSORSHIP | &quot;sponsorship&quot; |
+
+
+
+## Enum: List&lt;AdvertiserTypesEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| RETAILER | &quot;retailer&quot; |
+| BRAND | &quot;brand&quot; |
+| SELLER | &quot;seller&quot; |
 
 
 
@@ -145,6 +156,7 @@ Async Revenue report body request
 | ACCOUNTID | &quot;accountId&quot; |
 | ACCOUNTNAME | &quot;accountName&quot; |
 | ACCOUNTTYPENAME | &quot;accountTypeName&quot; |
+| ADVERTISERTYPE | &quot;advertiserType&quot; |
 | CAMPAIGNID | &quot;campaignId&quot; |
 | CAMPAIGNNAME | &quot;campaignName&quot; |
 | CAMPAIGNTYPENAME | &quot;campaignTypeName&quot; |
@@ -168,6 +180,7 @@ Async Revenue report body request
 | ADVPRODUCTNAME | &quot;advProductName&quot; |
 | ADVPRODUCTGTIN | &quot;advProductGtin&quot; |
 | ADVPRODUCTMPN | &quot;advProductMpn&quot; |
+| BUYTYPE | &quot;buyType&quot; |
 | SOLDBY | &quot;soldBy&quot; |
 | SALECHANNEL | &quot;saleChannel&quot; |
 | ATTRIBUTIONSETTINGS | &quot;attributionSettings&quot; |
@@ -212,6 +225,7 @@ Async Revenue report body request
 | TRANSACTIONS | &quot;transactions&quot; |
 | ASSISTEDSALES | &quot;assistedSales&quot; |
 | ASSISTEDUNITS | &quot;assistedUnits&quot; |
+| REVENUE | &quot;revenue&quot; |
 | OPENAUCTIONREVENUE | &quot;openAuctionRevenue&quot; |
 | PREFERREDDEALSREVENUE | &quot;preferredDealsRevenue&quot; |
 | CTR | &quot;ctr&quot; |

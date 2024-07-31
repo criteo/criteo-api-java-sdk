@@ -275,6 +275,59 @@ public class AsyncRevenueReport {
   private BuyTypeEnum buyType;
 
   /**
+   * Gets or Sets advertiserTypes
+   */
+  @JsonAdapter(AdvertiserTypesEnum.Adapter.class)
+  public enum AdvertiserTypesEnum {
+    RETAILER("retailer"),
+    
+    BRAND("brand"),
+    
+    SELLER("seller");
+
+    private String value;
+
+    AdvertiserTypesEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static AdvertiserTypesEnum fromValue(String value) {
+      for (AdvertiserTypesEnum b : AdvertiserTypesEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<AdvertiserTypesEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final AdvertiserTypesEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public AdvertiserTypesEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return AdvertiserTypesEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ADVERTISER_TYPES = "advertiserTypes";
+  @SerializedName(SERIALIZED_NAME_ADVERTISER_TYPES)
+  private List<AdvertiserTypesEnum> advertiserTypes = null;
+
+  /**
    * Gets or Sets skuRelations
    */
   @JsonAdapter(SkuRelationsEnum.Adapter.class)
@@ -621,6 +674,8 @@ public class AsyncRevenueReport {
     
     ACCOUNTTYPENAME("accountTypeName"),
     
+    ADVERTISERTYPE("advertiserType"),
+    
     CAMPAIGNID("campaignId"),
     
     CAMPAIGNNAME("campaignName"),
@@ -666,6 +721,8 @@ public class AsyncRevenueReport {
     ADVPRODUCTGTIN("advProductGtin"),
     
     ADVPRODUCTMPN("advProductMpn"),
+    
+    BUYTYPE("buyType"),
     
     SOLDBY("soldBy"),
     
@@ -788,6 +845,8 @@ public class AsyncRevenueReport {
     
     ASSISTEDUNITS("assistedUnits"),
     
+    REVENUE("revenue"),
+    
     OPENAUCTIONREVENUE("openAuctionRevenue"),
     
     PREFERREDDEALSREVENUE("preferredDealsRevenue"),
@@ -898,7 +957,7 @@ public class AsyncRevenueReport {
   }
 
    /**
-   * Campaign ids to report on
+   * Supply account ids to report on
    * @return ids
   **/
   @javax.annotation.Nullable
@@ -920,7 +979,7 @@ public class AsyncRevenueReport {
   }
 
    /**
-   * Campaign id to report on
+   * Supply account id to report on
    * @return id
   **/
   @javax.annotation.Nullable
@@ -1020,6 +1079,36 @@ public class AsyncRevenueReport {
 
   public void setBuyType(BuyTypeEnum buyType) {
     this.buyType = buyType;
+  }
+
+
+  public AsyncRevenueReport advertiserTypes(List<AdvertiserTypesEnum> advertiserTypes) {
+    
+    this.advertiserTypes = advertiserTypes;
+    return this;
+  }
+
+  public AsyncRevenueReport addAdvertiserTypesItem(AdvertiserTypesEnum advertiserTypesItem) {
+    if (this.advertiserTypes == null) {
+      this.advertiserTypes = null;
+    }
+    this.advertiserTypes.add(advertiserTypesItem);
+    return this;
+  }
+
+   /**
+   * Filter on the type of advertiser: retailer, brand, seller
+   * @return advertiserTypes
+  **/
+  @javax.annotation.Nullable
+
+  public List<AdvertiserTypesEnum> getAdvertiserTypes() {
+    return advertiserTypes;
+  }
+
+
+  public void setAdvertiserTypes(List<AdvertiserTypesEnum> advertiserTypes) {
+    this.advertiserTypes = advertiserTypes;
   }
 
 
@@ -1349,6 +1438,7 @@ public class AsyncRevenueReport {
         Objects.equals(this.revenueType, asyncRevenueReport.revenueType) &&
         Objects.equals(this.soldBy, asyncRevenueReport.soldBy) &&
         Objects.equals(this.buyType, asyncRevenueReport.buyType) &&
+        Objects.equals(this.advertiserTypes, asyncRevenueReport.advertiserTypes) &&
         Objects.equals(this.skuRelations, asyncRevenueReport.skuRelations) &&
         Objects.equals(this.format, asyncRevenueReport.format) &&
         Objects.equals(this.campaignType, asyncRevenueReport.campaignType) &&
@@ -1369,7 +1459,7 @@ public class AsyncRevenueReport {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ids, id, reportType, revenueType, soldBy, buyType, skuRelations, format, campaignType, salesChannel, clickAttributionWindow, viewAttributionWindow, dimensions, metrics, startDate, endDate, timezone, additionalProperties);
+    return Objects.hash(ids, id, reportType, revenueType, soldBy, buyType, advertiserTypes, skuRelations, format, campaignType, salesChannel, clickAttributionWindow, viewAttributionWindow, dimensions, metrics, startDate, endDate, timezone, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1389,6 +1479,7 @@ public class AsyncRevenueReport {
     sb.append("    revenueType: ").append(toIndentedString(revenueType)).append("\n");
     sb.append("    soldBy: ").append(toIndentedString(soldBy)).append("\n");
     sb.append("    buyType: ").append(toIndentedString(buyType)).append("\n");
+    sb.append("    advertiserTypes: ").append(toIndentedString(advertiserTypes)).append("\n");
     sb.append("    skuRelations: ").append(toIndentedString(skuRelations)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
@@ -1429,6 +1520,7 @@ public class AsyncRevenueReport {
     openapiFields.add("revenueType");
     openapiFields.add("soldBy");
     openapiFields.add("buyType");
+    openapiFields.add("advertiserTypes");
     openapiFields.add("skuRelations");
     openapiFields.add("format");
     openapiFields.add("campaignType");
@@ -1484,6 +1576,10 @@ public class AsyncRevenueReport {
       }
       if ((jsonObj.get("buyType") != null && !jsonObj.get("buyType").isJsonNull()) && !jsonObj.get("buyType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `buyType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("buyType").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("advertiserTypes") != null && !jsonObj.get("advertiserTypes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `advertiserTypes` to be an array in the JSON string but got `%s`", jsonObj.get("advertiserTypes").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("skuRelations") != null && !jsonObj.get("skuRelations").isJsonArray()) {

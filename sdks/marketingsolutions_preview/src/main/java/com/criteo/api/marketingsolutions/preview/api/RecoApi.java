@@ -30,7 +30,10 @@ import java.io.IOException;
 import com.criteo.api.marketingsolutions.preview.model.Outcome;
 import com.criteo.api.marketingsolutions.preview.model.ResourceCollectionOutcomeOfProductSet;
 import com.criteo.api.marketingsolutions.preview.model.ResourceOutcomeOfProductSet;
+import com.criteo.api.marketingsolutions.preview.model.ValueResourceCollectionOutcomeOfProductFilterConfig;
+import com.criteo.api.marketingsolutions.preview.model.ValueResourceInputOfCreateProductFilterRequest;
 import com.criteo.api.marketingsolutions.preview.model.ValueResourceInputOfCreateProductSetRequest;
+import com.criteo.api.marketingsolutions.preview.model.ValueResourceOutcomeOfProductFilterConfig;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -212,6 +215,554 @@ public class RecoApi {
 
         okhttp3.Call localVarCall = createProductSetValidateBeforeCall(valueResourceInputOfCreateProductSetRequest, _callback);
         Type localVarReturnType = new TypeToken<ResourceOutcomeOfProductSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for disableProductFiltering
+     * @param adId ID of the ad (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Operation failure </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call disableProductFilteringCall(String adId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/ads/{ad-id}/product-filter"
+            .replace("{" + "ad-id" + "}", localVarApiClient.escapeString(adId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call disableProductFilteringValidateBeforeCall(String adId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'adId' is set
+        if (adId == null) {
+            throw new ApiException("Missing the required parameter 'adId' when calling disableProductFiltering(Async)");
+        }
+
+        return disableProductFilteringCall(adId, _callback);
+
+    }
+
+    /**
+     * 
+     * Disable product filtering for a given ad
+     * @param adId ID of the ad (required)
+     * @return ValueResourceOutcomeOfProductFilterConfig
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Operation failure </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValueResourceOutcomeOfProductFilterConfig disableProductFiltering(String adId) throws ApiException {
+        ApiResponse<ValueResourceOutcomeOfProductFilterConfig> localVarResp = disableProductFilteringWithHttpInfo(adId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Disable product filtering for a given ad
+     * @param adId ID of the ad (required)
+     * @return ApiResponse&lt;ValueResourceOutcomeOfProductFilterConfig&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Operation failure </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValueResourceOutcomeOfProductFilterConfig> disableProductFilteringWithHttpInfo(String adId) throws ApiException {
+        okhttp3.Call localVarCall = disableProductFilteringValidateBeforeCall(adId, null);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfProductFilterConfig>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Disable product filtering for a given ad
+     * @param adId ID of the ad (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Operation failure </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call disableProductFilteringAsync(String adId, final ApiCallback<ValueResourceOutcomeOfProductFilterConfig> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = disableProductFilteringValidateBeforeCall(adId, _callback);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfProductFilterConfig>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for enableProductFiltering
+     * @param adId ID of the ad (required)
+     * @param valueResourceInputOfCreateProductFilterRequest  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call enableProductFilteringCall(String adId, ValueResourceInputOfCreateProductFilterRequest valueResourceInputOfCreateProductFilterRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputOfCreateProductFilterRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/ads/{ad-id}/product-filter"
+            .replace("{" + "ad-id" + "}", localVarApiClient.escapeString(adId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call enableProductFilteringValidateBeforeCall(String adId, ValueResourceInputOfCreateProductFilterRequest valueResourceInputOfCreateProductFilterRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'adId' is set
+        if (adId == null) {
+            throw new ApiException("Missing the required parameter 'adId' when calling enableProductFiltering(Async)");
+        }
+
+        return enableProductFilteringCall(adId, valueResourceInputOfCreateProductFilterRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Enable product filtering for a given ad
+     * @param adId ID of the ad (required)
+     * @param valueResourceInputOfCreateProductFilterRequest  (optional)
+     * @return ValueResourceOutcomeOfProductFilterConfig
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValueResourceOutcomeOfProductFilterConfig enableProductFiltering(String adId, ValueResourceInputOfCreateProductFilterRequest valueResourceInputOfCreateProductFilterRequest) throws ApiException {
+        ApiResponse<ValueResourceOutcomeOfProductFilterConfig> localVarResp = enableProductFilteringWithHttpInfo(adId, valueResourceInputOfCreateProductFilterRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Enable product filtering for a given ad
+     * @param adId ID of the ad (required)
+     * @param valueResourceInputOfCreateProductFilterRequest  (optional)
+     * @return ApiResponse&lt;ValueResourceOutcomeOfProductFilterConfig&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValueResourceOutcomeOfProductFilterConfig> enableProductFilteringWithHttpInfo(String adId, ValueResourceInputOfCreateProductFilterRequest valueResourceInputOfCreateProductFilterRequest) throws ApiException {
+        okhttp3.Call localVarCall = enableProductFilteringValidateBeforeCall(adId, valueResourceInputOfCreateProductFilterRequest, null);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfProductFilterConfig>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Enable product filtering for a given ad
+     * @param adId ID of the ad (required)
+     * @param valueResourceInputOfCreateProductFilterRequest  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call enableProductFilteringAsync(String adId, ValueResourceInputOfCreateProductFilterRequest valueResourceInputOfCreateProductFilterRequest, final ApiCallback<ValueResourceOutcomeOfProductFilterConfig> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = enableProductFilteringValidateBeforeCall(adId, valueResourceInputOfCreateProductFilterRequest, _callback);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfProductFilterConfig>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for fetchProductFilteringConfig
+     * @param adId ID of the ad (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful operation. Returns the product filtering configuration if it exists, or empty data if it doesn&#39;t. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call fetchProductFilteringConfigCall(String adId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/ads/{ad-id}/product-filter"
+            .replace("{" + "ad-id" + "}", localVarApiClient.escapeString(adId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call fetchProductFilteringConfigValidateBeforeCall(String adId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'adId' is set
+        if (adId == null) {
+            throw new ApiException("Missing the required parameter 'adId' when calling fetchProductFilteringConfig(Async)");
+        }
+
+        return fetchProductFilteringConfigCall(adId, _callback);
+
+    }
+
+    /**
+     * 
+     * Fetch product filtering configuration for a given ad
+     * @param adId ID of the ad (required)
+     * @return ValueResourceOutcomeOfProductFilterConfig
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful operation. Returns the product filtering configuration if it exists, or empty data if it doesn&#39;t. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValueResourceOutcomeOfProductFilterConfig fetchProductFilteringConfig(String adId) throws ApiException {
+        ApiResponse<ValueResourceOutcomeOfProductFilterConfig> localVarResp = fetchProductFilteringConfigWithHttpInfo(adId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Fetch product filtering configuration for a given ad
+     * @param adId ID of the ad (required)
+     * @return ApiResponse&lt;ValueResourceOutcomeOfProductFilterConfig&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful operation. Returns the product filtering configuration if it exists, or empty data if it doesn&#39;t. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValueResourceOutcomeOfProductFilterConfig> fetchProductFilteringConfigWithHttpInfo(String adId) throws ApiException {
+        okhttp3.Call localVarCall = fetchProductFilteringConfigValidateBeforeCall(adId, null);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfProductFilterConfig>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Fetch product filtering configuration for a given ad
+     * @param adId ID of the ad (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful operation. Returns the product filtering configuration if it exists, or empty data if it doesn&#39;t. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call fetchProductFilteringConfigAsync(String adId, final ApiCallback<ValueResourceOutcomeOfProductFilterConfig> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = fetchProductFilteringConfigValidateBeforeCall(adId, _callback);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfProductFilterConfig>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for fetchProductFilteringUsages
+     * @param productSetId ID of the product set (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call fetchProductFilteringUsagesCall(String productSetId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/product-sets/{product-set-id}/product-filters"
+            .replace("{" + "product-set-id" + "}", localVarApiClient.escapeString(productSetId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call fetchProductFilteringUsagesValidateBeforeCall(String productSetId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'productSetId' is set
+        if (productSetId == null) {
+            throw new ApiException("Missing the required parameter 'productSetId' when calling fetchProductFilteringUsages(Async)");
+        }
+
+        return fetchProductFilteringUsagesCall(productSetId, _callback);
+
+    }
+
+    /**
+     * 
+     * Fetch product filtering usages for a given product set
+     * @param productSetId ID of the product set (required)
+     * @return ValueResourceCollectionOutcomeOfProductFilterConfig
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValueResourceCollectionOutcomeOfProductFilterConfig fetchProductFilteringUsages(String productSetId) throws ApiException {
+        ApiResponse<ValueResourceCollectionOutcomeOfProductFilterConfig> localVarResp = fetchProductFilteringUsagesWithHttpInfo(productSetId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Fetch product filtering usages for a given product set
+     * @param productSetId ID of the product set (required)
+     * @return ApiResponse&lt;ValueResourceCollectionOutcomeOfProductFilterConfig&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValueResourceCollectionOutcomeOfProductFilterConfig> fetchProductFilteringUsagesWithHttpInfo(String productSetId) throws ApiException {
+        okhttp3.Call localVarCall = fetchProductFilteringUsagesValidateBeforeCall(productSetId, null);
+        Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomeOfProductFilterConfig>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Fetch product filtering usages for a given product set
+     * @param productSetId ID of the product set (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> successful operation </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Operation failure </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Operation failure </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call fetchProductFilteringUsagesAsync(String productSetId, final ApiCallback<ValueResourceCollectionOutcomeOfProductFilterConfig> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = fetchProductFilteringUsagesValidateBeforeCall(productSetId, _callback);
+        Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomeOfProductFilterConfig>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

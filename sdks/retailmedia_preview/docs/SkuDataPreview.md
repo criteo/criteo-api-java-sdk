@@ -11,7 +11,7 @@ Metadata and usage info of a sku search
 |**skuKey** | **String** | The product SKU Key. |  |
 |**name** | **String** | A short product name. |  [optional] |
 |**description** | **String** | A product description. |  [optional] |
-|**categoryId** | **String** | The category Id. |  [optional] |
+|**categoryId** | **String** | The category Id. |  |
 |**category** | **String** | The full category breadcrumb in the retailers catalog. |  [optional] |
 |**isSellerSku** | **Boolean** | An indication of if the sku is seller sku. |  [optional] |
 |**isBuybox** | **Boolean** | Whether the Sku is a Buybox Winner. |  [optional] |

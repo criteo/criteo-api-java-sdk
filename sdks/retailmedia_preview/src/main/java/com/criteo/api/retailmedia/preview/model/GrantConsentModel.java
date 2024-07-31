@@ -45,7 +45,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * An object that represents the required (ClientId and CallbackUrl) and optional (CallbackState) parameters when granting consents on behalf of a Private Market demand account.
+ * An object that represents the required (ClientId and CallbackUrl) and optional (CallbackState) parameters when granting consents on behalf of a Private Market demand account
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class GrantConsentModel {

@@ -171,6 +171,7 @@ docs/CreateCoupon.md
 docs/CreateCouponRequest.md
 docs/CreateCouponResource.md
 docs/CreateImageSlide.md
+docs/CreateProductFilterRequest.md
 docs/CreateProductSetRequest.md
 docs/Creative.md
 docs/CreativeApi.md
@@ -302,6 +303,7 @@ docs/Price.md
 docs/ProblemDetails.md
 docs/ProblemsDetails.md
 docs/Product.md
+docs/ProductFilterConfig.md
 docs/ProductImporterError.md
 docs/ProductImporterWarning.md
 docs/ProductSet.md
@@ -381,9 +383,14 @@ docs/UpdateCouponResource.md
 docs/UserDef.md
 docs/UserProfileAttributeModel.md
 docs/UserProfileIdentifierModel.md
+docs/ValueResourceCollectionOutcomeOfProductFilterConfig.md
+docs/ValueResourceInputOfCreateProductFilterRequest.md
 docs/ValueResourceInputOfCreateProductSetRequest.md
 docs/ValueResourceOfAdvertiserCreationInput.md
+docs/ValueResourceOfCreateProductFilterRequest.md
 docs/ValueResourceOfCreateProductSetRequest.md
+docs/ValueResourceOfProductFilterConfig.md
+docs/ValueResourceOutcomeOfProductFilterConfig.md
 docs/VideoDetail.md
 docs/WriteModelAdSetId.md
 docs/WriteModelPatchAdSetV24Q1.md
@@ -588,6 +595,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateCoupon.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateCouponRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateCouponResource.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateImageSlide.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateProductFilterRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CreateProductSetRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Creative.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CreativeListResponse.java
@@ -716,6 +724,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/Price.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProblemDetails.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProblemsDetails.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/Product.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductFilterConfig.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductImporterError.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductImporterWarning.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ProductSet.java
@@ -794,9 +803,14 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/UpdateCouponResour
 src/main/java/com/criteo/api/marketingsolutions/preview/model/UserDef.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/UserProfileAttributeModel.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/UserProfileIdentifierModel.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceCollectionOutcomeOfProductFilterConfig.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceInputOfCreateProductFilterRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceInputOfCreateProductSetRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfAdvertiserCreationInput.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfCreateProductFilterRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfCreateProductSetRequest.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOfProductFilterConfig.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/ValueResourceOutcomeOfProductFilterConfig.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/VideoDetail.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/WriteModelAdSetId.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/WriteModelPatchAdSetV24Q1.java

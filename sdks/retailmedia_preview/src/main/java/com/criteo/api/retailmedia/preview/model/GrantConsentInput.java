@@ -45,7 +45,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * A top-level object that encapsulates a Criteo API request for a single value.
+ * An object that encapsulates GrantConsentModel
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class GrantConsentInput {

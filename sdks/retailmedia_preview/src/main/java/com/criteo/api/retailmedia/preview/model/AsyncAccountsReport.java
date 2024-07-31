@@ -486,6 +486,10 @@ public class AsyncAccountsReport {
     
     PAGETYPENAME("pageTypeName"),
     
+    PAGECATEGORY("pageCategory"),
+    
+    TAXONOMYBREADCRUMB("taxonomyBreadcrumb"),
+    
     KEYWORD("keyword"),
     
     SEARCHTERM("searchTerm");

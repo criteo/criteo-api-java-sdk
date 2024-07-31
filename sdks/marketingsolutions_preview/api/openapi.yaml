@@ -4536,6 +4536,204 @@ paths:
       tags:
       - Catalog
       x-accepts: application/json
+  /preview/ads/{ad-id}/product-filter:
+    delete:
+      description: Disable product filtering for a given ad
+      operationId: DisableProductFiltering
+      parameters:
+      - description: ID of the ad
+        explode: false
+        in: path
+        name: ad-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeOfProductFilterConfig'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeOfProductFilterConfig'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeOfProductFilterConfig'
+          description: Successful operation
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Operation failure
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Operation failure
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Operation failure
+        "409":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Operation failure
+      tags:
+      - Reco
+      x-accepts: application/json
+    get:
+      description: Fetch product filtering configuration for a given ad
+      operationId: FetchProductFilteringConfig
+      parameters:
+      - description: ID of the ad
+        explode: false
+        in: path
+        name: ad-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeOfProductFilterConfig'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeOfProductFilterConfig'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeOfProductFilterConfig'
+          description: "Successful operation. Returns the product filtering configuration\
+            \ if it exists, or empty data if it doesn't."
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Operation failure
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Operation failure
+      tags:
+      - Reco
+      x-accepts: application/json
+    post:
+      description: Enable product filtering for a given ad
+      operationId: EnableProductFiltering
+      parameters:
+      - description: ID of the ad
+        explode: false
+        in: path
+        name: ad-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfCreateProductFilterRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfCreateProductFilterRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfCreateProductFilterRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfCreateProductFilterRequest'
+        x-bodyName: createProductFilterRequest
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeOfProductFilterConfig'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeOfProductFilterConfig'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeOfProductFilterConfig'
+          description: successful operation
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Operation failure
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Operation failure
+      tags:
+      - Reco
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /preview/product-sets:
     post:
       description: Create a new product set
@@ -4811,6 +5009,59 @@ paths:
               schema:
                 $ref: '#/components/schemas/Outcome'
           description: Internal Error
+      tags:
+      - Reco
+      x-accepts: application/json
+  /preview/product-sets/{product-set-id}/product-filters:
+    get:
+      description: Fetch product filtering usages for a given product set
+      operationId: FetchProductFilteringUsages
+      parameters:
+      - description: ID of the product set
+        explode: false
+        in: path
+        name: product-set-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfProductFilterConfig'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfProductFilterConfig'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfProductFilterConfig'
+          description: successful operation
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Operation failure
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Operation failure
       tags:
       - Reco
       x-accepts: application/json
@@ -7269,7 +7520,8 @@ components:
       - value
       type: object
     ApplicationSummaryModelResponse:
-      description: Response of ApplicationSummaryModel
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         data:
           attributes:
@@ -7330,17 +7582,16 @@ components:
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     ApplicationSummaryModelResource:
-      description: A class that represents a ValueType in a guild compliant way
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         attributes:
           organizationId: 6
@@ -7357,7 +7608,7 @@ components:
           $ref: '#/components/schemas/ApplicationSummaryModel'
       type: object
     CommonProblem:
-      description: Common problem object. Can be specialized as needed.
+      description: Common problem object.
       example:
         traceId: traceId
         traceIdentifier: traceIdentifier
@@ -7393,7 +7644,7 @@ components:
           nullable: true
           type: string
         code:
-          description: "A machine-readable  error code, expressed as a string value."
+          description: "A machine-readable error code, expressed as a string value."
           nullable: true
           type: string
         instance:
@@ -7421,7 +7672,8 @@ components:
           type: string
       type: object
     ApplicationSummaryModel:
-      description: Model of ApplicationSummary
+      description: Used for the /me endpoint. Contains information about the currently
+        authenticated application that we accept to give to our clients
       example:
         organizationId: 6
         name: name
@@ -16287,7 +16539,6 @@ components:
       required:
       - bodyTextColor
       - callsToAction
-      - creativeBackgrounColor
       - logoBase64String
       - pricesColor
       - productImageDisplay
@@ -21983,6 +22234,137 @@ components:
       - name
       - value
       type: object
+    ValueResourceOutcomeOfProductFilterConfig:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value.
+      example:
+        data:
+          attributes:
+            adId: adId
+            productSetId: productSetId
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfProductFilterConfig'
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-nullable: true
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-nullable: true
+      type: object
+    Outcome:
+      description: A class implementing the body of a response without data of the
+        Criteo API as described in API Guild Guidelines
+      example:
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        warnings:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          nullable: true
+          readOnly: true
+          type: array
+          uniqueItems: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ProblemDetails'
+          nullable: true
+          readOnly: true
+          type: array
+          uniqueItems: false
+      type: object
     ResourceOutcomeOfProductSet:
       description: A class implementing the response of the Criteo API as described
         in API Guild Guidelines with a single entity as body
@@ -22054,68 +22436,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ResourceOfProductSet'
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          nullable: true
-          readOnly: true
-          type: array
-          uniqueItems: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          nullable: true
-          readOnly: true
-          type: array
-          uniqueItems: false
-      type: object
-    Outcome:
-      description: A class implementing the body of a response without data of the
-        Criteo API as described in API Guild Guidelines
-      example:
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
         warnings:
           items:
             $ref: '#/components/schemas/ProblemDetails'
@@ -22242,6 +22562,95 @@ components:
           type: array
           uniqueItems: false
       type: object
+    ValueResourceCollectionOutcomeOfProductFilterConfig:
+      description: A top-level object that encapsulates a Criteo API response for
+        several values.
+      example:
+        data:
+        - attributes:
+            adId: adId
+            productSetId: productSetId
+          type: type
+        - attributes:
+            adId: adId
+            productSetId: productSetId
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ValueResourceOfProductFilterConfig'
+          nullable: true
+          type: array
+          x-nullable: true
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-nullable: true
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-nullable: true
+      type: object
+    ValueResourceInputOfCreateProductFilterRequest:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value.
+      example:
+        data:
+          attributes:
+            productSetId: productSetId
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfCreateProductFilterRequest'
+      type: object
     ValueResourceInputOfCreateProductSetRequest:
       description: "Represents an API request message containing the usual valueResource\
         \ data field,\r\ni.e. data is not an entity (no id). This can be used for\
@@ -22261,6 +22670,22 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceOfCreateProductSetRequest'
+      type: object
+    ValueResourceOfProductFilterConfig:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value.
+      example:
+        attributes:
+          adId: adId
+          productSetId: productSetId
+        type: type
+      properties:
+        type:
+          nullable: true
+          type: string
+          x-nullable: true
+        attributes:
+          $ref: '#/components/schemas/ProductFilterConfig'
       type: object
     ResourceOfProductSet:
       description: A class that represents an entity in a guild compliant way
@@ -22296,6 +22721,21 @@ components:
           nullable: true
           type: string
       type: object
+    ValueResourceOfCreateProductFilterRequest:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value.
+      example:
+        attributes:
+          productSetId: productSetId
+        type: type
+      properties:
+        type:
+          nullable: true
+          type: string
+          x-nullable: true
+        attributes:
+          $ref: '#/components/schemas/CreateProductFilterRequest'
+      type: object
     ValueResourceOfCreateProductSetRequest:
       description: A class that represents a ValueType in a guild compliant way
       properties:
@@ -22304,6 +22744,20 @@ components:
           type: string
         attributes:
           $ref: '#/components/schemas/CreateProductSetRequest'
+      type: object
+    ProductFilterConfig:
+      description: Entity to create a product filter configuration
+      example:
+        adId: adId
+        productSetId: productSetId
+      properties:
+        adId:
+          type: string
+        productSetId:
+          type: string
+      required:
+      - adId
+      - productSetId
       type: object
     ProductSet:
       description: Encapsulate a group of product
@@ -22371,6 +22825,16 @@ components:
         id:
           nullable: true
           type: string
+      type: object
+    CreateProductFilterRequest:
+      description: Encapsulate the parameters needed to enable product filtering
+      example:
+        productSetId: productSetId
+      properties:
+        productSetId:
+          nullable: true
+          type: string
+          x-nullable: true
       type: object
     CreateProductSetRequest:
       description: Entity to create a product set
@@ -23257,6 +23721,7 @@ components:
           - identityLink
           - gum
           - customerid
+          - phoneNumber
           example: email
           type: string
         identifiers:
@@ -23300,6 +23765,7 @@ components:
           - identityLink
           - gum
           - customerid
+          - phoneNumber
           nullable: true
           type: string
         identifiers:

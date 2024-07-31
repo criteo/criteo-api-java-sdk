@@ -30,6 +30,14 @@ import java.io.IOException;
 import com.criteo.api.retailmedia.preview.model.ErrorCodeResponse;
 import com.criteo.api.retailmedia.preview.model.RetailMediaContactlistAmendmentRequest;
 import com.criteo.api.retailmedia.preview.model.RetailMediaContactlistOperation;
+import com.criteo.api.retailmedia.preview.model.RmAudienceSegmentBulkCreateInputV1;
+import com.criteo.api.retailmedia.preview.model.RmAudienceSegmentBulkDeleteInputV1;
+import com.criteo.api.retailmedia.preview.model.RmAudienceSegmentBulkUpdateInputV1;
+import com.criteo.api.retailmedia.preview.model.RmAudienceSegmentEntityV1ListResponse;
+import com.criteo.api.retailmedia.preview.model.RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse;
+import com.criteo.api.retailmedia.preview.model.RmAudienceSegmentIdEntityV1ListResponse;
+import com.criteo.api.retailmedia.preview.model.RmAudienceSegmentSearchInputV1;
+import com.criteo.api.retailmedia.preview.model.RmContactListStatisticsEntityV1Response;
 import com.criteo.api.retailmedia.preview.model.RmLegacyAudienceGetEntityV1ListResponse;
 import com.criteo.api.retailmedia.preview.model.RmLegacyAudienceGetEntityV2ListResponse;
 
@@ -77,6 +85,456 @@ public class AudienceApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for bulkCreateV1
+     * @param accountId Account Id (required)
+     * @param rmAudienceSegmentBulkCreateInputV1 Segment creation parameter (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call bulkCreateV1Call(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = rmAudienceSegmentBulkCreateInputV1;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/accounts/{account-id}/audience-segments/create"
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call bulkCreateV1ValidateBeforeCall(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling bulkCreateV1(Async)");
+        }
+
+        // verify the required parameter 'rmAudienceSegmentBulkCreateInputV1' is set
+        if (rmAudienceSegmentBulkCreateInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'rmAudienceSegmentBulkCreateInputV1' when calling bulkCreateV1(Async)");
+        }
+
+        return bulkCreateV1Call(accountId, rmAudienceSegmentBulkCreateInputV1, _callback);
+
+    }
+
+    /**
+     * 
+     * Creates all segments with a valid configuration, and returns the full segments. For those that cannot be created, one or multiple errors are returned.
+     * @param accountId Account Id (required)
+     * @param rmAudienceSegmentBulkCreateInputV1 Segment creation parameter (required)
+     * @return RmAudienceSegmentEntityV1ListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public RmAudienceSegmentEntityV1ListResponse bulkCreateV1(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1) throws ApiException {
+        ApiResponse<RmAudienceSegmentEntityV1ListResponse> localVarResp = bulkCreateV1WithHttpInfo(accountId, rmAudienceSegmentBulkCreateInputV1);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Creates all segments with a valid configuration, and returns the full segments. For those that cannot be created, one or multiple errors are returned.
+     * @param accountId Account Id (required)
+     * @param rmAudienceSegmentBulkCreateInputV1 Segment creation parameter (required)
+     * @return ApiResponse&lt;RmAudienceSegmentEntityV1ListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<RmAudienceSegmentEntityV1ListResponse> bulkCreateV1WithHttpInfo(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1) throws ApiException {
+        okhttp3.Call localVarCall = bulkCreateV1ValidateBeforeCall(accountId, rmAudienceSegmentBulkCreateInputV1, null);
+        Type localVarReturnType = new TypeToken<RmAudienceSegmentEntityV1ListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Creates all segments with a valid configuration, and returns the full segments. For those that cannot be created, one or multiple errors are returned.
+     * @param accountId Account Id (required)
+     * @param rmAudienceSegmentBulkCreateInputV1 Segment creation parameter (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call bulkCreateV1Async(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1, final ApiCallback<RmAudienceSegmentEntityV1ListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = bulkCreateV1ValidateBeforeCall(accountId, rmAudienceSegmentBulkCreateInputV1, _callback);
+        Type localVarReturnType = new TypeToken<RmAudienceSegmentEntityV1ListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for bulkDeleteV1
+     * @param accountId Account id (required)
+     * @param rmAudienceSegmentBulkDeleteInputV1 Segment delete request. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call bulkDeleteV1Call(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = rmAudienceSegmentBulkDeleteInputV1;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/accounts/{account-id}/audience-segments/delete"
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call bulkDeleteV1ValidateBeforeCall(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling bulkDeleteV1(Async)");
+        }
+
+        // verify the required parameter 'rmAudienceSegmentBulkDeleteInputV1' is set
+        if (rmAudienceSegmentBulkDeleteInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'rmAudienceSegmentBulkDeleteInputV1' when calling bulkDeleteV1(Async)");
+        }
+
+        return bulkDeleteV1Call(accountId, rmAudienceSegmentBulkDeleteInputV1, _callback);
+
+    }
+
+    /**
+     * 
+     * Delete the segments associated to the given audience IDs.
+     * @param accountId Account id (required)
+     * @param rmAudienceSegmentBulkDeleteInputV1 Segment delete request. (required)
+     * @return RmAudienceSegmentIdEntityV1ListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public RmAudienceSegmentIdEntityV1ListResponse bulkDeleteV1(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1) throws ApiException {
+        ApiResponse<RmAudienceSegmentIdEntityV1ListResponse> localVarResp = bulkDeleteV1WithHttpInfo(accountId, rmAudienceSegmentBulkDeleteInputV1);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Delete the segments associated to the given audience IDs.
+     * @param accountId Account id (required)
+     * @param rmAudienceSegmentBulkDeleteInputV1 Segment delete request. (required)
+     * @return ApiResponse&lt;RmAudienceSegmentIdEntityV1ListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<RmAudienceSegmentIdEntityV1ListResponse> bulkDeleteV1WithHttpInfo(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1) throws ApiException {
+        okhttp3.Call localVarCall = bulkDeleteV1ValidateBeforeCall(accountId, rmAudienceSegmentBulkDeleteInputV1, null);
+        Type localVarReturnType = new TypeToken<RmAudienceSegmentIdEntityV1ListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Delete the segments associated to the given audience IDs.
+     * @param accountId Account id (required)
+     * @param rmAudienceSegmentBulkDeleteInputV1 Segment delete request. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call bulkDeleteV1Async(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1, final ApiCallback<RmAudienceSegmentIdEntityV1ListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = bulkDeleteV1ValidateBeforeCall(accountId, rmAudienceSegmentBulkDeleteInputV1, _callback);
+        Type localVarReturnType = new TypeToken<RmAudienceSegmentIdEntityV1ListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for bulkUpdateV1
+     * @param accountId Account id (required)
+     * @param rmAudienceSegmentBulkUpdateInputV1 Segment Update request (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call bulkUpdateV1Call(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = rmAudienceSegmentBulkUpdateInputV1;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/accounts/{account-id}/audience-segments"
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call bulkUpdateV1ValidateBeforeCall(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling bulkUpdateV1(Async)");
+        }
+
+        // verify the required parameter 'rmAudienceSegmentBulkUpdateInputV1' is set
+        if (rmAudienceSegmentBulkUpdateInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'rmAudienceSegmentBulkUpdateInputV1' when calling bulkUpdateV1(Async)");
+        }
+
+        return bulkUpdateV1Call(accountId, rmAudienceSegmentBulkUpdateInputV1, _callback);
+
+    }
+
+    /**
+     * 
+     * Updates the properties of all segments with a valid configuration, and returns the full segments. For those that cannot be updated, one or multiple errors are returned.
+     * @param accountId Account id (required)
+     * @param rmAudienceSegmentBulkUpdateInputV1 Segment Update request (required)
+     * @return RmAudienceSegmentEntityV1ListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public RmAudienceSegmentEntityV1ListResponse bulkUpdateV1(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1) throws ApiException {
+        ApiResponse<RmAudienceSegmentEntityV1ListResponse> localVarResp = bulkUpdateV1WithHttpInfo(accountId, rmAudienceSegmentBulkUpdateInputV1);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Updates the properties of all segments with a valid configuration, and returns the full segments. For those that cannot be updated, one or multiple errors are returned.
+     * @param accountId Account id (required)
+     * @param rmAudienceSegmentBulkUpdateInputV1 Segment Update request (required)
+     * @return ApiResponse&lt;RmAudienceSegmentEntityV1ListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<RmAudienceSegmentEntityV1ListResponse> bulkUpdateV1WithHttpInfo(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1) throws ApiException {
+        okhttp3.Call localVarCall = bulkUpdateV1ValidateBeforeCall(accountId, rmAudienceSegmentBulkUpdateInputV1, null);
+        Type localVarReturnType = new TypeToken<RmAudienceSegmentEntityV1ListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Updates the properties of all segments with a valid configuration, and returns the full segments. For those that cannot be updated, one or multiple errors are returned.
+     * @param accountId Account id (required)
+     * @param rmAudienceSegmentBulkUpdateInputV1 Segment Update request (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call bulkUpdateV1Async(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1, final ApiCallback<RmAudienceSegmentEntityV1ListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = bulkUpdateV1ValidateBeforeCall(accountId, rmAudienceSegmentBulkUpdateInputV1, _callback);
+        Type localVarReturnType = new TypeToken<RmAudienceSegmentEntityV1ListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for deleteContactListIdentifiers
      * @param audienceSegmentId The id of the contact list audience-segment to amend, we only accept external Id here (required)
@@ -198,6 +656,153 @@ public class AudienceApi {
 
         okhttp3.Call localVarCall = deleteContactListIdentifiersValidateBeforeCall(audienceSegmentId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getContactListStatisticsV1
+     * @param accountId Account Id (required)
+     * @param audienceSegmentId Segment Id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getContactListStatisticsV1Call(String accountId, String audienceSegmentId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list"
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()))
+            .replace("{" + "audience-segment-id" + "}", localVarApiClient.escapeString(audienceSegmentId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getContactListStatisticsV1ValidateBeforeCall(String accountId, String audienceSegmentId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling getContactListStatisticsV1(Async)");
+        }
+
+        // verify the required parameter 'audienceSegmentId' is set
+        if (audienceSegmentId == null) {
+            throw new ApiException("Missing the required parameter 'audienceSegmentId' when calling getContactListStatisticsV1(Async)");
+        }
+
+        return getContactListStatisticsV1Call(accountId, audienceSegmentId, _callback);
+
+    }
+
+    /**
+     * 
+     * Returns the statistics of a contact list segment.
+     * @param accountId Account Id (required)
+     * @param audienceSegmentId Segment Id. (required)
+     * @return RmContactListStatisticsEntityV1Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public RmContactListStatisticsEntityV1Response getContactListStatisticsV1(String accountId, String audienceSegmentId) throws ApiException {
+        ApiResponse<RmContactListStatisticsEntityV1Response> localVarResp = getContactListStatisticsV1WithHttpInfo(accountId, audienceSegmentId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Returns the statistics of a contact list segment.
+     * @param accountId Account Id (required)
+     * @param audienceSegmentId Segment Id. (required)
+     * @return ApiResponse&lt;RmContactListStatisticsEntityV1Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<RmContactListStatisticsEntityV1Response> getContactListStatisticsV1WithHttpInfo(String accountId, String audienceSegmentId) throws ApiException {
+        okhttp3.Call localVarCall = getContactListStatisticsV1ValidateBeforeCall(accountId, audienceSegmentId, null);
+        Type localVarReturnType = new TypeToken<RmContactListStatisticsEntityV1Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Returns the statistics of a contact list segment.
+     * @param accountId Account Id (required)
+     * @param audienceSegmentId Segment Id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getContactListStatisticsV1Async(String accountId, String audienceSegmentId, final ApiCallback<RmContactListStatisticsEntityV1Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getContactListStatisticsV1ValidateBeforeCall(accountId, audienceSegmentId, _callback);
+        Type localVarReturnType = new TypeToken<RmContactListStatisticsEntityV1Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -519,6 +1124,172 @@ public class AudienceApi {
 
         okhttp3.Call localVarCall = legacyGetAudienceV2ValidateBeforeCall(accountId, limitToId, pageSize, pageIndex, _callback);
         Type localVarReturnType = new TypeToken<RmLegacyAudienceGetEntityV2ListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for searchV1
+     * @param accountId Account Id (required)
+     * @param rmAudienceSegmentSearchInputV1 Segment creation parameter (required)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call searchV1Call(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = rmAudienceSegmentSearchInputV1;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/accounts/{account-id}/audience-segments/search"
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call searchV1ValidateBeforeCall(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling searchV1(Async)");
+        }
+
+        // verify the required parameter 'rmAudienceSegmentSearchInputV1' is set
+        if (rmAudienceSegmentSearchInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'rmAudienceSegmentSearchInputV1' when calling searchV1(Async)");
+        }
+
+        return searchV1Call(accountId, rmAudienceSegmentSearchInputV1, limit, offset, _callback);
+
+    }
+
+    /**
+     * 
+     * Search segments based on the provided filters.( by ids or retailer ids)
+     * @param accountId Account Id (required)
+     * @param rmAudienceSegmentSearchInputV1 Segment creation parameter (required)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
+     * @return RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse searchV1(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse> localVarResp = searchV1WithHttpInfo(accountId, rmAudienceSegmentSearchInputV1, limit, offset);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Search segments based on the provided filters.( by ids or retailer ids)
+     * @param accountId Account Id (required)
+     * @param rmAudienceSegmentSearchInputV1 Segment creation parameter (required)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
+     * @return ApiResponse&lt;RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse> searchV1WithHttpInfo(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = searchV1ValidateBeforeCall(accountId, rmAudienceSegmentSearchInputV1, limit, offset, null);
+        Type localVarReturnType = new TypeToken<RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Search segments based on the provided filters.( by ids or retailer ids)
+     * @param accountId Account Id (required)
+     * @param rmAudienceSegmentSearchInputV1 Segment creation parameter (required)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call searchV1Async(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset, final ApiCallback<RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = searchV1ValidateBeforeCall(accountId, rmAudienceSegmentSearchInputV1, limit, offset, _callback);
+        Type localVarReturnType = new TypeToken<RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -143,7 +143,7 @@ public class JsonApiPageResponseOfBrand {
    * Get metadata
    * @return metadata
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public PageMetadata getMetadata() {
     return metadata;
@@ -286,6 +286,7 @@ public class JsonApiPageResponseOfBrand {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("metadata");
     openapiRequiredFields.add("data");
   }
 
@@ -336,10 +337,8 @@ public class JsonApiPageResponseOfBrand {
           };
         }
       }
-      // validate the optional field `metadata`
-      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
-        PageMetadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
-      }
+      // validate the required field `metadata`
+      PageMetadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
       // ensure the json data is an array
       if (!jsonObj.get("data").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));

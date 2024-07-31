@@ -19,6 +19,7 @@ A Retail Media Balance used to determine the funds available for any or all camp
 |**status** | [**StatusEnum**](#StatusEnum) |  |  |
 |**createdAt** | **OffsetDateTime** |  |  |
 |**updatedAt** | **OffsetDateTime** |  |  |
+|**privateMarketBillingType** | [**PrivateMarketBillingTypeEnum**](#PrivateMarketBillingTypeEnum) | Billing type for Private Market. |  |
 
 
 
@@ -30,6 +31,17 @@ A Retail Media Balance used to determine the funds available for any or all camp
 | SCHEDULED | &quot;scheduled&quot; |
 | ACTIVE | &quot;active&quot; |
 | ENDED | &quot;ended&quot; |
+
+
+
+## Enum: PrivateMarketBillingTypeEnum
+
+| Name | Value |
+|---- | -----|
+| NOTAPPLICABLE | &quot;NotApplicable&quot; |
+| BILLBYRETAILER | &quot;BillByRetailer&quot; |
+| BILLBYCRITEO | &quot;BillByCriteo&quot; |
+| UNKNOWN | &quot;Unknown&quot; |
 
 
 

@@ -10,7 +10,7 @@ A wrapper class to return a single page of <typeparamref name=\"T\" /> with meta
 |------------ | ------------- | ------------- | -------------|
 |**errors** | [**List&lt;CommonError&gt;**](CommonError.md) |  |  [optional] |
 |**warnings** | [**List&lt;CommonWarning&gt;**](CommonWarning.md) |  |  [optional] |
-|**metadata** | [**PageMetadata**](PageMetadata.md) |  |  [optional] |
+|**metadata** | [**PageMetadata**](PageMetadata.md) |  |  |
 |**data** | [**List&lt;JsonApiBodyWithIdOfInt64AndBrandAndBrand&gt;**](JsonApiBodyWithIdOfInt64AndBrandAndBrand.md) |  |  |
 
 

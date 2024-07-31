@@ -40,6 +40,7 @@ paths:
       responses:
         "204":
           description: Success
+      summary: ""
       tags:
       - Accounts
       x-content-type: application/json-patch+json
@@ -338,6 +339,7 @@ paths:
         name: pageIndex
         required: false
         schema:
+          default: 0
           format: int32
           type: integer
         style: form
@@ -349,6 +351,7 @@ paths:
         name: pageSize
         required: false
         schema:
+          default: 25
           format: int32
           type: integer
         style: form
@@ -356,12 +359,18 @@ paths:
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfAccount'
             application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfAccount'
+            text/json:
               schema:
                 $ref: '#/components/schemas/JsonApiPageResponseOfAccount'
           description: Success
       tags:
-      - Campaign
+      - Accounts
       x-accepts: application/json
   /preview/retail-media/accounts/{accountId}/brands:
     get:
@@ -396,6 +405,7 @@ paths:
         name: pageIndex
         required: false
         schema:
+          default: 0
           format: int32
           type: integer
         style: form
@@ -407,6 +417,7 @@ paths:
         name: pageSize
         required: false
         schema:
+          default: 25
           format: int32
           type: integer
         style: form
@@ -414,7 +425,13 @@ paths:
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfBrand'
             application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfBrand'
+            text/json:
               schema:
                 $ref: '#/components/schemas/JsonApiPageResponseOfBrand'
           description: Success
@@ -454,6 +471,7 @@ paths:
         name: pageIndex
         required: false
         schema:
+          default: 0
           format: int32
           type: integer
         style: form
@@ -465,6 +483,7 @@ paths:
         name: pageSize
         required: false
         schema:
+          default: 25
           format: int32
           type: integer
         style: form
@@ -472,12 +491,361 @@ paths:
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfRetailer'
             application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfRetailer'
+            text/json:
               schema:
                 $ref: '#/components/schemas/JsonApiPageResponseOfRetailer'
           description: Success
       tags:
       - Campaign
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/audience-segments:
+    patch:
+      description: "Updates the properties of all segments with a valid configuration,\
+        \ and returns the full segments. For those that cannot be updated, one or\
+        \ multiple errors are returned."
+      operationId: BulkUpdateV1
+      parameters:
+      - description: Account id
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentBulkUpdateInputV1'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentBulkUpdateInputV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentBulkUpdateInputV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentBulkUpdateInputV1'
+        description: Segment Update request
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentEntityV1ListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentEntityV1ListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentEntityV1ListResponse'
+          description: Success or partial success
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad request
+        "401":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not properly authenticated.
+        "403":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not authorized to access this resource.
+      tags:
+      - Audience
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/audience-segments/create:
+    post:
+      description: "Creates all segments with a valid configuration, and returns the\
+        \ full segments. For those that cannot be created, one or multiple errors\
+        \ are returned."
+      operationId: BulkCreateV1
+      parameters:
+      - description: Account Id
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentBulkCreateInputV1'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentBulkCreateInputV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentBulkCreateInputV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentBulkCreateInputV1'
+        description: Segment creation parameter
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentEntityV1ListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentEntityV1ListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentEntityV1ListResponse'
+          description: Success or partial success
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad request
+        "401":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not properly authenticated.
+        "403":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not authorized to access this resource.
+      tags:
+      - Audience
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/audience-segments/delete:
+    post:
+      description: Delete the segments associated to the given audience IDs.
+      operationId: BulkDeleteV1
+      parameters:
+      - description: Account id
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentBulkDeleteInputV1'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentBulkDeleteInputV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentBulkDeleteInputV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentBulkDeleteInputV1'
+        description: Segment delete request.
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentIdEntityV1ListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentIdEntityV1ListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentIdEntityV1ListResponse'
+          description: Success or partial success
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad request
+        "401":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not properly authenticated.
+        "403":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not authorized to access this resource.
+      tags:
+      - Audience
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/audience-segments/search:
+    post:
+      description: Search segments based on the provided filters.( by ids or retailer
+        ids)
+      operationId: SearchV1
+      parameters:
+      - description: Account Id
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The number of elements to be returned. The default is 50 and
+          the maximum is 100.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          maximum: 100
+          minimum: 0
+          type: integer
+        style: form
+      - description: The (zero-based) offset into the collection. The default is 0.
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentSearchInputV1'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentSearchInputV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentSearchInputV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentSearchInputV1'
+        description: Segment creation parameter
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse'
+          description: Success or partial success
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad request
+        "401":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not properly authenticated.
+        "403":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not authorized to access this resource.
+      tags:
+      - Audience
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list:
+    get:
+      description: Returns the statistics of a contact list segment.
+      operationId: GetContactListStatisticsV1
+      parameters:
+      - description: Account Id
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Segment Id.
+        explode: false
+        in: path
+        name: audience-segment-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RmContactListStatisticsEntityV1Response'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RmContactListStatisticsEntityV1Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RmContactListStatisticsEntityV1Response'
+          description: Success or partial success
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad request
+        "401":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not properly authenticated.
+        "403":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not authorized to access this resource.
+      tags:
+      - Audience
       x-accepts: application/json
   /preview/retail-media/accounts/{accountId}/audiences:
     get:
@@ -1191,6 +1559,55 @@ paths:
             application/json: {}
             text/json: {}
           description: Creative updated
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{accountId}/catalogs/sellers:
+    post:
+      description: Create a request for a Catalog available to the indicated account.
+      operationId: Catalog_PostApiV1ExternalAccountCatalogsSellersByAccountId
+      parameters:
+      - description: The account to request the catalog for.
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JsonApiRequestOfSellerCatalogRequest'
+        x-bodyName: body
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfCatalogStatus'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfCatalogStatus'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfCatalogStatus'
+          description: Catalog request successfully created
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfCatalogStatus'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfCatalogStatus'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiSingleResponseOfCatalogStatus'
+          description: Bad Request
       tags:
       - Campaign
       x-content-type: application/json
@@ -2070,201 +2487,60 @@ paths:
       tags:
       - Analytics
       x-accepts: application/json
-  /preview/retail-media/account-management/accounts/{accountId}/brands/add:
-    post:
-      description: Add brands to an account
-      operationId: AddBrands
+  /preview/retail-media/balances/{balanceId}/history:
+    get:
+      description: Gets the balance's historical change data.
+      operationId: GetBalanceHistory
       parameters:
-      - description: the account id to update
+      - description: Balance id.
         explode: false
         in: path
-        name: accountId
+        name: balanceId
         required: true
         schema:
           type: string
         style: simple
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaBrands'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaBrands'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaBrands'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaBrands'
-        description: brands to associate to account
+      - description: The (zero-based) starting offset in the collection.
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        style: form
+      - description: The number of elements to be returned.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          format: int32
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - description: Comma separated change types string that will be queried.
+        explode: true
+        in: query
+        name: limitToChangeTypes
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValueResourceOfRetailMediaBrands'
+                $ref: '#/components/schemas/PageOfBalanceHistoryChangeDataCaptureV1'
           description: Success
       tags:
-      - Accounts
-      x-content-type: application/json-patch+json
-      x-accepts: application/json
-  /preview/retail-media/account-management/accounts/{accountId}/brands/remove:
-    post:
-      description: Remove a brand from an account
-      operationId: RemoveBrands
-      parameters:
-      - description: the account id to update
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaBrands'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaBrands'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaBrands'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaBrands'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceOfRetailMediaBrands'
-          description: Success
-      tags:
-      - Accounts
-      x-content-type: application/json-patch+json
-      x-accepts: application/json
-  /preview/retail-media/account-management/accounts/{accountId}/create-brand-account:
-    post:
-      description: Creates a new child Demand Brand Account for the provided parent
-        private market account
-      operationId: CreatePrivateMarketDemandBrandAccount
-      parameters:
-      - description: Account Id for the parent private market account
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaBrandAccountCreation'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaBrandAccountCreation'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaBrandAccountCreation'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaBrandAccountCreation'
-        description: Initial creation and configuration options for the new account
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfRetailMediaAccount'
-          description: Success
-      tags:
-      - Accounts
-      x-content-type: application/json-patch+json
-      x-accepts: application/json
-  /preview/retail-media/account-management/accounts/{accountId}/create-seller-account:
-    post:
-      description: Creates a new child Demand Seller Account for the provided parent
-        private market account
-      operationId: CreatePrivateMarketDemandSellerAccount
-      parameters:
-      - description: Account Id for the parent private market account
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaSellerAccountCreation'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaSellerAccountCreation'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaSellerAccountCreation'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaSellerAccountCreation'
-        description: Initial creation and configuration options for the new account
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfRetailMediaAccount'
-          description: Success
-      tags:
-      - Accounts
-      x-content-type: application/json-patch+json
-      x-accepts: application/json
-  /preview/retail-media/account-management/accounts/{accountId}/sellers:
-    put:
-      description: replace the sellers assoiated with an account
-      operationId: UpdateSellers
-      parameters:
-      - description: the account id to update
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceCollectionInputOfRetailMediaSeller'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceCollectionInputOfRetailMediaSeller'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceCollectionInputOfRetailMediaSeller'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceCollectionInputOfRetailMediaSeller'
-        description: sellers to associate
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfRetailMediaSeller'
-          description: Success
-      tags:
-      - Accounts
-      x-content-type: application/json-patch+json
+      - Balance
       x-accepts: application/json
   /preview/retail-media/campaigns/{campaignId}/campaign-budget-overrides:
     get:
@@ -2320,6 +2596,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ValueResourceInputOfCampaignBudgetOverrides'
         description: New campaign budget overrides settings value resource input.
+        x-bodyName: campaignBudgetOverridesInput
       responses:
         "201":
           content:
@@ -2396,6 +2673,7 @@ paths:
             schema:
               $ref: '#/components/schemas/SkuSearchRequest'
         description: ""
+        x-bodyName: skuSearchRequest
       responses:
         "200":
           content:
@@ -2410,7 +2688,7 @@ paths:
   /preview/retail-media/insertion-order-history/{insertionOrderId}/change-data-capture:
     get:
       description: Gets the balance's historical data change capture.
-      operationId: GetInsertionOrderHistoryChangeDataCapture
+      operationId: GetInsertionOrderHistoryChangeDataCaptureV2
       parameters:
       - description: External insertion order id.
         explode: false
@@ -2457,7 +2735,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PageOfInsertionOrderHistoryChangeDataCapture'
+                $ref: '#/components/schemas/PageOfInsertionOrderHistoryChangeDataCaptureV2'
           description: Success
       tags:
       - Campaign
@@ -2537,6 +2815,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ValueResourceInputOfLineItemBudgetOverrides'
         description: New line item budget overrides settings value resource input.
+        x-bodyName: lineItemBudgetOverridesInput
       responses:
         "201":
           content:
@@ -2547,6 +2826,298 @@ paths:
       tags:
       - Campaign
       x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/balances:
+    get:
+      description: Gets page of balance objects for the given account id
+      operationId: GetApiV2ExternalAccountBalancesByAccountId
+      parameters:
+      - description: The account to get balances for
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The ids that you would like to limit your result set to
+        explode: true
+        in: query
+        name: limitToId
+        required: true
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: false
+      - description: The 0 indexed page index you would like to receive given the
+          page size
+        explode: true
+        in: query
+        name: pageIndex
+        required: true
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      - description: The maximum number of items you would like to receive in this
+          request
+        explode: true
+        in: query
+        name: pageSize
+        required: true
+        schema:
+          default: 25
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PagedResourceCollectionOutcomeOfBalanceResponseV2'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceCollectionOutcomeOfBalanceResponseV2'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceCollectionOutcomeOfBalanceResponseV2'
+          description: Success
+      tags:
+      - Balance
+      x-accepts: application/json
+    post:
+      description: Create balance for the given account id
+      operationId: PostApiV2ExternalAccountBalancesByAccountId
+      parameters:
+      - description: The account to create balances for
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBalanceV2Request'
+        description: An object that represents the available options to set when creating
+          a Retail Media Balance
+        required: true
+        x-nullable: false
+        x-bodyName: createBalance
+      responses:
+        "201":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+          description: Success
+      tags:
+      - Balance
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/balances/{balance-id}:
+    get:
+      description: Get a balance for the given account id and balance id
+      operationId: "GetApiV2ExternalAccountByAccountId}Balances{balanceId"
+      parameters:
+      - description: The account of the balance
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The balance id
+        explode: false
+        in: path
+        name: balance-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+          description: Success
+      tags:
+      - Balance
+      x-accepts: application/json
+    patch:
+      description: Modify a balance for the given account id
+      operationId: "PatchApiV2ExternalAccountByAccountId}Balances{balanceId"
+      parameters:
+      - description: The account of the balance
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The balance to change the dates
+        explode: false
+        in: path
+        name: balance-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBalanceModelV2Request'
+        description: An object that represents the available options to modify a balance.
+        required: true
+        x-nullable: false
+        x-bodyName: updateBalanceModel
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+          description: Success
+      tags:
+      - Balance
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds:
+    post:
+      description: Add funds to a balance for the given account id
+      operationId: "PostApiV2ExternalAccountAddFundsByAccountId}Balances{balanceId"
+      parameters:
+      - description: The account of the balance
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The balance to add funds to
+        explode: false
+        in: path
+        name: balance-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddFundsToBalanceV2Request'
+        description: An object that represents the available options of adding funds
+          to a balance.
+        required: true
+        x-nullable: false
+        x-bodyName: addFundsToBalance
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+          description: Success
+      tags:
+      - Balance
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates:
+    post:
+      description: Change dates of a balance for the given account id
+      operationId: "PostApiV2ExternalAccountChangeDatesByAccountId}Balances{balanceId"
+      parameters:
+      - description: The account of the balance
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - description: The balance to change the dates
+        explode: false
+        in: path
+        name: balance-id
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeDatesOfBalanceV2Request'
+        description: An object that represents the available options to modify schedule
+          of a balance.
+        required: true
+        x-nullable: false
+        x-bodyName: changeDatesOfBalance
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+          description: Success
+      tags:
+      - Balance
+      x-content-type: application/json
       x-accepts: application/json
   /preview/retail-media/campaigns/{campaign-id}/preferred-line-items:
     get:
@@ -2949,8 +3520,7 @@ paths:
 components:
   schemas:
     GrantConsentInput:
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value.
+      description: An object that encapsulates GrantConsentModel
       example:
         data:
           attributes:
@@ -2964,7 +3534,7 @@ components:
       type: object
     GrantConsentModelValueResource:
       description: A top-level object that encapsulates a Criteo API response for
-        a single value.
+        a single value
       example:
         attributes:
           callbackState: callbackState
@@ -2981,7 +3551,7 @@ components:
     GrantConsentModel:
       description: An object that represents the required (ClientId and CallbackUrl)
         and optional (CallbackState) parameters when granting consents on behalf of
-        a Private Market demand account.
+        a Private Market demand account
       example:
         callbackState: callbackState
         clientId: clientId
@@ -3094,7 +3664,7 @@ components:
             identifiers:
             - identifiers
             - identifiers
-            identifierType: email
+            identifierType: Email
             operation: add
           type: AddRemoveContactlist
       properties:
@@ -3265,7 +3835,7 @@ components:
           identifiers:
           - identifiers
           - identifiers
-          identifierType: email
+          identifierType: Email
           operation: add
         type: AddRemoveContactlist
       properties:
@@ -3280,7 +3850,8 @@ components:
       - attributes
       type: object
     ApplicationSummaryModelResponse:
-      description: Response of ApplicationSummaryModel
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         data:
           attributes:
@@ -3341,17 +3912,16 @@ components:
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     ApplicationSummaryModelResource:
-      description: A class that represents a ValueType in a guild compliant way
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         attributes:
           organizationId: 6
@@ -3368,7 +3938,7 @@ components:
           $ref: '#/components/schemas/ApplicationSummaryModel'
       type: object
     CommonProblem:
-      description: Common problem object. Can be specialized as needed.
+      description: Common problem object.
       example:
         traceId: traceId
         traceIdentifier: traceIdentifier
@@ -3404,7 +3974,7 @@ components:
           nullable: true
           type: string
         code:
-          description: "A machine-readable  error code, expressed as a string value."
+          description: "A machine-readable error code, expressed as a string value."
           nullable: true
           type: string
         instance:
@@ -3432,7 +4002,8 @@ components:
           type: string
       type: object
     ApplicationSummaryModel:
-      description: Model of ApplicationSummary
+      description: Used for the /me endpoint. Contains information about the currently
+        authenticated application that we accept to give to our clients
       example:
         organizationId: 6
         name: name
@@ -5095,8 +5666,8 @@ components:
           x-nullable: false
       required:
       - data
+      - metadata
       type: object
-      x-nullable: false
     JsonApiPageResponseOfBrand:
       description: A wrapper class to return a single page of <typeparamref name="T"
         /> with metadata
@@ -5175,8 +5746,8 @@ components:
           x-nullable: false
       required:
       - data
+      - metadata
       type: object
-      x-nullable: false
     JsonApiPageResponseOfRetailer:
       description: A wrapper class to return a single page of <typeparamref name="T"
         /> with metadata
@@ -5261,8 +5832,8 @@ components:
           x-nullable: false
       required:
       - data
+      - metadata
       type: object
-      x-nullable: false
     PageMetadata:
       description: Metadata related to the current request
       example:
@@ -5301,7 +5872,6 @@ components:
       - currentPageIndex
       - currentPageSize
       type: object
-      x-nullable: false
     CommonError:
       description: A JSON:API Common error structure
       example:
@@ -5367,7 +5937,6 @@ components:
           type: string
           x-nullable: false
       type: object
-      x-nullable: false
     CommonWarning:
       description: A JSON:API Base common warning
       example:
@@ -5433,7 +6002,6 @@ components:
           type: string
           x-nullable: false
       type: object
-      x-nullable: false
     JsonApiBodyWithIdOfInt64AndAccountAndAccount:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with external Id, Type, and\r\nAttributes properties"
@@ -5465,7 +6033,6 @@ components:
       - id
       - type
       type: object
-      x-nullable: false
     JsonApiBodyWithIdOfInt64AndBrandAndBrand:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with external Id, Type, and\r\nAttributes properties"
@@ -5488,7 +6055,6 @@ components:
       - id
       - type
       type: object
-      x-nullable: false
     JsonApiBodyWithIdOfInt64AndRetailerAndRetailer:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with external Id, Type, and\r\nAttributes properties"
@@ -5514,7 +6080,6 @@ components:
       - id
       - type
       type: object
-      x-nullable: false
     ExternalAccount:
       description: A Retail Media Account used to launch campaigns and line items
       example:
@@ -5552,7 +6117,6 @@ components:
         countries:
           items:
             type: string
-            x-nullable: false
           type: array
           x-nullable: false
         currency:
@@ -5569,6 +6133,7 @@ components:
         companyName:
           nullable: true
           type: string
+          x-nullable: true
       required:
       - countries
       - currency
@@ -5577,7 +6142,6 @@ components:
       - timeZone
       - type
       type: object
-      x-nullable: false
     ExternalBrand:
       description: A Retail Media Brand used to represent a collection of products
         sold under the same umbrella name
@@ -5592,7 +6156,6 @@ components:
       required:
       - name
       type: object
-      x-nullable: false
     ExternalRetailer:
       description: A Retail Media Retailer used to represent a selection of products
         from multiple brands
@@ -5613,13 +6176,354 @@ components:
             - auction
             - preferred
             type: string
-            x-nullable: false
           type: array
           x-nullable: false
       required:
       - name
       type: object
-      x-nullable: false
+    RmAudienceSegmentEntityV1ListResponse:
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities
+      example:
+        data:
+        - attributes:
+            accountId: accountId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            contactList:
+              isReadOnly: true
+              type: Unknown
+            channels:
+            - Unknown
+            - Unknown
+            name: name
+            description: description
+            retailerId: retailerId
+            type: Unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        - attributes:
+            accountId: accountId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            contactList:
+              isReadOnly: true
+              type: Unknown
+            channels:
+            - Unknown
+            - Unknown
+            name: name
+            description: description
+            retailerId: retailerId
+            type: Unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/RmAudienceSegmentEntityV1Resource'
+          nullable: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    RmAudienceSegmentIdEntityV1ListResponse:
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities
+      example:
+        data:
+        - attributes: "{}"
+          id: id
+          type: type
+        - attributes: "{}"
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/RmAudienceSegmentIdEntityV1Resource'
+          nullable: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse:
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities and metadata
+      example:
+        data:
+        - attributes:
+            accountId: accountId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            contactList:
+              isReadOnly: true
+              type: Unknown
+            channels:
+            - Unknown
+            - Unknown
+            name: name
+            description: description
+            retailerId: retailerId
+            type: Unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        - attributes:
+            accountId: accountId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            contactList:
+              isReadOnly: true
+              type: Unknown
+            channels:
+            - Unknown
+            - Unknown
+            name: name
+            description: description
+            retailerId: retailerId
+            type: Unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        meta:
+          totalItems: 0
+          offset: 1
+          limit: 6
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        meta:
+          $ref: '#/components/schemas/RmAudienceSegmentSearchMetadataV1'
+        data:
+          items:
+            $ref: '#/components/schemas/RmAudienceSegmentEntityV1Resource'
+          nullable: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    RmContactListStatisticsEntityV1Response:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity
+      example:
+        data:
+          attributes:
+            numberOfIdentifiers: 0
+            matchRate: 1.4658129805029452
+            numberOfMatches: 6
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/RmContactListStatisticsEntityV1Resource'
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
     RmLegacyAudienceGetEntityV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
         several entities and metadata
@@ -5846,6 +6750,184 @@ components:
           readOnly: true
           type: array
       type: object
+    RmAudienceSegmentBulkUpdateInputV1:
+      description: Input to update one or more segments.
+      example:
+        data:
+        - attributes:
+            contactList: "{}"
+            name: name
+            description:
+              value: value
+          id: id
+          type: type
+        - attributes:
+            contactList: "{}"
+            name: name
+            description:
+              value: value
+          id: id
+          type: type
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/RmAudienceSegmentUpdateEntityV1Resource'
+          nullable: true
+          type: array
+      type: object
+    RmAudienceSegmentBulkCreateInputV1:
+      description: Input to create one or more audience segments.
+      example:
+        data:
+        - attributes:
+            contactList:
+              identifierType: Email
+            name: name
+            description: description
+            retailerId: retailerId
+          type: type
+        - attributes:
+            contactList:
+              identifierType: Email
+            name: name
+            description: description
+            retailerId: retailerId
+          type: type
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/RmAudienceSegmentCreateEntityV1Resource'
+          nullable: true
+          type: array
+      type: object
+    RmAudienceSegmentBulkDeleteInputV1:
+      description: Input to delete one or more segments.
+      example:
+        data:
+        - attributes: "{}"
+          id: id
+          type: type
+        - attributes: "{}"
+          id: id
+          type: type
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/RmAudienceSegmentDeleteEntityV1Resource'
+          nullable: true
+          type: array
+      type: object
+    RmAudienceSegmentSearchInputV1:
+      description: Audience segment search parameter
+      example:
+        data:
+          attributes:
+            audienceSegmentIds:
+            - audienceSegmentIds
+            - audienceSegmentIds
+            retailerIds:
+            - retailerIds
+            - retailerIds
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/RmAudienceSegmentSearchEntityV1Resource'
+      type: object
+    RmAudienceSegmentEntityV1Resource:
+      description: A class that represents a domain entity exposed by an API
+      example:
+        attributes:
+          accountId: accountId
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          contactList:
+            isReadOnly: true
+            type: Unknown
+          channels:
+          - Unknown
+          - Unknown
+          name: name
+          description: description
+          retailerId: retailerId
+          type: Unknown
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RmAudienceSegmentEntityV1'
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
+      type: object
+    RmAudienceSegmentIdEntityV1Resource:
+      description: A class that represents a domain entity exposed by an API
+      example:
+        attributes: "{}"
+        id: id
+        type: type
+      properties:
+        attributes:
+          description: Audience Segment entity only with its ID
+          type: object
+          x-criteo-canonical:
+            infoType: entity
+            name: RetailMediaAudienceSegment
+            version: v1
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
+      type: object
+    RmAudienceSegmentSearchMetadataV1:
+      description: Metadata for the audience segment search response.
+      example:
+        totalItems: 0
+        offset: 1
+        limit: 6
+      properties:
+        totalItems:
+          description: Total number of items
+          format: int32
+          nullable: true
+          type: integer
+        limit:
+          description: Max item of the current page
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          description: Number of item to skip
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    RmContactListStatisticsEntityV1Resource:
+      description: A class that represents a domain entity exposed by an API
+      example:
+        attributes:
+          numberOfIdentifiers: 0
+          matchRate: 1.4658129805029452
+          numberOfMatches: 6
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RmContactListStatisticsEntityV1'
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
+      type: object
     RmLegacyAudienceGetEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -5926,6 +7008,188 @@ components:
           nullable: true
           type: string
       type: object
+    RmAudienceSegmentUpdateEntityV1Resource:
+      description: A class that represents a domain entity exposed by an API
+      example:
+        attributes:
+          contactList: "{}"
+          name: name
+          description:
+            value: value
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RmAudienceSegmentUpdateEntityV1'
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
+      type: object
+    RmAudienceSegmentCreateEntityV1Resource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          contactList:
+            identifierType: Email
+          name: name
+          description: description
+          retailerId: retailerId
+        type: type
+      properties:
+        type:
+          nullable: true
+          type: string
+        attributes:
+          $ref: '#/components/schemas/RmAudienceSegmentCreateEntityV1'
+      type: object
+    RmAudienceSegmentDeleteEntityV1Resource:
+      description: A class that represents a domain entity exposed by an API
+      example:
+        attributes: "{}"
+        id: id
+        type: type
+      properties:
+        attributes:
+          description: Segment to delete
+          type: object
+          x-criteo-canonical:
+            infoType: entity
+            name: RetailMediaAudienceSegment
+            version: v1
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
+      type: object
+    RmAudienceSegmentSearchEntityV1Resource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          audienceSegmentIds:
+          - audienceSegmentIds
+          - audienceSegmentIds
+          retailerIds:
+          - retailerIds
+          - retailerIds
+        type: type
+      properties:
+        type:
+          nullable: true
+          type: string
+        attributes:
+          $ref: '#/components/schemas/RmAudienceSegmentSearchEntityV1'
+      type: object
+    RmAudienceSegmentEntityV1:
+      description: Set of rules that defines specific people to target.
+      example:
+        accountId: accountId
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        contactList:
+          isReadOnly: true
+          type: Unknown
+        channels:
+        - Unknown
+        - Unknown
+        name: name
+        description: description
+        retailerId: retailerId
+        type: Unknown
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        accountId:
+          description: Account associated to the segment
+          nullable: true
+          type: string
+        name:
+          description: Name of the segment
+          nullable: true
+          type: string
+        description:
+          description: Description of the segment
+          nullable: true
+          type: string
+        retailerId:
+          description: Retailer  associated to the segment
+          nullable: true
+          type: string
+        type:
+          description: Type of segment (read-only)
+          enum:
+          - Unknown
+          - ContactList
+          nullable: true
+          type: string
+        createdAt:
+          description: ISO-8601 timestamp in UTC of segment creation (read-only)
+          format: date-time
+          nullable: true
+          type: string
+        updatedAt:
+          description: ISO-8601 timestamp in UTC of segment update (read-only)
+          format: date-time
+          nullable: true
+          type: string
+        contactList:
+          $ref: '#/components/schemas/RmContactListV1'
+        channels:
+          description: Channels associated to the segment (read-only)
+          items:
+            enum:
+            - Unknown
+            - Onsite
+            - Offsite
+            type: string
+          nullable: true
+          type: array
+      type: object
+      x-criteo-canonical:
+        infoType: entity
+        name: RetailMediaAudienceSegment
+        version: v1
+    RmAudienceSegmentIdEntityV1:
+      description: Audience Segment entity only with its ID
+      type: object
+      x-criteo-canonical:
+        infoType: entity
+        name: RetailMediaAudienceSegment
+        version: v1
+    RmContactListStatisticsEntityV1:
+      description: Contact list statistics.
+      example:
+        numberOfIdentifiers: 0
+        matchRate: 1.4658129805029452
+        numberOfMatches: 6
+      properties:
+        numberOfIdentifiers:
+          description: Number of identifiers in the contact list.
+          format: int32
+          nullable: true
+          type: integer
+        numberOfMatches:
+          description: Number of matched identifiers in the contact list.
+          format: int32
+          nullable: true
+          type: integer
+        matchRate:
+          description: "Percentage of matched identifiers in the contact list.\r\n\
+            Can differ from matches/identifiers depending on the contact list type."
+          format: double
+          nullable: true
+          type: number
+      type: object
+      x-criteo-canonical:
+        infoType: entity
+        name: ContactListStatistics
+        version: v1
     RmLegacyAudienceGetEntityV1:
       description: Audience definition of people of interest for a marketer.
       example:
@@ -6010,6 +7274,104 @@ components:
         infoType: entity
         name: RetailMediaAudience
         version: v1
+    RmAudienceSegmentUpdateEntityV1:
+      description: Set of rules that defines specific people to target.
+      example:
+        contactList: "{}"
+        name: name
+        description:
+          value: value
+      properties:
+        name:
+          description: Name of the segment
+          nullable: true
+          type: string
+        description:
+          $ref: '#/components/schemas/NillableString'
+        contactList:
+          description: Settings to update the contact list of the segment
+          type: object
+      type: object
+      x-criteo-canonical:
+        infoType: entity
+        name: RetailMediaAudienceSegment
+        version: v1
+    RmAudienceSegmentCreateEntityV1:
+      description: Set of rules that defines specific people to target.
+      example:
+        contactList:
+          identifierType: Email
+        name: name
+        description: description
+        retailerId: retailerId
+      properties:
+        name:
+          description: Name of the segment
+          nullable: true
+          type: string
+        description:
+          description: Description of the segment
+          nullable: true
+          type: string
+        retailerId:
+          description: Retailer  associated to the segment
+          nullable: true
+          type: string
+        contactList:
+          $ref: '#/components/schemas/RmContactListCreateV1'
+      type: object
+    RmAudienceSegmentDeleteEntityV1:
+      description: Segment to delete
+      type: object
+      x-criteo-canonical:
+        infoType: entity
+        name: RetailMediaAudienceSegment
+        version: v1
+    RmAudienceSegmentSearchEntityV1:
+      description: "Available filters to perform a search on audience segments. If\
+        \ present, the filters are AND'ed together when applied."
+      example:
+        audienceSegmentIds:
+        - audienceSegmentIds
+        - audienceSegmentIds
+        retailerIds:
+        - retailerIds
+        - retailerIds
+      properties:
+        audienceSegmentIds:
+          description: List of segment ids
+          items:
+            type: string
+          nullable: true
+          type: array
+        retailerIds:
+          description: List of retailer ids
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
+    RmContactListV1:
+      description: Settings to target users with your contact lists.
+      example:
+        isReadOnly: true
+        type: Unknown
+      properties:
+        isReadOnly:
+          description: Is the segment read-only
+          nullable: true
+          type: boolean
+        type:
+          description: Indicates contact list type
+          enum:
+          - Unknown
+          - Email
+          - UserIdentifier
+          - IdentityLink
+          - CustomerId
+          nullable: true
+          type: string
+      type: object
     RmLegacySegmentUserBehaviorV1:
       description: Audience definition of people based on what they visited
       example:
@@ -6106,6 +7468,36 @@ components:
           $ref: '#/components/schemas/RmLegacySegmentUserBehaviorV2'
       required:
       - inclusiveSegment
+      type: object
+    NillableString:
+      description: Placeholder object for string value  for which "null" is a valid
+        business value
+      example:
+        value: value
+      properties:
+        value:
+          description: The string's value. If missing or null the string's value is
+            set to "null"
+          nullable: true
+          type: string
+      type: object
+    RmContactListUpdateV1:
+      description: Settings to update the contact list of the segment
+      type: object
+    RmContactListCreateV1:
+      description: Settings to target users with your contact lists.
+      example:
+        identifierType: Email
+      properties:
+        identifierType:
+          description: Indicates contact list type
+          enum:
+          - Email
+          - UserIdentifier
+          - IdentityLink
+          - CustomerId
+          nullable: true
+          type: string
       type: object
     RmLegacySegmentUserBehaviorV2:
       description: Audience definition of people based on what they visited
@@ -7366,6 +8758,76 @@ components:
           type: array
       type: object
       x-nullable: true
+    JsonApiSingleResponseOfCatalogStatus:
+      description: A JSON:API wrapper class to add one JSON:API <typeparamref name="T"
+        /> within a data property
+      example:
+        data:
+          attributes:
+            fileSizeBytes: 6
+            md5Checksum: md5Checksum
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            currency: currency
+            rowCount: 0
+            message: message
+            status: unknown
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus'
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonError'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonWarning'
+          type: array
+          x-nullable: false
+      required:
+      - data
+      type: object
+      x-nullable: false
     SkuDataPreviewListResponse:
       description: Data model for a list of response resources
       example:
@@ -8127,6 +9589,23 @@ components:
       - templateVariableValues
       type: object
       x-nullable: false
+    JsonApiRequestOfSellerCatalogRequest:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with Type, and Attributes properties"
+      example:
+        data:
+          attributes:
+            sellers:
+            - sellerId: sellerId
+              retailerId: retailerId
+            - sellerId: sellerId
+              retailerId: retailerId
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest'
+      type: object
+      x-nullable: true
     SkuSearchRequestPreviewRequest:
       description: Data model for an input resource
       example:
@@ -8265,6 +9744,35 @@ components:
           type: string
       type: object
       x-nullable: true
+    JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with external Id, Type, and\r\nAttributes properties"
+      example:
+        attributes:
+          fileSizeBytes: 6
+          md5Checksum: md5Checksum
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          currency: currency
+          rowCount: 0
+          message: message
+          status: unknown
+        id: id
+        type: type
+      properties:
+        id:
+          format: long-id
+          type: string
+          x-nullable: false
+        type:
+          type: string
+          x-nullable: false
+        attributes:
+          $ref: '#/components/schemas/ExternalCatalogStatus'
+      required:
+      - id
+      - type
+      type: object
+      x-nullable: false
     ResourceOfSkuDataPreview:
       description: Data model for a Resource
       example:
@@ -8570,6 +10078,26 @@ components:
       - id
       type: object
       x-nullable: false
+    JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with Type, and\r\nAttributes properties"
+      example:
+        attributes:
+          sellers:
+          - sellerId: sellerId
+            retailerId: retailerId
+          - sellerId: sellerId
+            retailerId: retailerId
+        type: type
+      properties:
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/SellerCatalogRequest'
+      required:
+      - type
+      type: object
+      x-nullable: false
     ResourceOfSkuSearchRequestPreview:
       description: Data model for a Resource
       example:
@@ -8792,6 +10320,74 @@ components:
       - updatedAt
       type: object
       x-nullable: false
+    ExternalCatalogStatus:
+      description: The status of an asynchronous request to generate a catalog
+      example:
+        fileSizeBytes: 6
+        md5Checksum: md5Checksum
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        currency: currency
+        rowCount: 0
+        message: message
+        status: unknown
+      properties:
+        status:
+          description: An enumeration of the status of the catalog.
+          enum:
+          - unknown
+          - pending
+          - success
+          - failure
+          - expired
+          type: string
+          x-nullable: false
+        currency:
+          description: An ISO4217 representation of the currency products are listed
+            under in this catalog.
+          type: string
+          x-nullable: false
+        rowCount:
+          description: "An indication of the number of products contained in this\
+            \ catalog. Available when\r\nthis catalog reaches a success status."
+          format: int32
+          nullable: true
+          type: integer
+          x-nullable: true
+        fileSizeBytes:
+          description: The size of this catalog in bytes. Available when this catalog
+            reaches a success status.
+          format: int32
+          nullable: true
+          type: integer
+          x-nullable: true
+        md5Checksum:
+          description: "An MD5 checksum of the catalog for use in confirming complete\
+            \ and uncorrupted retrieval.\r\nAvailable when this catalog reaches a\
+            \ success status."
+          nullable: true
+          type: string
+          x-nullable: true
+        createdAt:
+          description: The time this catalog was created. Represented as a UTC ISO8601
+            string.
+          format: date-time
+          type: string
+          x-nullable: false
+        message:
+          description: An optional information message intended for developer consumption.
+          nullable: true
+          type: string
+          x-nullable: true
+      required:
+      - createdAt
+      - currency
+      - fileSizeBytes
+      - md5Checksum
+      - message
+      - rowCount
+      - status
+      type: object
+      x-nullable: false
     SkuDataPreview:
       description: Metadata and usage info of a sku search
       example:
@@ -8922,7 +10518,7 @@ components:
       required:
       - brandId
       - brandName
-      - id
+      - categoryId
       - isInStock
       - price
       - retailerId
@@ -9021,9 +10617,9 @@ components:
           type: string
           x-nullable: false
       required:
+      - categoryId
       - globalBrandId
       - globalBrandName
-      - id
       - isInStock
       - price
       - updatedAt
@@ -9093,7 +10689,6 @@ components:
           type: string
           x-nullable: false
       required:
-      - id
       - isInStock
       - price
       - updatedAt
@@ -9305,6 +10900,23 @@ components:
       - width
       type: object
       x-nullable: false
+    SellerCatalogRequest:
+      description: Used to requst a catalog of seller SKUs
+      example:
+        sellers:
+        - sellerId: sellerId
+          retailerId: retailerId
+        - sellerId: sellerId
+          retailerId: retailerId
+      properties:
+        sellers:
+          description: A list of sellers to restict the catalog to.
+          items:
+            $ref: '#/components/schemas/SellerIdentifier'
+          nullable: true
+          type: array
+      type: object
+      x-nullable: true
     SkuSearchRequestPreview:
       description: A request for sku by sellers or brands.
       example:
@@ -9523,6 +11135,23 @@ components:
       - name
       - parentId
       - text
+      type: object
+      x-nullable: false
+    SellerIdentifier:
+      description: Identifies a Unique Seller
+      example:
+        sellerId: sellerId
+        retailerId: retailerId
+      properties:
+        retailerId:
+          description: The retailer Id that the seller operates under
+          type: string
+        sellerId:
+          description: The id for the seller based on the corresponding retailer
+          type: string
+      required:
+      - retailerId
+      - sellerId
       type: object
       x-nullable: false
     AsyncReportResponse:
@@ -10399,6 +12028,8 @@ components:
             - salesChannel
             - environment
             - pageTypeName
+            - pageCategory
+            - taxonomyBreadcrumb
             - keyword
             - searchTerm
             type: string
@@ -10574,6 +12205,8 @@ components:
             - salesChannel
             - environment
             - pageTypeName
+            - pageCategory
+            - taxonomyBreadcrumb
             - keyword
             - searchTerm
             type: string
@@ -10748,6 +12381,8 @@ components:
             - salesChannel
             - environment
             - pageTypeName
+            - pageCategory
+            - taxonomyBreadcrumb
             - keyword
             - searchTerm
             type: string
@@ -11049,6 +12684,8 @@ components:
             - salesChannel
             - environment
             - pageTypeName
+            - pageCategory
+            - taxonomyBreadcrumb
             - keyword
             - searchTerm
             type: string
@@ -11220,6 +12857,8 @@ components:
             - salesChannel
             - environment
             - pageTypeName
+            - pageCategory
+            - taxonomyBreadcrumb
             - keyword
             - searchTerm
             type: string
@@ -11274,174 +12913,41 @@ components:
       - endDate
       - startDate
       type: object
-    ValueResourceOfRetailMediaBrands:
+    PageOfBalanceHistoryChangeDataCaptureV1:
       additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value.
-      example:
-        attributes:
-          brandIds:
-          - 0
-          - 0
-        type: type
-      properties:
-        type:
-          nullable: true
-          type: string
-        attributes:
-          $ref: '#/components/schemas/RetailMediaBrands'
-      type: object
-    ResourceOutcomeOfRetailMediaAccount:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single entity.
+      description: A wrapper class to return a single page of items with metadata.
       example:
         data:
-          attributes:
-            companyName: companyName
-            parentAccountLabel: parentAccountLabel
-            name: name
-            countryIds:
-            - countryIds
-            - countryIds
-            timeZone: timeZone
-            subType: Unknown
-            type: Unknown
-            currencyId: currencyId
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
+        - dateOfModification: 2000-01-23T04:56:07.000+00:00
+          modifiedByUser: modifiedByUser
+          changeType: BalanceCreated
+          memo: memo
+          changeDetails:
+            changeValue: changeValue
+            previousValue: previousValue
+            currentValue: currentValue
+        - dateOfModification: 2000-01-23T04:56:07.000+00:00
+          modifiedByUser: modifiedByUser
+          changeType: BalanceCreated
+          memo: memo
+          changeDetails:
+            changeValue: changeValue
+            previousValue: previousValue
+            currentValue: currentValue
+        meta:
+          offset: 6
+          count: 0
+          limit: 1
       properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfRetailMediaAccount'
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
-    ValueResourceCollectionOutcomeOfRetailMediaSeller:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        several values.
-      example:
-        data:
-        - attributes:
-            sellerId: sellerId
-            retailerId: 0
-          type: type
-        - attributes:
-            sellerId: sellerId
-            retailerId: 0
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
+        meta:
+          $ref: '#/components/schemas/Metadata'
         data:
           items:
-            $ref: '#/components/schemas/ValueResourceOfRetailMediaSeller'
-          nullable: true
+            $ref: '#/components/schemas/BalanceHistoryChangeDataCaptureV1'
           type: array
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
+      required:
+      - data
+      - meta
       type: object
     ValueResourceOutcomeOfCampaignBudgetOverrides:
       additionalProperties: false
@@ -11630,7 +13136,7 @@ components:
           readOnly: true
           type: array
       type: object
-    PageOfInsertionOrderHistoryChangeDataCapture:
+    PageOfInsertionOrderHistoryChangeDataCaptureV2:
       additionalProperties: false
       description: A wrapper class to return a single page of items with metadata.
       example:
@@ -11660,7 +13166,7 @@ components:
           $ref: '#/components/schemas/Metadata'
         data:
           items:
-            $ref: '#/components/schemas/InsertionOrderHistoryChangeDataCapture'
+            $ref: '#/components/schemas/InsertionOrderHistoryChangeDataCaptureV2'
           type: array
       required:
       - data
@@ -11836,78 +13342,6 @@ components:
           readOnly: true
           type: array
       type: object
-    ValueResourceInputOfRetailMediaBrands:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value.
-      example:
-        data:
-          attributes:
-            brandIds:
-            - 0
-            - 0
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceOfRetailMediaBrands'
-      type: object
-    ValueResourceInputOfRetailMediaBrandAccountCreation:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value.
-      example:
-        data:
-          attributes:
-            brands:
-            - 0
-            - 0
-            companyName: companyName
-            name: name
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceOfRetailMediaBrandAccountCreation'
-      type: object
-    ValueResourceInputOfRetailMediaSellerAccountCreation:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value.
-      example:
-        data:
-          attributes:
-            companyName: companyName
-            name: name
-            sellers:
-            - sellerId: sellerId
-              retailerId: 0
-            - sellerId: sellerId
-              retailerId: 0
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceOfRetailMediaSellerAccountCreation'
-      type: object
-    ValueResourceCollectionInputOfRetailMediaSeller:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for several
-        values.
-      example:
-        data:
-        - attributes:
-            sellerId: sellerId
-            retailerId: 0
-          type: type
-        - attributes:
-            sellerId: sellerId
-            retailerId: 0
-          type: type
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ValueResourceOfRetailMediaSeller'
-          nullable: true
-          type: array
-      type: object
     ValueResourceInputOfCampaignBudgetOverrides:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -11984,64 +13418,76 @@ components:
         data:
           $ref: '#/components/schemas/ValueResourceOfLineItemBudgetOverrides'
       type: object
-    RetailMediaBrands:
+    Metadata:
       additionalProperties: false
-      description: A collection of brand ids
+      description: Metadata related to the current request.
       example:
-        brandIds:
-        - 0
-        - 0
+        offset: 6
+        count: 0
+        limit: 1
       properties:
-        brandIds:
-          items:
-            format: int64
-            type: integer
+        count:
+          format: int64
           nullable: true
-          type: array
+          type: integer
+        offset:
+          description: The (zero-based) starting offset in the collection.
+          format: int32
+          type: integer
+        limit:
+          description: The number of elements to be returned.
+          format: int32
+          type: integer
+      required:
+      - limit
+      - offset
       type: object
-    ResourceOfRetailMediaAccount:
+    BalanceHistoryChangeDataCaptureV1:
       additionalProperties: false
-      description: A class that represents a domain entity exposed by an API.
+      description: Data model represents the data change capture of balance history.
       example:
-        attributes:
-          companyName: companyName
-          parentAccountLabel: parentAccountLabel
-          name: name
-          countryIds:
-          - countryIds
-          - countryIds
-          timeZone: timeZone
-          subType: Unknown
-          type: Unknown
-          currencyId: currencyId
-        id: id
-        type: type
+        dateOfModification: 2000-01-23T04:56:07.000+00:00
+        modifiedByUser: modifiedByUser
+        changeType: BalanceCreated
+        memo: memo
+        changeDetails:
+          changeValue: changeValue
+          previousValue: previousValue
+          currentValue: currentValue
       properties:
-        attributes:
-          $ref: '#/components/schemas/RetailMediaAccount'
-        id:
-          description: Unique identifier of this resource.
+        dateOfModification:
+          description: Date when data change has occured.
+          format: date-time
+          type: string
+        modifiedByUser:
+          description: Username who modified the insertion order.
+          type: string
+        changeType:
+          description: Represent the type of change states of the history.
+          enum:
+          - BalanceCreated
+          - BalanceAdded
+          - BalanceRemoved
+          - BalanceUncapped
+          - BalanceCapped
+          - EndDate
+          - StartDate
+          - BalanceName
+          - PoNumber
+          - ValueAdd
+          - Unknown
+          type: string
+        changeDetails:
+          $ref: '#/components/schemas/ChangeDetailsV1'
+        memo:
+          description: Memo associate with the insertion order modification.
           nullable: true
           type: string
-        type:
-          nullable: true
-          type: string
-      type: object
-    ValueResourceOfRetailMediaSeller:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value.
-      example:
-        attributes:
-          sellerId: sellerId
-          retailerId: 0
-        type: type
-      properties:
-        type:
-          nullable: true
-          type: string
-        attributes:
-          $ref: '#/components/schemas/RetailMediaSeller'
+      required:
+      - changeDetails
+      - changeType
+      - dateOfModification
+      - modifiedByUser
       type: object
     ValueResourceOfCampaignBudgetOverrides:
       additionalProperties: false
@@ -12108,31 +13554,7 @@ components:
           nullable: true
           type: string
       type: object
-    Metadata:
-      additionalProperties: false
-      description: Metadata related to the current request.
-      example:
-        offset: 6
-        count: 0
-        limit: 1
-      properties:
-        count:
-          format: int64
-          nullable: true
-          type: integer
-        offset:
-          description: The (zero-based) starting offset in the collection.
-          format: int32
-          type: integer
-        limit:
-          description: The number of elements to be returned.
-          format: int32
-          type: integer
-      required:
-      - limit
-      - offset
-      type: object
-    InsertionOrderHistoryChangeDataCapture:
+    InsertionOrderHistoryChangeDataCaptureV2:
       additionalProperties: false
       description: Data model represents the data change capture of insertion order
         history.
@@ -12151,7 +13573,7 @@ components:
           format: date-time
           type: string
         modifiedByUser:
-          description: User name who modified the insertion order.
+          description: Username who modified the insertion order.
           type: string
         changeType:
           description: Represent the type of change states of the history.
@@ -12166,10 +13588,10 @@ components:
           - BalanceName
           - PoNumber
           - ValueAdd
-          - SalesforceId
+          - Unknown
           type: string
         changeDetails:
-          $ref: '#/components/schemas/ChangeDetails'
+          $ref: '#/components/schemas/ChangeDetailsV2'
         memo:
           description: Memo associate with the insertion order modification.
           nullable: true
@@ -12246,46 +13668,6 @@ components:
         attributes:
           $ref: '#/components/schemas/LineItemBudgetOverrides'
       type: object
-    ValueResourceOfRetailMediaBrandAccountCreation:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value.
-      example:
-        attributes:
-          brands:
-          - 0
-          - 0
-          companyName: companyName
-          name: name
-        type: type
-      properties:
-        type:
-          nullable: true
-          type: string
-        attributes:
-          $ref: '#/components/schemas/RetailMediaBrandAccountCreation'
-      type: object
-    ValueResourceOfRetailMediaSellerAccountCreation:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value.
-      example:
-        attributes:
-          companyName: companyName
-          name: name
-          sellers:
-          - sellerId: sellerId
-            retailerId: 0
-          - sellerId: sellerId
-            retailerId: 0
-        type: type
-      properties:
-        type:
-          nullable: true
-          type: string
-        attributes:
-          $ref: '#/components/schemas/RetailMediaSellerAccountCreation'
-      type: object
     SkuSearchRequestBody:
       additionalProperties: false
       description: defines the type product Id to search and list of ids to be searched
@@ -12315,81 +13697,30 @@ components:
       - productIdType
       - queryIds
       type: object
-    RetailMediaAccount:
+    ChangeDetailsV1:
       additionalProperties: false
-      description: The details for a newly created account
+      description: Change details of a property of the balance.
       example:
-        companyName: companyName
-        parentAccountLabel: parentAccountLabel
-        name: name
-        countryIds:
-        - countryIds
-        - countryIds
-        timeZone: timeZone
-        subType: Unknown
-        type: Unknown
-        currencyId: currencyId
+        changeValue: changeValue
+        previousValue: previousValue
+        currentValue: currentValue
       properties:
-        name:
-          description: account name
+        previousValue:
+          description: Previous value of a property of the insertion order.
           nullable: true
           type: string
-        companyName:
-          description: Display name for reporting the owning entity of ads for the
-            Digital Services Act in the European Union
+        currentValue:
+          description: Current value of a property of the insertion order.
           nullable: true
           type: string
-        type:
-          description: Type for the account
-          enum:
-          - Unknown
-          - Supply
-          - Demand
+        changeValue:
+          description: Change detail of a property of the insertion order.
           nullable: true
           type: string
-        subType:
-          description: subtype for the account
-          enum:
-          - Unknown
-          - Brand
-          - Seller
-          nullable: true
-          type: string
-        countryIds:
-          description: list of countries associated with the account
-          items:
-            type: string
-          nullable: true
-          type: array
-        currencyId:
-          description: the currency for the account
-          nullable: true
-          type: string
-        parentAccountLabel:
-          description: parent account label for the account
-          nullable: true
-          type: string
-        timeZone:
-          description: the timezone for the account
-          nullable: true
-          type: string
-      type: object
-    RetailMediaSeller:
-      additionalProperties: false
-      description: used to define the exact seller linked with an account
-      example:
-        sellerId: sellerId
-        retailerId: 0
-      properties:
-        sellerId:
-          description: the seller id
-          nullable: true
-          type: string
-        retailerId:
-          description: the retailer id
-          format: int32
-          nullable: true
-          type: integer
+      required:
+      - changeValue
+      - currentValue
+      - previousValue
       type: object
     CampaignBudgetOverrides:
       additionalProperties: false
@@ -12514,7 +13845,7 @@ components:
           nullable: true
           type: string
       type: object
-    ChangeDetails:
+    ChangeDetailsV2:
       additionalProperties: false
       description: Change details of a property of the insertion order.
       example:
@@ -12615,63 +13946,6 @@ components:
       required:
       - dailyLineItemBudgetOverrides
       - monthlyLineItemBudgetOverrides
-      type: object
-    RetailMediaBrandAccountCreation:
-      additionalProperties: false
-      description: the initial set up and configuration options for a new private
-        market demand brand account
-      example:
-        brands:
-        - 0
-        - 0
-        companyName: companyName
-        name: name
-      properties:
-        name:
-          description: "the name of the account, must be unique across all accounts"
-          nullable: true
-          type: string
-        companyName:
-          description: Display name for reporting the owning entity of ads for the
-            Digital Services Act in the European Union
-          nullable: true
-          type: string
-        brands:
-          description: list of brands to link to the new account
-          items:
-            format: int64
-            type: integer
-          nullable: true
-          type: array
-      type: object
-    RetailMediaSellerAccountCreation:
-      additionalProperties: false
-      description: the initial set up and configuration options for a new private
-        market demand brand account
-      example:
-        companyName: companyName
-        name: name
-        sellers:
-        - sellerId: sellerId
-          retailerId: 0
-        - sellerId: sellerId
-          retailerId: 0
-      properties:
-        name:
-          description: "the name of the account, must be unique across all accounts"
-          nullable: true
-          type: string
-        companyName:
-          description: Display name for reporting the owning entity of ads for the
-            Digital Services Act in the European Union
-          nullable: true
-          type: string
-        sellers:
-          description: list of sellers to associate to the new account
-          items:
-            $ref: '#/components/schemas/RetailMediaSeller'
-          nullable: true
-          type: array
       type: object
     CampaignMonthlyBudgetOverride:
       additionalProperties: false
@@ -12912,6 +14186,195 @@ components:
           nullable: true
           type: array
       type: object
+    PagedResourceCollectionOutcomeOfBalanceResponseV2:
+      description: Data model for a paged list of response resources
+      example:
+        metadata:
+          currentPageSize: 6
+          previousPage: previousPage
+          nextPage: nextPage
+          totalPages: 5
+          totalItemsAcrossAllPages: 0
+          currentPageIndex: 1
+        data:
+        - attributes:
+            privateMarketBillingType: notApplicable
+            endDate: endDate
+            deposited: 0.8008281904610115
+            spent: 6.027456183070403
+            memo: memo
+            spendType: Onsite
+            remaining: 1.4658129805029452
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            balanceType: unknown
+            name: name
+            poNumber: poNumber
+            startDate: startDate
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        - attributes:
+            privateMarketBillingType: notApplicable
+            endDate: endDate
+            deposited: 0.8008281904610115
+            spent: 6.027456183070403
+            memo: memo
+            spendType: Onsite
+            remaining: 1.4658129805029452
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            balanceType: unknown
+            name: name
+            poNumber: poNumber
+            startDate: startDate
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        metadata:
+          $ref: '#/components/schemas/PageMetadata'
+        data:
+          items:
+            $ref: '#/components/schemas/ResourceOfBalanceResponseV2'
+          type: array
+          x-nullable: false
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+    BalanceResponseV2Response:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity
+      example:
+        data:
+          attributes:
+            privateMarketBillingType: notApplicable
+            endDate: endDate
+            deposited: 0.8008281904610115
+            spent: 6.027456183070403
+            memo: memo
+            spendType: Onsite
+            remaining: 1.4658129805029452
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            balanceType: unknown
+            name: name
+            poNumber: poNumber
+            startDate: startDate
+            status: unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfBalanceResponseV2'
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+          x-nullable: false
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          readOnly: true
+          type: array
+          x-nullable: false
+      type: object
+      x-nullable: true
     PreferredLineItemV2PagedListResponse:
       description: Data model for a paged list of response resources
       example:
@@ -13376,6 +14839,72 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
+    CreateBalanceV2Request:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity
+      example:
+        data:
+          attributes:
+            endDate: endDate
+            deposited: 0.8008281904610115
+            name: name
+            memo: memo
+            poNumber: poNumber
+            spendType: Onsite
+            startDate: startDate
+          id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfCreateBalanceV2'
+      type: object
+    UpdateBalanceModelV2Request:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity
+      example:
+        data:
+          attributes:
+            endDate: endDate
+            name: name
+            memo: memo
+            poNumber: poNumber
+            startDate: startDate
+          id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfUpdateBalanceModelV2'
+      type: object
+    AddFundsToBalanceV2Request:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity
+      example:
+        data:
+          attributes:
+            deltaAmount: 0.8008281904610115
+            memo: memo
+            poNumber: poNumber
+          id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfAddFundsToBalanceV2'
+      type: object
+    ChangeDatesOfBalanceV2Request:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity
+      example:
+        data:
+          attributes:
+            endDate: endDate
+            memo: memo
+            startDate: startDate
+          id: id
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfChangeDatesOfBalanceV2'
+      type: object
     PreferredLineItemCreateModelV2Request:
       description: Data model for a create input resource
       example:
@@ -13512,6 +15041,38 @@ components:
           $ref: '#/components/schemas/ResourceOfPreferredLineItemUpdateModelV2'
       type: object
       x-nullable: false
+    ResourceOfBalanceResponseV2:
+      description: A class that represents a domain entity exposed by an API
+      example:
+        attributes:
+          privateMarketBillingType: notApplicable
+          endDate: endDate
+          deposited: 0.8008281904610115
+          spent: 6.027456183070403
+          memo: memo
+          spendType: Onsite
+          remaining: 1.4658129805029452
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          balanceType: unknown
+          name: name
+          poNumber: poNumber
+          startDate: startDate
+          status: unknown
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/BalanceResponseV2'
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
+        type:
+          description: Canonical type name of the entity
+          nullable: true
+          type: string
+      type: object
     ResourceOfPreferredLineItemV2:
       description: Data model for a Resource
       example:
@@ -13644,6 +15205,96 @@ components:
           type: string
       type: object
       x-nullable: false
+    ResourceOfCreateBalanceV2:
+      description: A class that represents a domain entity exposed by an API
+      example:
+        attributes:
+          endDate: endDate
+          deposited: 0.8008281904610115
+          name: name
+          memo: memo
+          poNumber: poNumber
+          spendType: Onsite
+          startDate: startDate
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CreateBalanceV2'
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
+        type:
+          description: Canonical type name of the entity
+          nullable: true
+          type: string
+      type: object
+    ResourceOfUpdateBalanceModelV2:
+      description: A class that represents a domain entity exposed by an API
+      example:
+        attributes:
+          endDate: endDate
+          name: name
+          memo: memo
+          poNumber: poNumber
+          startDate: startDate
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/UpdateBalanceModelV2'
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
+        type:
+          description: Canonical type name of the entity
+          nullable: true
+          type: string
+      type: object
+    ResourceOfAddFundsToBalanceV2:
+      description: A class that represents a domain entity exposed by an API
+      example:
+        attributes:
+          deltaAmount: 0.8008281904610115
+          memo: memo
+          poNumber: poNumber
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/AddFundsToBalanceV2'
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
+        type:
+          description: Canonical type name of the entity
+          nullable: true
+          type: string
+      type: object
+    ResourceOfChangeDatesOfBalanceV2:
+      description: A class that represents a domain entity exposed by an API
+      example:
+        attributes:
+          endDate: endDate
+          memo: memo
+          startDate: startDate
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ChangeDatesOfBalanceV2'
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
+        type:
+          description: Canonical type name of the entity
+          nullable: true
+          type: string
+      type: object
     InputResourceOfPreferredLineItemCreateModelV2:
       description: Data model for a Resource
       example:
@@ -13742,6 +15393,117 @@ components:
           $ref: '#/components/schemas/ExternalPreferredLineItemUpdateModelV2'
       type: object
       x-nullable: false
+    BalanceResponseV2:
+      description: A Retail Media Balance used to determine the funds available for
+        any or all campaigns in an account
+      example:
+        privateMarketBillingType: notApplicable
+        endDate: endDate
+        deposited: 0.8008281904610115
+        spent: 6.027456183070403
+        memo: memo
+        spendType: Onsite
+        remaining: 1.4658129805029452
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        balanceType: unknown
+        name: name
+        poNumber: poNumber
+        startDate: startDate
+        status: unknown
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        name:
+          description: Name of the balance.
+          type: string
+          x-nullable: false
+        poNumber:
+          description: Purchase Order number.
+          nullable: true
+          type: string
+          x-nullable: true
+        memo:
+          description: Memo.
+          nullable: true
+          type: string
+          x-nullable: true
+        deposited:
+          description: Amount of billable funds allotted to the balance.
+          format: decimal
+          nullable: true
+          type: number
+          x-nullable: true
+        spent:
+          description: Amount of spent funds of the balance.
+          format: decimal
+          nullable: true
+          type: number
+          x-nullable: true
+        remaining:
+          description: Amount of remaining funds of the balance.
+          format: decimal
+          nullable: true
+          type: number
+          x-nullable: true
+        startDate:
+          description: Start date of the balance in the format YYYY-MM-DD.
+          type: string
+          x-nullable: false
+        endDate:
+          description: End date of the balance in the format YYYY-MM-DD.
+          nullable: true
+          type: string
+          x-nullable: true
+        status:
+          description: Status of the balance.
+          enum:
+          - unknown
+          - scheduled
+          - active
+          - ended
+          type: string
+          x-nullable: false
+        createdAt:
+          description: Creation time of the balance.
+          format: date-time
+          type: string
+          x-nullable: false
+        updatedAt:
+          description: Update time of the balance.
+          format: date-time
+          type: string
+          x-nullable: false
+        balanceType:
+          description: Type of the balance.
+          enum:
+          - unknown
+          - capped
+          - uncapped
+          type: string
+          x-nullable: false
+        spendType:
+          description: Spend Type of the balance.
+          enum:
+          - Onsite
+          - Offsite
+          - OffsiteAwareness
+          type: string
+          x-nullable: false
+        privateMarketBillingType:
+          description: Billing type for Private Market of the balance.
+          enum:
+          - notApplicable
+          - billByRetailer
+          - billByCriteo
+          - unknown
+          type: string
+          x-nullable: false
+      required:
+      - balanceType
+      - name
+      - privateMarketBillingType
+      - spendType
+      - startDate
+      type: object
     ExternalPreferredLineItemV2:
       description: A Retail Media Preferred Line Item used to hold bid settings for
         one or many promoted products on a single retailer
@@ -13782,15 +15544,11 @@ components:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
-          required:
-          - "true"
           type: string
         endDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
-          required:
-          - "true"
           type: string
         status:
           description: Line Item Status Enum
@@ -13982,6 +15740,143 @@ components:
       - skus
       type: object
       x-nullable: false
+    CreateBalanceV2:
+      description: An object that represents the available options to set when creating
+        a Retail Media Balance
+      example:
+        endDate: endDate
+        deposited: 0.8008281904610115
+        name: name
+        memo: memo
+        poNumber: poNumber
+        spendType: Onsite
+        startDate: startDate
+      properties:
+        name:
+          description: Name of the balance.
+          type: string
+          x-nullable: false
+        poNumber:
+          description: Purchase Order number.
+          nullable: true
+          type: string
+        deposited:
+          description: Amount of billable funds allotted to the balance.
+          format: decimal
+          nullable: true
+          type: number
+        startDate:
+          description: Start date of the balance in the format YYYY-MM-DD.
+          type: string
+          x-nullable: false
+        endDate:
+          description: End date of the balance in the format YYYY-MM-DD.
+          nullable: true
+          type: string
+        spendType:
+          description: Type of the balance spend.
+          enum:
+          - Onsite
+          - Offsite
+          - OffsiteAwareness
+          type: string
+          x-nullable: false
+        memo:
+          description: Memo
+          nullable: true
+          type: string
+      required:
+      - name
+      - spendType
+      - startDate
+      type: object
+    UpdateBalanceModelV2:
+      description: An object that represents the available options to set when updating
+        a Retail Media Balance.
+      example:
+        endDate: endDate
+        name: name
+        memo: memo
+        poNumber: poNumber
+        startDate: startDate
+      properties:
+        name:
+          description: Name of the balance.
+          nullable: true
+          type: string
+          x-nullable: true
+        poNumber:
+          description: Purchase Order number.
+          nullable: true
+          type: string
+          x-nullable: true
+        startDate:
+          description: Start date of the balance in the format YYYY-MM-DD.
+          nullable: true
+          type: string
+          x-nullable: true
+        endDate:
+          description: End date of the balance in the format YYYY-MM-DD.
+          nullable: true
+          type: string
+          x-nullable: true
+        memo:
+          description: Memo.
+          nullable: true
+          type: string
+          x-nullable: true
+      type: object
+    AddFundsToBalanceV2:
+      description: An object that represents the available options of adding funds
+        to a balance.
+      example:
+        deltaAmount: 0.8008281904610115
+        memo: memo
+        poNumber: poNumber
+      properties:
+        deltaAmount:
+          description: Amount of billable funds to be added / decreased allotted to
+            the balance.
+          format: decimal
+          type: number
+          x-nullable: false
+        poNumber:
+          description: Purchase Order number.
+          nullable: true
+          type: string
+          x-nullable: true
+        memo:
+          description: Memo
+          nullable: true
+          type: string
+          x-nullable: true
+      required:
+      - deltaAmount
+      type: object
+    ChangeDatesOfBalanceV2:
+      description: An object that represents the available options to modify schedule
+        of a balance.
+      example:
+        endDate: endDate
+        memo: memo
+        startDate: startDate
+      properties:
+        startDate:
+          description: Start date of the balance in the format YYYY-MM-DD.
+          nullable: true
+          type: string
+          x-nullable: true
+        endDate:
+          description: End date of the balance in the format YYYY-MM-DD.
+          nullable: true
+          type: string
+          x-nullable: true
+        memo:
+          description: Memo.
+          nullable: true
+          type: string
+          x-nullable: true
+      type: object
     ExternalPreferredLineItemCreateModelV2:
       description: Model used to create a preferred line item
       example:
@@ -14016,15 +15911,11 @@ components:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
-          required:
-          - "true"
           type: string
         endDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
-          required:
-          - "true"
           type: string
         status:
           description: Line Item Status Enum
@@ -14145,15 +16036,11 @@ components:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
-          required:
-          - "true"
           type: string
         endDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
-          required:
-          - "true"
           type: string
         status:
           description: Line Item Status Enum
@@ -14338,7 +16225,7 @@ components:
         identifiers:
         - identifiers
         - identifiers
-        identifierType: email
+        identifierType: Email
         operation: add
       properties:
         operation:
@@ -14350,12 +16237,12 @@ components:
         identifierType:
           description: What type of identifiers are used
           enum:
-          - email
-          - madid
-          - identityLink
-          - gum
-          - customerid
-          - phoneNumber
+          - Email
+          - UserIdentifier
+          - IdentityLink
+          - Gum
+          - CustomerId
+          - PhoneNumber
           nullable: true
           type: string
         identifiers:

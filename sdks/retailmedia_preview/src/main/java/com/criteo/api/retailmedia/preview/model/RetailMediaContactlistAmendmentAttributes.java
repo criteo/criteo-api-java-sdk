@@ -107,17 +107,17 @@ public class RetailMediaContactlistAmendmentAttributes {
    */
   @JsonAdapter(IdentifierTypeEnum.Adapter.class)
   public enum IdentifierTypeEnum {
-    EMAIL("email"),
+    EMAIL("Email"),
     
-    MADID("madid"),
+    USERIDENTIFIER("UserIdentifier"),
     
-    IDENTITYLINK("identityLink"),
+    IDENTITYLINK("IdentityLink"),
     
-    GUM("gum"),
+    GUM("Gum"),
     
-    CUSTOMERID("customerid"),
+    CUSTOMERID("CustomerId"),
     
-    PHONENUMBER("phoneNumber");
+    PHONENUMBER("PhoneNumber");
 
     private String value;
 

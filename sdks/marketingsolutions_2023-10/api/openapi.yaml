@@ -3611,7 +3611,8 @@ components:
           type: string
       type: object
     ApplicationSummaryModelResponse:
-      description: Response of ApplicationSummaryModel
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         data:
           attributes:
@@ -3672,17 +3673,16 @@ components:
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     ApplicationSummaryModelResource:
-      description: A class that represents a ValueType in a guild compliant way
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         attributes:
           organizationId: 6
@@ -3699,7 +3699,7 @@ components:
           $ref: '#/components/schemas/ApplicationSummaryModel'
       type: object
     CommonProblem:
-      description: Common problem object. Can be specialized as needed.
+      description: Common problem object.
       example:
         traceId: traceId
         traceIdentifier: traceIdentifier
@@ -3735,7 +3735,7 @@ components:
           nullable: true
           type: string
         code:
-          description: "A machine-readable  error code, expressed as a string value."
+          description: "A machine-readable error code, expressed as a string value."
           nullable: true
           type: string
         instance:
@@ -3763,7 +3763,8 @@ components:
           type: string
       type: object
     ApplicationSummaryModel:
-      description: Model of ApplicationSummary
+      description: Used for the /me endpoint. Contains information about the currently
+        authenticated application that we accept to give to our clients
       example:
         organizationId: 6
         name: name
@@ -12686,7 +12687,6 @@ components:
       required:
       - bodyTextColor
       - callsToAction
-      - creativeBackgrounColor
       - logoBase64String
       - pricesColor
       - productImageDisplay
@@ -13814,6 +13814,7 @@ components:
           - identityLink
           - gum
           - customerid
+          - phoneNumber
           nullable: true
           type: string
         identifiers:

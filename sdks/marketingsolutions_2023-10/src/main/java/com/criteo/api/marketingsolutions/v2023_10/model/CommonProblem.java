@@ -47,7 +47,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2023_10.JSON;
 
 /**
- * Common problem object. Can be specialized as needed.
+ * Common problem object.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CommonProblem {
@@ -222,7 +222,7 @@ public class CommonProblem {
   }
 
    /**
-   * A machine-readable  error code, expressed as a string value.
+   * A machine-readable error code, expressed as a string value.
    * @return code
   **/
   @javax.annotation.Nullable

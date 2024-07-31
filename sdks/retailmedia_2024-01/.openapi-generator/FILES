@@ -6,6 +6,7 @@ README.md
 api/openapi.yaml
 build.gradle
 build.sbt
+docs/AccountsApi.md
 docs/AddFundsToBalanceRequest.md
 docs/AddRemoveKeywordModel.md
 docs/AddRemoveKeywordsModel.md
@@ -40,6 +41,7 @@ docs/AudienceApi.md
 docs/AudienceIdsUpdateModel202110Request.md
 docs/AudienceTarget202110Request.md
 docs/AudienceTarget202110Response.md
+docs/BalanceApi.md
 docs/BalanceCampaign202110ListRequest.md
 docs/BalanceCampaign202110PagedListResponse.md
 docs/BalanceResponse.md
@@ -247,8 +249,10 @@ src/main/java/com/criteo/api/retailmedia/v2024_01/ProgressResponseBody.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/ServerConfiguration.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/ServerVariable.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/StringUtil.java
+src/main/java/com/criteo/api/retailmedia/v2024_01/api/AccountsApi.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/api/AnalyticsApi.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/api/AudienceApi.java
+src/main/java/com/criteo/api/retailmedia/v2024_01/api/BalanceApi.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/api/CampaignApi.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/api/GatewayApi.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/auth/ApiKeyAuth.java

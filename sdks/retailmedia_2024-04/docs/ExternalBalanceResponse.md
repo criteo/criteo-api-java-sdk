@@ -22,6 +22,7 @@ A Retail Media Balance used to determine the funds available for any or all camp
 |**balanceType** | [**BalanceTypeEnum**](#BalanceTypeEnum) | Type of the balance |  |
 |**salesForceId** | **String** | SalesForceId the balance is linked to. |  |
 |**spendType** | [**SpendTypeEnum**](#SpendTypeEnum) | Spend Type of the balance. |  |
+|**privateMarketBillingType** | [**PrivateMarketBillingTypeEnum**](#PrivateMarketBillingTypeEnum) | Billing type for Private Market. |  |
 
 
 
@@ -53,6 +54,17 @@ A Retail Media Balance used to determine the funds available for any or all camp
 | ONSITE | &quot;Onsite&quot; |
 | OFFSITE | &quot;Offsite&quot; |
 | OFFSITEAWARENESS | &quot;OffsiteAwareness&quot; |
+
+
+
+## Enum: PrivateMarketBillingTypeEnum
+
+| Name | Value |
+|---- | -----|
+| NOTAPPLICABLE | &quot;NotApplicable&quot; |
+| BILLBYRETAILER | &quot;BillByRetailer&quot; |
+| BILLBYCRITEO | &quot;BillByCriteo&quot; |
+| UNKNOWN | &quot;Unknown&quot; |
 
 
 

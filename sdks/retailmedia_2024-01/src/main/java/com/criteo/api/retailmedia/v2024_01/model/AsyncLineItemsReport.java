@@ -439,6 +439,10 @@ public class AsyncLineItemsReport {
     
     PAGETYPENAME("pageTypeName"),
     
+    PAGECATEGORY("pageCategory"),
+    
+    TAXONOMYBREADCRUMB("taxonomyBreadcrumb"),
+    
     KEYWORD("keyword"),
     
     SEARCHTERM("searchTerm");

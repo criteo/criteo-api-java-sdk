@@ -9,7 +9,7 @@ Slim  version of Sku Data model
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**name** | **String** | A short product name. |  [optional] |
-|**categoryId** | **String** | The category Id. |  [optional] |
+|**categoryId** | **String** | The category Id. |  |
 |**globalCategoryId** | **String** | The global category Id. |  [optional] |
 |**category** | **String** | The full category breadcrumb in the retailers catalog. |  [optional] |
 |**globalBrandId** | **String** | The global brand id associated to the product. |  |

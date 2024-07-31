@@ -27,12 +27,12 @@ Attributes of retail media contact list amendment
 
 | Name | Value |
 |---- | -----|
-| EMAIL | &quot;email&quot; |
-| MADID | &quot;madid&quot; |
-| IDENTITYLINK | &quot;identityLink&quot; |
-| GUM | &quot;gum&quot; |
-| CUSTOMERID | &quot;customerid&quot; |
-| PHONENUMBER | &quot;phoneNumber&quot; |
+| EMAIL | &quot;Email&quot; |
+| USERIDENTIFIER | &quot;UserIdentifier&quot; |
+| IDENTITYLINK | &quot;IdentityLink&quot; |
+| GUM | &quot;Gum&quot; |
+| CUSTOMERID | &quot;CustomerId&quot; |
+| PHONENUMBER | &quot;PhoneNumber&quot; |
 
 
 

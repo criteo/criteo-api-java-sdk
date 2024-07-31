@@ -2,7 +2,7 @@
 
 # GrantConsentInput
 
-A top-level object that encapsulates a Criteo API request for a single value.
+An object that encapsulates GrantConsentModel
 
 ## Properties
 

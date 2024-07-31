@@ -49,6 +49,7 @@ paths:
         name: pageIndex
         required: false
         schema:
+          default: 0
           format: int32
           type: integer
         style: form
@@ -60,6 +61,7 @@ paths:
         name: pageSize
         required: false
         schema:
+          default: 25
           format: int32
           type: integer
         style: form
@@ -67,12 +69,18 @@ paths:
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfAccount'
             application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfAccount'
+            text/json:
               schema:
                 $ref: '#/components/schemas/JsonApiPageResponseOfAccount'
           description: Success
       tags:
-      - Campaign
+      - Accounts
       x-accepts: application/json
   /2024-01/retail-media/accounts/{accountId}/brands:
     get:
@@ -107,6 +115,7 @@ paths:
         name: pageIndex
         required: false
         schema:
+          default: 0
           format: int32
           type: integer
         style: form
@@ -118,6 +127,7 @@ paths:
         name: pageSize
         required: false
         schema:
+          default: 25
           format: int32
           type: integer
         style: form
@@ -125,7 +135,13 @@ paths:
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfBrand'
             application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfBrand'
+            text/json:
               schema:
                 $ref: '#/components/schemas/JsonApiPageResponseOfBrand'
           description: Success
@@ -165,6 +181,7 @@ paths:
         name: pageIndex
         required: false
         schema:
+          default: 0
           format: int32
           type: integer
         style: form
@@ -176,6 +193,7 @@ paths:
         name: pageSize
         required: false
         schema:
+          default: 25
           format: int32
           type: integer
         style: form
@@ -183,7 +201,13 @@ paths:
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfRetailer'
             application/json:
+              schema:
+                $ref: '#/components/schemas/JsonApiPageResponseOfRetailer'
+            text/json:
               schema:
                 $ref: '#/components/schemas/JsonApiPageResponseOfRetailer'
           description: Success
@@ -923,7 +947,10 @@ paths:
           description: Catalog download initiated.
         "400":
           content:
-            application/x-json-stream: {}
+            application/x-json-stream:
+              schema:
+                format: binary
+                type: string
             application/json: {}
           description: "The indicated catalog is not available for retrieval, wait\
             \ for a success status."
@@ -1477,6 +1504,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ValueResourceInputOfCampaignBudgetOverrides'
         description: New campaign budget overrides settings value resource input.
+        x-bodyName: campaignBudgetOverridesInput
       responses:
         "201":
           content:
@@ -1540,6 +1568,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ValueResourceInputOfLineItemBudgetOverrides'
         description: New line item budget overrides settings value resource input.
+        x-bodyName: lineItemBudgetOverridesInput
       responses:
         "201":
           content:
@@ -1608,7 +1637,7 @@ paths:
                 $ref: '#/components/schemas/BalanceResponsePagedListResponse'
           description: Success
       tags:
-      - Campaign
+      - Balance
       x-accepts: application/json
     post:
       description: Create balance for the given account id
@@ -1638,7 +1667,7 @@ paths:
                 $ref: '#/components/schemas/BalanceResponse'
           description: Success
       tags:
-      - Campaign
+      - Balance
       x-content-type: application/json
       x-accepts: application/json
   /2024-01/retail-media/accounts/{account-id}/balances/{balanceId}:
@@ -1672,7 +1701,7 @@ paths:
                 $ref: '#/components/schemas/BalanceResponse'
           description: Success
       tags:
-      - Campaign
+      - Balance
       x-accepts: application/json
     patch:
       description: Modify a balance for the given account id
@@ -1711,7 +1740,7 @@ paths:
                 $ref: '#/components/schemas/BalanceResponse'
           description: Success
       tags:
-      - Campaign
+      - Balance
       x-content-type: application/json
       x-accepts: application/json
   /2024-01/retail-media/accounts/{account-id}/balances/{balanceId}/add-funds:
@@ -1752,7 +1781,7 @@ paths:
                 $ref: '#/components/schemas/BalanceResponse'
           description: Success
       tags:
-      - Campaign
+      - Balance
       x-content-type: application/json
       x-accepts: application/json
   /2024-01/retail-media/accounts/{account-id}/balances/{balanceId}/change-dates:
@@ -1793,7 +1822,7 @@ paths:
                 $ref: '#/components/schemas/BalanceResponse'
           description: Success
       tags:
-      - Campaign
+      - Balance
       x-content-type: application/json
       x-accepts: application/json
   /2024-01/retail-media/accounts/{account-id}/campaigns:
@@ -2209,7 +2238,7 @@ paths:
                 $ref: '#/components/schemas/BalanceCampaign202110PagedListResponse'
           description: Success
       tags:
-      - Campaign
+      - Balance
       x-accepts: application/json
   /2024-01/retail-media/balances/{balance-id}/campaigns/append:
     post:
@@ -3338,7 +3367,8 @@ paths:
 components:
   schemas:
     ApplicationSummaryModelResponse:
-      description: Response of ApplicationSummaryModel
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         data:
           attributes:
@@ -3399,17 +3429,16 @@ components:
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
       type: object
     ApplicationSummaryModelResource:
-      description: A class that represents a ValueType in a guild compliant way
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
       example:
         attributes:
           organizationId: 6
@@ -3426,7 +3455,7 @@ components:
           $ref: '#/components/schemas/ApplicationSummaryModel'
       type: object
     CommonProblem:
-      description: Common problem object. Can be specialized as needed.
+      description: Common problem object.
       example:
         traceId: traceId
         traceIdentifier: traceIdentifier
@@ -3462,7 +3491,7 @@ components:
           nullable: true
           type: string
         code:
-          description: "A machine-readable  error code, expressed as a string value."
+          description: "A machine-readable error code, expressed as a string value."
           nullable: true
           type: string
         instance:
@@ -3490,7 +3519,8 @@ components:
           type: string
       type: object
     ApplicationSummaryModel:
-      description: Model of ApplicationSummary
+      description: Used for the /me endpoint. Contains information about the currently
+        authenticated application that we accept to give to our clients
       example:
         organizationId: 6
         name: name
@@ -3612,8 +3642,8 @@ components:
           x-nullable: false
       required:
       - data
+      - metadata
       type: object
-      x-nullable: false
     JsonApiPageResponseOfBrand:
       description: A wrapper class to return a single page of <typeparamref name="T"
         /> with metadata
@@ -3692,8 +3722,8 @@ components:
           x-nullable: false
       required:
       - data
+      - metadata
       type: object
-      x-nullable: false
     JsonApiPageResponseOfRetailer:
       description: A wrapper class to return a single page of <typeparamref name="T"
         /> with metadata
@@ -3778,8 +3808,8 @@ components:
           x-nullable: false
       required:
       - data
+      - metadata
       type: object
-      x-nullable: false
     PageMetadata:
       description: Metadata related to the current request
       example:
@@ -3818,7 +3848,6 @@ components:
       - currentPageIndex
       - currentPageSize
       type: object
-      x-nullable: false
     CommonError:
       description: A JSON:API Common error structure
       example:
@@ -3884,7 +3913,6 @@ components:
           type: string
           x-nullable: false
       type: object
-      x-nullable: false
     CommonWarning:
       description: A JSON:API Base common warning
       example:
@@ -3950,7 +3978,6 @@ components:
           type: string
           x-nullable: false
       type: object
-      x-nullable: false
     JsonApiBodyWithIdOfInt64AndAccountAndAccount:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with external Id, Type, and\r\nAttributes properties"
@@ -3982,7 +4009,6 @@ components:
       - id
       - type
       type: object
-      x-nullable: false
     JsonApiBodyWithIdOfInt64AndBrandAndBrand:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with external Id, Type, and\r\nAttributes properties"
@@ -4005,7 +4031,6 @@ components:
       - id
       - type
       type: object
-      x-nullable: false
     JsonApiBodyWithIdOfInt64AndRetailerAndRetailer:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with external Id, Type, and\r\nAttributes properties"
@@ -4031,7 +4056,6 @@ components:
       - id
       - type
       type: object
-      x-nullable: false
     ExternalAccount:
       description: A Retail Media Account used to launch campaigns and line items
       example:
@@ -4069,7 +4093,6 @@ components:
         countries:
           items:
             type: string
-            x-nullable: false
           type: array
           x-nullable: false
         currency:
@@ -4086,6 +4109,7 @@ components:
         companyName:
           nullable: true
           type: string
+          x-nullable: true
       required:
       - countries
       - currency
@@ -4094,7 +4118,6 @@ components:
       - timeZone
       - type
       type: object
-      x-nullable: false
     ExternalBrand:
       description: A Retail Media Brand used to represent a collection of products
         sold under the same umbrella name
@@ -4109,7 +4132,6 @@ components:
       required:
       - name
       type: object
-      x-nullable: false
     ExternalRetailer:
       description: A Retail Media Retailer used to represent a selection of products
         from multiple brands
@@ -4130,13 +4152,11 @@ components:
             - auction
             - preferred
             type: string
-            x-nullable: false
           type: array
           x-nullable: false
       required:
       - name
       type: object
-      x-nullable: false
     AssetResponse:
       description: A class implementing the response of the Criteo API as described
         in API Guild Guidelines with a single entity as body
@@ -8548,6 +8568,9 @@ components:
       example:
         data:
           attributes:
+            advertiserTypes:
+            - retailer
+            - retailer
             campaignType: all
             clickAttributionWindow: none
             endDate: 2000-01-23T04:56:07.000+00:00
@@ -8671,6 +8694,9 @@ components:
         a single value
       example:
         attributes:
+          advertiserTypes:
+          - retailer
+          - retailer
           campaignType: all
           clickAttributionWindow: none
           endDate: 2000-01-23T04:56:07.000+00:00
@@ -8871,6 +8897,8 @@ components:
             - salesChannel
             - environment
             - pageTypeName
+            - pageCategory
+            - taxonomyBreadcrumb
             - keyword
             - searchTerm
             type: string
@@ -9045,6 +9073,8 @@ components:
             - salesChannel
             - environment
             - pageTypeName
+            - pageCategory
+            - taxonomyBreadcrumb
             - keyword
             - searchTerm
             type: string
@@ -9101,6 +9131,9 @@ components:
     AsyncRevenueReport:
       description: Async Revenue report body request
       example:
+        advertiserTypes:
+        - retailer
+        - retailer
         campaignType: all
         clickAttributionWindow: none
         endDate: 2000-01-23T04:56:07.000+00:00
@@ -9128,13 +9161,13 @@ components:
         - date
       properties:
         ids:
-          description: Campaign ids to report on
+          description: Supply account ids to report on
           items:
             type: string
           nullable: true
           type: array
         id:
-          description: Campaign id to report on
+          description: Supply account id to report on
           nullable: true
           type: string
         reportType:
@@ -9171,6 +9204,16 @@ components:
           - sponsorship
           nullable: true
           type: string
+        advertiserTypes:
+          description: "Filter on the type of advertiser: retailer, brand, seller"
+          items:
+            enum:
+            - retailer
+            - brand
+            - seller
+            type: string
+          nullable: true
+          type: array
         skuRelations:
           description: "Filter on sku relations: Same SKU, Same Parent SKU, Same Category,\
             \ Same Brand or Same Seller"
@@ -9243,6 +9286,7 @@ components:
             - accountId
             - accountName
             - accountTypeName
+            - advertiserType
             - campaignId
             - campaignName
             - campaignTypeName
@@ -9266,6 +9310,7 @@ components:
             - advProductName
             - advProductGtin
             - advProductMpn
+            - buyType
             - soldBy
             - saleChannel
             - attributionSettings
@@ -9310,6 +9355,7 @@ components:
             - transactions
             - assistedSales
             - assistedUnits
+            - revenue
             - openAuctionRevenue
             - preferredDealsRevenue
             - ctr
@@ -9875,6 +9921,7 @@ components:
           currentPageIndex: 1
         data:
         - attributes:
+            privateMarketBillingType: NotApplicable
             endDate: 2000-01-23
             deposited: 0.8008281904610115
             spent: 6.027456183070403
@@ -9892,6 +9939,7 @@ components:
           id: id
           type: type
         - attributes:
+            privateMarketBillingType: NotApplicable
             endDate: 2000-01-23
             deposited: 0.8008281904610115
             spent: 6.027456183070403
@@ -9977,6 +10025,7 @@ components:
       example:
         data:
           attributes:
+            privateMarketBillingType: NotApplicable
             endDate: 2000-01-23
             deposited: 0.8008281904610115
             spent: 6.027456183070403
@@ -11860,6 +11909,7 @@ components:
       description: Data model for a Resource
       example:
         attributes:
+          privateMarketBillingType: NotApplicable
           endDate: 2000-01-23
           deposited: 0.8008281904610115
           spent: 6.027456183070403
@@ -12559,6 +12609,7 @@ components:
       description: A Retail Media Balance used to determine the funds available for
         any or all campaigns in an account
       example:
+        privateMarketBillingType: NotApplicable
         endDate: 2000-01-23
         deposited: 0.8008281904610115
         spent: 6.027456183070403
@@ -12590,30 +12641,22 @@ components:
           description: Amount of billable funds allotted to the balance.
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         spent:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         remaining:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         startDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
-          required:
-          - "true"
           type: string
         endDate:
           description: "Represents the Date as a year, month, and day in the format\
@@ -12656,6 +12699,15 @@ components:
           - OffsiteAwareness
           type: string
           x-nullable: false
+        privateMarketBillingType:
+          description: Billing type for Private Market.
+          enum:
+          - NotApplicable
+          - BillByRetailer
+          - BillByCriteo
+          - Unknown
+          type: string
+          x-nullable: false
       required:
       - balanceType
       - createdAt
@@ -12664,6 +12716,7 @@ components:
       - memo
       - name
       - poNumber
+      - privateMarketBillingType
       - remaining
       - salesForceId
       - spendType
@@ -12716,15 +12769,11 @@ components:
         budgetSpent:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         budgetRemaining:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         status:
@@ -12786,22 +12835,16 @@ components:
         budget:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         monthlyPacing:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         dailyPacing:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         isAutoDailyPacing:
@@ -12885,8 +12928,6 @@ components:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
-          required:
-          - "true"
           type: string
         endDate:
           description: "Represents the Date as a year, month, and day in the format\
@@ -12914,8 +12955,6 @@ components:
         budget:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         campaignId:
@@ -12929,8 +12968,6 @@ components:
         budgetRemaining:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         createdAt:
@@ -12983,8 +13020,6 @@ components:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
-          required:
-          - "true"
           type: string
         endDate:
           description: "Represents the Date as a year, month, and day in the format\
@@ -12995,29 +13030,21 @@ components:
         maxBid:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         budget:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         monthlyPacing:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         dailyPacing:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         bidStrategy:
@@ -13049,8 +13076,6 @@ components:
         targetBid:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         isAutoDailyPacing:
@@ -13068,8 +13093,6 @@ components:
         budgetRemaining:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         createdAt:
@@ -13155,15 +13178,11 @@ components:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
-          required:
-          - "true"
           type: string
         endDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
-          required:
-          - "true"
           type: string
         status:
           enum:
@@ -13290,8 +13309,6 @@ components:
         bidOverride:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
       type: object
@@ -13414,16 +13431,12 @@ components:
           description: Amount of billable funds allotted to the balance.
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         startDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
-          required:
-          - "true"
           type: string
         endDate:
           description: "Represents the Date as a year, month, and day in the format\
@@ -13615,22 +13628,16 @@ components:
         budget:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         monthlyPacing:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         dailyPacing:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         isAutoDailyPacing:
@@ -13699,8 +13706,6 @@ components:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
-          required:
-          - "true"
           type: string
         endDate:
           description: "Represents the Date as a year, month, and day in the format\
@@ -13724,36 +13729,26 @@ components:
         budget:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         targetBid:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         maxBid:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         monthlyPacing:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         dailyPacing:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         isAutoDailyPacing:
@@ -13801,8 +13796,6 @@ components:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
-          required:
-          - "true"
           type: string
         endDate:
           description: "Represents the Date as a year, month, and day in the format\
@@ -13830,36 +13823,26 @@ components:
         budget:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         targetBid:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         maxBid:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         monthlyPacing:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         dailyPacing:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         isAutoDailyPacing:
@@ -13915,15 +13898,11 @@ components:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
-          required:
-          - "true"
           type: string
         endDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
-          required:
-          - "true"
           type: string
         status:
           enum:
@@ -13997,22 +13976,16 @@ components:
         budget:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         monthlyPacing:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         dailyPacing:
           format: decimal
           nullable: true
-          required:
-          - "false"
           type: number
           x-nullable: true
         isAutoDailyPacing:
@@ -14110,15 +14083,11 @@ components:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
-          required:
-          - "true"
           type: string
         endDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
           format: date
-          required:
-          - "true"
           type: string
         status:
           enum:
