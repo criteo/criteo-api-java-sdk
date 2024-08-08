@@ -646,6 +646,217 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
+  /2024-07/retail-media/line-items/{line-item-id}/products:
+    get:
+      description: Retrieve a page of promoted products for a line item
+      operationId: FetchPromotedProducts
+      parameters:
+      - description: ID of the line item.
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Offset of the first item to fetch. Defaults to zero.
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - description: Maximum page size to fetch. Defaults to 500.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - description: "A comma separated list of attribute names from the response\
+          \ model to compute and return.\r\n            Valid values are `status`\
+          \ and `bidOverride` in any order. Defaults to `status`."
+        explode: true
+        in: query
+        name: fields
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromotedProductResourceCollectionOutcome'
+          description: Promoted products associated with the line item
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResourceOutcome'
+          description: Invalid external line item ID
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /2024-07/retail-media/line-items/{line-item-id}/products/append:
+    post:
+      description: Append a collection of promoted products to a line item
+      operationId: AppendPromotedProducts
+      parameters:
+      - description: ID of the line item
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromotedProductResourceCollectionInput'
+        description: "Request body whose {data} contains an array of promoted products."
+      responses:
+        "204":
+          description: Promoted products appended to the line item
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResourceOutcome'
+          description: Invalid request body
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResourceOutcome'
+          description: Invalid external line item ID
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /2024-07/retail-media/line-items/{line-item-id}/products/delete:
+    post:
+      description: Remove a collection of promoted products from a line item
+      operationId: DeletePromotedProducts
+      parameters:
+      - description: ID of the line item
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromotedProductResourceCollectionInput'
+        description: "Request body whose {data} contains an array of promoted products."
+      responses:
+        "204":
+          description: Promoted products removed from the line item
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResourceOutcome'
+          description: Invalid request body
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResourceOutcome'
+          description: Invalid external line item ID
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /2024-07/retail-media/line-items/{line-item-id}/products/pause:
+    post:
+      description: Pause a collection of promoted products associated with a line
+        item
+      operationId: PausePromotedProducts
+      parameters:
+      - description: ID of the line item
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromotedProductResourceCollectionInput'
+        description: "Request body whose {data} contains an array of promoted products."
+      responses:
+        "204":
+          description: Promoted products paused
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResourceOutcome'
+          description: Invalid request body
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResourceOutcome'
+          description: Invalid external line item ID
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /2024-07/retail-media/line-items/{line-item-id}/products/unpause:
+    post:
+      description: Un-pause a collection of promoted products associated with a line
+        item
+      operationId: UnpausePromotedProducts
+      parameters:
+      - description: ID of the line item
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromotedProductResourceCollectionInput'
+        description: "Request body whose {data} contains an array of promoted products."
+      responses:
+        "204":
+          description: Promoted products un-paused
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResourceOutcome'
+          description: Invalid request body
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResourceOutcome'
+          description: Invalid external line item ID
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
   /2024-07/retail-media/preferred-deal-line-items/{id}/proposal:
     get:
       description: "Includes the state of the proposal, the status of the booking\
@@ -1839,10 +2050,10 @@ paths:
       x-accepts: application/json
   /2024-07/retail-media/accounts/{account-id}/balances:
     get:
-      description: Get page of balances for the given accountId.
-      operationId: Balances_GetApiV1ExternalAccountBalancesByAccountId
+      description: Gets page of balance objects for the given account id
+      operationId: GetApiV2ExternalAccountBalancesByAccountId
       parameters:
-      - description: The account to get page of balances for
+      - description: The account to get balances for
         explode: false
         in: path
         name: account-id
@@ -1889,16 +2100,22 @@ paths:
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PagedResourceCollectionOutcomeOfBalanceResponseV2'
             application/json:
               schema:
-                $ref: '#/components/schemas/BalanceResponsePagedListResponse'
+                $ref: '#/components/schemas/PagedResourceCollectionOutcomeOfBalanceResponseV2'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceCollectionOutcomeOfBalanceResponseV2'
           description: Success
       tags:
       - Balance
       x-accepts: application/json
     post:
       description: Create balance for the given account id
-      operationId: Balances_PostApiV1ExternalAccountBalancesByAccountId
+      operationId: PostApiV2ExternalAccountBalancesByAccountId
       parameters:
       - description: The account to create balances for
         explode: false
@@ -1913,24 +2130,33 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateBalanceRequest'
+              $ref: '#/components/schemas/CreateBalanceV2Request'
+        description: An object that represents the available options to set when creating
+          a Retail Media Balance
+        required: true
         x-nullable: false
         x-bodyName: createBalance
       responses:
         "201":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
             application/json:
               schema:
-                $ref: '#/components/schemas/BalanceResponse'
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
           description: Success
       tags:
       - Balance
       x-content-type: application/json
       x-accepts: application/json
-  /2024-07/retail-media/accounts/{account-id}/balances/{balanceId}:
+  /2024-07/retail-media/accounts/{account-id}/balances/{balance-id}:
     get:
       description: Get a balance for the given account id and balance id
-      operationId: Balances_GetApiV1ExternalAccountByAccountIdAndBalanceId
+      operationId: "GetApiV2ExternalAccountByAccountId}Balances{balanceId"
       parameters:
       - description: The account of the balance
         explode: false
@@ -1944,7 +2170,7 @@ paths:
       - description: The balance id
         explode: false
         in: path
-        name: balanceId
+        name: balance-id
         required: true
         schema:
           type: string
@@ -1953,16 +2179,22 @@ paths:
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
             application/json:
               schema:
-                $ref: '#/components/schemas/BalanceResponse'
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
           description: Success
       tags:
       - Balance
       x-accepts: application/json
     patch:
       description: Modify a balance for the given account id
-      operationId: Balances_PatchApiV1ExternalAccountByAccountIdAndBalanceId
+      operationId: "PatchApiV2ExternalAccountByAccountId}Balances{balanceId"
       parameters:
       - description: The account of the balance
         explode: false
@@ -1976,7 +2208,7 @@ paths:
       - description: The balance to change the dates
         explode: false
         in: path
-        name: balanceId
+        name: balance-id
         required: true
         schema:
           type: string
@@ -1986,24 +2218,32 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateBalanceModelRequest'
+              $ref: '#/components/schemas/UpdateBalanceModelV2Request'
+        description: An object that represents the available options to modify a balance.
+        required: true
         x-nullable: false
         x-bodyName: updateBalanceModel
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
             application/json:
               schema:
-                $ref: '#/components/schemas/BalanceResponse'
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
           description: Success
       tags:
       - Balance
       x-content-type: application/json
       x-accepts: application/json
-  /2024-07/retail-media/accounts/{account-id}/balances/{balanceId}/add-funds:
+  /2024-07/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds:
     post:
       description: Add funds to a balance for the given account id
-      operationId: Balances_PostApiV1ExternalAccountAddFundsByAccountIdAndBalanceId
+      operationId: "PostApiV2ExternalAccountAddFundsByAccountId}Balances{balanceId"
       parameters:
       - description: The account of the balance
         explode: false
@@ -2017,7 +2257,7 @@ paths:
       - description: The balance to add funds to
         explode: false
         in: path
-        name: balanceId
+        name: balance-id
         required: true
         schema:
           type: string
@@ -2027,24 +2267,33 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AddFundsToBalanceRequest'
+              $ref: '#/components/schemas/AddFundsToBalanceV2Request'
+        description: An object that represents the available options of adding funds
+          to a balance.
+        required: true
         x-nullable: false
         x-bodyName: addFundsToBalance
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
             application/json:
               schema:
-                $ref: '#/components/schemas/BalanceResponse'
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
           description: Success
       tags:
       - Balance
       x-content-type: application/json
       x-accepts: application/json
-  /2024-07/retail-media/accounts/{account-id}/balances/{balanceId}/change-dates:
+  /2024-07/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates:
     post:
       description: Change dates of a balance for the given account id
-      operationId: Balances_PostApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId
+      operationId: "PostApiV2ExternalAccountChangeDatesByAccountId}Balances{balanceId"
       parameters:
       - description: The account of the balance
         explode: false
@@ -2058,7 +2307,7 @@ paths:
       - description: The balance to change the dates
         explode: false
         in: path
-        name: balanceId
+        name: balance-id
         required: true
         schema:
           type: string
@@ -2068,15 +2317,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ChangeDatesOfBalanceRequest'
+              $ref: '#/components/schemas/ChangeDatesOfBalanceV2Request'
+        description: An object that represents the available options to modify schedule
+          of a balance.
+        required: true
         x-nullable: false
         x-bodyName: changeDatesOfBalance
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
             application/json:
               schema:
-                $ref: '#/components/schemas/BalanceResponse'
+                $ref: '#/components/schemas/BalanceResponseV2Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BalanceResponseV2Response'
           description: Success
       tags:
       - Balance
@@ -2911,192 +3169,6 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/LineItemBidMultipliersResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /2024-07/retail-media/line-items/{line-item-id}/products:
-    get:
-      description: This endpoint gets the promoted products on the specified line
-        item.
-      operationId: PromotedProductsApi_GetApi202110ExternalLineItemProductsByLineItemId
-      parameters:
-      - description: The line item to interact with
-        explode: false
-        in: path
-        name: line-item-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: The ids that you would like to limit your result set to
-        explode: true
-        in: query
-        name: limitToId
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-        x-nullable: false
-      - description: The 0 indexed page index you would like to receive given the
-          page size
-        explode: true
-        in: query
-        name: pageIndex
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      - description: The maximum number of items you would like to receive in this
-          request
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PromotedProduct202110PagedListResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-accepts: application/json
-  /2024-07/retail-media/line-items/{line-item-id}/products/append:
-    post:
-      description: This endpoint appends one or more products to promote on the specified
-        line item.  The resulting state of the line item is returned.
-      operationId: PromotedProductsApi_PostApi202110ExternalLineItemProductsAppendByLineItemId
-      parameters:
-      - description: The line item to interact with
-        explode: false
-        in: path
-        name: line-item-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PromotedProduct202110ListRequest'
-        description: the products to append to this line item
-        x-nullable: false
-        x-bodyName: promotedProductsToAppend
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PromotedProduct202110PagedListResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /2024-07/retail-media/line-items/{line-item-id}/products/delete:
-    post:
-      description: This endpoint removes one or more products from promotion on the
-        specified line item.  The resulting state of the line item is returned.
-      operationId: PromotedProductsApi_PostApi202110ExternalLineItemProductsDeleteByLineItemId
-      parameters:
-      - description: The line item to interact with
-        explode: false
-        in: path
-        name: line-item-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PromotedProduct202110ListRequest'
-        description: ""
-        x-nullable: false
-        x-bodyName: promotedProductsToRemove
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PromotedProduct202110PagedListResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /2024-07/retail-media/line-items/{line-item-id}/products/pause:
-    post:
-      description: This endpoint pauses one or more promoted products on a specified
-        line item.
-      operationId: PromotedProducts_PostApi202110ExternalLineItemProductsPauseByLineItemId
-      parameters:
-      - description: The line item to interact with.
-        explode: false
-        in: path
-        name: line-item-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PromotedProduct202110ListRequest'
-        description: The products from which their IDs will be used to pause.
-        x-nullable: false
-        x-bodyName: promotedProductsToPause
-      responses:
-        "200":
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /2024-07/retail-media/line-items/{line-item-id}/products/unpause:
-    post:
-      description: This endpoint unpauses one or more promoted products on a specified
-        line item.
-      operationId: PromotedProducts_PostApi202110ExternalLineItemProductsUnpauseByLineItemId
-      parameters:
-      - description: The line item to interact with.
-        explode: false
-        in: path
-        name: line-item-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PromotedProduct202110ListRequest'
-        description: The products from which their IDs will be used to unpause.
-        x-nullable: false
-        x-bodyName: promotedProductsToUnpause
-      responses:
-        "200":
           description: Success
       tags:
       - Campaign
@@ -5695,6 +5767,106 @@ components:
           readOnly: true
           type: array
       type: object
+    PromotedProductResourceCollectionOutcome:
+      additionalProperties: false
+      description: Outcome object containing promoted products.
+      example:
+        metadata:
+          offset: 0
+          limit: 6
+          count: 1
+          responseCount: 5
+        data:
+        - attributes:
+            bidOverride: 5.637376656633329
+            id: id
+            status: null
+          id: id
+          type: type
+        - attributes:
+            bidOverride: 5.637376656633329
+            id: id
+            status: null
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+          status: 0
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+          status: 0
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+          status: 0
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+          status: 0
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/RmcaCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/RmcaCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        metadata:
+          $ref: '#/components/schemas/ProductMetadata'
+        data:
+          items:
+            $ref: '#/components/schemas/PromotedProductResource'
+          nullable: true
+          type: array
+      type: object
+    ProductResourceOutcome:
+      additionalProperties: false
+      description: Outcome object containing errors and warnings.
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/RmcaCommonProblem'
+          nullable: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/RmcaCommonProblem'
+          nullable: true
+          type: array
+      type: object
     ProposalStatusModelResponse:
       additionalProperties: false
       description: Response object containing the state of a proposal in the context
@@ -5805,6 +5977,31 @@ components:
         data:
           $ref: '#/components/schemas/SetBidsModelResource'
       type: object
+    PromotedProductResourceCollectionInput:
+      additionalProperties: false
+      description: "Request object containing promoted products to be appended, deleted,\
+        \ paused or unpaused."
+      example:
+        data:
+        - attributes:
+            bidOverride: 5.637376656633329
+            id: id
+            status: null
+          id: id
+          type: type
+        - attributes:
+            bidOverride: 5.637376656633329
+            id: id
+            status: null
+          id: id
+          type: type
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/PromotedProductResource'
+          nullable: true
+          type: array
+      type: object
     KeywordsModelResource:
       additionalProperties: false
       description: Resource object containing keywords associated with a line item.
@@ -5906,6 +6103,56 @@ components:
           format: int32
           nullable: true
           type: integer
+      type: object
+    ProductMetadata:
+      additionalProperties: false
+      description: Metadata about the response. Used for pagination.
+      example:
+        offset: 0
+        limit: 6
+        count: 1
+        responseCount: 5
+      properties:
+        offset:
+          description: Zero based offset of the first item in the response.
+          format: int32
+          nullable: true
+          type: integer
+        limit:
+          description: Maximum number of items in the response.
+          format: int32
+          nullable: true
+          type: integer
+        count:
+          description: Total number of items available.
+          format: int32
+          nullable: true
+          type: integer
+        responseCount:
+          description: Number of items in the response.
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    PromotedProductResource:
+      additionalProperties: false
+      description: Resource object containing a promoted product.
+      example:
+        attributes:
+          bidOverride: 5.637376656633329
+          id: id
+          status: null
+        id: id
+        type: type
+      properties:
+        id:
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
+        attributes:
+          $ref: '#/components/schemas/PromotedProduct'
       type: object
     ProposalStatusModelResource:
       additionalProperties: false
@@ -6014,6 +6261,27 @@ components:
           nullable: true
           type: array
       type: object
+    PromotedProduct:
+      additionalProperties: false
+      description: A promoted product.
+      example:
+        bidOverride: 5.637376656633329
+        id: id
+        status: null
+      properties:
+        id:
+          description: A retailer defined SKU ID for the promoted product.
+          nullable: true
+          type: string
+        bidOverride:
+          description: The bid override for the promoted product for this line item.
+            Ignored unless adding a product.
+          format: decimal
+          nullable: true
+          type: number
+        status:
+          $ref: '#/components/schemas/LineItemProductStatus'
+      type: object
     ProposalStatusModel:
       additionalProperties: false
       description: The state of a proposal in the context of a line item.
@@ -6117,6 +6385,13 @@ components:
           nullable: true
           type: string
       type: object
+    LineItemProductStatus:
+      description: The status of a promoted product in the context of the line item.
+      enum:
+      - Unknown
+      - Active
+      - Paused
+      type: string
     NegotiationStateModel:
       description: The state of a negotiation in the context of a line item.
       enum:
@@ -10771,7 +11046,7 @@ components:
       required:
       - duration
       type: object
-    BalanceResponsePagedListResponse:
+    PagedResourceCollectionOutcomeOfBalanceResponseV2:
       description: Data model for a paged list of response resources
       example:
         metadata:
@@ -10790,7 +11065,6 @@ components:
             memo: memo
             spendType: Onsite
             remaining: 1.4658129805029452
-            salesForceId: salesForceId
             createdAt: 2000-01-23T04:56:07.000+00:00
             balanceType: unknown
             name: name
@@ -10808,7 +11082,6 @@ components:
             memo: memo
             spendType: Onsite
             remaining: 1.4658129805029452
-            salesForceId: salesForceId
             createdAt: 2000-01-23T04:56:07.000+00:00
             balanceType: unknown
             name: name
@@ -10865,7 +11138,7 @@ components:
           $ref: '#/components/schemas/PageMetadata'
         data:
           items:
-            $ref: '#/components/schemas/ResourceOfBalanceResponse'
+            $ref: '#/components/schemas/ResourceOfBalanceResponseV2'
           type: array
           x-nullable: false
         warnings:
@@ -10881,9 +11154,9 @@ components:
           type: array
           x-nullable: false
       type: object
-      x-nullable: false
-    BalanceResponse:
-      description: Data model for response resource
+    BalanceResponseV2Response:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity
       example:
         data:
           attributes:
@@ -10894,7 +11167,6 @@ components:
             memo: memo
             spendType: Onsite
             remaining: 1.4658129805029452
-            salesForceId: salesForceId
             createdAt: 2000-01-23T04:56:07.000+00:00
             balanceType: unknown
             name: name
@@ -10948,7 +11220,7 @@ components:
           title: title
       properties:
         data:
-          $ref: '#/components/schemas/ResourceOfBalanceResponse'
+          $ref: '#/components/schemas/ResourceOfBalanceResponseV2'
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
@@ -10962,7 +11234,7 @@ components:
           type: array
           x-nullable: false
       type: object
-      x-nullable: false
+      x-nullable: true
     JsonApiPageResponseOfCampaignV202301:
       description: A wrapper class to return a single page of <typeparamref name="T"
         /> with metadata
@@ -12078,89 +12350,6 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
-    PromotedProduct202110PagedListResponse:
-      description: Data model for a paged list of response resources
-      example:
-        metadata:
-          currentPageSize: 6
-          previousPage: previousPage
-          nextPage: nextPage
-          totalPages: 5
-          totalItemsAcrossAllPages: 0
-          currentPageIndex: 1
-        data:
-        - attributes:
-            bidOverride: 0.8008281904610115
-          id: id
-          type: type
-        - attributes:
-            bidOverride: 0.8008281904610115
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        metadata:
-          $ref: '#/components/schemas/PageMetadata'
-        data:
-          items:
-            $ref: '#/components/schemas/ResourceOfPromotedProduct202110'
-          type: array
-          x-nullable: false
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
     AddToBasketTarget202110Response:
       description: Data model for a value type resource outcome
       example:
@@ -12371,12 +12560,12 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
-    CreateBalanceRequest:
-      description: Data model for an input resource
+    CreateBalanceV2Request:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity
       example:
         data:
           attributes:
-            salesForceId: salesForceId
             endDate: 2000-01-23
             deposited: 0.8008281904610115
             name: name
@@ -12388,29 +12577,28 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/ResourceOfCreateBalance'
+          $ref: '#/components/schemas/ResourceOfCreateBalanceV2'
       type: object
-      x-nullable: false
-    UpdateBalanceModelRequest:
-      description: Data model for an input resource
+    UpdateBalanceModelV2Request:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity
       example:
         data:
           attributes:
-            salesForceId: salesForceId
-            endDate: 2000-01-23
+            endDate: endDate
             name: name
             memo: memo
             poNumber: poNumber
-            startDate: 2000-01-23
+            startDate: startDate
           id: id
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/ResourceOfUpdateBalanceModel'
+          $ref: '#/components/schemas/ResourceOfUpdateBalanceModelV2'
       type: object
-      x-nullable: false
-    AddFundsToBalanceRequest:
-      description: Data model for an input resource
+    AddFundsToBalanceV2Request:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity
       example:
         data:
           attributes:
@@ -12421,24 +12609,23 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/ResourceOfAddFundsToBalance'
+          $ref: '#/components/schemas/ResourceOfAddFundsToBalanceV2'
       type: object
-      x-nullable: false
-    ChangeDatesOfBalanceRequest:
-      description: Data model for an input resource
+    ChangeDatesOfBalanceV2Request:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity
       example:
         data:
           attributes:
-            endDate: 2000-01-23
+            endDate: endDate
             memo: memo
-            startDate: 2000-01-23
+            startDate: startDate
           id: id
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/ResourceOfChangeDatesOfBalance'
+          $ref: '#/components/schemas/ResourceOfChangeDatesOfBalanceV2'
       type: object
-      x-nullable: false
     PostCampaignV202301:
       description: An object that represents the available options to set when creating
         a Retail Media Campaign
@@ -12622,26 +12809,6 @@ components:
           $ref: '#/components/schemas/ResourceOfLineItemBidMultipliers'
       type: object
       x-nullable: false
-    PromotedProduct202110ListRequest:
-      description: Data model for a list of input resources
-      example:
-        data:
-        - attributes:
-            bidOverride: 0.8008281904610115
-          id: id
-          type: type
-        - attributes:
-            bidOverride: 0.8008281904610115
-          id: id
-          type: type
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ResourceOfPromotedProduct202110'
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
     PreferredLineItemUpdateModel202110Request:
       description: Data model for an input resource
       example:
@@ -12767,8 +12934,8 @@ components:
           $ref: '#/components/schemas/ValueTypeResourceOfStoreIdsUpdateModel202110'
       type: object
       x-nullable: false
-    ResourceOfBalanceResponse:
-      description: Data model for a Resource
+    ResourceOfBalanceResponseV2:
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           privateMarketBillingType: NotApplicable
@@ -12778,7 +12945,6 @@ components:
           memo: memo
           spendType: Onsite
           remaining: 1.4658129805029452
-          salesForceId: salesForceId
           createdAt: 2000-01-23T04:56:07.000+00:00
           balanceType: unknown
           name: name
@@ -12790,7 +12956,7 @@ components:
         type: type
       properties:
         attributes:
-          $ref: '#/components/schemas/ExternalBalanceResponse'
+          $ref: '#/components/schemas/BalanceResponseV2'
         id:
           description: Id of the entity
           nullable: true
@@ -12800,7 +12966,6 @@ components:
           nullable: true
           type: string
       type: object
-      x-nullable: false
     JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with external Id, Type, and\r\nAttributes properties"
@@ -13052,26 +13217,6 @@ components:
           type: string
       type: object
       x-nullable: false
-    ResourceOfPromotedProduct202110:
-      description: Data model for a Resource
-      example:
-        attributes:
-          bidOverride: 0.8008281904610115
-        id: id
-        type: type
-      properties:
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-        type:
-          description: Canonical type name of the entity
-          nullable: true
-          type: string
-        attributes:
-          $ref: '#/components/schemas/ExternalPromotedProduct202110'
-      type: object
-      x-nullable: false
     ValueTypeResourceOfAddToBasketTarget202110:
       description: Data model for a value type resource
       example:
@@ -13126,11 +13271,10 @@ components:
           $ref: '#/components/schemas/ExternalStoreTarget202110'
       type: object
       x-nullable: false
-    ResourceOfCreateBalance:
-      description: Data model for a Resource
+    ResourceOfCreateBalanceV2:
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
-          salesForceId: salesForceId
           endDate: 2000-01-23
           deposited: 0.8008281904610115
           name: name
@@ -13142,7 +13286,7 @@ components:
         type: type
       properties:
         attributes:
-          $ref: '#/components/schemas/ExternalCreateBalance'
+          $ref: '#/components/schemas/CreateBalanceV2'
         id:
           description: Id of the entity
           nullable: true
@@ -13152,22 +13296,20 @@ components:
           nullable: true
           type: string
       type: object
-      x-nullable: false
-    ResourceOfUpdateBalanceModel:
-      description: Data model for a Resource
+    ResourceOfUpdateBalanceModelV2:
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
-          salesForceId: salesForceId
-          endDate: 2000-01-23
+          endDate: endDate
           name: name
           memo: memo
           poNumber: poNumber
-          startDate: 2000-01-23
+          startDate: startDate
         id: id
         type: type
       properties:
         attributes:
-          $ref: '#/components/schemas/ExternalUpdateBalanceModel'
+          $ref: '#/components/schemas/UpdateBalanceModelV2'
         id:
           description: Id of the entity
           nullable: true
@@ -13177,9 +13319,8 @@ components:
           nullable: true
           type: string
       type: object
-      x-nullable: false
-    ResourceOfAddFundsToBalance:
-      description: Data model for a Resource
+    ResourceOfAddFundsToBalanceV2:
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           deltaAmount: 0.8008281904610115
@@ -13189,7 +13330,7 @@ components:
         type: type
       properties:
         attributes:
-          $ref: '#/components/schemas/ExternalAddFundsToBalance'
+          $ref: '#/components/schemas/AddFundsToBalanceV2'
         id:
           description: Id of the entity
           nullable: true
@@ -13199,19 +13340,18 @@ components:
           nullable: true
           type: string
       type: object
-      x-nullable: false
-    ResourceOfChangeDatesOfBalance:
-      description: Data model for a Resource
+    ResourceOfChangeDatesOfBalanceV2:
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
-          endDate: 2000-01-23
+          endDate: endDate
           memo: memo
-          startDate: 2000-01-23
+          startDate: startDate
         id: id
         type: type
       properties:
         attributes:
-          $ref: '#/components/schemas/ExternalChangeDatesOfBalance'
+          $ref: '#/components/schemas/ChangeDatesOfBalanceV2'
         id:
           description: Id of the entity
           nullable: true
@@ -13221,7 +13361,6 @@ components:
           nullable: true
           type: string
       type: object
-      x-nullable: false
     JsonApiBodyWithoutIdOfCampaignAttributesV202301AndCampaignV202301:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with Type, and\r\nAttributes properties"
@@ -13467,7 +13606,7 @@ components:
           $ref: '#/components/schemas/ExternalStoreIdsUpdateModel202110'
       type: object
       x-nullable: false
-    ExternalBalanceResponse:
+    BalanceResponseV2:
       description: A Retail Media Balance used to determine the funds available for
         any or all campaigns in an account
       example:
@@ -13478,7 +13617,6 @@ components:
         memo: memo
         spendType: Onsite
         remaining: 1.4658129805029452
-        salesForceId: salesForceId
         createdAt: 2000-01-23T04:56:07.000+00:00
         balanceType: unknown
         name: name
@@ -13493,12 +13631,14 @@ components:
           x-nullable: false
         poNumber:
           description: Purchase Order number.
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         memo:
-          description: Memo
+          description: Memo.
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         deposited:
           description: Amount of billable funds allotted to the balance.
           format: decimal
@@ -13506,26 +13646,30 @@ components:
           type: number
           x-nullable: true
         spent:
+          description: Amount of spent funds of the balance.
           format: decimal
           nullable: true
           type: number
           x-nullable: true
         remaining:
+          description: Amount of remaining funds of the balance.
           format: decimal
           nullable: true
           type: number
           x-nullable: true
         startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
+          description: Start date of the balance in the format YYYY-MM-DD.
           format: date
           type: string
+          x-nullable: false
         endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
+          description: End date of the balance in the format YYYY-MM-DD.
           format: date
+          nullable: true
           type: string
+          x-nullable: true
         status:
+          description: Status of the balance.
           enum:
           - unknown
           - scheduled
@@ -13534,23 +13678,21 @@ components:
           type: string
           x-nullable: false
         createdAt:
+          description: Creation time of the balance.
           format: date-time
           type: string
           x-nullable: false
         updatedAt:
+          description: Update time of the balance.
           format: date-time
           type: string
           x-nullable: false
         balanceType:
-          description: Type of the balance
+          description: Type of the balance.
           enum:
           - unknown
           - capped
           - uncapped
-          type: string
-          x-nullable: false
-        salesForceId:
-          description: SalesForceId the balance is linked to.
           type: string
           x-nullable: false
         spendType:
@@ -13562,7 +13704,7 @@ components:
           type: string
           x-nullable: false
         privateMarketBillingType:
-          description: Billing type for Private Market.
+          description: Billing type for Private Market of the balance.
           enum:
           - NotApplicable
           - BillByRetailer
@@ -13572,22 +13714,11 @@ components:
           x-nullable: false
       required:
       - balanceType
-      - createdAt
-      - deposited
-      - endDate
-      - memo
       - name
-      - poNumber
       - privateMarketBillingType
-      - remaining
-      - salesForceId
       - spendType
-      - spent
       - startDate
-      - status
-      - updatedAt
       type: object
-      x-nullable: false
     CampaignV202301:
       description: A Retail Media Campaign used to represent an advertiser's marketing
         objective
@@ -14163,18 +14294,6 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
-    ExternalPromotedProduct202110:
-      description: identifies a promoted product
-      example:
-        bidOverride: 0.8008281904610115
-      properties:
-        bidOverride:
-          format: decimal
-          nullable: true
-          type: number
-          x-nullable: true
-      type: object
-      x-nullable: false
     ExternalAddToBasketTarget202110:
       description: Identifies add to basket targeting for a line item
       example:
@@ -14268,11 +14387,10 @@ components:
       - storeIds
       type: object
       x-nullable: false
-    ExternalCreateBalance:
+    CreateBalanceV2:
       description: An object that represents the available options to set when creating
         a Retail Media Balance
       example:
-        salesForceId: salesForceId
         endDate: 2000-01-23
         deposited: 0.8008281904610115
         name: name
@@ -14287,24 +14405,25 @@ components:
           x-nullable: false
         poNumber:
           description: Purchase Order number.
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         deposited:
           description: Amount of billable funds allotted to the balance.
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
+          description: Start date of the balance in the format YYYY-MM-DD.
           format: date
           type: string
+          x-nullable: false
         endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
+          description: End date of the balance in the format YYYY-MM-DD.
           format: date
+          nullable: true
           type: string
+          x-nullable: true
         spendType:
           description: Type of the balance spend.
           enum:
@@ -14315,64 +14434,51 @@ components:
           x-nullable: false
         memo:
           description: Memo
+          nullable: true
           type: string
-          x-nullable: false
-        salesForceId:
-          description: SalesForceId the balance is linked to.
-          type: string
-          x-nullable: false
+          x-nullable: true
       required:
-      - deposited
-      - endDate
-      - memo
       - name
-      - salesForceId
       - spendType
       - startDate
       type: object
-      x-nullable: false
-    ExternalUpdateBalanceModel:
+    UpdateBalanceModelV2:
       description: An object that represents the available options to set when updating
-        a Retail Media Balance
+        a Retail Media Balance.
       example:
-        salesForceId: salesForceId
-        endDate: 2000-01-23
+        endDate: endDate
         name: name
         memo: memo
         poNumber: poNumber
-        startDate: 2000-01-23
+        startDate: startDate
       properties:
         name:
           description: Name of the balance.
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         poNumber:
           description: Purchase Order number.
+          nullable: true
           type: string
-          x-nullable: false
-        salesForceId:
-          description: SalesForceId the balance is linked to.
-          type: string
-          x-nullable: false
+          x-nullable: true
         startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
+          description: Start date of the balance in the format YYYY-MM-DD.
           nullable: true
           type: string
+          x-nullable: true
         endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
+          description: End date of the balance in the format YYYY-MM-DD.
           nullable: true
           type: string
+          x-nullable: true
         memo:
-          description: Memo
+          description: Memo.
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
       type: object
-      x-nullable: false
-    ExternalAddFundsToBalance:
+    AddFundsToBalanceV2:
       description: An object that represents the available options of adding funds
         to a balance.
       example:
@@ -14383,50 +14489,46 @@ components:
         deltaAmount:
           description: Amount of billable funds to be added / decreased allotted to
             the balance.
-          format: double
+          format: decimal
           type: number
           x-nullable: false
         poNumber:
           description: Purchase Order number.
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         memo:
           description: Memo
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
       required:
       - deltaAmount
-      - memo
       type: object
-      x-nullable: false
-    ExternalChangeDatesOfBalance:
+    ChangeDatesOfBalanceV2:
       description: An object that represents the available options to modify schedule
         of a balance.
       example:
-        endDate: 2000-01-23
+        endDate: endDate
         memo: memo
-        startDate: 2000-01-23
+        startDate: startDate
       properties:
         startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
+          description: Start date of the balance in the format YYYY-MM-DD.
+          nullable: true
           type: string
+          x-nullable: true
         endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
+          description: End date of the balance in the format YYYY-MM-DD.
+          nullable: true
           type: string
+          x-nullable: true
         memo:
-          description: Memo
+          description: Memo.
+          nullable: true
           type: string
-          x-nullable: false
-      required:
-      - endDate
-      - memo
-      - startDate
+          x-nullable: true
       type: object
-      x-nullable: false
     CampaignAttributesV202301:
       description: An object that represents the available options to set when creating
         a Retail Media Campaign

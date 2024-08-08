@@ -280,8 +280,8 @@ public class CampaignApi {
         Object localVarPostBody = promotedProductResourceCollectionInput;
 
         // create path and map variables
-        String localVarPath = "/preview/retail-media/line-items/{lineItemId}/products/append"
-            .replace("{" + "lineItemId" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+        String localVarPath = "/preview/retail-media/line-items/{line-item-id}/products/append"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -540,8 +540,8 @@ public class CampaignApi {
         Object localVarPostBody = promotedProductResourceCollectionInput;
 
         // create path and map variables
-        String localVarPath = "/preview/retail-media/line-items/{lineItemId}/products/delete"
-            .replace("{" + "lineItemId" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+        String localVarPath = "/preview/retail-media/line-items/{line-item-id}/products/delete"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -800,8 +800,8 @@ public class CampaignApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/preview/retail-media/line-items/{lineItemId}/products"
-            .replace("{" + "lineItemId" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+        String localVarPath = "/preview/retail-media/line-items/{line-item-id}/products"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3380,8 +3380,8 @@ public class CampaignApi {
         Object localVarPostBody = promotedProductResourceCollectionInput;
 
         // create path and map variables
-        String localVarPath = "/preview/retail-media/line-items/{lineItemId}/products/pause"
-            .replace("{" + "lineItemId" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+        String localVarPath = "/preview/retail-media/line-items/{line-item-id}/products/pause"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5560,8 +5560,8 @@ public class CampaignApi {
         Object localVarPostBody = promotedProductResourceCollectionInput;
 
         // create path and map variables
-        String localVarPath = "/preview/retail-media/line-items/{lineItemId}/products/unpause"
-            .replace("{" + "lineItemId" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+        String localVarPath = "/preview/retail-media/line-items/{line-item-id}/products/unpause"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

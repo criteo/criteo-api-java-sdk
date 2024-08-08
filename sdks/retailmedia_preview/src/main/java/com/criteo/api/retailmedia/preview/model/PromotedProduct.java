@@ -22,6 +22,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -56,7 +57,7 @@ public class PromotedProduct {
 
   public static final String SERIALIZED_NAME_BID_OVERRIDE = "bidOverride";
   @SerializedName(SERIALIZED_NAME_BID_OVERRIDE)
-  private Double bidOverride;
+  private BigDecimal bidOverride;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -87,7 +88,7 @@ public class PromotedProduct {
   }
 
 
-  public PromotedProduct bidOverride(Double bidOverride) {
+  public PromotedProduct bidOverride(BigDecimal bidOverride) {
     
     this.bidOverride = bidOverride;
     return this;
@@ -99,12 +100,12 @@ public class PromotedProduct {
   **/
   @javax.annotation.Nullable
 
-  public Double getBidOverride() {
+  public BigDecimal getBidOverride() {
     return bidOverride;
   }
 
 
-  public void setBidOverride(Double bidOverride) {
+  public void setBidOverride(BigDecimal bidOverride) {
     this.bidOverride = bidOverride;
   }
 

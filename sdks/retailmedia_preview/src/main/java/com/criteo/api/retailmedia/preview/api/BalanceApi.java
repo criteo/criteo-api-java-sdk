@@ -82,9 +82,9 @@ public class BalanceApi {
     /**
      * Build call for getApiV2ExternalAccountBalancesByAccountId
      * @param accountId The account to get balances for (required)
-     * @param limitToId The ids that you would like to limit your result set to (required)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (required)
-     * @param pageSize The maximum number of items you would like to receive in this request (required)
+     * @param limitToId The ids that you would like to limit your result set to (optional)
+     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -160,21 +160,6 @@ public class BalanceApi {
             throw new ApiException("Missing the required parameter 'accountId' when calling getApiV2ExternalAccountBalancesByAccountId(Async)");
         }
 
-        // verify the required parameter 'limitToId' is set
-        if (limitToId == null) {
-            throw new ApiException("Missing the required parameter 'limitToId' when calling getApiV2ExternalAccountBalancesByAccountId(Async)");
-        }
-
-        // verify the required parameter 'pageIndex' is set
-        if (pageIndex == null) {
-            throw new ApiException("Missing the required parameter 'pageIndex' when calling getApiV2ExternalAccountBalancesByAccountId(Async)");
-        }
-
-        // verify the required parameter 'pageSize' is set
-        if (pageSize == null) {
-            throw new ApiException("Missing the required parameter 'pageSize' when calling getApiV2ExternalAccountBalancesByAccountId(Async)");
-        }
-
         return getApiV2ExternalAccountBalancesByAccountIdCall(accountId, limitToId, pageIndex, pageSize, _callback);
 
     }
@@ -183,9 +168,9 @@ public class BalanceApi {
      * 
      * Gets page of balance objects for the given account id
      * @param accountId The account to get balances for (required)
-     * @param limitToId The ids that you would like to limit your result set to (required)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (required)
-     * @param pageSize The maximum number of items you would like to receive in this request (required)
+     * @param limitToId The ids that you would like to limit your result set to (optional)
+     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
      * @return PagedResourceCollectionOutcomeOfBalanceResponseV2
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -203,9 +188,9 @@ public class BalanceApi {
      * 
      * Gets page of balance objects for the given account id
      * @param accountId The account to get balances for (required)
-     * @param limitToId The ids that you would like to limit your result set to (required)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (required)
-     * @param pageSize The maximum number of items you would like to receive in this request (required)
+     * @param limitToId The ids that you would like to limit your result set to (optional)
+     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
      * @return ApiResponse&lt;PagedResourceCollectionOutcomeOfBalanceResponseV2&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -224,9 +209,9 @@ public class BalanceApi {
      *  (asynchronously)
      * Gets page of balance objects for the given account id
      * @param accountId The account to get balances for (required)
-     * @param limitToId The ids that you would like to limit your result set to (required)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (required)
-     * @param pageSize The maximum number of items you would like to receive in this request (required)
+     * @param limitToId The ids that you would like to limit your result set to (optional)
+     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

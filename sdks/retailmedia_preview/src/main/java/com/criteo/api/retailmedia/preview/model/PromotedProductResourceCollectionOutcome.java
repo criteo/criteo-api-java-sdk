@@ -62,9 +62,9 @@ public class PromotedProductResourceCollectionOutcome {
   @SerializedName(SERIALIZED_NAME_WARNINGS)
   private List<RmcaCommonProblem> warnings = null;
 
-  public static final String SERIALIZED_NAME_META = "meta";
-  @SerializedName(SERIALIZED_NAME_META)
-  private ProductMetadata meta;
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private ProductMetadata metadata;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
@@ -73,18 +73,14 @@ public class PromotedProductResourceCollectionOutcome {
   public PromotedProductResourceCollectionOutcome() {
   }
 
-  public PromotedProductResourceCollectionOutcome errors(List<RmcaCommonProblem> errors) {
-    
+  
+  public PromotedProductResourceCollectionOutcome(
+     List<RmcaCommonProblem> errors, 
+     List<RmcaCommonProblem> warnings
+  ) {
+    this();
     this.errors = errors;
-    return this;
-  }
-
-  public PromotedProductResourceCollectionOutcome addErrorsItem(RmcaCommonProblem errorsItem) {
-    if (this.errors == null) {
-      this.errors = null;
-    }
-    this.errors.add(errorsItem);
-    return this;
+    this.warnings = warnings;
   }
 
    /**
@@ -98,24 +94,7 @@ public class PromotedProductResourceCollectionOutcome {
   }
 
 
-  public void setErrors(List<RmcaCommonProblem> errors) {
-    this.errors = errors;
-  }
 
-
-  public PromotedProductResourceCollectionOutcome warnings(List<RmcaCommonProblem> warnings) {
-    
-    this.warnings = warnings;
-    return this;
-  }
-
-  public PromotedProductResourceCollectionOutcome addWarningsItem(RmcaCommonProblem warningsItem) {
-    if (this.warnings == null) {
-      this.warnings = null;
-    }
-    this.warnings.add(warningsItem);
-    return this;
-  }
 
    /**
    * Get warnings
@@ -128,30 +107,27 @@ public class PromotedProductResourceCollectionOutcome {
   }
 
 
-  public void setWarnings(List<RmcaCommonProblem> warnings) {
-    this.warnings = warnings;
-  }
 
 
-  public PromotedProductResourceCollectionOutcome meta(ProductMetadata meta) {
+  public PromotedProductResourceCollectionOutcome metadata(ProductMetadata metadata) {
     
-    this.meta = meta;
+    this.metadata = metadata;
     return this;
   }
 
    /**
-   * Get meta
-   * @return meta
+   * Get metadata
+   * @return metadata
   **/
   @javax.annotation.Nullable
 
-  public ProductMetadata getMeta() {
-    return meta;
+  public ProductMetadata getMetadata() {
+    return metadata;
   }
 
 
-  public void setMeta(ProductMetadata meta) {
-    this.meta = meta;
+  public void setMetadata(ProductMetadata metadata) {
+    this.metadata = metadata;
   }
 
 
@@ -197,7 +173,7 @@ public class PromotedProductResourceCollectionOutcome {
     PromotedProductResourceCollectionOutcome promotedProductResourceCollectionOutcome = (PromotedProductResourceCollectionOutcome) o;
     return Objects.equals(this.errors, promotedProductResourceCollectionOutcome.errors) &&
         Objects.equals(this.warnings, promotedProductResourceCollectionOutcome.warnings) &&
-        Objects.equals(this.meta, promotedProductResourceCollectionOutcome.meta) &&
+        Objects.equals(this.metadata, promotedProductResourceCollectionOutcome.metadata) &&
         Objects.equals(this.data, promotedProductResourceCollectionOutcome.data);
   }
 
@@ -207,7 +183,7 @@ public class PromotedProductResourceCollectionOutcome {
 
   @Override
   public int hashCode() {
-    return Objects.hash(errors, warnings, meta, data);
+    return Objects.hash(errors, warnings, metadata, data);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -223,7 +199,7 @@ public class PromotedProductResourceCollectionOutcome {
     sb.append("class PromotedProductResourceCollectionOutcome {\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
-    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -249,7 +225,7 @@ public class PromotedProductResourceCollectionOutcome {
     openapiFields = new HashSet<String>();
     openapiFields.add("errors");
     openapiFields.add("warnings");
-    openapiFields.add("meta");
+    openapiFields.add("metadata");
     openapiFields.add("data");
 
     // a set of required properties/fields (JSON key names)
@@ -284,9 +260,9 @@ public class PromotedProductResourceCollectionOutcome {
       if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
       }
-      // validate the optional field `meta`
-      if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
-        ProductMetadata.validateJsonObject(jsonObj.getAsJsonObject("meta"));
+      // validate the optional field `metadata`
+      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
+        ProductMetadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
       }
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");

@@ -705,8 +705,8 @@ paths:
       x-accepts: application/json
   /preview/retail-media/accounts/{account-id}/audience-segments/search:
     post:
-      description: Search segments based on the provided filters.( by ids or retailer
-        ids)
+      description: "Returns a list of segments that match the provided filters. If\
+        \ present, the filters are AND'ed together when applied."
       operationId: SearchV1
       parameters:
       - description: Account Id
@@ -754,7 +754,7 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/RmAudienceSegmentSearchInputV1'
-        description: Segment creation parameter
+        description: Segment search filters.
         required: true
         x-bodyName: request
       responses:
@@ -1109,7 +1109,7 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
-  /preview/retail-media/line-items/{lineItemId}/products:
+  /preview/retail-media/line-items/{line-item-id}/products:
     get:
       description: Retrieve a page of promoted products for a line item
       operationId: FetchPromotedProducts
@@ -1117,7 +1117,7 @@ paths:
       - description: ID of the line item.
         explode: false
         in: path
-        name: lineItemId
+        name: line-item-id
         required: true
         schema:
           type: string
@@ -1166,7 +1166,7 @@ paths:
       tags:
       - Campaign
       x-accepts: application/json
-  /preview/retail-media/line-items/{lineItemId}/products/append:
+  /preview/retail-media/line-items/{line-item-id}/products/append:
     post:
       description: Append a collection of promoted products to a line item
       operationId: AppendPromotedProducts
@@ -1174,7 +1174,7 @@ paths:
       - description: ID of the line item
         explode: false
         in: path
-        name: lineItemId
+        name: line-item-id
         required: true
         schema:
           type: string
@@ -1204,7 +1204,7 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
-  /preview/retail-media/line-items/{lineItemId}/products/delete:
+  /preview/retail-media/line-items/{line-item-id}/products/delete:
     post:
       description: Remove a collection of promoted products from a line item
       operationId: DeletePromotedProducts
@@ -1212,7 +1212,7 @@ paths:
       - description: ID of the line item
         explode: false
         in: path
-        name: lineItemId
+        name: line-item-id
         required: true
         schema:
           type: string
@@ -1242,7 +1242,7 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
-  /preview/retail-media/line-items/{lineItemId}/products/pause:
+  /preview/retail-media/line-items/{line-item-id}/products/pause:
     post:
       description: Pause a collection of promoted products associated with a line
         item
@@ -1251,7 +1251,7 @@ paths:
       - description: ID of the line item
         explode: false
         in: path
-        name: lineItemId
+        name: line-item-id
         required: true
         schema:
           type: string
@@ -1281,7 +1281,7 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
-  /preview/retail-media/line-items/{lineItemId}/products/unpause:
+  /preview/retail-media/line-items/{line-item-id}/products/unpause:
     post:
       description: Un-pause a collection of promoted products associated with a line
         item
@@ -1290,7 +1290,7 @@ paths:
       - description: ID of the line item
         explode: false
         in: path
-        name: lineItemId
+        name: line-item-id
         required: true
         schema:
           type: string
@@ -2487,6 +2487,87 @@ paths:
       tags:
       - Analytics
       x-accepts: application/json
+  /preview/retail-media/account-management/accounts/{accountId}/create-seller-account:
+    post:
+      description: Creates a new child Demand Seller Account for the provided parent
+        private market account
+      operationId: CreatePrivateMarketDemandSellerAccount
+      parameters:
+      - description: Account Id for the parent private market account
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaSellerAccountCreation'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaSellerAccountCreation'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaSellerAccountCreation'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaSellerAccountCreation'
+        description: Initial creation and configuration options for the new account
+        x-bodyName: accountDetails
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceOutcomeOfRetailMediaAccount'
+          description: Success
+      tags:
+      - Accounts
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /preview/retail-media/account-management/accounts/{accountId}/sellers:
+    put:
+      description: replace the sellers assoiated with an account
+      operationId: UpdateSellers
+      parameters:
+      - description: the account id to update
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceCollectionInputOfRetailMediaSeller'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceCollectionInputOfRetailMediaSeller'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceCollectionInputOfRetailMediaSeller'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceCollectionInputOfRetailMediaSeller'
+        description: sellers to associate
+        x-bodyName: sellers
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfRetailMediaSeller'
+          description: Success
+      tags:
+      - Accounts
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /preview/retail-media/balances/{balanceId}/history:
     get:
       description: Gets the balance's historical change data.
@@ -2845,7 +2926,7 @@ paths:
         explode: true
         in: query
         name: limitToId
-        required: true
+        required: false
         schema:
           items:
             type: string
@@ -2857,7 +2938,7 @@ paths:
         explode: true
         in: query
         name: pageIndex
-        required: true
+        required: false
         schema:
           default: 0
           format: int32
@@ -2869,7 +2950,7 @@ paths:
         explode: true
         in: query
         name: pageSize
-        required: true
+        required: false
         schema:
           default: 25
           format: int32
@@ -6191,7 +6272,19 @@ components:
             createdAt: 2000-01-23T04:56:07.000+00:00
             contactList:
               isReadOnly: true
+              sharingStatus: Unknown
               type: Unknown
+            userBehavior:
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice: 0.8008281904610115
+              maxPrice: 6.027456183070403
+              shopperActivity: Unknown
+              lookbackDays: Unknown
+              brandIds:
+              - brandIds
+              - brandIds
             channels:
             - Unknown
             - Unknown
@@ -6199,6 +6292,7 @@ components:
             description: description
             retailerId: retailerId
             type: Unknown
+            createdById: createdById
             updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
           type: type
@@ -6207,7 +6301,19 @@ components:
             createdAt: 2000-01-23T04:56:07.000+00:00
             contactList:
               isReadOnly: true
+              sharingStatus: Unknown
               type: Unknown
+            userBehavior:
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice: 0.8008281904610115
+              maxPrice: 6.027456183070403
+              shopperActivity: Unknown
+              lookbackDays: Unknown
+              brandIds:
+              - brandIds
+              - brandIds
             channels:
             - Unknown
             - Unknown
@@ -6215,6 +6321,7 @@ components:
             description: description
             retailerId: retailerId
             type: Unknown
+            createdById: createdById
             updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
           type: type
@@ -6361,7 +6468,19 @@ components:
             createdAt: 2000-01-23T04:56:07.000+00:00
             contactList:
               isReadOnly: true
+              sharingStatus: Unknown
               type: Unknown
+            userBehavior:
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice: 0.8008281904610115
+              maxPrice: 6.027456183070403
+              shopperActivity: Unknown
+              lookbackDays: Unknown
+              brandIds:
+              - brandIds
+              - brandIds
             channels:
             - Unknown
             - Unknown
@@ -6369,6 +6488,7 @@ components:
             description: description
             retailerId: retailerId
             type: Unknown
+            createdById: createdById
             updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
           type: type
@@ -6377,7 +6497,19 @@ components:
             createdAt: 2000-01-23T04:56:07.000+00:00
             contactList:
               isReadOnly: true
+              sharingStatus: Unknown
               type: Unknown
+            userBehavior:
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice: 0.8008281904610115
+              maxPrice: 6.027456183070403
+              shopperActivity: Unknown
+              lookbackDays: Unknown
+              brandIds:
+              - brandIds
+              - brandIds
             channels:
             - Unknown
             - Unknown
@@ -6385,6 +6517,7 @@ components:
             description: description
             retailerId: retailerId
             type: Unknown
+            createdById: createdById
             updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
           type: type
@@ -6828,6 +6961,9 @@ components:
             retailerIds:
             - retailerIds
             - retailerIds
+            audienceSegmentTypes:
+            - Unknown
+            - Unknown
           type: type
       properties:
         data:
@@ -6841,7 +6977,19 @@ components:
           createdAt: 2000-01-23T04:56:07.000+00:00
           contactList:
             isReadOnly: true
+            sharingStatus: Unknown
             type: Unknown
+          userBehavior:
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            minPrice: 0.8008281904610115
+            maxPrice: 6.027456183070403
+            shopperActivity: Unknown
+            lookbackDays: Unknown
+            brandIds:
+            - brandIds
+            - brandIds
           channels:
           - Unknown
           - Unknown
@@ -6849,6 +6997,7 @@ components:
           description: description
           retailerId: retailerId
           type: Unknown
+          createdById: createdById
           updatedAt: 2000-01-23T04:56:07.000+00:00
         id: id
         type: type
@@ -7080,6 +7229,9 @@ components:
           retailerIds:
           - retailerIds
           - retailerIds
+          audienceSegmentTypes:
+          - Unknown
+          - Unknown
         type: type
       properties:
         type:
@@ -7095,7 +7247,19 @@ components:
         createdAt: 2000-01-23T04:56:07.000+00:00
         contactList:
           isReadOnly: true
+          sharingStatus: Unknown
           type: Unknown
+        userBehavior:
+          categoryIds:
+          - categoryIds
+          - categoryIds
+          minPrice: 0.8008281904610115
+          maxPrice: 6.027456183070403
+          shopperActivity: Unknown
+          lookbackDays: Unknown
+          brandIds:
+          - brandIds
+          - brandIds
         channels:
         - Unknown
         - Unknown
@@ -7103,6 +7267,7 @@ components:
         description: description
         retailerId: retailerId
         type: Unknown
+        createdById: createdById
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         accountId:
@@ -7126,6 +7291,7 @@ components:
           enum:
           - Unknown
           - ContactList
+          - UserBehavior
           nullable: true
           type: string
         createdAt:
@@ -7138,8 +7304,14 @@ components:
           format: date-time
           nullable: true
           type: string
+        createdById:
+          description: User that created the segment
+          nullable: true
+          type: string
         contactList:
           $ref: '#/components/schemas/RmContactListV1'
+        userBehavior:
+          $ref: '#/components/schemas/RmUserBehaviorV1'
         channels:
           description: Channels associated to the segment (read-only)
           items:
@@ -7337,6 +7509,9 @@ components:
         retailerIds:
         - retailerIds
         - retailerIds
+        audienceSegmentTypes:
+        - Unknown
+        - Unknown
       properties:
         audienceSegmentIds:
           description: List of segment ids
@@ -7350,11 +7525,22 @@ components:
             type: string
           nullable: true
           type: array
+        audienceSegmentTypes:
+          description: List of segment types
+          items:
+            enum:
+            - Unknown
+            - ContactList
+            - UserBehavior
+            type: string
+          nullable: true
+          type: array
       type: object
     RmContactListV1:
       description: Settings to target users with your contact lists.
       example:
         isReadOnly: true
+        sharingStatus: Unknown
         type: Unknown
       properties:
         isReadOnly:
@@ -7371,6 +7557,76 @@ components:
           - CustomerId
           nullable: true
           type: string
+        sharingStatus:
+          description: Indicates if the contact list is shared with other accounts
+          enum:
+          - Unknown
+          - NotShared
+          - SharedWithAll
+          - SharedWithDemandAccounts
+          nullable: true
+          type: string
+      type: object
+    RmUserBehaviorV1:
+      description: Settings to target users based on their behavior
+      example:
+        categoryIds:
+        - categoryIds
+        - categoryIds
+        minPrice: 0.8008281904610115
+        maxPrice: 6.027456183070403
+        shopperActivity: Unknown
+        lookbackDays: Unknown
+        brandIds:
+        - brandIds
+        - brandIds
+      properties:
+        shopperActivity:
+          description: Reach people who performed specific action
+          enum:
+          - Unknown
+          - View
+          - Buy
+          - AddToCart
+          nullable: true
+          type: string
+        lookbackDays:
+          description: The number of days to look back
+          enum:
+          - Unknown
+          - Last7Days
+          - Last14Days
+          - Last30Days
+          - Last45Days
+          - Last60Days
+          - Last90Days
+          - Last120Days
+          - Last150Days
+          - Last180Days
+          nullable: true
+          type: string
+        categoryIds:
+          description: The list of category ids
+          items:
+            type: string
+          nullable: true
+          type: array
+        brandIds:
+          description: The list of brand ids
+          items:
+            type: string
+          nullable: true
+          type: array
+        minPrice:
+          description: Minimum price of the products
+          format: double
+          nullable: true
+          type: number
+        maxPrice:
+          description: Maximum price of the products
+          format: double
+          nullable: true
+          type: number
       type: object
     RmLegacySegmentUserBehaviorV1:
       description: Audience definition of people based on what they visited
@@ -7713,6 +7969,11 @@ components:
       additionalProperties: false
       description: Outcome object containing promoted products.
       example:
+        metadata:
+          offset: 0
+          limit: 6
+          count: 1
+          responseCount: 5
         data:
         - attributes:
             bidOverride: 5.637376656633329
@@ -7726,11 +7987,6 @@ components:
             status: null
           id: id
           type: type
-        meta:
-          offset: 0
-          limit: 6
-          count: 1
-          responseCount: 5
         warnings:
         - traceId: traceId
           code: code
@@ -7778,13 +8034,15 @@ components:
           items:
             $ref: '#/components/schemas/RmcaCommonProblem'
           nullable: true
+          readOnly: true
           type: array
         warnings:
           items:
             $ref: '#/components/schemas/RmcaCommonProblem'
           nullable: true
+          readOnly: true
           type: array
-        meta:
+        metadata:
           $ref: '#/components/schemas/ProductMetadata'
         data:
           items:
@@ -8216,7 +8474,7 @@ components:
         bidOverride:
           description: The bid override for the promoted product for this line item.
             Ignored unless adding a product.
-          format: double
+          format: decimal
           nullable: true
           type: number
         status:
@@ -12913,6 +13171,158 @@ components:
       - endDate
       - startDate
       type: object
+    ResourceOutcomeOfRetailMediaAccount:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
+      example:
+        data:
+          attributes:
+            companyName: companyName
+            parentAccountLabel: parentAccountLabel
+            name: name
+            countryIds:
+            - countryIds
+            - countryIds
+            timeZone: timeZone
+            subType: Unknown
+            type: Unknown
+            currencyId: currencyId
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfRetailMediaAccount'
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    ValueResourceCollectionOutcomeOfRetailMediaSeller:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several values.
+      example:
+        data:
+        - attributes:
+            sellerId: sellerId
+            retailerId: 0
+          type: type
+        - attributes:
+            sellerId: sellerId
+            retailerId: 0
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ValueResourceOfRetailMediaSeller'
+          nullable: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
     PageOfBalanceHistoryChangeDataCaptureV1:
       additionalProperties: false
       description: A wrapper class to return a single page of items with metadata.
@@ -13342,6 +13752,46 @@ components:
           readOnly: true
           type: array
       type: object
+    ValueResourceInputOfRetailMediaSellerAccountCreation:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value.
+      example:
+        data:
+          attributes:
+            companyName: companyName
+            name: name
+            sellers:
+            - sellerId: sellerId
+              retailerId: 0
+            - sellerId: sellerId
+              retailerId: 0
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfRetailMediaSellerAccountCreation'
+      type: object
+    ValueResourceCollectionInputOfRetailMediaSeller:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for several
+        values.
+      example:
+        data:
+        - attributes:
+            sellerId: sellerId
+            retailerId: 0
+          type: type
+        - attributes:
+            sellerId: sellerId
+            retailerId: 0
+          type: type
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ValueResourceOfRetailMediaSeller'
+          nullable: true
+          type: array
+      type: object
     ValueResourceInputOfCampaignBudgetOverrides:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -13417,6 +13867,50 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceOfLineItemBudgetOverrides'
+      type: object
+    ResourceOfRetailMediaAccount:
+      additionalProperties: false
+      description: A class that represents a domain entity exposed by an API.
+      example:
+        attributes:
+          companyName: companyName
+          parentAccountLabel: parentAccountLabel
+          name: name
+          countryIds:
+          - countryIds
+          - countryIds
+          timeZone: timeZone
+          subType: Unknown
+          type: Unknown
+          currencyId: currencyId
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RetailMediaAccount'
+        id:
+          description: Unique identifier of this resource.
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
+      type: object
+    ValueResourceOfRetailMediaSeller:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value.
+      example:
+        attributes:
+          sellerId: sellerId
+          retailerId: 0
+        type: type
+      properties:
+        type:
+          nullable: true
+          type: string
+        attributes:
+          $ref: '#/components/schemas/RetailMediaSeller'
       type: object
     Metadata:
       additionalProperties: false
@@ -13668,6 +14162,27 @@ components:
         attributes:
           $ref: '#/components/schemas/LineItemBudgetOverrides'
       type: object
+    ValueResourceOfRetailMediaSellerAccountCreation:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value.
+      example:
+        attributes:
+          companyName: companyName
+          name: name
+          sellers:
+          - sellerId: sellerId
+            retailerId: 0
+          - sellerId: sellerId
+            retailerId: 0
+        type: type
+      properties:
+        type:
+          nullable: true
+          type: string
+        attributes:
+          $ref: '#/components/schemas/RetailMediaSellerAccountCreation'
+      type: object
     SkuSearchRequestBody:
       additionalProperties: false
       description: defines the type product Id to search and list of ids to be searched
@@ -13696,6 +14211,82 @@ components:
       required:
       - productIdType
       - queryIds
+      type: object
+    RetailMediaAccount:
+      additionalProperties: false
+      description: The details for a newly created account
+      example:
+        companyName: companyName
+        parentAccountLabel: parentAccountLabel
+        name: name
+        countryIds:
+        - countryIds
+        - countryIds
+        timeZone: timeZone
+        subType: Unknown
+        type: Unknown
+        currencyId: currencyId
+      properties:
+        name:
+          description: account name
+          nullable: true
+          type: string
+        companyName:
+          description: Display name for reporting the owning entity of ads for the
+            Digital Services Act in the European Union
+          nullable: true
+          type: string
+        type:
+          description: Type for the account
+          enum:
+          - Unknown
+          - Supply
+          - Demand
+          nullable: true
+          type: string
+        subType:
+          description: subtype for the account
+          enum:
+          - Unknown
+          - Brand
+          - Seller
+          nullable: true
+          type: string
+        countryIds:
+          description: list of countries associated with the account
+          items:
+            type: string
+          nullable: true
+          type: array
+        currencyId:
+          description: the currency for the account
+          nullable: true
+          type: string
+        parentAccountLabel:
+          description: parent account label for the account
+          nullable: true
+          type: string
+        timeZone:
+          description: the timezone for the account
+          nullable: true
+          type: string
+      type: object
+    RetailMediaSeller:
+      additionalProperties: false
+      description: used to define the exact seller linked with an account
+      example:
+        sellerId: sellerId
+        retailerId: 0
+      properties:
+        sellerId:
+          description: the seller id
+          nullable: true
+          type: string
+        retailerId:
+          description: the retailer id
+          format: int32
+          nullable: true
+          type: integer
       type: object
     ChangeDetailsV1:
       additionalProperties: false
@@ -13946,6 +14537,35 @@ components:
       required:
       - dailyLineItemBudgetOverrides
       - monthlyLineItemBudgetOverrides
+      type: object
+    RetailMediaSellerAccountCreation:
+      additionalProperties: false
+      description: the initial set up and configuration options for a new private
+        market demand brand account
+      example:
+        companyName: companyName
+        name: name
+        sellers:
+        - sellerId: sellerId
+          retailerId: 0
+        - sellerId: sellerId
+          retailerId: 0
+      properties:
+        name:
+          description: "the name of the account, must be unique across all accounts"
+          nullable: true
+          type: string
+        companyName:
+          description: Display name for reporting the owning entity of ads for the
+            Digital Services Act in the European Union
+          nullable: true
+          type: string
+        sellers:
+          description: list of sellers to associate to the new account
+          items:
+            $ref: '#/components/schemas/RetailMediaSeller'
+          nullable: true
+          type: array
       type: object
     CampaignMonthlyBudgetOverride:
       additionalProperties: false
@@ -14198,8 +14818,8 @@ components:
           currentPageIndex: 1
         data:
         - attributes:
-            privateMarketBillingType: notApplicable
-            endDate: endDate
+            privateMarketBillingType: NotApplicable
+            endDate: 2000-01-23
             deposited: 0.8008281904610115
             spent: 6.027456183070403
             memo: memo
@@ -14209,14 +14829,14 @@ components:
             balanceType: unknown
             name: name
             poNumber: poNumber
-            startDate: startDate
+            startDate: 2000-01-23
             status: unknown
             updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
           type: type
         - attributes:
-            privateMarketBillingType: notApplicable
-            endDate: endDate
+            privateMarketBillingType: NotApplicable
+            endDate: 2000-01-23
             deposited: 0.8008281904610115
             spent: 6.027456183070403
             memo: memo
@@ -14226,7 +14846,7 @@ components:
             balanceType: unknown
             name: name
             poNumber: poNumber
-            startDate: startDate
+            startDate: 2000-01-23
             status: unknown
             updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
@@ -14300,8 +14920,8 @@ components:
       example:
         data:
           attributes:
-            privateMarketBillingType: notApplicable
-            endDate: endDate
+            privateMarketBillingType: NotApplicable
+            endDate: 2000-01-23
             deposited: 0.8008281904610115
             spent: 6.027456183070403
             memo: memo
@@ -14311,7 +14931,7 @@ components:
             balanceType: unknown
             name: name
             poNumber: poNumber
-            startDate: startDate
+            startDate: 2000-01-23
             status: unknown
             updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
@@ -14845,13 +15465,13 @@ components:
       example:
         data:
           attributes:
-            endDate: endDate
+            endDate: 2000-01-23
             deposited: 0.8008281904610115
             name: name
             memo: memo
             poNumber: poNumber
             spendType: Onsite
-            startDate: startDate
+            startDate: 2000-01-23
           id: id
           type: type
       properties:
@@ -15045,8 +15665,8 @@ components:
       description: A class that represents a domain entity exposed by an API
       example:
         attributes:
-          privateMarketBillingType: notApplicable
-          endDate: endDate
+          privateMarketBillingType: NotApplicable
+          endDate: 2000-01-23
           deposited: 0.8008281904610115
           spent: 6.027456183070403
           memo: memo
@@ -15056,7 +15676,7 @@ components:
           balanceType: unknown
           name: name
           poNumber: poNumber
-          startDate: startDate
+          startDate: 2000-01-23
           status: unknown
           updatedAt: 2000-01-23T04:56:07.000+00:00
         id: id
@@ -15209,13 +15829,13 @@ components:
       description: A class that represents a domain entity exposed by an API
       example:
         attributes:
-          endDate: endDate
+          endDate: 2000-01-23
           deposited: 0.8008281904610115
           name: name
           memo: memo
           poNumber: poNumber
           spendType: Onsite
-          startDate: startDate
+          startDate: 2000-01-23
         id: id
         type: type
       properties:
@@ -15397,8 +16017,8 @@ components:
       description: A Retail Media Balance used to determine the funds available for
         any or all campaigns in an account
       example:
-        privateMarketBillingType: notApplicable
-        endDate: endDate
+        privateMarketBillingType: NotApplicable
+        endDate: 2000-01-23
         deposited: 0.8008281904610115
         spent: 6.027456183070403
         memo: memo
@@ -15408,7 +16028,7 @@ components:
         balanceType: unknown
         name: name
         poNumber: poNumber
-        startDate: startDate
+        startDate: 2000-01-23
         status: unknown
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -15446,10 +16066,12 @@ components:
           x-nullable: true
         startDate:
           description: Start date of the balance in the format YYYY-MM-DD.
+          format: date
           type: string
           x-nullable: false
         endDate:
           description: End date of the balance in the format YYYY-MM-DD.
+          format: date
           nullable: true
           type: string
           x-nullable: true
@@ -15491,10 +16113,10 @@ components:
         privateMarketBillingType:
           description: Billing type for Private Market of the balance.
           enum:
-          - notApplicable
-          - billByRetailer
-          - billByCriteo
-          - unknown
+          - NotApplicable
+          - BillByRetailer
+          - BillByCriteo
+          - Unknown
           type: string
           x-nullable: false
       required:
@@ -15744,13 +16366,13 @@ components:
       description: An object that represents the available options to set when creating
         a Retail Media Balance
       example:
-        endDate: endDate
+        endDate: 2000-01-23
         deposited: 0.8008281904610115
         name: name
         memo: memo
         poNumber: poNumber
         spendType: Onsite
-        startDate: startDate
+        startDate: 2000-01-23
       properties:
         name:
           description: Name of the balance.
@@ -15760,6 +16382,7 @@ components:
           description: Purchase Order number.
           nullable: true
           type: string
+          x-nullable: true
         deposited:
           description: Amount of billable funds allotted to the balance.
           format: decimal
@@ -15767,12 +16390,15 @@ components:
           type: number
         startDate:
           description: Start date of the balance in the format YYYY-MM-DD.
+          format: date
           type: string
           x-nullable: false
         endDate:
           description: End date of the balance in the format YYYY-MM-DD.
+          format: date
           nullable: true
           type: string
+          x-nullable: true
         spendType:
           description: Type of the balance spend.
           enum:
@@ -15785,6 +16411,7 @@ components:
           description: Memo
           nullable: true
           type: string
+          x-nullable: true
       required:
       - name
       - spendType

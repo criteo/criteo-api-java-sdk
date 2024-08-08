@@ -13,7 +13,7 @@ All URIs are relative to *https://api.criteo.com*
 
 ## getAdsetReport
 
-> File getAdsetReport(statisticsReportQueryMessage)
+> byte[] getAdsetReport(statisticsReportQueryMessage)
 
 
 
@@ -60,7 +60,7 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         StatisticsReportQueryMessage statisticsReportQueryMessage = new StatisticsReportQueryMessage(); // StatisticsReportQueryMessage | 
         try {
-            File result = apiInstance.getAdsetReport(statisticsReportQueryMessage);
+            byte[] result = apiInstance.getAdsetReport(statisticsReportQueryMessage);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalyticsApi#getAdsetReport");
@@ -82,7 +82,7 @@ public class Example {
 
 ### Return type
 
-[**File**](File.md)
+**byte[]**
 
 ### Authorization
 
@@ -104,7 +104,7 @@ public class Example {
 
 ## getPlacementsReport
 
-> File getPlacementsReport(placementsReportQueryDataMessage)
+> byte[] getPlacementsReport(placementsReportQueryMessageListRequest)
 
 
 
@@ -149,9 +149,9 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
-        PlacementsReportQueryDataMessage placementsReportQueryDataMessage = new PlacementsReportQueryDataMessage(); // PlacementsReportQueryDataMessage | 
+        PlacementsReportQueryMessageListRequest placementsReportQueryMessageListRequest = new PlacementsReportQueryMessageListRequest(); // PlacementsReportQueryMessageListRequest | 
         try {
-            File result = apiInstance.getPlacementsReport(placementsReportQueryDataMessage);
+            byte[] result = apiInstance.getPlacementsReport(placementsReportQueryMessageListRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalyticsApi#getPlacementsReport");
@@ -169,11 +169,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **placementsReportQueryDataMessage** | [**PlacementsReportQueryDataMessage**](PlacementsReportQueryDataMessage.md)|  | [optional] |
+| **placementsReportQueryMessageListRequest** | [**PlacementsReportQueryMessageListRequest**](PlacementsReportQueryMessageListRequest.md)|  | [optional] |
 
 ### Return type
 
-[**File**](File.md)
+**byte[]**
 
 ### Authorization
 
@@ -182,7 +182,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json, text/csv, text/xml, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+- **Accept**: text/plain, application/json, text/json, application/xml, text/xml
 
 
 ### HTTP response details
@@ -195,7 +195,7 @@ public class Example {
 
 ## getTransactionsReport
 
-> File getTransactionsReport(transactionsReportQueryDataMessage)
+> byte[] getTransactionsReport(transactionsReportQueryMessageListRequest)
 
 
 
@@ -240,9 +240,9 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
-        TransactionsReportQueryDataMessage transactionsReportQueryDataMessage = new TransactionsReportQueryDataMessage(); // TransactionsReportQueryDataMessage | 
+        TransactionsReportQueryMessageListRequest transactionsReportQueryMessageListRequest = new TransactionsReportQueryMessageListRequest(); // TransactionsReportQueryMessageListRequest | 
         try {
-            File result = apiInstance.getTransactionsReport(transactionsReportQueryDataMessage);
+            byte[] result = apiInstance.getTransactionsReport(transactionsReportQueryMessageListRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalyticsApi#getTransactionsReport");
@@ -260,11 +260,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **transactionsReportQueryDataMessage** | [**TransactionsReportQueryDataMessage**](TransactionsReportQueryDataMessage.md)|  | [optional] |
+| **transactionsReportQueryMessageListRequest** | [**TransactionsReportQueryMessageListRequest**](TransactionsReportQueryMessageListRequest.md)|  | [optional] |
 
 ### Return type
 
-[**File**](File.md)
+**byte[]**
 
 ### Authorization
 
@@ -286,7 +286,7 @@ public class Example {
 
 ## getTransparencyReport
 
-> TransparencyReportDataMessage getTransparencyReport(advertiserId, transparencyQueryMessage)
+> TransparencyReportListResponse getTransparencyReport(advertiserId, transparencyQueryMessage)
 
 
 
@@ -332,9 +332,9 @@ public class Example {
 
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         Integer advertiserId = 56; // Integer | The advertiser id to fetch the transparency data.
-        TransparencyQueryMessage transparencyQueryMessage = new TransparencyQueryMessage(); // TransparencyQueryMessage | 
+        TransparencyQueryMessage transparencyQueryMessage = new TransparencyQueryMessage(); // TransparencyQueryMessage | The query message.
         try {
-            TransparencyReportDataMessage result = apiInstance.getTransparencyReport(advertiserId, transparencyQueryMessage);
+            TransparencyReportListResponse result = apiInstance.getTransparencyReport(advertiserId, transparencyQueryMessage);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalyticsApi#getTransparencyReport");
@@ -353,11 +353,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **advertiserId** | **Integer**| The advertiser id to fetch the transparency data. | |
-| **transparencyQueryMessage** | [**TransparencyQueryMessage**](TransparencyQueryMessage.md)|  | [optional] |
+| **transparencyQueryMessage** | [**TransparencyQueryMessage**](TransparencyQueryMessage.md)| The query message. | [optional] |
 
 ### Return type
 
-[**TransparencyReportDataMessage**](TransparencyReportDataMessage.md)
+[**TransparencyReportListResponse**](TransparencyReportListResponse.md)
 
 ### Authorization
 
@@ -366,7 +366,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: application/json, text/plain, text/json
+- **Accept**: text/plain, application/json, text/json, application/xml, text/xml
 
 
 ### HTTP response details

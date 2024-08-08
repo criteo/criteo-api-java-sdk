@@ -2,13 +2,13 @@
 
 # GenerateAudiencePerformanceReportRequest
 
-Request for async audience performance report
+A top-level object that encapsulates a Criteo API request for a single value objects.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**GenerateAudiencePerformanceReportRequestData**](GenerateAudiencePerformanceReportRequestData.md) |  |  |
+|**data** | [**GenerateAudiencePerformanceReportResource**](GenerateAudiencePerformanceReportResource.md) |  |  [optional] |
 
 
 

@@ -69,8 +69,9 @@ import com.criteo.api.retailmedia.v2024_07.model.PreferredLineItem202110PagedLis
 import com.criteo.api.retailmedia.v2024_07.model.PreferredLineItem202110Response;
 import com.criteo.api.retailmedia.v2024_07.model.PreferredLineItemCreateModel202110Request;
 import com.criteo.api.retailmedia.v2024_07.model.PreferredLineItemUpdateModel202110Request;
-import com.criteo.api.retailmedia.v2024_07.model.PromotedProduct202110ListRequest;
-import com.criteo.api.retailmedia.v2024_07.model.PromotedProduct202110PagedListResponse;
+import com.criteo.api.retailmedia.v2024_07.model.ProductResourceOutcome;
+import com.criteo.api.retailmedia.v2024_07.model.PromotedProductResourceCollectionInput;
+import com.criteo.api.retailmedia.v2024_07.model.PromotedProductResourceCollectionOutcome;
 import com.criteo.api.retailmedia.v2024_07.model.ProposalStatusModelResponse;
 import com.criteo.api.retailmedia.v2024_07.model.PutCampaignV202301;
 import com.criteo.api.retailmedia.v2024_07.model.ResourceOutcome;
@@ -262,6 +263,138 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
+     * Build call for appendPromotedProducts
+     * @param lineItemId ID of the line item (required)
+     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call appendPromotedProductsCall(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = promotedProductResourceCollectionInput;
+
+        // create path and map variables
+        String localVarPath = "/2024-07/retail-media/line-items/{line-item-id}/products/append"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call appendPromotedProductsValidateBeforeCall(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lineItemId' is set
+        if (lineItemId == null) {
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling appendPromotedProducts(Async)");
+        }
+
+        return appendPromotedProductsCall(lineItemId, promotedProductResourceCollectionInput, _callback);
+
+    }
+
+    /**
+     * 
+     * Append a collection of promoted products to a line item
+     * @param lineItemId ID of the line item (required)
+     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public void appendPromotedProducts(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
+        appendPromotedProductsWithHttpInfo(lineItemId, promotedProductResourceCollectionInput);
+    }
+
+    /**
+     * 
+     * Append a collection of promoted products to a line item
+     * @param lineItemId ID of the line item (required)
+     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> appendPromotedProductsWithHttpInfo(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
+        okhttp3.Call localVarCall = appendPromotedProductsValidateBeforeCall(lineItemId, promotedProductResourceCollectionInput, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Append a collection of promoted products to a line item
+     * @param lineItemId ID of the line item (required)
+     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call appendPromotedProductsAsync(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = appendPromotedProductsValidateBeforeCall(lineItemId, promotedProductResourceCollectionInput, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for createAsset
      * @param assetFile The asset binary content (required)
      * @param _callback Callback for upload/download progress
@@ -391,6 +524,138 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
+     * Build call for deletePromotedProducts
+     * @param lineItemId ID of the line item (required)
+     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Promoted products removed from the line item </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deletePromotedProductsCall(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = promotedProductResourceCollectionInput;
+
+        // create path and map variables
+        String localVarPath = "/2024-07/retail-media/line-items/{line-item-id}/products/delete"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deletePromotedProductsValidateBeforeCall(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lineItemId' is set
+        if (lineItemId == null) {
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling deletePromotedProducts(Async)");
+        }
+
+        return deletePromotedProductsCall(lineItemId, promotedProductResourceCollectionInput, _callback);
+
+    }
+
+    /**
+     * 
+     * Remove a collection of promoted products from a line item
+     * @param lineItemId ID of the line item (required)
+     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Promoted products removed from the line item </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deletePromotedProducts(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
+        deletePromotedProductsWithHttpInfo(lineItemId, promotedProductResourceCollectionInput);
+    }
+
+    /**
+     * 
+     * Remove a collection of promoted products from a line item
+     * @param lineItemId ID of the line item (required)
+     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Promoted products removed from the line item </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deletePromotedProductsWithHttpInfo(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
+        okhttp3.Call localVarCall = deletePromotedProductsValidateBeforeCall(lineItemId, promotedProductResourceCollectionInput, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Remove a collection of promoted products from a line item
+     * @param lineItemId ID of the line item (required)
+     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Promoted products removed from the line item </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deletePromotedProductsAsync(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deletePromotedProductsValidateBeforeCall(lineItemId, promotedProductResourceCollectionInput, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for fetchKeywords
      * @param id ID of the line item (required)
      * @param _callback Callback for upload/download progress
@@ -514,6 +779,157 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = fetchKeywordsValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<KeywordsModelResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for fetchPromotedProducts
+     * @param lineItemId ID of the line item. (required)
+     * @param offset Offset of the first item to fetch. Defaults to zero. (optional)
+     * @param limit Maximum page size to fetch. Defaults to 500. (optional)
+     * @param fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Promoted products associated with the line item </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call fetchPromotedProductsCall(String lineItemId, Integer offset, Integer limit, String fields, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/2024-07/retail-media/line-items/{line-item-id}/products"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (fields != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("fields", fields));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call fetchPromotedProductsValidateBeforeCall(String lineItemId, Integer offset, Integer limit, String fields, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lineItemId' is set
+        if (lineItemId == null) {
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling fetchPromotedProducts(Async)");
+        }
+
+        return fetchPromotedProductsCall(lineItemId, offset, limit, fields, _callback);
+
+    }
+
+    /**
+     * 
+     * Retrieve a page of promoted products for a line item
+     * @param lineItemId ID of the line item. (required)
+     * @param offset Offset of the first item to fetch. Defaults to zero. (optional)
+     * @param limit Maximum page size to fetch. Defaults to 500. (optional)
+     * @param fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
+     * @return PromotedProductResourceCollectionOutcome
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Promoted products associated with the line item </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public PromotedProductResourceCollectionOutcome fetchPromotedProducts(String lineItemId, Integer offset, Integer limit, String fields) throws ApiException {
+        ApiResponse<PromotedProductResourceCollectionOutcome> localVarResp = fetchPromotedProductsWithHttpInfo(lineItemId, offset, limit, fields);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Retrieve a page of promoted products for a line item
+     * @param lineItemId ID of the line item. (required)
+     * @param offset Offset of the first item to fetch. Defaults to zero. (optional)
+     * @param limit Maximum page size to fetch. Defaults to 500. (optional)
+     * @param fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
+     * @return ApiResponse&lt;PromotedProductResourceCollectionOutcome&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Promoted products associated with the line item </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PromotedProductResourceCollectionOutcome> fetchPromotedProductsWithHttpInfo(String lineItemId, Integer offset, Integer limit, String fields) throws ApiException {
+        okhttp3.Call localVarCall = fetchPromotedProductsValidateBeforeCall(lineItemId, offset, limit, fields, null);
+        Type localVarReturnType = new TypeToken<PromotedProductResourceCollectionOutcome>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Retrieve a page of promoted products for a line item
+     * @param lineItemId ID of the line item. (required)
+     * @param offset Offset of the first item to fetch. Defaults to zero. (optional)
+     * @param limit Maximum page size to fetch. Defaults to 500. (optional)
+     * @param fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Promoted products associated with the line item </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call fetchPromotedProductsAsync(String lineItemId, Integer offset, Integer limit, String fields, final ApiCallback<PromotedProductResourceCollectionOutcome> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = fetchPromotedProductsValidateBeforeCall(lineItemId, offset, limit, fields, _callback);
+        Type localVarReturnType = new TypeToken<PromotedProductResourceCollectionOutcome>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1046,153 +1462,6 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = getApi202110ExternalCampaignPreferredLineItemsByCampaignIdValidateBeforeCall(campaignId, limitToId, pageIndex, pageSize, _callback);
         Type localVarReturnType = new TypeToken<PreferredLineItem202110PagedListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getApi202110ExternalLineItemProductsByLineItemId
-     * @param lineItemId The line item to interact with (required)
-     * @param limitToId The ids that you would like to limit your result set to (optional)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional)
-     * @param pageSize The maximum number of items you would like to receive in this request (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getApi202110ExternalLineItemProductsByLineItemIdCall(String lineItemId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/2024-07/retail-media/line-items/{line-item-id}/products"
-            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (limitToId != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "limitToId", limitToId));
-        }
-
-        if (pageIndex != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageIndex", pageIndex));
-        }
-
-        if (pageSize != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getApi202110ExternalLineItemProductsByLineItemIdValidateBeforeCall(String lineItemId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'lineItemId' is set
-        if (lineItemId == null) {
-            throw new ApiException("Missing the required parameter 'lineItemId' when calling getApi202110ExternalLineItemProductsByLineItemId(Async)");
-        }
-
-        return getApi202110ExternalLineItemProductsByLineItemIdCall(lineItemId, limitToId, pageIndex, pageSize, _callback);
-
-    }
-
-    /**
-     * 
-     * This endpoint gets the promoted products on the specified line item.
-     * @param lineItemId The line item to interact with (required)
-     * @param limitToId The ids that you would like to limit your result set to (optional)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional)
-     * @param pageSize The maximum number of items you would like to receive in this request (optional)
-     * @return PromotedProduct202110PagedListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public PromotedProduct202110PagedListResponse getApi202110ExternalLineItemProductsByLineItemId(String lineItemId, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
-        ApiResponse<PromotedProduct202110PagedListResponse> localVarResp = getApi202110ExternalLineItemProductsByLineItemIdWithHttpInfo(lineItemId, limitToId, pageIndex, pageSize);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * This endpoint gets the promoted products on the specified line item.
-     * @param lineItemId The line item to interact with (required)
-     * @param limitToId The ids that you would like to limit your result set to (optional)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional)
-     * @param pageSize The maximum number of items you would like to receive in this request (optional)
-     * @return ApiResponse&lt;PromotedProduct202110PagedListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PromotedProduct202110PagedListResponse> getApi202110ExternalLineItemProductsByLineItemIdWithHttpInfo(String lineItemId, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
-        okhttp3.Call localVarCall = getApi202110ExternalLineItemProductsByLineItemIdValidateBeforeCall(lineItemId, limitToId, pageIndex, pageSize, null);
-        Type localVarReturnType = new TypeToken<PromotedProduct202110PagedListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * This endpoint gets the promoted products on the specified line item.
-     * @param lineItemId The line item to interact with (required)
-     * @param limitToId The ids that you would like to limit your result set to (optional)
-     * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional)
-     * @param pageSize The maximum number of items you would like to receive in this request (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getApi202110ExternalLineItemProductsByLineItemIdAsync(String lineItemId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback<PromotedProduct202110PagedListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getApi202110ExternalLineItemProductsByLineItemIdValidateBeforeCall(lineItemId, limitToId, pageIndex, pageSize, _callback);
-        Type localVarReturnType = new TypeToken<PromotedProduct202110PagedListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4247,6 +4516,138 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
+     * Build call for pausePromotedProducts
+     * @param lineItemId ID of the line item (required)
+     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Promoted products paused </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call pausePromotedProductsCall(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = promotedProductResourceCollectionInput;
+
+        // create path and map variables
+        String localVarPath = "/2024-07/retail-media/line-items/{line-item-id}/products/pause"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call pausePromotedProductsValidateBeforeCall(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lineItemId' is set
+        if (lineItemId == null) {
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling pausePromotedProducts(Async)");
+        }
+
+        return pausePromotedProductsCall(lineItemId, promotedProductResourceCollectionInput, _callback);
+
+    }
+
+    /**
+     * 
+     * Pause a collection of promoted products associated with a line item
+     * @param lineItemId ID of the line item (required)
+     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Promoted products paused </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public void pausePromotedProducts(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
+        pausePromotedProductsWithHttpInfo(lineItemId, promotedProductResourceCollectionInput);
+    }
+
+    /**
+     * 
+     * Pause a collection of promoted products associated with a line item
+     * @param lineItemId ID of the line item (required)
+     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Promoted products paused </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> pausePromotedProductsWithHttpInfo(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
+        okhttp3.Call localVarCall = pausePromotedProductsValidateBeforeCall(lineItemId, promotedProductResourceCollectionInput, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Pause a collection of promoted products associated with a line item
+     * @param lineItemId ID of the line item (required)
+     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Promoted products paused </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call pausePromotedProductsAsync(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = pausePromotedProductsValidateBeforeCall(lineItemId, promotedProductResourceCollectionInput, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId
      * @param lineItemId The line item to interact with (required)
      * @param keywordTarget202110Request  (optional)
@@ -4896,508 +5297,6 @@ public class CampaignApi {
         okhttp3.Call localVarCall = postApi202110ExternalCampaignPreferredLineItemsByCampaignIdValidateBeforeCall(campaignId, preferredLineItemCreateModel202110Request, _callback);
         Type localVarReturnType = new TypeToken<PreferredLineItem202110Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postApi202110ExternalLineItemProductsAppendByLineItemId
-     * @param lineItemId The line item to interact with (required)
-     * @param promotedProduct202110ListRequest the products to append to this line item (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postApi202110ExternalLineItemProductsAppendByLineItemIdCall(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = promotedProduct202110ListRequest;
-
-        // create path and map variables
-        String localVarPath = "/2024-07/retail-media/line-items/{line-item-id}/products/append"
-            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postApi202110ExternalLineItemProductsAppendByLineItemIdValidateBeforeCall(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'lineItemId' is set
-        if (lineItemId == null) {
-            throw new ApiException("Missing the required parameter 'lineItemId' when calling postApi202110ExternalLineItemProductsAppendByLineItemId(Async)");
-        }
-
-        return postApi202110ExternalLineItemProductsAppendByLineItemIdCall(lineItemId, promotedProduct202110ListRequest, _callback);
-
-    }
-
-    /**
-     * 
-     * This endpoint appends one or more products to promote on the specified line item.  The resulting state of the line item is returned.
-     * @param lineItemId The line item to interact with (required)
-     * @param promotedProduct202110ListRequest the products to append to this line item (optional)
-     * @return PromotedProduct202110PagedListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public PromotedProduct202110PagedListResponse postApi202110ExternalLineItemProductsAppendByLineItemId(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest) throws ApiException {
-        ApiResponse<PromotedProduct202110PagedListResponse> localVarResp = postApi202110ExternalLineItemProductsAppendByLineItemIdWithHttpInfo(lineItemId, promotedProduct202110ListRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * This endpoint appends one or more products to promote on the specified line item.  The resulting state of the line item is returned.
-     * @param lineItemId The line item to interact with (required)
-     * @param promotedProduct202110ListRequest the products to append to this line item (optional)
-     * @return ApiResponse&lt;PromotedProduct202110PagedListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PromotedProduct202110PagedListResponse> postApi202110ExternalLineItemProductsAppendByLineItemIdWithHttpInfo(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest) throws ApiException {
-        okhttp3.Call localVarCall = postApi202110ExternalLineItemProductsAppendByLineItemIdValidateBeforeCall(lineItemId, promotedProduct202110ListRequest, null);
-        Type localVarReturnType = new TypeToken<PromotedProduct202110PagedListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * This endpoint appends one or more products to promote on the specified line item.  The resulting state of the line item is returned.
-     * @param lineItemId The line item to interact with (required)
-     * @param promotedProduct202110ListRequest the products to append to this line item (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postApi202110ExternalLineItemProductsAppendByLineItemIdAsync(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback<PromotedProduct202110PagedListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postApi202110ExternalLineItemProductsAppendByLineItemIdValidateBeforeCall(lineItemId, promotedProduct202110ListRequest, _callback);
-        Type localVarReturnType = new TypeToken<PromotedProduct202110PagedListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postApi202110ExternalLineItemProductsDeleteByLineItemId
-     * @param lineItemId The line item to interact with (required)
-     * @param promotedProduct202110ListRequest  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postApi202110ExternalLineItemProductsDeleteByLineItemIdCall(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = promotedProduct202110ListRequest;
-
-        // create path and map variables
-        String localVarPath = "/2024-07/retail-media/line-items/{line-item-id}/products/delete"
-            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postApi202110ExternalLineItemProductsDeleteByLineItemIdValidateBeforeCall(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'lineItemId' is set
-        if (lineItemId == null) {
-            throw new ApiException("Missing the required parameter 'lineItemId' when calling postApi202110ExternalLineItemProductsDeleteByLineItemId(Async)");
-        }
-
-        return postApi202110ExternalLineItemProductsDeleteByLineItemIdCall(lineItemId, promotedProduct202110ListRequest, _callback);
-
-    }
-
-    /**
-     * 
-     * This endpoint removes one or more products from promotion on the specified line item.  The resulting state of the line item is returned.
-     * @param lineItemId The line item to interact with (required)
-     * @param promotedProduct202110ListRequest  (optional)
-     * @return PromotedProduct202110PagedListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public PromotedProduct202110PagedListResponse postApi202110ExternalLineItemProductsDeleteByLineItemId(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest) throws ApiException {
-        ApiResponse<PromotedProduct202110PagedListResponse> localVarResp = postApi202110ExternalLineItemProductsDeleteByLineItemIdWithHttpInfo(lineItemId, promotedProduct202110ListRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * This endpoint removes one or more products from promotion on the specified line item.  The resulting state of the line item is returned.
-     * @param lineItemId The line item to interact with (required)
-     * @param promotedProduct202110ListRequest  (optional)
-     * @return ApiResponse&lt;PromotedProduct202110PagedListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PromotedProduct202110PagedListResponse> postApi202110ExternalLineItemProductsDeleteByLineItemIdWithHttpInfo(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest) throws ApiException {
-        okhttp3.Call localVarCall = postApi202110ExternalLineItemProductsDeleteByLineItemIdValidateBeforeCall(lineItemId, promotedProduct202110ListRequest, null);
-        Type localVarReturnType = new TypeToken<PromotedProduct202110PagedListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * This endpoint removes one or more products from promotion on the specified line item.  The resulting state of the line item is returned.
-     * @param lineItemId The line item to interact with (required)
-     * @param promotedProduct202110ListRequest  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postApi202110ExternalLineItemProductsDeleteByLineItemIdAsync(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback<PromotedProduct202110PagedListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postApi202110ExternalLineItemProductsDeleteByLineItemIdValidateBeforeCall(lineItemId, promotedProduct202110ListRequest, _callback);
-        Type localVarReturnType = new TypeToken<PromotedProduct202110PagedListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postApi202110ExternalLineItemProductsPauseByLineItemId
-     * @param lineItemId The line item to interact with. (required)
-     * @param promotedProduct202110ListRequest The products from which their IDs will be used to pause. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postApi202110ExternalLineItemProductsPauseByLineItemIdCall(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = promotedProduct202110ListRequest;
-
-        // create path and map variables
-        String localVarPath = "/2024-07/retail-media/line-items/{line-item-id}/products/pause"
-            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postApi202110ExternalLineItemProductsPauseByLineItemIdValidateBeforeCall(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'lineItemId' is set
-        if (lineItemId == null) {
-            throw new ApiException("Missing the required parameter 'lineItemId' when calling postApi202110ExternalLineItemProductsPauseByLineItemId(Async)");
-        }
-
-        return postApi202110ExternalLineItemProductsPauseByLineItemIdCall(lineItemId, promotedProduct202110ListRequest, _callback);
-
-    }
-
-    /**
-     * 
-     * This endpoint pauses one or more promoted products on a specified line item.
-     * @param lineItemId The line item to interact with. (required)
-     * @param promotedProduct202110ListRequest The products from which their IDs will be used to pause. (optional)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public void postApi202110ExternalLineItemProductsPauseByLineItemId(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest) throws ApiException {
-        postApi202110ExternalLineItemProductsPauseByLineItemIdWithHttpInfo(lineItemId, promotedProduct202110ListRequest);
-    }
-
-    /**
-     * 
-     * This endpoint pauses one or more promoted products on a specified line item.
-     * @param lineItemId The line item to interact with. (required)
-     * @param promotedProduct202110ListRequest The products from which their IDs will be used to pause. (optional)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> postApi202110ExternalLineItemProductsPauseByLineItemIdWithHttpInfo(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest) throws ApiException {
-        okhttp3.Call localVarCall = postApi202110ExternalLineItemProductsPauseByLineItemIdValidateBeforeCall(lineItemId, promotedProduct202110ListRequest, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * This endpoint pauses one or more promoted products on a specified line item.
-     * @param lineItemId The line item to interact with. (required)
-     * @param promotedProduct202110ListRequest The products from which their IDs will be used to pause. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postApi202110ExternalLineItemProductsPauseByLineItemIdAsync(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postApi202110ExternalLineItemProductsPauseByLineItemIdValidateBeforeCall(lineItemId, promotedProduct202110ListRequest, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postApi202110ExternalLineItemProductsUnpauseByLineItemId
-     * @param lineItemId The line item to interact with. (required)
-     * @param promotedProduct202110ListRequest The products from which their IDs will be used to unpause. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postApi202110ExternalLineItemProductsUnpauseByLineItemIdCall(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = promotedProduct202110ListRequest;
-
-        // create path and map variables
-        String localVarPath = "/2024-07/retail-media/line-items/{line-item-id}/products/unpause"
-            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postApi202110ExternalLineItemProductsUnpauseByLineItemIdValidateBeforeCall(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'lineItemId' is set
-        if (lineItemId == null) {
-            throw new ApiException("Missing the required parameter 'lineItemId' when calling postApi202110ExternalLineItemProductsUnpauseByLineItemId(Async)");
-        }
-
-        return postApi202110ExternalLineItemProductsUnpauseByLineItemIdCall(lineItemId, promotedProduct202110ListRequest, _callback);
-
-    }
-
-    /**
-     * 
-     * This endpoint unpauses one or more promoted products on a specified line item.
-     * @param lineItemId The line item to interact with. (required)
-     * @param promotedProduct202110ListRequest The products from which their IDs will be used to unpause. (optional)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public void postApi202110ExternalLineItemProductsUnpauseByLineItemId(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest) throws ApiException {
-        postApi202110ExternalLineItemProductsUnpauseByLineItemIdWithHttpInfo(lineItemId, promotedProduct202110ListRequest);
-    }
-
-    /**
-     * 
-     * This endpoint unpauses one or more promoted products on a specified line item.
-     * @param lineItemId The line item to interact with. (required)
-     * @param promotedProduct202110ListRequest The products from which their IDs will be used to unpause. (optional)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> postApi202110ExternalLineItemProductsUnpauseByLineItemIdWithHttpInfo(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest) throws ApiException {
-        okhttp3.Call localVarCall = postApi202110ExternalLineItemProductsUnpauseByLineItemIdValidateBeforeCall(lineItemId, promotedProduct202110ListRequest, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * This endpoint unpauses one or more promoted products on a specified line item.
-     * @param lineItemId The line item to interact with. (required)
-     * @param promotedProduct202110ListRequest The products from which their IDs will be used to unpause. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postApi202110ExternalLineItemProductsUnpauseByLineItemIdAsync(String lineItemId, PromotedProduct202110ListRequest promotedProduct202110ListRequest, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postApi202110ExternalLineItemProductsUnpauseByLineItemIdValidateBeforeCall(lineItemId, promotedProduct202110ListRequest, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -8160,6 +8059,138 @@ public class CampaignApi {
         okhttp3.Call localVarCall = submitProposalValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<ProposalStatusModelResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for unpausePromotedProducts
+     * @param lineItemId ID of the line item (required)
+     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Promoted products un-paused </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call unpausePromotedProductsCall(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = promotedProductResourceCollectionInput;
+
+        // create path and map variables
+        String localVarPath = "/2024-07/retail-media/line-items/{line-item-id}/products/unpause"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call unpausePromotedProductsValidateBeforeCall(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lineItemId' is set
+        if (lineItemId == null) {
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling unpausePromotedProducts(Async)");
+        }
+
+        return unpausePromotedProductsCall(lineItemId, promotedProductResourceCollectionInput, _callback);
+
+    }
+
+    /**
+     * 
+     * Un-pause a collection of promoted products associated with a line item
+     * @param lineItemId ID of the line item (required)
+     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Promoted products un-paused </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public void unpausePromotedProducts(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
+        unpausePromotedProductsWithHttpInfo(lineItemId, promotedProductResourceCollectionInput);
+    }
+
+    /**
+     * 
+     * Un-pause a collection of promoted products associated with a line item
+     * @param lineItemId ID of the line item (required)
+     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Promoted products un-paused </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> unpausePromotedProductsWithHttpInfo(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
+        okhttp3.Call localVarCall = unpausePromotedProductsValidateBeforeCall(lineItemId, promotedProductResourceCollectionInput, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Un-pause a collection of promoted products associated with a line item
+     * @param lineItemId ID of the line item (required)
+     * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> Promoted products un-paused </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call unpausePromotedProductsAsync(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = unpausePromotedProductsValidateBeforeCall(lineItemId, promotedProductResourceCollectionInput, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**

@@ -10,7 +10,6 @@ Object containing the status of report request and an associated message.
 |------------ | ------------- | ------------- | -------------|
 |**status** | [**StatusEnum**](#StatusEnum) |  |  [optional] |
 |**message** | **String** |  |  [optional] |
-|**id** | **String** |  |  [optional] |
 
 
 

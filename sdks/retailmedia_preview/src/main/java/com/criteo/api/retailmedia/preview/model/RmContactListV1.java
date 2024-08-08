@@ -110,6 +110,61 @@ public class RmContactListV1 {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
+  /**
+   * Indicates if the contact list is shared with other accounts
+   */
+  @JsonAdapter(SharingStatusEnum.Adapter.class)
+  public enum SharingStatusEnum {
+    UNKNOWN("Unknown"),
+    
+    NOTSHARED("NotShared"),
+    
+    SHAREDWITHALL("SharedWithAll"),
+    
+    SHAREDWITHDEMANDACCOUNTS("SharedWithDemandAccounts");
+
+    private String value;
+
+    SharingStatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static SharingStatusEnum fromValue(String value) {
+      for (SharingStatusEnum b : SharingStatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<SharingStatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SharingStatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SharingStatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return SharingStatusEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_SHARING_STATUS = "sharingStatus";
+  @SerializedName(SERIALIZED_NAME_SHARING_STATUS)
+  private SharingStatusEnum sharingStatus;
+
   public RmContactListV1() {
   }
 
@@ -154,6 +209,28 @@ public class RmContactListV1 {
 
   public void setType(TypeEnum type) {
     this.type = type;
+  }
+
+
+  public RmContactListV1 sharingStatus(SharingStatusEnum sharingStatus) {
+    
+    this.sharingStatus = sharingStatus;
+    return this;
+  }
+
+   /**
+   * Indicates if the contact list is shared with other accounts
+   * @return sharingStatus
+  **/
+  @javax.annotation.Nullable
+
+  public SharingStatusEnum getSharingStatus() {
+    return sharingStatus;
+  }
+
+
+  public void setSharingStatus(SharingStatusEnum sharingStatus) {
+    this.sharingStatus = sharingStatus;
   }
 
   /**
@@ -212,7 +289,8 @@ public class RmContactListV1 {
     }
     RmContactListV1 rmContactListV1 = (RmContactListV1) o;
     return Objects.equals(this.isReadOnly, rmContactListV1.isReadOnly) &&
-        Objects.equals(this.type, rmContactListV1.type)&&
+        Objects.equals(this.type, rmContactListV1.type) &&
+        Objects.equals(this.sharingStatus, rmContactListV1.sharingStatus)&&
         Objects.equals(this.additionalProperties, rmContactListV1.additionalProperties);
   }
 
@@ -222,7 +300,7 @@ public class RmContactListV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(isReadOnly, type, additionalProperties);
+    return Objects.hash(isReadOnly, type, sharingStatus, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -238,6 +316,7 @@ public class RmContactListV1 {
     sb.append("class RmContactListV1 {\n");
     sb.append("    isReadOnly: ").append(toIndentedString(isReadOnly)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    sharingStatus: ").append(toIndentedString(sharingStatus)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -263,6 +342,7 @@ public class RmContactListV1 {
     openapiFields = new HashSet<String>();
     openapiFields.add("isReadOnly");
     openapiFields.add("type");
+    openapiFields.add("sharingStatus");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -282,6 +362,9 @@ public class RmContactListV1 {
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      if ((jsonObj.get("sharingStatus") != null && !jsonObj.get("sharingStatus").isJsonNull()) && !jsonObj.get("sharingStatus").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sharingStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sharingStatus").toString()));
       }
   }
 

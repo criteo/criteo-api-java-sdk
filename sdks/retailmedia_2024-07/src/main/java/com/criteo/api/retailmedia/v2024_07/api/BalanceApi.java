@@ -27,14 +27,14 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.criteo.api.retailmedia.v2024_07.model.AddFundsToBalanceRequest;
+import com.criteo.api.retailmedia.v2024_07.model.AddFundsToBalanceV2Request;
 import com.criteo.api.retailmedia.v2024_07.model.BalanceCampaign202110PagedListResponse;
-import com.criteo.api.retailmedia.v2024_07.model.BalanceResponse;
-import com.criteo.api.retailmedia.v2024_07.model.BalanceResponsePagedListResponse;
-import com.criteo.api.retailmedia.v2024_07.model.ChangeDatesOfBalanceRequest;
-import com.criteo.api.retailmedia.v2024_07.model.CreateBalanceRequest;
+import com.criteo.api.retailmedia.v2024_07.model.BalanceResponseV2Response;
+import com.criteo.api.retailmedia.v2024_07.model.ChangeDatesOfBalanceV2Request;
+import com.criteo.api.retailmedia.v2024_07.model.CreateBalanceV2Request;
 import com.criteo.api.retailmedia.v2024_07.model.PageOfBalanceHistoryChangeDataCaptureV1;
-import com.criteo.api.retailmedia.v2024_07.model.UpdateBalanceModelRequest;
+import com.criteo.api.retailmedia.v2024_07.model.PagedResourceCollectionOutcomeOfBalanceResponseV2;
+import com.criteo.api.retailmedia.v2024_07.model.UpdateBalanceModelV2Request;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -228,8 +228,8 @@ public class BalanceApi {
         return localVarCall;
     }
     /**
-     * Build call for getApiV1ExternalAccountBalancesByAccountId
-     * @param accountId The account to get page of balances for (required)
+     * Build call for getApiV2ExternalAccountBalancesByAccountId
+     * @param accountId The account to get balances for (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
      * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
@@ -242,7 +242,7 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApiV1ExternalAccountBalancesByAccountIdCall(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getApiV2ExternalAccountBalancesByAccountIdCall(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -281,7 +281,9 @@ public class BalanceApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -300,24 +302,24 @@ public class BalanceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getApiV1ExternalAccountBalancesByAccountIdValidateBeforeCall(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getApiV2ExternalAccountBalancesByAccountIdValidateBeforeCall(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling getApiV1ExternalAccountBalancesByAccountId(Async)");
+            throw new ApiException("Missing the required parameter 'accountId' when calling getApiV2ExternalAccountBalancesByAccountId(Async)");
         }
 
-        return getApiV1ExternalAccountBalancesByAccountIdCall(accountId, limitToId, pageIndex, pageSize, _callback);
+        return getApiV2ExternalAccountBalancesByAccountIdCall(accountId, limitToId, pageIndex, pageSize, _callback);
 
     }
 
     /**
      * 
-     * Get page of balances for the given accountId.
-     * @param accountId The account to get page of balances for (required)
+     * Gets page of balance objects for the given account id
+     * @param accountId The account to get balances for (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
      * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @return BalanceResponsePagedListResponse
+     * @return PagedResourceCollectionOutcomeOfBalanceResponseV2
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -325,19 +327,19 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public BalanceResponsePagedListResponse getApiV1ExternalAccountBalancesByAccountId(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
-        ApiResponse<BalanceResponsePagedListResponse> localVarResp = getApiV1ExternalAccountBalancesByAccountIdWithHttpInfo(accountId, limitToId, pageIndex, pageSize);
+    public PagedResourceCollectionOutcomeOfBalanceResponseV2 getApiV2ExternalAccountBalancesByAccountId(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
+        ApiResponse<PagedResourceCollectionOutcomeOfBalanceResponseV2> localVarResp = getApiV2ExternalAccountBalancesByAccountIdWithHttpInfo(accountId, limitToId, pageIndex, pageSize);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Get page of balances for the given accountId.
-     * @param accountId The account to get page of balances for (required)
+     * Gets page of balance objects for the given account id
+     * @param accountId The account to get balances for (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
      * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @return ApiResponse&lt;BalanceResponsePagedListResponse&gt;
+     * @return ApiResponse&lt;PagedResourceCollectionOutcomeOfBalanceResponseV2&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -345,16 +347,16 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BalanceResponsePagedListResponse> getApiV1ExternalAccountBalancesByAccountIdWithHttpInfo(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
-        okhttp3.Call localVarCall = getApiV1ExternalAccountBalancesByAccountIdValidateBeforeCall(accountId, limitToId, pageIndex, pageSize, null);
-        Type localVarReturnType = new TypeToken<BalanceResponsePagedListResponse>(){}.getType();
+    public ApiResponse<PagedResourceCollectionOutcomeOfBalanceResponseV2> getApiV2ExternalAccountBalancesByAccountIdWithHttpInfo(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
+        okhttp3.Call localVarCall = getApiV2ExternalAccountBalancesByAccountIdValidateBeforeCall(accountId, limitToId, pageIndex, pageSize, null);
+        Type localVarReturnType = new TypeToken<PagedResourceCollectionOutcomeOfBalanceResponseV2>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Get page of balances for the given accountId.
-     * @param accountId The account to get page of balances for (required)
+     * Gets page of balance objects for the given account id
+     * @param accountId The account to get balances for (required)
      * @param limitToId The ids that you would like to limit your result set to (optional)
      * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param pageSize The maximum number of items you would like to receive in this request (optional, default to 25)
@@ -367,15 +369,15 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApiV1ExternalAccountBalancesByAccountIdAsync(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback<BalanceResponsePagedListResponse> _callback) throws ApiException {
+    public okhttp3.Call getApiV2ExternalAccountBalancesByAccountIdAsync(String accountId, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback<PagedResourceCollectionOutcomeOfBalanceResponseV2> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getApiV1ExternalAccountBalancesByAccountIdValidateBeforeCall(accountId, limitToId, pageIndex, pageSize, _callback);
-        Type localVarReturnType = new TypeToken<BalanceResponsePagedListResponse>(){}.getType();
+        okhttp3.Call localVarCall = getApiV2ExternalAccountBalancesByAccountIdValidateBeforeCall(accountId, limitToId, pageIndex, pageSize, _callback);
+        Type localVarReturnType = new TypeToken<PagedResourceCollectionOutcomeOfBalanceResponseV2>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getApiV1ExternalAccountByAccountIdAndBalanceId
+     * Build call for getApiV2ExternalAccountByAccountIdBalancesbalanceId
      * @param accountId The account of the balance (required)
      * @param balanceId The balance id (required)
      * @param _callback Callback for upload/download progress
@@ -387,7 +389,7 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApiV1ExternalAccountByAccountIdAndBalanceIdCall(String accountId, String balanceId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getApiV2ExternalAccountByAccountIdBalancesbalanceIdCall(String accountId, String balanceId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -404,9 +406,9 @@ public class BalanceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/2024-07/retail-media/accounts/{account-id}/balances/{balanceId}"
+        String localVarPath = "/2024-07/retail-media/accounts/{account-id}/balances/{balance-id}"
             .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()))
-            .replace("{" + "balanceId" + "}", localVarApiClient.escapeString(balanceId.toString()));
+            .replace("{" + "balance-id" + "}", localVarApiClient.escapeString(balanceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -415,7 +417,9 @@ public class BalanceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -434,18 +438,18 @@ public class BalanceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getApiV1ExternalAccountByAccountIdAndBalanceIdValidateBeforeCall(String accountId, String balanceId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getApiV2ExternalAccountByAccountIdBalancesbalanceIdValidateBeforeCall(String accountId, String balanceId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling getApiV1ExternalAccountByAccountIdAndBalanceId(Async)");
+            throw new ApiException("Missing the required parameter 'accountId' when calling getApiV2ExternalAccountByAccountIdBalancesbalanceId(Async)");
         }
 
         // verify the required parameter 'balanceId' is set
         if (balanceId == null) {
-            throw new ApiException("Missing the required parameter 'balanceId' when calling getApiV1ExternalAccountByAccountIdAndBalanceId(Async)");
+            throw new ApiException("Missing the required parameter 'balanceId' when calling getApiV2ExternalAccountByAccountIdBalancesbalanceId(Async)");
         }
 
-        return getApiV1ExternalAccountByAccountIdAndBalanceIdCall(accountId, balanceId, _callback);
+        return getApiV2ExternalAccountByAccountIdBalancesbalanceIdCall(accountId, balanceId, _callback);
 
     }
 
@@ -454,7 +458,7 @@ public class BalanceApi {
      * Get a balance for the given account id and balance id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance id (required)
-     * @return BalanceResponse
+     * @return BalanceResponseV2Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -462,8 +466,8 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public BalanceResponse getApiV1ExternalAccountByAccountIdAndBalanceId(String accountId, String balanceId) throws ApiException {
-        ApiResponse<BalanceResponse> localVarResp = getApiV1ExternalAccountByAccountIdAndBalanceIdWithHttpInfo(accountId, balanceId);
+    public BalanceResponseV2Response getApiV2ExternalAccountByAccountIdBalancesbalanceId(String accountId, String balanceId) throws ApiException {
+        ApiResponse<BalanceResponseV2Response> localVarResp = getApiV2ExternalAccountByAccountIdBalancesbalanceIdWithHttpInfo(accountId, balanceId);
         return localVarResp.getData();
     }
 
@@ -472,7 +476,7 @@ public class BalanceApi {
      * Get a balance for the given account id and balance id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance id (required)
-     * @return ApiResponse&lt;BalanceResponse&gt;
+     * @return ApiResponse&lt;BalanceResponseV2Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -480,9 +484,9 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BalanceResponse> getApiV1ExternalAccountByAccountIdAndBalanceIdWithHttpInfo(String accountId, String balanceId) throws ApiException {
-        okhttp3.Call localVarCall = getApiV1ExternalAccountByAccountIdAndBalanceIdValidateBeforeCall(accountId, balanceId, null);
-        Type localVarReturnType = new TypeToken<BalanceResponse>(){}.getType();
+    public ApiResponse<BalanceResponseV2Response> getApiV2ExternalAccountByAccountIdBalancesbalanceIdWithHttpInfo(String accountId, String balanceId) throws ApiException {
+        okhttp3.Call localVarCall = getApiV2ExternalAccountByAccountIdBalancesbalanceIdValidateBeforeCall(accountId, balanceId, null);
+        Type localVarReturnType = new TypeToken<BalanceResponseV2Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -500,10 +504,10 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApiV1ExternalAccountByAccountIdAndBalanceIdAsync(String accountId, String balanceId, final ApiCallback<BalanceResponse> _callback) throws ApiException {
+    public okhttp3.Call getApiV2ExternalAccountByAccountIdBalancesbalanceIdAsync(String accountId, String balanceId, final ApiCallback<BalanceResponseV2Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getApiV1ExternalAccountByAccountIdAndBalanceIdValidateBeforeCall(accountId, balanceId, _callback);
-        Type localVarReturnType = new TypeToken<BalanceResponse>(){}.getType();
+        okhttp3.Call localVarCall = getApiV2ExternalAccountByAccountIdBalancesbalanceIdValidateBeforeCall(accountId, balanceId, _callback);
+        Type localVarReturnType = new TypeToken<BalanceResponseV2Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -655,10 +659,10 @@ public class BalanceApi {
         return localVarCall;
     }
     /**
-     * Build call for patchApiV1ExternalAccountByAccountIdAndBalanceId
+     * Build call for patchApiV2ExternalAccountByAccountIdBalancesbalanceId
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
-     * @param updateBalanceModelRequest  (optional)
+     * @param updateBalanceModelV2Request An object that represents the available options to modify a balance. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -668,7 +672,7 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchApiV1ExternalAccountByAccountIdAndBalanceIdCall(String accountId, String balanceId, UpdateBalanceModelRequest updateBalanceModelRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchApiV2ExternalAccountByAccountIdBalancesbalanceIdCall(String accountId, String balanceId, UpdateBalanceModelV2Request updateBalanceModelV2Request, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -682,12 +686,12 @@ public class BalanceApi {
             basePath = null;
         }
 
-        Object localVarPostBody = updateBalanceModelRequest;
+        Object localVarPostBody = updateBalanceModelV2Request;
 
         // create path and map variables
-        String localVarPath = "/2024-07/retail-media/accounts/{account-id}/balances/{balanceId}"
+        String localVarPath = "/2024-07/retail-media/accounts/{account-id}/balances/{balance-id}"
             .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()))
-            .replace("{" + "balanceId" + "}", localVarApiClient.escapeString(balanceId.toString()));
+            .replace("{" + "balance-id" + "}", localVarApiClient.escapeString(balanceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -696,7 +700,9 @@ public class BalanceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -716,18 +722,23 @@ public class BalanceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchApiV1ExternalAccountByAccountIdAndBalanceIdValidateBeforeCall(String accountId, String balanceId, UpdateBalanceModelRequest updateBalanceModelRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchApiV2ExternalAccountByAccountIdBalancesbalanceIdValidateBeforeCall(String accountId, String balanceId, UpdateBalanceModelV2Request updateBalanceModelV2Request, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling patchApiV1ExternalAccountByAccountIdAndBalanceId(Async)");
+            throw new ApiException("Missing the required parameter 'accountId' when calling patchApiV2ExternalAccountByAccountIdBalancesbalanceId(Async)");
         }
 
         // verify the required parameter 'balanceId' is set
         if (balanceId == null) {
-            throw new ApiException("Missing the required parameter 'balanceId' when calling patchApiV1ExternalAccountByAccountIdAndBalanceId(Async)");
+            throw new ApiException("Missing the required parameter 'balanceId' when calling patchApiV2ExternalAccountByAccountIdBalancesbalanceId(Async)");
         }
 
-        return patchApiV1ExternalAccountByAccountIdAndBalanceIdCall(accountId, balanceId, updateBalanceModelRequest, _callback);
+        // verify the required parameter 'updateBalanceModelV2Request' is set
+        if (updateBalanceModelV2Request == null) {
+            throw new ApiException("Missing the required parameter 'updateBalanceModelV2Request' when calling patchApiV2ExternalAccountByAccountIdBalancesbalanceId(Async)");
+        }
+
+        return patchApiV2ExternalAccountByAccountIdBalancesbalanceIdCall(accountId, balanceId, updateBalanceModelV2Request, _callback);
 
     }
 
@@ -736,8 +747,8 @@ public class BalanceApi {
      * Modify a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
-     * @param updateBalanceModelRequest  (optional)
-     * @return BalanceResponse
+     * @param updateBalanceModelV2Request An object that represents the available options to modify a balance. (required)
+     * @return BalanceResponseV2Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -745,8 +756,8 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public BalanceResponse patchApiV1ExternalAccountByAccountIdAndBalanceId(String accountId, String balanceId, UpdateBalanceModelRequest updateBalanceModelRequest) throws ApiException {
-        ApiResponse<BalanceResponse> localVarResp = patchApiV1ExternalAccountByAccountIdAndBalanceIdWithHttpInfo(accountId, balanceId, updateBalanceModelRequest);
+    public BalanceResponseV2Response patchApiV2ExternalAccountByAccountIdBalancesbalanceId(String accountId, String balanceId, UpdateBalanceModelV2Request updateBalanceModelV2Request) throws ApiException {
+        ApiResponse<BalanceResponseV2Response> localVarResp = patchApiV2ExternalAccountByAccountIdBalancesbalanceIdWithHttpInfo(accountId, balanceId, updateBalanceModelV2Request);
         return localVarResp.getData();
     }
 
@@ -755,8 +766,8 @@ public class BalanceApi {
      * Modify a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
-     * @param updateBalanceModelRequest  (optional)
-     * @return ApiResponse&lt;BalanceResponse&gt;
+     * @param updateBalanceModelV2Request An object that represents the available options to modify a balance. (required)
+     * @return ApiResponse&lt;BalanceResponseV2Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -764,9 +775,9 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BalanceResponse> patchApiV1ExternalAccountByAccountIdAndBalanceIdWithHttpInfo(String accountId, String balanceId, UpdateBalanceModelRequest updateBalanceModelRequest) throws ApiException {
-        okhttp3.Call localVarCall = patchApiV1ExternalAccountByAccountIdAndBalanceIdValidateBeforeCall(accountId, balanceId, updateBalanceModelRequest, null);
-        Type localVarReturnType = new TypeToken<BalanceResponse>(){}.getType();
+    public ApiResponse<BalanceResponseV2Response> patchApiV2ExternalAccountByAccountIdBalancesbalanceIdWithHttpInfo(String accountId, String balanceId, UpdateBalanceModelV2Request updateBalanceModelV2Request) throws ApiException {
+        okhttp3.Call localVarCall = patchApiV2ExternalAccountByAccountIdBalancesbalanceIdValidateBeforeCall(accountId, balanceId, updateBalanceModelV2Request, null);
+        Type localVarReturnType = new TypeToken<BalanceResponseV2Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -775,7 +786,7 @@ public class BalanceApi {
      * Modify a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
-     * @param updateBalanceModelRequest  (optional)
+     * @param updateBalanceModelV2Request An object that represents the available options to modify a balance. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -785,18 +796,18 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchApiV1ExternalAccountByAccountIdAndBalanceIdAsync(String accountId, String balanceId, UpdateBalanceModelRequest updateBalanceModelRequest, final ApiCallback<BalanceResponse> _callback) throws ApiException {
+    public okhttp3.Call patchApiV2ExternalAccountByAccountIdBalancesbalanceIdAsync(String accountId, String balanceId, UpdateBalanceModelV2Request updateBalanceModelV2Request, final ApiCallback<BalanceResponseV2Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchApiV1ExternalAccountByAccountIdAndBalanceIdValidateBeforeCall(accountId, balanceId, updateBalanceModelRequest, _callback);
-        Type localVarReturnType = new TypeToken<BalanceResponse>(){}.getType();
+        okhttp3.Call localVarCall = patchApiV2ExternalAccountByAccountIdBalancesbalanceIdValidateBeforeCall(accountId, balanceId, updateBalanceModelV2Request, _callback);
+        Type localVarReturnType = new TypeToken<BalanceResponseV2Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId
+     * Build call for postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to add funds to (required)
-     * @param addFundsToBalanceRequest  (optional)
+     * @param addFundsToBalanceV2Request An object that represents the available options of adding funds to a balance. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -806,7 +817,7 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postApiV1ExternalAccountAddFundsByAccountIdAndBalanceIdCall(String accountId, String balanceId, AddFundsToBalanceRequest addFundsToBalanceRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceIdCall(String accountId, String balanceId, AddFundsToBalanceV2Request addFundsToBalanceV2Request, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -820,12 +831,12 @@ public class BalanceApi {
             basePath = null;
         }
 
-        Object localVarPostBody = addFundsToBalanceRequest;
+        Object localVarPostBody = addFundsToBalanceV2Request;
 
         // create path and map variables
-        String localVarPath = "/2024-07/retail-media/accounts/{account-id}/balances/{balanceId}/add-funds"
+        String localVarPath = "/2024-07/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds"
             .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()))
-            .replace("{" + "balanceId" + "}", localVarApiClient.escapeString(balanceId.toString()));
+            .replace("{" + "balance-id" + "}", localVarApiClient.escapeString(balanceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -834,7 +845,9 @@ public class BalanceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -854,18 +867,23 @@ public class BalanceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postApiV1ExternalAccountAddFundsByAccountIdAndBalanceIdValidateBeforeCall(String accountId, String balanceId, AddFundsToBalanceRequest addFundsToBalanceRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceIdValidateBeforeCall(String accountId, String balanceId, AddFundsToBalanceV2Request addFundsToBalanceV2Request, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId(Async)");
+            throw new ApiException("Missing the required parameter 'accountId' when calling postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId(Async)");
         }
 
         // verify the required parameter 'balanceId' is set
         if (balanceId == null) {
-            throw new ApiException("Missing the required parameter 'balanceId' when calling postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId(Async)");
+            throw new ApiException("Missing the required parameter 'balanceId' when calling postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId(Async)");
         }
 
-        return postApiV1ExternalAccountAddFundsByAccountIdAndBalanceIdCall(accountId, balanceId, addFundsToBalanceRequest, _callback);
+        // verify the required parameter 'addFundsToBalanceV2Request' is set
+        if (addFundsToBalanceV2Request == null) {
+            throw new ApiException("Missing the required parameter 'addFundsToBalanceV2Request' when calling postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId(Async)");
+        }
+
+        return postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceIdCall(accountId, balanceId, addFundsToBalanceV2Request, _callback);
 
     }
 
@@ -874,8 +892,8 @@ public class BalanceApi {
      * Add funds to a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to add funds to (required)
-     * @param addFundsToBalanceRequest  (optional)
-     * @return BalanceResponse
+     * @param addFundsToBalanceV2Request An object that represents the available options of adding funds to a balance. (required)
+     * @return BalanceResponseV2Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -883,8 +901,8 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public BalanceResponse postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId(String accountId, String balanceId, AddFundsToBalanceRequest addFundsToBalanceRequest) throws ApiException {
-        ApiResponse<BalanceResponse> localVarResp = postApiV1ExternalAccountAddFundsByAccountIdAndBalanceIdWithHttpInfo(accountId, balanceId, addFundsToBalanceRequest);
+    public BalanceResponseV2Response postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId(String accountId, String balanceId, AddFundsToBalanceV2Request addFundsToBalanceV2Request) throws ApiException {
+        ApiResponse<BalanceResponseV2Response> localVarResp = postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceIdWithHttpInfo(accountId, balanceId, addFundsToBalanceV2Request);
         return localVarResp.getData();
     }
 
@@ -893,8 +911,8 @@ public class BalanceApi {
      * Add funds to a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to add funds to (required)
-     * @param addFundsToBalanceRequest  (optional)
-     * @return ApiResponse&lt;BalanceResponse&gt;
+     * @param addFundsToBalanceV2Request An object that represents the available options of adding funds to a balance. (required)
+     * @return ApiResponse&lt;BalanceResponseV2Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -902,9 +920,9 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BalanceResponse> postApiV1ExternalAccountAddFundsByAccountIdAndBalanceIdWithHttpInfo(String accountId, String balanceId, AddFundsToBalanceRequest addFundsToBalanceRequest) throws ApiException {
-        okhttp3.Call localVarCall = postApiV1ExternalAccountAddFundsByAccountIdAndBalanceIdValidateBeforeCall(accountId, balanceId, addFundsToBalanceRequest, null);
-        Type localVarReturnType = new TypeToken<BalanceResponse>(){}.getType();
+    public ApiResponse<BalanceResponseV2Response> postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceIdWithHttpInfo(String accountId, String balanceId, AddFundsToBalanceV2Request addFundsToBalanceV2Request) throws ApiException {
+        okhttp3.Call localVarCall = postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceIdValidateBeforeCall(accountId, balanceId, addFundsToBalanceV2Request, null);
+        Type localVarReturnType = new TypeToken<BalanceResponseV2Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -913,7 +931,7 @@ public class BalanceApi {
      * Add funds to a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to add funds to (required)
-     * @param addFundsToBalanceRequest  (optional)
+     * @param addFundsToBalanceV2Request An object that represents the available options of adding funds to a balance. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -923,17 +941,17 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postApiV1ExternalAccountAddFundsByAccountIdAndBalanceIdAsync(String accountId, String balanceId, AddFundsToBalanceRequest addFundsToBalanceRequest, final ApiCallback<BalanceResponse> _callback) throws ApiException {
+    public okhttp3.Call postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceIdAsync(String accountId, String balanceId, AddFundsToBalanceV2Request addFundsToBalanceV2Request, final ApiCallback<BalanceResponseV2Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postApiV1ExternalAccountAddFundsByAccountIdAndBalanceIdValidateBeforeCall(accountId, balanceId, addFundsToBalanceRequest, _callback);
-        Type localVarReturnType = new TypeToken<BalanceResponse>(){}.getType();
+        okhttp3.Call localVarCall = postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceIdValidateBeforeCall(accountId, balanceId, addFundsToBalanceV2Request, _callback);
+        Type localVarReturnType = new TypeToken<BalanceResponseV2Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postApiV1ExternalAccountBalancesByAccountId
+     * Build call for postApiV2ExternalAccountBalancesByAccountId
      * @param accountId The account to create balances for (required)
-     * @param createBalanceRequest  (optional)
+     * @param createBalanceV2Request An object that represents the available options to set when creating a Retail Media Balance (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -943,7 +961,7 @@ public class BalanceApi {
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postApiV1ExternalAccountBalancesByAccountIdCall(String accountId, CreateBalanceRequest createBalanceRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postApiV2ExternalAccountBalancesByAccountIdCall(String accountId, CreateBalanceV2Request createBalanceV2Request, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -957,7 +975,7 @@ public class BalanceApi {
             basePath = null;
         }
 
-        Object localVarPostBody = createBalanceRequest;
+        Object localVarPostBody = createBalanceV2Request;
 
         // create path and map variables
         String localVarPath = "/2024-07/retail-media/accounts/{account-id}/balances"
@@ -970,7 +988,9 @@ public class BalanceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -990,13 +1010,18 @@ public class BalanceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postApiV1ExternalAccountBalancesByAccountIdValidateBeforeCall(String accountId, CreateBalanceRequest createBalanceRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postApiV2ExternalAccountBalancesByAccountIdValidateBeforeCall(String accountId, CreateBalanceV2Request createBalanceV2Request, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling postApiV1ExternalAccountBalancesByAccountId(Async)");
+            throw new ApiException("Missing the required parameter 'accountId' when calling postApiV2ExternalAccountBalancesByAccountId(Async)");
         }
 
-        return postApiV1ExternalAccountBalancesByAccountIdCall(accountId, createBalanceRequest, _callback);
+        // verify the required parameter 'createBalanceV2Request' is set
+        if (createBalanceV2Request == null) {
+            throw new ApiException("Missing the required parameter 'createBalanceV2Request' when calling postApiV2ExternalAccountBalancesByAccountId(Async)");
+        }
+
+        return postApiV2ExternalAccountBalancesByAccountIdCall(accountId, createBalanceV2Request, _callback);
 
     }
 
@@ -1004,8 +1029,8 @@ public class BalanceApi {
      * 
      * Create balance for the given account id
      * @param accountId The account to create balances for (required)
-     * @param createBalanceRequest  (optional)
-     * @return BalanceResponse
+     * @param createBalanceV2Request An object that represents the available options to set when creating a Retail Media Balance (required)
+     * @return BalanceResponseV2Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1013,8 +1038,8 @@ public class BalanceApi {
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public BalanceResponse postApiV1ExternalAccountBalancesByAccountId(String accountId, CreateBalanceRequest createBalanceRequest) throws ApiException {
-        ApiResponse<BalanceResponse> localVarResp = postApiV1ExternalAccountBalancesByAccountIdWithHttpInfo(accountId, createBalanceRequest);
+    public BalanceResponseV2Response postApiV2ExternalAccountBalancesByAccountId(String accountId, CreateBalanceV2Request createBalanceV2Request) throws ApiException {
+        ApiResponse<BalanceResponseV2Response> localVarResp = postApiV2ExternalAccountBalancesByAccountIdWithHttpInfo(accountId, createBalanceV2Request);
         return localVarResp.getData();
     }
 
@@ -1022,8 +1047,8 @@ public class BalanceApi {
      * 
      * Create balance for the given account id
      * @param accountId The account to create balances for (required)
-     * @param createBalanceRequest  (optional)
-     * @return ApiResponse&lt;BalanceResponse&gt;
+     * @param createBalanceV2Request An object that represents the available options to set when creating a Retail Media Balance (required)
+     * @return ApiResponse&lt;BalanceResponseV2Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1031,9 +1056,9 @@ public class BalanceApi {
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BalanceResponse> postApiV1ExternalAccountBalancesByAccountIdWithHttpInfo(String accountId, CreateBalanceRequest createBalanceRequest) throws ApiException {
-        okhttp3.Call localVarCall = postApiV1ExternalAccountBalancesByAccountIdValidateBeforeCall(accountId, createBalanceRequest, null);
-        Type localVarReturnType = new TypeToken<BalanceResponse>(){}.getType();
+    public ApiResponse<BalanceResponseV2Response> postApiV2ExternalAccountBalancesByAccountIdWithHttpInfo(String accountId, CreateBalanceV2Request createBalanceV2Request) throws ApiException {
+        okhttp3.Call localVarCall = postApiV2ExternalAccountBalancesByAccountIdValidateBeforeCall(accountId, createBalanceV2Request, null);
+        Type localVarReturnType = new TypeToken<BalanceResponseV2Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1041,7 +1066,7 @@ public class BalanceApi {
      *  (asynchronously)
      * Create balance for the given account id
      * @param accountId The account to create balances for (required)
-     * @param createBalanceRequest  (optional)
+     * @param createBalanceV2Request An object that represents the available options to set when creating a Retail Media Balance (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1051,18 +1076,18 @@ public class BalanceApi {
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postApiV1ExternalAccountBalancesByAccountIdAsync(String accountId, CreateBalanceRequest createBalanceRequest, final ApiCallback<BalanceResponse> _callback) throws ApiException {
+    public okhttp3.Call postApiV2ExternalAccountBalancesByAccountIdAsync(String accountId, CreateBalanceV2Request createBalanceV2Request, final ApiCallback<BalanceResponseV2Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postApiV1ExternalAccountBalancesByAccountIdValidateBeforeCall(accountId, createBalanceRequest, _callback);
-        Type localVarReturnType = new TypeToken<BalanceResponse>(){}.getType();
+        okhttp3.Call localVarCall = postApiV2ExternalAccountBalancesByAccountIdValidateBeforeCall(accountId, createBalanceV2Request, _callback);
+        Type localVarReturnType = new TypeToken<BalanceResponseV2Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId
+     * Build call for postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
-     * @param changeDatesOfBalanceRequest  (optional)
+     * @param changeDatesOfBalanceV2Request An object that represents the available options to modify schedule of a balance. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1072,7 +1097,7 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceIdCall(String accountId, String balanceId, ChangeDatesOfBalanceRequest changeDatesOfBalanceRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceIdCall(String accountId, String balanceId, ChangeDatesOfBalanceV2Request changeDatesOfBalanceV2Request, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1086,12 +1111,12 @@ public class BalanceApi {
             basePath = null;
         }
 
-        Object localVarPostBody = changeDatesOfBalanceRequest;
+        Object localVarPostBody = changeDatesOfBalanceV2Request;
 
         // create path and map variables
-        String localVarPath = "/2024-07/retail-media/accounts/{account-id}/balances/{balanceId}/change-dates"
+        String localVarPath = "/2024-07/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates"
             .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()))
-            .replace("{" + "balanceId" + "}", localVarApiClient.escapeString(balanceId.toString()));
+            .replace("{" + "balance-id" + "}", localVarApiClient.escapeString(balanceId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1100,7 +1125,9 @@ public class BalanceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "text/plain",
+            "application/json",
+            "text/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1120,18 +1147,23 @@ public class BalanceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceIdValidateBeforeCall(String accountId, String balanceId, ChangeDatesOfBalanceRequest changeDatesOfBalanceRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceIdValidateBeforeCall(String accountId, String balanceId, ChangeDatesOfBalanceV2Request changeDatesOfBalanceV2Request, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId(Async)");
+            throw new ApiException("Missing the required parameter 'accountId' when calling postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId(Async)");
         }
 
         // verify the required parameter 'balanceId' is set
         if (balanceId == null) {
-            throw new ApiException("Missing the required parameter 'balanceId' when calling postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId(Async)");
+            throw new ApiException("Missing the required parameter 'balanceId' when calling postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId(Async)");
         }
 
-        return postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceIdCall(accountId, balanceId, changeDatesOfBalanceRequest, _callback);
+        // verify the required parameter 'changeDatesOfBalanceV2Request' is set
+        if (changeDatesOfBalanceV2Request == null) {
+            throw new ApiException("Missing the required parameter 'changeDatesOfBalanceV2Request' when calling postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId(Async)");
+        }
+
+        return postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceIdCall(accountId, balanceId, changeDatesOfBalanceV2Request, _callback);
 
     }
 
@@ -1140,8 +1172,8 @@ public class BalanceApi {
      * Change dates of a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
-     * @param changeDatesOfBalanceRequest  (optional)
-     * @return BalanceResponse
+     * @param changeDatesOfBalanceV2Request An object that represents the available options to modify schedule of a balance. (required)
+     * @return BalanceResponseV2Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1149,8 +1181,8 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public BalanceResponse postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId(String accountId, String balanceId, ChangeDatesOfBalanceRequest changeDatesOfBalanceRequest) throws ApiException {
-        ApiResponse<BalanceResponse> localVarResp = postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceIdWithHttpInfo(accountId, balanceId, changeDatesOfBalanceRequest);
+    public BalanceResponseV2Response postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId(String accountId, String balanceId, ChangeDatesOfBalanceV2Request changeDatesOfBalanceV2Request) throws ApiException {
+        ApiResponse<BalanceResponseV2Response> localVarResp = postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceIdWithHttpInfo(accountId, balanceId, changeDatesOfBalanceV2Request);
         return localVarResp.getData();
     }
 
@@ -1159,8 +1191,8 @@ public class BalanceApi {
      * Change dates of a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
-     * @param changeDatesOfBalanceRequest  (optional)
-     * @return ApiResponse&lt;BalanceResponse&gt;
+     * @param changeDatesOfBalanceV2Request An object that represents the available options to modify schedule of a balance. (required)
+     * @return ApiResponse&lt;BalanceResponseV2Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1168,9 +1200,9 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BalanceResponse> postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceIdWithHttpInfo(String accountId, String balanceId, ChangeDatesOfBalanceRequest changeDatesOfBalanceRequest) throws ApiException {
-        okhttp3.Call localVarCall = postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceIdValidateBeforeCall(accountId, balanceId, changeDatesOfBalanceRequest, null);
-        Type localVarReturnType = new TypeToken<BalanceResponse>(){}.getType();
+    public ApiResponse<BalanceResponseV2Response> postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceIdWithHttpInfo(String accountId, String balanceId, ChangeDatesOfBalanceV2Request changeDatesOfBalanceV2Request) throws ApiException {
+        okhttp3.Call localVarCall = postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceIdValidateBeforeCall(accountId, balanceId, changeDatesOfBalanceV2Request, null);
+        Type localVarReturnType = new TypeToken<BalanceResponseV2Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1179,7 +1211,7 @@ public class BalanceApi {
      * Change dates of a balance for the given account id
      * @param accountId The account of the balance (required)
      * @param balanceId The balance to change the dates (required)
-     * @param changeDatesOfBalanceRequest  (optional)
+     * @param changeDatesOfBalanceV2Request An object that represents the available options to modify schedule of a balance. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1189,10 +1221,10 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceIdAsync(String accountId, String balanceId, ChangeDatesOfBalanceRequest changeDatesOfBalanceRequest, final ApiCallback<BalanceResponse> _callback) throws ApiException {
+    public okhttp3.Call postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceIdAsync(String accountId, String balanceId, ChangeDatesOfBalanceV2Request changeDatesOfBalanceV2Request, final ApiCallback<BalanceResponseV2Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceIdValidateBeforeCall(accountId, balanceId, changeDatesOfBalanceRequest, _callback);
-        Type localVarReturnType = new TypeToken<BalanceResponse>(){}.getType();
+        okhttp3.Call localVarCall = postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceIdValidateBeforeCall(accountId, balanceId, changeDatesOfBalanceV2Request, _callback);
+        Type localVarReturnType = new TypeToken<BalanceResponseV2Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

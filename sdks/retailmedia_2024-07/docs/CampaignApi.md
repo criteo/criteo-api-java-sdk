@@ -5,13 +5,15 @@ All URIs are relative to *https://api.criteo.com*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**addRemoveKeywords**](CampaignApi.md#addRemoveKeywords) | **POST** /2024-07/retail-media/line-items/{id}/keywords/add-remove |  |
+| [**appendPromotedProducts**](CampaignApi.md#appendPromotedProducts) | **POST** /2024-07/retail-media/line-items/{line-item-id}/products/append |  |
 | [**createAsset**](CampaignApi.md#createAsset) | **POST** /2024-07/retail-media/assets |  |
+| [**deletePromotedProducts**](CampaignApi.md#deletePromotedProducts) | **POST** /2024-07/retail-media/line-items/{line-item-id}/products/delete |  |
 | [**fetchKeywords**](CampaignApi.md#fetchKeywords) | **GET** /2024-07/retail-media/line-items/{id}/keywords |  |
+| [**fetchPromotedProducts**](CampaignApi.md#fetchPromotedProducts) | **GET** /2024-07/retail-media/line-items/{line-item-id}/products |  |
 | [**fetchProposal**](CampaignApi.md#fetchProposal) | **GET** /2024-07/retail-media/preferred-deal-line-items/{id}/proposal |  |
 | [**getApi202110ExternalAccountCreativesByAccountId**](CampaignApi.md#getApi202110ExternalAccountCreativesByAccountId) | **GET** /2024-07/retail-media/accounts/{account-id}/creatives |  |
 | [**getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId**](CampaignApi.md#getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId) | **GET** /2024-07/retail-media/auction-line-items/{line-item-id}/targeting/keywords |  |
 | [**getApi202110ExternalCampaignPreferredLineItemsByCampaignId**](CampaignApi.md#getApi202110ExternalCampaignPreferredLineItemsByCampaignId) | **GET** /2024-07/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
-| [**getApi202110ExternalLineItemProductsByLineItemId**](CampaignApi.md#getApi202110ExternalLineItemProductsByLineItemId) | **GET** /2024-07/retail-media/line-items/{line-item-id}/products |  |
 | [**getApi202110ExternalPreferredLineItemByLineItemId**](CampaignApi.md#getApi202110ExternalPreferredLineItemByLineItemId) | **GET** /2024-07/retail-media/preferred-line-items/{line-item-id} |  |
 | [**getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId**](CampaignApi.md#getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId) | **GET** /2024-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket |  |
 | [**getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId**](CampaignApi.md#getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId) | **GET** /2024-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences |  |
@@ -35,15 +37,12 @@ All URIs are relative to *https://api.criteo.com*
 | [**getApiV2ExternalLineItemByLineItemId**](CampaignApi.md#getApiV2ExternalLineItemByLineItemId) | **GET** /2024-07/retail-media/line-items/{line-item-id} |  |
 | [**getCampaignBudgetOverrides**](CampaignApi.md#getCampaignBudgetOverrides) | **GET** /2024-07/retail-media/campaigns/{campaignId}/campaign-budget-overrides |  |
 | [**getLineItemBudgetOverrides**](CampaignApi.md#getLineItemBudgetOverrides) | **GET** /2024-07/retail-media/line-items/{lineItemId}/line-item-budget-overrides |  |
+| [**pausePromotedProducts**](CampaignApi.md#pausePromotedProducts) | **POST** /2024-07/retail-media/line-items/{line-item-id}/products/pause |  |
 | [**postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId**](CampaignApi.md#postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId) | **POST** /2024-07/retail-media/auction-line-items/{line-item-id}/targeting/keywords/append |  |
 | [**postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId**](CampaignApi.md#postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId) | **POST** /2024-07/retail-media/auction-line-items/{line-item-id}/targeting/keywords/delete |  |
 | [**postApi202110ExternalBalanceCampaignsAppendByBalanceId**](CampaignApi.md#postApi202110ExternalBalanceCampaignsAppendByBalanceId) | **POST** /2024-07/retail-media/balances/{balance-id}/campaigns/append |  |
 | [**postApi202110ExternalBalanceCampaignsDeleteByBalanceId**](CampaignApi.md#postApi202110ExternalBalanceCampaignsDeleteByBalanceId) | **POST** /2024-07/retail-media/balances/{balance-id}/campaigns/delete |  |
 | [**postApi202110ExternalCampaignPreferredLineItemsByCampaignId**](CampaignApi.md#postApi202110ExternalCampaignPreferredLineItemsByCampaignId) | **POST** /2024-07/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
-| [**postApi202110ExternalLineItemProductsAppendByLineItemId**](CampaignApi.md#postApi202110ExternalLineItemProductsAppendByLineItemId) | **POST** /2024-07/retail-media/line-items/{line-item-id}/products/append |  |
-| [**postApi202110ExternalLineItemProductsDeleteByLineItemId**](CampaignApi.md#postApi202110ExternalLineItemProductsDeleteByLineItemId) | **POST** /2024-07/retail-media/line-items/{line-item-id}/products/delete |  |
-| [**postApi202110ExternalLineItemProductsPauseByLineItemId**](CampaignApi.md#postApi202110ExternalLineItemProductsPauseByLineItemId) | **POST** /2024-07/retail-media/line-items/{line-item-id}/products/pause |  |
-| [**postApi202110ExternalLineItemProductsUnpauseByLineItemId**](CampaignApi.md#postApi202110ExternalLineItemProductsUnpauseByLineItemId) | **POST** /2024-07/retail-media/line-items/{line-item-id}/products/unpause |  |
 | [**postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId) | **POST** /2024-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append |  |
 | [**postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemId**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemId) | **POST** /2024-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete |  |
 | [**postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemId**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemId) | **POST** /2024-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append |  |
@@ -65,6 +64,7 @@ All URIs are relative to *https://api.criteo.com*
 | [**putApiV2ExternalAuctionLineItemByLineItemId**](CampaignApi.md#putApiV2ExternalAuctionLineItemByLineItemId) | **PUT** /2024-07/retail-media/auction-line-items/{line-item-id} |  |
 | [**setKeywordBids**](CampaignApi.md#setKeywordBids) | **POST** /2024-07/retail-media/line-items/{id}/keywords/set-bid |  |
 | [**submitProposal**](CampaignApi.md#submitProposal) | **POST** /2024-07/retail-media/preferred-deal-line-items/{id}/proposal/submit |  |
+| [**unpausePromotedProducts**](CampaignApi.md#unpausePromotedProducts) | **POST** /2024-07/retail-media/line-items/{line-item-id}/products/unpause |  |
 | [**updateCampaignBudgetOverrides**](CampaignApi.md#updateCampaignBudgetOverrides) | **PUT** /2024-07/retail-media/campaigns/{campaignId}/campaign-budget-overrides |  |
 | [**updateLineItemBudgetOverrides**](CampaignApi.md#updateLineItemBudgetOverrides) | **PUT** /2024-07/retail-media/line-items/{lineItemId}/line-item-budget-overrides |  |
 
@@ -162,6 +162,98 @@ public class Example {
 | **400** | Bad Request |  -  |
 
 
+## appendPromotedProducts
+
+> appendPromotedProducts(lineItemId, promotedProductResourceCollectionInput)
+
+
+
+Append a collection of promoted products to a line item
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.v2024_07;
+
+import com.criteo.api.retailmedia.v2024_07.ApiClient;
+import com.criteo.api.retailmedia.v2024_07.ApiClientBuilder;
+import com.criteo.api.retailmedia.v2024_07.ApiException;
+import com.criteo.api.retailmedia.v2024_07.Configuration;
+import com.criteo.api.retailmedia.v2024_07.auth.*;
+import com.criteo.api.retailmedia.v2024_07.model.*;
+import com.criteo.api.retailmedia.v2024_07.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String lineItemId = "lineItemId_example"; // String | ID of the line item
+        PromotedProductResourceCollectionInput promotedProductResourceCollectionInput = new PromotedProductResourceCollectionInput(); // PromotedProductResourceCollectionInput | Request body whose {data} contains an array of promoted products.
+        try {
+            apiInstance.appendPromotedProducts(lineItemId, promotedProductResourceCollectionInput);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#appendPromotedProducts");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **lineItemId** | **String**| ID of the line item | |
+| **promotedProductResourceCollectionInput** | [**PromotedProductResourceCollectionInput**](PromotedProductResourceCollectionInput.md)| Request body whose {data} contains an array of promoted products. | [optional] |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Promoted products appended to the line item |  -  |
+| **400** | Invalid request body |  -  |
+| **403** | Invalid external line item ID |  -  |
+
+
 ## createAsset
 
 > AssetResponse createAsset(assetFile)
@@ -249,6 +341,98 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Success |  -  |
+
+
+## deletePromotedProducts
+
+> deletePromotedProducts(lineItemId, promotedProductResourceCollectionInput)
+
+
+
+Remove a collection of promoted products from a line item
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.v2024_07;
+
+import com.criteo.api.retailmedia.v2024_07.ApiClient;
+import com.criteo.api.retailmedia.v2024_07.ApiClientBuilder;
+import com.criteo.api.retailmedia.v2024_07.ApiException;
+import com.criteo.api.retailmedia.v2024_07.Configuration;
+import com.criteo.api.retailmedia.v2024_07.auth.*;
+import com.criteo.api.retailmedia.v2024_07.model.*;
+import com.criteo.api.retailmedia.v2024_07.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String lineItemId = "lineItemId_example"; // String | ID of the line item
+        PromotedProductResourceCollectionInput promotedProductResourceCollectionInput = new PromotedProductResourceCollectionInput(); // PromotedProductResourceCollectionInput | Request body whose {data} contains an array of promoted products.
+        try {
+            apiInstance.deletePromotedProducts(lineItemId, promotedProductResourceCollectionInput);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#deletePromotedProducts");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **lineItemId** | **String**| ID of the line item | |
+| **promotedProductResourceCollectionInput** | [**PromotedProductResourceCollectionInput**](PromotedProductResourceCollectionInput.md)| Request body whose {data} contains an array of promoted products. | [optional] |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Promoted products removed from the line item |  -  |
+| **400** | Invalid request body |  -  |
+| **403** | Invalid external line item ID |  -  |
 
 
 ## fetchKeywords
@@ -339,6 +523,102 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
 | **400** | Bad Request |  -  |
+
+
+## fetchPromotedProducts
+
+> PromotedProductResourceCollectionOutcome fetchPromotedProducts(lineItemId, offset, limit, fields)
+
+
+
+Retrieve a page of promoted products for a line item
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.v2024_07;
+
+import com.criteo.api.retailmedia.v2024_07.ApiClient;
+import com.criteo.api.retailmedia.v2024_07.ApiClientBuilder;
+import com.criteo.api.retailmedia.v2024_07.ApiException;
+import com.criteo.api.retailmedia.v2024_07.Configuration;
+import com.criteo.api.retailmedia.v2024_07.auth.*;
+import com.criteo.api.retailmedia.v2024_07.model.*;
+import com.criteo.api.retailmedia.v2024_07.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String lineItemId = "lineItemId_example"; // String | ID of the line item.
+        Integer offset = 56; // Integer | Offset of the first item to fetch. Defaults to zero.
+        Integer limit = 56; // Integer | Maximum page size to fetch. Defaults to 500.
+        String fields = "fields_example"; // String | A comma separated list of attribute names from the response model to compute and return.              Valid values are `status` and `bidOverride` in any order. Defaults to `status`.
+        try {
+            PromotedProductResourceCollectionOutcome result = apiInstance.fetchPromotedProducts(lineItemId, offset, limit, fields);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#fetchPromotedProducts");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **lineItemId** | **String**| ID of the line item. | |
+| **offset** | **Integer**| Offset of the first item to fetch. Defaults to zero. | [optional] |
+| **limit** | **Integer**| Maximum page size to fetch. Defaults to 500. | [optional] |
+| **fields** | **String**| A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. | [optional] |
+
+### Return type
+
+[**PromotedProductResourceCollectionOutcome**](PromotedProductResourceCollectionOutcome.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Promoted products associated with the line item |  -  |
+| **403** | Invalid external line item ID |  -  |
 
 
 ## fetchProposal
@@ -705,101 +985,6 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
 | **400** | Bad Request |  -  |
-
-
-## getApi202110ExternalLineItemProductsByLineItemId
-
-> PromotedProduct202110PagedListResponse getApi202110ExternalLineItemProductsByLineItemId(lineItemId, limitToId, pageIndex, pageSize)
-
-
-
-This endpoint gets the promoted products on the specified line item.
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2024_07;
-
-import com.criteo.api.retailmedia.v2024_07.ApiClient;
-import com.criteo.api.retailmedia.v2024_07.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2024_07.ApiException;
-import com.criteo.api.retailmedia.v2024_07.Configuration;
-import com.criteo.api.retailmedia.v2024_07.auth.*;
-import com.criteo.api.retailmedia.v2024_07.model.*;
-import com.criteo.api.retailmedia.v2024_07.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | The line item to interact with
-        List<String> limitToId = Arrays.asList(); // List<String> | The ids that you would like to limit your result set to
-        Integer pageIndex = 56; // Integer | The 0 indexed page index you would like to receive given the page size
-        Integer pageSize = 56; // Integer | The maximum number of items you would like to receive in this request
-        try {
-            PromotedProduct202110PagedListResponse result = apiInstance.getApi202110ExternalLineItemProductsByLineItemId(lineItemId, limitToId, pageIndex, pageSize);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getApi202110ExternalLineItemProductsByLineItemId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| The line item to interact with | |
-| **limitToId** | [**List&lt;String&gt;**](String.md)| The ids that you would like to limit your result set to | [optional] |
-| **pageIndex** | **Integer**| The 0 indexed page index you would like to receive given the page size | [optional] |
-| **pageSize** | **Integer**| The maximum number of items you would like to receive in this request | [optional] |
-
-### Return type
-
-[**PromotedProduct202110PagedListResponse**](PromotedProduct202110PagedListResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
 
 
 ## getApi202110ExternalPreferredLineItemByLineItemId
@@ -2902,6 +3087,98 @@ public class Example {
 | **200** | Success |  -  |
 
 
+## pausePromotedProducts
+
+> pausePromotedProducts(lineItemId, promotedProductResourceCollectionInput)
+
+
+
+Pause a collection of promoted products associated with a line item
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.v2024_07;
+
+import com.criteo.api.retailmedia.v2024_07.ApiClient;
+import com.criteo.api.retailmedia.v2024_07.ApiClientBuilder;
+import com.criteo.api.retailmedia.v2024_07.ApiException;
+import com.criteo.api.retailmedia.v2024_07.Configuration;
+import com.criteo.api.retailmedia.v2024_07.auth.*;
+import com.criteo.api.retailmedia.v2024_07.model.*;
+import com.criteo.api.retailmedia.v2024_07.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String lineItemId = "lineItemId_example"; // String | ID of the line item
+        PromotedProductResourceCollectionInput promotedProductResourceCollectionInput = new PromotedProductResourceCollectionInput(); // PromotedProductResourceCollectionInput | Request body whose {data} contains an array of promoted products.
+        try {
+            apiInstance.pausePromotedProducts(lineItemId, promotedProductResourceCollectionInput);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#pausePromotedProducts");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **lineItemId** | **String**| ID of the line item | |
+| **promotedProductResourceCollectionInput** | [**PromotedProductResourceCollectionInput**](PromotedProductResourceCollectionInput.md)| Request body whose {data} contains an array of promoted products. | [optional] |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Promoted products paused |  -  |
+| **400** | Invalid request body |  -  |
+| **403** | Invalid external line item ID |  -  |
+
+
 ## postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId
 
 > KeywordTarget202110Response postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId(lineItemId, keywordTarget202110Request)
@@ -3358,368 +3635,6 @@ public class Example {
 |-------------|-------------|------------------|
 | **201** | Success |  -  |
 | **400** | Bad Request |  -  |
-
-
-## postApi202110ExternalLineItemProductsAppendByLineItemId
-
-> PromotedProduct202110PagedListResponse postApi202110ExternalLineItemProductsAppendByLineItemId(lineItemId, promotedProduct202110ListRequest)
-
-
-
-This endpoint appends one or more products to promote on the specified line item.  The resulting state of the line item is returned.
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2024_07;
-
-import com.criteo.api.retailmedia.v2024_07.ApiClient;
-import com.criteo.api.retailmedia.v2024_07.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2024_07.ApiException;
-import com.criteo.api.retailmedia.v2024_07.Configuration;
-import com.criteo.api.retailmedia.v2024_07.auth.*;
-import com.criteo.api.retailmedia.v2024_07.model.*;
-import com.criteo.api.retailmedia.v2024_07.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | The line item to interact with
-        PromotedProduct202110ListRequest promotedProduct202110ListRequest = new PromotedProduct202110ListRequest(); // PromotedProduct202110ListRequest | the products to append to this line item
-        try {
-            PromotedProduct202110PagedListResponse result = apiInstance.postApi202110ExternalLineItemProductsAppendByLineItemId(lineItemId, promotedProduct202110ListRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#postApi202110ExternalLineItemProductsAppendByLineItemId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| The line item to interact with | |
-| **promotedProduct202110ListRequest** | [**PromotedProduct202110ListRequest**](PromotedProduct202110ListRequest.md)| the products to append to this line item | [optional] |
-
-### Return type
-
-[**PromotedProduct202110PagedListResponse**](PromotedProduct202110PagedListResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
-## postApi202110ExternalLineItemProductsDeleteByLineItemId
-
-> PromotedProduct202110PagedListResponse postApi202110ExternalLineItemProductsDeleteByLineItemId(lineItemId, promotedProduct202110ListRequest)
-
-
-
-This endpoint removes one or more products from promotion on the specified line item.  The resulting state of the line item is returned.
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2024_07;
-
-import com.criteo.api.retailmedia.v2024_07.ApiClient;
-import com.criteo.api.retailmedia.v2024_07.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2024_07.ApiException;
-import com.criteo.api.retailmedia.v2024_07.Configuration;
-import com.criteo.api.retailmedia.v2024_07.auth.*;
-import com.criteo.api.retailmedia.v2024_07.model.*;
-import com.criteo.api.retailmedia.v2024_07.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | The line item to interact with
-        PromotedProduct202110ListRequest promotedProduct202110ListRequest = new PromotedProduct202110ListRequest(); // PromotedProduct202110ListRequest | 
-        try {
-            PromotedProduct202110PagedListResponse result = apiInstance.postApi202110ExternalLineItemProductsDeleteByLineItemId(lineItemId, promotedProduct202110ListRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#postApi202110ExternalLineItemProductsDeleteByLineItemId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| The line item to interact with | |
-| **promotedProduct202110ListRequest** | [**PromotedProduct202110ListRequest**](PromotedProduct202110ListRequest.md)|  | [optional] |
-
-### Return type
-
-[**PromotedProduct202110PagedListResponse**](PromotedProduct202110PagedListResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
-## postApi202110ExternalLineItemProductsPauseByLineItemId
-
-> postApi202110ExternalLineItemProductsPauseByLineItemId(lineItemId, promotedProduct202110ListRequest)
-
-
-
-This endpoint pauses one or more promoted products on a specified line item.
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2024_07;
-
-import com.criteo.api.retailmedia.v2024_07.ApiClient;
-import com.criteo.api.retailmedia.v2024_07.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2024_07.ApiException;
-import com.criteo.api.retailmedia.v2024_07.Configuration;
-import com.criteo.api.retailmedia.v2024_07.auth.*;
-import com.criteo.api.retailmedia.v2024_07.model.*;
-import com.criteo.api.retailmedia.v2024_07.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | The line item to interact with.
-        PromotedProduct202110ListRequest promotedProduct202110ListRequest = new PromotedProduct202110ListRequest(); // PromotedProduct202110ListRequest | The products from which their IDs will be used to pause.
-        try {
-            apiInstance.postApi202110ExternalLineItemProductsPauseByLineItemId(lineItemId, promotedProduct202110ListRequest);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#postApi202110ExternalLineItemProductsPauseByLineItemId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| The line item to interact with. | |
-| **promotedProduct202110ListRequest** | [**PromotedProduct202110ListRequest**](PromotedProduct202110ListRequest.md)| The products from which their IDs will be used to pause. | [optional] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
-## postApi202110ExternalLineItemProductsUnpauseByLineItemId
-
-> postApi202110ExternalLineItemProductsUnpauseByLineItemId(lineItemId, promotedProduct202110ListRequest)
-
-
-
-This endpoint unpauses one or more promoted products on a specified line item.
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2024_07;
-
-import com.criteo.api.retailmedia.v2024_07.ApiClient;
-import com.criteo.api.retailmedia.v2024_07.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2024_07.ApiException;
-import com.criteo.api.retailmedia.v2024_07.Configuration;
-import com.criteo.api.retailmedia.v2024_07.auth.*;
-import com.criteo.api.retailmedia.v2024_07.model.*;
-import com.criteo.api.retailmedia.v2024_07.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | The line item to interact with.
-        PromotedProduct202110ListRequest promotedProduct202110ListRequest = new PromotedProduct202110ListRequest(); // PromotedProduct202110ListRequest | The products from which their IDs will be used to unpause.
-        try {
-            apiInstance.postApi202110ExternalLineItemProductsUnpauseByLineItemId(lineItemId, promotedProduct202110ListRequest);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#postApi202110ExternalLineItemProductsUnpauseByLineItemId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| The line item to interact with. | |
-| **promotedProduct202110ListRequest** | [**PromotedProduct202110ListRequest**](PromotedProduct202110ListRequest.md)| The products from which their IDs will be used to unpause. | [optional] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
 
 
 ## postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId
@@ -5647,6 +5562,98 @@ public class Example {
 | **200** | Success |  -  |
 | **400** | Bad Request |  -  |
 | **403** | Forbidden |  -  |
+
+
+## unpausePromotedProducts
+
+> unpausePromotedProducts(lineItemId, promotedProductResourceCollectionInput)
+
+
+
+Un-pause a collection of promoted products associated with a line item
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.v2024_07;
+
+import com.criteo.api.retailmedia.v2024_07.ApiClient;
+import com.criteo.api.retailmedia.v2024_07.ApiClientBuilder;
+import com.criteo.api.retailmedia.v2024_07.ApiException;
+import com.criteo.api.retailmedia.v2024_07.Configuration;
+import com.criteo.api.retailmedia.v2024_07.auth.*;
+import com.criteo.api.retailmedia.v2024_07.model.*;
+import com.criteo.api.retailmedia.v2024_07.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String lineItemId = "lineItemId_example"; // String | ID of the line item
+        PromotedProductResourceCollectionInput promotedProductResourceCollectionInput = new PromotedProductResourceCollectionInput(); // PromotedProductResourceCollectionInput | Request body whose {data} contains an array of promoted products.
+        try {
+            apiInstance.unpausePromotedProducts(lineItemId, promotedProductResourceCollectionInput);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#unpausePromotedProducts");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **lineItemId** | **String**| ID of the line item | |
+| **promotedProductResourceCollectionInput** | [**PromotedProductResourceCollectionInput**](PromotedProductResourceCollectionInput.md)| Request body whose {data} contains an array of promoted products. | [optional] |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Promoted products un-paused |  -  |
+| **400** | Invalid request body |  -  |
+| **403** | Invalid external line item ID |  -  |
 
 
 ## updateCampaignBudgetOverrides

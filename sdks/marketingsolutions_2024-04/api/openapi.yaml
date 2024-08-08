@@ -1125,6 +1125,7 @@ paths:
       x-accepts: application/json
   /2024-04/marketing-solutions/ad-sets:
     patch:
+      deprecated: true
       description: Patch a list of AdSets.
       operationId: PatchAdSets
       requestBody:
@@ -1174,6 +1175,7 @@ paths:
       x-content-type: application/json-patch+json
       x-accepts: application/json
     post:
+      deprecated: true
       description: Create the specified ad set
       operationId: CreateAdSet
       requestBody:
@@ -2758,80 +2760,142 @@ paths:
       requestBody:
         content:
           application/json-patch+json:
+            example:
+              shouldDisplayProductIds: false
+              startDate: 2024-04-24T00:00:00.0000000+02:00
+              endDate: 2024-04-27T00:00:00.0000000+02:00
             schema:
               $ref: '#/components/schemas/TransparencyQueryMessage'
           application/json:
+            example:
+              shouldDisplayProductIds: false
+              startDate: 2024-04-24T00:00:00.0000000+02:00
+              endDate: 2024-04-27T00:00:00.0000000+02:00
             schema:
               $ref: '#/components/schemas/TransparencyQueryMessage'
           text/json:
+            example:
+              shouldDisplayProductIds: false
+              startDate: 2024-04-24T00:00:00.0000000+02:00
+              endDate: 2024-04-27T00:00:00.0000000+02:00
             schema:
               $ref: '#/components/schemas/TransparencyQueryMessage'
           application/*+json:
+            example:
+              shouldDisplayProductIds: false
+              startDate: 2024-04-24T00:00:00.0000000+02:00
+              endDate: 2024-04-27T00:00:00.0000000+02:00
             schema:
               $ref: '#/components/schemas/TransparencyQueryMessage'
-        x-bodyName: queryMessage
+        description: The query message.
       responses:
         "200":
           content:
-            application/json:
-              example:
-                data:
-                - type: TransparencyReport
-                  attributes:
-                    advertiserId: "123"
-                    tokenValidUntil: 2021-01-31T00:00:00.0000000+00:00
-                    files:
-                    - fileName: report.csv
-                      url: https://www.example.com/transparency
-              schema:
-                $ref: '#/components/schemas/TransparencyReportDataMessage'
             text/plain:
               schema:
-                $ref: '#/components/schemas/TransparencyReportDataMessage'
+                $ref: '#/components/schemas/TransparencyReportListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransparencyReportListResponse'
             text/json:
               schema:
-                $ref: '#/components/schemas/TransparencyReportDataMessage'
+                $ref: '#/components/schemas/TransparencyReportListResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/TransparencyReportListResponse'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/TransparencyReportListResponse'
           description: Success
         "400":
           content:
-            application/json:
+            text/plain:
               example:
+                warnings: []
                 errors:
-                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
-                  traceIdentifier: 1234e1717d88aa8a
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
                   type: validation
                   code: required-field
                   instance: /report
                   title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
-            text/plain:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             text/json:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/Outcome'
           description: Bad Request
         "403":
           content:
+            text/plain:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
+              schema:
+                $ref: '#/components/schemas/Outcome'
             application/json:
               example:
+                warnings: []
                 errors:
-                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
-                  traceIdentifier: 1234e1717d88aa8a
-                  type: access-control
-                  code: insufficient-advertiser-permission
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
                   instance: /report
-                  title: Insufficient advertiser permission.
-                  detail: You do not have the rights to report on this advertiser.
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             text/json:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/Outcome'
           description: Forbidden
       tags:
       - Analytics
@@ -2848,103 +2912,129 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/PlacementsReportQueryDataMessage'
+              $ref: '#/components/schemas/PlacementsReportQueryMessageListRequest'
           application/json:
             schema:
-              $ref: '#/components/schemas/PlacementsReportQueryDataMessage'
+              $ref: '#/components/schemas/PlacementsReportQueryMessageListRequest'
           text/json:
             schema:
-              $ref: '#/components/schemas/PlacementsReportQueryDataMessage'
+              $ref: '#/components/schemas/PlacementsReportQueryMessageListRequest'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/PlacementsReportQueryDataMessage'
-        x-bodyName: dataMessage
+              $ref: '#/components/schemas/PlacementsReportQueryMessageListRequest'
       responses:
         "200":
           content:
             text/plain:
               schema:
-                format: binary
+                format: byte
                 type: string
             application/json:
               schema:
-                format: binary
+                format: byte
                 type: string
             text/json:
               schema:
-                format: binary
+                format: byte
                 type: string
-            text/csv:
+            application/xml:
               schema:
-                format: binary
+                format: byte
                 type: string
             text/xml:
               schema:
-                format: binary
-                type: string
-            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
-              schema:
-                format: binary
+                format: byte
                 type: string
           description: Success
         "400":
           content:
-            application/json:
+            text/plain:
               example:
+                warnings: []
                 errors:
-                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
-                  traceIdentifier: 1234e1717d88aa8a
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
                   type: validation
                   code: required-field
                   instance: /report
                   title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
-            text/plain:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             text/json:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
-            text/csv:
+                $ref: '#/components/schemas/Outcome'
+            application/xml:
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             text/xml:
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
-            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
-              schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
           description: Bad Request
         "403":
           content:
+            text/plain:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
+              schema:
+                $ref: '#/components/schemas/Outcome'
             application/json:
               example:
+                warnings: []
                 errors:
-                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
-                  traceIdentifier: 1234e1717d88aa8a
-                  type: access-control
-                  code: insufficient-advertiser-permission
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
                   instance: /report
-                  title: Insufficient advertiser permission.
-                  detail: You do not have the rights to report on this advertiser.
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             text/json:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
-            text/csv:
+                $ref: '#/components/schemas/Outcome'
+            application/xml:
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             text/xml:
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
-            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
-              schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
           description: Forbidden
       tags:
       - Analytics
@@ -2959,104 +3049,318 @@ paths:
       requestBody:
         content:
           application/json-patch+json:
+            example:
+              advertiserIds: "123,456,789"
+              adSetIds:
+              - "12345"
+              - "54321"
+              adSetNames:
+              - myAdSet1
+              - myAdSet2
+              adSetStatus:
+              - Active
+              dimensions:
+              - CampaignId
+              - Campaign
+              - AdsetId
+              - Adset
+              - AdvertiserId
+              - Advertiser
+              - AdId
+              - Ad
+              - CouponId
+              - Coupon
+              - CategoryId
+              - Category
+              - Hour
+              - Day
+              - Week
+              - Month
+              - Year
+              - Os
+              - Device
+              metrics:
+              - Clicks
+              - Displays
+              - Cpc
+              - Visits
+              currency: EUR
+              format: csv
+              timezone: Europe/Paris
+              startDate: 2024-04-24T00:00:00.0000000+02:00
+              endDate: 2024-04-27T00:00:00.0000000+02:00
             schema:
               $ref: '#/components/schemas/StatisticsReportQueryMessage'
           application/json:
+            example:
+              advertiserIds: "123,456,789"
+              adSetIds:
+              - "12345"
+              - "54321"
+              adSetNames:
+              - myAdSet1
+              - myAdSet2
+              adSetStatus:
+              - Active
+              dimensions:
+              - CampaignId
+              - Campaign
+              - AdsetId
+              - Adset
+              - AdvertiserId
+              - Advertiser
+              - AdId
+              - Ad
+              - CouponId
+              - Coupon
+              - CategoryId
+              - Category
+              - Hour
+              - Day
+              - Week
+              - Month
+              - Year
+              - Os
+              - Device
+              metrics:
+              - Clicks
+              - Displays
+              - Cpc
+              - Visits
+              currency: EUR
+              format: csv
+              timezone: Europe/Paris
+              startDate: 2024-04-24T00:00:00.0000000+02:00
+              endDate: 2024-04-27T00:00:00.0000000+02:00
             schema:
               $ref: '#/components/schemas/StatisticsReportQueryMessage'
           text/json:
+            example:
+              advertiserIds: "123,456,789"
+              adSetIds:
+              - "12345"
+              - "54321"
+              adSetNames:
+              - myAdSet1
+              - myAdSet2
+              adSetStatus:
+              - Active
+              dimensions:
+              - CampaignId
+              - Campaign
+              - AdsetId
+              - Adset
+              - AdvertiserId
+              - Advertiser
+              - AdId
+              - Ad
+              - CouponId
+              - Coupon
+              - CategoryId
+              - Category
+              - Hour
+              - Day
+              - Week
+              - Month
+              - Year
+              - Os
+              - Device
+              metrics:
+              - Clicks
+              - Displays
+              - Cpc
+              - Visits
+              currency: EUR
+              format: csv
+              timezone: Europe/Paris
+              startDate: 2024-04-24T00:00:00.0000000+02:00
+              endDate: 2024-04-27T00:00:00.0000000+02:00
             schema:
               $ref: '#/components/schemas/StatisticsReportQueryMessage'
           application/*+json:
+            example:
+              advertiserIds: "123,456,789"
+              adSetIds:
+              - "12345"
+              - "54321"
+              adSetNames:
+              - myAdSet1
+              - myAdSet2
+              adSetStatus:
+              - Active
+              dimensions:
+              - CampaignId
+              - Campaign
+              - AdsetId
+              - Adset
+              - AdvertiserId
+              - Advertiser
+              - AdId
+              - Ad
+              - CouponId
+              - Coupon
+              - CategoryId
+              - Category
+              - Hour
+              - Day
+              - Week
+              - Month
+              - Year
+              - Os
+              - Device
+              metrics:
+              - Clicks
+              - Displays
+              - Cpc
+              - Visits
+              currency: EUR
+              format: csv
+              timezone: Europe/Paris
+              startDate: 2024-04-24T00:00:00.0000000+02:00
+              endDate: 2024-04-27T00:00:00.0000000+02:00
             schema:
               $ref: '#/components/schemas/StatisticsReportQueryMessage'
-        x-bodyName: reportQuery
       responses:
         "200":
           content:
             text/plain:
               schema:
-                format: binary
+                format: byte
                 type: string
             application/json:
               schema:
-                format: binary
+                format: byte
                 type: string
             text/json:
               schema:
-                format: binary
+                format: byte
                 type: string
             text/csv:
               schema:
-                format: binary
+                format: byte
                 type: string
             text/xml:
               schema:
-                format: binary
+                format: byte
                 type: string
             application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
-                format: binary
+                format: byte
                 type: string
           description: Success
         "400":
           content:
-            application/json:
+            text/plain:
               example:
+                warnings: []
                 errors:
-                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
-                  traceIdentifier: 1234e1717d88aa8a
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
                   type: validation
                   code: required-field
                   instance: /report
                   title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
-            text/plain:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             text/json:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             text/csv:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             text/xml:
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
           description: Bad Request
         "403":
           content:
+            text/plain:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
+              schema:
+                $ref: '#/components/schemas/Outcome'
             application/json:
               example:
+                warnings: []
                 errors:
-                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
-                  traceIdentifier: 1234e1717d88aa8a
-                  type: access-control
-                  code: insufficient-advertiser-permission
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
                   instance: /report
-                  title: Insufficient advertiser permission.
-                  detail: You do not have the rights to report on this advertiser.
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             text/json:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             text/csv:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             text/xml:
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
           description: Forbidden
       tags:
       - Analytics
@@ -3070,103 +3374,157 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/TransactionsReportQueryDataMessage'
+              $ref: '#/components/schemas/TransactionsReportQueryMessageListRequest'
           application/json:
             schema:
-              $ref: '#/components/schemas/TransactionsReportQueryDataMessage'
+              $ref: '#/components/schemas/TransactionsReportQueryMessageListRequest'
           text/json:
             schema:
-              $ref: '#/components/schemas/TransactionsReportQueryDataMessage'
+              $ref: '#/components/schemas/TransactionsReportQueryMessageListRequest'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/TransactionsReportQueryDataMessage'
-        x-bodyName: dataMessage
+              $ref: '#/components/schemas/TransactionsReportQueryMessageListRequest'
       responses:
         "200":
           content:
             text/plain:
               schema:
-                format: binary
+                format: byte
                 type: string
             application/json:
               schema:
-                format: binary
+                format: byte
                 type: string
             text/json:
               schema:
-                format: binary
+                format: byte
                 type: string
             text/csv:
               schema:
-                format: binary
+                format: byte
                 type: string
             text/xml:
               schema:
-                format: binary
+                format: byte
                 type: string
             application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
-                format: binary
+                format: byte
                 type: string
           description: Success
         "400":
           content:
-            application/json:
+            text/plain:
               example:
+                warnings: []
                 errors:
-                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
-                  traceIdentifier: 1234e1717d88aa8a
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
                   type: validation
                   code: required-field
                   instance: /report
                   title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
-            text/plain:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             text/json:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             text/csv:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             text/xml:
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
           description: Bad Request
         "403":
           content:
+            text/plain:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
+              schema:
+                $ref: '#/components/schemas/Outcome'
             application/json:
               example:
+                warnings: []
                 errors:
-                - traceId: b7888125-dddb-c94e-9240-eb930c4ea146
-                  traceIdentifier: 1234e1717d88aa8a
-                  type: access-control
-                  code: insufficient-advertiser-permission
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
                   instance: /report
-                  title: Insufficient advertiser permission.
-                  detail: You do not have the rights to report on this advertiser.
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             text/json:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             text/csv:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             text/xml:
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
             application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
-                $ref: '#/components/schemas/ProblemsDetails'
+                $ref: '#/components/schemas/Outcome'
           description: Forbidden
       tags:
       - Analytics
@@ -13361,8 +13719,10 @@ components:
           nullable: true
           type: integer
       type: object
-    TransparencyReportDataMessage:
-      description: This is the message defining the response for Transparency report
+    TransparencyReportListResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several value objects.
       example:
         data:
         - attributes:
@@ -13383,32 +13743,95 @@ components:
               url: url
             advertiserId: advertiserId
           type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
       properties:
         data:
           items:
-            $ref: '#/components/schemas/TransparencyReportEntityMessage'
+            $ref: '#/components/schemas/TransparencyReportResource'
+          nullable: true
           type: array
-          uniqueItems: false
-      required:
-      - data
-      type: object
-    ProblemsDetails:
-      description: Common problems object
-      properties:
-        errors:
+        warnings:
+          description: Warnings that occured during this call.
           items:
-            $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    Outcome:
+      additionalProperties: false
+      description: The outcome of an API call.
+      properties:
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
       type: object
     TransparencyQueryMessage:
+      additionalProperties: false
       description: This is the message defining the query for Transparency report
       example:
         shouldDisplayProductIds: false
-        startDate: 2023-04-03T00:00:00.0000000+00:00
-        endDate: 2023-04-06T00:00:00.0000000+00:00
+        endDate: 2000-01-23T04:56:07.000+00:00
+        startDate: 2000-01-23T04:56:07.000+00:00
       properties:
         shouldDisplayProductIds:
           default: false
@@ -13429,82 +13852,82 @@ components:
       - endDate
       - startDate
       type: object
-    PlacementsReportQueryDataMessage:
-      description: Contains queries for Placements report
+    PlacementsReportQueryMessageListRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for several
+        value objects.
       example:
         data:
-        - type: PlacementReport
-          attributes:
-            advertiserIds: "123,456,789"
-            campaignIds: "111,222,333,444"
-            adsetIds: "135,246,357,468"
-            environment: web
-            placement: MyPlacement
+        - attributes:
+            disclosed: true
+            endDate: 2000-01-23T04:56:07.000+00:00
+            timezone: UTC
+            format: format
+            advertiserIds: advertiserIds
+            environment: environment
+            adsetIds: adsetIds
+            currency: currency
+            campaignIds: campaignIds
+            placement: placement
+            metrics:
+            - metrics
+            - metrics
+            startDate: 2000-01-23T04:56:07.000+00:00
             dimensions:
             - AdsetId
-            - AdvertiserId
-            - Placement
+            - AdsetId
+          type: type
+        - attributes:
+            disclosed: true
+            endDate: 2000-01-23T04:56:07.000+00:00
+            timezone: UTC
+            format: format
+            advertiserIds: advertiserIds
+            environment: environment
+            adsetIds: adsetIds
+            currency: currency
+            campaignIds: campaignIds
+            placement: placement
             metrics:
-            - clicks
-            - displays
-            - cost
-            currency: EUR
-            disclosed: false
-            format: csv
-            timezone: Europe/Paris
-            startDate: 2022-08-29T00:00:00.0000000+00:00
-            endDate: 2022-08-29T00:00:00.0000000+00:00
+            - metrics
+            - metrics
+            startDate: 2000-01-23T04:56:07.000+00:00
+            dimensions:
+            - AdsetId
+            - AdsetId
+          type: type
       properties:
         data:
           items:
-            $ref: '#/components/schemas/PlacementsReportQueryEntityMessage'
+            $ref: '#/components/schemas/PlacementsReportQueryMessageResource'
+          nullable: true
           type: array
-          uniqueItems: false
-      required:
-      - data
       type: object
     StatisticsReportQueryMessage:
+      additionalProperties: false
       description: This is the message defining the query for Adset report
       example:
-        advertiserIds: "123,456,789"
         adSetIds:
-        - "12345"
-        - "54321"
-        adSetNames:
-        - myAdSet1
-        - myAdSet2
+        - adSetIds
+        - adSetIds
+        advertiserIds: advertiserIds
         adSetStatus:
-        - Active
-        dimensions:
-        - CampaignId
-        - Campaign
-        - AdsetId
-        - Adset
-        - AdvertiserId
-        - Advertiser
-        - AdId
-        - Ad
-        - CouponId
-        - Coupon
-        - CategoryId
-        - Category
-        - Hour
-        - Day
-        - Week
-        - Month
-        - Year
-        - Os
-        - Device
+        - adSetStatus
+        - adSetStatus
+        endDate: 2000-01-23T04:56:07.000+00:00
+        timezone: UTC
+        adSetNames:
+        - adSetNames
+        - adSetNames
+        format: format
+        currency: currency
         metrics:
-        - Clicks
-        - Displays
-        - Cpc
-        - Visits
-        currency: EUR
-        format: csv
-        timezone: Europe/Paris
-        startDate: 2022-08-29T00:00:00.0000000+00:00
-        endDate: 2022-09-01T00:00:00.0000000+00:00
+        - metrics
+        - metrics
+        startDate: 2000-01-23T04:56:07.000+00:00
+        dimensions:
+        - AdsetId
+        - AdsetId
       properties:
         advertiserIds:
           description: "The comma-separated list of advertiser ids. If empty, all\
@@ -13517,21 +13940,18 @@ components:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
         adSetNames:
           description: "list of adSets names. If empty, all the adSets will be fetched"
           items:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
         adSetStatus:
           description: "list of adSets status. If empty, all the adSets will be fetched"
           items:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
         dimensions:
           description: The dimensions for the report.
           items:
@@ -13560,15 +13980,15 @@ components:
             - ChannelId
             - Channel
             - Goal
+            - AdChannel
+            - SocialPlatform
             type: string
           type: array
-          uniqueItems: false
         metrics:
           description: The list of metrics to report.
           items:
             type: string
           type: array
-          uniqueItems: false
         currency:
           description: The currency used for the report. ISO 4217 code (three-letter
             capitals).
@@ -13601,31 +14021,40 @@ components:
       - metrics
       - startDate
       type: object
-    TransactionsReportQueryDataMessage:
-      description: Contains queries for Transactions report
+    TransactionsReportQueryMessageListRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for several
+        value objects.
       example:
         data:
-        - type: TransactionsReport
-          attributes:
-            advertiserIds: "123,456,789"
-            eventType: display
-            currency: EUR
-            format: csv
-            timezone: Europe/Paris
-            startDate: 2023-04-03T00:00:00.0000000+00:00
-            endDate: 2023-04-03T00:00:00.0000000+00:00
+        - attributes:
+            advertiserIds: advertiserIds
+            endDate: 2000-01-23T04:56:07.000+00:00
+            timezone: UTC
+            format: format
+            currency: currency
+            eventType: eventType
+            startDate: 2000-01-23T04:56:07.000+00:00
+          type: type
+        - attributes:
+            advertiserIds: advertiserIds
+            endDate: 2000-01-23T04:56:07.000+00:00
+            timezone: UTC
+            format: format
+            currency: currency
+            eventType: eventType
+            startDate: 2000-01-23T04:56:07.000+00:00
+          type: type
       properties:
         data:
           items:
-            $ref: '#/components/schemas/TransactionsReportQueryEntityMessage'
+            $ref: '#/components/schemas/TransactionsReportQueryMessageResource'
+          nullable: true
           type: array
-          uniqueItems: false
-      required:
-      - data
       type: object
-    TransparencyReportEntityMessage:
-      description: This is the message defining the entity response for Transparency
-        report
+    TransparencyReportResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
       example:
         attributes:
           tokenValidUntil: 2000-01-23T04:56:07.000+00:00
@@ -13638,90 +14067,66 @@ components:
         type: type
       properties:
         type:
-          readOnly: true
+          description: Type of the resource.
+          nullable: true
           type: string
         attributes:
-          $ref: '#/components/schemas/TransparencyReportAttributes'
-      required:
-      - attributes
-      - type
+          $ref: '#/components/schemas/TransparencyReport'
       type: object
-    ProblemDetails:
-      description: Common problem object.
-      properties:
-        traceId:
-          description: The request correlation ID this problem comes from.
-          nullable: true
-          type: string
-        traceIdentifier:
-          description: "The request correlation ID this problem comes from. (deprecated,\
-            \ use traceId instead)"
-          nullable: true
-          type: string
-        type:
-          description: The problem's category.
-          enum:
-          - unknown
-          - access-control
-          - authentication
-          - authorization
-          - availability
-          - deprecation
-          - quota
-          - validation
-          nullable: true
-          type: string
-        code:
-          description: "A machine-readable error code, expressed as a string value."
-          nullable: true
-          type: string
-        instance:
-          description: A URI that identifies the specific occurrence of the problem.
-          nullable: true
-          type: string
-        title:
-          description: A short human-readable description of the problem type
-          nullable: true
-          type: string
-        detail:
-          description: A human-readable explanation specific to this occurrence of
-            the problem
-          nullable: true
-          type: string
-        source:
-          additionalProperties:
-            type: string
-          description: A machine-readable structure to reference to the exact location(s)
-            causing the error(s)
-          nullable: true
-          type: object
-        stackTrace:
-          nullable: true
-          type: string
-      type: object
-    PlacementsReportQueryEntityMessage:
-      description: Contains a query for Transaction report and its type
+    PlacementsReportQueryMessageResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          disclosed: true
+          endDate: 2000-01-23T04:56:07.000+00:00
+          timezone: UTC
+          format: format
+          advertiserIds: advertiserIds
+          environment: environment
+          adsetIds: adsetIds
+          currency: currency
+          campaignIds: campaignIds
+          placement: placement
+          metrics:
+          - metrics
+          - metrics
+          startDate: 2000-01-23T04:56:07.000+00:00
+          dimensions:
+          - AdsetId
+          - AdsetId
+        type: type
       properties:
         type:
+          description: Type of the resource.
+          nullable: true
           type: string
         attributes:
           $ref: '#/components/schemas/PlacementsReportQueryMessage'
-      required:
-      - attributes
-      - type
       type: object
-    TransactionsReportQueryEntityMessage:
-      description: Contains a query for Transaction report and its type
+    TransactionsReportQueryMessageResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          advertiserIds: advertiserIds
+          endDate: 2000-01-23T04:56:07.000+00:00
+          timezone: UTC
+          format: format
+          currency: currency
+          eventType: eventType
+          startDate: 2000-01-23T04:56:07.000+00:00
+        type: type
       properties:
         type:
+          description: Type of the resource.
+          nullable: true
           type: string
         attributes:
           $ref: '#/components/schemas/TransactionsReportQueryMessage'
-      required:
-      - attributes
-      - type
       type: object
-    TransparencyReportAttributes:
+    TransparencyReport:
+      additionalProperties: false
       description: This is the message defining the attribute response for Transparency
         report
       example:
@@ -13742,14 +14147,32 @@ components:
           items:
             $ref: '#/components/schemas/TransparencyReportFile'
           type: array
-          uniqueItems: false
       required:
       - advertiserId
       - files
       - tokenValidUntil
       type: object
     PlacementsReportQueryMessage:
+      additionalProperties: false
       description: This is the message defining the query for Placements report
+      example:
+        disclosed: true
+        endDate: 2000-01-23T04:56:07.000+00:00
+        timezone: UTC
+        format: format
+        advertiserIds: advertiserIds
+        environment: environment
+        adsetIds: adsetIds
+        currency: currency
+        campaignIds: campaignIds
+        placement: placement
+        metrics:
+        - metrics
+        - metrics
+        startDate: 2000-01-23T04:56:07.000+00:00
+        dimensions:
+        - AdsetId
+        - AdsetId
       properties:
         advertiserIds:
           description: The comma-separated list of advertiser ids.
@@ -13782,15 +14205,17 @@ components:
             - AdvertiserName
             - CampaignId
             - CampaignName
+            - AdChannel
+            - SocialPlatform
+            - CategoryId
+            - CategoryName
             type: string
           type: array
-          uniqueItems: false
         metrics:
           description: The list of metrics to report.
           items:
             type: string
           type: array
-          uniqueItems: false
         currency:
           description: The currency used for the report. ISO 4217 code (three-letter
             capitals).
@@ -13830,7 +14255,16 @@ components:
       - startDate
       type: object
     TransactionsReportQueryMessage:
+      additionalProperties: false
       description: This is the message defining the query for Transaction report
+      example:
+        advertiserIds: advertiserIds
+        endDate: 2000-01-23T04:56:07.000+00:00
+        timezone: UTC
+        format: format
+        currency: currency
+        eventType: eventType
+        startDate: 2000-01-23T04:56:07.000+00:00
       properties:
         advertiserIds:
           description: "The comma-separated list of advertiser ids. If empty, all\
@@ -13872,6 +14306,7 @@ components:
       - startDate
       type: object
     TransparencyReportFile:
+      additionalProperties: false
       description: This is the message defining the file response for Transparency
         report
       example:

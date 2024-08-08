@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -77,11 +78,11 @@ public class BalanceResponseV2 {
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
-  private String startDate;
+  private LocalDate startDate;
 
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
-  private String endDate;
+  private LocalDate endDate;
 
   /**
    * Status of the balance.
@@ -257,13 +258,13 @@ public class BalanceResponseV2 {
    */
   @JsonAdapter(PrivateMarketBillingTypeEnum.Adapter.class)
   public enum PrivateMarketBillingTypeEnum {
-    NOTAPPLICABLE("notApplicable"),
+    NOTAPPLICABLE("NotApplicable"),
     
-    BILLBYRETAILER("billByRetailer"),
+    BILLBYRETAILER("BillByRetailer"),
     
-    BILLBYCRITEO("billByCriteo"),
+    BILLBYCRITEO("BillByCriteo"),
     
-    UNKNOWN("unknown");
+    UNKNOWN("Unknown");
 
     private String value;
 
@@ -442,7 +443,7 @@ public class BalanceResponseV2 {
   }
 
 
-  public BalanceResponseV2 startDate(String startDate) {
+  public BalanceResponseV2 startDate(LocalDate startDate) {
     
     this.startDate = startDate;
     return this;
@@ -454,17 +455,17 @@ public class BalanceResponseV2 {
   **/
   @javax.annotation.Nonnull
 
-  public String getStartDate() {
+  public LocalDate getStartDate() {
     return startDate;
   }
 
 
-  public void setStartDate(String startDate) {
+  public void setStartDate(LocalDate startDate) {
     this.startDate = startDate;
   }
 
 
-  public BalanceResponseV2 endDate(String endDate) {
+  public BalanceResponseV2 endDate(LocalDate endDate) {
     
     this.endDate = endDate;
     return this;
@@ -476,12 +477,12 @@ public class BalanceResponseV2 {
   **/
   @javax.annotation.Nullable
 
-  public String getEndDate() {
+  public LocalDate getEndDate() {
     return endDate;
   }
 
 
-  public void setEndDate(String endDate) {
+  public void setEndDate(LocalDate endDate) {
     this.endDate = endDate;
   }
 
@@ -797,12 +798,6 @@ public class BalanceResponseV2 {
       }
       if ((jsonObj.get("memo") != null && !jsonObj.get("memo").isJsonNull()) && !jsonObj.get("memo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `memo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memo").toString()));
-      }
-      if (!jsonObj.get("startDate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
-      }
-      if ((jsonObj.get("endDate") != null && !jsonObj.get("endDate").isJsonNull()) && !jsonObj.get("endDate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `endDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endDate").toString()));
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));

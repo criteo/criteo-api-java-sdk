@@ -15,7 +15,9 @@ Set of rules that defines specific people to target.
 |**type** | [**TypeEnum**](#TypeEnum) | Type of segment (read-only) |  [optional] |
 |**createdAt** | **OffsetDateTime** | ISO-8601 timestamp in UTC of segment creation (read-only) |  [optional] |
 |**updatedAt** | **OffsetDateTime** | ISO-8601 timestamp in UTC of segment update (read-only) |  [optional] |
+|**createdById** | **String** | User that created the segment |  [optional] |
 |**contactList** | [**RmContactListV1**](RmContactListV1.md) |  |  [optional] |
+|**userBehavior** | [**RmUserBehaviorV1**](RmUserBehaviorV1.md) |  |  [optional] |
 |**channels** | [**List&lt;ChannelsEnum&gt;**](#List&lt;ChannelsEnum&gt;) | Channels associated to the segment (read-only) |  [optional] |
 
 
@@ -26,6 +28,7 @@ Set of rules that defines specific people to target.
 |---- | -----|
 | UNKNOWN | &quot;Unknown&quot; |
 | CONTACTLIST | &quot;ContactList&quot; |
+| USERBEHAVIOR | &quot;UserBehavior&quot; |
 
 
 

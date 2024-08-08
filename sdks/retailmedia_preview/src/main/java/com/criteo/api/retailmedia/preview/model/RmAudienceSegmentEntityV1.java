@@ -16,6 +16,7 @@ package com.criteo.api.retailmedia.preview.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.retailmedia.preview.model.RmContactListV1;
+import com.criteo.api.retailmedia.preview.model.RmUserBehaviorV1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -76,7 +77,9 @@ public class RmAudienceSegmentEntityV1 {
   public enum TypeEnum {
     UNKNOWN("Unknown"),
     
-    CONTACTLIST("ContactList");
+    CONTACTLIST("ContactList"),
+    
+    USERBEHAVIOR("UserBehavior");
 
     private String value;
 
@@ -128,9 +131,17 @@ public class RmAudienceSegmentEntityV1 {
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
+  public static final String SERIALIZED_NAME_CREATED_BY_ID = "createdById";
+  @SerializedName(SERIALIZED_NAME_CREATED_BY_ID)
+  private String createdById;
+
   public static final String SERIALIZED_NAME_CONTACT_LIST = "contactList";
   @SerializedName(SERIALIZED_NAME_CONTACT_LIST)
   private RmContactListV1 contactList;
+
+  public static final String SERIALIZED_NAME_USER_BEHAVIOR = "userBehavior";
+  @SerializedName(SERIALIZED_NAME_USER_BEHAVIOR)
+  private RmUserBehaviorV1 userBehavior;
 
   /**
    * Gets or Sets channels
@@ -342,6 +353,28 @@ public class RmAudienceSegmentEntityV1 {
   }
 
 
+  public RmAudienceSegmentEntityV1 createdById(String createdById) {
+    
+    this.createdById = createdById;
+    return this;
+  }
+
+   /**
+   * User that created the segment
+   * @return createdById
+  **/
+  @javax.annotation.Nullable
+
+  public String getCreatedById() {
+    return createdById;
+  }
+
+
+  public void setCreatedById(String createdById) {
+    this.createdById = createdById;
+  }
+
+
   public RmAudienceSegmentEntityV1 contactList(RmContactListV1 contactList) {
     
     this.contactList = contactList;
@@ -361,6 +394,28 @@ public class RmAudienceSegmentEntityV1 {
 
   public void setContactList(RmContactListV1 contactList) {
     this.contactList = contactList;
+  }
+
+
+  public RmAudienceSegmentEntityV1 userBehavior(RmUserBehaviorV1 userBehavior) {
+    
+    this.userBehavior = userBehavior;
+    return this;
+  }
+
+   /**
+   * Get userBehavior
+   * @return userBehavior
+  **/
+  @javax.annotation.Nullable
+
+  public RmUserBehaviorV1 getUserBehavior() {
+    return userBehavior;
+  }
+
+
+  public void setUserBehavior(RmUserBehaviorV1 userBehavior) {
+    this.userBehavior = userBehavior;
   }
 
 
@@ -455,7 +510,9 @@ public class RmAudienceSegmentEntityV1 {
         Objects.equals(this.type, rmAudienceSegmentEntityV1.type) &&
         Objects.equals(this.createdAt, rmAudienceSegmentEntityV1.createdAt) &&
         Objects.equals(this.updatedAt, rmAudienceSegmentEntityV1.updatedAt) &&
+        Objects.equals(this.createdById, rmAudienceSegmentEntityV1.createdById) &&
         Objects.equals(this.contactList, rmAudienceSegmentEntityV1.contactList) &&
+        Objects.equals(this.userBehavior, rmAudienceSegmentEntityV1.userBehavior) &&
         Objects.equals(this.channels, rmAudienceSegmentEntityV1.channels)&&
         Objects.equals(this.additionalProperties, rmAudienceSegmentEntityV1.additionalProperties);
   }
@@ -466,7 +523,7 @@ public class RmAudienceSegmentEntityV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, name, description, retailerId, type, createdAt, updatedAt, contactList, channels, additionalProperties);
+    return Objects.hash(accountId, name, description, retailerId, type, createdAt, updatedAt, createdById, contactList, userBehavior, channels, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -487,7 +544,9 @@ public class RmAudienceSegmentEntityV1 {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    createdById: ").append(toIndentedString(createdById)).append("\n");
     sb.append("    contactList: ").append(toIndentedString(contactList)).append("\n");
+    sb.append("    userBehavior: ").append(toIndentedString(userBehavior)).append("\n");
     sb.append("    channels: ").append(toIndentedString(channels)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -519,7 +578,9 @@ public class RmAudienceSegmentEntityV1 {
     openapiFields.add("type");
     openapiFields.add("createdAt");
     openapiFields.add("updatedAt");
+    openapiFields.add("createdById");
     openapiFields.add("contactList");
+    openapiFields.add("userBehavior");
     openapiFields.add("channels");
 
     // a set of required properties/fields (JSON key names)
@@ -553,9 +614,16 @@ public class RmAudienceSegmentEntityV1 {
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
+      if ((jsonObj.get("createdById") != null && !jsonObj.get("createdById").isJsonNull()) && !jsonObj.get("createdById").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `createdById` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdById").toString()));
+      }
       // validate the optional field `contactList`
       if (jsonObj.get("contactList") != null && !jsonObj.get("contactList").isJsonNull()) {
         RmContactListV1.validateJsonObject(jsonObj.getAsJsonObject("contactList"));
+      }
+      // validate the optional field `userBehavior`
+      if (jsonObj.get("userBehavior") != null && !jsonObj.get("userBehavior").isJsonNull()) {
+        RmUserBehaviorV1.validateJsonObject(jsonObj.getAsJsonObject("userBehavior"));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("channels") != null && !jsonObj.get("channels").isJsonArray()) {

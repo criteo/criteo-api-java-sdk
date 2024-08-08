@@ -36,6 +36,10 @@ This is the message defining the query for Placements report
 | ADVERTISERNAME | &quot;AdvertiserName&quot; |
 | CAMPAIGNID | &quot;CampaignId&quot; |
 | CAMPAIGNNAME | &quot;CampaignName&quot; |
+| ADCHANNEL | &quot;AdChannel&quot; |
+| SOCIALPLATFORM | &quot;SocialPlatform&quot; |
+| CATEGORYID | &quot;CategoryId&quot; |
+| CATEGORYNAME | &quot;CategoryName&quot; |
 
 
 

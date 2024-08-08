@@ -50,6 +50,8 @@ This is the message defining the query for Adset report
 | CHANNELID | &quot;ChannelId&quot; |
 | CHANNEL | &quot;Channel&quot; |
 | GOAL | &quot;Goal&quot; |
+| ADCHANNEL | &quot;AdChannel&quot; |
+| SOCIALPLATFORM | &quot;SocialPlatform&quot; |
 
 
 

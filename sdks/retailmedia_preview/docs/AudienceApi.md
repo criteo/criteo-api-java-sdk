@@ -683,7 +683,7 @@ public class Example {
 
 
 
-Search segments based on the provided filters.( by ids or retailer ids)
+Returns a list of segments that match the provided filters. If present, the filters are AND&#39;ed together when applied.
 
 ### Example
 
@@ -725,7 +725,7 @@ public class Example {
 
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         String accountId = "accountId_example"; // String | Account Id
-        RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1 = new RmAudienceSegmentSearchInputV1(); // RmAudienceSegmentSearchInputV1 | Segment creation parameter
+        RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1 = new RmAudienceSegmentSearchInputV1(); // RmAudienceSegmentSearchInputV1 | Segment search filters.
         Integer limit = 50; // Integer | The number of elements to be returned. The default is 50 and the maximum is 100.
         Integer offset = 0; // Integer | The (zero-based) offset into the collection. The default is 0.
         try {
@@ -748,7 +748,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| Account Id | |
-| **rmAudienceSegmentSearchInputV1** | [**RmAudienceSegmentSearchInputV1**](RmAudienceSegmentSearchInputV1.md)| Segment creation parameter | |
+| **rmAudienceSegmentSearchInputV1** | [**RmAudienceSegmentSearchInputV1**](RmAudienceSegmentSearchInputV1.md)| Segment search filters. | |
 | **limit** | **Integer**| The number of elements to be returned. The default is 50 and the maximum is 100. | [optional] [default to 50] |
 | **offset** | **Integer**| The (zero-based) offset into the collection. The default is 0. | [optional] [default to 0] |
 

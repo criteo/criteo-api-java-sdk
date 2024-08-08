@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -64,11 +65,11 @@ public class CreateBalanceV2 {
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
-  private String startDate;
+  private LocalDate startDate;
 
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
-  private String endDate;
+  private LocalDate endDate;
 
   /**
    * Type of the balance spend.
@@ -196,7 +197,7 @@ public class CreateBalanceV2 {
   }
 
 
-  public CreateBalanceV2 startDate(String startDate) {
+  public CreateBalanceV2 startDate(LocalDate startDate) {
     
     this.startDate = startDate;
     return this;
@@ -208,17 +209,17 @@ public class CreateBalanceV2 {
   **/
   @javax.annotation.Nonnull
 
-  public String getStartDate() {
+  public LocalDate getStartDate() {
     return startDate;
   }
 
 
-  public void setStartDate(String startDate) {
+  public void setStartDate(LocalDate startDate) {
     this.startDate = startDate;
   }
 
 
-  public CreateBalanceV2 endDate(String endDate) {
+  public CreateBalanceV2 endDate(LocalDate endDate) {
     
     this.endDate = endDate;
     return this;
@@ -230,12 +231,12 @@ public class CreateBalanceV2 {
   **/
   @javax.annotation.Nullable
 
-  public String getEndDate() {
+  public LocalDate getEndDate() {
     return endDate;
   }
 
 
-  public void setEndDate(String endDate) {
+  public void setEndDate(LocalDate endDate) {
     this.endDate = endDate;
   }
 
@@ -437,12 +438,6 @@ public class CreateBalanceV2 {
       }
       if ((jsonObj.get("poNumber") != null && !jsonObj.get("poNumber").isJsonNull()) && !jsonObj.get("poNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `poNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("poNumber").toString()));
-      }
-      if (!jsonObj.get("startDate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
-      }
-      if ((jsonObj.get("endDate") != null && !jsonObj.get("endDate").isJsonNull()) && !jsonObj.get("endDate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `endDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endDate").toString()));
       }
       if (!jsonObj.get("spendType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `spendType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("spendType").toString()));
