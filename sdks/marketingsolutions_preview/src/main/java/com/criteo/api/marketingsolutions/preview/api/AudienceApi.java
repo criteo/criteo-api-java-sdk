@@ -53,12 +53,10 @@ import com.criteo.api.marketingsolutions.preview.model.ContactListStatisticsEnti
 import com.criteo.api.marketingsolutions.preview.model.ContactlistAmendmentRequest;
 import com.criteo.api.marketingsolutions.preview.model.ContactlistWithAttributesAmendmentRequest;
 import com.criteo.api.marketingsolutions.preview.model.DeleteAudienceContactListResponse;
-import com.criteo.api.marketingsolutions.preview.model.DeleteUserProfileModelListRequest;
 import com.criteo.api.marketingsolutions.preview.model.ErrorCodeResponse;
 import com.criteo.api.marketingsolutions.preview.model.InMarketAudienceSegmentBrandEntityV1ListResponse;
 import com.criteo.api.marketingsolutions.preview.model.InMarketAudienceSegmentInterestEntityV1ListResponse;
 import com.criteo.api.marketingsolutions.preview.model.ModifyAudienceResponse;
-import com.criteo.api.marketingsolutions.preview.model.SetUserProfileModelListRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -1229,264 +1227,6 @@ public class AudienceApi {
         return localVarCall;
     }
     /**
-     * Build call for deleteContactListIdentifiers
-     * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Contact List was emptied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteContactListIdentifiersCall(String audienceSegmentId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list"
-            .replace("{" + "audience-segment-id" + "}", localVarApiClient.escapeString(audienceSegmentId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteContactListIdentifiersValidateBeforeCall(String audienceSegmentId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'audienceSegmentId' is set
-        if (audienceSegmentId == null) {
-            throw new ApiException("Missing the required parameter 'audienceSegmentId' when calling deleteContactListIdentifiers(Async)");
-        }
-
-        return deleteContactListIdentifiersCall(audienceSegmentId, _callback);
-
-    }
-
-    /**
-     * 
-     * Delete all identifiers from a contact list audience-segment.
-     * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
-     * @return DeleteAudienceContactListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Contact List was emptied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-     </table>
-     */
-    public DeleteAudienceContactListResponse deleteContactListIdentifiers(String audienceSegmentId) throws ApiException {
-        ApiResponse<DeleteAudienceContactListResponse> localVarResp = deleteContactListIdentifiersWithHttpInfo(audienceSegmentId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Delete all identifiers from a contact list audience-segment.
-     * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
-     * @return ApiResponse&lt;DeleteAudienceContactListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Contact List was emptied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DeleteAudienceContactListResponse> deleteContactListIdentifiersWithHttpInfo(String audienceSegmentId) throws ApiException {
-        okhttp3.Call localVarCall = deleteContactListIdentifiersValidateBeforeCall(audienceSegmentId, null);
-        Type localVarReturnType = new TypeToken<DeleteAudienceContactListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Delete all identifiers from a contact list audience-segment.
-     * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The Contact List was emptied </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteContactListIdentifiersAsync(String audienceSegmentId, final ApiCallback<DeleteAudienceContactListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteContactListIdentifiersValidateBeforeCall(audienceSegmentId, _callback);
-        Type localVarReturnType = new TypeToken<DeleteAudienceContactListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for deleteUserProfiles
-     * @param advertiserId Criteo Advertiser ID of user profiles&#39; owner (required)
-     * @param deleteUserProfileModelListRequest  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteUserProfilesCall(Integer advertiserId, DeleteUserProfileModelListRequest deleteUserProfileModelListRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = deleteUserProfileModelListRequest;
-
-        // create path and map variables
-        String localVarPath = "/preview/marketing-solutions/advertisers/{advertiserId}/user-profiles/delete"
-            .replace("{" + "advertiserId" + "}", localVarApiClient.escapeString(advertiserId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteUserProfilesValidateBeforeCall(Integer advertiserId, DeleteUserProfileModelListRequest deleteUserProfileModelListRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'advertiserId' is set
-        if (advertiserId == null) {
-            throw new ApiException("Missing the required parameter 'advertiserId' when calling deleteUserProfiles(Async)");
-        }
-
-        return deleteUserProfilesCall(advertiserId, deleteUserProfileModelListRequest, _callback);
-
-    }
-
-    /**
-     * 
-     * This endpoint will Delete User Profiles for a given Advertiser.
-     * @param advertiserId Criteo Advertiser ID of user profiles&#39; owner (required)
-     * @param deleteUserProfileModelListRequest  (optional)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-     </table>
-     */
-    public void deleteUserProfiles(Integer advertiserId, DeleteUserProfileModelListRequest deleteUserProfileModelListRequest) throws ApiException {
-        deleteUserProfilesWithHttpInfo(advertiserId, deleteUserProfileModelListRequest);
-    }
-
-    /**
-     * 
-     * This endpoint will Delete User Profiles for a given Advertiser.
-     * @param advertiserId Criteo Advertiser ID of user profiles&#39; owner (required)
-     * @param deleteUserProfileModelListRequest  (optional)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> deleteUserProfilesWithHttpInfo(Integer advertiserId, DeleteUserProfileModelListRequest deleteUserProfileModelListRequest) throws ApiException {
-        okhttp3.Call localVarCall = deleteUserProfilesValidateBeforeCall(advertiserId, deleteUserProfileModelListRequest, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * This endpoint will Delete User Profiles for a given Advertiser.
-     * @param advertiserId Criteo Advertiser ID of user profiles&#39; owner (required)
-     * @param deleteUserProfileModelListRequest  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteUserProfilesAsync(Integer advertiserId, DeleteUserProfileModelListRequest deleteUserProfileModelListRequest, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteUserProfilesValidateBeforeCall(advertiserId, deleteUserProfileModelListRequest, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for estimateAudienceSegmentSize
      * @param audienceSegmentEstimateSizeInputV1  (required)
      * @param _callback Callback for upload/download progress
@@ -2335,6 +2075,274 @@ public class AudienceApi {
         return localVarCall;
     }
     /**
+     * Build call for previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListDelete
+     * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The Contact List was emptied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListDeleteCall(String audienceSegmentId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list"
+            .replace("{" + "audience-segment-id" + "}", localVarApiClient.escapeString(audienceSegmentId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListDeleteValidateBeforeCall(String audienceSegmentId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceSegmentId' is set
+        if (audienceSegmentId == null) {
+            throw new ApiException("Missing the required parameter 'audienceSegmentId' when calling previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListDelete(Async)");
+        }
+
+        return previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListDeleteCall(audienceSegmentId, _callback);
+
+    }
+
+    /**
+     * 
+     * Delete all identifiers from a contact list audience-segment.
+     * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
+     * @return DeleteAudienceContactListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The Contact List was emptied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public DeleteAudienceContactListResponse previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListDelete(String audienceSegmentId) throws ApiException {
+        ApiResponse<DeleteAudienceContactListResponse> localVarResp = previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListDeleteWithHttpInfo(audienceSegmentId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Delete all identifiers from a contact list audience-segment.
+     * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
+     * @return ApiResponse&lt;DeleteAudienceContactListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The Contact List was emptied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DeleteAudienceContactListResponse> previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListDeleteWithHttpInfo(String audienceSegmentId) throws ApiException {
+        okhttp3.Call localVarCall = previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListDeleteValidateBeforeCall(audienceSegmentId, null);
+        Type localVarReturnType = new TypeToken<DeleteAudienceContactListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Delete all identifiers from a contact list audience-segment.
+     * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The Contact List was emptied </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListDeleteAsync(String audienceSegmentId, final ApiCallback<DeleteAudienceContactListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListDeleteValidateBeforeCall(audienceSegmentId, _callback);
+        Type localVarReturnType = new TypeToken<DeleteAudienceContactListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListPatch
+     * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
+     * @param contactlistAmendmentRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Audience 123 not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListPatchCall(String audienceSegmentId, ContactlistAmendmentRequest contactlistAmendmentRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = contactlistAmendmentRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list"
+            .replace("{" + "audience-segment-id" + "}", localVarApiClient.escapeString(audienceSegmentId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListPatchValidateBeforeCall(String audienceSegmentId, ContactlistAmendmentRequest contactlistAmendmentRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'audienceSegmentId' is set
+        if (audienceSegmentId == null) {
+            throw new ApiException("Missing the required parameter 'audienceSegmentId' when calling previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListPatch(Async)");
+        }
+
+        // verify the required parameter 'contactlistAmendmentRequest' is set
+        if (contactlistAmendmentRequest == null) {
+            throw new ApiException("Missing the required parameter 'contactlistAmendmentRequest' when calling previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListPatch(Async)");
+        }
+
+        return previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListPatchCall(audienceSegmentId, contactlistAmendmentRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Add/remove identifiers to or from a contact list audience-segment.
+     * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
+     * @param contactlistAmendmentRequest  (required)
+     * @return ModifyAudienceResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Audience 123 not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ModifyAudienceResponse previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListPatch(String audienceSegmentId, ContactlistAmendmentRequest contactlistAmendmentRequest) throws ApiException {
+        ApiResponse<ModifyAudienceResponse> localVarResp = previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListPatchWithHttpInfo(audienceSegmentId, contactlistAmendmentRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Add/remove identifiers to or from a contact list audience-segment.
+     * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
+     * @param contactlistAmendmentRequest  (required)
+     * @return ApiResponse&lt;ModifyAudienceResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Audience 123 not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ModifyAudienceResponse> previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListPatchWithHttpInfo(String audienceSegmentId, ContactlistAmendmentRequest contactlistAmendmentRequest) throws ApiException {
+        okhttp3.Call localVarCall = previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListPatchValidateBeforeCall(audienceSegmentId, contactlistAmendmentRequest, null);
+        Type localVarReturnType = new TypeToken<ModifyAudienceResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Add/remove identifiers to or from a contact list audience-segment.
+     * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
+     * @param contactlistAmendmentRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Audience 123 not found </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListPatchAsync(String audienceSegmentId, ContactlistAmendmentRequest contactlistAmendmentRequest, final ApiCallback<ModifyAudienceResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = previewMarketingSolutionsAudienceSegmentsAudienceSegmentIdContactListPatchValidateBeforeCall(audienceSegmentId, contactlistAmendmentRequest, _callback);
+        Type localVarReturnType = new TypeToken<ModifyAudienceResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for searchAudienceSegments
      * @param audienceSegmentSearchInputV1 Segment search filters. (required)
      * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
@@ -2643,278 +2651,6 @@ public class AudienceApi {
 
         okhttp3.Call localVarCall = searchAudiencesValidateBeforeCall(audienceSearchInputV1, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<AudienceEntityV1AudienceSearchMetadataV1ListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for setUserProfiles
-     * @param advertiserId Criteo Advertiser ID of user profiles&#39; owner (required)
-     * @param setUserProfileModelListRequest  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call setUserProfilesCall(Integer advertiserId, SetUserProfileModelListRequest setUserProfileModelListRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = setUserProfileModelListRequest;
-
-        // create path and map variables
-        String localVarPath = "/preview/marketing-solutions/advertisers/{advertiserId}/user-profiles/set"
-            .replace("{" + "advertiserId" + "}", localVarApiClient.escapeString(advertiserId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call setUserProfilesValidateBeforeCall(Integer advertiserId, SetUserProfileModelListRequest setUserProfileModelListRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'advertiserId' is set
-        if (advertiserId == null) {
-            throw new ApiException("Missing the required parameter 'advertiserId' when calling setUserProfiles(Async)");
-        }
-
-        return setUserProfilesCall(advertiserId, setUserProfileModelListRequest, _callback);
-
-    }
-
-    /**
-     * 
-     * This endpoint will Set User Profiles for a given Advertiser. If a User Profile does not exist, a new one will be created. If a User Profile exists, it will be replaced.
-     * @param advertiserId Criteo Advertiser ID of user profiles&#39; owner (required)
-     * @param setUserProfileModelListRequest  (optional)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-     </table>
-     */
-    public void setUserProfiles(Integer advertiserId, SetUserProfileModelListRequest setUserProfileModelListRequest) throws ApiException {
-        setUserProfilesWithHttpInfo(advertiserId, setUserProfileModelListRequest);
-    }
-
-    /**
-     * 
-     * This endpoint will Set User Profiles for a given Advertiser. If a User Profile does not exist, a new one will be created. If a User Profile exists, it will be replaced.
-     * @param advertiserId Criteo Advertiser ID of user profiles&#39; owner (required)
-     * @param setUserProfileModelListRequest  (optional)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> setUserProfilesWithHttpInfo(Integer advertiserId, SetUserProfileModelListRequest setUserProfileModelListRequest) throws ApiException {
-        okhttp3.Call localVarCall = setUserProfilesValidateBeforeCall(advertiserId, setUserProfileModelListRequest, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * This endpoint will Set User Profiles for a given Advertiser. If a User Profile does not exist, a new one will be created. If a User Profile exists, it will be replaced.
-     * @param advertiserId Criteo Advertiser ID of user profiles&#39; owner (required)
-     * @param setUserProfileModelListRequest  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call setUserProfilesAsync(Integer advertiserId, SetUserProfileModelListRequest setUserProfileModelListRequest, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = setUserProfilesValidateBeforeCall(advertiserId, setUserProfileModelListRequest, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for updateContactListIdentifiers
-     * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
-     * @param contactlistAmendmentRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Audience 123 not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateContactListIdentifiersCall(String audienceSegmentId, ContactlistAmendmentRequest contactlistAmendmentRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = contactlistAmendmentRequest;
-
-        // create path and map variables
-        String localVarPath = "/preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list"
-            .replace("{" + "audience-segment-id" + "}", localVarApiClient.escapeString(audienceSegmentId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateContactListIdentifiersValidateBeforeCall(String audienceSegmentId, ContactlistAmendmentRequest contactlistAmendmentRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'audienceSegmentId' is set
-        if (audienceSegmentId == null) {
-            throw new ApiException("Missing the required parameter 'audienceSegmentId' when calling updateContactListIdentifiers(Async)");
-        }
-
-        // verify the required parameter 'contactlistAmendmentRequest' is set
-        if (contactlistAmendmentRequest == null) {
-            throw new ApiException("Missing the required parameter 'contactlistAmendmentRequest' when calling updateContactListIdentifiers(Async)");
-        }
-
-        return updateContactListIdentifiersCall(audienceSegmentId, contactlistAmendmentRequest, _callback);
-
-    }
-
-    /**
-     * 
-     * Add/remove identifiers to or from a contact list audience-segment.
-     * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
-     * @param contactlistAmendmentRequest  (required)
-     * @return ModifyAudienceResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Audience 123 not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public ModifyAudienceResponse updateContactListIdentifiers(String audienceSegmentId, ContactlistAmendmentRequest contactlistAmendmentRequest) throws ApiException {
-        ApiResponse<ModifyAudienceResponse> localVarResp = updateContactListIdentifiersWithHttpInfo(audienceSegmentId, contactlistAmendmentRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Add/remove identifiers to or from a contact list audience-segment.
-     * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
-     * @param contactlistAmendmentRequest  (required)
-     * @return ApiResponse&lt;ModifyAudienceResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Audience 123 not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ModifyAudienceResponse> updateContactListIdentifiersWithHttpInfo(String audienceSegmentId, ContactlistAmendmentRequest contactlistAmendmentRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateContactListIdentifiersValidateBeforeCall(audienceSegmentId, contactlistAmendmentRequest, null);
-        Type localVarReturnType = new TypeToken<ModifyAudienceResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Add/remove identifiers to or from a contact list audience-segment.
-     * @param audienceSegmentId The id of the contact list audience-segment to amend (required)
-     * @param contactlistAmendmentRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Summary of created request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Audience 123 not found </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateContactListIdentifiersAsync(String audienceSegmentId, ContactlistAmendmentRequest contactlistAmendmentRequest, final ApiCallback<ModifyAudienceResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updateContactListIdentifiersValidateBeforeCall(audienceSegmentId, contactlistAmendmentRequest, _callback);
-        Type localVarReturnType = new TypeToken<ModifyAudienceResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

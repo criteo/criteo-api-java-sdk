@@ -181,6 +181,10 @@ public class ExternalAccount {
   @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
   private String companyName;
 
+  public static final String SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME = "onBehalfCompanyName";
+  @SerializedName(SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME)
+  private String onBehalfCompanyName;
+
   public ExternalAccount() {
   }
 
@@ -364,6 +368,28 @@ public class ExternalAccount {
     this.companyName = companyName;
   }
 
+
+  public ExternalAccount onBehalfCompanyName(String onBehalfCompanyName) {
+    
+    this.onBehalfCompanyName = onBehalfCompanyName;
+    return this;
+  }
+
+   /**
+   * Get onBehalfCompanyName
+   * @return onBehalfCompanyName
+  **/
+  @javax.annotation.Nullable
+
+  public String getOnBehalfCompanyName() {
+    return onBehalfCompanyName;
+  }
+
+
+  public void setOnBehalfCompanyName(String onBehalfCompanyName) {
+    this.onBehalfCompanyName = onBehalfCompanyName;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -426,7 +452,8 @@ public class ExternalAccount {
         Objects.equals(this.currency, externalAccount.currency) &&
         Objects.equals(this.parentAccountLabel, externalAccount.parentAccountLabel) &&
         Objects.equals(this.timeZone, externalAccount.timeZone) &&
-        Objects.equals(this.companyName, externalAccount.companyName)&&
+        Objects.equals(this.companyName, externalAccount.companyName) &&
+        Objects.equals(this.onBehalfCompanyName, externalAccount.onBehalfCompanyName)&&
         Objects.equals(this.additionalProperties, externalAccount.additionalProperties);
   }
 
@@ -436,7 +463,7 @@ public class ExternalAccount {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, subtype, countries, currency, parentAccountLabel, timeZone, companyName, additionalProperties);
+    return Objects.hash(name, type, subtype, countries, currency, parentAccountLabel, timeZone, companyName, onBehalfCompanyName, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -458,6 +485,7 @@ public class ExternalAccount {
     sb.append("    parentAccountLabel: ").append(toIndentedString(parentAccountLabel)).append("\n");
     sb.append("    timeZone: ").append(toIndentedString(timeZone)).append("\n");
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
+    sb.append("    onBehalfCompanyName: ").append(toIndentedString(onBehalfCompanyName)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -489,6 +517,7 @@ public class ExternalAccount {
     openapiFields.add("parentAccountLabel");
     openapiFields.add("timeZone");
     openapiFields.add("companyName");
+    openapiFields.add("onBehalfCompanyName");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -545,6 +574,9 @@ public class ExternalAccount {
       }
       if ((jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) && !jsonObj.get("companyName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
+      }
+      if ((jsonObj.get("onBehalfCompanyName") != null && !jsonObj.get("onBehalfCompanyName").isJsonNull()) && !jsonObj.get("onBehalfCompanyName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `onBehalfCompanyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("onBehalfCompanyName").toString()));
       }
   }
 

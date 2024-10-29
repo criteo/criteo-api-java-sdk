@@ -154,7 +154,7 @@ public class AnalyticsApi {
 
     /**
      * 
-     * Return an asynchronous Campaigns Report
+     * Return an asynchronous Campaigns Report This endpoint is subject to specific rate limits.
      * @param asyncCampaignsReportRequest  (required)
      * @return AsyncReportResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -173,7 +173,7 @@ public class AnalyticsApi {
 
     /**
      * 
-     * Return an asynchronous Campaigns Report
+     * Return an asynchronous Campaigns Report This endpoint is subject to specific rate limits.
      * @param asyncCampaignsReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -193,7 +193,7 @@ public class AnalyticsApi {
 
     /**
      *  (asynchronously)
-     * Return an asynchronous Campaigns Report
+     * Return an asynchronous Campaigns Report This endpoint is subject to specific rate limits.
      * @param asyncCampaignsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -290,7 +290,7 @@ public class AnalyticsApi {
 
     /**
      * 
-     * Returns an asynchronous Line Items Report
+     * Returns an asynchronous Line Items Report This endpoint is subject to specific rate limits.
      * @param asyncLineItemsReportRequest  (required)
      * @return AsyncReportResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -309,7 +309,7 @@ public class AnalyticsApi {
 
     /**
      * 
-     * Returns an asynchronous Line Items Report
+     * Returns an asynchronous Line Items Report This endpoint is subject to specific rate limits.
      * @param asyncLineItemsReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -329,7 +329,7 @@ public class AnalyticsApi {
 
     /**
      *  (asynchronously)
-     * Returns an asynchronous Line Items Report
+     * Returns an asynchronous Line Items Report This endpoint is subject to specific rate limits.
      * @param asyncLineItemsReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -426,7 +426,7 @@ public class AnalyticsApi {
 
     /**
      * 
-     * Returns an asynchronous Revenue Report
+     * Returns an asynchronous Revenue Report This endpoint is subject to specific rate limits.
      * @param asyncRevenueReportRequest  (required)
      * @return AsyncReportResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -445,7 +445,7 @@ public class AnalyticsApi {
 
     /**
      * 
-     * Returns an asynchronous Revenue Report
+     * Returns an asynchronous Revenue Report This endpoint is subject to specific rate limits.
      * @param asyncRevenueReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -465,7 +465,7 @@ public class AnalyticsApi {
 
     /**
      *  (asynchronously)
-     * Returns an asynchronous Revenue Report
+     * Returns an asynchronous Revenue Report This endpoint is subject to specific rate limits.
      * @param asyncRevenueReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

@@ -32,7 +32,6 @@ the name of the entity type
 | MADID | &quot;madid&quot; |
 | IDENTITYLINK | &quot;identityLink&quot; |
 | GUM | &quot;gum&quot; |
-| CUSTOMERID | &quot;customerid&quot; |
 | PHONENUMBER | &quot;phoneNumber&quot; |
 
 

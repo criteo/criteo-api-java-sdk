@@ -59,7 +59,7 @@ public class RmLegacyAudienceGetEntityV1Resource {
   private String id;
 
   /**
-   * Gets or Sets audienceType
+   * Type of the audience.
    */
   @JsonAdapter(AudienceTypeEnum.Adapter.class)
   public enum AudienceTypeEnum {
@@ -145,7 +145,7 @@ public class RmLegacyAudienceGetEntityV1Resource {
   }
 
    /**
-   * Get id
+   * Unique identifier of this resource.
    * @return id
   **/
   @javax.annotation.Nullable
@@ -167,7 +167,7 @@ public class RmLegacyAudienceGetEntityV1Resource {
   }
 
    /**
-   * Get audienceType
+   * Type of the audience.
    * @return audienceType
   **/
   @javax.annotation.Nullable

@@ -1,6 +1,6 @@
 # AnalyticsApi
 
-All URIs are relative to *https://api.criteo.com*
+All URIs are relative to *https://api.criteo.com*. Please check the detailed instructions about this API at [https://developers.criteo.com/](https://developers.criteo.com/).
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
@@ -20,7 +20,7 @@ All URIs are relative to *https://api.criteo.com*
 
 ## getAdsetReport
 
-> byte[] getAdsetReport(statisticsReportQueryMessage)
+> File getAdsetReport(statisticsReportQueryMessage)
 
 
 
@@ -67,7 +67,7 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         StatisticsReportQueryMessage statisticsReportQueryMessage = new StatisticsReportQueryMessage(); // StatisticsReportQueryMessage | 
         try {
-            byte[] result = apiInstance.getAdsetReport(statisticsReportQueryMessage);
+            File result = apiInstance.getAdsetReport(statisticsReportQueryMessage);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalyticsApi#getAdsetReport");
@@ -89,7 +89,7 @@ public class Example {
 
 ### Return type
 
-**byte[]**
+[**File**](File.md)
 
 ### Authorization
 
@@ -473,7 +473,7 @@ public class Example {
 
 ## getCategoriesReport
 
-> byte[] getCategoriesReport(generateCategoriesReportRequestAttributesRequest)
+> File getCategoriesReport(generateCategoriesReportRequestAttributesRequest)
 
 
 
@@ -520,7 +520,7 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         GenerateCategoriesReportRequestAttributesRequest generateCategoriesReportRequestAttributesRequest = new GenerateCategoriesReportRequestAttributesRequest(); // GenerateCategoriesReportRequestAttributesRequest | 
         try {
-            byte[] result = apiInstance.getCategoriesReport(generateCategoriesReportRequestAttributesRequest);
+            File result = apiInstance.getCategoriesReport(generateCategoriesReportRequestAttributesRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalyticsApi#getCategoriesReport");
@@ -542,7 +542,7 @@ public class Example {
 
 ### Return type
 
-**byte[]**
+[**File**](File.md)
 
 ### Authorization
 
@@ -655,7 +655,7 @@ public class Example {
 
 ## getPlacementsReport
 
-> byte[] getPlacementsReport(placementsReportQueryMessageListRequest)
+> File getPlacementsReport(placementsReportQueryMessageListRequest)
 
 
 
@@ -702,7 +702,7 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         PlacementsReportQueryMessageListRequest placementsReportQueryMessageListRequest = new PlacementsReportQueryMessageListRequest(); // PlacementsReportQueryMessageListRequest | 
         try {
-            byte[] result = apiInstance.getPlacementsReport(placementsReportQueryMessageListRequest);
+            File result = apiInstance.getPlacementsReport(placementsReportQueryMessageListRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalyticsApi#getPlacementsReport");
@@ -724,7 +724,7 @@ public class Example {
 
 ### Return type
 
-**byte[]**
+[**File**](File.md)
 
 ### Authorization
 
@@ -733,7 +733,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json, application/xml, text/xml
+- **Accept**: text/plain, application/json, text/json, text/csv, application/xml, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, text/xml
 
 
 ### HTTP response details
@@ -837,7 +837,7 @@ public class Example {
 
 ## getTransactionsReport
 
-> byte[] getTransactionsReport(transactionsReportQueryMessageListRequest)
+> File getTransactionsReport(transactionsReportQueryMessageListRequest)
 
 
 
@@ -884,7 +884,7 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         TransactionsReportQueryMessageListRequest transactionsReportQueryMessageListRequest = new TransactionsReportQueryMessageListRequest(); // TransactionsReportQueryMessageListRequest | 
         try {
-            byte[] result = apiInstance.getTransactionsReport(transactionsReportQueryMessageListRequest);
+            File result = apiInstance.getTransactionsReport(transactionsReportQueryMessageListRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalyticsApi#getTransactionsReport");
@@ -906,7 +906,7 @@ public class Example {
 
 ### Return type
 
-**byte[]**
+[**File**](File.md)
 
 ### Authorization
 

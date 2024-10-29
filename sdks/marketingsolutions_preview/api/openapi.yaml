@@ -59,7 +59,6 @@ paths:
   /preview/marketing-solutions/audience-segments/{audience-segment-id}/contact-list:
     delete:
       description: Delete all identifiers from a contact list audience-segment.
-      operationId: deleteContactListIdentifiers
       parameters:
       - description: The id of the contact list audience-segment to amend
         explode: false
@@ -156,7 +155,6 @@ paths:
       x-accepts: application/json
     patch:
       description: Add/remove identifiers to or from a contact list audience-segment.
-      operationId: updateContactListIdentifiers
       parameters:
       - description: The id of the contact list audience-segment to amend
         explode: false
@@ -1173,21 +1171,21 @@ paths:
   /preview/marketing-solutions/ad-sets:
     patch:
       description: Patch a list of AdSets.
-      operationId: PatchAdSetsV24Q1
+      operationId: PatchAdSetsV24Q3
       requestBody:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/RequestsPatchAdSetV24Q1'
+              $ref: '#/components/schemas/RequestsPatchAdSetV24Q3'
           application/json:
             schema:
-              $ref: '#/components/schemas/RequestsPatchAdSetV24Q1'
+              $ref: '#/components/schemas/RequestsPatchAdSetV24Q3'
           text/json:
             schema:
-              $ref: '#/components/schemas/RequestsPatchAdSetV24Q1'
+              $ref: '#/components/schemas/RequestsPatchAdSetV24Q3'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/RequestsPatchAdSetV24Q1'
+              $ref: '#/components/schemas/RequestsPatchAdSetV24Q3'
         description: List of adsets to patch.
         x-bodyName: adSets
       responses:
@@ -1195,13 +1193,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ResponsesAdSetIdV24Q1'
+                $ref: '#/components/schemas/ResponsesAdSetIdV24Q3'
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponsesAdSetIdV24Q1'
+                $ref: '#/components/schemas/ResponsesAdSetIdV24Q3'
             text/json:
               schema:
-                $ref: '#/components/schemas/ResponsesAdSetIdV24Q1'
+                $ref: '#/components/schemas/ResponsesAdSetIdV24Q3'
           description: List of patched adSets.
         "401":
           content:
@@ -1222,21 +1220,21 @@ paths:
       x-accepts: application/json
     post:
       description: Create the specified ad set
-      operationId: CreateAdSetV24Q1
+      operationId: CreateAdSetV24Q3
       requestBody:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/CreateAdSetV24Q1Request'
+              $ref: '#/components/schemas/CreateAdSetV24Q3Request'
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateAdSetV24Q1Request'
+              $ref: '#/components/schemas/CreateAdSetV24Q3Request'
           text/json:
             schema:
-              $ref: '#/components/schemas/CreateAdSetV24Q1Request'
+              $ref: '#/components/schemas/CreateAdSetV24Q3Request'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/CreateAdSetV24Q1Request'
+              $ref: '#/components/schemas/CreateAdSetV24Q3Request'
         description: the ad sets to create
         required: true
         x-bodyName: adSet
@@ -1245,13 +1243,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ResponseReadAdSetV24Q1'
+                $ref: '#/components/schemas/ResponseReadAdSetV24Q3'
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseReadAdSetV24Q1'
+                $ref: '#/components/schemas/ResponseReadAdSetV24Q3'
             text/json:
               schema:
-                $ref: '#/components/schemas/ResponseReadAdSetV24Q1'
+                $ref: '#/components/schemas/ResponseReadAdSetV24Q3'
           description: The ad set that has been created and errors / warnings
         "400":
           content:
@@ -1272,34 +1270,34 @@ paths:
   /preview/marketing-solutions/ad-sets/search:
     post:
       description: Search for ad sets
-      operationId: SearchAdSetsV24Q1
+      operationId: SearchAdSetsV24Q3
       requestBody:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/AdSetSearchRequestV24Q1'
+              $ref: '#/components/schemas/AdSetSearchRequestV24Q3'
           application/json:
             schema:
-              $ref: '#/components/schemas/AdSetSearchRequestV24Q1'
+              $ref: '#/components/schemas/AdSetSearchRequestV24Q3'
           text/json:
             schema:
-              $ref: '#/components/schemas/AdSetSearchRequestV24Q1'
+              $ref: '#/components/schemas/AdSetSearchRequestV24Q3'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/AdSetSearchRequestV24Q1'
+              $ref: '#/components/schemas/AdSetSearchRequestV24Q3'
         x-bodyName: request
       responses:
         "200":
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ResponsesReadAdSetV24Q1'
+                $ref: '#/components/schemas/ResponsesReadAdSetV24Q3'
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponsesReadAdSetV24Q1'
+                $ref: '#/components/schemas/ResponsesReadAdSetV24Q3'
             text/json:
               schema:
-                $ref: '#/components/schemas/ResponsesReadAdSetV24Q1'
+                $ref: '#/components/schemas/ResponsesReadAdSetV24Q3'
           description: data for the ad sets
         "400":
           content:
@@ -1427,7 +1425,7 @@ paths:
   /preview/marketing-solutions/ad-sets/{ad-set-id}:
     get:
       description: Get the data for the specified ad set
-      operationId: GetAdSetV24Q1
+      operationId: GetAdSetV24Q3
       parameters:
       - description: Id of the ad set
         explode: false
@@ -1442,13 +1440,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ResponseReadAdSetV24Q1'
+                $ref: '#/components/schemas/ResponseReadAdSetV24Q3'
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseReadAdSetV24Q1'
+                $ref: '#/components/schemas/ResponseReadAdSetV24Q3'
             text/json:
               schema:
-                $ref: '#/components/schemas/ResponseReadAdSetV24Q1'
+                $ref: '#/components/schemas/ResponseReadAdSetV24Q3'
           description: data for the ad set
         "401":
           content:
@@ -2821,23 +2819,23 @@ paths:
           content:
             text/plain:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/xml:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/xml:
               schema:
-                format: byte
+                format: binary
                 type: string
           description: Success
         "400":
@@ -3118,23 +3116,27 @@ paths:
           content:
             text/plain:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/json:
               schema:
-                format: byte
+                format: binary
+                type: string
+            text/csv:
+              schema:
+                format: binary
                 type: string
             application/xml:
               schema:
-                format: byte
+                format: binary
                 type: string
-            text/xml:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
-                format: byte
+                format: binary
                 type: string
           description: Success
         "400":
@@ -3698,27 +3700,27 @@ paths:
           content:
             text/plain:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/csv:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/xml:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
-                format: byte
+                format: binary
                 type: string
           description: Success
         "400":
@@ -3862,27 +3864,27 @@ paths:
           content:
             text/plain:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/csv:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/xml:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
-                format: byte
+                format: binary
                 type: string
           description: Success
         "400":
@@ -7691,92 +7693,6 @@ paths:
           description: Forbidden
       tags:
       - Campaign
-      x-content-type: application/json-patch+json
-      x-accepts: application/json
-  /preview/marketing-solutions/advertisers/{advertiserId}/user-profiles/delete:
-    post:
-      description: This endpoint will Delete User Profiles for a given Advertiser.
-      operationId: DeleteUserProfiles
-      parameters:
-      - description: Criteo Advertiser ID of user profiles' owner
-        explode: false
-        in: path
-        name: advertiserId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/DeleteUserProfileModelListRequest'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DeleteUserProfileModelListRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/DeleteUserProfileModelListRequest'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/DeleteUserProfileModelListRequest'
-        x-bodyName: deleteUserProfileModels
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Success
-        "403":
-          content:
-            application/json: {}
-          description: Forbidden
-      tags:
-      - Audience
-      x-content-type: application/json-patch+json
-      x-accepts: application/json
-  /preview/marketing-solutions/advertisers/{advertiserId}/user-profiles/set:
-    post:
-      description: "This endpoint will Set User Profiles for a given Advertiser. If\
-        \ a User Profile does not exist, a new one will be created. If a User Profile\
-        \ exists, it will be replaced."
-      operationId: SetUserProfiles
-      parameters:
-      - description: Criteo Advertiser ID of user profiles' owner
-        explode: false
-        in: path
-        name: advertiserId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/SetUserProfileModelListRequest'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SetUserProfileModelListRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/SetUserProfileModelListRequest'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/SetUserProfileModelListRequest'
-        x-bodyName: setUserProfileModels
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Success
-        "403":
-          content:
-            application/json: {}
-          description: Forbidden
-      tags:
-      - Audience
       x-content-type: application/json-patch+json
       x-accepts: application/json
 components:
@@ -12224,16 +12140,16 @@ components:
           nullable: true
           type: integer
       type: object
-    ResponsesAdSetIdV24Q1:
+    ResponsesAdSetIdV24Q3:
       description: List of output resources
       example:
         data:
         - attributes: "{}"
           id: id
-          type: AdSetIdV24Q1
+          type: AdSetIdV24Q3
         - attributes: "{}"
           id: id
-          type: AdSetIdV24Q1
+          type: AdSetIdV24Q3
         warnings:
         - traceId: traceId
           traceIdentifier: traceIdentifier
@@ -12279,7 +12195,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/ReadModelAdSetIdV24Q1'
+            $ref: '#/components/schemas/ReadModelAdSetIdV24Q3'
           nullable: true
           readOnly: true
           type: array
@@ -12299,7 +12215,7 @@ components:
           type: array
           x-nullable: true
       type: object
-    ResponseReadAdSetV24Q1:
+    ResponseReadAdSetV24Q3:
       description: output resource
       example:
         data:
@@ -12350,7 +12266,7 @@ components:
               budgetRenewal: undefined
               budgetStrategy: capped
           id: id
-          type: ReadAdSetV24Q1
+          type: ReadAdSetV24Q3
         warnings:
         - traceId: traceId
           traceIdentifier: traceIdentifier
@@ -12395,7 +12311,7 @@ components:
           title: title
       properties:
         data:
-          $ref: '#/components/schemas/ReadModelReadAdSetV24Q1'
+          $ref: '#/components/schemas/ReadModelReadAdSetV24Q3'
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
@@ -12411,7 +12327,7 @@ components:
           type: array
           x-nullable: true
       type: object
-    ResponsesReadAdSetV24Q1:
+    ResponsesReadAdSetV24Q3:
       description: List of output resources
       example:
         data:
@@ -12462,7 +12378,7 @@ components:
               budgetRenewal: undefined
               budgetStrategy: capped
           id: id
-          type: ReadAdSetV24Q1
+          type: ReadAdSetV24Q3
         - attributes:
             schedule:
               endDate:
@@ -12510,7 +12426,7 @@ components:
               budgetRenewal: undefined
               budgetStrategy: capped
           id: id
-          type: ReadAdSetV24Q1
+          type: ReadAdSetV24Q3
         warnings:
         - traceId: traceId
           traceIdentifier: traceIdentifier
@@ -12556,7 +12472,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/ReadModelReadAdSetV24Q1'
+            $ref: '#/components/schemas/ReadModelReadAdSetV24Q3'
           nullable: true
           readOnly: true
           type: array
@@ -13187,7 +13103,7 @@ components:
           type: array
           x-nullable: true
       type: object
-    RequestsPatchAdSetV24Q1:
+    RequestsPatchAdSetV24Q3:
       description: List of input resources
       example:
         data:
@@ -13230,7 +13146,7 @@ components:
               budgetRenewal: undefined
               budgetStrategy: capped
           id: id
-          type: PatchAdSetV24Q1
+          type: PatchAdSetV24Q3
         - attributes:
             targeting:
               geoLocation:
@@ -13270,16 +13186,16 @@ components:
               budgetRenewal: undefined
               budgetStrategy: capped
           id: id
-          type: PatchAdSetV24Q1
+          type: PatchAdSetV24Q3
       properties:
         data:
           items:
-            $ref: '#/components/schemas/WriteModelPatchAdSetV24Q1'
+            $ref: '#/components/schemas/WriteModelPatchAdSetV24Q3'
           nullable: true
           type: array
           x-nullable: true
       type: object
-    CreateAdSetV24Q1Request:
+    CreateAdSetV24Q3Request:
       description: Data model for an input resources
       example:
         data:
@@ -13335,9 +13251,9 @@ components:
           type: AdSet
       properties:
         data:
-          $ref: '#/components/schemas/CreateAdSetV24Q1Resource'
+          $ref: '#/components/schemas/CreateAdSetV24Q3Resource'
       type: object
-    AdSetSearchRequestV24Q1:
+    AdSetSearchRequestV24Q3:
       description: request payload of the search endpoint
       example:
         filters:
@@ -13352,7 +13268,7 @@ components:
           - campaignIds
       properties:
         filters:
-          $ref: '#/components/schemas/AdSetSearchFilterV24Q1'
+          $ref: '#/components/schemas/AdSetSearchFilterV24Q3'
       type: object
     RequestsAdSetId:
       description: List of input resources
@@ -13469,12 +13385,12 @@ components:
         filters:
           $ref: '#/components/schemas/CampaignSearchFiltersV23Q1'
       type: object
-    ReadModelAdSetIdV24Q1:
+    ReadModelAdSetIdV24Q3:
       description: read model data for resources
       example:
         attributes: "{}"
         id: id
-        type: AdSetIdV24Q1
+        type: AdSetIdV24Q3
       properties:
         id:
           description: Id of the entity
@@ -13483,7 +13399,7 @@ components:
           type: string
           x-nullable: true
         type:
-          example: AdSetIdV24Q1
+          example: AdSetIdV24Q3
           nullable: true
           readOnly: true
           type: string
@@ -13492,7 +13408,7 @@ components:
           description: ad set id model
           type: object
       type: object
-    ReadModelReadAdSetV24Q1:
+    ReadModelReadAdSetV24Q3:
       description: read model data for resources
       example:
         attributes:
@@ -13542,7 +13458,7 @@ components:
             budgetRenewal: undefined
             budgetStrategy: capped
         id: id
-        type: ReadAdSetV24Q1
+        type: ReadAdSetV24Q3
       properties:
         id:
           description: Id of the entity
@@ -13551,13 +13467,13 @@ components:
           type: string
           x-nullable: true
         type:
-          example: ReadAdSetV24Q1
+          example: ReadAdSetV24Q3
           nullable: true
           readOnly: true
           type: string
           x-nullable: true
         attributes:
-          $ref: '#/components/schemas/ReadAdSetV24Q1'
+          $ref: '#/components/schemas/ReadAdSetV24Q3'
       type: object
     ReadModelAdSetId:
       description: read model data for resources
@@ -13698,7 +13614,7 @@ components:
           nullable: true
           type: string
       type: object
-    WriteModelPatchAdSetV24Q1:
+    WriteModelPatchAdSetV24Q3:
       description: write model data for resources
       example:
         attributes:
@@ -13740,7 +13656,7 @@ components:
             budgetRenewal: undefined
             budgetStrategy: capped
         id: id
-        type: PatchAdSetV24Q1
+        type: PatchAdSetV24Q3
       properties:
         id:
           description: Id of the entity
@@ -13749,14 +13665,14 @@ components:
           x-nullable: true
         type:
           description: Canonical type name of the entity
-          example: PatchAdSetV24Q1
+          example: PatchAdSetV24Q3
           nullable: true
           type: string
           x-nullable: true
         attributes:
-          $ref: '#/components/schemas/PatchAdSetV24Q1'
+          $ref: '#/components/schemas/PatchAdSetV24Q3'
       type: object
-    CreateAdSetV24Q1Resource:
+    CreateAdSetV24Q3Resource:
       description: Data model for a Resource
       example:
         attributes:
@@ -13811,14 +13727,14 @@ components:
         type: AdSet
       properties:
         attributes:
-          $ref: '#/components/schemas/CreateAdSetV24Q1'
+          $ref: '#/components/schemas/CreateAdSetV24Q3'
         type:
           description: Canonical type name of the entity
           example: AdSet
           nullable: true
           type: string
       type: object
-    AdSetSearchFilterV24Q1:
+    AdSetSearchFilterV24Q3:
       description: filter on ad set ids
       example:
         adSetIds:
@@ -13978,10 +13894,10 @@ components:
           type: array
           x-nullable: true
       type: object
-    AdSetIdV24Q1:
+    AdSetIdV24Q3:
       description: ad set id model
       type: object
-    ReadAdSetV24Q1:
+    ReadAdSetV24Q3:
       description: ad set read model
       example:
         schedule:
@@ -14069,13 +13985,13 @@ components:
           nullable: true
           type: string
         schedule:
-          $ref: '#/components/schemas/ReadAdSetScheduleV24Q1'
+          $ref: '#/components/schemas/ReadAdSetScheduleV24Q3'
         bidding:
-          $ref: '#/components/schemas/ReadAdSetBiddingV24Q1'
+          $ref: '#/components/schemas/ReadAdSetBiddingV24Q3'
         targeting:
-          $ref: '#/components/schemas/AdSetTargetingV24Q1'
+          $ref: '#/components/schemas/AdSetTargetingV24Q3'
         budget:
-          $ref: '#/components/schemas/ReadAdSetBudgetV24Q1'
+          $ref: '#/components/schemas/ReadAdSetBudgetV24Q3'
         mediaType:
           enum:
           - display
@@ -14160,7 +14076,7 @@ components:
           nullable: true
           type: string
       type: object
-    PatchAdSetV24Q1:
+    PatchAdSetV24Q3:
       description: ad set patch model
       example:
         targeting:
@@ -14206,15 +14122,15 @@ components:
           type: string
           x-nullable: true
         scheduling:
-          $ref: '#/components/schemas/PatchAdSetSchedulingV24Q1'
+          $ref: '#/components/schemas/PatchAdSetSchedulingV24Q3'
         bidding:
-          $ref: '#/components/schemas/PatchAdSetBiddingV24Q1'
+          $ref: '#/components/schemas/PatchAdSetBiddingV24Q3'
         targeting:
-          $ref: '#/components/schemas/AdSetTargetingV24Q1'
+          $ref: '#/components/schemas/AdSetTargetingV24Q3'
         budget:
-          $ref: '#/components/schemas/PatchAdSetBudgetV24Q1'
+          $ref: '#/components/schemas/PatchAdSetBudgetV24Q3'
       type: object
-    CreateAdSetV24Q1:
+    CreateAdSetV24Q3:
       description: ad set create model
       example:
         schedule:
@@ -14297,13 +14213,13 @@ components:
           - videoViews
           type: string
         schedule:
-          $ref: '#/components/schemas/CreateAdSetScheduleV24Q1'
+          $ref: '#/components/schemas/CreateAdSetScheduleV24Q3'
         bidding:
-          $ref: '#/components/schemas/CreateAdSetBiddingV24Q1'
+          $ref: '#/components/schemas/CreateAdSetBiddingV24Q3'
         targeting:
-          $ref: '#/components/schemas/CreateAdSetTargetingV24Q1'
+          $ref: '#/components/schemas/CreateAdSetTargetingV24Q3'
         budget:
-          $ref: '#/components/schemas/CreateAdSetBudgetV24Q1'
+          $ref: '#/components/schemas/CreateAdSetBudgetV24Q3'
         trackingCode:
           description: The click tracking code associated to this Ad Set.
           nullable: true
@@ -14401,7 +14317,7 @@ components:
       - name
       - spendLimit
       type: object
-    ReadAdSetScheduleV24Q1:
+    ReadAdSetScheduleV24Q3:
       description: ad set schedule read model
       example:
         endDate:
@@ -14436,7 +14352,7 @@ components:
           nullable: true
           type: string
       type: object
-    ReadAdSetBiddingV24Q1:
+    ReadAdSetBiddingV24Q3:
       description: ad set bidding read model
       example:
         bidAmount: 0.8008281904610115
@@ -14454,7 +14370,7 @@ components:
           description: How spend is controlled
           enum:
           - COS
-          - CPC
+          - maxCPC
           - CPI
           - CPM
           - CPO
@@ -14465,7 +14381,7 @@ components:
           nullable: true
           type: string
       type: object
-    AdSetTargetingV24Q1:
+    AdSetTargetingV24Q3:
       description: ad set targeting model
       example:
         geoLocation:
@@ -14490,13 +14406,13 @@ components:
           - other
       properties:
         deliveryLimitations:
-          $ref: '#/components/schemas/AdSetDeliveryLimitationsV24Q1'
+          $ref: '#/components/schemas/AdSetDeliveryLimitationsV24Q3'
         geoLocation:
-          $ref: '#/components/schemas/AdSetGeoLocationV24Q1'
+          $ref: '#/components/schemas/AdSetGeoLocationV24Q3'
         frequencyCapping:
-          $ref: '#/components/schemas/AdSetFrequencyCappingV24Q1'
+          $ref: '#/components/schemas/AdSetFrequencyCappingV24Q3'
       type: object
-    ReadAdSetBudgetV24Q1:
+    ReadAdSetBudgetV24Q3:
       description: ad set budget read model
       example:
         budgetDeliverySmoothing: accelerated
@@ -14570,7 +14486,7 @@ components:
         spendLimitAmount:
           $ref: '#/components/schemas/NillableDecimal'
       type: object
-    PatchAdSetSchedulingV24Q1:
+    PatchAdSetSchedulingV24Q3:
       description: ad set schedule patch model
       example:
         endDate:
@@ -14583,7 +14499,7 @@ components:
         endDate:
           $ref: '#/components/schemas/NillableDateTime'
       type: object
-    PatchAdSetBiddingV24Q1:
+    PatchAdSetBiddingV24Q3:
       description: ad set bidding patch model
       example:
         bidAmount:
@@ -14592,7 +14508,7 @@ components:
         bidAmount:
           $ref: '#/components/schemas/NillableDecimal'
       type: object
-    PatchAdSetBudgetV24Q1:
+    PatchAdSetBudgetV24Q3:
       description: ad set budget patch model
       example:
         budgetDeliverySmoothing: accelerated
@@ -14642,7 +14558,7 @@ components:
         budgetAmount:
           $ref: '#/components/schemas/NillableDecimal'
       type: object
-    CreateAdSetScheduleV24Q1:
+    CreateAdSetScheduleV24Q3:
       description: ad set schedule create model
       example:
         endDate: 2000-01-23T04:56:07.000+00:00
@@ -14659,7 +14575,7 @@ components:
       required:
       - startDate
       type: object
-    CreateAdSetBiddingV24Q1:
+    CreateAdSetBiddingV24Q3:
       description: ad set bidding create model
       example:
         bidAmount: 0.8008281904610115
@@ -14677,7 +14593,7 @@ components:
           description: How spend is controlled
           enum:
           - COS
-          - CPC
+          - maxCPC
           - CPI
           - CPM
           - CPO
@@ -14689,7 +14605,7 @@ components:
       required:
       - costController
       type: object
-    CreateAdSetTargetingV24Q1:
+    CreateAdSetTargetingV24Q3:
       description: Targeting configuration of the ad set
       example:
         geoLocation:
@@ -14723,15 +14639,15 @@ components:
           - other
       properties:
         deliveryLimitations:
-          $ref: '#/components/schemas/AdSetDeliveryLimitationsV24Q1'
+          $ref: '#/components/schemas/AdSetDeliveryLimitationsV24Q3'
         geoLocation:
-          $ref: '#/components/schemas/CreateAdSetGeoLocationV24Q1'
+          $ref: '#/components/schemas/CreateAdSetGeoLocationV24Q3'
         frequencyCapping:
-          $ref: '#/components/schemas/AdSetFrequencyCappingV24Q1'
+          $ref: '#/components/schemas/AdSetFrequencyCappingV24Q3'
       required:
       - frequencyCapping
       type: object
-    CreateAdSetBudgetV24Q1:
+    CreateAdSetBudgetV24Q3:
       description: ad set budget create model
       example:
         budgetDeliverySmoothing: accelerated
@@ -14851,7 +14767,7 @@ components:
           type: string
           x-nullable: true
       type: object
-    AdSetDeliveryLimitationsV24Q1:
+    AdSetDeliveryLimitationsV24Q3:
       description: ad set delivery limitations model
       example:
         operatingSystems:
@@ -14895,7 +14811,7 @@ components:
           type: array
           x-nullable: true
       type: object
-    AdSetGeoLocationV24Q1:
+    AdSetGeoLocationV24Q3:
       description: ad set geolocation model
       example:
         zipCodes:
@@ -14906,13 +14822,13 @@ components:
           value: null
       properties:
         countries:
-          $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q1'
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q3'
         subdivisions:
-          $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q1'
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q3'
         zipCodes:
-          $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q1'
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q3'
       type: object
-    AdSetFrequencyCappingV24Q1:
+    AdSetFrequencyCappingV24Q3:
       description: ad set frequency capping model
       example:
         maximumImpressions: 6
@@ -14946,7 +14862,7 @@ components:
           x-nullable: true
       type: object
       x-nullable: true
-    CreateAdSetGeoLocationV24Q1:
+    CreateAdSetGeoLocationV24Q3:
       description: Geolocation configuration of the ad set
       example:
         zipCodes:
@@ -14966,13 +14882,13 @@ components:
           operand: undefined
       properties:
         countries:
-          $ref: '#/components/schemas/AdSetTargetingRuleV24Q1'
+          $ref: '#/components/schemas/AdSetTargetingRuleV24Q3'
         subdivisions:
-          $ref: '#/components/schemas/AdSetTargetingRuleV24Q1'
+          $ref: '#/components/schemas/AdSetTargetingRuleV24Q3'
         zipCodes:
-          $ref: '#/components/schemas/AdSetTargetingRuleV24Q1'
+          $ref: '#/components/schemas/AdSetTargetingRuleV24Q3'
       type: object
-    NillableAdSetTargetingRuleV24Q1:
+    NillableAdSetTargetingRuleV24Q3:
       description: "structure that encapsulates an object that have valid business\
         \ null values. If the structure is provided (i.e. not null), then the value\
         \ in it, even null, is provided."
@@ -14980,9 +14896,9 @@ components:
         value: null
       properties:
         value:
-          $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q1_value'
+          $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q3_value'
       type: object
-    AdSetTargetingRuleV24Q1:
+    AdSetTargetingRuleV24Q3:
       description: ad set targeting rule model
       example:
         values:
@@ -20158,6 +20074,9 @@ components:
             videoPlacement:
             - InBanner
             - InBanner
+            videoPlcmt:
+            - InStream
+            - InStream
             skippable: Required
             videoPlayerSize:
             - Small
@@ -20395,6 +20314,9 @@ components:
             videoPlacement:
             - InBanner
             - InBanner
+            videoPlcmt:
+            - InStream
+            - InStream
             skippable: Required
             videoPlayerSize:
             - Small
@@ -20484,6 +20406,9 @@ components:
           videoPlacement:
           - InBanner
           - InBanner
+          videoPlcmt:
+          - InStream
+          - InStream
           skippable: Required
           videoPlayerSize:
           - Small
@@ -20559,6 +20484,9 @@ components:
           videoPlacement:
           - InBanner
           - InBanner
+          videoPlcmt:
+          - InStream
+          - InStream
           skippable: Required
           videoPlayerSize:
           - Small
@@ -20625,6 +20553,9 @@ components:
         videoPlacement:
         - InBanner
         - InBanner
+        videoPlcmt:
+        - InStream
+        - InStream
         skippable: Required
         videoPlayerSize:
         - Small
@@ -20641,6 +20572,17 @@ components:
             - InFeed
             - Interstitial
             - InStream
+            type: string
+          nullable: true
+          type: array
+          uniqueItems: false
+        videoPlcmt:
+          items:
+            enum:
+            - InStream
+            - AccompanyingContent
+            - Interstitial
+            - NoContentStandalone
             type: string
           nullable: true
           type: array
@@ -20738,6 +20680,9 @@ components:
         videoPlacement:
         - InBanner
         - InBanner
+        videoPlcmt:
+        - InStream
+        - InStream
         skippable: Required
         videoPlayerSize:
         - Small
@@ -20754,6 +20699,17 @@ components:
             - InFeed
             - Interstitial
             - InStream
+            type: string
+          nullable: true
+          type: array
+          uniqueItems: false
+        videoPlcmt:
+          items:
+            enum:
+            - InStream
+            - AccompanyingContent
+            - Interstitial
+            - NoContentStandalone
             type: string
           nullable: true
           type: array
@@ -21867,6 +21823,24 @@ components:
         numberOfProductsWithErrors: 5
         importRequestTimestamp: 0
         numberOfProductsInTheBatch: 6
+        numberOfProductsWithWarnings: 2
+        warningDetails:
+        - productId: productId
+          warnings:
+          - type: OverlargeBadgeUrl
+            message: message
+            isServerRelated: true
+          - type: OverlargeBadgeUrl
+            message: message
+            isServerRelated: true
+        - productId: productId
+          warnings:
+          - type: OverlargeBadgeUrl
+            message: message
+            isServerRelated: true
+          - type: OverlargeBadgeUrl
+            message: message
+            isServerRelated: true
         numberOfProductsDeleted: 5
         numberOfProductsUpserted: 1
         status: ACCEPTED
@@ -21924,6 +21898,15 @@ components:
           items:
             $ref: '#/components/schemas/ReportDetailErrors'
           type: array
+        numberOfProductsWithWarnings:
+          description: The number of products with Warnings.
+          format: int32
+          type: integer
+        warningDetails:
+          description: The list of Warnings with details.
+          items:
+            $ref: '#/components/schemas/ReportDetailWarnings'
+          type: array
       required:
       - errorDetails
       - importRequestTimestamp
@@ -21931,7 +21914,9 @@ components:
       - numberOfProductsInTheBatch
       - numberOfProductsUpserted
       - numberOfProductsWithErrors
+      - numberOfProductsWithWarnings
       - status
+      - warningDetails
       type: object
     ProductsCustomBatchRequest:
       description: Defines a batch of operations.
@@ -22026,6 +22011,7 @@ components:
             mobileLink: mobileLink
             targetCountry: targetCountry
             taxCategory: taxCategory
+            badge: badge
             condition: condition
             externalSellerName: externalSellerName
             minEnergyEfficiencyClass: minEnergyEfficiencyClass
@@ -22191,6 +22177,7 @@ components:
             mobileLink: mobileLink
             targetCountry: targetCountry
             taxCategory: taxCategory
+            badge: badge
             condition: condition
             externalSellerName: externalSellerName
             minEnergyEfficiencyClass: minEnergyEfficiencyClass
@@ -22299,6 +22286,28 @@ components:
       - errors
       - productId
       type: object
+    ReportDetailWarnings:
+      description: A list of warnings on a batch operation.
+      example:
+        productId: productId
+        warnings:
+        - type: OverlargeBadgeUrl
+          message: message
+          isServerRelated: true
+        - type: OverlargeBadgeUrl
+          message: message
+          isServerRelated: true
+      properties:
+        productId:
+          type: string
+        warnings:
+          items:
+            $ref: '#/components/schemas/ReportDetailWarning'
+          type: array
+      required:
+      - productId
+      - warnings
+      type: object
     ProductsCustomBatchRequestEntry:
       description: A product event for a batch request.
       example:
@@ -22391,6 +22400,7 @@ components:
           mobileLink: mobileLink
           targetCountry: targetCountry
           taxCategory: taxCategory
+          badge: badge
           condition: condition
           externalSellerName: externalSellerName
           minEnergyEfficiencyClass: minEnergyEfficiencyClass
@@ -22539,6 +22549,27 @@ components:
       - message
       - type
       type: object
+    ReportDetailWarning:
+      description: A warning on a batch operation.
+      example:
+        type: OverlargeBadgeUrl
+        message: message
+        isServerRelated: true
+      properties:
+        type:
+          enum:
+          - OverlargeBadgeUrl
+          - InvalidBadgeUrl
+          type: string
+        message:
+          type: string
+        isServerRelated:
+          type: boolean
+      required:
+      - isServerRelated
+      - message
+      - type
+      type: object
     Product:
       description: Defines a product to be inserted or updated.
       example:
@@ -22630,6 +22661,7 @@ components:
         mobileLink: mobileLink
         targetCountry: targetCountry
         taxCategory: taxCategory
+        badge: badge
         condition: condition
         externalSellerName: externalSellerName
         minEnergyEfficiencyClass: minEnergyEfficiencyClass
@@ -23062,6 +23094,10 @@ components:
           type: integer
         productRating:
           description: The product rating for the product
+          nullable: true
+          type: string
+        badge:
+          description: URL of a badge image to display on the product.
           nullable: true
           type: string
       required:
@@ -24479,188 +24515,6 @@ components:
           nullable: true
           type: boolean
       type: object
-    DeleteUserProfileModelListRequest:
-      description: A top-level object that encapsulates a Criteo API request for several
-        values
-      example:
-        data:
-        - attributes:
-            userProfileId: userProfileId
-            userProfileListId: userProfileListId
-          type: type
-        - attributes:
-            userProfileId: userProfileId
-            userProfileListId: userProfileListId
-          type: type
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/DeleteUserProfileModelResource'
-          nullable: true
-          type: array
-          uniqueItems: false
-      type: object
-    SetUserProfileModelListRequest:
-      description: A top-level object that encapsulates a Criteo API request for several
-        values
-      example:
-        data:
-        - attributes:
-            userProfileIdentifiers:
-            - type: type
-              value: value
-            - type: type
-              value: value
-            userProfileId: userProfileId
-            userProfileAttributes:
-            - value: value
-              key: key
-            - value: value
-              key: key
-            userProfileListId: userProfileListId
-          type: type
-        - attributes:
-            userProfileIdentifiers:
-            - type: type
-              value: value
-            - type: type
-              value: value
-            userProfileId: userProfileId
-            userProfileAttributes:
-            - value: value
-              key: key
-            - value: value
-              key: key
-            userProfileListId: userProfileListId
-          type: type
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/SetUserProfileModelResource'
-          nullable: true
-          type: array
-          uniqueItems: false
-      type: object
-    DeleteUserProfileModelResource:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value
-      example:
-        attributes:
-          userProfileId: userProfileId
-          userProfileListId: userProfileListId
-        type: type
-      properties:
-        type:
-          nullable: true
-          type: string
-        attributes:
-          $ref: '#/components/schemas/DeleteUserProfileModel'
-      type: object
-    SetUserProfileModelResource:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value
-      example:
-        attributes:
-          userProfileIdentifiers:
-          - type: type
-            value: value
-          - type: type
-            value: value
-          userProfileId: userProfileId
-          userProfileAttributes:
-          - value: value
-            key: key
-          - value: value
-            key: key
-          userProfileListId: userProfileListId
-        type: type
-      properties:
-        type:
-          nullable: true
-          type: string
-        attributes:
-          $ref: '#/components/schemas/SetUserProfileModel'
-      type: object
-    DeleteUserProfileModel:
-      description: Used for the /user-profiles/delete endpoint. Contains information
-        about the user profile that we delete
-      example:
-        userProfileId: userProfileId
-        userProfileListId: userProfileListId
-      properties:
-        userProfileId:
-          type: string
-        userProfileListId:
-          nullable: true
-          type: string
-      required:
-      - userProfileId
-      type: object
-    SetUserProfileModel:
-      description: Used for the /user-profiles/set endpoint. Contains information
-        about the user profile that we add or update
-      example:
-        userProfileIdentifiers:
-        - type: type
-          value: value
-        - type: type
-          value: value
-        userProfileId: userProfileId
-        userProfileAttributes:
-        - value: value
-          key: key
-        - value: value
-          key: key
-        userProfileListId: userProfileListId
-      properties:
-        userProfileId:
-          type: string
-        userProfileListId:
-          nullable: true
-          type: string
-        userProfileIdentifiers:
-          items:
-            $ref: '#/components/schemas/UserProfileIdentifierModel'
-          nullable: true
-          type: array
-          uniqueItems: false
-        userProfileAttributes:
-          items:
-            $ref: '#/components/schemas/UserProfileAttributeModel'
-          nullable: true
-          type: array
-          uniqueItems: false
-      required:
-      - userProfileId
-      type: object
-    UserProfileIdentifierModel:
-      description: Identifier of a user profile
-      example:
-        type: type
-        value: value
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-      required:
-      - type
-      - value
-      type: object
-    UserProfileAttributeModel:
-      description: Attributes of a user profile
-      example:
-        value: value
-        key: key
-      properties:
-        key:
-          type: string
-        value:
-          type: string
-      required:
-      - key
-      - value
-      type: object
     ContactlistOperation_attributes:
       description: the contactlist operation attributes
       example:
@@ -24723,7 +24577,6 @@ components:
           - madid
           - identityLink
           - gum
-          - customerid
           - phoneNumber
           example: email
           type: string
@@ -24767,12 +24620,11 @@ components:
           - madid
           - identityLink
           - gum
-          - customerid
           - phoneNumber
           nullable: true
           type: string
         identifiers:
-          description: "The users tos add or remove, each in the schema specified"
+          description: "The users to add or remove, each in the schema specified"
           items:
             type: string
           type: array
@@ -24785,9 +24637,9 @@ components:
       - identifiers
       - operation
       type: object
-    NillableAdSetTargetingRuleV24Q1_value:
+    NillableAdSetTargetingRuleV24Q3_value:
       allOf:
-      - $ref: '#/components/schemas/AdSetTargetingRuleV24Q1'
+      - $ref: '#/components/schemas/AdSetTargetingRuleV24Q3'
       nullable: true
       type: object
       x-nullable: true

@@ -16,7 +16,7 @@ package com.criteo.api.retailmedia.preview.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.retailmedia.preview.model.RmContactListV1;
-import com.criteo.api.retailmedia.preview.model.RmUserBehaviorV1;
+import com.criteo.api.retailmedia.preview.model.RmEventsV1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -79,7 +79,7 @@ public class RmAudienceSegmentEntityV1 {
     
     CONTACTLIST("ContactList"),
     
-    USERBEHAVIOR("UserBehavior");
+    EVENTS("Events");
 
     private String value;
 
@@ -139,9 +139,9 @@ public class RmAudienceSegmentEntityV1 {
   @SerializedName(SERIALIZED_NAME_CONTACT_LIST)
   private RmContactListV1 contactList;
 
-  public static final String SERIALIZED_NAME_USER_BEHAVIOR = "userBehavior";
-  @SerializedName(SERIALIZED_NAME_USER_BEHAVIOR)
-  private RmUserBehaviorV1 userBehavior;
+  public static final String SERIALIZED_NAME_EVENTS = "events";
+  @SerializedName(SERIALIZED_NAME_EVENTS)
+  private RmEventsV1 events;
 
   /**
    * Gets or Sets channels
@@ -397,25 +397,25 @@ public class RmAudienceSegmentEntityV1 {
   }
 
 
-  public RmAudienceSegmentEntityV1 userBehavior(RmUserBehaviorV1 userBehavior) {
+  public RmAudienceSegmentEntityV1 events(RmEventsV1 events) {
     
-    this.userBehavior = userBehavior;
+    this.events = events;
     return this;
   }
 
    /**
-   * Get userBehavior
-   * @return userBehavior
+   * Get events
+   * @return events
   **/
   @javax.annotation.Nullable
 
-  public RmUserBehaviorV1 getUserBehavior() {
-    return userBehavior;
+  public RmEventsV1 getEvents() {
+    return events;
   }
 
 
-  public void setUserBehavior(RmUserBehaviorV1 userBehavior) {
-    this.userBehavior = userBehavior;
+  public void setEvents(RmEventsV1 events) {
+    this.events = events;
   }
 
 
@@ -512,7 +512,7 @@ public class RmAudienceSegmentEntityV1 {
         Objects.equals(this.updatedAt, rmAudienceSegmentEntityV1.updatedAt) &&
         Objects.equals(this.createdById, rmAudienceSegmentEntityV1.createdById) &&
         Objects.equals(this.contactList, rmAudienceSegmentEntityV1.contactList) &&
-        Objects.equals(this.userBehavior, rmAudienceSegmentEntityV1.userBehavior) &&
+        Objects.equals(this.events, rmAudienceSegmentEntityV1.events) &&
         Objects.equals(this.channels, rmAudienceSegmentEntityV1.channels)&&
         Objects.equals(this.additionalProperties, rmAudienceSegmentEntityV1.additionalProperties);
   }
@@ -523,7 +523,7 @@ public class RmAudienceSegmentEntityV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, name, description, retailerId, type, createdAt, updatedAt, createdById, contactList, userBehavior, channels, additionalProperties);
+    return Objects.hash(accountId, name, description, retailerId, type, createdAt, updatedAt, createdById, contactList, events, channels, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -546,7 +546,7 @@ public class RmAudienceSegmentEntityV1 {
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    createdById: ").append(toIndentedString(createdById)).append("\n");
     sb.append("    contactList: ").append(toIndentedString(contactList)).append("\n");
-    sb.append("    userBehavior: ").append(toIndentedString(userBehavior)).append("\n");
+    sb.append("    events: ").append(toIndentedString(events)).append("\n");
     sb.append("    channels: ").append(toIndentedString(channels)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -580,7 +580,7 @@ public class RmAudienceSegmentEntityV1 {
     openapiFields.add("updatedAt");
     openapiFields.add("createdById");
     openapiFields.add("contactList");
-    openapiFields.add("userBehavior");
+    openapiFields.add("events");
     openapiFields.add("channels");
 
     // a set of required properties/fields (JSON key names)
@@ -621,9 +621,9 @@ public class RmAudienceSegmentEntityV1 {
       if (jsonObj.get("contactList") != null && !jsonObj.get("contactList").isJsonNull()) {
         RmContactListV1.validateJsonObject(jsonObj.getAsJsonObject("contactList"));
       }
-      // validate the optional field `userBehavior`
-      if (jsonObj.get("userBehavior") != null && !jsonObj.get("userBehavior").isJsonNull()) {
-        RmUserBehaviorV1.validateJsonObject(jsonObj.getAsJsonObject("userBehavior"));
+      // validate the optional field `events`
+      if (jsonObj.get("events") != null && !jsonObj.get("events").isJsonNull()) {
+        RmEventsV1.validateJsonObject(jsonObj.getAsJsonObject("events"));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("channels") != null && !jsonObj.get("channels").isJsonArray()) {

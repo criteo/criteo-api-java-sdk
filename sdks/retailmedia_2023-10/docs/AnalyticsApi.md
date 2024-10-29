@@ -1,6 +1,6 @@
 # AnalyticsApi
 
-All URIs are relative to *https://api.criteo.com*
+All URIs are relative to *https://api.criteo.com*. Please check the detailed instructions about this API at [https://developers.criteo.com/](https://developers.criteo.com/).
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
@@ -18,7 +18,7 @@ All URIs are relative to *https://api.criteo.com*
 
 
 
-Return an asynchronous Campaigns Report
+Return an asynchronous Campaigns Report This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -109,7 +109,7 @@ public class Example {
 
 
 
-Returns an asynchronous Line Items Report
+Returns an asynchronous Line Items Report This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -200,7 +200,7 @@ public class Example {
 
 
 
-Returns an asynchronous Revenue Report
+Returns an asynchronous Revenue Report This endpoint is subject to specific rate limits.
 
 ### Example
 

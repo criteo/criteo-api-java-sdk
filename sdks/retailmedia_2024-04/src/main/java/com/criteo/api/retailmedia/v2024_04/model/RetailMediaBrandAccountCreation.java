@@ -59,6 +59,10 @@ public class RetailMediaBrandAccountCreation {
   @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
   private String companyName;
 
+  public static final String SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME = "onBehalfCompanyName";
+  @SerializedName(SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME)
+  private String onBehalfCompanyName;
+
   public static final String SERIALIZED_NAME_BRANDS = "brands";
   @SerializedName(SERIALIZED_NAME_BRANDS)
   private List<Long> brands = null;
@@ -95,7 +99,7 @@ public class RetailMediaBrandAccountCreation {
   }
 
    /**
-   * Display name for reporting the owning entity of ads for the Digital Services Act in the European Union
+   * Paying entity name of ads for the Digital Services Act
    * @return companyName
   **/
   @javax.annotation.Nullable
@@ -107,6 +111,28 @@ public class RetailMediaBrandAccountCreation {
 
   public void setCompanyName(String companyName) {
     this.companyName = companyName;
+  }
+
+
+  public RetailMediaBrandAccountCreation onBehalfCompanyName(String onBehalfCompanyName) {
+    
+    this.onBehalfCompanyName = onBehalfCompanyName;
+    return this;
+  }
+
+   /**
+   * On behalf entity name of ads for the Digital Services Act
+   * @return onBehalfCompanyName
+  **/
+  @javax.annotation.Nullable
+
+  public String getOnBehalfCompanyName() {
+    return onBehalfCompanyName;
+  }
+
+
+  public void setOnBehalfCompanyName(String onBehalfCompanyName) {
+    this.onBehalfCompanyName = onBehalfCompanyName;
   }
 
 
@@ -152,6 +178,7 @@ public class RetailMediaBrandAccountCreation {
     RetailMediaBrandAccountCreation retailMediaBrandAccountCreation = (RetailMediaBrandAccountCreation) o;
     return Objects.equals(this.name, retailMediaBrandAccountCreation.name) &&
         Objects.equals(this.companyName, retailMediaBrandAccountCreation.companyName) &&
+        Objects.equals(this.onBehalfCompanyName, retailMediaBrandAccountCreation.onBehalfCompanyName) &&
         Objects.equals(this.brands, retailMediaBrandAccountCreation.brands);
   }
 
@@ -161,7 +188,7 @@ public class RetailMediaBrandAccountCreation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, companyName, brands);
+    return Objects.hash(name, companyName, onBehalfCompanyName, brands);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -177,6 +204,7 @@ public class RetailMediaBrandAccountCreation {
     sb.append("class RetailMediaBrandAccountCreation {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
+    sb.append("    onBehalfCompanyName: ").append(toIndentedString(onBehalfCompanyName)).append("\n");
     sb.append("    brands: ").append(toIndentedString(brands)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -202,6 +230,7 @@ public class RetailMediaBrandAccountCreation {
     openapiFields = new HashSet<String>();
     openapiFields.add("name");
     openapiFields.add("companyName");
+    openapiFields.add("onBehalfCompanyName");
     openapiFields.add("brands");
 
     // a set of required properties/fields (JSON key names)
@@ -233,6 +262,9 @@ public class RetailMediaBrandAccountCreation {
       }
       if ((jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) && !jsonObj.get("companyName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
+      }
+      if ((jsonObj.get("onBehalfCompanyName") != null && !jsonObj.get("onBehalfCompanyName").isJsonNull()) && !jsonObj.get("onBehalfCompanyName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `onBehalfCompanyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("onBehalfCompanyName").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("brands") != null && !jsonObj.get("brands").isJsonArray()) {

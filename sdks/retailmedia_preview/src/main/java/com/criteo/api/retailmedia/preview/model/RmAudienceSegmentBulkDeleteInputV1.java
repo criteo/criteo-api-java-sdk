@@ -48,7 +48,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Input to delete one or more segments.
+ * A top-level object that encapsulates a Criteo API request for several entities.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RmAudienceSegmentBulkDeleteInputV1 {

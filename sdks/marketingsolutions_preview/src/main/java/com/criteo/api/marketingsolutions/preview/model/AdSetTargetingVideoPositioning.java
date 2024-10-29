@@ -109,6 +109,61 @@ public class AdSetTargetingVideoPositioning {
   private List<VideoPlacementEnum> videoPlacement = null;
 
   /**
+   * Gets or Sets videoPlcmt
+   */
+  @JsonAdapter(VideoPlcmtEnum.Adapter.class)
+  public enum VideoPlcmtEnum {
+    INSTREAM("InStream"),
+    
+    ACCOMPANYINGCONTENT("AccompanyingContent"),
+    
+    INTERSTITIAL("Interstitial"),
+    
+    NOCONTENTSTANDALONE("NoContentStandalone");
+
+    private String value;
+
+    VideoPlcmtEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static VideoPlcmtEnum fromValue(String value) {
+      for (VideoPlcmtEnum b : VideoPlcmtEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<VideoPlcmtEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final VideoPlcmtEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public VideoPlcmtEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return VideoPlcmtEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_VIDEO_PLCMT = "videoPlcmt";
+  @SerializedName(SERIALIZED_NAME_VIDEO_PLCMT)
+  private List<VideoPlcmtEnum> videoPlcmt = null;
+
+  /**
    * Gets or Sets playbackMethod
    */
   @JsonAdapter(PlaybackMethodEnum.Adapter.class)
@@ -412,6 +467,36 @@ public class AdSetTargetingVideoPositioning {
   }
 
 
+  public AdSetTargetingVideoPositioning videoPlcmt(List<VideoPlcmtEnum> videoPlcmt) {
+    
+    this.videoPlcmt = videoPlcmt;
+    return this;
+  }
+
+  public AdSetTargetingVideoPositioning addVideoPlcmtItem(VideoPlcmtEnum videoPlcmtItem) {
+    if (this.videoPlcmt == null) {
+      this.videoPlcmt = null;
+    }
+    this.videoPlcmt.add(videoPlcmtItem);
+    return this;
+  }
+
+   /**
+   * Get videoPlcmt
+   * @return videoPlcmt
+  **/
+  @javax.annotation.Nullable
+
+  public List<VideoPlcmtEnum> getVideoPlcmt() {
+    return videoPlcmt;
+  }
+
+
+  public void setVideoPlcmt(List<VideoPlcmtEnum> videoPlcmt) {
+    this.videoPlcmt = videoPlcmt;
+  }
+
+
   public AdSetTargetingVideoPositioning playbackMethod(List<PlaybackMethodEnum> playbackMethod) {
     
     this.playbackMethod = playbackMethod;
@@ -609,6 +694,7 @@ public class AdSetTargetingVideoPositioning {
     }
     AdSetTargetingVideoPositioning adSetTargetingVideoPositioning = (AdSetTargetingVideoPositioning) o;
     return Objects.equals(this.videoPlacement, adSetTargetingVideoPositioning.videoPlacement) &&
+        Objects.equals(this.videoPlcmt, adSetTargetingVideoPositioning.videoPlcmt) &&
         Objects.equals(this.playbackMethod, adSetTargetingVideoPositioning.playbackMethod) &&
         Objects.equals(this.skippable, adSetTargetingVideoPositioning.skippable) &&
         Objects.equals(this.videoInStreamPosition, adSetTargetingVideoPositioning.videoInStreamPosition) &&
@@ -623,7 +709,7 @@ public class AdSetTargetingVideoPositioning {
 
   @Override
   public int hashCode() {
-    return Objects.hash(videoPlacement, playbackMethod, skippable, videoInStreamPosition, videoPlayerSize, videoAspectRatio, additionalProperties);
+    return Objects.hash(videoPlacement, videoPlcmt, playbackMethod, skippable, videoInStreamPosition, videoPlayerSize, videoAspectRatio, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -638,6 +724,7 @@ public class AdSetTargetingVideoPositioning {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdSetTargetingVideoPositioning {\n");
     sb.append("    videoPlacement: ").append(toIndentedString(videoPlacement)).append("\n");
+    sb.append("    videoPlcmt: ").append(toIndentedString(videoPlcmt)).append("\n");
     sb.append("    playbackMethod: ").append(toIndentedString(playbackMethod)).append("\n");
     sb.append("    skippable: ").append(toIndentedString(skippable)).append("\n");
     sb.append("    videoInStreamPosition: ").append(toIndentedString(videoInStreamPosition)).append("\n");
@@ -667,6 +754,7 @@ public class AdSetTargetingVideoPositioning {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("videoPlacement");
+    openapiFields.add("videoPlcmt");
     openapiFields.add("playbackMethod");
     openapiFields.add("skippable");
     openapiFields.add("videoInStreamPosition");
@@ -692,6 +780,10 @@ public class AdSetTargetingVideoPositioning {
       // ensure the optional json data is an array if present
       if (jsonObj.get("videoPlacement") != null && !jsonObj.get("videoPlacement").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `videoPlacement` to be an array in the JSON string but got `%s`", jsonObj.get("videoPlacement").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("videoPlcmt") != null && !jsonObj.get("videoPlcmt").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `videoPlcmt` to be an array in the JSON string but got `%s`", jsonObj.get("videoPlcmt").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("playbackMethod") != null && !jsonObj.get("playbackMethod").isJsonArray()) {

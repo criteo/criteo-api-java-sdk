@@ -10,7 +10,7 @@ the name of the entity type
 |------------ | ------------- | ------------- | -------------|
 |**operation** | [**OperationEnum**](#OperationEnum) | Operation to add or remove users |  |
 |**identifierType** | [**IdentifierTypeEnum**](#IdentifierTypeEnum) | What type of identifiers are used |  [optional] |
-|**identifiers** | **List&lt;String&gt;** | The users tos add or remove, each in the schema specified |  |
+|**identifiers** | **List&lt;String&gt;** | The users to add or remove, each in the schema specified |  |
 |**gumCallerId** | **Integer** | The Gum caller id of the advertiser patching identifiers of type Gum |  [optional] |
 
 
@@ -32,7 +32,6 @@ the name of the entity type
 | MADID | &quot;madid&quot; |
 | IDENTITYLINK | &quot;identityLink&quot; |
 | GUM | &quot;gum&quot; |
-| CUSTOMERID | &quot;customerid&quot; |
 | PHONENUMBER | &quot;phoneNumber&quot; |
 
 

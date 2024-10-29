@@ -1,6 +1,6 @@
 # CampaignApi
 
-All URIs are relative to *https://api.criteo.com*
+All URIs are relative to *https://api.criteo.com*. Please check the detailed instructions about this API at [https://developers.criteo.com/](https://developers.criteo.com/).
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|

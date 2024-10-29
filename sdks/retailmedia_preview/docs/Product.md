@@ -89,6 +89,7 @@ Defines a product to be inserted or updated.
 |**externalSellerName** | **String** | The external name of the seller (case sensitive and 50 UTF8 characters max). This information is required by the Criteo Offsite Ads. |  [optional] |
 |**numberOfReviews** | **Integer** | The number of customer reviews for the product |  [optional] |
 |**productRating** | **String** | The product rating for the product |  [optional] |
+|**badge** | **String** | URL of a badge image to display on the product. |  [optional] |
 
 
 

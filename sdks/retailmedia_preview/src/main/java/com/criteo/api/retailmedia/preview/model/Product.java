@@ -430,6 +430,10 @@ public class Product {
   @SerializedName(SERIALIZED_NAME_PRODUCT_RATING)
   private String productRating;
 
+  public static final String SERIALIZED_NAME_BADGE = "badge";
+  @SerializedName(SERIALIZED_NAME_BADGE)
+  private String badge;
+
   public Product() {
   }
 
@@ -2310,6 +2314,28 @@ public class Product {
     this.productRating = productRating;
   }
 
+
+  public Product badge(String badge) {
+    
+    this.badge = badge;
+    return this;
+  }
+
+   /**
+   * URL of a badge image to display on the product.
+   * @return badge
+  **/
+  @javax.annotation.Nullable
+
+  public String getBadge() {
+    return badge;
+  }
+
+
+  public void setBadge(String badge) {
+    this.badge = badge;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -2445,7 +2471,8 @@ public class Product {
         Objects.equals(this.externalSellerId, product.externalSellerId) &&
         Objects.equals(this.externalSellerName, product.externalSellerName) &&
         Objects.equals(this.numberOfReviews, product.numberOfReviews) &&
-        Objects.equals(this.productRating, product.productRating)&&
+        Objects.equals(this.productRating, product.productRating) &&
+        Objects.equals(this.badge, product.badge)&&
         Objects.equals(this.additionalProperties, product.additionalProperties);
   }
 
@@ -2455,7 +2482,7 @@ public class Product {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, offerId, title, description, link, imageLink, additionalImageLinks, contentLanguage, targetCountry, channel, expirationDate, adult, kind, brand, color, googleProductCategory, gtin, itemGroupId, material, mpn, pattern, price, salePrice, salePriceEffectiveDate, shipping, shippingWeight, sizes, taxes, customAttributes, identifierExists, installment, loyaltyPoints, multipack, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, isBundle, mobileLink, availabilityDate, shippingLabel, unitPricingMeasure, unitPricingBaseMeasure, shippingLength, shippingWidth, shippingHeight, displayAdsId, displayAdsSimilarIds, displayAdsTitle, displayAdsLink, displayAdsValue, sellOnGoogleQuantity, promotionIds, maxHandlingTime, minHandlingTime, costOfGoodsSold, source, includedDestinations, excludedDestinations, adsGrouping, adsLabels, adsRedirect, productTypes, productTypeKeys, ageGroup, availability, condition, gender, sizeSystem, sizeType, energyEfficiencyClass, minEnergyEfficiencyClass, maxEnergyEfficiencyClass, taxCategory, transitTimeLabel, sellerId, externalSellerId, externalSellerName, numberOfReviews, productRating, additionalProperties);
+    return Objects.hash(id, offerId, title, description, link, imageLink, additionalImageLinks, contentLanguage, targetCountry, channel, expirationDate, adult, kind, brand, color, googleProductCategory, gtin, itemGroupId, material, mpn, pattern, price, salePrice, salePriceEffectiveDate, shipping, shippingWeight, sizes, taxes, customAttributes, identifierExists, installment, loyaltyPoints, multipack, customLabel0, customLabel1, customLabel2, customLabel3, customLabel4, isBundle, mobileLink, availabilityDate, shippingLabel, unitPricingMeasure, unitPricingBaseMeasure, shippingLength, shippingWidth, shippingHeight, displayAdsId, displayAdsSimilarIds, displayAdsTitle, displayAdsLink, displayAdsValue, sellOnGoogleQuantity, promotionIds, maxHandlingTime, minHandlingTime, costOfGoodsSold, source, includedDestinations, excludedDestinations, adsGrouping, adsLabels, adsRedirect, productTypes, productTypeKeys, ageGroup, availability, condition, gender, sizeSystem, sizeType, energyEfficiencyClass, minEnergyEfficiencyClass, maxEnergyEfficiencyClass, taxCategory, transitTimeLabel, sellerId, externalSellerId, externalSellerName, numberOfReviews, productRating, badge, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -2550,6 +2577,7 @@ public class Product {
     sb.append("    externalSellerName: ").append(toIndentedString(externalSellerName)).append("\n");
     sb.append("    numberOfReviews: ").append(toIndentedString(numberOfReviews)).append("\n");
     sb.append("    productRating: ").append(toIndentedString(productRating)).append("\n");
+    sb.append("    badge: ").append(toIndentedString(badge)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -2654,6 +2682,7 @@ public class Product {
     openapiFields.add("externalSellerName");
     openapiFields.add("numberOfReviews");
     openapiFields.add("productRating");
+    openapiFields.add("badge");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -2951,6 +2980,9 @@ public class Product {
       }
       if ((jsonObj.get("productRating") != null && !jsonObj.get("productRating").isJsonNull()) && !jsonObj.get("productRating").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `productRating` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productRating").toString()));
+      }
+      if ((jsonObj.get("badge") != null && !jsonObj.get("badge").isJsonNull()) && !jsonObj.get("badge").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `badge` to be a primitive type in the JSON string but got `%s`", jsonObj.get("badge").toString()));
       }
   }
 

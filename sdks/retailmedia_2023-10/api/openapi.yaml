@@ -1163,7 +1163,9 @@ paths:
       x-accepts: application/json
   /2023-10/retail-media/reports/campaigns:
     post:
-      description: Return an asynchronous Campaigns Report
+      description: |-
+        Return an asynchronous Campaigns Report
+        This endpoint is subject to specific rate limits.
       operationId: GenerateAsyncCampaignsReport
       requestBody:
         content:
@@ -1224,7 +1226,9 @@ paths:
       x-accepts: application/json
   /2023-10/retail-media/reports/line-items:
     post:
-      description: Returns an asynchronous Line Items Report
+      description: |-
+        Returns an asynchronous Line Items Report
+        This endpoint is subject to specific rate limits.
       operationId: GenerateAsyncLineItemsReport
       requestBody:
         content:
@@ -1285,7 +1289,9 @@ paths:
       x-accepts: application/json
   /2023-10/retail-media/reports/revenue:
     post:
-      description: Returns an asynchronous Revenue Report
+      description: |-
+        Returns an asynchronous Revenue Report
+        This endpoint is subject to specific rate limits.
       operationId: GenerateAsyncRevenueReport
       requestBody:
         content:
@@ -3433,6 +3439,7 @@ components:
             parentAccountLabel: parentAccountLabel
             companyName: companyName
             name: name
+            onBehalfCompanyName: onBehalfCompanyName
             timeZone: timeZone
             currency: currency
             countries:
@@ -3446,6 +3453,7 @@ components:
             parentAccountLabel: parentAccountLabel
             companyName: companyName
             name: name
+            onBehalfCompanyName: onBehalfCompanyName
             timeZone: timeZone
             currency: currency
             countries:
@@ -3857,6 +3865,7 @@ components:
           parentAccountLabel: parentAccountLabel
           companyName: companyName
           name: name
+          onBehalfCompanyName: onBehalfCompanyName
           timeZone: timeZone
           currency: currency
           countries:
@@ -3933,6 +3942,7 @@ components:
         parentAccountLabel: parentAccountLabel
         companyName: companyName
         name: name
+        onBehalfCompanyName: onBehalfCompanyName
         timeZone: timeZone
         currency: currency
         countries:
@@ -3977,6 +3987,10 @@ components:
           type: string
           x-nullable: false
         companyName:
+          nullable: true
+          type: string
+          x-nullable: true
+        onBehalfCompanyName:
           nullable: true
           type: string
           x-nullable: true
@@ -4140,8 +4154,7 @@ components:
       - fileExtension
       type: object
     RmLegacyAudienceGetEntityV1ListResponse:
-      description: A top-level object that encapsulates a Criteo API response for
-        several entities and metadata
+      description: The outcome of an API call.
       example:
         data:
         - attributes:
@@ -4529,7 +4542,8 @@ components:
           type: array
       type: object
     RmLegacyAudienceCreateInputEntityV1:
-      description: Input to create audience.
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity.
       example:
         data:
           attributes:
@@ -4550,7 +4564,8 @@ components:
           $ref: '#/components/schemas/RmLegacyAudienceCreateEntityV1Resource'
       type: object
     RmLegacyAudienceCreateInputEntityV2:
-      description: Input to create audience.
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity.
       example:
         data:
           attributes:
@@ -4604,9 +4619,11 @@ components:
         attributes:
           $ref: '#/components/schemas/RmLegacyAudienceGetEntityV1'
         id:
+          description: Unique identifier of this resource.
           nullable: true
           type: string
         audienceType:
+          description: Type of the audience.
           enum:
           - customerList
           - userBehavior
@@ -8094,8 +8111,9 @@ components:
             maxBytes: 2
       properties:
         title:
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         templateVariables:
           items:
             $ref: '#/components/schemas/TemplateVariable'
@@ -8103,7 +8121,6 @@ components:
           x-nullable: false
       required:
       - templateVariables
-      - title
       type: object
       x-nullable: false
     TemplateVariable:
@@ -9478,6 +9495,7 @@ components:
             drawableBalanceIds:
             - drawableBalanceIds
             - drawableBalanceIds
+            onBehalfCompanyName: onBehalfCompanyName
             type: auction
             accountId: accountId
             createdAt: 2000-01-23T04:56:07.000+00:00
@@ -9506,6 +9524,7 @@ components:
             drawableBalanceIds:
             - drawableBalanceIds
             - drawableBalanceIds
+            onBehalfCompanyName: onBehalfCompanyName
             type: auction
             accountId: accountId
             createdAt: 2000-01-23T04:56:07.000+00:00
@@ -9600,6 +9619,7 @@ components:
             drawableBalanceIds:
             - drawableBalanceIds
             - drawableBalanceIds
+            onBehalfCompanyName: onBehalfCompanyName
             type: auction
             accountId: accountId
             createdAt: 2000-01-23T04:56:07.000+00:00
@@ -10946,6 +10966,7 @@ components:
             drawableBalanceIds:
             - drawableBalanceIds
             - drawableBalanceIds
+            onBehalfCompanyName: onBehalfCompanyName
             type: auction
             clickAttributionScope: unknown
             viewAttributionScope: unknown
@@ -11080,9 +11101,10 @@ components:
           attributes:
             clickAttributionWindow: 7D
             endDate: 2000-01-23T04:56:07.000+00:00
+            companyName: companyName
+            onBehalfCompanyName: onBehalfCompanyName
             clickAttributionScope: unknown
             viewAttributionScope: unknown
-            companyName: companyName
             name: name
             viewAttributionWindow: None
             isAutoDailyPacing: true
@@ -11308,6 +11330,7 @@ components:
           drawableBalanceIds:
           - drawableBalanceIds
           - drawableBalanceIds
+          onBehalfCompanyName: onBehalfCompanyName
           type: auction
           accountId: accountId
           createdAt: 2000-01-23T04:56:07.000+00:00
@@ -11728,6 +11751,7 @@ components:
           drawableBalanceIds:
           - drawableBalanceIds
           - drawableBalanceIds
+          onBehalfCompanyName: onBehalfCompanyName
           type: auction
           clickAttributionScope: unknown
           viewAttributionScope: unknown
@@ -11845,9 +11869,10 @@ components:
         attributes:
           clickAttributionWindow: 7D
           endDate: 2000-01-23T04:56:07.000+00:00
+          companyName: companyName
+          onBehalfCompanyName: onBehalfCompanyName
           clickAttributionScope: unknown
           viewAttributionScope: unknown
-          companyName: companyName
           name: name
           viewAttributionWindow: None
           isAutoDailyPacing: true
@@ -12094,6 +12119,7 @@ components:
         drawableBalanceIds:
         - drawableBalanceIds
         - drawableBalanceIds
+        onBehalfCompanyName: onBehalfCompanyName
         type: auction
         accountId: accountId
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -12236,6 +12262,10 @@ components:
           type: string
           x-nullable: true
         companyName:
+          nullable: true
+          type: string
+          x-nullable: true
+        onBehalfCompanyName:
           nullable: true
           type: string
           x-nullable: true
@@ -12932,6 +12962,7 @@ components:
         drawableBalanceIds:
         - drawableBalanceIds
         - drawableBalanceIds
+        onBehalfCompanyName: onBehalfCompanyName
         type: auction
         clickAttributionScope: unknown
         viewAttributionScope: unknown
@@ -13029,6 +13060,10 @@ components:
           type: string
           x-nullable: true
         companyName:
+          nullable: true
+          type: string
+          x-nullable: true
+        onBehalfCompanyName:
           nullable: true
           type: string
           x-nullable: true
@@ -13314,9 +13349,10 @@ components:
       example:
         clickAttributionWindow: 7D
         endDate: 2000-01-23T04:56:07.000+00:00
+        companyName: companyName
+        onBehalfCompanyName: onBehalfCompanyName
         clickAttributionScope: unknown
         viewAttributionScope: unknown
-        companyName: companyName
         name: name
         viewAttributionWindow: None
         isAutoDailyPacing: true
@@ -13395,6 +13431,10 @@ components:
           type: string
           x-nullable: true
         companyName:
+          nullable: true
+          type: string
+          x-nullable: true
+        onBehalfCompanyName:
           nullable: true
           type: string
           x-nullable: true

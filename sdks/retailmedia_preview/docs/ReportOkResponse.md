@@ -15,6 +15,8 @@ The report on a given operationToken is ready. The report is available for 4 day
 |**numberOfProductsDeleted** | **Integer** | The number of products deleted. |  |
 |**numberOfProductsWithErrors** | **Integer** | The number of products with errors. |  |
 |**errorDetails** | [**List&lt;ReportDetailErrors&gt;**](ReportDetailErrors.md) | The list of errors with details. |  |
+|**numberOfProductsWithWarnings** | **Integer** | The number of products with Warnings. |  |
+|**warningDetails** | [**List&lt;ReportDetailWarnings&gt;**](ReportDetailWarnings.md) | The list of Warnings with details. |  |
 
 
 

@@ -68,7 +68,7 @@ public class RmAudienceSegmentSearchEntityV1 {
     
     CONTACTLIST("ContactList"),
     
-    USERBEHAVIOR("UserBehavior");
+    EVENTS("Events");
 
     private String value;
 

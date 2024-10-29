@@ -28,6 +28,7 @@ import java.io.IOException;
 
 
 import com.criteo.api.marketingsolutions.preview.model.ExportResult;
+import java.io.File;
 import com.criteo.api.marketingsolutions.preview.model.GenerateAudiencePerformanceReportRequest;
 import com.criteo.api.marketingsolutions.preview.model.GenerateCategoriesReportRequestAttributesRequest;
 import com.criteo.api.marketingsolutions.preview.model.GenerateCreativesReportRequestAttributesRequest;
@@ -163,7 +164,7 @@ public class AnalyticsApi {
      * 
      * This Statistics endpoint provides adset related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.
      * @param statisticsReportQueryMessage  (optional)
-     * @return byte[]
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -173,8 +174,8 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public byte[] getAdsetReport(StatisticsReportQueryMessage statisticsReportQueryMessage) throws ApiException {
-        ApiResponse<byte[]> localVarResp = getAdsetReportWithHttpInfo(statisticsReportQueryMessage);
+    public File getAdsetReport(StatisticsReportQueryMessage statisticsReportQueryMessage) throws ApiException {
+        ApiResponse<File> localVarResp = getAdsetReportWithHttpInfo(statisticsReportQueryMessage);
         return localVarResp.getData();
     }
 
@@ -182,7 +183,7 @@ public class AnalyticsApi {
      * 
      * This Statistics endpoint provides adset related data. It is an upgrade of our previous Statistics endpoint, and includes new metrics and customization capabilities.
      * @param statisticsReportQueryMessage  (optional)
-     * @return ApiResponse&lt;byte[]&gt;
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -192,9 +193,9 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<byte[]> getAdsetReportWithHttpInfo(StatisticsReportQueryMessage statisticsReportQueryMessage) throws ApiException {
+    public ApiResponse<File> getAdsetReportWithHttpInfo(StatisticsReportQueryMessage statisticsReportQueryMessage) throws ApiException {
         okhttp3.Call localVarCall = getAdsetReportValidateBeforeCall(statisticsReportQueryMessage, null);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -213,10 +214,10 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdsetReportAsync(StatisticsReportQueryMessage statisticsReportQueryMessage, final ApiCallback<byte[]> _callback) throws ApiException {
+    public okhttp3.Call getAdsetReportAsync(StatisticsReportQueryMessage statisticsReportQueryMessage, final ApiCallback<File> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAdsetReportValidateBeforeCall(statisticsReportQueryMessage, _callback);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -831,7 +832,7 @@ public class AnalyticsApi {
      * 
      * With this endpoint you can analyse what are the categories of the placements&#39; domains your ads are placed in.
      * @param generateCategoriesReportRequestAttributesRequest  (optional)
-     * @return byte[]
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -841,8 +842,8 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public byte[] getCategoriesReport(GenerateCategoriesReportRequestAttributesRequest generateCategoriesReportRequestAttributesRequest) throws ApiException {
-        ApiResponse<byte[]> localVarResp = getCategoriesReportWithHttpInfo(generateCategoriesReportRequestAttributesRequest);
+    public File getCategoriesReport(GenerateCategoriesReportRequestAttributesRequest generateCategoriesReportRequestAttributesRequest) throws ApiException {
+        ApiResponse<File> localVarResp = getCategoriesReportWithHttpInfo(generateCategoriesReportRequestAttributesRequest);
         return localVarResp.getData();
     }
 
@@ -850,7 +851,7 @@ public class AnalyticsApi {
      * 
      * With this endpoint you can analyse what are the categories of the placements&#39; domains your ads are placed in.
      * @param generateCategoriesReportRequestAttributesRequest  (optional)
-     * @return ApiResponse&lt;byte[]&gt;
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -860,9 +861,9 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<byte[]> getCategoriesReportWithHttpInfo(GenerateCategoriesReportRequestAttributesRequest generateCategoriesReportRequestAttributesRequest) throws ApiException {
+    public ApiResponse<File> getCategoriesReportWithHttpInfo(GenerateCategoriesReportRequestAttributesRequest generateCategoriesReportRequestAttributesRequest) throws ApiException {
         okhttp3.Call localVarCall = getCategoriesReportValidateBeforeCall(generateCategoriesReportRequestAttributesRequest, null);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -881,10 +882,10 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCategoriesReportAsync(GenerateCategoriesReportRequestAttributesRequest generateCategoriesReportRequestAttributesRequest, final ApiCallback<byte[]> _callback) throws ApiException {
+    public okhttp3.Call getCategoriesReportAsync(GenerateCategoriesReportRequestAttributesRequest generateCategoriesReportRequestAttributesRequest, final ApiCallback<File> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCategoriesReportValidateBeforeCall(generateCategoriesReportRequestAttributesRequest, _callback);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1067,7 +1068,9 @@ public class AnalyticsApi {
             "text/plain",
             "application/json",
             "text/json",
+            "text/csv",
             "application/xml",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             "text/xml"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -1100,7 +1103,7 @@ public class AnalyticsApi {
      * 
      * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.
      * @param placementsReportQueryMessageListRequest  (optional)
-     * @return byte[]
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1110,8 +1113,8 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public byte[] getPlacementsReport(PlacementsReportQueryMessageListRequest placementsReportQueryMessageListRequest) throws ApiException {
-        ApiResponse<byte[]> localVarResp = getPlacementsReportWithHttpInfo(placementsReportQueryMessageListRequest);
+    public File getPlacementsReport(PlacementsReportQueryMessageListRequest placementsReportQueryMessageListRequest) throws ApiException {
+        ApiResponse<File> localVarResp = getPlacementsReportWithHttpInfo(placementsReportQueryMessageListRequest);
         return localVarResp.getData();
     }
 
@@ -1119,7 +1122,7 @@ public class AnalyticsApi {
      * 
      * Your ads are placed in different domains (publishers) and environments (websites and apps). Thanks to the placements endpoint, you can analyse the performances for each publisher, comparing displays, clicks and sales generated.
      * @param placementsReportQueryMessageListRequest  (optional)
-     * @return ApiResponse&lt;byte[]&gt;
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1129,9 +1132,9 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<byte[]> getPlacementsReportWithHttpInfo(PlacementsReportQueryMessageListRequest placementsReportQueryMessageListRequest) throws ApiException {
+    public ApiResponse<File> getPlacementsReportWithHttpInfo(PlacementsReportQueryMessageListRequest placementsReportQueryMessageListRequest) throws ApiException {
         okhttp3.Call localVarCall = getPlacementsReportValidateBeforeCall(placementsReportQueryMessageListRequest, null);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1150,10 +1153,10 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlacementsReportAsync(PlacementsReportQueryMessageListRequest placementsReportQueryMessageListRequest, final ApiCallback<byte[]> _callback) throws ApiException {
+    public okhttp3.Call getPlacementsReportAsync(PlacementsReportQueryMessageListRequest placementsReportQueryMessageListRequest, final ApiCallback<File> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlacementsReportValidateBeforeCall(placementsReportQueryMessageListRequest, _callback);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1370,7 +1373,7 @@ public class AnalyticsApi {
      * 
      * This Transactions endpoint provides transactions id related data.
      * @param transactionsReportQueryMessageListRequest  (optional)
-     * @return byte[]
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1380,8 +1383,8 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public byte[] getTransactionsReport(TransactionsReportQueryMessageListRequest transactionsReportQueryMessageListRequest) throws ApiException {
-        ApiResponse<byte[]> localVarResp = getTransactionsReportWithHttpInfo(transactionsReportQueryMessageListRequest);
+    public File getTransactionsReport(TransactionsReportQueryMessageListRequest transactionsReportQueryMessageListRequest) throws ApiException {
+        ApiResponse<File> localVarResp = getTransactionsReportWithHttpInfo(transactionsReportQueryMessageListRequest);
         return localVarResp.getData();
     }
 
@@ -1389,7 +1392,7 @@ public class AnalyticsApi {
      * 
      * This Transactions endpoint provides transactions id related data.
      * @param transactionsReportQueryMessageListRequest  (optional)
-     * @return ApiResponse&lt;byte[]&gt;
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1399,9 +1402,9 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<byte[]> getTransactionsReportWithHttpInfo(TransactionsReportQueryMessageListRequest transactionsReportQueryMessageListRequest) throws ApiException {
+    public ApiResponse<File> getTransactionsReportWithHttpInfo(TransactionsReportQueryMessageListRequest transactionsReportQueryMessageListRequest) throws ApiException {
         okhttp3.Call localVarCall = getTransactionsReportValidateBeforeCall(transactionsReportQueryMessageListRequest, null);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1420,10 +1423,10 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTransactionsReportAsync(TransactionsReportQueryMessageListRequest transactionsReportQueryMessageListRequest, final ApiCallback<byte[]> _callback) throws ApiException {
+    public okhttp3.Call getTransactionsReportAsync(TransactionsReportQueryMessageListRequest transactionsReportQueryMessageListRequest, final ApiCallback<File> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTransactionsReportValidateBeforeCall(transactionsReportQueryMessageListRequest, _callback);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -49,7 +49,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2023_10.JSON;
 
 /**
- * A top-level object that encapsulates a Criteo API response for several entities and metadata
+ * The outcome of an API call.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RmLegacyAudienceGetEntityV1ListResponse {

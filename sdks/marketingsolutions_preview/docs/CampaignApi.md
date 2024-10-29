@@ -1,10 +1,10 @@
 # CampaignApi
 
-All URIs are relative to *https://api.criteo.com*
+All URIs are relative to *https://api.criteo.com*. Please check the detailed instructions about this API at [https://developers.criteo.com/](https://developers.criteo.com/).
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createAdSetV24Q1**](CampaignApi.md#createAdSetV24Q1) | **POST** /preview/marketing-solutions/ad-sets |  |
+| [**createAdSetV24Q3**](CampaignApi.md#createAdSetV24Q3) | **POST** /preview/marketing-solutions/ad-sets |  |
 | [**createCampaign**](CampaignApi.md#createCampaign) | **POST** /preview/marketing-solutions/campaigns |  |
 | [**deleteAdvertiserBundleRules**](CampaignApi.md#deleteAdvertiserBundleRules) | **DELETE** /preview/advertisers/{advertiserId}/targeting/bundle-rules |  |
 | [**deleteAdvertiserDomainRules**](CampaignApi.md#deleteAdvertiserDomainRules) | **DELETE** /preview/advertisers/{advertiserId}/targeting/domain-rules |  |
@@ -16,7 +16,7 @@ All URIs are relative to *https://api.criteo.com*
 | [**disableAdSetTargetingVideoPositioning**](CampaignApi.md#disableAdSetTargetingVideoPositioning) | **POST** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positionings/disable |  |
 | [**getAdSetTargetingDealIds**](CampaignApi.md#getAdSetTargetingDealIds) | **GET** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids |  |
 | [**getAdSetTargetingVideoPositioning**](CampaignApi.md#getAdSetTargetingVideoPositioning) | **GET** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning |  |
-| [**getAdSetV24Q1**](CampaignApi.md#getAdSetV24Q1) | **GET** /preview/marketing-solutions/ad-sets/{ad-set-id} |  |
+| [**getAdSetV24Q3**](CampaignApi.md#getAdSetV24Q3) | **GET** /preview/marketing-solutions/ad-sets/{ad-set-id} |  |
 | [**getAdvertiserBundleRules**](CampaignApi.md#getAdvertiserBundleRules) | **GET** /preview/advertisers/{advertiserId}/targeting/bundle-rules |  |
 | [**getAdvertiserDomainRules**](CampaignApi.md#getAdvertiserDomainRules) | **GET** /preview/advertisers/{advertiserId}/targeting/domain-rules |  |
 | [**getCampaignBundleRules**](CampaignApi.md#getCampaignBundleRules) | **GET** /preview/campaigns/{campaignId}/targeting/bundle-rules |  |
@@ -27,7 +27,7 @@ All URIs are relative to *https://api.criteo.com*
 | [**getOCIbrandSafetyRule**](CampaignApi.md#getOCIbrandSafetyRule) | **GET** /preview/brand-safety/oci |  |
 | [**getOCItargetingRule**](CampaignApi.md#getOCItargetingRule) | **GET** /preview/targeting/oci |  |
 | [**getSupplyVendorList**](CampaignApi.md#getSupplyVendorList) | **GET** /preview/marketing-solutions/ad-sets/targeting/supply-vendors |  |
-| [**patchAdSetsV24Q1**](CampaignApi.md#patchAdSetsV24Q1) | **PATCH** /preview/marketing-solutions/ad-sets |  |
+| [**patchAdSetsV24Q3**](CampaignApi.md#patchAdSetsV24Q3) | **PATCH** /preview/marketing-solutions/ad-sets |  |
 | [**patchCampaigns**](CampaignApi.md#patchCampaigns) | **PATCH** /preview/marketing-solutions/campaigns |  |
 | [**patchCategoryBidList**](CampaignApi.md#patchCategoryBidList) | **PATCH** /preview/marketing-solutions/ad-sets/{ad-set-id}/category-bids |  |
 | [**patchDisplayMultipliers**](CampaignApi.md#patchDisplayMultipliers) | **PATCH** /preview/marketing-solutions/ad-sets/{ad-set-id}/display-multipliers |  |
@@ -39,7 +39,7 @@ All URIs are relative to *https://api.criteo.com*
 | [**putAdvertiserDomainRules**](CampaignApi.md#putAdvertiserDomainRules) | **PUT** /preview/advertisers/{advertiserId}/targeting/domain-rules |  |
 | [**putCampaignBundleRules**](CampaignApi.md#putCampaignBundleRules) | **PUT** /preview/campaigns/{campaignId}/targeting/bundle-rules |  |
 | [**putCampaignDomainRules**](CampaignApi.md#putCampaignDomainRules) | **PUT** /preview/campaigns/{campaignId}/targeting/domain-rules |  |
-| [**searchAdSetsV24Q1**](CampaignApi.md#searchAdSetsV24Q1) | **POST** /preview/marketing-solutions/ad-sets/search |  |
+| [**searchAdSetsV24Q3**](CampaignApi.md#searchAdSetsV24Q3) | **POST** /preview/marketing-solutions/ad-sets/search |  |
 | [**searchCampaignsV23Q1**](CampaignApi.md#searchCampaignsV23Q1) | **POST** /preview/marketing-solutions/campaigns/search |  |
 | [**setAdSetTargetingDealIds**](CampaignApi.md#setAdSetTargetingDealIds) | **PUT** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/deal-ids |  |
 | [**setAdSetTargetingVideoPositioning**](CampaignApi.md#setAdSetTargetingVideoPositioning) | **PUT** /preview/marketing-solutions/ad-sets/{ad-set-id}/targeting/video-positioning |  |
@@ -51,9 +51,9 @@ All URIs are relative to *https://api.criteo.com*
 
 
 
-## createAdSetV24Q1
+## createAdSetV24Q3
 
-> ResponseReadAdSetV24Q1 createAdSetV24Q1(createAdSetV24Q1Request)
+> ResponseReadAdSetV24Q3 createAdSetV24Q3(createAdSetV24Q3Request)
 
 
 
@@ -98,12 +98,12 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        CreateAdSetV24Q1Request createAdSetV24Q1Request = new CreateAdSetV24Q1Request(); // CreateAdSetV24Q1Request | the ad sets to create
+        CreateAdSetV24Q3Request createAdSetV24Q3Request = new CreateAdSetV24Q3Request(); // CreateAdSetV24Q3Request | the ad sets to create
         try {
-            ResponseReadAdSetV24Q1 result = apiInstance.createAdSetV24Q1(createAdSetV24Q1Request);
+            ResponseReadAdSetV24Q3 result = apiInstance.createAdSetV24Q3(createAdSetV24Q3Request);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#createAdSetV24Q1");
+            System.err.println("Exception when calling CampaignApi#createAdSetV24Q3");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -118,11 +118,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createAdSetV24Q1Request** | [**CreateAdSetV24Q1Request**](CreateAdSetV24Q1Request.md)| the ad sets to create | |
+| **createAdSetV24Q3Request** | [**CreateAdSetV24Q3Request**](CreateAdSetV24Q3Request.md)| the ad sets to create | |
 
 ### Return type
 
-[**ResponseReadAdSetV24Q1**](ResponseReadAdSetV24Q1.md)
+[**ResponseReadAdSetV24Q3**](ResponseReadAdSetV24Q3.md)
 
 ### Authorization
 
@@ -1163,9 +1163,9 @@ public class Example {
 | **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
-## getAdSetV24Q1
+## getAdSetV24Q3
 
-> ResponseReadAdSetV24Q1 getAdSetV24Q1(adSetId)
+> ResponseReadAdSetV24Q3 getAdSetV24Q3(adSetId)
 
 
 
@@ -1212,10 +1212,10 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String adSetId = "adSetId_example"; // String | Id of the ad set
         try {
-            ResponseReadAdSetV24Q1 result = apiInstance.getAdSetV24Q1(adSetId);
+            ResponseReadAdSetV24Q3 result = apiInstance.getAdSetV24Q3(adSetId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getAdSetV24Q1");
+            System.err.println("Exception when calling CampaignApi#getAdSetV24Q3");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -1234,7 +1234,7 @@ public class Example {
 
 ### Return type
 
-[**ResponseReadAdSetV24Q1**](ResponseReadAdSetV24Q1.md)
+[**ResponseReadAdSetV24Q3**](ResponseReadAdSetV24Q3.md)
 
 ### Authorization
 
@@ -2174,9 +2174,9 @@ This endpoint does not need any parameter.
 | **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
-## patchAdSetsV24Q1
+## patchAdSetsV24Q3
 
-> ResponsesAdSetIdV24Q1 patchAdSetsV24Q1(requestsPatchAdSetV24Q1)
+> ResponsesAdSetIdV24Q3 patchAdSetsV24Q3(requestsPatchAdSetV24Q3)
 
 
 
@@ -2221,12 +2221,12 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        RequestsPatchAdSetV24Q1 requestsPatchAdSetV24Q1 = new RequestsPatchAdSetV24Q1(); // RequestsPatchAdSetV24Q1 | List of adsets to patch.
+        RequestsPatchAdSetV24Q3 requestsPatchAdSetV24Q3 = new RequestsPatchAdSetV24Q3(); // RequestsPatchAdSetV24Q3 | List of adsets to patch.
         try {
-            ResponsesAdSetIdV24Q1 result = apiInstance.patchAdSetsV24Q1(requestsPatchAdSetV24Q1);
+            ResponsesAdSetIdV24Q3 result = apiInstance.patchAdSetsV24Q3(requestsPatchAdSetV24Q3);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#patchAdSetsV24Q1");
+            System.err.println("Exception when calling CampaignApi#patchAdSetsV24Q3");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -2241,11 +2241,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **requestsPatchAdSetV24Q1** | [**RequestsPatchAdSetV24Q1**](RequestsPatchAdSetV24Q1.md)| List of adsets to patch. | [optional] |
+| **requestsPatchAdSetV24Q3** | [**RequestsPatchAdSetV24Q3**](RequestsPatchAdSetV24Q3.md)| List of adsets to patch. | [optional] |
 
 ### Return type
 
-[**ResponsesAdSetIdV24Q1**](ResponsesAdSetIdV24Q1.md)
+[**ResponsesAdSetIdV24Q3**](ResponsesAdSetIdV24Q3.md)
 
 ### Authorization
 
@@ -3293,9 +3293,9 @@ public class Example {
 | **403** | Forbidden |  -  |
 
 
-## searchAdSetsV24Q1
+## searchAdSetsV24Q3
 
-> ResponsesReadAdSetV24Q1 searchAdSetsV24Q1(adSetSearchRequestV24Q1)
+> ResponsesReadAdSetV24Q3 searchAdSetsV24Q3(adSetSearchRequestV24Q3)
 
 
 
@@ -3340,12 +3340,12 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1 = new AdSetSearchRequestV24Q1(); // AdSetSearchRequestV24Q1 | 
+        AdSetSearchRequestV24Q3 adSetSearchRequestV24Q3 = new AdSetSearchRequestV24Q3(); // AdSetSearchRequestV24Q3 | 
         try {
-            ResponsesReadAdSetV24Q1 result = apiInstance.searchAdSetsV24Q1(adSetSearchRequestV24Q1);
+            ResponsesReadAdSetV24Q3 result = apiInstance.searchAdSetsV24Q3(adSetSearchRequestV24Q3);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#searchAdSetsV24Q1");
+            System.err.println("Exception when calling CampaignApi#searchAdSetsV24Q3");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -3360,11 +3360,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adSetSearchRequestV24Q1** | [**AdSetSearchRequestV24Q1**](AdSetSearchRequestV24Q1.md)|  | [optional] |
+| **adSetSearchRequestV24Q3** | [**AdSetSearchRequestV24Q3**](AdSetSearchRequestV24Q3.md)|  | [optional] |
 
 ### Return type
 
-[**ResponsesReadAdSetV24Q1**](ResponsesReadAdSetV24Q1.md)
+[**ResponsesReadAdSetV24Q3**](ResponsesReadAdSetV24Q3.md)
 
 ### Authorization
 

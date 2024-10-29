@@ -9,6 +9,7 @@ Video positioning targeting writing model
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**videoPlacement** | [**List&lt;VideoPlacementEnum&gt;**](#List&lt;VideoPlacementEnum&gt;) |  |  [optional] |
+|**videoPlcmt** | [**List&lt;VideoPlcmtEnum&gt;**](#List&lt;VideoPlcmtEnum&gt;) |  |  [optional] |
 |**playbackMethod** | [**List&lt;PlaybackMethodEnum&gt;**](#List&lt;PlaybackMethodEnum&gt;) |  |  [optional] |
 |**skippable** | [**SkippableEnum**](#SkippableEnum) |  |  [optional] |
 |**videoInStreamPosition** | [**List&lt;VideoInStreamPositionEnum&gt;**](#List&lt;VideoInStreamPositionEnum&gt;) |  |  [optional] |
@@ -26,6 +27,17 @@ Video positioning targeting writing model
 | INFEED | &quot;InFeed&quot; |
 | INTERSTITIAL | &quot;Interstitial&quot; |
 | INSTREAM | &quot;InStream&quot; |
+
+
+
+## Enum: List&lt;VideoPlcmtEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| INSTREAM | &quot;InStream&quot; |
+| ACCOMPANYINGCONTENT | &quot;AccompanyingContent&quot; |
+| INTERSTITIAL | &quot;Interstitial&quot; |
+| NOCONTENTSTANDALONE | &quot;NoContentStandalone&quot; |
 
 
 

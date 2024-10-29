@@ -8,10 +8,9 @@ servers:
 security:
 - oauth: []
 paths:
-  /2024-01/marketing-solutions/audience-segments/{audience-segment-id}/contact-list:
+  /2024-01/audiences/{audience-segment-id}/contactlist:
     delete:
       description: Delete all identifiers from a contact list audience-segment.
-      operationId: deleteContactListIdentifiers
       parameters:
       - description: The id of the contact list audience-segment to amend
         explode: false
@@ -67,7 +66,154 @@ paths:
       x-accepts: application/json
     patch:
       description: Add/remove identifiers to or from a contact list audience-segment.
-      operationId: updateContactListIdentifiers
+      parameters:
+      - description: The id of the contact list audience-segment to amend
+        explode: false
+        in: path
+        name: audience-segment-id
+        required: true
+        schema:
+          format: int32
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactlistAmendmentRequest'
+        required: true
+        x-bodyName: body
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                data:
+                  type: ContactlistAmendment
+                  attributes:
+                    contactListId: 12
+                    operation: add
+                    requestDate: 2018-12-10T10:00:50.0000000+00:00
+                    identifierType: madid
+                    nbValidIdentifiers: 7343
+                    nbInvalidIdentifiers: 13
+                    sampleInvalidIdentifiers:
+                    - InvalidIdentifier
+                errors: []
+                warnings:
+                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
+                  type: deprecation
+                  code: deprecated-field
+                  instance: /audiences/314195
+                  title: '''nbValidIds'' is deprecated'
+                  detail: The field 'nbValidIds' is deprecated please use 'nbValidIdentifiers
+              schema:
+                $ref: '#/components/schemas/ModifyAudienceResponse'
+          description: Summary of created request
+        "403":
+          content:
+            application/json:
+              example:
+                errors:
+                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
+                  type: validation
+                  code: audience-invalid
+                  instance: /audience/314159
+                  title: Audience is invalid
+                  detail: "Audience is not found, please choose a valid audience"
+                warnings:
+                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
+                  type: deprecation
+                  code: deprecated-field
+                  instance: /audiences/314195
+                  title: '''nbValidIds'' is deprecated'
+                  detail: The field 'nbValidIds' is deprecated please use 'nbValidIdentifiers
+              schema:
+                $ref: '#/components/schemas/ErrorCodeResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              example:
+                errors:
+                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
+                  type: validation
+                  code: audience-invalid
+                  instance: /audience/314159
+                  title: Audience is invalid
+                  detail: "Audience is not found, please choose a valid audience"
+                warnings:
+                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
+                  type: deprecation
+                  code: deprecated-field
+                  instance: /audiences/314195
+                  title: '''nbValidIds'' is deprecated'
+                  detail: The field 'nbValidIds' is deprecated please use 'nbValidIdentifiers
+              schema:
+                $ref: '#/components/schemas/ErrorCodeResponse'
+          description: Audience 123 not found
+      tags:
+      - Audience
+      x-content-type: application/json
+      x-accepts: application/json
+  /2024-01/marketing-solutions/audience-segments/{audience-segment-id}/contact-list:
+    delete:
+      description: Delete all identifiers from a contact list audience-segment.
+      parameters:
+      - description: The id of the contact list audience-segment to amend
+        explode: false
+        in: path
+        name: audience-segment-id
+        required: true
+        schema:
+          format: int32
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                data:
+                  id: "1"
+                  type: AudienceContactlist
+                errors: []
+                warnings:
+                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
+                  type: deprecation
+                  code: deprecated-field
+                  instance: /audiences/314195
+                  title: '''nbValidIds'' is deprecated'
+                  detail: The field 'nbValidIds' is deprecated please use 'nbValidIdentifiers
+              schema:
+                $ref: '#/components/schemas/DeleteAudienceContactListResponse'
+          description: The Contact List was emptied
+        "403":
+          content:
+            application/json:
+              example:
+                errors:
+                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
+                  type: validation
+                  code: audience-invalid
+                  instance: /audience/314159
+                  title: Audience is invalid
+                  detail: "Audience is not found, please choose a valid audience"
+                warnings:
+                - traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
+                  type: deprecation
+                  code: deprecated-field
+                  instance: /audiences/314195
+                  title: '''nbValidIds'' is deprecated'
+                  detail: The field 'nbValidIds' is deprecated please use 'nbValidIdentifiers
+              schema:
+                $ref: '#/components/schemas/ErrorCodeResponse'
+          description: Forbidden
+      tags:
+      - Audience
+      x-accepts: application/json
+    patch:
+      description: Add/remove identifiers to or from a contact list audience-segment.
       parameters:
       - description: The id of the contact list audience-segment to amend
         explode: false
@@ -2927,23 +3073,27 @@ paths:
           content:
             text/plain:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/json:
               schema:
-                format: byte
+                format: binary
+                type: string
+            text/csv:
+              schema:
+                format: binary
                 type: string
             application/xml:
               schema:
-                format: byte
+                format: binary
                 type: string
-            text/xml:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
-                format: byte
+                format: binary
                 type: string
           description: Success
         "400":
@@ -3225,27 +3375,27 @@ paths:
           content:
             text/plain:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/csv:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/xml:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
-                format: byte
+                format: binary
                 type: string
           description: Success
         "400":
@@ -3389,27 +3539,27 @@ paths:
           content:
             text/plain:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/json:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/csv:
               schema:
-                format: byte
+                format: binary
                 type: string
             text/xml:
               schema:
-                format: byte
+                format: binary
                 type: string
             application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               schema:
-                format: byte
+                format: binary
                 type: string
           description: Success
         "400":
@@ -14630,12 +14780,11 @@ components:
           - madid
           - identityLink
           - gum
-          - customerid
           - phoneNumber
           nullable: true
           type: string
         identifiers:
-          description: "The users tos add or remove, each in the schema specified"
+          description: "The users to add or remove, each in the schema specified"
           items:
             type: string
           type: array

@@ -22,6 +22,7 @@ An object that represents the available options to set when creating a Retail Me
 |**clickAttributionScope** | [**ClickAttributionScopeEnum**](#ClickAttributionScopeEnum) |  |  [optional] |
 |**viewAttributionScope** | [**ViewAttributionScopeEnum**](#ViewAttributionScopeEnum) |  |  [optional] |
 |**companyName** | **String** |  |  [optional] |
+|**onBehalfCompanyName** | **String** |  |  [optional] |
 
 
 

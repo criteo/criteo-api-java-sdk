@@ -175,6 +175,50 @@ paths:
       tags:
       - Gateway
       x-accepts: application/json
+  /preview/retail-media/chatbot-catalogs/{catalogid}/product-recommendations:
+    post:
+      description: Ask a chatbot for a product recommendation
+      operationId: chatbotProductRecommendations
+      parameters:
+      - description: the identifier of the catalog to query
+        explode: false
+        in: path
+        name: catalogid
+        required: true
+        schema:
+          description: the identifier of the catalog to query
+          title: catalogid
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InbotDiscussionBodyModel'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageBodyModel'
+          description: Successful Response
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpValidationError'
+          description: Validation Error
+      tags:
+      - OnSiteRecommendation
+      x-content-type: application/json
+      x-accepts: application/json
   /preview/retail-media/catalog/products/batch:
     post:
       description: |-
@@ -315,6 +359,55 @@ paths:
             availability\", code=\"service-unavailable\")]"
       tags:
       - Catalog
+      x-accepts: application/json
+  /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts:
+    get:
+      description: Gets page of private market child accounts that are associated
+        with the given account
+      operationId: ExternalApiAccounts_GetApiExternalV1AccountPrivateMarketChildAccountsByAccountId
+      parameters:
+      - description: Account Id
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: true
+      - description: The (zero-based) offset into the collection of accounts. The
+          default is 0.
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      - description: The number of accounts to be returned. The default is 25.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          format: int32
+          type: integer
+        style: form
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeOfRetailMediaAccount'
+          description: Success
+      tags:
+      - Accounts
+      x-source-method: ExternalApiAccounts_GetPrivateMarketChildDemandAccountsV1
       x-accepts: application/json
   /preview/retail-media/accounts:
     get:
@@ -509,7 +602,7 @@ paths:
       description: "Updates the properties of all segments with a valid configuration,\
         \ and returns the full segments. For those that cannot be updated, one or\
         \ multiple errors are returned."
-      operationId: BulkUpdateV1
+      operationId: bulkUpdateAudienceSegments
       parameters:
       - description: Account id
         explode: false
@@ -576,7 +669,7 @@ paths:
       description: "Creates all segments with a valid configuration, and returns the\
         \ full segments. For those that cannot be created, one or multiple errors\
         \ are returned."
-      operationId: BulkCreateV1
+      operationId: bulkCreateAudienceSegments
       parameters:
       - description: Account Id
         explode: false
@@ -641,7 +734,7 @@ paths:
   /preview/retail-media/accounts/{account-id}/audience-segments/delete:
     post:
       description: Delete the segments associated to the given audience IDs.
-      operationId: BulkDeleteV1
+      operationId: bulkDeleteAudienceSegments
       parameters:
       - description: Account id
         explode: false
@@ -707,7 +800,7 @@ paths:
     post:
       description: "Returns a list of segments that match the provided filters. If\
         \ present, the filters are AND'ed together when applied."
-      operationId: SearchV1
+      operationId: searchAudienceSegments
       parameters:
       - description: Account Id
         explode: false
@@ -795,7 +888,7 @@ paths:
   /preview/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list:
     get:
       description: Returns the statistics of a contact list segment.
-      operationId: GetContactListStatisticsV1
+      operationId: getAudienceSegmentContactListStatistics
       parameters:
       - description: Account Id
         explode: false
@@ -847,66 +940,73 @@ paths:
       tags:
       - Audience
       x-accepts: application/json
-  /preview/retail-media/accounts/{accountId}/audiences:
-    get:
-      description: Get a page of Audiences. (deprecated Public API)
-      operationId: LegacyGetAudienceV1
+  /preview/retail-media/accounts/{account-id}/audiences/search:
+    post:
+      description: "Returns a list of audiences that match the provided filters. If\
+        \ present, the filters are AND'ed together when applied."
+      operationId: searchAudiences
       parameters:
-      - description: ID of the account to which this audience belongs.
+      - description: Account Id
         explode: false
         in: path
-        name: accountId
+        name: account-id
         required: true
         schema:
-          format: int64
-          type: integer
+          type: string
         style: simple
-      - description: "Limits results to the entity IDs specified; parameter key is\
-          \ repeated, eg. limitToId=1&limitToId=2"
+      - description: The number of elements to be returned. The default is 50 and
+          the maximum is 100.
         explode: true
         in: query
-        name: limitToId
+        name: limit
         required: false
         schema:
-          items:
-            format: int32
-            type: integer
-          type: array
+          default: 50
+          format: int32
+          maximum: 100
+          minimum: 0
+          type: integer
         style: form
-      - description: Specifies the maximum number of entities returned in a single
-          page; defaults to 25 entities per page.
+      - description: The (zero-based) offset into the collection. The default is 0.
         explode: true
         in: query
-        name: pageSize
+        name: offset
         required: false
         schema:
+          default: 0
           format: int32
           type: integer
         style: form
-      - description: Returns the specified page of results given a pageSize; pages
-          are 0-indexed.
-        explode: true
-        in: query
-        name: pageIndex
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSearchInputV1'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSearchInputV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSearchInputV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSearchInputV1'
+        description: Audience search filters.
+        required: true
+        x-bodyName: request
       responses:
         "200":
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/RmLegacyAudienceGetEntityV1ListResponse'
+                $ref: '#/components/schemas/RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/RmLegacyAudienceGetEntityV1ListResponse'
+                $ref: '#/components/schemas/RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse'
             text/json:
               schema:
-                $ref: '#/components/schemas/RmLegacyAudienceGetEntityV1ListResponse'
-          description: A page of audiences for the supplied account or shared by related
-            retailers.
+                $ref: '#/components/schemas/RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse'
+          description: Success or partial success
         "400":
           content:
             text/plain: {}
@@ -927,87 +1027,7 @@ paths:
           description: The API client is not authorized to access this resource.
       tags:
       - Audience
-      x-accepts: application/json
-  /preview/retail-media/v2/accounts/{accountId}/audiences:
-    get:
-      description: Get a page of Audiences. (deprecated Public API)
-      operationId: LegacyGetAudienceV2
-      parameters:
-      - description: ID of the account to which this audience belongs.
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      - description: "Limits results to the entity IDs specified; parameter key is\
-          \ repeated, eg. limitToId=1&limitToId=2"
-        explode: true
-        in: query
-        name: limitToId
-        required: false
-        schema:
-          items:
-            format: int32
-            type: integer
-          type: array
-        style: form
-      - description: Specifies the maximum number of entities returned in a single
-          page; defaults to 25 entities per page.
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - description: Returns the specified page of results given a pageSize; pages
-          are 0-indexed.
-        explode: true
-        in: query
-        name: pageIndex
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RmLegacyAudienceGetEntityV2ListResponse'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RmLegacyAudienceGetEntityV2ListResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RmLegacyAudienceGetEntityV2ListResponse'
-          description: A page of audiences for the supplied account or shared by related
-            retailers.
-        "400":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Bad request
-        "401":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not properly authenticated.
-        "403":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: The API client is not authorized to access this resource.
-      tags:
-      - Audience
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/retail-media/line-items/{id}/keywords:
     get:
@@ -2017,7 +2037,9 @@ paths:
       x-accepts: application/json
   /preview/retail-media/reports/accounts:
     post:
-      description: Returns an asynchronous Accounts Report
+      description: |-
+        Returns an asynchronous Accounts Report
+        This endpoint is subject to specific rate limits.
       operationId: GenerateAsyncAccountsReport
       requestBody:
         content:
@@ -2078,7 +2100,9 @@ paths:
       x-accepts: application/json
   /preview/retail-media/reports/campaigns:
     post:
-      description: Return an asynchronous Campaigns Report
+      description: |-
+        Return an asynchronous Campaigns Report
+        This endpoint is subject to specific rate limits.
       operationId: GenerateAsyncCampaignsReport
       requestBody:
         content:
@@ -2139,7 +2163,9 @@ paths:
       x-accepts: application/json
   /preview/retail-media/reports/line-items:
     post:
-      description: Returns an asynchronous Line Items Report
+      description: |-
+        Returns an asynchronous Line Items Report
+        This endpoint is subject to specific rate limits.
       operationId: GenerateAsyncLineItemsReport
       requestBody:
         content:
@@ -2623,72 +2649,6 @@ paths:
       tags:
       - Balance
       x-accepts: application/json
-  /preview/retail-media/campaigns/{campaignId}/campaign-budget-overrides:
-    get:
-      description: Get current campaign budget overrides by given external campaign
-        id.
-      operationId: GetCampaignBudgetOverrides
-      parameters:
-      - description: External campaign id.
-        explode: false
-        in: path
-        name: campaignId
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceOutcomeOfCampaignBudgetOverrides'
-          description: Success
-      tags:
-      - Campaign
-      x-accepts: application/json
-    put:
-      description: Update campaign budget overrides by given external campaign id
-        and new campaign budget overrides settings.
-      operationId: UpdateCampaignBudgetOverrides
-      parameters:
-      - description: External campaign id.
-        explode: false
-        in: path
-        name: campaignId
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfCampaignBudgetOverrides'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfCampaignBudgetOverrides'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfCampaignBudgetOverrides'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfCampaignBudgetOverrides'
-        description: New campaign budget overrides settings value resource input.
-        x-bodyName: campaignBudgetOverridesInput
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceOutcomeOfCampaignBudgetOverrides'
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json-patch+json
-      x-accepts: application/json
   /preview/retail-media/catalogs/sku/search/accounts/{accountId}/retailers/{retailerId}/by-id:
     post:
       description: Gets a list of SKUs based on a privided list of Product Ids
@@ -2843,70 +2803,6 @@ paths:
           description: Success
       tags:
       - Campaign
-      x-accepts: application/json
-  /preview/retail-media/line-items/{lineItemId}/line-item-budget-overrides:
-    get:
-      description: Gets a collection of monthly and daily budget overrides for the
-        provided line item.
-      operationId: GetLineItemBudgetOverrides
-      parameters:
-      - description: The line item id to get budget overrides for.
-        explode: false
-        in: path
-        name: lineItemId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceOutcomeOfLineItemBudgetOverrides'
-          description: Success
-      tags:
-      - Campaign
-      x-accepts: application/json
-    put:
-      description: Update line item budget overrides by given external line item id
-        and new line item budget overrides settings.
-      operationId: UpdateLineItemBudgetOverrides
-      parameters:
-      - description: Line item external id.
-        explode: false
-        in: path
-        name: lineItemId
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfLineItemBudgetOverrides'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfLineItemBudgetOverrides'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfLineItemBudgetOverrides'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfLineItemBudgetOverrides'
-        description: New line item budget overrides settings value resource input.
-        x-bodyName: lineItemBudgetOverridesInput
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceOutcomeOfLineItemBudgetOverrides'
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/retail-media/accounts/{account-id}/balances:
     get:
@@ -4110,6 +4006,264 @@ components:
           nullable: true
           type: string
       type: object
+    MessageBodyModel:
+      description: error message
+      example:
+        data:
+          attributes:
+            userMessage: userMessage
+            botMessage: null
+          type: Message
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          type: type
+        - traceId: traceId
+          code: code
+          instance: instance
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/MessageDataInstanceModel'
+        errors:
+          items:
+            $ref: '#/components/schemas/MessageError'
+          nullable: true
+          title: Errors
+          type: array
+      title: MessageBodyModel
+      type: object
+    HttpValidationError:
+      description: http validation error
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          nullable: true
+          title: Detail
+          type: array
+      title: HttpValidationError
+      type: object
+    InbotDiscussionBodyModel:
+      description: an API recommendation message
+      example:
+        data:
+          attributes:
+            messages:
+            - userMessage: userMessage
+              botMessage: null
+            - userMessage: userMessage
+              botMessage: null
+          type: InbotDiscussion
+      properties:
+        data:
+          $ref: '#/components/schemas/InbotDiscussionDataInstanceModel'
+      required:
+      - data
+      title: InbotDiscussionBodyModel
+      type: object
+    MessageDataInstanceModel:
+      description: an API answer message
+      example:
+        attributes:
+          userMessage: userMessage
+          botMessage: null
+        type: Message
+      properties:
+        type:
+          default: Message
+          nullable: true
+          title: Type
+          type: string
+        attributes:
+          $ref: '#/components/schemas/Message'
+      required:
+      - attributes
+      title: MessageDataInstanceModel
+      type: object
+    MessageError:
+      description: error message
+      example:
+        traceId: traceId
+        code: code
+        instance: instance
+        type: type
+      properties:
+        traceId:
+          description: "correlation ID, unique to each request"
+          nullable: true
+          title: Traceid
+          type: string
+        type:
+          description: error category
+          nullable: true
+          title: Type
+          type: string
+        code:
+          description: error code
+          nullable: true
+          title: Code
+          type: string
+        instance:
+          description: specific occurrence of the problem
+          nullable: true
+          title: Instance
+          type: string
+      title: MessageError
+      type: object
+    ValidationError:
+      description: validation error
+      properties:
+        loc:
+          items:
+            $ref: '#/components/schemas/Location_inner'
+          title: Location
+          type: array
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+      type: object
+    InbotDiscussionDataInstanceModel:
+      description: an API recommendation request
+      example:
+        attributes:
+          messages:
+          - userMessage: userMessage
+            botMessage: null
+          - userMessage: userMessage
+            botMessage: null
+        type: InbotDiscussion
+      properties:
+        type:
+          default: InbotDiscussion
+          nullable: true
+          title: Type
+          type: string
+        attributes:
+          $ref: '#/components/schemas/InbotDiscussion'
+      required:
+      - attributes
+      title: InbotDiscussionDataInstanceModel
+      type: object
+    Message:
+      description: message of the discussion
+      example:
+        userMessage: userMessage
+        botMessage: null
+      properties:
+        userMessage:
+          description: user prompt
+          nullable: true
+          title: Usermessage
+          type: string
+        botMessage:
+          $ref: '#/components/schemas/Botmessage'
+      title: Message
+      type: object
+    InbotDiscussion:
+      description: discussion between the user and the chatbot
+      example:
+        messages:
+        - userMessage: userMessage
+          botMessage: null
+        - userMessage: userMessage
+          botMessage: null
+      properties:
+        messages:
+          description: "ordered list of previous messages, alternating between user\
+            \ prompts and bot answers"
+          items:
+            $ref: '#/components/schemas/Message'
+          minItems: 1
+          nullable: true
+          title: Messages
+          type: array
+      title: InbotDiscussion
+      type: object
+    BotMessage:
+      description: bot structured answer to the user prompt
+      properties:
+        opening:
+          description: "opening comment from the bot, introducing the list of recommended\
+            \ products if relevant."
+          nullable: true
+          title: Opening
+          type: string
+        productRecos:
+          description: list of recommended products
+          items:
+            $ref: '#/components/schemas/ProductRecommendation'
+          nullable: true
+          title: Productrecos
+          type: array
+        closing:
+          description: closing remark from the bot
+          nullable: true
+          title: Closing
+          type: string
+      title: BotMessage
+      type: object
+    ProductRecommendation:
+      description: recommendation data for a product
+      properties:
+        rationale:
+          description: "reason for this recommendation, given by the bot"
+          title: Rationale
+          type: string
+        name:
+          description: name of the product
+          nullable: true
+          title: Name
+          type: string
+        description:
+          description: description of the product
+          nullable: true
+          title: Description
+          type: string
+        imageUrl:
+          description: url of the product image
+          format: uri
+          maxLength: 65536
+          minLength: 1
+          nullable: true
+          title: Imageurl
+          type: string
+        url:
+          description: url of the product on the retailer website
+          format: uri
+          maxLength: 65536
+          minLength: 1
+          nullable: true
+          title: Url
+          type: string
+        brand:
+          description: brand of the product
+          nullable: true
+          title: Brand
+          type: string
+        price:
+          description: numerical value of the price of the product
+          nullable: true
+          title: Price
+          type: number
+        currency:
+          description: currency of the price of the product
+          nullable: true
+          title: Currency
+          type: string
+      required:
+      - rationale
+      title: ProductRecommendation
+      type: object
     BatchAcceptedResponse:
       description: A batch was accepted. The report can be accessed using the reporting
         endpoint.
@@ -4145,6 +4299,24 @@ components:
         numberOfProductsWithErrors: 5
         importRequestTimestamp: 0
         numberOfProductsInTheBatch: 6
+        numberOfProductsWithWarnings: 2
+        warningDetails:
+        - productId: productId
+          warnings:
+          - type: OverlargeBadgeUrl
+            message: message
+            isServerRelated: true
+          - type: OverlargeBadgeUrl
+            message: message
+            isServerRelated: true
+        - productId: productId
+          warnings:
+          - type: OverlargeBadgeUrl
+            message: message
+            isServerRelated: true
+          - type: OverlargeBadgeUrl
+            message: message
+            isServerRelated: true
         numberOfProductsDeleted: 5
         numberOfProductsUpserted: 1
         status: ACCEPTED
@@ -4202,6 +4374,15 @@ components:
           items:
             $ref: '#/components/schemas/ReportDetailErrors'
           type: array
+        numberOfProductsWithWarnings:
+          description: The number of products with Warnings.
+          format: int32
+          type: integer
+        warningDetails:
+          description: The list of Warnings with details.
+          items:
+            $ref: '#/components/schemas/ReportDetailWarnings'
+          type: array
       required:
       - errorDetails
       - importRequestTimestamp
@@ -4209,7 +4390,9 @@ components:
       - numberOfProductsInTheBatch
       - numberOfProductsUpserted
       - numberOfProductsWithErrors
+      - numberOfProductsWithWarnings
       - status
+      - warningDetails
       type: object
     ProductsCustomBatchRequest:
       description: Defines a batch of operations.
@@ -4304,6 +4487,7 @@ components:
             mobileLink: mobileLink
             targetCountry: targetCountry
             taxCategory: taxCategory
+            badge: badge
             condition: condition
             externalSellerName: externalSellerName
             minEnergyEfficiencyClass: minEnergyEfficiencyClass
@@ -4469,6 +4653,7 @@ components:
             mobileLink: mobileLink
             targetCountry: targetCountry
             taxCategory: taxCategory
+            badge: badge
             condition: condition
             externalSellerName: externalSellerName
             minEnergyEfficiencyClass: minEnergyEfficiencyClass
@@ -4651,6 +4836,28 @@ components:
       - errors
       - productId
       type: object
+    ReportDetailWarnings:
+      description: A list of warnings on a batch operation.
+      example:
+        productId: productId
+        warnings:
+        - type: OverlargeBadgeUrl
+          message: message
+          isServerRelated: true
+        - type: OverlargeBadgeUrl
+          message: message
+          isServerRelated: true
+      properties:
+        productId:
+          type: string
+        warnings:
+          items:
+            $ref: '#/components/schemas/ReportDetailWarning'
+          type: array
+      required:
+      - productId
+      - warnings
+      type: object
     ProductsCustomBatchRequestEntry:
       description: A product event for a batch request.
       example:
@@ -4743,6 +4950,7 @@ components:
           mobileLink: mobileLink
           targetCountry: targetCountry
           taxCategory: taxCategory
+          badge: badge
           condition: condition
           externalSellerName: externalSellerName
           minEnergyEfficiencyClass: minEnergyEfficiencyClass
@@ -4891,6 +5099,27 @@ components:
       - message
       - type
       type: object
+    ReportDetailWarning:
+      description: A warning on a batch operation.
+      example:
+        type: OverlargeBadgeUrl
+        message: message
+        isServerRelated: true
+      properties:
+        type:
+          enum:
+          - OverlargeBadgeUrl
+          - InvalidBadgeUrl
+          type: string
+        message:
+          type: string
+        isServerRelated:
+          type: boolean
+      required:
+      - isServerRelated
+      - message
+      - type
+      type: object
     Product:
       description: Defines a product to be inserted or updated.
       example:
@@ -4982,6 +5211,7 @@ components:
         mobileLink: mobileLink
         targetCountry: targetCountry
         taxCategory: taxCategory
+        badge: badge
         condition: condition
         externalSellerName: externalSellerName
         minEnergyEfficiencyClass: minEnergyEfficiencyClass
@@ -5416,6 +5646,10 @@ components:
           description: The product rating for the product
           nullable: true
           type: string
+        badge:
+          description: URL of a badge image to display on the product.
+          nullable: true
+          type: string
       required:
       - channel
       - id
@@ -5651,6 +5885,103 @@ components:
       - name
       - value
       type: object
+    EntityResourceCollectionOutcomeOfRetailMediaAccount:
+      description: A resource that represents collection of Retail Media account entities
+      example:
+        data:
+        - attributes:
+            companyName: companyName
+            parentAccountLabel: parentAccountLabel
+            name: name
+            onBehalfCompanyName: onBehalfCompanyName
+            countryIds:
+            - countryIds
+            - countryIds
+            timeZone: timeZone
+            subType: Unknown
+            type: Unknown
+            currencyId: currencyId
+          id: id
+          type: type
+        - attributes:
+            companyName: companyName
+            parentAccountLabel: parentAccountLabel
+            name: name
+            onBehalfCompanyName: onBehalfCompanyName
+            countryIds:
+            - countryIds
+            - countryIds
+            timeZone: timeZone
+            subType: Unknown
+            type: Unknown
+            currencyId: currencyId
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/EntityResourceOfRetailMediaAccount'
+          nullable: true
+          type: array
+          x-nullable: true
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-nullable: true
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-nullable: true
+      type: object
+      x-nullable: true
     JsonApiPageResponseOfAccount:
       description: A wrapper class to return a single page of <typeparamref name="T"
         /> with metadata
@@ -5668,6 +5999,7 @@ components:
             parentAccountLabel: parentAccountLabel
             companyName: companyName
             name: name
+            onBehalfCompanyName: onBehalfCompanyName
             timeZone: timeZone
             currency: currency
             countries:
@@ -5681,6 +6013,7 @@ components:
             parentAccountLabel: parentAccountLabel
             companyName: companyName
             name: name
+            onBehalfCompanyName: onBehalfCompanyName
             timeZone: timeZone
             currency: currency
             countries:
@@ -5915,6 +6248,37 @@ components:
       - data
       - metadata
       type: object
+    EntityResourceOfRetailMediaAccount:
+      description: A resource object that represents a single Retail Media account
+        entity
+      example:
+        attributes:
+          companyName: companyName
+          parentAccountLabel: parentAccountLabel
+          name: name
+          onBehalfCompanyName: onBehalfCompanyName
+          countryIds:
+          - countryIds
+          - countryIds
+          timeZone: timeZone
+          subType: Unknown
+          type: Unknown
+          currencyId: currencyId
+        id: id
+        type: type
+      properties:
+        id:
+          nullable: true
+          type: string
+          x-nullable: true
+        type:
+          nullable: true
+          type: string
+          x-nullable: true
+        attributes:
+          $ref: '#/components/schemas/ExternalRetailMediaAccount'
+      type: object
+      x-nullable: true
     PageMetadata:
       description: Metadata related to the current request
       example:
@@ -6092,6 +6456,7 @@ components:
           parentAccountLabel: parentAccountLabel
           companyName: companyName
           name: name
+          onBehalfCompanyName: onBehalfCompanyName
           timeZone: timeZone
           currency: currency
           countries:
@@ -6161,6 +6526,94 @@ components:
       - id
       - type
       type: object
+    ExternalRetailMediaAccount:
+      description: A Retail Media account entity
+      example:
+        companyName: companyName
+        parentAccountLabel: parentAccountLabel
+        name: name
+        onBehalfCompanyName: onBehalfCompanyName
+        countryIds:
+        - countryIds
+        - countryIds
+        timeZone: timeZone
+        subType: Unknown
+        type: Unknown
+        currencyId: currencyId
+      properties:
+        name:
+          nullable: true
+          type: string
+          x-nullable: true
+        companyName:
+          nullable: true
+          type: string
+          x-nullable: true
+        onBehalfCompanyName:
+          nullable: true
+          type: string
+          x-nullable: true
+        type:
+          enum:
+          - Unknown
+          - Supply
+          - Demand
+          format: string
+          type: string
+          x-ms-enum:
+            name: AccountTypeEnum
+            modelAsString: false
+            values:
+            - 0
+            - 1
+            - 2
+          x-enumNames:
+          - Unknown
+          - Supply
+          - Demand
+          x-nullable: false
+        subType:
+          enum:
+          - Unknown
+          - Brand
+          - Seller
+          format: string
+          type: string
+          x-ms-enum:
+            name: AccountSubtypeEnum
+            modelAsString: false
+            values:
+            - 0
+            - 1
+            - 2
+          x-enumNames:
+          - Unknown
+          - Brand
+          - Seller
+          x-nullable: false
+        countryIds:
+          items:
+            type: string
+          nullable: true
+          type: array
+          x-nullable: true
+        currencyId:
+          nullable: true
+          type: string
+          x-nullable: true
+        parentAccountLabel:
+          nullable: true
+          type: string
+          x-nullable: true
+        timeZone:
+          nullable: true
+          type: string
+          x-nullable: true
+      required:
+      - subType
+      - type
+      type: object
+      x-nullable: true
     ExternalAccount:
       description: A Retail Media Account used to launch campaigns and line items
       example:
@@ -6168,6 +6621,7 @@ components:
         parentAccountLabel: parentAccountLabel
         companyName: companyName
         name: name
+        onBehalfCompanyName: onBehalfCompanyName
         timeZone: timeZone
         currency: currency
         countries:
@@ -6212,6 +6666,10 @@ components:
           type: string
           x-nullable: false
         companyName:
+          nullable: true
+          type: string
+          x-nullable: true
+        onBehalfCompanyName:
           nullable: true
           type: string
           x-nullable: true
@@ -6273,8 +6731,16 @@ components:
             contactList:
               isReadOnly: true
               sharingStatus: Unknown
-              type: Unknown
-            userBehavior:
+              identifierType: Unknown
+            channels:
+            - Unknown
+            - Unknown
+            name: name
+            description: description
+            retailerId: retailerId
+            type: Unknown
+            createdById: createdById
+            events:
               categoryIds:
               - categoryIds
               - categoryIds
@@ -6285,14 +6751,6 @@ components:
               brandIds:
               - brandIds
               - brandIds
-            channels:
-            - Unknown
-            - Unknown
-            name: name
-            description: description
-            retailerId: retailerId
-            type: Unknown
-            createdById: createdById
             updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
           type: type
@@ -6302,8 +6760,16 @@ components:
             contactList:
               isReadOnly: true
               sharingStatus: Unknown
-              type: Unknown
-            userBehavior:
+              identifierType: Unknown
+            channels:
+            - Unknown
+            - Unknown
+            name: name
+            description: description
+            retailerId: retailerId
+            type: Unknown
+            createdById: createdById
+            events:
               categoryIds:
               - categoryIds
               - categoryIds
@@ -6314,14 +6780,6 @@ components:
               brandIds:
               - brandIds
               - brandIds
-            channels:
-            - Unknown
-            - Unknown
-            name: name
-            description: description
-            retailerId: retailerId
-            type: Unknown
-            createdById: createdById
             updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
           type: type
@@ -6469,8 +6927,16 @@ components:
             contactList:
               isReadOnly: true
               sharingStatus: Unknown
-              type: Unknown
-            userBehavior:
+              identifierType: Unknown
+            channels:
+            - Unknown
+            - Unknown
+            name: name
+            description: description
+            retailerId: retailerId
+            type: Unknown
+            createdById: createdById
+            events:
               categoryIds:
               - categoryIds
               - categoryIds
@@ -6481,14 +6947,6 @@ components:
               brandIds:
               - brandIds
               - brandIds
-            channels:
-            - Unknown
-            - Unknown
-            name: name
-            description: description
-            retailerId: retailerId
-            type: Unknown
-            createdById: createdById
             updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
           type: type
@@ -6498,8 +6956,16 @@ components:
             contactList:
               isReadOnly: true
               sharingStatus: Unknown
-              type: Unknown
-            userBehavior:
+              identifierType: Unknown
+            channels:
+            - Unknown
+            - Unknown
+            name: name
+            description: description
+            retailerId: retailerId
+            type: Unknown
+            createdById: createdById
+            events:
               categoryIds:
               - categoryIds
               - categoryIds
@@ -6510,14 +6976,6 @@ components:
               brandIds:
               - brandIds
               - brandIds
-            channels:
-            - Unknown
-            - Unknown
-            name: name
-            description: description
-            retailerId: retailerId
-            type: Unknown
-            createdById: createdById
             updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
           type: type
@@ -6657,43 +7115,59 @@ components:
           readOnly: true
           type: array
       type: object
-    RmLegacyAudienceGetEntityV1ListResponse:
+    RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
         several entities and metadata
       example:
         data:
         - attributes:
-            customerListDetails:
-              size: size
-              isShared: true
+            accountId: accountId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            channels:
+            - Unknown
+            - Unknown
             name: name
+            description: description
+            algebra:
+              not: null
+              or:
+              - null
+              - null
+              and:
+              - null
+              - null
+              audienceSegmentId: audienceSegmentId
             retailerId: retailerId
-            userBehaviorDetails:
-              targetIds:
-              - targetIds
-              - targetIds
-              targetType: brand
-              userType: viewer
-              lookbackWindow: P7D
+            createdById: createdById
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
-          audienceType: customerList
           type: type
         - attributes:
-            customerListDetails:
-              size: size
-              isShared: true
+            accountId: accountId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            channels:
+            - Unknown
+            - Unknown
             name: name
+            description: description
+            algebra:
+              not: null
+              or:
+              - null
+              - null
+              and:
+              - null
+              - null
+              audienceSegmentId: audienceSegmentId
             retailerId: retailerId
-            userBehaviorDetails:
-              targetIds:
-              - targetIds
-              - targetIds
-              targetType: brand
-              userType: viewer
-              lookbackWindow: P7D
+            createdById: createdById
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
-          audienceType: customerList
           type: type
+        meta:
+          totalItems: 0
+          offset: 1
+          limit: 6
         warnings:
         - traceId: traceId
           traceIdentifier: traceIdentifier
@@ -6737,137 +7211,11 @@ components:
           type: unknown
           title: title
       properties:
+        meta:
+          $ref: '#/components/schemas/RmAudienceSearchMetadataV1'
         data:
           items:
-            $ref: '#/components/schemas/RmLegacyAudienceGetEntityV1Resource'
-          nullable: true
-          type: array
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
-    RmLegacyAudienceGetEntityV2ListResponse:
-      description: A top-level object that encapsulates a Criteo API response for
-        several entities
-      example:
-        data:
-        - attributes:
-            customerListDetails:
-              size: size
-              isShared: true
-            name: name
-            retailerId: retailerId
-            userBehaviorDetails:
-              inclusiveSegment:
-                userAction: buy
-                categoryIds:
-                - 0
-                - 0
-                minPrice: 1.4658129805029452
-                maxPrice: 5.962133916683182
-                brandIds:
-                - 6
-                - 6
-                lookbackWindow: P7D
-              exclusiveSegment:
-                userAction: buy
-                categoryIds:
-                - 0
-                - 0
-                minPrice: 1.4658129805029452
-                maxPrice: 5.962133916683182
-                brandIds:
-                - 6
-                - 6
-                lookbackWindow: P7D
-          id: id
-          type: type
-        - attributes:
-            customerListDetails:
-              size: size
-              isShared: true
-            name: name
-            retailerId: retailerId
-            userBehaviorDetails:
-              inclusiveSegment:
-                userAction: buy
-                categoryIds:
-                - 0
-                - 0
-                minPrice: 1.4658129805029452
-                maxPrice: 5.962133916683182
-                brandIds:
-                - 6
-                - 6
-                lookbackWindow: P7D
-              exclusiveSegment:
-                userAction: buy
-                categoryIds:
-                - 0
-                - 0
-                minPrice: 1.4658129805029452
-                maxPrice: 5.962133916683182
-                brandIds:
-                - 6
-                - 6
-                lookbackWindow: P7D
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/RmLegacyAudienceGetEntityV2Resource'
+            $ref: '#/components/schemas/RmAudienceEntityV1Resource'
           nullable: true
           type: array
         warnings:
@@ -6884,7 +7232,8 @@ components:
           type: array
       type: object
     RmAudienceSegmentBulkUpdateInputV1:
-      description: Input to update one or more segments.
+      description: A top-level object that encapsulates a Criteo API request for several
+        entities.
       example:
         data:
         - attributes:
@@ -6909,7 +7258,8 @@ components:
           type: array
       type: object
     RmAudienceSegmentBulkCreateInputV1:
-      description: Input to create one or more audience segments.
+      description: A top-level object that encapsulates a Criteo API request for several
+        values.
       example:
         data:
         - attributes:
@@ -6934,7 +7284,8 @@ components:
           type: array
       type: object
     RmAudienceSegmentBulkDeleteInputV1:
-      description: Input to delete one or more segments.
+      description: A top-level object that encapsulates a Criteo API request for several
+        entities.
       example:
         data:
         - attributes: "{}"
@@ -6951,7 +7302,8 @@ components:
           type: array
       type: object
     RmAudienceSegmentSearchInputV1:
-      description: Audience segment search parameter
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value.
       example:
         data:
           attributes:
@@ -6969,6 +7321,26 @@ components:
         data:
           $ref: '#/components/schemas/RmAudienceSegmentSearchEntityV1Resource'
       type: object
+    RmAudienceSearchInputV1:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value.
+      example:
+        data:
+          attributes:
+            audienceSegmentIds:
+            - audienceSegmentIds
+            - audienceSegmentIds
+            retailerIds:
+            - retailerIds
+            - retailerIds
+            audienceIds:
+            - audienceIds
+            - audienceIds
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/RmAudienceSearchEntityV1Resource'
+      type: object
     RmAudienceSegmentEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -6978,8 +7350,16 @@ components:
           contactList:
             isReadOnly: true
             sharingStatus: Unknown
-            type: Unknown
-          userBehavior:
+            identifierType: Unknown
+          channels:
+          - Unknown
+          - Unknown
+          name: name
+          description: description
+          retailerId: retailerId
+          type: Unknown
+          createdById: createdById
+          events:
             categoryIds:
             - categoryIds
             - categoryIds
@@ -6990,14 +7370,6 @@ components:
             brandIds:
             - brandIds
             - brandIds
-          channels:
-          - Unknown
-          - Unknown
-          name: name
-          description: description
-          retailerId: retailerId
-          type: Unknown
-          createdById: createdById
           updatedAt: 2000-01-23T04:56:07.000+00:00
         id: id
         type: type
@@ -7077,78 +7449,57 @@ components:
           nullable: true
           type: string
       type: object
-    RmLegacyAudienceGetEntityV1Resource:
-      description: A class that represents a domain entity exposed by an API
+    RmAudienceSearchMetadataV1:
+      description: Metadata for the audience search response.
       example:
-        attributes:
-          customerListDetails:
-            size: size
-            isShared: true
-          name: name
-          retailerId: retailerId
-          userBehaviorDetails:
-            targetIds:
-            - targetIds
-            - targetIds
-            targetType: brand
-            userType: viewer
-            lookbackWindow: P7D
-        id: id
-        audienceType: customerList
-        type: type
+        totalItems: 0
+        offset: 1
+        limit: 6
       properties:
-        attributes:
-          $ref: '#/components/schemas/RmLegacyAudienceGetEntityV1'
-        id:
+        totalItems:
+          description: Total number of items
+          format: int32
           nullable: true
-          type: string
-        audienceType:
-          enum:
-          - customerList
-          - userBehavior
+          type: integer
+        limit:
+          description: Max item of the current page
+          format: int32
           nullable: true
-          type: string
-        type:
+          type: integer
+        offset:
+          description: Number of item to skip
+          format: int32
           nullable: true
-          type: string
+          type: integer
       type: object
-    RmLegacyAudienceGetEntityV2Resource:
+    RmAudienceEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
         attributes:
-          customerListDetails:
-            size: size
-            isShared: true
+          accountId: accountId
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          channels:
+          - Unknown
+          - Unknown
           name: name
+          description: description
+          algebra:
+            not: null
+            or:
+            - null
+            - null
+            and:
+            - null
+            - null
+            audienceSegmentId: audienceSegmentId
           retailerId: retailerId
-          userBehaviorDetails:
-            inclusiveSegment:
-              userAction: buy
-              categoryIds:
-              - 0
-              - 0
-              minPrice: 1.4658129805029452
-              maxPrice: 5.962133916683182
-              brandIds:
-              - 6
-              - 6
-              lookbackWindow: P7D
-            exclusiveSegment:
-              userAction: buy
-              categoryIds:
-              - 0
-              - 0
-              minPrice: 1.4658129805029452
-              maxPrice: 5.962133916683182
-              brandIds:
-              - 6
-              - 6
-              lookbackWindow: P7D
+          createdById: createdById
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         id: id
         type: type
       properties:
         attributes:
-          $ref: '#/components/schemas/RmLegacyAudienceGetEntityV2'
+          $ref: '#/components/schemas/RmAudienceEntityV1'
         id:
           description: Id of the entity
           nullable: true
@@ -7240,6 +7591,28 @@ components:
         attributes:
           $ref: '#/components/schemas/RmAudienceSegmentSearchEntityV1'
       type: object
+    RmAudienceSearchEntityV1Resource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          audienceSegmentIds:
+          - audienceSegmentIds
+          - audienceSegmentIds
+          retailerIds:
+          - retailerIds
+          - retailerIds
+          audienceIds:
+          - audienceIds
+          - audienceIds
+        type: type
+      properties:
+        type:
+          nullable: true
+          type: string
+        attributes:
+          $ref: '#/components/schemas/RmAudienceSearchEntityV1'
+      type: object
     RmAudienceSegmentEntityV1:
       description: Set of rules that defines specific people to target.
       example:
@@ -7248,8 +7621,16 @@ components:
         contactList:
           isReadOnly: true
           sharingStatus: Unknown
-          type: Unknown
-        userBehavior:
+          identifierType: Unknown
+        channels:
+        - Unknown
+        - Unknown
+        name: name
+        description: description
+        retailerId: retailerId
+        type: Unknown
+        createdById: createdById
+        events:
           categoryIds:
           - categoryIds
           - categoryIds
@@ -7260,14 +7641,6 @@ components:
           brandIds:
           - brandIds
           - brandIds
-        channels:
-        - Unknown
-        - Unknown
-        name: name
-        description: description
-        retailerId: retailerId
-        type: Unknown
-        createdById: createdById
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         accountId:
@@ -7291,7 +7664,7 @@ components:
           enum:
           - Unknown
           - ContactList
-          - UserBehavior
+          - Events
           nullable: true
           type: string
         createdAt:
@@ -7310,8 +7683,8 @@ components:
           type: string
         contactList:
           $ref: '#/components/schemas/RmContactListV1'
-        userBehavior:
-          $ref: '#/components/schemas/RmUserBehaviorV1'
+        events:
+          $ref: '#/components/schemas/RmEventsV1'
         channels:
           description: Channels associated to the segment (read-only)
           items:
@@ -7362,85 +7735,71 @@ components:
         infoType: entity
         name: ContactListStatistics
         version: v1
-    RmLegacyAudienceGetEntityV1:
-      description: Audience definition of people of interest for a marketer.
+    RmAudienceEntityV1:
+      description: Audience of people of interest for a marketer.
       example:
-        customerListDetails:
-          size: size
-          isShared: true
+        accountId: accountId
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        channels:
+        - Unknown
+        - Unknown
         name: name
+        description: description
+        algebra:
+          not: null
+          or:
+          - null
+          - null
+          and:
+          - null
+          - null
+          audienceSegmentId: audienceSegmentId
         retailerId: retailerId
-        userBehaviorDetails:
-          targetIds:
-          - targetIds
-          - targetIds
-          targetType: brand
-          userType: viewer
-          lookbackWindow: P7D
+        createdById: createdById
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
+        accountId:
+          description: Account associated to the audience
+          nullable: true
+          type: string
         name:
           description: Name of the audience
+          nullable: true
+          type: string
+        description:
+          description: Description of the audience
+          nullable: true
           type: string
         retailerId:
-          description: ID of the retailer associated with this audience
+          description: Retailer  associated to the audience
+          nullable: true
           type: string
-        userBehaviorDetails:
-          $ref: '#/components/schemas/RmLegacySegmentUserBehaviorV1'
-        customerListDetails:
-          $ref: '#/components/schemas/RmLegacySegmentCustomerList'
-      required:
-      - name
-      - retailerId
-      type: object
-      x-criteo-canonical:
-        infoType: entity
-        name: RetailMediaAudienceSummary
-        version: v1
-    RmLegacyAudienceGetEntityV2:
-      description: Audience definition of people of interest for a marketer
-      example:
-        customerListDetails:
-          size: size
-          isShared: true
-        name: name
-        retailerId: retailerId
-        userBehaviorDetails:
-          inclusiveSegment:
-            userAction: buy
-            categoryIds:
-            - 0
-            - 0
-            minPrice: 1.4658129805029452
-            maxPrice: 5.962133916683182
-            brandIds:
-            - 6
-            - 6
-            lookbackWindow: P7D
-          exclusiveSegment:
-            userAction: buy
-            categoryIds:
-            - 0
-            - 0
-            minPrice: 1.4658129805029452
-            maxPrice: 5.962133916683182
-            brandIds:
-            - 6
-            - 6
-            lookbackWindow: P7D
-      properties:
-        retailerId:
-          description: ID of the retailer associated with this audience
+        createdById:
+          description: User that created the audience
+          nullable: true
           type: string
-        userBehaviorDetails:
-          $ref: '#/components/schemas/RmLegacyAudienceUserBehaviorDetailsV2'
-        customerListDetails:
-          $ref: '#/components/schemas/RmLegacySegmentCustomerList'
-        name:
-          description: Name of the audience
+        createdAt:
+          description: ISO-8601 timestamp in UTC of audience creation (read-only)
+          format: date-time
+          nullable: true
           type: string
-      required:
-      - name
-      - retailerId
+        updatedAt:
+          description: ISO-8601 timestamp in UTC of audience update (read-only)
+          format: date-time
+          nullable: true
+          type: string
+        channels:
+          description: Channels associated to the audience (read-only)
+          items:
+            enum:
+            - Unknown
+            - Onsite
+            - Offsite
+            type: string
+          nullable: true
+          type: array
+        algebra:
+          $ref: '#/components/schemas/RmAlgebraNodeV1'
       type: object
       x-criteo-canonical:
         infoType: entity
@@ -7479,7 +7838,6 @@ components:
       properties:
         name:
           description: Name of the segment
-          nullable: true
           type: string
         description:
           description: Description of the segment
@@ -7487,10 +7845,12 @@ components:
           type: string
         retailerId:
           description: Retailer  associated to the segment
-          nullable: true
           type: string
         contactList:
           $ref: '#/components/schemas/RmContactListCreateV1'
+      required:
+      - name
+      - retailerId
       type: object
     RmAudienceSegmentDeleteEntityV1:
       description: Segment to delete
@@ -7531,7 +7891,40 @@ components:
             enum:
             - Unknown
             - ContactList
-            - UserBehavior
+            - Events
+            type: string
+          nullable: true
+          type: array
+      type: object
+    RmAudienceSearchEntityV1:
+      description: "Available filters to perform a search on audiences. If present,\
+        \ the filters are AND'ed together when applied."
+      example:
+        audienceSegmentIds:
+        - audienceSegmentIds
+        - audienceSegmentIds
+        retailerIds:
+        - retailerIds
+        - retailerIds
+        audienceIds:
+        - audienceIds
+        - audienceIds
+      properties:
+        audienceIds:
+          description: List of audience ids
+          items:
+            type: string
+          nullable: true
+          type: array
+        retailerIds:
+          description: List of retailer ids
+          items:
+            type: string
+          nullable: true
+          type: array
+        audienceSegmentIds:
+          description: List of segment ids (linked to the result audiences)
+          items:
             type: string
           nullable: true
           type: array
@@ -7541,14 +7934,14 @@ components:
       example:
         isReadOnly: true
         sharingStatus: Unknown
-        type: Unknown
+        identifierType: Unknown
       properties:
         isReadOnly:
           description: Is the segment read-only
           nullable: true
           type: boolean
-        type:
-          description: Indicates contact list type
+        identifierType:
+          description: Indicates contact list identifier's type
           enum:
           - Unknown
           - Email
@@ -7567,7 +7960,7 @@ components:
           nullable: true
           type: string
       type: object
-    RmUserBehaviorV1:
+    RmEventsV1:
       description: Settings to target users based on their behavior
       example:
         categoryIds:
@@ -7628,102 +8021,33 @@ components:
           nullable: true
           type: number
       type: object
-    RmLegacySegmentUserBehaviorV1:
-      description: Audience definition of people based on what they visited
+    RmAlgebraNodeV1:
+      description: Node in the audience algebra definition.
       example:
-        targetIds:
-        - targetIds
-        - targetIds
-        targetType: brand
-        userType: viewer
-        lookbackWindow: P7D
+        not: null
+        or:
+        - null
+        - null
+        and:
+        - null
+        - null
+        audienceSegmentId: audienceSegmentId
       properties:
-        userType:
-          description: Type of shopper activity used to generate the audience.
-          enum:
-          - viewer
-          - buyer
-          - addToCarter
-          type: string
-        lookbackWindow:
-          description: Length of lookback window
-          enum:
-          - P7D
-          - P14D
-          - P30D
-          - P45D
-          - P60D
-          - P90D
-          - P120D
-          - P150D
-          - P180D
-          type: string
-        targetType:
-          description: Type of target
-          enum:
-          - brand
-          - category
-          nullable: true
-          type: string
-        targetIds:
-          description: The categories to target
+        and:
           items:
-            type: string
+            $ref: '#/components/schemas/RmAlgebraNodeV1'
           nullable: true
           type: array
-          uniqueItems: true
-      required:
-      - lookbackWindow
-      - userType
-      type: object
-    RmLegacySegmentCustomerList:
-      description: Audience definition of people based on a customer list
-      example:
-        size: size
-        isShared: true
-      properties:
-        size:
-          description: Number of users in the customer list audience.
+        or:
+          items:
+            $ref: '#/components/schemas/RmAlgebraNodeV1'
+          nullable: true
+          type: array
+        not:
+          $ref: '#/components/schemas/RmAlgebraNodeV1'
+        audienceSegmentId:
+          nullable: true
           type: string
-        isShared:
-          description: Indicate if the audience is shared.
-          type: boolean
-      required:
-      - isShared
-      - size
-      type: object
-    RmLegacyAudienceUserBehaviorDetailsV2:
-      description: User Behavior Details.
-      example:
-        inclusiveSegment:
-          userAction: buy
-          categoryIds:
-          - 0
-          - 0
-          minPrice: 1.4658129805029452
-          maxPrice: 5.962133916683182
-          brandIds:
-          - 6
-          - 6
-          lookbackWindow: P7D
-        exclusiveSegment:
-          userAction: buy
-          categoryIds:
-          - 0
-          - 0
-          minPrice: 1.4658129805029452
-          maxPrice: 5.962133916683182
-          brandIds:
-          - 6
-          - 6
-          lookbackWindow: P7D
-      properties:
-        inclusiveSegment:
-          $ref: '#/components/schemas/RmLegacySegmentUserBehaviorV2'
-        exclusiveSegment:
-          $ref: '#/components/schemas/RmLegacySegmentUserBehaviorV2'
-      required:
-      - inclusiveSegment
       type: object
     NillableString:
       description: Placeholder object for string value  for which "null" is a valid
@@ -7754,70 +8078,6 @@ components:
           - CustomerId
           nullable: true
           type: string
-      type: object
-    RmLegacySegmentUserBehaviorV2:
-      description: Audience definition of people based on what they visited
-      example:
-        userAction: buy
-        categoryIds:
-        - 0
-        - 0
-        minPrice: 1.4658129805029452
-        maxPrice: 5.962133916683182
-        brandIds:
-        - 6
-        - 6
-        lookbackWindow: P7D
-      properties:
-        userAction:
-          description: Type of shopper activity used to generate the audience.
-          enum:
-          - buy
-          - view
-          - addToCart
-          type: string
-        lookbackWindow:
-          description: Length of lookback window
-          enum:
-          - P7D
-          - P14D
-          - P30D
-          - P45D
-          - P60D
-          - P90D
-          - P120D
-          - P150D
-          - P180D
-          type: string
-        categoryIds:
-          description: The categories to target
-          items:
-            format: int32
-            type: integer
-          nullable: true
-          type: array
-          uniqueItems: true
-        brandIds:
-          description: The brands to target
-          items:
-            format: int64
-            type: integer
-          nullable: true
-          type: array
-          uniqueItems: true
-        minPrice:
-          description: The min price of targeted skus.
-          format: double
-          nullable: true
-          type: number
-        maxPrice:
-          description: The max price of targeted skus.
-          format: double
-          nullable: true
-          type: number
-      required:
-      - lookbackWindow
-      - userAction
       type: object
     KeywordsModelResponse:
       additionalProperties: false
@@ -13181,6 +13441,7 @@ components:
             companyName: companyName
             parentAccountLabel: parentAccountLabel
             name: name
+            onBehalfCompanyName: onBehalfCompanyName
             countryIds:
             - countryIds
             - countryIds
@@ -13358,90 +13619,6 @@ components:
       required:
       - data
       - meta
-      type: object
-    ValueResourceOutcomeOfCampaignBudgetOverrides:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value.
-      example:
-        data:
-          attributes:
-            monthlyBudgetOverrides:
-            - duration: duration
-              maxMonthlySpend: 0.8008281904610115
-              startMonth: 2000-01-23T04:56:07.000+00:00
-              status: Expired
-            - duration: duration
-              maxMonthlySpend: 0.8008281904610115
-              startMonth: 2000-01-23T04:56:07.000+00:00
-              status: Expired
-            dailyBudgetOverrides:
-            - duration: duration
-              maxDailySpend: 6.027456183070403
-              startDate: 2000-01-23T04:56:07.000+00:00
-              status: Expired
-            - duration: duration
-              maxDailySpend: 6.027456183070403
-              startDate: 2000-01-23T04:56:07.000+00:00
-              status: Expired
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceOfCampaignBudgetOverrides'
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
       type: object
     ResourceCollectionOutcomeOfSkuSearchResult:
       additionalProperties: false
@@ -13668,90 +13845,6 @@ components:
           readOnly: true
           type: array
       type: object
-    ValueResourceOutcomeOfLineItemBudgetOverrides:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value.
-      example:
-        data:
-          attributes:
-            monthlyLineItemBudgetOverrides:
-            - duration: duration
-              maxMonthlySpend: 0.8008281904610115
-              startMonth: 2000-01-23T04:56:07.000+00:00
-              status: Expired
-            - duration: duration
-              maxMonthlySpend: 0.8008281904610115
-              startMonth: 2000-01-23T04:56:07.000+00:00
-              status: Expired
-            dailyLineItemBudgetOverrides:
-            - duration: duration
-              maxDailySpend: 6.027456183070403
-              startDate: 2000-01-23T04:56:07.000+00:00
-              status: Expired
-            - duration: duration
-              maxDailySpend: 6.027456183070403
-              startDate: 2000-01-23T04:56:07.000+00:00
-              status: Expired
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceOfLineItemBudgetOverrides'
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
     ValueResourceInputOfRetailMediaSellerAccountCreation:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -13761,6 +13854,7 @@ components:
           attributes:
             companyName: companyName
             name: name
+            onBehalfCompanyName: onBehalfCompanyName
             sellers:
             - sellerId: sellerId
               retailerId: 0
@@ -13792,36 +13886,6 @@ components:
           nullable: true
           type: array
       type: object
-    ValueResourceInputOfCampaignBudgetOverrides:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value.
-      example:
-        data:
-          attributes:
-            monthlyBudgetOverrides:
-            - duration: duration
-              maxMonthlySpend: 0.8008281904610115
-              startMonth: 2000-01-23T04:56:07.000+00:00
-              status: Expired
-            - duration: duration
-              maxMonthlySpend: 0.8008281904610115
-              startMonth: 2000-01-23T04:56:07.000+00:00
-              status: Expired
-            dailyBudgetOverrides:
-            - duration: duration
-              maxDailySpend: 6.027456183070403
-              startDate: 2000-01-23T04:56:07.000+00:00
-              status: Expired
-            - duration: duration
-              maxDailySpend: 6.027456183070403
-              startDate: 2000-01-23T04:56:07.000+00:00
-              status: Expired
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceOfCampaignBudgetOverrides'
-      type: object
     SkuSearchRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -13838,36 +13902,6 @@ components:
       required:
       - data
       type: object
-    ValueResourceInputOfLineItemBudgetOverrides:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value.
-      example:
-        data:
-          attributes:
-            monthlyLineItemBudgetOverrides:
-            - duration: duration
-              maxMonthlySpend: 0.8008281904610115
-              startMonth: 2000-01-23T04:56:07.000+00:00
-              status: Expired
-            - duration: duration
-              maxMonthlySpend: 0.8008281904610115
-              startMonth: 2000-01-23T04:56:07.000+00:00
-              status: Expired
-            dailyLineItemBudgetOverrides:
-            - duration: duration
-              maxDailySpend: 6.027456183070403
-              startDate: 2000-01-23T04:56:07.000+00:00
-              status: Expired
-            - duration: duration
-              maxDailySpend: 6.027456183070403
-              startDate: 2000-01-23T04:56:07.000+00:00
-              status: Expired
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceOfLineItemBudgetOverrides'
-      type: object
     ResourceOfRetailMediaAccount:
       additionalProperties: false
       description: A class that represents a domain entity exposed by an API.
@@ -13876,6 +13910,7 @@ components:
           companyName: companyName
           parentAccountLabel: parentAccountLabel
           name: name
+          onBehalfCompanyName: onBehalfCompanyName
           countryIds:
           - countryIds
           - countryIds
@@ -13982,38 +14017,6 @@ components:
       - changeType
       - dateOfModification
       - modifiedByUser
-      type: object
-    ValueResourceOfCampaignBudgetOverrides:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value.
-      example:
-        attributes:
-          monthlyBudgetOverrides:
-          - duration: duration
-            maxMonthlySpend: 0.8008281904610115
-            startMonth: 2000-01-23T04:56:07.000+00:00
-            status: Expired
-          - duration: duration
-            maxMonthlySpend: 0.8008281904610115
-            startMonth: 2000-01-23T04:56:07.000+00:00
-            status: Expired
-          dailyBudgetOverrides:
-          - duration: duration
-            maxDailySpend: 6.027456183070403
-            startDate: 2000-01-23T04:56:07.000+00:00
-            status: Expired
-          - duration: duration
-            maxDailySpend: 6.027456183070403
-            startDate: 2000-01-23T04:56:07.000+00:00
-            status: Expired
-        type: type
-      properties:
-        type:
-          nullable: true
-          type: string
-        attributes:
-          $ref: '#/components/schemas/CampaignBudgetOverrides'
       type: object
     ResourceOfSkuSearchResult:
       additionalProperties: false
@@ -14130,38 +14133,6 @@ components:
         attributes:
           $ref: '#/components/schemas/RecommendedKeywordsResult'
       type: object
-    ValueResourceOfLineItemBudgetOverrides:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value.
-      example:
-        attributes:
-          monthlyLineItemBudgetOverrides:
-          - duration: duration
-            maxMonthlySpend: 0.8008281904610115
-            startMonth: 2000-01-23T04:56:07.000+00:00
-            status: Expired
-          - duration: duration
-            maxMonthlySpend: 0.8008281904610115
-            startMonth: 2000-01-23T04:56:07.000+00:00
-            status: Expired
-          dailyLineItemBudgetOverrides:
-          - duration: duration
-            maxDailySpend: 6.027456183070403
-            startDate: 2000-01-23T04:56:07.000+00:00
-            status: Expired
-          - duration: duration
-            maxDailySpend: 6.027456183070403
-            startDate: 2000-01-23T04:56:07.000+00:00
-            status: Expired
-        type: type
-      properties:
-        type:
-          nullable: true
-          type: string
-        attributes:
-          $ref: '#/components/schemas/LineItemBudgetOverrides'
-      type: object
     ValueResourceOfRetailMediaSellerAccountCreation:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
@@ -14170,6 +14141,7 @@ components:
         attributes:
           companyName: companyName
           name: name
+          onBehalfCompanyName: onBehalfCompanyName
           sellers:
           - sellerId: sellerId
             retailerId: 0
@@ -14219,6 +14191,7 @@ components:
         companyName: companyName
         parentAccountLabel: parentAccountLabel
         name: name
+        onBehalfCompanyName: onBehalfCompanyName
         countryIds:
         - countryIds
         - countryIds
@@ -14232,8 +14205,11 @@ components:
           nullable: true
           type: string
         companyName:
-          description: Display name for reporting the owning entity of ads for the
-            Digital Services Act in the European Union
+          description: Paying entity name of ads for the Digital Services Act
+          nullable: true
+          type: string
+        onBehalfCompanyName:
+          description: On behalf entity name of ads for the Digital Services Act
           nullable: true
           type: string
         type:
@@ -14312,44 +14288,6 @@ components:
       - changeValue
       - currentValue
       - previousValue
-      type: object
-    CampaignBudgetOverrides:
-      additionalProperties: false
-      description: Campaign budget overrides including Monthly and Daily budget overrides.
-      example:
-        monthlyBudgetOverrides:
-        - duration: duration
-          maxMonthlySpend: 0.8008281904610115
-          startMonth: 2000-01-23T04:56:07.000+00:00
-          status: Expired
-        - duration: duration
-          maxMonthlySpend: 0.8008281904610115
-          startMonth: 2000-01-23T04:56:07.000+00:00
-          status: Expired
-        dailyBudgetOverrides:
-        - duration: duration
-          maxDailySpend: 6.027456183070403
-          startDate: 2000-01-23T04:56:07.000+00:00
-          status: Expired
-        - duration: duration
-          maxDailySpend: 6.027456183070403
-          startDate: 2000-01-23T04:56:07.000+00:00
-          status: Expired
-      properties:
-        monthlyBudgetOverrides:
-          description: "Campaign budget override monthly part, chronological order\
-            \ restricted."
-          items:
-            $ref: '#/components/schemas/CampaignMonthlyBudgetOverride'
-          type: array
-        dailyBudgetOverrides:
-          description: "Campaign budget override daily part, chronological order restricted."
-          items:
-            $ref: '#/components/schemas/CampaignDailyBudgetOverride'
-          type: array
-      required:
-      - dailyBudgetOverrides
-      - monthlyBudgetOverrides
       type: object
     SkuSearchResult:
       additionalProperties: false
@@ -14499,45 +14437,6 @@ components:
           nullable: true
           type: array
       type: object
-    LineItemBudgetOverrides:
-      additionalProperties: false
-      description: Line item budget overrides including Monthly and Daily budget overrides.
-      example:
-        monthlyLineItemBudgetOverrides:
-        - duration: duration
-          maxMonthlySpend: 0.8008281904610115
-          startMonth: 2000-01-23T04:56:07.000+00:00
-          status: Expired
-        - duration: duration
-          maxMonthlySpend: 0.8008281904610115
-          startMonth: 2000-01-23T04:56:07.000+00:00
-          status: Expired
-        dailyLineItemBudgetOverrides:
-        - duration: duration
-          maxDailySpend: 6.027456183070403
-          startDate: 2000-01-23T04:56:07.000+00:00
-          status: Expired
-        - duration: duration
-          maxDailySpend: 6.027456183070403
-          startDate: 2000-01-23T04:56:07.000+00:00
-          status: Expired
-      properties:
-        monthlyLineItemBudgetOverrides:
-          description: "Line item budget override monthly part, chronological order\
-            \ restricted."
-          items:
-            $ref: '#/components/schemas/MonthlyLineItemBudegetOverride'
-          type: array
-        dailyLineItemBudgetOverrides:
-          description: "Line item budget override daily part, chronological order\
-            \ restricted."
-          items:
-            $ref: '#/components/schemas/DailyLineItemBudgetOverride'
-          type: array
-      required:
-      - dailyLineItemBudgetOverrides
-      - monthlyLineItemBudgetOverrides
-      type: object
     RetailMediaSellerAccountCreation:
       additionalProperties: false
       description: the initial set up and configuration options for a new private
@@ -14545,6 +14444,7 @@ components:
       example:
         companyName: companyName
         name: name
+        onBehalfCompanyName: onBehalfCompanyName
         sellers:
         - sellerId: sellerId
           retailerId: 0
@@ -14556,8 +14456,11 @@ components:
           nullable: true
           type: string
         companyName:
-          description: Display name for reporting the owning entity of ads for the
-            Digital Services Act in the European Union
+          description: Paying entity name of ads for the Digital Services Act
+          nullable: true
+          type: string
+        onBehalfCompanyName:
+          description: On behalf entity name of ads for the Digital Services Act
           nullable: true
           type: string
         sellers:
@@ -14566,78 +14469,6 @@ components:
             $ref: '#/components/schemas/RetailMediaSeller'
           nullable: true
           type: array
-      type: object
-    CampaignMonthlyBudgetOverride:
-      additionalProperties: false
-      description: Campaign monthly budget override.
-      example:
-        duration: duration
-        maxMonthlySpend: 0.8008281904610115
-        startMonth: 2000-01-23T04:56:07.000+00:00
-        status: Expired
-      properties:
-        startMonth:
-          description: "Monthly budget override start month, format \"yyyy-MM\". If\
-            \ it is null, the StartMonth would be the following month of the last\
-            \ item in the override sequence."
-          format: date-time
-          nullable: true
-          type: string
-        duration:
-          description: "The number of MONTHs that the override is active from StartMonth,\
-            \ e.g. \"1M\". Must end with 'M' or 'm'."
-          type: string
-        maxMonthlySpend:
-          description: Monthly budget override maximum monthly spend amount.
-          format: double
-          type: number
-        status:
-          description: Monthly budget override computed status.
-          enum:
-          - Expired
-          - Active
-          - Upcoming
-          nullable: true
-          type: string
-      required:
-      - duration
-      - maxMonthlySpend
-      type: object
-    CampaignDailyBudgetOverride:
-      additionalProperties: false
-      description: Campaign daily budget override.
-      example:
-        duration: duration
-        maxDailySpend: 6.027456183070403
-        startDate: 2000-01-23T04:56:07.000+00:00
-        status: Expired
-      properties:
-        startDate:
-          description: "Daily budget override start date, format \"yyyy-MM-dd\". If\
-            \ it is null, the StartDate would be the following date of the last item\
-            \ in the override sequence."
-          format: date-time
-          nullable: true
-          type: string
-        duration:
-          description: "The number of DAYs that the override is active from StartDate,\
-            \ e.g. \"1D\". Must end with 'D' or 'd'."
-          type: string
-        maxDailySpend:
-          description: Daily budget override maximum daily spend amount.
-          format: double
-          type: number
-        status:
-          description: Daily budget override computed status.
-          enum:
-          - Expired
-          - Active
-          - Upcoming
-          nullable: true
-          type: string
-      required:
-      - duration
-      - maxDailySpend
       type: object
     Keywords:
       additionalProperties: false
@@ -14699,78 +14530,6 @@ components:
           format: date-time
           nullable: true
           type: string
-      type: object
-    MonthlyLineItemBudegetOverride:
-      additionalProperties: false
-      description: The details for a monthly budget override
-      example:
-        duration: duration
-        maxMonthlySpend: 0.8008281904610115
-        startMonth: 2000-01-23T04:56:07.000+00:00
-        status: Expired
-      properties:
-        startMonth:
-          description: "Monthly budget override start month, format \"yyyy-MM\". If\
-            \ it is null, the StartMonth would be the following month of the last\
-            \ item in the override sequence."
-          format: date-time
-          nullable: true
-          type: string
-        duration:
-          description: "The number of MONTHs that the override is active from StartMonth,\
-            \ e.g. \"1M\". Must end with 'M' or 'm'."
-          type: string
-        maxMonthlySpend:
-          description: Monthly budget override maximum monthly spend amount.
-          format: double
-          type: number
-        status:
-          description: Monthly budget override computed status.
-          enum:
-          - Expired
-          - Active
-          - Upcoming
-          nullable: true
-          type: string
-      required:
-      - duration
-      - maxMonthlySpend
-      type: object
-    DailyLineItemBudgetOverride:
-      additionalProperties: false
-      description: The details for a daily budget override
-      example:
-        duration: duration
-        maxDailySpend: 6.027456183070403
-        startDate: 2000-01-23T04:56:07.000+00:00
-        status: Expired
-      properties:
-        startDate:
-          description: "Daily budget override start date, format \"yyyy-MM-dd\". If\
-            \ it is null, the StartDate would be the following date of the last item\
-            \ in the override sequence."
-          format: date-time
-          nullable: true
-          type: string
-        duration:
-          description: "The number of DAYs that the override is active from StartDate,\
-            \ e.g. \"1D\". Must end with 'D' or 'd'."
-          type: string
-        maxDailySpend:
-          description: Daily budget override maximum daily spend amount.
-          format: double
-          nullable: true
-          type: number
-        status:
-          description: Daily budget override computed status.
-          enum:
-          - Expired
-          - Active
-          - Upcoming
-          nullable: true
-          type: string
-      required:
-      - duration
       type: object
     InputKeywords:
       additionalProperties: false
@@ -16881,6 +16640,16 @@ components:
       - identifiers
       - operation
       type: object
+    Location_inner:
+      anyOf:
+      - type: string
+      - type: integer
+    Botmessage:
+      allOf:
+      - $ref: '#/components/schemas/BotMessage'
+      description: bot answer with recommendations
+      nullable: true
+      title: Botmessage
   securitySchemes:
     oauth:
       flows:

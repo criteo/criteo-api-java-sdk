@@ -79,7 +79,7 @@ public class RmAudienceSegmentCreateEntityV1 {
    * Name of the segment
    * @return name
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getName() {
     return name;
@@ -123,7 +123,7 @@ public class RmAudienceSegmentCreateEntityV1 {
    * Retailer  associated to the segment
    * @return retailerId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getRetailerId() {
     return retailerId;
@@ -272,6 +272,8 @@ public class RmAudienceSegmentCreateEntityV1 {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("retailerId");
   }
 
  /**
@@ -286,13 +288,20 @@ public class RmAudienceSegmentCreateEntityV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in RmAudienceSegmentCreateEntityV1 is not found in the empty JSON string", RmAudienceSegmentCreateEntityV1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : RmAudienceSegmentCreateEntityV1.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if ((jsonObj.get("retailerId") != null && !jsonObj.get("retailerId").isJsonNull()) && !jsonObj.get("retailerId").isJsonPrimitive()) {
+      if (!jsonObj.get("retailerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerId").toString()));
       }
       // validate the optional field `contactList`

@@ -54,10 +54,10 @@ public class RmContactListV1 {
   private Boolean isReadOnly;
 
   /**
-   * Indicates contact list type
+   * Indicates contact list identifier&#39;s type
    */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
+  @JsonAdapter(IdentifierTypeEnum.Adapter.class)
+  public enum IdentifierTypeEnum {
     UNKNOWN("Unknown"),
     
     EMAIL("Email"),
@@ -70,7 +70,7 @@ public class RmContactListV1 {
 
     private String value;
 
-    TypeEnum(String value) {
+    IdentifierTypeEnum(String value) {
       this.value = value;
     }
 
@@ -83,8 +83,8 @@ public class RmContactListV1 {
       return String.valueOf(value);
     }
 
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
+    public static IdentifierTypeEnum fromValue(String value) {
+      for (IdentifierTypeEnum b : IdentifierTypeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -92,23 +92,23 @@ public class RmContactListV1 {
       return null;
     }
 
-    public static class Adapter extends TypeAdapter<TypeEnum> {
+    public static class Adapter extends TypeAdapter<IdentifierTypeEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final IdentifierTypeEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+      public IdentifierTypeEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
+        return IdentifierTypeEnum.fromValue(value);
       }
     }
   }
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private TypeEnum type;
+  public static final String SERIALIZED_NAME_IDENTIFIER_TYPE = "identifierType";
+  @SerializedName(SERIALIZED_NAME_IDENTIFIER_TYPE)
+  private IdentifierTypeEnum identifierType;
 
   /**
    * Indicates if the contact list is shared with other accounts
@@ -190,25 +190,25 @@ public class RmContactListV1 {
   }
 
 
-  public RmContactListV1 type(TypeEnum type) {
+  public RmContactListV1 identifierType(IdentifierTypeEnum identifierType) {
     
-    this.type = type;
+    this.identifierType = identifierType;
     return this;
   }
 
    /**
-   * Indicates contact list type
-   * @return type
+   * Indicates contact list identifier&#39;s type
+   * @return identifierType
   **/
   @javax.annotation.Nullable
 
-  public TypeEnum getType() {
-    return type;
+  public IdentifierTypeEnum getIdentifierType() {
+    return identifierType;
   }
 
 
-  public void setType(TypeEnum type) {
-    this.type = type;
+  public void setIdentifierType(IdentifierTypeEnum identifierType) {
+    this.identifierType = identifierType;
   }
 
 
@@ -289,7 +289,7 @@ public class RmContactListV1 {
     }
     RmContactListV1 rmContactListV1 = (RmContactListV1) o;
     return Objects.equals(this.isReadOnly, rmContactListV1.isReadOnly) &&
-        Objects.equals(this.type, rmContactListV1.type) &&
+        Objects.equals(this.identifierType, rmContactListV1.identifierType) &&
         Objects.equals(this.sharingStatus, rmContactListV1.sharingStatus)&&
         Objects.equals(this.additionalProperties, rmContactListV1.additionalProperties);
   }
@@ -300,7 +300,7 @@ public class RmContactListV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(isReadOnly, type, sharingStatus, additionalProperties);
+    return Objects.hash(isReadOnly, identifierType, sharingStatus, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -315,7 +315,7 @@ public class RmContactListV1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class RmContactListV1 {\n");
     sb.append("    isReadOnly: ").append(toIndentedString(isReadOnly)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    identifierType: ").append(toIndentedString(identifierType)).append("\n");
     sb.append("    sharingStatus: ").append(toIndentedString(sharingStatus)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -341,7 +341,7 @@ public class RmContactListV1 {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("isReadOnly");
-    openapiFields.add("type");
+    openapiFields.add("identifierType");
     openapiFields.add("sharingStatus");
 
     // a set of required properties/fields (JSON key names)
@@ -360,8 +360,8 @@ public class RmContactListV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in RmContactListV1 is not found in the empty JSON string", RmContactListV1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      if ((jsonObj.get("identifierType") != null && !jsonObj.get("identifierType").isJsonNull()) && !jsonObj.get("identifierType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `identifierType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierType").toString()));
       }
       if ((jsonObj.get("sharingStatus") != null && !jsonObj.get("sharingStatus").isJsonNull()) && !jsonObj.get("sharingStatus").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sharingStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sharingStatus").toString()));

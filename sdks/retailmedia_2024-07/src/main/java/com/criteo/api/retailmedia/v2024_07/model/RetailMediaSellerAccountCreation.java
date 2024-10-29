@@ -60,6 +60,10 @@ public class RetailMediaSellerAccountCreation {
   @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
   private String companyName;
 
+  public static final String SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME = "onBehalfCompanyName";
+  @SerializedName(SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME)
+  private String onBehalfCompanyName;
+
   public static final String SERIALIZED_NAME_SELLERS = "sellers";
   @SerializedName(SERIALIZED_NAME_SELLERS)
   private List<RetailMediaSeller> sellers = null;
@@ -96,7 +100,7 @@ public class RetailMediaSellerAccountCreation {
   }
 
    /**
-   * Display name for reporting the owning entity of ads for the Digital Services Act in the European Union
+   * Paying entity name of ads for the Digital Services Act
    * @return companyName
   **/
   @javax.annotation.Nullable
@@ -108,6 +112,28 @@ public class RetailMediaSellerAccountCreation {
 
   public void setCompanyName(String companyName) {
     this.companyName = companyName;
+  }
+
+
+  public RetailMediaSellerAccountCreation onBehalfCompanyName(String onBehalfCompanyName) {
+    
+    this.onBehalfCompanyName = onBehalfCompanyName;
+    return this;
+  }
+
+   /**
+   * On behalf entity name of ads for the Digital Services Act
+   * @return onBehalfCompanyName
+  **/
+  @javax.annotation.Nullable
+
+  public String getOnBehalfCompanyName() {
+    return onBehalfCompanyName;
+  }
+
+
+  public void setOnBehalfCompanyName(String onBehalfCompanyName) {
+    this.onBehalfCompanyName = onBehalfCompanyName;
   }
 
 
@@ -153,6 +179,7 @@ public class RetailMediaSellerAccountCreation {
     RetailMediaSellerAccountCreation retailMediaSellerAccountCreation = (RetailMediaSellerAccountCreation) o;
     return Objects.equals(this.name, retailMediaSellerAccountCreation.name) &&
         Objects.equals(this.companyName, retailMediaSellerAccountCreation.companyName) &&
+        Objects.equals(this.onBehalfCompanyName, retailMediaSellerAccountCreation.onBehalfCompanyName) &&
         Objects.equals(this.sellers, retailMediaSellerAccountCreation.sellers);
   }
 
@@ -162,7 +189,7 @@ public class RetailMediaSellerAccountCreation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, companyName, sellers);
+    return Objects.hash(name, companyName, onBehalfCompanyName, sellers);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -178,6 +205,7 @@ public class RetailMediaSellerAccountCreation {
     sb.append("class RetailMediaSellerAccountCreation {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
+    sb.append("    onBehalfCompanyName: ").append(toIndentedString(onBehalfCompanyName)).append("\n");
     sb.append("    sellers: ").append(toIndentedString(sellers)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -203,6 +231,7 @@ public class RetailMediaSellerAccountCreation {
     openapiFields = new HashSet<String>();
     openapiFields.add("name");
     openapiFields.add("companyName");
+    openapiFields.add("onBehalfCompanyName");
     openapiFields.add("sellers");
 
     // a set of required properties/fields (JSON key names)
@@ -234,6 +263,9 @@ public class RetailMediaSellerAccountCreation {
       }
       if ((jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) && !jsonObj.get("companyName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
+      }
+      if ((jsonObj.get("onBehalfCompanyName") != null && !jsonObj.get("onBehalfCompanyName").isJsonNull()) && !jsonObj.get("onBehalfCompanyName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `onBehalfCompanyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("onBehalfCompanyName").toString()));
       }
       if (jsonObj.get("sellers") != null && !jsonObj.get("sellers").isJsonNull()) {
         JsonArray jsonArraysellers = jsonObj.getAsJsonArray("sellers");

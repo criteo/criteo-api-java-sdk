@@ -59,6 +59,10 @@ public class RetailMediaAccount {
   @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
   private String companyName;
 
+  public static final String SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME = "onBehalfCompanyName";
+  @SerializedName(SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME)
+  private String onBehalfCompanyName;
+
   /**
    * Type for the account
    */
@@ -213,7 +217,7 @@ public class RetailMediaAccount {
   }
 
    /**
-   * Display name for reporting the owning entity of ads for the Digital Services Act in the European Union
+   * Paying entity name of ads for the Digital Services Act
    * @return companyName
   **/
   @javax.annotation.Nullable
@@ -225,6 +229,28 @@ public class RetailMediaAccount {
 
   public void setCompanyName(String companyName) {
     this.companyName = companyName;
+  }
+
+
+  public RetailMediaAccount onBehalfCompanyName(String onBehalfCompanyName) {
+    
+    this.onBehalfCompanyName = onBehalfCompanyName;
+    return this;
+  }
+
+   /**
+   * On behalf entity name of ads for the Digital Services Act
+   * @return onBehalfCompanyName
+  **/
+  @javax.annotation.Nullable
+
+  public String getOnBehalfCompanyName() {
+    return onBehalfCompanyName;
+  }
+
+
+  public void setOnBehalfCompanyName(String onBehalfCompanyName) {
+    this.onBehalfCompanyName = onBehalfCompanyName;
   }
 
 
@@ -380,6 +406,7 @@ public class RetailMediaAccount {
     RetailMediaAccount retailMediaAccount = (RetailMediaAccount) o;
     return Objects.equals(this.name, retailMediaAccount.name) &&
         Objects.equals(this.companyName, retailMediaAccount.companyName) &&
+        Objects.equals(this.onBehalfCompanyName, retailMediaAccount.onBehalfCompanyName) &&
         Objects.equals(this.type, retailMediaAccount.type) &&
         Objects.equals(this.subType, retailMediaAccount.subType) &&
         Objects.equals(this.countryIds, retailMediaAccount.countryIds) &&
@@ -394,7 +421,7 @@ public class RetailMediaAccount {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, companyName, type, subType, countryIds, currencyId, parentAccountLabel, timeZone);
+    return Objects.hash(name, companyName, onBehalfCompanyName, type, subType, countryIds, currencyId, parentAccountLabel, timeZone);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -410,6 +437,7 @@ public class RetailMediaAccount {
     sb.append("class RetailMediaAccount {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
+    sb.append("    onBehalfCompanyName: ").append(toIndentedString(onBehalfCompanyName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    subType: ").append(toIndentedString(subType)).append("\n");
     sb.append("    countryIds: ").append(toIndentedString(countryIds)).append("\n");
@@ -440,6 +468,7 @@ public class RetailMediaAccount {
     openapiFields = new HashSet<String>();
     openapiFields.add("name");
     openapiFields.add("companyName");
+    openapiFields.add("onBehalfCompanyName");
     openapiFields.add("type");
     openapiFields.add("subType");
     openapiFields.add("countryIds");
@@ -476,6 +505,9 @@ public class RetailMediaAccount {
       }
       if ((jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) && !jsonObj.get("companyName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
+      }
+      if ((jsonObj.get("onBehalfCompanyName") != null && !jsonObj.get("onBehalfCompanyName").isJsonNull()) && !jsonObj.get("onBehalfCompanyName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `onBehalfCompanyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("onBehalfCompanyName").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

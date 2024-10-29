@@ -30,6 +30,8 @@ import java.io.IOException;
 import com.criteo.api.retailmedia.preview.model.ErrorCodeResponse;
 import com.criteo.api.retailmedia.preview.model.RetailMediaContactlistAmendmentRequest;
 import com.criteo.api.retailmedia.preview.model.RetailMediaContactlistOperation;
+import com.criteo.api.retailmedia.preview.model.RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse;
+import com.criteo.api.retailmedia.preview.model.RmAudienceSearchInputV1;
 import com.criteo.api.retailmedia.preview.model.RmAudienceSegmentBulkCreateInputV1;
 import com.criteo.api.retailmedia.preview.model.RmAudienceSegmentBulkDeleteInputV1;
 import com.criteo.api.retailmedia.preview.model.RmAudienceSegmentBulkUpdateInputV1;
@@ -38,8 +40,6 @@ import com.criteo.api.retailmedia.preview.model.RmAudienceSegmentEntityV1RmAudie
 import com.criteo.api.retailmedia.preview.model.RmAudienceSegmentIdEntityV1ListResponse;
 import com.criteo.api.retailmedia.preview.model.RmAudienceSegmentSearchInputV1;
 import com.criteo.api.retailmedia.preview.model.RmContactListStatisticsEntityV1Response;
-import com.criteo.api.retailmedia.preview.model.RmLegacyAudienceGetEntityV1ListResponse;
-import com.criteo.api.retailmedia.preview.model.RmLegacyAudienceGetEntityV2ListResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -86,7 +86,7 @@ public class AudienceApi {
     }
 
     /**
-     * Build call for bulkCreateV1
+     * Build call for bulkCreateAudienceSegments
      * @param accountId Account Id (required)
      * @param rmAudienceSegmentBulkCreateInputV1 Segment creation parameter (required)
      * @param _callback Callback for upload/download progress
@@ -101,7 +101,7 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bulkCreateV1Call(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call bulkCreateAudienceSegmentsCall(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -153,18 +153,18 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bulkCreateV1ValidateBeforeCall(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call bulkCreateAudienceSegmentsValidateBeforeCall(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling bulkCreateV1(Async)");
+            throw new ApiException("Missing the required parameter 'accountId' when calling bulkCreateAudienceSegments(Async)");
         }
 
         // verify the required parameter 'rmAudienceSegmentBulkCreateInputV1' is set
         if (rmAudienceSegmentBulkCreateInputV1 == null) {
-            throw new ApiException("Missing the required parameter 'rmAudienceSegmentBulkCreateInputV1' when calling bulkCreateV1(Async)");
+            throw new ApiException("Missing the required parameter 'rmAudienceSegmentBulkCreateInputV1' when calling bulkCreateAudienceSegments(Async)");
         }
 
-        return bulkCreateV1Call(accountId, rmAudienceSegmentBulkCreateInputV1, _callback);
+        return bulkCreateAudienceSegmentsCall(accountId, rmAudienceSegmentBulkCreateInputV1, _callback);
 
     }
 
@@ -184,8 +184,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public RmAudienceSegmentEntityV1ListResponse bulkCreateV1(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1) throws ApiException {
-        ApiResponse<RmAudienceSegmentEntityV1ListResponse> localVarResp = bulkCreateV1WithHttpInfo(accountId, rmAudienceSegmentBulkCreateInputV1);
+    public RmAudienceSegmentEntityV1ListResponse bulkCreateAudienceSegments(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1) throws ApiException {
+        ApiResponse<RmAudienceSegmentEntityV1ListResponse> localVarResp = bulkCreateAudienceSegmentsWithHttpInfo(accountId, rmAudienceSegmentBulkCreateInputV1);
         return localVarResp.getData();
     }
 
@@ -205,8 +205,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RmAudienceSegmentEntityV1ListResponse> bulkCreateV1WithHttpInfo(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1) throws ApiException {
-        okhttp3.Call localVarCall = bulkCreateV1ValidateBeforeCall(accountId, rmAudienceSegmentBulkCreateInputV1, null);
+    public ApiResponse<RmAudienceSegmentEntityV1ListResponse> bulkCreateAudienceSegmentsWithHttpInfo(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1) throws ApiException {
+        okhttp3.Call localVarCall = bulkCreateAudienceSegmentsValidateBeforeCall(accountId, rmAudienceSegmentBulkCreateInputV1, null);
         Type localVarReturnType = new TypeToken<RmAudienceSegmentEntityV1ListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -228,15 +228,15 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bulkCreateV1Async(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1, final ApiCallback<RmAudienceSegmentEntityV1ListResponse> _callback) throws ApiException {
+    public okhttp3.Call bulkCreateAudienceSegmentsAsync(String accountId, RmAudienceSegmentBulkCreateInputV1 rmAudienceSegmentBulkCreateInputV1, final ApiCallback<RmAudienceSegmentEntityV1ListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = bulkCreateV1ValidateBeforeCall(accountId, rmAudienceSegmentBulkCreateInputV1, _callback);
+        okhttp3.Call localVarCall = bulkCreateAudienceSegmentsValidateBeforeCall(accountId, rmAudienceSegmentBulkCreateInputV1, _callback);
         Type localVarReturnType = new TypeToken<RmAudienceSegmentEntityV1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for bulkDeleteV1
+     * Build call for bulkDeleteAudienceSegments
      * @param accountId Account id (required)
      * @param rmAudienceSegmentBulkDeleteInputV1 Segment delete request. (required)
      * @param _callback Callback for upload/download progress
@@ -251,7 +251,7 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bulkDeleteV1Call(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call bulkDeleteAudienceSegmentsCall(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -303,18 +303,18 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bulkDeleteV1ValidateBeforeCall(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call bulkDeleteAudienceSegmentsValidateBeforeCall(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling bulkDeleteV1(Async)");
+            throw new ApiException("Missing the required parameter 'accountId' when calling bulkDeleteAudienceSegments(Async)");
         }
 
         // verify the required parameter 'rmAudienceSegmentBulkDeleteInputV1' is set
         if (rmAudienceSegmentBulkDeleteInputV1 == null) {
-            throw new ApiException("Missing the required parameter 'rmAudienceSegmentBulkDeleteInputV1' when calling bulkDeleteV1(Async)");
+            throw new ApiException("Missing the required parameter 'rmAudienceSegmentBulkDeleteInputV1' when calling bulkDeleteAudienceSegments(Async)");
         }
 
-        return bulkDeleteV1Call(accountId, rmAudienceSegmentBulkDeleteInputV1, _callback);
+        return bulkDeleteAudienceSegmentsCall(accountId, rmAudienceSegmentBulkDeleteInputV1, _callback);
 
     }
 
@@ -334,8 +334,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public RmAudienceSegmentIdEntityV1ListResponse bulkDeleteV1(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1) throws ApiException {
-        ApiResponse<RmAudienceSegmentIdEntityV1ListResponse> localVarResp = bulkDeleteV1WithHttpInfo(accountId, rmAudienceSegmentBulkDeleteInputV1);
+    public RmAudienceSegmentIdEntityV1ListResponse bulkDeleteAudienceSegments(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1) throws ApiException {
+        ApiResponse<RmAudienceSegmentIdEntityV1ListResponse> localVarResp = bulkDeleteAudienceSegmentsWithHttpInfo(accountId, rmAudienceSegmentBulkDeleteInputV1);
         return localVarResp.getData();
     }
 
@@ -355,8 +355,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RmAudienceSegmentIdEntityV1ListResponse> bulkDeleteV1WithHttpInfo(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1) throws ApiException {
-        okhttp3.Call localVarCall = bulkDeleteV1ValidateBeforeCall(accountId, rmAudienceSegmentBulkDeleteInputV1, null);
+    public ApiResponse<RmAudienceSegmentIdEntityV1ListResponse> bulkDeleteAudienceSegmentsWithHttpInfo(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1) throws ApiException {
+        okhttp3.Call localVarCall = bulkDeleteAudienceSegmentsValidateBeforeCall(accountId, rmAudienceSegmentBulkDeleteInputV1, null);
         Type localVarReturnType = new TypeToken<RmAudienceSegmentIdEntityV1ListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -378,15 +378,15 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bulkDeleteV1Async(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1, final ApiCallback<RmAudienceSegmentIdEntityV1ListResponse> _callback) throws ApiException {
+    public okhttp3.Call bulkDeleteAudienceSegmentsAsync(String accountId, RmAudienceSegmentBulkDeleteInputV1 rmAudienceSegmentBulkDeleteInputV1, final ApiCallback<RmAudienceSegmentIdEntityV1ListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = bulkDeleteV1ValidateBeforeCall(accountId, rmAudienceSegmentBulkDeleteInputV1, _callback);
+        okhttp3.Call localVarCall = bulkDeleteAudienceSegmentsValidateBeforeCall(accountId, rmAudienceSegmentBulkDeleteInputV1, _callback);
         Type localVarReturnType = new TypeToken<RmAudienceSegmentIdEntityV1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for bulkUpdateV1
+     * Build call for bulkUpdateAudienceSegments
      * @param accountId Account id (required)
      * @param rmAudienceSegmentBulkUpdateInputV1 Segment Update request (required)
      * @param _callback Callback for upload/download progress
@@ -401,7 +401,7 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bulkUpdateV1Call(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call bulkUpdateAudienceSegmentsCall(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -453,18 +453,18 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bulkUpdateV1ValidateBeforeCall(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call bulkUpdateAudienceSegmentsValidateBeforeCall(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling bulkUpdateV1(Async)");
+            throw new ApiException("Missing the required parameter 'accountId' when calling bulkUpdateAudienceSegments(Async)");
         }
 
         // verify the required parameter 'rmAudienceSegmentBulkUpdateInputV1' is set
         if (rmAudienceSegmentBulkUpdateInputV1 == null) {
-            throw new ApiException("Missing the required parameter 'rmAudienceSegmentBulkUpdateInputV1' when calling bulkUpdateV1(Async)");
+            throw new ApiException("Missing the required parameter 'rmAudienceSegmentBulkUpdateInputV1' when calling bulkUpdateAudienceSegments(Async)");
         }
 
-        return bulkUpdateV1Call(accountId, rmAudienceSegmentBulkUpdateInputV1, _callback);
+        return bulkUpdateAudienceSegmentsCall(accountId, rmAudienceSegmentBulkUpdateInputV1, _callback);
 
     }
 
@@ -484,8 +484,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public RmAudienceSegmentEntityV1ListResponse bulkUpdateV1(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1) throws ApiException {
-        ApiResponse<RmAudienceSegmentEntityV1ListResponse> localVarResp = bulkUpdateV1WithHttpInfo(accountId, rmAudienceSegmentBulkUpdateInputV1);
+    public RmAudienceSegmentEntityV1ListResponse bulkUpdateAudienceSegments(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1) throws ApiException {
+        ApiResponse<RmAudienceSegmentEntityV1ListResponse> localVarResp = bulkUpdateAudienceSegmentsWithHttpInfo(accountId, rmAudienceSegmentBulkUpdateInputV1);
         return localVarResp.getData();
     }
 
@@ -505,8 +505,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RmAudienceSegmentEntityV1ListResponse> bulkUpdateV1WithHttpInfo(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1) throws ApiException {
-        okhttp3.Call localVarCall = bulkUpdateV1ValidateBeforeCall(accountId, rmAudienceSegmentBulkUpdateInputV1, null);
+    public ApiResponse<RmAudienceSegmentEntityV1ListResponse> bulkUpdateAudienceSegmentsWithHttpInfo(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1) throws ApiException {
+        okhttp3.Call localVarCall = bulkUpdateAudienceSegmentsValidateBeforeCall(accountId, rmAudienceSegmentBulkUpdateInputV1, null);
         Type localVarReturnType = new TypeToken<RmAudienceSegmentEntityV1ListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -528,9 +528,9 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bulkUpdateV1Async(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1, final ApiCallback<RmAudienceSegmentEntityV1ListResponse> _callback) throws ApiException {
+    public okhttp3.Call bulkUpdateAudienceSegmentsAsync(String accountId, RmAudienceSegmentBulkUpdateInputV1 rmAudienceSegmentBulkUpdateInputV1, final ApiCallback<RmAudienceSegmentEntityV1ListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = bulkUpdateV1ValidateBeforeCall(accountId, rmAudienceSegmentBulkUpdateInputV1, _callback);
+        okhttp3.Call localVarCall = bulkUpdateAudienceSegmentsValidateBeforeCall(accountId, rmAudienceSegmentBulkUpdateInputV1, _callback);
         Type localVarReturnType = new TypeToken<RmAudienceSegmentEntityV1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -659,7 +659,7 @@ public class AudienceApi {
         return localVarCall;
     }
     /**
-     * Build call for getContactListStatisticsV1
+     * Build call for getAudienceSegmentContactListStatistics
      * @param accountId Account Id (required)
      * @param audienceSegmentId Segment Id. (required)
      * @param _callback Callback for upload/download progress
@@ -674,7 +674,7 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getContactListStatisticsV1Call(String accountId, String audienceSegmentId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAudienceSegmentContactListStatisticsCall(String accountId, String audienceSegmentId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -723,18 +723,18 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getContactListStatisticsV1ValidateBeforeCall(String accountId, String audienceSegmentId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAudienceSegmentContactListStatisticsValidateBeforeCall(String accountId, String audienceSegmentId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling getContactListStatisticsV1(Async)");
+            throw new ApiException("Missing the required parameter 'accountId' when calling getAudienceSegmentContactListStatistics(Async)");
         }
 
         // verify the required parameter 'audienceSegmentId' is set
         if (audienceSegmentId == null) {
-            throw new ApiException("Missing the required parameter 'audienceSegmentId' when calling getContactListStatisticsV1(Async)");
+            throw new ApiException("Missing the required parameter 'audienceSegmentId' when calling getAudienceSegmentContactListStatistics(Async)");
         }
 
-        return getContactListStatisticsV1Call(accountId, audienceSegmentId, _callback);
+        return getAudienceSegmentContactListStatisticsCall(accountId, audienceSegmentId, _callback);
 
     }
 
@@ -754,8 +754,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public RmContactListStatisticsEntityV1Response getContactListStatisticsV1(String accountId, String audienceSegmentId) throws ApiException {
-        ApiResponse<RmContactListStatisticsEntityV1Response> localVarResp = getContactListStatisticsV1WithHttpInfo(accountId, audienceSegmentId);
+    public RmContactListStatisticsEntityV1Response getAudienceSegmentContactListStatistics(String accountId, String audienceSegmentId) throws ApiException {
+        ApiResponse<RmContactListStatisticsEntityV1Response> localVarResp = getAudienceSegmentContactListStatisticsWithHttpInfo(accountId, audienceSegmentId);
         return localVarResp.getData();
     }
 
@@ -775,8 +775,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RmContactListStatisticsEntityV1Response> getContactListStatisticsV1WithHttpInfo(String accountId, String audienceSegmentId) throws ApiException {
-        okhttp3.Call localVarCall = getContactListStatisticsV1ValidateBeforeCall(accountId, audienceSegmentId, null);
+    public ApiResponse<RmContactListStatisticsEntityV1Response> getAudienceSegmentContactListStatisticsWithHttpInfo(String accountId, String audienceSegmentId) throws ApiException {
+        okhttp3.Call localVarCall = getAudienceSegmentContactListStatisticsValidateBeforeCall(accountId, audienceSegmentId, null);
         Type localVarReturnType = new TypeToken<RmContactListStatisticsEntityV1Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -798,337 +798,15 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getContactListStatisticsV1Async(String accountId, String audienceSegmentId, final ApiCallback<RmContactListStatisticsEntityV1Response> _callback) throws ApiException {
+    public okhttp3.Call getAudienceSegmentContactListStatisticsAsync(String accountId, String audienceSegmentId, final ApiCallback<RmContactListStatisticsEntityV1Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getContactListStatisticsV1ValidateBeforeCall(accountId, audienceSegmentId, _callback);
+        okhttp3.Call localVarCall = getAudienceSegmentContactListStatisticsValidateBeforeCall(accountId, audienceSegmentId, _callback);
         Type localVarReturnType = new TypeToken<RmContactListStatisticsEntityV1Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for legacyGetAudienceV1
-     * @param accountId ID of the account to which this audience belongs. (required)
-     * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
-     * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A page of audiences for the supplied account or shared by related retailers. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call legacyGetAudienceV1Call(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/accounts/{accountId}/audiences"
-            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (limitToId != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "limitToId", limitToId));
-        }
-
-        if (pageSize != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
-        }
-
-        if (pageIndex != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageIndex", pageIndex));
-        }
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call legacyGetAudienceV1ValidateBeforeCall(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'accountId' is set
-        if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling legacyGetAudienceV1(Async)");
-        }
-
-        return legacyGetAudienceV1Call(accountId, limitToId, pageSize, pageIndex, _callback);
-
-    }
-
-    /**
-     * 
-     * Get a page of Audiences. (deprecated Public API)
-     * @param accountId ID of the account to which this audience belongs. (required)
-     * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
-     * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
-     * @return RmLegacyAudienceGetEntityV1ListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A page of audiences for the supplied account or shared by related retailers. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
-     </table>
-     */
-    public RmLegacyAudienceGetEntityV1ListResponse legacyGetAudienceV1(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex) throws ApiException {
-        ApiResponse<RmLegacyAudienceGetEntityV1ListResponse> localVarResp = legacyGetAudienceV1WithHttpInfo(accountId, limitToId, pageSize, pageIndex);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Get a page of Audiences. (deprecated Public API)
-     * @param accountId ID of the account to which this audience belongs. (required)
-     * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
-     * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
-     * @return ApiResponse&lt;RmLegacyAudienceGetEntityV1ListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A page of audiences for the supplied account or shared by related retailers. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<RmLegacyAudienceGetEntityV1ListResponse> legacyGetAudienceV1WithHttpInfo(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex) throws ApiException {
-        okhttp3.Call localVarCall = legacyGetAudienceV1ValidateBeforeCall(accountId, limitToId, pageSize, pageIndex, null);
-        Type localVarReturnType = new TypeToken<RmLegacyAudienceGetEntityV1ListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get a page of Audiences. (deprecated Public API)
-     * @param accountId ID of the account to which this audience belongs. (required)
-     * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
-     * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A page of audiences for the supplied account or shared by related retailers. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call legacyGetAudienceV1Async(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex, final ApiCallback<RmLegacyAudienceGetEntityV1ListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = legacyGetAudienceV1ValidateBeforeCall(accountId, limitToId, pageSize, pageIndex, _callback);
-        Type localVarReturnType = new TypeToken<RmLegacyAudienceGetEntityV1ListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for legacyGetAudienceV2
-     * @param accountId ID of the account to which this audience belongs. (required)
-     * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
-     * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A page of audiences for the supplied account or shared by related retailers. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call legacyGetAudienceV2Call(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/v2/accounts/{accountId}/audiences"
-            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (limitToId != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "limitToId", limitToId));
-        }
-
-        if (pageSize != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
-        }
-
-        if (pageIndex != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageIndex", pageIndex));
-        }
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call legacyGetAudienceV2ValidateBeforeCall(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'accountId' is set
-        if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling legacyGetAudienceV2(Async)");
-        }
-
-        return legacyGetAudienceV2Call(accountId, limitToId, pageSize, pageIndex, _callback);
-
-    }
-
-    /**
-     * 
-     * Get a page of Audiences. (deprecated Public API)
-     * @param accountId ID of the account to which this audience belongs. (required)
-     * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
-     * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
-     * @return RmLegacyAudienceGetEntityV2ListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A page of audiences for the supplied account or shared by related retailers. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
-     </table>
-     */
-    public RmLegacyAudienceGetEntityV2ListResponse legacyGetAudienceV2(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex) throws ApiException {
-        ApiResponse<RmLegacyAudienceGetEntityV2ListResponse> localVarResp = legacyGetAudienceV2WithHttpInfo(accountId, limitToId, pageSize, pageIndex);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Get a page of Audiences. (deprecated Public API)
-     * @param accountId ID of the account to which this audience belongs. (required)
-     * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
-     * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
-     * @return ApiResponse&lt;RmLegacyAudienceGetEntityV2ListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A page of audiences for the supplied account or shared by related retailers. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<RmLegacyAudienceGetEntityV2ListResponse> legacyGetAudienceV2WithHttpInfo(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex) throws ApiException {
-        okhttp3.Call localVarCall = legacyGetAudienceV2ValidateBeforeCall(accountId, limitToId, pageSize, pageIndex, null);
-        Type localVarReturnType = new TypeToken<RmLegacyAudienceGetEntityV2ListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get a page of Audiences. (deprecated Public API)
-     * @param accountId ID of the account to which this audience belongs. (required)
-     * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
-     * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A page of audiences for the supplied account or shared by related retailers. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call legacyGetAudienceV2Async(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex, final ApiCallback<RmLegacyAudienceGetEntityV2ListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = legacyGetAudienceV2ValidateBeforeCall(accountId, limitToId, pageSize, pageIndex, _callback);
-        Type localVarReturnType = new TypeToken<RmLegacyAudienceGetEntityV2ListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for searchV1
+     * Build call for searchAudienceSegments
      * @param accountId Account Id (required)
      * @param rmAudienceSegmentSearchInputV1 Segment search filters. (required)
      * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
@@ -1145,7 +823,7 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchV1Call(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchAudienceSegmentsCall(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1205,18 +883,18 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchV1ValidateBeforeCall(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchAudienceSegmentsValidateBeforeCall(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling searchV1(Async)");
+            throw new ApiException("Missing the required parameter 'accountId' when calling searchAudienceSegments(Async)");
         }
 
         // verify the required parameter 'rmAudienceSegmentSearchInputV1' is set
         if (rmAudienceSegmentSearchInputV1 == null) {
-            throw new ApiException("Missing the required parameter 'rmAudienceSegmentSearchInputV1' when calling searchV1(Async)");
+            throw new ApiException("Missing the required parameter 'rmAudienceSegmentSearchInputV1' when calling searchAudienceSegments(Async)");
         }
 
-        return searchV1Call(accountId, rmAudienceSegmentSearchInputV1, limit, offset, _callback);
+        return searchAudienceSegmentsCall(accountId, rmAudienceSegmentSearchInputV1, limit, offset, _callback);
 
     }
 
@@ -1238,8 +916,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse searchV1(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset) throws ApiException {
-        ApiResponse<RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse> localVarResp = searchV1WithHttpInfo(accountId, rmAudienceSegmentSearchInputV1, limit, offset);
+    public RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse searchAudienceSegments(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse> localVarResp = searchAudienceSegmentsWithHttpInfo(accountId, rmAudienceSegmentSearchInputV1, limit, offset);
         return localVarResp.getData();
     }
 
@@ -1261,8 +939,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse> searchV1WithHttpInfo(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset) throws ApiException {
-        okhttp3.Call localVarCall = searchV1ValidateBeforeCall(accountId, rmAudienceSegmentSearchInputV1, limit, offset, null);
+    public ApiResponse<RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse> searchAudienceSegmentsWithHttpInfo(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = searchAudienceSegmentsValidateBeforeCall(accountId, rmAudienceSegmentSearchInputV1, limit, offset, null);
         Type localVarReturnType = new TypeToken<RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1286,10 +964,176 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchV1Async(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset, final ApiCallback<RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse> _callback) throws ApiException {
+    public okhttp3.Call searchAudienceSegmentsAsync(String accountId, RmAudienceSegmentSearchInputV1 rmAudienceSegmentSearchInputV1, Integer limit, Integer offset, final ApiCallback<RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchV1ValidateBeforeCall(accountId, rmAudienceSegmentSearchInputV1, limit, offset, _callback);
+        okhttp3.Call localVarCall = searchAudienceSegmentsValidateBeforeCall(accountId, rmAudienceSegmentSearchInputV1, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for searchAudiences
+     * @param accountId Account Id (required)
+     * @param rmAudienceSearchInputV1 Audience search filters. (required)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call searchAudiencesCall(String accountId, RmAudienceSearchInputV1 rmAudienceSearchInputV1, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = rmAudienceSearchInputV1;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/accounts/{account-id}/audiences/search"
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call searchAudiencesValidateBeforeCall(String accountId, RmAudienceSearchInputV1 rmAudienceSearchInputV1, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling searchAudiences(Async)");
+        }
+
+        // verify the required parameter 'rmAudienceSearchInputV1' is set
+        if (rmAudienceSearchInputV1 == null) {
+            throw new ApiException("Missing the required parameter 'rmAudienceSearchInputV1' when calling searchAudiences(Async)");
+        }
+
+        return searchAudiencesCall(accountId, rmAudienceSearchInputV1, limit, offset, _callback);
+
+    }
+
+    /**
+     * 
+     * Returns a list of audiences that match the provided filters. If present, the filters are AND&#39;ed together when applied.
+     * @param accountId Account Id (required)
+     * @param rmAudienceSearchInputV1 Audience search filters. (required)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
+     * @return RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse searchAudiences(String accountId, RmAudienceSearchInputV1 rmAudienceSearchInputV1, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse> localVarResp = searchAudiencesWithHttpInfo(accountId, rmAudienceSearchInputV1, limit, offset);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Returns a list of audiences that match the provided filters. If present, the filters are AND&#39;ed together when applied.
+     * @param accountId Account Id (required)
+     * @param rmAudienceSearchInputV1 Audience search filters. (required)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
+     * @return ApiResponse&lt;RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse> searchAudiencesWithHttpInfo(String accountId, RmAudienceSearchInputV1 rmAudienceSearchInputV1, Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = searchAudiencesValidateBeforeCall(accountId, rmAudienceSearchInputV1, limit, offset, null);
+        Type localVarReturnType = new TypeToken<RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Returns a list of audiences that match the provided filters. If present, the filters are AND&#39;ed together when applied.
+     * @param accountId Account Id (required)
+     * @param rmAudienceSearchInputV1 Audience search filters. (required)
+     * @param limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success or partial success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call searchAudiencesAsync(String accountId, RmAudienceSearchInputV1 rmAudienceSearchInputV1, Integer limit, Integer offset, final ApiCallback<RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = searchAudiencesValidateBeforeCall(accountId, rmAudienceSearchInputV1, limit, offset, _callback);
+        Type localVarReturnType = new TypeToken<RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

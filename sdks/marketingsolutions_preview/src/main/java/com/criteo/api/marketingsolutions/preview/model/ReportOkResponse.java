@@ -16,6 +16,7 @@ package com.criteo.api.marketingsolutions.preview.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.marketingsolutions.preview.model.ReportDetailErrors;
+import com.criteo.api.marketingsolutions.preview.model.ReportDetailWarnings;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -131,6 +132,14 @@ public class ReportOkResponse {
   public static final String SERIALIZED_NAME_ERROR_DETAILS = "errorDetails";
   @SerializedName(SERIALIZED_NAME_ERROR_DETAILS)
   private List<ReportDetailErrors> errorDetails = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_NUMBER_OF_PRODUCTS_WITH_WARNINGS = "numberOfProductsWithWarnings";
+  @SerializedName(SERIALIZED_NAME_NUMBER_OF_PRODUCTS_WITH_WARNINGS)
+  private Integer numberOfProductsWithWarnings;
+
+  public static final String SERIALIZED_NAME_WARNING_DETAILS = "warningDetails";
+  @SerializedName(SERIALIZED_NAME_WARNING_DETAILS)
+  private List<ReportDetailWarnings> warningDetails = new ArrayList<>();
 
   public ReportOkResponse() {
   }
@@ -293,6 +302,55 @@ public class ReportOkResponse {
     this.errorDetails = errorDetails;
   }
 
+
+  public ReportOkResponse numberOfProductsWithWarnings(Integer numberOfProductsWithWarnings) {
+    
+    this.numberOfProductsWithWarnings = numberOfProductsWithWarnings;
+    return this;
+  }
+
+   /**
+   * The number of products with Warnings.
+   * @return numberOfProductsWithWarnings
+  **/
+  @javax.annotation.Nonnull
+
+  public Integer getNumberOfProductsWithWarnings() {
+    return numberOfProductsWithWarnings;
+  }
+
+
+  public void setNumberOfProductsWithWarnings(Integer numberOfProductsWithWarnings) {
+    this.numberOfProductsWithWarnings = numberOfProductsWithWarnings;
+  }
+
+
+  public ReportOkResponse warningDetails(List<ReportDetailWarnings> warningDetails) {
+    
+    this.warningDetails = warningDetails;
+    return this;
+  }
+
+  public ReportOkResponse addWarningDetailsItem(ReportDetailWarnings warningDetailsItem) {
+    this.warningDetails.add(warningDetailsItem);
+    return this;
+  }
+
+   /**
+   * The list of Warnings with details.
+   * @return warningDetails
+  **/
+  @javax.annotation.Nonnull
+
+  public List<ReportDetailWarnings> getWarningDetails() {
+    return warningDetails;
+  }
+
+
+  public void setWarningDetails(List<ReportDetailWarnings> warningDetails) {
+    this.warningDetails = warningDetails;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -354,13 +412,15 @@ public class ReportOkResponse {
         Objects.equals(this.numberOfProductsUpserted, reportOkResponse.numberOfProductsUpserted) &&
         Objects.equals(this.numberOfProductsDeleted, reportOkResponse.numberOfProductsDeleted) &&
         Objects.equals(this.numberOfProductsWithErrors, reportOkResponse.numberOfProductsWithErrors) &&
-        Objects.equals(this.errorDetails, reportOkResponse.errorDetails)&&
+        Objects.equals(this.errorDetails, reportOkResponse.errorDetails) &&
+        Objects.equals(this.numberOfProductsWithWarnings, reportOkResponse.numberOfProductsWithWarnings) &&
+        Objects.equals(this.warningDetails, reportOkResponse.warningDetails)&&
         Objects.equals(this.additionalProperties, reportOkResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, importRequestTimestamp, numberOfProductsInTheBatch, numberOfProductsUpserted, numberOfProductsDeleted, numberOfProductsWithErrors, errorDetails, additionalProperties);
+    return Objects.hash(status, importRequestTimestamp, numberOfProductsInTheBatch, numberOfProductsUpserted, numberOfProductsDeleted, numberOfProductsWithErrors, errorDetails, numberOfProductsWithWarnings, warningDetails, additionalProperties);
   }
 
   @Override
@@ -374,6 +434,8 @@ public class ReportOkResponse {
     sb.append("    numberOfProductsDeleted: ").append(toIndentedString(numberOfProductsDeleted)).append("\n");
     sb.append("    numberOfProductsWithErrors: ").append(toIndentedString(numberOfProductsWithErrors)).append("\n");
     sb.append("    errorDetails: ").append(toIndentedString(errorDetails)).append("\n");
+    sb.append("    numberOfProductsWithWarnings: ").append(toIndentedString(numberOfProductsWithWarnings)).append("\n");
+    sb.append("    warningDetails: ").append(toIndentedString(warningDetails)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -404,6 +466,8 @@ public class ReportOkResponse {
     openapiFields.add("numberOfProductsDeleted");
     openapiFields.add("numberOfProductsWithErrors");
     openapiFields.add("errorDetails");
+    openapiFields.add("numberOfProductsWithWarnings");
+    openapiFields.add("warningDetails");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -414,6 +478,8 @@ public class ReportOkResponse {
     openapiRequiredFields.add("numberOfProductsDeleted");
     openapiRequiredFields.add("numberOfProductsWithErrors");
     openapiRequiredFields.add("errorDetails");
+    openapiRequiredFields.add("numberOfProductsWithWarnings");
+    openapiRequiredFields.add("warningDetails");
   }
 
  /**
@@ -447,6 +513,16 @@ public class ReportOkResponse {
       // validate the required field `errorDetails` (array)
       for (int i = 0; i < jsonArrayerrorDetails.size(); i++) {
         ReportDetailErrors.validateJsonObject(jsonArrayerrorDetails.get(i).getAsJsonObject());
+      };
+      // ensure the json data is an array
+      if (!jsonObj.get("warningDetails").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `warningDetails` to be an array in the JSON string but got `%s`", jsonObj.get("warningDetails").toString()));
+      }
+
+      JsonArray jsonArraywarningDetails = jsonObj.getAsJsonArray("warningDetails");
+      // validate the required field `warningDetails` (array)
+      for (int i = 0; i < jsonArraywarningDetails.size(); i++) {
+        ReportDetailWarnings.validateJsonObject(jsonArraywarningDetails.get(i).getAsJsonObject());
       };
   }
 

@@ -48,7 +48,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Input to create one or more audience segments.
+ * A top-level object that encapsulates a Criteo API request for several values.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RmAudienceSegmentBulkCreateInputV1 {

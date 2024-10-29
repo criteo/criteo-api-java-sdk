@@ -115,8 +115,6 @@ public class ContactlistAmendmentAttributes {
     
     GUM("gum"),
     
-    CUSTOMERID("customerid"),
-    
     PHONENUMBER("phoneNumber");
 
     private String value;
@@ -228,7 +226,7 @@ public class ContactlistAmendmentAttributes {
   }
 
    /**
-   * The users tos add or remove, each in the schema specified
+   * The users to add or remove, each in the schema specified
    * @return identifiers
   **/
   @javax.annotation.Nonnull

@@ -8,7 +8,7 @@ Section object that hold template variables
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**title** | **String** |  |  |
+|**title** | **String** |  |  [optional] |
 |**templateVariables** | [**List&lt;TemplateVariable&gt;**](TemplateVariable.md) |  |  |
 
 
