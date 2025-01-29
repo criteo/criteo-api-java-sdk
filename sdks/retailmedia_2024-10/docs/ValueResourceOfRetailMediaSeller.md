@@ -9,7 +9,7 @@ A top-level object that encapsulates a Criteo API response for a single value.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**type** | **String** |  |  [optional] |
-|**attributes** | [**RetailMediaSeller**](RetailMediaSeller.md) |  |  [optional] |
+|**attributes** | [**ExternalRetailMediaSeller**](ExternalRetailMediaSeller.md) |  |  [optional] |
 
 
 

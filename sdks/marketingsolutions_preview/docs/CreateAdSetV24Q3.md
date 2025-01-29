@@ -18,6 +18,7 @@ ad set create model
 |**budget** | [**CreateAdSetBudgetV24Q3**](CreateAdSetBudgetV24Q3.md) |  |  |
 |**trackingCode** | **String** | The click tracking code associated to this Ad Set. |  |
 |**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) | Media type for the ad set |  |
+|**attributionConfiguration** | [**CreateAdSetAttributionConfigurationV24Q3**](CreateAdSetAttributionConfigurationV24Q3.md) |  |  [optional] |
 
 
 

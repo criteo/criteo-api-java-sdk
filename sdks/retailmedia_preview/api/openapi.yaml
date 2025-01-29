@@ -374,7 +374,7 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: true
+        x-nullable: false
       - description: The (zero-based) offset into the collection of accounts. The
           default is 0.
         explode: true
@@ -403,199 +403,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityResourceCollectionOutcomeOfRetailMediaAccount'
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeOfRetailMediaChildAccount'
           description: Success
       tags:
       - Accounts
       x-source-method: ExternalApiAccounts_GetPrivateMarketChildDemandAccountsV1
-      x-accepts: application/json
-  /preview/retail-media/accounts:
-    get:
-      description: Gets page of account objects that the current user can access
-      operationId: AccountsApi_GetApiV1ExternalAccounts
-      parameters:
-      - description: The ids that you would like to limit your result set to
-        explode: true
-        in: query
-        name: limitToId
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-        x-nullable: false
-      - description: The 0 indexed page index you would like to receive given the
-          page size
-        explode: true
-        in: query
-        name: pageIndex
-        required: false
-        schema:
-          default: 0
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      - description: The maximum number of items you would like to receive in this
-          request
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          default: 25
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/JsonApiPageResponseOfAccount'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JsonApiPageResponseOfAccount'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/JsonApiPageResponseOfAccount'
-          description: Success
-      tags:
-      - Accounts
-      x-accepts: application/json
-  /preview/retail-media/accounts/{accountId}/brands:
-    get:
-      description: Gets page of retailer objects that are associated with the given
-        account
-      operationId: AccountsApi_GetApiV1ExternalAccountBrandsByAccountId
-      parameters:
-      - description: The given account id
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: The ids that you would like to limit your result set to
-        explode: true
-        in: query
-        name: limitToId
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-        x-nullable: false
-      - description: The 0 indexed page index you would like to receive given the
-          page size
-        explode: true
-        in: query
-        name: pageIndex
-        required: false
-        schema:
-          default: 0
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      - description: The maximum number of items you would like to receive in this
-          request
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          default: 25
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/JsonApiPageResponseOfBrand'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JsonApiPageResponseOfBrand'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/JsonApiPageResponseOfBrand'
-          description: Success
-      tags:
-      - Campaign
-      x-accepts: application/json
-  /preview/retail-media/accounts/{accountId}/retailers:
-    get:
-      description: Gets page of retailer objects that are associated with the given
-        account
-      operationId: AccountsApi_GetApiV1ExternalAccountRetailersByAccountId
-      parameters:
-      - description: The given account id
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: The ids that you would like to limit your result set to
-        explode: true
-        in: query
-        name: limitToId
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-        x-nullable: false
-      - description: The 0 indexed page index you would like to receive given the
-          page size
-        explode: true
-        in: query
-        name: pageIndex
-        required: false
-        schema:
-          default: 0
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      - description: The maximum number of items you would like to receive in this
-          request
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          default: 25
-          format: int32
-          type: integer
-        style: form
-        x-nullable: false
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/JsonApiPageResponseOfRetailer'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JsonApiPageResponseOfRetailer'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/JsonApiPageResponseOfRetailer'
-          description: Success
-      tags:
-      - Campaign
       x-accepts: application/json
   /preview/retail-media/accounts/{account-id}/audience-segments:
     patch:
@@ -1029,6 +841,54 @@ paths:
       - Audience
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /preview/retail-media/retailers/{retailerId}/cpc-min-bids:
+    post:
+      description: Get overall and individual minimum bid amount for given retailer
+        id and sku id list.
+      operationId: GetCpcMinBidsBySkuIdsV1
+      parameters:
+      - description: Retailer Id.
+        explode: false
+        in: path
+        name: retailerId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputCpcMinBidsRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputCpcMinBidsRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputCpcMinBidsRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputCpcMinBidsRequest'
+        description: Cpc minimum bid amount request object.
+        x-bodyName: cpcMinBidsRequest
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeCpcMinBidsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeCpcMinBidsResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeCpcMinBidsResponse'
+          description: Success
+      tags:
+      - Campaign
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /preview/retail-media/line-items/{id}/keywords:
     get:
       description: Fetch keywords associated with the specified line item
@@ -1336,249 +1196,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProductResourceOutcome'
           description: Invalid external line item ID
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/preferred-deal-line-items/{id}/proposal:
-    get:
-      description: "Includes the state of the proposal, the status of the booking\
-        \ and approval, as well as any comments explaining why it might have been\
-        \ rejected."
-      operationId: FetchProposal
-      parameters:
-      - description: ID of the line item
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProposalStatusModelResponse'
-          description: Success
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcome'
-          description: Bad Request
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcome'
-          description: Forbidden
-      tags:
-      - Campaign
-      x-accepts: application/json
-  /preview/retail-media/preferred-deal-line-items/{id}/proposal/submit:
-    post:
-      description: Only the components of the Line Item that are in a valid state
-        will be reviewed.
-      operationId: SubmitProposal
-      parameters:
-      - description: ID of the line item
-        explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProposalStatusModelResponse'
-          description: Success
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcome'
-          description: Bad Request
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcome'
-          description: Forbidden
-      tags:
-      - Campaign
-      x-accepts: application/json
-  /preview/retail-media/accounts/{account-id}/creatives:
-    post:
-      description: Create a creative for an account
-      operationId: PostApiV2ExternalAccountCreativesByAccountId
-      parameters:
-      - description: External account id to create a creative for
-        explode: false
-        in: path
-        name: account-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExternalCreativeCreateModelV2'
-        description: The creative to create
-        x-bodyName: body
-      responses:
-        "201":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/CreativeV2Response'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreativeV2Response'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/CreativeV2Response'
-          description: Creatives created
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/accounts/{account-id}/creatives/search:
-    post:
-      description: Get account creatives
-      operationId: PostApiV2ExternalAccountCreativesSearchByAccountId
-      parameters:
-      - description: External account id to retrieve creatives for
-        explode: false
-        in: path
-        name: account-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: Creatives to filter by
-        explode: true
-        in: query
-        name: creative-ids
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-        x-nullable: false
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/CreativeV2ListResponse'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreativeV2ListResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/CreativeV2ListResponse'
-          description: Creatives found
-      tags:
-      - Campaign
-      x-accepts: application/json
-  /preview/retail-media/accounts/{account-id}/creatives/{creative-id}:
-    get:
-      description: Get the specified creative
-      operationId: "GetApiV2ExternalAccountByAccountId}Creatives{creativeId"
-      parameters:
-      - description: External account id to retrieve creatives for
-        explode: false
-        in: path
-        name: account-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: Creative to get
-        explode: false
-        in: path
-        name: creative-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/CreativeV2Response'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreativeV2Response'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/CreativeV2Response'
-          description: Creatives found
-      tags:
-      - Campaign
-      x-accepts: application/json
-    put:
-      description: Update a creative
-      operationId: "PutApiV2ExternalAccountByAccountId}Creatives{creativeId"
-      parameters:
-      - description: External account id containing the creative
-        explode: false
-        in: path
-        name: account-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: Creative to update
-        explode: false
-        in: path
-        name: creative-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExternalCreativeUpdateModelV2'
-        description: The creative to create
-        x-bodyName: body
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/CreativeV2Response'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreativeV2Response'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/CreativeV2Response'
-          description: Success
-        "204":
-          content:
-            text/plain: {}
-            application/json: {}
-            text/json: {}
-          description: Creative updated
       tags:
       - Campaign
       x-content-type: application/json
@@ -2034,6 +1651,165 @@ paths:
           description: Seller found.
       tags:
       - Campaign
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/creatives:
+    post:
+      description: Create a creative for an account
+      operationId: PostApiV2ExternalAccountCreativesByAccountId
+      parameters:
+      - description: External account id to create a creative for
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreativeCreateModel2'
+        description: The creative to create
+        x-bodyName: creative
+      responses:
+        "201":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Creative2Response'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Creative2Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Creative2Response'
+          description: Creatives created
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/creatives/search:
+    post:
+      description: Get account creatives
+      operationId: PostApiV2ExternalAccountCreativesSearchByAccountId
+      parameters:
+      - description: External account id to retrieve creatives for
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Creatives to filter by
+        explode: true
+        in: query
+        name: creative-ids
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Creative2ListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Creative2ListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Creative2ListResponse'
+          description: Creatives found
+      tags:
+      - Campaign
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/creatives/{creative-id}:
+    get:
+      description: Get the specified creative
+      operationId: "GetApiV2ExternalAccountByAccountId}Creatives{creativeId"
+      parameters:
+      - description: External account id to retrieve creatives for
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Creative to get
+        explode: false
+        in: path
+        name: creative-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Creative2Response'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Creative2Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Creative2Response'
+          description: Creatives found
+      tags:
+      - Campaign
+      x-accepts: application/json
+    put:
+      description: Update a creative
+      operationId: "PutApiV2ExternalAccountByAccountId}Creatives{creativeId"
+      parameters:
+      - description: External account id containing the creative
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Creative to update
+        explode: false
+        in: path
+        name: creative-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreativeUpdateModel2'
+        description: The creative to create
+        x-bodyName: creative
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Creative2Response'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Creative2Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Creative2Response'
+          description: Success
+        "204":
+          description: Creative updated
+      tags:
+      - Campaign
+      x-content-type: application/json
       x-accepts: application/json
   /preview/retail-media/reports/accounts:
     post:
@@ -2513,83 +2289,63 @@ paths:
       tags:
       - Analytics
       x-accepts: application/json
-  /preview/retail-media/account-management/accounts/{accountId}/create-seller-account:
+  /preview/retail-media/accounts/sellers/search:
     post:
-      description: Creates a new child Demand Seller Account for the provided parent
-        private market account
-      operationId: CreatePrivateMarketDemandSellerAccount
-      parameters:
-      - description: Account Id for the parent private market account
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
+      description: Get the sellers mapped to provided accounts
+      operationId: SearchSellers
       requestBody:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaSellerAccountCreation'
+              $ref: '#/components/schemas/ValueResourceInputOfSellerSearch'
           application/json:
             schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaSellerAccountCreation'
+              $ref: '#/components/schemas/ValueResourceInputOfSellerSearch'
           text/json:
             schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaSellerAccountCreation'
+              $ref: '#/components/schemas/ValueResourceInputOfSellerSearch'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/ValueResourceInputOfRetailMediaSellerAccountCreation'
-        description: Initial creation and configuration options for the new account
-        x-bodyName: accountDetails
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResourceOutcomeOfRetailMediaAccount'
-          description: Success
-      tags:
-      - Accounts
-      x-content-type: application/json-patch+json
-      x-accepts: application/json
-  /preview/retail-media/account-management/accounts/{accountId}/sellers:
-    put:
-      description: replace the sellers assoiated with an account
-      operationId: UpdateSellers
-      parameters:
-      - description: the account id to update
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceCollectionInputOfRetailMediaSeller'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceCollectionInputOfRetailMediaSeller'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceCollectionInputOfRetailMediaSeller'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceCollectionInputOfRetailMediaSeller'
-        description: sellers to associate
-        x-bodyName: sellers
+              $ref: '#/components/schemas/ValueResourceInputOfSellerSearch'
+        description: ""
+        x-bodyName: searchDetails
       responses:
         "200":
           content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfRetailMediaSeller'
             application/json:
               schema:
                 $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfRetailMediaSeller'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfRetailMediaSeller'
           description: Success
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Bad Request
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Forbidden
       tags:
       - Accounts
       x-content-type: application/json-patch+json
@@ -2648,138 +2404,6 @@ paths:
           description: Success
       tags:
       - Balance
-      x-accepts: application/json
-  /preview/retail-media/catalogs/sku/search/accounts/{accountId}/retailers/{retailerId}/by-id:
-    post:
-      description: Gets a list of SKUs based on a privided list of Product Ids
-      operationId: GetSkuByProductId
-      parameters:
-      - description: account id
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          pattern: ^\d+$
-          type: string
-        style: simple
-      - description: retailer id
-        explode: false
-        in: path
-        name: retailerId
-        required: true
-        schema:
-          format: int32
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-        style: simple
-      - description: "skip a number of matches before retrning results, used with\
-          \ limit"
-        explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          default: 0
-          format: int32
-          maximum: 2147483647
-          minimum: 0
-          type: integer
-        style: form
-      - description: max number of results to return
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 100
-          format: int32
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-        style: form
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/SkuSearchRequest'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SkuSearchRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/SkuSearchRequest'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/SkuSearchRequest'
-        description: ""
-        x-bodyName: skuSearchRequest
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResourceCollectionOutcomeOfSkuSearchResult'
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json-patch+json
-      x-accepts: application/json
-  /preview/retail-media/insertion-order-history/{insertionOrderId}/change-data-capture:
-    get:
-      description: Gets the balance's historical data change capture.
-      operationId: GetInsertionOrderHistoryChangeDataCaptureV2
-      parameters:
-      - description: External insertion order id.
-        explode: false
-        in: path
-        name: insertionOrderId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: The (zero-based) starting offset in the collection.
-        explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          default: 0
-          format: int32
-          maximum: 2147483647
-          minimum: 0
-          type: integer
-        style: form
-      - description: The number of elements to be returned.
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 25
-          format: int32
-          maximum: 100
-          minimum: 1
-          type: integer
-        style: form
-      - description: Comma separated change types string that will be queried.
-        explode: true
-        in: query
-        name: limitToChangeTypes
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PageOfInsertionOrderHistoryChangeDataCaptureV2'
-          description: Success
-      tags:
-      - Campaign
       x-accepts: application/json
   /preview/retail-media/line-items/{externalLineItemId}/keywords/recommended:
     get:
@@ -2979,56 +2603,6 @@ paths:
         required: true
         x-nullable: false
         x-bodyName: updateBalanceModel
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/BalanceResponseV2Response'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponseV2Response'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponseV2Response'
-          description: Success
-      tags:
-      - Balance
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds:
-    post:
-      description: Add funds to a balance for the given account id
-      operationId: "PostApiV2ExternalAccountAddFundsByAccountId}Balances{balanceId"
-      parameters:
-      - description: The account of the balance
-        explode: false
-        in: path
-        name: account-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      - description: The balance to add funds to
-        explode: false
-        in: path
-        name: balance-id
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: false
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AddFundsToBalanceV2Request'
-        description: An object that represents the available options of adding funds
-          to a balance.
-        required: true
-        x-nullable: false
-        x-bodyName: addFundsToBalance
       responses:
         "200":
           content:
@@ -3493,6 +3067,68 @@ paths:
       tags:
       - Campaign
       x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/brands/search:
+    post:
+      description: Search for brands given a retailer ID and search term.
+      operationId: SearchBrandsByNameAsyncV1
+      parameters:
+      - description: offset of paginated results
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        style: form
+      - description: the number of brands to return
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          format: int32
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputBrandIdSearchRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputBrandIdSearchRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputBrandIdSearchRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputBrandIdSearchRequest'
+        description: BrandIdSearchRequest which contains the request parameters
+        x-bodyName: brandIdSearchRequest
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeBrandIdSearchResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeBrandIdSearchResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeBrandIdSearchResult'
+          description: Success
+      tags:
+      - Catalog
+      x-content-type: application/json-patch+json
       x-accepts: application/json
 components:
   schemas:
@@ -4352,23 +3988,33 @@ components:
         importRequestTimestamp:
           description: The date when the original batch request was sent.
           format: int64
+          nullable: true
           type: integer
+          x-nullable: true
         numberOfProductsInTheBatch:
           description: The number of products present in the batch.
           format: int32
+          nullable: true
           type: integer
+          x-nullable: true
         numberOfProductsUpserted:
           description: The number of products upserted.
           format: int32
+          nullable: true
           type: integer
+          x-nullable: true
         numberOfProductsDeleted:
           description: The number of products deleted.
           format: int32
+          nullable: true
           type: integer
+          x-nullable: true
         numberOfProductsWithErrors:
           description: The number of products with errors.
           format: int32
+          nullable: true
           type: integer
+          x-nullable: true
         errorDetails:
           description: The list of errors with details.
           items:
@@ -4377,7 +4023,9 @@ components:
         numberOfProductsWithWarnings:
           description: The number of products with Warnings.
           format: int32
+          nullable: true
           type: integer
+          x-nullable: true
         warningDetails:
           description: The list of Warnings with details.
           items:
@@ -5885,13 +5533,17 @@ components:
       - name
       - value
       type: object
-    EntityResourceCollectionOutcomeOfRetailMediaAccount:
-      description: A resource that represents collection of Retail Media account entities
+    EntityResourceCollectionOutcomeOfRetailMediaChildAccount:
+      description: A resource that represents collection of Retail Media child account
+        entities
       example:
+        metadata:
+          offset: 6
+          count: 0
+          limit: 1
         data:
         - attributes:
             companyName: companyName
-            parentAccountLabel: parentAccountLabel
             name: name
             onBehalfCompanyName: onBehalfCompanyName
             countryIds:
@@ -5905,7 +5557,6 @@ components:
           type: type
         - attributes:
             companyName: companyName
-            parentAccountLabel: parentAccountLabel
             name: name
             onBehalfCompanyName: onBehalfCompanyName
             countryIds:
@@ -5959,10 +5610,13 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
+      nullable: true
       properties:
+        metadata:
+          $ref: '#/components/schemas/OffsetPageMetadata'
         data:
           items:
-            $ref: '#/components/schemas/EntityResourceOfRetailMediaAccount'
+            $ref: '#/components/schemas/EntityResourceOfRetailMediaChildAccount'
           nullable: true
           type: array
           x-nullable: true
@@ -5982,279 +5636,36 @@ components:
           x-nullable: true
       type: object
       x-nullable: true
-    JsonApiPageResponseOfAccount:
-      description: A wrapper class to return a single page of <typeparamref name="T"
-        /> with metadata
+    OffsetPageMetadata:
+      description: Metadata related to the current request
       example:
-        metadata:
-          currentPageSize: 6
-          previousPage: previousPage
-          nextPage: nextPage
-          totalPages: 5
-          totalItemsAcrossAllPages: 0
-          currentPageIndex: 1
-        data:
-        - attributes:
-            subtype: unknown
-            parentAccountLabel: parentAccountLabel
-            companyName: companyName
-            name: name
-            onBehalfCompanyName: onBehalfCompanyName
-            timeZone: timeZone
-            currency: currency
-            countries:
-            - countries
-            - countries
-            type: unknown
-          id: id
-          type: type
-        - attributes:
-            subtype: unknown
-            parentAccountLabel: parentAccountLabel
-            companyName: companyName
-            name: name
-            onBehalfCompanyName: onBehalfCompanyName
-            timeZone: timeZone
-            currency: currency
-            countries:
-            - countries
-            - countries
-            type: unknown
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
+        offset: 6
+        count: 0
+        limit: 1
       properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonError'
-          type: array
+        count:
+          format: int64
+          nullable: true
+          type: integer
+          x-nullable: true
+        offset:
+          format: int32
+          type: integer
           x-nullable: false
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonWarning'
-          type: array
-          x-nullable: false
-        metadata:
-          $ref: '#/components/schemas/PageMetadata'
-        data:
-          items:
-            $ref: '#/components/schemas/JsonApiBodyWithIdOfInt64AndAccountAndAccount'
-          type: array
+        limit:
+          format: int32
+          type: integer
           x-nullable: false
       required:
-      - data
-      - metadata
+      - limit
+      - offset
       type: object
-    JsonApiPageResponseOfBrand:
-      description: A wrapper class to return a single page of <typeparamref name="T"
-        /> with metadata
-      example:
-        metadata:
-          currentPageSize: 6
-          previousPage: previousPage
-          nextPage: nextPage
-          totalPages: 5
-          totalItemsAcrossAllPages: 0
-          currentPageIndex: 1
-        data:
-        - attributes:
-            name: name
-          id: id
-          type: type
-        - attributes:
-            name: name
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonError'
-          type: array
-          x-nullable: false
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonWarning'
-          type: array
-          x-nullable: false
-        metadata:
-          $ref: '#/components/schemas/PageMetadata'
-        data:
-          items:
-            $ref: '#/components/schemas/JsonApiBodyWithIdOfInt64AndBrandAndBrand'
-          type: array
-          x-nullable: false
-      required:
-      - data
-      - metadata
-      type: object
-    JsonApiPageResponseOfRetailer:
-      description: A wrapper class to return a single page of <typeparamref name="T"
-        /> with metadata
-      example:
-        metadata:
-          currentPageSize: 6
-          previousPage: previousPage
-          nextPage: nextPage
-          totalPages: 5
-          totalItemsAcrossAllPages: 0
-          currentPageIndex: 1
-        data:
-        - attributes:
-            name: name
-            campaignEligibilities:
-            - unknown
-            - unknown
-          id: id
-          type: type
-        - attributes:
-            name: name
-            campaignEligibilities:
-            - unknown
-            - unknown
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonError'
-          type: array
-          x-nullable: false
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonWarning'
-          type: array
-          x-nullable: false
-        metadata:
-          $ref: '#/components/schemas/PageMetadata'
-        data:
-          items:
-            $ref: '#/components/schemas/JsonApiBodyWithIdOfInt64AndRetailerAndRetailer'
-          type: array
-          x-nullable: false
-      required:
-      - data
-      - metadata
-      type: object
-    EntityResourceOfRetailMediaAccount:
-      description: A resource object that represents a single Retail Media account
+    EntityResourceOfRetailMediaChildAccount:
+      description: A resource object that represents a single Retail Media child account
         entity
       example:
         attributes:
           companyName: companyName
-          parentAccountLabel: parentAccountLabel
           name: name
           onBehalfCompanyName: onBehalfCompanyName
           countryIds:
@@ -6266,6 +5677,7 @@ components:
           currencyId: currencyId
         id: id
         type: type
+      nullable: true
       properties:
         id:
           nullable: true
@@ -6276,261 +5688,13 @@ components:
           type: string
           x-nullable: true
         attributes:
-          $ref: '#/components/schemas/ExternalRetailMediaAccount'
+          $ref: '#/components/schemas/ExternalRetailMediaChildAccount'
       type: object
       x-nullable: true
-    PageMetadata:
-      description: Metadata related to the current request
-      example:
-        currentPageSize: 6
-        previousPage: previousPage
-        nextPage: nextPage
-        totalPages: 5
-        totalItemsAcrossAllPages: 0
-        currentPageIndex: 1
-      properties:
-        totalItemsAcrossAllPages:
-          format: int64
-          nullable: true
-          type: integer
-          x-nullable: true
-        currentPageSize:
-          format: int32
-          type: integer
-          x-nullable: false
-        currentPageIndex:
-          format: int32
-          type: integer
-          x-nullable: false
-        totalPages:
-          format: int64
-          nullable: true
-          type: integer
-          x-nullable: true
-        nextPage:
-          type: string
-          x-nullable: false
-        previousPage:
-          type: string
-          x-nullable: false
-      required:
-      - currentPageIndex
-      - currentPageSize
-      type: object
-    CommonError:
-      description: A JSON:API Common error structure
-      example:
-        traceId: traceId
-        code: code
-        instance: instance
-        detail: detail
-        source:
-          key: source
-        stackTrace: stackTrace
-        type: unknown
-        title: title
-      properties:
-        traceId:
-          description: (REQUIRED) The Correlation ID provided by the Gateway. It is
-            also a unique identifier for this particular occurrence of the problem.
-          type: string
-          x-nullable: false
-        type:
-          description: (REQUIRED) The classification of the error.
-          enum:
-          - unknown
-          - access-control
-          - authentication
-          - authorization
-          - availability
-          - deprecation
-          - quota
-          - validation
-          type: string
-          x-nullable: false
-        code:
-          description: "(REQUIRED) A machine-readable unique error code, expressed\
-            \ as a string value. The format used must be kabab-case."
-          type: string
-          x-nullable: false
-        instance:
-          description: (REQUIRED) A URI reference that identifies the specific occurrence
-            of the problem.
-          type: string
-          x-nullable: false
-        title:
-          description: "(RECOMMENDED) A short, human-readable summary of the problem\
-            \ type."
-          type: string
-          x-nullable: false
-        detail:
-          description: (RECOMMENDED) A human-readable explanation specific to this
-            occurrence of the problem.
-          type: string
-          x-nullable: false
-        source:
-          additionalProperties:
-            type: string
-            x-nullable: false
-          description: (OPTIONAL) A machine-readable structure to reference to the
-            exact location(s) causing the error(s)
-          type: object
-          x-nullable: false
-        stackTrace:
-          description: (NEVER IN PRODUCTION) A human-readable stacktrace produced
-            by the implementation technology
-          type: string
-          x-nullable: false
-      type: object
-    CommonWarning:
-      description: A JSON:API Base common warning
-      example:
-        traceId: traceId
-        code: code
-        instance: instance
-        detail: detail
-        source:
-          key: source
-        stackTrace: stackTrace
-        type: unknown
-        title: title
-      properties:
-        traceId:
-          description: (REQUIRED) The Correlation ID provided by the Gateway. It is
-            also a unique identifier for this particular occurrence of the problem.
-          type: string
-          x-nullable: false
-        type:
-          description: (REQUIRED) The classification of the error.
-          enum:
-          - unknown
-          - access-control
-          - authentication
-          - authorization
-          - availability
-          - deprecation
-          - quota
-          - validation
-          type: string
-          x-nullable: false
-        code:
-          description: "(REQUIRED) A machine-readable unique error code, expressed\
-            \ as a string value. The format used must be kabab-case."
-          type: string
-          x-nullable: false
-        instance:
-          description: (REQUIRED) A URI reference that identifies the specific occurrence
-            of the problem.
-          type: string
-          x-nullable: false
-        title:
-          description: "(RECOMMENDED) A short, human-readable summary of the problem\
-            \ type."
-          type: string
-          x-nullable: false
-        detail:
-          description: (RECOMMENDED) A human-readable explanation specific to this
-            occurrence of the problem.
-          type: string
-          x-nullable: false
-        source:
-          additionalProperties:
-            type: string
-            x-nullable: false
-          description: (OPTIONAL) A machine-readable structure to reference to the
-            exact location(s) causing the error(s)
-          type: object
-          x-nullable: false
-        stackTrace:
-          description: (NEVER IN PRODUCTION) A human-readable stacktrace produced
-            by the implementation technology
-          type: string
-          x-nullable: false
-      type: object
-    JsonApiBodyWithIdOfInt64AndAccountAndAccount:
-      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
-        \ /> with external Id, Type, and\r\nAttributes properties"
-      example:
-        attributes:
-          subtype: unknown
-          parentAccountLabel: parentAccountLabel
-          companyName: companyName
-          name: name
-          onBehalfCompanyName: onBehalfCompanyName
-          timeZone: timeZone
-          currency: currency
-          countries:
-          - countries
-          - countries
-          type: unknown
-        id: id
-        type: type
-      properties:
-        id:
-          format: long-id
-          type: string
-          x-nullable: false
-        type:
-          type: string
-          x-nullable: false
-        attributes:
-          $ref: '#/components/schemas/ExternalAccount'
-      required:
-      - id
-      - type
-      type: object
-    JsonApiBodyWithIdOfInt64AndBrandAndBrand:
-      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
-        \ /> with external Id, Type, and\r\nAttributes properties"
-      example:
-        attributes:
-          name: name
-        id: id
-        type: type
-      properties:
-        id:
-          format: long-id
-          type: string
-          x-nullable: false
-        type:
-          type: string
-          x-nullable: false
-        attributes:
-          $ref: '#/components/schemas/ExternalBrand'
-      required:
-      - id
-      - type
-      type: object
-    JsonApiBodyWithIdOfInt64AndRetailerAndRetailer:
-      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
-        \ /> with external Id, Type, and\r\nAttributes properties"
-      example:
-        attributes:
-          name: name
-          campaignEligibilities:
-          - unknown
-          - unknown
-        id: id
-        type: type
-      properties:
-        id:
-          format: long-id
-          type: string
-          x-nullable: false
-        type:
-          type: string
-          x-nullable: false
-        attributes:
-          $ref: '#/components/schemas/ExternalRetailer'
-      required:
-      - id
-      - type
-      type: object
-    ExternalRetailMediaAccount:
+    ExternalRetailMediaChildAccount:
       description: A Retail Media account entity
       example:
         companyName: companyName
-        parentAccountLabel: parentAccountLabel
         name: name
         onBehalfCompanyName: onBehalfCompanyName
         countryIds:
@@ -6540,6 +5704,7 @@ components:
         subType: Unknown
         type: Unknown
         currencyId: currencyId
+      nullable: true
       properties:
         name:
           nullable: true
@@ -6601,10 +5766,6 @@ components:
           nullable: true
           type: string
           x-nullable: true
-        parentAccountLabel:
-          nullable: true
-          type: string
-          x-nullable: true
         timeZone:
           nullable: true
           type: string
@@ -6614,112 +5775,6 @@ components:
       - type
       type: object
       x-nullable: true
-    ExternalAccount:
-      description: A Retail Media Account used to launch campaigns and line items
-      example:
-        subtype: unknown
-        parentAccountLabel: parentAccountLabel
-        companyName: companyName
-        name: name
-        onBehalfCompanyName: onBehalfCompanyName
-        timeZone: timeZone
-        currency: currency
-        countries:
-        - countries
-        - countries
-        type: unknown
-      properties:
-        name:
-          maxLength: 510
-          minLength: 0
-          type: string
-          x-nullable: false
-        type:
-          enum:
-          - unknown
-          - supply
-          - demand
-          type: string
-          x-nullable: false
-        subtype:
-          enum:
-          - unknown
-          - brand
-          - seller
-          nullable: true
-          type: string
-          x-nullable: true
-        countries:
-          items:
-            type: string
-          type: array
-          x-nullable: false
-        currency:
-          type: string
-          x-nullable: false
-        parentAccountLabel:
-          maxLength: 510
-          minLength: 0
-          type: string
-          x-nullable: false
-        timeZone:
-          type: string
-          x-nullable: false
-        companyName:
-          nullable: true
-          type: string
-          x-nullable: true
-        onBehalfCompanyName:
-          nullable: true
-          type: string
-          x-nullable: true
-      required:
-      - countries
-      - currency
-      - name
-      - parentAccountLabel
-      - timeZone
-      - type
-      type: object
-    ExternalBrand:
-      description: A Retail Media Brand used to represent a collection of products
-        sold under the same umbrella name
-      example:
-        name: name
-      properties:
-        name:
-          maxLength: 120
-          minLength: 0
-          type: string
-          x-nullable: false
-      required:
-      - name
-      type: object
-    ExternalRetailer:
-      description: A Retail Media Retailer used to represent a selection of products
-        from multiple brands
-      example:
-        name: name
-        campaignEligibilities:
-        - unknown
-        - unknown
-      properties:
-        name:
-          maxLength: 100
-          type: string
-          x-nullable: false
-        campaignEligibilities:
-          items:
-            enum:
-            - unknown
-            - auction
-            - preferred
-            type: string
-          type: array
-          x-nullable: false
-      required:
-      - name
-      type: object
     RmAudienceSegmentEntityV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
         several entities
@@ -8079,6 +7134,246 @@ components:
           nullable: true
           type: string
       type: object
+    ValueResourceOutcomeCpcMinBidsResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value object.
+      example:
+        data:
+          attributes:
+            overallMinBid: 0.8008281904610115
+            skuMinBids:
+            - minBid: 6.027456183070403
+              skuId: skuId
+            - minBid: 6.027456183070403
+              skuId: skuId
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceCpcMinBidsResponse'
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    ValueResourceInputCpcMinBidsRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value objects.
+      example:
+        data:
+          attributes:
+            skuIds:
+            - skuIds
+            - skuIds
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceCpcMinBidsRequest'
+      type: object
+    ValueResourceCpcMinBidsResponse:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          overallMinBid: 0.8008281904610115
+          skuMinBids:
+          - minBid: 6.027456183070403
+            skuId: skuId
+          - minBid: 6.027456183070403
+            skuId: skuId
+        type: type
+      properties:
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+        attributes:
+          $ref: '#/components/schemas/CpcMinBidsResponse'
+      type: object
+    SdkApiRestCommonProblem:
+      additionalProperties: false
+      description: Common problem object.
+      example:
+        traceId: traceId
+        code: code
+        instance: instance
+        detail: detail
+        source:
+          key: source
+        stackTrace: stackTrace
+        type: unknown
+        title: title
+      properties:
+        traceId:
+          description: The request correlation ID this problem comes from.
+          nullable: true
+          type: string
+        type:
+          description: The problem's category.
+          enum:
+          - unknown
+          - access-control
+          - authentication
+          - authorization
+          - availability
+          - deprecation
+          - quota
+          - validation
+          nullable: true
+          type: string
+        code:
+          description: "A machine-readable error code, expressed as a string value."
+          nullable: true
+          type: string
+        instance:
+          description: A URI that identifies the specific occurrence of the problem.
+          nullable: true
+          type: string
+        title:
+          description: A short human-readable description of the problem type.
+          nullable: true
+          type: string
+        detail:
+          description: A human-readable explanation specific to this occurrence of
+            the problem.
+          nullable: true
+          type: string
+        source:
+          additionalProperties:
+            type: string
+          description: A machine-readable structure to reference to the exact location(s)
+            causing the error(s).
+          nullable: true
+          type: object
+        stackTrace:
+          description: ""
+          nullable: true
+          type: string
+      type: object
+    ValueResourceCpcMinBidsRequest:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          skuIds:
+          - skuIds
+          - skuIds
+        type: type
+      properties:
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+        attributes:
+          $ref: '#/components/schemas/CpcMinBidsRequest'
+      type: object
+    CpcMinBidsResponse:
+      additionalProperties: false
+      description: Cpc Min Bids response object.
+      example:
+        overallMinBid: 0.8008281904610115
+        skuMinBids:
+        - minBid: 6.027456183070403
+          skuId: skuId
+        - minBid: 6.027456183070403
+          skuId: skuId
+      properties:
+        overallMinBid:
+          description: Overall minimum bid amount for the given list of sku ids.
+          format: double
+          type: number
+        skuMinBids:
+          description: Minimum bid amounts for each of the given list of sku ids.
+          items:
+            $ref: '#/components/schemas/SkuMinBid'
+          type: array
+      required:
+      - overallMinBid
+      - skuMinBids
+      type: object
+    CpcMinBidsRequest:
+      additionalProperties: false
+      description: Cpc Min Bids request object.
+      example:
+        skuIds:
+        - skuIds
+        - skuIds
+      properties:
+        skuIds:
+          description: Sku id list for which minimum bid amounts are requested.
+          items:
+            type: string
+          type: array
+      required:
+      - skuIds
+      type: object
+    SkuMinBid:
+      additionalProperties: false
+      description: An object represents the minimum bid amount value of a sku.
+      example:
+        minBid: 6.027456183070403
+        skuId: skuId
+      properties:
+        skuId:
+          description: Sku id.
+          type: string
+        minBid:
+          description: Minimum bid amount value.
+          format: double
+          type: number
+      required:
+      - minBid
+      - skuId
+      type: object
     KeywordsModelResponse:
       additionalProperties: false
       description: Response object containing keywords associated with a line item.
@@ -8325,79 +7620,6 @@ components:
           nullable: true
           type: array
       type: object
-    ProposalStatusModelResponse:
-      additionalProperties: false
-      description: Response object containing the state of a proposal in the context
-        of a line item.
-      example:
-        data:
-          attributes:
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            runnableStatus: null
-            negotiationState: null
-            bookingStatus: null
-            comment: comment
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-          status: 0
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-          status: 0
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-          status: 0
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-          status: 0
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/RmcaCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          items:
-            $ref: '#/components/schemas/RmcaCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        data:
-          $ref: '#/components/schemas/ProposalStatusModelResource'
-      type: object
     AddRemoveKeywordsModelRequest:
       additionalProperties: false
       description: Request object to add or remove keywords from a line item
@@ -8612,30 +7834,6 @@ components:
         attributes:
           $ref: '#/components/schemas/PromotedProduct'
       type: object
-    ProposalStatusModelResource:
-      additionalProperties: false
-      description: Resource object containing the state of a proposal in the context
-        of a line item.
-      example:
-        attributes:
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          runnableStatus: null
-          negotiationState: null
-          bookingStatus: null
-          comment: comment
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        id: id
-        type: type
-      properties:
-        id:
-          nullable: true
-          type: string
-        type:
-          nullable: true
-          type: string
-        attributes:
-          $ref: '#/components/schemas/ProposalStatusModel'
-      type: object
     AddRemoveKeywordsModelResource:
       additionalProperties: false
       description: Resource object containing keywords to be added or removed from
@@ -8740,35 +7938,6 @@ components:
         status:
           $ref: '#/components/schemas/LineItemProductStatus'
       type: object
-    ProposalStatusModel:
-      additionalProperties: false
-      description: The state of a proposal in the context of a line item.
-      example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        runnableStatus: null
-        negotiationState: null
-        bookingStatus: null
-        comment: comment
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        negotiationState:
-          $ref: '#/components/schemas/NegotiationStateModel'
-        bookingStatus:
-          $ref: '#/components/schemas/ApprovalStatusModel'
-        runnableStatus:
-          $ref: '#/components/schemas/ApprovalStatusModel'
-        comment:
-          nullable: true
-          type: string
-        createdAt:
-          format: date-time
-          nullable: true
-          type: string
-        updatedAt:
-          format: date-time
-          nullable: true
-          type: string
-      type: object
     AddRemoveKeywordsModel:
       additionalProperties: false
       description: Data model containing keywords to be added or removed from a line
@@ -8849,23 +8018,6 @@ components:
       - Unknown
       - Active
       - Paused
-      type: string
-    NegotiationStateModel:
-      description: The state of a negotiation in the context of a line item.
-      enum:
-      - Invalid
-      - Modified
-      - Submitted
-      - Reviewed
-      - Approved
-      type: string
-    ApprovalStatusModel:
-      description: The status of a booking or runnable in the context of a line item.
-      enum:
-      - NotSubmitted
-      - Submitted
-      - Rejected
-      - Approved
       type: string
     AddRemoveKeywordModel:
       additionalProperties: false
@@ -8950,332 +8102,6 @@ components:
           nullable: true
           type: array
       type: object
-    CreativeV2Response:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single entity
-      example:
-        data:
-          attributes:
-            formatId: 5
-            templateVariableValues:
-            - colorVariableValue:
-                color: color
-              textVariableValue:
-                text: text
-              filesVariableValue:
-                assetIds:
-                - assetIds
-                - assetIds
-              choiceVariableValue:
-                chosenOptions:
-                - chosenOptions
-                - chosenOptions
-              hyperlinkVariableValue:
-                url: url
-              videoVariableValue:
-                duration: duration
-                width: 5
-                url: url
-                height: 2
-              id: id
-            - colorVariableValue:
-                color: color
-              textVariableValue:
-                text: text
-              filesVariableValue:
-                assetIds:
-                - assetIds
-                - assetIds
-              choiceVariableValue:
-                chosenOptions:
-                - chosenOptions
-                - chosenOptions
-              hyperlinkVariableValue:
-                url: url
-              videoVariableValue:
-                duration: duration
-                width: 5
-                url: url
-                height: 2
-              id: id
-            templateName: templateName
-            associatedLineItemIds:
-            - associatedLineItemIds
-            - associatedLineItemIds
-            environments:
-            - pageType: Unknown
-              environments:
-              - Web
-              - Web
-            - pageType: Unknown
-              environments:
-              - Web
-              - Web
-            brandId: 0
-            creativeFormatType: Unknown
-            name: name
-            retailerId: 6
-            templateId: 1
-            status: Ready
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfCreativeV2'
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
-      x-nullable: true
-    CreativeV2ListResponse:
-      description: A top-level object that encapsulates a Criteo API response for
-        several entities
-      example:
-        data:
-        - attributes:
-            formatId: 5
-            templateVariableValues:
-            - colorVariableValue:
-                color: color
-              textVariableValue:
-                text: text
-              filesVariableValue:
-                assetIds:
-                - assetIds
-                - assetIds
-              choiceVariableValue:
-                chosenOptions:
-                - chosenOptions
-                - chosenOptions
-              hyperlinkVariableValue:
-                url: url
-              videoVariableValue:
-                duration: duration
-                width: 5
-                url: url
-                height: 2
-              id: id
-            - colorVariableValue:
-                color: color
-              textVariableValue:
-                text: text
-              filesVariableValue:
-                assetIds:
-                - assetIds
-                - assetIds
-              choiceVariableValue:
-                chosenOptions:
-                - chosenOptions
-                - chosenOptions
-              hyperlinkVariableValue:
-                url: url
-              videoVariableValue:
-                duration: duration
-                width: 5
-                url: url
-                height: 2
-              id: id
-            templateName: templateName
-            associatedLineItemIds:
-            - associatedLineItemIds
-            - associatedLineItemIds
-            environments:
-            - pageType: Unknown
-              environments:
-              - Web
-              - Web
-            - pageType: Unknown
-              environments:
-              - Web
-              - Web
-            brandId: 0
-            creativeFormatType: Unknown
-            name: name
-            retailerId: 6
-            templateId: 1
-            status: Ready
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        - attributes:
-            formatId: 5
-            templateVariableValues:
-            - colorVariableValue:
-                color: color
-              textVariableValue:
-                text: text
-              filesVariableValue:
-                assetIds:
-                - assetIds
-                - assetIds
-              choiceVariableValue:
-                chosenOptions:
-                - chosenOptions
-                - chosenOptions
-              hyperlinkVariableValue:
-                url: url
-              videoVariableValue:
-                duration: duration
-                width: 5
-                url: url
-                height: 2
-              id: id
-            - colorVariableValue:
-                color: color
-              textVariableValue:
-                text: text
-              filesVariableValue:
-                assetIds:
-                - assetIds
-                - assetIds
-              choiceVariableValue:
-                chosenOptions:
-                - chosenOptions
-                - chosenOptions
-              hyperlinkVariableValue:
-                url: url
-              videoVariableValue:
-                duration: duration
-                width: 5
-                url: url
-                height: 2
-              id: id
-            templateName: templateName
-            associatedLineItemIds:
-            - associatedLineItemIds
-            - associatedLineItemIds
-            environments:
-            - pageType: Unknown
-              environments:
-              - Web
-              - Web
-            - pageType: Unknown
-              environments:
-              - Web
-              - Web
-            brandId: 0
-            creativeFormatType: Unknown
-            name: name
-            retailerId: 6
-            templateId: 1
-            status: Ready
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ResourceOfCreativeV2'
-          nullable: true
-          type: array
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
-      x-nullable: true
     JsonApiSingleResponseOfCatalogStatus:
       description: A JSON:API wrapper class to add one JSON:API <typeparamref name="T"
         /> within a data property
@@ -9953,160 +8779,6 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
-    ExternalCreativeCreateModelV2:
-      description: Create model of a creative
-      example:
-        templateVariableValues:
-        - colorVariableValue:
-            color: color
-          textVariableValue:
-            text: text
-          filesVariableValue:
-            assetIds:
-            - assetIds
-            - assetIds
-          choiceVariableValue:
-            chosenOptions:
-            - chosenOptions
-            - chosenOptions
-          hyperlinkVariableValue:
-            url: url
-          videoVariableValue:
-            duration: duration
-            width: 5
-            url: url
-            height: 2
-          id: id
-        - colorVariableValue:
-            color: color
-          textVariableValue:
-            text: text
-          filesVariableValue:
-            assetIds:
-            - assetIds
-            - assetIds
-          choiceVariableValue:
-            chosenOptions:
-            - chosenOptions
-            - chosenOptions
-          hyperlinkVariableValue:
-            url: url
-          videoVariableValue:
-            duration: duration
-            width: 5
-            url: url
-            height: 2
-          id: id
-        brandId: 0
-        name: name
-        retailerId: 6
-        templateId: 1
-      properties:
-        name:
-          description: The name of the creative
-          type: string
-        brandId:
-          description: The brand associated to the creative
-          format: int64
-          nullable: true
-          type: integer
-        retailerId:
-          description: The retailer associated to the creative
-          format: int32
-          type: integer
-        templateId:
-          description: The creative template used for this creative
-          format: int32
-          type: integer
-        templateVariableValues:
-          description: The template chosen values
-          items:
-            $ref: '#/components/schemas/ExternalTemplateVariableValue'
-          type: array
-      required:
-      - name
-      - retailerId
-      - templateId
-      - templateVariableValues
-      type: object
-      x-nullable: false
-    ExternalCreativeUpdateModelV2:
-      description: Update model of a creative
-      example:
-        templateVariableValues:
-        - colorVariableValue:
-            color: color
-          textVariableValue:
-            text: text
-          filesVariableValue:
-            assetIds:
-            - assetIds
-            - assetIds
-          choiceVariableValue:
-            chosenOptions:
-            - chosenOptions
-            - chosenOptions
-          hyperlinkVariableValue:
-            url: url
-          videoVariableValue:
-            duration: duration
-            width: 5
-            url: url
-            height: 2
-          id: id
-        - colorVariableValue:
-            color: color
-          textVariableValue:
-            text: text
-          filesVariableValue:
-            assetIds:
-            - assetIds
-            - assetIds
-          choiceVariableValue:
-            chosenOptions:
-            - chosenOptions
-            - chosenOptions
-          hyperlinkVariableValue:
-            url: url
-          videoVariableValue:
-            duration: duration
-            width: 5
-            url: url
-            height: 2
-          id: id
-        brandId: 0
-        name: name
-        retailerId: 6
-        templateId: 1
-      properties:
-        name:
-          description: The name of the creative
-          type: string
-        brandId:
-          description: The brand associated to the creative
-          format: int64
-          nullable: true
-          type: integer
-        retailerId:
-          description: The retailer associated to the creative
-          format: int32
-          type: integer
-        templateId:
-          description: The creative template used for this creative
-          format: int32
-          type: integer
-        templateVariableValues:
-          description: The template chosen values
-          items:
-            $ref: '#/components/schemas/ExternalTemplateVariableValue'
-          type: array
-      required:
-      - name
-      - retailerId
-      - templateId
-      - templateVariableValues
-      type: object
-      x-nullable: false
     JsonApiRequestOfSellerCatalogRequest:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with Type, and Attributes properties"
@@ -10119,6 +8791,7 @@ components:
             - sellerId: sellerId
               retailerId: retailerId
           type: type
+      nullable: true
       properties:
         data:
           $ref: '#/components/schemas/JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest'
@@ -10181,87 +8854,6 @@ components:
           $ref: '#/components/schemas/ResourceOfSkuSearchRequestSlimV2Preview'
       type: object
       x-nullable: false
-    ResourceOfCreativeV2:
-      description: A class that represents a domain entity exposed by an API
-      example:
-        attributes:
-          formatId: 5
-          templateVariableValues:
-          - colorVariableValue:
-              color: color
-            textVariableValue:
-              text: text
-            filesVariableValue:
-              assetIds:
-              - assetIds
-              - assetIds
-            choiceVariableValue:
-              chosenOptions:
-              - chosenOptions
-              - chosenOptions
-            hyperlinkVariableValue:
-              url: url
-            videoVariableValue:
-              duration: duration
-              width: 5
-              url: url
-              height: 2
-            id: id
-          - colorVariableValue:
-              color: color
-            textVariableValue:
-              text: text
-            filesVariableValue:
-              assetIds:
-              - assetIds
-              - assetIds
-            choiceVariableValue:
-              chosenOptions:
-              - chosenOptions
-              - chosenOptions
-            hyperlinkVariableValue:
-              url: url
-            videoVariableValue:
-              duration: duration
-              width: 5
-              url: url
-              height: 2
-            id: id
-          templateName: templateName
-          associatedLineItemIds:
-          - associatedLineItemIds
-          - associatedLineItemIds
-          environments:
-          - pageType: Unknown
-            environments:
-            - Web
-            - Web
-          - pageType: Unknown
-            environments:
-            - Web
-            - Web
-          brandId: 0
-          creativeFormatType: Unknown
-          name: name
-          retailerId: 6
-          templateId: 1
-          status: Ready
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ExternalCreativeV2'
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-        type:
-          description: Canonical type name of the entity
-          nullable: true
-          type: string
-      type: object
-      x-nullable: true
     JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with external Id, Type, and\r\nAttributes properties"
@@ -10289,6 +8881,138 @@ components:
       required:
       - id
       - type
+      type: object
+      x-nullable: false
+    CommonError:
+      description: A JSON:API Common error structure
+      example:
+        traceId: traceId
+        code: code
+        instance: instance
+        detail: detail
+        source:
+          key: source
+        stackTrace: stackTrace
+        type: unknown
+        title: title
+      properties:
+        traceId:
+          description: (REQUIRED) The Correlation ID provided by the Gateway. It is
+            also a unique identifier for this particular occurrence of the problem.
+          type: string
+          x-nullable: false
+        type:
+          description: (REQUIRED) The classification of the error.
+          enum:
+          - unknown
+          - access-control
+          - authentication
+          - authorization
+          - availability
+          - deprecation
+          - quota
+          - validation
+          type: string
+          x-nullable: false
+        code:
+          description: "(REQUIRED) A machine-readable unique error code, expressed\
+            \ as a string value. The format used must be kabab-case."
+          type: string
+          x-nullable: false
+        instance:
+          description: (REQUIRED) A URI reference that identifies the specific occurrence
+            of the problem.
+          type: string
+          x-nullable: false
+        title:
+          description: "(RECOMMENDED) A short, human-readable summary of the problem\
+            \ type."
+          type: string
+          x-nullable: false
+        detail:
+          description: (RECOMMENDED) A human-readable explanation specific to this
+            occurrence of the problem.
+          type: string
+          x-nullable: false
+        source:
+          additionalProperties:
+            type: string
+            x-nullable: false
+          description: (OPTIONAL) A machine-readable structure to reference to the
+            exact location(s) causing the error(s)
+          type: object
+          x-nullable: false
+        stackTrace:
+          description: (NEVER IN PRODUCTION) A human-readable stacktrace produced
+            by the implementation technology
+          type: string
+          x-nullable: false
+      type: object
+      x-nullable: false
+    CommonWarning:
+      description: A JSON:API Base common warning
+      example:
+        traceId: traceId
+        code: code
+        instance: instance
+        detail: detail
+        source:
+          key: source
+        stackTrace: stackTrace
+        type: unknown
+        title: title
+      properties:
+        traceId:
+          description: (REQUIRED) The Correlation ID provided by the Gateway. It is
+            also a unique identifier for this particular occurrence of the problem.
+          type: string
+          x-nullable: false
+        type:
+          description: (REQUIRED) The classification of the error.
+          enum:
+          - unknown
+          - access-control
+          - authentication
+          - authorization
+          - availability
+          - deprecation
+          - quota
+          - validation
+          type: string
+          x-nullable: false
+        code:
+          description: "(REQUIRED) A machine-readable unique error code, expressed\
+            \ as a string value. The format used must be kabab-case."
+          type: string
+          x-nullable: false
+        instance:
+          description: (REQUIRED) A URI reference that identifies the specific occurrence
+            of the problem.
+          type: string
+          x-nullable: false
+        title:
+          description: "(RECOMMENDED) A short, human-readable summary of the problem\
+            \ type."
+          type: string
+          x-nullable: false
+        detail:
+          description: (RECOMMENDED) A human-readable explanation specific to this
+            occurrence of the problem.
+          type: string
+          x-nullable: false
+        source:
+          additionalProperties:
+            type: string
+            x-nullable: false
+          description: (OPTIONAL) A machine-readable structure to reference to the
+            exact location(s) causing the error(s)
+          type: object
+          x-nullable: false
+        stackTrace:
+          description: (NEVER IN PRODUCTION) A human-readable stacktrace produced
+            by the implementation technology
+          type: string
+          x-nullable: false
       type: object
       x-nullable: false
     ResourceOfSkuDataPreview:
@@ -10553,49 +9277,6 @@ components:
           $ref: '#/components/schemas/SellerPreview'
       type: object
       x-nullable: false
-    ExternalTemplateVariableValue:
-      description: A value for a variable in a creative template.
-      example:
-        colorVariableValue:
-          color: color
-        textVariableValue:
-          text: text
-        filesVariableValue:
-          assetIds:
-          - assetIds
-          - assetIds
-        choiceVariableValue:
-          chosenOptions:
-          - chosenOptions
-          - chosenOptions
-        hyperlinkVariableValue:
-          url: url
-        videoVariableValue:
-          duration: duration
-          width: 5
-          url: url
-          height: 2
-        id: id
-      properties:
-        id:
-          description: The id of the template variable the value is applied to
-          type: string
-        textVariableValue:
-          $ref: '#/components/schemas/ExternalTextVariableValue'
-        choiceVariableValue:
-          $ref: '#/components/schemas/ExternalChoiceVariableValue'
-        colorVariableValue:
-          $ref: '#/components/schemas/ExternalColorVariableValue'
-        filesVariableValue:
-          $ref: '#/components/schemas/ExternalFilesVariableValue'
-        hyperlinkVariableValue:
-          $ref: '#/components/schemas/ExternalHyperlinkVariableValue'
-        videoVariableValue:
-          $ref: '#/components/schemas/ExternalVideoVariableValue'
-      required:
-      - id
-      type: object
-      x-nullable: false
     JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with Type, and\r\nAttributes properties"
@@ -10692,150 +9373,6 @@ components:
           description: Canonical type name of the entity
           nullable: true
           type: string
-      type: object
-      x-nullable: false
-    ExternalCreativeV2:
-      description: A creative entity
-      example:
-        formatId: 5
-        templateVariableValues:
-        - colorVariableValue:
-            color: color
-          textVariableValue:
-            text: text
-          filesVariableValue:
-            assetIds:
-            - assetIds
-            - assetIds
-          choiceVariableValue:
-            chosenOptions:
-            - chosenOptions
-            - chosenOptions
-          hyperlinkVariableValue:
-            url: url
-          videoVariableValue:
-            duration: duration
-            width: 5
-            url: url
-            height: 2
-          id: id
-        - colorVariableValue:
-            color: color
-          textVariableValue:
-            text: text
-          filesVariableValue:
-            assetIds:
-            - assetIds
-            - assetIds
-          choiceVariableValue:
-            chosenOptions:
-            - chosenOptions
-            - chosenOptions
-          hyperlinkVariableValue:
-            url: url
-          videoVariableValue:
-            duration: duration
-            width: 5
-            url: url
-            height: 2
-          id: id
-        templateName: templateName
-        associatedLineItemIds:
-        - associatedLineItemIds
-        - associatedLineItemIds
-        environments:
-        - pageType: Unknown
-          environments:
-          - Web
-          - Web
-        - pageType: Unknown
-          environments:
-          - Web
-          - Web
-        brandId: 0
-        creativeFormatType: Unknown
-        name: name
-        retailerId: 6
-        templateId: 1
-        status: Ready
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        name:
-          description: Name
-          type: string
-        status:
-          description: Creative Status
-          enum:
-          - Ready
-          - InUse
-          - Archived
-          - Deleted
-          type: string
-        brandId:
-          description: Brand Id
-          format: int64
-          type: integer
-        retailerId:
-          description: Retailer Id
-          format: int32
-          type: integer
-        templateId:
-          description: Template Id
-          format: int32
-          type: integer
-        templateName:
-          description: Template Name
-          type: string
-        formatId:
-          description: Format Id
-          format: int32
-          type: integer
-        associatedLineItemIds:
-          description: Associated Line Item Ids
-          items:
-            type: string
-          type: array
-        updatedAt:
-          description: Updated at time
-          format: date-time
-          type: string
-        creativeFormatType:
-          description: Creative format type
-          enum:
-          - Unknown
-          - FlagShip
-          - Showcase
-          - SponsoredProducts
-          - Butterfly
-          - BundleBoost
-          - IAB
-          - Custom
-          - DisplayPanel
-          - DigitalShelfTalker
-          type: string
-        environments:
-          description: "Environment type (e.g. mobile, web, app)"
-          items:
-            $ref: '#/components/schemas/ExternalPageTypeEnvironment'
-          type: array
-        templateVariableValues:
-          description: The template chosen values
-          items:
-            $ref: '#/components/schemas/ExternalTemplateVariableValue'
-          type: array
-      required:
-      - associatedLineItemIds
-      - brandId
-      - creativeFormatType
-      - environments
-      - formatId
-      - name
-      - retailerId
-      - status
-      - templateId
-      - templateName
-      - templateVariableValues
-      - updatedAt
       type: object
       x-nullable: false
     ExternalCatalogStatus:
@@ -10944,8 +9481,9 @@ components:
           x-nullable: false
         description:
           description: A product description.
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         categoryId:
           description: The category Id.
           type: string
@@ -10954,8 +9492,9 @@ components:
           description: The full category breadcrumb in the retailers catalog.
           maxLength: 1000
           minLength: 0
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         isSellerSku:
           description: An indication of if the sku is seller sku.
           type: boolean
@@ -10966,12 +9505,14 @@ components:
           x-nullable: false
         sellerId:
           description: The id of the seller.
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         sellerName:
           description: The name of the seller.
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         brandId:
           description: The global brand id associated to the product.
           type: string
@@ -11005,28 +9546,33 @@ components:
         gtin:
           description: A GTIN identifier for the product if available. Covers variations
             such as EANs and UPCs.
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         mpn:
           description: The MPN for the product if available.
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         modelNumber:
           description: The Model Number for the product if available.
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         parentId:
           description: The ParentId for the product if available.
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         imageUrl:
           description: An http image resource provided by the retailer.
           type: string
           x-nullable: false
         productPage:
-          description: An The product page URL
+          description: The product page URL
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         updatedAt:
           description: The last time this product was updated in the Retail Media
             Catalog. Represented as a UTC ISO8601 string.
@@ -11167,10 +9713,9 @@ components:
           x-nullable: false
         description:
           description: A short description of the product.
-          maxLength: 1000
-          minLength: 0
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         category:
           $ref: '#/components/schemas/Category'
         brand:
@@ -11190,12 +9735,14 @@ components:
         gtin:
           description: A GTIN identifier for the product if available. Covers variations
             such as EANs and UPCs.
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         mpn:
           description: The MPN for the product if available.
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         imageUrl:
           description: An http image resource provided by the retailer.
           type: string
@@ -11235,14 +9782,16 @@ components:
             type: number
             x-nullable: false
           description: map of category id to minimum cpc bids
+          nullable: true
           type: object
-          x-nullable: false
+          x-nullable: true
         categories:
           additionalProperties:
             $ref: '#/components/schemas/Category202204'
           description: map of category id to category values
+          nullable: true
           type: object
-          x-nullable: false
+          x-nullable: true
       required:
       - retailerMinimumCpcBid
       type: object
@@ -11285,6 +9834,10 @@ components:
           - Web
           - Mobile
           - App
+          - Lockout
+          - Mixed
+          - iOS
+          - Android
           type: string
           x-nullable: false
       required:
@@ -11318,106 +9871,6 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
-    ExternalTextVariableValue:
-      description: A value of a template text variable
-      example:
-        text: text
-      properties:
-        text:
-          description: The displayed text
-          nullable: true
-          type: string
-      type: object
-      x-nullable: true
-    ExternalChoiceVariableValue:
-      description: A value of a template choice variable (among different accepted
-        options)
-      example:
-        chosenOptions:
-        - chosenOptions
-        - chosenOptions
-      properties:
-        chosenOptions:
-          description: The chosen options
-          items:
-            type: string
-          type: array
-      required:
-      - chosenOptions
-      type: object
-      x-nullable: false
-    ExternalColorVariableValue:
-      description: A value of a template color variable
-      example:
-        color: color
-      properties:
-        color:
-          description: The displayed color (HEX format)
-          nullable: true
-          pattern: "^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$"
-          type: string
-      type: object
-      x-nullable: true
-    ExternalFilesVariableValue:
-      description: "A value of a template file variable (one or several files), like\
-        \ images in a creative"
-      example:
-        assetIds:
-        - assetIds
-        - assetIds
-      properties:
-        assetIds:
-          description: The assets representing the images to be displayed
-          items:
-            type: string
-          minItems: 1
-          type: array
-      required:
-      - assetIds
-      type: object
-      x-nullable: false
-    ExternalHyperlinkVariableValue:
-      description: A value of a template hyperlink variable
-      example:
-        url: url
-      properties:
-        url:
-          description: The url to redirect to
-          nullable: true
-          type: string
-      type: object
-      x-nullable: true
-    ExternalVideoVariableValue:
-      description: A value of a template video variable
-      example:
-        duration: duration
-        width: 5
-        url: url
-        height: 2
-      properties:
-        url:
-          description: The vast video url
-          minLength: 1
-          type: string
-        width:
-          description: The video's width
-          format: int32
-          type: integer
-        height:
-          description: The video's height
-          format: int32
-          type: integer
-        duration:
-          description: The video's duration
-          minLength: 1
-          type: string
-      required:
-      - duration
-      - height
-      - url
-      - width
-      type: object
-      x-nullable: false
     SellerCatalogRequest:
       description: Used to requst a catalog of seller SKUs
       example:
@@ -11426,6 +9879,7 @@ components:
           retailerId: retailerId
         - sellerId: sellerId
           retailerId: retailerId
+      nullable: true
       properties:
         sellers:
           description: A list of sellers to restict the catalog to.
@@ -11560,49 +10014,6 @@ components:
       - searchString
       type: object
       x-nullable: false
-    ExternalPageTypeEnvironment:
-      description: The PageType-Environment Tuples for creatives
-      example:
-        pageType: Unknown
-        environments:
-        - Web
-        - Web
-      properties:
-        pageType:
-          description: Creative PageType
-          enum:
-          - Unknown
-          - Search
-          - Home
-          - Browse
-          - Checkout
-          - Category
-          - ProductDetail
-          - Confirmation
-          - Merchandising
-          - Deals
-          - Favorites
-          - SearchBar
-          - CategoryMenu
-          nullable: true
-          type: string
-        environments:
-          description: List of environments per PageType
-          items:
-            description: "Creative format, defining where the creative can be served"
-            enum:
-            - Web
-            - Mobile
-            - App
-            - Lockout
-            - Mixed
-            - iOS
-            - Android
-            type: string
-          nullable: true
-          type: array
-      type: object
-      x-nullable: false
     Category:
       description: Retailer Category.
       example:
@@ -11612,8 +10023,9 @@ components:
           description: The full category breadcrumb in the retailers catalog.
           maxLength: 1000
           minLength: 0
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
       type: object
       x-nullable: false
     Brand:
@@ -11672,6 +10084,907 @@ components:
       - sellerId
       type: object
       x-nullable: false
+    Creative2Response:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
+      example:
+        data:
+          attributes:
+            formatId: 5
+            templateVariableValues:
+            - colorVariableValue:
+                color: color
+              textVariableValue:
+                text: text
+              filesVariableValue:
+                assetIds:
+                - assetIds
+                - assetIds
+              choiceVariableValue:
+                chosenOptions:
+                - chosenOptions
+                - chosenOptions
+              hyperlinkVariableValue:
+                url: url
+              videoVariableValue:
+                duration: duration
+                width: 5
+                url: url
+                height: 2
+              id: id
+            - colorVariableValue:
+                color: color
+              textVariableValue:
+                text: text
+              filesVariableValue:
+                assetIds:
+                - assetIds
+                - assetIds
+              choiceVariableValue:
+                chosenOptions:
+                - chosenOptions
+                - chosenOptions
+              hyperlinkVariableValue:
+                url: url
+              videoVariableValue:
+                duration: duration
+                width: 5
+                url: url
+                height: 2
+              id: id
+            templateName: templateName
+            associatedLineItemIds:
+            - associatedLineItemIds
+            - associatedLineItemIds
+            environments:
+            - pageType: Unknown
+              environments:
+              - Web
+              - Web
+            - pageType: Unknown
+              environments:
+              - Web
+              - Web
+            brandId: 0
+            name: name
+            creativeFormatV2Type: Unknown
+            retailerId: 6
+            templateId: 1
+            status: Ready
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      nullable: true
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceOfCreative2'
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    Creative2ListResponse:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities.
+      example:
+        data:
+        - attributes:
+            formatId: 5
+            templateVariableValues:
+            - colorVariableValue:
+                color: color
+              textVariableValue:
+                text: text
+              filesVariableValue:
+                assetIds:
+                - assetIds
+                - assetIds
+              choiceVariableValue:
+                chosenOptions:
+                - chosenOptions
+                - chosenOptions
+              hyperlinkVariableValue:
+                url: url
+              videoVariableValue:
+                duration: duration
+                width: 5
+                url: url
+                height: 2
+              id: id
+            - colorVariableValue:
+                color: color
+              textVariableValue:
+                text: text
+              filesVariableValue:
+                assetIds:
+                - assetIds
+                - assetIds
+              choiceVariableValue:
+                chosenOptions:
+                - chosenOptions
+                - chosenOptions
+              hyperlinkVariableValue:
+                url: url
+              videoVariableValue:
+                duration: duration
+                width: 5
+                url: url
+                height: 2
+              id: id
+            templateName: templateName
+            associatedLineItemIds:
+            - associatedLineItemIds
+            - associatedLineItemIds
+            environments:
+            - pageType: Unknown
+              environments:
+              - Web
+              - Web
+            - pageType: Unknown
+              environments:
+              - Web
+              - Web
+            brandId: 0
+            name: name
+            creativeFormatV2Type: Unknown
+            retailerId: 6
+            templateId: 1
+            status: Ready
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        - attributes:
+            formatId: 5
+            templateVariableValues:
+            - colorVariableValue:
+                color: color
+              textVariableValue:
+                text: text
+              filesVariableValue:
+                assetIds:
+                - assetIds
+                - assetIds
+              choiceVariableValue:
+                chosenOptions:
+                - chosenOptions
+                - chosenOptions
+              hyperlinkVariableValue:
+                url: url
+              videoVariableValue:
+                duration: duration
+                width: 5
+                url: url
+                height: 2
+              id: id
+            - colorVariableValue:
+                color: color
+              textVariableValue:
+                text: text
+              filesVariableValue:
+                assetIds:
+                - assetIds
+                - assetIds
+              choiceVariableValue:
+                chosenOptions:
+                - chosenOptions
+                - chosenOptions
+              hyperlinkVariableValue:
+                url: url
+              videoVariableValue:
+                duration: duration
+                width: 5
+                url: url
+                height: 2
+              id: id
+            templateName: templateName
+            associatedLineItemIds:
+            - associatedLineItemIds
+            - associatedLineItemIds
+            environments:
+            - pageType: Unknown
+              environments:
+              - Web
+              - Web
+            - pageType: Unknown
+              environments:
+              - Web
+              - Web
+            brandId: 0
+            name: name
+            creativeFormatV2Type: Unknown
+            retailerId: 6
+            templateId: 1
+            status: Ready
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          traceIdentifier: traceIdentifier
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      nullable: true
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ResourceOfCreative2'
+          nullable: true
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    CreativeCreateModel2:
+      additionalProperties: false
+      description: Create model of a creative
+      example:
+        templateVariableValues:
+        - colorVariableValue:
+            color: color
+          textVariableValue:
+            text: text
+          filesVariableValue:
+            assetIds:
+            - assetIds
+            - assetIds
+          choiceVariableValue:
+            chosenOptions:
+            - chosenOptions
+            - chosenOptions
+          hyperlinkVariableValue:
+            url: url
+          videoVariableValue:
+            duration: duration
+            width: 5
+            url: url
+            height: 2
+          id: id
+        - colorVariableValue:
+            color: color
+          textVariableValue:
+            text: text
+          filesVariableValue:
+            assetIds:
+            - assetIds
+            - assetIds
+          choiceVariableValue:
+            chosenOptions:
+            - chosenOptions
+            - chosenOptions
+          hyperlinkVariableValue:
+            url: url
+          videoVariableValue:
+            duration: duration
+            width: 5
+            url: url
+            height: 2
+          id: id
+        brandId: 0
+        name: name
+        retailerId: 6
+        templateId: 1
+      properties:
+        name:
+          description: The name of the creative
+          type: string
+        brandId:
+          description: The brand associated to the creative
+          format: int64
+          nullable: true
+          type: integer
+        retailerId:
+          description: The retailer associated to the creative
+          format: int32
+          type: integer
+        templateId:
+          description: The creative template used for this creative
+          format: int32
+          type: integer
+        templateVariableValues:
+          description: The template chosen values
+          items:
+            $ref: '#/components/schemas/TemplateVariableValue'
+          type: array
+      required:
+      - name
+      - retailerId
+      - templateId
+      - templateVariableValues
+      type: object
+    CreativeUpdateModel2:
+      additionalProperties: false
+      description: Update model of a creative
+      example:
+        templateVariableValues:
+        - colorVariableValue:
+            color: color
+          textVariableValue:
+            text: text
+          filesVariableValue:
+            assetIds:
+            - assetIds
+            - assetIds
+          choiceVariableValue:
+            chosenOptions:
+            - chosenOptions
+            - chosenOptions
+          hyperlinkVariableValue:
+            url: url
+          videoVariableValue:
+            duration: duration
+            width: 5
+            url: url
+            height: 2
+          id: id
+        - colorVariableValue:
+            color: color
+          textVariableValue:
+            text: text
+          filesVariableValue:
+            assetIds:
+            - assetIds
+            - assetIds
+          choiceVariableValue:
+            chosenOptions:
+            - chosenOptions
+            - chosenOptions
+          hyperlinkVariableValue:
+            url: url
+          videoVariableValue:
+            duration: duration
+            width: 5
+            url: url
+            height: 2
+          id: id
+        brandId: 0
+        name: name
+        retailerId: 6
+        templateId: 1
+      properties:
+        name:
+          description: The name of the creative
+          type: string
+        brandId:
+          description: The brand associated to the creative
+          format: int64
+          nullable: true
+          type: integer
+        retailerId:
+          description: The retailer associated to the creative
+          format: int32
+          type: integer
+        templateId:
+          description: The creative template used for this creative
+          format: int32
+          type: integer
+        templateVariableValues:
+          description: The template chosen values
+          items:
+            $ref: '#/components/schemas/TemplateVariableValue'
+          type: array
+      required:
+      - name
+      - retailerId
+      - templateId
+      - templateVariableValues
+      type: object
+    ResourceOfCreative2:
+      additionalProperties: false
+      description: A class that represents a domain entity exposed by an API.
+      example:
+        attributes:
+          formatId: 5
+          templateVariableValues:
+          - colorVariableValue:
+              color: color
+            textVariableValue:
+              text: text
+            filesVariableValue:
+              assetIds:
+              - assetIds
+              - assetIds
+            choiceVariableValue:
+              chosenOptions:
+              - chosenOptions
+              - chosenOptions
+            hyperlinkVariableValue:
+              url: url
+            videoVariableValue:
+              duration: duration
+              width: 5
+              url: url
+              height: 2
+            id: id
+          - colorVariableValue:
+              color: color
+            textVariableValue:
+              text: text
+            filesVariableValue:
+              assetIds:
+              - assetIds
+              - assetIds
+            choiceVariableValue:
+              chosenOptions:
+              - chosenOptions
+              - chosenOptions
+            hyperlinkVariableValue:
+              url: url
+            videoVariableValue:
+              duration: duration
+              width: 5
+              url: url
+              height: 2
+            id: id
+          templateName: templateName
+          associatedLineItemIds:
+          - associatedLineItemIds
+          - associatedLineItemIds
+          environments:
+          - pageType: Unknown
+            environments:
+            - Web
+            - Web
+          - pageType: Unknown
+            environments:
+            - Web
+            - Web
+          brandId: 0
+          name: name
+          creativeFormatV2Type: Unknown
+          retailerId: 6
+          templateId: 1
+          status: Ready
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/Creative2'
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
+        type:
+          description: Canonical type name of the entity
+          nullable: true
+          type: string
+      type: object
+    TemplateVariableValue:
+      additionalProperties: false
+      description: A value for a variable in a creative template.
+      example:
+        colorVariableValue:
+          color: color
+        textVariableValue:
+          text: text
+        filesVariableValue:
+          assetIds:
+          - assetIds
+          - assetIds
+        choiceVariableValue:
+          chosenOptions:
+          - chosenOptions
+          - chosenOptions
+        hyperlinkVariableValue:
+          url: url
+        videoVariableValue:
+          duration: duration
+          width: 5
+          url: url
+          height: 2
+        id: id
+      properties:
+        id:
+          description: The id of the template variable the value is applied to
+          type: string
+        textVariableValue:
+          $ref: '#/components/schemas/TextVariableValue'
+        choiceVariableValue:
+          $ref: '#/components/schemas/ChoiceVariableValue'
+        colorVariableValue:
+          $ref: '#/components/schemas/ColorVariableValue'
+        filesVariableValue:
+          $ref: '#/components/schemas/FilesVariableValue'
+        hyperlinkVariableValue:
+          $ref: '#/components/schemas/HyperlinkVariableValue'
+        videoVariableValue:
+          $ref: '#/components/schemas/VideoVariableValue'
+      required:
+      - id
+      type: object
+    Creative2:
+      additionalProperties: false
+      description: A creative entity
+      example:
+        formatId: 5
+        templateVariableValues:
+        - colorVariableValue:
+            color: color
+          textVariableValue:
+            text: text
+          filesVariableValue:
+            assetIds:
+            - assetIds
+            - assetIds
+          choiceVariableValue:
+            chosenOptions:
+            - chosenOptions
+            - chosenOptions
+          hyperlinkVariableValue:
+            url: url
+          videoVariableValue:
+            duration: duration
+            width: 5
+            url: url
+            height: 2
+          id: id
+        - colorVariableValue:
+            color: color
+          textVariableValue:
+            text: text
+          filesVariableValue:
+            assetIds:
+            - assetIds
+            - assetIds
+          choiceVariableValue:
+            chosenOptions:
+            - chosenOptions
+            - chosenOptions
+          hyperlinkVariableValue:
+            url: url
+          videoVariableValue:
+            duration: duration
+            width: 5
+            url: url
+            height: 2
+          id: id
+        templateName: templateName
+        associatedLineItemIds:
+        - associatedLineItemIds
+        - associatedLineItemIds
+        environments:
+        - pageType: Unknown
+          environments:
+          - Web
+          - Web
+        - pageType: Unknown
+          environments:
+          - Web
+          - Web
+        brandId: 0
+        name: name
+        creativeFormatV2Type: Unknown
+        retailerId: 6
+        templateId: 1
+        status: Ready
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        name:
+          description: Name
+          type: string
+        status:
+          description: Creative Status
+          enum:
+          - Ready
+          - InUse
+          - Archived
+          - Deleted
+          format: string
+          type: string
+        brandId:
+          description: Brand Id
+          format: int64
+          type: integer
+        retailerId:
+          description: Retailer Id
+          format: int32
+          type: integer
+        templateId:
+          description: Template Id
+          format: int32
+          type: integer
+        templateName:
+          description: Template Name
+          type: string
+        formatId:
+          description: Format Id
+          format: int32
+          type: integer
+        associatedLineItemIds:
+          description: Associated Line Item Ids
+          items:
+            type: string
+          type: array
+        updatedAt:
+          description: Updated at time
+          format: date-time
+          type: string
+        creativeFormatV2Type:
+          description: Creative format type
+          enum:
+          - Unknown
+          - FlagShip
+          - Showcase
+          - SponsoredProducts
+          - Butterfly
+          - BundleBoost
+          - IAB
+          - Custom
+          - DisplayPanel
+          - DigitalShelfTalker
+          format: string
+          type: string
+        environments:
+          description: "Environment type (e.g. mobile, web, app)"
+          items:
+            $ref: '#/components/schemas/PageTypeEnvironment2'
+          type: array
+        templateVariableValues:
+          description: The template chosen values
+          items:
+            $ref: '#/components/schemas/TemplateVariableValue'
+          type: array
+      required:
+      - associatedLineItemIds
+      - brandId
+      - creativeFormatV2Type
+      - environments
+      - formatId
+      - name
+      - retailerId
+      - status
+      - templateId
+      - templateName
+      - templateVariableValues
+      - updatedAt
+      type: object
+    TextVariableValue:
+      additionalProperties: false
+      description: A value of a template text variable
+      example:
+        text: text
+      nullable: true
+      properties:
+        text:
+          description: The displayed text
+          nullable: true
+          type: string
+      type: object
+    ChoiceVariableValue:
+      additionalProperties: false
+      description: A value of a template choice variable (among different accepted
+        options)
+      example:
+        chosenOptions:
+        - chosenOptions
+        - chosenOptions
+      properties:
+        chosenOptions:
+          description: The chosen options
+          items:
+            type: string
+          type: array
+      required:
+      - chosenOptions
+      type: object
+    ColorVariableValue:
+      additionalProperties: false
+      description: A value of a template color variable
+      example:
+        color: color
+      nullable: true
+      properties:
+        color:
+          description: The displayed color (HEX format)
+          nullable: true
+          pattern: "^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$"
+          type: string
+      type: object
+    FilesVariableValue:
+      additionalProperties: false
+      description: "A value of a template file variable (one or several files), like\
+        \ images in a creative"
+      example:
+        assetIds:
+        - assetIds
+        - assetIds
+      properties:
+        assetIds:
+          description: The assets representing the images to be displayed
+          items:
+            type: string
+          minItems: 1
+          type: array
+      required:
+      - assetIds
+      type: object
+    HyperlinkVariableValue:
+      additionalProperties: false
+      description: A value of a template hyperlink variable
+      example:
+        url: url
+      nullable: true
+      properties:
+        url:
+          description: The url to redirect to
+          nullable: true
+          type: string
+      type: object
+    VideoVariableValue:
+      additionalProperties: false
+      description: A value of a template video variable
+      example:
+        duration: duration
+        width: 5
+        url: url
+        height: 2
+      properties:
+        url:
+          description: The vast video url
+          minLength: 1
+          type: string
+        width:
+          description: The video's width
+          format: int32
+          type: integer
+        height:
+          description: The video's height
+          format: int32
+          type: integer
+        duration:
+          description: The video's duration
+          minLength: 1
+          type: string
+      required:
+      - duration
+      - height
+      - url
+      - width
+      type: object
+    PageTypeEnvironment2:
+      additionalProperties: false
+      description: The PageType-Environment Tuples for creatives
+      example:
+        pageType: Unknown
+        environments:
+        - Web
+        - Web
+      properties:
+        pageType:
+          description: Creative PageType
+          enum:
+          - Unknown
+          - Search
+          - Home
+          - Browse
+          - Checkout
+          - Category
+          - ProductDetail
+          - Confirmation
+          - Merchandising
+          - Deals
+          - Favorites
+          - SearchBar
+          - CategoryMenu
+          format: string
+          nullable: true
+          type: string
+        environments:
+          description: List of environments per PageType
+          items:
+            description: "Creative format, defining where the creative can be served"
+            enum:
+            - Web
+            - Mobile
+            - App
+            - Lockout
+            - Mixed
+            - iOS
+            - Android
+            format: string
+            type: string
+          nullable: true
+          type: array
+      type: object
     AsyncReportResponse:
       description: Async Report response format
       example:
@@ -11860,7 +11173,13 @@ components:
           attributes:
             campaignType: all
             clickAttributionWindow: none
+            searchTermTargetings:
+            - unknown
+            - unknown
             endDate: 2000-01-23T04:56:07.000+00:00
+            searchTermTypes:
+            - unknown
+            - unknown
             timezone: UTC
             format: json-compact
             salesChannel: all
@@ -11890,7 +11209,13 @@ components:
           attributes:
             campaignType: all
             clickAttributionWindow: none
+            searchTermTargetings:
+            - unknown
+            - unknown
             endDate: 2000-01-23T04:56:07.000+00:00
+            searchTermTypes:
+            - unknown
+            - unknown
             timezone: UTC
             format: json-compact
             salesChannel: all
@@ -11920,7 +11245,13 @@ components:
           attributes:
             campaignType: all
             clickAttributionWindow: none
+            searchTermTargetings:
+            - unknown
+            - unknown
             endDate: 2000-01-23T04:56:07.000+00:00
+            searchTermTypes:
+            - unknown
+            - unknown
             timezone: UTC
             format: json-compact
             salesChannel: all
@@ -12123,7 +11454,13 @@ components:
         attributes:
           campaignType: all
           clickAttributionWindow: none
+          searchTermTargetings:
+          - unknown
+          - unknown
           endDate: 2000-01-23T04:56:07.000+00:00
+          searchTermTypes:
+          - unknown
+          - unknown
           timezone: UTC
           format: json-compact
           salesChannel: all
@@ -12155,7 +11492,13 @@ components:
         attributes:
           campaignType: all
           clickAttributionWindow: none
+          searchTermTargetings:
+          - unknown
+          - unknown
           endDate: 2000-01-23T04:56:07.000+00:00
+          searchTermTypes:
+          - unknown
+          - unknown
           timezone: UTC
           format: json-compact
           salesChannel: all
@@ -12187,7 +11530,13 @@ components:
         attributes:
           campaignType: all
           clickAttributionWindow: none
+          searchTermTargetings:
+          - unknown
+          - unknown
           endDate: 2000-01-23T04:56:07.000+00:00
+          searchTermTypes:
+          - unknown
+          - unknown
           timezone: UTC
           format: json-compact
           salesChannel: all
@@ -12335,7 +11684,7 @@ components:
           nullable: true
           type: integer
         fileSizeBytes:
-          format: int32
+          format: int64
           nullable: true
           type: integer
         md5CheckSum:
@@ -12426,7 +11775,13 @@ components:
       example:
         campaignType: all
         clickAttributionWindow: none
+        searchTermTargetings:
+        - unknown
+        - unknown
         endDate: 2000-01-23T04:56:07.000+00:00
+        searchTermTypes:
+        - unknown
+        - unknown
         timezone: UTC
         format: json-compact
         salesChannel: all
@@ -12458,6 +11813,28 @@ components:
           - lineItem
           nullable: true
           type: string
+        searchTermTypes:
+          description: "Filter on the type of search term type: unknown, searched,\
+            \ entered"
+          items:
+            enum:
+            - unknown
+            - searched
+            - entered
+            type: string
+          nullable: true
+          type: array
+        searchTermTargetings:
+          description: "Filter on the type of search term targeting: unknown, automatic,\
+            \ manual"
+          items:
+            enum:
+            - unknown
+            - automatic
+            - manual
+            type: string
+          nullable: true
+          type: array
         campaignType:
           default: all
           description: "Filter the type of campaigns to report on: sponsoredProducts\
@@ -12500,6 +11877,7 @@ components:
           - attributedTransactions
           - environment
           - servedCategory
+          - capout
           nullable: true
           type: string
         clickAttributionWindow:
@@ -12547,9 +11925,18 @@ components:
             - environment
             - pageTypeName
             - pageCategory
+            - servedCategory
             - taxonomyBreadcrumb
             - keyword
             - searchTerm
+            - searchTermType
+            - searchTermTargeting
+            - creativeId
+            - creativeName
+            - creativeTypeId
+            - creativeTypeName
+            - creativeTemplateId
+            - creativeTemplateName
             type: string
           nullable: true
           type: array
@@ -12578,6 +11965,16 @@ components:
             - videosPlayedTo100
             - videoPlayingRate
             - videoCompletionRate
+            - videoImpressions
+            - videoMuted
+            - videoUnmuted
+            - videoPaused
+            - videoResumed
+            - videoAvgInteractionRate
+            - videoViewability
+            - videoStartingRate
+            - videoCPC
+            - videoCPCV
             - uniqueVisitors
             - frequency
             type: string
@@ -12607,7 +12004,13 @@ components:
       example:
         campaignType: all
         clickAttributionWindow: none
+        searchTermTargetings:
+        - unknown
+        - unknown
         endDate: 2000-01-23T04:56:07.000+00:00
+        searchTermTypes:
+        - unknown
+        - unknown
         timezone: UTC
         format: json-compact
         salesChannel: all
@@ -12635,6 +12038,28 @@ components:
           description: Campaign id to report on
           nullable: true
           type: string
+        searchTermTypes:
+          description: "Filter on the type of search term type: unknown, searched,\
+            \ entered"
+          items:
+            enum:
+            - unknown
+            - searched
+            - entered
+            type: string
+          nullable: true
+          type: array
+        searchTermTargetings:
+          description: "Filter on the type of search term targeting: unknown, automatic,\
+            \ manual"
+          items:
+            enum:
+            - unknown
+            - automatic
+            - manual
+            type: string
+          nullable: true
+          type: array
         campaignType:
           default: all
           description: "Filter the type of campaigns to report on: sponsoredProducts\
@@ -12677,6 +12102,7 @@ components:
           - attributedTransactions
           - environment
           - servedCategory
+          - capout
           nullable: true
           type: string
         clickAttributionWindow:
@@ -12724,9 +12150,18 @@ components:
             - environment
             - pageTypeName
             - pageCategory
+            - servedCategory
             - taxonomyBreadcrumb
             - keyword
             - searchTerm
+            - searchTermType
+            - searchTermTargeting
+            - creativeId
+            - creativeName
+            - creativeTypeId
+            - creativeTypeName
+            - creativeTemplateId
+            - creativeTemplateName
             type: string
           nullable: true
           type: array
@@ -12755,6 +12190,16 @@ components:
             - videosPlayedTo100
             - videoPlayingRate
             - videoCompletionRate
+            - videoImpressions
+            - videoMuted
+            - videoUnmuted
+            - videoPaused
+            - videoResumed
+            - videoAvgInteractionRate
+            - videoViewability
+            - videoStartingRate
+            - videoCPC
+            - videoCPCV
             - uniqueVisitors
             - frequency
             type: string
@@ -12783,7 +12228,13 @@ components:
       example:
         campaignType: all
         clickAttributionWindow: none
+        searchTermTargetings:
+        - unknown
+        - unknown
         endDate: 2000-01-23T04:56:07.000+00:00
+        searchTermTypes:
+        - unknown
+        - unknown
         timezone: UTC
         format: json-compact
         salesChannel: all
@@ -12811,6 +12262,28 @@ components:
           description: Line Item id to report on
           nullable: true
           type: string
+        searchTermTypes:
+          description: "Filter on the type of search term type: unknown, searched,\
+            \ entered"
+          items:
+            enum:
+            - unknown
+            - searched
+            - entered
+            type: string
+          nullable: true
+          type: array
+        searchTermTargetings:
+          description: "Filter on the type of search term targeting: unknown, automatic,\
+            \ manual"
+          items:
+            enum:
+            - unknown
+            - automatic
+            - manual
+            type: string
+          nullable: true
+          type: array
         campaignType:
           default: all
           description: "Filter the type of campaigns to report on: sponsoredProducts\
@@ -12853,6 +12326,7 @@ components:
           - attributedTransactions
           - environment
           - servedCategory
+          - capout
           nullable: true
           type: string
         clickAttributionWindow:
@@ -12900,9 +12374,18 @@ components:
             - environment
             - pageTypeName
             - pageCategory
+            - servedCategory
             - taxonomyBreadcrumb
             - keyword
             - searchTerm
+            - searchTermType
+            - searchTermTargeting
+            - creativeId
+            - creativeName
+            - creativeTypeId
+            - creativeTypeName
+            - creativeTemplateId
+            - creativeTemplateName
             type: string
           nullable: true
           type: array
@@ -12931,6 +12414,16 @@ components:
             - videosPlayedTo100
             - videoPlayingRate
             - videoCompletionRate
+            - videoImpressions
+            - videoMuted
+            - videoUnmuted
+            - videoPaused
+            - videoResumed
+            - videoAvgInteractionRate
+            - videoViewability
+            - videoStartingRate
+            - videoCPC
+            - videoCPCV
             - uniqueVisitors
             - frequency
             type: string
@@ -13063,6 +12556,10 @@ components:
             - pageTypeName
             - keyword
             - attributionWindow
+            - saleSellerId
+            - saleSellerName
+            - activitySellerId
+            - activitySellerName
             type: string
           nullable: true
           type: array
@@ -13123,7 +12620,6 @@ components:
           enum:
           - summary
           - pageType
-          - keyword
           - productCategory
           - product
           - environment
@@ -13203,9 +12699,8 @@ components:
             - environment
             - pageTypeName
             - pageCategory
+            - servedCategory
             - taxonomyBreadcrumb
-            - keyword
-            - searchTerm
             type: string
           nullable: true
           type: array
@@ -13226,14 +12721,6 @@ components:
             - cpo
             - cpm
             - roas
-            - videoViews
-            - videosStarted
-            - videosPlayedTo25
-            - videosPlayedTo50
-            - videosPlayedTo75
-            - videosPlayedTo100
-            - videoPlayingRate
-            - videoCompletionRate
             - uniqueVisitors
             - frequency
             type: string
@@ -13290,7 +12777,6 @@ components:
           enum:
           - summary
           - pageType
-          - keyword
           - productCategory
           - product
           - environment
@@ -13376,9 +12862,8 @@ components:
             - environment
             - pageTypeName
             - pageCategory
+            - servedCategory
             - taxonomyBreadcrumb
-            - keyword
-            - searchTerm
             type: string
           nullable: true
           type: array
@@ -13399,14 +12884,6 @@ components:
             - cpo
             - cpm
             - roas
-            - videoViews
-            - videosStarted
-            - videosPlayedTo25
-            - videosPlayedTo50
-            - videosPlayedTo75
-            - videosPlayedTo100
-            - videoPlayingRate
-            - videoCompletionRate
             - uniqueVisitors
             - frequency
             type: string
@@ -13431,101 +12908,24 @@ components:
       - endDate
       - startDate
       type: object
-    ResourceOutcomeOfRetailMediaAccount:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single entity.
-      example:
-        data:
-          attributes:
-            companyName: companyName
-            parentAccountLabel: parentAccountLabel
-            name: name
-            onBehalfCompanyName: onBehalfCompanyName
-            countryIds:
-            - countryIds
-            - countryIds
-            timeZone: timeZone
-            subType: Unknown
-            type: Unknown
-            currencyId: currencyId
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfRetailMediaAccount'
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
     ValueResourceCollectionOutcomeOfRetailMediaSeller:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
-        several values.
+        several value objects.
       example:
         data:
         - attributes:
             sellerId: sellerId
+            name: name
             retailerId: 0
           type: type
         - attributes:
             sellerId: sellerId
+            name: name
             retailerId: 0
           type: type
         warnings:
         - traceId: traceId
-          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13535,7 +12935,6 @@ components:
           type: unknown
           title: title
         - traceId: traceId
-          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13546,7 +12945,6 @@ components:
           title: title
         errors:
         - traceId: traceId
-          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13556,7 +12954,6 @@ components:
           type: unknown
           title: title
         - traceId: traceId
-          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -13572,21 +12969,43 @@ components:
           nullable: true
           type: array
         warnings:
+          description: Warnings that occured during this call.
           items:
-            $ref: '#/components/schemas/CommonProblem'
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
           nullable: true
           readOnly: true
           type: array
         errors:
+          description: Errors that occured during this call.
           items:
-            $ref: '#/components/schemas/CommonProblem'
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    Outcome:
+      additionalProperties: false
+      description: The outcome of an API call.
+      properties:
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
           nullable: true
           readOnly: true
           type: array
       type: object
     PageOfBalanceHistoryChangeDataCaptureV1:
       additionalProperties: false
-      description: A wrapper class to return a single page of items with metadata.
+      description: A wrapper class to return a single page of items with metadata
+        for offset and limit based paging.
       example:
         data:
         - dateOfModification: 2000-01-23T04:56:07.000+00:00
@@ -13615,145 +13034,6 @@ components:
         data:
           items:
             $ref: '#/components/schemas/BalanceHistoryChangeDataCaptureV1'
-          type: array
-      required:
-      - data
-      - meta
-      type: object
-    ResourceCollectionOutcomeOfSkuSearchResult:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        several entities.
-      example:
-        data:
-        - attributes:
-            globalBrandName: globalBrandName
-            gtin: gtin
-            globalCategoryId: globalCategoryId
-            retailerBrandName: retailerBrandName
-            mpn: mpn
-            retailerBrandId: retailerBrandId
-            globalBrandId: globalBrandId
-            price: 0.8008281904610115
-            imageUrl: imageUrl
-            name: name
-            modelNumber: modelNumber
-            isInStock: true
-            category: category
-            categoryId: categoryId
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        - attributes:
-            globalBrandName: globalBrandName
-            gtin: gtin
-            globalCategoryId: globalCategoryId
-            retailerBrandName: retailerBrandName
-            mpn: mpn
-            retailerBrandId: retailerBrandId
-            globalBrandId: globalBrandId
-            price: 0.8008281904610115
-            imageUrl: imageUrl
-            name: name
-            modelNumber: modelNumber
-            isInStock: true
-            category: category
-            categoryId: categoryId
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ResourceOfSkuSearchResult'
-          nullable: true
-          type: array
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
-    PageOfInsertionOrderHistoryChangeDataCaptureV2:
-      additionalProperties: false
-      description: A wrapper class to return a single page of items with metadata.
-      example:
-        data:
-        - dateOfModification: 2000-01-23T04:56:07.000+00:00
-          modifiedByUser: modifiedByUser
-          changeType: BalanceCreated
-          memo: memo
-          changeDetails:
-            changeValue: changeValue
-            previousValue: previousValue
-            currentValue: currentValue
-        - dateOfModification: 2000-01-23T04:56:07.000+00:00
-          modifiedByUser: modifiedByUser
-          changeType: BalanceCreated
-          memo: memo
-          changeDetails:
-            changeValue: changeValue
-            previousValue: previousValue
-            currentValue: currentValue
-        meta:
-          offset: 6
-          count: 0
-          limit: 1
-      properties:
-        meta:
-          $ref: '#/components/schemas/Metadata'
-        data:
-          items:
-            $ref: '#/components/schemas/InsertionOrderHistoryChangeDataCaptureV2'
           type: array
       required:
       - data
@@ -13845,103 +13125,37 @@ components:
           readOnly: true
           type: array
       type: object
-    ValueResourceInputOfRetailMediaSellerAccountCreation:
+    ValueResourceInputOfSellerSearch:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
-        single value.
+        single value objects.
       example:
         data:
           attributes:
-            companyName: companyName
-            name: name
-            onBehalfCompanyName: onBehalfCompanyName
-            sellers:
-            - sellerId: sellerId
-              retailerId: 0
-            - sellerId: sellerId
-              retailerId: 0
+            accountIds:
+            - accountIds
+            - accountIds
+            - accountIds
+            - accountIds
+            - accountIds
+            includeDetails: false
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/ValueResourceOfRetailMediaSellerAccountCreation'
-      type: object
-    ValueResourceCollectionInputOfRetailMediaSeller:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for several
-        values.
-      example:
-        data:
-        - attributes:
-            sellerId: sellerId
-            retailerId: 0
-          type: type
-        - attributes:
-            sellerId: sellerId
-            retailerId: 0
-          type: type
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ValueResourceOfRetailMediaSeller'
-          nullable: true
-          type: array
-      type: object
-    SkuSearchRequest:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single entity.
-      example:
-        data:
-          productIdType: SkuKey
-          queryIds:
-          - queryIds
-          - queryIds
-      properties:
-        data:
-          $ref: '#/components/schemas/SkuSearchRequestBody'
-      required:
-      - data
-      type: object
-    ResourceOfRetailMediaAccount:
-      additionalProperties: false
-      description: A class that represents a domain entity exposed by an API.
-      example:
-        attributes:
-          companyName: companyName
-          parentAccountLabel: parentAccountLabel
-          name: name
-          onBehalfCompanyName: onBehalfCompanyName
-          countryIds:
-          - countryIds
-          - countryIds
-          timeZone: timeZone
-          subType: Unknown
-          type: Unknown
-          currencyId: currencyId
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/RetailMediaAccount'
-        id:
-          description: Unique identifier of this resource.
-          nullable: true
-          type: string
-        type:
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/ValueResourceOfSellerSearch'
       type: object
     ValueResourceOfRetailMediaSeller:
       additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value.
+      description: A value resource exposed by the API.
       example:
         attributes:
           sellerId: sellerId
+          name: name
           retailerId: 0
         type: type
       properties:
         type:
+          description: Type of the resource.
           nullable: true
           type: string
         attributes:
@@ -14018,87 +13232,6 @@ components:
       - dateOfModification
       - modifiedByUser
       type: object
-    ResourceOfSkuSearchResult:
-      additionalProperties: false
-      description: A class that represents a domain entity exposed by an API.
-      example:
-        attributes:
-          globalBrandName: globalBrandName
-          gtin: gtin
-          globalCategoryId: globalCategoryId
-          retailerBrandName: retailerBrandName
-          mpn: mpn
-          retailerBrandId: retailerBrandId
-          globalBrandId: globalBrandId
-          price: 0.8008281904610115
-          imageUrl: imageUrl
-          name: name
-          modelNumber: modelNumber
-          isInStock: true
-          category: category
-          categoryId: categoryId
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/SkuSearchResult'
-        id:
-          description: Unique identifier of this resource.
-          nullable: true
-          type: string
-        type:
-          nullable: true
-          type: string
-      type: object
-    InsertionOrderHistoryChangeDataCaptureV2:
-      additionalProperties: false
-      description: Data model represents the data change capture of insertion order
-        history.
-      example:
-        dateOfModification: 2000-01-23T04:56:07.000+00:00
-        modifiedByUser: modifiedByUser
-        changeType: BalanceCreated
-        memo: memo
-        changeDetails:
-          changeValue: changeValue
-          previousValue: previousValue
-          currentValue: currentValue
-      properties:
-        dateOfModification:
-          description: Date when data change has occured.
-          format: date-time
-          type: string
-        modifiedByUser:
-          description: Username who modified the insertion order.
-          type: string
-        changeType:
-          description: Represent the type of change states of the history.
-          enum:
-          - BalanceCreated
-          - BalanceAdded
-          - BalanceRemoved
-          - BalanceUncapped
-          - BalanceCapped
-          - EndDate
-          - StartDate
-          - BalanceName
-          - PoNumber
-          - ValueAdd
-          - Unknown
-          type: string
-        changeDetails:
-          $ref: '#/components/schemas/ChangeDetailsV2'
-        memo:
-          description: Memo associate with the insertion order modification.
-          nullable: true
-          type: string
-      required:
-      - changeDetails
-      - changeType
-      - dateOfModification
-      - modifiedByUser
-      type: object
     ValueResourceOfRecommendedKeywordsResult:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
@@ -14133,125 +13266,33 @@ components:
         attributes:
           $ref: '#/components/schemas/RecommendedKeywordsResult'
       type: object
-    ValueResourceOfRetailMediaSellerAccountCreation:
+    ValueResourceOfSellerSearch:
       additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value.
+      description: A value resource exposed by the API.
       example:
         attributes:
-          companyName: companyName
-          name: name
-          onBehalfCompanyName: onBehalfCompanyName
-          sellers:
-          - sellerId: sellerId
-            retailerId: 0
-          - sellerId: sellerId
-            retailerId: 0
+          accountIds:
+          - accountIds
+          - accountIds
+          - accountIds
+          - accountIds
+          - accountIds
+          includeDetails: false
         type: type
       properties:
         type:
+          description: Type of the resource.
           nullable: true
           type: string
         attributes:
-          $ref: '#/components/schemas/RetailMediaSellerAccountCreation'
-      type: object
-    SkuSearchRequestBody:
-      additionalProperties: false
-      description: defines the type product Id to search and list of ids to be searched
-        for
-      example:
-        productIdType: SkuKey
-        queryIds:
-        - queryIds
-        - queryIds
-      properties:
-        productIdType:
-          description: sets which product id the QueryIds will be compared to
-          enum:
-          - SkuKey
-          - Gtin
-          - Mpn
-          - Model
-          - SkuId
-          - ParentId
-          type: string
-        queryIds:
-          description: list of product ids to search for
-          items:
-            type: string
-          type: array
-      required:
-      - productIdType
-      - queryIds
-      type: object
-    RetailMediaAccount:
-      additionalProperties: false
-      description: The details for a newly created account
-      example:
-        companyName: companyName
-        parentAccountLabel: parentAccountLabel
-        name: name
-        onBehalfCompanyName: onBehalfCompanyName
-        countryIds:
-        - countryIds
-        - countryIds
-        timeZone: timeZone
-        subType: Unknown
-        type: Unknown
-        currencyId: currencyId
-      properties:
-        name:
-          description: account name
-          nullable: true
-          type: string
-        companyName:
-          description: Paying entity name of ads for the Digital Services Act
-          nullable: true
-          type: string
-        onBehalfCompanyName:
-          description: On behalf entity name of ads for the Digital Services Act
-          nullable: true
-          type: string
-        type:
-          description: Type for the account
-          enum:
-          - Unknown
-          - Supply
-          - Demand
-          nullable: true
-          type: string
-        subType:
-          description: subtype for the account
-          enum:
-          - Unknown
-          - Brand
-          - Seller
-          nullable: true
-          type: string
-        countryIds:
-          description: list of countries associated with the account
-          items:
-            type: string
-          nullable: true
-          type: array
-        currencyId:
-          description: the currency for the account
-          nullable: true
-          type: string
-        parentAccountLabel:
-          description: parent account label for the account
-          nullable: true
-          type: string
-        timeZone:
-          description: the timezone for the account
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/SellerSearch'
       type: object
     RetailMediaSeller:
       additionalProperties: false
       description: used to define the exact seller linked with an account
       example:
         sellerId: sellerId
+        name: name
         retailerId: 0
       properties:
         sellerId:
@@ -14263,6 +13304,10 @@ components:
           format: int32
           nullable: true
           type: integer
+        name:
+          description: seller name
+          nullable: true
+          type: string
       type: object
     ChangeDetailsV1:
       additionalProperties: false
@@ -14284,120 +13329,6 @@ components:
           description: Change detail of a property of the insertion order.
           nullable: true
           type: string
-      required:
-      - changeValue
-      - currentValue
-      - previousValue
-      type: object
-    SkuSearchResult:
-      additionalProperties: false
-      description: Data model for response resource
-      example:
-        globalBrandName: globalBrandName
-        gtin: gtin
-        globalCategoryId: globalCategoryId
-        retailerBrandName: retailerBrandName
-        mpn: mpn
-        retailerBrandId: retailerBrandId
-        globalBrandId: globalBrandId
-        price: 0.8008281904610115
-        imageUrl: imageUrl
-        name: name
-        modelNumber: modelNumber
-        isInStock: true
-        category: category
-        categoryId: categoryId
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        name:
-          description: The product name
-          nullable: true
-          type: string
-        categoryId:
-          description: The cateogry Id
-          nullable: true
-          type: string
-        category:
-          description: The full retailer category taken from the retailers catalog
-          nullable: true
-          type: string
-        globalBrandId:
-          description: The global brand id associated to the product
-          nullable: true
-          type: string
-        globalBrandName:
-          description: The name of the global brand
-          nullable: true
-          type: string
-        retailerBrandId:
-          description: The retailer brand id associated to the product
-          nullable: true
-          type: string
-        retailerBrandName:
-          description: The name of the retailer brand
-          nullable: true
-          type: string
-        globalCategoryId:
-          description: the Global Category Id
-          nullable: true
-          type: string
-        price:
-          description: The product price pulled from the retailer's catalog
-          format: double
-          nullable: true
-          type: number
-        modelNumber:
-          description: The model number for the product
-          nullable: true
-          type: string
-        isInStock:
-          description: Indicates if the retailer product is in stock
-          nullable: true
-          type: boolean
-        gtin:
-          description: "A GTIN identifier for the product if available.\r\nTIt covers\
-            \ variations such as EANs and UPCs"
-          nullable: true
-          type: string
-        mpn:
-          description: The MPN identifier for the product if available
-          nullable: true
-          type: string
-        imageUrl:
-          description: An http image resource provided by the retailer catalog
-          nullable: true
-          type: string
-        updatedAt:
-          description: "The last time this product was updated in the Retail Media\
-            \ Catalog.\r\nThe date value is represented as an UTC ISO8601 string"
-          format: date-time
-          nullable: true
-          type: string
-      type: object
-    ChangeDetailsV2:
-      additionalProperties: false
-      description: Change details of a property of the insertion order.
-      example:
-        changeValue: changeValue
-        previousValue: previousValue
-        currentValue: currentValue
-      properties:
-        previousValue:
-          description: Previous value of a property of the insertion order.
-          nullable: true
-          type: string
-        currentValue:
-          description: Current value of a property of the insertion order.
-          nullable: true
-          type: string
-        changeValue:
-          description: Change detail of a property of the insertion order.
-          nullable: true
-          type: string
-      required:
-      - changeValue
-      - currentValue
-      - previousValue
       type: object
     RecommendedKeywordsResult:
       additionalProperties: false
@@ -14437,38 +13368,33 @@ components:
           nullable: true
           type: array
       type: object
-    RetailMediaSellerAccountCreation:
+    SellerSearch:
       additionalProperties: false
-      description: the initial set up and configuration options for a new private
-        market demand brand account
+      description: request body for the seller search endpoint
       example:
-        companyName: companyName
-        name: name
-        onBehalfCompanyName: onBehalfCompanyName
-        sellers:
-        - sellerId: sellerId
-          retailerId: 0
-        - sellerId: sellerId
-          retailerId: 0
+        accountIds:
+        - accountIds
+        - accountIds
+        - accountIds
+        - accountIds
+        - accountIds
+        includeDetails: false
       properties:
-        name:
-          description: "the name of the account, must be unique across all accounts"
-          nullable: true
-          type: string
-        companyName:
-          description: Paying entity name of ads for the Digital Services Act
-          nullable: true
-          type: string
-        onBehalfCompanyName:
-          description: On behalf entity name of ads for the Digital Services Act
-          nullable: true
-          type: string
-        sellers:
-          description: list of sellers to associate to the new account
+        accountIds:
+          description: list of accounts to return seller information for. max length
+            of 25
           items:
-            $ref: '#/components/schemas/RetailMediaSeller'
-          nullable: true
+            type: string
+          maxItems: 25
           type: array
+        includeDetails:
+          default: false
+          description: "whether to include additional fields beyond the sellerId and\
+            \ retailerId in the response.\r\nMay improve performance when set to false."
+          nullable: true
+          type: boolean
+      required:
+      - accountIds
       type: object
     Keywords:
       additionalProperties: false
@@ -14579,11 +13505,11 @@ components:
         - attributes:
             privateMarketBillingType: NotApplicable
             endDate: 2000-01-23
-            deposited: 0.8008281904610115
-            spent: 6.027456183070403
+            deposited: 5.637376656633329
+            spent: 2.3021358869347655
             memo: memo
             spendType: Onsite
-            remaining: 1.4658129805029452
+            remaining: 7.061401241503109
             createdAt: 2000-01-23T04:56:07.000+00:00
             balanceType: unknown
             name: name
@@ -14596,11 +13522,11 @@ components:
         - attributes:
             privateMarketBillingType: NotApplicable
             endDate: 2000-01-23
-            deposited: 0.8008281904610115
-            spent: 6.027456183070403
+            deposited: 5.637376656633329
+            spent: 2.3021358869347655
             memo: memo
             spendType: Onsite
-            remaining: 1.4658129805029452
+            remaining: 7.061401241503109
             createdAt: 2000-01-23T04:56:07.000+00:00
             balanceType: unknown
             name: name
@@ -14681,11 +13607,11 @@ components:
           attributes:
             privateMarketBillingType: NotApplicable
             endDate: 2000-01-23
-            deposited: 0.8008281904610115
-            spent: 6.027456183070403
+            deposited: 5.637376656633329
+            spent: 2.3021358869347655
             memo: memo
             spendType: Onsite
-            remaining: 1.4658129805029452
+            remaining: 7.061401241503109
             createdAt: 2000-01-23T04:56:07.000+00:00
             balanceType: unknown
             name: name
@@ -14737,6 +13663,7 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
+      nullable: true
       properties:
         data:
           $ref: '#/components/schemas/ResourceOfBalanceResponseV2'
@@ -15115,6 +14042,7 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
+      nullable: true
       properties:
         data:
           $ref: '#/components/schemas/ResourceOfLineItemBidMultipliersV2'
@@ -15254,21 +14182,6 @@ components:
         data:
           $ref: '#/components/schemas/ResourceOfUpdateBalanceModelV2'
       type: object
-    AddFundsToBalanceV2Request:
-      description: A top-level object that encapsulates a Criteo API request for a
-        single entity
-      example:
-        data:
-          attributes:
-            deltaAmount: 0.8008281904610115
-            memo: memo
-            poNumber: poNumber
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfAddFundsToBalanceV2'
-      type: object
     ChangeDatesOfBalanceV2Request:
       description: A top-level object that encapsulates a Criteo API request for a
         single entity
@@ -15335,6 +14248,7 @@ components:
             home: 6.027456183070403
           id: id
           type: type
+      nullable: true
       properties:
         data:
           $ref: '#/components/schemas/ResourceOfLineItemBidMultipliersV2'
@@ -15420,17 +14334,56 @@ components:
           $ref: '#/components/schemas/ResourceOfPreferredLineItemUpdateModelV2'
       type: object
       x-nullable: false
+    PageMetadata:
+      description: Metadata related to the current request
+      example:
+        currentPageSize: 6
+        previousPage: previousPage
+        nextPage: nextPage
+        totalPages: 5
+        totalItemsAcrossAllPages: 0
+        currentPageIndex: 1
+      properties:
+        totalItemsAcrossAllPages:
+          format: int64
+          nullable: true
+          type: integer
+          x-nullable: true
+        currentPageSize:
+          format: int32
+          type: integer
+          x-nullable: false
+        currentPageIndex:
+          format: int32
+          type: integer
+          x-nullable: false
+        totalPages:
+          format: int64
+          nullable: true
+          type: integer
+          x-nullable: true
+        nextPage:
+          type: string
+          x-nullable: false
+        previousPage:
+          type: string
+          x-nullable: false
+      required:
+      - currentPageIndex
+      - currentPageSize
+      type: object
+      x-nullable: false
     ResourceOfBalanceResponseV2:
       description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           privateMarketBillingType: NotApplicable
           endDate: 2000-01-23
-          deposited: 0.8008281904610115
-          spent: 6.027456183070403
+          deposited: 5.637376656633329
+          spent: 2.3021358869347655
           memo: memo
           spendType: Onsite
-          remaining: 1.4658129805029452
+          remaining: 7.061401241503109
           createdAt: 2000-01-23T04:56:07.000+00:00
           balanceType: unknown
           name: name
@@ -15484,6 +14437,7 @@ components:
           updatedAt: 2000-01-23T04:56:07.000+00:00
         id: id
         type: type
+      nullable: true
       properties:
         id:
           description: Id of the entity
@@ -15545,6 +14499,7 @@ components:
           home: 6.027456183070403
         id: id
         type: type
+      nullable: true
       properties:
         attributes:
           $ref: '#/components/schemas/ExternalLineItemBidMultipliersV2'
@@ -15623,27 +14578,6 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/UpdateBalanceModelV2'
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-        type:
-          description: Canonical type name of the entity
-          nullable: true
-          type: string
-      type: object
-    ResourceOfAddFundsToBalanceV2:
-      description: A class that represents a domain entity exposed by an API
-      example:
-        attributes:
-          deltaAmount: 0.8008281904610115
-          memo: memo
-          poNumber: poNumber
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/AddFundsToBalanceV2'
         id:
           description: Id of the entity
           nullable: true
@@ -15778,11 +14712,11 @@ components:
       example:
         privateMarketBillingType: NotApplicable
         endDate: 2000-01-23
-        deposited: 0.8008281904610115
-        spent: 6.027456183070403
+        deposited: 5.637376656633329
+        spent: 2.3021358869347655
         memo: memo
         spendType: Onsite
-        remaining: 1.4658129805029452
+        remaining: 7.061401241503109
         createdAt: 2000-01-23T04:56:07.000+00:00
         balanceType: unknown
         name: name
@@ -16019,6 +14953,7 @@ components:
         merchandising: 2.3021358869347655
         checkout: 9.301444243932576
         home: 6.027456183070403
+      nullable: true
       properties:
         search:
           description: Search Page Type Bid Multiplier
@@ -16211,33 +15146,6 @@ components:
           nullable: true
           type: string
           x-nullable: true
-      type: object
-    AddFundsToBalanceV2:
-      description: An object that represents the available options of adding funds
-        to a balance.
-      example:
-        deltaAmount: 0.8008281904610115
-        memo: memo
-        poNumber: poNumber
-      properties:
-        deltaAmount:
-          description: Amount of billable funds to be added / decreased allotted to
-            the balance.
-          format: decimal
-          type: number
-          x-nullable: false
-        poNumber:
-          description: Purchase Order number.
-          nullable: true
-          type: string
-          x-nullable: true
-        memo:
-          description: Memo
-          nullable: true
-          type: string
-          x-nullable: true
-      required:
-      - deltaAmount
       type: object
     ChangeDatesOfBalanceV2:
       description: An object that represents the available options to modify schedule
@@ -16556,6 +15464,213 @@ components:
       - categoryId
       type: object
       x-nullable: false
+    EntityResourceCollectionOutcomeBrandIdSearchResult:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities.
+      example:
+        data:
+        - attributes:
+            brandType: brandType
+            name: name
+            id: id
+            retailerIds:
+            - 0
+            - 0
+          id: id
+          type: type
+        - attributes:
+            brandType: brandType
+            name: name
+            id: id
+            retailerIds:
+            - 0
+            - 0
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/EntityResourceBrandIdSearchResult'
+          nullable: true
+          type: array
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    ValueResourceInputBrandIdSearchRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value objects.
+      example:
+        data:
+          attributes:
+            brandType: uc
+            name: name
+            retailerIds:
+            - 0
+            - 0
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceBrandIdSearchRequest'
+      type: object
+    EntityResourceBrandIdSearchResult:
+      additionalProperties: false
+      description: "A domain entity exposed by the API, identified by a unique id."
+      example:
+        attributes:
+          brandType: brandType
+          name: name
+          id: id
+          retailerIds:
+          - 0
+          - 0
+        id: id
+        type: type
+      properties:
+        id:
+          description: Unique id of the entity.
+          nullable: true
+          type: string
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+        attributes:
+          $ref: '#/components/schemas/BrandIdSearchResult'
+      type: object
+    ValueResourceBrandIdSearchRequest:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          brandType: uc
+          name: name
+          retailerIds:
+          - 0
+          - 0
+        type: type
+      properties:
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+        attributes:
+          $ref: '#/components/schemas/BrandIdSearchRequest'
+      type: object
+    BrandIdSearchResult:
+      additionalProperties: false
+      description: An object that represents the result from a brand ID search.
+      example:
+        brandType: brandType
+        name: name
+        id: id
+        retailerIds:
+        - 0
+        - 0
+      properties:
+        id:
+          description: The brand id
+          type: string
+        name:
+          description: The name of the brand
+          type: string
+        brandType:
+          description: The type of the brand
+          type: string
+        retailerIds:
+          description: The retailer ids associated to the brand
+          items:
+            format: int32
+            type: integer
+          type: array
+      required:
+      - brandType
+      - id
+      - name
+      - retailerIds
+      type: object
+    BrandIdSearchRequest:
+      additionalProperties: false
+      description: An object that represents the request of BrandIdSearch endpoint.
+      example:
+        brandType: uc
+        name: name
+        retailerIds:
+        - 0
+        - 0
+      properties:
+        retailerIds:
+          description: IDs of the retailers we want to limit the search to
+          items:
+            format: int32
+            type: integer
+          nullable: true
+          type: array
+        name:
+          description: The name of the brand(s) to be searched
+          nullable: true
+          type: string
+        brandType:
+          description: "The type of brand, primarily where this brand belongs: UC,\
+            \ Retailer or All (both)"
+          enum:
+          - uc
+          - retailer
+          - all
+          nullable: true
+          type: string
+      type: object
     RetailMediaContactlistOperationResponseAttributes_attributes:
       description: The attributes of Retaile Media contact list operation
       example:

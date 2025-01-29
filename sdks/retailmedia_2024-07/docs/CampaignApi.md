@@ -10,7 +10,6 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**deletePromotedProducts**](CampaignApi.md#deletePromotedProducts) | **POST** /2024-07/retail-media/line-items/{line-item-id}/products/delete |  |
 | [**fetchKeywords**](CampaignApi.md#fetchKeywords) | **GET** /2024-07/retail-media/line-items/{id}/keywords |  |
 | [**fetchPromotedProducts**](CampaignApi.md#fetchPromotedProducts) | **GET** /2024-07/retail-media/line-items/{line-item-id}/products |  |
-| [**fetchProposal**](CampaignApi.md#fetchProposal) | **GET** /2024-07/retail-media/preferred-deal-line-items/{id}/proposal |  |
 | [**getApi202110ExternalAccountCreativesByAccountId**](CampaignApi.md#getApi202110ExternalAccountCreativesByAccountId) | **GET** /2024-07/retail-media/accounts/{account-id}/creatives |  |
 | [**getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId**](CampaignApi.md#getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId) | **GET** /2024-07/retail-media/auction-line-items/{line-item-id}/targeting/keywords |  |
 | [**getApi202110ExternalCampaignPreferredLineItemsByCampaignId**](CampaignApi.md#getApi202110ExternalCampaignPreferredLineItemsByCampaignId) | **GET** /2024-07/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
@@ -63,7 +62,6 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**putApi202301ExternalLineItemBidMultipliersByLineItemId**](CampaignApi.md#putApi202301ExternalLineItemBidMultipliersByLineItemId) | **PUT** /2024-07/retail-media/line-items/{line-item-id}/bid-multipliers |  |
 | [**putApiV2ExternalAuctionLineItemByLineItemId**](CampaignApi.md#putApiV2ExternalAuctionLineItemByLineItemId) | **PUT** /2024-07/retail-media/auction-line-items/{line-item-id} |  |
 | [**setKeywordBids**](CampaignApi.md#setKeywordBids) | **POST** /2024-07/retail-media/line-items/{id}/keywords/set-bid |  |
-| [**submitProposal**](CampaignApi.md#submitProposal) | **POST** /2024-07/retail-media/preferred-deal-line-items/{id}/proposal/submit |  |
 | [**unpausePromotedProducts**](CampaignApi.md#unpausePromotedProducts) | **POST** /2024-07/retail-media/line-items/{line-item-id}/products/unpause |  |
 | [**updateCampaignBudgetOverrides**](CampaignApi.md#updateCampaignBudgetOverrides) | **PUT** /2024-07/retail-media/campaigns/{campaignId}/campaign-budget-overrides |  |
 | [**updateLineItemBudgetOverrides**](CampaignApi.md#updateLineItemBudgetOverrides) | **PUT** /2024-07/retail-media/line-items/{lineItemId}/line-item-budget-overrides |  |
@@ -621,97 +619,6 @@ public class Example {
 | **403** | Invalid external line item ID |  -  |
 
 
-## fetchProposal
-
-> ProposalStatusModelResponse fetchProposal(id)
-
-
-
-Includes the state of the proposal, the status of the booking and approval, as well as any comments explaining why it might have been rejected.
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2024_07;
-
-import com.criteo.api.retailmedia.v2024_07.ApiClient;
-import com.criteo.api.retailmedia.v2024_07.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2024_07.ApiException;
-import com.criteo.api.retailmedia.v2024_07.Configuration;
-import com.criteo.api.retailmedia.v2024_07.auth.*;
-import com.criteo.api.retailmedia.v2024_07.model.*;
-import com.criteo.api.retailmedia.v2024_07.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String id = "id_example"; // String | ID of the line item
-        try {
-            ProposalStatusModelResponse result = apiInstance.fetchProposal(id);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#fetchProposal");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **id** | **String**| ID of the line item | |
-
-### Return type
-
-[**ProposalStatusModelResponse**](ProposalStatusModelResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **403** | Forbidden |  -  |
-
-
 ## getApi202110ExternalAccountCreativesByAccountId
 
 > Creative202110ListResponse getApi202110ExternalAccountCreativesByAccountId(accountId)
@@ -792,7 +699,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -1704,7 +1611,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -1793,7 +1700,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -1884,7 +1791,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -4271,7 +4178,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -4362,7 +4269,7 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -5097,14 +5004,13 @@ public class Example {
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **204** | Creative updated |  -  |
+| **201** | Creative updated |  -  |
 
 
 ## putApi202301ExternalCampaignByCampaignId
@@ -5471,97 +5377,6 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
 | **400** | Bad Request |  -  |
-
-
-## submitProposal
-
-> ProposalStatusModelResponse submitProposal(id)
-
-
-
-Only the components of the Line Item that are in a valid state will be reviewed.
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2024_07;
-
-import com.criteo.api.retailmedia.v2024_07.ApiClient;
-import com.criteo.api.retailmedia.v2024_07.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2024_07.ApiException;
-import com.criteo.api.retailmedia.v2024_07.Configuration;
-import com.criteo.api.retailmedia.v2024_07.auth.*;
-import com.criteo.api.retailmedia.v2024_07.model.*;
-import com.criteo.api.retailmedia.v2024_07.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String id = "id_example"; // String | ID of the line item
-        try {
-            ProposalStatusModelResponse result = apiInstance.submitProposal(id);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#submitProposal");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **id** | **String**| ID of the line item | |
-
-### Return type
-
-[**ProposalStatusModelResponse**](ProposalStatusModelResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **403** | Forbidden |  -  |
 
 
 ## unpausePromotedProducts

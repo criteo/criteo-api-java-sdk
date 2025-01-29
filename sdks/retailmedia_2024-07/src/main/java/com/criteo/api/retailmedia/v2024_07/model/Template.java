@@ -124,10 +124,6 @@ public class Template {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
-  @SerializedName(SERIALIZED_NAME_RETAILER_ID)
-  private Integer retailerId;
-
   public static final String SERIALIZED_NAME_SKU_COLLECTION_MIN = "skuCollectionMin";
   @SerializedName(SERIALIZED_NAME_SKU_COLLECTION_MIN)
   private Integer skuCollectionMin;
@@ -211,28 +207,6 @@ public class Template {
   }
 
 
-  public Template retailerId(Integer retailerId) {
-    
-    this.retailerId = retailerId;
-    return this;
-  }
-
-   /**
-   * The retailer associated to the template
-   * @return retailerId
-  **/
-  @javax.annotation.Nullable
-
-  public Integer getRetailerId() {
-    return retailerId;
-  }
-
-
-  public void setRetailerId(Integer retailerId) {
-    this.retailerId = retailerId;
-  }
-
-
   public Template skuCollectionMin(Integer skuCollectionMin) {
     
     this.skuCollectionMin = skuCollectionMin;
@@ -240,7 +214,7 @@ public class Template {
   }
 
    /**
-   * TODO: what is it ?
+   * Minimum number of skus in the collection
    * @return skuCollectionMin
   **/
   @javax.annotation.Nonnull
@@ -262,7 +236,7 @@ public class Template {
   }
 
    /**
-   * TODO: what is it ?
+   * Maximum number of skus in the collection
    * @return skuCollectionMax
   **/
   @javax.annotation.Nullable
@@ -284,7 +258,7 @@ public class Template {
   }
 
    /**
-   * TODO: what is it ?
+   * Minimum number of skus per collection
    * @return skuPerCollectionMin
   **/
   @javax.annotation.Nonnull
@@ -306,7 +280,7 @@ public class Template {
   }
 
    /**
-   * TODO: what is it ?
+   * Maximum number of skus per collection
    * @return skuPerCollectionMax
   **/
   @javax.annotation.Nullable
@@ -328,7 +302,7 @@ public class Template {
   }
 
    /**
-   * TODO: what is it ?
+   * Maximum number of displayable skus
    * @return displayableSkusMax
   **/
   @javax.annotation.Nullable
@@ -350,7 +324,7 @@ public class Template {
   }
 
    /**
-   * TODO: what is it ?
+   * Marks whether or not all collections are mandatory
    * @return allCollectionsMandatory
   **/
   @javax.annotation.Nonnull
@@ -435,50 +409,6 @@ public class Template {
     this.sections = sections;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the Template instance itself
-   */
-  public Template putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -492,7 +422,6 @@ public class Template {
     Template template = (Template) o;
     return Objects.equals(this.creativeFormat, template.creativeFormat) &&
         Objects.equals(this.name, template.name) &&
-        Objects.equals(this.retailerId, template.retailerId) &&
         Objects.equals(this.skuCollectionMin, template.skuCollectionMin) &&
         Objects.equals(this.skuCollectionMax, template.skuCollectionMax) &&
         Objects.equals(this.skuPerCollectionMin, template.skuPerCollectionMin) &&
@@ -501,8 +430,7 @@ public class Template {
         Objects.equals(this.allCollectionsMandatory, template.allCollectionsMandatory) &&
         Objects.equals(this.createdAt, template.createdAt) &&
         Objects.equals(this.updatedAt, template.updatedAt) &&
-        Objects.equals(this.sections, template.sections)&&
-        Objects.equals(this.additionalProperties, template.additionalProperties);
+        Objects.equals(this.sections, template.sections);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -511,7 +439,7 @@ public class Template {
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeFormat, name, retailerId, skuCollectionMin, skuCollectionMax, skuPerCollectionMin, skuPerCollectionMax, displayableSkusMax, allCollectionsMandatory, createdAt, updatedAt, sections, additionalProperties);
+    return Objects.hash(creativeFormat, name, skuCollectionMin, skuCollectionMax, skuPerCollectionMin, skuPerCollectionMax, displayableSkusMax, allCollectionsMandatory, createdAt, updatedAt, sections);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -527,7 +455,6 @@ public class Template {
     sb.append("class Template {\n");
     sb.append("    creativeFormat: ").append(toIndentedString(creativeFormat)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    skuCollectionMin: ").append(toIndentedString(skuCollectionMin)).append("\n");
     sb.append("    skuCollectionMax: ").append(toIndentedString(skuCollectionMax)).append("\n");
     sb.append("    skuPerCollectionMin: ").append(toIndentedString(skuPerCollectionMin)).append("\n");
@@ -537,7 +464,6 @@ public class Template {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    sections: ").append(toIndentedString(sections)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -562,7 +488,6 @@ public class Template {
     openapiFields = new HashSet<String>();
     openapiFields.add("creativeFormat");
     openapiFields.add("name");
-    openapiFields.add("retailerId");
     openapiFields.add("skuCollectionMin");
     openapiFields.add("skuCollectionMax");
     openapiFields.add("skuPerCollectionMin");
@@ -595,6 +520,14 @@ public class Template {
       if (jsonObj == null) {
         if (!Template.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Template is not found in the empty JSON string", Template.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Template.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Template` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
@@ -637,23 +570,6 @@ public class Template {
            @Override
            public void write(JsonWriter out, Template value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additional properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
@@ -661,27 +577,7 @@ public class Template {
            public Template read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             Template instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             return thisAdapter.fromJsonTree(jsonObj);
            }
 
        }.nullSafe();

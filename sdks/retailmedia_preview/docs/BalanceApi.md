@@ -8,7 +8,6 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**getApiV2ExternalAccountByAccountIdBalancesbalanceId**](BalanceApi.md#getApiV2ExternalAccountByAccountIdBalancesbalanceId) | **GET** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
 | [**getBalanceHistory**](BalanceApi.md#getBalanceHistory) | **GET** /preview/retail-media/balances/{balanceId}/history |  |
 | [**patchApiV2ExternalAccountByAccountIdBalancesbalanceId**](BalanceApi.md#patchApiV2ExternalAccountByAccountIdBalancesbalanceId) | **PATCH** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
-| [**postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId**](BalanceApi.md#postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId) | **POST** /preview/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds |  |
 | [**postApiV2ExternalAccountBalancesByAccountId**](BalanceApi.md#postApiV2ExternalAccountBalancesByAccountId) | **POST** /preview/retail-media/accounts/{account-id}/balances |  |
 | [**postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId**](BalanceApi.md#postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId) | **POST** /preview/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates |  |
 
@@ -367,99 +366,6 @@ public class Example {
 | **accountId** | **String**| The account of the balance | |
 | **balanceId** | **String**| The balance to change the dates | |
 | **updateBalanceModelV2Request** | [**UpdateBalanceModelV2Request**](UpdateBalanceModelV2Request.md)| An object that represents the available options to modify a balance. | |
-
-### Return type
-
-[**BalanceResponseV2Response**](BalanceResponseV2Response.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: text/plain, application/json, text/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
-## postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId
-
-> BalanceResponseV2Response postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId(accountId, balanceId, addFundsToBalanceV2Request)
-
-
-
-Add funds to a balance for the given account id
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.preview;
-
-import com.criteo.api.retailmedia.preview.ApiClient;
-import com.criteo.api.retailmedia.preview.ApiClientBuilder;
-import com.criteo.api.retailmedia.preview.ApiException;
-import com.criteo.api.retailmedia.preview.Configuration;
-import com.criteo.api.retailmedia.preview.auth.*;
-import com.criteo.api.retailmedia.preview.model.*;
-import com.criteo.api.retailmedia.preview.api.BalanceApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        BalanceApi apiInstance = new BalanceApi(defaultClient);
-        String accountId = "accountId_example"; // String | The account of the balance
-        String balanceId = "balanceId_example"; // String | The balance to add funds to
-        AddFundsToBalanceV2Request addFundsToBalanceV2Request = new AddFundsToBalanceV2Request(); // AddFundsToBalanceV2Request | An object that represents the available options of adding funds to a balance.
-        try {
-            BalanceResponseV2Response result = apiInstance.postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId(accountId, balanceId, addFundsToBalanceV2Request);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling BalanceApi#postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The account of the balance | |
-| **balanceId** | **String**| The balance to add funds to | |
-| **addFundsToBalanceV2Request** | [**AddFundsToBalanceV2Request**](AddFundsToBalanceV2Request.md)| An object that represents the available options of adding funds to a balance. | |
 
 ### Return type
 

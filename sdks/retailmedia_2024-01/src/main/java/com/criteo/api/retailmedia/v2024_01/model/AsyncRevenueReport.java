@@ -60,6 +60,22 @@ public class AsyncRevenueReport {
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
+  public static final String SERIALIZED_NAME_RETAILER_IDS = "retailerIds";
+  @SerializedName(SERIALIZED_NAME_RETAILER_IDS)
+  private List<String> retailerIds = null;
+
+  public static final String SERIALIZED_NAME_ACCOUNT_IDS = "accountIds";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT_IDS)
+  private List<String> accountIds = null;
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
+  private List<String> campaignIds = null;
+
+  public static final String SERIALIZED_NAME_LINE_ITEM_IDS = "lineItemIds";
+  @SerializedName(SERIALIZED_NAME_LINE_ITEM_IDS)
+  private List<String> lineItemIds = null;
+
   /**
    * Type of report
    */
@@ -437,7 +453,7 @@ public class AsyncRevenueReport {
 
   public static final String SERIALIZED_NAME_FORMAT = "format";
   @SerializedName(SERIALIZED_NAME_FORMAT)
-  private FormatEnum format;
+  private FormatEnum format = FormatEnum.JSON;
 
   /**
    * Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays
@@ -728,6 +744,8 @@ public class AsyncRevenueReport {
     
     SALECHANNEL("saleChannel"),
     
+    SALESCHANNEL("salesChannel"),
+    
     ATTRIBUTIONSETTINGS("attributionSettings"),
     
     ACTIVITYTYPE("activityType"),
@@ -881,6 +899,26 @@ public class AsyncRevenueReport {
     
     VIDEOCOMPLETIONRATE("videoCompletionRate"),
     
+    VIDEOIMPRESSIONS("videoImpressions"),
+    
+    VIDEOMUTED("videoMuted"),
+    
+    VIDEOUNMUTED("videoUnmuted"),
+    
+    VIDEORESUMED("videoResumed"),
+    
+    VIDEOPAUSED("videoPaused"),
+    
+    VIDEOAVGINTERACTIONRATE("videoAvgInteractionRate"),
+    
+    VIDEOVIEWABILITY("videoViewability"),
+    
+    VIDEOSTARTINGRATE("videoStartingRate"),
+    
+    VIDEOCPC("videoCPC"),
+    
+    VIDEOCPCV("videoCPCV"),
+    
     UNIQUEVISITORS("uniqueVisitors"),
     
     FREQUENCY("frequency");
@@ -991,6 +1029,126 @@ public class AsyncRevenueReport {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+
+  public AsyncRevenueReport retailerIds(List<String> retailerIds) {
+    
+    this.retailerIds = retailerIds;
+    return this;
+  }
+
+  public AsyncRevenueReport addRetailerIdsItem(String retailerIdsItem) {
+    if (this.retailerIds == null) {
+      this.retailerIds = null;
+    }
+    this.retailerIds.add(retailerIdsItem);
+    return this;
+  }
+
+   /**
+   * Retailer ids to filter
+   * @return retailerIds
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getRetailerIds() {
+    return retailerIds;
+  }
+
+
+  public void setRetailerIds(List<String> retailerIds) {
+    this.retailerIds = retailerIds;
+  }
+
+
+  public AsyncRevenueReport accountIds(List<String> accountIds) {
+    
+    this.accountIds = accountIds;
+    return this;
+  }
+
+  public AsyncRevenueReport addAccountIdsItem(String accountIdsItem) {
+    if (this.accountIds == null) {
+      this.accountIds = null;
+    }
+    this.accountIds.add(accountIdsItem);
+    return this;
+  }
+
+   /**
+   * Account ids to filter
+   * @return accountIds
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getAccountIds() {
+    return accountIds;
+  }
+
+
+  public void setAccountIds(List<String> accountIds) {
+    this.accountIds = accountIds;
+  }
+
+
+  public AsyncRevenueReport campaignIds(List<String> campaignIds) {
+    
+    this.campaignIds = campaignIds;
+    return this;
+  }
+
+  public AsyncRevenueReport addCampaignIdsItem(String campaignIdsItem) {
+    if (this.campaignIds == null) {
+      this.campaignIds = null;
+    }
+    this.campaignIds.add(campaignIdsItem);
+    return this;
+  }
+
+   /**
+   * Campaign ids to filter
+   * @return campaignIds
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getCampaignIds() {
+    return campaignIds;
+  }
+
+
+  public void setCampaignIds(List<String> campaignIds) {
+    this.campaignIds = campaignIds;
+  }
+
+
+  public AsyncRevenueReport lineItemIds(List<String> lineItemIds) {
+    
+    this.lineItemIds = lineItemIds;
+    return this;
+  }
+
+  public AsyncRevenueReport addLineItemIdsItem(String lineItemIdsItem) {
+    if (this.lineItemIds == null) {
+      this.lineItemIds = null;
+    }
+    this.lineItemIds.add(lineItemIdsItem);
+    return this;
+  }
+
+   /**
+   * Line item ids to filter
+   * @return lineItemIds
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getLineItemIds() {
+    return lineItemIds;
+  }
+
+
+  public void setLineItemIds(List<String> lineItemIds) {
+    this.lineItemIds = lineItemIds;
   }
 
 
@@ -1434,6 +1592,10 @@ public class AsyncRevenueReport {
     AsyncRevenueReport asyncRevenueReport = (AsyncRevenueReport) o;
     return Objects.equals(this.ids, asyncRevenueReport.ids) &&
         Objects.equals(this.id, asyncRevenueReport.id) &&
+        Objects.equals(this.retailerIds, asyncRevenueReport.retailerIds) &&
+        Objects.equals(this.accountIds, asyncRevenueReport.accountIds) &&
+        Objects.equals(this.campaignIds, asyncRevenueReport.campaignIds) &&
+        Objects.equals(this.lineItemIds, asyncRevenueReport.lineItemIds) &&
         Objects.equals(this.reportType, asyncRevenueReport.reportType) &&
         Objects.equals(this.revenueType, asyncRevenueReport.revenueType) &&
         Objects.equals(this.soldBy, asyncRevenueReport.soldBy) &&
@@ -1459,7 +1621,7 @@ public class AsyncRevenueReport {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ids, id, reportType, revenueType, soldBy, buyType, advertiserTypes, skuRelations, format, campaignType, salesChannel, clickAttributionWindow, viewAttributionWindow, dimensions, metrics, startDate, endDate, timezone, additionalProperties);
+    return Objects.hash(ids, id, retailerIds, accountIds, campaignIds, lineItemIds, reportType, revenueType, soldBy, buyType, advertiserTypes, skuRelations, format, campaignType, salesChannel, clickAttributionWindow, viewAttributionWindow, dimensions, metrics, startDate, endDate, timezone, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1475,6 +1637,10 @@ public class AsyncRevenueReport {
     sb.append("class AsyncRevenueReport {\n");
     sb.append("    ids: ").append(toIndentedString(ids)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    retailerIds: ").append(toIndentedString(retailerIds)).append("\n");
+    sb.append("    accountIds: ").append(toIndentedString(accountIds)).append("\n");
+    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
+    sb.append("    lineItemIds: ").append(toIndentedString(lineItemIds)).append("\n");
     sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
     sb.append("    revenueType: ").append(toIndentedString(revenueType)).append("\n");
     sb.append("    soldBy: ").append(toIndentedString(soldBy)).append("\n");
@@ -1516,6 +1682,10 @@ public class AsyncRevenueReport {
     openapiFields = new HashSet<String>();
     openapiFields.add("ids");
     openapiFields.add("id");
+    openapiFields.add("retailerIds");
+    openapiFields.add("accountIds");
+    openapiFields.add("campaignIds");
+    openapiFields.add("lineItemIds");
     openapiFields.add("reportType");
     openapiFields.add("revenueType");
     openapiFields.add("soldBy");
@@ -1564,6 +1734,22 @@ public class AsyncRevenueReport {
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("retailerIds") != null && !jsonObj.get("retailerIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `retailerIds` to be an array in the JSON string but got `%s`", jsonObj.get("retailerIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("accountIds") != null && !jsonObj.get("accountIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `accountIds` to be an array in the JSON string but got `%s`", jsonObj.get("accountIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("campaignIds") != null && !jsonObj.get("campaignIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `campaignIds` to be an array in the JSON string but got `%s`", jsonObj.get("campaignIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("lineItemIds") != null && !jsonObj.get("lineItemIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `lineItemIds` to be an array in the JSON string but got `%s`", jsonObj.get("lineItemIds").toString()));
       }
       if ((jsonObj.get("reportType") != null && !jsonObj.get("reportType").isJsonNull()) && !jsonObj.get("reportType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `reportType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reportType").toString()));

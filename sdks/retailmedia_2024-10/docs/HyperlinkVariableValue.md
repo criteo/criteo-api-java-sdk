@@ -8,7 +8,7 @@ A value of a template hyperlink variable
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**url** | **String** | The url to redirect to |  |
+|**url** | **String** | The url to redirect to |  [optional] |
 
 
 

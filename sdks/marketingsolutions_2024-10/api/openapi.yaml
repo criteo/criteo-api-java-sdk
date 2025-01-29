@@ -2018,7 +2018,7 @@ paths:
       - Creative
       x-accepts: application/json
     get:
-      description: Get an Ad from its id
+      description: Get an Ad with its id
       operationId: GetAd
       parameters:
       - description: The ad identifier to retrieve.
@@ -2035,13 +2035,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/AdResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfAd'
             application/json:
               schema:
-                $ref: '#/components/schemas/AdResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfAd'
             text/json:
               schema:
-                $ref: '#/components/schemas/AdResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfAd'
           description: The found ad is returned.
         "400":
           content:
@@ -2086,6 +2086,7 @@ paths:
           format: int32
           type: integer
         style: form
+        x-nullable: true
       - description: The (zero-based) offset into the collection of ads. The default
           is 0.
         explode: true
@@ -2096,18 +2097,19 @@ paths:
           format: int32
           type: integer
         style: form
+        x-nullable: true
       responses:
         "200":
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/AdListResponse'
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfAd'
             application/json:
               schema:
-                $ref: '#/components/schemas/AdListResponse'
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfAd'
             text/json:
               schema:
-                $ref: '#/components/schemas/AdListResponse'
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfAd'
           description: The list of self-services Ads is returned.
         "400":
           content:
@@ -2146,16 +2148,16 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/AdWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfAdWrite'
           application/json:
             schema:
-              $ref: '#/components/schemas/AdWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfAdWrite'
           text/json:
             schema:
-              $ref: '#/components/schemas/AdWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfAdWrite'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/AdWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfAdWrite'
         required: true
         x-bodyName: request
       responses:
@@ -2163,13 +2165,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/AdResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfAd'
             application/json:
               schema:
-                $ref: '#/components/schemas/AdResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfAd'
             text/json:
               schema:
-                $ref: '#/components/schemas/AdResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfAd'
           description: The created Ad is returned.
         "400":
           content:
@@ -2215,6 +2217,7 @@ paths:
           format: int32
           type: integer
         style: form
+        x-nullable: true
       - description: The (zero-based) offset into the collection of coupons. The default
           is 0.
         explode: true
@@ -2225,18 +2228,19 @@ paths:
           format: int32
           type: integer
         style: form
+        x-nullable: true
       responses:
         "200":
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CouponListResponse'
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfCoupon'
             application/json:
               schema:
-                $ref: '#/components/schemas/CouponListResponse'
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfCoupon'
             text/json:
               schema:
-                $ref: '#/components/schemas/CouponListResponse'
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfCoupon'
           description: The list of self-services Coupons is returned.
         "400":
           content:
@@ -2269,16 +2273,16 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/CreateCouponRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreateCoupon'
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateCouponRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreateCoupon'
           text/json:
             schema:
-              $ref: '#/components/schemas/CreateCouponRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreateCoupon'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/CreateCouponRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreateCoupon'
         required: true
         x-bodyName: request
       responses:
@@ -2286,13 +2290,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CouponResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
             application/json:
               schema:
-                $ref: '#/components/schemas/CouponResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
             text/json:
               schema:
-                $ref: '#/components/schemas/CouponResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
           description: The created Coupon is returned.
         "400":
           content:
@@ -2337,13 +2341,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CouponSupportedSizesResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCouponSupportedSizes'
             application/json:
               schema:
-                $ref: '#/components/schemas/CouponSupportedSizesResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCouponSupportedSizes'
             text/json:
               schema:
-                $ref: '#/components/schemas/CouponSupportedSizesResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCouponSupportedSizes'
           description: The list of Coupon supported sizes is returned.
         "400":
           content:
@@ -2392,7 +2396,7 @@ paths:
       - Creative
       x-accepts: application/json
     get:
-      description: Get a Coupon from its id
+      description: Get a Coupon with its id
       operationId: GetAdvertiserCoupon
       parameters:
       - description: The advertiser identifier.
@@ -2416,13 +2420,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CouponResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
             application/json:
               schema:
-                $ref: '#/components/schemas/CouponResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
             text/json:
               schema:
-                $ref: '#/components/schemas/CouponResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
           description: The found Coupon is returned.
         "400":
           content:
@@ -2463,16 +2467,16 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/UpdateCouponRequest'
+              $ref: '#/components/schemas/ResourceInputOfUpdateCoupon'
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateCouponRequest'
+              $ref: '#/components/schemas/ResourceInputOfUpdateCoupon'
           text/json:
             schema:
-              $ref: '#/components/schemas/UpdateCouponRequest'
+              $ref: '#/components/schemas/ResourceInputOfUpdateCoupon'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/UpdateCouponRequest'
+              $ref: '#/components/schemas/ResourceInputOfUpdateCoupon'
         required: true
         x-bodyName: request
       responses:
@@ -2480,13 +2484,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CouponResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
             application/json:
               schema:
-                $ref: '#/components/schemas/CouponResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
             text/json:
               schema:
-                $ref: '#/components/schemas/CouponResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
           description: The edited Coupon is returned.
         "400":
           content:
@@ -2494,6 +2498,12 @@ paths:
             application/json: {}
             text/json: {}
           description: The request contained invalid parameters.
+        "403":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The request was not properly authorized.
       tags:
       - Creative
       x-content-type: application/json-patch+json
@@ -2587,6 +2597,7 @@ paths:
           format: int32
           type: integer
         style: form
+        x-nullable: true
       - description: The (zero-based) offset into the collection of creatives. The
           default is 0.
         explode: true
@@ -2597,18 +2608,19 @@ paths:
           format: int32
           type: integer
         style: form
+        x-nullable: true
       responses:
         "200":
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CreativeListResponse'
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfCreative'
             application/json:
               schema:
-                $ref: '#/components/schemas/CreativeListResponse'
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfCreative'
             text/json:
               schema:
-                $ref: '#/components/schemas/CreativeListResponse'
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfCreative'
           description: The list of self-services Creatives is returned.
         "400":
           content:
@@ -2647,16 +2659,16 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/CreativeWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
           application/json:
             schema:
-              $ref: '#/components/schemas/CreativeWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
           text/json:
             schema:
-              $ref: '#/components/schemas/CreativeWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/CreativeWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
         required: true
         x-bodyName: request
       responses:
@@ -2664,13 +2676,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CreativeResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
             application/json:
               schema:
-                $ref: '#/components/schemas/CreativeResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
             text/json:
               schema:
-                $ref: '#/components/schemas/CreativeResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
           description: The created creative is returned.
         "400":
           content:
@@ -2720,7 +2732,7 @@ paths:
       - Creative
       x-accepts: application/json
     get:
-      description: Get a Creative from its id
+      description: Get a Creative with its id
       operationId: GetCreative
       parameters:
       - description: The creative identifier to retrieve.
@@ -2736,13 +2748,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CreativeResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
             application/json:
               schema:
-                $ref: '#/components/schemas/CreativeResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
             text/json:
               schema:
-                $ref: '#/components/schemas/CreativeResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
           description: The found creative is returned.
         "400":
           content:
@@ -2781,16 +2793,16 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/CreativeWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
           application/json:
             schema:
-              $ref: '#/components/schemas/CreativeWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
           text/json:
             schema:
-              $ref: '#/components/schemas/CreativeWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/CreativeWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
         required: true
         x-bodyName: request
       responses:
@@ -2798,13 +2810,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CreativeResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
             application/json:
               schema:
-                $ref: '#/components/schemas/CreativeResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
             text/json:
               schema:
-                $ref: '#/components/schemas/CreativeResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
           description: The edited creative is returned.
         "400":
           content:
@@ -2830,7 +2842,7 @@ paths:
       x-accepts: application/json
   /2024-10/marketing-solutions/creatives/{id}/preview:
     post:
-      description: Generate a preview of a specific Creative
+      description: Get the preview of a specific Creative
       operationId: GenerateCreativePreview
       parameters:
       - description: The Creative identifier to preview.
@@ -10884,8 +10896,9 @@ components:
           type: array
           x-nullable: true
       type: object
-    AdResponse:
-      description: Data model for response resource
+    ResourceOutcomeOfAd:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
       example:
         data:
           attributes:
@@ -10942,24 +10955,25 @@ components:
           title: title
       properties:
         data:
-          $ref: '#/components/schemas/AdResource'
+          $ref: '#/components/schemas/ResourceOfAd'
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
-    AdListResponse:
-      description: Data model for a list of response resources
+    ResourceCollectionOutcomeOfAd:
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities.
       example:
         data:
         - attributes:
@@ -11027,27 +11041,28 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/AdResource'
+            $ref: '#/components/schemas/ResourceOfAd'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
-    CouponListResponse:
-      description: Data model for a list of response resources
+    ResourceCollectionOutcomeOfCoupon:
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities.
       example:
         data:
         - attributes:
@@ -11149,27 +11164,28 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/CouponResource'
+            $ref: '#/components/schemas/ResourceOfCoupon'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
-    CouponResponse:
-      description: Data model for response resource
+    ResourceOutcomeOfCoupon:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
       example:
         data:
           attributes:
@@ -11243,24 +11259,25 @@ components:
           title: title
       properties:
         data:
-          $ref: '#/components/schemas/CouponResource'
+          $ref: '#/components/schemas/ResourceOfCoupon'
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
-    CouponSupportedSizesResponse:
-      description: Data model for response resource
+    ResourceOutcomeOfCouponSupportedSizes:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
       example:
         data:
           attributes:
@@ -11316,24 +11333,25 @@ components:
           title: title
       properties:
         data:
-          $ref: '#/components/schemas/CouponSupportedSizesResource'
+          $ref: '#/components/schemas/ResourceOfCouponSupportedSizes'
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
-    CreativeListResponse:
-      description: Data model for a list of response resources
+    ResourceCollectionOutcomeOfCreative:
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities.
       example:
         data:
         - attributes:
@@ -11549,27 +11567,28 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/CreativeResource'
+            $ref: '#/components/schemas/ResourceOfCreative'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
-    CreativeResponse:
-      description: Data model for response resource
+    ResourceOutcomeOfCreative:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
       example:
         data:
           attributes:
@@ -11700,24 +11719,25 @@ components:
           title: title
       properties:
         data:
-          $ref: '#/components/schemas/CreativeResource'
+          $ref: '#/components/schemas/ResourceOfCreative'
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
-    AdWriteRequest:
-      description: Data model for input resource
+    ResourceInputOfAdWrite:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity.
       example:
         data:
           attributes:
@@ -11732,10 +11752,11 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/AdWriteResource'
+          $ref: '#/components/schemas/ResourceOfAdWrite'
       type: object
-    CreateCouponRequest:
-      description: Data model for input resource
+    ResourceInputOfCreateCoupon:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity.
       example:
         data:
           attributes:
@@ -11764,10 +11785,11 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/CreateCouponResource'
+          $ref: '#/components/schemas/ResourceOfCreateCoupon'
       type: object
-    UpdateCouponRequest:
-      description: Data model for input resource
+    ResourceInputOfUpdateCoupon:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity.
       example:
         data:
           attributes:
@@ -11777,10 +11799,11 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/UpdateCouponResource'
+          $ref: '#/components/schemas/ResourceOfUpdateCoupon'
       type: object
-    CreativeWriteRequest:
-      description: Data model for input resource
+    ResourceInputOfCreativeWrite:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity.
       example:
         data:
           attributes:
@@ -11850,10 +11873,10 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/CreativeWriteResource'
+          $ref: '#/components/schemas/ResourceOfCreativeWrite'
       type: object
-    AdResource:
-      description: Data model for a Resource
+    ResourceOfAd:
+      description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
           inventoryType: Native
@@ -11869,14 +11892,17 @@ components:
         attributes:
           $ref: '#/components/schemas/Ad'
         id:
+          description: Unique identifier of this resource.
           nullable: true
           type: string
+          x-nullable: true
         type:
           nullable: true
           type: string
+          x-nullable: true
       type: object
-    CouponResource:
-      description: Data model for a Resource
+    ResourceOfCoupon:
+      description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
           showEvery: 1
@@ -11909,14 +11935,17 @@ components:
         attributes:
           $ref: '#/components/schemas/Coupon'
         id:
+          description: Unique identifier of this resource.
           nullable: true
           type: string
+          x-nullable: true
         type:
           nullable: true
           type: string
+          x-nullable: true
       type: object
-    CouponSupportedSizesResource:
-      description: Data model for a Resource
+    ResourceOfCouponSupportedSizes:
+      description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
           fullFrame:
@@ -11931,14 +11960,17 @@ components:
         attributes:
           $ref: '#/components/schemas/CouponSupportedSizes'
         id:
+          description: Unique identifier of this resource.
           nullable: true
           type: string
+          x-nullable: true
         type:
           nullable: true
           type: string
+          x-nullable: true
       type: object
-    CreativeResource:
-      description: Data model for a Resource
+    ResourceOfCreative:
+      description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
           dynamicAttributes:
@@ -12028,14 +12060,17 @@ components:
         attributes:
           $ref: '#/components/schemas/Creative'
         id:
+          description: Unique identifier of this resource.
           nullable: true
           type: string
+          x-nullable: true
         type:
           nullable: true
           type: string
+          x-nullable: true
       type: object
-    AdWriteResource:
-      description: Data model for a Resource
+    ResourceOfAdWrite:
+      description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
           inventoryType: Display
@@ -12051,14 +12086,17 @@ components:
         attributes:
           $ref: '#/components/schemas/AdWrite'
         id:
+          description: Unique identifier of this resource.
           nullable: true
           type: string
+          x-nullable: true
         type:
           nullable: true
           type: string
+          x-nullable: true
       type: object
-    CreateCouponResource:
-      description: Data model for a Resource
+    ResourceOfCreateCoupon:
+      description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
           showEvery: 2
@@ -12088,14 +12126,17 @@ components:
         attributes:
           $ref: '#/components/schemas/CreateCoupon'
         id:
+          description: Unique identifier of this resource.
           nullable: true
           type: string
+          x-nullable: true
         type:
           nullable: true
           type: string
+          x-nullable: true
       type: object
-    UpdateCouponResource:
-      description: Data model for a Resource
+    ResourceOfUpdateCoupon:
+      description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
           endDate: endDate
@@ -12106,14 +12147,17 @@ components:
         attributes:
           $ref: '#/components/schemas/UpdateCoupon'
         id:
+          description: Unique identifier of this resource.
           nullable: true
           type: string
+          x-nullable: true
         type:
           nullable: true
           type: string
+          x-nullable: true
       type: object
-    CreativeWriteResource:
-      description: Data model for a Resource
+    ResourceOfCreativeWrite:
+      description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
           htmlTagWriteAttributes:
@@ -12184,11 +12228,14 @@ components:
         attributes:
           $ref: '#/components/schemas/CreativeWrite'
         id:
+          description: Unique identifier of this resource.
           nullable: true
           type: string
+          x-nullable: true
         type:
           nullable: true
           type: string
+          x-nullable: true
       type: object
     Ad:
       description: An ad is the binding that connects a creative with an ad set
@@ -12205,18 +12252,22 @@ components:
           description: The name of the ad
           nullable: true
           type: string
+          x-nullable: true
         description:
           description: The description of the ad
           nullable: true
           type: string
+          x-nullable: true
         creativeId:
           description: The id of the Creative binded to this Ad
           nullable: true
           type: string
+          x-nullable: true
         adSetId:
           description: The id of the Ad Set binded to this Ad
           nullable: true
           type: string
+          x-nullable: true
         inventoryType:
           description: The inventory the Ad belongs to. Possible values are "Display"
             and "Native". This is optional since this doesn't make sense for every
@@ -12227,17 +12278,20 @@ components:
           - Video
           nullable: true
           type: string
+          x-nullable: true
         startDate:
           description: "The date when the ad will be launched\r\nString must be in\
             \ ISO8601 format"
           nullable: true
           type: string
+          x-nullable: true
         endDate:
           description: "The date when when we will stop to show this ad. If the end\
             \ date is not specified (i.e. null) then the ad will go on forever\r\n\
             String must be in ISO8601 format"
           nullable: true
           type: string
+          x-nullable: true
       type: object
     Coupon:
       description: Coupons are static images applied on ad set which can be displayed
@@ -12272,53 +12326,63 @@ components:
           description: The name of the Coupon
           nullable: true
           type: string
+          x-nullable: true
         description:
           description: The description of the Coupon
           nullable: true
           type: string
+          x-nullable: true
         author:
           description: The login of the person who created this Coupon
           nullable: true
           type: string
+          x-nullable: true
         advertiserId:
           description: Advertiser linked to the Coupon
           nullable: true
           type: string
+          x-nullable: true
         adSetId:
           description: The id of the Ad Set on which the Coupon is applied to
           nullable: true
           type: string
+          x-nullable: true
         landingPageUrl:
           description: Web redirection of the landing page url
           nullable: true
           type: string
+          x-nullable: true
         startDate:
           description: "The date when the Coupon will be launched\r\nString must be\
             \ in ISO8601 format"
           nullable: true
           type: string
+          x-nullable: true
         endDate:
           description: "The date when when we will stop to show this Coupon. If the\
             \ end date is not specified (i.e. null) then the Coupon will go on forever\r\
             \nString must be in ISO8601 format"
           nullable: true
           type: string
+          x-nullable: true
         format:
           description: "Format of the Coupon, it can have two values: \"FullFrame\"\
             \ or \"LogoZone\""
           nullable: true
           type: string
+          x-nullable: true
         status:
           description: The status of the Coupon
           nullable: true
           type: string
+          x-nullable: true
         images:
           description: List of slides containing the image URLs
           items:
             $ref: '#/components/schemas/ImageSlide'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         showEvery:
           description: Show the Coupon every N seconds (between 1 and 10)
           format: int32
@@ -12351,14 +12415,14 @@ components:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         fullFrame:
           description: Array of FullFrame sizes as string in width x height format
           items:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     Creative:
       description: A creative is a project with the necessary information to display
@@ -12453,6 +12517,7 @@ components:
           description: The description of the creative
           nullable: true
           type: string
+          x-nullable: true
         author:
           description: The login of the person who created this creative (
           type: string
@@ -12463,6 +12528,7 @@ components:
           description: The format of the creative
           nullable: true
           type: string
+          x-nullable: true
         advertiserId:
           description: Advertiser linked to the Creative
           type: string
@@ -12470,6 +12536,7 @@ components:
           description: Data set id linked to the Creative
           nullable: true
           type: string
+          x-nullable: true
         imageAttributes:
           $ref: '#/components/schemas/ImageAttributes'
         htmlTagAttributes:
@@ -12502,6 +12569,7 @@ components:
           description: The description of the ad
           nullable: true
           type: string
+          x-nullable: true
         creativeId:
           description: The id of the Creative bound to this Ad
           type: string
@@ -12518,6 +12586,7 @@ components:
           - Native
           nullable: true
           type: string
+          x-nullable: true
         startDate:
           description: "The date when the ad will be launched\r\nString must be in\
             \ ISO8601 format"
@@ -12528,6 +12597,7 @@ components:
             String must be in ISO8601 format"
           nullable: true
           type: string
+          x-nullable: true
       required:
       - adSetId
       - creativeId
@@ -12566,6 +12636,7 @@ components:
           description: The description of the Coupon
           nullable: true
           type: string
+          x-nullable: true
         adSetId:
           description: The id of the Ad Set on which the Coupon is applied to
           type: string
@@ -12582,6 +12653,7 @@ components:
             \nString must be in ISO8601 format"
           nullable: true
           type: string
+          x-nullable: true
         format:
           description: "Format of the Coupon, it can have two values: \"FullFrame\"\
             \ or \"LogoZone\""
@@ -12594,7 +12666,6 @@ components:
           items:
             $ref: '#/components/schemas/CreateImageSlide'
           type: array
-          uniqueItems: false
         showEvery:
           description: Show the Coupon every N seconds (between 1 and 10)
           format: int32
@@ -12640,6 +12711,7 @@ components:
             \nString must be in ISO8601 format"
           nullable: true
           type: string
+          x-nullable: true
       required:
       - startDate
       type: object
@@ -12716,6 +12788,7 @@ components:
           description: The description of the creative
           nullable: true
           type: string
+          x-nullable: true
         format:
           description: "The format of the creative\r\nYou can use \"Image\", \" HtmlTag\"\
             , \"Dynamic\" or \"Adaptive\""
@@ -12767,7 +12840,7 @@ components:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     ImageAttributes:
       description: The attributes specific to Image creatives
@@ -12784,11 +12857,12 @@ components:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         landingPageUrl:
           description: Web redirection of the landing page url
           nullable: true
           type: string
+          x-nullable: true
       type: object
     HtmlTagAttributes:
       description: The attributes specific to HtmlTag creatives
@@ -12809,7 +12883,7 @@ components:
             $ref: '#/components/schemas/Tag'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     DynamicAttributes:
       description: The attributes specific to Dynamic creatives
@@ -12835,26 +12909,30 @@ components:
             $ref: '#/components/schemas/ImageShape'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         creativeBackgroundColor:
           description: "Color of the creative's background\r\nValid hexadecimal color\
             \ (e.g. \"AB00FF\")"
           nullable: true
           type: string
+          x-nullable: true
         bodyTextColor:
           description: "Color of the creative's body text\r\nValid hexadecimal color\
             \ (e.g. \"AB00FF\")"
           nullable: true
           type: string
+          x-nullable: true
         pricesColor:
           description: "Color of the creative's prices\r\nValid hexadecimal color\
             \ (e.g. \"AB00FF\")"
           nullable: true
           type: string
+          x-nullable: true
         primaryFont:
           description: "Font of the primary font\r\nValid supported font like \"Arial\""
           nullable: true
           type: string
+          x-nullable: true
         callsToAction:
           description: "A Call-to-Action (CTA) is an action-driven instruction to\
             \ your audience intended to provoke an immediate\r\nresponse, such as\
@@ -12863,7 +12941,7 @@ components:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         productImageDisplay:
           description: "Value can be \"ShowFullImage\" or \"ZoomOnImage\". Choose\
             \ whether your product catalog images should fit inside the allocated\r\
@@ -12935,14 +13013,12 @@ components:
             - InBannerVideo
             type: string
           type: array
-          uniqueItems: false
         logos:
           description: Logo images uploaded on demostatic.criteo.com when deploying
             and then static.criteo.net
           items:
             $ref: '#/components/schemas/ImageShape'
           type: array
-          uniqueItems: false
         headlineText:
           description: The headline text of the banner
           type: string
@@ -12962,7 +13038,6 @@ components:
           items:
             type: string
           type: array
-          uniqueItems: false
         colors:
           $ref: '#/components/schemas/AdaptiveColors'
         imageSets:
@@ -12972,7 +13047,7 @@ components:
             $ref: '#/components/schemas/ImageSet'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         imageDisplay:
           description: "Value can be \"ShowFullImage\" or \"ZoomOnImage\". Choose\
             \ whether your image set should fit inside the allocated\r\nspace (\"\
@@ -12983,13 +13058,14 @@ components:
           - ZoomOnImage
           nullable: true
           type: string
+          x-nullable: true
         videos:
           description: Multiple videos potentially in different shapes.
           items:
             $ref: '#/components/schemas/VideoDetail'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         landingPageUrl:
           description: Web redirection of the landing page url
           format: uri
@@ -13031,7 +13107,7 @@ components:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     ImageWriteAttributes:
       description: The attributes specific to create or update an Image creative
@@ -13047,7 +13123,6 @@ components:
             type: string
           minItems: 1
           type: array
-          uniqueItems: false
         landingPageUrl:
           description: Web redirection of the landing page url
           format: uri
@@ -13074,7 +13149,6 @@ components:
           items:
             $ref: '#/components/schemas/Tag'
           type: array
-          uniqueItems: false
       required:
       - tags
       type: object
@@ -13095,22 +13169,24 @@ components:
           description: Logo image as a base-64 encoded string
           type: string
         creativeBackgroundColor:
-          description: "Color of the creative's background\r\nValid hexadecimal RGB\
-            \ color (e.g. \"AB00FF\")"
+          description: "Color of the creative's background\r\nValid hexadecimal color\
+            \ (e.g. \"AB00FF\")"
           nullable: true
           type: string
+          x-nullable: true
         bodyTextColor:
-          description: "Color of the creative's body text\r\nValid hexadecimal RGB\
-            \ color (e.g. \"AB00FF\")"
+          description: "Color of the creative's body text\r\nValid hexadecimal color\
+            \ (e.g. \"AB00FF\")"
           type: string
         pricesColor:
-          description: "Color of the creative's prices\r\nValid hexadecimal RGB color\
+          description: "Color of the creative's prices\r\nValid hexadecimal color\
             \ (e.g. \"AB00FF\")"
           type: string
         primaryFont:
           description: "Font of the primary font\r\nValid supported font like \"Arial\""
           nullable: true
           type: string
+          x-nullable: true
         callsToAction:
           description: "A Call-to-Action (CTA) is an action-driven instruction to\
             \ your audience intended to provoke an immediate\r\nresponse, such as\
@@ -13119,7 +13195,6 @@ components:
             type: string
           minItems: 1
           type: array
-          uniqueItems: false
         productImageDisplay:
           description: "Value can be \"ShowFullImage\" or \"ZoomOnImage\". Choose\
             \ whether your product catalog images should fit inside the allocated\r\
@@ -13185,7 +13260,6 @@ components:
             type: string
           minItems: 1
           type: array
-          uniqueItems: false
         logoBase64String:
           description: Logo image as a base-64 encoded string
           type: string
@@ -13209,7 +13283,6 @@ components:
             type: string
           minItems: 1
           type: array
-          uniqueItems: false
         colors:
           $ref: '#/components/schemas/AdaptiveColors'
         imageSetsBase64:
@@ -13219,7 +13292,7 @@ components:
             $ref: '#/components/schemas/ImageSetBase64'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         imageDisplay:
           description: "Value can be \"ShowFullImage\" or \"ZoomOnImage\". Choose\
             \ whether your image set should fit inside the allocated\r\nspace (\"\
@@ -13230,6 +13303,7 @@ components:
           - ZoomOnImage
           nullable: true
           type: string
+          x-nullable: true
         videoBase64Strings:
           description: "Multiple videos potentially in different shapes, each video\
             \ is a base-64 encoded string."
@@ -13237,7 +13311,7 @@ components:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         landingPageUrl:
           description: Web redirection of the landing page url.
           format: uri
@@ -13265,6 +13339,7 @@ components:
           description: Html tag
           nullable: true
           type: string
+          x-nullable: true
         size:
           $ref: '#/components/schemas/Size'
       type: object
@@ -13348,11 +13423,11 @@ components:
           items:
             $ref: '#/components/schemas/ImageShape'
           type: array
-          uniqueItems: false
         headlineText:
           description: The headline of the image set
           nullable: true
           type: string
+          x-nullable: true
       required:
       - images
       type: object
@@ -13402,11 +13477,11 @@ components:
             type: string
           minItems: 1
           type: array
-          uniqueItems: false
         headlineText:
           description: The headline of the image set
           nullable: true
           type: string
+          x-nullable: true
       required:
       - imageBase64Strings
       type: object

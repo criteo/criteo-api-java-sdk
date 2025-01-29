@@ -10,6 +10,10 @@ Async Revenue report body request
 |------------ | ------------- | ------------- | -------------|
 |**ids** | **List&lt;String&gt;** | Supply account ids to report on |  [optional] |
 |**id** | **String** | Supply account id to report on |  [optional] |
+|**retailerIds** | **List&lt;String&gt;** | Retailer ids to filter |  [optional] |
+|**accountIds** | **List&lt;String&gt;** | Account ids to filter |  [optional] |
+|**campaignIds** | **List&lt;String&gt;** | Campaign ids to filter |  [optional] |
+|**lineItemIds** | **List&lt;String&gt;** | Line item ids to filter |  [optional] |
 |**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report |  [optional] |
 |**revenueType** | [**RevenueTypeEnum**](#RevenueTypeEnum) | Type of revenue |  [optional] |
 |**soldBy** | [**SoldByEnum**](#SoldByEnum) | Filter on the seller: Indirect Sold, Direct Sold or Private Market |  [optional] |
@@ -183,6 +187,7 @@ Async Revenue report body request
 | BUYTYPE | &quot;buyType&quot; |
 | SOLDBY | &quot;soldBy&quot; |
 | SALECHANNEL | &quot;saleChannel&quot; |
+| SALESCHANNEL | &quot;salesChannel&quot; |
 | ATTRIBUTIONSETTINGS | &quot;attributionSettings&quot; |
 | ACTIVITYTYPE | &quot;activityType&quot; |
 | KEYWORD | &quot;keyword&quot; |
@@ -243,6 +248,16 @@ Async Revenue report body request
 | VIDEOSPLAYEDTO100 | &quot;videosPlayedTo100&quot; |
 | VIDEOPLAYINGRATE | &quot;videoPlayingRate&quot; |
 | VIDEOCOMPLETIONRATE | &quot;videoCompletionRate&quot; |
+| VIDEOIMPRESSIONS | &quot;videoImpressions&quot; |
+| VIDEOMUTED | &quot;videoMuted&quot; |
+| VIDEOUNMUTED | &quot;videoUnmuted&quot; |
+| VIDEORESUMED | &quot;videoResumed&quot; |
+| VIDEOPAUSED | &quot;videoPaused&quot; |
+| VIDEOAVGINTERACTIONRATE | &quot;videoAvgInteractionRate&quot; |
+| VIDEOVIEWABILITY | &quot;videoViewability&quot; |
+| VIDEOSTARTINGRATE | &quot;videoStartingRate&quot; |
+| VIDEOCPC | &quot;videoCPC&quot; |
+| VIDEOCPCV | &quot;videoCPCV&quot; |
 | UNIQUEVISITORS | &quot;uniqueVisitors&quot; |
 | FREQUENCY | &quot;frequency&quot; |
 

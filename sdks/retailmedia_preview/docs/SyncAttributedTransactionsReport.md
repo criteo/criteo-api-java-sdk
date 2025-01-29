@@ -96,6 +96,10 @@ Attributed Transactions report body request
 | PAGETYPENAME | &quot;pageTypeName&quot; |
 | KEYWORD | &quot;keyword&quot; |
 | ATTRIBUTIONWINDOW | &quot;attributionWindow&quot; |
+| SALESELLERID | &quot;saleSellerId&quot; |
+| SALESELLERNAME | &quot;saleSellerName&quot; |
+| ACTIVITYSELLERID | &quot;activitySellerId&quot; |
+| ACTIVITYSELLERNAME | &quot;activitySellerName&quot; |
 
 
 

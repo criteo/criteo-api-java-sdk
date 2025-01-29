@@ -2,7 +2,7 @@
 
 # ResourceOfCreative202210
 
-Data model for a Resource
+A class that represents a domain entity exposed by an API.
 
 ## Properties
 

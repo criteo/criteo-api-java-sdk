@@ -28,7 +28,7 @@ Metadata and usage info of a sku search
 |**modelNumber** | **String** | The Model Number for the product if available. |  [optional] |
 |**parentId** | **String** | The ParentId for the product if available. |  [optional] |
 |**imageUrl** | **String** | An http image resource provided by the retailer. |  [optional] |
-|**productPage** | **String** | An The product page URL |  [optional] |
+|**productPage** | **String** | The product page URL |  [optional] |
 |**updatedAt** | **OffsetDateTime** | The last time this product was updated in the Retail Media Catalog. Represented as a UTC ISO8601 string. |  |
 
 

@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.v2024_10.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.v2024_10.model.RetailMediaSellerAccountCreation;
+import com.criteo.api.retailmedia.v2024_10.model.ExternalRetailMediaSellerAccountCreation;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -56,7 +56,7 @@ public class ValueResourceOfRetailMediaSellerAccountCreation {
 
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private RetailMediaSellerAccountCreation attributes;
+  private ExternalRetailMediaSellerAccountCreation attributes;
 
   public ValueResourceOfRetailMediaSellerAccountCreation() {
   }
@@ -83,7 +83,7 @@ public class ValueResourceOfRetailMediaSellerAccountCreation {
   }
 
 
-  public ValueResourceOfRetailMediaSellerAccountCreation attributes(RetailMediaSellerAccountCreation attributes) {
+  public ValueResourceOfRetailMediaSellerAccountCreation attributes(ExternalRetailMediaSellerAccountCreation attributes) {
     
     this.attributes = attributes;
     return this;
@@ -95,15 +95,59 @@ public class ValueResourceOfRetailMediaSellerAccountCreation {
   **/
   @javax.annotation.Nullable
 
-  public RetailMediaSellerAccountCreation getAttributes() {
+  public ExternalRetailMediaSellerAccountCreation getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(RetailMediaSellerAccountCreation attributes) {
+  public void setAttributes(ExternalRetailMediaSellerAccountCreation attributes) {
     this.attributes = attributes;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the ValueResourceOfRetailMediaSellerAccountCreation instance itself
+   */
+  public ValueResourceOfRetailMediaSellerAccountCreation putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -116,7 +160,8 @@ public class ValueResourceOfRetailMediaSellerAccountCreation {
     }
     ValueResourceOfRetailMediaSellerAccountCreation valueResourceOfRetailMediaSellerAccountCreation = (ValueResourceOfRetailMediaSellerAccountCreation) o;
     return Objects.equals(this.type, valueResourceOfRetailMediaSellerAccountCreation.type) &&
-        Objects.equals(this.attributes, valueResourceOfRetailMediaSellerAccountCreation.attributes);
+        Objects.equals(this.attributes, valueResourceOfRetailMediaSellerAccountCreation.attributes)&&
+        Objects.equals(this.additionalProperties, valueResourceOfRetailMediaSellerAccountCreation.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -125,7 +170,7 @@ public class ValueResourceOfRetailMediaSellerAccountCreation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes);
+    return Objects.hash(type, attributes, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -141,6 +186,7 @@ public class ValueResourceOfRetailMediaSellerAccountCreation {
     sb.append("class ValueResourceOfRetailMediaSellerAccountCreation {\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -182,20 +228,12 @@ public class ValueResourceOfRetailMediaSellerAccountCreation {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ValueResourceOfRetailMediaSellerAccountCreation is not found in the empty JSON string", ValueResourceOfRetailMediaSellerAccountCreation.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!ValueResourceOfRetailMediaSellerAccountCreation.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValueResourceOfRetailMediaSellerAccountCreation` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        RetailMediaSellerAccountCreation.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+        ExternalRetailMediaSellerAccountCreation.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
   }
 
@@ -214,6 +252,23 @@ public class ValueResourceOfRetailMediaSellerAccountCreation {
            @Override
            public void write(JsonWriter out, ValueResourceOfRetailMediaSellerAccountCreation value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -221,7 +276,27 @@ public class ValueResourceOfRetailMediaSellerAccountCreation {
            public ValueResourceOfRetailMediaSellerAccountCreation read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
+             // store additional fields in the deserialized instance
+             ValueResourceOfRetailMediaSellerAccountCreation instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

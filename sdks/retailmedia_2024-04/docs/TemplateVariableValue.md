@@ -14,6 +14,7 @@ A value for a variable in a creative template.
 |**colorVariableValue** | [**ColorVariableValue**](ColorVariableValue.md) |  |  [optional] |
 |**filesVariableValue** | [**FilesVariableValue**](FilesVariableValue.md) |  |  [optional] |
 |**hyperlinkVariableValue** | [**HyperlinkVariableValue**](HyperlinkVariableValue.md) |  |  [optional] |
+|**videoVariableValue** | [**VideoVariableValue**](VideoVariableValue.md) |  |  [optional] |
 
 
 

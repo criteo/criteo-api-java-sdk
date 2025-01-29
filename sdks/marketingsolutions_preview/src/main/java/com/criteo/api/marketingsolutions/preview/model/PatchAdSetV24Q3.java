@@ -16,6 +16,7 @@ package com.criteo.api.marketingsolutions.preview.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.marketingsolutions.preview.model.AdSetTargetingV24Q3;
+import com.criteo.api.marketingsolutions.preview.model.PatchAdSetAttributionConfigurationV24Q3;
 import com.criteo.api.marketingsolutions.preview.model.PatchAdSetBiddingV24Q3;
 import com.criteo.api.marketingsolutions.preview.model.PatchAdSetBudgetV24Q3;
 import com.criteo.api.marketingsolutions.preview.model.PatchAdSetSchedulingV24Q3;
@@ -72,6 +73,10 @@ public class PatchAdSetV24Q3 {
   public static final String SERIALIZED_NAME_BUDGET = "budget";
   @SerializedName(SERIALIZED_NAME_BUDGET)
   private PatchAdSetBudgetV24Q3 budget;
+
+  public static final String SERIALIZED_NAME_ATTRIBUTION_CONFIGURATION = "attributionConfiguration";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTION_CONFIGURATION)
+  private PatchAdSetAttributionConfigurationV24Q3 attributionConfiguration;
 
   public PatchAdSetV24Q3() {
   }
@@ -185,6 +190,28 @@ public class PatchAdSetV24Q3 {
     this.budget = budget;
   }
 
+
+  public PatchAdSetV24Q3 attributionConfiguration(PatchAdSetAttributionConfigurationV24Q3 attributionConfiguration) {
+    
+    this.attributionConfiguration = attributionConfiguration;
+    return this;
+  }
+
+   /**
+   * Get attributionConfiguration
+   * @return attributionConfiguration
+  **/
+  @javax.annotation.Nullable
+
+  public PatchAdSetAttributionConfigurationV24Q3 getAttributionConfiguration() {
+    return attributionConfiguration;
+  }
+
+
+  public void setAttributionConfiguration(PatchAdSetAttributionConfigurationV24Q3 attributionConfiguration) {
+    this.attributionConfiguration = attributionConfiguration;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -244,7 +271,8 @@ public class PatchAdSetV24Q3 {
         Objects.equals(this.scheduling, patchAdSetV24Q3.scheduling) &&
         Objects.equals(this.bidding, patchAdSetV24Q3.bidding) &&
         Objects.equals(this.targeting, patchAdSetV24Q3.targeting) &&
-        Objects.equals(this.budget, patchAdSetV24Q3.budget)&&
+        Objects.equals(this.budget, patchAdSetV24Q3.budget) &&
+        Objects.equals(this.attributionConfiguration, patchAdSetV24Q3.attributionConfiguration)&&
         Objects.equals(this.additionalProperties, patchAdSetV24Q3.additionalProperties);
   }
 
@@ -254,7 +282,7 @@ public class PatchAdSetV24Q3 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, scheduling, bidding, targeting, budget, additionalProperties);
+    return Objects.hash(name, scheduling, bidding, targeting, budget, attributionConfiguration, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -273,6 +301,7 @@ public class PatchAdSetV24Q3 {
     sb.append("    bidding: ").append(toIndentedString(bidding)).append("\n");
     sb.append("    targeting: ").append(toIndentedString(targeting)).append("\n");
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
+    sb.append("    attributionConfiguration: ").append(toIndentedString(attributionConfiguration)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -301,6 +330,7 @@ public class PatchAdSetV24Q3 {
     openapiFields.add("bidding");
     openapiFields.add("targeting");
     openapiFields.add("budget");
+    openapiFields.add("attributionConfiguration");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -336,6 +366,10 @@ public class PatchAdSetV24Q3 {
       // validate the optional field `budget`
       if (jsonObj.get("budget") != null && !jsonObj.get("budget").isJsonNull()) {
         PatchAdSetBudgetV24Q3.validateJsonObject(jsonObj.getAsJsonObject("budget"));
+      }
+      // validate the optional field `attributionConfiguration`
+      if (jsonObj.get("attributionConfiguration") != null && !jsonObj.get("attributionConfiguration").isJsonNull()) {
+        PatchAdSetAttributionConfigurationV24Q3.validateJsonObject(jsonObj.getAsJsonObject("attributionConfiguration"));
       }
   }
 

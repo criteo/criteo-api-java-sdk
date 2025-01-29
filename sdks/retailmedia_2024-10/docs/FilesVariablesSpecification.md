@@ -10,7 +10,7 @@ Specification of a file variable
 |------------ | ------------- | ------------- | -------------|
 |**extensions** | [**List&lt;ExtensionsEnum&gt;**](#List&lt;ExtensionsEnum&gt;) | The accepted file extensions |  |
 |**maxBytes** | **Integer** | The maximum amount of bytes per file |  [optional] |
-|**minFiles** | **Integer** | The minimum amount of files requires |  |
+|**minFiles** | **Integer** | The minimum amount of files requires |  [optional] |
 |**maxFile** | **Integer** | The maximum amount of files required |  [optional] |
 
 

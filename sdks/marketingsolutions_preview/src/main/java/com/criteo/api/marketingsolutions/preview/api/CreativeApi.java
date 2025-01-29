@@ -27,17 +27,17 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.criteo.api.marketingsolutions.preview.model.AdListResponse;
-import com.criteo.api.marketingsolutions.preview.model.AdResponse;
-import com.criteo.api.marketingsolutions.preview.model.AdWriteRequest;
-import com.criteo.api.marketingsolutions.preview.model.CouponListResponse;
-import com.criteo.api.marketingsolutions.preview.model.CouponResponse;
-import com.criteo.api.marketingsolutions.preview.model.CouponSupportedSizesResponse;
-import com.criteo.api.marketingsolutions.preview.model.CreateCouponRequest;
-import com.criteo.api.marketingsolutions.preview.model.CreativeListResponse;
-import com.criteo.api.marketingsolutions.preview.model.CreativeResponse;
-import com.criteo.api.marketingsolutions.preview.model.CreativeWriteRequest;
-import com.criteo.api.marketingsolutions.preview.model.UpdateCouponRequest;
+import com.criteo.api.marketingsolutions.preview.model.ResourceCollectionOutcomeOfAd;
+import com.criteo.api.marketingsolutions.preview.model.ResourceCollectionOutcomeOfCoupon;
+import com.criteo.api.marketingsolutions.preview.model.ResourceCollectionOutcomeOfCreative;
+import com.criteo.api.marketingsolutions.preview.model.ResourceInputOfAdWrite;
+import com.criteo.api.marketingsolutions.preview.model.ResourceInputOfCreateCoupon;
+import com.criteo.api.marketingsolutions.preview.model.ResourceInputOfCreativeWrite;
+import com.criteo.api.marketingsolutions.preview.model.ResourceInputOfUpdateCoupon;
+import com.criteo.api.marketingsolutions.preview.model.ResourceOutcomeOfAd;
+import com.criteo.api.marketingsolutions.preview.model.ResourceOutcomeOfCoupon;
+import com.criteo.api.marketingsolutions.preview.model.ResourceOutcomeOfCouponSupportedSizes;
+import com.criteo.api.marketingsolutions.preview.model.ResourceOutcomeOfCreative;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -86,7 +86,7 @@ public class CreativeApi {
     /**
      * Build call for createAdvertiserAd
      * @param advertiserId The advertiser identifier. (required)
-     * @param adWriteRequest  (required)
+     * @param resourceInputOfAdWrite  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -99,7 +99,7 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAdvertiserAdCall(String advertiserId, AdWriteRequest adWriteRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createAdvertiserAdCall(String advertiserId, ResourceInputOfAdWrite resourceInputOfAdWrite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -113,7 +113,7 @@ public class CreativeApi {
             basePath = null;
         }
 
-        Object localVarPostBody = adWriteRequest;
+        Object localVarPostBody = resourceInputOfAdWrite;
 
         // create path and map variables
         String localVarPath = "/preview/advertisers/{advertiser-id}/ads"
@@ -151,18 +151,18 @@ public class CreativeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAdvertiserAdValidateBeforeCall(String advertiserId, AdWriteRequest adWriteRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAdvertiserAdValidateBeforeCall(String advertiserId, ResourceInputOfAdWrite resourceInputOfAdWrite, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling createAdvertiserAd(Async)");
         }
 
-        // verify the required parameter 'adWriteRequest' is set
-        if (adWriteRequest == null) {
-            throw new ApiException("Missing the required parameter 'adWriteRequest' when calling createAdvertiserAd(Async)");
+        // verify the required parameter 'resourceInputOfAdWrite' is set
+        if (resourceInputOfAdWrite == null) {
+            throw new ApiException("Missing the required parameter 'resourceInputOfAdWrite' when calling createAdvertiserAd(Async)");
         }
 
-        return createAdvertiserAdCall(advertiserId, adWriteRequest, _callback);
+        return createAdvertiserAdCall(advertiserId, resourceInputOfAdWrite, _callback);
 
     }
 
@@ -170,8 +170,8 @@ public class CreativeApi {
      * 
      * Create an Ad
      * @param advertiserId The advertiser identifier. (required)
-     * @param adWriteRequest  (required)
-     * @return AdResponse
+     * @param resourceInputOfAdWrite  (required)
+     * @return ResourceOutcomeOfAd
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -182,8 +182,8 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public AdResponse createAdvertiserAd(String advertiserId, AdWriteRequest adWriteRequest) throws ApiException {
-        ApiResponse<AdResponse> localVarResp = createAdvertiserAdWithHttpInfo(advertiserId, adWriteRequest);
+    public ResourceOutcomeOfAd createAdvertiserAd(String advertiserId, ResourceInputOfAdWrite resourceInputOfAdWrite) throws ApiException {
+        ApiResponse<ResourceOutcomeOfAd> localVarResp = createAdvertiserAdWithHttpInfo(advertiserId, resourceInputOfAdWrite);
         return localVarResp.getData();
     }
 
@@ -191,8 +191,8 @@ public class CreativeApi {
      * 
      * Create an Ad
      * @param advertiserId The advertiser identifier. (required)
-     * @param adWriteRequest  (required)
-     * @return ApiResponse&lt;AdResponse&gt;
+     * @param resourceInputOfAdWrite  (required)
+     * @return ApiResponse&lt;ResourceOutcomeOfAd&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -203,9 +203,9 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdResponse> createAdvertiserAdWithHttpInfo(String advertiserId, AdWriteRequest adWriteRequest) throws ApiException {
-        okhttp3.Call localVarCall = createAdvertiserAdValidateBeforeCall(advertiserId, adWriteRequest, null);
-        Type localVarReturnType = new TypeToken<AdResponse>(){}.getType();
+    public ApiResponse<ResourceOutcomeOfAd> createAdvertiserAdWithHttpInfo(String advertiserId, ResourceInputOfAdWrite resourceInputOfAdWrite) throws ApiException {
+        okhttp3.Call localVarCall = createAdvertiserAdValidateBeforeCall(advertiserId, resourceInputOfAdWrite, null);
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfAd>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -213,7 +213,7 @@ public class CreativeApi {
      *  (asynchronously)
      * Create an Ad
      * @param advertiserId The advertiser identifier. (required)
-     * @param adWriteRequest  (required)
+     * @param resourceInputOfAdWrite  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -226,17 +226,17 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAdvertiserAdAsync(String advertiserId, AdWriteRequest adWriteRequest, final ApiCallback<AdResponse> _callback) throws ApiException {
+    public okhttp3.Call createAdvertiserAdAsync(String advertiserId, ResourceInputOfAdWrite resourceInputOfAdWrite, final ApiCallback<ResourceOutcomeOfAd> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createAdvertiserAdValidateBeforeCall(advertiserId, adWriteRequest, _callback);
-        Type localVarReturnType = new TypeToken<AdResponse>(){}.getType();
+        okhttp3.Call localVarCall = createAdvertiserAdValidateBeforeCall(advertiserId, resourceInputOfAdWrite, _callback);
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfAd>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for createAdvertiserCoupon
      * @param advertiserId The advertiser identifier. (required)
-     * @param createCouponRequest  (required)
+     * @param resourceInputOfCreateCoupon  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -248,7 +248,7 @@ public class CreativeApi {
         <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAdvertiserCouponCall(String advertiserId, CreateCouponRequest createCouponRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createAdvertiserCouponCall(String advertiserId, ResourceInputOfCreateCoupon resourceInputOfCreateCoupon, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -262,7 +262,7 @@ public class CreativeApi {
             basePath = null;
         }
 
-        Object localVarPostBody = createCouponRequest;
+        Object localVarPostBody = resourceInputOfCreateCoupon;
 
         // create path and map variables
         String localVarPath = "/preview/advertisers/{advertiser-id}/coupons"
@@ -300,18 +300,18 @@ public class CreativeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAdvertiserCouponValidateBeforeCall(String advertiserId, CreateCouponRequest createCouponRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAdvertiserCouponValidateBeforeCall(String advertiserId, ResourceInputOfCreateCoupon resourceInputOfCreateCoupon, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling createAdvertiserCoupon(Async)");
         }
 
-        // verify the required parameter 'createCouponRequest' is set
-        if (createCouponRequest == null) {
-            throw new ApiException("Missing the required parameter 'createCouponRequest' when calling createAdvertiserCoupon(Async)");
+        // verify the required parameter 'resourceInputOfCreateCoupon' is set
+        if (resourceInputOfCreateCoupon == null) {
+            throw new ApiException("Missing the required parameter 'resourceInputOfCreateCoupon' when calling createAdvertiserCoupon(Async)");
         }
 
-        return createAdvertiserCouponCall(advertiserId, createCouponRequest, _callback);
+        return createAdvertiserCouponCall(advertiserId, resourceInputOfCreateCoupon, _callback);
 
     }
 
@@ -319,8 +319,8 @@ public class CreativeApi {
      * 
      * Create a Coupon
      * @param advertiserId The advertiser identifier. (required)
-     * @param createCouponRequest  (required)
-     * @return CouponResponse
+     * @param resourceInputOfCreateCoupon  (required)
+     * @return ResourceOutcomeOfCoupon
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -330,8 +330,8 @@ public class CreativeApi {
         <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public CouponResponse createAdvertiserCoupon(String advertiserId, CreateCouponRequest createCouponRequest) throws ApiException {
-        ApiResponse<CouponResponse> localVarResp = createAdvertiserCouponWithHttpInfo(advertiserId, createCouponRequest);
+    public ResourceOutcomeOfCoupon createAdvertiserCoupon(String advertiserId, ResourceInputOfCreateCoupon resourceInputOfCreateCoupon) throws ApiException {
+        ApiResponse<ResourceOutcomeOfCoupon> localVarResp = createAdvertiserCouponWithHttpInfo(advertiserId, resourceInputOfCreateCoupon);
         return localVarResp.getData();
     }
 
@@ -339,8 +339,8 @@ public class CreativeApi {
      * 
      * Create a Coupon
      * @param advertiserId The advertiser identifier. (required)
-     * @param createCouponRequest  (required)
-     * @return ApiResponse&lt;CouponResponse&gt;
+     * @param resourceInputOfCreateCoupon  (required)
+     * @return ApiResponse&lt;ResourceOutcomeOfCoupon&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -350,9 +350,9 @@ public class CreativeApi {
         <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CouponResponse> createAdvertiserCouponWithHttpInfo(String advertiserId, CreateCouponRequest createCouponRequest) throws ApiException {
-        okhttp3.Call localVarCall = createAdvertiserCouponValidateBeforeCall(advertiserId, createCouponRequest, null);
-        Type localVarReturnType = new TypeToken<CouponResponse>(){}.getType();
+    public ApiResponse<ResourceOutcomeOfCoupon> createAdvertiserCouponWithHttpInfo(String advertiserId, ResourceInputOfCreateCoupon resourceInputOfCreateCoupon) throws ApiException {
+        okhttp3.Call localVarCall = createAdvertiserCouponValidateBeforeCall(advertiserId, resourceInputOfCreateCoupon, null);
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfCoupon>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -360,7 +360,7 @@ public class CreativeApi {
      *  (asynchronously)
      * Create a Coupon
      * @param advertiserId The advertiser identifier. (required)
-     * @param createCouponRequest  (required)
+     * @param resourceInputOfCreateCoupon  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -372,17 +372,17 @@ public class CreativeApi {
         <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAdvertiserCouponAsync(String advertiserId, CreateCouponRequest createCouponRequest, final ApiCallback<CouponResponse> _callback) throws ApiException {
+    public okhttp3.Call createAdvertiserCouponAsync(String advertiserId, ResourceInputOfCreateCoupon resourceInputOfCreateCoupon, final ApiCallback<ResourceOutcomeOfCoupon> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createAdvertiserCouponValidateBeforeCall(advertiserId, createCouponRequest, _callback);
-        Type localVarReturnType = new TypeToken<CouponResponse>(){}.getType();
+        okhttp3.Call localVarCall = createAdvertiserCouponValidateBeforeCall(advertiserId, resourceInputOfCreateCoupon, _callback);
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfCoupon>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for createAdvertiserCreative
      * @param advertiserId The advertiser identifier. (required)
-     * @param creativeWriteRequest  (required)
+     * @param resourceInputOfCreativeWrite  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -395,7 +395,7 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAdvertiserCreativeCall(String advertiserId, CreativeWriteRequest creativeWriteRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createAdvertiserCreativeCall(String advertiserId, ResourceInputOfCreativeWrite resourceInputOfCreativeWrite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -409,7 +409,7 @@ public class CreativeApi {
             basePath = null;
         }
 
-        Object localVarPostBody = creativeWriteRequest;
+        Object localVarPostBody = resourceInputOfCreativeWrite;
 
         // create path and map variables
         String localVarPath = "/preview/advertisers/{advertiser-id}/creatives"
@@ -447,18 +447,18 @@ public class CreativeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAdvertiserCreativeValidateBeforeCall(String advertiserId, CreativeWriteRequest creativeWriteRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAdvertiserCreativeValidateBeforeCall(String advertiserId, ResourceInputOfCreativeWrite resourceInputOfCreativeWrite, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling createAdvertiserCreative(Async)");
         }
 
-        // verify the required parameter 'creativeWriteRequest' is set
-        if (creativeWriteRequest == null) {
-            throw new ApiException("Missing the required parameter 'creativeWriteRequest' when calling createAdvertiserCreative(Async)");
+        // verify the required parameter 'resourceInputOfCreativeWrite' is set
+        if (resourceInputOfCreativeWrite == null) {
+            throw new ApiException("Missing the required parameter 'resourceInputOfCreativeWrite' when calling createAdvertiserCreative(Async)");
         }
 
-        return createAdvertiserCreativeCall(advertiserId, creativeWriteRequest, _callback);
+        return createAdvertiserCreativeCall(advertiserId, resourceInputOfCreativeWrite, _callback);
 
     }
 
@@ -466,8 +466,8 @@ public class CreativeApi {
      * 
      * Create a Creative
      * @param advertiserId The advertiser identifier. (required)
-     * @param creativeWriteRequest  (required)
-     * @return CreativeResponse
+     * @param resourceInputOfCreativeWrite  (required)
+     * @return ResourceOutcomeOfCreative
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -478,8 +478,8 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public CreativeResponse createAdvertiserCreative(String advertiserId, CreativeWriteRequest creativeWriteRequest) throws ApiException {
-        ApiResponse<CreativeResponse> localVarResp = createAdvertiserCreativeWithHttpInfo(advertiserId, creativeWriteRequest);
+    public ResourceOutcomeOfCreative createAdvertiserCreative(String advertiserId, ResourceInputOfCreativeWrite resourceInputOfCreativeWrite) throws ApiException {
+        ApiResponse<ResourceOutcomeOfCreative> localVarResp = createAdvertiserCreativeWithHttpInfo(advertiserId, resourceInputOfCreativeWrite);
         return localVarResp.getData();
     }
 
@@ -487,8 +487,8 @@ public class CreativeApi {
      * 
      * Create a Creative
      * @param advertiserId The advertiser identifier. (required)
-     * @param creativeWriteRequest  (required)
-     * @return ApiResponse&lt;CreativeResponse&gt;
+     * @param resourceInputOfCreativeWrite  (required)
+     * @return ApiResponse&lt;ResourceOutcomeOfCreative&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -499,9 +499,9 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreativeResponse> createAdvertiserCreativeWithHttpInfo(String advertiserId, CreativeWriteRequest creativeWriteRequest) throws ApiException {
-        okhttp3.Call localVarCall = createAdvertiserCreativeValidateBeforeCall(advertiserId, creativeWriteRequest, null);
-        Type localVarReturnType = new TypeToken<CreativeResponse>(){}.getType();
+    public ApiResponse<ResourceOutcomeOfCreative> createAdvertiserCreativeWithHttpInfo(String advertiserId, ResourceInputOfCreativeWrite resourceInputOfCreativeWrite) throws ApiException {
+        okhttp3.Call localVarCall = createAdvertiserCreativeValidateBeforeCall(advertiserId, resourceInputOfCreativeWrite, null);
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfCreative>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -509,7 +509,7 @@ public class CreativeApi {
      *  (asynchronously)
      * Create a Creative
      * @param advertiserId The advertiser identifier. (required)
-     * @param creativeWriteRequest  (required)
+     * @param resourceInputOfCreativeWrite  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -522,10 +522,10 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAdvertiserCreativeAsync(String advertiserId, CreativeWriteRequest creativeWriteRequest, final ApiCallback<CreativeResponse> _callback) throws ApiException {
+    public okhttp3.Call createAdvertiserCreativeAsync(String advertiserId, ResourceInputOfCreativeWrite resourceInputOfCreativeWrite, final ApiCallback<ResourceOutcomeOfCreative> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createAdvertiserCreativeValidateBeforeCall(advertiserId, creativeWriteRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreativeResponse>(){}.getType();
+        okhttp3.Call localVarCall = createAdvertiserCreativeValidateBeforeCall(advertiserId, resourceInputOfCreativeWrite, _callback);
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfCreative>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -929,7 +929,7 @@ public class CreativeApi {
      * Build call for editAdvertiserCoupon
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to edit. (required)
-     * @param updateCouponRequest  (required)
+     * @param resourceInputOfUpdateCoupon  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -938,9 +938,10 @@ public class CreativeApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The edited Coupon is returned. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call editAdvertiserCouponCall(String advertiserId, String id, UpdateCouponRequest updateCouponRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call editAdvertiserCouponCall(String advertiserId, String id, ResourceInputOfUpdateCoupon resourceInputOfUpdateCoupon, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -954,7 +955,7 @@ public class CreativeApi {
             basePath = null;
         }
 
-        Object localVarPostBody = updateCouponRequest;
+        Object localVarPostBody = resourceInputOfUpdateCoupon;
 
         // create path and map variables
         String localVarPath = "/preview/advertisers/{advertiser-id}/coupons/{id}"
@@ -993,7 +994,7 @@ public class CreativeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call editAdvertiserCouponValidateBeforeCall(String advertiserId, String id, UpdateCouponRequest updateCouponRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call editAdvertiserCouponValidateBeforeCall(String advertiserId, String id, ResourceInputOfUpdateCoupon resourceInputOfUpdateCoupon, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advertiserId' is set
         if (advertiserId == null) {
             throw new ApiException("Missing the required parameter 'advertiserId' when calling editAdvertiserCoupon(Async)");
@@ -1004,12 +1005,12 @@ public class CreativeApi {
             throw new ApiException("Missing the required parameter 'id' when calling editAdvertiserCoupon(Async)");
         }
 
-        // verify the required parameter 'updateCouponRequest' is set
-        if (updateCouponRequest == null) {
-            throw new ApiException("Missing the required parameter 'updateCouponRequest' when calling editAdvertiserCoupon(Async)");
+        // verify the required parameter 'resourceInputOfUpdateCoupon' is set
+        if (resourceInputOfUpdateCoupon == null) {
+            throw new ApiException("Missing the required parameter 'resourceInputOfUpdateCoupon' when calling editAdvertiserCoupon(Async)");
         }
 
-        return editAdvertiserCouponCall(advertiserId, id, updateCouponRequest, _callback);
+        return editAdvertiserCouponCall(advertiserId, id, resourceInputOfUpdateCoupon, _callback);
 
     }
 
@@ -1018,18 +1019,19 @@ public class CreativeApi {
      * Edit a specific Coupon
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to edit. (required)
-     * @param updateCouponRequest  (required)
-     * @return CouponResponse
+     * @param resourceInputOfUpdateCoupon  (required)
+     * @return ResourceOutcomeOfCoupon
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The edited Coupon is returned. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public CouponResponse editAdvertiserCoupon(String advertiserId, String id, UpdateCouponRequest updateCouponRequest) throws ApiException {
-        ApiResponse<CouponResponse> localVarResp = editAdvertiserCouponWithHttpInfo(advertiserId, id, updateCouponRequest);
+    public ResourceOutcomeOfCoupon editAdvertiserCoupon(String advertiserId, String id, ResourceInputOfUpdateCoupon resourceInputOfUpdateCoupon) throws ApiException {
+        ApiResponse<ResourceOutcomeOfCoupon> localVarResp = editAdvertiserCouponWithHttpInfo(advertiserId, id, resourceInputOfUpdateCoupon);
         return localVarResp.getData();
     }
 
@@ -1038,19 +1040,20 @@ public class CreativeApi {
      * Edit a specific Coupon
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to edit. (required)
-     * @param updateCouponRequest  (required)
-     * @return ApiResponse&lt;CouponResponse&gt;
+     * @param resourceInputOfUpdateCoupon  (required)
+     * @return ApiResponse&lt;ResourceOutcomeOfCoupon&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The edited Coupon is returned. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CouponResponse> editAdvertiserCouponWithHttpInfo(String advertiserId, String id, UpdateCouponRequest updateCouponRequest) throws ApiException {
-        okhttp3.Call localVarCall = editAdvertiserCouponValidateBeforeCall(advertiserId, id, updateCouponRequest, null);
-        Type localVarReturnType = new TypeToken<CouponResponse>(){}.getType();
+    public ApiResponse<ResourceOutcomeOfCoupon> editAdvertiserCouponWithHttpInfo(String advertiserId, String id, ResourceInputOfUpdateCoupon resourceInputOfUpdateCoupon) throws ApiException {
+        okhttp3.Call localVarCall = editAdvertiserCouponValidateBeforeCall(advertiserId, id, resourceInputOfUpdateCoupon, null);
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfCoupon>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1059,7 +1062,7 @@ public class CreativeApi {
      * Edit a specific Coupon
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to edit. (required)
-     * @param updateCouponRequest  (required)
+     * @param resourceInputOfUpdateCoupon  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1068,19 +1071,20 @@ public class CreativeApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> The edited Coupon is returned. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The request contained invalid parameters. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call editAdvertiserCouponAsync(String advertiserId, String id, UpdateCouponRequest updateCouponRequest, final ApiCallback<CouponResponse> _callback) throws ApiException {
+    public okhttp3.Call editAdvertiserCouponAsync(String advertiserId, String id, ResourceInputOfUpdateCoupon resourceInputOfUpdateCoupon, final ApiCallback<ResourceOutcomeOfCoupon> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = editAdvertiserCouponValidateBeforeCall(advertiserId, id, updateCouponRequest, _callback);
-        Type localVarReturnType = new TypeToken<CouponResponse>(){}.getType();
+        okhttp3.Call localVarCall = editAdvertiserCouponValidateBeforeCall(advertiserId, id, resourceInputOfUpdateCoupon, _callback);
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfCoupon>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for editCreative
      * @param id The creative identifier to edit. (required)
-     * @param creativeWriteRequest  (required)
+     * @param resourceInputOfCreativeWrite  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1093,7 +1097,7 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call editCreativeCall(String id, CreativeWriteRequest creativeWriteRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call editCreativeCall(String id, ResourceInputOfCreativeWrite resourceInputOfCreativeWrite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1107,7 +1111,7 @@ public class CreativeApi {
             basePath = null;
         }
 
-        Object localVarPostBody = creativeWriteRequest;
+        Object localVarPostBody = resourceInputOfCreativeWrite;
 
         // create path and map variables
         String localVarPath = "/preview/creatives/{id}"
@@ -1145,18 +1149,18 @@ public class CreativeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call editCreativeValidateBeforeCall(String id, CreativeWriteRequest creativeWriteRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call editCreativeValidateBeforeCall(String id, ResourceInputOfCreativeWrite resourceInputOfCreativeWrite, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling editCreative(Async)");
         }
 
-        // verify the required parameter 'creativeWriteRequest' is set
-        if (creativeWriteRequest == null) {
-            throw new ApiException("Missing the required parameter 'creativeWriteRequest' when calling editCreative(Async)");
+        // verify the required parameter 'resourceInputOfCreativeWrite' is set
+        if (resourceInputOfCreativeWrite == null) {
+            throw new ApiException("Missing the required parameter 'resourceInputOfCreativeWrite' when calling editCreative(Async)");
         }
 
-        return editCreativeCall(id, creativeWriteRequest, _callback);
+        return editCreativeCall(id, resourceInputOfCreativeWrite, _callback);
 
     }
 
@@ -1164,8 +1168,8 @@ public class CreativeApi {
      * 
      * Edit a specific Creative
      * @param id The creative identifier to edit. (required)
-     * @param creativeWriteRequest  (required)
-     * @return CreativeResponse
+     * @param resourceInputOfCreativeWrite  (required)
+     * @return ResourceOutcomeOfCreative
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1176,8 +1180,8 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public CreativeResponse editCreative(String id, CreativeWriteRequest creativeWriteRequest) throws ApiException {
-        ApiResponse<CreativeResponse> localVarResp = editCreativeWithHttpInfo(id, creativeWriteRequest);
+    public ResourceOutcomeOfCreative editCreative(String id, ResourceInputOfCreativeWrite resourceInputOfCreativeWrite) throws ApiException {
+        ApiResponse<ResourceOutcomeOfCreative> localVarResp = editCreativeWithHttpInfo(id, resourceInputOfCreativeWrite);
         return localVarResp.getData();
     }
 
@@ -1185,8 +1189,8 @@ public class CreativeApi {
      * 
      * Edit a specific Creative
      * @param id The creative identifier to edit. (required)
-     * @param creativeWriteRequest  (required)
-     * @return ApiResponse&lt;CreativeResponse&gt;
+     * @param resourceInputOfCreativeWrite  (required)
+     * @return ApiResponse&lt;ResourceOutcomeOfCreative&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1197,9 +1201,9 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreativeResponse> editCreativeWithHttpInfo(String id, CreativeWriteRequest creativeWriteRequest) throws ApiException {
-        okhttp3.Call localVarCall = editCreativeValidateBeforeCall(id, creativeWriteRequest, null);
-        Type localVarReturnType = new TypeToken<CreativeResponse>(){}.getType();
+    public ApiResponse<ResourceOutcomeOfCreative> editCreativeWithHttpInfo(String id, ResourceInputOfCreativeWrite resourceInputOfCreativeWrite) throws ApiException {
+        okhttp3.Call localVarCall = editCreativeValidateBeforeCall(id, resourceInputOfCreativeWrite, null);
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfCreative>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1207,7 +1211,7 @@ public class CreativeApi {
      *  (asynchronously)
      * Edit a specific Creative
      * @param id The creative identifier to edit. (required)
-     * @param creativeWriteRequest  (required)
+     * @param resourceInputOfCreativeWrite  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1220,10 +1224,10 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call editCreativeAsync(String id, CreativeWriteRequest creativeWriteRequest, final ApiCallback<CreativeResponse> _callback) throws ApiException {
+    public okhttp3.Call editCreativeAsync(String id, ResourceInputOfCreativeWrite resourceInputOfCreativeWrite, final ApiCallback<ResourceOutcomeOfCreative> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = editCreativeValidateBeforeCall(id, creativeWriteRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreativeResponse>(){}.getType();
+        okhttp3.Call localVarCall = editCreativeValidateBeforeCall(id, resourceInputOfCreativeWrite, _callback);
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfCreative>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1311,7 +1315,7 @@ public class CreativeApi {
 
     /**
      * 
-     * Generate a preview of a specific Creative
+     * Get the preview of a specific Creative
      * @param id The Creative identifier to preview. (required)
      * @param width The width of the Creative to preview. (optional)
      * @param height The height of the Creative to preview. (optional)
@@ -1332,7 +1336,7 @@ public class CreativeApi {
 
     /**
      * 
-     * Generate a preview of a specific Creative
+     * Get the preview of a specific Creative
      * @param id The Creative identifier to preview. (required)
      * @param width The width of the Creative to preview. (optional)
      * @param height The height of the Creative to preview. (optional)
@@ -1354,7 +1358,7 @@ public class CreativeApi {
 
     /**
      *  (asynchronously)
-     * Generate a preview of a specific Creative
+     * Get the preview of a specific Creative
      * @param id The Creative identifier to preview. (required)
      * @param width The width of the Creative to preview. (optional)
      * @param height The height of the Creative to preview. (optional)
@@ -1451,9 +1455,9 @@ public class CreativeApi {
 
     /**
      * 
-     * Get an Ad from its id
+     * Get an Ad with its id
      * @param id The ad identifier to retrieve. (required)
-     * @return AdResponse
+     * @return ResourceOutcomeOfAd
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1464,16 +1468,16 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public AdResponse getAd(Integer id) throws ApiException {
-        ApiResponse<AdResponse> localVarResp = getAdWithHttpInfo(id);
+    public ResourceOutcomeOfAd getAd(Integer id) throws ApiException {
+        ApiResponse<ResourceOutcomeOfAd> localVarResp = getAdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Get an Ad from its id
+     * Get an Ad with its id
      * @param id The ad identifier to retrieve. (required)
-     * @return ApiResponse&lt;AdResponse&gt;
+     * @return ApiResponse&lt;ResourceOutcomeOfAd&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1484,15 +1488,15 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdResponse> getAdWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<ResourceOutcomeOfAd> getAdWithHttpInfo(Integer id) throws ApiException {
         okhttp3.Call localVarCall = getAdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<AdResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfAd>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Get an Ad from its id
+     * Get an Ad with its id
      * @param id The ad identifier to retrieve. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1506,10 +1510,10 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdAsync(Integer id, final ApiCallback<AdResponse> _callback) throws ApiException {
+    public okhttp3.Call getAdAsync(Integer id, final ApiCallback<ResourceOutcomeOfAd> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<AdResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfAd>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1602,7 +1606,7 @@ public class CreativeApi {
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of ads to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of ads. The default is 0. (optional)
-     * @return AdListResponse
+     * @return ResourceCollectionOutcomeOfAd
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1613,8 +1617,8 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public AdListResponse getAdvertiserAds(String advertiserId, Integer limit, Integer offset) throws ApiException {
-        ApiResponse<AdListResponse> localVarResp = getAdvertiserAdsWithHttpInfo(advertiserId, limit, offset);
+    public ResourceCollectionOutcomeOfAd getAdvertiserAds(String advertiserId, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<ResourceCollectionOutcomeOfAd> localVarResp = getAdvertiserAdsWithHttpInfo(advertiserId, limit, offset);
         return localVarResp.getData();
     }
 
@@ -1624,7 +1628,7 @@ public class CreativeApi {
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of ads to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of ads. The default is 0. (optional)
-     * @return ApiResponse&lt;AdListResponse&gt;
+     * @return ApiResponse&lt;ResourceCollectionOutcomeOfAd&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1635,9 +1639,9 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdListResponse> getAdvertiserAdsWithHttpInfo(String advertiserId, Integer limit, Integer offset) throws ApiException {
+    public ApiResponse<ResourceCollectionOutcomeOfAd> getAdvertiserAdsWithHttpInfo(String advertiserId, Integer limit, Integer offset) throws ApiException {
         okhttp3.Call localVarCall = getAdvertiserAdsValidateBeforeCall(advertiserId, limit, offset, null);
-        Type localVarReturnType = new TypeToken<AdListResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceCollectionOutcomeOfAd>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1659,10 +1663,10 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdvertiserAdsAsync(String advertiserId, Integer limit, Integer offset, final ApiCallback<AdListResponse> _callback) throws ApiException {
+    public okhttp3.Call getAdvertiserAdsAsync(String advertiserId, Integer limit, Integer offset, final ApiCallback<ResourceCollectionOutcomeOfAd> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAdvertiserAdsValidateBeforeCall(advertiserId, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<AdListResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceCollectionOutcomeOfAd>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1747,10 +1751,10 @@ public class CreativeApi {
 
     /**
      * 
-     * Get a Coupon from its id
+     * Get a Coupon with its id
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to retrieve. (required)
-     * @return CouponResponse
+     * @return ResourceOutcomeOfCoupon
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1760,17 +1764,17 @@ public class CreativeApi {
         <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public CouponResponse getAdvertiserCoupon(String advertiserId, String id) throws ApiException {
-        ApiResponse<CouponResponse> localVarResp = getAdvertiserCouponWithHttpInfo(advertiserId, id);
+    public ResourceOutcomeOfCoupon getAdvertiserCoupon(String advertiserId, String id) throws ApiException {
+        ApiResponse<ResourceOutcomeOfCoupon> localVarResp = getAdvertiserCouponWithHttpInfo(advertiserId, id);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Get a Coupon from its id
+     * Get a Coupon with its id
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to retrieve. (required)
-     * @return ApiResponse&lt;CouponResponse&gt;
+     * @return ApiResponse&lt;ResourceOutcomeOfCoupon&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1780,15 +1784,15 @@ public class CreativeApi {
         <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CouponResponse> getAdvertiserCouponWithHttpInfo(String advertiserId, String id) throws ApiException {
+    public ApiResponse<ResourceOutcomeOfCoupon> getAdvertiserCouponWithHttpInfo(String advertiserId, String id) throws ApiException {
         okhttp3.Call localVarCall = getAdvertiserCouponValidateBeforeCall(advertiserId, id, null);
-        Type localVarReturnType = new TypeToken<CouponResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfCoupon>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Get a Coupon from its id
+     * Get a Coupon with its id
      * @param advertiserId The advertiser identifier. (required)
      * @param id The Coupon identifier to retrieve. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1802,10 +1806,10 @@ public class CreativeApi {
         <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdvertiserCouponAsync(String advertiserId, String id, final ApiCallback<CouponResponse> _callback) throws ApiException {
+    public okhttp3.Call getAdvertiserCouponAsync(String advertiserId, String id, final ApiCallback<ResourceOutcomeOfCoupon> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAdvertiserCouponValidateBeforeCall(advertiserId, id, _callback);
-        Type localVarReturnType = new TypeToken<CouponResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfCoupon>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2050,7 +2054,7 @@ public class CreativeApi {
      * Get the list of Coupon supported sizes
      * @param advertiserId The advertiser identifier. (required)
      * @param adSetId The ad set id on which you want to check the Coupon supported sizes. (optional)
-     * @return CouponSupportedSizesResponse
+     * @return ResourceOutcomeOfCouponSupportedSizes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2060,8 +2064,8 @@ public class CreativeApi {
         <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public CouponSupportedSizesResponse getAdvertiserCouponSupportedSizes(String advertiserId, String adSetId) throws ApiException {
-        ApiResponse<CouponSupportedSizesResponse> localVarResp = getAdvertiserCouponSupportedSizesWithHttpInfo(advertiserId, adSetId);
+    public ResourceOutcomeOfCouponSupportedSizes getAdvertiserCouponSupportedSizes(String advertiserId, String adSetId) throws ApiException {
+        ApiResponse<ResourceOutcomeOfCouponSupportedSizes> localVarResp = getAdvertiserCouponSupportedSizesWithHttpInfo(advertiserId, adSetId);
         return localVarResp.getData();
     }
 
@@ -2070,7 +2074,7 @@ public class CreativeApi {
      * Get the list of Coupon supported sizes
      * @param advertiserId The advertiser identifier. (required)
      * @param adSetId The ad set id on which you want to check the Coupon supported sizes. (optional)
-     * @return ApiResponse&lt;CouponSupportedSizesResponse&gt;
+     * @return ApiResponse&lt;ResourceOutcomeOfCouponSupportedSizes&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2080,9 +2084,9 @@ public class CreativeApi {
         <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CouponSupportedSizesResponse> getAdvertiserCouponSupportedSizesWithHttpInfo(String advertiserId, String adSetId) throws ApiException {
+    public ApiResponse<ResourceOutcomeOfCouponSupportedSizes> getAdvertiserCouponSupportedSizesWithHttpInfo(String advertiserId, String adSetId) throws ApiException {
         okhttp3.Call localVarCall = getAdvertiserCouponSupportedSizesValidateBeforeCall(advertiserId, adSetId, null);
-        Type localVarReturnType = new TypeToken<CouponSupportedSizesResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfCouponSupportedSizes>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2102,10 +2106,10 @@ public class CreativeApi {
         <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdvertiserCouponSupportedSizesAsync(String advertiserId, String adSetId, final ApiCallback<CouponSupportedSizesResponse> _callback) throws ApiException {
+    public okhttp3.Call getAdvertiserCouponSupportedSizesAsync(String advertiserId, String adSetId, final ApiCallback<ResourceOutcomeOfCouponSupportedSizes> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAdvertiserCouponSupportedSizesValidateBeforeCall(advertiserId, adSetId, _callback);
-        Type localVarReturnType = new TypeToken<CouponSupportedSizesResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfCouponSupportedSizes>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2197,7 +2201,7 @@ public class CreativeApi {
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of coupons to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of coupons. The default is 0. (optional)
-     * @return CouponListResponse
+     * @return ResourceCollectionOutcomeOfCoupon
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2207,8 +2211,8 @@ public class CreativeApi {
         <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public CouponListResponse getAdvertiserCoupons(String advertiserId, Integer limit, Integer offset) throws ApiException {
-        ApiResponse<CouponListResponse> localVarResp = getAdvertiserCouponsWithHttpInfo(advertiserId, limit, offset);
+    public ResourceCollectionOutcomeOfCoupon getAdvertiserCoupons(String advertiserId, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<ResourceCollectionOutcomeOfCoupon> localVarResp = getAdvertiserCouponsWithHttpInfo(advertiserId, limit, offset);
         return localVarResp.getData();
     }
 
@@ -2218,7 +2222,7 @@ public class CreativeApi {
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of coupons to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of coupons. The default is 0. (optional)
-     * @return ApiResponse&lt;CouponListResponse&gt;
+     * @return ApiResponse&lt;ResourceCollectionOutcomeOfCoupon&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2228,9 +2232,9 @@ public class CreativeApi {
         <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CouponListResponse> getAdvertiserCouponsWithHttpInfo(String advertiserId, Integer limit, Integer offset) throws ApiException {
+    public ApiResponse<ResourceCollectionOutcomeOfCoupon> getAdvertiserCouponsWithHttpInfo(String advertiserId, Integer limit, Integer offset) throws ApiException {
         okhttp3.Call localVarCall = getAdvertiserCouponsValidateBeforeCall(advertiserId, limit, offset, null);
-        Type localVarReturnType = new TypeToken<CouponListResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceCollectionOutcomeOfCoupon>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2251,10 +2255,10 @@ public class CreativeApi {
         <tr><td> 403 </td><td> The request was not properly authorized. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdvertiserCouponsAsync(String advertiserId, Integer limit, Integer offset, final ApiCallback<CouponListResponse> _callback) throws ApiException {
+    public okhttp3.Call getAdvertiserCouponsAsync(String advertiserId, Integer limit, Integer offset, final ApiCallback<ResourceCollectionOutcomeOfCoupon> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAdvertiserCouponsValidateBeforeCall(advertiserId, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<CouponListResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceCollectionOutcomeOfCoupon>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2347,7 +2351,7 @@ public class CreativeApi {
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of creatives to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of creatives. The default is 0. (optional)
-     * @return CreativeListResponse
+     * @return ResourceCollectionOutcomeOfCreative
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2358,8 +2362,8 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public CreativeListResponse getAdvertiserCreatives(String advertiserId, Integer limit, Integer offset) throws ApiException {
-        ApiResponse<CreativeListResponse> localVarResp = getAdvertiserCreativesWithHttpInfo(advertiserId, limit, offset);
+    public ResourceCollectionOutcomeOfCreative getAdvertiserCreatives(String advertiserId, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<ResourceCollectionOutcomeOfCreative> localVarResp = getAdvertiserCreativesWithHttpInfo(advertiserId, limit, offset);
         return localVarResp.getData();
     }
 
@@ -2369,7 +2373,7 @@ public class CreativeApi {
      * @param advertiserId The advertiser identifier. (required)
      * @param limit The number of creatives to be returned. The default is 50. (optional)
      * @param offset The (zero-based) offset into the collection of creatives. The default is 0. (optional)
-     * @return ApiResponse&lt;CreativeListResponse&gt;
+     * @return ApiResponse&lt;ResourceCollectionOutcomeOfCreative&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2380,9 +2384,9 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreativeListResponse> getAdvertiserCreativesWithHttpInfo(String advertiserId, Integer limit, Integer offset) throws ApiException {
+    public ApiResponse<ResourceCollectionOutcomeOfCreative> getAdvertiserCreativesWithHttpInfo(String advertiserId, Integer limit, Integer offset) throws ApiException {
         okhttp3.Call localVarCall = getAdvertiserCreativesValidateBeforeCall(advertiserId, limit, offset, null);
-        Type localVarReturnType = new TypeToken<CreativeListResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceCollectionOutcomeOfCreative>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2404,10 +2408,10 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdvertiserCreativesAsync(String advertiserId, Integer limit, Integer offset, final ApiCallback<CreativeListResponse> _callback) throws ApiException {
+    public okhttp3.Call getAdvertiserCreativesAsync(String advertiserId, Integer limit, Integer offset, final ApiCallback<ResourceCollectionOutcomeOfCreative> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAdvertiserCreativesValidateBeforeCall(advertiserId, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<CreativeListResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceCollectionOutcomeOfCreative>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2486,9 +2490,9 @@ public class CreativeApi {
 
     /**
      * 
-     * Get a Creative from its id
+     * Get a Creative with its id
      * @param id The creative identifier to retrieve. (required)
-     * @return CreativeResponse
+     * @return ResourceOutcomeOfCreative
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2499,16 +2503,16 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public CreativeResponse getCreative(String id) throws ApiException {
-        ApiResponse<CreativeResponse> localVarResp = getCreativeWithHttpInfo(id);
+    public ResourceOutcomeOfCreative getCreative(String id) throws ApiException {
+        ApiResponse<ResourceOutcomeOfCreative> localVarResp = getCreativeWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Get a Creative from its id
+     * Get a Creative with its id
      * @param id The creative identifier to retrieve. (required)
-     * @return ApiResponse&lt;CreativeResponse&gt;
+     * @return ApiResponse&lt;ResourceOutcomeOfCreative&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2519,15 +2523,15 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreativeResponse> getCreativeWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<ResourceOutcomeOfCreative> getCreativeWithHttpInfo(String id) throws ApiException {
         okhttp3.Call localVarCall = getCreativeValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<CreativeResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfCreative>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Get a Creative from its id
+     * Get a Creative with its id
      * @param id The creative identifier to retrieve. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2541,10 +2545,10 @@ public class CreativeApi {
         <tr><td> 500 </td><td> A non-request based error occurred on the server. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCreativeAsync(String id, final ApiCallback<CreativeResponse> _callback) throws ApiException {
+    public okhttp3.Call getCreativeAsync(String id, final ApiCallback<ResourceOutcomeOfCreative> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCreativeValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<CreativeResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceOutcomeOfCreative>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

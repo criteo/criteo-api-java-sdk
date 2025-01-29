@@ -61,8 +61,6 @@ public class SyncLineItemsReport {
     
     PAGETYPE("pageType"),
     
-    KEYWORD("keyword"),
-    
     PRODUCTCATEGORY("productCategory"),
     
     PRODUCT("product"),
@@ -388,11 +386,9 @@ public class SyncLineItemsReport {
     
     PAGECATEGORY("pageCategory"),
     
-    TAXONOMYBREADCRUMB("taxonomyBreadcrumb"),
+    SERVEDCATEGORY("servedCategory"),
     
-    KEYWORD("keyword"),
-    
-    SEARCHTERM("searchTerm");
+    TAXONOMYBREADCRUMB("taxonomyBreadcrumb");
 
     private String value;
 
@@ -466,22 +462,6 @@ public class SyncLineItemsReport {
     CPM("cpm"),
     
     ROAS("roas"),
-    
-    VIDEOVIEWS("videoViews"),
-    
-    VIDEOSSTARTED("videosStarted"),
-    
-    VIDEOSPLAYEDTO25("videosPlayedTo25"),
-    
-    VIDEOSPLAYEDTO50("videosPlayedTo50"),
-    
-    VIDEOSPLAYEDTO75("videosPlayedTo75"),
-    
-    VIDEOSPLAYEDTO100("videosPlayedTo100"),
-    
-    VIDEOPLAYINGRATE("videoPlayingRate"),
-    
-    VIDEOCOMPLETIONRATE("videoCompletionRate"),
     
     UNIQUEVISITORS("uniqueVisitors"),
     

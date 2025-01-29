@@ -18,7 +18,7 @@ A creative entity
 |**associatedLineItemIds** | **List&lt;String&gt;** | Associated Line Item Ids |  [optional] |
 |**updatedAt** | **OffsetDateTime** | Updated at time |  [optional] |
 |**creativeFormatType** | [**CreativeFormatTypeEnum**](#CreativeFormatTypeEnum) | Creative format type |  |
-|**environments** | [**List&lt;PageTypeEnvironment&gt;**](PageTypeEnvironment.md) | Environment type (e.g. mobile, web, app) |  |
+|**environments** | [**List&lt;PageTypeEnvironment202210&gt;**](PageTypeEnvironment202210.md) | Environment type (e.g. mobile, web, app) |  |
 |**templateVariableValues** | [**List&lt;TemplateVariableValue&gt;**](TemplateVariableValue.md) | The template chosen values |  |
 
 

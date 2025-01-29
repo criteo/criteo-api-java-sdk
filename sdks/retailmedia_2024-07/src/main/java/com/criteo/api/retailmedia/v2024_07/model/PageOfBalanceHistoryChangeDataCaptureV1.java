@@ -48,7 +48,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2024_07.JSON;
 
 /**
- * A wrapper class to return a single page of items with metadata.
+ * A wrapper class to return a single page of items with metadata for offset and limit based paging.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PageOfBalanceHistoryChangeDataCaptureV1 {

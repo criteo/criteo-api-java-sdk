@@ -16,6 +16,7 @@ package com.criteo.api.marketingsolutions.preview.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.marketingsolutions.preview.model.AdSetTargetingV24Q3;
+import com.criteo.api.marketingsolutions.preview.model.ReadAdSetAttributionConfigurationV24Q3;
 import com.criteo.api.marketingsolutions.preview.model.ReadAdSetBiddingV24Q3;
 import com.criteo.api.marketingsolutions.preview.model.ReadAdSetBudgetV24Q3;
 import com.criteo.api.marketingsolutions.preview.model.ReadAdSetScheduleV24Q3;
@@ -309,6 +310,10 @@ public class ReadAdSetV24Q3 {
   @SerializedName(SERIALIZED_NAME_VIDEO_CHANNEL)
   private VideoChannelEnum videoChannel;
 
+  public static final String SERIALIZED_NAME_ATTRIBUTION_CONFIGURATION = "attributionConfiguration";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTION_CONFIGURATION)
+  private ReadAdSetAttributionConfigurationV24Q3 attributionConfiguration;
+
   public ReadAdSetV24Q3() {
   }
 
@@ -575,6 +580,28 @@ public class ReadAdSetV24Q3 {
     this.videoChannel = videoChannel;
   }
 
+
+  public ReadAdSetV24Q3 attributionConfiguration(ReadAdSetAttributionConfigurationV24Q3 attributionConfiguration) {
+    
+    this.attributionConfiguration = attributionConfiguration;
+    return this;
+  }
+
+   /**
+   * Get attributionConfiguration
+   * @return attributionConfiguration
+  **/
+  @javax.annotation.Nullable
+
+  public ReadAdSetAttributionConfigurationV24Q3 getAttributionConfiguration() {
+    return attributionConfiguration;
+  }
+
+
+  public void setAttributionConfiguration(ReadAdSetAttributionConfigurationV24Q3 attributionConfiguration) {
+    this.attributionConfiguration = attributionConfiguration;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -641,7 +668,8 @@ public class ReadAdSetV24Q3 {
         Objects.equals(this.targeting, readAdSetV24Q3.targeting) &&
         Objects.equals(this.budget, readAdSetV24Q3.budget) &&
         Objects.equals(this.mediaType, readAdSetV24Q3.mediaType) &&
-        Objects.equals(this.videoChannel, readAdSetV24Q3.videoChannel)&&
+        Objects.equals(this.videoChannel, readAdSetV24Q3.videoChannel) &&
+        Objects.equals(this.attributionConfiguration, readAdSetV24Q3.attributionConfiguration)&&
         Objects.equals(this.additionalProperties, readAdSetV24Q3.additionalProperties);
   }
 
@@ -651,7 +679,7 @@ public class ReadAdSetV24Q3 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, advertiserId, datasetId, campaignId, destinationEnvironment, objective, schedule, bidding, targeting, budget, mediaType, videoChannel, additionalProperties);
+    return Objects.hash(name, advertiserId, datasetId, campaignId, destinationEnvironment, objective, schedule, bidding, targeting, budget, mediaType, videoChannel, attributionConfiguration, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -677,6 +705,7 @@ public class ReadAdSetV24Q3 {
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("    videoChannel: ").append(toIndentedString(videoChannel)).append("\n");
+    sb.append("    attributionConfiguration: ").append(toIndentedString(attributionConfiguration)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -712,6 +741,7 @@ public class ReadAdSetV24Q3 {
     openapiFields.add("budget");
     openapiFields.add("mediaType");
     openapiFields.add("videoChannel");
+    openapiFields.add("attributionConfiguration");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -768,6 +798,10 @@ public class ReadAdSetV24Q3 {
       }
       if ((jsonObj.get("videoChannel") != null && !jsonObj.get("videoChannel").isJsonNull()) && !jsonObj.get("videoChannel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `videoChannel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("videoChannel").toString()));
+      }
+      // validate the optional field `attributionConfiguration`
+      if (jsonObj.get("attributionConfiguration") != null && !jsonObj.get("attributionConfiguration").isJsonNull()) {
+        ReadAdSetAttributionConfigurationV24Q3.validateJsonObject(jsonObj.getAsJsonObject("attributionConfiguration"));
       }
   }
 

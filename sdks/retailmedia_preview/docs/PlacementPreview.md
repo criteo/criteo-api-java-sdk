@@ -40,6 +40,10 @@ Ad Placement information on a page
 | WEB | &quot;Web&quot; |
 | MOBILE | &quot;Mobile&quot; |
 | APP | &quot;App&quot; |
+| LOCKOUT | &quot;Lockout&quot; |
+| MIXED | &quot;Mixed&quot; |
+| IOS | &quot;iOS&quot; |
+| ANDROID | &quot;Android&quot; |
 
 
 

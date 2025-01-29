@@ -19,7 +19,6 @@ docs/AnalyticsApi.md
 docs/ApplicationSummaryModel.md
 docs/ApplicationSummaryModelResource.md
 docs/ApplicationSummaryModelResponse.md
-docs/ApprovalStatusModel.md
 docs/Asset.md
 docs/AssetResource.md
 docs/AssetResponse.md
@@ -139,9 +138,8 @@ docs/LineItemBidMultipliersResponse.md
 docs/LineItemBudgetOverrides.md
 docs/MatchTypeModel.md
 docs/MonthlyLineItemBudegetOverride.md
-docs/NegotiationStateModel.md
 docs/PageMetadata.md
-docs/PageTypeEnvironment.md
+docs/PageTypeEnvironment202210.md
 docs/PostCampaignV202301.md
 docs/PreferredLineItem202110PagedListResponse.md
 docs/PreferredLineItem202110Response.md
@@ -150,9 +148,6 @@ docs/PreferredLineItemUpdateModel202110Request.md
 docs/ProblemDetails.md
 docs/PromotedProduct202110ListRequest.md
 docs/PromotedProduct202110PagedListResponse.md
-docs/ProposalStatusModel.md
-docs/ProposalStatusModelResource.md
-docs/ProposalStatusModelResponse.md
 docs/PutCampaignV202301.md
 docs/ReportOutcome.md
 docs/ResourceOfAddFundsToBalance.md
@@ -226,6 +221,7 @@ docs/ValueTypeResourceOfAudienceTarget202110.md
 docs/ValueTypeResourceOfKeywordTarget202110.md
 docs/ValueTypeResourceOfStoreIdsUpdateModel202110.md
 docs/ValueTypeResourceOfStoreTarget202110.md
+docs/VideoVariableValue.md
 git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
@@ -275,7 +271,6 @@ src/main/java/com/criteo/api/retailmedia/v2024_01/model/AddToBasketTarget202110R
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/ApplicationSummaryModel.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/ApplicationSummaryModelResource.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/ApplicationSummaryModelResponse.java
-src/main/java/com/criteo/api/retailmedia/v2024_01/model/ApprovalStatusModel.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/Asset.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/AssetResource.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/AssetResponse.java
@@ -391,9 +386,8 @@ src/main/java/com/criteo/api/retailmedia/v2024_01/model/LineItemBidMultipliersRe
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/LineItemBudgetOverrides.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/MatchTypeModel.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/MonthlyLineItemBudegetOverride.java
-src/main/java/com/criteo/api/retailmedia/v2024_01/model/NegotiationStateModel.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/PageMetadata.java
-src/main/java/com/criteo/api/retailmedia/v2024_01/model/PageTypeEnvironment.java
+src/main/java/com/criteo/api/retailmedia/v2024_01/model/PageTypeEnvironment202210.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/PostCampaignV202301.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/PreferredLineItem202110PagedListResponse.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/PreferredLineItem202110Response.java
@@ -402,9 +396,6 @@ src/main/java/com/criteo/api/retailmedia/v2024_01/model/PreferredLineItemUpdateM
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/ProblemDetails.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/PromotedProduct202110ListRequest.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/PromotedProduct202110PagedListResponse.java
-src/main/java/com/criteo/api/retailmedia/v2024_01/model/ProposalStatusModel.java
-src/main/java/com/criteo/api/retailmedia/v2024_01/model/ProposalStatusModelResource.java
-src/main/java/com/criteo/api/retailmedia/v2024_01/model/ProposalStatusModelResponse.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/PutCampaignV202301.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/ReportOutcome.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/ResourceOfAddFundsToBalance.java
@@ -478,5 +469,6 @@ src/main/java/com/criteo/api/retailmedia/v2024_01/model/ValueTypeResourceOfAudie
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/ValueTypeResourceOfKeywordTarget202110.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/ValueTypeResourceOfStoreIdsUpdateModel202110.java
 src/main/java/com/criteo/api/retailmedia/v2024_01/model/ValueTypeResourceOfStoreTarget202110.java
+src/main/java/com/criteo/api/retailmedia/v2024_01/model/VideoVariableValue.java
 src/test/java/com/criteo/api/retailmedia/v2024_01/ExampleApplication.java
 src/test/java/com/criteo/api/retailmedia/v2024_01/GatewayApiTest.java

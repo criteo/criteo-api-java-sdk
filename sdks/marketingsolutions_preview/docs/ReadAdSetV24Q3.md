@@ -20,6 +20,7 @@ ad set read model
 |**budget** | [**ReadAdSetBudgetV24Q3**](ReadAdSetBudgetV24Q3.md) |  |  [optional] |
 |**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) |  |  [optional] |
 |**videoChannel** | [**VideoChannelEnum**](#VideoChannelEnum) |  |  [optional] |
+|**attributionConfiguration** | [**ReadAdSetAttributionConfigurationV24Q3**](ReadAdSetAttributionConfigurationV24Q3.md) |  |  [optional] |
 
 
 

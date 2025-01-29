@@ -57,6 +57,10 @@ public class RetailMediaSeller {
   @SerializedName(SERIALIZED_NAME_RETAILER_ID)
   private Integer retailerId;
 
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
   public RetailMediaSeller() {
   }
 
@@ -104,6 +108,28 @@ public class RetailMediaSeller {
   }
 
 
+  public RetailMediaSeller name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * seller name
+   * @return name
+  **/
+  @javax.annotation.Nullable
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -115,7 +141,8 @@ public class RetailMediaSeller {
     }
     RetailMediaSeller retailMediaSeller = (RetailMediaSeller) o;
     return Objects.equals(this.sellerId, retailMediaSeller.sellerId) &&
-        Objects.equals(this.retailerId, retailMediaSeller.retailerId);
+        Objects.equals(this.retailerId, retailMediaSeller.retailerId) &&
+        Objects.equals(this.name, retailMediaSeller.name);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -124,7 +151,7 @@ public class RetailMediaSeller {
 
   @Override
   public int hashCode() {
-    return Objects.hash(sellerId, retailerId);
+    return Objects.hash(sellerId, retailerId, name);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -140,6 +167,7 @@ public class RetailMediaSeller {
     sb.append("class RetailMediaSeller {\n");
     sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -164,6 +192,7 @@ public class RetailMediaSeller {
     openapiFields = new HashSet<String>();
     openapiFields.add("sellerId");
     openapiFields.add("retailerId");
+    openapiFields.add("name");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -191,6 +220,9 @@ public class RetailMediaSeller {
       }
       if ((jsonObj.get("sellerId") != null && !jsonObj.get("sellerId").isJsonNull()) && !jsonObj.get("sellerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sellerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sellerId").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
   }
 

@@ -134,7 +134,15 @@ public class PlacementPreview {
     
     MOBILE("Mobile"),
     
-    APP("App");
+    APP("App"),
+    
+    LOCKOUT("Lockout"),
+    
+    MIXED("Mixed"),
+    
+    IOS("iOS"),
+    
+    ANDROID("Android");
 
     private String value;
 

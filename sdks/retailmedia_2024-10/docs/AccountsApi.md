@@ -15,7 +15,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 ## addBrands
 
-> ValueResourceOfRetailMediaBrands addBrands(accountId, valueResourceInputOfRetailMediaBrands)
+> ValueResourceOutcomeOfRetailMediaBrands addBrands(accountId, valueResourceInputOfRetailMediaBrands)
 
 
 
@@ -61,9 +61,9 @@ public class Example {
 
         AccountsApi apiInstance = new AccountsApi(defaultClient);
         String accountId = "accountId_example"; // String | the account id to update
-        ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands = new ValueResourceInputOfRetailMediaBrands(); // ValueResourceInputOfRetailMediaBrands | brands to associate to account
+        ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands = new ValueResourceInputOfRetailMediaBrands(); // ValueResourceInputOfRetailMediaBrands | 
         try {
-            ValueResourceOfRetailMediaBrands result = apiInstance.addBrands(accountId, valueResourceInputOfRetailMediaBrands);
+            ValueResourceOutcomeOfRetailMediaBrands result = apiInstance.addBrands(accountId, valueResourceInputOfRetailMediaBrands);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountsApi#addBrands");
@@ -82,11 +82,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| the account id to update | |
-| **valueResourceInputOfRetailMediaBrands** | [**ValueResourceInputOfRetailMediaBrands**](ValueResourceInputOfRetailMediaBrands.md)| brands to associate to account | [optional] |
+| **valueResourceInputOfRetailMediaBrands** | [**ValueResourceInputOfRetailMediaBrands**](ValueResourceInputOfRetailMediaBrands.md)|  | [optional] |
 
 ### Return type
 
-[**ValueResourceOfRetailMediaBrands**](ValueResourceOfRetailMediaBrands.md)
+[**ValueResourceOutcomeOfRetailMediaBrands**](ValueResourceOutcomeOfRetailMediaBrands.md)
 
 ### Authorization
 
@@ -94,7 +94,7 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -106,7 +106,7 @@ public class Example {
 
 ## createPrivateMarketDemandBrandAccount
 
-> ResourceOutcomeOfRetailMediaAccount createPrivateMarketDemandBrandAccount(accountId, valueResourceInputOfRetailMediaBrandAccountCreation)
+> EntityResourceOutcomeOfRetailMediaAccount createPrivateMarketDemandBrandAccount(accountId, valueResourceInputOfRetailMediaBrandAccountCreation)
 
 
 
@@ -151,10 +151,10 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AccountsApi apiInstance = new AccountsApi(defaultClient);
-        String accountId = "accountId_example"; // String | Account Id for the parent private market account
-        ValueResourceInputOfRetailMediaBrandAccountCreation valueResourceInputOfRetailMediaBrandAccountCreation = new ValueResourceInputOfRetailMediaBrandAccountCreation(); // ValueResourceInputOfRetailMediaBrandAccountCreation | Initial creation and configuration options for the new account
+        String accountId = "accountId_example"; // String | The given account id
+        ValueResourceInputOfRetailMediaBrandAccountCreation valueResourceInputOfRetailMediaBrandAccountCreation = new ValueResourceInputOfRetailMediaBrandAccountCreation(); // ValueResourceInputOfRetailMediaBrandAccountCreation | 
         try {
-            ResourceOutcomeOfRetailMediaAccount result = apiInstance.createPrivateMarketDemandBrandAccount(accountId, valueResourceInputOfRetailMediaBrandAccountCreation);
+            EntityResourceOutcomeOfRetailMediaAccount result = apiInstance.createPrivateMarketDemandBrandAccount(accountId, valueResourceInputOfRetailMediaBrandAccountCreation);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountsApi#createPrivateMarketDemandBrandAccount");
@@ -172,12 +172,12 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Account Id for the parent private market account | |
-| **valueResourceInputOfRetailMediaBrandAccountCreation** | [**ValueResourceInputOfRetailMediaBrandAccountCreation**](ValueResourceInputOfRetailMediaBrandAccountCreation.md)| Initial creation and configuration options for the new account | [optional] |
+| **accountId** | **String**| The given account id | |
+| **valueResourceInputOfRetailMediaBrandAccountCreation** | [**ValueResourceInputOfRetailMediaBrandAccountCreation**](ValueResourceInputOfRetailMediaBrandAccountCreation.md)|  | [optional] |
 
 ### Return type
 
-[**ResourceOutcomeOfRetailMediaAccount**](ResourceOutcomeOfRetailMediaAccount.md)
+[**EntityResourceOutcomeOfRetailMediaAccount**](EntityResourceOutcomeOfRetailMediaAccount.md)
 
 ### Authorization
 
@@ -185,7 +185,7 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -197,7 +197,7 @@ public class Example {
 
 ## createPrivateMarketDemandSellerAccount
 
-> ResourceOutcomeOfRetailMediaAccount createPrivateMarketDemandSellerAccount(accountId, valueResourceInputOfRetailMediaSellerAccountCreation)
+> EntityResourceOutcomeOfRetailMediaAccount createPrivateMarketDemandSellerAccount(accountId, valueResourceInputOfRetailMediaSellerAccountCreation)
 
 
 
@@ -242,10 +242,10 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AccountsApi apiInstance = new AccountsApi(defaultClient);
-        String accountId = "accountId_example"; // String | Account Id for the parent private market account
-        ValueResourceInputOfRetailMediaSellerAccountCreation valueResourceInputOfRetailMediaSellerAccountCreation = new ValueResourceInputOfRetailMediaSellerAccountCreation(); // ValueResourceInputOfRetailMediaSellerAccountCreation | Initial creation and configuration options for the new account
+        String accountId = "accountId_example"; // String | The given account id
+        ValueResourceInputOfRetailMediaSellerAccountCreation valueResourceInputOfRetailMediaSellerAccountCreation = new ValueResourceInputOfRetailMediaSellerAccountCreation(); // ValueResourceInputOfRetailMediaSellerAccountCreation | 
         try {
-            ResourceOutcomeOfRetailMediaAccount result = apiInstance.createPrivateMarketDemandSellerAccount(accountId, valueResourceInputOfRetailMediaSellerAccountCreation);
+            EntityResourceOutcomeOfRetailMediaAccount result = apiInstance.createPrivateMarketDemandSellerAccount(accountId, valueResourceInputOfRetailMediaSellerAccountCreation);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountsApi#createPrivateMarketDemandSellerAccount");
@@ -263,12 +263,12 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Account Id for the parent private market account | |
-| **valueResourceInputOfRetailMediaSellerAccountCreation** | [**ValueResourceInputOfRetailMediaSellerAccountCreation**](ValueResourceInputOfRetailMediaSellerAccountCreation.md)| Initial creation and configuration options for the new account | [optional] |
+| **accountId** | **String**| The given account id | |
+| **valueResourceInputOfRetailMediaSellerAccountCreation** | [**ValueResourceInputOfRetailMediaSellerAccountCreation**](ValueResourceInputOfRetailMediaSellerAccountCreation.md)|  | [optional] |
 
 ### Return type
 
-[**ResourceOutcomeOfRetailMediaAccount**](ResourceOutcomeOfRetailMediaAccount.md)
+[**EntityResourceOutcomeOfRetailMediaAccount**](EntityResourceOutcomeOfRetailMediaAccount.md)
 
 ### Authorization
 
@@ -276,7 +276,7 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -381,102 +381,11 @@ public class Example {
 
 ## removeBrands
 
-> ValueResourceOfRetailMediaBrands removeBrands(accountId, valueResourceInputOfRetailMediaBrands)
+> ValueResourceOutcomeOfRetailMediaBrands removeBrands(accountId, valueResourceInputOfRetailMediaBrands)
 
 
 
-Remove a brand from an account
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2024_10;
-
-import com.criteo.api.retailmedia.v2024_10.ApiClient;
-import com.criteo.api.retailmedia.v2024_10.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2024_10.ApiException;
-import com.criteo.api.retailmedia.v2024_10.Configuration;
-import com.criteo.api.retailmedia.v2024_10.auth.*;
-import com.criteo.api.retailmedia.v2024_10.model.*;
-import com.criteo.api.retailmedia.v2024_10.api.AccountsApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        AccountsApi apiInstance = new AccountsApi(defaultClient);
-        String accountId = "accountId_example"; // String | The account id to update
-        ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands = new ValueResourceInputOfRetailMediaBrands(); // ValueResourceInputOfRetailMediaBrands | Brands to remove from account
-        try {
-            ValueResourceOfRetailMediaBrands result = apiInstance.removeBrands(accountId, valueResourceInputOfRetailMediaBrands);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AccountsApi#removeBrands");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The account id to update | |
-| **valueResourceInputOfRetailMediaBrands** | [**ValueResourceInputOfRetailMediaBrands**](ValueResourceInputOfRetailMediaBrands.md)| Brands to remove from account | [optional] |
-
-### Return type
-
-[**ValueResourceOfRetailMediaBrands**](ValueResourceOfRetailMediaBrands.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
-## updateSellers
-
-> ValueResourceCollectionOutcomeOfRetailMediaSeller updateSellers(accountId, valueResourceCollectionInputOfRetailMediaSeller)
-
-
-
-replace the sellers assoiated with an account
+Remove brands from an account
 
 ### Example
 
@@ -518,7 +427,98 @@ public class Example {
 
         AccountsApi apiInstance = new AccountsApi(defaultClient);
         String accountId = "accountId_example"; // String | the account id to update
-        ValueResourceCollectionInputOfRetailMediaSeller valueResourceCollectionInputOfRetailMediaSeller = new ValueResourceCollectionInputOfRetailMediaSeller(); // ValueResourceCollectionInputOfRetailMediaSeller | sellers to associate
+        ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands = new ValueResourceInputOfRetailMediaBrands(); // ValueResourceInputOfRetailMediaBrands | 
+        try {
+            ValueResourceOutcomeOfRetailMediaBrands result = apiInstance.removeBrands(accountId, valueResourceInputOfRetailMediaBrands);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AccountsApi#removeBrands");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| the account id to update | |
+| **valueResourceInputOfRetailMediaBrands** | [**ValueResourceInputOfRetailMediaBrands**](ValueResourceInputOfRetailMediaBrands.md)|  | [optional] |
+
+### Return type
+
+[**ValueResourceOutcomeOfRetailMediaBrands**](ValueResourceOutcomeOfRetailMediaBrands.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+
+## updateSellers
+
+> ValueResourceCollectionOutcomeOfRetailMediaSeller updateSellers(accountId, valueResourceCollectionInputOfRetailMediaSeller)
+
+
+
+replace the sellers associated with an account
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.v2024_10;
+
+import com.criteo.api.retailmedia.v2024_10.ApiClient;
+import com.criteo.api.retailmedia.v2024_10.ApiClientBuilder;
+import com.criteo.api.retailmedia.v2024_10.ApiException;
+import com.criteo.api.retailmedia.v2024_10.Configuration;
+import com.criteo.api.retailmedia.v2024_10.auth.*;
+import com.criteo.api.retailmedia.v2024_10.model.*;
+import com.criteo.api.retailmedia.v2024_10.api.AccountsApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        AccountsApi apiInstance = new AccountsApi(defaultClient);
+        String accountId = "accountId_example"; // String | The given account id
+        ValueResourceCollectionInputOfRetailMediaSeller valueResourceCollectionInputOfRetailMediaSeller = new ValueResourceCollectionInputOfRetailMediaSeller(); // ValueResourceCollectionInputOfRetailMediaSeller | 
         try {
             ValueResourceCollectionOutcomeOfRetailMediaSeller result = apiInstance.updateSellers(accountId, valueResourceCollectionInputOfRetailMediaSeller);
             System.out.println(result);
@@ -538,8 +538,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| the account id to update | |
-| **valueResourceCollectionInputOfRetailMediaSeller** | [**ValueResourceCollectionInputOfRetailMediaSeller**](ValueResourceCollectionInputOfRetailMediaSeller.md)| sellers to associate | [optional] |
+| **accountId** | **String**| The given account id | |
+| **valueResourceCollectionInputOfRetailMediaSeller** | [**ValueResourceCollectionInputOfRetailMediaSeller**](ValueResourceCollectionInputOfRetailMediaSeller.md)|  | [optional] |
 
 ### Return type
 
@@ -551,7 +551,7 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

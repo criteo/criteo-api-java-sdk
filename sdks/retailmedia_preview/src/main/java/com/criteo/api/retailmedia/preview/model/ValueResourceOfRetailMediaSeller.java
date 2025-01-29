@@ -46,7 +46,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * A top-level object that encapsulates a Criteo API response for a single value.
+ * A value resource exposed by the API.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ValueResourceOfRetailMediaSeller {
@@ -68,7 +68,7 @@ public class ValueResourceOfRetailMediaSeller {
   }
 
    /**
-   * Get type
+   * Type of the resource.
    * @return type
   **/
   @javax.annotation.Nullable

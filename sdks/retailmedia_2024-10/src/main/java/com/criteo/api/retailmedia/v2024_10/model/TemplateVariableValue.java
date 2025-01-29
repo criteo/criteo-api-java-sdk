@@ -20,12 +20,14 @@ import com.criteo.api.retailmedia.v2024_10.model.ColorVariableValue;
 import com.criteo.api.retailmedia.v2024_10.model.FilesVariableValue;
 import com.criteo.api.retailmedia.v2024_10.model.HyperlinkVariableValue;
 import com.criteo.api.retailmedia.v2024_10.model.TextVariableValue;
+import com.criteo.api.retailmedia.v2024_10.model.VideoVariableValue;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -76,6 +78,10 @@ public class TemplateVariableValue {
   public static final String SERIALIZED_NAME_HYPERLINK_VARIABLE_VALUE = "hyperlinkVariableValue";
   @SerializedName(SERIALIZED_NAME_HYPERLINK_VARIABLE_VALUE)
   private HyperlinkVariableValue hyperlinkVariableValue;
+
+  public static final String SERIALIZED_NAME_VIDEO_VARIABLE_VALUE = "videoVariableValue";
+  @SerializedName(SERIALIZED_NAME_VIDEO_VARIABLE_VALUE)
+  private VideoVariableValue videoVariableValue;
 
   public TemplateVariableValue() {
   }
@@ -211,50 +217,28 @@ public class TemplateVariableValue {
     this.hyperlinkVariableValue = hyperlinkVariableValue;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
 
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the TemplateVariableValue instance itself
-   */
-  public TemplateVariableValue putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
+  public TemplateVariableValue videoVariableValue(VideoVariableValue videoVariableValue) {
+    
+    this.videoVariableValue = videoVariableValue;
     return this;
   }
 
-  /**
-   * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
+   /**
+   * Get videoVariableValue
+   * @return videoVariableValue
+  **/
+  @javax.annotation.Nullable
+
+  public VideoVariableValue getVideoVariableValue() {
+    return videoVariableValue;
   }
 
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
+
+  public void setVideoVariableValue(VideoVariableValue videoVariableValue) {
+    this.videoVariableValue = videoVariableValue;
   }
+
 
 
   @Override
@@ -271,13 +255,24 @@ public class TemplateVariableValue {
         Objects.equals(this.choiceVariableValue, templateVariableValue.choiceVariableValue) &&
         Objects.equals(this.colorVariableValue, templateVariableValue.colorVariableValue) &&
         Objects.equals(this.filesVariableValue, templateVariableValue.filesVariableValue) &&
-        Objects.equals(this.hyperlinkVariableValue, templateVariableValue.hyperlinkVariableValue)&&
-        Objects.equals(this.additionalProperties, templateVariableValue.additionalProperties);
+        Objects.equals(this.hyperlinkVariableValue, templateVariableValue.hyperlinkVariableValue) &&
+        Objects.equals(this.videoVariableValue, templateVariableValue.videoVariableValue);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, textVariableValue, choiceVariableValue, colorVariableValue, filesVariableValue, hyperlinkVariableValue, additionalProperties);
+    return Objects.hash(id, textVariableValue, choiceVariableValue, colorVariableValue, filesVariableValue, hyperlinkVariableValue, videoVariableValue);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -290,7 +285,7 @@ public class TemplateVariableValue {
     sb.append("    colorVariableValue: ").append(toIndentedString(colorVariableValue)).append("\n");
     sb.append("    filesVariableValue: ").append(toIndentedString(filesVariableValue)).append("\n");
     sb.append("    hyperlinkVariableValue: ").append(toIndentedString(hyperlinkVariableValue)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
+    sb.append("    videoVariableValue: ").append(toIndentedString(videoVariableValue)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -319,6 +314,7 @@ public class TemplateVariableValue {
     openapiFields.add("colorVariableValue");
     openapiFields.add("filesVariableValue");
     openapiFields.add("hyperlinkVariableValue");
+    openapiFields.add("videoVariableValue");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -335,6 +331,14 @@ public class TemplateVariableValue {
       if (jsonObj == null) {
         if (!TemplateVariableValue.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in TemplateVariableValue is not found in the empty JSON string", TemplateVariableValue.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!TemplateVariableValue.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TemplateVariableValue` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
 
@@ -367,6 +371,10 @@ public class TemplateVariableValue {
       if (jsonObj.get("hyperlinkVariableValue") != null && !jsonObj.get("hyperlinkVariableValue").isJsonNull()) {
         HyperlinkVariableValue.validateJsonObject(jsonObj.getAsJsonObject("hyperlinkVariableValue"));
       }
+      // validate the optional field `videoVariableValue`
+      if (jsonObj.get("videoVariableValue") != null && !jsonObj.get("videoVariableValue").isJsonNull()) {
+        VideoVariableValue.validateJsonObject(jsonObj.getAsJsonObject("videoVariableValue"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -384,23 +392,6 @@ public class TemplateVariableValue {
            @Override
            public void write(JsonWriter out, TemplateVariableValue value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additional properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
@@ -408,27 +399,7 @@ public class TemplateVariableValue {
            public TemplateVariableValue read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             TemplateVariableValue instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             return thisAdapter.fromJsonTree(jsonObj);
            }
 
        }.nullSafe();

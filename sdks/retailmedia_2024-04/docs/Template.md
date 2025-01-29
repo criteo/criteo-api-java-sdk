@@ -10,13 +10,12 @@ A template for creating creatives.
 |------------ | ------------- | ------------- | -------------|
 |**creativeFormat** | [**CreativeFormatEnum**](#CreativeFormatEnum) | The kind of creative this template can be used to build. |  |
 |**name** | **String** | The name of the template |  |
-|**retailerId** | **Integer** | The retailer associated to the template |  [optional] |
-|**skuCollectionMin** | **Integer** | TODO: what is it ? |  |
-|**skuCollectionMax** | **Integer** | TODO: what is it ? |  [optional] |
-|**skuPerCollectionMin** | **Integer** | TODO: what is it ? |  |
-|**skuPerCollectionMax** | **Integer** | TODO: what is it ? |  [optional] |
-|**displayableSkusMax** | **Integer** | TODO: what is it ? |  [optional] |
-|**allCollectionsMandatory** | **Boolean** | TODO: what is it ? |  |
+|**skuCollectionMin** | **Integer** | Minimum number of skus in the collection |  |
+|**skuCollectionMax** | **Integer** | Maximum number of skus in the collection |  [optional] |
+|**skuPerCollectionMin** | **Integer** | Minimum number of skus per collection |  |
+|**skuPerCollectionMax** | **Integer** | Maximum number of skus per collection |  [optional] |
+|**displayableSkusMax** | **Integer** | Maximum number of displayable skus |  [optional] |
+|**allCollectionsMandatory** | **Boolean** | Marks whether or not all collections are mandatory |  |
 |**createdAt** | **OffsetDateTime** | The time at which the template was created |  |
 |**updatedAt** | **OffsetDateTime** | The time at which the template was updated |  |
 |**sections** | [**List&lt;Section&gt;**](Section.md) | The sections holding various template variables |  |

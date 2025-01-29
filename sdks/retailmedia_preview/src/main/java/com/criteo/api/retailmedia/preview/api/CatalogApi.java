@@ -28,9 +28,11 @@ import java.io.IOException;
 
 
 import com.criteo.api.retailmedia.preview.model.BatchAcceptedResponse;
+import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeBrandIdSearchResult;
 import com.criteo.api.retailmedia.preview.model.FailResponse;
 import com.criteo.api.retailmedia.preview.model.ProductsCustomBatchRequest;
 import com.criteo.api.retailmedia.preview.model.ReportOkResponse;
+import com.criteo.api.retailmedia.preview.model.ValueResourceInputBrandIdSearchRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -375,6 +377,145 @@ public class CatalogApi {
 
         okhttp3.Call localVarCall = previewRetailMediaCatalogProductsBatchReportOperationTokenGetValidateBeforeCall(operationToken, _callback);
         Type localVarReturnType = new TypeToken<ReportOkResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for searchBrandsByNameAsyncV1
+     * @param offset offset of paginated results (optional, default to 0)
+     * @param limit the number of brands to return (optional, default to 25)
+     * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call searchBrandsByNameAsyncV1Call(Integer offset, Integer limit, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputBrandIdSearchRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/brands/search";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call searchBrandsByNameAsyncV1ValidateBeforeCall(Integer offset, Integer limit, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback _callback) throws ApiException {
+        return searchBrandsByNameAsyncV1Call(offset, limit, valueResourceInputBrandIdSearchRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Search for brands given a retailer ID and search term.
+     * @param offset offset of paginated results (optional, default to 0)
+     * @param limit the number of brands to return (optional, default to 25)
+     * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
+     * @return EntityResourceCollectionOutcomeBrandIdSearchResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public EntityResourceCollectionOutcomeBrandIdSearchResult searchBrandsByNameAsyncV1(Integer offset, Integer limit, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest) throws ApiException {
+        ApiResponse<EntityResourceCollectionOutcomeBrandIdSearchResult> localVarResp = searchBrandsByNameAsyncV1WithHttpInfo(offset, limit, valueResourceInputBrandIdSearchRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Search for brands given a retailer ID and search term.
+     * @param offset offset of paginated results (optional, default to 0)
+     * @param limit the number of brands to return (optional, default to 25)
+     * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
+     * @return ApiResponse&lt;EntityResourceCollectionOutcomeBrandIdSearchResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<EntityResourceCollectionOutcomeBrandIdSearchResult> searchBrandsByNameAsyncV1WithHttpInfo(Integer offset, Integer limit, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest) throws ApiException {
+        okhttp3.Call localVarCall = searchBrandsByNameAsyncV1ValidateBeforeCall(offset, limit, valueResourceInputBrandIdSearchRequest, null);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeBrandIdSearchResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Search for brands given a retailer ID and search term.
+     * @param offset offset of paginated results (optional, default to 0)
+     * @param limit the number of brands to return (optional, default to 25)
+     * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call searchBrandsByNameAsyncV1Async(Integer offset, Integer limit, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback<EntityResourceCollectionOutcomeBrandIdSearchResult> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = searchBrandsByNameAsyncV1ValidateBeforeCall(offset, limit, valueResourceInputBrandIdSearchRequest, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeBrandIdSearchResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

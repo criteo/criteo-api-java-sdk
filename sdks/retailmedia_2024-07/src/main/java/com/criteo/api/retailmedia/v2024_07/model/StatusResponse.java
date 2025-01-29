@@ -110,7 +110,7 @@ public class StatusResponse {
 
   public static final String SERIALIZED_NAME_FILE_SIZE_BYTES = "fileSizeBytes";
   @SerializedName(SERIALIZED_NAME_FILE_SIZE_BYTES)
-  private Integer fileSizeBytes;
+  private Long fileSizeBytes;
 
   public static final String SERIALIZED_NAME_MD5_CHECK_SUM = "md5CheckSum";
   @SerializedName(SERIALIZED_NAME_MD5_CHECK_SUM)
@@ -179,7 +179,7 @@ public class StatusResponse {
   }
 
 
-  public StatusResponse fileSizeBytes(Integer fileSizeBytes) {
+  public StatusResponse fileSizeBytes(Long fileSizeBytes) {
     
     this.fileSizeBytes = fileSizeBytes;
     return this;
@@ -191,12 +191,12 @@ public class StatusResponse {
   **/
   @javax.annotation.Nullable
 
-  public Integer getFileSizeBytes() {
+  public Long getFileSizeBytes() {
     return fileSizeBytes;
   }
 
 
-  public void setFileSizeBytes(Integer fileSizeBytes) {
+  public void setFileSizeBytes(Long fileSizeBytes) {
     this.fileSizeBytes = fileSizeBytes;
   }
 

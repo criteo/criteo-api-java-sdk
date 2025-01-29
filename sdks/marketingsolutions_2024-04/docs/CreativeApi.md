@@ -26,7 +26,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 ## createAdvertiserAd
 
-> AdResponse createAdvertiserAd(advertiserId, adWriteRequest)
+> ResourceOutcomeOfAd createAdvertiserAd(advertiserId, resourceInputOfAdWrite)
 
 
 
@@ -72,9 +72,9 @@ public class Example {
 
         CreativeApi apiInstance = new CreativeApi(defaultClient);
         String advertiserId = "advertiserId_example"; // String | The advertiser identifier.
-        AdWriteRequest adWriteRequest = new AdWriteRequest(); // AdWriteRequest | 
+        ResourceInputOfAdWrite resourceInputOfAdWrite = new ResourceInputOfAdWrite(); // ResourceInputOfAdWrite | 
         try {
-            AdResponse result = apiInstance.createAdvertiserAd(advertiserId, adWriteRequest);
+            ResourceOutcomeOfAd result = apiInstance.createAdvertiserAd(advertiserId, resourceInputOfAdWrite);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CreativeApi#createAdvertiserAd");
@@ -93,11 +93,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **advertiserId** | **String**| The advertiser identifier. | |
-| **adWriteRequest** | [**AdWriteRequest**](AdWriteRequest.md)|  | |
+| **resourceInputOfAdWrite** | [**ResourceInputOfAdWrite**](ResourceInputOfAdWrite.md)|  | |
 
 ### Return type
 
-[**AdResponse**](AdResponse.md)
+[**ResourceOutcomeOfAd**](ResourceOutcomeOfAd.md)
 
 ### Authorization
 
@@ -120,7 +120,7 @@ public class Example {
 
 ## createAdvertiserCoupon
 
-> CouponResponse createAdvertiserCoupon(advertiserId, createCouponRequest)
+> ResourceOutcomeOfCoupon createAdvertiserCoupon(advertiserId, resourceInputOfCreateCoupon)
 
 
 
@@ -166,9 +166,9 @@ public class Example {
 
         CreativeApi apiInstance = new CreativeApi(defaultClient);
         String advertiserId = "advertiserId_example"; // String | The advertiser identifier.
-        CreateCouponRequest createCouponRequest = new CreateCouponRequest(); // CreateCouponRequest | 
+        ResourceInputOfCreateCoupon resourceInputOfCreateCoupon = new ResourceInputOfCreateCoupon(); // ResourceInputOfCreateCoupon | 
         try {
-            CouponResponse result = apiInstance.createAdvertiserCoupon(advertiserId, createCouponRequest);
+            ResourceOutcomeOfCoupon result = apiInstance.createAdvertiserCoupon(advertiserId, resourceInputOfCreateCoupon);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CreativeApi#createAdvertiserCoupon");
@@ -187,11 +187,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **advertiserId** | **String**| The advertiser identifier. | |
-| **createCouponRequest** | [**CreateCouponRequest**](CreateCouponRequest.md)|  | |
+| **resourceInputOfCreateCoupon** | [**ResourceInputOfCreateCoupon**](ResourceInputOfCreateCoupon.md)|  | |
 
 ### Return type
 
-[**CouponResponse**](CouponResponse.md)
+[**ResourceOutcomeOfCoupon**](ResourceOutcomeOfCoupon.md)
 
 ### Authorization
 
@@ -213,7 +213,7 @@ public class Example {
 
 ## createAdvertiserCreative
 
-> CreativeResponse createAdvertiserCreative(advertiserId, creativeWriteRequest)
+> ResourceOutcomeOfCreative createAdvertiserCreative(advertiserId, resourceInputOfCreativeWrite)
 
 
 
@@ -259,9 +259,9 @@ public class Example {
 
         CreativeApi apiInstance = new CreativeApi(defaultClient);
         String advertiserId = "advertiserId_example"; // String | The advertiser identifier.
-        CreativeWriteRequest creativeWriteRequest = new CreativeWriteRequest(); // CreativeWriteRequest | 
+        ResourceInputOfCreativeWrite resourceInputOfCreativeWrite = new ResourceInputOfCreativeWrite(); // ResourceInputOfCreativeWrite | 
         try {
-            CreativeResponse result = apiInstance.createAdvertiserCreative(advertiserId, creativeWriteRequest);
+            ResourceOutcomeOfCreative result = apiInstance.createAdvertiserCreative(advertiserId, resourceInputOfCreativeWrite);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CreativeApi#createAdvertiserCreative");
@@ -280,11 +280,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **advertiserId** | **String**| The advertiser identifier. | |
-| **creativeWriteRequest** | [**CreativeWriteRequest**](CreativeWriteRequest.md)|  | |
+| **resourceInputOfCreativeWrite** | [**ResourceInputOfCreativeWrite**](ResourceInputOfCreativeWrite.md)|  | |
 
 ### Return type
 
-[**CreativeResponse**](CreativeResponse.md)
+[**ResourceOutcomeOfCreative**](ResourceOutcomeOfCreative.md)
 
 ### Authorization
 
@@ -581,7 +581,7 @@ null (empty response body)
 
 ## editAdvertiserCoupon
 
-> CouponResponse editAdvertiserCoupon(advertiserId, id, updateCouponRequest)
+> ResourceOutcomeOfCoupon editAdvertiserCoupon(advertiserId, id, resourceInputOfUpdateCoupon)
 
 
 
@@ -628,9 +628,9 @@ public class Example {
         CreativeApi apiInstance = new CreativeApi(defaultClient);
         String advertiserId = "advertiserId_example"; // String | The advertiser identifier.
         String id = "id_example"; // String | The Coupon identifier to edit.
-        UpdateCouponRequest updateCouponRequest = new UpdateCouponRequest(); // UpdateCouponRequest | 
+        ResourceInputOfUpdateCoupon resourceInputOfUpdateCoupon = new ResourceInputOfUpdateCoupon(); // ResourceInputOfUpdateCoupon | 
         try {
-            CouponResponse result = apiInstance.editAdvertiserCoupon(advertiserId, id, updateCouponRequest);
+            ResourceOutcomeOfCoupon result = apiInstance.editAdvertiserCoupon(advertiserId, id, resourceInputOfUpdateCoupon);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CreativeApi#editAdvertiserCoupon");
@@ -650,11 +650,11 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **advertiserId** | **String**| The advertiser identifier. | |
 | **id** | **String**| The Coupon identifier to edit. | |
-| **updateCouponRequest** | [**UpdateCouponRequest**](UpdateCouponRequest.md)|  | |
+| **resourceInputOfUpdateCoupon** | [**ResourceInputOfUpdateCoupon**](ResourceInputOfUpdateCoupon.md)|  | |
 
 ### Return type
 
-[**CouponResponse**](CouponResponse.md)
+[**ResourceOutcomeOfCoupon**](ResourceOutcomeOfCoupon.md)
 
 ### Authorization
 
@@ -671,11 +671,12 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | The edited Coupon is returned. |  -  |
 | **400** | The request contained invalid parameters. |  -  |
+| **403** | The request was not properly authorized. |  -  |
 
 
 ## editCreative
 
-> CreativeResponse editCreative(id, creativeWriteRequest)
+> ResourceOutcomeOfCreative editCreative(id, resourceInputOfCreativeWrite)
 
 
 
@@ -721,9 +722,9 @@ public class Example {
 
         CreativeApi apiInstance = new CreativeApi(defaultClient);
         String id = "id_example"; // String | The creative identifier to edit.
-        CreativeWriteRequest creativeWriteRequest = new CreativeWriteRequest(); // CreativeWriteRequest | 
+        ResourceInputOfCreativeWrite resourceInputOfCreativeWrite = new ResourceInputOfCreativeWrite(); // ResourceInputOfCreativeWrite | 
         try {
-            CreativeResponse result = apiInstance.editCreative(id, creativeWriteRequest);
+            ResourceOutcomeOfCreative result = apiInstance.editCreative(id, resourceInputOfCreativeWrite);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CreativeApi#editCreative");
@@ -742,11 +743,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**| The creative identifier to edit. | |
-| **creativeWriteRequest** | [**CreativeWriteRequest**](CreativeWriteRequest.md)|  | |
+| **resourceInputOfCreativeWrite** | [**ResourceInputOfCreativeWrite**](ResourceInputOfCreativeWrite.md)|  | |
 
 ### Return type
 
-[**CreativeResponse**](CreativeResponse.md)
+[**ResourceOutcomeOfCreative**](ResourceOutcomeOfCreative.md)
 
 ### Authorization
 
@@ -773,7 +774,7 @@ public class Example {
 
 
 
-Generate a preview of a specific Creative
+Get the preview of a specific Creative
 
 ### Example
 
@@ -864,11 +865,11 @@ public class Example {
 
 ## getAd
 
-> AdResponse getAd(id)
+> ResourceOutcomeOfAd getAd(id)
 
 
 
-Get an Ad from its id
+Get an Ad with its id
 
 ### Example
 
@@ -911,7 +912,7 @@ public class Example {
         CreativeApi apiInstance = new CreativeApi(defaultClient);
         Integer id = 56; // Integer | The ad identifier to retrieve.
         try {
-            AdResponse result = apiInstance.getAd(id);
+            ResourceOutcomeOfAd result = apiInstance.getAd(id);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CreativeApi#getAd");
@@ -933,7 +934,7 @@ public class Example {
 
 ### Return type
 
-[**AdResponse**](AdResponse.md)
+[**ResourceOutcomeOfAd**](ResourceOutcomeOfAd.md)
 
 ### Authorization
 
@@ -956,7 +957,7 @@ public class Example {
 
 ## getAdvertiserAds
 
-> AdListResponse getAdvertiserAds(advertiserId, limit, offset)
+> ResourceCollectionOutcomeOfAd getAdvertiserAds(advertiserId, limit, offset)
 
 
 
@@ -1005,7 +1006,7 @@ public class Example {
         Integer limit = 56; // Integer | The number of ads to be returned. The default is 50.
         Integer offset = 56; // Integer | The (zero-based) offset into the collection of ads. The default is 0.
         try {
-            AdListResponse result = apiInstance.getAdvertiserAds(advertiserId, limit, offset);
+            ResourceCollectionOutcomeOfAd result = apiInstance.getAdvertiserAds(advertiserId, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CreativeApi#getAdvertiserAds");
@@ -1029,7 +1030,7 @@ public class Example {
 
 ### Return type
 
-[**AdListResponse**](AdListResponse.md)
+[**ResourceCollectionOutcomeOfAd**](ResourceCollectionOutcomeOfAd.md)
 
 ### Authorization
 
@@ -1052,11 +1053,11 @@ public class Example {
 
 ## getAdvertiserCoupon
 
-> CouponResponse getAdvertiserCoupon(advertiserId, id)
+> ResourceOutcomeOfCoupon getAdvertiserCoupon(advertiserId, id)
 
 
 
-Get a Coupon from its id
+Get a Coupon with its id
 
 ### Example
 
@@ -1100,7 +1101,7 @@ public class Example {
         String advertiserId = "advertiserId_example"; // String | The advertiser identifier.
         String id = "id_example"; // String | The Coupon identifier to retrieve.
         try {
-            CouponResponse result = apiInstance.getAdvertiserCoupon(advertiserId, id);
+            ResourceOutcomeOfCoupon result = apiInstance.getAdvertiserCoupon(advertiserId, id);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CreativeApi#getAdvertiserCoupon");
@@ -1123,7 +1124,7 @@ public class Example {
 
 ### Return type
 
-[**CouponResponse**](CouponResponse.md)
+[**ResourceOutcomeOfCoupon**](ResourceOutcomeOfCoupon.md)
 
 ### Authorization
 
@@ -1242,7 +1243,7 @@ public class Example {
 
 ## getAdvertiserCouponSupportedSizes
 
-> CouponSupportedSizesResponse getAdvertiserCouponSupportedSizes(advertiserId, adSetId)
+> ResourceOutcomeOfCouponSupportedSizes getAdvertiserCouponSupportedSizes(advertiserId, adSetId)
 
 
 
@@ -1290,7 +1291,7 @@ public class Example {
         String advertiserId = "advertiserId_example"; // String | The advertiser identifier.
         String adSetId = "adSetId_example"; // String | The ad set id on which you want to check the Coupon supported sizes.
         try {
-            CouponSupportedSizesResponse result = apiInstance.getAdvertiserCouponSupportedSizes(advertiserId, adSetId);
+            ResourceOutcomeOfCouponSupportedSizes result = apiInstance.getAdvertiserCouponSupportedSizes(advertiserId, adSetId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CreativeApi#getAdvertiserCouponSupportedSizes");
@@ -1313,7 +1314,7 @@ public class Example {
 
 ### Return type
 
-[**CouponSupportedSizesResponse**](CouponSupportedSizesResponse.md)
+[**ResourceOutcomeOfCouponSupportedSizes**](ResourceOutcomeOfCouponSupportedSizes.md)
 
 ### Authorization
 
@@ -1335,7 +1336,7 @@ public class Example {
 
 ## getAdvertiserCoupons
 
-> CouponListResponse getAdvertiserCoupons(advertiserId, limit, offset)
+> ResourceCollectionOutcomeOfCoupon getAdvertiserCoupons(advertiserId, limit, offset)
 
 
 
@@ -1384,7 +1385,7 @@ public class Example {
         Integer limit = 56; // Integer | The number of coupons to be returned. The default is 50.
         Integer offset = 56; // Integer | The (zero-based) offset into the collection of coupons. The default is 0.
         try {
-            CouponListResponse result = apiInstance.getAdvertiserCoupons(advertiserId, limit, offset);
+            ResourceCollectionOutcomeOfCoupon result = apiInstance.getAdvertiserCoupons(advertiserId, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CreativeApi#getAdvertiserCoupons");
@@ -1408,7 +1409,7 @@ public class Example {
 
 ### Return type
 
-[**CouponListResponse**](CouponListResponse.md)
+[**ResourceCollectionOutcomeOfCoupon**](ResourceCollectionOutcomeOfCoupon.md)
 
 ### Authorization
 
@@ -1430,7 +1431,7 @@ public class Example {
 
 ## getAdvertiserCreatives
 
-> CreativeListResponse getAdvertiserCreatives(advertiserId, limit, offset)
+> ResourceCollectionOutcomeOfCreative getAdvertiserCreatives(advertiserId, limit, offset)
 
 
 
@@ -1479,7 +1480,7 @@ public class Example {
         Integer limit = 56; // Integer | The number of creatives to be returned. The default is 50.
         Integer offset = 56; // Integer | The (zero-based) offset into the collection of creatives. The default is 0.
         try {
-            CreativeListResponse result = apiInstance.getAdvertiserCreatives(advertiserId, limit, offset);
+            ResourceCollectionOutcomeOfCreative result = apiInstance.getAdvertiserCreatives(advertiserId, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CreativeApi#getAdvertiserCreatives");
@@ -1503,7 +1504,7 @@ public class Example {
 
 ### Return type
 
-[**CreativeListResponse**](CreativeListResponse.md)
+[**ResourceCollectionOutcomeOfCreative**](ResourceCollectionOutcomeOfCreative.md)
 
 ### Authorization
 
@@ -1526,11 +1527,11 @@ public class Example {
 
 ## getCreative
 
-> CreativeResponse getCreative(id)
+> ResourceOutcomeOfCreative getCreative(id)
 
 
 
-Get a Creative from its id
+Get a Creative with its id
 
 ### Example
 
@@ -1573,7 +1574,7 @@ public class Example {
         CreativeApi apiInstance = new CreativeApi(defaultClient);
         String id = "id_example"; // String | The creative identifier to retrieve.
         try {
-            CreativeResponse result = apiInstance.getCreative(id);
+            ResourceOutcomeOfCreative result = apiInstance.getCreative(id);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CreativeApi#getCreative");
@@ -1595,7 +1596,7 @@ public class Example {
 
 ### Return type
 
-[**CreativeResponse**](CreativeResponse.md)
+[**ResourceOutcomeOfCreative**](ResourceOutcomeOfCreative.md)
 
 ### Authorization
 

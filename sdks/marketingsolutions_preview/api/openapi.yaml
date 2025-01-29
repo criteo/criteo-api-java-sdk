@@ -1917,7 +1917,7 @@ paths:
       - Creative
       x-accepts: application/json
     get:
-      description: Get an Ad from its id
+      description: Get an Ad with its id
       operationId: GetAd
       parameters:
       - description: The ad identifier to retrieve.
@@ -1934,13 +1934,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/AdResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfAd'
             application/json:
               schema:
-                $ref: '#/components/schemas/AdResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfAd'
             text/json:
               schema:
-                $ref: '#/components/schemas/AdResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfAd'
           description: The found ad is returned.
         "400":
           content:
@@ -1985,6 +1985,7 @@ paths:
           format: int32
           type: integer
         style: form
+        x-nullable: true
       - description: The (zero-based) offset into the collection of ads. The default
           is 0.
         explode: true
@@ -1995,18 +1996,19 @@ paths:
           format: int32
           type: integer
         style: form
+        x-nullable: true
       responses:
         "200":
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/AdListResponse'
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfAd'
             application/json:
               schema:
-                $ref: '#/components/schemas/AdListResponse'
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfAd'
             text/json:
               schema:
-                $ref: '#/components/schemas/AdListResponse'
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfAd'
           description: The list of self-services Ads is returned.
         "400":
           content:
@@ -2045,16 +2047,16 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/AdWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfAdWrite'
           application/json:
             schema:
-              $ref: '#/components/schemas/AdWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfAdWrite'
           text/json:
             schema:
-              $ref: '#/components/schemas/AdWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfAdWrite'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/AdWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfAdWrite'
         required: true
         x-bodyName: request
       responses:
@@ -2062,13 +2064,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/AdResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfAd'
             application/json:
               schema:
-                $ref: '#/components/schemas/AdResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfAd'
             text/json:
               schema:
-                $ref: '#/components/schemas/AdResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfAd'
           description: The created Ad is returned.
         "400":
           content:
@@ -2114,6 +2116,7 @@ paths:
           format: int32
           type: integer
         style: form
+        x-nullable: true
       - description: The (zero-based) offset into the collection of coupons. The default
           is 0.
         explode: true
@@ -2124,18 +2127,19 @@ paths:
           format: int32
           type: integer
         style: form
+        x-nullable: true
       responses:
         "200":
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CouponListResponse'
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfCoupon'
             application/json:
               schema:
-                $ref: '#/components/schemas/CouponListResponse'
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfCoupon'
             text/json:
               schema:
-                $ref: '#/components/schemas/CouponListResponse'
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfCoupon'
           description: The list of self-services Coupons is returned.
         "400":
           content:
@@ -2168,16 +2172,16 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/CreateCouponRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreateCoupon'
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateCouponRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreateCoupon'
           text/json:
             schema:
-              $ref: '#/components/schemas/CreateCouponRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreateCoupon'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/CreateCouponRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreateCoupon'
         required: true
         x-bodyName: request
       responses:
@@ -2185,13 +2189,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CouponResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
             application/json:
               schema:
-                $ref: '#/components/schemas/CouponResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
             text/json:
               schema:
-                $ref: '#/components/schemas/CouponResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
           description: The created Coupon is returned.
         "400":
           content:
@@ -2236,13 +2240,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CouponSupportedSizesResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCouponSupportedSizes'
             application/json:
               schema:
-                $ref: '#/components/schemas/CouponSupportedSizesResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCouponSupportedSizes'
             text/json:
               schema:
-                $ref: '#/components/schemas/CouponSupportedSizesResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCouponSupportedSizes'
           description: The list of Coupon supported sizes is returned.
         "400":
           content:
@@ -2291,7 +2295,7 @@ paths:
       - Creative
       x-accepts: application/json
     get:
-      description: Get a Coupon from its id
+      description: Get a Coupon with its id
       operationId: GetAdvertiserCoupon
       parameters:
       - description: The advertiser identifier.
@@ -2315,13 +2319,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CouponResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
             application/json:
               schema:
-                $ref: '#/components/schemas/CouponResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
             text/json:
               schema:
-                $ref: '#/components/schemas/CouponResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
           description: The found Coupon is returned.
         "400":
           content:
@@ -2362,16 +2366,16 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/UpdateCouponRequest'
+              $ref: '#/components/schemas/ResourceInputOfUpdateCoupon'
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateCouponRequest'
+              $ref: '#/components/schemas/ResourceInputOfUpdateCoupon'
           text/json:
             schema:
-              $ref: '#/components/schemas/UpdateCouponRequest'
+              $ref: '#/components/schemas/ResourceInputOfUpdateCoupon'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/UpdateCouponRequest'
+              $ref: '#/components/schemas/ResourceInputOfUpdateCoupon'
         required: true
         x-bodyName: request
       responses:
@@ -2379,13 +2383,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CouponResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
             application/json:
               schema:
-                $ref: '#/components/schemas/CouponResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
             text/json:
               schema:
-                $ref: '#/components/schemas/CouponResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCoupon'
           description: The edited Coupon is returned.
         "400":
           content:
@@ -2393,6 +2397,12 @@ paths:
             application/json: {}
             text/json: {}
           description: The request contained invalid parameters.
+        "403":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The request was not properly authorized.
       tags:
       - Creative
       x-content-type: application/json-patch+json
@@ -2486,6 +2496,7 @@ paths:
           format: int32
           type: integer
         style: form
+        x-nullable: true
       - description: The (zero-based) offset into the collection of creatives. The
           default is 0.
         explode: true
@@ -2496,18 +2507,19 @@ paths:
           format: int32
           type: integer
         style: form
+        x-nullable: true
       responses:
         "200":
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CreativeListResponse'
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfCreative'
             application/json:
               schema:
-                $ref: '#/components/schemas/CreativeListResponse'
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfCreative'
             text/json:
               schema:
-                $ref: '#/components/schemas/CreativeListResponse'
+                $ref: '#/components/schemas/ResourceCollectionOutcomeOfCreative'
           description: The list of self-services Creatives is returned.
         "400":
           content:
@@ -2546,16 +2558,16 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/CreativeWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
           application/json:
             schema:
-              $ref: '#/components/schemas/CreativeWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
           text/json:
             schema:
-              $ref: '#/components/schemas/CreativeWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/CreativeWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
         required: true
         x-bodyName: request
       responses:
@@ -2563,13 +2575,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CreativeResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
             application/json:
               schema:
-                $ref: '#/components/schemas/CreativeResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
             text/json:
               schema:
-                $ref: '#/components/schemas/CreativeResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
           description: The created creative is returned.
         "400":
           content:
@@ -2619,7 +2631,7 @@ paths:
       - Creative
       x-accepts: application/json
     get:
-      description: Get a Creative from its id
+      description: Get a Creative with its id
       operationId: GetCreative
       parameters:
       - description: The creative identifier to retrieve.
@@ -2635,13 +2647,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CreativeResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
             application/json:
               schema:
-                $ref: '#/components/schemas/CreativeResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
             text/json:
               schema:
-                $ref: '#/components/schemas/CreativeResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
           description: The found creative is returned.
         "400":
           content:
@@ -2680,16 +2692,16 @@ paths:
         content:
           application/json-patch+json:
             schema:
-              $ref: '#/components/schemas/CreativeWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
           application/json:
             schema:
-              $ref: '#/components/schemas/CreativeWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
           text/json:
             schema:
-              $ref: '#/components/schemas/CreativeWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/CreativeWriteRequest'
+              $ref: '#/components/schemas/ResourceInputOfCreativeWrite'
         required: true
         x-bodyName: request
       responses:
@@ -2697,13 +2709,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/CreativeResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
             application/json:
               schema:
-                $ref: '#/components/schemas/CreativeResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
             text/json:
               schema:
-                $ref: '#/components/schemas/CreativeResponse'
+                $ref: '#/components/schemas/ResourceOutcomeOfCreative'
           description: The edited creative is returned.
         "400":
           content:
@@ -2729,7 +2741,7 @@ paths:
       x-accepts: application/json
   /preview/creatives/{id}/preview:
     post:
-      description: Generate a preview of a specific Creative
+      description: Get the preview of a specific Creative
       operationId: GenerateCreativePreview
       parameters:
       - description: The Creative identifier to preview.
@@ -5820,644 +5832,6 @@ paths:
       tags:
       - OnSiteRecommendation
       x-content-type: application/json-patch+json
-      x-accepts: application/json
-  /preview/brand-safety/oci:
-    delete:
-      description: Delete OCI brand-safety rule.
-      operationId: deleteOCIbrandSafetyRule
-      parameters:
-      - description: Defines a target for a rule.
-        explode: true
-        in: query
-        name: target-type
-        required: true
-        schema:
-          $ref: '#/components/schemas/TargetType'
-        style: form
-      - description: Unique target identifier.
-        explode: true
-        in: query
-        name: target-id
-        required: true
-        schema:
-          minimum: 1
-          type: integer
-        style: form
-      responses:
-        "204":
-          description: Rule deleted
-        "400":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Bad request error example
-                  value:
-                    errors:
-                    - type: validation
-                      code: invalid
-                      title: Invalid json
-                      detail: "Invalid json. Path: line 2, position 42."
-                      instance: /v2/brand-safety/oci
-                      traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-              schema:
-                $ref: '#/components/schemas/OciBrandSafetyResponse'
-          description: Invalid input
-        "401":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Unauthorized response.
-                  value:
-                    errors:
-                    - type: authentication
-                      code: not-authenticated
-                      title: Unauthorized request
-                      detail: JWT provided invalid or expired
-                      instance: /v2/brand-safety/oci
-                      traceId: 308125b1-e9a7-4712-b420-cc11e681e337
-              schema:
-                $ref: '#/components/schemas/OciBrandSafetyResponse'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Forbidden response.
-                  value:
-                    errors:
-                    - type: authorization
-                      code: not-authorized
-                      title: User has no access to the resource
-                      detail: "Invalid json. Path: line 2, position 42."
-                      instance: /v2/brand-safety/oci
-                      traceId: 1a786adf-d06f-4a01-903b-bc37981cdf79
-              schema:
-                $ref: '#/components/schemas/OciBrandSafetyResponse'
-          description: Forbidden
-        "500":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Internal service error response.
-                  value:
-                    errors:
-                    - type: availability
-                      code: internal-error
-                      title: Internal service error
-                      detail: An internal error has occurred
-                      instance: /v2/brand-safety/oci
-                      traceId: 6d247cae-7497-4039-9310-69f426566365
-              schema:
-                $ref: '#/components/schemas/OciBrandSafetyResponse'
-          description: Internal service error
-      tags:
-      - Campaign
-      x-accepts: application/json
-    description: This resource represents a brand-safety rule. Each brand-safety rule
-      determines which context will be applied to the selected target.
-    get:
-      description: Get OCI brand-safety rule for the specified target
-      operationId: getOCIbrandSafetyRule
-      parameters:
-      - description: Defines a target for a rule.
-        explode: true
-        in: query
-        name: target-type
-        required: true
-        schema:
-          $ref: '#/components/schemas/TargetType'
-        style: form
-      - description: Unique target identifier.
-        explode: true
-        in: query
-        name: target-id
-        required: true
-        schema:
-          minimum: 1
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Ok response for OCI brand safety endpoints
-                  value:
-                    data:
-                      id: "42"
-                      type: OciBrandSafetyRule
-                      attributes:
-                        target:
-                          id: 42
-                          type: Campaign
-                        blacklisted:
-                        - gv_adult
-                        - gv_arms
-              schema:
-                $ref: '#/components/schemas/OciBrandSafetyResponse'
-          description: Rule found
-        "400":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Bad request error example
-                  value:
-                    errors:
-                    - type: validation
-                      code: invalid
-                      title: Invalid json
-                      detail: "Invalid json. Path: line 2, position 42."
-                      instance: /v2/brand-safety/oci
-                      traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-              schema:
-                $ref: '#/components/schemas/OciBrandSafetyResponse'
-          description: Invalid input
-        "401":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Unauthorized response.
-                  value:
-                    errors:
-                    - type: authentication
-                      code: not-authenticated
-                      title: Unauthorized request
-                      detail: JWT provided invalid or expired
-                      instance: /v2/brand-safety/oci
-                      traceId: 308125b1-e9a7-4712-b420-cc11e681e337
-              schema:
-                $ref: '#/components/schemas/OciBrandSafetyResponse'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Forbidden response.
-                  value:
-                    errors:
-                    - type: authorization
-                      code: not-authorized
-                      title: User has no access to the resource
-                      detail: "Invalid json. Path: line 2, position 42."
-                      instance: /v2/brand-safety/oci
-                      traceId: 1a786adf-d06f-4a01-903b-bc37981cdf79
-              schema:
-                $ref: '#/components/schemas/OciBrandSafetyResponse'
-          description: Forbidden
-        "500":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Internal service error response.
-                  value:
-                    errors:
-                    - type: availability
-                      code: internal-error
-                      title: Internal service error
-                      detail: An internal error has occurred
-                      instance: /v2/brand-safety/oci
-                      traceId: 6d247cae-7497-4039-9310-69f426566365
-              schema:
-                $ref: '#/components/schemas/OciBrandSafetyResponse'
-          description: Internal service error
-      tags:
-      - Campaign
-      x-accepts: application/json
-    post:
-      description: Create or update a new or replace existing OCI brand-safety rule.
-      operationId: upsertOCIbrandSafetyRule
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OciBrandSafetyRule'
-        description: OCI brand-safety rule input
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Ok response for OCI brand safety endpoints
-                  value:
-                    data:
-                      id: "42"
-                      type: OciBrandSafetyRule
-                      attributes:
-                        target:
-                          id: 42
-                          type: Campaign
-                        blacklisted:
-                        - gv_adult
-                        - gv_arms
-              schema:
-                $ref: '#/components/schemas/OciBrandSafetyResponse'
-          description: Rule created
-        "400":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Bad request error example
-                  value:
-                    errors:
-                    - type: validation
-                      code: invalid
-                      title: Invalid json
-                      detail: "Invalid json. Path: line 2, position 42."
-                      instance: /v2/brand-safety/oci
-                      traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-              schema:
-                $ref: '#/components/schemas/OciBrandSafetyResponse'
-          description: Invalid input
-        "401":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Unauthorized response.
-                  value:
-                    errors:
-                    - type: authentication
-                      code: not-authenticated
-                      title: Unauthorized request
-                      detail: JWT provided invalid or expired
-                      instance: /v2/brand-safety/oci
-                      traceId: 308125b1-e9a7-4712-b420-cc11e681e337
-              schema:
-                $ref: '#/components/schemas/OciBrandSafetyResponse'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Forbidden response.
-                  value:
-                    errors:
-                    - type: authorization
-                      code: not-authorized
-                      title: User has no access to the resource
-                      detail: "Invalid json. Path: line 2, position 42."
-                      instance: /v2/brand-safety/oci
-                      traceId: 1a786adf-d06f-4a01-903b-bc37981cdf79
-              schema:
-                $ref: '#/components/schemas/OciBrandSafetyResponse'
-          description: Forbidden
-        "500":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Internal service error response.
-                  value:
-                    errors:
-                    - type: availability
-                      code: internal-error
-                      title: Internal service error
-                      detail: An internal error has occurred
-                      instance: /v2/brand-safety/oci
-                      traceId: 6d247cae-7497-4039-9310-69f426566365
-              schema:
-                $ref: '#/components/schemas/OciBrandSafetyResponse'
-          description: Internal service error
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/targeting/oci:
-    delete:
-      description: Delete OCI targeting rule.
-      operationId: deleteOCItargetingRule
-      parameters:
-      - description: Defines a target for a rule.
-        explode: true
-        in: query
-        name: target-type
-        required: true
-        schema:
-          $ref: '#/components/schemas/TargetType'
-        style: form
-      - description: Unique target identifier.
-        explode: true
-        in: query
-        name: target-id
-        required: true
-        schema:
-          minimum: 1
-          type: integer
-        style: form
-      responses:
-        "204":
-          description: Rule deleted
-        "400":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Bad request error example
-                  value:
-                    errors:
-                    - type: validation
-                      code: invalid
-                      title: Invalid json
-                      detail: "Invalid json. Path: line 2, position 42."
-                      instance: /v2/targeting/oci
-                      traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-              schema:
-                $ref: '#/components/schemas/OciTargetingResponse'
-          description: Invalid input
-        "401":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Unauthorized response.
-                  value:
-                    errors:
-                    - type: authentication
-                      code: not-authenticated
-                      title: Unauthorized request
-                      detail: JWT provided invalid or expired
-                      instance: /v2/targeting/oci
-                      traceId: 308125b1-e9a7-4712-b420-cc11e681e337
-              schema:
-                $ref: '#/components/schemas/OciTargetingResponse'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Forbidden response.
-                  value:
-                    errors:
-                    - type: authorization
-                      code: not-authorized
-                      title: User has no access to the resource
-                      detail: "Invalid json. Path: line 2, position 42."
-                      instance: /v2/targeting/oci
-                      traceId: 1a786adf-d06f-4a01-903b-bc37981cdf79
-              schema:
-                $ref: '#/components/schemas/OciTargetingResponse'
-          description: Forbidden
-        "500":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Internal service error response.
-                  value:
-                    errors:
-                    - type: availability
-                      code: internal-error
-                      title: Internal service error
-                      detail: An internal error has occurred
-                      instance: /v2/targeting/oci
-                      traceId: 6d247cae-7497-4039-9310-69f426566365
-              schema:
-                $ref: '#/components/schemas/OciTargetingResponse'
-          description: Internal service error
-      tags:
-      - Campaign
-      x-accepts: application/json
-    description: This resource represents a targeting rule. Each targeting rule is
-      determines which contextual data will be aimed for the selected target.
-    get:
-      description: Get OCI targeting rule for specified target.
-      operationId: getOCItargetingRule
-      parameters:
-      - description: Defines a target for a rule.
-        explode: true
-        in: query
-        name: target-type
-        required: true
-        schema:
-          $ref: '#/components/schemas/TargetType'
-        style: form
-      - description: Unique target identifier.
-        explode: true
-        in: query
-        name: target-id
-        required: true
-        schema:
-          minimum: 1
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              examples:
-                sample:
-                  value:
-                    value:
-                      summary: Ok response for OCI targeting endpoints
-                      value:
-                        data:
-                          id: "42"
-                          type: OciTargetingRule
-                          attributes:
-                            target:
-                              id: 42
-                              type: Campaign
-                            rule:
-                              operator: Or
-                              children:
-                              - operator: Value
-                                value: gs_auto
-                              - operator: Value
-                                value: gs_business
-              schema:
-                $ref: '#/components/schemas/OciTargetingResponse'
-          description: Rule found
-        "400":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Bad request error example
-                  value:
-                    errors:
-                    - type: validation
-                      code: invalid
-                      title: Invalid json
-                      detail: "Invalid json. Path: line 2, position 42."
-                      instance: /v2/targeting/oci
-                      traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-              schema:
-                $ref: '#/components/schemas/OciTargetingResponse'
-          description: Invalid input
-        "401":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Unauthorized response.
-                  value:
-                    errors:
-                    - type: authentication
-                      code: not-authenticated
-                      title: Unauthorized request
-                      detail: JWT provided invalid or expired
-                      instance: /v2/targeting/oci
-                      traceId: 308125b1-e9a7-4712-b420-cc11e681e337
-              schema:
-                $ref: '#/components/schemas/OciTargetingResponse'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Forbidden response.
-                  value:
-                    errors:
-                    - type: authorization
-                      code: not-authorized
-                      title: User has no access to the resource
-                      detail: "Invalid json. Path: line 2, position 42."
-                      instance: /v2/targeting/oci
-                      traceId: 1a786adf-d06f-4a01-903b-bc37981cdf79
-              schema:
-                $ref: '#/components/schemas/OciTargetingResponse'
-          description: Forbidden
-        "500":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Internal service error response.
-                  value:
-                    errors:
-                    - type: availability
-                      code: internal-error
-                      title: Internal service error
-                      detail: An internal error has occurred
-                      instance: /v2/targeting/oci
-                      traceId: 6d247cae-7497-4039-9310-69f426566365
-              schema:
-                $ref: '#/components/schemas/OciTargetingResponse'
-          description: Internal service error
-      tags:
-      - Campaign
-      x-accepts: application/json
-    post:
-      description: Create or update new or update existing OCI targeting rule.
-      operationId: upsertOCItargetingRule
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OciTargetingRule'
-        description: OCI targeting rule input
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Ok response for OCI targeting endpoints
-                  value:
-                    data:
-                      id: "42"
-                      type: OciTargetingRule
-                      attributes:
-                        target:
-                          id: 42
-                          type: Campaign
-                        rule:
-                          operator: Or
-                          children:
-                          - operator: Value
-                            value: gs_auto
-                          - operator: Value
-                            value: gs_business
-              schema:
-                $ref: '#/components/schemas/OciTargetingResponse'
-          description: Rule created
-        "400":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Bad request error example
-                  value:
-                    errors:
-                    - type: validation
-                      code: invalid
-                      title: Invalid json
-                      detail: "Invalid json. Path: line 2, position 42."
-                      instance: /v2/targeting/oci
-                      traceId: 56ed4096-f96a-4944-8881-05468efe0ec9
-              schema:
-                $ref: '#/components/schemas/OciTargetingResponse'
-          description: Invalid input
-        "401":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Unauthorized response.
-                  value:
-                    errors:
-                    - type: authentication
-                      code: not-authenticated
-                      title: Unauthorized request
-                      detail: JWT provided invalid or expired
-                      instance: /v2/targeting/oci
-                      traceId: 308125b1-e9a7-4712-b420-cc11e681e337
-              schema:
-                $ref: '#/components/schemas/OciTargetingResponse'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Forbidden response.
-                  value:
-                    errors:
-                    - type: authorization
-                      code: not-authorized
-                      title: User has no access to the resource
-                      detail: "Invalid json. Path: line 2, position 42."
-                      instance: /v2/targeting/oci
-                      traceId: 1a786adf-d06f-4a01-903b-bc37981cdf79
-              schema:
-                $ref: '#/components/schemas/OciTargetingResponse'
-          description: Forbidden
-        "500":
-          content:
-            application/json:
-              examples:
-                sample:
-                  summary: Internal service error response.
-                  value:
-                    errors:
-                    - type: availability
-                      code: internal-error
-                      title: Internal service error
-                      detail: An internal error has occurred
-                      instance: /v2/targeting/oci
-                      traceId: 6d247cae-7497-4039-9310-69f426566365
-              schema:
-                $ref: '#/components/schemas/OciTargetingResponse'
-          description: Internal service error
-      tags:
-      - Campaign
-      x-content-type: application/json
       x-accepts: application/json
   /preview/advertisers/{advertiserId}/targeting/bundle-rules:
     delete:
@@ -12220,6 +11594,18 @@ components:
       example:
         data:
           attributes:
+            bidding:
+              bidAmount: 0.8008281904610115
+              costController: COS
+            campaignId: campaignId
+            mediaType: display
+            attributionConfiguration:
+              attributionMethod: unknown
+              lookbackWindow: unknown
+            destinationEnvironment: undefined
+            videoChannel: olv
+            advertiserId: advertiserId
+            objective: customAction
             schedule:
               endDate:
                 value: 2000-01-23T04:56:07.000+00:00
@@ -12248,17 +11634,8 @@ components:
                 devices:
                 - other
                 - other
-            bidding:
-              bidAmount: 0.8008281904610115
-              costController: COS
-            campaignId: campaignId
             name: name
             datasetId: datasetId
-            mediaType: display
-            destinationEnvironment: undefined
-            videoChannel: olv
-            advertiserId: advertiserId
-            objective: customAction
             budget:
               budgetDeliverySmoothing: accelerated
               budgetDeliveryWeek: undefined
@@ -12332,6 +11709,18 @@ components:
       example:
         data:
         - attributes:
+            bidding:
+              bidAmount: 0.8008281904610115
+              costController: COS
+            campaignId: campaignId
+            mediaType: display
+            attributionConfiguration:
+              attributionMethod: unknown
+              lookbackWindow: unknown
+            destinationEnvironment: undefined
+            videoChannel: olv
+            advertiserId: advertiserId
+            objective: customAction
             schedule:
               endDate:
                 value: 2000-01-23T04:56:07.000+00:00
@@ -12360,17 +11749,8 @@ components:
                 devices:
                 - other
                 - other
-            bidding:
-              bidAmount: 0.8008281904610115
-              costController: COS
-            campaignId: campaignId
             name: name
             datasetId: datasetId
-            mediaType: display
-            destinationEnvironment: undefined
-            videoChannel: olv
-            advertiserId: advertiserId
-            objective: customAction
             budget:
               budgetDeliverySmoothing: accelerated
               budgetDeliveryWeek: undefined
@@ -12380,6 +11760,18 @@ components:
           id: id
           type: ReadAdSetV24Q3
         - attributes:
+            bidding:
+              bidAmount: 0.8008281904610115
+              costController: COS
+            campaignId: campaignId
+            mediaType: display
+            attributionConfiguration:
+              attributionMethod: unknown
+              lookbackWindow: unknown
+            destinationEnvironment: undefined
+            videoChannel: olv
+            advertiserId: advertiserId
+            objective: customAction
             schedule:
               endDate:
                 value: 2000-01-23T04:56:07.000+00:00
@@ -12408,17 +11800,8 @@ components:
                 devices:
                 - other
                 - other
-            bidding:
-              bidAmount: 0.8008281904610115
-              costController: COS
-            campaignId: campaignId
             name: name
             datasetId: datasetId
-            mediaType: display
-            destinationEnvironment: undefined
-            videoChannel: olv
-            advertiserId: advertiserId
-            objective: customAction
             budget:
               budgetDeliverySmoothing: accelerated
               budgetDeliveryWeek: undefined
@@ -13138,6 +12521,10 @@ components:
                 value: 2000-01-23T04:56:07.000+00:00
               startDate:
                 value: 2000-01-23T04:56:07.000+00:00
+            attributionConfiguration:
+              attributionMethod: unknown
+              lookbackWindow:
+                value: unknown
             budget:
               budgetDeliverySmoothing: accelerated
               budgetDeliveryWeek: undefined
@@ -13178,6 +12565,10 @@ components:
                 value: 2000-01-23T04:56:07.000+00:00
               startDate:
                 value: 2000-01-23T04:56:07.000+00:00
+            attributionConfiguration:
+              attributionMethod: unknown
+              lookbackWindow:
+                value: unknown
             budget:
               budgetDeliverySmoothing: accelerated
               budgetDeliveryWeek: undefined
@@ -13241,6 +12632,9 @@ components:
             datasetId: datasetId
             trackingCode: trackingCode
             mediaType: display
+            attributionConfiguration:
+              attributionMethod: unknown
+              lookbackWindow: unknown
             objective: customAction
             budget:
               budgetDeliverySmoothing: accelerated
@@ -13412,6 +12806,18 @@ components:
       description: read model data for resources
       example:
         attributes:
+          bidding:
+            bidAmount: 0.8008281904610115
+            costController: COS
+          campaignId: campaignId
+          mediaType: display
+          attributionConfiguration:
+            attributionMethod: unknown
+            lookbackWindow: unknown
+          destinationEnvironment: undefined
+          videoChannel: olv
+          advertiserId: advertiserId
+          objective: customAction
           schedule:
             endDate:
               value: 2000-01-23T04:56:07.000+00:00
@@ -13440,17 +12846,8 @@ components:
               devices:
               - other
               - other
-          bidding:
-            bidAmount: 0.8008281904610115
-            costController: COS
-          campaignId: campaignId
           name: name
           datasetId: datasetId
-          mediaType: display
-          destinationEnvironment: undefined
-          videoChannel: olv
-          advertiserId: advertiserId
-          objective: customAction
           budget:
             budgetDeliverySmoothing: accelerated
             budgetDeliveryWeek: undefined
@@ -13648,6 +13045,10 @@ components:
               value: 2000-01-23T04:56:07.000+00:00
             startDate:
               value: 2000-01-23T04:56:07.000+00:00
+          attributionConfiguration:
+            attributionMethod: unknown
+            lookbackWindow:
+              value: unknown
           budget:
             budgetDeliverySmoothing: accelerated
             budgetDeliveryWeek: undefined
@@ -13717,6 +13118,9 @@ components:
           datasetId: datasetId
           trackingCode: trackingCode
           mediaType: display
+          attributionConfiguration:
+            attributionMethod: unknown
+            lookbackWindow: unknown
           objective: customAction
           budget:
             budgetDeliverySmoothing: accelerated
@@ -13900,6 +13304,18 @@ components:
     ReadAdSetV24Q3:
       description: ad set read model
       example:
+        bidding:
+          bidAmount: 0.8008281904610115
+          costController: COS
+        campaignId: campaignId
+        mediaType: display
+        attributionConfiguration:
+          attributionMethod: unknown
+          lookbackWindow: unknown
+        destinationEnvironment: undefined
+        videoChannel: olv
+        advertiserId: advertiserId
+        objective: customAction
         schedule:
           endDate:
             value: 2000-01-23T04:56:07.000+00:00
@@ -13928,17 +13344,8 @@ components:
             devices:
             - other
             - other
-        bidding:
-          bidAmount: 0.8008281904610115
-          costController: COS
-        campaignId: campaignId
         name: name
         datasetId: datasetId
-        mediaType: display
-        destinationEnvironment: undefined
-        videoChannel: olv
-        advertiserId: advertiserId
-        objective: customAction
         budget:
           budgetDeliverySmoothing: accelerated
           budgetDeliveryWeek: undefined
@@ -14006,6 +13413,8 @@ components:
           nullable: true
           type: string
           x-nullable: true
+        attributionConfiguration:
+          $ref: '#/components/schemas/ReadAdSetAttributionConfigurationV24Q3'
       type: object
     AdSetCategoryBid:
       description: Category Bid information about a Category for a given Ad Set.
@@ -14109,6 +13518,10 @@ components:
             value: 2000-01-23T04:56:07.000+00:00
           startDate:
             value: 2000-01-23T04:56:07.000+00:00
+        attributionConfiguration:
+          attributionMethod: unknown
+          lookbackWindow:
+            value: unknown
         budget:
           budgetDeliverySmoothing: accelerated
           budgetDeliveryWeek: undefined
@@ -14129,6 +13542,8 @@ components:
           $ref: '#/components/schemas/AdSetTargetingV24Q3'
         budget:
           $ref: '#/components/schemas/PatchAdSetBudgetV24Q3'
+        attributionConfiguration:
+          $ref: '#/components/schemas/PatchAdSetAttributionConfigurationV24Q3'
       type: object
     CreateAdSetV24Q3:
       description: ad set create model
@@ -14174,6 +13589,9 @@ components:
         datasetId: datasetId
         trackingCode: trackingCode
         mediaType: display
+        attributionConfiguration:
+          attributionMethod: unknown
+          lookbackWindow: unknown
         objective: customAction
         budget:
           budgetDeliverySmoothing: accelerated
@@ -14231,6 +13649,8 @@ components:
           - display
           - video
           type: string
+        attributionConfiguration:
+          $ref: '#/components/schemas/CreateAdSetAttributionConfigurationV24Q3'
       required:
       - bidding
       - budget
@@ -14461,6 +13881,36 @@ components:
           type: number
           x-nullable: true
       type: object
+    ReadAdSetAttributionConfigurationV24Q3:
+      description: Read model for an ad set's attribution configuration.
+      example:
+        attributionMethod: unknown
+        lookbackWindow: unknown
+      properties:
+        attributionMethod:
+          description: The attribution method.
+          enum:
+          - unknown
+          - criteoAttribution
+          - googleAnalyticsLastClick
+          - googleAnalyticsDataDriven
+          - lastClick
+          - postClick
+          nullable: true
+          type: string
+        lookbackWindow:
+          description: "The lookback window. Optional, should be specified only for\
+            \ attribution methods PostClick and LastClick."
+          enum:
+          - unknown
+          - sameSession
+          - twentyFourHours
+          - sevenDays
+          - thirtyDays
+          nullable: true
+          type: string
+          x-nullable: true
+      type: object
     CampaignSpendLimitV23Q1:
       description: campaign spend limit model
       example:
@@ -14557,6 +14007,28 @@ components:
           x-nullable: true
         budgetAmount:
           $ref: '#/components/schemas/NillableDecimal'
+      type: object
+    PatchAdSetAttributionConfigurationV24Q3:
+      description: Patch model for an ad set's attribution configuration.
+      example:
+        attributionMethod: unknown
+        lookbackWindow:
+          value: unknown
+      properties:
+        attributionMethod:
+          description: The attribution method.
+          enum:
+          - unknown
+          - criteoAttribution
+          - googleAnalyticsLastClick
+          - googleAnalyticsDataDriven
+          - lastClick
+          - postClick
+          nullable: true
+          type: string
+          x-nullable: true
+        lookbackWindow:
+          $ref: '#/components/schemas/NillableLookbackWindowV24Q3'
       type: object
     CreateAdSetScheduleV24Q3:
       description: ad set schedule create model
@@ -14695,6 +14167,36 @@ components:
           x-nullable: true
       required:
       - budgetStrategy
+      type: object
+    CreateAdSetAttributionConfigurationV24Q3:
+      description: Create model for an ad set's attribution configuration.
+      example:
+        attributionMethod: unknown
+        lookbackWindow: unknown
+      properties:
+        attributionMethod:
+          description: The attribution method.
+          enum:
+          - unknown
+          - criteoAttribution
+          - googleAnalyticsLastClick
+          - googleAnalyticsDataDriven
+          - lastClick
+          - postClick
+          nullable: true
+          type: string
+        lookbackWindow:
+          description: "The lookback window. Optional, should be specified only for\
+            \ attribution methods PostClick and LastClick."
+          enum:
+          - unknown
+          - sameSession
+          - twentyFourHours
+          - sevenDays
+          - thirtyDays
+          nullable: true
+          type: string
+          x-nullable: true
       type: object
     PatchCampaignSpendLimit:
       description: campaign spend limit model
@@ -14847,6 +14349,7 @@ components:
           nullable: true
           type: integer
       type: object
+      x-nullable: "true"
     NillableDecimal:
       description: "structure that encapsulates an object that have valid business\
         \ null values. If the structure is provided (i.e. not null), then the value\
@@ -14862,6 +14365,24 @@ components:
           x-nullable: true
       type: object
       x-nullable: true
+    NillableLookbackWindowV24Q3:
+      description: "structure that encapsulates an object that have valid business\
+        \ null values. If the structure is provided (i.e. not null), then the value\
+        \ in it, even null, is provided."
+      example:
+        value: unknown
+      properties:
+        value:
+          enum:
+          - unknown
+          - sameSession
+          - twentyFourHours
+          - sevenDays
+          - thirtyDays
+          nullable: true
+          type: string
+          x-nullable: true
+      type: object
     CreateAdSetGeoLocationV24Q3:
       description: Geolocation configuration of the ad set
       example:
@@ -14920,8 +14441,9 @@ components:
           type: array
           x-nullable: true
       type: object
-    AdResponse:
-      description: Data model for response resource
+    ResourceOutcomeOfAd:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
       example:
         data:
           attributes:
@@ -14978,24 +14500,25 @@ components:
           title: title
       properties:
         data:
-          $ref: '#/components/schemas/AdResource'
+          $ref: '#/components/schemas/ResourceOfAd'
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
-    AdListResponse:
-      description: Data model for a list of response resources
+    ResourceCollectionOutcomeOfAd:
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities.
       example:
         data:
         - attributes:
@@ -15063,27 +14586,28 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/AdResource'
+            $ref: '#/components/schemas/ResourceOfAd'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
-    CouponListResponse:
-      description: Data model for a list of response resources
+    ResourceCollectionOutcomeOfCoupon:
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities.
       example:
         data:
         - attributes:
@@ -15185,27 +14709,28 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/CouponResource'
+            $ref: '#/components/schemas/ResourceOfCoupon'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
-    CouponResponse:
-      description: Data model for response resource
+    ResourceOutcomeOfCoupon:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
       example:
         data:
           attributes:
@@ -15279,24 +14804,25 @@ components:
           title: title
       properties:
         data:
-          $ref: '#/components/schemas/CouponResource'
+          $ref: '#/components/schemas/ResourceOfCoupon'
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
-    CouponSupportedSizesResponse:
-      description: Data model for response resource
+    ResourceOutcomeOfCouponSupportedSizes:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
       example:
         data:
           attributes:
@@ -15352,24 +14878,25 @@ components:
           title: title
       properties:
         data:
-          $ref: '#/components/schemas/CouponSupportedSizesResource'
+          $ref: '#/components/schemas/ResourceOfCouponSupportedSizes'
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
-    CreativeListResponse:
-      description: Data model for a list of response resources
+    ResourceCollectionOutcomeOfCreative:
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities.
       example:
         data:
         - attributes:
@@ -15585,27 +15112,28 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/CreativeResource'
+            $ref: '#/components/schemas/ResourceOfCreative'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
-    CreativeResponse:
-      description: Data model for response resource
+    ResourceOutcomeOfCreative:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
       example:
         data:
           attributes:
@@ -15736,24 +15264,25 @@ components:
           title: title
       properties:
         data:
-          $ref: '#/components/schemas/CreativeResource'
+          $ref: '#/components/schemas/ResourceOfCreative'
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
-    AdWriteRequest:
-      description: Data model for input resource
+    ResourceInputOfAdWrite:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity.
       example:
         data:
           attributes:
@@ -15768,10 +15297,11 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/AdWriteResource'
+          $ref: '#/components/schemas/ResourceOfAdWrite'
       type: object
-    CreateCouponRequest:
-      description: Data model for input resource
+    ResourceInputOfCreateCoupon:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity.
       example:
         data:
           attributes:
@@ -15800,10 +15330,11 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/CreateCouponResource'
+          $ref: '#/components/schemas/ResourceOfCreateCoupon'
       type: object
-    UpdateCouponRequest:
-      description: Data model for input resource
+    ResourceInputOfUpdateCoupon:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity.
       example:
         data:
           attributes:
@@ -15813,10 +15344,11 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/UpdateCouponResource'
+          $ref: '#/components/schemas/ResourceOfUpdateCoupon'
       type: object
-    CreativeWriteRequest:
-      description: Data model for input resource
+    ResourceInputOfCreativeWrite:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single entity.
       example:
         data:
           attributes:
@@ -15886,10 +15418,10 @@ components:
           type: type
       properties:
         data:
-          $ref: '#/components/schemas/CreativeWriteResource'
+          $ref: '#/components/schemas/ResourceOfCreativeWrite'
       type: object
-    AdResource:
-      description: Data model for a Resource
+    ResourceOfAd:
+      description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
           inventoryType: Native
@@ -15905,14 +15437,17 @@ components:
         attributes:
           $ref: '#/components/schemas/Ad'
         id:
+          description: Unique identifier of this resource.
           nullable: true
           type: string
+          x-nullable: true
         type:
           nullable: true
           type: string
+          x-nullable: true
       type: object
-    CouponResource:
-      description: Data model for a Resource
+    ResourceOfCoupon:
+      description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
           showEvery: 1
@@ -15945,14 +15480,17 @@ components:
         attributes:
           $ref: '#/components/schemas/Coupon'
         id:
+          description: Unique identifier of this resource.
           nullable: true
           type: string
+          x-nullable: true
         type:
           nullable: true
           type: string
+          x-nullable: true
       type: object
-    CouponSupportedSizesResource:
-      description: Data model for a Resource
+    ResourceOfCouponSupportedSizes:
+      description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
           fullFrame:
@@ -15967,14 +15505,17 @@ components:
         attributes:
           $ref: '#/components/schemas/CouponSupportedSizes'
         id:
+          description: Unique identifier of this resource.
           nullable: true
           type: string
+          x-nullable: true
         type:
           nullable: true
           type: string
+          x-nullable: true
       type: object
-    CreativeResource:
-      description: Data model for a Resource
+    ResourceOfCreative:
+      description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
           dynamicAttributes:
@@ -16064,14 +15605,17 @@ components:
         attributes:
           $ref: '#/components/schemas/Creative'
         id:
+          description: Unique identifier of this resource.
           nullable: true
           type: string
+          x-nullable: true
         type:
           nullable: true
           type: string
+          x-nullable: true
       type: object
-    AdWriteResource:
-      description: Data model for a Resource
+    ResourceOfAdWrite:
+      description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
           inventoryType: Display
@@ -16087,14 +15631,17 @@ components:
         attributes:
           $ref: '#/components/schemas/AdWrite'
         id:
+          description: Unique identifier of this resource.
           nullable: true
           type: string
+          x-nullable: true
         type:
           nullable: true
           type: string
+          x-nullable: true
       type: object
-    CreateCouponResource:
-      description: Data model for a Resource
+    ResourceOfCreateCoupon:
+      description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
           showEvery: 2
@@ -16124,14 +15671,17 @@ components:
         attributes:
           $ref: '#/components/schemas/CreateCoupon'
         id:
+          description: Unique identifier of this resource.
           nullable: true
           type: string
+          x-nullable: true
         type:
           nullable: true
           type: string
+          x-nullable: true
       type: object
-    UpdateCouponResource:
-      description: Data model for a Resource
+    ResourceOfUpdateCoupon:
+      description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
           endDate: endDate
@@ -16142,14 +15692,17 @@ components:
         attributes:
           $ref: '#/components/schemas/UpdateCoupon'
         id:
+          description: Unique identifier of this resource.
           nullable: true
           type: string
+          x-nullable: true
         type:
           nullable: true
           type: string
+          x-nullable: true
       type: object
-    CreativeWriteResource:
-      description: Data model for a Resource
+    ResourceOfCreativeWrite:
+      description: A class that represents a domain entity exposed by an API.
       example:
         attributes:
           htmlTagWriteAttributes:
@@ -16220,11 +15773,14 @@ components:
         attributes:
           $ref: '#/components/schemas/CreativeWrite'
         id:
+          description: Unique identifier of this resource.
           nullable: true
           type: string
+          x-nullable: true
         type:
           nullable: true
           type: string
+          x-nullable: true
       type: object
     Ad:
       description: An ad is the binding that connects a creative with an ad set
@@ -16241,18 +15797,22 @@ components:
           description: The name of the ad
           nullable: true
           type: string
+          x-nullable: true
         description:
           description: The description of the ad
           nullable: true
           type: string
+          x-nullable: true
         creativeId:
           description: The id of the Creative binded to this Ad
           nullable: true
           type: string
+          x-nullable: true
         adSetId:
           description: The id of the Ad Set binded to this Ad
           nullable: true
           type: string
+          x-nullable: true
         inventoryType:
           description: The inventory the Ad belongs to. Possible values are "Display"
             and "Native". This is optional since this doesn't make sense for every
@@ -16263,17 +15823,20 @@ components:
           - Video
           nullable: true
           type: string
+          x-nullable: true
         startDate:
           description: "The date when the ad will be launched\r\nString must be in\
             \ ISO8601 format"
           nullable: true
           type: string
+          x-nullable: true
         endDate:
           description: "The date when when we will stop to show this ad. If the end\
             \ date is not specified (i.e. null) then the ad will go on forever\r\n\
             String must be in ISO8601 format"
           nullable: true
           type: string
+          x-nullable: true
       type: object
     Coupon:
       description: Coupons are static images applied on ad set which can be displayed
@@ -16308,53 +15871,63 @@ components:
           description: The name of the Coupon
           nullable: true
           type: string
+          x-nullable: true
         description:
           description: The description of the Coupon
           nullable: true
           type: string
+          x-nullable: true
         author:
           description: The login of the person who created this Coupon
           nullable: true
           type: string
+          x-nullable: true
         advertiserId:
           description: Advertiser linked to the Coupon
           nullable: true
           type: string
+          x-nullable: true
         adSetId:
           description: The id of the Ad Set on which the Coupon is applied to
           nullable: true
           type: string
+          x-nullable: true
         landingPageUrl:
           description: Web redirection of the landing page url
           nullable: true
           type: string
+          x-nullable: true
         startDate:
           description: "The date when the Coupon will be launched\r\nString must be\
             \ in ISO8601 format"
           nullable: true
           type: string
+          x-nullable: true
         endDate:
           description: "The date when when we will stop to show this Coupon. If the\
             \ end date is not specified (i.e. null) then the Coupon will go on forever\r\
             \nString must be in ISO8601 format"
           nullable: true
           type: string
+          x-nullable: true
         format:
           description: "Format of the Coupon, it can have two values: \"FullFrame\"\
             \ or \"LogoZone\""
           nullable: true
           type: string
+          x-nullable: true
         status:
           description: The status of the Coupon
           nullable: true
           type: string
+          x-nullable: true
         images:
           description: List of slides containing the image URLs
           items:
             $ref: '#/components/schemas/ImageSlide'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         showEvery:
           description: Show the Coupon every N seconds (between 1 and 10)
           format: int32
@@ -16387,14 +15960,14 @@ components:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         fullFrame:
           description: Array of FullFrame sizes as string in width x height format
           items:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     Creative:
       description: A creative is a project with the necessary information to display
@@ -16489,6 +16062,7 @@ components:
           description: The description of the creative
           nullable: true
           type: string
+          x-nullable: true
         author:
           description: The login of the person who created this creative (
           type: string
@@ -16499,6 +16073,7 @@ components:
           description: The format of the creative
           nullable: true
           type: string
+          x-nullable: true
         advertiserId:
           description: Advertiser linked to the Creative
           type: string
@@ -16506,6 +16081,7 @@ components:
           description: Data set id linked to the Creative
           nullable: true
           type: string
+          x-nullable: true
         imageAttributes:
           $ref: '#/components/schemas/ImageAttributes'
         htmlTagAttributes:
@@ -16538,6 +16114,7 @@ components:
           description: The description of the ad
           nullable: true
           type: string
+          x-nullable: true
         creativeId:
           description: The id of the Creative bound to this Ad
           type: string
@@ -16554,6 +16131,7 @@ components:
           - Native
           nullable: true
           type: string
+          x-nullable: true
         startDate:
           description: "The date when the ad will be launched\r\nString must be in\
             \ ISO8601 format"
@@ -16564,6 +16142,7 @@ components:
             String must be in ISO8601 format"
           nullable: true
           type: string
+          x-nullable: true
       required:
       - adSetId
       - creativeId
@@ -16602,6 +16181,7 @@ components:
           description: The description of the Coupon
           nullable: true
           type: string
+          x-nullable: true
         adSetId:
           description: The id of the Ad Set on which the Coupon is applied to
           type: string
@@ -16618,6 +16198,7 @@ components:
             \nString must be in ISO8601 format"
           nullable: true
           type: string
+          x-nullable: true
         format:
           description: "Format of the Coupon, it can have two values: \"FullFrame\"\
             \ or \"LogoZone\""
@@ -16630,7 +16211,6 @@ components:
           items:
             $ref: '#/components/schemas/CreateImageSlide'
           type: array
-          uniqueItems: false
         showEvery:
           description: Show the Coupon every N seconds (between 1 and 10)
           format: int32
@@ -16676,6 +16256,7 @@ components:
             \nString must be in ISO8601 format"
           nullable: true
           type: string
+          x-nullable: true
       required:
       - startDate
       type: object
@@ -16752,6 +16333,7 @@ components:
           description: The description of the creative
           nullable: true
           type: string
+          x-nullable: true
         format:
           description: "The format of the creative\r\nYou can use \"Image\", \" HtmlTag\"\
             , \"Dynamic\" or \"Adaptive\""
@@ -16803,7 +16385,7 @@ components:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     ImageAttributes:
       description: The attributes specific to Image creatives
@@ -16820,11 +16402,12 @@ components:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         landingPageUrl:
           description: Web redirection of the landing page url
           nullable: true
           type: string
+          x-nullable: true
       type: object
     HtmlTagAttributes:
       description: The attributes specific to HtmlTag creatives
@@ -16845,7 +16428,7 @@ components:
             $ref: '#/components/schemas/Tag'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     DynamicAttributes:
       description: The attributes specific to Dynamic creatives
@@ -16871,26 +16454,30 @@ components:
             $ref: '#/components/schemas/ImageShape'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         creativeBackgroundColor:
           description: "Color of the creative's background\r\nValid hexadecimal color\
             \ (e.g. \"AB00FF\")"
           nullable: true
           type: string
+          x-nullable: true
         bodyTextColor:
           description: "Color of the creative's body text\r\nValid hexadecimal color\
             \ (e.g. \"AB00FF\")"
           nullable: true
           type: string
+          x-nullable: true
         pricesColor:
           description: "Color of the creative's prices\r\nValid hexadecimal color\
             \ (e.g. \"AB00FF\")"
           nullable: true
           type: string
+          x-nullable: true
         primaryFont:
           description: "Font of the primary font\r\nValid supported font like \"Arial\""
           nullable: true
           type: string
+          x-nullable: true
         callsToAction:
           description: "A Call-to-Action (CTA) is an action-driven instruction to\
             \ your audience intended to provoke an immediate\r\nresponse, such as\
@@ -16899,7 +16486,7 @@ components:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         productImageDisplay:
           description: "Value can be \"ShowFullImage\" or \"ZoomOnImage\". Choose\
             \ whether your product catalog images should fit inside the allocated\r\
@@ -16971,14 +16558,12 @@ components:
             - InBannerVideo
             type: string
           type: array
-          uniqueItems: false
         logos:
           description: Logo images uploaded on demostatic.criteo.com when deploying
             and then static.criteo.net
           items:
             $ref: '#/components/schemas/ImageShape'
           type: array
-          uniqueItems: false
         headlineText:
           description: The headline text of the banner
           type: string
@@ -16998,7 +16583,6 @@ components:
           items:
             type: string
           type: array
-          uniqueItems: false
         colors:
           $ref: '#/components/schemas/AdaptiveColors'
         imageSets:
@@ -17008,7 +16592,7 @@ components:
             $ref: '#/components/schemas/ImageSet'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         imageDisplay:
           description: "Value can be \"ShowFullImage\" or \"ZoomOnImage\". Choose\
             \ whether your image set should fit inside the allocated\r\nspace (\"\
@@ -17019,13 +16603,14 @@ components:
           - ZoomOnImage
           nullable: true
           type: string
+          x-nullable: true
         videos:
           description: Multiple videos potentially in different shapes.
           items:
             $ref: '#/components/schemas/VideoDetail'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         landingPageUrl:
           description: Web redirection of the landing page url
           format: uri
@@ -17067,7 +16652,7 @@ components:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
       type: object
     ImageWriteAttributes:
       description: The attributes specific to create or update an Image creative
@@ -17083,7 +16668,6 @@ components:
             type: string
           minItems: 1
           type: array
-          uniqueItems: false
         landingPageUrl:
           description: Web redirection of the landing page url
           format: uri
@@ -17110,7 +16694,6 @@ components:
           items:
             $ref: '#/components/schemas/Tag'
           type: array
-          uniqueItems: false
       required:
       - tags
       type: object
@@ -17131,22 +16714,24 @@ components:
           description: Logo image as a base-64 encoded string
           type: string
         creativeBackgroundColor:
-          description: "Color of the creative's background\r\nValid hexadecimal RGB\
-            \ color (e.g. \"AB00FF\")"
+          description: "Color of the creative's background\r\nValid hexadecimal color\
+            \ (e.g. \"AB00FF\")"
           nullable: true
           type: string
+          x-nullable: true
         bodyTextColor:
-          description: "Color of the creative's body text\r\nValid hexadecimal RGB\
-            \ color (e.g. \"AB00FF\")"
+          description: "Color of the creative's body text\r\nValid hexadecimal color\
+            \ (e.g. \"AB00FF\")"
           type: string
         pricesColor:
-          description: "Color of the creative's prices\r\nValid hexadecimal RGB color\
+          description: "Color of the creative's prices\r\nValid hexadecimal color\
             \ (e.g. \"AB00FF\")"
           type: string
         primaryFont:
           description: "Font of the primary font\r\nValid supported font like \"Arial\""
           nullable: true
           type: string
+          x-nullable: true
         callsToAction:
           description: "A Call-to-Action (CTA) is an action-driven instruction to\
             \ your audience intended to provoke an immediate\r\nresponse, such as\
@@ -17155,7 +16740,6 @@ components:
             type: string
           minItems: 1
           type: array
-          uniqueItems: false
         productImageDisplay:
           description: "Value can be \"ShowFullImage\" or \"ZoomOnImage\". Choose\
             \ whether your product catalog images should fit inside the allocated\r\
@@ -17221,7 +16805,6 @@ components:
             type: string
           minItems: 1
           type: array
-          uniqueItems: false
         logoBase64String:
           description: Logo image as a base-64 encoded string
           type: string
@@ -17245,7 +16828,6 @@ components:
             type: string
           minItems: 1
           type: array
-          uniqueItems: false
         colors:
           $ref: '#/components/schemas/AdaptiveColors'
         imageSetsBase64:
@@ -17255,7 +16837,7 @@ components:
             $ref: '#/components/schemas/ImageSetBase64'
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         imageDisplay:
           description: "Value can be \"ShowFullImage\" or \"ZoomOnImage\". Choose\
             \ whether your image set should fit inside the allocated\r\nspace (\"\
@@ -17266,6 +16848,7 @@ components:
           - ZoomOnImage
           nullable: true
           type: string
+          x-nullable: true
         videoBase64Strings:
           description: "Multiple videos potentially in different shapes, each video\
             \ is a base-64 encoded string."
@@ -17273,7 +16856,7 @@ components:
             type: string
           nullable: true
           type: array
-          uniqueItems: false
+          x-nullable: true
         landingPageUrl:
           description: Web redirection of the landing page url.
           format: uri
@@ -17301,6 +16884,7 @@ components:
           description: Html tag
           nullable: true
           type: string
+          x-nullable: true
         size:
           $ref: '#/components/schemas/Size'
       type: object
@@ -17384,11 +16968,11 @@ components:
           items:
             $ref: '#/components/schemas/ImageShape'
           type: array
-          uniqueItems: false
         headlineText:
           description: The headline of the image set
           nullable: true
           type: string
+          x-nullable: true
       required:
       - images
       type: object
@@ -17438,11 +17022,11 @@ components:
             type: string
           minItems: 1
           type: array
-          uniqueItems: false
         headlineText:
           description: The headline of the image set
           nullable: true
           type: string
+          x-nullable: true
       required:
       - imageBase64Strings
       type: object
@@ -18280,6 +17864,7 @@ components:
         rows:
           items:
             additionalProperties:
+              nullable: true
               type: string
             type: object
           nullable: true
@@ -21876,23 +21461,33 @@ components:
         importRequestTimestamp:
           description: The date when the original batch request was sent.
           format: int64
+          nullable: true
           type: integer
+          x-nullable: true
         numberOfProductsInTheBatch:
           description: The number of products present in the batch.
           format: int32
+          nullable: true
           type: integer
+          x-nullable: true
         numberOfProductsUpserted:
           description: The number of products upserted.
           format: int32
+          nullable: true
           type: integer
+          x-nullable: true
         numberOfProductsDeleted:
           description: The number of products deleted.
           format: int32
+          nullable: true
           type: integer
+          x-nullable: true
         numberOfProductsWithErrors:
           description: The number of products with errors.
           format: int32
+          nullable: true
           type: integer
+          x-nullable: true
         errorDetails:
           description: The list of errors with details.
           items:
@@ -21901,7 +21496,9 @@ components:
         numberOfProductsWithWarnings:
           description: The number of products with Warnings.
           format: int32
+          nullable: true
           type: integer
+          x-nullable: true
         warningDetails:
           description: The list of Warnings with details.
           items:
@@ -24080,301 +23677,6 @@ components:
           nullable: true
           type: string
       type: object
-    TargetType:
-      description: Defines a target for a rule
-      enum:
-      - Campaign
-      - Advertiser
-      type: string
-      x-enumNames:
-      - Campaign
-      - Advertiser
-    OciBrandSafetyResponse:
-      description: Response container
-      example:
-        data:
-          attributes:
-            blacklisted:
-            - null
-            - null
-            target:
-              id: 0
-              type: null
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source: "{}"
-          title: title
-          type: type
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source: "{}"
-          title: title
-          type: type
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source: "{}"
-          title: title
-          type: type
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source: "{}"
-          title: title
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/OciBrandSafetyResponse_data'
-        warnings:
-          description: An array of warning objects
-          items:
-            $ref: '#/components/schemas/TargetingErrorModel'
-          nullable: true
-          type: array
-        errors:
-          description: An array of error objects
-          items:
-            $ref: '#/components/schemas/TargetingErrorModel'
-          nullable: true
-          type: array
-      type: object
-    OciTargetingResponse:
-      description: Response container
-      example:
-        data:
-          attributes:
-            rule:
-              children:
-              - null
-              - null
-              value: value
-              operator: null
-            target:
-              id: 0
-              type: null
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source: "{}"
-          title: title
-          type: type
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source: "{}"
-          title: title
-          type: type
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source: "{}"
-          title: title
-          type: type
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source: "{}"
-          title: title
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/OciTargetingResponse_data'
-        warnings:
-          description: An array of warning objects
-          items:
-            $ref: '#/components/schemas/TargetingErrorModel'
-          nullable: true
-          type: array
-        errors:
-          description: An array of error objects
-          items:
-            $ref: '#/components/schemas/TargetingErrorModel'
-          nullable: true
-          type: array
-      type: object
-    OciBrandSafetyRule:
-      description: Object represents brand-safety rule based on OCI brand-safety segments.
-        A brand-safety rule consists of a target and a list of brand-safety segments.
-      example:
-        blacklisted:
-        - null
-        - null
-        target:
-          id: 0
-          type: null
-      properties:
-        target:
-          $ref: '#/components/schemas/Target'
-        blacklisted:
-          items:
-            $ref: '#/components/schemas/OciBrandSafetySegment'
-          nullable: true
-          type: array
-      type: object
-    OciTargetingRule:
-      description: Object represents targeting rule based on OCI targeting segments.
-        A targeting rule consists of a target and a boolean tree that reflects a boolean
-        expression.
-      example:
-        rule:
-          children:
-          - null
-          - null
-          value: value
-          operator: null
-        target:
-          id: 0
-          type: null
-      properties:
-        target:
-          $ref: '#/components/schemas/Target'
-        rule:
-          $ref: '#/components/schemas/OciTargetingNode'
-      type: object
-    TargetingErrorModel:
-      description: A machine-readable format for specifying errors in Targeting.API
-      example:
-        traceId: traceId
-        code: code
-        instance: instance
-        detail: detail
-        source: "{}"
-        title: title
-        type: type
-      properties:
-        code:
-          description: A machine-readable error code string.
-          type: string
-        detail:
-          description: A human-readable detailed explanation specific to this occurrence
-            of the problem.
-          nullable: true
-          type: string
-        instance:
-          description: A machine-readable URI reference that identifies the specific
-            occurrence of the problem.
-          type: string
-        source:
-          description: A machine-readable structure to reference to the exact location(s)
-            causing the error(s).
-          nullable: true
-          type: object
-        title:
-          description: "A short, human-readable summary of the problem type."
-          nullable: true
-          type: string
-        traceId:
-          description: The machine-readable correlation Id provided by the gateway.
-          type: string
-        type:
-          description: "A machine-readable code specifying error category. This information\
-            \ is used on client side to focus on certain type of error, \nto either\
-            \ retry some processing or display only certain type of errors."
-          type: string
-      required:
-      - code
-      - instance
-      - traceId
-      - type
-      type: object
-    Target:
-      additionalProperties: false
-      description: Object describes the target for the rules
-      example:
-        id: 0
-        type: null
-      properties:
-        type:
-          $ref: '#/components/schemas/TargetType'
-        id:
-          format: int32
-          type: integer
-      required:
-      - id
-      - type
-      type: object
-    OciBrandSafetySegment:
-      description: Represents Oci standard brand-safety segment.
-      enum:
-      - gv_adult
-      - gv_arms
-      - gv_crime
-      - gv_death_injury
-      - gv_download
-      - gv_drugs
-      - gv_hatespeech
-      - gv_military
-      - gv_obscenity
-      - gv_terrorism
-      - gv_tobacco
-      - gv_safe_adult
-      - gv_safe_arms
-      - gv_safe_crime
-      - gv_safe_death_injury
-      - gv_safe_download
-      - gv_safe_drugs
-      - gv_safe_hatespeech
-      - gv_safe_military
-      - gv_safe_obscenity
-      - gv_safe_terrorism
-      - gv_safe_tobacco
-      - gv_crime_other
-      - gv_crime_serious
-      - gv_crime_sex
-      - gv_crime_violent
-      - gv_death_injury_air
-      - gv_death_injury_fire
-      - gv_death_injury_misc
-      - gv_death_injury_rail
-      - gv_death_injury_road
-      - gv_death_injury_sea
-      type: string
-    OciTargetingNode:
-      description: Object represents a single node in a boolean tree.
-      example:
-        children:
-        - null
-        - null
-        value: value
-        operator: null
-      properties:
-        operator:
-          $ref: '#/components/schemas/TargetingOperator'
-        value:
-          nullable: true
-          type: string
-        children:
-          items:
-            $ref: '#/components/schemas/OciTargetingNode'
-          nullable: true
-          type: array
-      type: object
-    TargetingOperator:
-      description: Defines a targeting operator
-      enum:
-      - Or
-      - And
-      - Not
-      - Value
-      type: string
     ApiResponseOfTargetingEntity:
       description: Root object for the API response
       example:
@@ -24643,63 +23945,6 @@ components:
       nullable: true
       type: object
       x-nullable: true
-    OciBrandSafetyResponse_data:
-      description: The document's primary data
-      example:
-        attributes:
-          blacklisted:
-          - null
-          - null
-          target:
-            id: 0
-            type: null
-        id: id
-        type: type
-      nullable: true
-      properties:
-        id:
-          type: string
-          x-nullable: false
-        type:
-          description: A string containing the entity type
-          type: string
-        attributes:
-          $ref: '#/components/schemas/OciBrandSafetyRule'
-      required:
-      - attributes
-      - id
-      - type
-      type: object
-    OciTargetingResponse_data:
-      description: The document's primary data
-      example:
-        attributes:
-          rule:
-            children:
-            - null
-            - null
-            value: value
-            operator: null
-          target:
-            id: 0
-            type: null
-        id: id
-        type: type
-      nullable: true
-      properties:
-        id:
-          type: string
-          x-nullable: false
-        type:
-          description: A string containing the entity type
-          type: string
-        attributes:
-          $ref: '#/components/schemas/OciTargetingRule'
-      required:
-      - attributes
-      - id
-      - type
-      type: object
   securitySchemes:
     oauth:
       flows:

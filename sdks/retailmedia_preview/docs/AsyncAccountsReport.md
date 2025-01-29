@@ -10,6 +10,8 @@ Async Accounts report body request
 |------------ | ------------- | ------------- | -------------|
 |**accountIds** | **List&lt;String&gt;** | Account Ids to report on |  |
 |**aggregationLevel** | [**AggregationLevelEnum**](#AggregationLevelEnum) | Level of aggregation, if no dimensions/metrics are provided, falls back to campaign aggregationLevel |  [optional] |
+|**searchTermTypes** | [**List&lt;SearchTermTypesEnum&gt;**](#List&lt;SearchTermTypesEnum&gt;) | Filter on the type of search term type: unknown, searched, entered |  [optional] |
+|**searchTermTargetings** | [**List&lt;SearchTermTargetingsEnum&gt;**](#List&lt;SearchTermTargetingsEnum&gt;) | Filter on the type of search term targeting: unknown, automatic, manual |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays |  [optional] |
 |**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
 |**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
@@ -30,6 +32,26 @@ Async Accounts report body request
 |---- | -----|
 | CAMPAIGN | &quot;campaign&quot; |
 | LINEITEM | &quot;lineItem&quot; |
+
+
+
+## Enum: List&lt;SearchTermTypesEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| SEARCHED | &quot;searched&quot; |
+| ENTERED | &quot;entered&quot; |
+
+
+
+## Enum: List&lt;SearchTermTargetingsEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| AUTOMATIC | &quot;automatic&quot; |
+| MANUAL | &quot;manual&quot; |
 
 
 
@@ -76,6 +98,7 @@ Async Accounts report body request
 | ATTRIBUTEDTRANSACTIONS | &quot;attributedTransactions&quot; |
 | ENVIRONMENT | &quot;environment&quot; |
 | SERVEDCATEGORY | &quot;servedCategory&quot; |
+| CAPOUT | &quot;capout&quot; |
 
 
 
@@ -126,9 +149,18 @@ Async Accounts report body request
 | ENVIRONMENT | &quot;environment&quot; |
 | PAGETYPENAME | &quot;pageTypeName&quot; |
 | PAGECATEGORY | &quot;pageCategory&quot; |
+| SERVEDCATEGORY | &quot;servedCategory&quot; |
 | TAXONOMYBREADCRUMB | &quot;taxonomyBreadcrumb&quot; |
 | KEYWORD | &quot;keyword&quot; |
 | SEARCHTERM | &quot;searchTerm&quot; |
+| SEARCHTERMTYPE | &quot;searchTermType&quot; |
+| SEARCHTERMTARGETING | &quot;searchTermTargeting&quot; |
+| CREATIVEID | &quot;creativeId&quot; |
+| CREATIVENAME | &quot;creativeName&quot; |
+| CREATIVETYPEID | &quot;creativeTypeId&quot; |
+| CREATIVETYPENAME | &quot;creativeTypeName&quot; |
+| CREATIVETEMPLATEID | &quot;creativeTemplateId&quot; |
+| CREATIVETEMPLATENAME | &quot;creativeTemplateName&quot; |
 
 
 
@@ -157,6 +189,16 @@ Async Accounts report body request
 | VIDEOSPLAYEDTO100 | &quot;videosPlayedTo100&quot; |
 | VIDEOPLAYINGRATE | &quot;videoPlayingRate&quot; |
 | VIDEOCOMPLETIONRATE | &quot;videoCompletionRate&quot; |
+| VIDEOIMPRESSIONS | &quot;videoImpressions&quot; |
+| VIDEOMUTED | &quot;videoMuted&quot; |
+| VIDEOUNMUTED | &quot;videoUnmuted&quot; |
+| VIDEOPAUSED | &quot;videoPaused&quot; |
+| VIDEORESUMED | &quot;videoResumed&quot; |
+| VIDEOAVGINTERACTIONRATE | &quot;videoAvgInteractionRate&quot; |
+| VIDEOVIEWABILITY | &quot;videoViewability&quot; |
+| VIDEOSTARTINGRATE | &quot;videoStartingRate&quot; |
+| VIDEOCPC | &quot;videoCPC&quot; |
+| VIDEOCPCV | &quot;videoCPCV&quot; |
 | UNIQUEVISITORS | &quot;uniqueVisitors&quot; |
 | FREQUENCY | &quot;frequency&quot; |
 

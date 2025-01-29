@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.CommonProblem;
+import com.criteo.api.retailmedia.preview.model.SdkApiRestCommonProblem;
 import com.criteo.api.retailmedia.preview.model.ValueResourceOfRetailMediaSeller;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -49,7 +49,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * A top-level object that encapsulates a Criteo API response for several values.
+ * A top-level object that encapsulates a Criteo API response for several value objects.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ValueResourceCollectionOutcomeOfRetailMediaSeller {
@@ -59,19 +59,19 @@ public class ValueResourceCollectionOutcomeOfRetailMediaSeller {
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<CommonProblem> warnings = null;
+  private List<SdkApiRestCommonProblem> warnings = null;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
-  private List<CommonProblem> errors = null;
+  private List<SdkApiRestCommonProblem> errors = null;
 
   public ValueResourceCollectionOutcomeOfRetailMediaSeller() {
   }
 
   
   public ValueResourceCollectionOutcomeOfRetailMediaSeller(
-     List<CommonProblem> warnings, 
-     List<CommonProblem> errors
+     List<SdkApiRestCommonProblem> warnings, 
+     List<SdkApiRestCommonProblem> errors
   ) {
     this();
     this.warnings = warnings;
@@ -109,12 +109,12 @@ public class ValueResourceCollectionOutcomeOfRetailMediaSeller {
 
 
    /**
-   * Get warnings
+   * Warnings that occured during this call.
    * @return warnings
   **/
   @javax.annotation.Nullable
 
-  public List<CommonProblem> getWarnings() {
+  public List<SdkApiRestCommonProblem> getWarnings() {
     return warnings;
   }
 
@@ -122,12 +122,12 @@ public class ValueResourceCollectionOutcomeOfRetailMediaSeller {
 
 
    /**
-   * Get errors
+   * Errors that occured during this call.
    * @return errors
   **/
   @javax.annotation.Nullable
 
-  public List<CommonProblem> getErrors() {
+  public List<SdkApiRestCommonProblem> getErrors() {
     return errors;
   }
 
@@ -246,7 +246,7 @@ public class ValueResourceCollectionOutcomeOfRetailMediaSeller {
 
           // validate the optional field `warnings` (array)
           for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
+            SdkApiRestCommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }
@@ -260,7 +260,7 @@ public class ValueResourceCollectionOutcomeOfRetailMediaSeller {
 
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
-            CommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+            SdkApiRestCommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
           };
         }
       }

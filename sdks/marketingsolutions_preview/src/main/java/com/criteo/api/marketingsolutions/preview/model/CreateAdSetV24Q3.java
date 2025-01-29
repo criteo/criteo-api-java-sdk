@@ -15,6 +15,7 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.marketingsolutions.preview.model.CreateAdSetAttributionConfigurationV24Q3;
 import com.criteo.api.marketingsolutions.preview.model.CreateAdSetBiddingV24Q3;
 import com.criteo.api.marketingsolutions.preview.model.CreateAdSetBudgetV24Q3;
 import com.criteo.api.marketingsolutions.preview.model.CreateAdSetScheduleV24Q3;
@@ -203,6 +204,10 @@ public class CreateAdSetV24Q3 {
   public static final String SERIALIZED_NAME_MEDIA_TYPE = "mediaType";
   @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
   private MediaTypeEnum mediaType;
+
+  public static final String SERIALIZED_NAME_ATTRIBUTION_CONFIGURATION = "attributionConfiguration";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTION_CONFIGURATION)
+  private CreateAdSetAttributionConfigurationV24Q3 attributionConfiguration;
 
   public CreateAdSetV24Q3() {
   }
@@ -426,6 +431,28 @@ public class CreateAdSetV24Q3 {
     this.mediaType = mediaType;
   }
 
+
+  public CreateAdSetV24Q3 attributionConfiguration(CreateAdSetAttributionConfigurationV24Q3 attributionConfiguration) {
+    
+    this.attributionConfiguration = attributionConfiguration;
+    return this;
+  }
+
+   /**
+   * Get attributionConfiguration
+   * @return attributionConfiguration
+  **/
+  @javax.annotation.Nullable
+
+  public CreateAdSetAttributionConfigurationV24Q3 getAttributionConfiguration() {
+    return attributionConfiguration;
+  }
+
+
+  public void setAttributionConfiguration(CreateAdSetAttributionConfigurationV24Q3 attributionConfiguration) {
+    this.attributionConfiguration = attributionConfiguration;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -490,13 +517,14 @@ public class CreateAdSetV24Q3 {
         Objects.equals(this.targeting, createAdSetV24Q3.targeting) &&
         Objects.equals(this.budget, createAdSetV24Q3.budget) &&
         Objects.equals(this.trackingCode, createAdSetV24Q3.trackingCode) &&
-        Objects.equals(this.mediaType, createAdSetV24Q3.mediaType)&&
+        Objects.equals(this.mediaType, createAdSetV24Q3.mediaType) &&
+        Objects.equals(this.attributionConfiguration, createAdSetV24Q3.attributionConfiguration)&&
         Objects.equals(this.additionalProperties, createAdSetV24Q3.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, datasetId, campaignId, objective, schedule, bidding, targeting, budget, trackingCode, mediaType, additionalProperties);
+    return Objects.hash(name, datasetId, campaignId, objective, schedule, bidding, targeting, budget, trackingCode, mediaType, attributionConfiguration, additionalProperties);
   }
 
   @Override
@@ -513,6 +541,7 @@ public class CreateAdSetV24Q3 {
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
     sb.append("    trackingCode: ").append(toIndentedString(trackingCode)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
+    sb.append("    attributionConfiguration: ").append(toIndentedString(attributionConfiguration)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -546,6 +575,7 @@ public class CreateAdSetV24Q3 {
     openapiFields.add("budget");
     openapiFields.add("trackingCode");
     openapiFields.add("mediaType");
+    openapiFields.add("attributionConfiguration");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -605,6 +635,10 @@ public class CreateAdSetV24Q3 {
       }
       if (!jsonObj.get("mediaType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mediaType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mediaType").toString()));
+      }
+      // validate the optional field `attributionConfiguration`
+      if (jsonObj.get("attributionConfiguration") != null && !jsonObj.get("attributionConfiguration").isJsonNull()) {
+        CreateAdSetAttributionConfigurationV24Q3.validateJsonObject(jsonObj.getAsJsonObject("attributionConfiguration"));
       }
   }
 

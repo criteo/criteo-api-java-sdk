@@ -158,7 +158,7 @@ public class DynamicWriteAttributes {
   }
 
    /**
-   * Color of the creative&#39;s background  Valid hexadecimal RGB color (e.g. \&quot;AB00FF\&quot;)
+   * Color of the creative&#39;s background  Valid hexadecimal color (e.g. \&quot;AB00FF\&quot;)
    * @return creativeBackgroundColor
   **/
   @javax.annotation.Nullable
@@ -180,7 +180,7 @@ public class DynamicWriteAttributes {
   }
 
    /**
-   * Color of the creative&#39;s body text  Valid hexadecimal RGB color (e.g. \&quot;AB00FF\&quot;)
+   * Color of the creative&#39;s body text  Valid hexadecimal color (e.g. \&quot;AB00FF\&quot;)
    * @return bodyTextColor
   **/
   @javax.annotation.Nonnull
@@ -202,7 +202,7 @@ public class DynamicWriteAttributes {
   }
 
    /**
-   * Color of the creative&#39;s prices  Valid hexadecimal RGB color (e.g. \&quot;AB00FF\&quot;)
+   * Color of the creative&#39;s prices  Valid hexadecimal color (e.g. \&quot;AB00FF\&quot;)
    * @return pricesColor
   **/
   @javax.annotation.Nonnull

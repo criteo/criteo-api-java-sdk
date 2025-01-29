@@ -10,7 +10,7 @@ Status of an async report request
 |------------ | ------------- | ------------- | -------------|
 |**status** | [**StatusEnum**](#StatusEnum) |  |  [optional] |
 |**rowCount** | **Integer** |  |  [optional] |
-|**fileSizeBytes** | **Integer** |  |  [optional] |
+|**fileSizeBytes** | **Long** |  |  [optional] |
 |**md5CheckSum** | **String** |  |  [optional] |
 |**createdAt** | **String** |  |  [optional] |
 |**expiresAt** | **String** |  |  [optional] |

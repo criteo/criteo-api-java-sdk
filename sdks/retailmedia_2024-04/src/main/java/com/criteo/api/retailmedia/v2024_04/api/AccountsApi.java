@@ -27,11 +27,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.criteo.api.retailmedia.v2024_04.model.EntityResourceOutcomeOfRetailMediaAccount;
 import com.criteo.api.retailmedia.v2024_04.model.JsonApiPageResponseOfAccount;
-import com.criteo.api.retailmedia.v2024_04.model.ResourceOutcomeOfRetailMediaAccount;
 import com.criteo.api.retailmedia.v2024_04.model.ValueResourceInputOfRetailMediaBrandAccountCreation;
 import com.criteo.api.retailmedia.v2024_04.model.ValueResourceInputOfRetailMediaBrands;
-import com.criteo.api.retailmedia.v2024_04.model.ValueResourceOfRetailMediaBrands;
+import com.criteo.api.retailmedia.v2024_04.model.ValueResourceOutcomeOfRetailMediaBrands;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -80,7 +80,7 @@ public class AccountsApi {
     /**
      * Build call for addBrands
      * @param accountId the account id to update (required)
-     * @param valueResourceInputOfRetailMediaBrands brands to associate to account (optional)
+     * @param valueResourceInputOfRetailMediaBrands  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -125,10 +125,7 @@ public class AccountsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -154,8 +151,8 @@ public class AccountsApi {
      * 
      * Add brands to an account
      * @param accountId the account id to update (required)
-     * @param valueResourceInputOfRetailMediaBrands brands to associate to account (optional)
-     * @return ValueResourceOfRetailMediaBrands
+     * @param valueResourceInputOfRetailMediaBrands  (optional)
+     * @return ValueResourceOutcomeOfRetailMediaBrands
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -163,8 +160,8 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ValueResourceOfRetailMediaBrands addBrands(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands) throws ApiException {
-        ApiResponse<ValueResourceOfRetailMediaBrands> localVarResp = addBrandsWithHttpInfo(accountId, valueResourceInputOfRetailMediaBrands);
+    public ValueResourceOutcomeOfRetailMediaBrands addBrands(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands) throws ApiException {
+        ApiResponse<ValueResourceOutcomeOfRetailMediaBrands> localVarResp = addBrandsWithHttpInfo(accountId, valueResourceInputOfRetailMediaBrands);
         return localVarResp.getData();
     }
 
@@ -172,8 +169,8 @@ public class AccountsApi {
      * 
      * Add brands to an account
      * @param accountId the account id to update (required)
-     * @param valueResourceInputOfRetailMediaBrands brands to associate to account (optional)
-     * @return ApiResponse&lt;ValueResourceOfRetailMediaBrands&gt;
+     * @param valueResourceInputOfRetailMediaBrands  (optional)
+     * @return ApiResponse&lt;ValueResourceOutcomeOfRetailMediaBrands&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -181,9 +178,9 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValueResourceOfRetailMediaBrands> addBrandsWithHttpInfo(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands) throws ApiException {
+    public ApiResponse<ValueResourceOutcomeOfRetailMediaBrands> addBrandsWithHttpInfo(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands) throws ApiException {
         okhttp3.Call localVarCall = addBrandsValidateBeforeCall(accountId, valueResourceInputOfRetailMediaBrands, null);
-        Type localVarReturnType = new TypeToken<ValueResourceOfRetailMediaBrands>(){}.getType();
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfRetailMediaBrands>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -191,7 +188,7 @@ public class AccountsApi {
      *  (asynchronously)
      * Add brands to an account
      * @param accountId the account id to update (required)
-     * @param valueResourceInputOfRetailMediaBrands brands to associate to account (optional)
+     * @param valueResourceInputOfRetailMediaBrands  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -201,17 +198,17 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addBrandsAsync(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands, final ApiCallback<ValueResourceOfRetailMediaBrands> _callback) throws ApiException {
+    public okhttp3.Call addBrandsAsync(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands, final ApiCallback<ValueResourceOutcomeOfRetailMediaBrands> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addBrandsValidateBeforeCall(accountId, valueResourceInputOfRetailMediaBrands, _callback);
-        Type localVarReturnType = new TypeToken<ValueResourceOfRetailMediaBrands>(){}.getType();
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfRetailMediaBrands>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for createPrivateMarketDemandBrandAccount
-     * @param accountId Account Id for the parent private market account (required)
-     * @param valueResourceInputOfRetailMediaBrandAccountCreation Initial creation and configuration options for the new account (optional)
+     * @param accountId The given account id (required)
+     * @param valueResourceInputOfRetailMediaBrandAccountCreation  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -256,10 +253,7 @@ public class AccountsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -284,9 +278,9 @@ public class AccountsApi {
     /**
      * 
      * Creates a new child Demand Brand Account for the provided parent private market account
-     * @param accountId Account Id for the parent private market account (required)
-     * @param valueResourceInputOfRetailMediaBrandAccountCreation Initial creation and configuration options for the new account (optional)
-     * @return ResourceOutcomeOfRetailMediaAccount
+     * @param accountId The given account id (required)
+     * @param valueResourceInputOfRetailMediaBrandAccountCreation  (optional)
+     * @return EntityResourceOutcomeOfRetailMediaAccount
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -294,17 +288,17 @@ public class AccountsApi {
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ResourceOutcomeOfRetailMediaAccount createPrivateMarketDemandBrandAccount(String accountId, ValueResourceInputOfRetailMediaBrandAccountCreation valueResourceInputOfRetailMediaBrandAccountCreation) throws ApiException {
-        ApiResponse<ResourceOutcomeOfRetailMediaAccount> localVarResp = createPrivateMarketDemandBrandAccountWithHttpInfo(accountId, valueResourceInputOfRetailMediaBrandAccountCreation);
+    public EntityResourceOutcomeOfRetailMediaAccount createPrivateMarketDemandBrandAccount(String accountId, ValueResourceInputOfRetailMediaBrandAccountCreation valueResourceInputOfRetailMediaBrandAccountCreation) throws ApiException {
+        ApiResponse<EntityResourceOutcomeOfRetailMediaAccount> localVarResp = createPrivateMarketDemandBrandAccountWithHttpInfo(accountId, valueResourceInputOfRetailMediaBrandAccountCreation);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Creates a new child Demand Brand Account for the provided parent private market account
-     * @param accountId Account Id for the parent private market account (required)
-     * @param valueResourceInputOfRetailMediaBrandAccountCreation Initial creation and configuration options for the new account (optional)
-     * @return ApiResponse&lt;ResourceOutcomeOfRetailMediaAccount&gt;
+     * @param accountId The given account id (required)
+     * @param valueResourceInputOfRetailMediaBrandAccountCreation  (optional)
+     * @return ApiResponse&lt;EntityResourceOutcomeOfRetailMediaAccount&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -312,17 +306,17 @@ public class AccountsApi {
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResourceOutcomeOfRetailMediaAccount> createPrivateMarketDemandBrandAccountWithHttpInfo(String accountId, ValueResourceInputOfRetailMediaBrandAccountCreation valueResourceInputOfRetailMediaBrandAccountCreation) throws ApiException {
+    public ApiResponse<EntityResourceOutcomeOfRetailMediaAccount> createPrivateMarketDemandBrandAccountWithHttpInfo(String accountId, ValueResourceInputOfRetailMediaBrandAccountCreation valueResourceInputOfRetailMediaBrandAccountCreation) throws ApiException {
         okhttp3.Call localVarCall = createPrivateMarketDemandBrandAccountValidateBeforeCall(accountId, valueResourceInputOfRetailMediaBrandAccountCreation, null);
-        Type localVarReturnType = new TypeToken<ResourceOutcomeOfRetailMediaAccount>(){}.getType();
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfRetailMediaAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
      * Creates a new child Demand Brand Account for the provided parent private market account
-     * @param accountId Account Id for the parent private market account (required)
-     * @param valueResourceInputOfRetailMediaBrandAccountCreation Initial creation and configuration options for the new account (optional)
+     * @param accountId The given account id (required)
+     * @param valueResourceInputOfRetailMediaBrandAccountCreation  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -332,10 +326,10 @@ public class AccountsApi {
         <tr><td> 201 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createPrivateMarketDemandBrandAccountAsync(String accountId, ValueResourceInputOfRetailMediaBrandAccountCreation valueResourceInputOfRetailMediaBrandAccountCreation, final ApiCallback<ResourceOutcomeOfRetailMediaAccount> _callback) throws ApiException {
+    public okhttp3.Call createPrivateMarketDemandBrandAccountAsync(String accountId, ValueResourceInputOfRetailMediaBrandAccountCreation valueResourceInputOfRetailMediaBrandAccountCreation, final ApiCallback<EntityResourceOutcomeOfRetailMediaAccount> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createPrivateMarketDemandBrandAccountValidateBeforeCall(accountId, valueResourceInputOfRetailMediaBrandAccountCreation, _callback);
-        Type localVarReturnType = new TypeToken<ResourceOutcomeOfRetailMediaAccount>(){}.getType();
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfRetailMediaAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -480,8 +474,8 @@ public class AccountsApi {
     }
     /**
      * Build call for removeBrands
-     * @param accountId The account id to update (required)
-     * @param valueResourceInputOfRetailMediaBrands Brands to remove from account (optional)
+     * @param accountId the account id to update (required)
+     * @param valueResourceInputOfRetailMediaBrands  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -526,10 +520,7 @@ public class AccountsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -553,10 +544,10 @@ public class AccountsApi {
 
     /**
      * 
-     * Remove a brand from an account
-     * @param accountId The account id to update (required)
-     * @param valueResourceInputOfRetailMediaBrands Brands to remove from account (optional)
-     * @return ValueResourceOfRetailMediaBrands
+     * Remove brands from an account
+     * @param accountId the account id to update (required)
+     * @param valueResourceInputOfRetailMediaBrands  (optional)
+     * @return ValueResourceOutcomeOfRetailMediaBrands
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -564,17 +555,17 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ValueResourceOfRetailMediaBrands removeBrands(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands) throws ApiException {
-        ApiResponse<ValueResourceOfRetailMediaBrands> localVarResp = removeBrandsWithHttpInfo(accountId, valueResourceInputOfRetailMediaBrands);
+    public ValueResourceOutcomeOfRetailMediaBrands removeBrands(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands) throws ApiException {
+        ApiResponse<ValueResourceOutcomeOfRetailMediaBrands> localVarResp = removeBrandsWithHttpInfo(accountId, valueResourceInputOfRetailMediaBrands);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Remove a brand from an account
-     * @param accountId The account id to update (required)
-     * @param valueResourceInputOfRetailMediaBrands Brands to remove from account (optional)
-     * @return ApiResponse&lt;ValueResourceOfRetailMediaBrands&gt;
+     * Remove brands from an account
+     * @param accountId the account id to update (required)
+     * @param valueResourceInputOfRetailMediaBrands  (optional)
+     * @return ApiResponse&lt;ValueResourceOutcomeOfRetailMediaBrands&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -582,17 +573,17 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValueResourceOfRetailMediaBrands> removeBrandsWithHttpInfo(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands) throws ApiException {
+    public ApiResponse<ValueResourceOutcomeOfRetailMediaBrands> removeBrandsWithHttpInfo(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands) throws ApiException {
         okhttp3.Call localVarCall = removeBrandsValidateBeforeCall(accountId, valueResourceInputOfRetailMediaBrands, null);
-        Type localVarReturnType = new TypeToken<ValueResourceOfRetailMediaBrands>(){}.getType();
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfRetailMediaBrands>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Remove a brand from an account
-     * @param accountId The account id to update (required)
-     * @param valueResourceInputOfRetailMediaBrands Brands to remove from account (optional)
+     * Remove brands from an account
+     * @param accountId the account id to update (required)
+     * @param valueResourceInputOfRetailMediaBrands  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -602,10 +593,10 @@ public class AccountsApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call removeBrandsAsync(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands, final ApiCallback<ValueResourceOfRetailMediaBrands> _callback) throws ApiException {
+    public okhttp3.Call removeBrandsAsync(String accountId, ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands, final ApiCallback<ValueResourceOutcomeOfRetailMediaBrands> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = removeBrandsValidateBeforeCall(accountId, valueResourceInputOfRetailMediaBrands, _callback);
-        Type localVarReturnType = new TypeToken<ValueResourceOfRetailMediaBrands>(){}.getType();
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeOfRetailMediaBrands>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -24,6 +24,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -96,7 +97,7 @@ public class CpcRateCardPreview {
 
   public CpcRateCardPreview putCategoryMinimumCpcBidsItem(String key, Double categoryMinimumCpcBidsItem) {
     if (this.categoryMinimumCpcBids == null) {
-      this.categoryMinimumCpcBids = new HashMap<>();
+      this.categoryMinimumCpcBids = null;
     }
     this.categoryMinimumCpcBids.put(key, categoryMinimumCpcBidsItem);
     return this;
@@ -126,7 +127,7 @@ public class CpcRateCardPreview {
 
   public CpcRateCardPreview putCategoriesItem(String key, Category202204 categoriesItem) {
     if (this.categories == null) {
-      this.categories = new HashMap<>();
+      this.categories = null;
     }
     this.categories.put(key, categoriesItem);
     return this;
@@ -208,9 +209,20 @@ public class CpcRateCardPreview {
         Objects.equals(this.additionalProperties, cpcRateCardPreview.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(retailerMinimumCpcBid, categoryMinimumCpcBids, categories, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

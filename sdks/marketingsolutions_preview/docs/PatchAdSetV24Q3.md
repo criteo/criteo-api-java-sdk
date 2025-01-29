@@ -13,6 +13,7 @@ ad set patch model
 |**bidding** | [**PatchAdSetBiddingV24Q3**](PatchAdSetBiddingV24Q3.md) |  |  [optional] |
 |**targeting** | [**AdSetTargetingV24Q3**](AdSetTargetingV24Q3.md) |  |  [optional] |
 |**budget** | [**PatchAdSetBudgetV24Q3**](PatchAdSetBudgetV24Q3.md) |  |  [optional] |
+|**attributionConfiguration** | [**PatchAdSetAttributionConfigurationV24Q3**](PatchAdSetAttributionConfigurationV24Q3.md) |  |  [optional] |
 
 
 

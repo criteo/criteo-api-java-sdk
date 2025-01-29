@@ -29,7 +29,6 @@ Campaigns report body request
 |---- | -----|
 | SUMMARY | &quot;summary&quot; |
 | PAGETYPE | &quot;pageType&quot; |
-| KEYWORD | &quot;keyword&quot; |
 | PRODUCTCATEGORY | &quot;productCategory&quot; |
 | PRODUCT | &quot;product&quot; |
 | ENVIRONMENT | &quot;environment&quot; |
@@ -104,9 +103,8 @@ Campaigns report body request
 | ENVIRONMENT | &quot;environment&quot; |
 | PAGETYPENAME | &quot;pageTypeName&quot; |
 | PAGECATEGORY | &quot;pageCategory&quot; |
+| SERVEDCATEGORY | &quot;servedCategory&quot; |
 | TAXONOMYBREADCRUMB | &quot;taxonomyBreadcrumb&quot; |
-| KEYWORD | &quot;keyword&quot; |
-| SEARCHTERM | &quot;searchTerm&quot; |
 
 
 
@@ -127,14 +125,6 @@ Campaigns report body request
 | CPO | &quot;cpo&quot; |
 | CPM | &quot;cpm&quot; |
 | ROAS | &quot;roas&quot; |
-| VIDEOVIEWS | &quot;videoViews&quot; |
-| VIDEOSSTARTED | &quot;videosStarted&quot; |
-| VIDEOSPLAYEDTO25 | &quot;videosPlayedTo25&quot; |
-| VIDEOSPLAYEDTO50 | &quot;videosPlayedTo50&quot; |
-| VIDEOSPLAYEDTO75 | &quot;videosPlayedTo75&quot; |
-| VIDEOSPLAYEDTO100 | &quot;videosPlayedTo100&quot; |
-| VIDEOPLAYINGRATE | &quot;videoPlayingRate&quot; |
-| VIDEOCOMPLETIONRATE | &quot;videoCompletionRate&quot; |
 | UNIQUEVISITORS | &quot;uniqueVisitors&quot; |
 | FREQUENCY | &quot;frequency&quot; |
 

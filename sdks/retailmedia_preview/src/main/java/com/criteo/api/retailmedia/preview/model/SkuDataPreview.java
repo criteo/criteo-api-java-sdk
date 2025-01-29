@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -587,7 +588,7 @@ public class SkuDataPreview {
   }
 
    /**
-   * An The product page URL
+   * The product page URL
    * @return productPage
   **/
   @javax.annotation.Nullable
@@ -703,9 +704,20 @@ public class SkuDataPreview {
         Objects.equals(this.additionalProperties, skuDataPreview.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(skuKey, name, description, categoryId, category, isSellerSku, isBuybox, sellerId, sellerName, brandId, brandName, retailerId, retailerName, price, isInStock, gtin, mpn, modelNumber, parentId, imageUrl, productPage, updatedAt, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

@@ -108,6 +108,112 @@ public class AsyncAccountsReport {
   private AggregationLevelEnum aggregationLevel = AggregationLevelEnum.CAMPAIGN;
 
   /**
+   * Gets or Sets searchTermTypes
+   */
+  @JsonAdapter(SearchTermTypesEnum.Adapter.class)
+  public enum SearchTermTypesEnum {
+    UNKNOWN("unknown"),
+    
+    SEARCHED("searched"),
+    
+    ENTERED("entered");
+
+    private String value;
+
+    SearchTermTypesEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static SearchTermTypesEnum fromValue(String value) {
+      for (SearchTermTypesEnum b : SearchTermTypesEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<SearchTermTypesEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SearchTermTypesEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SearchTermTypesEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return SearchTermTypesEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_SEARCH_TERM_TYPES = "searchTermTypes";
+  @SerializedName(SERIALIZED_NAME_SEARCH_TERM_TYPES)
+  private List<SearchTermTypesEnum> searchTermTypes = null;
+
+  /**
+   * Gets or Sets searchTermTargetings
+   */
+  @JsonAdapter(SearchTermTargetingsEnum.Adapter.class)
+  public enum SearchTermTargetingsEnum {
+    UNKNOWN("unknown"),
+    
+    AUTOMATIC("automatic"),
+    
+    MANUAL("manual");
+
+    private String value;
+
+    SearchTermTargetingsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static SearchTermTargetingsEnum fromValue(String value) {
+      for (SearchTermTargetingsEnum b : SearchTermTargetingsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<SearchTermTargetingsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SearchTermTargetingsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SearchTermTargetingsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return SearchTermTargetingsEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_SEARCH_TERM_TARGETINGS = "searchTermTargetings";
+  @SerializedName(SERIALIZED_NAME_SEARCH_TERM_TARGETINGS)
+  private List<SearchTermTargetingsEnum> searchTermTargetings = null;
+
+  /**
    * Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays
    */
   @JsonAdapter(CampaignTypeEnum.Adapter.class)
@@ -287,7 +393,9 @@ public class AsyncAccountsReport {
     
     ENVIRONMENT("environment"),
     
-    SERVEDCATEGORY("servedCategory");
+    SERVEDCATEGORY("servedCategory"),
+    
+    CAPOUT("capout");
 
     private String value;
 
@@ -488,11 +596,29 @@ public class AsyncAccountsReport {
     
     PAGECATEGORY("pageCategory"),
     
+    SERVEDCATEGORY("servedCategory"),
+    
     TAXONOMYBREADCRUMB("taxonomyBreadcrumb"),
     
     KEYWORD("keyword"),
     
-    SEARCHTERM("searchTerm");
+    SEARCHTERM("searchTerm"),
+    
+    SEARCHTERMTYPE("searchTermType"),
+    
+    SEARCHTERMTARGETING("searchTermTargeting"),
+    
+    CREATIVEID("creativeId"),
+    
+    CREATIVENAME("creativeName"),
+    
+    CREATIVETYPEID("creativeTypeId"),
+    
+    CREATIVETYPENAME("creativeTypeName"),
+    
+    CREATIVETEMPLATEID("creativeTemplateId"),
+    
+    CREATIVETEMPLATENAME("creativeTemplateName");
 
     private String value;
 
@@ -582,6 +708,26 @@ public class AsyncAccountsReport {
     VIDEOPLAYINGRATE("videoPlayingRate"),
     
     VIDEOCOMPLETIONRATE("videoCompletionRate"),
+    
+    VIDEOIMPRESSIONS("videoImpressions"),
+    
+    VIDEOMUTED("videoMuted"),
+    
+    VIDEOUNMUTED("videoUnmuted"),
+    
+    VIDEOPAUSED("videoPaused"),
+    
+    VIDEORESUMED("videoResumed"),
+    
+    VIDEOAVGINTERACTIONRATE("videoAvgInteractionRate"),
+    
+    VIDEOVIEWABILITY("videoViewability"),
+    
+    VIDEOSTARTINGRATE("videoStartingRate"),
+    
+    VIDEOCPC("videoCPC"),
+    
+    VIDEOCPCV("videoCPCV"),
     
     UNIQUEVISITORS("uniqueVisitors"),
     
@@ -690,6 +836,66 @@ public class AsyncAccountsReport {
 
   public void setAggregationLevel(AggregationLevelEnum aggregationLevel) {
     this.aggregationLevel = aggregationLevel;
+  }
+
+
+  public AsyncAccountsReport searchTermTypes(List<SearchTermTypesEnum> searchTermTypes) {
+    
+    this.searchTermTypes = searchTermTypes;
+    return this;
+  }
+
+  public AsyncAccountsReport addSearchTermTypesItem(SearchTermTypesEnum searchTermTypesItem) {
+    if (this.searchTermTypes == null) {
+      this.searchTermTypes = null;
+    }
+    this.searchTermTypes.add(searchTermTypesItem);
+    return this;
+  }
+
+   /**
+   * Filter on the type of search term type: unknown, searched, entered
+   * @return searchTermTypes
+  **/
+  @javax.annotation.Nullable
+
+  public List<SearchTermTypesEnum> getSearchTermTypes() {
+    return searchTermTypes;
+  }
+
+
+  public void setSearchTermTypes(List<SearchTermTypesEnum> searchTermTypes) {
+    this.searchTermTypes = searchTermTypes;
+  }
+
+
+  public AsyncAccountsReport searchTermTargetings(List<SearchTermTargetingsEnum> searchTermTargetings) {
+    
+    this.searchTermTargetings = searchTermTargetings;
+    return this;
+  }
+
+  public AsyncAccountsReport addSearchTermTargetingsItem(SearchTermTargetingsEnum searchTermTargetingsItem) {
+    if (this.searchTermTargetings == null) {
+      this.searchTermTargetings = null;
+    }
+    this.searchTermTargetings.add(searchTermTargetingsItem);
+    return this;
+  }
+
+   /**
+   * Filter on the type of search term targeting: unknown, automatic, manual
+   * @return searchTermTargetings
+  **/
+  @javax.annotation.Nullable
+
+  public List<SearchTermTargetingsEnum> getSearchTermTargetings() {
+    return searchTermTargetings;
+  }
+
+
+  public void setSearchTermTargetings(List<SearchTermTargetingsEnum> searchTermTargetings) {
+    this.searchTermTargetings = searchTermTargetings;
   }
 
 
@@ -1007,6 +1213,8 @@ public class AsyncAccountsReport {
     AsyncAccountsReport asyncAccountsReport = (AsyncAccountsReport) o;
     return Objects.equals(this.accountIds, asyncAccountsReport.accountIds) &&
         Objects.equals(this.aggregationLevel, asyncAccountsReport.aggregationLevel) &&
+        Objects.equals(this.searchTermTypes, asyncAccountsReport.searchTermTypes) &&
+        Objects.equals(this.searchTermTargetings, asyncAccountsReport.searchTermTargetings) &&
         Objects.equals(this.campaignType, asyncAccountsReport.campaignType) &&
         Objects.equals(this.salesChannel, asyncAccountsReport.salesChannel) &&
         Objects.equals(this.format, asyncAccountsReport.format) &&
@@ -1027,7 +1235,7 @@ public class AsyncAccountsReport {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountIds, aggregationLevel, campaignType, salesChannel, format, reportType, clickAttributionWindow, viewAttributionWindow, dimensions, metrics, startDate, endDate, timezone, additionalProperties);
+    return Objects.hash(accountIds, aggregationLevel, searchTermTypes, searchTermTargetings, campaignType, salesChannel, format, reportType, clickAttributionWindow, viewAttributionWindow, dimensions, metrics, startDate, endDate, timezone, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1043,6 +1251,8 @@ public class AsyncAccountsReport {
     sb.append("class AsyncAccountsReport {\n");
     sb.append("    accountIds: ").append(toIndentedString(accountIds)).append("\n");
     sb.append("    aggregationLevel: ").append(toIndentedString(aggregationLevel)).append("\n");
+    sb.append("    searchTermTypes: ").append(toIndentedString(searchTermTypes)).append("\n");
+    sb.append("    searchTermTargetings: ").append(toIndentedString(searchTermTargetings)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    salesChannel: ").append(toIndentedString(salesChannel)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
@@ -1079,6 +1289,8 @@ public class AsyncAccountsReport {
     openapiFields = new HashSet<String>();
     openapiFields.add("accountIds");
     openapiFields.add("aggregationLevel");
+    openapiFields.add("searchTermTypes");
+    openapiFields.add("searchTermTargetings");
     openapiFields.add("campaignType");
     openapiFields.add("salesChannel");
     openapiFields.add("format");
@@ -1125,6 +1337,14 @@ public class AsyncAccountsReport {
       }
       if ((jsonObj.get("aggregationLevel") != null && !jsonObj.get("aggregationLevel").isJsonNull()) && !jsonObj.get("aggregationLevel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `aggregationLevel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("aggregationLevel").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("searchTermTypes") != null && !jsonObj.get("searchTermTypes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `searchTermTypes` to be an array in the JSON string but got `%s`", jsonObj.get("searchTermTypes").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("searchTermTargetings") != null && !jsonObj.get("searchTermTargetings").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `searchTermTargetings` to be an array in the JSON string but got `%s`", jsonObj.get("searchTermTargetings").toString()));
       }
       if ((jsonObj.get("campaignType") != null && !jsonObj.get("campaignType").isJsonNull()) && !jsonObj.get("campaignType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignType").toString()));

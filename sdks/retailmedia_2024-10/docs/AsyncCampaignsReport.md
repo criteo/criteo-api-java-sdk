@@ -10,6 +10,8 @@ Async Campaigns report body request
 |------------ | ------------- | ------------- | -------------|
 |**ids** | **List&lt;String&gt;** | Campaign ids to report on |  [optional] |
 |**id** | **String** | Campaign id to report on |  [optional] |
+|**searchTermTypes** | [**List&lt;SearchTermTypesEnum&gt;**](#List&lt;SearchTermTypesEnum&gt;) | Filter on the type of search term type: unknown, searched, entered |  [optional] |
+|**searchTermTargetings** | [**List&lt;SearchTermTargetingsEnum&gt;**](#List&lt;SearchTermTargetingsEnum&gt;) | Filter on the type of search term targeting: unknown, automatic, manual |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays |  [optional] |
 |**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
 |**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
@@ -21,6 +23,26 @@ Async Campaigns report body request
 |**startDate** | **OffsetDateTime** | Start date |  |
 |**endDate** | **OffsetDateTime** | End date |  |
 |**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
+
+
+
+## Enum: List&lt;SearchTermTypesEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| SEARCHED | &quot;searched&quot; |
+| ENTERED | &quot;entered&quot; |
+
+
+
+## Enum: List&lt;SearchTermTargetingsEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| AUTOMATIC | &quot;automatic&quot; |
+| MANUAL | &quot;manual&quot; |
 
 
 
@@ -67,6 +89,7 @@ Async Campaigns report body request
 | ATTRIBUTEDTRANSACTIONS | &quot;attributedTransactions&quot; |
 | ENVIRONMENT | &quot;environment&quot; |
 | SERVEDCATEGORY | &quot;servedCategory&quot; |
+| CAPOUT | &quot;capout&quot; |
 
 
 
@@ -117,9 +140,18 @@ Async Campaigns report body request
 | ENVIRONMENT | &quot;environment&quot; |
 | PAGETYPENAME | &quot;pageTypeName&quot; |
 | PAGECATEGORY | &quot;pageCategory&quot; |
+| SERVEDCATEGORY | &quot;servedCategory&quot; |
 | TAXONOMYBREADCRUMB | &quot;taxonomyBreadcrumb&quot; |
 | KEYWORD | &quot;keyword&quot; |
 | SEARCHTERM | &quot;searchTerm&quot; |
+| SEARCHTERMTYPE | &quot;searchTermType&quot; |
+| SEARCHTERMTARGETING | &quot;searchTermTargeting&quot; |
+| CREATIVEID | &quot;creativeId&quot; |
+| CREATIVENAME | &quot;creativeName&quot; |
+| CREATIVETYPEID | &quot;creativeTypeId&quot; |
+| CREATIVETYPENAME | &quot;creativeTypeName&quot; |
+| CREATIVETEMPLATEID | &quot;creativeTemplateId&quot; |
+| CREATIVETEMPLATENAME | &quot;creativeTemplateName&quot; |
 
 
 
@@ -148,6 +180,16 @@ Async Campaigns report body request
 | VIDEOSPLAYEDTO100 | &quot;videosPlayedTo100&quot; |
 | VIDEOPLAYINGRATE | &quot;videoPlayingRate&quot; |
 | VIDEOCOMPLETIONRATE | &quot;videoCompletionRate&quot; |
+| VIDEOIMPRESSIONS | &quot;videoImpressions&quot; |
+| VIDEOMUTED | &quot;videoMuted&quot; |
+| VIDEOUNMUTED | &quot;videoUnmuted&quot; |
+| VIDEOPAUSED | &quot;videoPaused&quot; |
+| VIDEORESUMED | &quot;videoResumed&quot; |
+| VIDEOAVGINTERACTIONRATE | &quot;videoAvgInteractionRate&quot; |
+| VIDEOVIEWABILITY | &quot;videoViewability&quot; |
+| VIDEOSTARTINGRATE | &quot;videoStartingRate&quot; |
+| VIDEOCPC | &quot;videoCPC&quot; |
+| VIDEOCPCV | &quot;videoCPCV&quot; |
 | UNIQUEVISITORS | &quot;uniqueVisitors&quot; |
 | FREQUENCY | &quot;frequency&quot; |
 

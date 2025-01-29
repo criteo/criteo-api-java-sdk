@@ -337,7 +337,15 @@ public class SyncAttributedTransactionsReport {
     
     KEYWORD("keyword"),
     
-    ATTRIBUTIONWINDOW("attributionWindow");
+    ATTRIBUTIONWINDOW("attributionWindow"),
+    
+    SALESELLERID("saleSellerId"),
+    
+    SALESELLERNAME("saleSellerName"),
+    
+    ACTIVITYSELLERID("activitySellerId"),
+    
+    ACTIVITYSELLERNAME("activitySellerName");
 
     private String value;
 

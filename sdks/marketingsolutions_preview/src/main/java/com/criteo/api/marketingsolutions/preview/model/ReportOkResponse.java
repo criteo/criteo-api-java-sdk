@@ -176,7 +176,7 @@ public class ReportOkResponse {
    * The date when the original batch request was sent.
    * @return importRequestTimestamp
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public Long getImportRequestTimestamp() {
     return importRequestTimestamp;
@@ -198,7 +198,7 @@ public class ReportOkResponse {
    * The number of products present in the batch.
    * @return numberOfProductsInTheBatch
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public Integer getNumberOfProductsInTheBatch() {
     return numberOfProductsInTheBatch;
@@ -220,7 +220,7 @@ public class ReportOkResponse {
    * The number of products upserted.
    * @return numberOfProductsUpserted
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public Integer getNumberOfProductsUpserted() {
     return numberOfProductsUpserted;
@@ -242,7 +242,7 @@ public class ReportOkResponse {
    * The number of products deleted.
    * @return numberOfProductsDeleted
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public Integer getNumberOfProductsDeleted() {
     return numberOfProductsDeleted;
@@ -264,7 +264,7 @@ public class ReportOkResponse {
    * The number of products with errors.
    * @return numberOfProductsWithErrors
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public Integer getNumberOfProductsWithErrors() {
     return numberOfProductsWithErrors;
@@ -313,7 +313,7 @@ public class ReportOkResponse {
    * The number of products with Warnings.
    * @return numberOfProductsWithWarnings
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public Integer getNumberOfProductsWithWarnings() {
     return numberOfProductsWithWarnings;

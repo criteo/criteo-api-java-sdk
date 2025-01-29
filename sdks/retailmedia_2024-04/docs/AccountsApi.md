@@ -13,7 +13,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 ## addBrands
 
-> ValueResourceOfRetailMediaBrands addBrands(accountId, valueResourceInputOfRetailMediaBrands)
+> ValueResourceOutcomeOfRetailMediaBrands addBrands(accountId, valueResourceInputOfRetailMediaBrands)
 
 
 
@@ -59,9 +59,9 @@ public class Example {
 
         AccountsApi apiInstance = new AccountsApi(defaultClient);
         String accountId = "accountId_example"; // String | the account id to update
-        ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands = new ValueResourceInputOfRetailMediaBrands(); // ValueResourceInputOfRetailMediaBrands | brands to associate to account
+        ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands = new ValueResourceInputOfRetailMediaBrands(); // ValueResourceInputOfRetailMediaBrands | 
         try {
-            ValueResourceOfRetailMediaBrands result = apiInstance.addBrands(accountId, valueResourceInputOfRetailMediaBrands);
+            ValueResourceOutcomeOfRetailMediaBrands result = apiInstance.addBrands(accountId, valueResourceInputOfRetailMediaBrands);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountsApi#addBrands");
@@ -80,11 +80,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| the account id to update | |
-| **valueResourceInputOfRetailMediaBrands** | [**ValueResourceInputOfRetailMediaBrands**](ValueResourceInputOfRetailMediaBrands.md)| brands to associate to account | [optional] |
+| **valueResourceInputOfRetailMediaBrands** | [**ValueResourceInputOfRetailMediaBrands**](ValueResourceInputOfRetailMediaBrands.md)|  | [optional] |
 
 ### Return type
 
-[**ValueResourceOfRetailMediaBrands**](ValueResourceOfRetailMediaBrands.md)
+[**ValueResourceOutcomeOfRetailMediaBrands**](ValueResourceOutcomeOfRetailMediaBrands.md)
 
 ### Authorization
 
@@ -92,7 +92,7 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -104,7 +104,7 @@ public class Example {
 
 ## createPrivateMarketDemandBrandAccount
 
-> ResourceOutcomeOfRetailMediaAccount createPrivateMarketDemandBrandAccount(accountId, valueResourceInputOfRetailMediaBrandAccountCreation)
+> EntityResourceOutcomeOfRetailMediaAccount createPrivateMarketDemandBrandAccount(accountId, valueResourceInputOfRetailMediaBrandAccountCreation)
 
 
 
@@ -149,10 +149,10 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AccountsApi apiInstance = new AccountsApi(defaultClient);
-        String accountId = "accountId_example"; // String | Account Id for the parent private market account
-        ValueResourceInputOfRetailMediaBrandAccountCreation valueResourceInputOfRetailMediaBrandAccountCreation = new ValueResourceInputOfRetailMediaBrandAccountCreation(); // ValueResourceInputOfRetailMediaBrandAccountCreation | Initial creation and configuration options for the new account
+        String accountId = "accountId_example"; // String | The given account id
+        ValueResourceInputOfRetailMediaBrandAccountCreation valueResourceInputOfRetailMediaBrandAccountCreation = new ValueResourceInputOfRetailMediaBrandAccountCreation(); // ValueResourceInputOfRetailMediaBrandAccountCreation | 
         try {
-            ResourceOutcomeOfRetailMediaAccount result = apiInstance.createPrivateMarketDemandBrandAccount(accountId, valueResourceInputOfRetailMediaBrandAccountCreation);
+            EntityResourceOutcomeOfRetailMediaAccount result = apiInstance.createPrivateMarketDemandBrandAccount(accountId, valueResourceInputOfRetailMediaBrandAccountCreation);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountsApi#createPrivateMarketDemandBrandAccount");
@@ -170,12 +170,12 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| Account Id for the parent private market account | |
-| **valueResourceInputOfRetailMediaBrandAccountCreation** | [**ValueResourceInputOfRetailMediaBrandAccountCreation**](ValueResourceInputOfRetailMediaBrandAccountCreation.md)| Initial creation and configuration options for the new account | [optional] |
+| **accountId** | **String**| The given account id | |
+| **valueResourceInputOfRetailMediaBrandAccountCreation** | [**ValueResourceInputOfRetailMediaBrandAccountCreation**](ValueResourceInputOfRetailMediaBrandAccountCreation.md)|  | [optional] |
 
 ### Return type
 
-[**ResourceOutcomeOfRetailMediaAccount**](ResourceOutcomeOfRetailMediaAccount.md)
+[**EntityResourceOutcomeOfRetailMediaAccount**](EntityResourceOutcomeOfRetailMediaAccount.md)
 
 ### Authorization
 
@@ -183,7 +183,7 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -288,11 +288,11 @@ public class Example {
 
 ## removeBrands
 
-> ValueResourceOfRetailMediaBrands removeBrands(accountId, valueResourceInputOfRetailMediaBrands)
+> ValueResourceOutcomeOfRetailMediaBrands removeBrands(accountId, valueResourceInputOfRetailMediaBrands)
 
 
 
-Remove a brand from an account
+Remove brands from an account
 
 ### Example
 
@@ -333,10 +333,10 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         AccountsApi apiInstance = new AccountsApi(defaultClient);
-        String accountId = "accountId_example"; // String | The account id to update
-        ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands = new ValueResourceInputOfRetailMediaBrands(); // ValueResourceInputOfRetailMediaBrands | Brands to remove from account
+        String accountId = "accountId_example"; // String | the account id to update
+        ValueResourceInputOfRetailMediaBrands valueResourceInputOfRetailMediaBrands = new ValueResourceInputOfRetailMediaBrands(); // ValueResourceInputOfRetailMediaBrands | 
         try {
-            ValueResourceOfRetailMediaBrands result = apiInstance.removeBrands(accountId, valueResourceInputOfRetailMediaBrands);
+            ValueResourceOutcomeOfRetailMediaBrands result = apiInstance.removeBrands(accountId, valueResourceInputOfRetailMediaBrands);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountsApi#removeBrands");
@@ -354,12 +354,12 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **accountId** | **String**| The account id to update | |
-| **valueResourceInputOfRetailMediaBrands** | [**ValueResourceInputOfRetailMediaBrands**](ValueResourceInputOfRetailMediaBrands.md)| Brands to remove from account | [optional] |
+| **accountId** | **String**| the account id to update | |
+| **valueResourceInputOfRetailMediaBrands** | [**ValueResourceInputOfRetailMediaBrands**](ValueResourceInputOfRetailMediaBrands.md)|  | [optional] |
 
 ### Return type
 
-[**ValueResourceOfRetailMediaBrands**](ValueResourceOfRetailMediaBrands.md)
+[**ValueResourceOutcomeOfRetailMediaBrands**](ValueResourceOutcomeOfRetailMediaBrands.md)
 
 ### Authorization
 
@@ -367,7 +367,7 @@ public class Example {
 
 ### HTTP request headers
 
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

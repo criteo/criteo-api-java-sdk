@@ -2,7 +2,7 @@
 
 # ValueResourceCollectionOutcomeOfRetailMediaSeller
 
-A top-level object that encapsulates a Criteo API response for several values.
+A top-level object that encapsulates a Criteo API response for a collection of values.
 
 ## Properties
 
