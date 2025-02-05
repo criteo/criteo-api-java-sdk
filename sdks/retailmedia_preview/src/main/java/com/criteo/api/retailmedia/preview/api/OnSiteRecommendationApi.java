@@ -27,7 +27,6 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.criteo.api.retailmedia.preview.model.HttpValidationError;
 import com.criteo.api.retailmedia.preview.model.InbotDiscussionBodyModel;
 import com.criteo.api.retailmedia.preview.model.MessageBodyModel;
 
@@ -89,7 +88,6 @@ public class OnSiteRecommendationApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Validation Error </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call chatbotProductRecommendationsCall(Integer catalogid, InbotDiscussionBodyModel inbotDiscussionBodyModel, final ApiCallback _callback) throws ApiException {
@@ -168,7 +166,6 @@ public class OnSiteRecommendationApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Validation Error </td><td>  -  </td></tr>
      </table>
      */
     public MessageBodyModel chatbotProductRecommendations(Integer catalogid, InbotDiscussionBodyModel inbotDiscussionBodyModel) throws ApiException {
@@ -190,7 +187,6 @@ public class OnSiteRecommendationApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Validation Error </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<MessageBodyModel> chatbotProductRecommendationsWithHttpInfo(Integer catalogid, InbotDiscussionBodyModel inbotDiscussionBodyModel) throws ApiException {
@@ -214,7 +210,6 @@ public class OnSiteRecommendationApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td> Validation Error </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call chatbotProductRecommendationsAsync(Integer catalogid, InbotDiscussionBodyModel inbotDiscussionBodyModel, final ApiCallback<MessageBodyModel> _callback) throws ApiException {

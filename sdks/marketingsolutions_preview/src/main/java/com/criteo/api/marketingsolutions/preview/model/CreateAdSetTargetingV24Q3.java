@@ -120,7 +120,7 @@ public class CreateAdSetTargetingV24Q3 {
    * Get frequencyCapping
    * @return frequencyCapping
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public AdSetFrequencyCappingV24Q3 getFrequencyCapping() {
     return frequencyCapping;

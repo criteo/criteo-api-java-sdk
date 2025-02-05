@@ -1917,6 +1917,7 @@ paths:
           - Unknown
           - Auction
           - Preferred
+          nullable: true
           type: string
         style: form
         x-nullable: true
@@ -4117,6 +4118,8 @@ components:
             - unknown
             - auction
             - preferred
+            - offsite
+            - offsiteCpc
             type: string
           type: array
           x-nullable: false
@@ -8927,6 +8930,10 @@ components:
             - videoStartingRate
             - videoCPC
             - videoCPCV
+            - newToBrandAttributedSales
+            - newToBrandAttributedSalesRate
+            - newToBrandAttributedUnits
+            - newToBrandAttributedUnitsRate
             - uniqueVisitors
             - frequency
             type: string
@@ -9151,6 +9158,10 @@ components:
             - videoStartingRate
             - videoCPC
             - videoCPCV
+            - newToBrandAttributedSales
+            - newToBrandAttributedSalesRate
+            - newToBrandAttributedUnits
+            - newToBrandAttributedUnitsRate
             - uniqueVisitors
             - frequency
             type: string

@@ -1983,6 +1983,7 @@ paths:
         required: false
         schema:
           format: int32
+          nullable: true
           type: integer
         style: form
         x-nullable: true
@@ -1994,6 +1995,7 @@ paths:
         required: false
         schema:
           format: int32
+          nullable: true
           type: integer
         style: form
         x-nullable: true
@@ -2114,6 +2116,7 @@ paths:
         required: false
         schema:
           format: int32
+          nullable: true
           type: integer
         style: form
         x-nullable: true
@@ -2125,6 +2128,7 @@ paths:
         required: false
         schema:
           format: int32
+          nullable: true
           type: integer
         style: form
         x-nullable: true
@@ -2494,6 +2498,7 @@ paths:
         required: false
         schema:
           format: int32
+          nullable: true
           type: integer
         style: form
         x-nullable: true
@@ -2505,6 +2510,7 @@ paths:
         required: false
         schema:
           format: int32
+          nullable: true
           type: integer
         style: form
         x-nullable: true
@@ -14335,6 +14341,7 @@ components:
       example:
         maximumImpressions: 6
         frequency: hourly
+      nullable: true
       properties:
         frequency:
           enum:
@@ -14349,7 +14356,7 @@ components:
           nullable: true
           type: integer
       type: object
-      x-nullable: "true"
+      x-nullable: true
     NillableDecimal:
       description: "structure that encapsulates an object that have valid business\
         \ null values. If the structure is provided (i.e. not null), then the value\
@@ -14452,6 +14459,7 @@ components:
             name: name
             adSetId: adSetId
             description: description
+            id: id
             creativeId: creativeId
             startDate: startDate
           id: id
@@ -14527,6 +14535,7 @@ components:
             name: name
             adSetId: adSetId
             description: description
+            id: id
             creativeId: creativeId
             startDate: startDate
           id: id
@@ -14537,6 +14546,7 @@ components:
             name: name
             adSetId: adSetId
             description: description
+            id: id
             creativeId: creativeId
             startDate: startDate
           id: id
@@ -14632,6 +14642,7 @@ components:
             name: name
             adSetId: adSetId
             rotationsNumber: 5
+            id: id
             landingPageUrl: landingPageUrl
             startDate: startDate
             status: status
@@ -14659,6 +14670,7 @@ components:
             name: name
             adSetId: adSetId
             rotationsNumber: 5
+            id: id
             landingPageUrl: landingPageUrl
             startDate: startDate
             status: status
@@ -14755,6 +14767,7 @@ components:
             name: name
             adSetId: adSetId
             rotationsNumber: 5
+            id: id
             landingPageUrl: landingPageUrl
             startDate: startDate
             status: status
@@ -14969,6 +14982,7 @@ components:
             format: format
             description: description
             datasetId: datasetId
+            id: id
             status: status
             advertiserId: advertiserId
             htmlTagAttributes:
@@ -15053,6 +15067,7 @@ components:
             format: format
             description: description
             datasetId: datasetId
+            id: id
             status: status
             advertiserId: advertiserId
             htmlTagAttributes:
@@ -15206,6 +15221,7 @@ components:
             format: format
             description: description
             datasetId: datasetId
+            id: id
             status: status
             advertiserId: advertiserId
             htmlTagAttributes:
@@ -15429,6 +15445,7 @@ components:
           name: name
           adSetId: adSetId
           description: description
+          id: id
           creativeId: creativeId
           startDate: startDate
         id: id
@@ -15471,6 +15488,7 @@ components:
           name: name
           adSetId: adSetId
           rotationsNumber: 5
+          id: id
           landingPageUrl: landingPageUrl
           startDate: startDate
           status: status
@@ -15587,6 +15605,7 @@ components:
           format: format
           description: description
           datasetId: datasetId
+          id: id
           status: status
           advertiserId: advertiserId
           htmlTagAttributes:
@@ -15790,6 +15809,7 @@ components:
         name: name
         adSetId: adSetId
         description: description
+        id: id
         creativeId: creativeId
         startDate: startDate
       properties:
@@ -15837,6 +15857,11 @@ components:
           nullable: true
           type: string
           x-nullable: true
+        id:
+          description: Unique identifier (duplicate of the parent id).
+          nullable: true
+          type: string
+          x-nullable: true
       type: object
     Coupon:
       description: Coupons are static images applied on ad set which can be displayed
@@ -15863,6 +15888,7 @@ components:
         name: name
         adSetId: adSetId
         rotationsNumber: 5
+        id: id
         landingPageUrl: landingPageUrl
         startDate: startDate
         status: status
@@ -15943,6 +15969,11 @@ components:
           format: int32
           nullable: true
           type: integer
+        id:
+          description: Unique identifier (duplicate of the parent id).
+          nullable: true
+          type: string
+          x-nullable: true
       type: object
     CouponSupportedSizes:
       description: Entity containing the list of Coupon supported sizes
@@ -16042,6 +16073,7 @@ components:
         format: format
         description: description
         datasetId: datasetId
+        id: id
         status: status
         advertiserId: advertiserId
         htmlTagAttributes:
@@ -16090,6 +16122,11 @@ components:
           $ref: '#/components/schemas/DynamicAttributes'
         adaptiveAttributes:
           $ref: '#/components/schemas/AdaptiveAttributes'
+        id:
+          description: Unique identifier (duplicate of the parent id).
+          nullable: true
+          type: string
+          x-nullable: true
       required:
       - advertiserId
       - author

@@ -21,6 +21,9 @@ docs/AsyncAccountsReportResource.md
 docs/AsyncCampaignsReport.md
 docs/AsyncCampaignsReportRequest.md
 docs/AsyncCampaignsReportResource.md
+docs/AsyncFillRateReport.md
+docs/AsyncFillRateReportRequest.md
+docs/AsyncFillRateReportResource.md
 docs/AsyncLineItemsReport.md
 docs/AsyncLineItemsReportRequest.md
 docs/AsyncLineItemsReportResource.md
@@ -34,7 +37,6 @@ docs/BalanceResponseV2.md
 docs/BalanceResponseV2Response.md
 docs/BatchAcceptedResponse.md
 docs/BotMessage.md
-docs/Botmessage.md
 docs/Brand.md
 docs/BrandIdSearchRequest.md
 docs/BrandIdSearchResult.md
@@ -88,7 +90,6 @@ docs/GatewayApi.md
 docs/GrantConsentInput.md
 docs/GrantConsentModel.md
 docs/GrantConsentModelValueResource.md
-docs/HttpValidationError.md
 docs/HyperlinkVariableValue.md
 docs/InbotDiscussion.md
 docs/InbotDiscussionBodyModel.md
@@ -111,7 +112,6 @@ docs/KeywordsModelResponse.md
 docs/LineItemBidMultipliersV2Request.md
 docs/LineItemBidMultipliersV2Response.md
 docs/LineItemProductStatus.md
-docs/LocationInner.md
 docs/LoyaltyPoints.md
 docs/MatchTypeModel.md
 docs/Message.md
@@ -187,7 +187,6 @@ docs/ResourceOfSkuSlimDataV2.md
 docs/ResourceOfUpdateBalanceModelV2.md
 docs/ResourceOutcome.md
 docs/RetailMediaContactlistAmendment.md
-docs/RetailMediaContactlistAmendmentAttributes.md
 docs/RetailMediaContactlistAmendmentRequest.md
 docs/RetailMediaContactlistOperation.md
 docs/RetailMediaContactlistOperationResponseAttributes.md
@@ -265,7 +264,6 @@ docs/TemplateVariableValue.md
 docs/TextVariableValue.md
 docs/UpdateBalanceModelV2.md
 docs/UpdateBalanceModelV2Request.md
-docs/ValidationError.md
 docs/ValueResourceBrandIdSearchRequest.md
 docs/ValueResourceCollectionOutcomeOfRetailMediaSeller.md
 docs/ValueResourceCpcMinBidsRequest.md
@@ -332,6 +330,9 @@ src/main/java/com/criteo/api/retailmedia/preview/model/AsyncAccountsReportResour
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncCampaignsReport.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncCampaignsReportRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncCampaignsReportResource.java
+src/main/java/com/criteo/api/retailmedia/preview/model/AsyncFillRateReport.java
+src/main/java/com/criteo/api/retailmedia/preview/model/AsyncFillRateReportRequest.java
+src/main/java/com/criteo/api/retailmedia/preview/model/AsyncFillRateReportResource.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncLineItemsReport.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncLineItemsReportRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/AsyncLineItemsReportResource.java
@@ -343,7 +344,6 @@ src/main/java/com/criteo/api/retailmedia/preview/model/BalanceResponseV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/BalanceResponseV2Response.java
 src/main/java/com/criteo/api/retailmedia/preview/model/BatchAcceptedResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/BotMessage.java
-src/main/java/com/criteo/api/retailmedia/preview/model/Botmessage.java
 src/main/java/com/criteo/api/retailmedia/preview/model/Brand.java
 src/main/java/com/criteo/api/retailmedia/preview/model/BrandIdSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/BrandIdSearchResult.java
@@ -394,7 +394,6 @@ src/main/java/com/criteo/api/retailmedia/preview/model/FilesVariableValue.java
 src/main/java/com/criteo/api/retailmedia/preview/model/GrantConsentInput.java
 src/main/java/com/criteo/api/retailmedia/preview/model/GrantConsentModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/GrantConsentModelValueResource.java
-src/main/java/com/criteo/api/retailmedia/preview/model/HttpValidationError.java
 src/main/java/com/criteo/api/retailmedia/preview/model/HyperlinkVariableValue.java
 src/main/java/com/criteo/api/retailmedia/preview/model/InbotDiscussion.java
 src/main/java/com/criteo/api/retailmedia/preview/model/InbotDiscussionBodyModel.java
@@ -417,7 +416,6 @@ src/main/java/com/criteo/api/retailmedia/preview/model/KeywordsModelResponse.jav
 src/main/java/com/criteo/api/retailmedia/preview/model/LineItemBidMultipliersV2Request.java
 src/main/java/com/criteo/api/retailmedia/preview/model/LineItemBidMultipliersV2Response.java
 src/main/java/com/criteo/api/retailmedia/preview/model/LineItemProductStatus.java
-src/main/java/com/criteo/api/retailmedia/preview/model/LocationInner.java
 src/main/java/com/criteo/api/retailmedia/preview/model/LoyaltyPoints.java
 src/main/java/com/criteo/api/retailmedia/preview/model/MatchTypeModel.java
 src/main/java/com/criteo/api/retailmedia/preview/model/Message.java
@@ -492,7 +490,6 @@ src/main/java/com/criteo/api/retailmedia/preview/model/ResourceOfSkuSlimDataV2.j
 src/main/java/com/criteo/api/retailmedia/preview/model/ResourceOfUpdateBalanceModelV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ResourceOutcome.java
 src/main/java/com/criteo/api/retailmedia/preview/model/RetailMediaContactlistAmendment.java
-src/main/java/com/criteo/api/retailmedia/preview/model/RetailMediaContactlistAmendmentAttributes.java
 src/main/java/com/criteo/api/retailmedia/preview/model/RetailMediaContactlistAmendmentRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/RetailMediaContactlistOperation.java
 src/main/java/com/criteo/api/retailmedia/preview/model/RetailMediaContactlistOperationResponseAttributes.java
@@ -570,7 +567,6 @@ src/main/java/com/criteo/api/retailmedia/preview/model/TemplateVariableValue.jav
 src/main/java/com/criteo/api/retailmedia/preview/model/TextVariableValue.java
 src/main/java/com/criteo/api/retailmedia/preview/model/UpdateBalanceModelV2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/UpdateBalanceModelV2Request.java
-src/main/java/com/criteo/api/retailmedia/preview/model/ValidationError.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceBrandIdSearchRequest.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceCollectionOutcomeOfRetailMediaSeller.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ValueResourceCpcMinBidsRequest.java

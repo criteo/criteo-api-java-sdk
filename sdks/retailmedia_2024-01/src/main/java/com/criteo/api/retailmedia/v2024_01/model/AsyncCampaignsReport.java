@@ -682,6 +682,14 @@ public class AsyncCampaignsReport {
     
     VIDEOCPCV("videoCPCV"),
     
+    NEWTOBRANDATTRIBUTEDSALES("newToBrandAttributedSales"),
+    
+    NEWTOBRANDATTRIBUTEDSALESRATE("newToBrandAttributedSalesRate"),
+    
+    NEWTOBRANDATTRIBUTEDUNITS("newToBrandAttributedUnits"),
+    
+    NEWTOBRANDATTRIBUTEDUNITSRATE("newToBrandAttributedUnitsRate"),
+    
     UNIQUEVISITORS("uniqueVisitors"),
     
     FREQUENCY("frequency");

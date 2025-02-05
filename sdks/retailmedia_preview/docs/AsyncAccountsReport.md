@@ -199,6 +199,10 @@ Async Accounts report body request
 | VIDEOSTARTINGRATE | &quot;videoStartingRate&quot; |
 | VIDEOCPC | &quot;videoCPC&quot; |
 | VIDEOCPCV | &quot;videoCPCV&quot; |
+| NEWTOBRANDATTRIBUTEDSALES | &quot;newToBrandAttributedSales&quot; |
+| NEWTOBRANDATTRIBUTEDSALESRATE | &quot;newToBrandAttributedSalesRate&quot; |
+| NEWTOBRANDATTRIBUTEDUNITS | &quot;newToBrandAttributedUnits&quot; |
+| NEWTOBRANDATTRIBUTEDUNITSRATE | &quot;newToBrandAttributedUnitsRate&quot; |
 | UNIQUEVISITORS | &quot;uniqueVisitors&quot; |
 | FREQUENCY | &quot;frequency&quot; |
 

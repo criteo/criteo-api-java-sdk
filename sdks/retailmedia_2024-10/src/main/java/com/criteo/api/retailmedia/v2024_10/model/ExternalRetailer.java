@@ -63,7 +63,11 @@ public class ExternalRetailer {
     
     AUCTION("auction"),
     
-    PREFERRED("preferred");
+    PREFERRED("preferred"),
+    
+    OFFSITE("offsite"),
+    
+    OFFSITECPC("offsiteCpc");
 
     private String value;
 

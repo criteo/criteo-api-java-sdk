@@ -126,6 +126,10 @@ public class Ad {
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private String endDate;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public Ad() {
   }
 
@@ -282,6 +286,28 @@ public class Ad {
     this.endDate = endDate;
   }
 
+
+  public Ad id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Unique identifier (duplicate of the parent id).
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -343,7 +369,8 @@ public class Ad {
         Objects.equals(this.adSetId, ad.adSetId) &&
         Objects.equals(this.inventoryType, ad.inventoryType) &&
         Objects.equals(this.startDate, ad.startDate) &&
-        Objects.equals(this.endDate, ad.endDate)&&
+        Objects.equals(this.endDate, ad.endDate) &&
+        Objects.equals(this.id, ad.id)&&
         Objects.equals(this.additionalProperties, ad.additionalProperties);
   }
 
@@ -353,7 +380,7 @@ public class Ad {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, creativeId, adSetId, inventoryType, startDate, endDate, additionalProperties);
+    return Objects.hash(name, description, creativeId, adSetId, inventoryType, startDate, endDate, id, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -374,6 +401,7 @@ public class Ad {
     sb.append("    inventoryType: ").append(toIndentedString(inventoryType)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -404,6 +432,7 @@ public class Ad {
     openapiFields.add("inventoryType");
     openapiFields.add("startDate");
     openapiFields.add("endDate");
+    openapiFields.add("id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -441,6 +470,9 @@ public class Ad {
       }
       if ((jsonObj.get("endDate") != null && !jsonObj.get("endDate").isJsonNull()) && !jsonObj.get("endDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `endDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endDate").toString()));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
   }
 

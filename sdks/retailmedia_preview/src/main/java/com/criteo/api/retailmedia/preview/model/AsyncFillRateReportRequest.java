@@ -15,15 +15,13 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.LocationInner;
+import com.criteo.api.retailmedia.preview.model.AsyncFillRateReportResource;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,93 +45,36 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * validation error
+ * A top-level object that encapsulates a Criteo API request for a single value
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ValidationError {
-  public static final String SERIALIZED_NAME_LOC = "loc";
-  @SerializedName(SERIALIZED_NAME_LOC)
-  private List<LocationInner> loc = new ArrayList<>();
+public class AsyncFillRateReportRequest {
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private AsyncFillRateReportResource data;
 
-  public static final String SERIALIZED_NAME_MSG = "msg";
-  @SerializedName(SERIALIZED_NAME_MSG)
-  private String msg;
-
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
-
-  public ValidationError() {
+  public AsyncFillRateReportRequest() {
   }
 
-  public ValidationError loc(List<LocationInner> loc) {
+  public AsyncFillRateReportRequest data(AsyncFillRateReportResource data) {
     
-    this.loc = loc;
-    return this;
-  }
-
-  public ValidationError addLocItem(LocationInner locItem) {
-    this.loc.add(locItem);
+    this.data = data;
     return this;
   }
 
    /**
-   * Get loc
-   * @return loc
+   * Get data
+   * @return data
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public List<LocationInner> getLoc() {
-    return loc;
+  public AsyncFillRateReportResource getData() {
+    return data;
   }
 
 
-  public void setLoc(List<LocationInner> loc) {
-    this.loc = loc;
-  }
-
-
-  public ValidationError msg(String msg) {
-    
-    this.msg = msg;
-    return this;
-  }
-
-   /**
-   * Get msg
-   * @return msg
-  **/
-  @javax.annotation.Nonnull
-
-  public String getMsg() {
-    return msg;
-  }
-
-
-  public void setMsg(String msg) {
-    this.msg = msg;
-  }
-
-
-  public ValidationError type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Get type
-   * @return type
-  **/
-  @javax.annotation.Nonnull
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
+  public void setData(AsyncFillRateReportResource data) {
+    this.data = data;
   }
 
   /**
@@ -149,9 +90,9 @@ public class ValidationError {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ValidationError instance itself
+   * @return the AsyncFillRateReportRequest instance itself
    */
-  public ValidationError putAdditionalProperty(String key, Object value) {
+  public AsyncFillRateReportRequest putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -190,25 +131,21 @@ public class ValidationError {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ValidationError validationError = (ValidationError) o;
-    return Objects.equals(this.loc, validationError.loc) &&
-        Objects.equals(this.msg, validationError.msg) &&
-        Objects.equals(this.type, validationError.type)&&
-        Objects.equals(this.additionalProperties, validationError.additionalProperties);
+    AsyncFillRateReportRequest asyncFillRateReportRequest = (AsyncFillRateReportRequest) o;
+    return Objects.equals(this.data, asyncFillRateReportRequest.data)&&
+        Objects.equals(this.additionalProperties, asyncFillRateReportRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(loc, msg, type, additionalProperties);
+    return Objects.hash(data, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ValidationError {\n");
-    sb.append("    loc: ").append(toIndentedString(loc)).append("\n");
-    sb.append("    msg: ").append(toIndentedString(msg)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("class AsyncFillRateReportRequest {\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -232,51 +169,27 @@ public class ValidationError {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("loc");
-    openapiFields.add("msg");
-    openapiFields.add("type");
+    openapiFields.add("data");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("loc");
-    openapiRequiredFields.add("msg");
-    openapiRequiredFields.add("type");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ValidationError
+  * @throws IOException if the JSON Object is invalid with respect to AsyncFillRateReportRequest
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ValidationError.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ValidationError is not found in the empty JSON string", ValidationError.openapiRequiredFields.toString()));
+        if (!AsyncFillRateReportRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AsyncFillRateReportRequest is not found in the empty JSON string", AsyncFillRateReportRequest.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ValidationError.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      // ensure the json data is an array
-      if (!jsonObj.get("loc").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `loc` to be an array in the JSON string but got `%s`", jsonObj.get("loc").toString()));
-      }
-
-      JsonArray jsonArrayloc = jsonObj.getAsJsonArray("loc");
-      // validate the required field `loc` (array)
-      for (int i = 0; i < jsonArrayloc.size(); i++) {
-        LocationInner.validateJsonObject(jsonArrayloc.get(i).getAsJsonObject());
-      };
-      if (!jsonObj.get("msg").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `msg` to be a primitive type in the JSON string but got `%s`", jsonObj.get("msg").toString()));
-      }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      // validate the optional field `data`
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        AsyncFillRateReportResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
   }
 
@@ -284,16 +197,16 @@ public class ValidationError {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ValidationError.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ValidationError' and its subtypes
+       if (!AsyncFillRateReportRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AsyncFillRateReportRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ValidationError> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ValidationError.class));
+       final TypeAdapter<AsyncFillRateReportRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AsyncFillRateReportRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ValidationError>() {
+       return (TypeAdapter<T>) new TypeAdapter<AsyncFillRateReportRequest>() {
            @Override
-           public void write(JsonWriter out, ValidationError value) throws IOException {
+           public void write(JsonWriter out, AsyncFillRateReportRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -316,11 +229,11 @@ public class ValidationError {
            }
 
            @Override
-           public ValidationError read(JsonReader in) throws IOException {
+           public AsyncFillRateReportRequest read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             ValidationError instance = thisAdapter.fromJsonTree(jsonObj);
+             AsyncFillRateReportRequest instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -347,18 +260,18 @@ public class ValidationError {
   }
 
  /**
-  * Create an instance of ValidationError given an JSON string
+  * Create an instance of AsyncFillRateReportRequest given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ValidationError
-  * @throws IOException if the JSON string is invalid with respect to ValidationError
+  * @return An instance of AsyncFillRateReportRequest
+  * @throws IOException if the JSON string is invalid with respect to AsyncFillRateReportRequest
   */
-  public static ValidationError fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ValidationError.class);
+  public static AsyncFillRateReportRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AsyncFillRateReportRequest.class);
   }
 
  /**
-  * Convert an instance of ValidationError to an JSON string
+  * Convert an instance of AsyncFillRateReportRequest to an JSON string
   *
   * @return JSON string
   */

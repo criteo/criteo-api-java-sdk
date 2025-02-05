@@ -9,7 +9,7 @@ message of the discussion
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**userMessage** | **String** | user prompt |  [optional] |
-|**botMessage** | [**Botmessage**](Botmessage.md) |  |  [optional] |
+|**botMessage** | [**BotMessage**](BotMessage.md) |  |  [optional] |
 
 
 

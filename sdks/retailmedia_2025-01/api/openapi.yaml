@@ -1536,59 +1536,6 @@ paths:
       tags:
       - Campaign
       x-accepts: application/json
-  /2025-01/retail-media/retailers/{retailerId}/brands:
-    get:
-      description: Gets the brands for the given retailer
-      operationId: RetailerApi_GetApiV1ExternalRetailerBrandsByRetailerId
-      parameters:
-      - description: The retailer id for which brands should be fetched.
-        explode: false
-        in: path
-        name: retailerId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-        x-nullable: false
-      - description: "Filter to narrow down brands [first-party|third-party|first-and-third-party].\
-          \ Defaults to first-and-third-party"
-        explode: true
-        in: query
-        name: sku-stock-type-filter
-        required: false
-        schema:
-          enum:
-          - first-party
-          - third-party
-          - first-and-third-party
-          type: string
-        style: form
-        x-nullable: false
-      - description: " Filter to narrow down brands [all|uc|retailer]. Defaults to\
-          \ uc"
-        explode: true
-        in: query
-        name: brand-type
-        required: false
-        schema:
-          enum:
-          - all
-          - uc
-          - retailer
-          type: string
-        style: form
-        x-nullable: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BrandPreviewListResponse'
-          description: Brands found.
-      tags:
-      - Campaign
-      x-accepts: application/json
   /2025-01/retail-media/retailers/{retailerId}/pages:
     get:
       description: Get the page types available for the given retailer
@@ -2797,6 +2744,7 @@ paths:
           - Unknown
           - Auction
           - Preferred
+          nullable: true
           type: string
         style: form
         x-nullable: true
@@ -4163,13 +4111,11 @@ components:
       description: Request of Retail Media contactlist
       example:
         data:
-          attributes:
-            identifiers:
-            - identifiers
-            - identifiers
-            identifierType: Email
-            operation: add
-          type: AddRemoveContactlist
+          identifiers:
+          - identifiers
+          - identifiers
+          identifierType: Email
+          operation: add
       properties:
         data:
           $ref: '#/components/schemas/RetailMediaContactlistAmendment'
@@ -4334,23 +4280,37 @@ components:
     RetailMediaContactlistAmendment:
       description: Request data of retail media contact list amendment
       example:
-        attributes:
-          identifiers:
-          - identifiers
-          - identifiers
-          identifierType: Email
-          operation: add
-        type: AddRemoveContactlist
+        identifiers:
+        - identifiers
+        - identifiers
+        identifierType: Email
+        operation: add
       properties:
-        type:
-          description: User List
-          example: AddRemoveContactlist
+        operation:
+          description: Whether to add or remove users
+          enum:
+          - add
+          - remove
+          type: string
+        identifierType:
+          description: What type of identifiers are used
+          enum:
+          - Email
+          - UserIdentifier
+          - IdentityLink
+          - Gum
+          - CustomerId
+          - PhoneNumber
           nullable: true
           type: string
-        attributes:
-          $ref: '#/components/schemas/RetailMediaContactlistAmendment_attributes'
+        identifiers:
+          description: "The users to add or remove, each in the schema specified"
+          items:
+            type: string
+          type: array
       required:
-      - attributes
+      - identifiers
+      - operation
       type: object
     ApplicationSummaryModelResponse:
       description: A top-level object that encapsulates a Criteo API response for
@@ -5683,6 +5643,8 @@ components:
             - unknown
             - auction
             - preferred
+            - offsite
+            - offsiteCpc
             type: string
           type: array
           x-nullable: false
@@ -8124,80 +8086,6 @@ components:
       - text
       type: object
       x-nullable: false
-    BrandPreviewListResponse:
-      description: Data model for a list of response resources
-      example:
-        data:
-        - attributes:
-            name: name
-          id: id
-          type: type
-        - attributes:
-            name: name
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        errors:
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-        - traceId: traceId
-          traceIdentifier: traceIdentifier
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          type: unknown
-          title: title
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ResourceOfBrandPreview'
-          type: array
-          x-nullable: false
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-          x-nullable: false
-      type: object
-      x-nullable: false
     ExternalRetailerPages202110:
       description: Wraps a list of valid pages for a retailer
       example:
@@ -8366,26 +8254,6 @@ components:
           x-nullable: false
       type: object
       x-nullable: false
-    ResourceOfBrandPreview:
-      description: Data model for a Resource
-      example:
-        attributes:
-          name: name
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/BrandPreview'
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-        type:
-          description: Canonical type name of the entity
-          nullable: true
-          type: string
-      type: object
-      x-nullable: false
     JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with Type, and\r\nAttributes properties"
@@ -8492,19 +8360,6 @@ components:
       - message
       - rowCount
       - status
-      type: object
-      x-nullable: false
-    BrandPreview:
-      description: Retail media brands
-      example:
-        name: name
-      properties:
-        name:
-          description: Brand Name
-          type: string
-          x-nullable: false
-      required:
-      - name
       type: object
       x-nullable: false
     ExternalCatalogRequest:
@@ -11674,6 +11529,10 @@ components:
             - videoStartingRate
             - videoCPC
             - videoCPCV
+            - newToBrandAttributedSales
+            - newToBrandAttributedSalesRate
+            - newToBrandAttributedUnits
+            - newToBrandAttributedUnitsRate
             - uniqueVisitors
             - frequency
             type: string
@@ -11898,6 +11757,10 @@ components:
             - videoStartingRate
             - videoCPC
             - videoCPCV
+            - newToBrandAttributedSales
+            - newToBrandAttributedSalesRate
+            - newToBrandAttributedUnits
+            - newToBrandAttributedUnitsRate
             - uniqueVisitors
             - frequency
             type: string
@@ -17463,41 +17326,6 @@ components:
       - contactListId
       - operation
       - requestDate
-      type: object
-    RetailMediaContactlistAmendment_attributes:
-      description: Attributes of retail media contact list amendment
-      example:
-        identifiers:
-        - identifiers
-        - identifiers
-        identifierType: Email
-        operation: add
-      properties:
-        operation:
-          description: Whether to add or remove users
-          enum:
-          - add
-          - remove
-          type: string
-        identifierType:
-          description: What type of identifiers are used
-          enum:
-          - Email
-          - UserIdentifier
-          - IdentityLink
-          - Gum
-          - CustomerId
-          - PhoneNumber
-          nullable: true
-          type: string
-        identifiers:
-          description: "The users to add or remove, each in the schema specified"
-          items:
-            type: string
-          type: array
-      required:
-      - identifiers
-      - operation
       type: object
   securitySchemes:
     oauth:

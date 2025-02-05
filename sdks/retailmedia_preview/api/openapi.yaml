@@ -209,12 +209,6 @@ paths:
           description: Forbidden
         "404":
           description: Not Found
-        "422":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HttpValidationError'
-          description: Validation Error
       tags:
       - OnSiteRecommendation
       x-content-type: application/json
@@ -1937,6 +1931,69 @@ paths:
       - Analytics
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /preview/retail-media/reports/fillrate:
+    post:
+      description: |-
+        Returns an asynchronous Fill Rate Report
+        This endpoint is subject to specific rate limits.
+      operationId: GenerateAsyncFillRateReport
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/AsyncFillRateReportRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AsyncFillRateReportRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AsyncFillRateReportRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AsyncFillRateReportRequest'
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AsyncReportResponse'
+          description: Success
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Bad Request
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReportOutcome'
+          description: Forbidden
+      tags:
+      - Analytics
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /preview/retail-media/reports/line-items:
     post:
       description: |-
@@ -3127,7 +3184,7 @@ paths:
                 $ref: '#/components/schemas/EntityResourceCollectionOutcomeBrandIdSearchResult'
           description: Success
       tags:
-      - Catalog
+      - Campaign
       x-content-type: application/json-patch+json
       x-accepts: application/json
 components:
@@ -3273,13 +3330,11 @@ components:
       description: Request of Retail Media contactlist
       example:
         data:
-          attributes:
-            identifiers:
-            - identifiers
-            - identifiers
-            identifierType: Email
-            operation: add
-          type: AddRemoveContactlist
+          identifiers:
+          - identifiers
+          - identifiers
+          identifierType: Email
+          operation: add
       properties:
         data:
           $ref: '#/components/schemas/RetailMediaContactlistAmendment'
@@ -3444,23 +3499,37 @@ components:
     RetailMediaContactlistAmendment:
       description: Request data of retail media contact list amendment
       example:
-        attributes:
-          identifiers:
-          - identifiers
-          - identifiers
-          identifierType: Email
-          operation: add
-        type: AddRemoveContactlist
+        identifiers:
+        - identifiers
+        - identifiers
+        identifierType: Email
+        operation: add
       properties:
-        type:
-          description: User List
-          example: AddRemoveContactlist
+        operation:
+          description: Whether to add or remove users
+          enum:
+          - add
+          - remove
+          type: string
+        identifierType:
+          description: What type of identifiers are used
+          enum:
+          - Email
+          - UserIdentifier
+          - IdentityLink
+          - Gum
+          - CustomerId
+          - PhoneNumber
           nullable: true
           type: string
-        attributes:
-          $ref: '#/components/schemas/RetailMediaContactlistAmendment_attributes'
+        identifiers:
+          description: "The users to add or remove, each in the schema specified"
+          items:
+            type: string
+          type: array
       required:
-      - attributes
+      - identifiers
+      - operation
       type: object
     ApplicationSummaryModelResponse:
       description: A top-level object that encapsulates a Criteo API response for
@@ -3648,7 +3717,26 @@ components:
         data:
           attributes:
             userMessage: userMessage
-            botMessage: null
+            botMessage:
+              closing: closing
+              opening: opening
+              productRecos:
+              - price: 0.8008281904610115
+                imageUrl: https://openapi-generator.tech
+                name: name
+                description: description
+                currency: currency
+                rationale: rationale
+                brand: brand
+                url: https://openapi-generator.tech
+              - price: 0.8008281904610115
+                imageUrl: https://openapi-generator.tech
+                name: name
+                description: description
+                currency: currency
+                rationale: rationale
+                brand: brand
+                url: https://openapi-generator.tech
           type: Message
         errors:
         - traceId: traceId
@@ -3670,17 +3758,6 @@ components:
           type: array
       title: MessageBodyModel
       type: object
-    HttpValidationError:
-      description: http validation error
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          nullable: true
-          title: Detail
-          type: array
-      title: HttpValidationError
-      type: object
     InbotDiscussionBodyModel:
       description: an API recommendation message
       example:
@@ -3688,9 +3765,47 @@ components:
           attributes:
             messages:
             - userMessage: userMessage
-              botMessage: null
+              botMessage:
+                closing: closing
+                opening: opening
+                productRecos:
+                - price: 0.8008281904610115
+                  imageUrl: https://openapi-generator.tech
+                  name: name
+                  description: description
+                  currency: currency
+                  rationale: rationale
+                  brand: brand
+                  url: https://openapi-generator.tech
+                - price: 0.8008281904610115
+                  imageUrl: https://openapi-generator.tech
+                  name: name
+                  description: description
+                  currency: currency
+                  rationale: rationale
+                  brand: brand
+                  url: https://openapi-generator.tech
             - userMessage: userMessage
-              botMessage: null
+              botMessage:
+                closing: closing
+                opening: opening
+                productRecos:
+                - price: 0.8008281904610115
+                  imageUrl: https://openapi-generator.tech
+                  name: name
+                  description: description
+                  currency: currency
+                  rationale: rationale
+                  brand: brand
+                  url: https://openapi-generator.tech
+                - price: 0.8008281904610115
+                  imageUrl: https://openapi-generator.tech
+                  name: name
+                  description: description
+                  currency: currency
+                  rationale: rationale
+                  brand: brand
+                  url: https://openapi-generator.tech
           type: InbotDiscussion
       properties:
         data:
@@ -3704,7 +3819,26 @@ components:
       example:
         attributes:
           userMessage: userMessage
-          botMessage: null
+          botMessage:
+            closing: closing
+            opening: opening
+            productRecos:
+            - price: 0.8008281904610115
+              imageUrl: https://openapi-generator.tech
+              name: name
+              description: description
+              currency: currency
+              rationale: rationale
+              brand: brand
+              url: https://openapi-generator.tech
+            - price: 0.8008281904610115
+              imageUrl: https://openapi-generator.tech
+              name: name
+              description: description
+              currency: currency
+              rationale: rationale
+              brand: brand
+              url: https://openapi-generator.tech
         type: Message
       properties:
         type:
@@ -3748,35 +3882,53 @@ components:
           type: string
       title: MessageError
       type: object
-    ValidationError:
-      description: validation error
-      properties:
-        loc:
-          items:
-            $ref: '#/components/schemas/Location_inner'
-          title: Location
-          type: array
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-      type: object
     InbotDiscussionDataInstanceModel:
       description: an API recommendation request
       example:
         attributes:
           messages:
           - userMessage: userMessage
-            botMessage: null
+            botMessage:
+              closing: closing
+              opening: opening
+              productRecos:
+              - price: 0.8008281904610115
+                imageUrl: https://openapi-generator.tech
+                name: name
+                description: description
+                currency: currency
+                rationale: rationale
+                brand: brand
+                url: https://openapi-generator.tech
+              - price: 0.8008281904610115
+                imageUrl: https://openapi-generator.tech
+                name: name
+                description: description
+                currency: currency
+                rationale: rationale
+                brand: brand
+                url: https://openapi-generator.tech
           - userMessage: userMessage
-            botMessage: null
+            botMessage:
+              closing: closing
+              opening: opening
+              productRecos:
+              - price: 0.8008281904610115
+                imageUrl: https://openapi-generator.tech
+                name: name
+                description: description
+                currency: currency
+                rationale: rationale
+                brand: brand
+                url: https://openapi-generator.tech
+              - price: 0.8008281904610115
+                imageUrl: https://openapi-generator.tech
+                name: name
+                description: description
+                currency: currency
+                rationale: rationale
+                brand: brand
+                url: https://openapi-generator.tech
         type: InbotDiscussion
       properties:
         type:
@@ -3794,7 +3946,26 @@ components:
       description: message of the discussion
       example:
         userMessage: userMessage
-        botMessage: null
+        botMessage:
+          closing: closing
+          opening: opening
+          productRecos:
+          - price: 0.8008281904610115
+            imageUrl: https://openapi-generator.tech
+            name: name
+            description: description
+            currency: currency
+            rationale: rationale
+            brand: brand
+            url: https://openapi-generator.tech
+          - price: 0.8008281904610115
+            imageUrl: https://openapi-generator.tech
+            name: name
+            description: description
+            currency: currency
+            rationale: rationale
+            brand: brand
+            url: https://openapi-generator.tech
       properties:
         userMessage:
           description: user prompt
@@ -3802,7 +3973,7 @@ components:
           title: Usermessage
           type: string
         botMessage:
-          $ref: '#/components/schemas/Botmessage'
+          $ref: '#/components/schemas/BotMessage'
       title: Message
       type: object
     InbotDiscussion:
@@ -3810,9 +3981,47 @@ components:
       example:
         messages:
         - userMessage: userMessage
-          botMessage: null
+          botMessage:
+            closing: closing
+            opening: opening
+            productRecos:
+            - price: 0.8008281904610115
+              imageUrl: https://openapi-generator.tech
+              name: name
+              description: description
+              currency: currency
+              rationale: rationale
+              brand: brand
+              url: https://openapi-generator.tech
+            - price: 0.8008281904610115
+              imageUrl: https://openapi-generator.tech
+              name: name
+              description: description
+              currency: currency
+              rationale: rationale
+              brand: brand
+              url: https://openapi-generator.tech
         - userMessage: userMessage
-          botMessage: null
+          botMessage:
+            closing: closing
+            opening: opening
+            productRecos:
+            - price: 0.8008281904610115
+              imageUrl: https://openapi-generator.tech
+              name: name
+              description: description
+              currency: currency
+              rationale: rationale
+              brand: brand
+              url: https://openapi-generator.tech
+            - price: 0.8008281904610115
+              imageUrl: https://openapi-generator.tech
+              name: name
+              description: description
+              currency: currency
+              rationale: rationale
+              brand: brand
+              url: https://openapi-generator.tech
       properties:
         messages:
           description: "ordered list of previous messages, alternating between user\
@@ -3827,6 +4036,26 @@ components:
       type: object
     BotMessage:
       description: bot structured answer to the user prompt
+      example:
+        closing: closing
+        opening: opening
+        productRecos:
+        - price: 0.8008281904610115
+          imageUrl: https://openapi-generator.tech
+          name: name
+          description: description
+          currency: currency
+          rationale: rationale
+          brand: brand
+          url: https://openapi-generator.tech
+        - price: 0.8008281904610115
+          imageUrl: https://openapi-generator.tech
+          name: name
+          description: description
+          currency: currency
+          rationale: rationale
+          brand: brand
+          url: https://openapi-generator.tech
       properties:
         opening:
           description: "opening comment from the bot, introducing the list of recommended\
@@ -3850,6 +4079,15 @@ components:
       type: object
     ProductRecommendation:
       description: recommendation data for a product
+      example:
+        price: 0.8008281904610115
+        imageUrl: https://openapi-generator.tech
+        name: name
+        description: description
+        currency: currency
+        rationale: rationale
+        brand: brand
+        url: https://openapi-generator.tech
       properties:
         rationale:
           description: "reason for this recommendation, given by the bot"
@@ -11237,6 +11475,30 @@ components:
         data:
           $ref: '#/components/schemas/AsyncCampaignsReportResource'
       type: object
+    AsyncFillRateReportRequest:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value
+      example:
+        data:
+          attributes:
+            endDate: 2000-01-23T04:56:07.000+00:00
+            timezone: UTC
+            format: json
+            supplyAccountIds:
+            - supplyAccountIds
+            - supplyAccountIds
+            metrics:
+            - pageViews
+            - pageViews
+            startDate: 2000-01-23T04:56:07.000+00:00
+            dimensions:
+            - date
+            - date
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/AsyncFillRateReportResource'
+      type: object
     AsyncLineItemsReportRequest:
       description: A top-level object that encapsulates a Criteo API request for a
         single value
@@ -11522,6 +11784,32 @@ components:
           type: string
         attributes:
           $ref: '#/components/schemas/AsyncCampaignsReport'
+      type: object
+    AsyncFillRateReportResource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          timezone: UTC
+          format: json
+          supplyAccountIds:
+          - supplyAccountIds
+          - supplyAccountIds
+          metrics:
+          - pageViews
+          - pageViews
+          startDate: 2000-01-23T04:56:07.000+00:00
+          dimensions:
+          - date
+          - date
+        type: type
+      properties:
+        type:
+          nullable: true
+          type: string
+        attributes:
+          $ref: '#/components/schemas/AsyncFillRateReport'
       type: object
     AsyncLineItemsReportResource:
       description: A top-level object that encapsulates a Criteo API response for
@@ -11975,6 +12263,10 @@ components:
             - videoStartingRate
             - videoCPC
             - videoCPCV
+            - newToBrandAttributedSales
+            - newToBrandAttributedSalesRate
+            - newToBrandAttributedUnits
+            - newToBrandAttributedUnitsRate
             - uniqueVisitors
             - frequency
             type: string
@@ -12200,6 +12492,10 @@ components:
             - videoStartingRate
             - videoCPC
             - videoCPCV
+            - newToBrandAttributedSales
+            - newToBrandAttributedSalesRate
+            - newToBrandAttributedUnits
+            - newToBrandAttributedUnitsRate
             - uniqueVisitors
             - frequency
             type: string
@@ -12221,6 +12517,102 @@ components:
           type: string
       required:
       - endDate
+      - startDate
+      type: object
+    AsyncFillRateReport:
+      description: Async FillRate report body request
+      example:
+        endDate: 2000-01-23T04:56:07.000+00:00
+        timezone: UTC
+        format: json
+        supplyAccountIds:
+        - supplyAccountIds
+        - supplyAccountIds
+        metrics:
+        - pageViews
+        - pageViews
+        startDate: 2000-01-23T04:56:07.000+00:00
+        dimensions:
+        - date
+        - date
+      properties:
+        supplyAccountIds:
+          description: Supply account ids to report on
+          items:
+            type: string
+          nullable: true
+          type: array
+        dimensions:
+          description: List of dimensions to report on
+          items:
+            enum:
+            - date
+            - retailerId
+            - retailerName
+            - placementId
+            - placementName
+            - pageTypeName
+            - environment
+            - servedCategory
+            - retailerCategoryId
+            - retailerCategoryName
+            type: string
+          type: array
+        metrics:
+          description: List of metrics to report on
+          items:
+            enum:
+            - pageViews
+            - availablePlacements
+            - unfilledPlacements
+            - fillRate
+            - placementImpressions
+            - productImpressions
+            - impressions
+            - placementClicks
+            - productClicks
+            - clicks
+            - placementImpressionsCTR
+            - productImpressionsCTR
+            - cpm
+            - cpc
+            - placementImpressionsRevenue
+            - productClicksRevenue
+            - totalRevenue
+            - workingMedia
+            - netRevenue
+            - uniqueVisitors
+            - frequency
+            type: string
+          type: array
+        format:
+          default: json
+          description: Format of the output
+          enum:
+          - json
+          - json-compact
+          - json-newline
+          - csv
+          nullable: true
+          type: string
+        startDate:
+          description: Start date
+          format: date-time
+          type: string
+        endDate:
+          description: End date
+          format: date-time
+          type: string
+        timezone:
+          default: UTC
+          description: "Time zone : see criteo developer portal for supported time\
+            \ zones"
+          nullable: true
+          type: string
+      required:
+      - dimensions
+      - endDate
+      - metrics
       - startDate
       type: object
     AsyncLineItemsReport:
@@ -12424,6 +12816,10 @@ components:
             - videoStartingRate
             - videoCPC
             - videoCPCV
+            - newToBrandAttributedSales
+            - newToBrandAttributedSalesRate
+            - newToBrandAttributedUnits
+            - newToBrandAttributedUnitsRate
             - uniqueVisitors
             - frequency
             type: string
@@ -15720,51 +16116,6 @@ components:
       - operation
       - requestDate
       type: object
-    RetailMediaContactlistAmendment_attributes:
-      description: Attributes of retail media contact list amendment
-      example:
-        identifiers:
-        - identifiers
-        - identifiers
-        identifierType: Email
-        operation: add
-      properties:
-        operation:
-          description: Whether to add or remove users
-          enum:
-          - add
-          - remove
-          type: string
-        identifierType:
-          description: What type of identifiers are used
-          enum:
-          - Email
-          - UserIdentifier
-          - IdentityLink
-          - Gum
-          - CustomerId
-          - PhoneNumber
-          nullable: true
-          type: string
-        identifiers:
-          description: "The users to add or remove, each in the schema specified"
-          items:
-            type: string
-          type: array
-      required:
-      - identifiers
-      - operation
-      type: object
-    Location_inner:
-      anyOf:
-      - type: string
-      - type: integer
-    Botmessage:
-      allOf:
-      - $ref: '#/components/schemas/BotMessage'
-      description: bot answer with recommendations
-      nullable: true
-      title: Botmessage
   securitySchemes:
     oauth:
       flows:

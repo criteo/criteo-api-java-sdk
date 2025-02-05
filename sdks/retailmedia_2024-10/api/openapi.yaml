@@ -2635,6 +2635,7 @@ paths:
           - Unknown
           - Auction
           - Preferred
+          nullable: true
           type: string
         style: form
         x-nullable: true
@@ -3952,13 +3953,11 @@ components:
       description: Request of Retail Media contactlist
       example:
         data:
-          attributes:
-            identifiers:
-            - identifiers
-            - identifiers
-            identifierType: Email
-            operation: add
-          type: AddRemoveContactlist
+          identifiers:
+          - identifiers
+          - identifiers
+          identifierType: Email
+          operation: add
       properties:
         data:
           $ref: '#/components/schemas/RetailMediaContactlistAmendment'
@@ -4123,23 +4122,37 @@ components:
     RetailMediaContactlistAmendment:
       description: Request data of retail media contact list amendment
       example:
-        attributes:
-          identifiers:
-          - identifiers
-          - identifiers
-          identifierType: Email
-          operation: add
-        type: AddRemoveContactlist
+        identifiers:
+        - identifiers
+        - identifiers
+        identifierType: Email
+        operation: add
       properties:
-        type:
-          description: User List
-          example: AddRemoveContactlist
+        operation:
+          description: Whether to add or remove users
+          enum:
+          - add
+          - remove
+          type: string
+        identifierType:
+          description: What type of identifiers are used
+          enum:
+          - Email
+          - UserIdentifier
+          - IdentityLink
+          - Gum
+          - CustomerId
+          - PhoneNumber
           nullable: true
           type: string
-        attributes:
-          $ref: '#/components/schemas/RetailMediaContactlistAmendment_attributes'
+        identifiers:
+          description: "The users to add or remove, each in the schema specified"
+          items:
+            type: string
+          type: array
       required:
-      - attributes
+      - identifiers
+      - operation
       type: object
     ApplicationSummaryModelResponse:
       description: A top-level object that encapsulates a Criteo API response for
@@ -5472,6 +5485,8 @@ components:
             - unknown
             - auction
             - preferred
+            - offsite
+            - offsiteCpc
             type: string
           type: array
           x-nullable: false
@@ -11283,6 +11298,10 @@ components:
             - videoStartingRate
             - videoCPC
             - videoCPCV
+            - newToBrandAttributedSales
+            - newToBrandAttributedSalesRate
+            - newToBrandAttributedUnits
+            - newToBrandAttributedUnitsRate
             - uniqueVisitors
             - frequency
             type: string
@@ -11507,6 +11526,10 @@ components:
             - videoStartingRate
             - videoCPC
             - videoCPCV
+            - newToBrandAttributedSales
+            - newToBrandAttributedSalesRate
+            - newToBrandAttributedUnits
+            - newToBrandAttributedUnitsRate
             - uniqueVisitors
             - frequency
             type: string
@@ -16819,41 +16842,6 @@ components:
       - contactListId
       - operation
       - requestDate
-      type: object
-    RetailMediaContactlistAmendment_attributes:
-      description: Attributes of retail media contact list amendment
-      example:
-        identifiers:
-        - identifiers
-        - identifiers
-        identifierType: Email
-        operation: add
-      properties:
-        operation:
-          description: Whether to add or remove users
-          enum:
-          - add
-          - remove
-          type: string
-        identifierType:
-          description: What type of identifiers are used
-          enum:
-          - Email
-          - UserIdentifier
-          - IdentityLink
-          - Gum
-          - CustomerId
-          - PhoneNumber
-          nullable: true
-          type: string
-        identifiers:
-          description: "The users to add or remove, each in the schema specified"
-          items:
-            type: string
-          type: array
-      required:
-      - identifiers
-      - operation
       type: object
   securitySchemes:
     oauth:

@@ -108,6 +108,10 @@ public class Coupon {
   @SerializedName(SERIALIZED_NAME_ROTATIONS_NUMBER)
   private Integer rotationsNumber;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public Coupon() {
   }
 
@@ -426,6 +430,28 @@ public class Coupon {
     this.rotationsNumber = rotationsNumber;
   }
 
+
+  public Coupon id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Unique identifier (duplicate of the parent id).
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -494,7 +520,8 @@ public class Coupon {
         Objects.equals(this.images, coupon.images) &&
         Objects.equals(this.showEvery, coupon.showEvery) &&
         Objects.equals(this.showDuration, coupon.showDuration) &&
-        Objects.equals(this.rotationsNumber, coupon.rotationsNumber)&&
+        Objects.equals(this.rotationsNumber, coupon.rotationsNumber) &&
+        Objects.equals(this.id, coupon.id)&&
         Objects.equals(this.additionalProperties, coupon.additionalProperties);
   }
 
@@ -504,7 +531,7 @@ public class Coupon {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, author, advertiserId, adSetId, landingPageUrl, startDate, endDate, format, status, images, showEvery, showDuration, rotationsNumber, additionalProperties);
+    return Objects.hash(name, description, author, advertiserId, adSetId, landingPageUrl, startDate, endDate, format, status, images, showEvery, showDuration, rotationsNumber, id, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -532,6 +559,7 @@ public class Coupon {
     sb.append("    showEvery: ").append(toIndentedString(showEvery)).append("\n");
     sb.append("    showDuration: ").append(toIndentedString(showDuration)).append("\n");
     sb.append("    rotationsNumber: ").append(toIndentedString(rotationsNumber)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -569,6 +597,7 @@ public class Coupon {
     openapiFields.add("showEvery");
     openapiFields.add("showDuration");
     openapiFields.add("rotationsNumber");
+    openapiFields.add("id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -629,6 +658,9 @@ public class Coupon {
             ImageSlide.validateJsonObject(jsonArrayimages.get(i).getAsJsonObject());
           };
         }
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
   }
 

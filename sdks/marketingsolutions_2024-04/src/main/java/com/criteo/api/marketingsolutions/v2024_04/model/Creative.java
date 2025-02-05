@@ -97,6 +97,10 @@ public class Creative {
   @SerializedName(SERIALIZED_NAME_ADAPTIVE_ATTRIBUTES)
   private AdaptiveAttributes adaptiveAttributes;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public Creative() {
   }
 
@@ -341,6 +345,28 @@ public class Creative {
     this.adaptiveAttributes = adaptiveAttributes;
   }
 
+
+  public Creative id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Unique identifier (duplicate of the parent id).
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -406,7 +432,8 @@ public class Creative {
         Objects.equals(this.imageAttributes, creative.imageAttributes) &&
         Objects.equals(this.htmlTagAttributes, creative.htmlTagAttributes) &&
         Objects.equals(this.dynamicAttributes, creative.dynamicAttributes) &&
-        Objects.equals(this.adaptiveAttributes, creative.adaptiveAttributes)&&
+        Objects.equals(this.adaptiveAttributes, creative.adaptiveAttributes) &&
+        Objects.equals(this.id, creative.id)&&
         Objects.equals(this.additionalProperties, creative.additionalProperties);
   }
 
@@ -416,7 +443,7 @@ public class Creative {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, author, status, format, advertiserId, datasetId, imageAttributes, htmlTagAttributes, dynamicAttributes, adaptiveAttributes, additionalProperties);
+    return Objects.hash(name, description, author, status, format, advertiserId, datasetId, imageAttributes, htmlTagAttributes, dynamicAttributes, adaptiveAttributes, id, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -441,6 +468,7 @@ public class Creative {
     sb.append("    htmlTagAttributes: ").append(toIndentedString(htmlTagAttributes)).append("\n");
     sb.append("    dynamicAttributes: ").append(toIndentedString(dynamicAttributes)).append("\n");
     sb.append("    adaptiveAttributes: ").append(toIndentedString(adaptiveAttributes)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -475,6 +503,7 @@ public class Creative {
     openapiFields.add("htmlTagAttributes");
     openapiFields.add("dynamicAttributes");
     openapiFields.add("adaptiveAttributes");
+    openapiFields.add("id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -539,6 +568,9 @@ public class Creative {
       // validate the optional field `adaptiveAttributes`
       if (jsonObj.get("adaptiveAttributes") != null && !jsonObj.get("adaptiveAttributes").isJsonNull()) {
         AdaptiveAttributes.validateJsonObject(jsonObj.getAsJsonObject("adaptiveAttributes"));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
   }
 

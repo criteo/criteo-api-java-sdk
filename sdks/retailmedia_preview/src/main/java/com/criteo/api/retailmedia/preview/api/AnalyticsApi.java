@@ -29,6 +29,7 @@ import java.io.IOException;
 
 import com.criteo.api.retailmedia.preview.model.AsyncAccountsReportRequest;
 import com.criteo.api.retailmedia.preview.model.AsyncCampaignsReportRequest;
+import com.criteo.api.retailmedia.preview.model.AsyncFillRateReportRequest;
 import com.criteo.api.retailmedia.preview.model.AsyncLineItemsReportRequest;
 import com.criteo.api.retailmedia.preview.model.AsyncReportResponse;
 import com.criteo.api.retailmedia.preview.model.ReportOutcome;
@@ -349,6 +350,142 @@ public class AnalyticsApi {
     public okhttp3.Call generateAsyncCampaignsReportAsync(AsyncCampaignsReportRequest asyncCampaignsReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = generateAsyncCampaignsReportValidateBeforeCall(asyncCampaignsReportRequest, _callback);
+        Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for generateAsyncFillRateReport
+     * @param asyncFillRateReportRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call generateAsyncFillRateReportCall(AsyncFillRateReportRequest asyncFillRateReportRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = asyncFillRateReportRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/reports/fillrate";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call generateAsyncFillRateReportValidateBeforeCall(AsyncFillRateReportRequest asyncFillRateReportRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'asyncFillRateReportRequest' is set
+        if (asyncFillRateReportRequest == null) {
+            throw new ApiException("Missing the required parameter 'asyncFillRateReportRequest' when calling generateAsyncFillRateReport(Async)");
+        }
+
+        return generateAsyncFillRateReportCall(asyncFillRateReportRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Returns an asynchronous Fill Rate Report This endpoint is subject to specific rate limits.
+     * @param asyncFillRateReportRequest  (required)
+     * @return AsyncReportResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public AsyncReportResponse generateAsyncFillRateReport(AsyncFillRateReportRequest asyncFillRateReportRequest) throws ApiException {
+        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncFillRateReportWithHttpInfo(asyncFillRateReportRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Returns an asynchronous Fill Rate Report This endpoint is subject to specific rate limits.
+     * @param asyncFillRateReportRequest  (required)
+     * @return ApiResponse&lt;AsyncReportResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AsyncReportResponse> generateAsyncFillRateReportWithHttpInfo(AsyncFillRateReportRequest asyncFillRateReportRequest) throws ApiException {
+        okhttp3.Call localVarCall = generateAsyncFillRateReportValidateBeforeCall(asyncFillRateReportRequest, null);
+        Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Returns an asynchronous Fill Rate Report This endpoint is subject to specific rate limits.
+     * @param asyncFillRateReportRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call generateAsyncFillRateReportAsync(AsyncFillRateReportRequest asyncFillRateReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = generateAsyncFillRateReportValidateBeforeCall(asyncFillRateReportRequest, _callback);
         Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

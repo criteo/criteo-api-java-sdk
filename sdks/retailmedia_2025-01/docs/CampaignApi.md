@@ -26,7 +26,6 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**getApiV1ExternalAccountRetailersByAccountId**](CampaignApi.md#getApiV1ExternalAccountRetailersByAccountId) | **GET** /2025-01/retail-media/accounts/{accountId}/retailers |  |
 | [**getApiV1ExternalCatalogOutputByCatalogId**](CampaignApi.md#getApiV1ExternalCatalogOutputByCatalogId) | **GET** /2025-01/retail-media/catalogs/{catalogId}/output |  |
 | [**getApiV1ExternalCatalogStatusByCatalogId**](CampaignApi.md#getApiV1ExternalCatalogStatusByCatalogId) | **GET** /2025-01/retail-media/catalogs/{catalogId}/status |  |
-| [**getApiV1ExternalRetailerBrandsByRetailerId**](CampaignApi.md#getApiV1ExternalRetailerBrandsByRetailerId) | **GET** /2025-01/retail-media/retailers/{retailerId}/brands |  |
 | [**getApiV2ExternalAccountByAccountIdCreativescreativeId**](CampaignApi.md#getApiV2ExternalAccountByAccountIdCreativescreativeId) | **GET** /2025-01/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
 | [**getApiV2ExternalAccountLineItemsByAccountId**](CampaignApi.md#getApiV2ExternalAccountLineItemsByAccountId) | **GET** /2025-01/retail-media/accounts/{account-id}/line-items |  |
 | [**getApiV2ExternalAuctionLineItemByLineItemId**](CampaignApi.md#getApiV2ExternalAuctionLineItemByLineItemId) | **GET** /2025-01/retail-media/auction-line-items/{line-item-id} |  |
@@ -2077,99 +2076,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Catalog request found. |  -  |
-
-
-## getApiV1ExternalRetailerBrandsByRetailerId
-
-> BrandPreviewListResponse getApiV1ExternalRetailerBrandsByRetailerId(retailerId, skuStockTypeFilter, brandType)
-
-
-
-Gets the brands for the given retailer
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.v2025_01;
-
-import com.criteo.api.retailmedia.v2025_01.ApiClient;
-import com.criteo.api.retailmedia.v2025_01.ApiClientBuilder;
-import com.criteo.api.retailmedia.v2025_01.ApiException;
-import com.criteo.api.retailmedia.v2025_01.Configuration;
-import com.criteo.api.retailmedia.v2025_01.auth.*;
-import com.criteo.api.retailmedia.v2025_01.model.*;
-import com.criteo.api.retailmedia.v2025_01.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer retailerId = 56; // Integer | The retailer id for which brands should be fetched.
-        String skuStockTypeFilter = "first-party"; // String | Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party
-        String brandType = "all"; // String |  Filter to narrow down brands [all|uc|retailer]. Defaults to uc
-        try {
-            BrandPreviewListResponse result = apiInstance.getApiV1ExternalRetailerBrandsByRetailerId(retailerId, skuStockTypeFilter, brandType);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getApiV1ExternalRetailerBrandsByRetailerId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| The retailer id for which brands should be fetched. | |
-| **skuStockTypeFilter** | **String**| Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party | [optional] [enum: first-party, third-party, first-and-third-party] |
-| **brandType** | **String**|  Filter to narrow down brands [all|uc|retailer]. Defaults to uc | [optional] [enum: all, uc, retailer] |
-
-### Return type
-
-[**BrandPreviewListResponse**](BrandPreviewListResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Brands found. |  -  |
 
 
 ## getApiV2ExternalAccountByAccountIdCreativescreativeId

@@ -190,7 +190,6 @@ docs/ResourceOfTemplate.md
 docs/ResourceOfUpdateBalanceModelV2.md
 docs/ResourceOutcome.md
 docs/RetailMediaContactlistAmendment.md
-docs/RetailMediaContactlistAmendmentAttributes.md
 docs/RetailMediaContactlistAmendmentRequest.md
 docs/RetailMediaContactlistOperation.md
 docs/RetailMediaContactlistOperationResponseAttributes.md
@@ -488,7 +487,6 @@ src/main/java/com/criteo/api/retailmedia/v2024_10/model/ResourceOfTemplate.java
 src/main/java/com/criteo/api/retailmedia/v2024_10/model/ResourceOfUpdateBalanceModelV2.java
 src/main/java/com/criteo/api/retailmedia/v2024_10/model/ResourceOutcome.java
 src/main/java/com/criteo/api/retailmedia/v2024_10/model/RetailMediaContactlistAmendment.java
-src/main/java/com/criteo/api/retailmedia/v2024_10/model/RetailMediaContactlistAmendmentAttributes.java
 src/main/java/com/criteo/api/retailmedia/v2024_10/model/RetailMediaContactlistAmendmentRequest.java
 src/main/java/com/criteo/api/retailmedia/v2024_10/model/RetailMediaContactlistOperation.java
 src/main/java/com/criteo/api/retailmedia/v2024_10/model/RetailMediaContactlistOperationResponseAttributes.java

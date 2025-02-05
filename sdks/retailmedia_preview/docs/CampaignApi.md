@@ -36,6 +36,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId**](CampaignApi.md#putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId) | **PUT** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
 | [**putApiV2ExternalAccountByAccountIdCreativescreativeId**](CampaignApi.md#putApiV2ExternalAccountByAccountIdCreativescreativeId) | **PUT** /preview/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
 | [**putApiV2ExternalLineItemBidMultipliersByLineItemId**](CampaignApi.md#putApiV2ExternalLineItemBidMultipliersByLineItemId) | **PUT** /preview/retail-media/line-items/{line-item-id}/bid-multipliers |  |
+| [**searchBrandsByNameAsyncV1**](CampaignApi.md#searchBrandsByNameAsyncV1) | **POST** /preview/retail-media/brands/search |  |
 | [**setKeywordBids**](CampaignApi.md#setKeywordBids) | **POST** /preview/retail-media/line-items/{id}/keywords/set-bid |  |
 | [**unpausePromotedProducts**](CampaignApi.md#unpausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/unpause |  |
 
@@ -2982,6 +2983,99 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | BidMultipliers Updated |  -  |
+
+
+## searchBrandsByNameAsyncV1
+
+> EntityResourceCollectionOutcomeBrandIdSearchResult searchBrandsByNameAsyncV1(offset, limit, valueResourceInputBrandIdSearchRequest)
+
+
+
+Search for brands given a retailer ID and search term.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        Integer offset = 0; // Integer | offset of paginated results
+        Integer limit = 25; // Integer | the number of brands to return
+        ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest = new ValueResourceInputBrandIdSearchRequest(); // ValueResourceInputBrandIdSearchRequest | BrandIdSearchRequest which contains the request parameters
+        try {
+            EntityResourceCollectionOutcomeBrandIdSearchResult result = apiInstance.searchBrandsByNameAsyncV1(offset, limit, valueResourceInputBrandIdSearchRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#searchBrandsByNameAsyncV1");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **offset** | **Integer**| offset of paginated results | [optional] [default to 0] |
+| **limit** | **Integer**| the number of brands to return | [optional] [default to 25] |
+| **valueResourceInputBrandIdSearchRequest** | [**ValueResourceInputBrandIdSearchRequest**](ValueResourceInputBrandIdSearchRequest.md)| BrandIdSearchRequest which contains the request parameters | [optional] |
+
+### Return type
+
+[**EntityResourceCollectionOutcomeBrandIdSearchResult**](EntityResourceCollectionOutcomeBrandIdSearchResult.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
 
 
 ## setKeywordBids

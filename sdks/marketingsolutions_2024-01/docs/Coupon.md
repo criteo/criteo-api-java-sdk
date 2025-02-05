@@ -22,6 +22,7 @@ Coupons are static images applied on ad set which can be displayed within an ad 
 |**showEvery** | **Integer** | Show the Coupon every N seconds (between 1 and 10) |  [optional] |
 |**showDuration** | **Integer** | Show Coupon for a duration of N seconds (between 1 and 5) |  [optional] |
 |**rotationsNumber** | **Integer** | Number of rotations for the Coupons (from 1 to 10 times) |  [optional] |
+|**id** | **String** | Unique identifier (duplicate of the parent id). |  [optional] |
 
 
 

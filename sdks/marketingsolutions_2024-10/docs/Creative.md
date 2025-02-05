@@ -19,6 +19,7 @@ A creative is a project with the necessary information to display a creative
 |**htmlTagAttributes** | [**HtmlTagAttributes**](HtmlTagAttributes.md) |  |  [optional] |
 |**dynamicAttributes** | [**DynamicAttributes**](DynamicAttributes.md) |  |  [optional] |
 |**adaptiveAttributes** | [**AdaptiveAttributes**](AdaptiveAttributes.md) |  |  [optional] |
+|**id** | **String** | Unique identifier (duplicate of the parent id). |  [optional] |
 
 
 

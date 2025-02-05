@@ -15,7 +15,7 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.Botmessage;
+import com.criteo.api.retailmedia.preview.model.BotMessage;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -56,7 +56,7 @@ public class Message {
 
   public static final String SERIALIZED_NAME_BOT_MESSAGE = "botMessage";
   @SerializedName(SERIALIZED_NAME_BOT_MESSAGE)
-  private Botmessage botMessage;
+  private BotMessage botMessage;
 
   public Message() {
   }
@@ -83,7 +83,7 @@ public class Message {
   }
 
 
-  public Message botMessage(Botmessage botMessage) {
+  public Message botMessage(BotMessage botMessage) {
     
     this.botMessage = botMessage;
     return this;
@@ -95,12 +95,12 @@ public class Message {
   **/
   @javax.annotation.Nullable
 
-  public Botmessage getBotMessage() {
+  public BotMessage getBotMessage() {
     return botMessage;
   }
 
 
-  public void setBotMessage(Botmessage botMessage) {
+  public void setBotMessage(BotMessage botMessage) {
     this.botMessage = botMessage;
   }
 
@@ -233,7 +233,7 @@ public class Message {
       }
       // validate the optional field `botMessage`
       if (jsonObj.get("botMessage") != null && !jsonObj.get("botMessage").isJsonNull()) {
-        Botmessage.validateJsonObject(jsonObj.getAsJsonObject("botMessage"));
+        BotMessage.validateJsonObject(jsonObj.getAsJsonObject("botMessage"));
       }
   }
 

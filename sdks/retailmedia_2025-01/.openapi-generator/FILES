@@ -49,8 +49,6 @@ docs/BalanceCampaign202110PagedListResponse.md
 docs/BalanceHistoryChangeDataCaptureV1.md
 docs/BalanceResponseV2.md
 docs/BalanceResponseV2Response.md
-docs/BrandPreview.md
-docs/BrandPreviewListResponse.md
 docs/CampaignApi.md
 docs/CampaignAttributesV202301.md
 docs/CampaignBudgetOverrides.md
@@ -186,7 +184,6 @@ docs/ResourceOfAuctionLineItem.md
 docs/ResourceOfAuctionLineItemUpdateModel.md
 docs/ResourceOfBalanceCampaign202110.md
 docs/ResourceOfBalanceResponseV2.md
-docs/ResourceOfBrandPreview.md
 docs/ResourceOfCategory202204.md
 docs/ResourceOfChangeDatesOfBalanceV2.md
 docs/ResourceOfCommonLineItem.md
@@ -201,7 +198,6 @@ docs/ResourceOfTemplate.md
 docs/ResourceOfUpdateBalanceModelV2.md
 docs/ResourceOutcome.md
 docs/RetailMediaContactlistAmendment.md
-docs/RetailMediaContactlistAmendmentAttributes.md
 docs/RetailMediaContactlistAmendmentRequest.md
 docs/RetailMediaContactlistOperation.md
 docs/RetailMediaContactlistOperationResponseAttributes.md
@@ -364,8 +360,6 @@ src/main/java/com/criteo/api/retailmedia/v2025_01/model/BalanceCampaign202110Pag
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/BalanceHistoryChangeDataCaptureV1.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/BalanceResponseV2.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/BalanceResponseV2Response.java
-src/main/java/com/criteo/api/retailmedia/v2025_01/model/BrandPreview.java
-src/main/java/com/criteo/api/retailmedia/v2025_01/model/BrandPreviewListResponse.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/CampaignAttributesV202301.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/CampaignBudgetOverrides.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/CampaignDailyBudgetOverride.java
@@ -499,7 +493,6 @@ src/main/java/com/criteo/api/retailmedia/v2025_01/model/ResourceOfAuctionLineIte
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ResourceOfAuctionLineItemUpdateModel.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ResourceOfBalanceCampaign202110.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ResourceOfBalanceResponseV2.java
-src/main/java/com/criteo/api/retailmedia/v2025_01/model/ResourceOfBrandPreview.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ResourceOfCategory202204.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ResourceOfChangeDatesOfBalanceV2.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ResourceOfCommonLineItem.java
@@ -514,7 +507,6 @@ src/main/java/com/criteo/api/retailmedia/v2025_01/model/ResourceOfTemplate.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ResourceOfUpdateBalanceModelV2.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ResourceOutcome.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/RetailMediaContactlistAmendment.java
-src/main/java/com/criteo/api/retailmedia/v2025_01/model/RetailMediaContactlistAmendmentAttributes.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/RetailMediaContactlistAmendmentRequest.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/RetailMediaContactlistOperation.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/RetailMediaContactlistOperationResponseAttributes.java
