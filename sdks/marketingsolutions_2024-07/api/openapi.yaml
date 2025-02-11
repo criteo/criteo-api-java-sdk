@@ -8932,6 +8932,7 @@ components:
               spendLimitAmount:
                 value: 0.8008281904610115
               spendLimitType: capped
+            id: id
             advertiserId: advertiserId
           id: id
           type: Campaign
@@ -9007,6 +9008,7 @@ components:
               spendLimitAmount:
                 value: 0.8008281904610115
               spendLimitType: capped
+            id: id
             advertiserId: advertiserId
           id: id
           type: Campaign
@@ -9018,6 +9020,7 @@ components:
               spendLimitAmount:
                 value: 0.8008281904610115
               spendLimitType: capped
+            id: id
             advertiserId: advertiserId
           id: id
           type: Campaign
@@ -9580,6 +9583,7 @@ components:
             spendLimitAmount:
               value: 0.8008281904610115
             spendLimitType: capped
+          id: id
           advertiserId: advertiserId
         id: id
         type: Campaign
@@ -10038,6 +10042,7 @@ components:
           spendLimitAmount:
             value: 0.8008281904610115
           spendLimitType: capped
+        id: id
         advertiserId: advertiserId
       properties:
         name:
@@ -10057,6 +10062,11 @@ components:
           - retention
           nullable: true
           type: string
+        id:
+          description: Id of the entity (duplicate of the parent id).
+          nullable: true
+          type: string
+          x-nullable: true
       type: object
     PatchAdSetV24Q1:
       description: ad set patch model

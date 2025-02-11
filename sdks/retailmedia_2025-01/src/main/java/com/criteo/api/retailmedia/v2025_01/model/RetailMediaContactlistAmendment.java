@@ -15,14 +15,13 @@ package com.criteo.api.retailmedia.v2025_01.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.retailmedia.v2025_01.model.RetailMediaContactlistAmendmentAttributes;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -51,191 +50,58 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RetailMediaContactlistAmendment {
-  /**
-   * Whether to add or remove users
-   */
-  @JsonAdapter(OperationEnum.Adapter.class)
-  public enum OperationEnum {
-    ADD("add"),
-    
-    REMOVE("remove");
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
 
-    private String value;
-
-    OperationEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static OperationEnum fromValue(String value) {
-      for (OperationEnum b : OperationEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<OperationEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final OperationEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public OperationEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return OperationEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_OPERATION = "operation";
-  @SerializedName(SERIALIZED_NAME_OPERATION)
-  private OperationEnum operation;
-
-  /**
-   * What type of identifiers are used
-   */
-  @JsonAdapter(IdentifierTypeEnum.Adapter.class)
-  public enum IdentifierTypeEnum {
-    EMAIL("Email"),
-    
-    USERIDENTIFIER("UserIdentifier"),
-    
-    IDENTITYLINK("IdentityLink"),
-    
-    GUM("Gum"),
-    
-    CUSTOMERID("CustomerId"),
-    
-    PHONENUMBER("PhoneNumber");
-
-    private String value;
-
-    IdentifierTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static IdentifierTypeEnum fromValue(String value) {
-      for (IdentifierTypeEnum b : IdentifierTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<IdentifierTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final IdentifierTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public IdentifierTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return IdentifierTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_IDENTIFIER_TYPE = "identifierType";
-  @SerializedName(SERIALIZED_NAME_IDENTIFIER_TYPE)
-  private IdentifierTypeEnum identifierType;
-
-  public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
-  @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
-  private List<String> identifiers = new ArrayList<>();
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private RetailMediaContactlistAmendmentAttributes attributes;
 
   public RetailMediaContactlistAmendment() {
   }
 
-  public RetailMediaContactlistAmendment operation(OperationEnum operation) {
+  public RetailMediaContactlistAmendment type(String type) {
     
-    this.operation = operation;
+    this.type = type;
     return this;
   }
 
    /**
-   * Whether to add or remove users
-   * @return operation
-  **/
-  @javax.annotation.Nonnull
-
-  public OperationEnum getOperation() {
-    return operation;
-  }
-
-
-  public void setOperation(OperationEnum operation) {
-    this.operation = operation;
-  }
-
-
-  public RetailMediaContactlistAmendment identifierType(IdentifierTypeEnum identifierType) {
-    
-    this.identifierType = identifierType;
-    return this;
-  }
-
-   /**
-   * What type of identifiers are used
-   * @return identifierType
+   * User List
+   * @return type
   **/
   @javax.annotation.Nullable
 
-  public IdentifierTypeEnum getIdentifierType() {
-    return identifierType;
+  public String getType() {
+    return type;
   }
 
 
-  public void setIdentifierType(IdentifierTypeEnum identifierType) {
-    this.identifierType = identifierType;
+  public void setType(String type) {
+    this.type = type;
   }
 
 
-  public RetailMediaContactlistAmendment identifiers(List<String> identifiers) {
+  public RetailMediaContactlistAmendment attributes(RetailMediaContactlistAmendmentAttributes attributes) {
     
-    this.identifiers = identifiers;
-    return this;
-  }
-
-  public RetailMediaContactlistAmendment addIdentifiersItem(String identifiersItem) {
-    this.identifiers.add(identifiersItem);
+    this.attributes = attributes;
     return this;
   }
 
    /**
-   * The users to add or remove, each in the schema specified
-   * @return identifiers
+   * Get attributes
+   * @return attributes
   **/
   @javax.annotation.Nonnull
 
-  public List<String> getIdentifiers() {
-    return identifiers;
+  public RetailMediaContactlistAmendmentAttributes getAttributes() {
+    return attributes;
   }
 
 
-  public void setIdentifiers(List<String> identifiers) {
-    this.identifiers = identifiers;
+  public void setAttributes(RetailMediaContactlistAmendmentAttributes attributes) {
+    this.attributes = attributes;
   }
 
   /**
@@ -293,9 +159,8 @@ public class RetailMediaContactlistAmendment {
       return false;
     }
     RetailMediaContactlistAmendment retailMediaContactlistAmendment = (RetailMediaContactlistAmendment) o;
-    return Objects.equals(this.operation, retailMediaContactlistAmendment.operation) &&
-        Objects.equals(this.identifierType, retailMediaContactlistAmendment.identifierType) &&
-        Objects.equals(this.identifiers, retailMediaContactlistAmendment.identifiers)&&
+    return Objects.equals(this.type, retailMediaContactlistAmendment.type) &&
+        Objects.equals(this.attributes, retailMediaContactlistAmendment.attributes)&&
         Objects.equals(this.additionalProperties, retailMediaContactlistAmendment.additionalProperties);
   }
 
@@ -305,7 +170,7 @@ public class RetailMediaContactlistAmendment {
 
   @Override
   public int hashCode() {
-    return Objects.hash(operation, identifierType, identifiers, additionalProperties);
+    return Objects.hash(type, attributes, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -319,9 +184,8 @@ public class RetailMediaContactlistAmendment {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RetailMediaContactlistAmendment {\n");
-    sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    identifierType: ").append(toIndentedString(identifierType)).append("\n");
-    sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -345,14 +209,12 @@ public class RetailMediaContactlistAmendment {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("operation");
-    openapiFields.add("identifierType");
-    openapiFields.add("identifiers");
+    openapiFields.add("type");
+    openapiFields.add("attributes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("operation");
-    openapiRequiredFields.add("identifiers");
+    openapiRequiredFields.add("attributes");
   }
 
  /**
@@ -374,18 +236,11 @@ public class RetailMediaContactlistAmendment {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("operation").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `operation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operation").toString()));
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      if ((jsonObj.get("identifierType") != null && !jsonObj.get("identifierType").isJsonNull()) && !jsonObj.get("identifierType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `identifierType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierType").toString()));
-      }
-      // ensure the required json array is present
-      if (jsonObj.get("identifiers") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("identifiers").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `identifiers` to be an array in the JSON string but got `%s`", jsonObj.get("identifiers").toString()));
-      }
+      // validate the required field `attributes`
+      RetailMediaContactlistAmendmentAttributes.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

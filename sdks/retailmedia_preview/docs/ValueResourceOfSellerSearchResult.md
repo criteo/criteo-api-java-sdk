@@ -1,6 +1,6 @@
 
 
-# ValueResourceOfRetailMediaSeller
+# ValueResourceOfSellerSearchResult
 
 A value resource exposed by the API.
 
@@ -9,7 +9,7 @@ A value resource exposed by the API.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**type** | **String** | Type of the resource. |  [optional] |
-|**attributes** | [**RetailMediaSeller**](RetailMediaSeller.md) |  |  [optional] |
+|**attributes** | [**SellerSearchResult**](SellerSearchResult.md) |  |  [optional] |
 
 
 

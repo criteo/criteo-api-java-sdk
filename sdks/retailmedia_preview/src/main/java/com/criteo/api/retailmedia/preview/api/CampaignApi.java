@@ -253,6 +253,7 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Promoted products appended to the line item with warnings </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
@@ -319,17 +320,20 @@ public class CampaignApi {
      * Append a collection of promoted products to a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
+     * @return ProductResourceOutcome
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Promoted products appended to the line item with warnings </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
-    public void appendPromotedProducts(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
-        appendPromotedProductsWithHttpInfo(lineItemId, promotedProductResourceCollectionInput);
+    public ProductResourceOutcome appendPromotedProducts(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
+        ApiResponse<ProductResourceOutcome> localVarResp = appendPromotedProductsWithHttpInfo(lineItemId, promotedProductResourceCollectionInput);
+        return localVarResp.getData();
     }
 
     /**
@@ -337,19 +341,21 @@ public class CampaignApi {
      * Append a collection of promoted products to a line item
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;ProductResourceOutcome&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Promoted products appended to the line item with warnings </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> appendPromotedProductsWithHttpInfo(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
+    public ApiResponse<ProductResourceOutcome> appendPromotedProductsWithHttpInfo(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput) throws ApiException {
         okhttp3.Call localVarCall = appendPromotedProductsValidateBeforeCall(lineItemId, promotedProductResourceCollectionInput, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<ProductResourceOutcome>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -364,14 +370,16 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Promoted products appended to the line item with warnings </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call appendPromotedProductsAsync(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call appendPromotedProductsAsync(String lineItemId, PromotedProductResourceCollectionInput promotedProductResourceCollectionInput, final ApiCallback<ProductResourceOutcome> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = appendPromotedProductsValidateBeforeCall(lineItemId, promotedProductResourceCollectionInput, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<ProductResourceOutcome>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

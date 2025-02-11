@@ -258,13 +258,13 @@ public class BalanceResponseV2 {
    */
   @JsonAdapter(PrivateMarketBillingTypeEnum.Adapter.class)
   public enum PrivateMarketBillingTypeEnum {
-    NOTAPPLICABLE("NotApplicable"),
+    NOTAPPLICABLE("notApplicable"),
     
-    BILLBYRETAILER("BillByRetailer"),
+    BILLBYRETAILER("billByRetailer"),
     
-    BILLBYCRITEO("BillByCriteo"),
+    BILLBYCRITEO("billByCriteo"),
     
-    UNKNOWN("Unknown");
+    UNKNOWN("unknown");
 
     private String value;
 

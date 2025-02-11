@@ -136,7 +136,7 @@ public class Example {
 
 ## appendPromotedProducts
 
-> appendPromotedProducts(lineItemId, promotedProductResourceCollectionInput)
+> ProductResourceOutcome appendPromotedProducts(lineItemId, promotedProductResourceCollectionInput)
 
 
 
@@ -184,7 +184,8 @@ public class Example {
         String lineItemId = "lineItemId_example"; // String | ID of the line item
         PromotedProductResourceCollectionInput promotedProductResourceCollectionInput = new PromotedProductResourceCollectionInput(); // PromotedProductResourceCollectionInput | Request body whose {data} contains an array of promoted products.
         try {
-            apiInstance.appendPromotedProducts(lineItemId, promotedProductResourceCollectionInput);
+            ProductResourceOutcome result = apiInstance.appendPromotedProducts(lineItemId, promotedProductResourceCollectionInput);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#appendPromotedProducts");
             System.err.println("Status code: " + e.getCode());
@@ -206,7 +207,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**ProductResourceOutcome**](ProductResourceOutcome.md)
 
 ### Authorization
 
@@ -222,6 +223,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | Promoted products appended to the line item |  -  |
+| **200** | Promoted products appended to the line item with warnings |  -  |
 | **400** | Invalid request body |  -  |
 | **403** | Invalid external line item ID |  -  |
 

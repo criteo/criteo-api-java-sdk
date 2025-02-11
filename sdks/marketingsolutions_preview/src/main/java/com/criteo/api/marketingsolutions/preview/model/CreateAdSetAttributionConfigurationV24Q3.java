@@ -115,13 +115,13 @@ public class CreateAdSetAttributionConfigurationV24Q3 {
   public enum LookbackWindowEnum {
     UNKNOWN("unknown"),
     
-    SAMESESSION("sameSession"),
+    _30M("30M"),
     
-    TWENTYFOURHOURS("twentyFourHours"),
+    _24H("24H"),
     
-    SEVENDAYS("sevenDays"),
+    _7D("7D"),
     
-    THIRTYDAYS("thirtyDays");
+    _30D("30D");
 
     private String value;
 

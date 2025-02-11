@@ -5,11 +5,11 @@
 ## Enum
 
 
-* `UNKNOWN` (value: `"Unknown"`)
+* `UNKNOWN` (value: `"unknown"`)
 
-* `ACTIVE` (value: `"Active"`)
+* `ACTIVE` (value: `"active"`)
 
-* `PAUSED` (value: `"Paused"`)
+* `PAUSED` (value: `"paused"`)
 
 
 

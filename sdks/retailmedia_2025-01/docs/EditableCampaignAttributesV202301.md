@@ -39,12 +39,12 @@ An object that represents the available options to set when editing a Retail Med
 
 | Name | Value |
 |---- | -----|
-| NONE | &quot;None&quot; |
-| UNKNOWN | &quot;Unknown&quot; |
-| ONEDAY | &quot;OneDay&quot; |
-| SEVENDAYS | &quot;SevenDays&quot; |
-| FOURTEENDAYS | &quot;FourteenDays&quot; |
-| THIRTYDAYS | &quot;ThirtyDays&quot; |
+| NONE | &quot;none&quot; |
+| UNKNOWN | &quot;unknown&quot; |
+| _1D | &quot;1D&quot; |
+| _7D | &quot;7D&quot; |
+| _14D | &quot;14D&quot; |
+| _30D | &quot;30D&quot; |
 
 
 

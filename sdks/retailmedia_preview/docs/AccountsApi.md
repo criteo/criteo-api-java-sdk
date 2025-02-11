@@ -195,7 +195,7 @@ null (empty response body)
 
 ## searchSellers
 
-> ValueResourceCollectionOutcomeOfRetailMediaSeller searchSellers(valueResourceInputOfSellerSearch)
+> ValueResourceCollectionOutcomeOfSellerSearchResult searchSellers(valueResourceInputOfSellerSearch)
 
 
 
@@ -242,7 +242,7 @@ public class Example {
         AccountsApi apiInstance = new AccountsApi(defaultClient);
         ValueResourceInputOfSellerSearch valueResourceInputOfSellerSearch = new ValueResourceInputOfSellerSearch(); // ValueResourceInputOfSellerSearch | 
         try {
-            ValueResourceCollectionOutcomeOfRetailMediaSeller result = apiInstance.searchSellers(valueResourceInputOfSellerSearch);
+            ValueResourceCollectionOutcomeOfSellerSearchResult result = apiInstance.searchSellers(valueResourceInputOfSellerSearch);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountsApi#searchSellers");
@@ -264,7 +264,7 @@ public class Example {
 
 ### Return type
 
-[**ValueResourceCollectionOutcomeOfRetailMediaSeller**](ValueResourceCollectionOutcomeOfRetailMediaSeller.md)
+[**ValueResourceCollectionOutcomeOfSellerSearchResult**](ValueResourceCollectionOutcomeOfSellerSearchResult.md)
 
 ### Authorization
 

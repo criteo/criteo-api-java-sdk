@@ -73,17 +73,16 @@ paths:
           content:
             application/json:
               example:
+                type: AddRemoveContactlistResult
                 data:
-                  type: AddRemoveContactlistResult
-                  attributes:
-                    contactListId: 568708742535471104
-                    operation: add
-                    requestDate: 2018-12-10T10:00:50.0000000+00:00
-                    identifierType: madid
-                    nbValidIdentifiers: 7343
-                    nbInvalidIdentifiers: 13
-                    sampleInvalidIdentifiers:
-                    - InvalidIdentifier
+                  contactListId: 568708742535471104
+                  operation: add
+                  requestDate: 2018-12-10T10:00:50.0000000+00:00
+                  identifierType: madid
+                  nbValidIdentifiers: 7343
+                  nbInvalidIdentifiers: 13
+                  sampleInvalidIdentifiers:
+                  - InvalidIdentifier
                 errors:
                 - traceId: 667ac683ac797284.667ac683ac797284<:667ac683ac797284
                   type: availability
@@ -1062,6 +1061,12 @@ paths:
       responses:
         "204":
           description: Promoted products appended to the line item
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResourceOutcome'
+          description: Promoted products appended to the line item with warnings
         "400":
           content:
             application/json:
@@ -2371,13 +2376,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfRetailMediaSeller'
+                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfSellerSearchResult'
             application/json:
               schema:
-                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfRetailMediaSeller'
+                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfSellerSearchResult'
             text/json:
               schema:
-                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfRetailMediaSeller'
+                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfSellerSearchResult'
           description: Success
         "400":
           content:
@@ -3242,17 +3247,15 @@ components:
       description: Operation on Retail Media contact list
       example:
         data:
-          attributes:
-            nbValidIdentifiers: 1
-            nbInvalidIdentifiers: 6
-            sampleInvalidIdentifiers:
-            - sampleInvalidIdentifiers
-            - sampleInvalidIdentifiers
-            contactListId: 0
-            requestDate: 2000-01-23T04:56:07.000+00:00
-            identifierType: identifierType
-            operation: operation
-          type: AddRemoveContactlistResult
+          nbValidIdentifiers: 1
+          nbInvalidIdentifiers: 6
+          sampleInvalidIdentifiers:
+          - sampleInvalidIdentifiers
+          - sampleInvalidIdentifiers
+          contactListId: 0
+          requestDate: 2000-01-23T04:56:07.000+00:00
+          identifierType: identifierType
+          operation: operation
         warnings:
         - traceId: traceId
           code: code
@@ -3274,6 +3277,7 @@ components:
           - stackTrace
           type: access-control
           title: title
+        type: AddRemoveContactlistResult
         errors:
         - traceId: traceId
           code: code
@@ -3298,6 +3302,11 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/RetailMediaContactlistOperationResponseAttributes'
+        type:
+          description: the name of the entity type
+          example: AddRemoveContactlistResult
+          nullable: true
+          type: string
         errors:
           items:
             $ref: '#/components/schemas/AudienceError'
@@ -3330,11 +3339,13 @@ components:
       description: Request of Retail Media contactlist
       example:
         data:
-          identifiers:
-          - identifiers
-          - identifiers
-          identifierType: Email
-          operation: add
+          attributes:
+            identifiers:
+            - identifiers
+            - identifiers
+            identifierType: Email
+            operation: add
+          type: AddRemoveContactlist
       properties:
         data:
           $ref: '#/components/schemas/RetailMediaContactlistAmendment'
@@ -3342,29 +3353,53 @@ components:
       - data
       type: object
     RetailMediaContactlistOperationResponseAttributes:
-      description: Response data of Retail Media contact list operation
+      description: The attributes of Retail Media contact list operation
       example:
-        attributes:
-          nbValidIdentifiers: 1
-          nbInvalidIdentifiers: 6
-          sampleInvalidIdentifiers:
-          - sampleInvalidIdentifiers
-          - sampleInvalidIdentifiers
-          contactListId: 0
-          requestDate: 2000-01-23T04:56:07.000+00:00
-          identifierType: identifierType
-          operation: operation
-        type: AddRemoveContactlistResult
+        nbValidIdentifiers: 1
+        nbInvalidIdentifiers: 6
+        sampleInvalidIdentifiers:
+        - sampleInvalidIdentifiers
+        - sampleInvalidIdentifiers
+        contactListId: 0
+        requestDate: 2000-01-23T04:56:07.000+00:00
+        identifierType: identifierType
+        operation: operation
       properties:
-        type:
-          description: the name of the entity type
-          example: AddRemoveContactlistResult
+        contactListId:
+          description: The affected user list id
+          format: int64
+          type: integer
+        operation:
+          description: The action recorded
           type: string
-        attributes:
-          $ref: '#/components/schemas/RetailMediaContactlistOperationResponseAttributes_attributes'
+        requestDate:
+          description: When the action was recorded
+          format: date-time
+          type: string
+        identifierType:
+          description: The schema specified for of the identifiers
+          nullable: true
+          type: string
+        nbInvalidIdentifiers:
+          description: How many identifiers were invalid for the specified schema
+          format: int32
+          nullable: true
+          type: integer
+        nbValidIdentifiers:
+          description: How many identifiers were valid for the specified schema
+          format: int32
+          nullable: true
+          type: integer
+        sampleInvalidIdentifiers:
+          description: A sample of invalid identifiers if there is some
+          items:
+            type: string
+          nullable: true
+          type: array
       required:
-      - attributes
-      - type
+      - contactListId
+      - operation
+      - requestDate
       type: object
     AudienceError:
       description: Definition of an audience error
@@ -3499,37 +3534,23 @@ components:
     RetailMediaContactlistAmendment:
       description: Request data of retail media contact list amendment
       example:
-        identifiers:
-        - identifiers
-        - identifiers
-        identifierType: Email
-        operation: add
+        attributes:
+          identifiers:
+          - identifiers
+          - identifiers
+          identifierType: Email
+          operation: add
+        type: AddRemoveContactlist
       properties:
-        operation:
-          description: Whether to add or remove users
-          enum:
-          - add
-          - remove
-          type: string
-        identifierType:
-          description: What type of identifiers are used
-          enum:
-          - Email
-          - UserIdentifier
-          - IdentityLink
-          - Gum
-          - CustomerId
-          - PhoneNumber
+        type:
+          description: User List
+          example: AddRemoveContactlist
           nullable: true
           type: string
-        identifiers:
-          description: "The users to add or remove, each in the schema specified"
-          items:
-            type: string
-          type: array
+        attributes:
+          $ref: '#/components/schemas/RetailMediaContactlistAmendment_attributes'
       required:
-      - identifiers
-      - operation
+      - attributes
       type: object
     ApplicationSummaryModelResponse:
       description: A top-level object that encapsulates a Criteo API response for
@@ -7846,6 +7867,49 @@ components:
     ProductResourceOutcome:
       additionalProperties: false
       description: Outcome object containing errors and warnings.
+      example:
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+          status: 0
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+          status: 0
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+          status: 0
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+          status: 0
       properties:
         errors:
           items:
@@ -8253,9 +8317,9 @@ components:
     LineItemProductStatus:
       description: The status of a promoted product in the context of the line item.
       enum:
-      - Unknown
-      - Active
-      - Paused
+      - unknown
+      - active
+      - paused
       type: string
     AddRemoveKeywordModel:
       additionalProperties: false
@@ -9637,8 +9701,9 @@ components:
         currency:
           description: An ISO4217 representation of the currency products are listed
             under in this catalog.
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         rowCount:
           description: "An indication of the number of products contained in this\
             \ catalog. Available when\r\nthis catalog reaches a success status."
@@ -13304,21 +13369,31 @@ components:
       - endDate
       - startDate
       type: object
-    ValueResourceCollectionOutcomeOfRetailMediaSeller:
+    ValueResourceCollectionOutcomeOfSellerSearchResult:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
         several value objects.
       example:
         data:
         - attributes:
-            sellerId: sellerId
-            name: name
-            retailerId: 0
+            accountId: accountId
+            sellers:
+            - sellerId: sellerId
+              name: name
+              retailerId: 0
+            - sellerId: sellerId
+              name: name
+              retailerId: 0
           type: type
         - attributes:
-            sellerId: sellerId
-            name: name
-            retailerId: 0
+            accountId: accountId
+            sellers:
+            - sellerId: sellerId
+              name: name
+              retailerId: 0
+            - sellerId: sellerId
+              name: name
+              retailerId: 0
           type: type
         warnings:
         - traceId: traceId
@@ -13361,7 +13436,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/ValueResourceOfRetailMediaSeller'
+            $ref: '#/components/schemas/ValueResourceOfSellerSearchResult'
           nullable: true
           type: array
         warnings:
@@ -13540,14 +13615,19 @@ components:
         data:
           $ref: '#/components/schemas/ValueResourceOfSellerSearch'
       type: object
-    ValueResourceOfRetailMediaSeller:
+    ValueResourceOfSellerSearchResult:
       additionalProperties: false
       description: A value resource exposed by the API.
       example:
         attributes:
-          sellerId: sellerId
-          name: name
-          retailerId: 0
+          accountId: accountId
+          sellers:
+          - sellerId: sellerId
+            name: name
+            retailerId: 0
+          - sellerId: sellerId
+            name: name
+            retailerId: 0
         type: type
       properties:
         type:
@@ -13555,7 +13635,7 @@ components:
           nullable: true
           type: string
         attributes:
-          $ref: '#/components/schemas/RetailMediaSeller'
+          $ref: '#/components/schemas/SellerSearchResult'
       type: object
     Metadata:
       additionalProperties: false
@@ -13683,27 +13763,29 @@ components:
         attributes:
           $ref: '#/components/schemas/SellerSearch'
       type: object
-    RetailMediaSeller:
+    SellerSearchResult:
       additionalProperties: false
-      description: used to define the exact seller linked with an account
+      description: holds an AccountId and the mapped seller information for that account
       example:
-        sellerId: sellerId
-        name: name
-        retailerId: 0
+        accountId: accountId
+        sellers:
+        - sellerId: sellerId
+          name: name
+          retailerId: 0
+        - sellerId: sellerId
+          name: name
+          retailerId: 0
       properties:
-        sellerId:
-          description: the seller id
+        accountId:
+          description: the id for the account
           nullable: true
           type: string
-        retailerId:
-          description: the retailer id
-          format: int32
+        sellers:
+          description: the details for mapped sellers for the account
+          items:
+            $ref: '#/components/schemas/RetailMediaSeller'
           nullable: true
-          type: integer
-        name:
-          description: seller name
-          nullable: true
-          type: string
+          type: array
       type: object
     ChangeDetailsV1:
       additionalProperties: false
@@ -13791,6 +13873,28 @@ components:
           type: boolean
       required:
       - accountIds
+      type: object
+    RetailMediaSeller:
+      additionalProperties: false
+      description: used to define the exact seller linked with an account
+      example:
+        sellerId: sellerId
+        name: name
+        retailerId: 0
+      properties:
+        sellerId:
+          description: the seller id
+          nullable: true
+          type: string
+        retailerId:
+          description: the retailer id
+          format: int32
+          nullable: true
+          type: integer
+        name:
+          description: seller name
+          nullable: true
+          type: string
       type: object
     Keywords:
       additionalProperties: false
@@ -13899,7 +14003,7 @@ components:
           currentPageIndex: 1
         data:
         - attributes:
-            privateMarketBillingType: NotApplicable
+            privateMarketBillingType: notApplicable
             endDate: 2000-01-23
             deposited: 5.637376656633329
             spent: 2.3021358869347655
@@ -13916,7 +14020,7 @@ components:
           id: id
           type: type
         - attributes:
-            privateMarketBillingType: NotApplicable
+            privateMarketBillingType: notApplicable
             endDate: 2000-01-23
             deposited: 5.637376656633329
             spent: 2.3021358869347655
@@ -14001,7 +14105,7 @@ components:
       example:
         data:
           attributes:
-            privateMarketBillingType: NotApplicable
+            privateMarketBillingType: notApplicable
             endDate: 2000-01-23
             deposited: 5.637376656633329
             spent: 2.3021358869347655
@@ -14773,7 +14877,7 @@ components:
       description: A class that represents a domain entity exposed by an API
       example:
         attributes:
-          privateMarketBillingType: NotApplicable
+          privateMarketBillingType: notApplicable
           endDate: 2000-01-23
           deposited: 5.637376656633329
           spent: 2.3021358869347655
@@ -15106,7 +15210,7 @@ components:
       description: A Retail Media Balance used to determine the funds available for
         any or all campaigns in an account
       example:
-        privateMarketBillingType: NotApplicable
+        privateMarketBillingType: notApplicable
         endDate: 2000-01-23
         deposited: 5.637376656633329
         spent: 2.3021358869347655
@@ -15202,10 +15306,10 @@ components:
         privateMarketBillingType:
           description: Billing type for Private Market of the balance.
           enum:
-          - NotApplicable
-          - BillByRetailer
-          - BillByCriteo
-          - Unknown
+          - notApplicable
+          - billByRetailer
+          - billByCriteo
+          - unknown
           type: string
           x-nullable: false
       required:
@@ -16067,54 +16171,40 @@ components:
           nullable: true
           type: string
       type: object
-    RetailMediaContactlistOperationResponseAttributes_attributes:
-      description: The attributes of Retaile Media contact list operation
+    RetailMediaContactlistAmendment_attributes:
+      description: Attributes of retail media contact list amendment
       example:
-        nbValidIdentifiers: 1
-        nbInvalidIdentifiers: 6
-        sampleInvalidIdentifiers:
-        - sampleInvalidIdentifiers
-        - sampleInvalidIdentifiers
-        contactListId: 0
-        requestDate: 2000-01-23T04:56:07.000+00:00
-        identifierType: identifierType
-        operation: operation
+        identifiers:
+        - identifiers
+        - identifiers
+        identifierType: Email
+        operation: add
       properties:
-        contactListId:
-          description: The affected user list id
-          format: int64
-          type: integer
         operation:
-          description: The action recorded
-          type: string
-        requestDate:
-          description: When the action was recorded
-          format: date-time
+          description: Whether to add or remove users
+          enum:
+          - add
+          - remove
           type: string
         identifierType:
-          description: The schema specified for of the identifiers
+          description: What type of identifiers are used
+          enum:
+          - Email
+          - UserIdentifier
+          - IdentityLink
+          - Gum
+          - CustomerId
+          - PhoneNumber
           nullable: true
           type: string
-        nbInvalidIdentifiers:
-          description: How many identifiers were invalid for the specified schema
-          format: int32
-          nullable: true
-          type: integer
-        nbValidIdentifiers:
-          description: How many identifiers were valid for the specified schema
-          format: int32
-          nullable: true
-          type: integer
-        sampleInvalidIdentifiers:
-          description: A sample of invalid identifiers if there is some
+        identifiers:
+          description: "The users to add or remove, each in the schema specified"
           items:
             type: string
-          nullable: true
           type: array
       required:
-      - contactListId
+      - identifiers
       - operation
-      - requestDate
       type: object
   securitySchemes:
     oauth:

@@ -198,10 +198,10 @@ docs/ResourceOfTemplate.md
 docs/ResourceOfUpdateBalanceModelV2.md
 docs/ResourceOutcome.md
 docs/RetailMediaContactlistAmendment.md
+docs/RetailMediaContactlistAmendmentAttributes.md
 docs/RetailMediaContactlistAmendmentRequest.md
 docs/RetailMediaContactlistOperation.md
 docs/RetailMediaContactlistOperationResponseAttributes.md
-docs/RetailMediaContactlistOperationResponseAttributesAttributes.md
 docs/ReviewStateModel.md
 docs/RmAlgebraNodeV1.md
 docs/RmAudienceEntityV1.md
@@ -507,10 +507,10 @@ src/main/java/com/criteo/api/retailmedia/v2025_01/model/ResourceOfTemplate.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ResourceOfUpdateBalanceModelV2.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ResourceOutcome.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/RetailMediaContactlistAmendment.java
+src/main/java/com/criteo/api/retailmedia/v2025_01/model/RetailMediaContactlistAmendmentAttributes.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/RetailMediaContactlistAmendmentRequest.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/RetailMediaContactlistOperation.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/RetailMediaContactlistOperationResponseAttributes.java
-src/main/java/com/criteo/api/retailmedia/v2025_01/model/RetailMediaContactlistOperationResponseAttributesAttributes.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/ReviewStateModel.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/RmAlgebraNodeV1.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/RmAudienceEntityV1.java

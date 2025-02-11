@@ -165,7 +165,7 @@ public class ExternalCatalogStatus {
    * An ISO4217 representation of the currency products are listed under in this catalog.
    * @return currency
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public String getCurrency() {
     return currency;

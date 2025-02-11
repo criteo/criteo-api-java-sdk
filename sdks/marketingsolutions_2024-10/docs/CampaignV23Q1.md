@@ -12,6 +12,7 @@ campaign read model
 |**advertiserId** | **String** |  |  [optional] |
 |**spendLimit** | [**CampaignSpendLimitV23Q1**](CampaignSpendLimitV23Q1.md) |  |  [optional] |
 |**goal** | [**GoalEnum**](#GoalEnum) |  |  [optional] |
+|**id** | **String** | Id of the entity (duplicate of the parent id). |  [optional] |
 
 
 

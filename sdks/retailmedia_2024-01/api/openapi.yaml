@@ -6157,8 +6157,9 @@ components:
         currency:
           description: An ISO4217 representation of the currency products are listed
             under in this catalog.
+          nullable: true
           type: string
-          x-nullable: false
+          x-nullable: true
         rowCount:
           description: "An indication of the number of products contained in this\
             \ catalog. Available when\r\nthis catalog reaches a success status."
@@ -10026,7 +10027,7 @@ components:
           currentPageIndex: 1
         data:
         - attributes:
-            privateMarketBillingType: NotApplicable
+            privateMarketBillingType: notApplicable
             endDate: 2000-01-23
             deposited: 0.8008281904610115
             spent: 6.027456183070403
@@ -10044,7 +10045,7 @@ components:
           id: id
           type: type
         - attributes:
-            privateMarketBillingType: NotApplicable
+            privateMarketBillingType: notApplicable
             endDate: 2000-01-23
             deposited: 0.8008281904610115
             spent: 6.027456183070403
@@ -10130,7 +10131,7 @@ components:
       example:
         data:
           attributes:
-            privateMarketBillingType: NotApplicable
+            privateMarketBillingType: notApplicable
             endDate: 2000-01-23
             deposited: 0.8008281904610115
             spent: 6.027456183070403
@@ -10236,7 +10237,7 @@ components:
             promotedBrandIds:
             - promotedBrandIds
             - promotedBrandIds
-            viewAttributionWindow: None
+            viewAttributionWindow: none
             name: name
             isAutoDailyPacing: true
             dailyPacing: 5.637376656633329
@@ -10265,7 +10266,7 @@ components:
             promotedBrandIds:
             - promotedBrandIds
             - promotedBrandIds
-            viewAttributionWindow: None
+            viewAttributionWindow: none
             name: name
             isAutoDailyPacing: true
             dailyPacing: 5.637376656633329
@@ -10360,7 +10361,7 @@ components:
             promotedBrandIds:
             - promotedBrandIds
             - promotedBrandIds
-            viewAttributionWindow: None
+            viewAttributionWindow: none
             name: name
             isAutoDailyPacing: true
             dailyPacing: 5.637376656633329
@@ -11701,7 +11702,7 @@ components:
             type: auction
             clickAttributionScope: unknown
             viewAttributionScope: unknown
-            viewAttributionWindow: None
+            viewAttributionWindow: none
             name: name
             isAutoDailyPacing: true
             dailyPacing: 1.4658129805029452
@@ -11837,7 +11838,7 @@ components:
             clickAttributionScope: unknown
             viewAttributionScope: unknown
             name: name
-            viewAttributionWindow: None
+            viewAttributionWindow: none
             isAutoDailyPacing: true
             dailyPacing: 1.4658129805029452
             monthlyPacing: 6.027456183070403
@@ -12019,7 +12020,7 @@ components:
       description: Data model for a Resource
       example:
         attributes:
-          privateMarketBillingType: NotApplicable
+          privateMarketBillingType: notApplicable
           endDate: 2000-01-23
           deposited: 0.8008281904610115
           spent: 6.027456183070403
@@ -12071,7 +12072,7 @@ components:
           promotedBrandIds:
           - promotedBrandIds
           - promotedBrandIds
-          viewAttributionWindow: None
+          viewAttributionWindow: none
           name: name
           isAutoDailyPacing: true
           dailyPacing: 5.637376656633329
@@ -12486,7 +12487,7 @@ components:
           type: auction
           clickAttributionScope: unknown
           viewAttributionScope: unknown
-          viewAttributionWindow: None
+          viewAttributionWindow: none
           name: name
           isAutoDailyPacing: true
           dailyPacing: 1.4658129805029452
@@ -12605,7 +12606,7 @@ components:
           clickAttributionScope: unknown
           viewAttributionScope: unknown
           name: name
-          viewAttributionWindow: None
+          viewAttributionWindow: none
           isAutoDailyPacing: true
           dailyPacing: 1.4658129805029452
           monthlyPacing: 6.027456183070403
@@ -12722,7 +12723,7 @@ components:
       description: A Retail Media Balance used to determine the funds available for
         any or all campaigns in an account
       example:
-        privateMarketBillingType: NotApplicable
+        privateMarketBillingType: notApplicable
         endDate: 2000-01-23
         deposited: 0.8008281904610115
         spent: 6.027456183070403
@@ -12815,10 +12816,10 @@ components:
         privateMarketBillingType:
           description: Billing type for Private Market.
           enum:
-          - NotApplicable
-          - BillByRetailer
-          - BillByCriteo
-          - Unknown
+          - notApplicable
+          - billByRetailer
+          - billByCriteo
+          - unknown
           type: string
           x-nullable: false
       required:
@@ -12860,7 +12861,7 @@ components:
         promotedBrandIds:
         - promotedBrandIds
         - promotedBrandIds
-        viewAttributionWindow: None
+        viewAttributionWindow: none
         name: name
         isAutoDailyPacing: true
         dailyPacing: 5.637376656633329
@@ -12931,14 +12932,14 @@ components:
           type: string
           x-nullable: false
         viewAttributionWindow:
-          default: None
+          default: none
           enum:
-          - None
-          - Unknown
-          - OneDay
-          - SevenDays
-          - FourteenDays
-          - ThirtyDays
+          - none
+          - unknown
+          - 1D
+          - 7D
+          - 14D
+          - 30D
           type: string
           x-nullable: false
         name:
@@ -13697,7 +13698,7 @@ components:
         type: auction
         clickAttributionScope: unknown
         viewAttributionScope: unknown
-        viewAttributionWindow: None
+        viewAttributionWindow: none
         name: name
         isAutoDailyPacing: true
         dailyPacing: 1.4658129805029452
@@ -13729,14 +13730,14 @@ components:
           type: string
           x-nullable: false
         viewAttributionWindow:
-          default: None
+          default: none
           enum:
-          - None
-          - Unknown
-          - OneDay
-          - SevenDays
-          - FourteenDays
-          - ThirtyDays
+          - none
+          - unknown
+          - 1D
+          - 7D
+          - 14D
+          - 30D
           type: string
           x-nullable: false
         name:
@@ -14085,7 +14086,7 @@ components:
         clickAttributionScope: unknown
         viewAttributionScope: unknown
         name: name
-        viewAttributionWindow: None
+        viewAttributionWindow: none
         isAutoDailyPacing: true
         dailyPacing: 1.4658129805029452
         monthlyPacing: 6.027456183070403
@@ -14135,12 +14136,12 @@ components:
           x-nullable: false
         viewAttributionWindow:
           enum:
-          - None
-          - Unknown
-          - OneDay
-          - SevenDays
-          - FourteenDays
-          - ThirtyDays
+          - none
+          - unknown
+          - 1D
+          - 7D
+          - 14D
+          - 30D
           type: string
           x-nullable: false
         clickAttributionScope:

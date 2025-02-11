@@ -60,10 +60,10 @@ A Retail Media Balance used to determine the funds available for any or all camp
 
 | Name | Value |
 |---- | -----|
-| NOTAPPLICABLE | &quot;NotApplicable&quot; |
-| BILLBYRETAILER | &quot;BillByRetailer&quot; |
-| BILLBYCRITEO | &quot;BillByCriteo&quot; |
-| UNKNOWN | &quot;Unknown&quot; |
+| NOTAPPLICABLE | &quot;notApplicable&quot; |
+| BILLBYRETAILER | &quot;billByRetailer&quot; |
+| BILLBYCRITEO | &quot;billByCriteo&quot; |
+| UNKNOWN | &quot;unknown&quot; |
 
 
 

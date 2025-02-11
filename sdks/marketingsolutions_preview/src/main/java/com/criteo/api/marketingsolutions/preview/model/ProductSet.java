@@ -60,6 +60,10 @@ public class ProductSet {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_MINIMUM_NUMBER_OF_PRODUCTS = "minimumNumberOfProducts";
+  @SerializedName(SERIALIZED_NAME_MINIMUM_NUMBER_OF_PRODUCTS)
+  private Integer minimumNumberOfProducts;
+
   /**
    * The status of the product set
    */
@@ -98,7 +102,7 @@ public class ProductSet {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<StatusEnum> {
@@ -119,10 +123,6 @@ public class ProductSet {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
-  public static final String SERIALIZED_NAME_IS_ENABLED = "isEnabled";
-  @SerializedName(SERIALIZED_NAME_IS_ENABLED)
-  private Boolean isEnabled;
-
   public static final String SERIALIZED_NAME_NUMBER_OF_PRODUCTS = "numberOfProducts";
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_PRODUCTS)
   private Integer numberOfProducts;
@@ -133,7 +133,64 @@ public class ProductSet {
 
   public static final String SERIALIZED_NAME_RULES = "rules";
   @SerializedName(SERIALIZED_NAME_RULES)
-  private List<ProductSetRule> rules = null;
+  private List<ProductSetRule> rules = new ArrayList<>();
+
+  /**
+   * The client type of the product set
+   */
+  @JsonAdapter(ClientTypeEnum.Adapter.class)
+  public enum ClientTypeEnum {
+    UNKNOWN("Unknown"),
+    
+    CGROWTH("CGrowth"),
+    
+    CMAX("CMax");
+
+    private String value;
+
+    ClientTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ClientTypeEnum fromValue(String value) {
+      for (ClientTypeEnum b : ClientTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ClientTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ClientTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ClientTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ClientTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CLIENT_TYPE = "clientType";
+  @SerializedName(SERIALIZED_NAME_CLIENT_TYPE)
+  private ClientTypeEnum clientType;
+
+  public static final String SERIALIZED_NAME_KEEP_VARIANT_PRODUCTS = "keepVariantProducts";
+  @SerializedName(SERIALIZED_NAME_KEEP_VARIANT_PRODUCTS)
+  private Boolean keepVariantProducts;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -152,7 +209,7 @@ public class ProductSet {
    * The dataset to which the product set belong
    * @return datasetId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getDatasetId() {
     return datasetId;
@@ -174,7 +231,7 @@ public class ProductSet {
    * The name of the product set
    * @return name
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getName() {
     return name;
@@ -183,6 +240,28 @@ public class ProductSet {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+
+  public ProductSet minimumNumberOfProducts(Integer minimumNumberOfProducts) {
+    
+    this.minimumNumberOfProducts = minimumNumberOfProducts;
+    return this;
+  }
+
+   /**
+   * Minimum amount of products that should match the product set to consider it valid.  Greater or equal than one.
+   * @return minimumNumberOfProducts
+  **/
+  @javax.annotation.Nonnull
+
+  public Integer getMinimumNumberOfProducts() {
+    return minimumNumberOfProducts;
+  }
+
+
+  public void setMinimumNumberOfProducts(Integer minimumNumberOfProducts) {
+    this.minimumNumberOfProducts = minimumNumberOfProducts;
   }
 
 
@@ -196,7 +275,7 @@ public class ProductSet {
    * The status of the product set
    * @return status
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public StatusEnum getStatus() {
     return status;
@@ -208,28 +287,6 @@ public class ProductSet {
   }
 
 
-  public ProductSet isEnabled(Boolean isEnabled) {
-    
-    this.isEnabled = isEnabled;
-    return this;
-  }
-
-   /**
-   * True if the product set is active
-   * @return isEnabled
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getIsEnabled() {
-    return isEnabled;
-  }
-
-
-  public void setIsEnabled(Boolean isEnabled) {
-    this.isEnabled = isEnabled;
-  }
-
-
   public ProductSet numberOfProducts(Integer numberOfProducts) {
     
     this.numberOfProducts = numberOfProducts;
@@ -237,7 +294,7 @@ public class ProductSet {
   }
 
    /**
-   * The number of product matching the product set
+   * The number of product matching the product set.  Can be null for newly created product set.
    * @return numberOfProducts
   **/
   @javax.annotation.Nullable
@@ -259,10 +316,10 @@ public class ProductSet {
   }
 
    /**
-   * Optional: The creation date of the product set (UTC time in ISO8601 format). Example: \&quot;02/25/2022 14:51:26\&quot;  Can be null if the value doesn&#39;t exist.
+   * The creation date of the product set (UTC time in ISO8601 format). Example: \&quot;02/25/2022 14:51:26\&quot;.  Can be null if the value isn&#39;t available.
    * @return creationDate
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getCreationDate() {
     return creationDate;
@@ -281,9 +338,6 @@ public class ProductSet {
   }
 
   public ProductSet addRulesItem(ProductSetRule rulesItem) {
-    if (this.rules == null) {
-      this.rules = null;
-    }
     this.rules.add(rulesItem);
     return this;
   }
@@ -292,7 +346,7 @@ public class ProductSet {
    * The rules identifying the product belonging to the set
    * @return rules
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public List<ProductSetRule> getRules() {
     return rules;
@@ -301,6 +355,50 @@ public class ProductSet {
 
   public void setRules(List<ProductSetRule> rules) {
     this.rules = rules;
+  }
+
+
+  public ProductSet clientType(ClientTypeEnum clientType) {
+    
+    this.clientType = clientType;
+    return this;
+  }
+
+   /**
+   * The client type of the product set
+   * @return clientType
+  **/
+  @javax.annotation.Nonnull
+
+  public ClientTypeEnum getClientType() {
+    return clientType;
+  }
+
+
+  public void setClientType(ClientTypeEnum clientType) {
+    this.clientType = clientType;
+  }
+
+
+  public ProductSet keepVariantProducts(Boolean keepVariantProducts) {
+    
+    this.keepVariantProducts = keepVariantProducts;
+    return this;
+  }
+
+   /**
+   * Get keepVariantProducts
+   * @return keepVariantProducts
+  **/
+  @javax.annotation.Nonnull
+
+  public Boolean getKeepVariantProducts() {
+    return keepVariantProducts;
+  }
+
+
+  public void setKeepVariantProducts(Boolean keepVariantProducts) {
+    this.keepVariantProducts = keepVariantProducts;
   }
 
 
@@ -382,11 +480,13 @@ public class ProductSet {
     ProductSet productSet = (ProductSet) o;
     return Objects.equals(this.datasetId, productSet.datasetId) &&
         Objects.equals(this.name, productSet.name) &&
+        Objects.equals(this.minimumNumberOfProducts, productSet.minimumNumberOfProducts) &&
         Objects.equals(this.status, productSet.status) &&
-        Objects.equals(this.isEnabled, productSet.isEnabled) &&
         Objects.equals(this.numberOfProducts, productSet.numberOfProducts) &&
         Objects.equals(this.creationDate, productSet.creationDate) &&
         Objects.equals(this.rules, productSet.rules) &&
+        Objects.equals(this.clientType, productSet.clientType) &&
+        Objects.equals(this.keepVariantProducts, productSet.keepVariantProducts) &&
         Objects.equals(this.id, productSet.id)&&
         Objects.equals(this.additionalProperties, productSet.additionalProperties);
   }
@@ -397,7 +497,7 @@ public class ProductSet {
 
   @Override
   public int hashCode() {
-    return Objects.hash(datasetId, name, status, isEnabled, numberOfProducts, creationDate, rules, id, additionalProperties);
+    return Objects.hash(datasetId, name, minimumNumberOfProducts, status, numberOfProducts, creationDate, rules, clientType, keepVariantProducts, id, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -413,11 +513,13 @@ public class ProductSet {
     sb.append("class ProductSet {\n");
     sb.append("    datasetId: ").append(toIndentedString(datasetId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    minimumNumberOfProducts: ").append(toIndentedString(minimumNumberOfProducts)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    isEnabled: ").append(toIndentedString(isEnabled)).append("\n");
     sb.append("    numberOfProducts: ").append(toIndentedString(numberOfProducts)).append("\n");
     sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
     sb.append("    rules: ").append(toIndentedString(rules)).append("\n");
+    sb.append("    clientType: ").append(toIndentedString(clientType)).append("\n");
+    sb.append("    keepVariantProducts: ").append(toIndentedString(keepVariantProducts)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -444,15 +546,26 @@ public class ProductSet {
     openapiFields = new HashSet<String>();
     openapiFields.add("datasetId");
     openapiFields.add("name");
+    openapiFields.add("minimumNumberOfProducts");
     openapiFields.add("status");
-    openapiFields.add("isEnabled");
     openapiFields.add("numberOfProducts");
     openapiFields.add("creationDate");
     openapiFields.add("rules");
+    openapiFields.add("clientType");
+    openapiFields.add("keepVariantProducts");
     openapiFields.add("id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("datasetId");
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("minimumNumberOfProducts");
+    openapiRequiredFields.add("status");
+    openapiRequiredFields.add("numberOfProducts");
+    openapiRequiredFields.add("creationDate");
+    openapiRequiredFields.add("rules");
+    openapiRequiredFields.add("clientType");
+    openapiRequiredFields.add("keepVariantProducts");
   }
 
  /**
@@ -467,31 +580,37 @@ public class ProductSet {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ProductSet is not found in the empty JSON string", ProductSet.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("datasetId") != null && !jsonObj.get("datasetId").isJsonNull()) && !jsonObj.get("datasetId").isJsonPrimitive()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ProductSet.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("datasetId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `datasetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("datasetId").toString()));
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+      if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+      if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
-      if ((jsonObj.get("creationDate") != null && !jsonObj.get("creationDate").isJsonNull()) && !jsonObj.get("creationDate").isJsonPrimitive()) {
+      if (!jsonObj.get("creationDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `creationDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creationDate").toString()));
       }
-      if (jsonObj.get("rules") != null && !jsonObj.get("rules").isJsonNull()) {
-        JsonArray jsonArrayrules = jsonObj.getAsJsonArray("rules");
-        if (jsonArrayrules != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("rules").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `rules` to be an array in the JSON string but got `%s`", jsonObj.get("rules").toString()));
-          }
+      // ensure the json data is an array
+      if (!jsonObj.get("rules").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `rules` to be an array in the JSON string but got `%s`", jsonObj.get("rules").toString()));
+      }
 
-          // validate the optional field `rules` (array)
-          for (int i = 0; i < jsonArrayrules.size(); i++) {
-            ProductSetRule.validateJsonObject(jsonArrayrules.get(i).getAsJsonObject());
-          };
-        }
+      JsonArray jsonArrayrules = jsonObj.getAsJsonArray("rules");
+      // validate the required field `rules` (array)
+      for (int i = 0; i < jsonArrayrules.size(); i++) {
+        ProductSetRule.validateJsonObject(jsonArrayrules.get(i).getAsJsonObject());
+      };
+      if (!jsonObj.get("clientType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `clientType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientType").toString()));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));

@@ -115,6 +115,10 @@ public class CampaignV23Q1 {
   @SerializedName(SERIALIZED_NAME_GOAL)
   private GoalEnum goal;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public CampaignV23Q1() {
   }
 
@@ -205,6 +209,28 @@ public class CampaignV23Q1 {
     this.goal = goal;
   }
 
+
+  public CampaignV23Q1 id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Id of the entity (duplicate of the parent id).
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -263,7 +289,8 @@ public class CampaignV23Q1 {
     return Objects.equals(this.name, campaignV23Q1.name) &&
         Objects.equals(this.advertiserId, campaignV23Q1.advertiserId) &&
         Objects.equals(this.spendLimit, campaignV23Q1.spendLimit) &&
-        Objects.equals(this.goal, campaignV23Q1.goal)&&
+        Objects.equals(this.goal, campaignV23Q1.goal) &&
+        Objects.equals(this.id, campaignV23Q1.id)&&
         Objects.equals(this.additionalProperties, campaignV23Q1.additionalProperties);
   }
 
@@ -273,7 +300,7 @@ public class CampaignV23Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, advertiserId, spendLimit, goal, additionalProperties);
+    return Objects.hash(name, advertiserId, spendLimit, goal, id, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -291,6 +318,7 @@ public class CampaignV23Q1 {
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
     sb.append("    spendLimit: ").append(toIndentedString(spendLimit)).append("\n");
     sb.append("    goal: ").append(toIndentedString(goal)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -318,6 +346,7 @@ public class CampaignV23Q1 {
     openapiFields.add("advertiserId");
     openapiFields.add("spendLimit");
     openapiFields.add("goal");
+    openapiFields.add("id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -347,6 +376,9 @@ public class CampaignV23Q1 {
       }
       if ((jsonObj.get("goal") != null && !jsonObj.get("goal").isJsonNull()) && !jsonObj.get("goal").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `goal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("goal").toString()));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
   }
 

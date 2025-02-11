@@ -251,17 +251,17 @@ public class CampaignV202301 {
    */
   @JsonAdapter(ViewAttributionWindowEnum.Adapter.class)
   public enum ViewAttributionWindowEnum {
-    NONE("None"),
+    NONE("none"),
     
-    UNKNOWN("Unknown"),
+    UNKNOWN("unknown"),
     
-    ONEDAY("OneDay"),
+    _1D("1D"),
     
-    SEVENDAYS("SevenDays"),
+    _7D("7D"),
     
-    FOURTEENDAYS("FourteenDays"),
+    _14D("14D"),
     
-    THIRTYDAYS("ThirtyDays");
+    _30D("30D");
 
     private String value;
 

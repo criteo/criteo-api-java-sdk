@@ -30,7 +30,7 @@ import java.io.IOException;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfRetailMediaChildAccount;
 import com.criteo.api.retailmedia.preview.model.GrantConsentInput;
 import com.criteo.api.retailmedia.preview.model.Outcome;
-import com.criteo.api.retailmedia.preview.model.ValueResourceCollectionOutcomeOfRetailMediaSeller;
+import com.criteo.api.retailmedia.preview.model.ValueResourceCollectionOutcomeOfSellerSearchResult;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfSellerSearch;
 
 import java.lang.reflect.Type;
@@ -416,7 +416,7 @@ public class AccountsApi {
      * 
      * Get the sellers mapped to provided accounts
      * @param valueResourceInputOfSellerSearch  (optional)
-     * @return ValueResourceCollectionOutcomeOfRetailMediaSeller
+     * @return ValueResourceCollectionOutcomeOfSellerSearchResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -426,8 +426,8 @@ public class AccountsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ValueResourceCollectionOutcomeOfRetailMediaSeller searchSellers(ValueResourceInputOfSellerSearch valueResourceInputOfSellerSearch) throws ApiException {
-        ApiResponse<ValueResourceCollectionOutcomeOfRetailMediaSeller> localVarResp = searchSellersWithHttpInfo(valueResourceInputOfSellerSearch);
+    public ValueResourceCollectionOutcomeOfSellerSearchResult searchSellers(ValueResourceInputOfSellerSearch valueResourceInputOfSellerSearch) throws ApiException {
+        ApiResponse<ValueResourceCollectionOutcomeOfSellerSearchResult> localVarResp = searchSellersWithHttpInfo(valueResourceInputOfSellerSearch);
         return localVarResp.getData();
     }
 
@@ -435,7 +435,7 @@ public class AccountsApi {
      * 
      * Get the sellers mapped to provided accounts
      * @param valueResourceInputOfSellerSearch  (optional)
-     * @return ApiResponse&lt;ValueResourceCollectionOutcomeOfRetailMediaSeller&gt;
+     * @return ApiResponse&lt;ValueResourceCollectionOutcomeOfSellerSearchResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -445,9 +445,9 @@ public class AccountsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValueResourceCollectionOutcomeOfRetailMediaSeller> searchSellersWithHttpInfo(ValueResourceInputOfSellerSearch valueResourceInputOfSellerSearch) throws ApiException {
+    public ApiResponse<ValueResourceCollectionOutcomeOfSellerSearchResult> searchSellersWithHttpInfo(ValueResourceInputOfSellerSearch valueResourceInputOfSellerSearch) throws ApiException {
         okhttp3.Call localVarCall = searchSellersValidateBeforeCall(valueResourceInputOfSellerSearch, null);
-        Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomeOfRetailMediaSeller>(){}.getType();
+        Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomeOfSellerSearchResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -466,10 +466,10 @@ public class AccountsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchSellersAsync(ValueResourceInputOfSellerSearch valueResourceInputOfSellerSearch, final ApiCallback<ValueResourceCollectionOutcomeOfRetailMediaSeller> _callback) throws ApiException {
+    public okhttp3.Call searchSellersAsync(ValueResourceInputOfSellerSearch valueResourceInputOfSellerSearch, final ApiCallback<ValueResourceCollectionOutcomeOfSellerSearchResult> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = searchSellersValidateBeforeCall(valueResourceInputOfSellerSearch, _callback);
-        Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomeOfRetailMediaSeller>(){}.getType();
+        Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomeOfSellerSearchResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

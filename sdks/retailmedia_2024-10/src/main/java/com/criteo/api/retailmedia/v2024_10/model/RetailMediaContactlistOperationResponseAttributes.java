@@ -15,13 +15,16 @@ package com.criteo.api.retailmedia.v2024_10.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.v2024_10.model.RetailMediaContactlistOperationResponseAttributesAttributes;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -45,62 +48,200 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2024_10.JSON;
 
 /**
- * Response data of Retail Media contact list operation
+ * The attributes of Retail Media contact list operation
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RetailMediaContactlistOperationResponseAttributes {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
+  public static final String SERIALIZED_NAME_CONTACT_LIST_ID = "contactListId";
+  @SerializedName(SERIALIZED_NAME_CONTACT_LIST_ID)
+  private Long contactListId;
 
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private RetailMediaContactlistOperationResponseAttributesAttributes attributes;
+  public static final String SERIALIZED_NAME_OPERATION = "operation";
+  @SerializedName(SERIALIZED_NAME_OPERATION)
+  private String operation;
+
+  public static final String SERIALIZED_NAME_REQUEST_DATE = "requestDate";
+  @SerializedName(SERIALIZED_NAME_REQUEST_DATE)
+  private OffsetDateTime requestDate;
+
+  public static final String SERIALIZED_NAME_IDENTIFIER_TYPE = "identifierType";
+  @SerializedName(SERIALIZED_NAME_IDENTIFIER_TYPE)
+  private String identifierType;
+
+  public static final String SERIALIZED_NAME_NB_INVALID_IDENTIFIERS = "nbInvalidIdentifiers";
+  @SerializedName(SERIALIZED_NAME_NB_INVALID_IDENTIFIERS)
+  private Integer nbInvalidIdentifiers;
+
+  public static final String SERIALIZED_NAME_NB_VALID_IDENTIFIERS = "nbValidIdentifiers";
+  @SerializedName(SERIALIZED_NAME_NB_VALID_IDENTIFIERS)
+  private Integer nbValidIdentifiers;
+
+  public static final String SERIALIZED_NAME_SAMPLE_INVALID_IDENTIFIERS = "sampleInvalidIdentifiers";
+  @SerializedName(SERIALIZED_NAME_SAMPLE_INVALID_IDENTIFIERS)
+  private List<String> sampleInvalidIdentifiers = null;
 
   public RetailMediaContactlistOperationResponseAttributes() {
   }
 
-  public RetailMediaContactlistOperationResponseAttributes type(String type) {
+  public RetailMediaContactlistOperationResponseAttributes contactListId(Long contactListId) {
     
-    this.type = type;
+    this.contactListId = contactListId;
     return this;
   }
 
    /**
-   * the name of the entity type
-   * @return type
+   * The affected user list id
+   * @return contactListId
   **/
   @javax.annotation.Nonnull
 
-  public String getType() {
-    return type;
+  public Long getContactListId() {
+    return contactListId;
   }
 
 
-  public void setType(String type) {
-    this.type = type;
+  public void setContactListId(Long contactListId) {
+    this.contactListId = contactListId;
   }
 
 
-  public RetailMediaContactlistOperationResponseAttributes attributes(RetailMediaContactlistOperationResponseAttributesAttributes attributes) {
+  public RetailMediaContactlistOperationResponseAttributes operation(String operation) {
     
-    this.attributes = attributes;
+    this.operation = operation;
     return this;
   }
 
    /**
-   * Get attributes
-   * @return attributes
+   * The action recorded
+   * @return operation
   **/
   @javax.annotation.Nonnull
 
-  public RetailMediaContactlistOperationResponseAttributesAttributes getAttributes() {
-    return attributes;
+  public String getOperation() {
+    return operation;
   }
 
 
-  public void setAttributes(RetailMediaContactlistOperationResponseAttributesAttributes attributes) {
-    this.attributes = attributes;
+  public void setOperation(String operation) {
+    this.operation = operation;
+  }
+
+
+  public RetailMediaContactlistOperationResponseAttributes requestDate(OffsetDateTime requestDate) {
+    
+    this.requestDate = requestDate;
+    return this;
+  }
+
+   /**
+   * When the action was recorded
+   * @return requestDate
+  **/
+  @javax.annotation.Nonnull
+
+  public OffsetDateTime getRequestDate() {
+    return requestDate;
+  }
+
+
+  public void setRequestDate(OffsetDateTime requestDate) {
+    this.requestDate = requestDate;
+  }
+
+
+  public RetailMediaContactlistOperationResponseAttributes identifierType(String identifierType) {
+    
+    this.identifierType = identifierType;
+    return this;
+  }
+
+   /**
+   * The schema specified for of the identifiers
+   * @return identifierType
+  **/
+  @javax.annotation.Nullable
+
+  public String getIdentifierType() {
+    return identifierType;
+  }
+
+
+  public void setIdentifierType(String identifierType) {
+    this.identifierType = identifierType;
+  }
+
+
+  public RetailMediaContactlistOperationResponseAttributes nbInvalidIdentifiers(Integer nbInvalidIdentifiers) {
+    
+    this.nbInvalidIdentifiers = nbInvalidIdentifiers;
+    return this;
+  }
+
+   /**
+   * How many identifiers were invalid for the specified schema
+   * @return nbInvalidIdentifiers
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getNbInvalidIdentifiers() {
+    return nbInvalidIdentifiers;
+  }
+
+
+  public void setNbInvalidIdentifiers(Integer nbInvalidIdentifiers) {
+    this.nbInvalidIdentifiers = nbInvalidIdentifiers;
+  }
+
+
+  public RetailMediaContactlistOperationResponseAttributes nbValidIdentifiers(Integer nbValidIdentifiers) {
+    
+    this.nbValidIdentifiers = nbValidIdentifiers;
+    return this;
+  }
+
+   /**
+   * How many identifiers were valid for the specified schema
+   * @return nbValidIdentifiers
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getNbValidIdentifiers() {
+    return nbValidIdentifiers;
+  }
+
+
+  public void setNbValidIdentifiers(Integer nbValidIdentifiers) {
+    this.nbValidIdentifiers = nbValidIdentifiers;
+  }
+
+
+  public RetailMediaContactlistOperationResponseAttributes sampleInvalidIdentifiers(List<String> sampleInvalidIdentifiers) {
+    
+    this.sampleInvalidIdentifiers = sampleInvalidIdentifiers;
+    return this;
+  }
+
+  public RetailMediaContactlistOperationResponseAttributes addSampleInvalidIdentifiersItem(String sampleInvalidIdentifiersItem) {
+    if (this.sampleInvalidIdentifiers == null) {
+      this.sampleInvalidIdentifiers = null;
+    }
+    this.sampleInvalidIdentifiers.add(sampleInvalidIdentifiersItem);
+    return this;
+  }
+
+   /**
+   * A sample of invalid identifiers if there is some
+   * @return sampleInvalidIdentifiers
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getSampleInvalidIdentifiers() {
+    return sampleInvalidIdentifiers;
+  }
+
+
+  public void setSampleInvalidIdentifiers(List<String> sampleInvalidIdentifiers) {
+    this.sampleInvalidIdentifiers = sampleInvalidIdentifiers;
   }
 
   /**
@@ -158,22 +299,43 @@ public class RetailMediaContactlistOperationResponseAttributes {
       return false;
     }
     RetailMediaContactlistOperationResponseAttributes retailMediaContactlistOperationResponseAttributes = (RetailMediaContactlistOperationResponseAttributes) o;
-    return Objects.equals(this.type, retailMediaContactlistOperationResponseAttributes.type) &&
-        Objects.equals(this.attributes, retailMediaContactlistOperationResponseAttributes.attributes)&&
+    return Objects.equals(this.contactListId, retailMediaContactlistOperationResponseAttributes.contactListId) &&
+        Objects.equals(this.operation, retailMediaContactlistOperationResponseAttributes.operation) &&
+        Objects.equals(this.requestDate, retailMediaContactlistOperationResponseAttributes.requestDate) &&
+        Objects.equals(this.identifierType, retailMediaContactlistOperationResponseAttributes.identifierType) &&
+        Objects.equals(this.nbInvalidIdentifiers, retailMediaContactlistOperationResponseAttributes.nbInvalidIdentifiers) &&
+        Objects.equals(this.nbValidIdentifiers, retailMediaContactlistOperationResponseAttributes.nbValidIdentifiers) &&
+        Objects.equals(this.sampleInvalidIdentifiers, retailMediaContactlistOperationResponseAttributes.sampleInvalidIdentifiers)&&
         Objects.equals(this.additionalProperties, retailMediaContactlistOperationResponseAttributes.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes, additionalProperties);
+    return Objects.hash(contactListId, operation, requestDate, identifierType, nbInvalidIdentifiers, nbValidIdentifiers, sampleInvalidIdentifiers, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RetailMediaContactlistOperationResponseAttributes {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    contactListId: ").append(toIndentedString(contactListId)).append("\n");
+    sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
+    sb.append("    requestDate: ").append(toIndentedString(requestDate)).append("\n");
+    sb.append("    identifierType: ").append(toIndentedString(identifierType)).append("\n");
+    sb.append("    nbInvalidIdentifiers: ").append(toIndentedString(nbInvalidIdentifiers)).append("\n");
+    sb.append("    nbValidIdentifiers: ").append(toIndentedString(nbValidIdentifiers)).append("\n");
+    sb.append("    sampleInvalidIdentifiers: ").append(toIndentedString(sampleInvalidIdentifiers)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -197,13 +359,19 @@ public class RetailMediaContactlistOperationResponseAttributes {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
-    openapiFields.add("attributes");
+    openapiFields.add("contactListId");
+    openapiFields.add("operation");
+    openapiFields.add("requestDate");
+    openapiFields.add("identifierType");
+    openapiFields.add("nbInvalidIdentifiers");
+    openapiFields.add("nbValidIdentifiers");
+    openapiFields.add("sampleInvalidIdentifiers");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("attributes");
+    openapiRequiredFields.add("contactListId");
+    openapiRequiredFields.add("operation");
+    openapiRequiredFields.add("requestDate");
   }
 
  /**
@@ -225,11 +393,16 @@ public class RetailMediaContactlistOperationResponseAttributes {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      if (!jsonObj.get("operation").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `operation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operation").toString()));
       }
-      // validate the required field `attributes`
-      RetailMediaContactlistOperationResponseAttributesAttributes.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      if ((jsonObj.get("identifierType") != null && !jsonObj.get("identifierType").isJsonNull()) && !jsonObj.get("identifierType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `identifierType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierType").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("sampleInvalidIdentifiers") != null && !jsonObj.get("sampleInvalidIdentifiers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sampleInvalidIdentifiers` to be an array in the JSON string but got `%s`", jsonObj.get("sampleInvalidIdentifiers").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

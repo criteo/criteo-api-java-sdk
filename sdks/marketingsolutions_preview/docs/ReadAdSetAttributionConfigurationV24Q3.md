@@ -31,10 +31,10 @@ Read model for an ad set's attribution configuration.
 | Name | Value |
 |---- | -----|
 | UNKNOWN | &quot;unknown&quot; |
-| SAMESESSION | &quot;sameSession&quot; |
-| TWENTYFOURHOURS | &quot;twentyFourHours&quot; |
-| SEVENDAYS | &quot;sevenDays&quot; |
-| THIRTYDAYS | &quot;thirtyDays&quot; |
+| _30M | &quot;30M&quot; |
+| _24H | &quot;24H&quot; |
+| _7D | &quot;7D&quot; |
+| _30D | &quot;30D&quot; |
 
 
 

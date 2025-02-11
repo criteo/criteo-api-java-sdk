@@ -29,11 +29,11 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(LineItemProductStatus.Adapter.class)
 public enum LineItemProductStatus {
   
-  UNKNOWN("Unknown"),
+  UNKNOWN("unknown"),
   
-  ACTIVE("Active"),
+  ACTIVE("active"),
   
-  PAUSED("Paused");
+  PAUSED("paused");
 
   private String value;
 

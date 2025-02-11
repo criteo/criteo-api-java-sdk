@@ -16,7 +16,7 @@ package com.criteo.api.retailmedia.preview.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.retailmedia.preview.model.SdkApiRestCommonProblem;
-import com.criteo.api.retailmedia.preview.model.ValueResourceOfRetailMediaSeller;
+import com.criteo.api.retailmedia.preview.model.ValueResourceOfSellerSearchResult;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -52,10 +52,10 @@ import com.criteo.api.retailmedia.preview.JSON;
  * A top-level object that encapsulates a Criteo API response for several value objects.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ValueResourceCollectionOutcomeOfRetailMediaSeller {
+public class ValueResourceCollectionOutcomeOfSellerSearchResult {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private List<ValueResourceOfRetailMediaSeller> data = null;
+  private List<ValueResourceOfSellerSearchResult> data = null;
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
@@ -65,11 +65,11 @@ public class ValueResourceCollectionOutcomeOfRetailMediaSeller {
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<SdkApiRestCommonProblem> errors = null;
 
-  public ValueResourceCollectionOutcomeOfRetailMediaSeller() {
+  public ValueResourceCollectionOutcomeOfSellerSearchResult() {
   }
 
   
-  public ValueResourceCollectionOutcomeOfRetailMediaSeller(
+  public ValueResourceCollectionOutcomeOfSellerSearchResult(
      List<SdkApiRestCommonProblem> warnings, 
      List<SdkApiRestCommonProblem> errors
   ) {
@@ -78,13 +78,13 @@ public class ValueResourceCollectionOutcomeOfRetailMediaSeller {
     this.errors = errors;
   }
 
-  public ValueResourceCollectionOutcomeOfRetailMediaSeller data(List<ValueResourceOfRetailMediaSeller> data) {
+  public ValueResourceCollectionOutcomeOfSellerSearchResult data(List<ValueResourceOfSellerSearchResult> data) {
     
     this.data = data;
     return this;
   }
 
-  public ValueResourceCollectionOutcomeOfRetailMediaSeller addDataItem(ValueResourceOfRetailMediaSeller dataItem) {
+  public ValueResourceCollectionOutcomeOfSellerSearchResult addDataItem(ValueResourceOfSellerSearchResult dataItem) {
     if (this.data == null) {
       this.data = null;
     }
@@ -98,12 +98,12 @@ public class ValueResourceCollectionOutcomeOfRetailMediaSeller {
   **/
   @javax.annotation.Nullable
 
-  public List<ValueResourceOfRetailMediaSeller> getData() {
+  public List<ValueResourceOfSellerSearchResult> getData() {
     return data;
   }
 
 
-  public void setData(List<ValueResourceOfRetailMediaSeller> data) {
+  public void setData(List<ValueResourceOfSellerSearchResult> data) {
     this.data = data;
   }
 
@@ -143,10 +143,10 @@ public class ValueResourceCollectionOutcomeOfRetailMediaSeller {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ValueResourceCollectionOutcomeOfRetailMediaSeller valueResourceCollectionOutcomeOfRetailMediaSeller = (ValueResourceCollectionOutcomeOfRetailMediaSeller) o;
-    return Objects.equals(this.data, valueResourceCollectionOutcomeOfRetailMediaSeller.data) &&
-        Objects.equals(this.warnings, valueResourceCollectionOutcomeOfRetailMediaSeller.warnings) &&
-        Objects.equals(this.errors, valueResourceCollectionOutcomeOfRetailMediaSeller.errors);
+    ValueResourceCollectionOutcomeOfSellerSearchResult valueResourceCollectionOutcomeOfSellerSearchResult = (ValueResourceCollectionOutcomeOfSellerSearchResult) o;
+    return Objects.equals(this.data, valueResourceCollectionOutcomeOfSellerSearchResult.data) &&
+        Objects.equals(this.warnings, valueResourceCollectionOutcomeOfSellerSearchResult.warnings) &&
+        Objects.equals(this.errors, valueResourceCollectionOutcomeOfSellerSearchResult.errors);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -168,7 +168,7 @@ public class ValueResourceCollectionOutcomeOfRetailMediaSeller {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ValueResourceCollectionOutcomeOfRetailMediaSeller {\n");
+    sb.append("class ValueResourceCollectionOutcomeOfSellerSearchResult {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
@@ -206,20 +206,20 @@ public class ValueResourceCollectionOutcomeOfRetailMediaSeller {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ValueResourceCollectionOutcomeOfRetailMediaSeller
+  * @throws IOException if the JSON Object is invalid with respect to ValueResourceCollectionOutcomeOfSellerSearchResult
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ValueResourceCollectionOutcomeOfRetailMediaSeller.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ValueResourceCollectionOutcomeOfRetailMediaSeller is not found in the empty JSON string", ValueResourceCollectionOutcomeOfRetailMediaSeller.openapiRequiredFields.toString()));
+        if (!ValueResourceCollectionOutcomeOfSellerSearchResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ValueResourceCollectionOutcomeOfSellerSearchResult is not found in the empty JSON string", ValueResourceCollectionOutcomeOfSellerSearchResult.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!ValueResourceCollectionOutcomeOfRetailMediaSeller.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValueResourceCollectionOutcomeOfRetailMediaSeller` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!ValueResourceCollectionOutcomeOfSellerSearchResult.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValueResourceCollectionOutcomeOfSellerSearchResult` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
@@ -232,7 +232,7 @@ public class ValueResourceCollectionOutcomeOfRetailMediaSeller {
 
           // validate the optional field `data` (array)
           for (int i = 0; i < jsonArraydata.size(); i++) {
-            ValueResourceOfRetailMediaSeller.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
+            ValueResourceOfSellerSearchResult.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
           };
         }
       }
@@ -270,22 +270,22 @@ public class ValueResourceCollectionOutcomeOfRetailMediaSeller {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ValueResourceCollectionOutcomeOfRetailMediaSeller.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ValueResourceCollectionOutcomeOfRetailMediaSeller' and its subtypes
+       if (!ValueResourceCollectionOutcomeOfSellerSearchResult.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ValueResourceCollectionOutcomeOfSellerSearchResult' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ValueResourceCollectionOutcomeOfRetailMediaSeller> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ValueResourceCollectionOutcomeOfRetailMediaSeller.class));
+       final TypeAdapter<ValueResourceCollectionOutcomeOfSellerSearchResult> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ValueResourceCollectionOutcomeOfSellerSearchResult.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ValueResourceCollectionOutcomeOfRetailMediaSeller>() {
+       return (TypeAdapter<T>) new TypeAdapter<ValueResourceCollectionOutcomeOfSellerSearchResult>() {
            @Override
-           public void write(JsonWriter out, ValueResourceCollectionOutcomeOfRetailMediaSeller value) throws IOException {
+           public void write(JsonWriter out, ValueResourceCollectionOutcomeOfSellerSearchResult value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ValueResourceCollectionOutcomeOfRetailMediaSeller read(JsonReader in) throws IOException {
+           public ValueResourceCollectionOutcomeOfSellerSearchResult read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -296,18 +296,18 @@ public class ValueResourceCollectionOutcomeOfRetailMediaSeller {
   }
 
  /**
-  * Create an instance of ValueResourceCollectionOutcomeOfRetailMediaSeller given an JSON string
+  * Create an instance of ValueResourceCollectionOutcomeOfSellerSearchResult given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ValueResourceCollectionOutcomeOfRetailMediaSeller
-  * @throws IOException if the JSON string is invalid with respect to ValueResourceCollectionOutcomeOfRetailMediaSeller
+  * @return An instance of ValueResourceCollectionOutcomeOfSellerSearchResult
+  * @throws IOException if the JSON string is invalid with respect to ValueResourceCollectionOutcomeOfSellerSearchResult
   */
-  public static ValueResourceCollectionOutcomeOfRetailMediaSeller fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ValueResourceCollectionOutcomeOfRetailMediaSeller.class);
+  public static ValueResourceCollectionOutcomeOfSellerSearchResult fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ValueResourceCollectionOutcomeOfSellerSearchResult.class);
   }
 
  /**
-  * Convert an instance of ValueResourceCollectionOutcomeOfRetailMediaSeller to an JSON string
+  * Convert an instance of ValueResourceCollectionOutcomeOfSellerSearchResult to an JSON string
   *
   * @return JSON string
   */
