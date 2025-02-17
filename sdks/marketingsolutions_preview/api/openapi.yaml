@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: Criteo API - MarketingSolutions
   title: Criteo API
-  version: preview
+  version: Preview
 servers:
 - url: https://api.criteo.com
 security:
@@ -21122,37 +21122,37 @@ components:
       example:
         data:
           statisticsRecordList:
-          - nonDisplayable: 5
+          - nonDisplayable: nonDisplayable
             endDate: 2000-01-23T04:56:07.000+00:00
-            added: 5
-            missingImage: 2
-            displayable: 1
-            missingName: 1
-            missingDescription: 1
-            total: 0
-            blacklisted: 9
-            deleted: 2
-            missingPrice: 7
-            variant: 6
-            outOfStock: 3
-            missingUrl: 4
-            updated: 7
+            added: added
+            missingImage: missingImage
+            displayable: displayable
+            missingName: missingName
+            missingDescription: missingDescription
+            total: total
+            blacklisted: blacklisted
+            deleted: deleted
+            missingPrice: missingPrice
+            variant: variant
+            outOfStock: outOfStock
+            missingUrl: missingUrl
+            updated: updated
             startDate: 2000-01-23T04:56:07.000+00:00
-          - nonDisplayable: 5
+          - nonDisplayable: nonDisplayable
             endDate: 2000-01-23T04:56:07.000+00:00
-            added: 5
-            missingImage: 2
-            displayable: 1
-            missingName: 1
-            missingDescription: 1
-            total: 0
-            blacklisted: 9
-            deleted: 2
-            missingPrice: 7
-            variant: 6
-            outOfStock: 3
-            missingUrl: 4
-            updated: 7
+            added: added
+            missingImage: missingImage
+            displayable: displayable
+            missingName: missingName
+            missingDescription: missingDescription
+            total: total
+            blacklisted: blacklisted
+            deleted: deleted
+            missingPrice: missingPrice
+            variant: variant
+            outOfStock: outOfStock
+            missingUrl: missingUrl
+            updated: updated
             startDate: 2000-01-23T04:56:07.000+00:00
         warnings:
         - traceId: traceId
@@ -21290,37 +21290,37 @@ components:
       description: The list of statistics reports
       example:
         statisticsRecordList:
-        - nonDisplayable: 5
+        - nonDisplayable: nonDisplayable
           endDate: 2000-01-23T04:56:07.000+00:00
-          added: 5
-          missingImage: 2
-          displayable: 1
-          missingName: 1
-          missingDescription: 1
-          total: 0
-          blacklisted: 9
-          deleted: 2
-          missingPrice: 7
-          variant: 6
-          outOfStock: 3
-          missingUrl: 4
-          updated: 7
+          added: added
+          missingImage: missingImage
+          displayable: displayable
+          missingName: missingName
+          missingDescription: missingDescription
+          total: total
+          blacklisted: blacklisted
+          deleted: deleted
+          missingPrice: missingPrice
+          variant: variant
+          outOfStock: outOfStock
+          missingUrl: missingUrl
+          updated: updated
           startDate: 2000-01-23T04:56:07.000+00:00
-        - nonDisplayable: 5
+        - nonDisplayable: nonDisplayable
           endDate: 2000-01-23T04:56:07.000+00:00
-          added: 5
-          missingImage: 2
-          displayable: 1
-          missingName: 1
-          missingDescription: 1
-          total: 0
-          blacklisted: 9
-          deleted: 2
-          missingPrice: 7
-          variant: 6
-          outOfStock: 3
-          missingUrl: 4
-          updated: 7
+          added: added
+          missingImage: missingImage
+          displayable: displayable
+          missingName: missingName
+          missingDescription: missingDescription
+          total: total
+          blacklisted: blacklisted
+          deleted: deleted
+          missingPrice: missingPrice
+          variant: variant
+          outOfStock: outOfStock
+          missingUrl: missingUrl
+          updated: updated
           startDate: 2000-01-23T04:56:07.000+00:00
       properties:
         statisticsRecordList:
@@ -21334,21 +21334,21 @@ components:
       description: The format  statistics report for a period between startDate and
         endDate
       example:
-        nonDisplayable: 5
+        nonDisplayable: nonDisplayable
         endDate: 2000-01-23T04:56:07.000+00:00
-        added: 5
-        missingImage: 2
-        displayable: 1
-        missingName: 1
-        missingDescription: 1
-        total: 0
-        blacklisted: 9
-        deleted: 2
-        missingPrice: 7
-        variant: 6
-        outOfStock: 3
-        missingUrl: 4
-        updated: 7
+        added: added
+        missingImage: missingImage
+        displayable: displayable
+        missingName: missingName
+        missingDescription: missingDescription
+        total: total
+        blacklisted: blacklisted
+        deleted: deleted
+        missingPrice: missingPrice
+        variant: variant
+        outOfStock: outOfStock
+        missingUrl: missingUrl
+        updated: updated
         startDate: 2000-01-23T04:56:07.000+00:00
       properties:
         startDate:
@@ -21362,63 +21362,63 @@ components:
         total:
           description: The number of total products at endDate moment
           format: int64
-          type: integer
+          type: string
         variant:
           description: The number of total variant products at endDate moment
           format: int64
-          type: integer
+          type: string
         displayable:
           description: The number of total displayable products at endDate moment
           format: int64
-          type: integer
+          type: string
         nonDisplayable:
           description: The number of total non-displayable products at endDate moment
           format: int64
-          type: integer
+          type: string
         added:
           description: The number of inserted products during the period between startDate
             and endDate
           format: int64
-          type: integer
+          type: string
         deleted:
           description: The number of deleted products during the period between startDate
             and endDate
           format: int64
-          type: integer
+          type: string
         updated:
           description: The number of updated products during the period between startDate
             and endDate
           format: int64
-          type: integer
+          type: string
         blacklisted:
           description: The number of total blacklisted products at endDate moment
           format: int64
-          type: integer
+          type: string
         outOfStock:
           description: The number of total out-of-stock products at endDate moment
           format: int64
-          type: integer
+          type: string
         missingImage:
           description: The number of total missing image products at endDate moment
           format: int64
-          type: integer
+          type: string
         missingUrl:
           description: The number of total missing url products at endDate moment
           format: int64
-          type: integer
+          type: string
         missingPrice:
           description: The number of total missing price products at endDate moment
           format: int64
-          type: integer
+          type: string
         missingName:
           description: The number of total missing name products at endDate moment
           format: int64
-          type: integer
+          type: string
         missingDescription:
           description: The number of total missing description products at endDate
             moment
           format: int64
-          type: integer
+          type: string
       required:
       - added
       - blacklisted
@@ -21452,10 +21452,10 @@ components:
       description: The report on a given operationToken is ready. The report is available
         for 4 days
       example:
-        numberOfProductsWithErrors: 5
-        importRequestTimestamp: 0
-        numberOfProductsInTheBatch: 6
-        numberOfProductsWithWarnings: 2
+        numberOfProductsWithErrors: numberOfProductsWithErrors
+        importRequestTimestamp: importRequestTimestamp
+        numberOfProductsInTheBatch: numberOfProductsInTheBatch
+        numberOfProductsWithWarnings: numberOfProductsWithWarnings
         warningDetails:
         - productId: productId
           warnings:
@@ -21473,8 +21473,8 @@ components:
           - type: OverlargeBadgeUrl
             message: message
             isServerRelated: true
-        numberOfProductsDeleted: 5
-        numberOfProductsUpserted: 1
+        numberOfProductsDeleted: numberOfProductsDeleted
+        numberOfProductsUpserted: numberOfProductsUpserted
         status: ACCEPTED
         errorDetails:
         - productId: productId
@@ -21509,31 +21509,31 @@ components:
           description: The date when the original batch request was sent.
           format: int64
           nullable: true
-          type: integer
+          type: string
           x-nullable: true
         numberOfProductsInTheBatch:
           description: The number of products present in the batch.
           format: int32
           nullable: true
-          type: integer
+          type: string
           x-nullable: true
         numberOfProductsUpserted:
           description: The number of products upserted.
           format: int32
           nullable: true
-          type: integer
+          type: string
           x-nullable: true
         numberOfProductsDeleted:
           description: The number of products deleted.
           format: int32
           nullable: true
-          type: integer
+          type: string
           x-nullable: true
         numberOfProductsWithErrors:
           description: The number of products with errors.
           format: int32
           nullable: true
-          type: integer
+          type: string
           x-nullable: true
         errorDetails:
           description: The list of errors with details.
@@ -21544,7 +21544,7 @@ components:
           description: The number of products with Warnings.
           format: int32
           nullable: true
-          type: integer
+          type: string
           x-nullable: true
         warningDetails:
           description: The list of Warnings with details.

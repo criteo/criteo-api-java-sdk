@@ -3180,13 +3180,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/EntityResourceCollectionOutcomeBrandIdSearchResult'
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata'
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityResourceCollectionOutcomeBrandIdSearchResult'
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata'
             text/json:
               schema:
-                $ref: '#/components/schemas/EntityResourceCollectionOutcomeBrandIdSearchResult'
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata'
           description: Success
       tags:
       - Campaign
@@ -4191,10 +4191,10 @@ components:
       description: The report on a given operationToken is ready. The report is available
         for 4 days
       example:
-        numberOfProductsWithErrors: 5
-        importRequestTimestamp: 0
-        numberOfProductsInTheBatch: 6
-        numberOfProductsWithWarnings: 2
+        numberOfProductsWithErrors: numberOfProductsWithErrors
+        importRequestTimestamp: importRequestTimestamp
+        numberOfProductsInTheBatch: numberOfProductsInTheBatch
+        numberOfProductsWithWarnings: numberOfProductsWithWarnings
         warningDetails:
         - productId: productId
           warnings:
@@ -4212,8 +4212,8 @@ components:
           - type: OverlargeBadgeUrl
             message: message
             isServerRelated: true
-        numberOfProductsDeleted: 5
-        numberOfProductsUpserted: 1
+        numberOfProductsDeleted: numberOfProductsDeleted
+        numberOfProductsUpserted: numberOfProductsUpserted
         status: ACCEPTED
         errorDetails:
         - productId: productId
@@ -4248,31 +4248,31 @@ components:
           description: The date when the original batch request was sent.
           format: int64
           nullable: true
-          type: integer
+          type: string
           x-nullable: true
         numberOfProductsInTheBatch:
           description: The number of products present in the batch.
           format: int32
           nullable: true
-          type: integer
+          type: string
           x-nullable: true
         numberOfProductsUpserted:
           description: The number of products upserted.
           format: int32
           nullable: true
-          type: integer
+          type: string
           x-nullable: true
         numberOfProductsDeleted:
           description: The number of products deleted.
           format: int32
           nullable: true
-          type: integer
+          type: string
           x-nullable: true
         numberOfProductsWithErrors:
           description: The number of products with errors.
           format: int32
           nullable: true
-          type: integer
+          type: string
           x-nullable: true
         errorDetails:
           description: The list of errors with details.
@@ -4283,7 +4283,7 @@ components:
           description: The number of products with Warnings.
           format: int32
           nullable: true
-          type: integer
+          type: string
           x-nullable: true
         warningDetails:
           description: The list of Warnings with details.
@@ -7783,11 +7783,6 @@ components:
       additionalProperties: false
       description: Outcome object containing promoted products.
       example:
-        metadata:
-          offset: 0
-          limit: 6
-          count: 1
-          responseCount: 5
         data:
         - attributes:
             bidOverride: 5.637376656633329
@@ -7801,6 +7796,11 @@ components:
             status: null
           id: id
           type: type
+        meta:
+          offset: 0
+          limit: 6
+          count: 1
+          responseCount: 5
         warnings:
         - traceId: traceId
           code: code
@@ -7856,7 +7856,7 @@ components:
           nullable: true
           readOnly: true
           type: array
-        metadata:
+        meta:
           $ref: '#/components/schemas/ProductMetadata'
         data:
           items:
@@ -15964,19 +15964,23 @@ components:
       - categoryId
       type: object
       x-nullable: false
-    EntityResourceCollectionOutcomeBrandIdSearchResult:
+    EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
-        several entities.
+        several entities and metadata.
       example:
+        metadata:
+          offset: 6
+          count: 0
+          limit: 1
         data:
         - attributes:
             brandType: brandType
             name: name
             id: id
             retailerIds:
-            - 0
-            - 0
+            - 5
+            - 5
           id: id
           type: type
         - attributes:
@@ -15984,8 +15988,8 @@ components:
             name: name
             id: id
             retailerIds:
-            - 0
-            - 0
+            - 5
+            - 5
           id: id
           type: type
         warnings:
@@ -16027,6 +16031,8 @@ components:
           type: unknown
           title: title
       properties:
+        metadata:
+          $ref: '#/components/schemas/PagingOffsetLimitMetadata'
         data:
           items:
             $ref: '#/components/schemas/EntityResourceBrandIdSearchResult'
@@ -16064,6 +16070,30 @@ components:
         data:
           $ref: '#/components/schemas/ValueResourceBrandIdSearchRequest'
       type: object
+    PagingOffsetLimitMetadata:
+      additionalProperties: false
+      description: Metadata for paging data.
+      example:
+        offset: 6
+        count: 0
+        limit: 1
+      properties:
+        count:
+          format: int64
+          nullable: true
+          type: integer
+        offset:
+          description: The (zero-based) starting offset in the collection.
+          format: int32
+          type: integer
+        limit:
+          description: The number of elements to be returned.
+          format: int32
+          type: integer
+      required:
+      - limit
+      - offset
+      type: object
     EntityResourceBrandIdSearchResult:
       additionalProperties: false
       description: "A domain entity exposed by the API, identified by a unique id."
@@ -16073,8 +16103,8 @@ components:
           name: name
           id: id
           retailerIds:
-          - 0
-          - 0
+          - 5
+          - 5
         id: id
         type: type
       properties:
@@ -16116,8 +16146,8 @@ components:
         name: name
         id: id
         retailerIds:
-        - 0
-        - 0
+        - 5
+        - 5
       properties:
         id:
           description: The brand id
@@ -16155,7 +16185,7 @@ components:
           items:
             format: int32
             type: integer
-          nullable: true
+          minItems: 1
           type: array
         name:
           description: The name of the brand(s) to be searched
@@ -16170,6 +16200,8 @@ components:
           - all
           nullable: true
           type: string
+      required:
+      - retailerIds
       type: object
     RetailMediaContactlistAmendment_attributes:
       description: Attributes of retail media contact list amendment

@@ -2989,7 +2989,7 @@ public class Example {
 
 ## searchBrandsByNameAsyncV1
 
-> EntityResourceCollectionOutcomeBrandIdSearchResult searchBrandsByNameAsyncV1(offset, limit, valueResourceInputBrandIdSearchRequest)
+> EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata searchBrandsByNameAsyncV1(offset, limit, valueResourceInputBrandIdSearchRequest)
 
 
 
@@ -3038,7 +3038,7 @@ public class Example {
         Integer limit = 25; // Integer | the number of brands to return
         ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest = new ValueResourceInputBrandIdSearchRequest(); // ValueResourceInputBrandIdSearchRequest | BrandIdSearchRequest which contains the request parameters
         try {
-            EntityResourceCollectionOutcomeBrandIdSearchResult result = apiInstance.searchBrandsByNameAsyncV1(offset, limit, valueResourceInputBrandIdSearchRequest);
+            EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata result = apiInstance.searchBrandsByNameAsyncV1(offset, limit, valueResourceInputBrandIdSearchRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#searchBrandsByNameAsyncV1");
@@ -3062,7 +3062,7 @@ public class Example {
 
 ### Return type
 
-[**EntityResourceCollectionOutcomeBrandIdSearchResult**](EntityResourceCollectionOutcomeBrandIdSearchResult.md)
+[**EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata**](EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.md)
 
 ### Authorization
 

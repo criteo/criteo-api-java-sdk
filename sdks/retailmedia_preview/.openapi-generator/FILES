@@ -67,7 +67,7 @@ docs/CreativeCreateModel2.md
 docs/CreativeUpdateModel2.md
 docs/CustomAttribute.md
 docs/EntityResourceBrandIdSearchResult.md
-docs/EntityResourceCollectionOutcomeBrandIdSearchResult.md
+docs/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.md
 docs/EntityResourceCollectionOutcomeOfRetailMediaChildAccount.md
 docs/EntityResourceOfRetailMediaChildAccount.md
 docs/ErrorCodeResponse.md
@@ -127,6 +127,7 @@ docs/PageMetadata.md
 docs/PageOfBalanceHistoryChangeDataCaptureV1.md
 docs/PageTypeEnvironment2.md
 docs/PagedResourceCollectionOutcomeOfBalanceResponseV2.md
+docs/PagingOffsetLimitMetadata.md
 docs/PlacementPreview.md
 docs/PlacementPreviewListResponse.md
 docs/PreferredLineItemCreateModelV2Request.md
@@ -373,7 +374,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/CreativeCreateModel2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CreativeUpdateModel2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/CustomAttribute.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceBrandIdSearchResult.java
-src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCollectionOutcomeBrandIdSearchResult.java
+src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceCollectionOutcomeOfRetailMediaChildAccount.java
 src/main/java/com/criteo/api/retailmedia/preview/model/EntityResourceOfRetailMediaChildAccount.java
 src/main/java/com/criteo/api/retailmedia/preview/model/ErrorCodeResponse.java
@@ -431,6 +432,7 @@ src/main/java/com/criteo/api/retailmedia/preview/model/PageMetadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PageOfBalanceHistoryChangeDataCaptureV1.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PageTypeEnvironment2.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PagedResourceCollectionOutcomeOfBalanceResponseV2.java
+src/main/java/com/criteo/api/retailmedia/preview/model/PagingOffsetLimitMetadata.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PlacementPreview.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PlacementPreviewListResponse.java
 src/main/java/com/criteo/api/retailmedia/preview/model/PreferredLineItemCreateModelV2Request.java

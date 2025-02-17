@@ -34,7 +34,7 @@ import com.criteo.api.retailmedia.preview.model.Creative2ListResponse;
 import com.criteo.api.retailmedia.preview.model.Creative2Response;
 import com.criteo.api.retailmedia.preview.model.CreativeCreateModel2;
 import com.criteo.api.retailmedia.preview.model.CreativeUpdateModel2;
-import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeBrandIdSearchResult;
+import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata;
 import com.criteo.api.retailmedia.preview.model.JsonApiRequestOfSellerCatalogRequest;
 import com.criteo.api.retailmedia.preview.model.JsonApiSingleResponseOfCatalogStatus;
 import com.criteo.api.retailmedia.preview.model.JsonApiSingleResponseOfLineItemBidMultipliersV2;
@@ -4505,7 +4505,7 @@ public class CampaignApi {
      * @param offset offset of paginated results (optional, default to 0)
      * @param limit the number of brands to return (optional, default to 25)
      * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
-     * @return EntityResourceCollectionOutcomeBrandIdSearchResult
+     * @return EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4513,8 +4513,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceCollectionOutcomeBrandIdSearchResult searchBrandsByNameAsyncV1(Integer offset, Integer limit, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest) throws ApiException {
-        ApiResponse<EntityResourceCollectionOutcomeBrandIdSearchResult> localVarResp = searchBrandsByNameAsyncV1WithHttpInfo(offset, limit, valueResourceInputBrandIdSearchRequest);
+    public EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata searchBrandsByNameAsyncV1(Integer offset, Integer limit, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest) throws ApiException {
+        ApiResponse<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> localVarResp = searchBrandsByNameAsyncV1WithHttpInfo(offset, limit, valueResourceInputBrandIdSearchRequest);
         return localVarResp.getData();
     }
 
@@ -4524,7 +4524,7 @@ public class CampaignApi {
      * @param offset offset of paginated results (optional, default to 0)
      * @param limit the number of brands to return (optional, default to 25)
      * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
-     * @return ApiResponse&lt;EntityResourceCollectionOutcomeBrandIdSearchResult&gt;
+     * @return ApiResponse&lt;EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4532,9 +4532,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceCollectionOutcomeBrandIdSearchResult> searchBrandsByNameAsyncV1WithHttpInfo(Integer offset, Integer limit, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest) throws ApiException {
+    public ApiResponse<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> searchBrandsByNameAsyncV1WithHttpInfo(Integer offset, Integer limit, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest) throws ApiException {
         okhttp3.Call localVarCall = searchBrandsByNameAsyncV1ValidateBeforeCall(offset, limit, valueResourceInputBrandIdSearchRequest, null);
-        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeBrandIdSearchResult>(){}.getType();
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -4553,10 +4553,10 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchBrandsByNameAsyncV1Async(Integer offset, Integer limit, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback<EntityResourceCollectionOutcomeBrandIdSearchResult> _callback) throws ApiException {
+    public okhttp3.Call searchBrandsByNameAsyncV1Async(Integer offset, Integer limit, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = searchBrandsByNameAsyncV1ValidateBeforeCall(offset, limit, valueResourceInputBrandIdSearchRequest, _callback);
-        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeBrandIdSearchResult>(){}.getType();
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

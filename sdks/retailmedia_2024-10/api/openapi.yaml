@@ -7197,11 +7197,6 @@ components:
       additionalProperties: false
       description: Outcome object containing promoted products.
       example:
-        metadata:
-          offset: 0
-          limit: 6
-          count: 1
-          responseCount: 5
         data:
         - attributes:
             bidOverride: 5.637376656633329
@@ -7215,6 +7210,11 @@ components:
             status: null
           id: id
           type: type
+        meta:
+          offset: 0
+          limit: 6
+          count: 1
+          responseCount: 5
         warnings:
         - traceId: traceId
           code: code
@@ -7270,7 +7270,7 @@ components:
           nullable: true
           readOnly: true
           type: array
-        metadata:
+        meta:
           $ref: '#/components/schemas/ProductMetadata'
         data:
           items:

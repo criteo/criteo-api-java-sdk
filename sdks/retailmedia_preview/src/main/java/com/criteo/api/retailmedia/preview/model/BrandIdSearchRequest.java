@@ -53,7 +53,7 @@ import com.criteo.api.retailmedia.preview.JSON;
 public class BrandIdSearchRequest {
   public static final String SERIALIZED_NAME_RETAILER_IDS = "retailerIds";
   @SerializedName(SERIALIZED_NAME_RETAILER_IDS)
-  private List<Integer> retailerIds = null;
+  private List<Integer> retailerIds = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -122,9 +122,6 @@ public class BrandIdSearchRequest {
   }
 
   public BrandIdSearchRequest addRetailerIdsItem(Integer retailerIdsItem) {
-    if (this.retailerIds == null) {
-      this.retailerIds = null;
-    }
     this.retailerIds.add(retailerIdsItem);
     return this;
   }
@@ -133,7 +130,7 @@ public class BrandIdSearchRequest {
    * IDs of the retailers we want to limit the search to
    * @return retailerIds
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public List<Integer> getRetailerIds() {
     return retailerIds;
@@ -255,6 +252,7 @@ public class BrandIdSearchRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("retailerIds");
   }
 
  /**
@@ -277,8 +275,17 @@ public class BrandIdSearchRequest {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BrandIdSearchRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("retailerIds") != null && !jsonObj.get("retailerIds").isJsonArray()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : BrandIdSearchRequest.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("retailerIds") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("retailerIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerIds` to be an array in the JSON string but got `%s`", jsonObj.get("retailerIds").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {

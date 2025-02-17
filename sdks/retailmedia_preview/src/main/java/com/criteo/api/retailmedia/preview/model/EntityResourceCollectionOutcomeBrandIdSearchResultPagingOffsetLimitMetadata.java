@@ -16,6 +16,7 @@ package com.criteo.api.retailmedia.preview.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.retailmedia.preview.model.EntityResourceBrandIdSearchResult;
+import com.criteo.api.retailmedia.preview.model.PagingOffsetLimitMetadata;
 import com.criteo.api.retailmedia.preview.model.SdkApiRestCommonProblem;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -49,10 +50,14 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * A top-level object that encapsulates a Criteo API response for several entities.
+ * A top-level object that encapsulates a Criteo API response for several entities and metadata.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class EntityResourceCollectionOutcomeBrandIdSearchResult {
+public class EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata {
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private PagingOffsetLimitMetadata metadata;
+
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<EntityResourceBrandIdSearchResult> data = null;
@@ -65,11 +70,11 @@ public class EntityResourceCollectionOutcomeBrandIdSearchResult {
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<SdkApiRestCommonProblem> errors = null;
 
-  public EntityResourceCollectionOutcomeBrandIdSearchResult() {
+  public EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata() {
   }
 
   
-  public EntityResourceCollectionOutcomeBrandIdSearchResult(
+  public EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata(
      List<SdkApiRestCommonProblem> warnings, 
      List<SdkApiRestCommonProblem> errors
   ) {
@@ -78,13 +83,35 @@ public class EntityResourceCollectionOutcomeBrandIdSearchResult {
     this.errors = errors;
   }
 
-  public EntityResourceCollectionOutcomeBrandIdSearchResult data(List<EntityResourceBrandIdSearchResult> data) {
+  public EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata metadata(PagingOffsetLimitMetadata metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * Get metadata
+   * @return metadata
+  **/
+  @javax.annotation.Nullable
+
+  public PagingOffsetLimitMetadata getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(PagingOffsetLimitMetadata metadata) {
+    this.metadata = metadata;
+  }
+
+
+  public EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata data(List<EntityResourceBrandIdSearchResult> data) {
     
     this.data = data;
     return this;
   }
 
-  public EntityResourceCollectionOutcomeBrandIdSearchResult addDataItem(EntityResourceBrandIdSearchResult dataItem) {
+  public EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata addDataItem(EntityResourceBrandIdSearchResult dataItem) {
     if (this.data == null) {
       this.data = null;
     }
@@ -143,10 +170,11 @@ public class EntityResourceCollectionOutcomeBrandIdSearchResult {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    EntityResourceCollectionOutcomeBrandIdSearchResult entityResourceCollectionOutcomeBrandIdSearchResult = (EntityResourceCollectionOutcomeBrandIdSearchResult) o;
-    return Objects.equals(this.data, entityResourceCollectionOutcomeBrandIdSearchResult.data) &&
-        Objects.equals(this.warnings, entityResourceCollectionOutcomeBrandIdSearchResult.warnings) &&
-        Objects.equals(this.errors, entityResourceCollectionOutcomeBrandIdSearchResult.errors);
+    EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata entityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata = (EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata) o;
+    return Objects.equals(this.metadata, entityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.metadata) &&
+        Objects.equals(this.data, entityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.data) &&
+        Objects.equals(this.warnings, entityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.warnings) &&
+        Objects.equals(this.errors, entityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.errors);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -155,7 +183,7 @@ public class EntityResourceCollectionOutcomeBrandIdSearchResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, warnings, errors);
+    return Objects.hash(metadata, data, warnings, errors);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -168,7 +196,8 @@ public class EntityResourceCollectionOutcomeBrandIdSearchResult {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class EntityResourceCollectionOutcomeBrandIdSearchResult {\n");
+    sb.append("class EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata {\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
@@ -194,6 +223,7 @@ public class EntityResourceCollectionOutcomeBrandIdSearchResult {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("metadata");
     openapiFields.add("data");
     openapiFields.add("warnings");
     openapiFields.add("errors");
@@ -206,21 +236,25 @@ public class EntityResourceCollectionOutcomeBrandIdSearchResult {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to EntityResourceCollectionOutcomeBrandIdSearchResult
+  * @throws IOException if the JSON Object is invalid with respect to EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!EntityResourceCollectionOutcomeBrandIdSearchResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in EntityResourceCollectionOutcomeBrandIdSearchResult is not found in the empty JSON string", EntityResourceCollectionOutcomeBrandIdSearchResult.openapiRequiredFields.toString()));
+        if (!EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata is not found in the empty JSON string", EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!EntityResourceCollectionOutcomeBrandIdSearchResult.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `EntityResourceCollectionOutcomeBrandIdSearchResult` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
+      }
+      // validate the optional field `metadata`
+      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
+        PagingOffsetLimitMetadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
       }
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
@@ -270,22 +304,22 @@ public class EntityResourceCollectionOutcomeBrandIdSearchResult {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!EntityResourceCollectionOutcomeBrandIdSearchResult.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'EntityResourceCollectionOutcomeBrandIdSearchResult' and its subtypes
+       if (!EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<EntityResourceCollectionOutcomeBrandIdSearchResult> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(EntityResourceCollectionOutcomeBrandIdSearchResult.class));
+       final TypeAdapter<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<EntityResourceCollectionOutcomeBrandIdSearchResult>() {
+       return (TypeAdapter<T>) new TypeAdapter<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata>() {
            @Override
-           public void write(JsonWriter out, EntityResourceCollectionOutcomeBrandIdSearchResult value) throws IOException {
+           public void write(JsonWriter out, EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public EntityResourceCollectionOutcomeBrandIdSearchResult read(JsonReader in) throws IOException {
+           public EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -296,18 +330,18 @@ public class EntityResourceCollectionOutcomeBrandIdSearchResult {
   }
 
  /**
-  * Create an instance of EntityResourceCollectionOutcomeBrandIdSearchResult given an JSON string
+  * Create an instance of EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of EntityResourceCollectionOutcomeBrandIdSearchResult
-  * @throws IOException if the JSON string is invalid with respect to EntityResourceCollectionOutcomeBrandIdSearchResult
+  * @return An instance of EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
+  * @throws IOException if the JSON string is invalid with respect to EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
   */
-  public static EntityResourceCollectionOutcomeBrandIdSearchResult fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, EntityResourceCollectionOutcomeBrandIdSearchResult.class);
+  public static EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.class);
   }
 
  /**
-  * Convert an instance of EntityResourceCollectionOutcomeBrandIdSearchResult to an JSON string
+  * Convert an instance of EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata to an JSON string
   *
   * @return JSON string
   */

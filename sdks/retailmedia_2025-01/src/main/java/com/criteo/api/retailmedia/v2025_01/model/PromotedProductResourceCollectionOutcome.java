@@ -62,9 +62,9 @@ public class PromotedProductResourceCollectionOutcome {
   @SerializedName(SERIALIZED_NAME_WARNINGS)
   private List<RmcaCommonProblem> warnings = null;
 
-  public static final String SERIALIZED_NAME_METADATA = "metadata";
-  @SerializedName(SERIALIZED_NAME_METADATA)
-  private ProductMetadata metadata;
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private ProductMetadata meta;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
@@ -109,25 +109,25 @@ public class PromotedProductResourceCollectionOutcome {
 
 
 
-  public PromotedProductResourceCollectionOutcome metadata(ProductMetadata metadata) {
+  public PromotedProductResourceCollectionOutcome meta(ProductMetadata meta) {
     
-    this.metadata = metadata;
+    this.meta = meta;
     return this;
   }
 
    /**
-   * Get metadata
-   * @return metadata
+   * Get meta
+   * @return meta
   **/
   @javax.annotation.Nullable
 
-  public ProductMetadata getMetadata() {
-    return metadata;
+  public ProductMetadata getMeta() {
+    return meta;
   }
 
 
-  public void setMetadata(ProductMetadata metadata) {
-    this.metadata = metadata;
+  public void setMeta(ProductMetadata meta) {
+    this.meta = meta;
   }
 
 
@@ -173,7 +173,7 @@ public class PromotedProductResourceCollectionOutcome {
     PromotedProductResourceCollectionOutcome promotedProductResourceCollectionOutcome = (PromotedProductResourceCollectionOutcome) o;
     return Objects.equals(this.errors, promotedProductResourceCollectionOutcome.errors) &&
         Objects.equals(this.warnings, promotedProductResourceCollectionOutcome.warnings) &&
-        Objects.equals(this.metadata, promotedProductResourceCollectionOutcome.metadata) &&
+        Objects.equals(this.meta, promotedProductResourceCollectionOutcome.meta) &&
         Objects.equals(this.data, promotedProductResourceCollectionOutcome.data);
   }
 
@@ -183,7 +183,7 @@ public class PromotedProductResourceCollectionOutcome {
 
   @Override
   public int hashCode() {
-    return Objects.hash(errors, warnings, metadata, data);
+    return Objects.hash(errors, warnings, meta, data);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -199,7 +199,7 @@ public class PromotedProductResourceCollectionOutcome {
     sb.append("class PromotedProductResourceCollectionOutcome {\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
-    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -225,7 +225,7 @@ public class PromotedProductResourceCollectionOutcome {
     openapiFields = new HashSet<String>();
     openapiFields.add("errors");
     openapiFields.add("warnings");
-    openapiFields.add("metadata");
+    openapiFields.add("meta");
     openapiFields.add("data");
 
     // a set of required properties/fields (JSON key names)
@@ -260,9 +260,9 @@ public class PromotedProductResourceCollectionOutcome {
       if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
       }
-      // validate the optional field `metadata`
-      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
-        ProductMetadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
+      // validate the optional field `meta`
+      if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
+        ProductMetadata.validateJsonObject(jsonObj.getAsJsonObject("meta"));
       }
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
