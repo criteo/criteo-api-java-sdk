@@ -99,6 +99,8 @@ docs/AudienceWarning.md
 docs/BasicAudienceDefinition.md
 docs/BehavioralV1.md
 docs/CampaignApi.md
+docs/CampaignBudgetAutomationV23Q1.md
+docs/CampaignBudgetAutomationV23Q1AutomatedBudgetConfiguration.md
 docs/CampaignSearchFiltersV23Q1.md
 docs/CampaignSearchRequestV23Q1.md
 docs/CampaignSpendLimitV23Q1.md
@@ -383,6 +385,8 @@ src/main/java/com/criteo/api/marketingsolutions/v2024_07/model/AudienceUpdateEnt
 src/main/java/com/criteo/api/marketingsolutions/v2024_07/model/AudienceWarning.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_07/model/BasicAudienceDefinition.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_07/model/BehavioralV1.java
+src/main/java/com/criteo/api/marketingsolutions/v2024_07/model/CampaignBudgetAutomationV23Q1.java
+src/main/java/com/criteo/api/marketingsolutions/v2024_07/model/CampaignBudgetAutomationV23Q1AutomatedBudgetConfiguration.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_07/model/CampaignSearchFiltersV23Q1.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_07/model/CampaignSearchRequestV23Q1.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_07/model/CampaignSpendLimitV23Q1.java

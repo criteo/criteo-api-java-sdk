@@ -205,6 +205,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.preview.model.BasicAudienceDefinition.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.preview.model.BatchAcceptedResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.preview.model.BehavioralV1.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.preview.model.CampaignBudgetAutomationV23Q1.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.preview.model.CampaignBudgetAutomationV23Q1AutomatedBudgetConfiguration.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.preview.model.CampaignSearchFiltersV23Q1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.preview.model.CampaignSearchRequestV23Q1.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.criteo.api.marketingsolutions.preview.model.CampaignSpendLimitV23Q1.CustomTypeAdapterFactory());

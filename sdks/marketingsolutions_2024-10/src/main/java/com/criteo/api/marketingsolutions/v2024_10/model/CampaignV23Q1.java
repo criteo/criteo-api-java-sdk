@@ -15,6 +15,7 @@ package com.criteo.api.marketingsolutions.v2024_10.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.marketingsolutions.v2024_10.model.CampaignBudgetAutomationV23Q1;
 import com.criteo.api.marketingsolutions.v2024_10.model.CampaignSpendLimitV23Q1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -115,6 +116,10 @@ public class CampaignV23Q1 {
   @SerializedName(SERIALIZED_NAME_GOAL)
   private GoalEnum goal;
 
+  public static final String SERIALIZED_NAME_BUDGET_AUTOMATION = "budgetAutomation";
+  @SerializedName(SERIALIZED_NAME_BUDGET_AUTOMATION)
+  private CampaignBudgetAutomationV23Q1 budgetAutomation;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -210,6 +215,28 @@ public class CampaignV23Q1 {
   }
 
 
+  public CampaignV23Q1 budgetAutomation(CampaignBudgetAutomationV23Q1 budgetAutomation) {
+    
+    this.budgetAutomation = budgetAutomation;
+    return this;
+  }
+
+   /**
+   * Get budgetAutomation
+   * @return budgetAutomation
+  **/
+  @javax.annotation.Nullable
+
+  public CampaignBudgetAutomationV23Q1 getBudgetAutomation() {
+    return budgetAutomation;
+  }
+
+
+  public void setBudgetAutomation(CampaignBudgetAutomationV23Q1 budgetAutomation) {
+    this.budgetAutomation = budgetAutomation;
+  }
+
+
   public CampaignV23Q1 id(String id) {
     
     this.id = id;
@@ -290,6 +317,7 @@ public class CampaignV23Q1 {
         Objects.equals(this.advertiserId, campaignV23Q1.advertiserId) &&
         Objects.equals(this.spendLimit, campaignV23Q1.spendLimit) &&
         Objects.equals(this.goal, campaignV23Q1.goal) &&
+        Objects.equals(this.budgetAutomation, campaignV23Q1.budgetAutomation) &&
         Objects.equals(this.id, campaignV23Q1.id)&&
         Objects.equals(this.additionalProperties, campaignV23Q1.additionalProperties);
   }
@@ -300,7 +328,7 @@ public class CampaignV23Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, advertiserId, spendLimit, goal, id, additionalProperties);
+    return Objects.hash(name, advertiserId, spendLimit, goal, budgetAutomation, id, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -318,6 +346,7 @@ public class CampaignV23Q1 {
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
     sb.append("    spendLimit: ").append(toIndentedString(spendLimit)).append("\n");
     sb.append("    goal: ").append(toIndentedString(goal)).append("\n");
+    sb.append("    budgetAutomation: ").append(toIndentedString(budgetAutomation)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -346,6 +375,7 @@ public class CampaignV23Q1 {
     openapiFields.add("advertiserId");
     openapiFields.add("spendLimit");
     openapiFields.add("goal");
+    openapiFields.add("budgetAutomation");
     openapiFields.add("id");
 
     // a set of required properties/fields (JSON key names)
@@ -376,6 +406,10 @@ public class CampaignV23Q1 {
       }
       if ((jsonObj.get("goal") != null && !jsonObj.get("goal").isJsonNull()) && !jsonObj.get("goal").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `goal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("goal").toString()));
+      }
+      // validate the optional field `budgetAutomation`
+      if (jsonObj.get("budgetAutomation") != null && !jsonObj.get("budgetAutomation").isJsonNull()) {
+        CampaignBudgetAutomationV23Q1.validateJsonObject(jsonObj.getAsJsonObject("budgetAutomation"));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));

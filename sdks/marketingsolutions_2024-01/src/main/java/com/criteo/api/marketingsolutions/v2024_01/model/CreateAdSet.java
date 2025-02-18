@@ -371,7 +371,7 @@ public class CreateAdSet {
    * Get budget
    * @return budget
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public CreateAdSetBudget getBudget() {
     return budget;
@@ -556,7 +556,6 @@ public class CreateAdSet {
     openapiRequiredFields.add("schedule");
     openapiRequiredFields.add("bidding");
     openapiRequiredFields.add("targeting");
-    openapiRequiredFields.add("budget");
     openapiRequiredFields.add("trackingCode");
     openapiRequiredFields.add("mediaType");
   }
@@ -598,8 +597,10 @@ public class CreateAdSet {
       CreateAdSetBidding.validateJsonObject(jsonObj.getAsJsonObject("bidding"));
       // validate the required field `targeting`
       CreateAdSetTargeting.validateJsonObject(jsonObj.getAsJsonObject("targeting"));
-      // validate the required field `budget`
-      CreateAdSetBudget.validateJsonObject(jsonObj.getAsJsonObject("budget"));
+      // validate the optional field `budget`
+      if (jsonObj.get("budget") != null && !jsonObj.get("budget").isJsonNull()) {
+        CreateAdSetBudget.validateJsonObject(jsonObj.getAsJsonObject("budget"));
+      }
       if (!jsonObj.get("trackingCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `trackingCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("trackingCode").toString()));
       }

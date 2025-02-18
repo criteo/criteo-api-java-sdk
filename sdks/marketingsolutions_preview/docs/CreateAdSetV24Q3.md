@@ -15,7 +15,7 @@ ad set create model
 |**schedule** | [**CreateAdSetScheduleV24Q3**](CreateAdSetScheduleV24Q3.md) |  |  |
 |**bidding** | [**CreateAdSetBiddingV24Q3**](CreateAdSetBiddingV24Q3.md) |  |  |
 |**targeting** | [**CreateAdSetTargetingV24Q3**](CreateAdSetTargetingV24Q3.md) |  |  |
-|**budget** | [**CreateAdSetBudgetV24Q3**](CreateAdSetBudgetV24Q3.md) |  |  |
+|**budget** | [**CreateAdSetBudgetV24Q3**](CreateAdSetBudgetV24Q3.md) |  |  [optional] |
 |**trackingCode** | **String** | The click tracking code associated to this Ad Set. |  |
 |**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) | Media type for the ad set |  |
 |**attributionConfiguration** | [**CreateAdSetAttributionConfigurationV24Q3**](CreateAdSetAttributionConfigurationV24Q3.md) |  |  [optional] |

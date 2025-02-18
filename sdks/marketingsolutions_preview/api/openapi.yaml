@@ -12339,6 +12339,10 @@ components:
               spendLimitAmount:
                 value: 0.8008281904610115
               spendLimitType: capped
+            budgetAutomation:
+              automatedBudgetConfiguration:
+                adSetOptimizationObjective: customAction
+              enabled: true
             id: id
             advertiserId: advertiserId
           id: id
@@ -12415,6 +12419,10 @@ components:
               spendLimitAmount:
                 value: 0.8008281904610115
               spendLimitType: capped
+            budgetAutomation:
+              automatedBudgetConfiguration:
+                adSetOptimizationObjective: customAction
+              enabled: true
             id: id
             advertiserId: advertiserId
           id: id
@@ -12427,6 +12435,10 @@ components:
               spendLimitAmount:
                 value: 0.8008281904610115
               spendLimitType: capped
+            budgetAutomation:
+              automatedBudgetConfiguration:
+                adSetOptimizationObjective: customAction
+              enabled: true
             id: id
             advertiserId: advertiserId
           id: id
@@ -13004,6 +13016,10 @@ components:
             spendLimitAmount:
               value: 0.8008281904610115
             spendLimitType: capped
+          budgetAutomation:
+            automatedBudgetConfiguration:
+              adSetOptimizationObjective: customAction
+            enabled: true
           id: id
           advertiserId: advertiserId
         id: id
@@ -13475,6 +13491,10 @@ components:
           spendLimitAmount:
             value: 0.8008281904610115
           spendLimitType: capped
+        budgetAutomation:
+          automatedBudgetConfiguration:
+            adSetOptimizationObjective: customAction
+          enabled: true
         id: id
         advertiserId: advertiserId
       properties:
@@ -13495,6 +13515,8 @@ components:
           - retention
           nullable: true
           type: string
+        budgetAutomation:
+          $ref: '#/components/schemas/CampaignBudgetAutomationV23Q1'
         id:
           description: Id of the entity (duplicate of the parent id).
           nullable: true
@@ -13669,7 +13691,6 @@ components:
           $ref: '#/components/schemas/CreateAdSetAttributionConfigurationV24Q3'
       required:
       - bidding
-      - budget
       - campaignId
       - datasetId
       - mediaType
@@ -13951,6 +13972,19 @@ components:
           type: string
         spendLimitAmount:
           $ref: '#/components/schemas/NillableDecimal'
+      type: object
+    CampaignBudgetAutomationV23Q1:
+      description: The campaign budget automation model
+      example:
+        automatedBudgetConfiguration:
+          adSetOptimizationObjective: customAction
+        enabled: true
+      properties:
+        enabled:
+          nullable: true
+          type: boolean
+        automatedBudgetConfiguration:
+          $ref: '#/components/schemas/CampaignBudgetAutomationV23Q1_automatedBudgetConfiguration'
       type: object
     PatchAdSetSchedulingV24Q3:
       description: ad set schedule patch model
@@ -24013,6 +24047,28 @@ components:
       - identifiers
       - operation
       type: object
+    CampaignBudgetAutomationV23Q1_automatedBudgetConfiguration:
+      example:
+        adSetOptimizationObjective: customAction
+      nullable: true
+      properties:
+        adSetOptimizationObjective:
+          enum:
+          - customAction
+          - clicks
+          - conversions
+          - displays
+          - appPromotion
+          - revenue
+          - storeConversions
+          - value
+          - reach
+          - visits
+          - videoViews
+          nullable: true
+          type: string
+      type: object
+      x-nullable: true
     NillableAdSetTargetingRuleV24Q3_value:
       allOf:
       - $ref: '#/components/schemas/AdSetTargetingRuleV24Q3'
