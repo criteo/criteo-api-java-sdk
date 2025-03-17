@@ -19,6 +19,7 @@ The Bid Multiplier Entity of a LineItem
 |**favorites** | **BigDecimal** | Favorites Page Type Bid Multiplier |  [optional] |
 |**searchBar** | **BigDecimal** | SearchBar Page Type Bid Multiplier |  [optional] |
 |**categoryMenu** | **BigDecimal** | CategoryMenu Page Type Bid Multiplier |  [optional] |
+|**id** | **String** | Id of the entity |  [optional] |
 
 
 

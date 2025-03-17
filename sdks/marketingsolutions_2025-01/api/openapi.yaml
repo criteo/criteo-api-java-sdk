@@ -3813,6 +3813,7 @@ components:
       - errors
       - warnings
       type: object
+      x-used-in-response: true
     ErrorCodeResponse:
       description: Definition of the error code
       properties:
@@ -3825,9 +3826,11 @@ components:
             $ref: '#/components/schemas/AudienceWarning'
           nullable: true
           type: array
+          x-optional-in-response: true
       required:
       - errors
       type: object
+      x-used-in-response: true
     ModifyAudienceResponse:
       description: Parameters to modify an audience
       example:
@@ -3901,6 +3904,7 @@ components:
       - errors
       - warnings
       type: object
+      x-used-in-response: true
     ContactlistAmendmentRequest:
       description: Request for a contactlist amendment
       example:
@@ -3919,6 +3923,7 @@ components:
       required:
       - data
       type: object
+      x-used-in-request: true
     BasicAudienceDefinition:
       description: Common definition of an audience
       example:
@@ -3940,6 +3945,7 @@ components:
       - id
       - type
       type: object
+      x-used-in-response: true
     AudienceError:
       description: Definition of an audience error
       example:
@@ -3959,6 +3965,7 @@ components:
             also a unique identifier for this particular occurrence of the problem.
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           description: (REQUIRED) The classification of the error
           enum:
@@ -3983,16 +3990,19 @@ components:
             \ type"
           nullable: true
           type: string
+          x-optional-in-response: true
         detail:
           description: (RECOMMENDED) A human-readable explanation specific to this
             occurrence of the problem
           nullable: true
           type: string
+          x-optional-in-response: true
         source:
           description: (OPTIONAL) A machine-readable structure to reference to the
             exact location(s) causing the error(s)
           nullable: true
           type: object
+          x-optional-in-response: true
         stackTrace:
           description: (NEVER IN PRODUCTION) A human-readable stacktrace produced
             by the implementation technology
@@ -4000,11 +4010,13 @@ components:
             type: string
           nullable: true
           type: array
+          x-optional-in-response: true
       required:
       - code
       - instance
       - type
       type: object
+      x-used-in-response: true
     AudienceWarning:
       description: Definition of the warning
       example:
@@ -4024,6 +4036,7 @@ components:
             also a unique identifier for this particular occurrence of the problem.
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           description: (REQUIRED) The classification of the error
           enum:
@@ -4048,6 +4061,7 @@ components:
             \ type"
           nullable: true
           type: string
+          x-optional-in-response: true
         detail:
           description: (REQUIRED) A human-readable explanation specific to this occurrence
             of the problem
@@ -4057,6 +4071,7 @@ components:
             exact location(s) causing the error(s)
           nullable: true
           type: object
+          x-optional-in-response: true
         stackTrace:
           description: (NEVER IN PRODUCTION) A human-readable stacktrace produced
             by the implementation technology
@@ -4064,12 +4079,14 @@ components:
             type: string
           nullable: true
           type: array
+          x-optional-in-response: true
       required:
       - code
       - detail
       - instance
       - type
       type: object
+      x-used-in-response: true
     ContactlistOperation:
       description: Response definition of a contactlist operation
       example:
@@ -4094,6 +4111,7 @@ components:
       - attributes
       - type
       type: object
+      x-used-in-response: true
     ContactlistAmendment:
       description: Parameters for the amendment of a contactlist
       example:
@@ -4116,21 +4134,27 @@ components:
       - attributes
       - type
       type: object
+      x-used-in-request: true
     AudienceNameDescription:
       description: Description of an audience with name and detailed description
       example:
         name: name
         description: description
+      nullable: true
       properties:
         name:
           description: The name to designate the audience by
           nullable: true
           type: string
+          x-optional-in-response: true
         description:
           description: The description of the audience
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     ApplicationSummaryModelResponse:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
@@ -4194,13 +4218,16 @@ components:
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     ApplicationSummaryModelResource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
@@ -4212,13 +4239,17 @@ components:
           criteoService: criteoService
           applicationId: 0
         type: type
+      nullable: true
       properties:
         type:
           nullable: true
           type: string
+          x-optional-in-response: true
         attributes:
           $ref: '#/components/schemas/ApplicationSummaryModel'
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     CommonProblem:
       description: Common problem object.
       example:
@@ -4237,11 +4268,13 @@ components:
           description: The request correlation ID this problem comes from.
           nullable: true
           type: string
+          x-optional-in-response: true
         traceIdentifier:
           description: "The request correlation ID this problem comes from. (deprecated,\
             \ use traceId instead)"
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           description: The problem's category.
           enum:
@@ -4255,23 +4288,28 @@ components:
           - validation
           nullable: true
           type: string
+          x-optional-in-response: true
         code:
           description: "A machine-readable error code, expressed as a string value."
           nullable: true
           type: string
+          x-optional-in-response: true
         instance:
           description: A URI that identifies the specific occurrence of the problem.
           nullable: true
           type: string
+          x-optional-in-response: true
         title:
           description: A short human-readable description of the problem type
           nullable: true
           type: string
+          x-optional-in-response: true
         detail:
           description: A human-readable explanation specific to this occurrence of
             the problem
           nullable: true
           type: string
+          x-optional-in-response: true
         source:
           additionalProperties:
             type: string
@@ -4279,10 +4317,13 @@ components:
             causing the error(s)
           nullable: true
           type: object
+          x-optional-in-response: true
         stackTrace:
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     ApplicationSummaryModel:
       description: Used for the /me endpoint. Contains information about the currently
         authenticated application that we accept to give to our clients
@@ -4292,25 +4333,33 @@ components:
         description: description
         criteoService: criteoService
         applicationId: 0
+      nullable: true
       properties:
         applicationId:
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
         name:
           nullable: true
           type: string
+          x-optional-in-response: true
         organizationId:
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
         description:
           nullable: true
           type: string
+          x-optional-in-response: true
         criteoService:
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     AdSetAudienceLinkEntityV1Response:
       description: A top-level object that encapsulates a Criteo API response for
         a single entity
@@ -4371,13 +4420,16 @@ components:
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AudienceSegmentEntityV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
         several entities
@@ -4535,19 +4587,23 @@ components:
             $ref: '#/components/schemas/AudienceSegmentEntityV1Resource'
           nullable: true
           type: array
+          x-optional-in-response: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AudienceSegmentSizeEntityV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
         several entities
@@ -4609,19 +4665,23 @@ components:
             $ref: '#/components/schemas/AudienceSegmentSizeEntityV1Resource'
           nullable: true
           type: array
+          x-optional-in-response: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AudienceSegmentIdEntityV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
         several entities
@@ -4681,19 +4741,23 @@ components:
             $ref: '#/components/schemas/AudienceSegmentIdEntityV1Resource'
           nullable: true
           type: array
+          x-optional-in-response: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AudienceSegmentSizeEstimationV1Response:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
@@ -4753,13 +4817,16 @@ components:
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     InMarketAudienceSegmentBrandEntityV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
         several entities
@@ -4823,19 +4890,23 @@ components:
             $ref: '#/components/schemas/InMarketAudienceSegmentBrandEntityV1Resource'
           nullable: true
           type: array
+          x-optional-in-response: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     InMarketAudienceSegmentInterestEntityV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
         several entities
@@ -4897,19 +4968,23 @@ components:
             $ref: '#/components/schemas/InMarketAudienceSegmentInterestEntityV1Resource'
           nullable: true
           type: array
+          x-optional-in-response: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
         several entities and metadata
@@ -5073,19 +5148,23 @@ components:
             $ref: '#/components/schemas/AudienceSegmentEntityV1Resource'
           nullable: true
           type: array
+          x-optional-in-response: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     ContactListStatisticsEntityV1Response:
       description: A top-level object that encapsulates a Criteo API response for
         a single entity
@@ -5148,13 +5227,16 @@ components:
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AudienceEntityV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
         several entities
@@ -5248,19 +5330,23 @@ components:
             $ref: '#/components/schemas/AudienceEntityV1Resource'
           nullable: true
           type: array
+          x-optional-in-response: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AudienceSizeEntityV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
         several entities
@@ -5322,19 +5408,23 @@ components:
             $ref: '#/components/schemas/AudienceSizeEntityV1Resource'
           nullable: true
           type: array
+          x-optional-in-response: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AudienceIdEntityV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
         several entities
@@ -5394,19 +5484,23 @@ components:
             $ref: '#/components/schemas/AudienceIdEntityV1Resource'
           nullable: true
           type: array
+          x-optional-in-response: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AudienceSizeEstimationV1Response:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
@@ -5466,13 +5560,16 @@ components:
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AudienceEntityV1AudienceSearchMetadataV1ListResponse:
       description: A top-level object that encapsulates a Criteo API response for
         several entities and metadata
@@ -5572,19 +5669,23 @@ components:
             $ref: '#/components/schemas/AudienceEntityV1Resource'
           nullable: true
           type: array
+          x-optional-in-response: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AdSetAudienceLinkInputEntityV1:
       description: Input to set audience ad set link.
       example:
@@ -5597,6 +5698,7 @@ components:
         data:
           $ref: '#/components/schemas/AdSetAudienceLinkEntityV1Resource'
       type: object
+      x-used-in-request: true
     AudienceSegmentBulkUpdateInputV1:
       description: Input to update one or more segments.
       example:
@@ -5693,9 +5795,9 @@ components:
         data:
           items:
             $ref: '#/components/schemas/AudienceSegmentUpdateEntityV1Resource'
-          nullable: true
           type: array
       type: object
+      x-used-in-request: true
     AudienceSegmentComputeSizesInputV1:
       description: Input to retrieve the size of one or more segments.
       example:
@@ -5710,9 +5812,9 @@ components:
         data:
           items:
             $ref: '#/components/schemas/AudienceSegmentComputeSizeEntityV1Resource'
-          nullable: true
           type: array
       type: object
+      x-used-in-request: true
     AudienceSegmentBulkCreateInputV1:
       description: Input to create one or more audience segments.
       example:
@@ -5803,9 +5905,9 @@ components:
         data:
           items:
             $ref: '#/components/schemas/AudienceSegmentCreateEntityV1Resource'
-          nullable: true
           type: array
       type: object
+      x-used-in-request: true
     AudienceSegmentBulkDeleteInputV1:
       description: Input to delete one or more segments.
       example:
@@ -5820,9 +5922,9 @@ components:
         data:
           items:
             $ref: '#/components/schemas/AudienceSegmentDeleteEntityV1Resource'
-          nullable: true
           type: array
       type: object
+      x-used-in-request: true
     AudienceSegmentEstimateSizeInputV1:
       description: Input to estimate the size of an audience segment..
       example:
@@ -5858,6 +5960,7 @@ components:
         data:
           $ref: '#/components/schemas/AudienceSegmentSizeEstimationEntityV1Resource'
       type: object
+      x-used-in-request: true
     AudienceSegmentSearchInputV1:
       description: Audience segment search parameter
       example:
@@ -5877,6 +5980,7 @@ components:
         data:
           $ref: '#/components/schemas/AudienceSegmentSearchEntityV1Resource'
       type: object
+      x-used-in-request: true
     AudienceBulkUpdateInputV1:
       description: Input to update one or more audiences.
       example:
@@ -5915,9 +6019,9 @@ components:
         data:
           items:
             $ref: '#/components/schemas/AudienceUpdateEntityV1Resource'
-          nullable: true
           type: array
       type: object
+      x-used-in-request: true
     AudienceComputeSizesInputV1:
       description: Input to retrieve the size of one or more audiences.
       example:
@@ -5932,9 +6036,9 @@ components:
         data:
           items:
             $ref: '#/components/schemas/AudienceComputeSizeEntityV1Resource'
-          nullable: true
           type: array
       type: object
+      x-used-in-request: true
     AudienceBulkCreateInputV1:
       description: Input to create one or more audiences.
       example:
@@ -5971,9 +6075,9 @@ components:
         data:
           items:
             $ref: '#/components/schemas/AudienceCreateEntityV1Resource'
-          nullable: true
           type: array
       type: object
+      x-used-in-request: true
     AudienceBulkDeleteInputV1:
       description: Input to delete one or more audiences.
       example:
@@ -5988,9 +6092,9 @@ components:
         data:
           items:
             $ref: '#/components/schemas/AudienceDeleteEntityV1Resource'
-          nullable: true
           type: array
       type: object
+      x-used-in-request: true
     AudienceEstimateSizeInputV1:
       description: Input to estimate the size of an audience.
       example:
@@ -6011,6 +6115,7 @@ components:
         data:
           $ref: '#/components/schemas/AudienceEstimateSizeEntityV1Resource'
       type: object
+      x-used-in-request: true
     AudienceSearchInputV1:
       description: Audience search parameter
       example:
@@ -6033,6 +6138,7 @@ components:
         data:
           $ref: '#/components/schemas/AudienceSearchEntityV1Resource'
       type: object
+      x-used-in-request: true
     AdSetAudienceLinkEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -6040,6 +6146,7 @@ components:
           audienceId: audienceId
         id: id
         type: type
+      nullable: true
       properties:
         attributes:
           $ref: '#/components/schemas/AdSetAudienceLinkEntityV1'
@@ -6047,10 +6154,15 @@ components:
           description: Id of the entity
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-request: true
+      x-used-in-response: true
+      x-optional-in-response: true
     AudienceSegmentEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -6113,10 +6225,13 @@ components:
           description: Id of the entity
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AudienceSegmentSizeEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -6131,10 +6246,13 @@ components:
           description: Id of the entity
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AudienceSegmentIdEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -6144,19 +6262,25 @@ components:
       properties:
         attributes:
           description: Audience Segment entity only with its ID
+          nullable: true
           type: object
           x-criteo-canonical:
             infoType: entity
             name: AudienceSegment
             version: v1
+          x-used-in-response: true
+          x-optional-in-response: true
         id:
           description: Id of the entity
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AudienceSegmentSizeEstimationV1Resource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
@@ -6164,13 +6288,17 @@ components:
         attributes:
           size: 0
         type: type
+      nullable: true
       properties:
         type:
           nullable: true
           type: string
+          x-optional-in-response: true
         attributes:
           $ref: '#/components/schemas/AudienceSegmentSizeEstimationV1'
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     InMarketAudienceSegmentBrandEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -6186,10 +6314,13 @@ components:
           description: Id of the entity
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     InMarketAudienceSegmentInterestEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -6204,33 +6335,42 @@ components:
           description: Id of the entity
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AudienceSegmentSearchMetadataV1:
       description: Metadata for the audience segment search response.
       example:
         totalItems: 0
         offset: 1
         limit: 6
+      nullable: true
       properties:
         totalItems:
           description: Total number of items
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
         limit:
           description: Max item of the current page
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
         offset:
           description: Number of item to skip
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     ContactListStatisticsEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -6240,6 +6380,7 @@ components:
           numberOfMatches: 6
         id: id
         type: type
+      nullable: true
       properties:
         attributes:
           $ref: '#/components/schemas/ContactListStatisticsEntityV1'
@@ -6247,10 +6388,14 @@ components:
           description: Id of the entity
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     AudienceEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -6281,10 +6426,13 @@ components:
           description: Id of the entity
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AudienceSizeEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -6299,10 +6447,13 @@ components:
           description: Id of the entity
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AudienceIdEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -6312,19 +6463,25 @@ components:
       properties:
         attributes:
           description: Audience entity with only its ID
+          nullable: true
           type: object
           x-criteo-canonical:
             infoType: entity
             name: Audience
             version: v1
+          x-used-in-response: true
+          x-optional-in-response: true
         id:
           description: Id of the entity
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AudienceSizeEstimationV1Resource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
@@ -6332,36 +6489,46 @@ components:
         attributes:
           size: 0
         type: type
+      nullable: true
       properties:
         type:
           nullable: true
           type: string
+          x-optional-in-response: true
         attributes:
           $ref: '#/components/schemas/AudienceSizeEstimationV1'
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     AudienceSearchMetadataV1:
       description: Metadata for the audience search response.
       example:
         totalItems: 0
         offset: 1
         limit: 6
+      nullable: true
       properties:
         totalItems:
           description: Total number of items
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
         limit:
           description: Max item of the current page
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
         offset:
           description: Number of item to skip
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     AudienceSegmentUpdateEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -6414,12 +6581,11 @@ components:
           $ref: '#/components/schemas/AudienceSegmentUpdateEntityV1'
         id:
           description: Id of the entity
-          nullable: true
           type: string
         type:
-          nullable: true
           type: string
       type: object
+      x-used-in-request: true
     AudienceSegmentComputeSizeEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -6434,14 +6600,14 @@ components:
             infoType: entity
             name: AudienceSegment
             version: v1
+          x-used-in-request: true
         id:
           description: Id of the entity
-          nullable: true
           type: string
         type:
-          nullable: true
           type: string
       type: object
+      x-used-in-request: true
     AudienceSegmentCreateEntityV1Resource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
@@ -6489,11 +6655,11 @@ components:
         type: type
       properties:
         type:
-          nullable: true
           type: string
         attributes:
           $ref: '#/components/schemas/AudienceSegmentCreateEntityV1'
       type: object
+      x-used-in-request: true
     AudienceSegmentDeleteEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -6508,14 +6674,14 @@ components:
             infoType: entity
             name: AudienceSegment
             version: v1
+          x-used-in-request: true
         id:
           description: Id of the entity
-          nullable: true
           type: string
         type:
-          nullable: true
           type: string
       type: object
+      x-used-in-request: true
     AudienceSegmentSizeEstimationEntityV1Resource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
@@ -6549,11 +6715,11 @@ components:
         type: type
       properties:
         type:
-          nullable: true
           type: string
         attributes:
           $ref: '#/components/schemas/AudienceSegmentSizeEstimationEntityV1'
       type: object
+      x-used-in-request: true
     AudienceSegmentSearchEntityV1Resource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
@@ -6571,11 +6737,11 @@ components:
         type: type
       properties:
         type:
-          nullable: true
           type: string
         attributes:
           $ref: '#/components/schemas/AudienceSegmentSearchEntityV1'
       type: object
+      x-used-in-request: true
     AudienceUpdateEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -6599,12 +6765,11 @@ components:
           $ref: '#/components/schemas/AudienceUpdateEntityV1'
         id:
           description: Id of the entity
-          nullable: true
           type: string
         type:
-          nullable: true
           type: string
       type: object
+      x-used-in-request: true
     AudienceComputeSizeEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -6619,14 +6784,14 @@ components:
             infoType: entity
             name: Audience
             version: v1
+          x-used-in-request: true
         id:
           description: Id of the entity
-          nullable: true
           type: string
         type:
-          nullable: true
           type: string
       type: object
+      x-used-in-request: true
     AudienceCreateEntityV1Resource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
@@ -6647,11 +6812,11 @@ components:
         type: type
       properties:
         type:
-          nullable: true
           type: string
         attributes:
           $ref: '#/components/schemas/AudienceCreateEntityV1'
       type: object
+      x-used-in-request: true
     AudienceDeleteEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -6666,14 +6831,14 @@ components:
             infoType: entity
             name: Audience
             version: v1
+          x-used-in-request: true
         id:
           description: Id of the entity
-          nullable: true
           type: string
         type:
-          nullable: true
           type: string
       type: object
+      x-used-in-request: true
     AudienceEstimateSizeEntityV1Resource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
@@ -6692,11 +6857,11 @@ components:
         type: type
       properties:
         type:
-          nullable: true
           type: string
         attributes:
           $ref: '#/components/schemas/AudienceEstimateSizeEntityV1'
       type: object
+      x-used-in-request: true
     AudienceSearchEntityV1Resource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
@@ -6717,24 +6882,29 @@ components:
         type: type
       properties:
         type:
-          nullable: true
           type: string
         attributes:
           $ref: '#/components/schemas/AudienceSearchEntityV1'
       type: object
+      x-used-in-request: true
     AdSetAudienceLinkEntityV1:
       description: Link Audience with an ad set
       example:
         audienceId: audienceId
+      nullable: true
       properties:
         audienceId:
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
       x-criteo-canonical:
         infoType: entity
         name: AdSetAudience
         version: v1
+      x-used-in-request: true
+      x-used-in-response: true
+      x-optional-in-response: true
     AudienceSegmentEntityV1:
       description: Set of rules that defines specific people to target.
       example:
@@ -6787,15 +6957,18 @@ components:
           - Unknown
           - Unknown
         updatedAt: 2000-01-23T04:56:07.000+00:00
+      nullable: true
       properties:
         name:
           description: Name of the segment
           nullable: true
           type: string
+          x-optional-in-response: true
         description:
           description: Description of the segment
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           description: Type of segment (read-only)
           enum:
@@ -6809,20 +6982,24 @@ components:
           - Lookalike
           nullable: true
           type: string
+          x-optional-in-response: true
         createdAt:
           description: ISO-8601 timestamp in UTC of segment creation (read-only)
           format: date-time
           nullable: true
           type: string
+          x-optional-in-response: true
         updatedAt:
           description: ISO-8601 timestamp in UTC of segment update (read-only)
           format: date-time
           nullable: true
           type: string
+          x-optional-in-response: true
         advertiserId:
           description: Advertiser associated to the segment
           nullable: true
           type: string
+          x-optional-in-response: true
         inMarket:
           $ref: '#/components/schemas/InMarketV1'
         prospecting:
@@ -6842,99 +7019,127 @@ components:
         infoType: entity
         name: AudienceSegment
         version: v1
+      x-used-in-response: true
+      x-optional-in-response: true
     AudienceSegmentSizeEntityV1:
       description: Set of rules that defines specific people to target.
       example:
         size: 0
+      nullable: true
       properties:
         size:
           format: int64
           nullable: true
           type: integer
+          x-optional-in-response: true
       type: object
       x-criteo-canonical:
         infoType: entity
         name: AudienceSegmentSize
         version: v1
+      x-used-in-response: true
+      x-optional-in-response: true
     AudienceSegmentIdEntityV1:
       description: Audience Segment entity only with its ID
+      nullable: true
       type: object
       x-criteo-canonical:
         infoType: entity
         name: AudienceSegment
         version: v1
+      x-used-in-response: true
+      x-optional-in-response: true
     AudienceSegmentSizeEstimationV1:
       description: Segment size estimation
       example:
         size: 0
+      nullable: true
       properties:
         size:
           format: int64
           nullable: true
           type: integer
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     InMarketAudienceSegmentBrandEntityV1:
       description: In-market segment brand entity
       example:
         size: 0
         name: name
+      nullable: true
       properties:
         name:
           description: Name of the in-market segment brand
           nullable: true
           type: string
+          x-optional-in-response: true
         size:
           description: Size of the in-market segment brand
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
       type: object
       x-criteo-canonical:
         infoType: entity
         name: InMarketAudienceSegmentBrand
         version: v1
+      x-used-in-response: true
+      x-optional-in-response: true
     InMarketAudienceSegmentInterestEntityV1:
       description: In-market segment interest entity
       example:
         parentId: parentId
+      nullable: true
       properties:
         parentId:
           description: Id of the parent in-market segment interest
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
       x-criteo-canonical:
         infoType: entity
         name: InMarketAudienceSegmentInterest
         version: v1
+      x-used-in-response: true
+      x-optional-in-response: true
     ContactListStatisticsEntityV1:
       description: Contact list statistics.
       example:
         numberOfIdentifiers: 0
         matchRate: 1.4658129805029452
         numberOfMatches: 6
+      nullable: true
       properties:
         numberOfIdentifiers:
           description: Number of identifiers in the contact list.
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
         numberOfMatches:
           description: Number of matched identifiers in the contact list.
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
         matchRate:
           description: "Percentage of matched identifiers in the contact list.\r\n\
             Can differ from matches/identifiers depending on the contact list type."
           format: double
           nullable: true
           type: number
+          x-optional-in-response: true
       type: object
       x-criteo-canonical:
         infoType: entity
         name: ContactListStatistics
         version: v1
+      x-used-in-response: true
+      x-optional-in-response: true
     AudienceEntityV1:
       description: Audience of people of interest for a marketer.
       example:
@@ -6955,29 +7160,35 @@ components:
           audienceSegmentId: audienceSegmentId
         updatedAt: 2000-01-23T04:56:07.000+00:00
         advertiserId: advertiserId
+      nullable: true
       properties:
         name:
           description: Name of the audience
           nullable: true
           type: string
+          x-optional-in-response: true
         description:
           description: Description of the audience
           nullable: true
           type: string
+          x-optional-in-response: true
         createdAt:
           description: ISO-8601 timestamp in UTC of audience creation (read-only)
           format: date-time
           nullable: true
           type: string
+          x-optional-in-response: true
         updatedAt:
           description: ISO-8601 timestamp in UTC of audience update (read-only)
           format: date-time
           nullable: true
           type: string
+          x-optional-in-response: true
         advertiserId:
           description: Advertiser associated to the audience
           nullable: true
           type: string
+          x-optional-in-response: true
         adSetIds:
           description: Ad sets associated to the audience
           items:
@@ -6985,6 +7196,7 @@ components:
           nullable: true
           type: array
           uniqueItems: true
+          x-optional-in-response: true
         algebra:
           $ref: '#/components/schemas/AlgebraNodeV1'
       type: object
@@ -6992,37 +7204,50 @@ components:
         infoType: entity
         name: Audience
         version: v1
+      x-used-in-response: true
+      x-optional-in-response: true
     AudienceSizeEntityV1:
       description: Audience entity only with its size
       example:
         size: 0
+      nullable: true
       properties:
         size:
           format: int64
           nullable: true
           type: integer
+          x-optional-in-response: true
       type: object
       x-criteo-canonical:
         infoType: entity
         name: AudienceSize
         version: v1
+      x-used-in-response: true
+      x-optional-in-response: true
     AudienceIdEntityV1:
       description: Audience entity with only its ID
+      nullable: true
       type: object
       x-criteo-canonical:
         infoType: entity
         name: Audience
         version: v1
+      x-used-in-response: true
+      x-optional-in-response: true
     AudienceSizeEstimationV1:
       description: Audience size estimation
       example:
         size: 0
+      nullable: true
       properties:
         size:
           format: int64
           nullable: true
           type: integer
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     AudienceSegmentUpdateEntityV1:
       description: Set of rules that defines specific people to target.
       example:
@@ -7070,7 +7295,6 @@ components:
       properties:
         name:
           description: Name of the segment
-          nullable: true
           type: string
         description:
           $ref: '#/components/schemas/NillableString'
@@ -7089,6 +7313,7 @@ components:
         infoType: entity
         name: AudienceSegment
         version: v1
+      x-used-in-request: true
     AudienceSegmentComputeSizeEntityV1:
       description: Set of rules that defines specific people to target.
       type: object
@@ -7096,6 +7321,7 @@ components:
         infoType: entity
         name: AudienceSegment
         version: v1
+      x-used-in-request: true
     AudienceSegmentCreateEntityV1:
       description: Set of rules that defines specific people to target.
       example:
@@ -7144,7 +7370,6 @@ components:
           type: string
         description:
           description: Description of the segment
-          nullable: true
           type: string
         advertiserId:
           description: Advertiser associated to the segment
@@ -7156,6 +7381,7 @@ components:
         contactList:
           description: Settings to target users with your contact lists.
           type: object
+          x-used-in-request: true
         location:
           $ref: '#/components/schemas/LocationCreateV1'
         retargeting:
@@ -7166,6 +7392,7 @@ components:
       - advertiserId
       - name
       type: object
+      x-used-in-request: true
     AudienceSegmentDeleteEntityV1:
       description: Segment to delete
       type: object
@@ -7173,6 +7400,7 @@ components:
         infoType: entity
         name: AudienceSegment
         version: v1
+      x-used-in-request: true
     AudienceSegmentSizeEstimationEntityV1:
       description: Set of rules that defines specific people to target.
       example:
@@ -7212,6 +7440,7 @@ components:
       required:
       - advertiserId
       type: object
+      x-used-in-request: true
     AudienceSegmentSearchEntityV1:
       description: "Available filters to perform a search on audience segments. If\
         \ present, the filters are AND'ed together when applied."
@@ -7230,13 +7459,11 @@ components:
           description: List of segment ids
           items:
             type: string
-          nullable: true
           type: array
         advertiserIds:
           description: List of advertiser ids
           items:
             type: string
-          nullable: true
           type: array
         audienceSegmentTypes:
           description: List of segment types
@@ -7251,9 +7478,9 @@ components:
             - Retargeting
             - Lookalike
             type: string
-          nullable: true
           type: array
       type: object
+      x-used-in-request: true
     AudienceUpdateEntityV1:
       description: Audience of people of interest for a marketer.
       example:
@@ -7272,7 +7499,6 @@ components:
       properties:
         name:
           description: Name of the audience
-          nullable: true
           type: string
         description:
           $ref: '#/components/schemas/NillableString'
@@ -7283,6 +7509,7 @@ components:
         infoType: entity
         name: Audience
         version: v1
+      x-used-in-request: true
     AudienceComputeSizeEntityV1:
       description: Audience of people of interest for a marketer.
       type: object
@@ -7290,6 +7517,7 @@ components:
         infoType: entity
         name: Audience
         version: v1
+      x-used-in-request: true
     AudienceCreateEntityV1:
       description: Audience of people of interest for a marketer.
       example:
@@ -7311,7 +7539,6 @@ components:
           type: string
         description:
           description: Description of the audience
-          nullable: true
           type: string
         advertiserId:
           description: Advertiser associated to the audience
@@ -7323,6 +7550,7 @@ components:
       - algebra
       - name
       type: object
+      x-used-in-request: true
     AudienceDeleteEntityV1:
       description: Audience to delete
       type: object
@@ -7330,6 +7558,7 @@ components:
         infoType: entity
         name: Audience
         version: v1
+      x-used-in-request: true
     AudienceEstimateSizeEntityV1:
       description: Audience of people of interest for a marketer.
       example:
@@ -7353,6 +7582,7 @@ components:
       - advertiserId
       - algebra
       type: object
+      x-used-in-request: true
     AudienceSearchEntityV1:
       description: "Available filters to perform a search on segments. If present,\
         \ the filters are AND'ed together when applied."
@@ -7374,27 +7604,24 @@ components:
           description: List of audience ids
           items:
             type: string
-          nullable: true
           type: array
         advertiserIds:
           description: List of advertiser ids
           items:
             type: string
-          nullable: true
           type: array
         audienceSegmentIds:
           description: List of segment ids (linked to the result audiences)
           items:
             type: string
-          nullable: true
           type: array
         adSetIds:
           description: List of AdSet ids
           items:
             type: string
-          nullable: true
           type: array
       type: object
+      x-used-in-request: true
     InMarketV1:
       description: Settings to target users based on high shopping intents and demographics.
       example:
@@ -7412,11 +7639,13 @@ components:
         priceRange:
         - Unknown
         - Unknown
+      nullable: true
       properties:
         country:
           description: Reach people of a specific country
           nullable: true
           type: string
+          x-optional-in-response: true
         buyingPower:
           description: Reach people who frequently purchase high price range items
             to lower price range items
@@ -7431,6 +7660,7 @@ components:
           nullable: true
           type: array
           uniqueItems: true
+          x-optional-in-response: true
         gender:
           description: Reach people who’ve shown interest in products made for a specific
             gender
@@ -7440,6 +7670,7 @@ components:
           - Female
           nullable: true
           type: string
+          x-optional-in-response: true
         interestIds:
           description: Reach new people based on their interests
           items:
@@ -7447,6 +7678,7 @@ components:
           nullable: true
           type: array
           uniqueItems: true
+          x-optional-in-response: true
         brandIds:
           description: Choose the brands your segment might be interested in
           items:
@@ -7454,6 +7686,7 @@ components:
           nullable: true
           type: array
           uniqueItems: true
+          x-optional-in-response: true
         priceRange:
           description: Reach people who’ve shown interest in products within a specific
             price range
@@ -7467,13 +7700,17 @@ components:
           nullable: true
           type: array
           uniqueItems: true
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     ProspectingV1:
       description: Settings to target prospecting users to website visitors.
       example:
         daysSinceLastVisitMax: 6
         usersType: Unknown
         daysSinceLastVisitMin: 0
+      nullable: true
       properties:
         daysSinceLastVisitMin:
           description: "When non buyers are included, include users who visited your\
@@ -7481,12 +7718,14 @@ components:
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
         daysSinceLastVisitMax:
           description: "When non buyers are included, include users who visited your\
             \ website after this number of days"
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
         usersType:
           description: Type of users to target
           enum:
@@ -7495,17 +7734,24 @@ components:
           - ProspectsOrNonBuyers
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     ContactListV1:
       description: Settings to target users with your contact lists.
       example:
         isReadOnly: true
+      nullable: true
       properties:
         isReadOnly:
           description: Is the segment read-only
           nullable: true
           type: boolean
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     LocationV1:
       description: Settings to target users based on their location.
       example:
@@ -7518,6 +7764,7 @@ components:
           name: name
           longitude: 5.962133916683182
         radiusInKm: 5
+      nullable: true
       properties:
         pointsOfInterest:
           description: Reach users which have been historically located in the given
@@ -7526,12 +7773,14 @@ components:
             $ref: '#/components/schemas/PointOfInterestV1'
           nullable: true
           type: array
+          x-optional-in-response: true
         radiusInKm:
           description: The expected maximum distance in kilometers between a user
             and a point of interest
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
         registryType:
           description: The kind of Location audience
           enum:
@@ -7539,7 +7788,10 @@ components:
           - PointOfInterest
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     BehavioralV1:
       description: Settings of a behavioral set of users provided by Criteo.
       example:
@@ -7547,11 +7799,13 @@ components:
         endDate: 2000-01-23T04:56:07.000+00:00
         category: Unknown
         startDate: 2000-01-23T04:56:07.000+00:00
+      nullable: true
       properties:
         country:
           description: The users' country
           nullable: true
           type: string
+          x-optional-in-response: true
         category:
           description: The type of behavioral
           enum:
@@ -7566,14 +7820,18 @@ components:
           format: date-time
           nullable: true
           type: string
+          x-optional-in-response: true
         endDate:
           description: Desired date when the behavioral will end
           format: date-time
           nullable: true
           type: string
+          x-optional-in-response: true
       required:
       - category
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     RetargetingV1:
       description: Settings to target users based on its type and days since last
         visit.
@@ -7581,6 +7839,7 @@ components:
         visitorsType: Unknown
         daysSinceLastVisitMax: 7
         daysSinceLastVisitMin: 2
+      nullable: true
       properties:
         visitorsType:
           description: Types of visitors.
@@ -7591,33 +7850,43 @@ components:
           - NonBuyers
           nullable: true
           type: string
+          x-optional-in-response: true
         daysSinceLastVisitMin:
           description: Minimum number of days since last visit to partner.
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
         daysSinceLastVisitMax:
           description: Maximum number of days since last visit to partner.
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     LookalikeV1:
       description: Settings to target users that behave like a given seed segment
       example:
         targetSize: 9
         seedSegmentId: seedSegmentId
+      nullable: true
       properties:
         seedSegmentId:
           description: Segment from which the Lookalike segment will be generated
           nullable: true
           type: string
+          x-optional-in-response: true
         targetSize:
           description: Desired size of the generated Lookalike segment
           format: int64
           nullable: true
           type: integer
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     AlgebraNodeV1:
       description: Node in the audience algebra definition.
       example:
@@ -7629,28 +7898,36 @@ components:
         - null
         - null
         audienceSegmentId: audienceSegmentId
+      nullable: true
       properties:
         and:
           items:
             $ref: '#/components/schemas/AlgebraNodeV1'
           nullable: true
           type: array
+          x-optional-in-response: true
         or:
           items:
             $ref: '#/components/schemas/AlgebraNodeV1'
           nullable: true
           type: array
+          x-optional-in-response: true
         not:
           $ref: '#/components/schemas/AlgebraNodeV1'
         audienceSegmentId:
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-request: true
+      x-used-in-response: true
+      x-optional-in-response: true
     NillableString:
       description: Placeholder object for string value  for which "null" is a valid
         business value
       example:
         value: value
+      nullable: true
       properties:
         value:
           description: The string's value. If missing or null the string's value is
@@ -7658,6 +7935,7 @@ components:
           nullable: true
           type: string
       type: object
+      x-used-in-request: true
     InMarketUpdateV1:
       description: Settings to target users based on high shopping intents and demographics.
       example:
@@ -7679,7 +7957,6 @@ components:
       properties:
         country:
           description: Reach people of a specific country
-          nullable: true
           type: string
         buyingPower:
           description: Reach people who frequently purchase high price range items
@@ -7691,7 +7968,6 @@ components:
             - High
             - VeryHigh
             type: string
-          nullable: true
           type: array
           uniqueItems: true
         gender:
@@ -7700,14 +7976,12 @@ components:
           description: Reach new people based on their interests
           items:
             type: string
-          nullable: true
           type: array
           uniqueItems: true
         brandIds:
           description: Choose the brands your segment might be interested in
           items:
             type: string
-          nullable: true
           type: array
           uniqueItems: true
         priceRange:
@@ -7719,10 +7993,10 @@ components:
             - Medium
             - High
             type: string
-          nullable: true
           type: array
           uniqueItems: true
       type: object
+      x-used-in-request: true
     LocationUpdateV1:
       description: Settings to target users based on their location.
       example:
@@ -7741,20 +8015,18 @@ components:
             coordinates
           items:
             $ref: '#/components/schemas/PointOfInterestV1'
-          nullable: true
           type: array
         radiusInKm:
           description: Radius in kilometers
           format: int32
-          nullable: true
           type: integer
         registryType:
           description: The kind of Location audience
           enum:
           - PointOfInterest
-          nullable: true
           type: string
       type: object
+      x-used-in-request: true
     RetargetingUpdateV1:
       description: Settings to target users based on its type and days since last
         visit.
@@ -7769,19 +8041,17 @@ components:
           - All
           - Buyers
           - NonBuyers
-          nullable: true
           type: string
         daysSinceLastVisitMin:
           description: Minimum number of days since last visit to partner.
           format: int32
-          nullable: true
           type: integer
         daysSinceLastVisitMax:
           description: Maximum number of days since last visit to partner.
           format: int32
-          nullable: true
           type: integer
       type: object
+      x-used-in-request: true
     LookalikeUpdateV1:
       description: Settings to target users that behave like a given seed segment
       example:
@@ -7790,9 +8060,9 @@ components:
         targetSize:
           description: Desired size of the generated Lookalike segment
           format: int64
-          nullable: true
           type: integer
       type: object
+      x-used-in-request: true
     ProspectingUpdateV1:
       description: Settings to target prospecting users to website visitors.
       example:
@@ -7811,9 +8081,9 @@ components:
           enum:
           - Prospects
           - ProspectsOrNonBuyers
-          nullable: true
           type: string
       type: object
+      x-used-in-request: true
     InMarketCreateV1:
       description: Settings to target users based on high shopping intents and demographics.
       example:
@@ -7845,7 +8115,6 @@ components:
             - High
             - VeryHigh
             type: string
-          nullable: true
           type: array
           uniqueItems: true
         gender:
@@ -7854,20 +8123,17 @@ components:
           enum:
           - Male
           - Female
-          nullable: true
           type: string
         interestIds:
           description: Reach new people based on their interests
           items:
             type: string
-          nullable: true
           type: array
           uniqueItems: true
         brandIds:
           description: Choose the brands your segment might be interested in
           items:
             type: string
-          nullable: true
           type: array
           uniqueItems: true
         priceRange:
@@ -7879,12 +8145,12 @@ components:
             - Medium
             - High
             type: string
-          nullable: true
           type: array
           uniqueItems: true
       required:
       - country
       type: object
+      x-used-in-request: true
     ProspectingCreateV1:
       description: Settings to target prospecting users to website visitors.
       example:
@@ -7896,13 +8162,11 @@ components:
           description: "When non buyers are included, include users who visited your\
             \ website before this number of days"
           format: int32
-          nullable: true
           type: integer
         daysSinceLastVisitMax:
           description: "When non buyers are included, include users who visited your\
             \ website after this number of days"
           format: int32
-          nullable: true
           type: integer
         usersType:
           description: Type of users to target
@@ -7913,9 +8177,11 @@ components:
       required:
       - usersType
       type: object
+      x-used-in-request: true
     ContactListCreateV1:
       description: Settings to target users with your contact lists.
       type: object
+      x-used-in-request: true
     LocationCreateV1:
       description: Settings to target users based on their location.
       example:
@@ -7943,6 +8209,7 @@ components:
       - pointsOfInterest
       - radiusInKm
       type: object
+      x-used-in-request: true
     RetargetingCreateV1:
       description: Settings to target users based on its type and days since last
         visit.
@@ -7971,6 +8238,7 @@ components:
       - daysSinceLastVisitMin
       - visitorsType
       type: object
+      x-used-in-request: true
     LookalikeCreateV1:
       description: Settings to target users close to a given seed segment.
       example:
@@ -7983,11 +8251,11 @@ components:
         targetSize:
           description: Desired size of the generated Lookalike segment
           format: int64
-          nullable: true
           type: integer
       required:
       - seedSegmentId
       type: object
+      x-used-in-request: true
     InMarketSizeEstimationV1:
       description: Settings to target users based on high shopping intents and demographics.
       example:
@@ -8016,25 +8284,21 @@ components:
             - High
             - VeryHigh
             type: string
-          nullable: true
           type: array
           uniqueItems: true
         gender:
           enum:
           - Male
           - Female
-          nullable: true
           type: string
         interestIds:
           items:
             type: string
-          nullable: true
           type: array
           uniqueItems: true
         brandIds:
           items:
             type: string
-          nullable: true
           type: array
           uniqueItems: true
         priceRange:
@@ -8044,12 +8308,12 @@ components:
             - Medium
             - High
             type: string
-          nullable: true
           type: array
           uniqueItems: true
       required:
       - country
       type: object
+      x-used-in-request: true
     LocationSizeEstimationV1:
       description: Settings to define your audience based on their location.
       example:
@@ -8073,6 +8337,7 @@ components:
       - pointsOfInterest
       - radiusInKm
       type: object
+      x-used-in-request: true
     PointOfInterestV1:
       description: "Named coordinate defined by its latitude and longitude.\r\nLatitude\
         \ and Longitude are rounded at 5 decimals."
@@ -8085,22 +8350,28 @@ components:
           description: Name of the point of interest
           nullable: true
           type: string
+          x-optional-in-response: true
         latitude:
           description: ISO-6709 latitude (rounded at 5 decimals)
           format: double
           nullable: true
           type: number
+          x-optional-in-response: true
         longitude:
           description: ISO-6709 longitude (rounded at 5 decimals)
           format: double
           nullable: true
           type: number
+          x-optional-in-response: true
       type: object
+      x-used-in-request: true
+      x-used-in-response: true
     NillableGenderV1:
       description: Placeholder object for value for which "null" is a valid business
         value
       example:
         value: Male
+      nullable: true
       properties:
         value:
           description: The value. If missing or null the value is set to "null"
@@ -8110,11 +8381,13 @@ components:
           nullable: true
           type: string
       type: object
+      x-used-in-request: true
     NillableInt32:
       description: Placeholder object for value for which "null" is a valid business
         value
       example:
         value: 5
+      nullable: true
       properties:
         value:
           description: The value. If missing or null the value is set to "null"
@@ -8122,6 +8395,7 @@ components:
           nullable: true
           type: integer
       type: object
+      x-used-in-request: true
     ResponsesAdSetIdV24Q1:
       description: List of output resources
       example:
@@ -8197,6 +8471,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     ResponseReadAdSetV24Q1:
       description: output resource
       example:
@@ -8309,6 +8584,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     ResponsesReadAdSetV24Q1:
       description: List of output resources
       example:
@@ -8474,6 +8750,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     ResponsesAdSetId:
       description: List of output resources
       example:
@@ -8547,6 +8824,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     AdSetCategoryBidListResponse:
       description: Data model for a list of response resources
       example:
@@ -8625,6 +8903,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     PatchAdSetCategoryBidResultListResponse:
       description: Data model for a list of response resources
       example:
@@ -8697,6 +8976,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     AdSetDisplayMultiplierListResponse:
       description: Data model for a list of response resources
       example:
@@ -8775,6 +9055,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     PatchAdSetDisplayMultiplierResultListResponse:
       description: Data model for a list of response resources
       example:
@@ -8847,6 +9128,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     PatchResultCampaignListResponse:
       description: List of output resources
       example:
@@ -8920,6 +9202,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     CampaignV23Q1Response:
       description: Data model for response resource
       example:
@@ -9000,6 +9283,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     CampaignV23Q1ListResponse:
       description: Data model for a list of response resources
       example:
@@ -9100,6 +9384,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     RequestsPatchAdSetV24Q1:
       description: List of input resources
       example:
@@ -9192,6 +9477,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-request: true
     CreateAdSetV24Q1Request:
       description: Data model for an input resources
       example:
@@ -9250,6 +9536,7 @@ components:
         data:
           $ref: '#/components/schemas/CreateAdSetV24Q1Resource'
       type: object
+      x-used-in-request: true
     AdSetSearchRequestV24Q1:
       description: request payload of the search endpoint
       example:
@@ -9267,6 +9554,7 @@ components:
         filters:
           $ref: '#/components/schemas/AdSetSearchFilterV24Q1'
       type: object
+      x-used-in-request: true
     RequestsAdSetId:
       description: List of input resources
       example:
@@ -9283,6 +9571,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-request: true
     PatchAdSetCategoryBidListRequest:
       description: Data model for a list of input resources
       example:
@@ -9303,6 +9592,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-request: true
     PatchAdSetDisplayMultiplierListRequest:
       description: Data model for a list of input resources
       example:
@@ -9323,6 +9613,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-request: true
     PatchCampaignListRequest:
       description: List of input resources
       example:
@@ -9333,6 +9624,10 @@ components:
               spendLimitAmount:
                 value: 0.8008281904610115
               spendLimitType: capped
+            budgetAutomation:
+              budgetConfiguration:
+                adSetObjectives: customAction
+              enable: true
           id: id
           type: Campaign
         - attributes:
@@ -9341,6 +9636,10 @@ components:
               spendLimitAmount:
                 value: 0.8008281904610115
               spendLimitType: capped
+            budgetAutomation:
+              budgetConfiguration:
+                adSetObjectives: customAction
+              enable: true
           id: id
           type: Campaign
       properties:
@@ -9351,6 +9650,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-request: true
     CreateCampaignRequest:
       description: Data model for an input resources
       example:
@@ -9362,12 +9662,17 @@ components:
               spendLimitRenewal: undefined
               spendLimitAmount: 0.8008281904610115
               spendLimitType: capped
+            budgetAutomation:
+              automatedBudgetConfiguration:
+                objective: customAction
+              enabled: true
             advertiserId: advertiserId
           type: Campaign
       properties:
         data:
           $ref: '#/components/schemas/CreateCampaignResource'
       type: object
+      x-used-in-request: true
     CampaignSearchRequestV23Q1:
       description: request payload of the search endpoint
       example:
@@ -9382,6 +9687,7 @@ components:
         filters:
           $ref: '#/components/schemas/CampaignSearchFiltersV23Q1'
       type: object
+      x-used-in-request: true
     ReadModelAdSetIdV24Q1:
       description: read model data for resources
       example:
@@ -9403,8 +9709,12 @@ components:
           x-nullable: true
         attributes:
           description: ad set id model
+          nullable: true
           type: object
+          x-used-in-response: true
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     ReadModelReadAdSetV24Q1:
       description: read model data for resources
       example:
@@ -9456,6 +9766,7 @@ components:
             budgetStrategy: capped
         id: id
         type: ReadAdSetV24Q1
+      nullable: true
       properties:
         id:
           description: Id of the entity
@@ -9472,6 +9783,8 @@ components:
         attributes:
           $ref: '#/components/schemas/ReadAdSetV24Q1'
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     ReadModelAdSetId:
       description: read model data for resources
       example:
@@ -9491,6 +9804,7 @@ components:
           type: string
           x-nullable: true
       type: object
+      x-used-in-response: true
     AdSetCategoryBidResource:
       description: Data model for a Resource
       example:
@@ -9506,12 +9820,15 @@ components:
           description: Id of the entity
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           description: Canonical type name of the entity
           example: AdSetCategoryBid
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     PatchAdSetCategoryBidResultResource:
       description: Data model for a Resource
       example:
@@ -9522,12 +9839,15 @@ components:
           description: Id of the entity
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           description: Canonical type name of the entity
           example: AdSetCategoryBid
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     AdSetDisplayMultiplierResource:
       description: Data model for a Resource
       example:
@@ -9543,12 +9863,15 @@ components:
           description: Id of the entity
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           description: Canonical type name of the entity
           example: AdSetDisplayMultiplier
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     PatchAdSetDisplayMultiplierResultResource:
       description: Data model for a Resource
       example:
@@ -9559,12 +9882,15 @@ components:
           description: Id of the entity
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           description: Canonical type name of the entity
           example: AdSetDisplayMultiplier
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     PatchResultCampaignReadResource:
       description: read model data for resources
       example:
@@ -9584,6 +9910,7 @@ components:
           type: string
           x-nullable: true
       type: object
+      x-used-in-response: true
     CampaignV23Q1Resource:
       description: Data model for a Resource
       example:
@@ -9603,6 +9930,7 @@ components:
           advertiserId: advertiserId
         id: id
         type: Campaign
+      nullable: true
       properties:
         attributes:
           $ref: '#/components/schemas/CampaignV23Q1'
@@ -9610,12 +9938,16 @@ components:
           description: Id of the entity
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           description: Canonical type name of the entity
           example: Campaign
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     WriteModelPatchAdSetV24Q1:
       description: write model data for resources
       example:
@@ -9674,6 +10006,7 @@ components:
         attributes:
           $ref: '#/components/schemas/PatchAdSetV24Q1'
       type: object
+      x-used-in-request: true
     CreateAdSetV24Q1Resource:
       description: Data model for a Resource
       example:
@@ -9733,9 +10066,9 @@ components:
         type:
           description: Canonical type name of the entity
           example: AdSet
-          nullable: true
           type: string
       type: object
+      x-used-in-request: true
     AdSetSearchFilterV24Q1:
       description: filter on ad set ids
       example:
@@ -9768,6 +10101,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-request: true
     WriteModelAdSetId:
       description: write model data for resources
       example:
@@ -9786,6 +10120,7 @@ components:
           type: string
           x-nullable: true
       type: object
+      x-used-in-request: true
     PatchAdSetCategoryBidResource:
       description: Data model for a Resource
       example:
@@ -9798,14 +10133,13 @@ components:
           $ref: '#/components/schemas/PatchAdSetCategoryBid'
         id:
           description: Id of the entity
-          nullable: true
           type: string
         type:
           description: Canonical type name of the entity
           example: AdSetCategoryBid
-          nullable: true
           type: string
       type: object
+      x-used-in-request: true
     PatchAdSetDisplayMultiplierResource:
       description: Data model for a Resource
       example:
@@ -9818,14 +10152,13 @@ components:
           $ref: '#/components/schemas/PatchAdSetDisplayMultiplier'
         id:
           description: Id of the entity
-          nullable: true
           type: string
         type:
           description: Canonical type name of the entity
           example: AdSetDisplayMultiplier
-          nullable: true
           type: string
       type: object
+      x-used-in-request: true
     PatchCampaignWriteResource:
       description: write model data for resources
       example:
@@ -9835,6 +10168,10 @@ components:
             spendLimitAmount:
               value: 0.8008281904610115
             spendLimitType: capped
+          budgetAutomation:
+            budgetConfiguration:
+              adSetObjectives: customAction
+            enable: true
         id: id
         type: Campaign
       properties:
@@ -9852,6 +10189,7 @@ components:
         attributes:
           $ref: '#/components/schemas/PatchCampaign'
       type: object
+      x-used-in-request: true
     CreateCampaignResource:
       description: Data model for a Resource
       example:
@@ -9862,6 +10200,10 @@ components:
             spendLimitRenewal: undefined
             spendLimitAmount: 0.8008281904610115
             spendLimitType: capped
+          budgetAutomation:
+            automatedBudgetConfiguration:
+              objective: customAction
+            enabled: true
           advertiserId: advertiserId
         type: Campaign
       properties:
@@ -9870,9 +10212,9 @@ components:
         type:
           description: Canonical type name of the entity
           example: Campaign
-          nullable: true
           type: string
       type: object
+      x-used-in-request: true
     CampaignSearchFiltersV23Q1:
       description: filters on campaign
       example:
@@ -9896,9 +10238,13 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-request: true
     AdSetIdV24Q1:
       description: ad set id model
+      nullable: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     ReadAdSetV24Q1:
       description: ad set read model
       example:
@@ -9947,6 +10293,7 @@ components:
           budgetAmount: 1.4658129805029452
           budgetRenewal: undefined
           budgetStrategy: capped
+      nullable: true
       properties:
         name:
           nullable: true
@@ -9971,6 +10318,7 @@ components:
           - app
           nullable: true
           type: string
+          x-optional-in-response: true
         objective:
           enum:
           - customAction
@@ -9986,6 +10334,7 @@ components:
           - videoViews
           nullable: true
           type: string
+          x-optional-in-response: true
         schedule:
           $ref: '#/components/schemas/ReadAdSetScheduleV24Q1'
         bidding:
@@ -10009,11 +10358,14 @@ components:
           type: string
           x-nullable: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     AdSetCategoryBid:
       description: Category Bid information about a Category for a given Ad Set.
       example:
         bidAmount: 0.8008281904610115
         categoryName: categoryName
+      nullable: true
       properties:
         categoryName:
           description: The name of the Category to which the Category Bid has been
@@ -10027,13 +10379,17 @@ components:
           format: double
           nullable: true
           type: number
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     AdSetDisplayMultiplier:
       description: Display Multiplier information about a Category for a given Ad
         Set.
       example:
         displayMultiplier: 0.8008281904610115
         categoryName: categoryName
+      nullable: true
       properties:
         categoryName:
           description: The name of the Category to which the given for which the Display
@@ -10047,7 +10403,10 @@ components:
           format: double
           nullable: true
           type: number
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     CampaignV23Q1:
       description: campaign read model
       example:
@@ -10064,6 +10423,7 @@ components:
           enabled: true
         id: id
         advertiserId: advertiserId
+      nullable: true
       properties:
         name:
           nullable: true
@@ -10082,6 +10442,7 @@ components:
           - retention
           nullable: true
           type: string
+          x-optional-in-response: true
         budgetAutomation:
           $ref: '#/components/schemas/CampaignBudgetAutomationV23Q1'
         id:
@@ -10090,6 +10451,8 @@ components:
           type: string
           x-nullable: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     PatchAdSetV24Q1:
       description: ad set patch model
       example:
@@ -10144,6 +10507,7 @@ components:
         budget:
           $ref: '#/components/schemas/PatchAdSetBudgetV24Q1'
       type: object
+      x-used-in-request: true
     CreateAdSetV24Q1:
       description: ad set create model
       example:
@@ -10256,6 +10620,7 @@ components:
       - targeting
       - trackingCode
       type: object
+      x-used-in-request: true
     PatchAdSetCategoryBid:
       description: Category Bid to update for a given combination of Ad Set and Category.
       example:
@@ -10265,9 +10630,9 @@ components:
           description: The Bid amount applied to the given Category associated to
             an Ad Set. At most 4 decimals are supported. Additional decimals are rounded.
           format: double
-          nullable: true
           type: number
       type: object
+      x-used-in-request: true
     PatchAdSetDisplayMultiplier:
       description: Display Multiplier to update for a given combination of Ad Set
         and Category.
@@ -10279,9 +10644,9 @@ components:
             Multiplier set it to 1. At most 4 decimals are supported. Additional decimals
             are rounded.
           format: double
-          nullable: true
           type: number
       type: object
+      x-used-in-request: true
     PatchCampaign:
       description: campaign patch model
       example:
@@ -10290,10 +10655,17 @@ components:
           spendLimitAmount:
             value: 0.8008281904610115
           spendLimitType: capped
+        budgetAutomation:
+          budgetConfiguration:
+            adSetObjectives: customAction
+          enable: true
       properties:
         spendLimit:
           $ref: '#/components/schemas/PatchCampaignSpendLimit'
+        budgetAutomation:
+          $ref: '#/components/schemas/PatchMarketingCampaignBudgetAutomation'
       type: object
+      x-used-in-request: true
     CreateCampaign:
       description: Campaign create model
       example:
@@ -10303,6 +10675,10 @@ components:
           spendLimitRenewal: undefined
           spendLimitAmount: 0.8008281904610115
           spendLimitType: capped
+        budgetAutomation:
+          automatedBudgetConfiguration:
+            objective: customAction
+          enabled: true
         advertiserId: advertiserId
       properties:
         name:
@@ -10324,12 +10700,15 @@ components:
           type: string
         spendLimit:
           $ref: '#/components/schemas/CreateCampaignSpendLimit'
+        budgetAutomation:
+          $ref: '#/components/schemas/BudgetAutomation'
       required:
       - advertiserId
       - goal
       - name
       - spendLimit
       type: object
+      x-used-in-request: true
     ReadAdSetScheduleV24Q1:
       description: ad set schedule read model
       example:
@@ -10339,6 +10718,7 @@ components:
         startDate:
           value: 2000-01-23T04:56:07.000+00:00
         deliveryStatus: draft
+      nullable: true
       properties:
         startDate:
           $ref: '#/components/schemas/NillableDateTime'
@@ -10350,6 +10730,7 @@ components:
           - "off"
           nullable: true
           type: string
+          x-optional-in-response: true
         deliveryStatus:
           enum:
           - draft
@@ -10364,12 +10745,16 @@ components:
           - archived
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     ReadAdSetBiddingV24Q1:
       description: ad set bidding read model
       example:
         bidAmount: 0.8008281904610115
         costController: COS
+      nullable: true
       properties:
         bidAmount:
           description: Decimal value target relating to the `adSetObjective` specified.
@@ -10393,7 +10778,10 @@ components:
           - targetCPM
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     AdSetTargetingV24Q1:
       description: ad set targeting model
       example:
@@ -10417,6 +10805,7 @@ components:
           devices:
           - other
           - other
+      nullable: true
       properties:
         deliveryLimitations:
           $ref: '#/components/schemas/AdSetDeliveryLimitationsV24Q1'
@@ -10425,6 +10814,9 @@ components:
         frequencyCapping:
           $ref: '#/components/schemas/AdSetFrequencyCappingV24Q1'
       type: object
+      x-used-in-request: true
+      x-used-in-response: true
+      x-optional-in-response: true
     ReadAdSetBudgetV24Q1:
       description: ad set budget read model
       example:
@@ -10433,6 +10825,7 @@ components:
         budgetAmount: 1.4658129805029452
         budgetRenewal: undefined
         budgetStrategy: capped
+      nullable: true
       properties:
         budgetStrategy:
           enum:
@@ -10440,6 +10833,7 @@ components:
           - uncapped
           nullable: true
           type: string
+          x-optional-in-response: true
         budgetRenewal:
           enum:
           - undefined
@@ -10449,6 +10843,7 @@ components:
           - weekly
           nullable: true
           type: string
+          x-optional-in-response: true
         budgetDeliverySmoothing:
           enum:
           - accelerated
@@ -10468,12 +10863,15 @@ components:
           - sundayToSaturday
           nullable: true
           type: string
+          x-optional-in-response: true
         budgetAmount:
           format: double
           nullable: true
           type: number
           x-nullable: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     CampaignSpendLimitV23Q1:
       description: campaign spend limit model
       example:
@@ -10481,6 +10879,7 @@ components:
         spendLimitAmount:
           value: 0.8008281904610115
         spendLimitType: capped
+      nullable: true
       properties:
         spendLimitType:
           enum:
@@ -10488,6 +10887,7 @@ components:
           - uncapped
           nullable: true
           type: string
+          x-optional-in-response: true
         spendLimitRenewal:
           enum:
           - undefined
@@ -10496,22 +10896,29 @@ components:
           - lifetime
           nullable: true
           type: string
+          x-optional-in-response: true
         spendLimitAmount:
           $ref: '#/components/schemas/NillableDecimal'
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     CampaignBudgetAutomationV23Q1:
       description: The campaign budget automation model
       example:
         automatedBudgetConfiguration:
           adSetOptimizationObjective: customAction
         enabled: true
+      nullable: true
       properties:
         enabled:
           nullable: true
           type: boolean
+          x-optional-in-response: true
         automatedBudgetConfiguration:
-          $ref: '#/components/schemas/CampaignBudgetAutomationV23Q1_automatedBudgetConfiguration'
+          $ref: '#/components/schemas/AutomatedBudgetConfigurationV23Q1'
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     PatchAdSetSchedulingV24Q1:
       description: ad set schedule patch model
       example:
@@ -10525,6 +10932,7 @@ components:
         endDate:
           $ref: '#/components/schemas/NillableDateTime'
       type: object
+      x-used-in-request: true
     PatchAdSetBiddingV24Q1:
       description: ad set bidding patch model
       example:
@@ -10534,6 +10942,7 @@ components:
         bidAmount:
           $ref: '#/components/schemas/NillableDecimal'
       type: object
+      x-used-in-request: true
     PatchAdSetBudgetV24Q1:
       description: ad set budget patch model
       example:
@@ -10584,6 +10993,7 @@ components:
         budgetAmount:
           $ref: '#/components/schemas/NillableDecimal'
       type: object
+      x-used-in-request: true
     CreateAdSetScheduleV24Q1:
       description: ad set schedule create model
       example:
@@ -10601,6 +11011,7 @@ components:
       required:
       - startDate
       type: object
+      x-used-in-request: true
     CreateAdSetBiddingV24Q1:
       description: ad set bidding create model
       example:
@@ -10631,6 +11042,7 @@ components:
       required:
       - costController
       type: object
+      x-used-in-request: true
     CreateAdSetTargetingV24Q1:
       description: Targeting configuration of the ad set
       example:
@@ -10673,6 +11085,7 @@ components:
       required:
       - frequencyCapping
       type: object
+      x-used-in-request: true
     CreateAdSetBudgetV24Q1:
       description: ad set budget create model
       example:
@@ -10694,13 +11107,11 @@ components:
           - monthly
           - lifetime
           - weekly
-          nullable: true
           type: string
         budgetDeliverySmoothing:
           enum:
           - accelerated
           - standard
-          nullable: true
           type: string
         budgetDeliveryWeek:
           enum:
@@ -10712,7 +11123,6 @@ components:
           - fridayToThursday
           - saturdayToFriday
           - sundayToSaturday
-          nullable: true
           type: string
         budgetAmount:
           format: double
@@ -10722,6 +11132,7 @@ components:
       required:
       - budgetStrategy
       type: object
+      x-used-in-request: true
     PatchCampaignSpendLimit:
       description: campaign spend limit model
       example:
@@ -10749,6 +11160,21 @@ components:
         spendLimitAmount:
           $ref: '#/components/schemas/NillableDecimal'
       type: object
+      x-used-in-request: true
+    PatchMarketingCampaignBudgetAutomation:
+      description: patch marketing campaign budet automation model
+      example:
+        budgetConfiguration:
+          adSetObjectives: customAction
+        enable: true
+      properties:
+        enable:
+          description: Budget automation for the marketing campaign enable
+          type: boolean
+        budgetConfiguration:
+          $ref: '#/components/schemas/BudgetAutomationConfiguration'
+      type: object
+      x-used-in-request: true
     CreateCampaignSpendLimit:
       description: campaign spend limit create model
       example:
@@ -10769,7 +11195,6 @@ components:
           - daily
           - monthly
           - lifetime
-          nullable: true
           type: string
         spendLimitAmount:
           description: The amount of the spend limit. null if spendLimitType is uncapped.
@@ -10780,12 +11205,27 @@ components:
       required:
       - spendLimitType
       type: object
+      x-used-in-request: true
+    BudgetAutomation:
+      description: The campaign budget automation model
+      example:
+        automatedBudgetConfiguration:
+          objective: customAction
+        enabled: true
+      properties:
+        enabled:
+          type: boolean
+        automatedBudgetConfiguration:
+          $ref: '#/components/schemas/AutomatedBudgetConfiguration'
+      type: object
+      x-used-in-request: true
     NillableDateTime:
       description: "structure that encapsulates an object that have valid business\
         \ null values. If the structure is provided (i.e. not null), then the value\
         \ in it, even null, is provided."
       example:
         value: 2000-01-23T04:56:07.000+00:00
+      nullable: true
       properties:
         value:
           format: date-time
@@ -10793,6 +11233,9 @@ components:
           type: string
           x-nullable: true
       type: object
+      x-used-in-request: true
+      x-used-in-response: true
+      x-optional-in-response: true
     AdSetDeliveryLimitationsV24Q1:
       description: ad set delivery limitations model
       example:
@@ -10805,6 +11248,7 @@ components:
         devices:
         - other
         - other
+      nullable: true
       properties:
         environments:
           items:
@@ -10837,6 +11281,9 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-request: true
+      x-used-in-response: true
+      x-optional-in-response: true
     AdSetGeoLocationV24Q1:
       description: ad set geolocation model
       example:
@@ -10846,6 +11293,7 @@ components:
           value: null
         subdivisions:
           value: null
+      nullable: true
       properties:
         countries:
           $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q1'
@@ -10854,6 +11302,9 @@ components:
         zipCodes:
           $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q1'
       type: object
+      x-used-in-request: true
+      x-used-in-response: true
+      x-optional-in-response: true
     AdSetFrequencyCappingV24Q1:
       description: ad set frequency capping model
       example:
@@ -10869,12 +11320,16 @@ components:
           - advanced
           nullable: true
           type: string
+          x-optional-in-response: true
         maximumImpressions:
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
       type: object
       x-nullable: true
+      x-used-in-request: true
+      x-used-in-response: true
     NillableDecimal:
       description: "structure that encapsulates an object that have valid business\
         \ null values. If the structure is provided (i.e. not null), then the value\
@@ -10889,7 +11344,34 @@ components:
           type: number
           x-nullable: true
       type: object
+      x-used-in-request: true
+      x-used-in-response: true
+      x-optional-in-response: true
+    AutomatedBudgetConfigurationV23Q1:
+      description: The automated budget configuration model
+      example:
+        adSetOptimizationObjective: customAction
+      nullable: true
+      properties:
+        adSetOptimizationObjective:
+          enum:
+          - customAction
+          - clicks
+          - conversions
+          - displays
+          - appPromotion
+          - revenue
+          - storeConversions
+          - value
+          - reach
+          - visits
+          - videoViews
+          nullable: true
+          type: string
+          x-optional-in-response: true
+      type: object
       x-nullable: true
+      x-used-in-response: true
     CreateAdSetGeoLocationV24Q1:
       description: Geolocation configuration of the ad set
       example:
@@ -10916,16 +11398,66 @@ components:
         zipCodes:
           $ref: '#/components/schemas/AdSetTargetingRuleV24Q1'
       type: object
+      x-used-in-request: true
+    BudgetAutomationConfiguration:
+      description: The budget automation configuration model
+      example:
+        adSetObjectives: customAction
+      properties:
+        adSetObjectives:
+          enum:
+          - customAction
+          - clicks
+          - conversions
+          - displays
+          - appPromotion
+          - revenue
+          - storeConversions
+          - value
+          - reach
+          - visits
+          - videoViews
+          type: string
+      type: object
+      x-used-in-request: true
+    AutomatedBudgetConfiguration:
+      description: The campaign automated budget configuration model
+      example:
+        objective: customAction
+      nullable: true
+      properties:
+        objective:
+          description: Objective of the ad set
+          enum:
+          - customAction
+          - clicks
+          - conversions
+          - displays
+          - appPromotion
+          - revenue
+          - storeConversions
+          - value
+          - reach
+          - visits
+          - videoViews
+          type: string
+      type: object
+      x-nullable: true
+      x-used-in-request: true
     NillableAdSetTargetingRuleV24Q1:
       description: "structure that encapsulates an object that have valid business\
         \ null values. If the structure is provided (i.e. not null), then the value\
         \ in it, even null, is provided."
       example:
         value: null
+      nullable: true
       properties:
         value:
           $ref: '#/components/schemas/NillableAdSetTargetingRuleV24Q1_value'
       type: object
+      x-used-in-request: true
+      x-used-in-response: true
+      x-optional-in-response: true
     AdSetTargetingRuleV24Q1:
       description: ad set targeting rule model
       example:
@@ -10939,7 +11471,6 @@ components:
           - undefined
           - in
           - notIn
-          nullable: true
           type: string
         values:
           items:
@@ -10948,6 +11479,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-request: true
     ResourceOutcomeOfAd:
       description: A top-level object that encapsulates a Criteo API response for
         a single entity.
@@ -11024,6 +11556,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     ResourceCollectionOutcomeOfAd:
       description: A top-level object that encapsulates a Criteo API response for
         several entities.
@@ -11115,6 +11648,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     ResourceCollectionOutcomeOfCoupon:
       description: A top-level object that encapsulates a Criteo API response for
         several entities.
@@ -11240,6 +11774,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     ResourceOutcomeOfCoupon:
       description: A top-level object that encapsulates a Criteo API response for
         a single entity.
@@ -11333,6 +11868,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     ResourceOutcomeOfCouponSupportedSizes:
       description: A top-level object that encapsulates a Criteo API response for
         a single entity.
@@ -11407,6 +11943,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     ResourceCollectionOutcomeOfCreative:
       description: A top-level object that encapsulates a Criteo API response for
         several entities.
@@ -11646,6 +12183,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     ResourceOutcomeOfCreative:
       description: A top-level object that encapsulates a Criteo API response for
         a single entity.
@@ -11796,6 +12334,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     ResourceInputOfAdWrite:
       description: A top-level object that encapsulates a Criteo API request for a
         single entity.
@@ -11815,6 +12354,7 @@ components:
         data:
           $ref: '#/components/schemas/ResourceOfAdWrite'
       type: object
+      x-used-in-request: true
     ResourceInputOfCreateCoupon:
       description: A top-level object that encapsulates a Criteo API request for a
         single entity.
@@ -11848,6 +12388,7 @@ components:
         data:
           $ref: '#/components/schemas/ResourceOfCreateCoupon'
       type: object
+      x-used-in-request: true
     ResourceInputOfUpdateCoupon:
       description: A top-level object that encapsulates a Criteo API request for a
         single entity.
@@ -11862,6 +12403,7 @@ components:
         data:
           $ref: '#/components/schemas/ResourceOfUpdateCoupon'
       type: object
+      x-used-in-request: true
     ResourceInputOfCreativeWrite:
       description: A top-level object that encapsulates a Criteo API request for a
         single entity.
@@ -11936,6 +12478,7 @@ components:
         data:
           $ref: '#/components/schemas/ResourceOfCreativeWrite'
       type: object
+      x-used-in-request: true
     ResourceOfAd:
       description: A class that represents a domain entity exposed by an API.
       example:
@@ -11950,6 +12493,7 @@ components:
           startDate: startDate
         id: id
         type: type
+      nullable: true
       properties:
         attributes:
           $ref: '#/components/schemas/Ad'
@@ -11963,6 +12507,8 @@ components:
           type: string
           x-nullable: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     ResourceOfCoupon:
       description: A class that represents a domain entity exposed by an API.
       example:
@@ -11994,6 +12540,7 @@ components:
           status: status
         id: id
         type: type
+      nullable: true
       properties:
         attributes:
           $ref: '#/components/schemas/Coupon'
@@ -12007,6 +12554,8 @@ components:
           type: string
           x-nullable: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     ResourceOfCouponSupportedSizes:
       description: A class that represents a domain entity exposed by an API.
       example:
@@ -12019,6 +12568,7 @@ components:
           - logoZone
         id: id
         type: type
+      nullable: true
       properties:
         attributes:
           $ref: '#/components/schemas/CouponSupportedSizes'
@@ -12032,6 +12582,8 @@ components:
           type: string
           x-nullable: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     ResourceOfCreative:
       description: A class that represents a domain entity exposed by an API.
       example:
@@ -12120,6 +12672,7 @@ components:
                 height: 6
         id: id
         type: type
+      nullable: true
       properties:
         attributes:
           $ref: '#/components/schemas/Creative'
@@ -12133,6 +12686,8 @@ components:
           type: string
           x-nullable: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     ResourceOfAdWrite:
       description: A class that represents a domain entity exposed by an API.
       example:
@@ -12159,6 +12714,7 @@ components:
           type: string
           x-nullable: true
       type: object
+      x-used-in-request: true
     ResourceOfCreateCoupon:
       description: A class that represents a domain entity exposed by an API.
       example:
@@ -12199,6 +12755,7 @@ components:
           type: string
           x-nullable: true
       type: object
+      x-used-in-request: true
     ResourceOfUpdateCoupon:
       description: A class that represents a domain entity exposed by an API.
       example:
@@ -12220,6 +12777,7 @@ components:
           type: string
           x-nullable: true
       type: object
+      x-used-in-request: true
     ResourceOfCreativeWrite:
       description: A class that represents a domain entity exposed by an API.
       example:
@@ -12301,6 +12859,7 @@ components:
           type: string
           x-nullable: true
       type: object
+      x-used-in-request: true
     Ad:
       description: An ad is the binding that connects a creative with an ad set
       example:
@@ -12312,6 +12871,7 @@ components:
         id: id
         creativeId: creativeId
         startDate: startDate
+      nullable: true
       properties:
         name:
           description: The name of the ad
@@ -12363,6 +12923,8 @@ components:
           type: string
           x-nullable: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     Coupon:
       description: Coupons are static images applied on ad set which can be displayed
         within an ad and link to a landing page.
@@ -12392,6 +12954,7 @@ components:
         landingPageUrl: landingPageUrl
         startDate: startDate
         status: status
+      nullable: true
       properties:
         name:
           description: The name of the Coupon
@@ -12459,22 +13022,27 @@ components:
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
         showDuration:
           description: Show Coupon for a duration of N seconds (between 1 and 5)
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
         rotationsNumber:
           description: Number of rotations for the Coupons (from 1 to 10 times)
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
         id:
           description: Unique identifier (duplicate of the parent id).
           nullable: true
           type: string
           x-nullable: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     CouponSupportedSizes:
       description: Entity containing the list of Coupon supported sizes
       example:
@@ -12484,6 +13052,7 @@ components:
         logoZone:
         - logoZone
         - logoZone
+      nullable: true
       properties:
         logoZone:
           description: Array of LogoZone sizes as string in width x height format
@@ -12500,6 +13069,8 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     Creative:
       description: A creative is a project with the necessary information to display
         a creative
@@ -12586,6 +13157,7 @@ components:
             size:
               width: 0
               height: 6
+      nullable: true
       properties:
         name:
           description: The name of the creative
@@ -12633,6 +13205,8 @@ components:
       - name
       - status
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     AdWrite:
       description: Entity to create or update an ad
       example:
@@ -12686,6 +13260,7 @@ components:
       - name
       - startDate
       type: object
+      x-used-in-request: true
     CreateCoupon:
       description: Entity to create a Coupon
       example:
@@ -12777,6 +13352,7 @@ components:
       - showEvery
       - startDate
       type: object
+      x-used-in-request: true
     UpdateCoupon:
       description: Entity to edit a Coupon
       example:
@@ -12797,6 +13373,7 @@ components:
       required:
       - startDate
       type: object
+      x-used-in-request: true
     CreativeWrite:
       description: Entity to create or update a creative
       example:
@@ -12896,6 +13473,7 @@ components:
       - format
       - name
       type: object
+      x-used-in-request: true
     ImageSlide:
       description: Slide containing the image URLs
       example:
@@ -12910,11 +13488,13 @@ components:
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
         height:
           description: Height of the Coupon slide
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
         slideUrls:
           description: Array of images of the same size uploaded on demostatic.criteo.com
             when deploying and then static.criteo.net
@@ -12924,6 +13504,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
     ImageAttributes:
       description: The attributes specific to Image creatives
       example:
@@ -12931,6 +13512,7 @@ components:
         - urls
         - urls
         landingPageUrl: landingPageUrl
+      nullable: true
       properties:
         urls:
           description: Array of images uploaded on demostatic.criteo.com when deploying
@@ -12946,6 +13528,8 @@ components:
           type: string
           x-nullable: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     HtmlTagAttributes:
       description: The attributes specific to HtmlTag creatives
       example:
@@ -12958,6 +13542,7 @@ components:
           size:
             width: 0
             height: 6
+      nullable: true
       properties:
         tags:
           description: An array containing the html tags
@@ -12967,6 +13552,8 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     DynamicAttributes:
       description: The attributes specific to Dynamic creatives
       example:
@@ -12983,6 +13570,7 @@ components:
         - callsToAction
         - callsToAction
         productImageDisplay: ShowFullImage
+      nullable: true
       properties:
         logos:
           description: Logo images uploaded on demostatic.criteo.com when deploying
@@ -13035,7 +13623,10 @@ components:
           - ZoomOnImage
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     AdaptiveAttributes:
       description: The attributes specific to Adaptive creatives
       example:
@@ -13083,6 +13674,7 @@ components:
           ctaBackgroundColor: ctaBackgroundColor
           logoAreaAndTitleColor: logoAreaAndTitleColor
         headlineText: headlineText
+      nullable: true
       properties:
         layouts:
           description: "The Adaptive layouts that are enabled.\r\nIt can contain any\
@@ -13163,6 +13755,8 @@ components:
       - layouts
       - logos
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     CreateImageSlide:
       description: Slide containing the images of the same size as a base-64 encoded
         string
@@ -13176,12 +13770,10 @@ components:
         width:
           description: Width of the Coupon slide
           format: int32
-          nullable: true
           type: integer
         height:
           description: Height of the Coupon slide
           format: int32
-          nullable: true
           type: integer
         slideBase64Strings:
           description: Array of images of the same size as a base-64 encoded string
@@ -13191,6 +13783,7 @@ components:
           type: array
           x-nullable: true
       type: object
+      x-used-in-request: true
     ImageWriteAttributes:
       description: The attributes specific to create or update an Image creative
       example:
@@ -13213,6 +13806,7 @@ components:
       - base64Strings
       - landingPageUrl
       type: object
+      x-used-in-request: true
     HtmlTagWriteAttributes:
       description: The attributes specific to create or update a HtmlTag creative
       example:
@@ -13234,6 +13828,7 @@ components:
       required:
       - tags
       type: object
+      x-used-in-request: true
     DynamicWriteAttributes:
       description: The attributes specific to create or update a Dynamic creative
       example:
@@ -13294,6 +13889,7 @@ components:
       - pricesColor
       - productImageDisplay
       type: object
+      x-used-in-request: true
     AdaptiveWriteAttributes:
       description: The attributes specific to create or update an Adaptive creative
       example:
@@ -13409,6 +14005,7 @@ components:
       - layouts
       - logoBase64String
       type: object
+      x-used-in-request: true
     Tag:
       description: Entity specifying the html of the tag and its size
       example:
@@ -13425,6 +14022,8 @@ components:
         size:
           $ref: '#/components/schemas/Size'
       type: object
+      x-used-in-response: true
+      x-used-in-request: true
     ImageShape:
       description: Entity containing the shape and url of the image
       example:
@@ -13447,6 +14046,7 @@ components:
       - shape
       - url
       type: object
+      x-used-in-response: true
     AdaptiveColors:
       description: Entity consists of the color aliases of the creative's elements
       example:
@@ -13489,6 +14089,8 @@ components:
       - text1Color
       - text2Color
       type: object
+      x-used-in-response: true
+      x-used-in-request: true
     ImageSet:
       description: Entity consists of multiple images in different ratios and a headline
         text.
@@ -13513,6 +14115,7 @@ components:
       required:
       - images
       type: object
+      x-used-in-response: true
     VideoDetail:
       description: "Entity consists of the url of the video, its duration and its\
         \ shape."
@@ -13543,6 +14146,7 @@ components:
       - shape
       - url
       type: object
+      x-used-in-response: true
     ImageSetBase64:
       description: Entity consists of multiple images in different ratios as a base-64
         encoded and a headline text.
@@ -13567,21 +14171,28 @@ components:
       required:
       - imageBase64Strings
       type: object
+      x-used-in-request: true
     Size:
       description: Size entity containing width and height of the creative
       example:
         width: 0
         height: 6
+      nullable: true
       properties:
         width:
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
         height:
           format: int32
           nullable: true
           type: integer
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-used-in-request: true
+      x-optional-in-response: true
     TransparencyReportListResponse:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
@@ -13654,6 +14265,7 @@ components:
             $ref: '#/components/schemas/TransparencyReportResource'
           nullable: true
           type: array
+          x-optional-in-response: true
         warnings:
           description: Warnings that occured during this call.
           items:
@@ -13661,6 +14273,7 @@ components:
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
         errors:
           description: Errors that occured during this call.
           items:
@@ -13668,7 +14281,9 @@ components:
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     Outcome:
       additionalProperties: false
       description: The outcome of an API call.
@@ -13680,6 +14295,7 @@ components:
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
         errors:
           description: Errors that occured during this call.
           items:
@@ -13687,7 +14303,9 @@ components:
           nullable: true
           readOnly: true
           type: array
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     TransparencyQueryMessage:
       additionalProperties: false
       description: This is the message defining the query for Transparency report
@@ -13699,7 +14317,6 @@ components:
         shouldDisplayProductIds:
           default: false
           description: Specify if the product ids are displayed in the report.
-          nullable: true
           type: boolean
         startDate:
           description: "Start date of the report. Date component of ISO 8061 format,\
@@ -13715,6 +14332,7 @@ components:
       - endDate
       - startDate
       type: object
+      x-used-in-request: true
     PlacementsReportQueryMessageListRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for several
@@ -13766,6 +14384,7 @@ components:
           nullable: true
           type: array
       type: object
+      x-used-in-request: true
     StatisticsReportQueryMessage:
       additionalProperties: false
       description: This is the message defining the query for Adset report
@@ -13884,6 +14503,7 @@ components:
       - metrics
       - startDate
       type: object
+      x-used-in-request: true
     TransactionsReportQueryMessageListRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for several
@@ -13915,6 +14535,7 @@ components:
           nullable: true
           type: array
       type: object
+      x-used-in-request: true
     TransparencyReportResource:
       additionalProperties: false
       description: A value resource exposed by the API.
@@ -13933,9 +14554,11 @@ components:
           description: Type of the resource.
           nullable: true
           type: string
+          x-optional-in-response: true
         attributes:
           $ref: '#/components/schemas/TransparencyReport'
       type: object
+      x-used-in-response: true
     PlacementsReportQueryMessageResource:
       additionalProperties: false
       description: A value resource exposed by the API.
@@ -13967,6 +14590,7 @@ components:
         attributes:
           $ref: '#/components/schemas/PlacementsReportQueryMessage'
       type: object
+      x-used-in-request: true
     TransactionsReportQueryMessageResource:
       additionalProperties: false
       description: A value resource exposed by the API.
@@ -13988,6 +14612,7 @@ components:
         attributes:
           $ref: '#/components/schemas/TransactionsReportQueryMessage'
       type: object
+      x-used-in-request: true
     TransparencyReport:
       additionalProperties: false
       description: This is the message defining the attribute response for Transparency
@@ -14000,6 +14625,7 @@ components:
         - fileName: fileName
           url: url
         advertiserId: advertiserId
+      nullable: true
       properties:
         advertiserId:
           type: string
@@ -14015,6 +14641,8 @@ components:
       - files
       - tokenValidUntil
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     PlacementsReportQueryMessage:
       additionalProperties: false
       description: This is the message defining the query for Placements report
@@ -14086,7 +14714,6 @@ components:
         disclosed:
           default: true
           description: Returns disclosed or undisclosed placements.
-          nullable: true
           type: boolean
         format:
           description: "The file format of the generated report: csv, xml, excel or\
@@ -14117,6 +14744,7 @@ components:
       - metrics
       - startDate
       type: object
+      x-used-in-request: true
     TransactionsReportQueryMessage:
       additionalProperties: false
       description: This is the message defining the query for Transaction report
@@ -14168,6 +14796,7 @@ components:
       - format
       - startDate
       type: object
+      x-used-in-request: true
     TransparencyReportFile:
       additionalProperties: false
       description: This is the message defining the file response for Transparency
@@ -14184,6 +14813,7 @@ components:
       - fileName
       - url
       type: object
+      x-used-in-response: true
     GetPortfolioResponse:
       description: Portfolio fetch Response
       example:
@@ -14236,6 +14866,7 @@ components:
           nullable: true
           type: array
           uniqueItems: false
+          x-optional-in-response: true
         errors:
           description: "Error list returned by the Criteo API\r\nFor successful requests\
             \ it is empty"
@@ -14244,6 +14875,7 @@ components:
           nullable: true
           type: array
           uniqueItems: false
+          x-optional-in-response: true
         warnings:
           description: "Warnings list returned by the Criteo API\r\nIn some situations\
             \ the operations are successful but it may be useful to issue warnings\
@@ -14255,7 +14887,9 @@ components:
           nullable: true
           type: array
           uniqueItems: false
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     EntityOfPortfolioMessage:
       description: Generic Criteo API successful data model
       example:
@@ -14281,17 +14915,21 @@ components:
           example: campaign
           nullable: true
           type: string
+          x-optional-in-response: true
         id:
           description: A opaque string containing the unique Id of the entity
           nullable: true
           type: string
+          x-optional-in-response: true
         attributes:
           $ref: '#/components/schemas/PortfolioMessage'
         meta:
           description: A meta object that contains application-specific metadata
           nullable: true
           type: object
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     CriteoApiError:
       description: Criteo API response error
       example:
@@ -14308,6 +14946,7 @@ components:
           description: The correlation ID provided by the gateway
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           description: A machine-readable code specifying error category
           enum:
@@ -14321,6 +14960,7 @@ components:
           example: access_control
           nullable: true
           type: string
+          x-optional-in-response: true
         code:
           description: A machine-readable error code string in kabab-case. Unique
             across Criteo
@@ -14336,20 +14976,24 @@ components:
           example: internal-error
           nullable: true
           type: string
+          x-optional-in-response: true
         instance:
           description: A URI reference that identifies the specific occurrence of
             the problem
           nullable: true
           type: string
+          x-optional-in-response: true
         title:
           description: "A short, human-readable remarks of the problem type."
           nullable: true
           type: string
+          x-optional-in-response: true
         detail:
           description: A human-readable explanation specific to this occurrence of
             the problem.
           nullable: true
           type: string
+          x-optional-in-response: true
         source:
           additionalProperties:
             type: string
@@ -14357,7 +15001,9 @@ components:
             causing the error(s).
           nullable: true
           type: object
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     CriteoApiWarning:
       description: Criteo API response warning
       example:
@@ -14372,6 +15018,7 @@ components:
           description: The correlation ID provided by the gateway
           nullable: true
           type: string
+          x-optional-in-response: true
         type:
           description: A machine-readable code specifying error category
           enum:
@@ -14385,6 +15032,7 @@ components:
           example: access_control
           nullable: true
           type: string
+          x-optional-in-response: true
         code:
           description: A machine-readable error code string in kabab-case. Unique
             across Criteo
@@ -14400,30 +15048,39 @@ components:
           example: internal-error
           nullable: true
           type: string
+          x-optional-in-response: true
         instance:
           description: A URI reference that identifies the specific occurrence of
             the problem
           nullable: true
           type: string
+          x-optional-in-response: true
         title:
           description: "A short, human-readable remarks of the problem type."
           nullable: true
           type: string
+          x-optional-in-response: true
         detail:
           description: A human-readable explanation specific to this occurrence of
             the problem.
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
     PortfolioMessage:
       description: Class with elementary info about advertiser
       example:
         advertiserName: advertiserName
+      nullable: true
       properties:
         advertiserName:
           nullable: true
           type: string
+          x-optional-in-response: true
       type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     ContactlistOperation_attributes:
       description: the contactlist operation attributes
       example:
@@ -14441,6 +15098,7 @@ components:
           description: the affected user list id
           nullable: true
           type: integer
+          x-optional-in-response: true
         operation:
           description: The action recorded
           type: string
@@ -14449,24 +15107,29 @@ components:
           format: date-time
           nullable: true
           type: string
+          x-optional-in-response: true
         identifierType:
           description: The schema specified for of the identifiers
           nullable: true
           type: string
+          x-optional-in-response: true
         nbValidIdentifiers:
           description: How many identifiers were valid for the specified schema
           nullable: true
           type: integer
+          x-optional-in-response: true
         nbInvalidIdentifiers:
           description: How many identifiers were invalid for the specified schema
           nullable: true
           type: integer
+          x-optional-in-response: true
         sampleInvalidIdentifiers:
           description: A sample of invalid identifiers if there is some
           items:
             type: string
           nullable: true
           type: array
+          x-optional-in-response: true
       required:
       - operation
       type: object
@@ -14494,7 +15157,6 @@ components:
           - identityLink
           - gum
           - phoneNumber
-          nullable: true
           type: string
         identifiers:
           description: "The users to add or remove, each in the schema specified"
@@ -14504,34 +15166,11 @@ components:
         gumCallerId:
           description: The Gum caller id of the advertiser patching identifiers of
             type Gum
-          nullable: true
           type: integer
       required:
       - identifiers
       - operation
       type: object
-    CampaignBudgetAutomationV23Q1_automatedBudgetConfiguration:
-      example:
-        adSetOptimizationObjective: customAction
-      nullable: true
-      properties:
-        adSetOptimizationObjective:
-          enum:
-          - customAction
-          - clicks
-          - conversions
-          - displays
-          - appPromotion
-          - revenue
-          - storeConversions
-          - value
-          - reach
-          - visits
-          - videoViews
-          nullable: true
-          type: string
-      type: object
-      x-nullable: true
     NillableAdSetTargetingRuleV24Q1_value:
       allOf:
       - $ref: '#/components/schemas/AdSetTargetingRuleV24Q1'

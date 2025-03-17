@@ -803,7 +803,7 @@ public class AccountsApi {
 
     /**
      * 
-     * replace the sellers associated with an account
+     * Replace the sellers associated with an account
      * @param accountId The given account id (required)
      * @param valueResourceCollectionInputOfRetailMediaSeller  (optional)
      * @return ValueResourceCollectionOutcomeOfRetailMediaSeller
@@ -821,7 +821,7 @@ public class AccountsApi {
 
     /**
      * 
-     * replace the sellers associated with an account
+     * Replace the sellers associated with an account
      * @param accountId The given account id (required)
      * @param valueResourceCollectionInputOfRetailMediaSeller  (optional)
      * @return ApiResponse&lt;ValueResourceCollectionOutcomeOfRetailMediaSeller&gt;
@@ -840,7 +840,7 @@ public class AccountsApi {
 
     /**
      *  (asynchronously)
-     * replace the sellers associated with an account
+     * Replace the sellers associated with an account
      * @param accountId The given account id (required)
      * @param valueResourceCollectionInputOfRetailMediaSeller  (optional)
      * @param _callback The callback to be executed when the API call finishes

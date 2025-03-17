@@ -92,7 +92,7 @@ public class AudienceEstimateSizeEntityV1 {
    * Get algebra
    * @return algebra
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public AlgebraNodeV1 getAlgebra() {
     return algebra;

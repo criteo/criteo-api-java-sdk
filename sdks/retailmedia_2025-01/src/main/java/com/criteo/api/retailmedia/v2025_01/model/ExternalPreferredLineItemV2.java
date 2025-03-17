@@ -224,6 +224,10 @@ public class ExternalPreferredLineItemV2 {
   @SerializedName(SERIALIZED_NAME_CREATIVE_ID)
   private String creativeId;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public ExternalPreferredLineItemV2() {
   }
 
@@ -556,6 +560,28 @@ public class ExternalPreferredLineItemV2 {
     this.creativeId = creativeId;
   }
 
+
+  public ExternalPreferredLineItemV2 id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Id of the entity
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -625,7 +651,8 @@ public class ExternalPreferredLineItemV2 {
         Objects.equals(this.budgetRemaining, externalPreferredLineItemV2.budgetRemaining) &&
         Objects.equals(this.createdAt, externalPreferredLineItemV2.createdAt) &&
         Objects.equals(this.updatedAt, externalPreferredLineItemV2.updatedAt) &&
-        Objects.equals(this.creativeId, externalPreferredLineItemV2.creativeId)&&
+        Objects.equals(this.creativeId, externalPreferredLineItemV2.creativeId) &&
+        Objects.equals(this.id, externalPreferredLineItemV2.id)&&
         Objects.equals(this.additionalProperties, externalPreferredLineItemV2.additionalProperties);
   }
 
@@ -635,7 +662,7 @@ public class ExternalPreferredLineItemV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, startDate, endDate, status, pacing, capping, page, targetRetailerId, budget, campaignId, budgetSpent, budgetRemaining, createdAt, updatedAt, creativeId, additionalProperties);
+    return Objects.hash(name, startDate, endDate, status, pacing, capping, page, targetRetailerId, budget, campaignId, budgetSpent, budgetRemaining, createdAt, updatedAt, creativeId, id, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -664,6 +691,7 @@ public class ExternalPreferredLineItemV2 {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    creativeId: ").append(toIndentedString(creativeId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -702,6 +730,7 @@ public class ExternalPreferredLineItemV2 {
     openapiFields.add("createdAt");
     openapiFields.add("updatedAt");
     openapiFields.add("creativeId");
+    openapiFields.add("id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -759,6 +788,9 @@ public class ExternalPreferredLineItemV2 {
       }
       if ((jsonObj.get("creativeId") != null && !jsonObj.get("creativeId").isJsonNull()) && !jsonObj.get("creativeId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `creativeId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creativeId").toString()));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
   }
 

@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -214,6 +215,10 @@ public class Creative2 {
   public static final String SERIALIZED_NAME_TEMPLATE_VARIABLE_VALUES = "templateVariableValues";
   @SerializedName(SERIALIZED_NAME_TEMPLATE_VARIABLE_VALUES)
   private List<TemplateVariableValue> templateVariableValues = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
 
   public Creative2() {
   }
@@ -497,6 +502,28 @@ public class Creative2 {
   }
 
 
+  public Creative2 id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Id of the entity
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -518,12 +545,24 @@ public class Creative2 {
         Objects.equals(this.updatedAt, creative2.updatedAt) &&
         Objects.equals(this.creativeFormatV2Type, creative2.creativeFormatV2Type) &&
         Objects.equals(this.environments, creative2.environments) &&
-        Objects.equals(this.templateVariableValues, creative2.templateVariableValues);
+        Objects.equals(this.templateVariableValues, creative2.templateVariableValues) &&
+        Objects.equals(this.id, creative2.id);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, status, brandId, retailerId, templateId, templateName, formatId, associatedLineItemIds, updatedAt, creativeFormatV2Type, environments, templateVariableValues);
+    return Objects.hash(name, status, brandId, retailerId, templateId, templateName, formatId, associatedLineItemIds, updatedAt, creativeFormatV2Type, environments, templateVariableValues, id);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -542,6 +581,7 @@ public class Creative2 {
     sb.append("    creativeFormatV2Type: ").append(toIndentedString(creativeFormatV2Type)).append("\n");
     sb.append("    environments: ").append(toIndentedString(environments)).append("\n");
     sb.append("    templateVariableValues: ").append(toIndentedString(templateVariableValues)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -576,6 +616,7 @@ public class Creative2 {
     openapiFields.add("creativeFormatV2Type");
     openapiFields.add("environments");
     openapiFields.add("templateVariableValues");
+    openapiFields.add("id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -658,6 +699,9 @@ public class Creative2 {
       for (int i = 0; i < jsonArraytemplateVariableValues.size(); i++) {
         TemplateVariableValue.validateJsonObject(jsonArraytemplateVariableValues.get(i).getAsJsonObject());
       };
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

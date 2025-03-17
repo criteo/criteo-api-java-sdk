@@ -73,7 +73,7 @@ public class PageOfBalanceHistoryChangeDataCaptureV1 {
    * Get meta
    * @return meta
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
   public Metadata getMeta() {
     return meta;

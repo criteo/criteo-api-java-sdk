@@ -10,7 +10,7 @@ ad set targeting model
 |------------ | ------------- | ------------- | -------------|
 |**deliveryLimitations** | [**AdSetDeliveryLimitationsV24Q3**](AdSetDeliveryLimitationsV24Q3.md) |  |  [optional] |
 |**geoLocation** | [**AdSetGeoLocationV24Q3**](AdSetGeoLocationV24Q3.md) |  |  [optional] |
-|**frequencyCapping** | [**AdSetFrequencyCappingV24Q3**](AdSetFrequencyCappingV24Q3.md) |  |  [optional] |
+|**frequencyCapping** | [**AdSetTargetingV24Q3FrequencyCapping**](AdSetTargetingV24Q3FrequencyCapping.md) |  |  [optional] |
 
 
 

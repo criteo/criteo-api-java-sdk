@@ -567,7 +567,7 @@ public class Example {
 
 
 
-replace the sellers associated with an account
+Replace the sellers associated with an account
 
 ### Example
 

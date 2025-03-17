@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -198,7 +197,7 @@ public class AsyncLineItemsReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<CampaignTypeEnum> {
@@ -251,7 +250,7 @@ public class AsyncLineItemsReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<SalesChannelEnum> {
@@ -306,7 +305,7 @@ public class AsyncLineItemsReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<FormatEnum> {
@@ -371,7 +370,7 @@ public class AsyncLineItemsReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ReportTypeEnum> {
@@ -426,7 +425,7 @@ public class AsyncLineItemsReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ClickAttributionWindowEnum> {
@@ -483,7 +482,7 @@ public class AsyncLineItemsReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ViewAttributionWindowEnum> {
@@ -759,7 +758,7 @@ public class AsyncLineItemsReport {
 
   public AsyncLineItemsReport addIdsItem(String idsItem) {
     if (this.ids == null) {
-      this.ids = null;
+      this.ids = new ArrayList<>();
     }
     this.ids.add(idsItem);
     return this;
@@ -811,7 +810,7 @@ public class AsyncLineItemsReport {
 
   public AsyncLineItemsReport addSearchTermTypesItem(SearchTermTypesEnum searchTermTypesItem) {
     if (this.searchTermTypes == null) {
-      this.searchTermTypes = null;
+      this.searchTermTypes = new ArrayList<>();
     }
     this.searchTermTypes.add(searchTermTypesItem);
     return this;
@@ -841,7 +840,7 @@ public class AsyncLineItemsReport {
 
   public AsyncLineItemsReport addSearchTermTargetingsItem(SearchTermTargetingsEnum searchTermTargetingsItem) {
     if (this.searchTermTargetings == null) {
-      this.searchTermTargetings = null;
+      this.searchTermTargetings = new ArrayList<>();
     }
     this.searchTermTargetings.add(searchTermTargetingsItem);
     return this;
@@ -1003,7 +1002,7 @@ public class AsyncLineItemsReport {
 
   public AsyncLineItemsReport addDimensionsItem(DimensionsEnum dimensionsItem) {
     if (this.dimensions == null) {
-      this.dimensions = null;
+      this.dimensions = new ArrayList<>();
     }
     this.dimensions.add(dimensionsItem);
     return this;
@@ -1033,7 +1032,7 @@ public class AsyncLineItemsReport {
 
   public AsyncLineItemsReport addMetricsItem(MetricsEnum metricsItem) {
     if (this.metrics == null) {
-      this.metrics = null;
+      this.metrics = new ArrayList<>();
     }
     this.metrics.add(metricsItem);
     return this;
@@ -1193,20 +1192,9 @@ public class AsyncLineItemsReport {
         Objects.equals(this.additionalProperties, asyncLineItemsReport.additionalProperties);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(ids, id, searchTermTypes, searchTermTargetings, campaignType, salesChannel, format, reportType, clickAttributionWindow, viewAttributionWindow, dimensions, metrics, startDate, endDate, timezone, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

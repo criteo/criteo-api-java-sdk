@@ -9,7 +9,7 @@ Patch model for an ad set's attribution configuration.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**attributionMethod** | [**AttributionMethodEnum**](#AttributionMethodEnum) | The attribution method. |  [optional] |
-|**lookbackWindow** | [**NillableLookbackWindowV24Q3**](NillableLookbackWindowV24Q3.md) |  |  [optional] |
+|**lookbackWindow** | [**LookbackWindowEnum**](#LookbackWindowEnum) | The lookback window. Optional, should be specified only for attribution methods PostClick and LastClick. |  [optional] |
 
 
 
@@ -23,6 +23,18 @@ Patch model for an ad set's attribution configuration.
 | GOOGLEANALYTICSDATADRIVEN | &quot;googleAnalyticsDataDriven&quot; |
 | LASTCLICK | &quot;lastClick&quot; |
 | POSTCLICK | &quot;postClick&quot; |
+
+
+
+## Enum: LookbackWindowEnum
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| _30M | &quot;30M&quot; |
+| _24H | &quot;24H&quot; |
+| _7D | &quot;7D&quot; |
+| _30D | &quot;30D&quot; |
 
 
 

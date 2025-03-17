@@ -23,6 +23,7 @@ A Retail Media Preferred Line Item used to hold bid settings for one or many pro
 |**createdAt** | **OffsetDateTime** |  |  |
 |**updatedAt** | **OffsetDateTime** |  |  |
 |**creativeId** | **String** | External creative Id |  [optional] |
+|**id** | **String** | Id of the entity |  [optional] |
 
 
 

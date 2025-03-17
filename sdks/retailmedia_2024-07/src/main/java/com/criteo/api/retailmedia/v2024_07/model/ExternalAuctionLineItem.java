@@ -232,6 +232,10 @@ public class ExternalAuctionLineItem {
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public ExternalAuctionLineItem() {
   }
 
@@ -608,6 +612,28 @@ public class ExternalAuctionLineItem {
     this.updatedAt = updatedAt;
   }
 
+
+  public ExternalAuctionLineItem id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Id of the entity
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -679,7 +705,8 @@ public class ExternalAuctionLineItem {
         Objects.equals(this.budgetSpent, externalAuctionLineItem.budgetSpent) &&
         Objects.equals(this.budgetRemaining, externalAuctionLineItem.budgetRemaining) &&
         Objects.equals(this.createdAt, externalAuctionLineItem.createdAt) &&
-        Objects.equals(this.updatedAt, externalAuctionLineItem.updatedAt)&&
+        Objects.equals(this.updatedAt, externalAuctionLineItem.updatedAt) &&
+        Objects.equals(this.id, externalAuctionLineItem.id)&&
         Objects.equals(this.additionalProperties, externalAuctionLineItem.additionalProperties);
   }
 
@@ -689,7 +716,7 @@ public class ExternalAuctionLineItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, startDate, endDate, maxBid, budget, monthlyPacing, dailyPacing, bidStrategy, targetRetailerId, status, targetBid, isAutoDailyPacing, campaignId, budgetSpent, budgetRemaining, createdAt, updatedAt, additionalProperties);
+    return Objects.hash(name, startDate, endDate, maxBid, budget, monthlyPacing, dailyPacing, bidStrategy, targetRetailerId, status, targetBid, isAutoDailyPacing, campaignId, budgetSpent, budgetRemaining, createdAt, updatedAt, id, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -720,6 +747,7 @@ public class ExternalAuctionLineItem {
     sb.append("    budgetRemaining: ").append(toIndentedString(budgetRemaining)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -760,6 +788,7 @@ public class ExternalAuctionLineItem {
     openapiFields.add("budgetRemaining");
     openapiFields.add("createdAt");
     openapiFields.add("updatedAt");
+    openapiFields.add("id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -805,6 +834,9 @@ public class ExternalAuctionLineItem {
       }
       if (!jsonObj.get("campaignId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
   }
 

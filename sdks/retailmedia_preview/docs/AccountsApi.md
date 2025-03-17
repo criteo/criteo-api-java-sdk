@@ -12,7 +12,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 
 ## getApiExternalV1AccountPrivateMarketChildAccountsByAccountId
 
-> EntityResourceCollectionOutcomeOfRetailMediaChildAccount getApiExternalV1AccountPrivateMarketChildAccountsByAccountId(accountId, offset, limit)
+> EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata getApiExternalV1AccountPrivateMarketChildAccountsByAccountId(accountId, offset, limit)
 
 
 
@@ -61,7 +61,7 @@ public class Example {
         Integer offset = 0; // Integer | The (zero-based) offset into the collection of accounts. The default is 0.
         Integer limit = 25; // Integer | The number of accounts to be returned. The default is 25.
         try {
-            EntityResourceCollectionOutcomeOfRetailMediaChildAccount result = apiInstance.getApiExternalV1AccountPrivateMarketChildAccountsByAccountId(accountId, offset, limit);
+            EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata result = apiInstance.getApiExternalV1AccountPrivateMarketChildAccountsByAccountId(accountId, offset, limit);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountsApi#getApiExternalV1AccountPrivateMarketChildAccountsByAccountId");
@@ -85,7 +85,7 @@ public class Example {
 
 ### Return type
 
-[**EntityResourceCollectionOutcomeOfRetailMediaChildAccount**](EntityResourceCollectionOutcomeOfRetailMediaChildAccount.md)
+[**EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata**](EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.md)
 
 ### Authorization
 

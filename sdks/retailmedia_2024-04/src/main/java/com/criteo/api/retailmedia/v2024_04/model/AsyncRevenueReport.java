@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -112,7 +111,7 @@ public class AsyncRevenueReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ReportTypeEnum> {
@@ -163,7 +162,7 @@ public class AsyncRevenueReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<RevenueTypeEnum> {
@@ -216,7 +215,7 @@ public class AsyncRevenueReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<SoldByEnum> {
@@ -269,7 +268,7 @@ public class AsyncRevenueReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<BuyTypeEnum> {
@@ -434,7 +433,7 @@ public class AsyncRevenueReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<FormatEnum> {
@@ -487,7 +486,7 @@ public class AsyncRevenueReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<CampaignTypeEnum> {
@@ -540,7 +539,7 @@ public class AsyncRevenueReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<SalesChannelEnum> {
@@ -595,7 +594,7 @@ public class AsyncRevenueReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ClickAttributionWindowEnum> {
@@ -652,7 +651,7 @@ public class AsyncRevenueReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ViewAttributionWindowEnum> {
@@ -988,7 +987,7 @@ public class AsyncRevenueReport {
 
   public AsyncRevenueReport addIdsItem(String idsItem) {
     if (this.ids == null) {
-      this.ids = null;
+      this.ids = new ArrayList<>();
     }
     this.ids.add(idsItem);
     return this;
@@ -1040,7 +1039,7 @@ public class AsyncRevenueReport {
 
   public AsyncRevenueReport addRetailerIdsItem(String retailerIdsItem) {
     if (this.retailerIds == null) {
-      this.retailerIds = null;
+      this.retailerIds = new ArrayList<>();
     }
     this.retailerIds.add(retailerIdsItem);
     return this;
@@ -1070,7 +1069,7 @@ public class AsyncRevenueReport {
 
   public AsyncRevenueReport addAccountIdsItem(String accountIdsItem) {
     if (this.accountIds == null) {
-      this.accountIds = null;
+      this.accountIds = new ArrayList<>();
     }
     this.accountIds.add(accountIdsItem);
     return this;
@@ -1100,7 +1099,7 @@ public class AsyncRevenueReport {
 
   public AsyncRevenueReport addCampaignIdsItem(String campaignIdsItem) {
     if (this.campaignIds == null) {
-      this.campaignIds = null;
+      this.campaignIds = new ArrayList<>();
     }
     this.campaignIds.add(campaignIdsItem);
     return this;
@@ -1130,7 +1129,7 @@ public class AsyncRevenueReport {
 
   public AsyncRevenueReport addLineItemIdsItem(String lineItemIdsItem) {
     if (this.lineItemIds == null) {
-      this.lineItemIds = null;
+      this.lineItemIds = new ArrayList<>();
     }
     this.lineItemIds.add(lineItemIdsItem);
     return this;
@@ -1248,7 +1247,7 @@ public class AsyncRevenueReport {
 
   public AsyncRevenueReport addAdvertiserTypesItem(AdvertiserTypesEnum advertiserTypesItem) {
     if (this.advertiserTypes == null) {
-      this.advertiserTypes = null;
+      this.advertiserTypes = new ArrayList<>();
     }
     this.advertiserTypes.add(advertiserTypesItem);
     return this;
@@ -1278,7 +1277,7 @@ public class AsyncRevenueReport {
 
   public AsyncRevenueReport addSkuRelationsItem(SkuRelationsEnum skuRelationsItem) {
     if (this.skuRelations == null) {
-      this.skuRelations = null;
+      this.skuRelations = new ArrayList<>();
     }
     this.skuRelations.add(skuRelationsItem);
     return this;
@@ -1418,7 +1417,7 @@ public class AsyncRevenueReport {
 
   public AsyncRevenueReport addDimensionsItem(DimensionsEnum dimensionsItem) {
     if (this.dimensions == null) {
-      this.dimensions = null;
+      this.dimensions = new ArrayList<>();
     }
     this.dimensions.add(dimensionsItem);
     return this;
@@ -1448,7 +1447,7 @@ public class AsyncRevenueReport {
 
   public AsyncRevenueReport addMetricsItem(MetricsEnum metricsItem) {
     if (this.metrics == null) {
-      this.metrics = null;
+      this.metrics = new ArrayList<>();
     }
     this.metrics.add(metricsItem);
     return this;
@@ -1615,20 +1614,9 @@ public class AsyncRevenueReport {
         Objects.equals(this.additionalProperties, asyncRevenueReport.additionalProperties);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(ids, id, retailerIds, accountIds, campaignIds, lineItemIds, reportType, revenueType, soldBy, buyType, advertiserTypes, skuRelations, format, campaignType, salesChannel, clickAttributionWindow, viewAttributionWindow, dimensions, metrics, startDate, endDate, timezone, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

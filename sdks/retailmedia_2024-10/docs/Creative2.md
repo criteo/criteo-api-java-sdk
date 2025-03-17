@@ -20,6 +20,7 @@ A creative entity
 |**creativeFormatV2Type** | [**CreativeFormatV2TypeEnum**](#CreativeFormatV2TypeEnum) | Creative format type |  |
 |**environments** | [**List&lt;PageTypeEnvironment2&gt;**](PageTypeEnvironment2.md) | Environment type (e.g. mobile, web, app) |  |
 |**templateVariableValues** | [**List&lt;TemplateVariableValue&gt;**](TemplateVariableValue.md) | The template chosen values |  |
+|**id** | **String** | Id of the entity |  [optional] |
 
 
 

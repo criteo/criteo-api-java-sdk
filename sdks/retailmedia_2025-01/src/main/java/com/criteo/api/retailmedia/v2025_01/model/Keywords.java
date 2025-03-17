@@ -91,7 +91,7 @@ public class Keywords {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ReviewStateEnum> {
@@ -146,7 +146,7 @@ public class Keywords {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<MatchTypeEnum> {

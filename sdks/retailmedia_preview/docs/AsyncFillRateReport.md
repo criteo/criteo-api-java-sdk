@@ -8,7 +8,7 @@ Async FillRate report body request
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**supplyAccountIds** | **List&lt;String&gt;** | Supply account ids to report on |  [optional] |
+|**supplyAccountIds** | **List&lt;String&gt;** | Supply account ids to report on |  |
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  |
 |**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  |
 |**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
@@ -55,7 +55,7 @@ Async FillRate report body request
 | CPC | &quot;cpc&quot; |
 | PLACEMENTIMPRESSIONSREVENUE | &quot;placementImpressionsRevenue&quot; |
 | PRODUCTCLICKSREVENUE | &quot;productClicksRevenue&quot; |
-| TOTALREVENUE | &quot;totalRevenue&quot; |
+| REVENUE | &quot;revenue&quot; |
 | WORKINGMEDIA | &quot;workingMedia&quot; |
 | NETREVENUE | &quot;netRevenue&quot; |
 | UNIQUEVISITORS | &quot;uniqueVisitors&quot; |

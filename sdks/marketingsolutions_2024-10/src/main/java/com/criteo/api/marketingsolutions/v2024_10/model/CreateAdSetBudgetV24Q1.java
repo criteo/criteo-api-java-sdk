@@ -136,7 +136,7 @@ public class CreateAdSetBudgetV24Q1 {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<BudgetRenewalEnum> {
@@ -187,7 +187,7 @@ public class CreateAdSetBudgetV24Q1 {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<BudgetDeliverySmoothingEnum> {
@@ -250,7 +250,7 @@ public class CreateAdSetBudgetV24Q1 {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<BudgetDeliveryWeekEnum> {

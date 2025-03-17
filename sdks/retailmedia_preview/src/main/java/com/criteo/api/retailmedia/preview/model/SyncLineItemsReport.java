@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -90,7 +89,7 @@ public class SyncLineItemsReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ReportTypeEnum> {
@@ -157,7 +156,7 @@ public class SyncLineItemsReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ClickAttributionWindowEnum> {
@@ -214,7 +213,7 @@ public class SyncLineItemsReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ViewAttributionWindowEnum> {
@@ -267,7 +266,7 @@ public class SyncLineItemsReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<CampaignTypeEnum> {
@@ -320,7 +319,7 @@ public class SyncLineItemsReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<SalesChannelEnum> {
@@ -554,7 +553,7 @@ public class SyncLineItemsReport {
 
   public SyncLineItemsReport addLineItemIdsItem(String lineItemIdsItem) {
     if (this.lineItemIds == null) {
-      this.lineItemIds = null;
+      this.lineItemIds = new ArrayList<>();
     }
     this.lineItemIds.add(lineItemIdsItem);
     return this;
@@ -584,7 +583,7 @@ public class SyncLineItemsReport {
 
   public SyncLineItemsReport addCampaignIdsItem(String campaignIdsItem) {
     if (this.campaignIds == null) {
-      this.campaignIds = null;
+      this.campaignIds = new ArrayList<>();
     }
     this.campaignIds.add(campaignIdsItem);
     return this;
@@ -724,7 +723,7 @@ public class SyncLineItemsReport {
 
   public SyncLineItemsReport addDimensionsItem(DimensionsEnum dimensionsItem) {
     if (this.dimensions == null) {
-      this.dimensions = null;
+      this.dimensions = new ArrayList<>();
     }
     this.dimensions.add(dimensionsItem);
     return this;
@@ -754,7 +753,7 @@ public class SyncLineItemsReport {
 
   public SyncLineItemsReport addMetricsItem(MetricsEnum metricsItem) {
     if (this.metrics == null) {
-      this.metrics = null;
+      this.metrics = new ArrayList<>();
     }
     this.metrics.add(metricsItem);
     return this;
@@ -912,20 +911,9 @@ public class SyncLineItemsReport {
         Objects.equals(this.additionalProperties, syncLineItemsReport.additionalProperties);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(reportType, lineItemIds, campaignIds, accountId, clickAttributionWindow, viewAttributionWindow, campaignType, salesChannel, dimensions, metrics, startDate, endDate, timezone, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

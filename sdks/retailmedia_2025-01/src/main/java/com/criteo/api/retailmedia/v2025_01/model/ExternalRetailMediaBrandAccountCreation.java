@@ -47,7 +47,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2025_01.JSON;
 
 /**
- * The details for a newly created brand account
+ * the initial set up and configuration options for a new private market demand brand account
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalRetailMediaBrandAccountCreation {
@@ -77,7 +77,7 @@ public class ExternalRetailMediaBrandAccountCreation {
   }
 
    /**
-   * Get name
+   * the name of the account, must be unique across all accounts
    * @return name
   **/
   @javax.annotation.Nullable
@@ -99,7 +99,7 @@ public class ExternalRetailMediaBrandAccountCreation {
   }
 
    /**
-   * Get companyName
+   * Display name for reporting the owning entity of ads for the Digital Services Act in the European Union
    * @return companyName
   **/
   @javax.annotation.Nullable
@@ -121,7 +121,7 @@ public class ExternalRetailMediaBrandAccountCreation {
   }
 
    /**
-   * Get onBehalfCompanyName
+   * On behalf entity name of ads for the Digital Services Act
    * @return onBehalfCompanyName
   **/
   @javax.annotation.Nullable
@@ -151,7 +151,7 @@ public class ExternalRetailMediaBrandAccountCreation {
   }
 
    /**
-   * Get brands
+   * list of brands to link to the new account
    * @return brands
   **/
   @javax.annotation.Nullable
@@ -165,50 +165,6 @@ public class ExternalRetailMediaBrandAccountCreation {
     this.brands = brands;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the ExternalRetailMediaBrandAccountCreation instance itself
-   */
-  public ExternalRetailMediaBrandAccountCreation putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -223,8 +179,7 @@ public class ExternalRetailMediaBrandAccountCreation {
     return Objects.equals(this.name, externalRetailMediaBrandAccountCreation.name) &&
         Objects.equals(this.companyName, externalRetailMediaBrandAccountCreation.companyName) &&
         Objects.equals(this.onBehalfCompanyName, externalRetailMediaBrandAccountCreation.onBehalfCompanyName) &&
-        Objects.equals(this.brands, externalRetailMediaBrandAccountCreation.brands)&&
-        Objects.equals(this.additionalProperties, externalRetailMediaBrandAccountCreation.additionalProperties);
+        Objects.equals(this.brands, externalRetailMediaBrandAccountCreation.brands);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -233,7 +188,7 @@ public class ExternalRetailMediaBrandAccountCreation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, companyName, onBehalfCompanyName, brands, additionalProperties);
+    return Objects.hash(name, companyName, onBehalfCompanyName, brands);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -251,7 +206,6 @@ public class ExternalRetailMediaBrandAccountCreation {
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
     sb.append("    onBehalfCompanyName: ").append(toIndentedString(onBehalfCompanyName)).append("\n");
     sb.append("    brands: ").append(toIndentedString(brands)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -295,6 +249,14 @@ public class ExternalRetailMediaBrandAccountCreation {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalRetailMediaBrandAccountCreation is not found in the empty JSON string", ExternalRetailMediaBrandAccountCreation.openapiRequiredFields.toString()));
         }
       }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ExternalRetailMediaBrandAccountCreation.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ExternalRetailMediaBrandAccountCreation` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
@@ -325,23 +287,6 @@ public class ExternalRetailMediaBrandAccountCreation {
            @Override
            public void write(JsonWriter out, ExternalRetailMediaBrandAccountCreation value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additional properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
@@ -349,27 +294,7 @@ public class ExternalRetailMediaBrandAccountCreation {
            public ExternalRetailMediaBrandAccountCreation read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             ExternalRetailMediaBrandAccountCreation instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             return thisAdapter.fromJsonTree(jsonObj);
            }
 
        }.nullSafe();

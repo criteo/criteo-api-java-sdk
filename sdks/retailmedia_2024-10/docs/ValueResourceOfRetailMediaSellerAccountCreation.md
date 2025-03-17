@@ -2,13 +2,13 @@
 
 # ValueResourceOfRetailMediaSellerAccountCreation
 
-A top-level object that encapsulates a Criteo API response for a single value.
+A value resource exposed by the API.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** |  |  [optional] |
+|**type** | **String** | Type of the resource. |  [optional] |
 |**attributes** | [**ExternalRetailMediaSellerAccountCreation**](ExternalRetailMediaSellerAccountCreation.md) |  |  [optional] |
 
 

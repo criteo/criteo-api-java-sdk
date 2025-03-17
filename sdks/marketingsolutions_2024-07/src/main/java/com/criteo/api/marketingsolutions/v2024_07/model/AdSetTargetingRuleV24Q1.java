@@ -83,7 +83,7 @@ public class AdSetTargetingRuleV24Q1 {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<OperandEnum> {

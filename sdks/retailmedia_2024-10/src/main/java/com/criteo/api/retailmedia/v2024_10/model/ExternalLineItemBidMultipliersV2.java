@@ -94,6 +94,10 @@ public class ExternalLineItemBidMultipliersV2 {
   @SerializedName(SERIALIZED_NAME_CATEGORY_MENU)
   private BigDecimal categoryMenu;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public ExternalLineItemBidMultipliersV2() {
   }
 
@@ -338,6 +342,28 @@ public class ExternalLineItemBidMultipliersV2 {
     this.categoryMenu = categoryMenu;
   }
 
+
+  public ExternalLineItemBidMultipliersV2 id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Id of the entity
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -403,7 +429,8 @@ public class ExternalLineItemBidMultipliersV2 {
         Objects.equals(this.checkout, externalLineItemBidMultipliersV2.checkout) &&
         Objects.equals(this.favorites, externalLineItemBidMultipliersV2.favorites) &&
         Objects.equals(this.searchBar, externalLineItemBidMultipliersV2.searchBar) &&
-        Objects.equals(this.categoryMenu, externalLineItemBidMultipliersV2.categoryMenu)&&
+        Objects.equals(this.categoryMenu, externalLineItemBidMultipliersV2.categoryMenu) &&
+        Objects.equals(this.id, externalLineItemBidMultipliersV2.id)&&
         Objects.equals(this.additionalProperties, externalLineItemBidMultipliersV2.additionalProperties);
   }
 
@@ -413,7 +440,7 @@ public class ExternalLineItemBidMultipliersV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(search, home, category, productDetail, confirmation, merchandising, deals, checkout, favorites, searchBar, categoryMenu, additionalProperties);
+    return Objects.hash(search, home, category, productDetail, confirmation, merchandising, deals, checkout, favorites, searchBar, categoryMenu, id, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -438,6 +465,7 @@ public class ExternalLineItemBidMultipliersV2 {
     sb.append("    favorites: ").append(toIndentedString(favorites)).append("\n");
     sb.append("    searchBar: ").append(toIndentedString(searchBar)).append("\n");
     sb.append("    categoryMenu: ").append(toIndentedString(categoryMenu)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -472,6 +500,7 @@ public class ExternalLineItemBidMultipliersV2 {
     openapiFields.add("favorites");
     openapiFields.add("searchBar");
     openapiFields.add("categoryMenu");
+    openapiFields.add("id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -488,6 +517,9 @@ public class ExternalLineItemBidMultipliersV2 {
         if (!ExternalLineItemBidMultipliersV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalLineItemBidMultipliersV2 is not found in the empty JSON string", ExternalLineItemBidMultipliersV2.openapiRequiredFields.toString()));
         }
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
   }
 

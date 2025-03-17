@@ -48,7 +48,7 @@ import java.util.Set;
 import com.criteo.api.retailmedia.v2024_07.JSON;
 
 /**
- * The details for a newly created seller account
+ * the initial set up and configuration options for a new private market demand brand account
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalRetailMediaSellerAccountCreation {
@@ -66,7 +66,7 @@ public class ExternalRetailMediaSellerAccountCreation {
 
   public static final String SERIALIZED_NAME_SELLERS = "sellers";
   @SerializedName(SERIALIZED_NAME_SELLERS)
-  private List<ExternalRetailMediaSeller> sellers = null;
+  private List<ExternalRetailMediaSeller> sellers = new ArrayList<>();
 
   public ExternalRetailMediaSellerAccountCreation() {
   }
@@ -78,7 +78,7 @@ public class ExternalRetailMediaSellerAccountCreation {
   }
 
    /**
-   * Get name
+   * the name of the account, must be unique across all accounts
    * @return name
   **/
   @javax.annotation.Nullable
@@ -100,7 +100,7 @@ public class ExternalRetailMediaSellerAccountCreation {
   }
 
    /**
-   * Get companyName
+   * Display name for reporting the owning entity of ads for the Digital Services Act in the European Union
    * @return companyName
   **/
   @javax.annotation.Nullable
@@ -122,7 +122,7 @@ public class ExternalRetailMediaSellerAccountCreation {
   }
 
    /**
-   * Get onBehalfCompanyName
+   * On behalf entity name of ads for the Digital Services Act
    * @return onBehalfCompanyName
   **/
   @javax.annotation.Nullable
@@ -144,18 +144,15 @@ public class ExternalRetailMediaSellerAccountCreation {
   }
 
   public ExternalRetailMediaSellerAccountCreation addSellersItem(ExternalRetailMediaSeller sellersItem) {
-    if (this.sellers == null) {
-      this.sellers = new ArrayList<>();
-    }
     this.sellers.add(sellersItem);
     return this;
   }
 
    /**
-   * Get sellers
+   * list of sellers to associate to the new account
    * @return sellers
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public List<ExternalRetailMediaSeller> getSellers() {
     return sellers;
@@ -166,50 +163,6 @@ public class ExternalRetailMediaSellerAccountCreation {
     this.sellers = sellers;
   }
 
-  /**
-   * A container for additional, undeclared properties.
-   * This is a holder for any undeclared properties as specified with
-   * the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value.
-   * If the property does not already exist, create it otherwise replace it.
-   *
-   * @param key name of the property
-   * @param value value of the property
-   * @return the ExternalRetailMediaSellerAccountCreation instance itself
-   */
-  public ExternalRetailMediaSellerAccountCreation putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-        this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /**
-   * Return the additional (undeclared) property.
-   *
-   * @return a map of objects
-   */
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /**
-   * Return the additional (undeclared) property with the specified name.
-   *
-   * @param key name of the property
-   * @return an object
-   */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-        return null;
-    }
-    return this.additionalProperties.get(key);
-  }
 
 
   @Override
@@ -224,8 +177,7 @@ public class ExternalRetailMediaSellerAccountCreation {
     return Objects.equals(this.name, externalRetailMediaSellerAccountCreation.name) &&
         Objects.equals(this.companyName, externalRetailMediaSellerAccountCreation.companyName) &&
         Objects.equals(this.onBehalfCompanyName, externalRetailMediaSellerAccountCreation.onBehalfCompanyName) &&
-        Objects.equals(this.sellers, externalRetailMediaSellerAccountCreation.sellers)&&
-        Objects.equals(this.additionalProperties, externalRetailMediaSellerAccountCreation.additionalProperties);
+        Objects.equals(this.sellers, externalRetailMediaSellerAccountCreation.sellers);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -234,7 +186,7 @@ public class ExternalRetailMediaSellerAccountCreation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, companyName, onBehalfCompanyName, sellers, additionalProperties);
+    return Objects.hash(name, companyName, onBehalfCompanyName, sellers);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -252,7 +204,6 @@ public class ExternalRetailMediaSellerAccountCreation {
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
     sb.append("    onBehalfCompanyName: ").append(toIndentedString(onBehalfCompanyName)).append("\n");
     sb.append("    sellers: ").append(toIndentedString(sellers)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -282,6 +233,7 @@ public class ExternalRetailMediaSellerAccountCreation {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("sellers");
   }
 
  /**
@@ -296,6 +248,21 @@ public class ExternalRetailMediaSellerAccountCreation {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalRetailMediaSellerAccountCreation is not found in the empty JSON string", ExternalRetailMediaSellerAccountCreation.openapiRequiredFields.toString()));
         }
       }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ExternalRetailMediaSellerAccountCreation.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ExternalRetailMediaSellerAccountCreation` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ExternalRetailMediaSellerAccountCreation.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
@@ -305,20 +272,16 @@ public class ExternalRetailMediaSellerAccountCreation {
       if ((jsonObj.get("onBehalfCompanyName") != null && !jsonObj.get("onBehalfCompanyName").isJsonNull()) && !jsonObj.get("onBehalfCompanyName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `onBehalfCompanyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("onBehalfCompanyName").toString()));
       }
-      if (jsonObj.get("sellers") != null && !jsonObj.get("sellers").isJsonNull()) {
-        JsonArray jsonArraysellers = jsonObj.getAsJsonArray("sellers");
-        if (jsonArraysellers != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("sellers").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `sellers` to be an array in the JSON string but got `%s`", jsonObj.get("sellers").toString()));
-          }
-
-          // validate the optional field `sellers` (array)
-          for (int i = 0; i < jsonArraysellers.size(); i++) {
-            ExternalRetailMediaSeller.validateJsonObject(jsonArraysellers.get(i).getAsJsonObject());
-          };
-        }
+      // ensure the json data is an array
+      if (!jsonObj.get("sellers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sellers` to be an array in the JSON string but got `%s`", jsonObj.get("sellers").toString()));
       }
+
+      JsonArray jsonArraysellers = jsonObj.getAsJsonArray("sellers");
+      // validate the required field `sellers` (array)
+      for (int i = 0; i < jsonArraysellers.size(); i++) {
+        ExternalRetailMediaSeller.validateJsonObject(jsonArraysellers.get(i).getAsJsonObject());
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -336,23 +299,6 @@ public class ExternalRetailMediaSellerAccountCreation {
            @Override
            public void write(JsonWriter out, ExternalRetailMediaSellerAccountCreation value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             obj.remove("additionalProperties");
-             // serialize additional properties
-             if (value.getAdditionalProperties() != null) {
-               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
-                 if (entry.getValue() instanceof String)
-                   obj.addProperty(entry.getKey(), (String) entry.getValue());
-                 else if (entry.getValue() instanceof Number)
-                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
-                 else if (entry.getValue() instanceof Boolean)
-                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
-                 else if (entry.getValue() instanceof Character)
-                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
-                 else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
-                 }
-               }
-             }
              elementAdapter.write(out, obj);
            }
 
@@ -360,27 +306,7 @@ public class ExternalRetailMediaSellerAccountCreation {
            public ExternalRetailMediaSellerAccountCreation read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
-             // store additional fields in the deserialized instance
-             ExternalRetailMediaSellerAccountCreation instance = thisAdapter.fromJsonTree(jsonObj);
-             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
-               if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
-                 }
-               }
-             }
-             return instance;
+             return thisAdapter.fromJsonTree(jsonObj);
            }
 
        }.nullSafe();

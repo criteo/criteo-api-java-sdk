@@ -25,6 +25,7 @@ A Retail Media Auction Line Item used to hold bid settings for one or many promo
 |**budgetRemaining** | **BigDecimal** |  |  |
 |**createdAt** | **OffsetDateTime** |  |  |
 |**updatedAt** | **OffsetDateTime** |  |  |
+|**id** | **String** | Id of the entity |  [optional] |
 
 
 

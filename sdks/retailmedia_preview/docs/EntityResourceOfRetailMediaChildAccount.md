@@ -2,14 +2,14 @@
 
 # EntityResourceOfRetailMediaChildAccount
 
-A resource object that represents a single Retail Media child account entity
+A domain entity exposed by the API, identified by a unique id.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **String** |  |  [optional] |
-|**type** | **String** |  |  [optional] |
+|**id** | **String** | Unique id of the entity. |  [optional] |
+|**type** | **String** | Type of the resource. |  [optional] |
 |**attributes** | [**ExternalRetailMediaChildAccount**](ExternalRetailMediaChildAccount.md) |  |  [optional] |
 
 

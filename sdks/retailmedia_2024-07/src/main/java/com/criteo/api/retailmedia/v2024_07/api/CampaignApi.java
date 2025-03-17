@@ -3348,6 +3348,7 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog download initiated. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Catalog has expired. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The indicated catalog is not available for retrieval, wait for a success status. </td><td>  -  </td></tr>
      </table>
      */
@@ -3418,6 +3419,7 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog download initiated. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Catalog has expired. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The indicated catalog is not available for retrieval, wait for a success status. </td><td>  -  </td></tr>
      </table>
      */
@@ -3436,6 +3438,7 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog download initiated. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Catalog has expired. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The indicated catalog is not available for retrieval, wait for a success status. </td><td>  -  </td></tr>
      </table>
      */
@@ -3456,6 +3459,7 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog download initiated. </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Catalog has expired. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The indicated catalog is not available for retrieval, wait for a success status. </td><td>  -  </td></tr>
      </table>
      */

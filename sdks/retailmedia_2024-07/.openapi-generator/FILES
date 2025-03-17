@@ -203,6 +203,7 @@ docs/RmLegacySegmentUserBehaviorCreateV2.md
 docs/RmLegacySegmentUserBehaviorV1.md
 docs/RmLegacySegmentUserBehaviorV2.md
 docs/RmcaCommonProblem.md
+docs/SdkApiRestCommonProblem.md
 docs/Section.md
 docs/SetBidModel.md
 docs/SetBidsModel.md
@@ -475,6 +476,7 @@ src/main/java/com/criteo/api/retailmedia/v2024_07/model/RmLegacySegmentUserBehav
 src/main/java/com/criteo/api/retailmedia/v2024_07/model/RmLegacySegmentUserBehaviorV1.java
 src/main/java/com/criteo/api/retailmedia/v2024_07/model/RmLegacySegmentUserBehaviorV2.java
 src/main/java/com/criteo/api/retailmedia/v2024_07/model/RmcaCommonProblem.java
+src/main/java/com/criteo/api/retailmedia/v2024_07/model/SdkApiRestCommonProblem.java
 src/main/java/com/criteo/api/retailmedia/v2024_07/model/Section.java
 src/main/java/com/criteo/api/retailmedia/v2024_07/model/SetBidModel.java
 src/main/java/com/criteo/api/retailmedia/v2024_07/model/SetBidsModel.java

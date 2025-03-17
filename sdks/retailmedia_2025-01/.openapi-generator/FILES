@@ -236,6 +236,7 @@ docs/RmContactListStatisticsEntityV1Response.md
 docs/RmContactListV1.md
 docs/RmEventsV1.md
 docs/RmcaCommonProblem.md
+docs/SdkApiRestCommonProblem.md
 docs/Section.md
 docs/SellerCatalogRequest.md
 docs/SellerIdentifier.md
@@ -545,6 +546,7 @@ src/main/java/com/criteo/api/retailmedia/v2025_01/model/RmContactListStatisticsE
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/RmContactListV1.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/RmEventsV1.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/RmcaCommonProblem.java
+src/main/java/com/criteo/api/retailmedia/v2025_01/model/SdkApiRestCommonProblem.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/Section.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/SellerCatalogRequest.java
 src/main/java/com/criteo/api/retailmedia/v2025_01/model/SellerIdentifier.java

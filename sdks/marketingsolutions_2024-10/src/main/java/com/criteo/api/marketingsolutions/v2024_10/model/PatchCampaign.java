@@ -16,6 +16,7 @@ package com.criteo.api.marketingsolutions.v2024_10.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.marketingsolutions.v2024_10.model.PatchCampaignSpendLimit;
+import com.criteo.api.marketingsolutions.v2024_10.model.PatchMarketingCampaignBudgetAutomation;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -53,6 +54,10 @@ public class PatchCampaign {
   @SerializedName(SERIALIZED_NAME_SPEND_LIMIT)
   private PatchCampaignSpendLimit spendLimit;
 
+  public static final String SERIALIZED_NAME_BUDGET_AUTOMATION = "budgetAutomation";
+  @SerializedName(SERIALIZED_NAME_BUDGET_AUTOMATION)
+  private PatchMarketingCampaignBudgetAutomation budgetAutomation;
+
   public PatchCampaign() {
   }
 
@@ -75,6 +80,28 @@ public class PatchCampaign {
 
   public void setSpendLimit(PatchCampaignSpendLimit spendLimit) {
     this.spendLimit = spendLimit;
+  }
+
+
+  public PatchCampaign budgetAutomation(PatchMarketingCampaignBudgetAutomation budgetAutomation) {
+    
+    this.budgetAutomation = budgetAutomation;
+    return this;
+  }
+
+   /**
+   * Get budgetAutomation
+   * @return budgetAutomation
+  **/
+  @javax.annotation.Nullable
+
+  public PatchMarketingCampaignBudgetAutomation getBudgetAutomation() {
+    return budgetAutomation;
+  }
+
+
+  public void setBudgetAutomation(PatchMarketingCampaignBudgetAutomation budgetAutomation) {
+    this.budgetAutomation = budgetAutomation;
   }
 
   /**
@@ -132,13 +159,14 @@ public class PatchCampaign {
       return false;
     }
     PatchCampaign patchCampaign = (PatchCampaign) o;
-    return Objects.equals(this.spendLimit, patchCampaign.spendLimit)&&
+    return Objects.equals(this.spendLimit, patchCampaign.spendLimit) &&
+        Objects.equals(this.budgetAutomation, patchCampaign.budgetAutomation)&&
         Objects.equals(this.additionalProperties, patchCampaign.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(spendLimit, additionalProperties);
+    return Objects.hash(spendLimit, budgetAutomation, additionalProperties);
   }
 
   @Override
@@ -146,6 +174,7 @@ public class PatchCampaign {
     StringBuilder sb = new StringBuilder();
     sb.append("class PatchCampaign {\n");
     sb.append("    spendLimit: ").append(toIndentedString(spendLimit)).append("\n");
+    sb.append("    budgetAutomation: ").append(toIndentedString(budgetAutomation)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -170,6 +199,7 @@ public class PatchCampaign {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("spendLimit");
+    openapiFields.add("budgetAutomation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -190,6 +220,10 @@ public class PatchCampaign {
       // validate the optional field `spendLimit`
       if (jsonObj.get("spendLimit") != null && !jsonObj.get("spendLimit").isJsonNull()) {
         PatchCampaignSpendLimit.validateJsonObject(jsonObj.getAsJsonObject("spendLimit"));
+      }
+      // validate the optional field `budgetAutomation`
+      if (jsonObj.get("budgetAutomation") != null && !jsonObj.get("budgetAutomation").isJsonNull()) {
+        PatchMarketingCampaignBudgetAutomation.validateJsonObject(jsonObj.getAsJsonObject("budgetAutomation"));
       }
   }
 

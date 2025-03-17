@@ -8,7 +8,7 @@ A collection of brand ids
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**brandIds** | **List&lt;Long&gt;** |  |  [optional] |
+|**brandIds** | **List&lt;Long&gt;** |  |  |
 
 
 

@@ -15,6 +15,7 @@ package com.criteo.api.marketingsolutions.v2025_01.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.criteo.api.marketingsolutions.v2025_01.model.BudgetAutomation;
 import com.criteo.api.marketingsolutions.v2025_01.model.CreateCampaignSpendLimit;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -114,6 +115,10 @@ public class CreateCampaign {
   @SerializedName(SERIALIZED_NAME_SPEND_LIMIT)
   private CreateCampaignSpendLimit spendLimit;
 
+  public static final String SERIALIZED_NAME_BUDGET_AUTOMATION = "budgetAutomation";
+  @SerializedName(SERIALIZED_NAME_BUDGET_AUTOMATION)
+  private BudgetAutomation budgetAutomation;
+
   public CreateCampaign() {
   }
 
@@ -204,6 +209,28 @@ public class CreateCampaign {
     this.spendLimit = spendLimit;
   }
 
+
+  public CreateCampaign budgetAutomation(BudgetAutomation budgetAutomation) {
+    
+    this.budgetAutomation = budgetAutomation;
+    return this;
+  }
+
+   /**
+   * Get budgetAutomation
+   * @return budgetAutomation
+  **/
+  @javax.annotation.Nullable
+
+  public BudgetAutomation getBudgetAutomation() {
+    return budgetAutomation;
+  }
+
+
+  public void setBudgetAutomation(BudgetAutomation budgetAutomation) {
+    this.budgetAutomation = budgetAutomation;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -262,13 +289,14 @@ public class CreateCampaign {
     return Objects.equals(this.name, createCampaign.name) &&
         Objects.equals(this.advertiserId, createCampaign.advertiserId) &&
         Objects.equals(this.goal, createCampaign.goal) &&
-        Objects.equals(this.spendLimit, createCampaign.spendLimit)&&
+        Objects.equals(this.spendLimit, createCampaign.spendLimit) &&
+        Objects.equals(this.budgetAutomation, createCampaign.budgetAutomation)&&
         Objects.equals(this.additionalProperties, createCampaign.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, advertiserId, goal, spendLimit, additionalProperties);
+    return Objects.hash(name, advertiserId, goal, spendLimit, budgetAutomation, additionalProperties);
   }
 
   @Override
@@ -279,6 +307,7 @@ public class CreateCampaign {
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
     sb.append("    goal: ").append(toIndentedString(goal)).append("\n");
     sb.append("    spendLimit: ").append(toIndentedString(spendLimit)).append("\n");
+    sb.append("    budgetAutomation: ").append(toIndentedString(budgetAutomation)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -306,6 +335,7 @@ public class CreateCampaign {
     openapiFields.add("advertiserId");
     openapiFields.add("goal");
     openapiFields.add("spendLimit");
+    openapiFields.add("budgetAutomation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -345,6 +375,10 @@ public class CreateCampaign {
       }
       // validate the required field `spendLimit`
       CreateCampaignSpendLimit.validateJsonObject(jsonObj.getAsJsonObject("spendLimit"));
+      // validate the optional field `budgetAutomation`
+      if (jsonObj.get("budgetAutomation") != null && !jsonObj.get("budgetAutomation").isJsonNull()) {
+        BudgetAutomation.validateJsonObject(jsonObj.getAsJsonObject("budgetAutomation"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,7 +53,7 @@ import com.criteo.api.retailmedia.preview.JSON;
 public class AsyncFillRateReport {
   public static final String SERIALIZED_NAME_SUPPLY_ACCOUNT_IDS = "supplyAccountIds";
   @SerializedName(SERIALIZED_NAME_SUPPLY_ACCOUNT_IDS)
-  private List<String> supplyAccountIds = null;
+  private List<String> supplyAccountIds = new ArrayList<>();
 
   /**
    * Gets or Sets dimensions
@@ -160,7 +159,7 @@ public class AsyncFillRateReport {
     
     PRODUCTCLICKSREVENUE("productClicksRevenue"),
     
-    TOTALREVENUE("totalRevenue"),
+    REVENUE("revenue"),
     
     WORKINGMEDIA("workingMedia"),
     
@@ -246,7 +245,7 @@ public class AsyncFillRateReport {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<FormatEnum> {
@@ -289,9 +288,6 @@ public class AsyncFillRateReport {
   }
 
   public AsyncFillRateReport addSupplyAccountIdsItem(String supplyAccountIdsItem) {
-    if (this.supplyAccountIds == null) {
-      this.supplyAccountIds = null;
-    }
     this.supplyAccountIds.add(supplyAccountIdsItem);
     return this;
   }
@@ -300,7 +296,7 @@ public class AsyncFillRateReport {
    * Supply account ids to report on
    * @return supplyAccountIds
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public List<String> getSupplyAccountIds() {
     return supplyAccountIds;
@@ -518,20 +514,9 @@ public class AsyncFillRateReport {
         Objects.equals(this.additionalProperties, asyncFillRateReport.additionalProperties);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(supplyAccountIds, dimensions, metrics, format, startDate, endDate, timezone, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -578,6 +563,7 @@ public class AsyncFillRateReport {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("supplyAccountIds");
     openapiRequiredFields.add("dimensions");
     openapiRequiredFields.add("metrics");
     openapiRequiredFields.add("startDate");
@@ -603,8 +589,10 @@ public class AsyncFillRateReport {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("supplyAccountIds") != null && !jsonObj.get("supplyAccountIds").isJsonArray()) {
+      // ensure the required json array is present
+      if (jsonObj.get("supplyAccountIds") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("supplyAccountIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `supplyAccountIds` to be an array in the JSON string but got `%s`", jsonObj.get("supplyAccountIds").toString()));
       }
       // ensure the required json array is present

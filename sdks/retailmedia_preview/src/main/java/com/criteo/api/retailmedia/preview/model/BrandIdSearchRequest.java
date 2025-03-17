@@ -91,7 +91,7 @@ public class BrandIdSearchRequest {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<BrandTypeEnum> {

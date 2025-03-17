@@ -101,11 +101,14 @@ docs/AudienceSizeEstimationV1Response.md
 docs/AudienceUpdateEntityV1.md
 docs/AudienceUpdateEntityV1Resource.md
 docs/AudienceWarning.md
+docs/AutomatedBudgetConfiguration.md
+docs/AutomatedBudgetConfigurationV23Q1.md
 docs/BasicAudienceDefinition.md
 docs/BehavioralV1.md
+docs/BudgetAutomation.md
+docs/BudgetAutomationConfiguration.md
 docs/CampaignApi.md
 docs/CampaignBudgetAutomationV23Q1.md
-docs/CampaignBudgetAutomationV23Q1AutomatedBudgetConfiguration.md
 docs/CampaignSearchFiltersV23Q1.md
 docs/CampaignSearchRequestV23Q1.md
 docs/CampaignSpendLimitV23Q1.md
@@ -205,6 +208,7 @@ docs/PatchCampaign.md
 docs/PatchCampaignListRequest.md
 docs/PatchCampaignSpendLimit.md
 docs/PatchCampaignWriteResource.md
+docs/PatchMarketingCampaignBudgetAutomation.md
 docs/PatchResultCampaignListResponse.md
 docs/PatchResultCampaignReadResource.md
 docs/PlacementsReportQueryMessage.md
@@ -399,10 +403,13 @@ src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/AudienceSizeEstim
 src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/AudienceUpdateEntityV1.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/AudienceUpdateEntityV1Resource.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/AudienceWarning.java
+src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/AutomatedBudgetConfiguration.java
+src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/AutomatedBudgetConfigurationV23Q1.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/BasicAudienceDefinition.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/BehavioralV1.java
+src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/BudgetAutomation.java
+src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/BudgetAutomationConfiguration.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/CampaignBudgetAutomationV23Q1.java
-src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/CampaignBudgetAutomationV23Q1AutomatedBudgetConfiguration.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/CampaignSearchFiltersV23Q1.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/CampaignSearchRequestV23Q1.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/CampaignSpendLimitV23Q1.java
@@ -500,6 +507,7 @@ src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/PatchCampaign.jav
 src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/PatchCampaignListRequest.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/PatchCampaignSpendLimit.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/PatchCampaignWriteResource.java
+src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/PatchMarketingCampaignBudgetAutomation.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/PatchResultCampaignListResponse.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/PatchResultCampaignReadResource.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_01/model/PlacementsReportQueryMessage.java

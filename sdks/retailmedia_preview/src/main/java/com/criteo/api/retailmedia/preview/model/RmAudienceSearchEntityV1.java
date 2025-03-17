@@ -23,7 +23,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -74,7 +73,7 @@ public class RmAudienceSearchEntityV1 {
 
   public RmAudienceSearchEntityV1 addAudienceIdsItem(String audienceIdsItem) {
     if (this.audienceIds == null) {
-      this.audienceIds = null;
+      this.audienceIds = new ArrayList<>();
     }
     this.audienceIds.add(audienceIdsItem);
     return this;
@@ -104,7 +103,7 @@ public class RmAudienceSearchEntityV1 {
 
   public RmAudienceSearchEntityV1 addRetailerIdsItem(String retailerIdsItem) {
     if (this.retailerIds == null) {
-      this.retailerIds = null;
+      this.retailerIds = new ArrayList<>();
     }
     this.retailerIds.add(retailerIdsItem);
     return this;
@@ -134,7 +133,7 @@ public class RmAudienceSearchEntityV1 {
 
   public RmAudienceSearchEntityV1 addAudienceSegmentIdsItem(String audienceSegmentIdsItem) {
     if (this.audienceSegmentIds == null) {
-      this.audienceSegmentIds = null;
+      this.audienceSegmentIds = new ArrayList<>();
     }
     this.audienceSegmentIds.add(audienceSegmentIdsItem);
     return this;
@@ -216,20 +215,9 @@ public class RmAudienceSearchEntityV1 {
         Objects.equals(this.additionalProperties, rmAudienceSearchEntityV1.additionalProperties);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(audienceIds, retailerIds, audienceSegmentIds, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

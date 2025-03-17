@@ -8,15 +8,15 @@ The details for a newly created account
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** |  |  [optional] |
-|**companyName** | **String** |  |  [optional] |
-|**onBehalfCompanyName** | **String** |  |  [optional] |
-|**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
-|**subType** | [**SubTypeEnum**](#SubTypeEnum) |  |  [optional] |
-|**countryIds** | **List&lt;String&gt;** |  |  [optional] |
-|**currencyId** | **String** |  |  [optional] |
-|**parentAccountLabel** | **String** |  |  [optional] |
-|**timeZone** | **String** |  |  [optional] |
+|**name** | **String** | account name |  [optional] |
+|**companyName** | **String** | Paying entity name of ads for the Digital Services Act |  [optional] |
+|**onBehalfCompanyName** | **String** | On behalf entity name of ads for the Digital Services Act |  [optional] |
+|**type** | [**TypeEnum**](#TypeEnum) | Type for the account |  [optional] |
+|**subType** | [**SubTypeEnum**](#SubTypeEnum) | subtype for the account |  [optional] |
+|**countryIds** | **List&lt;String&gt;** | list of countries associated with the account |  [optional] |
+|**currencyId** | **String** | the currency for the account |  [optional] |
+|**parentAccountLabel** | **String** | parent account label for the account |  [optional] |
+|**timeZone** | **String** | the timezone for the account |  [optional] |
 
 
 

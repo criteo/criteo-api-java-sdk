@@ -31,6 +31,7 @@ docs/AdSetTargetingDealIdsSetResultResource.md
 docs/AdSetTargetingDealIdsSetResultResponse.md
 docs/AdSetTargetingRuleV24Q3.md
 docs/AdSetTargetingV24Q3.md
+docs/AdSetTargetingV24Q3FrequencyCapping.md
 docs/AdSetTargetingVideoPositioning.md
 docs/AdSetTargetingVideoPositioningDisableResultResource.md
 docs/AdSetTargetingVideoPositioningDisableResultResponse.md
@@ -118,12 +119,15 @@ docs/AudienceSizeEstimationV1Response.md
 docs/AudienceUpdateEntityV1.md
 docs/AudienceUpdateEntityV1Resource.md
 docs/AudienceWarning.md
+docs/AutomatedBudgetConfiguration.md
+docs/AutomatedBudgetConfigurationV23Q1.md
 docs/BasicAudienceDefinition.md
 docs/BatchAcceptedResponse.md
 docs/BehavioralV1.md
+docs/BudgetAutomation.md
+docs/BudgetAutomationConfiguration.md
 docs/CampaignApi.md
 docs/CampaignBudgetAutomationV23Q1.md
-docs/CampaignBudgetAutomationV23Q1AutomatedBudgetConfiguration.md
 docs/CampaignSearchFiltersV23Q1.md
 docs/CampaignSearchRequestV23Q1.md
 docs/CampaignSpendLimitV23Q1.md
@@ -246,7 +250,6 @@ docs/NillableDateTime.md
 docs/NillableDecimal.md
 docs/NillableGenderV1.md
 docs/NillableInt32.md
-docs/NillableLookbackWindowV24Q3.md
 docs/NillableString.md
 docs/OnSiteRecoRequest.md
 docs/OnSiteRecoResponse.md
@@ -271,6 +274,7 @@ docs/PatchCampaign.md
 docs/PatchCampaignListRequest.md
 docs/PatchCampaignSpendLimit.md
 docs/PatchCampaignWriteResource.md
+docs/PatchMarketingCampaignBudgetAutomation.md
 docs/PatchResultCampaignListResponse.md
 docs/PatchResultCampaignReadResource.md
 docs/PlacementsReportQueryMessage.md
@@ -446,6 +450,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetTargetingDeal
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetTargetingDealIdsSetResultResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetTargetingRuleV24Q3.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetTargetingV24Q3.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetTargetingV24Q3FrequencyCapping.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetTargetingVideoPositioning.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetTargetingVideoPositioningDisableResultResource.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AdSetTargetingVideoPositioningDisableResultResponse.java
@@ -530,11 +535,14 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/AudienceSizeEstima
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AudienceUpdateEntityV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AudienceUpdateEntityV1Resource.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AudienceWarning.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/AutomatedBudgetConfiguration.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/AutomatedBudgetConfigurationV23Q1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/BasicAudienceDefinition.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/BatchAcceptedResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/BehavioralV1.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/BudgetAutomation.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/BudgetAutomationConfiguration.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CampaignBudgetAutomationV23Q1.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/CampaignBudgetAutomationV23Q1AutomatedBudgetConfiguration.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CampaignSearchFiltersV23Q1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CampaignSearchRequestV23Q1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/CampaignSpendLimitV23Q1.java
@@ -654,7 +662,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableDateTime.j
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableDecimal.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableGenderV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableInt32.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableLookbackWindowV24Q3.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/NillableString.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/OnSiteRecoRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/OnSiteRecoResponse.java
@@ -678,6 +685,7 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/PatchCampaign.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/PatchCampaignListRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/PatchCampaignSpendLimit.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/PatchCampaignWriteResource.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/PatchMarketingCampaignBudgetAutomation.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/PatchResultCampaignListResponse.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/PatchResultCampaignReadResource.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/PlacementsReportQueryMessage.java
