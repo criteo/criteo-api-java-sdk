@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,7 +49,7 @@ import com.criteo.api.retailmedia.preview.JSON;
  * The status of an asynchronous request to generate a catalog
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ExternalCatalogStatus {
+public class CatalogStatusV2 {
   /**
    * An enumeration of the status of the catalog.
    */
@@ -106,10 +107,6 @@ public class ExternalCatalogStatus {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
-  public static final String SERIALIZED_NAME_CURRENCY = "currency";
-  @SerializedName(SERIALIZED_NAME_CURRENCY)
-  private String currency;
-
   public static final String SERIALIZED_NAME_ROW_COUNT = "rowCount";
   @SerializedName(SERIALIZED_NAME_ROW_COUNT)
   private Integer rowCount;
@@ -130,10 +127,10 @@ public class ExternalCatalogStatus {
   @SerializedName(SERIALIZED_NAME_MESSAGE)
   private String message;
 
-  public ExternalCatalogStatus() {
+  public CatalogStatusV2() {
   }
 
-  public ExternalCatalogStatus status(StatusEnum status) {
+  public CatalogStatusV2 status(StatusEnum status) {
     
     this.status = status;
     return this;
@@ -155,29 +152,7 @@ public class ExternalCatalogStatus {
   }
 
 
-  public ExternalCatalogStatus currency(String currency) {
-    
-    this.currency = currency;
-    return this;
-  }
-
-   /**
-   * An ISO4217 representation of the currency products are listed under in this catalog.
-   * @return currency
-  **/
-  @javax.annotation.Nullable
-
-  public String getCurrency() {
-    return currency;
-  }
-
-
-  public void setCurrency(String currency) {
-    this.currency = currency;
-  }
-
-
-  public ExternalCatalogStatus rowCount(Integer rowCount) {
+  public CatalogStatusV2 rowCount(Integer rowCount) {
     
     this.rowCount = rowCount;
     return this;
@@ -199,7 +174,7 @@ public class ExternalCatalogStatus {
   }
 
 
-  public ExternalCatalogStatus fileSizeBytes(Integer fileSizeBytes) {
+  public CatalogStatusV2 fileSizeBytes(Integer fileSizeBytes) {
     
     this.fileSizeBytes = fileSizeBytes;
     return this;
@@ -221,7 +196,7 @@ public class ExternalCatalogStatus {
   }
 
 
-  public ExternalCatalogStatus md5Checksum(String md5Checksum) {
+  public CatalogStatusV2 md5Checksum(String md5Checksum) {
     
     this.md5Checksum = md5Checksum;
     return this;
@@ -243,7 +218,7 @@ public class ExternalCatalogStatus {
   }
 
 
-  public ExternalCatalogStatus createdAt(OffsetDateTime createdAt) {
+  public CatalogStatusV2 createdAt(OffsetDateTime createdAt) {
     
     this.createdAt = createdAt;
     return this;
@@ -265,7 +240,7 @@ public class ExternalCatalogStatus {
   }
 
 
-  public ExternalCatalogStatus message(String message) {
+  public CatalogStatusV2 message(String message) {
     
     this.message = message;
     return this;
@@ -299,9 +274,9 @@ public class ExternalCatalogStatus {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ExternalCatalogStatus instance itself
+   * @return the CatalogStatusV2 instance itself
    */
-  public ExternalCatalogStatus putAdditionalProperty(String key, Object value) {
+  public CatalogStatusV2 putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -340,28 +315,37 @@ public class ExternalCatalogStatus {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExternalCatalogStatus externalCatalogStatus = (ExternalCatalogStatus) o;
-    return Objects.equals(this.status, externalCatalogStatus.status) &&
-        Objects.equals(this.currency, externalCatalogStatus.currency) &&
-        Objects.equals(this.rowCount, externalCatalogStatus.rowCount) &&
-        Objects.equals(this.fileSizeBytes, externalCatalogStatus.fileSizeBytes) &&
-        Objects.equals(this.md5Checksum, externalCatalogStatus.md5Checksum) &&
-        Objects.equals(this.createdAt, externalCatalogStatus.createdAt) &&
-        Objects.equals(this.message, externalCatalogStatus.message)&&
-        Objects.equals(this.additionalProperties, externalCatalogStatus.additionalProperties);
+    CatalogStatusV2 catalogStatusV2 = (CatalogStatusV2) o;
+    return Objects.equals(this.status, catalogStatusV2.status) &&
+        Objects.equals(this.rowCount, catalogStatusV2.rowCount) &&
+        Objects.equals(this.fileSizeBytes, catalogStatusV2.fileSizeBytes) &&
+        Objects.equals(this.md5Checksum, catalogStatusV2.md5Checksum) &&
+        Objects.equals(this.createdAt, catalogStatusV2.createdAt) &&
+        Objects.equals(this.message, catalogStatusV2.message)&&
+        Objects.equals(this.additionalProperties, catalogStatusV2.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, currency, rowCount, fileSizeBytes, md5Checksum, createdAt, message, additionalProperties);
+    return Objects.hash(status, rowCount, fileSizeBytes, md5Checksum, createdAt, message, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExternalCatalogStatus {\n");
+    sb.append("class CatalogStatusV2 {\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    rowCount: ").append(toIndentedString(rowCount)).append("\n");
     sb.append("    fileSizeBytes: ").append(toIndentedString(fileSizeBytes)).append("\n");
     sb.append("    md5Checksum: ").append(toIndentedString(md5Checksum)).append("\n");
@@ -391,7 +375,6 @@ public class ExternalCatalogStatus {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("status");
-    openapiFields.add("currency");
     openapiFields.add("rowCount");
     openapiFields.add("fileSizeBytes");
     openapiFields.add("md5Checksum");
@@ -401,29 +384,24 @@ public class ExternalCatalogStatus {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("status");
-    openapiRequiredFields.add("currency");
-    openapiRequiredFields.add("rowCount");
-    openapiRequiredFields.add("fileSizeBytes");
-    openapiRequiredFields.add("md5Checksum");
     openapiRequiredFields.add("createdAt");
-    openapiRequiredFields.add("message");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ExternalCatalogStatus
+  * @throws IOException if the JSON Object is invalid with respect to CatalogStatusV2
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ExternalCatalogStatus.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalCatalogStatus is not found in the empty JSON string", ExternalCatalogStatus.openapiRequiredFields.toString()));
+        if (!CatalogStatusV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogStatusV2 is not found in the empty JSON string", CatalogStatusV2.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ExternalCatalogStatus.openapiRequiredFields) {
+      for (String requiredField : CatalogStatusV2.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
@@ -431,13 +409,10 @@ public class ExternalCatalogStatus {
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
-      if (!jsonObj.get("currency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
-      }
-      if (!jsonObj.get("md5Checksum").isJsonPrimitive()) {
+      if ((jsonObj.get("md5Checksum") != null && !jsonObj.get("md5Checksum").isJsonNull()) && !jsonObj.get("md5Checksum").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `md5Checksum` to be a primitive type in the JSON string but got `%s`", jsonObj.get("md5Checksum").toString()));
       }
-      if (!jsonObj.get("message").isJsonPrimitive()) {
+      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
       }
   }
@@ -446,16 +421,16 @@ public class ExternalCatalogStatus {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ExternalCatalogStatus.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ExternalCatalogStatus' and its subtypes
+       if (!CatalogStatusV2.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CatalogStatusV2' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ExternalCatalogStatus> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ExternalCatalogStatus.class));
+       final TypeAdapter<CatalogStatusV2> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CatalogStatusV2.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ExternalCatalogStatus>() {
+       return (TypeAdapter<T>) new TypeAdapter<CatalogStatusV2>() {
            @Override
-           public void write(JsonWriter out, ExternalCatalogStatus value) throws IOException {
+           public void write(JsonWriter out, CatalogStatusV2 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -478,11 +453,11 @@ public class ExternalCatalogStatus {
            }
 
            @Override
-           public ExternalCatalogStatus read(JsonReader in) throws IOException {
+           public CatalogStatusV2 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             ExternalCatalogStatus instance = thisAdapter.fromJsonTree(jsonObj);
+             CatalogStatusV2 instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -509,18 +484,18 @@ public class ExternalCatalogStatus {
   }
 
  /**
-  * Create an instance of ExternalCatalogStatus given an JSON string
+  * Create an instance of CatalogStatusV2 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ExternalCatalogStatus
-  * @throws IOException if the JSON string is invalid with respect to ExternalCatalogStatus
+  * @return An instance of CatalogStatusV2
+  * @throws IOException if the JSON string is invalid with respect to CatalogStatusV2
   */
-  public static ExternalCatalogStatus fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ExternalCatalogStatus.class);
+  public static CatalogStatusV2 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CatalogStatusV2.class);
   }
 
  /**
-  * Convert an instance of ExternalCatalogStatus to an JSON string
+  * Convert an instance of CatalogStatusV2 to an JSON string
   *
   * @return JSON string
   */

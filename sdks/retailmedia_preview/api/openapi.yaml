@@ -1195,10 +1195,10 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
-  /preview/retail-media/accounts/{accountId}/catalogs/sellers:
+  /preview/retail-media/accounts/{accountId}/brand-catalog-export:
     post:
       description: Create a request for a Catalog available to the indicated account.
-      operationId: Catalog_PostApiV1ExternalAccountCatalogsSellersByAccountId
+      operationId: Catalog_PostApiExternalV2AccountBrandCatalogExportByAccountId
       parameters:
       - description: The account to request the catalog for.
         explode: false
@@ -1213,32 +1213,69 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/JsonApiRequestOfSellerCatalogRequest'
+              $ref: '#/components/schemas/JsonApiRequestOfBrandCatalogRequestV2'
         x-bodyName: body
       responses:
         "200":
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/JsonApiSingleResponseOfCatalogStatus'
+                $ref: '#/components/schemas/CatalogStatusV2Response'
             application/json:
               schema:
-                $ref: '#/components/schemas/JsonApiSingleResponseOfCatalogStatus'
+                $ref: '#/components/schemas/CatalogStatusV2Response'
             text/json:
               schema:
-                $ref: '#/components/schemas/JsonApiSingleResponseOfCatalogStatus'
+                $ref: '#/components/schemas/CatalogStatusV2Response'
+          description: Catalog request successfully created
+      tags:
+      - Campaign
+      x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{accountId}/seller-catalog-export:
+    post:
+      description: Create a request for a Catalog available to the indicated account.
+      operationId: Catalog_PostApiExternalV2AccountSellerCatalogExportByAccountId
+      parameters:
+      - description: The account to request the catalog for.
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JsonApiRequestOfSellerCatalogRequestV2'
+        x-bodyName: body
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CatalogStatusV2Response'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogStatusV2Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CatalogStatusV2Response'
           description: Catalog request successfully created
         "400":
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/JsonApiSingleResponseOfCatalogStatus'
+                $ref: '#/components/schemas/CatalogStatusV2Response'
             application/json:
               schema:
-                $ref: '#/components/schemas/JsonApiSingleResponseOfCatalogStatus'
+                $ref: '#/components/schemas/CatalogStatusV2Response'
             text/json:
               schema:
-                $ref: '#/components/schemas/JsonApiSingleResponseOfCatalogStatus'
+                $ref: '#/components/schemas/CatalogStatusV2Response'
           description: Bad Request
       tags:
       - Campaign
@@ -1491,6 +1528,36 @@ paths:
       tags:
       - Campaign
       x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/catalogs/{catalogId}/status:
+    get:
+      description: Check the status of a catalog request.
+      operationId: Catalog_GetApiExternalV2CatalogStatusByCatalogId
+      parameters:
+      - description: A catalog ID returned from an account catalog request.
+        explode: false
+        in: path
+        name: catalogId
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CatalogStatusV2Response'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogStatusV2Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CatalogStatusV2Response'
+          description: Catalog request found.
+      tags:
+      - Campaign
       x-accepts: application/json
   /preview/retail-media/retailers/{retailer-id}/cpc-rates:
     get:
@@ -8704,16 +8771,15 @@ components:
           nullable: true
           type: array
       type: object
-    JsonApiSingleResponseOfCatalogStatus:
-      description: A JSON:API wrapper class to add one JSON:API <typeparamref name="T"
-        /> within a data property
+    CatalogStatusV2Response:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity
       example:
         data:
           attributes:
             fileSizeBytes: 6
             md5Checksum: md5Checksum
             createdAt: 2000-01-23T04:56:07.000+00:00
-            currency: currency
             rowCount: 0
             message: message
             status: unknown
@@ -8721,6 +8787,7 @@ components:
           type: type
         warnings:
         - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8730,6 +8797,7 @@ components:
           type: unknown
           title: title
         - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8740,6 +8808,7 @@ components:
           title: title
         errors:
         - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8749,6 +8818,7 @@ components:
           type: unknown
           title: title
         - traceId: traceId
+          traceIdentifier: traceIdentifier
           code: code
           instance: instance
           detail: detail
@@ -8757,23 +8827,26 @@ components:
           stackTrace: stackTrace
           type: unknown
           title: title
+      nullable: true
       properties:
         data:
-          $ref: '#/components/schemas/JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus'
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonError'
-          type: array
-          x-nullable: false
+          $ref: '#/components/schemas/ResourceOfCatalogStatusV2'
         warnings:
           items:
-            $ref: '#/components/schemas/CommonWarning'
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
           type: array
-          x-nullable: false
-      required:
-      - data
+          x-optional-in-response: true
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
       type: object
-      x-nullable: false
+      x-nullable: true
       x-used-in-response: true
     SkuDataPreviewListResponse:
       description: Data model for a list of response resources
@@ -9389,12 +9462,40 @@ components:
       type: object
       x-nullable: false
       x-used-in-response: true
-    JsonApiRequestOfSellerCatalogRequest:
+    JsonApiRequestOfBrandCatalogRequestV2:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with Type, and Attributes properties"
       example:
         data:
           attributes:
+            modifiedAfter: 2000-01-23T04:56:07.000+00:00
+            brandIdFilter:
+            - brandIdFilter
+            - brandIdFilter
+            includeFields:
+            - Unknown
+            - Unknown
+            retailerIdFilter:
+            - 0
+            - 0
+          type: type
+      nullable: true
+      properties:
+        data:
+          $ref: '#/components/schemas/JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2'
+      type: object
+      x-nullable: true
+      x-used-in-request: true
+    JsonApiRequestOfSellerCatalogRequestV2:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with Type, and Attributes properties"
+      example:
+        data:
+          attributes:
+            modifiedAfter: 2000-01-23T04:56:07.000+00:00
+            includeFields:
+            - Unknown
+            - Unknown
             sellers:
             - sellerId: sellerId
               retailerId: retailerId
@@ -9404,7 +9505,7 @@ components:
       nullable: true
       properties:
         data:
-          $ref: '#/components/schemas/JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest'
+          $ref: '#/components/schemas/JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2'
       type: object
       x-nullable: true
       x-used-in-request: true
@@ -9468,169 +9569,34 @@ components:
       type: object
       x-nullable: false
       x-used-in-request: true
-    JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus:
-      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
-        \ /> with external Id, Type, and\r\nAttributes properties"
+    ResourceOfCatalogStatusV2:
+      description: A class that represents a domain entity exposed by an API
       example:
         attributes:
           fileSizeBytes: 6
           md5Checksum: md5Checksum
           createdAt: 2000-01-23T04:56:07.000+00:00
-          currency: currency
           rowCount: 0
           message: message
           status: unknown
         id: id
         type: type
+      nullable: true
       properties:
-        id:
-          format: long-id
-          type: string
-          x-nullable: false
-        type:
-          type: string
-          x-nullable: false
         attributes:
-          $ref: '#/components/schemas/ExternalCatalogStatus'
-      required:
-      - id
-      - type
-      type: object
-      x-nullable: false
-      x-used-in-response: true
-    CommonError:
-      description: A JSON:API Common error structure
-      example:
-        traceId: traceId
-        code: code
-        instance: instance
-        detail: detail
-        source:
-          key: source
-        stackTrace: stackTrace
-        type: unknown
-        title: title
-      properties:
-        traceId:
-          description: (REQUIRED) The Correlation ID provided by the Gateway. It is
-            also a unique identifier for this particular occurrence of the problem.
+          $ref: '#/components/schemas/CatalogStatusV2'
+        id:
+          description: Id of the entity
+          nullable: true
           type: string
-          x-nullable: false
+          x-optional-in-response: true
         type:
-          description: (REQUIRED) The classification of the error.
-          enum:
-          - unknown
-          - access-control
-          - authentication
-          - authorization
-          - availability
-          - deprecation
-          - quota
-          - validation
+          description: Canonical type name of the entity
+          nullable: true
           type: string
-          x-nullable: false
-        code:
-          description: "(REQUIRED) A machine-readable unique error code, expressed\
-            \ as a string value. The format used must be kabab-case."
-          type: string
-          x-nullable: false
-        instance:
-          description: (REQUIRED) A URI reference that identifies the specific occurrence
-            of the problem.
-          type: string
-          x-nullable: false
-        title:
-          description: "(RECOMMENDED) A short, human-readable summary of the problem\
-            \ type."
-          type: string
-          x-nullable: false
-        detail:
-          description: (RECOMMENDED) A human-readable explanation specific to this
-            occurrence of the problem.
-          type: string
-          x-nullable: false
-        source:
-          additionalProperties:
-            type: string
-            x-nullable: false
-          description: (OPTIONAL) A machine-readable structure to reference to the
-            exact location(s) causing the error(s)
-          type: object
-          x-nullable: false
-        stackTrace:
-          description: (NEVER IN PRODUCTION) A human-readable stacktrace produced
-            by the implementation technology
-          type: string
-          x-nullable: false
+          x-optional-in-response: true
       type: object
-      x-nullable: false
-      x-used-in-response: true
-    CommonWarning:
-      description: A JSON:API Base common warning
-      example:
-        traceId: traceId
-        code: code
-        instance: instance
-        detail: detail
-        source:
-          key: source
-        stackTrace: stackTrace
-        type: unknown
-        title: title
-      properties:
-        traceId:
-          description: (REQUIRED) The Correlation ID provided by the Gateway. It is
-            also a unique identifier for this particular occurrence of the problem.
-          type: string
-          x-nullable: false
-        type:
-          description: (REQUIRED) The classification of the error.
-          enum:
-          - unknown
-          - access-control
-          - authentication
-          - authorization
-          - availability
-          - deprecation
-          - quota
-          - validation
-          type: string
-          x-nullable: false
-        code:
-          description: "(REQUIRED) A machine-readable unique error code, expressed\
-            \ as a string value. The format used must be kabab-case."
-          type: string
-          x-nullable: false
-        instance:
-          description: (REQUIRED) A URI reference that identifies the specific occurrence
-            of the problem.
-          type: string
-          x-nullable: false
-        title:
-          description: "(RECOMMENDED) A short, human-readable summary of the problem\
-            \ type."
-          type: string
-          x-nullable: false
-        detail:
-          description: (RECOMMENDED) A human-readable explanation specific to this
-            occurrence of the problem.
-          type: string
-          x-nullable: false
-        source:
-          additionalProperties:
-            type: string
-            x-nullable: false
-          description: (OPTIONAL) A machine-readable structure to reference to the
-            exact location(s) causing the error(s)
-          type: object
-          x-nullable: false
-        stackTrace:
-          description: (NEVER IN PRODUCTION) A human-readable stacktrace produced
-            by the implementation technology
-          type: string
-          x-nullable: false
-      type: object
-      x-nullable: false
+      x-nullable: true
       x-used-in-response: true
     ResourceOfSkuDataPreview:
       description: Data model for a Resource
@@ -9918,11 +9884,41 @@ components:
       type: object
       x-nullable: false
       x-used-in-response: true
-    JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest:
+    JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with Type, and\r\nAttributes properties"
       example:
         attributes:
+          modifiedAfter: 2000-01-23T04:56:07.000+00:00
+          brandIdFilter:
+          - brandIdFilter
+          - brandIdFilter
+          includeFields:
+          - Unknown
+          - Unknown
+          retailerIdFilter:
+          - 0
+          - 0
+        type: type
+      properties:
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/BrandCatalogRequestV2'
+      required:
+      - type
+      type: object
+      x-nullable: false
+      x-used-in-request: true
+    JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2:
+      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
+        \ /> with Type, and\r\nAttributes properties"
+      example:
+        attributes:
+          modifiedAfter: 2000-01-23T04:56:07.000+00:00
+          includeFields:
+          - Unknown
+          - Unknown
           sellers:
           - sellerId: sellerId
             retailerId: retailerId
@@ -9933,7 +9929,7 @@ components:
         type:
           type: string
         attributes:
-          $ref: '#/components/schemas/SellerCatalogRequest'
+          $ref: '#/components/schemas/SellerCatalogRequestV2'
       required:
       - type
       type: object
@@ -10014,13 +10010,12 @@ components:
       type: object
       x-nullable: false
       x-used-in-request: true
-    ExternalCatalogStatus:
+    CatalogStatusV2:
       description: The status of an asynchronous request to generate a catalog
       example:
         fileSizeBytes: 6
         md5Checksum: md5Checksum
         createdAt: 2000-01-23T04:56:07.000+00:00
-        currency: currency
         rowCount: 0
         message: message
         status: unknown
@@ -10034,52 +10029,39 @@ components:
           - failure
           - expired
           type: string
-          x-nullable: false
-        currency:
-          description: An ISO4217 representation of the currency products are listed
-            under in this catalog.
-          nullable: true
-          type: string
-          x-nullable: true
         rowCount:
           description: "An indication of the number of products contained in this\
             \ catalog. Available when\r\nthis catalog reaches a success status."
           format: int32
           nullable: true
           type: integer
-          x-nullable: true
+          x-optional-in-response: true
         fileSizeBytes:
           description: The size of this catalog in bytes. Available when this catalog
             reaches a success status.
           format: int32
           nullable: true
           type: integer
-          x-nullable: true
+          x-optional-in-response: true
         md5Checksum:
           description: "An MD5 checksum of the catalog for use in confirming complete\
             \ and uncorrupted retrieval.\r\nAvailable when this catalog reaches a\
             \ success status."
           nullable: true
           type: string
-          x-nullable: true
+          x-optional-in-response: true
         createdAt:
           description: The time this catalog was created. Represented as a UTC ISO8601
             string.
           format: date-time
           type: string
-          x-nullable: false
         message:
           description: An optional information message intended for developer consumption.
           nullable: true
           type: string
-          x-nullable: true
+          x-optional-in-response: true
       required:
       - createdAt
-      - currency
-      - fileSizeBytes
-      - md5Checksum
-      - message
-      - rowCount
       - status
       type: object
       x-nullable: false
@@ -10519,9 +10501,62 @@ components:
       type: object
       x-nullable: false
       x-used-in-response: true
-    SellerCatalogRequest:
-      description: Used to requst a catalog of seller SKUs
+    BrandCatalogRequestV2:
+      description: A request for a catalog under the specified format.
       example:
+        modifiedAfter: 2000-01-23T04:56:07.000+00:00
+        brandIdFilter:
+        - brandIdFilter
+        - brandIdFilter
+        includeFields:
+        - Unknown
+        - Unknown
+        retailerIdFilter:
+        - 0
+        - 0
+      nullable: true
+      properties:
+        brandIdFilter:
+          description: The brand ids to filter the catalog by.
+          items:
+            description: The brand ids to filter the catalog by.
+            format: long-id
+            type: string
+          type: array
+        retailerIdFilter:
+          description: The retailer ids to filter the catalog by.
+          items:
+            format: int32
+            type: integer
+          type: array
+        modifiedAfter:
+          description: Only products modified after this time will be returned.
+          format: date-time
+          type: string
+        includeFields:
+          description: "Out of the optional fields, only the ones specified will be\
+            \ included in the catalog generated."
+          items:
+            enum:
+            - Unknown
+            - Description
+            - ImageUrl
+            - GlobalCategoryId
+            - RetailerName
+            - Category
+            - BrandName
+            type: string
+          type: array
+      type: object
+      x-nullable: true
+      x-used-in-request: true
+    SellerCatalogRequestV2:
+      description: Used to request a catalog of seller SKUs
+      example:
+        modifiedAfter: 2000-01-23T04:56:07.000+00:00
+        includeFields:
+        - Unknown
+        - Unknown
         sellers:
         - sellerId: sellerId
           retailerId: retailerId
@@ -10530,9 +10565,27 @@ components:
       nullable: true
       properties:
         sellers:
-          description: A list of sellers to restict the catalog to.
+          description: A list of sellers to restrict the catalog to.
           items:
-            $ref: '#/components/schemas/SellerIdentifier'
+            $ref: '#/components/schemas/SellerIdentifierV2'
+          type: array
+        modifiedAfter:
+          description: Only products modified after this time will be returned.
+          format: date-time
+          type: string
+        includeFields:
+          description: "Out of the optional fields, only the ones specified will be\
+            \ included in the catalog generated."
+          items:
+            enum:
+            - Unknown
+            - Description
+            - ImageUrl
+            - GlobalCategoryId
+            - RetailerName
+            - Category
+            - BrandName
+            type: string
           type: array
       type: object
       x-nullable: true
@@ -10720,7 +10773,7 @@ components:
       - text
       type: object
       x-nullable: false
-    SellerIdentifier:
+    SellerIdentifierV2:
       description: Identifies a Unique Seller
       example:
         sellerId: sellerId
@@ -15643,6 +15696,140 @@ components:
           $ref: '#/components/schemas/ExternalLineItemBidMultipliersV2'
       required:
       - type
+      type: object
+      x-nullable: false
+      x-used-in-response: true
+    CommonError:
+      description: A JSON:API Common error structure
+      example:
+        traceId: traceId
+        code: code
+        instance: instance
+        detail: detail
+        source:
+          key: source
+        stackTrace: stackTrace
+        type: unknown
+        title: title
+      properties:
+        traceId:
+          description: (REQUIRED) The Correlation ID provided by the Gateway. It is
+            also a unique identifier for this particular occurrence of the problem.
+          type: string
+          x-nullable: false
+        type:
+          description: (REQUIRED) The classification of the error.
+          enum:
+          - unknown
+          - access-control
+          - authentication
+          - authorization
+          - availability
+          - deprecation
+          - quota
+          - validation
+          type: string
+          x-nullable: false
+        code:
+          description: "(REQUIRED) A machine-readable unique error code, expressed\
+            \ as a string value. The format used must be kabab-case."
+          type: string
+          x-nullable: false
+        instance:
+          description: (REQUIRED) A URI reference that identifies the specific occurrence
+            of the problem.
+          type: string
+          x-nullable: false
+        title:
+          description: "(RECOMMENDED) A short, human-readable summary of the problem\
+            \ type."
+          type: string
+          x-nullable: false
+        detail:
+          description: (RECOMMENDED) A human-readable explanation specific to this
+            occurrence of the problem.
+          type: string
+          x-nullable: false
+        source:
+          additionalProperties:
+            type: string
+            x-nullable: false
+          description: (OPTIONAL) A machine-readable structure to reference to the
+            exact location(s) causing the error(s)
+          type: object
+          x-nullable: false
+        stackTrace:
+          description: (NEVER IN PRODUCTION) A human-readable stacktrace produced
+            by the implementation technology
+          type: string
+          x-nullable: false
+      type: object
+      x-nullable: false
+      x-used-in-response: true
+    CommonWarning:
+      description: A JSON:API Base common warning
+      example:
+        traceId: traceId
+        code: code
+        instance: instance
+        detail: detail
+        source:
+          key: source
+        stackTrace: stackTrace
+        type: unknown
+        title: title
+      properties:
+        traceId:
+          description: (REQUIRED) The Correlation ID provided by the Gateway. It is
+            also a unique identifier for this particular occurrence of the problem.
+          type: string
+          x-nullable: false
+        type:
+          description: (REQUIRED) The classification of the error.
+          enum:
+          - unknown
+          - access-control
+          - authentication
+          - authorization
+          - availability
+          - deprecation
+          - quota
+          - validation
+          type: string
+          x-nullable: false
+        code:
+          description: "(REQUIRED) A machine-readable unique error code, expressed\
+            \ as a string value. The format used must be kabab-case."
+          type: string
+          x-nullable: false
+        instance:
+          description: (REQUIRED) A URI reference that identifies the specific occurrence
+            of the problem.
+          type: string
+          x-nullable: false
+        title:
+          description: "(RECOMMENDED) A short, human-readable summary of the problem\
+            \ type."
+          type: string
+          x-nullable: false
+        detail:
+          description: (RECOMMENDED) A human-readable explanation specific to this
+            occurrence of the problem.
+          type: string
+          x-nullable: false
+        source:
+          additionalProperties:
+            type: string
+            x-nullable: false
+          description: (OPTIONAL) A machine-readable structure to reference to the
+            exact location(s) causing the error(s)
+          type: object
+          x-nullable: false
+        stackTrace:
+          description: (NEVER IN PRODUCTION) A human-readable stacktrace produced
+            by the implementation technology
+          type: string
+          x-nullable: false
       type: object
       x-nullable: false
       x-used-in-response: true

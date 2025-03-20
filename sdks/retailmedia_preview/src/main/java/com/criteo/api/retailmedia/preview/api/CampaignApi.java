@@ -29,14 +29,15 @@ import java.io.IOException;
 
 import com.criteo.api.retailmedia.preview.model.AddRemoveKeywordsModelRequest;
 import com.criteo.api.retailmedia.preview.model.BrandPreviewListResponse;
+import com.criteo.api.retailmedia.preview.model.CatalogStatusV2Response;
 import com.criteo.api.retailmedia.preview.model.CpcRateCardPreviewResponse;
 import com.criteo.api.retailmedia.preview.model.Creative2ListResponse;
 import com.criteo.api.retailmedia.preview.model.Creative2Response;
 import com.criteo.api.retailmedia.preview.model.CreativeCreateModel2;
 import com.criteo.api.retailmedia.preview.model.CreativeUpdateModel2;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata;
-import com.criteo.api.retailmedia.preview.model.JsonApiRequestOfSellerCatalogRequest;
-import com.criteo.api.retailmedia.preview.model.JsonApiSingleResponseOfCatalogStatus;
+import com.criteo.api.retailmedia.preview.model.JsonApiRequestOfBrandCatalogRequestV2;
+import com.criteo.api.retailmedia.preview.model.JsonApiRequestOfSellerCatalogRequestV2;
 import com.criteo.api.retailmedia.preview.model.JsonApiSingleResponseOfLineItemBidMultipliersV2;
 import com.criteo.api.retailmedia.preview.model.KeywordsModelResponse;
 import com.criteo.api.retailmedia.preview.model.LineItemBidMultipliersV2Request;
@@ -1173,6 +1174,131 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdValidateBeforeCall(lineItemId, productButtonId, _callback);
         Type localVarReturnType = new TypeToken<ProductButtonListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getApiExternalV2CatalogStatusByCatalogId
+     * @param catalogId A catalog ID returned from an account catalog request. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Catalog request found. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getApiExternalV2CatalogStatusByCatalogIdCall(String catalogId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/catalogs/{catalogId}/status"
+            .replace("{" + "catalogId" + "}", localVarApiClient.escapeString(catalogId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getApiExternalV2CatalogStatusByCatalogIdValidateBeforeCall(String catalogId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'catalogId' is set
+        if (catalogId == null) {
+            throw new ApiException("Missing the required parameter 'catalogId' when calling getApiExternalV2CatalogStatusByCatalogId(Async)");
+        }
+
+        return getApiExternalV2CatalogStatusByCatalogIdCall(catalogId, _callback);
+
+    }
+
+    /**
+     * 
+     * Check the status of a catalog request.
+     * @param catalogId A catalog ID returned from an account catalog request. (required)
+     * @return CatalogStatusV2Response
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Catalog request found. </td><td>  -  </td></tr>
+     </table>
+     */
+    public CatalogStatusV2Response getApiExternalV2CatalogStatusByCatalogId(String catalogId) throws ApiException {
+        ApiResponse<CatalogStatusV2Response> localVarResp = getApiExternalV2CatalogStatusByCatalogIdWithHttpInfo(catalogId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Check the status of a catalog request.
+     * @param catalogId A catalog ID returned from an account catalog request. (required)
+     * @return ApiResponse&lt;CatalogStatusV2Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Catalog request found. </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CatalogStatusV2Response> getApiExternalV2CatalogStatusByCatalogIdWithHttpInfo(String catalogId) throws ApiException {
+        okhttp3.Call localVarCall = getApiExternalV2CatalogStatusByCatalogIdValidateBeforeCall(catalogId, null);
+        Type localVarReturnType = new TypeToken<CatalogStatusV2Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Check the status of a catalog request.
+     * @param catalogId A catalog ID returned from an account catalog request. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Catalog request found. </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getApiExternalV2CatalogStatusByCatalogIdAsync(String catalogId, final ApiCallback<CatalogStatusV2Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getApiExternalV2CatalogStatusByCatalogIdValidateBeforeCall(catalogId, _callback);
+        Type localVarReturnType = new TypeToken<CatalogStatusV2Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2902,9 +3028,9 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
-     * Build call for postApiV1ExternalAccountCatalogsSellersByAccountId
+     * Build call for postApiExternalV2AccountBrandCatalogExportByAccountId
      * @param accountId The account to request the catalog for. (required)
-     * @param jsonApiRequestOfSellerCatalogRequest  (optional)
+     * @param jsonApiRequestOfBrandCatalogRequestV2  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2912,10 +3038,9 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postApiV1ExternalAccountCatalogsSellersByAccountIdCall(String accountId, JsonApiRequestOfSellerCatalogRequest jsonApiRequestOfSellerCatalogRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postApiExternalV2AccountBrandCatalogExportByAccountIdCall(String accountId, JsonApiRequestOfBrandCatalogRequestV2 jsonApiRequestOfBrandCatalogRequestV2, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2929,10 +3054,10 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = jsonApiRequestOfSellerCatalogRequest;
+        Object localVarPostBody = jsonApiRequestOfBrandCatalogRequestV2;
 
         // create path and map variables
-        String localVarPath = "/preview/retail-media/accounts/{accountId}/catalogs/sellers"
+        String localVarPath = "/preview/retail-media/accounts/{accountId}/brand-catalog-export"
             .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -2964,13 +3089,13 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postApiV1ExternalAccountCatalogsSellersByAccountIdValidateBeforeCall(String accountId, JsonApiRequestOfSellerCatalogRequest jsonApiRequestOfSellerCatalogRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postApiExternalV2AccountBrandCatalogExportByAccountIdValidateBeforeCall(String accountId, JsonApiRequestOfBrandCatalogRequestV2 jsonApiRequestOfBrandCatalogRequestV2, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling postApiV1ExternalAccountCatalogsSellersByAccountId(Async)");
+            throw new ApiException("Missing the required parameter 'accountId' when calling postApiExternalV2AccountBrandCatalogExportByAccountId(Async)");
         }
 
-        return postApiV1ExternalAccountCatalogsSellersByAccountIdCall(accountId, jsonApiRequestOfSellerCatalogRequest, _callback);
+        return postApiExternalV2AccountBrandCatalogExportByAccountIdCall(accountId, jsonApiRequestOfBrandCatalogRequestV2, _callback);
 
     }
 
@@ -2978,18 +3103,17 @@ public class CampaignApi {
      * 
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
-     * @param jsonApiRequestOfSellerCatalogRequest  (optional)
-     * @return JsonApiSingleResponseOfCatalogStatus
+     * @param jsonApiRequestOfBrandCatalogRequestV2  (optional)
+     * @return CatalogStatusV2Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public JsonApiSingleResponseOfCatalogStatus postApiV1ExternalAccountCatalogsSellersByAccountId(String accountId, JsonApiRequestOfSellerCatalogRequest jsonApiRequestOfSellerCatalogRequest) throws ApiException {
-        ApiResponse<JsonApiSingleResponseOfCatalogStatus> localVarResp = postApiV1ExternalAccountCatalogsSellersByAccountIdWithHttpInfo(accountId, jsonApiRequestOfSellerCatalogRequest);
+    public CatalogStatusV2Response postApiExternalV2AccountBrandCatalogExportByAccountId(String accountId, JsonApiRequestOfBrandCatalogRequestV2 jsonApiRequestOfBrandCatalogRequestV2) throws ApiException {
+        ApiResponse<CatalogStatusV2Response> localVarResp = postApiExternalV2AccountBrandCatalogExportByAccountIdWithHttpInfo(accountId, jsonApiRequestOfBrandCatalogRequestV2);
         return localVarResp.getData();
     }
 
@@ -2997,8 +3121,121 @@ public class CampaignApi {
      * 
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
-     * @param jsonApiRequestOfSellerCatalogRequest  (optional)
-     * @return ApiResponse&lt;JsonApiSingleResponseOfCatalogStatus&gt;
+     * @param jsonApiRequestOfBrandCatalogRequestV2  (optional)
+     * @return ApiResponse&lt;CatalogStatusV2Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CatalogStatusV2Response> postApiExternalV2AccountBrandCatalogExportByAccountIdWithHttpInfo(String accountId, JsonApiRequestOfBrandCatalogRequestV2 jsonApiRequestOfBrandCatalogRequestV2) throws ApiException {
+        okhttp3.Call localVarCall = postApiExternalV2AccountBrandCatalogExportByAccountIdValidateBeforeCall(accountId, jsonApiRequestOfBrandCatalogRequestV2, null);
+        Type localVarReturnType = new TypeToken<CatalogStatusV2Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Create a request for a Catalog available to the indicated account.
+     * @param accountId The account to request the catalog for. (required)
+     * @param jsonApiRequestOfBrandCatalogRequestV2  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postApiExternalV2AccountBrandCatalogExportByAccountIdAsync(String accountId, JsonApiRequestOfBrandCatalogRequestV2 jsonApiRequestOfBrandCatalogRequestV2, final ApiCallback<CatalogStatusV2Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postApiExternalV2AccountBrandCatalogExportByAccountIdValidateBeforeCall(accountId, jsonApiRequestOfBrandCatalogRequestV2, _callback);
+        Type localVarReturnType = new TypeToken<CatalogStatusV2Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postApiExternalV2AccountSellerCatalogExportByAccountId
+     * @param accountId The account to request the catalog for. (required)
+     * @param jsonApiRequestOfSellerCatalogRequestV2  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postApiExternalV2AccountSellerCatalogExportByAccountIdCall(String accountId, JsonApiRequestOfSellerCatalogRequestV2 jsonApiRequestOfSellerCatalogRequestV2, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = jsonApiRequestOfSellerCatalogRequestV2;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/accounts/{accountId}/seller-catalog-export"
+            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postApiExternalV2AccountSellerCatalogExportByAccountIdValidateBeforeCall(String accountId, JsonApiRequestOfSellerCatalogRequestV2 jsonApiRequestOfSellerCatalogRequestV2, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling postApiExternalV2AccountSellerCatalogExportByAccountId(Async)");
+        }
+
+        return postApiExternalV2AccountSellerCatalogExportByAccountIdCall(accountId, jsonApiRequestOfSellerCatalogRequestV2, _callback);
+
+    }
+
+    /**
+     * 
+     * Create a request for a Catalog available to the indicated account.
+     * @param accountId The account to request the catalog for. (required)
+     * @param jsonApiRequestOfSellerCatalogRequestV2  (optional)
+     * @return CatalogStatusV2Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3007,9 +3244,28 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<JsonApiSingleResponseOfCatalogStatus> postApiV1ExternalAccountCatalogsSellersByAccountIdWithHttpInfo(String accountId, JsonApiRequestOfSellerCatalogRequest jsonApiRequestOfSellerCatalogRequest) throws ApiException {
-        okhttp3.Call localVarCall = postApiV1ExternalAccountCatalogsSellersByAccountIdValidateBeforeCall(accountId, jsonApiRequestOfSellerCatalogRequest, null);
-        Type localVarReturnType = new TypeToken<JsonApiSingleResponseOfCatalogStatus>(){}.getType();
+    public CatalogStatusV2Response postApiExternalV2AccountSellerCatalogExportByAccountId(String accountId, JsonApiRequestOfSellerCatalogRequestV2 jsonApiRequestOfSellerCatalogRequestV2) throws ApiException {
+        ApiResponse<CatalogStatusV2Response> localVarResp = postApiExternalV2AccountSellerCatalogExportByAccountIdWithHttpInfo(accountId, jsonApiRequestOfSellerCatalogRequestV2);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Create a request for a Catalog available to the indicated account.
+     * @param accountId The account to request the catalog for. (required)
+     * @param jsonApiRequestOfSellerCatalogRequestV2  (optional)
+     * @return ApiResponse&lt;CatalogStatusV2Response&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<CatalogStatusV2Response> postApiExternalV2AccountSellerCatalogExportByAccountIdWithHttpInfo(String accountId, JsonApiRequestOfSellerCatalogRequestV2 jsonApiRequestOfSellerCatalogRequestV2) throws ApiException {
+        okhttp3.Call localVarCall = postApiExternalV2AccountSellerCatalogExportByAccountIdValidateBeforeCall(accountId, jsonApiRequestOfSellerCatalogRequestV2, null);
+        Type localVarReturnType = new TypeToken<CatalogStatusV2Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3017,7 +3273,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
-     * @param jsonApiRequestOfSellerCatalogRequest  (optional)
+     * @param jsonApiRequestOfSellerCatalogRequestV2  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3028,10 +3284,10 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postApiV1ExternalAccountCatalogsSellersByAccountIdAsync(String accountId, JsonApiRequestOfSellerCatalogRequest jsonApiRequestOfSellerCatalogRequest, final ApiCallback<JsonApiSingleResponseOfCatalogStatus> _callback) throws ApiException {
+    public okhttp3.Call postApiExternalV2AccountSellerCatalogExportByAccountIdAsync(String accountId, JsonApiRequestOfSellerCatalogRequestV2 jsonApiRequestOfSellerCatalogRequestV2, final ApiCallback<CatalogStatusV2Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postApiV1ExternalAccountCatalogsSellersByAccountIdValidateBeforeCall(accountId, jsonApiRequestOfSellerCatalogRequest, _callback);
-        Type localVarReturnType = new TypeToken<JsonApiSingleResponseOfCatalogStatus>(){}.getType();
+        okhttp3.Call localVarCall = postApiExternalV2AccountSellerCatalogExportByAccountIdValidateBeforeCall(accountId, jsonApiRequestOfSellerCatalogRequestV2, _callback);
+        Type localVarReturnType = new TypeToken<CatalogStatusV2Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

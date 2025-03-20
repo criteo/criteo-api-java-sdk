@@ -1,6 +1,6 @@
 
 
-# JsonApiRequestOfSellerCatalogRequest
+# JsonApiRequestOfBrandCatalogRequestV2
 
 A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\" /> with Type, and Attributes properties
 
@@ -8,7 +8,7 @@ A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\" /> with 
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**data** | [**JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest**](JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest.md) |  |  [optional] |
+|**data** | [**JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2**](JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2.md) |  |  [optional] |
 
 
 

@@ -15,15 +15,14 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.CommonError;
-import com.criteo.api.retailmedia.preview.model.CommonWarning;
-import com.criteo.api.retailmedia.preview.model.JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus;
+import com.criteo.api.retailmedia.preview.model.SellerIdentifierV2;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,104 +48,161 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * A JSON:API wrapper class to add one JSON:API &lt;typeparamref name&#x3D;\&quot;T\&quot; /&gt; within a data property
+ * Used to request a catalog of seller SKUs
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class JsonApiSingleResponseOfCatalogStatus {
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus data;
+public class SellerCatalogRequestV2 {
+  public static final String SERIALIZED_NAME_SELLERS = "sellers";
+  @SerializedName(SERIALIZED_NAME_SELLERS)
+  private List<SellerIdentifierV2> sellers = null;
 
-  public static final String SERIALIZED_NAME_ERRORS = "errors";
-  @SerializedName(SERIALIZED_NAME_ERRORS)
-  private List<CommonError> errors = null;
+  public static final String SERIALIZED_NAME_MODIFIED_AFTER = "modifiedAfter";
+  @SerializedName(SERIALIZED_NAME_MODIFIED_AFTER)
+  private OffsetDateTime modifiedAfter;
 
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<CommonWarning> warnings = null;
-
-  public JsonApiSingleResponseOfCatalogStatus() {
-  }
-
-  public JsonApiSingleResponseOfCatalogStatus data(JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus data) {
+  /**
+   * Gets or Sets includeFields
+   */
+  @JsonAdapter(IncludeFieldsEnum.Adapter.class)
+  public enum IncludeFieldsEnum {
+    UNKNOWN("Unknown"),
     
-    this.data = data;
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @javax.annotation.Nonnull
-
-  public JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus getData() {
-    return data;
-  }
-
-
-  public void setData(JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus data) {
-    this.data = data;
-  }
-
-
-  public JsonApiSingleResponseOfCatalogStatus errors(List<CommonError> errors) {
+    DESCRIPTION("Description"),
     
-    this.errors = errors;
-    return this;
-  }
+    IMAGEURL("ImageUrl"),
+    
+    GLOBALCATEGORYID("GlobalCategoryId"),
+    
+    RETAILERNAME("RetailerName"),
+    
+    CATEGORY("Category"),
+    
+    BRANDNAME("BrandName");
 
-  public JsonApiSingleResponseOfCatalogStatus addErrorsItem(CommonError errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
+    private String value;
+
+    IncludeFieldsEnum(String value) {
+      this.value = value;
     }
-    this.errors.add(errorsItem);
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static IncludeFieldsEnum fromValue(String value) {
+      for (IncludeFieldsEnum b : IncludeFieldsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<IncludeFieldsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final IncludeFieldsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public IncludeFieldsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return IncludeFieldsEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_INCLUDE_FIELDS = "includeFields";
+  @SerializedName(SERIALIZED_NAME_INCLUDE_FIELDS)
+  private List<IncludeFieldsEnum> includeFields = null;
+
+  public SellerCatalogRequestV2() {
+  }
+
+  public SellerCatalogRequestV2 sellers(List<SellerIdentifierV2> sellers) {
+    
+    this.sellers = sellers;
+    return this;
+  }
+
+  public SellerCatalogRequestV2 addSellersItem(SellerIdentifierV2 sellersItem) {
+    if (this.sellers == null) {
+      this.sellers = new ArrayList<>();
+    }
+    this.sellers.add(sellersItem);
     return this;
   }
 
    /**
-   * Get errors
-   * @return errors
+   * A list of sellers to restrict the catalog to.
+   * @return sellers
   **/
   @javax.annotation.Nullable
 
-  public List<CommonError> getErrors() {
-    return errors;
+  public List<SellerIdentifierV2> getSellers() {
+    return sellers;
   }
 
 
-  public void setErrors(List<CommonError> errors) {
-    this.errors = errors;
+  public void setSellers(List<SellerIdentifierV2> sellers) {
+    this.sellers = sellers;
   }
 
 
-  public JsonApiSingleResponseOfCatalogStatus warnings(List<CommonWarning> warnings) {
+  public SellerCatalogRequestV2 modifiedAfter(OffsetDateTime modifiedAfter) {
     
-    this.warnings = warnings;
-    return this;
-  }
-
-  public JsonApiSingleResponseOfCatalogStatus addWarningsItem(CommonWarning warningsItem) {
-    if (this.warnings == null) {
-      this.warnings = new ArrayList<>();
-    }
-    this.warnings.add(warningsItem);
+    this.modifiedAfter = modifiedAfter;
     return this;
   }
 
    /**
-   * Get warnings
-   * @return warnings
+   * Only products modified after this time will be returned.
+   * @return modifiedAfter
   **/
   @javax.annotation.Nullable
 
-  public List<CommonWarning> getWarnings() {
-    return warnings;
+  public OffsetDateTime getModifiedAfter() {
+    return modifiedAfter;
   }
 
 
-  public void setWarnings(List<CommonWarning> warnings) {
-    this.warnings = warnings;
+  public void setModifiedAfter(OffsetDateTime modifiedAfter) {
+    this.modifiedAfter = modifiedAfter;
+  }
+
+
+  public SellerCatalogRequestV2 includeFields(List<IncludeFieldsEnum> includeFields) {
+    
+    this.includeFields = includeFields;
+    return this;
+  }
+
+  public SellerCatalogRequestV2 addIncludeFieldsItem(IncludeFieldsEnum includeFieldsItem) {
+    if (this.includeFields == null) {
+      this.includeFields = new ArrayList<>();
+    }
+    this.includeFields.add(includeFieldsItem);
+    return this;
+  }
+
+   /**
+   * Out of the optional fields, only the ones specified will be included in the catalog generated.
+   * @return includeFields
+  **/
+  @javax.annotation.Nullable
+
+  public List<IncludeFieldsEnum> getIncludeFields() {
+    return includeFields;
+  }
+
+
+  public void setIncludeFields(List<IncludeFieldsEnum> includeFields) {
+    this.includeFields = includeFields;
   }
 
   /**
@@ -162,9 +218,9 @@ public class JsonApiSingleResponseOfCatalogStatus {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the JsonApiSingleResponseOfCatalogStatus instance itself
+   * @return the SellerCatalogRequestV2 instance itself
    */
-  public JsonApiSingleResponseOfCatalogStatus putAdditionalProperty(String key, Object value) {
+  public SellerCatalogRequestV2 putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -203,25 +259,25 @@ public class JsonApiSingleResponseOfCatalogStatus {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    JsonApiSingleResponseOfCatalogStatus jsonApiSingleResponseOfCatalogStatus = (JsonApiSingleResponseOfCatalogStatus) o;
-    return Objects.equals(this.data, jsonApiSingleResponseOfCatalogStatus.data) &&
-        Objects.equals(this.errors, jsonApiSingleResponseOfCatalogStatus.errors) &&
-        Objects.equals(this.warnings, jsonApiSingleResponseOfCatalogStatus.warnings)&&
-        Objects.equals(this.additionalProperties, jsonApiSingleResponseOfCatalogStatus.additionalProperties);
+    SellerCatalogRequestV2 sellerCatalogRequestV2 = (SellerCatalogRequestV2) o;
+    return Objects.equals(this.sellers, sellerCatalogRequestV2.sellers) &&
+        Objects.equals(this.modifiedAfter, sellerCatalogRequestV2.modifiedAfter) &&
+        Objects.equals(this.includeFields, sellerCatalogRequestV2.includeFields)&&
+        Objects.equals(this.additionalProperties, sellerCatalogRequestV2.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, errors, warnings, additionalProperties);
+    return Objects.hash(sellers, modifiedAfter, includeFields, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class JsonApiSingleResponseOfCatalogStatus {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("class SellerCatalogRequestV2 {\n");
+    sb.append("    sellers: ").append(toIndentedString(sellers)).append("\n");
+    sb.append("    modifiedAfter: ").append(toIndentedString(modifiedAfter)).append("\n");
+    sb.append("    includeFields: ").append(toIndentedString(includeFields)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -245,63 +301,43 @@ public class JsonApiSingleResponseOfCatalogStatus {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("data");
-    openapiFields.add("errors");
-    openapiFields.add("warnings");
+    openapiFields.add("sellers");
+    openapiFields.add("modifiedAfter");
+    openapiFields.add("includeFields");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("data");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to JsonApiSingleResponseOfCatalogStatus
+  * @throws IOException if the JSON Object is invalid with respect to SellerCatalogRequestV2
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!JsonApiSingleResponseOfCatalogStatus.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in JsonApiSingleResponseOfCatalogStatus is not found in the empty JSON string", JsonApiSingleResponseOfCatalogStatus.openapiRequiredFields.toString()));
+        if (!SellerCatalogRequestV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SellerCatalogRequestV2 is not found in the empty JSON string", SellerCatalogRequestV2.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : JsonApiSingleResponseOfCatalogStatus.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      // validate the required field `data`
-      JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus.validateJsonObject(jsonObj.getAsJsonObject("data"));
-      if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
-        JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
-        if (jsonArrayerrors != null) {
+      if (jsonObj.get("sellers") != null && !jsonObj.get("sellers").isJsonNull()) {
+        JsonArray jsonArraysellers = jsonObj.getAsJsonArray("sellers");
+        if (jsonArraysellers != null) {
           // ensure the json data is an array
-          if (!jsonObj.get("errors").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
+          if (!jsonObj.get("sellers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `sellers` to be an array in the JSON string but got `%s`", jsonObj.get("sellers").toString()));
           }
 
-          // validate the optional field `errors` (array)
-          for (int i = 0; i < jsonArrayerrors.size(); i++) {
-            CommonError.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+          // validate the optional field `sellers` (array)
+          for (int i = 0; i < jsonArraysellers.size(); i++) {
+            SellerIdentifierV2.validateJsonObject(jsonArraysellers.get(i).getAsJsonObject());
           };
         }
       }
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
-        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
-        if (jsonArraywarnings != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("warnings").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-          }
-
-          // validate the optional field `warnings` (array)
-          for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            CommonWarning.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
-          };
-        }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("includeFields") != null && !jsonObj.get("includeFields").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `includeFields` to be an array in the JSON string but got `%s`", jsonObj.get("includeFields").toString()));
       }
   }
 
@@ -309,16 +345,16 @@ public class JsonApiSingleResponseOfCatalogStatus {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!JsonApiSingleResponseOfCatalogStatus.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'JsonApiSingleResponseOfCatalogStatus' and its subtypes
+       if (!SellerCatalogRequestV2.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SellerCatalogRequestV2' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<JsonApiSingleResponseOfCatalogStatus> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(JsonApiSingleResponseOfCatalogStatus.class));
+       final TypeAdapter<SellerCatalogRequestV2> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SellerCatalogRequestV2.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<JsonApiSingleResponseOfCatalogStatus>() {
+       return (TypeAdapter<T>) new TypeAdapter<SellerCatalogRequestV2>() {
            @Override
-           public void write(JsonWriter out, JsonApiSingleResponseOfCatalogStatus value) throws IOException {
+           public void write(JsonWriter out, SellerCatalogRequestV2 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -341,11 +377,11 @@ public class JsonApiSingleResponseOfCatalogStatus {
            }
 
            @Override
-           public JsonApiSingleResponseOfCatalogStatus read(JsonReader in) throws IOException {
+           public SellerCatalogRequestV2 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             JsonApiSingleResponseOfCatalogStatus instance = thisAdapter.fromJsonTree(jsonObj);
+             SellerCatalogRequestV2 instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -372,18 +408,18 @@ public class JsonApiSingleResponseOfCatalogStatus {
   }
 
  /**
-  * Create an instance of JsonApiSingleResponseOfCatalogStatus given an JSON string
+  * Create an instance of SellerCatalogRequestV2 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of JsonApiSingleResponseOfCatalogStatus
-  * @throws IOException if the JSON string is invalid with respect to JsonApiSingleResponseOfCatalogStatus
+  * @return An instance of SellerCatalogRequestV2
+  * @throws IOException if the JSON string is invalid with respect to SellerCatalogRequestV2
   */
-  public static JsonApiSingleResponseOfCatalogStatus fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, JsonApiSingleResponseOfCatalogStatus.class);
+  public static SellerCatalogRequestV2 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SellerCatalogRequestV2.class);
   }
 
  /**
-  * Convert an instance of JsonApiSingleResponseOfCatalogStatus to an JSON string
+  * Convert an instance of SellerCatalogRequestV2 to an JSON string
   *
   * @return JSON string
   */

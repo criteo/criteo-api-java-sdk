@@ -12,6 +12,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**fetchPromotedProducts**](CampaignApi.md#fetchPromotedProducts) | **GET** /preview/retail-media/line-items/{line-item-id}/products |  |
 | [**getApi202210ExternalLineItemProductButtonsByLineItemId**](CampaignApi.md#getApi202210ExternalLineItemProductButtonsByLineItemId) | **GET** /preview/retail-media/line-items/{line-item-id}/product-buttons |  |
 | [**getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId**](CampaignApi.md#getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId) | **GET** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
+| [**getApiExternalV2CatalogStatusByCatalogId**](CampaignApi.md#getApiExternalV2CatalogStatusByCatalogId) | **GET** /preview/retail-media/catalogs/{catalogId}/status |  |
 | [**getApiV1ExternalRetailerBrandsByRetailerId**](CampaignApi.md#getApiV1ExternalRetailerBrandsByRetailerId) | **GET** /preview/retail-media/retailers/{retailerId}/brands |  |
 | [**getApiV1ExternalRetailerByRetailerIdSellerBySeller**](CampaignApi.md#getApiV1ExternalRetailerByRetailerIdSellerBySeller) | **GET** /preview/retail-media/retailers/{retailerId}/sellers/{seller} |  |
 | [**getApiV1ExternalRetailerCategoryCpcRatesByRetailerId**](CampaignApi.md#getApiV1ExternalRetailerCategoryCpcRatesByRetailerId) | **GET** /preview/retail-media/retailers/{retailer-id}/cpc-rates |  |
@@ -25,7 +26,8 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**pausePromotedProducts**](CampaignApi.md#pausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/pause |  |
 | [**postApi202110ExternalCampaignPreferredLineItemsByCampaignId**](CampaignApi.md#postApi202110ExternalCampaignPreferredLineItemsByCampaignId) | **POST** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
 | [**postApi202210ExternalLineItemProductButtonsCreateByLineItemId**](CampaignApi.md#postApi202210ExternalLineItemProductButtonsCreateByLineItemId) | **POST** /preview/retail-media/line-items/{line-item-id}/product-buttons/create |  |
-| [**postApiV1ExternalAccountCatalogsSellersByAccountId**](CampaignApi.md#postApiV1ExternalAccountCatalogsSellersByAccountId) | **POST** /preview/retail-media/accounts/{accountId}/catalogs/sellers |  |
+| [**postApiExternalV2AccountBrandCatalogExportByAccountId**](CampaignApi.md#postApiExternalV2AccountBrandCatalogExportByAccountId) | **POST** /preview/retail-media/accounts/{accountId}/brand-catalog-export |  |
+| [**postApiExternalV2AccountSellerCatalogExportByAccountId**](CampaignApi.md#postApiExternalV2AccountSellerCatalogExportByAccountId) | **POST** /preview/retail-media/accounts/{accountId}/seller-catalog-export |  |
 | [**postApiV1ExternalCatalogsSkuRetrieval**](CampaignApi.md#postApiV1ExternalCatalogsSkuRetrieval) | **POST** /preview/retail-media/catalogs/sku-retrieval |  |
 | [**postApiV1ExternalCatalogsSkuSearch**](CampaignApi.md#postApiV1ExternalCatalogsSkuSearch) | **POST** /preview/retail-media/catalogs/sku-search |  |
 | [**postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId**](CampaignApi.md#postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId) | **POST** /preview/retail-media/catalogs/sku-search/accounts/{account-id}/retailers/{retailer-id} |  |
@@ -774,6 +776,95 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
+
+
+## getApiExternalV2CatalogStatusByCatalogId
+
+> CatalogStatusV2Response getApiExternalV2CatalogStatusByCatalogId(catalogId)
+
+
+
+Check the status of a catalog request.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String catalogId = "catalogId_example"; // String | A catalog ID returned from an account catalog request.
+        try {
+            CatalogStatusV2Response result = apiInstance.getApiExternalV2CatalogStatusByCatalogId(catalogId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#getApiExternalV2CatalogStatusByCatalogId");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **catalogId** | **String**| A catalog ID returned from an account catalog request. | |
+
+### Return type
+
+[**CatalogStatusV2Response**](CatalogStatusV2Response.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Catalog request found. |  -  |
 
 
 ## getApiV1ExternalRetailerBrandsByRetailerId
@@ -1963,9 +2054,9 @@ public class Example {
 | **200** | Success |  -  |
 
 
-## postApiV1ExternalAccountCatalogsSellersByAccountId
+## postApiExternalV2AccountBrandCatalogExportByAccountId
 
-> JsonApiSingleResponseOfCatalogStatus postApiV1ExternalAccountCatalogsSellersByAccountId(accountId, jsonApiRequestOfSellerCatalogRequest)
+> CatalogStatusV2Response postApiExternalV2AccountBrandCatalogExportByAccountId(accountId, jsonApiRequestOfBrandCatalogRequestV2)
 
 
 
@@ -2011,12 +2102,12 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String accountId = "accountId_example"; // String | The account to request the catalog for.
-        JsonApiRequestOfSellerCatalogRequest jsonApiRequestOfSellerCatalogRequest = new JsonApiRequestOfSellerCatalogRequest(); // JsonApiRequestOfSellerCatalogRequest | 
+        JsonApiRequestOfBrandCatalogRequestV2 jsonApiRequestOfBrandCatalogRequestV2 = new JsonApiRequestOfBrandCatalogRequestV2(); // JsonApiRequestOfBrandCatalogRequestV2 | 
         try {
-            JsonApiSingleResponseOfCatalogStatus result = apiInstance.postApiV1ExternalAccountCatalogsSellersByAccountId(accountId, jsonApiRequestOfSellerCatalogRequest);
+            CatalogStatusV2Response result = apiInstance.postApiExternalV2AccountBrandCatalogExportByAccountId(accountId, jsonApiRequestOfBrandCatalogRequestV2);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#postApiV1ExternalAccountCatalogsSellersByAccountId");
+            System.err.println("Exception when calling CampaignApi#postApiExternalV2AccountBrandCatalogExportByAccountId");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -2032,11 +2123,102 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| The account to request the catalog for. | |
-| **jsonApiRequestOfSellerCatalogRequest** | [**JsonApiRequestOfSellerCatalogRequest**](JsonApiRequestOfSellerCatalogRequest.md)|  | [optional] |
+| **jsonApiRequestOfBrandCatalogRequestV2** | [**JsonApiRequestOfBrandCatalogRequestV2**](JsonApiRequestOfBrandCatalogRequestV2.md)|  | [optional] |
 
 ### Return type
 
-[**JsonApiSingleResponseOfCatalogStatus**](JsonApiSingleResponseOfCatalogStatus.md)
+[**CatalogStatusV2Response**](CatalogStatusV2Response.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Catalog request successfully created |  -  |
+
+
+## postApiExternalV2AccountSellerCatalogExportByAccountId
+
+> CatalogStatusV2Response postApiExternalV2AccountSellerCatalogExportByAccountId(accountId, jsonApiRequestOfSellerCatalogRequestV2)
+
+
+
+Create a request for a Catalog available to the indicated account.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.CampaignApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        CampaignApi apiInstance = new CampaignApi(defaultClient);
+        String accountId = "accountId_example"; // String | The account to request the catalog for.
+        JsonApiRequestOfSellerCatalogRequestV2 jsonApiRequestOfSellerCatalogRequestV2 = new JsonApiRequestOfSellerCatalogRequestV2(); // JsonApiRequestOfSellerCatalogRequestV2 | 
+        try {
+            CatalogStatusV2Response result = apiInstance.postApiExternalV2AccountSellerCatalogExportByAccountId(accountId, jsonApiRequestOfSellerCatalogRequestV2);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CampaignApi#postApiExternalV2AccountSellerCatalogExportByAccountId");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **accountId** | **String**| The account to request the catalog for. | |
+| **jsonApiRequestOfSellerCatalogRequestV2** | [**JsonApiRequestOfSellerCatalogRequestV2**](JsonApiRequestOfSellerCatalogRequestV2.md)|  | [optional] |
+
+### Return type
+
+[**CatalogStatusV2Response**](CatalogStatusV2Response.md)
 
 ### Authorization
 

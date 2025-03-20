@@ -15,15 +15,14 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.SellerIdentifier;
+import com.criteo.api.retailmedia.preview.model.CatalogStatusV2;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,44 +46,88 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * Used to requst a catalog of seller SKUs
+ * A class that represents a domain entity exposed by an API
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class SellerCatalogRequest {
-  public static final String SERIALIZED_NAME_SELLERS = "sellers";
-  @SerializedName(SERIALIZED_NAME_SELLERS)
-  private List<SellerIdentifier> sellers = null;
+public class ResourceOfCatalogStatusV2 {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private CatalogStatusV2 attributes;
 
-  public SellerCatalogRequest() {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
+  public ResourceOfCatalogStatusV2() {
   }
 
-  public SellerCatalogRequest sellers(List<SellerIdentifier> sellers) {
+  public ResourceOfCatalogStatusV2 attributes(CatalogStatusV2 attributes) {
     
-    this.sellers = sellers;
-    return this;
-  }
-
-  public SellerCatalogRequest addSellersItem(SellerIdentifier sellersItem) {
-    if (this.sellers == null) {
-      this.sellers = new ArrayList<>();
-    }
-    this.sellers.add(sellersItem);
+    this.attributes = attributes;
     return this;
   }
 
    /**
-   * A list of sellers to restict the catalog to.
-   * @return sellers
+   * Get attributes
+   * @return attributes
   **/
   @javax.annotation.Nullable
 
-  public List<SellerIdentifier> getSellers() {
-    return sellers;
+  public CatalogStatusV2 getAttributes() {
+    return attributes;
   }
 
 
-  public void setSellers(List<SellerIdentifier> sellers) {
-    this.sellers = sellers;
+  public void setAttributes(CatalogStatusV2 attributes) {
+    this.attributes = attributes;
+  }
+
+
+  public ResourceOfCatalogStatusV2 id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Id of the entity
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  public ResourceOfCatalogStatusV2 type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Canonical type name of the entity
+   * @return type
+  **/
+  @javax.annotation.Nullable
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   /**
@@ -100,9 +143,9 @@ public class SellerCatalogRequest {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the SellerCatalogRequest instance itself
+   * @return the ResourceOfCatalogStatusV2 instance itself
    */
-  public SellerCatalogRequest putAdditionalProperty(String key, Object value) {
+  public ResourceOfCatalogStatusV2 putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -141,21 +184,36 @@ public class SellerCatalogRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SellerCatalogRequest sellerCatalogRequest = (SellerCatalogRequest) o;
-    return Objects.equals(this.sellers, sellerCatalogRequest.sellers)&&
-        Objects.equals(this.additionalProperties, sellerCatalogRequest.additionalProperties);
+    ResourceOfCatalogStatusV2 resourceOfCatalogStatusV2 = (ResourceOfCatalogStatusV2) o;
+    return Objects.equals(this.attributes, resourceOfCatalogStatusV2.attributes) &&
+        Objects.equals(this.id, resourceOfCatalogStatusV2.id) &&
+        Objects.equals(this.type, resourceOfCatalogStatusV2.type)&&
+        Objects.equals(this.additionalProperties, resourceOfCatalogStatusV2.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sellers, additionalProperties);
+    return Objects.hash(attributes, id, type, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SellerCatalogRequest {\n");
-    sb.append("    sellers: ").append(toIndentedString(sellers)).append("\n");
+    sb.append("class ResourceOfCatalogStatusV2 {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -179,7 +237,9 @@ public class SellerCatalogRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("sellers");
+    openapiFields.add("attributes");
+    openapiFields.add("id");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -189,27 +249,23 @@ public class SellerCatalogRequest {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to SellerCatalogRequest
+  * @throws IOException if the JSON Object is invalid with respect to ResourceOfCatalogStatusV2
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!SellerCatalogRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SellerCatalogRequest is not found in the empty JSON string", SellerCatalogRequest.openapiRequiredFields.toString()));
+        if (!ResourceOfCatalogStatusV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ResourceOfCatalogStatusV2 is not found in the empty JSON string", ResourceOfCatalogStatusV2.openapiRequiredFields.toString()));
         }
       }
-      if (jsonObj.get("sellers") != null && !jsonObj.get("sellers").isJsonNull()) {
-        JsonArray jsonArraysellers = jsonObj.getAsJsonArray("sellers");
-        if (jsonArraysellers != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("sellers").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `sellers` to be an array in the JSON string but got `%s`", jsonObj.get("sellers").toString()));
-          }
-
-          // validate the optional field `sellers` (array)
-          for (int i = 0; i < jsonArraysellers.size(); i++) {
-            SellerIdentifier.validateJsonObject(jsonArraysellers.get(i).getAsJsonObject());
-          };
-        }
+      // validate the optional field `attributes`
+      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
+        CatalogStatusV2.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 
@@ -217,16 +273,16 @@ public class SellerCatalogRequest {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!SellerCatalogRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'SellerCatalogRequest' and its subtypes
+       if (!ResourceOfCatalogStatusV2.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ResourceOfCatalogStatusV2' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<SellerCatalogRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(SellerCatalogRequest.class));
+       final TypeAdapter<ResourceOfCatalogStatusV2> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ResourceOfCatalogStatusV2.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<SellerCatalogRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<ResourceOfCatalogStatusV2>() {
            @Override
-           public void write(JsonWriter out, SellerCatalogRequest value) throws IOException {
+           public void write(JsonWriter out, ResourceOfCatalogStatusV2 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -249,11 +305,11 @@ public class SellerCatalogRequest {
            }
 
            @Override
-           public SellerCatalogRequest read(JsonReader in) throws IOException {
+           public ResourceOfCatalogStatusV2 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             SellerCatalogRequest instance = thisAdapter.fromJsonTree(jsonObj);
+             ResourceOfCatalogStatusV2 instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -280,18 +336,18 @@ public class SellerCatalogRequest {
   }
 
  /**
-  * Create an instance of SellerCatalogRequest given an JSON string
+  * Create an instance of ResourceOfCatalogStatusV2 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of SellerCatalogRequest
-  * @throws IOException if the JSON string is invalid with respect to SellerCatalogRequest
+  * @return An instance of ResourceOfCatalogStatusV2
+  * @throws IOException if the JSON string is invalid with respect to ResourceOfCatalogStatusV2
   */
-  public static SellerCatalogRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, SellerCatalogRequest.class);
+  public static ResourceOfCatalogStatusV2 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ResourceOfCatalogStatusV2.class);
   }
 
  /**
-  * Convert an instance of SellerCatalogRequest to an JSON string
+  * Convert an instance of ResourceOfCatalogStatusV2 to an JSON string
   *
   * @return JSON string
   */

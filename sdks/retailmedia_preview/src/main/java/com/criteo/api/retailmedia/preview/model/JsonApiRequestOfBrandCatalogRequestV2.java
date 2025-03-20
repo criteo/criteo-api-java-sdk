@@ -15,14 +15,13 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.SellerCatalogRequest;
+import com.criteo.api.retailmedia.preview.model.JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,62 +45,36 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * A JSON:API wrapper class to format a &lt;typeparamref name&#x3D;\&quot;TAttributes\&quot; /&gt; with Type, and  Attributes properties
+ * A JSON:API wrapper class to format a &lt;typeparamref name&#x3D;\&quot;TAttributes\&quot; /&gt; with Type, and Attributes properties
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
+public class JsonApiRequestOfBrandCatalogRequestV2 {
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 data;
 
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private SellerCatalogRequest attributes;
-
-  public JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest() {
+  public JsonApiRequestOfBrandCatalogRequestV2() {
   }
 
-  public JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest type(String type) {
+  public JsonApiRequestOfBrandCatalogRequestV2 data(JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 data) {
     
-    this.type = type;
+    this.data = data;
     return this;
   }
 
    /**
-   * Get type
-   * @return type
-  **/
-  @javax.annotation.Nonnull
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
-
-  public JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest attributes(SellerCatalogRequest attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
+   * Get data
+   * @return data
   **/
   @javax.annotation.Nullable
 
-  public SellerCatalogRequest getAttributes() {
-    return attributes;
+  public JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 getData() {
+    return data;
   }
 
 
-  public void setAttributes(SellerCatalogRequest attributes) {
-    this.attributes = attributes;
+  public void setData(JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 data) {
+    this.data = data;
   }
 
   /**
@@ -117,9 +90,9 @@ public class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest instance itself
+   * @return the JsonApiRequestOfBrandCatalogRequestV2 instance itself
    */
-  public JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest putAdditionalProperty(String key, Object value) {
+  public JsonApiRequestOfBrandCatalogRequestV2 putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -158,34 +131,21 @@ public class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest jsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest = (JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest) o;
-    return Objects.equals(this.type, jsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest.type) &&
-        Objects.equals(this.attributes, jsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest.attributes)&&
-        Objects.equals(this.additionalProperties, jsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest.additionalProperties);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    JsonApiRequestOfBrandCatalogRequestV2 jsonApiRequestOfBrandCatalogRequestV2 = (JsonApiRequestOfBrandCatalogRequestV2) o;
+    return Objects.equals(this.data, jsonApiRequestOfBrandCatalogRequestV2.data)&&
+        Objects.equals(this.additionalProperties, jsonApiRequestOfBrandCatalogRequestV2.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(data, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("class JsonApiRequestOfBrandCatalogRequestV2 {\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -209,39 +169,27 @@ public class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
-    openapiFields.add("attributes");
+    openapiFields.add("data");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("type");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest
+  * @throws IOException if the JSON Object is invalid with respect to JsonApiRequestOfBrandCatalogRequestV2
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest is not found in the empty JSON string", JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest.openapiRequiredFields.toString()));
+        if (!JsonApiRequestOfBrandCatalogRequestV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in JsonApiRequestOfBrandCatalogRequestV2 is not found in the empty JSON string", JsonApiRequestOfBrandCatalogRequestV2.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        SellerCatalogRequest.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      // validate the optional field `data`
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
   }
 
@@ -249,16 +197,16 @@ public class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest' and its subtypes
+       if (!JsonApiRequestOfBrandCatalogRequestV2.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'JsonApiRequestOfBrandCatalogRequestV2' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest.class));
+       final TypeAdapter<JsonApiRequestOfBrandCatalogRequestV2> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(JsonApiRequestOfBrandCatalogRequestV2.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<JsonApiRequestOfBrandCatalogRequestV2>() {
            @Override
-           public void write(JsonWriter out, JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest value) throws IOException {
+           public void write(JsonWriter out, JsonApiRequestOfBrandCatalogRequestV2 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -281,11 +229,11 @@ public class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest {
            }
 
            @Override
-           public JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest read(JsonReader in) throws IOException {
+           public JsonApiRequestOfBrandCatalogRequestV2 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest instance = thisAdapter.fromJsonTree(jsonObj);
+             JsonApiRequestOfBrandCatalogRequestV2 instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -312,18 +260,18 @@ public class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest {
   }
 
  /**
-  * Create an instance of JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest given an JSON string
+  * Create an instance of JsonApiRequestOfBrandCatalogRequestV2 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest
-  * @throws IOException if the JSON string is invalid with respect to JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest
+  * @return An instance of JsonApiRequestOfBrandCatalogRequestV2
+  * @throws IOException if the JSON string is invalid with respect to JsonApiRequestOfBrandCatalogRequestV2
   */
-  public static JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest.class);
+  public static JsonApiRequestOfBrandCatalogRequestV2 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, JsonApiRequestOfBrandCatalogRequestV2.class);
   }
 
  /**
-  * Convert an instance of JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest to an JSON string
+  * Convert an instance of JsonApiRequestOfBrandCatalogRequestV2 to an JSON string
   *
   * @return JSON string
   */
