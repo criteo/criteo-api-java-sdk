@@ -1012,7 +1012,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -1046,7 +1045,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -1089,7 +1087,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -1114,7 +1111,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       - description: Query string to search across Categories
         explode: true
         in: query
@@ -1123,7 +1119,6 @@ paths:
         schema:
           type: string
         style: form
-        x-nullable: false
       - description: The start position in the overall list of matches. Must be zero
           or greater.
         explode: true
@@ -1137,7 +1132,6 @@ paths:
           minimum: 0.0
           type: integer
         style: form
-        x-nullable: false
       - description: The maximum number of results to return with each call. Must
           be greater than zero.
         explode: true
@@ -1151,7 +1145,6 @@ paths:
           minimum: 1.0
           type: integer
         style: form
-        x-nullable: false
       responses:
         "200":
           content:
@@ -1176,7 +1169,6 @@ paths:
           format: int32
           type: integer
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -1209,7 +1201,6 @@ paths:
           format: int32
           type: integer
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -1967,7 +1958,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The ids that you would like to limit your result set to
         explode: true
         in: query
@@ -1978,7 +1968,6 @@ paths:
             type: string
           type: array
         style: form
-        x-nullable: false
       - description: The 0 indexed page index you would like to receive given the
           page size
         explode: true
@@ -1990,7 +1979,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       - description: The maximum number of items you would like to receive in this
           request
         explode: true
@@ -2002,7 +1990,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       responses:
         "200":
           content:
@@ -2031,7 +2018,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -2072,7 +2058,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The balance id
         explode: false
         in: path
@@ -2081,7 +2066,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -2110,7 +2094,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The balance to change the dates
         explode: false
         in: path
@@ -2119,7 +2102,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -2159,7 +2141,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The balance to add funds to
         explode: false
         in: path
@@ -2168,7 +2149,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -2209,7 +2189,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The balance to change the dates
         explode: false
         in: path
@@ -2218,7 +2197,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -2261,7 +2239,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The ids that you would like to limit your result set to
         explode: true
         in: query
@@ -2272,7 +2249,6 @@ paths:
             type: string
           type: array
         style: form
-        x-nullable: false
       - description: The 0 indexed page index you would like to receive given the
           page size
         explode: true
@@ -2284,7 +2260,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       - description: The maximum number of items you would like to receive in this
           request
         explode: true
@@ -2296,7 +2271,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       responses:
         "200":
           content:
@@ -2323,7 +2297,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -2356,7 +2329,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The campaign ids that you would like to limit your result set
           to
         explode: true
@@ -2368,7 +2340,6 @@ paths:
             type: string
           type: array
         style: form
-        x-nullable: false
       - description: The campaign types that you would like to limit your result set
           to
         explode: true
@@ -2383,7 +2354,6 @@ paths:
           nullable: true
           type: string
         style: form
-        x-nullable: true
       - description: The ids that you would like to limit your result set to
         explode: true
         in: query
@@ -2394,7 +2364,6 @@ paths:
             type: string
           type: array
         style: form
-        x-nullable: false
       - description: The 0 indexed page index you would like to receive given the
           page size
         explode: true
@@ -2405,7 +2374,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       - description: The maximum number of items you would like to receive in this
           request
         explode: true
@@ -2416,7 +2384,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       responses:
         "200":
           content:
@@ -2440,7 +2407,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -2469,7 +2435,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -2508,7 +2473,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -2539,7 +2503,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -2579,7 +2542,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -2618,7 +2580,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The ids that you would like to limit your result set to
         explode: true
         in: query
@@ -2629,7 +2590,6 @@ paths:
             type: string
           type: array
         style: form
-        x-nullable: false
       - description: The 0 indexed page index you would like to receive given the
           page size
         explode: true
@@ -2640,7 +2600,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       - description: The maximum number of items you would like to receive in this
           request
         explode: true
@@ -2651,7 +2610,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       responses:
         "200":
           content:
@@ -2675,7 +2633,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -2708,7 +2665,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -2741,7 +2697,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The ids that you would like to limit your result set to
         explode: true
         in: query
@@ -2752,7 +2707,6 @@ paths:
             type: string
           type: array
         style: form
-        x-nullable: false
       - description: The 0 indexed page index you would like to receive given the
           page size
         explode: true
@@ -2763,7 +2717,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       - description: The maximum number of items you would like to receive in this
           request
         explode: true
@@ -2774,7 +2727,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       responses:
         "200":
           content:
@@ -2803,7 +2755,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -2843,7 +2794,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The ids that you would like to limit your result set to
         explode: true
         in: query
@@ -2854,7 +2804,6 @@ paths:
             type: string
           type: array
         style: form
-        x-nullable: false
       - description: The 0 indexed page index you would like to receive given the
           page size
         explode: true
@@ -2865,7 +2814,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       - description: The maximum number of items you would like to receive in this
           request
         explode: true
@@ -2876,7 +2824,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       responses:
         "200":
           content:
@@ -2905,7 +2852,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -2945,7 +2891,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -2972,7 +2917,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -3005,7 +2949,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -3094,7 +3037,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -3123,7 +3065,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -3163,7 +3104,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -3193,7 +3133,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -3234,7 +3173,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -3275,7 +3213,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -3314,7 +3251,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -3344,7 +3280,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -3384,7 +3319,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -3425,7 +3359,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -3464,7 +3397,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -3494,7 +3426,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -3534,7 +3465,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -3574,7 +3504,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -7261,16 +7190,13 @@ components:
           items:
             $ref: '#/components/schemas/CommonError'
           type: array
-          x-nullable: false
         warnings:
           items:
             $ref: '#/components/schemas/CommonWarning'
           type: array
-          x-nullable: false
       required:
       - data
       type: object
-      x-nullable: false
       x-used-in-response: true
     Category202204ListResponse:
       description: Data model for a list of response resources
@@ -7335,21 +7261,17 @@ components:
           items:
             $ref: '#/components/schemas/ResourceOfCategory202204'
           type: array
-          x-nullable: false
         warnings:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     Category202204:
       description: "List of retailer's categories, including the full hierarchy of\
@@ -7362,21 +7284,17 @@ components:
         text:
           description: Category Text
           type: string
-          x-nullable: false
         name:
           description: Category Name
           type: string
-          x-nullable: false
         parentId:
           description: Category ParentId
           type: string
-          x-nullable: false
       required:
       - name
       - parentId
       - text
       type: object
-      x-nullable: false
       x-used-in-response: true
     ExternalRetailerPages202110:
       description: Wraps a list of valid pages for a retailer
@@ -7389,11 +7307,8 @@ components:
           description: List of valid pages for a retailer
           items:
             type: string
-            x-nullable: false
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     JsonApiRequestOfCatalogRequest:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
@@ -7410,7 +7325,6 @@ components:
         data:
           $ref: '#/components/schemas/JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest'
       type: object
-      x-nullable: false
       x-used-in-request: true
     JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
@@ -7430,17 +7344,14 @@ components:
         id:
           format: long-id
           type: string
-          x-nullable: false
         type:
           type: string
-          x-nullable: false
         attributes:
           $ref: '#/components/schemas/ExternalCatalogStatus'
       required:
       - id
       - type
       type: object
-      x-nullable: false
       x-used-in-response: true
     ResourceOfCategory202204:
       description: Data model for a Resource
@@ -7465,7 +7376,6 @@ components:
           type: string
           x-optional-in-response: true
       type: object
-      x-nullable: false
       x-used-in-response: true
     ProblemDetails:
       description: Data model for common error or warning
@@ -7504,38 +7414,29 @@ components:
           - quota
           - validation
           type: string
-          x-nullable: false
         code:
           description: "A machine-readable  error code, expressed as a string value."
           type: string
-          x-nullable: false
         instance:
           description: A URI that identifies the specific occurrence of the problem.
           type: string
-          x-nullable: false
         title:
           description: A short human-readable description of the problem type
           type: string
-          x-nullable: false
         detail:
           description: A human-readable explanation specific to this occurrence of
             the problem
           type: string
-          x-nullable: false
         source:
           additionalProperties:
             type: string
-            x-nullable: false
           description: A machine-readable structure to reference to the exact location(s)
             causing the error(s)
           type: object
-          x-nullable: false
         stackTrace:
           description: "Technical information, only used in non-prod environments"
           type: string
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
@@ -7550,13 +7451,11 @@ components:
       properties:
         type:
           type: string
-          x-nullable: false
         attributes:
           $ref: '#/components/schemas/ExternalCatalogRequest'
       required:
       - type
       type: object
-      x-nullable: false
       x-used-in-request: true
     ExternalCatalogStatus:
       description: The status of an asynchronous request to generate a catalog
@@ -7578,45 +7477,38 @@ components:
           - failure
           - expired
           type: string
-          x-nullable: false
         currency:
           description: An ISO4217 representation of the currency products are listed
             under in this catalog.
           nullable: true
           type: string
-          x-nullable: true
         rowCount:
           description: "An indication of the number of products contained in this\
             \ catalog. Available when\r\nthis catalog reaches a success status."
           format: int32
           nullable: true
           type: integer
-          x-nullable: true
         fileSizeBytes:
           description: The size of this catalog in bytes. Available when this catalog
             reaches a success status.
           format: int32
           nullable: true
           type: integer
-          x-nullable: true
         md5Checksum:
           description: "An MD5 checksum of the catalog for use in confirming complete\
             \ and uncorrupted retrieval.\r\nAvailable when this catalog reaches a\
             \ success status."
           nullable: true
           type: string
-          x-nullable: true
         createdAt:
           description: The time this catalog was created. Represented as a UTC ISO8601
             string.
           format: date-time
           type: string
-          x-nullable: false
         message:
           description: An optional information message intended for developer consumption.
           nullable: true
           type: string
-          x-nullable: true
       required:
       - createdAt
       - currency
@@ -7626,7 +7518,6 @@ components:
       - rowCount
       - status
       type: object
-      x-nullable: false
       x-used-in-response: true
     ExternalCatalogRequest:
       description: A request for a catalog under the specified format. Currently "json-newline"
@@ -7642,15 +7533,12 @@ components:
           enum:
           - json-newline
           type: string
-          x-nullable: false
         brandIdFilter:
           items:
             format: long-id
             type: string
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-request: true
     Creative202110ListResponse:
       additionalProperties: false
@@ -11795,19 +11683,16 @@ components:
           items:
             $ref: '#/components/schemas/ResourceOfBalanceResponseV2'
           type: array
-          x-nullable: false
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
       x-used-in-response: true
     BalanceResponseV2Response:
@@ -11883,15 +11768,12 @@ components:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: true
       x-used-in-response: true
     JsonApiPageResponseOfCampaignV202301:
       description: A wrapper class to return a single page of <typeparamref name="T"
@@ -12006,24 +11888,20 @@ components:
           items:
             $ref: '#/components/schemas/CommonError'
           type: array
-          x-nullable: false
         warnings:
           items:
             $ref: '#/components/schemas/CommonWarning'
           type: array
-          x-nullable: false
         metadata:
           $ref: '#/components/schemas/PageMetadata'
         data:
           items:
             $ref: '#/components/schemas/JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301'
           type: array
-          x-nullable: false
       required:
       - data
       - metadata
       type: object
-      x-nullable: false
       x-used-in-response: true
     JsonApiSingleResponseOfCampaignV202301:
       description: A JSON:API wrapper class to add one JSON:API <typeparamref name="T"
@@ -12104,16 +11982,13 @@ components:
           items:
             $ref: '#/components/schemas/CommonError'
           type: array
-          x-nullable: false
         warnings:
           items:
             $ref: '#/components/schemas/CommonWarning'
           type: array
-          x-nullable: false
       required:
       - data
       type: object
-      x-nullable: false
       x-used-in-response: true
     CommonLineItemPagedListResponse:
       description: Data model for a paged list of response resources
@@ -12205,21 +12080,17 @@ components:
           items:
             $ref: '#/components/schemas/ResourceOfCommonLineItem'
           type: array
-          x-nullable: false
         warnings:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     AuctionLineItemResponse:
       description: Data model for response resource
@@ -12296,15 +12167,12 @@ components:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     KeywordTarget202110Response:
       description: Data model for a value type resource outcome
@@ -12364,15 +12232,12 @@ components:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     BalanceCampaign202110PagedListResponse:
       description: Data model for a paged list of response resources
@@ -12440,21 +12305,17 @@ components:
           items:
             $ref: '#/components/schemas/ResourceOfBalanceCampaign202110'
           type: array
-          x-nullable: false
         warnings:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     AuctionLineItemPagedListResponse:
       description: Data model for a paged list of response resources
@@ -12558,21 +12419,17 @@ components:
           items:
             $ref: '#/components/schemas/ResourceOfAuctionLineItem'
           type: array
-          x-nullable: false
         warnings:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     PreferredLineItem202110PagedListResponse:
       description: Data model for a paged list of response resources
@@ -12692,21 +12549,17 @@ components:
           items:
             $ref: '#/components/schemas/ResourceOfPreferredLineItem202110'
           type: array
-          x-nullable: false
         warnings:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     PreferredLineItem202110Response:
       description: Data model for response resource
@@ -12791,15 +12644,12 @@ components:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     CommonLineItemResponse:
       description: Data model for response resource
@@ -12870,15 +12720,12 @@ components:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     JsonApiSingleResponseOfLineItemBidMultipliers:
       description: Data model for the response of a line item bid multiplier
@@ -12940,16 +12787,13 @@ components:
           items:
             $ref: '#/components/schemas/CommonError'
           type: array
-          x-nullable: false
         warnings:
           items:
             $ref: '#/components/schemas/CommonWarning'
           type: array
-          x-nullable: false
       required:
       - data
       type: object
-      x-nullable: false
       x-used-in-response: true
     LineItemBidMultipliersResponse:
       description: Data model for response resource
@@ -13016,15 +12860,12 @@ components:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     AddToBasketTarget202110Response:
       description: Data model for a value type resource outcome
@@ -13089,15 +12930,12 @@ components:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     AudienceTarget202110Response:
       description: Data model for a value type resource outcome
@@ -13159,15 +12997,12 @@ components:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     StoreTarget202110Response:
       description: Data model for a value type resource outcome
@@ -13229,15 +13064,12 @@ components:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     CreateBalanceV2Request:
       description: A top-level object that encapsulates a Criteo API request for a
@@ -13337,7 +13169,6 @@ components:
         data:
           $ref: '#/components/schemas/JsonApiBodyWithoutIdOfCampaignAttributesV202301AndCampaignV202301'
       type: object
-      x-nullable: false
       x-used-in-request: true
     AuctionLineItemUpdateModelRequest:
       description: Data model for an input resource
@@ -13361,7 +13192,6 @@ components:
         data:
           $ref: '#/components/schemas/ResourceOfAuctionLineItemUpdateModel'
       type: object
-      x-nullable: false
       x-used-in-request: true
     KeywordTarget202110Request:
       description: Data model for a value type input resource
@@ -13375,7 +13205,6 @@ components:
         data:
           $ref: '#/components/schemas/ValueTypeResourceOfKeywordTarget202110'
       type: object
-      x-nullable: false
       x-used-in-request: true
     BalanceCampaign202110ListRequest:
       description: "A class implementing the request of the Criteo API as described\
@@ -13393,9 +13222,7 @@ components:
           items:
             $ref: '#/components/schemas/ResourceOfBalanceCampaign202110'
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-request: true
     AuctionLineItemCreateModelRequest:
       description: Data model for a create input resource
@@ -13419,7 +13246,6 @@ components:
         data:
           $ref: '#/components/schemas/InputResourceOfAuctionLineItemCreateModel'
       type: object
-      x-nullable: false
       x-used-in-request: true
     PreferredLineItemCreateModel202110Request:
       description: Data model for a create input resource
@@ -13452,7 +13278,6 @@ components:
         data:
           $ref: '#/components/schemas/InputResourceOfPreferredLineItemCreateModel202110'
       type: object
-      x-nullable: false
       x-used-in-request: true
     PutCampaignV202301:
       description: An object that represents the available options to set when editing
@@ -13479,7 +13304,6 @@ components:
         data:
           $ref: '#/components/schemas/JsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301'
       type: object
-      x-nullable: false
       x-used-in-request: true
     LineItemBidMultipliersRequest:
       description: Data model for an input resource
@@ -13500,7 +13324,6 @@ components:
         data:
           $ref: '#/components/schemas/ResourceOfLineItemBidMultipliers'
       type: object
-      x-nullable: false
       x-used-in-request: true
     PreferredLineItemUpdateModel202110Request:
       description: Data model for an input resource
@@ -13533,7 +13356,6 @@ components:
         data:
           $ref: '#/components/schemas/ResourceOfPreferredLineItemUpdateModel202110'
       type: object
-      x-nullable: false
       x-used-in-request: true
     AddToBasketTarget202110Request:
       description: Data model for a value type input resource
@@ -13552,7 +13374,6 @@ components:
         data:
           $ref: '#/components/schemas/ValueTypeResourceOfAddToBasketTarget202110'
       type: object
-      x-nullable: false
       x-used-in-request: true
     AddToBasketIdsUpdateModel202110Request:
       description: Data model for a value type input resource
@@ -13570,7 +13391,6 @@ components:
         data:
           $ref: '#/components/schemas/ValueTypeResourceOfAddToBasketIdsUpdateModel202110'
       type: object
-      x-nullable: false
       x-used-in-request: true
     AudienceTarget202110Request:
       description: Data model for a value type input resource
@@ -13586,7 +13406,6 @@ components:
         data:
           $ref: '#/components/schemas/ValueTypeResourceOfAudienceTarget202110'
       type: object
-      x-nullable: false
       x-used-in-request: true
     AudienceIdsUpdateModel202110Request:
       description: Data model for a value type input resource
@@ -13601,7 +13420,6 @@ components:
         data:
           $ref: '#/components/schemas/ValueTypeResourceOfAudienceIdsUpdateModel202110'
       type: object
-      x-nullable: false
       x-used-in-request: true
     StoreTarget202110Request:
       description: Data model for a value type input resource
@@ -13617,7 +13435,6 @@ components:
         data:
           $ref: '#/components/schemas/ValueTypeResourceOfStoreTarget202110'
       type: object
-      x-nullable: false
       x-used-in-request: true
     StoreIdsUpdateModel202110Request:
       description: Data model for a value type input resource
@@ -13632,7 +13449,6 @@ components:
         data:
           $ref: '#/components/schemas/ValueTypeResourceOfStoreIdsUpdateModel202110'
       type: object
-      x-nullable: false
       x-used-in-request: true
     ResourceOfBalanceResponseV2:
       description: A class that represents a domain entity exposed by an API
@@ -13708,17 +13524,14 @@ components:
         id:
           format: long-id
           type: string
-          x-nullable: false
         type:
           type: string
-          x-nullable: false
         attributes:
           $ref: '#/components/schemas/CampaignV202301'
       required:
       - id
       - type
       type: object
-      x-nullable: false
       x-used-in-response: true
     ResourceOfCommonLineItem:
       description: Data model for a Resource
@@ -13752,7 +13565,6 @@ components:
         attributes:
           $ref: '#/components/schemas/ExternalCommonLineItem'
       type: object
-      x-nullable: false
       x-used-in-response: true
     ResourceOfAuctionLineItem:
       description: Data model for a Resource
@@ -13792,7 +13604,6 @@ components:
         attributes:
           $ref: '#/components/schemas/ExternalAuctionLineItem'
       type: object
-      x-nullable: false
       x-used-in-response: true
     ValueTypeResourceOfKeywordTarget202110:
       description: Data model for a value type resource
@@ -13804,11 +13615,9 @@ components:
       properties:
         type:
           type: string
-          x-nullable: false
         attributes:
           $ref: '#/components/schemas/ExternalKeywordTarget202110'
       type: object
-      x-nullable: false
       x-used-in-response: true
       x-used-in-request: true
     ResourceOfBalanceCampaign202110:
@@ -13831,11 +13640,9 @@ components:
         attributes:
           description: Campaigns related to the balance
           type: object
-          x-nullable: false
           x-used-in-response: true
           x-used-in-request: true
       type: object
-      x-nullable: false
       x-used-in-response: true
       x-used-in-request: true
     ResourceOfPreferredLineItem202110:
@@ -13884,7 +13691,6 @@ components:
         attributes:
           $ref: '#/components/schemas/ExternalPreferredLineItem202110'
       type: object
-      x-nullable: false
       x-used-in-response: true
     JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersAndLineItemBidMultipliers:
       description: Response object for line item bid multiplier calls
@@ -13904,17 +13710,14 @@ components:
         id:
           format: long-id
           type: string
-          x-nullable: false
         type:
           type: string
-          x-nullable: false
         attributes:
           $ref: '#/components/schemas/LineItemBidMultipliers'
       required:
       - id
       - type
       type: object
-      x-nullable: false
       x-used-in-response: true
     ResourceOfLineItemBidMultipliers:
       description: Data model for a Resource
@@ -13944,7 +13747,6 @@ components:
           type: string
           x-optional-in-response: true
       type: object
-      x-nullable: false
       x-used-in-request: true
       x-used-in-response: true
     ValueTypeResourceOfAddToBasketTarget202110:
@@ -13962,11 +13764,9 @@ components:
       properties:
         type:
           type: string
-          x-nullable: false
         attributes:
           $ref: '#/components/schemas/ExternalAddToBasketTarget202110'
       type: object
-      x-nullable: false
       x-used-in-response: true
       x-used-in-request: true
     ValueTypeResourceOfAudienceTarget202110:
@@ -13981,11 +13781,9 @@ components:
       properties:
         type:
           type: string
-          x-nullable: false
         attributes:
           $ref: '#/components/schemas/ExternalAudienceTarget202110'
       type: object
-      x-nullable: false
       x-used-in-response: true
       x-used-in-request: true
     ValueTypeResourceOfStoreTarget202110:
@@ -14000,11 +13798,9 @@ components:
       properties:
         type:
           type: string
-          x-nullable: false
         attributes:
           $ref: '#/components/schemas/ExternalStoreTarget202110'
       type: object
-      x-nullable: false
       x-used-in-response: true
       x-used-in-request: true
     ResourceOfCreateBalanceV2:
@@ -14119,13 +13915,11 @@ components:
       properties:
         type:
           type: string
-          x-nullable: false
         attributes:
           $ref: '#/components/schemas/CampaignAttributesV202301'
       required:
       - type
       type: object
-      x-nullable: false
       x-used-in-request: true
     ResourceOfAuctionLineItemUpdateModel:
       description: Data model for a Resource
@@ -14154,7 +13948,6 @@ components:
         attributes:
           $ref: '#/components/schemas/ExternalAuctionLineItemUpdateModel'
       type: object
-      x-nullable: false
       x-used-in-request: true
     InputResourceOfAuctionLineItemCreateModel:
       description: Data model for a Resource
@@ -14176,11 +13969,9 @@ components:
       properties:
         type:
           type: string
-          x-nullable: false
         attributes:
           $ref: '#/components/schemas/ExternalAuctionLineItemCreateModel'
       type: object
-      x-nullable: false
       x-used-in-request: true
     InputResourceOfPreferredLineItemCreateModel202110:
       description: Data model for a Resource
@@ -14211,11 +14002,9 @@ components:
       properties:
         type:
           type: string
-          x-nullable: false
         attributes:
           $ref: '#/components/schemas/ExternalPreferredLineItemCreateModel202110'
       type: object
-      x-nullable: false
       x-used-in-request: true
     JsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
@@ -14241,17 +14030,14 @@ components:
         id:
           format: long-id
           type: string
-          x-nullable: false
         type:
           type: string
-          x-nullable: false
         attributes:
           $ref: '#/components/schemas/EditableCampaignAttributesV202301'
       required:
       - id
       - type
       type: object
-      x-nullable: false
       x-used-in-request: true
     ResourceOfPreferredLineItemUpdateModel202110:
       description: Data model for a Resource
@@ -14289,7 +14075,6 @@ components:
         attributes:
           $ref: '#/components/schemas/ExternalPreferredLineItemUpdateModel202110'
       type: object
-      x-nullable: false
       x-used-in-request: true
     ValueTypeResourceOfAddToBasketIdsUpdateModel202110:
       description: Data model for a value type resource
@@ -14305,11 +14090,9 @@ components:
       properties:
         type:
           type: string
-          x-nullable: false
         attributes:
           $ref: '#/components/schemas/ExternalAddToBasketIdsUpdateModel202110'
       type: object
-      x-nullable: false
       x-used-in-request: true
     ValueTypeResourceOfAudienceIdsUpdateModel202110:
       description: Data model for a value type resource
@@ -14322,11 +14105,9 @@ components:
       properties:
         type:
           type: string
-          x-nullable: false
         attributes:
           $ref: '#/components/schemas/ExternalAudienceIdsUpdateModel202110'
       type: object
-      x-nullable: false
       x-used-in-request: true
     ValueTypeResourceOfStoreIdsUpdateModel202110:
       description: Data model for a value type resource
@@ -14339,11 +14120,9 @@ components:
       properties:
         type:
           type: string
-          x-nullable: false
         attributes:
           $ref: '#/components/schemas/ExternalStoreIdsUpdateModel202110'
       type: object
-      x-nullable: false
       x-used-in-request: true
     BalanceResponseV2:
       description: A Retail Media Balance used to determine the funds available for
@@ -14368,46 +14147,38 @@ components:
         name:
           description: Name of the balance.
           type: string
-          x-nullable: false
         poNumber:
           description: Purchase Order number.
           nullable: true
           type: string
-          x-nullable: true
         memo:
           description: Memo.
           nullable: true
           type: string
-          x-nullable: true
         deposited:
           description: Amount of billable funds allotted to the balance.
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         spent:
           description: Amount of spent funds of the balance.
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         remaining:
           description: Amount of remaining funds of the balance.
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         startDate:
           description: Start date of the balance in the format YYYY-MM-DD.
           format: date
           type: string
-          x-nullable: false
         endDate:
           description: End date of the balance in the format YYYY-MM-DD.
           format: date
           nullable: true
           type: string
-          x-nullable: true
         status:
           description: Status of the balance.
           enum:
@@ -14416,17 +14187,14 @@ components:
           - active
           - ended
           type: string
-          x-nullable: false
         createdAt:
           description: Creation time of the balance.
           format: date-time
           type: string
-          x-nullable: false
         updatedAt:
           description: Update time of the balance.
           format: date-time
           type: string
-          x-nullable: false
         balanceType:
           description: Type of the balance.
           enum:
@@ -14434,7 +14202,6 @@ components:
           - capped
           - uncapped
           type: string
-          x-nullable: false
         spendType:
           description: Spend Type of the balance.
           enum:
@@ -14442,7 +14209,6 @@ components:
           - Offsite
           - OffsiteAwareness
           type: string
-          x-nullable: false
         privateMarketBillingType:
           description: Billing type for Private Market of the balance.
           enum:
@@ -14451,7 +14217,6 @@ components:
           - billByCriteo
           - unknown
           type: string
-          x-nullable: false
       required:
       - balanceType
       - name
@@ -14495,23 +14260,19 @@ components:
         accountId:
           format: long-id
           type: string
-          x-nullable: false
         promotedBrandIds:
           items:
             format: long-id
             type: string
           type: array
-          x-nullable: false
         budgetSpent:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         budgetRemaining:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         status:
           enum:
           - unknown
@@ -14520,15 +14281,12 @@ components:
           - scheduled
           - ended
           type: string
-          x-nullable: false
         createdAt:
           format: date-time
           type: string
-          x-nullable: false
         updatedAt:
           format: date-time
           type: string
-          x-nullable: false
         type:
           default: auction
           enum:
@@ -14536,13 +14294,11 @@ components:
           - auction
           - preferred
           type: string
-          x-nullable: false
         drawableBalanceIds:
           items:
             format: long-id
             type: string
           type: array
-          x-nullable: false
         clickAttributionWindow:
           default: 30D
           enum:
@@ -14551,7 +14307,6 @@ components:
           - 30D
           - unknown
           type: string
-          x-nullable: false
         viewAttributionWindow:
           default: none
           enum:
@@ -14562,40 +14317,32 @@ components:
           - 14D
           - 30D
           type: string
-          x-nullable: false
         name:
           maxLength: 255
           minLength: 0
           type: string
-          x-nullable: false
         budget:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         monthlyPacing:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         dailyPacing:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         isAutoDailyPacing:
           type: boolean
-          x-nullable: false
         startDate:
           format: date-time
           nullable: true
           type: string
-          x-nullable: true
         endDate:
           format: date-time
           nullable: true
           type: string
-          x-nullable: true
         clickAttributionScope:
           enum:
           - unknown
@@ -14604,7 +14351,6 @@ components:
           - sameSkuCategoryBrand
           nullable: true
           type: string
-          x-nullable: true
         viewAttributionScope:
           enum:
           - unknown
@@ -14613,15 +14359,12 @@ components:
           - sameSkuCategoryBrand
           nullable: true
           type: string
-          x-nullable: true
         companyName:
           nullable: true
           type: string
-          x-nullable: true
         onBehalfCompanyName:
           nullable: true
           type: string
-          x-nullable: true
       required:
       - accountId
       - budgetRemaining
@@ -14634,7 +14377,6 @@ components:
       - startDate
       - updatedAt
       type: object
-      x-nullable: false
       x-used-in-response: true
     ExternalCommonLineItem:
       description: A common line item to hold line item information shared between
@@ -14657,14 +14399,12 @@ components:
           maxLength: 255
           minLength: 0
           type: string
-          x-nullable: false
         type:
           enum:
           - unknown
           - auction
           - preferred
           type: string
-          x-nullable: false
         startDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
@@ -14689,37 +14429,29 @@ components:
           - archived
           - noFunds
           type: string
-          x-nullable: false
         targetRetailerId:
           format: long-id
           type: string
-          x-nullable: false
         budget:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         campaignId:
           format: long-id
           type: string
-          x-nullable: false
         budgetSpent:
           format: double
           type: number
-          x-nullable: false
         budgetRemaining:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         createdAt:
           format: date-time
           type: string
-          x-nullable: false
         updatedAt:
           format: date-time
           type: string
-          x-nullable: false
       required:
       - budgetRemaining
       - campaignId
@@ -14730,7 +14462,6 @@ components:
       - type
       - updatedAt
       type: object
-      x-nullable: false
       x-used-in-response: true
     ExternalAuctionLineItem:
       description: A Retail Media Auction Line Item used to hold bid settings for
@@ -14759,7 +14490,6 @@ components:
           maxLength: 255
           minLength: 0
           type: string
-          x-nullable: false
         startDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
@@ -14776,22 +14506,18 @@ components:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         budget:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         monthlyPacing:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         dailyPacing:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         bidStrategy:
           default: conversion
           enum:
@@ -14800,11 +14526,9 @@ components:
           - clicks
           - revenue
           type: string
-          x-nullable: false
         targetRetailerId:
           format: long-id
           type: string
-          x-nullable: false
         status:
           enum:
           - unknown
@@ -14817,42 +14541,33 @@ components:
           - archived
           - noFunds
           type: string
-          x-nullable: false
         targetBid:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         isAutoDailyPacing:
           default: false
           type: boolean
-          x-nullable: false
         campaignId:
           format: long-id
           type: string
-          x-nullable: false
         budgetSpent:
           format: double
           type: number
-          x-nullable: false
         budgetRemaining:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         createdAt:
           format: date-time
           type: string
-          x-nullable: false
         updatedAt:
           format: date-time
           type: string
-          x-nullable: false
         id:
           description: Id of the entity
           nullable: true
           type: string
-          x-nullable: true
       required:
       - budgetRemaining
       - campaignId
@@ -14862,7 +14577,6 @@ components:
       - targetRetailerId
       - updatedAt
       type: object
-      x-nullable: false
       x-used-in-response: true
     ExternalKeywordTarget202110:
       description: Identifies keyword targeting for a line item
@@ -14877,20 +14591,16 @@ components:
             - negativeExact
             - negativeBroad
             type: string
-            x-nullable: false
           description: Keywords that targeting specifications exist for
           type: object
-          x-nullable: false
       required:
       - keywords
       type: object
-      x-nullable: false
       x-used-in-response: true
       x-used-in-request: true
     ExternalBalanceCampaign202110:
       description: Campaigns related to the balance
       type: object
-      x-nullable: false
       x-used-in-response: true
       x-used-in-request: true
     ExternalPreferredLineItem202110:
@@ -14928,7 +14638,6 @@ components:
           maxLength: 255
           minLength: 0
           type: string
-          x-nullable: false
         startDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
@@ -14951,14 +14660,12 @@ components:
           - archived
           - noFunds
           type: string
-          x-nullable: false
         pacing:
           enum:
           - unknown
           - standard
           - accelerated
           type: string
-          x-nullable: false
         capping:
           $ref: '#/components/schemas/ExternalLineItemCapping202110'
         page:
@@ -14966,36 +14673,28 @@ components:
         targetRetailerId:
           format: long-id
           type: string
-          x-nullable: false
         budget:
           format: double
           type: number
-          x-nullable: false
         campaignId:
           format: long-id
           type: string
-          x-nullable: false
         budgetSpent:
           format: double
           type: number
-          x-nullable: false
         budgetRemaining:
           format: double
           type: number
-          x-nullable: false
         createdAt:
           format: date-time
           type: string
-          x-nullable: false
         updatedAt:
           format: date-time
           type: string
-          x-nullable: false
         creativeId:
           format: long-id
           nullable: true
           type: string
-          x-nullable: true
       required:
       - budget
       - campaignId
@@ -15009,7 +14708,6 @@ components:
       - targetRetailerId
       - updatedAt
       type: object
-      x-nullable: false
       x-used-in-response: true
     LineItemBidMultipliers:
       description: Data model representing bid multipliers on a line item
@@ -15026,37 +14724,28 @@ components:
         search:
           format: double
           type: number
-          x-nullable: false
         homepage:
           format: double
           type: number
-          x-nullable: false
         categories:
           format: double
           type: number
-          x-nullable: false
         productDetail:
           format: double
           type: number
-          x-nullable: false
         confirmation:
           format: double
           type: number
-          x-nullable: false
         merchandising:
           format: double
           type: number
-          x-nullable: false
         deals:
           format: double
           type: number
-          x-nullable: false
         checkout:
           format: double
           type: number
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
       x-used-in-request: true
     ExternalAddToBasketTarget202110:
@@ -15077,25 +14766,19 @@ components:
           - include
           - exclude
           type: string
-          x-nullable: false
         productIds:
           description: Product ids that add to basket should target
           items:
             type: string
-            x-nullable: false
           type: array
-          x-nullable: false
         categoryIds:
           description: Category ids that add to basket should target
           items:
             type: string
-            x-nullable: false
           type: array
-          x-nullable: false
       required:
       - scope
       type: object
-      x-nullable: false
       x-used-in-response: true
       x-used-in-request: true
     ExternalAudienceTarget202110:
@@ -15113,19 +14796,16 @@ components:
           - include
           - exclude
           type: string
-          x-nullable: false
         audienceIds:
           description: Audience ids that should be targeted
           items:
             format: long-id
             type: string
           type: array
-          x-nullable: false
       required:
       - audienceIds
       - scope
       type: object
-      x-nullable: false
       x-used-in-response: true
       x-used-in-request: true
     ExternalStoreTarget202110:
@@ -15143,19 +14823,15 @@ components:
           - include
           - exclude
           type: string
-          x-nullable: false
         storeIds:
           description: Store ids that should be targeted
           items:
             type: string
-            x-nullable: false
           type: array
-          x-nullable: false
       required:
       - scope
       - storeIds
       type: object
-      x-nullable: false
       x-used-in-response: true
       x-used-in-request: true
     CreateBalanceV2:
@@ -15173,12 +14849,10 @@ components:
         name:
           description: Name of the balance.
           type: string
-          x-nullable: false
         poNumber:
           description: Purchase Order number.
           nullable: true
           type: string
-          x-nullable: true
         deposited:
           description: Amount of billable funds allotted to the balance.
           format: decimal
@@ -15187,13 +14861,11 @@ components:
           description: Start date of the balance in the format YYYY-MM-DD.
           format: date
           type: string
-          x-nullable: false
         endDate:
           description: End date of the balance in the format YYYY-MM-DD.
           format: date
           nullable: true
           type: string
-          x-nullable: true
         spendType:
           description: Type of the balance spend.
           enum:
@@ -15201,12 +14873,10 @@ components:
           - Offsite
           - OffsiteAwareness
           type: string
-          x-nullable: false
         memo:
           description: Memo
           nullable: true
           type: string
-          x-nullable: true
       required:
       - name
       - spendType
@@ -15227,27 +14897,22 @@ components:
           description: Name of the balance.
           nullable: true
           type: string
-          x-nullable: true
         poNumber:
           description: Purchase Order number.
           nullable: true
           type: string
-          x-nullable: true
         startDate:
           description: Start date of the balance in the format YYYY-MM-DD.
           nullable: true
           type: string
-          x-nullable: true
         endDate:
           description: End date of the balance in the format YYYY-MM-DD.
           nullable: true
           type: string
-          x-nullable: true
         memo:
           description: Memo.
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-request: true
     AddFundsToBalanceV2:
@@ -15263,17 +14928,14 @@ components:
             the balance.
           format: decimal
           type: number
-          x-nullable: false
         poNumber:
           description: Purchase Order number.
           nullable: true
           type: string
-          x-nullable: true
         memo:
           description: Memo
           nullable: true
           type: string
-          x-nullable: true
       required:
       - deltaAmount
       type: object
@@ -15290,17 +14952,14 @@ components:
           description: Start date of the balance in the format YYYY-MM-DD.
           nullable: true
           type: string
-          x-nullable: true
         endDate:
           description: End date of the balance in the format YYYY-MM-DD.
           nullable: true
           type: string
-          x-nullable: true
         memo:
           description: Memo.
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-request: true
     CampaignAttributesV202301:
@@ -15332,13 +14991,11 @@ components:
           - auction
           - preferred
           type: string
-          x-nullable: false
         drawableBalanceIds:
           items:
             format: long-id
             type: string
           type: array
-          x-nullable: false
         clickAttributionWindow:
           default: 30D
           enum:
@@ -15347,7 +15004,6 @@ components:
           - 30D
           - unknown
           type: string
-          x-nullable: false
         viewAttributionWindow:
           default: none
           enum:
@@ -15358,40 +15014,32 @@ components:
           - 14D
           - 30D
           type: string
-          x-nullable: false
         name:
           maxLength: 255
           minLength: 0
           type: string
-          x-nullable: false
         budget:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         monthlyPacing:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         dailyPacing:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         isAutoDailyPacing:
           type: boolean
-          x-nullable: false
         startDate:
           format: date-time
           nullable: true
           type: string
-          x-nullable: true
         endDate:
           format: date-time
           nullable: true
           type: string
-          x-nullable: true
         clickAttributionScope:
           enum:
           - unknown
@@ -15400,7 +15048,6 @@ components:
           - sameSkuCategoryBrand
           nullable: true
           type: string
-          x-nullable: true
         viewAttributionScope:
           enum:
           - unknown
@@ -15409,22 +15056,18 @@ components:
           - sameSkuCategoryBrand
           nullable: true
           type: string
-          x-nullable: true
         companyName:
           nullable: true
           type: string
-          x-nullable: true
         onBehalfCompanyName:
           nullable: true
           type: string
-          x-nullable: true
       required:
       - endDate
       - isAutoDailyPacing
       - name
       - startDate
       type: object
-      x-nullable: false
       x-used-in-request: true
     ExternalAuctionLineItemUpdateModel:
       description: Model to update a retail media auction line item
@@ -15445,7 +15088,6 @@ components:
           maxLength: 255
           minLength: 0
           type: string
-          x-nullable: false
         startDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
@@ -15468,35 +15110,28 @@ components:
           - archived
           - noFunds
           type: string
-          x-nullable: false
         budget:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         targetBid:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         maxBid:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         monthlyPacing:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         dailyPacing:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         isAutoDailyPacing:
           type: boolean
-          x-nullable: false
         bidStrategy:
           default: conversion
           enum:
@@ -15505,7 +15140,6 @@ components:
           - clicks
           - revenue
           type: string
-          x-nullable: false
       required:
       - isAutoDailyPacing
       - name
@@ -15513,7 +15147,6 @@ components:
       - status
       - targetBid
       type: object
-      x-nullable: false
       x-used-in-request: true
     ExternalAuctionLineItemCreateModel:
       description: Model to create a retail media auction line item
@@ -15535,7 +15168,6 @@ components:
           maxLength: 255
           minLength: 0
           type: string
-          x-nullable: false
         startDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
@@ -15558,40 +15190,32 @@ components:
           - archived
           - noFunds
           type: string
-          x-nullable: false
         targetRetailerId:
           format: long-id
           type: string
-          x-nullable: false
         budget:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         targetBid:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         maxBid:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         monthlyPacing:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         dailyPacing:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         isAutoDailyPacing:
           default: false
           type: boolean
-          x-nullable: false
         bidStrategy:
           default: conversion
           enum:
@@ -15600,13 +15224,11 @@ components:
           - clicks
           - revenue
           type: string
-          x-nullable: false
       required:
       - name
       - startDate
       - targetRetailerId
       type: object
-      x-nullable: false
       x-used-in-request: true
     ExternalPreferredLineItemCreateModel202110:
       description: Model used to create a preferred line item
@@ -15637,7 +15259,6 @@ components:
           maxLength: 255
           minLength: 0
           type: string
-          x-nullable: false
         startDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
@@ -15660,14 +15281,12 @@ components:
           - archived
           - noFunds
           type: string
-          x-nullable: false
         pacing:
           enum:
           - unknown
           - standard
           - accelerated
           type: string
-          x-nullable: false
         capping:
           $ref: '#/components/schemas/ExternalLineItemCapping202110'
         page:
@@ -15675,16 +15294,13 @@ components:
         targetRetailerId:
           format: long-id
           type: string
-          x-nullable: false
         budget:
           format: double
           type: number
-          x-nullable: false
         creativeId:
           format: long-id
           nullable: true
           type: string
-          x-nullable: true
       required:
       - budget
       - endDate
@@ -15694,7 +15310,6 @@ components:
       - startDate
       - targetRetailerId
       type: object
-      x-nullable: false
       x-used-in-request: true
     EditableCampaignAttributesV202301:
       description: An object that represents the available options to set when editing
@@ -15718,35 +15333,28 @@ components:
           maxLength: 255
           minLength: 0
           type: string
-          x-nullable: false
         budget:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         monthlyPacing:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         dailyPacing:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         isAutoDailyPacing:
           type: boolean
-          x-nullable: false
         startDate:
           format: date-time
           nullable: true
           type: string
-          x-nullable: true
         endDate:
           format: date-time
           nullable: true
           type: string
-          x-nullable: true
         clickAttributionWindow:
           enum:
           - 7D
@@ -15754,7 +15362,6 @@ components:
           - 30D
           - unknown
           type: string
-          x-nullable: false
         viewAttributionWindow:
           enum:
           - none
@@ -15764,7 +15371,6 @@ components:
           - 14D
           - 30D
           type: string
-          x-nullable: false
         clickAttributionScope:
           enum:
           - unknown
@@ -15773,7 +15379,6 @@ components:
           - sameSkuCategoryBrand
           nullable: true
           type: string
-          x-nullable: true
         viewAttributionScope:
           enum:
           - unknown
@@ -15782,15 +15387,12 @@ components:
           - sameSkuCategoryBrand
           nullable: true
           type: string
-          x-nullable: true
         companyName:
           nullable: true
           type: string
-          x-nullable: true
         onBehalfCompanyName:
           nullable: true
           type: string
-          x-nullable: true
       required:
       - clickAttributionWindow
       - endDate
@@ -15799,7 +15401,6 @@ components:
       - startDate
       - viewAttributionWindow
       type: object
-      x-nullable: false
       x-used-in-request: true
     ExternalPreferredLineItemUpdateModel202110:
       description: Model used to update a preferred line item
@@ -15829,7 +15430,6 @@ components:
           maxLength: 255
           minLength: 0
           type: string
-          x-nullable: false
         startDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
@@ -15852,7 +15452,6 @@ components:
           - archived
           - noFunds
           type: string
-          x-nullable: false
         pacing:
           default: accelerated
           enum:
@@ -15860,7 +15459,6 @@ components:
           - standard
           - accelerated
           type: string
-          x-nullable: false
         capping:
           $ref: '#/components/schemas/ExternalLineItemCapping202110'
         page:
@@ -15868,19 +15466,16 @@ components:
         budget:
           format: double
           type: number
-          x-nullable: false
         creativeId:
           format: long-id
           nullable: true
           type: string
-          x-nullable: true
       required:
       - endDate
       - name
       - startDate
       - status
       type: object
-      x-nullable: false
       x-used-in-request: true
     ExternalAddToBasketIdsUpdateModel202110:
       description: Update model for updating add to basket target ids
@@ -15896,18 +15491,13 @@ components:
           description: Product ids that add to basket should target
           items:
             type: string
-            x-nullable: false
           type: array
-          x-nullable: false
         categoryIds:
           description: Category ids that add to basket should target
           items:
             type: string
-            x-nullable: false
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-request: true
     ExternalAudienceIdsUpdateModel202110:
       description: Update model for updating audience target ids
@@ -15922,11 +15512,9 @@ components:
             format: long-id
             type: string
           type: array
-          x-nullable: false
       required:
       - audienceIds
       type: object
-      x-nullable: false
       x-used-in-request: true
     ExternalStoreIdsUpdateModel202110:
       description: Update model for updating store target ids
@@ -15939,13 +15527,10 @@ components:
           description: Store ids that should be targeted
           items:
             type: string
-            x-nullable: false
           type: array
-          x-nullable: false
       required:
       - storeIds
       type: object
-      x-nullable: false
       x-used-in-request: true
     ExternalLineItemCapping202110:
       description: Frequency capping for a preferred line item
@@ -15959,16 +15544,13 @@ components:
           - day
           - session
           type: string
-          x-nullable: false
         count:
           format: int32
           type: integer
-          x-nullable: false
       required:
       - count
       - type
       type: object
-      x-nullable: false
       x-used-in-response: true
       x-used-in-request: true
     ExternalLineItemPage202110:
@@ -15995,22 +15577,17 @@ components:
           - merchandising
           - deals
           type: string
-          x-nullable: false
         categories:
           items:
             $ref: '#/components/schemas/ExternalLineItemPageCategory202110'
           type: array
-          x-nullable: false
         searchKeywords:
           items:
             type: string
-            x-nullable: false
           type: array
-          x-nullable: false
       required:
       - pageType
       type: object
-      x-nullable: false
       x-used-in-response: true
       x-used-in-request: true
     ExternalLineItemPageCategory202110:
@@ -16021,15 +15598,12 @@ components:
       properties:
         categoryId:
           type: string
-          x-nullable: false
         includeChildren:
           default: true
           type: boolean
-          x-nullable: false
       required:
       - categoryId
       type: object
-      x-nullable: false
       x-used-in-response: true
       x-used-in-request: true
     CreateAsset_request:

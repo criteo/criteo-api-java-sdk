@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: Criteo API - MarketingSolutions
   title: Criteo API
-  version: preview
+  version: Preview
 servers:
 - url: https://api.criteo.com
 security:
@@ -1986,7 +1986,6 @@ paths:
           nullable: true
           type: integer
         style: form
-        x-nullable: true
       - description: The (zero-based) offset into the collection of ads. The default
           is 0.
         explode: true
@@ -1998,7 +1997,6 @@ paths:
           nullable: true
           type: integer
         style: form
-        x-nullable: true
       responses:
         "200":
           content:
@@ -2119,7 +2117,6 @@ paths:
           nullable: true
           type: integer
         style: form
-        x-nullable: true
       - description: The (zero-based) offset into the collection of coupons. The default
           is 0.
         explode: true
@@ -2131,7 +2128,6 @@ paths:
           nullable: true
           type: integer
         style: form
-        x-nullable: true
       responses:
         "200":
           content:
@@ -2501,7 +2497,6 @@ paths:
           nullable: true
           type: integer
         style: form
-        x-nullable: true
       - description: The (zero-based) offset into the collection of creatives. The
           default is 0.
         explode: true
@@ -2513,7 +2508,6 @@ paths:
           nullable: true
           type: integer
         style: form
-        x-nullable: true
       responses:
         "200":
           content:
@@ -11839,21 +11833,18 @@ components:
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     ResponseReadAdSetV24Q3:
@@ -11963,14 +11954,12 @@ components:
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     ResponsesReadAdSetV24Q3:
@@ -12130,21 +12119,18 @@ components:
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     ResponsesAdSetId:
@@ -12204,21 +12190,18 @@ components:
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     AdSetCategoryBidListResponse:
@@ -12283,21 +12266,18 @@ components:
             $ref: '#/components/schemas/AdSetCategoryBidResource'
           nullable: true
           type: array
-          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     PatchAdSetCategoryBidResultListResponse:
@@ -12356,21 +12336,18 @@ components:
             $ref: '#/components/schemas/PatchAdSetCategoryBidResultResource'
           nullable: true
           type: array
-          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     AdSetDisplayMultiplierListResponse:
@@ -12435,21 +12412,18 @@ components:
             $ref: '#/components/schemas/AdSetDisplayMultiplierResource'
           nullable: true
           type: array
-          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     PatchAdSetDisplayMultiplierResultListResponse:
@@ -12508,21 +12482,18 @@ components:
             $ref: '#/components/schemas/PatchAdSetDisplayMultiplierResultResource'
           nullable: true
           type: array
-          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     PatchResultCampaignListResponse:
@@ -12582,21 +12553,18 @@ components:
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     CampaignV23Q1Response:
@@ -12670,14 +12638,12 @@ components:
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     CampaignV23Q1ListResponse:
@@ -12764,21 +12730,18 @@ components:
             $ref: '#/components/schemas/CampaignV23Q1Resource'
           nullable: true
           type: array
-          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     RequestsPatchAdSetV24Q3:
@@ -12879,7 +12842,6 @@ components:
             $ref: '#/components/schemas/WriteModelPatchAdSetV24Q3'
           nullable: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-request: true
     CreateAdSetV24Q3Request:
@@ -12976,7 +12938,6 @@ components:
             $ref: '#/components/schemas/WriteModelAdSetId'
           nullable: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-request: true
     PatchAdSetCategoryBidListRequest:
@@ -12997,7 +12958,6 @@ components:
             $ref: '#/components/schemas/PatchAdSetCategoryBidResource'
           nullable: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-request: true
     PatchAdSetDisplayMultiplierListRequest:
@@ -13018,7 +12978,6 @@ components:
             $ref: '#/components/schemas/PatchAdSetDisplayMultiplierResource'
           nullable: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-request: true
     PatchCampaignListRequest:
@@ -13055,7 +13014,6 @@ components:
             $ref: '#/components/schemas/PatchCampaignWriteResource'
           nullable: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-request: true
     CreateCampaignRequest:
@@ -13107,13 +13065,11 @@ components:
           nullable: true
           readOnly: true
           type: string
-          x-nullable: true
         type:
           example: AdSetIdV24Q3
           nullable: true
           readOnly: true
           type: string
-          x-nullable: true
         attributes:
           description: ad set id model
           nullable: true
@@ -13184,13 +13140,11 @@ components:
           nullable: true
           readOnly: true
           type: string
-          x-nullable: true
         type:
           example: ReadAdSetV24Q3
           nullable: true
           readOnly: true
           type: string
-          x-nullable: true
         attributes:
           $ref: '#/components/schemas/ReadAdSetV24Q3'
       type: object
@@ -13207,13 +13161,11 @@ components:
           nullable: true
           readOnly: true
           type: string
-          x-nullable: true
         type:
           example: AdSetId
           nullable: true
           readOnly: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-response: true
     AdSetCategoryBidResource:
@@ -13313,13 +13265,11 @@ components:
           nullable: true
           readOnly: true
           type: string
-          x-nullable: true
         type:
           example: Campaign
           nullable: true
           readOnly: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-response: true
     CampaignV23Q1Resource:
@@ -13411,13 +13361,11 @@ components:
           description: Id of the entity
           nullable: true
           type: string
-          x-nullable: true
         type:
           description: Canonical type name of the entity
           example: PatchAdSetV24Q3
           nullable: true
           type: string
-          x-nullable: true
         attributes:
           $ref: '#/components/schemas/PatchAdSetV24Q3'
       type: object
@@ -13505,19 +13453,16 @@ components:
             type: string
           nullable: true
           type: array
-          x-nullable: true
         advertiserIds:
           items:
             type: string
           nullable: true
           type: array
-          x-nullable: true
         campaignIds:
           items:
             type: string
           nullable: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-request: true
     WriteModelAdSetId:
@@ -13530,13 +13475,11 @@ components:
           description: Id of the entity
           nullable: true
           type: string
-          x-nullable: true
         type:
           description: Canonical type name of the entity
           example: AdSetId
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-request: true
     PatchAdSetCategoryBidResource:
@@ -13597,13 +13540,11 @@ components:
           description: Id of the entity
           nullable: true
           type: string
-          x-nullable: true
         type:
           description: Canonical type name of the entity
           example: Campaign
           nullable: true
           type: string
-          x-nullable: true
         attributes:
           $ref: '#/components/schemas/PatchCampaign'
       type: object
@@ -13648,13 +13589,11 @@ components:
             type: string
           nullable: true
           type: array
-          x-nullable: true
         advertiserIds:
           items:
             type: string
           nullable: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-request: true
     AdSetIdV24Q3:
@@ -13720,19 +13659,15 @@ components:
         name:
           nullable: true
           type: string
-          x-nullable: true
         advertiserId:
           nullable: true
           type: string
-          x-nullable: true
         datasetId:
           nullable: true
           type: string
-          x-nullable: true
         campaignId:
           nullable: true
           type: string
-          x-nullable: true
         destinationEnvironment:
           enum:
           - undefined
@@ -13771,14 +13706,12 @@ components:
           - video
           nullable: true
           type: string
-          x-nullable: true
         videoChannel:
           enum:
           - olv
           - ctv
           nullable: true
           type: string
-          x-nullable: true
         attributionConfiguration:
           $ref: '#/components/schemas/ReadAdSetAttributionConfigurationV24Q3'
       type: object
@@ -13796,7 +13729,6 @@ components:
             applied.
           nullable: true
           type: string
-          x-nullable: true
         bidAmount:
           description: The Bid amount applied to the given Category associated to
             an Ad Set. At most 4 decimals are supported. Additional decimals are rounded.
@@ -13820,7 +13752,6 @@ components:
             Multiplier has been applied.
           nullable: true
           type: string
-          x-nullable: true
         displayMultiplier:
           description: The Display Multiplier applied to the given Category associated
             to an Ad Set.
@@ -13852,11 +13783,9 @@ components:
         name:
           nullable: true
           type: string
-          x-nullable: true
         advertiserId:
           nullable: true
           type: string
-          x-nullable: true
         spendLimit:
           $ref: '#/components/schemas/CampaignSpendLimitV23Q1'
         goal:
@@ -13873,7 +13802,6 @@ components:
           description: Id of the entity (duplicate of the parent id).
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-response: true
       x-optional-in-response: true
@@ -13925,7 +13853,6 @@ components:
         name:
           nullable: true
           type: string
-          x-nullable: true
         scheduling:
           $ref: '#/components/schemas/PatchAdSetSchedulingV24Q3'
         bidding:
@@ -13997,17 +13924,14 @@ components:
           description: Name of the ad set
           nullable: true
           type: string
-          x-nullable: true
         datasetId:
           description: Dataset id of this ad set
           nullable: true
           type: string
-          x-nullable: true
         campaignId:
           description: Campaign id this ad set belongs to
           nullable: true
           type: string
-          x-nullable: true
         objective:
           description: Objective of the ad set
           enum:
@@ -14035,7 +13959,6 @@ components:
           description: The click tracking code associated to this Ad Set.
           nullable: true
           type: string
-          x-nullable: true
         mediaType:
           description: Media type for the ad set
           enum:
@@ -14120,12 +14043,10 @@ components:
           description: Name of the campaign
           nullable: true
           type: string
-          x-nullable: true
         advertiserId:
           description: Advertiser id this campaign belongs to
           nullable: true
           type: string
-          x-nullable: true
         goal:
           description: Goal for the marketing campaign
           enum:
@@ -14198,7 +14119,6 @@ components:
           format: double
           nullable: true
           type: number
-          x-nullable: true
         costController:
           description: How spend is controlled
           enum:
@@ -14286,7 +14206,6 @@ components:
           - standard
           nullable: true
           type: string
-          x-nullable: true
         budgetDeliveryWeek:
           enum:
           - undefined
@@ -14304,7 +14223,6 @@ components:
           format: double
           nullable: true
           type: number
-          x-nullable: true
       type: object
       x-used-in-response: true
       x-optional-in-response: true
@@ -14338,9 +14256,7 @@ components:
           - 30D
           nullable: true
           type: string
-          x-nullable: true
       type: object
-      x-nullable: true
       x-used-in-response: true
     CampaignSpendLimitV23Q1:
       description: campaign spend limit model
@@ -14429,7 +14345,6 @@ components:
           - uncapped
           nullable: true
           type: string
-          x-nullable: true
         budgetRenewal:
           enum:
           - undefined
@@ -14439,14 +14354,12 @@ components:
           - weekly
           nullable: true
           type: string
-          x-nullable: true
         budgetDeliverySmoothing:
           enum:
           - accelerated
           - standard
           nullable: true
           type: string
-          x-nullable: true
         budgetDeliveryWeek:
           enum:
           - undefined
@@ -14459,7 +14372,6 @@ components:
           - sundayToSaturday
           nullable: true
           type: string
-          x-nullable: true
         budgetAmount:
           $ref: '#/components/schemas/NillableDecimal'
       type: object
@@ -14481,7 +14393,6 @@ components:
           - postClick
           nullable: true
           type: string
-          x-nullable: true
         lookbackWindow:
           description: "The lookback window. Optional, should be specified only for\
             \ attribution methods PostClick and LastClick."
@@ -14493,7 +14404,6 @@ components:
           - 30D
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-request: true
     CreateAdSetScheduleV24Q3:
@@ -14509,7 +14419,6 @@ components:
           format: date-time
           nullable: true
           type: string
-          x-nullable: true
       required:
       - startDate
       type: object
@@ -14527,7 +14436,6 @@ components:
           format: double
           nullable: true
           type: number
-          x-nullable: true
         costController:
           description: How spend is controlled
           enum:
@@ -14630,7 +14538,6 @@ components:
           format: double
           nullable: true
           type: number
-          x-nullable: true
       required:
       - budgetStrategy
       type: object
@@ -14662,7 +14569,6 @@ components:
           - 30D
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-request: true
     PatchCampaignSpendLimit:
@@ -14679,7 +14585,6 @@ components:
           - uncapped
           nullable: true
           type: string
-          x-nullable: true
         spendLimitRenewal:
           enum:
           - undefined
@@ -14688,7 +14593,6 @@ components:
           - lifetime
           nullable: true
           type: string
-          x-nullable: true
         spendLimitAmount:
           $ref: '#/components/schemas/NillableDecimal'
       type: object
@@ -14733,7 +14637,6 @@ components:
           format: double
           nullable: true
           type: number
-          x-nullable: true
       required:
       - spendLimitType
       type: object
@@ -14763,7 +14666,6 @@ components:
           format: date-time
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-request: true
       x-used-in-response: true
@@ -14790,7 +14692,6 @@ components:
             type: string
           nullable: true
           type: array
-          x-nullable: true
         devices:
           items:
             enum:
@@ -14801,7 +14702,6 @@ components:
             type: string
           nullable: true
           type: array
-          x-nullable: true
         operatingSystems:
           items:
             enum:
@@ -14811,7 +14711,6 @@ components:
             type: string
           nullable: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-request: true
       x-used-in-response: true
@@ -14859,7 +14758,6 @@ components:
           type: integer
           x-optional-in-response: true
       type: object
-      x-nullable: true
       x-used-in-request: true
       x-used-in-response: true
     NillableDecimal:
@@ -14874,7 +14772,6 @@ components:
           format: double
           nullable: true
           type: number
-          x-nullable: true
       type: object
       x-used-in-request: true
       x-used-in-response: true
@@ -14902,7 +14799,6 @@ components:
           type: string
           x-optional-in-response: true
       type: object
-      x-nullable: true
       x-used-in-response: true
     CreateAdSetGeoLocationV24Q3:
       description: Geolocation configuration of the ad set
@@ -14974,7 +14870,6 @@ components:
           - videoViews
           type: string
       type: object
-      x-nullable: true
       x-used-in-request: true
     NillableAdSetTargetingRuleV24Q3:
       description: "structure that encapsulates an object that have valid business\
@@ -15009,7 +14904,6 @@ components:
             type: string
           nullable: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-request: true
     ResourceOutcomeOfAd:
@@ -15079,14 +14973,12 @@ components:
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     ResourceCollectionOutcomeOfAd:
@@ -15164,21 +15056,18 @@ components:
             $ref: '#/components/schemas/ResourceOfAd'
           nullable: true
           type: array
-          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     ResourceCollectionOutcomeOfCoupon:
@@ -15290,21 +15179,18 @@ components:
             $ref: '#/components/schemas/ResourceOfCoupon'
           nullable: true
           type: array
-          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     ResourceOutcomeOfCoupon:
@@ -15391,14 +15277,12 @@ components:
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     ResourceOutcomeOfCouponSupportedSizes:
@@ -15466,14 +15350,12 @@ components:
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     ResourceCollectionOutcomeOfCreative:
@@ -15699,21 +15581,18 @@ components:
             $ref: '#/components/schemas/ResourceOfCreative'
           nullable: true
           type: array
-          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     ResourceOutcomeOfCreative:
@@ -15857,14 +15736,12 @@ components:
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     ResourceInputOfAdWrite:
@@ -16033,11 +15910,9 @@ components:
           description: Unique identifier of this resource.
           nullable: true
           type: string
-          x-nullable: true
         type:
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-response: true
       x-optional-in-response: true
@@ -16080,11 +15955,9 @@ components:
           description: Unique identifier of this resource.
           nullable: true
           type: string
-          x-nullable: true
         type:
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-response: true
       x-optional-in-response: true
@@ -16108,11 +15981,9 @@ components:
           description: Unique identifier of this resource.
           nullable: true
           type: string
-          x-nullable: true
         type:
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-response: true
       x-optional-in-response: true
@@ -16212,11 +16083,9 @@ components:
           description: Unique identifier of this resource.
           nullable: true
           type: string
-          x-nullable: true
         type:
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-response: true
       x-optional-in-response: true
@@ -16240,11 +16109,9 @@ components:
           description: Unique identifier of this resource.
           nullable: true
           type: string
-          x-nullable: true
         type:
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-request: true
     ResourceOfCreateCoupon:
@@ -16281,11 +16148,9 @@ components:
           description: Unique identifier of this resource.
           nullable: true
           type: string
-          x-nullable: true
         type:
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-request: true
     ResourceOfUpdateCoupon:
@@ -16303,11 +16168,9 @@ components:
           description: Unique identifier of this resource.
           nullable: true
           type: string
-          x-nullable: true
         type:
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-request: true
     ResourceOfCreativeWrite:
@@ -16385,11 +16248,9 @@ components:
           description: Unique identifier of this resource.
           nullable: true
           type: string
-          x-nullable: true
         type:
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-request: true
     Ad:
@@ -16409,22 +16270,18 @@ components:
           description: The name of the ad
           nullable: true
           type: string
-          x-nullable: true
         description:
           description: The description of the ad
           nullable: true
           type: string
-          x-nullable: true
         creativeId:
           description: The id of the Creative binded to this Ad
           nullable: true
           type: string
-          x-nullable: true
         adSetId:
           description: The id of the Ad Set binded to this Ad
           nullable: true
           type: string
-          x-nullable: true
         inventoryType:
           description: The inventory the Ad belongs to. Possible values are "Display"
             and "Native". This is optional since this doesn't make sense for every
@@ -16435,25 +16292,21 @@ components:
           - Video
           nullable: true
           type: string
-          x-nullable: true
         startDate:
           description: "The date when the ad will be launched\r\nString must be in\
             \ ISO8601 format"
           nullable: true
           type: string
-          x-nullable: true
         endDate:
           description: "The date when when we will stop to show this ad. If the end\
             \ date is not specified (i.e. null) then the ad will go on forever\r\n\
             String must be in ISO8601 format"
           nullable: true
           type: string
-          x-nullable: true
         id:
           description: Unique identifier (duplicate of the parent id).
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-response: true
       x-optional-in-response: true
@@ -16492,63 +16345,52 @@ components:
           description: The name of the Coupon
           nullable: true
           type: string
-          x-nullable: true
         description:
           description: The description of the Coupon
           nullable: true
           type: string
-          x-nullable: true
         author:
           description: The login of the person who created this Coupon
           nullable: true
           type: string
-          x-nullable: true
         advertiserId:
           description: Advertiser linked to the Coupon
           nullable: true
           type: string
-          x-nullable: true
         adSetId:
           description: The id of the Ad Set on which the Coupon is applied to
           nullable: true
           type: string
-          x-nullable: true
         landingPageUrl:
           description: Web redirection of the landing page url
           nullable: true
           type: string
-          x-nullable: true
         startDate:
           description: "The date when the Coupon will be launched\r\nString must be\
             \ in ISO8601 format"
           nullable: true
           type: string
-          x-nullable: true
         endDate:
           description: "The date when when we will stop to show this Coupon. If the\
             \ end date is not specified (i.e. null) then the Coupon will go on forever\r\
             \nString must be in ISO8601 format"
           nullable: true
           type: string
-          x-nullable: true
         format:
           description: "Format of the Coupon, it can have two values: \"FullFrame\"\
             \ or \"LogoZone\""
           nullable: true
           type: string
-          x-nullable: true
         status:
           description: The status of the Coupon
           nullable: true
           type: string
-          x-nullable: true
         images:
           description: List of slides containing the image URLs
           items:
             $ref: '#/components/schemas/ImageSlide'
           nullable: true
           type: array
-          x-nullable: true
         showEvery:
           description: Show the Coupon every N seconds (between 1 and 10)
           format: int32
@@ -16571,7 +16413,6 @@ components:
           description: Unique identifier (duplicate of the parent id).
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-response: true
       x-optional-in-response: true
@@ -16592,14 +16433,12 @@ components:
             type: string
           nullable: true
           type: array
-          x-nullable: true
         fullFrame:
           description: Array of FullFrame sizes as string in width x height format
           items:
             type: string
           nullable: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
       x-optional-in-response: true
@@ -16698,7 +16537,6 @@ components:
           description: The description of the creative
           nullable: true
           type: string
-          x-nullable: true
         author:
           description: The login of the person who created this creative (
           type: string
@@ -16709,7 +16547,6 @@ components:
           description: The format of the creative
           nullable: true
           type: string
-          x-nullable: true
         advertiserId:
           description: Advertiser linked to the Creative
           type: string
@@ -16717,7 +16554,6 @@ components:
           description: Data set id linked to the Creative
           nullable: true
           type: string
-          x-nullable: true
         imageAttributes:
           $ref: '#/components/schemas/ImageAttributes'
         htmlTagAttributes:
@@ -16730,7 +16566,6 @@ components:
           description: Unique identifier (duplicate of the parent id).
           nullable: true
           type: string
-          x-nullable: true
       required:
       - advertiserId
       - author
@@ -16757,7 +16592,6 @@ components:
           description: The description of the ad
           nullable: true
           type: string
-          x-nullable: true
         creativeId:
           description: The id of the Creative bound to this Ad
           type: string
@@ -16774,7 +16608,6 @@ components:
           - Native
           nullable: true
           type: string
-          x-nullable: true
         startDate:
           description: "The date when the ad will be launched\r\nString must be in\
             \ ISO8601 format"
@@ -16785,7 +16618,6 @@ components:
             String must be in ISO8601 format"
           nullable: true
           type: string
-          x-nullable: true
       required:
       - adSetId
       - creativeId
@@ -16825,7 +16657,6 @@ components:
           description: The description of the Coupon
           nullable: true
           type: string
-          x-nullable: true
         adSetId:
           description: The id of the Ad Set on which the Coupon is applied to
           type: string
@@ -16842,7 +16673,6 @@ components:
             \nString must be in ISO8601 format"
           nullable: true
           type: string
-          x-nullable: true
         format:
           description: "Format of the Coupon, it can have two values: \"FullFrame\"\
             \ or \"LogoZone\""
@@ -16901,7 +16731,6 @@ components:
             \nString must be in ISO8601 format"
           nullable: true
           type: string
-          x-nullable: true
       required:
       - startDate
       type: object
@@ -16979,7 +16808,6 @@ components:
           description: The description of the creative
           nullable: true
           type: string
-          x-nullable: true
         format:
           description: "The format of the creative\r\nYou can use \"Image\", \" HtmlTag\"\
             , \"Dynamic\" or \"Adaptive\""
@@ -17034,7 +16862,6 @@ components:
             type: string
           nullable: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     ImageAttributes:
@@ -17053,12 +16880,10 @@ components:
             type: string
           nullable: true
           type: array
-          x-nullable: true
         landingPageUrl:
           description: Web redirection of the landing page url
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-response: true
       x-optional-in-response: true
@@ -17082,7 +16907,6 @@ components:
             $ref: '#/components/schemas/Tag'
           nullable: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
       x-optional-in-response: true
@@ -17111,30 +16935,25 @@ components:
             $ref: '#/components/schemas/ImageShape'
           nullable: true
           type: array
-          x-nullable: true
         creativeBackgroundColor:
           description: "Color of the creative's background\r\nValid hexadecimal color\
             \ (e.g. \"AB00FF\")"
           nullable: true
           type: string
-          x-nullable: true
         bodyTextColor:
           description: "Color of the creative's body text\r\nValid hexadecimal color\
             \ (e.g. \"AB00FF\")"
           nullable: true
           type: string
-          x-nullable: true
         pricesColor:
           description: "Color of the creative's prices\r\nValid hexadecimal color\
             \ (e.g. \"AB00FF\")"
           nullable: true
           type: string
-          x-nullable: true
         primaryFont:
           description: "Font of the primary font\r\nValid supported font like \"Arial\""
           nullable: true
           type: string
-          x-nullable: true
         callsToAction:
           description: "A Call-to-Action (CTA) is an action-driven instruction to\
             \ your audience intended to provoke an immediate\r\nresponse, such as\
@@ -17143,7 +16962,6 @@ components:
             type: string
           nullable: true
           type: array
-          x-nullable: true
         productImageDisplay:
           description: "Value can be \"ShowFullImage\" or \"ZoomOnImage\". Choose\
             \ whether your product catalog images should fit inside the allocated\r\
@@ -17253,7 +17071,6 @@ components:
             $ref: '#/components/schemas/ImageSet'
           nullable: true
           type: array
-          x-nullable: true
         imageDisplay:
           description: "Value can be \"ShowFullImage\" or \"ZoomOnImage\". Choose\
             \ whether your image set should fit inside the allocated\r\nspace (\"\
@@ -17264,14 +17081,12 @@ components:
           - ZoomOnImage
           nullable: true
           type: string
-          x-nullable: true
         videos:
           description: Multiple videos potentially in different shapes.
           items:
             $ref: '#/components/schemas/VideoDetail'
           nullable: true
           type: array
-          x-nullable: true
         landingPageUrl:
           description: Web redirection of the landing page url
           format: uri
@@ -17313,7 +17128,6 @@ components:
             type: string
           nullable: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-request: true
     ImageWriteAttributes:
@@ -17382,7 +17196,6 @@ components:
             \ (e.g. \"AB00FF\")"
           nullable: true
           type: string
-          x-nullable: true
         bodyTextColor:
           description: "Color of the creative's body text\r\nValid hexadecimal color\
             \ (e.g. \"AB00FF\")"
@@ -17395,7 +17208,6 @@ components:
           description: "Font of the primary font\r\nValid supported font like \"Arial\""
           nullable: true
           type: string
-          x-nullable: true
         callsToAction:
           description: "A Call-to-Action (CTA) is an action-driven instruction to\
             \ your audience intended to provoke an immediate\r\nresponse, such as\
@@ -17502,7 +17314,6 @@ components:
             $ref: '#/components/schemas/ImageSetBase64'
           nullable: true
           type: array
-          x-nullable: true
         imageDisplay:
           description: "Value can be \"ShowFullImage\" or \"ZoomOnImage\". Choose\
             \ whether your image set should fit inside the allocated\r\nspace (\"\
@@ -17513,7 +17324,6 @@ components:
           - ZoomOnImage
           nullable: true
           type: string
-          x-nullable: true
         videoBase64Strings:
           description: "Multiple videos potentially in different shapes, each video\
             \ is a base-64 encoded string."
@@ -17521,7 +17331,6 @@ components:
             type: string
           nullable: true
           type: array
-          x-nullable: true
         landingPageUrl:
           description: Web redirection of the landing page url.
           format: uri
@@ -17550,7 +17359,6 @@ components:
           description: Html tag
           nullable: true
           type: string
-          x-nullable: true
         size:
           $ref: '#/components/schemas/Size'
       type: object
@@ -17643,7 +17451,6 @@ components:
           description: The headline of the image set
           nullable: true
           type: string
-          x-nullable: true
       required:
       - images
       type: object
@@ -17699,7 +17506,6 @@ components:
           description: The headline of the image set
           nullable: true
           type: string
-          x-nullable: true
       required:
       - imageBase64Strings
       type: object
@@ -22382,31 +22188,26 @@ components:
           format: int64
           nullable: true
           type: string
-          x-nullable: true
         numberOfProductsInTheBatch:
           description: The number of products present in the batch.
           format: int32
           nullable: true
           type: string
-          x-nullable: true
         numberOfProductsUpserted:
           description: The number of products upserted.
           format: int32
           nullable: true
           type: string
-          x-nullable: true
         numberOfProductsDeleted:
           description: The number of products deleted.
           format: int32
           nullable: true
           type: string
-          x-nullable: true
         numberOfProductsWithErrors:
           description: The number of products with errors.
           format: int32
           nullable: true
           type: string
-          x-nullable: true
         errorDetails:
           description: The list of errors with details.
           items:
@@ -22417,7 +22218,6 @@ components:
           format: int32
           nullable: true
           type: string
-          x-nullable: true
         warningDetails:
           description: The list of Warnings with details.
           items:
@@ -23833,14 +23633,12 @@ components:
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     ResourceOutcomeOfProductSet:
@@ -24114,21 +23912,18 @@ components:
             $ref: '#/components/schemas/ValueResourceOfProductFilterConfig'
           nullable: true
           type: array
-          x-nullable: true
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
-          x-nullable: true
       type: object
       x-used-in-response: true
     ValueResourceInputOfCreateProductFilterRequest:
@@ -24178,7 +23973,6 @@ components:
         type:
           nullable: true
           type: string
-          x-nullable: true
         attributes:
           $ref: '#/components/schemas/ProductFilterConfig'
       type: object
@@ -24236,7 +24030,6 @@ components:
         type:
           nullable: true
           type: string
-          x-nullable: true
         attributes:
           $ref: '#/components/schemas/CreateProductFilterRequest'
       type: object
@@ -24319,7 +24112,6 @@ components:
           format: int32
           nullable: true
           type: integer
-          x-nullable: true
         creationDate:
           description: "The creation date of the product set (UTC time in ISO8601\
             \ format). Example: \"02/25/2022 14:51:26\".\r\nCan be null if the value\
@@ -24342,7 +24134,6 @@ components:
         id:
           nullable: true
           type: string
-          x-nullable: true
       required:
       - clientType
       - creationDate
@@ -24364,7 +24155,6 @@ components:
         productSetId:
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-request: true
     CreateProductSetRequest:
@@ -24892,7 +24682,6 @@ components:
       - $ref: '#/components/schemas/AdSetTargetingRuleV24Q3'
       nullable: true
       type: object
-      x-nullable: true
   securitySchemes:
     oauth:
       flows:

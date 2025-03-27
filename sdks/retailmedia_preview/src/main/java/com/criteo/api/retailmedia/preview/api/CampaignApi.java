@@ -36,6 +36,7 @@ import com.criteo.api.retailmedia.preview.model.Creative2Response;
 import com.criteo.api.retailmedia.preview.model.CreativeCreateModel2;
 import com.criteo.api.retailmedia.preview.model.CreativeUpdateModel2;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata;
+import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata;
 import com.criteo.api.retailmedia.preview.model.JsonApiRequestOfBrandCatalogRequestV2;
 import com.criteo.api.retailmedia.preview.model.JsonApiRequestOfSellerCatalogRequestV2;
 import com.criteo.api.retailmedia.preview.model.JsonApiSingleResponseOfLineItemBidMultipliersV2;
@@ -64,8 +65,10 @@ import com.criteo.api.retailmedia.preview.model.SkuSlimDataPreviewListResponse;
 import com.criteo.api.retailmedia.preview.model.SkuSlimDataV2ListResponse;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputBrandIdSearchRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputCpcMinBidsRequest;
+import com.criteo.api.retailmedia.preview.model.ValueResourceInputRetailMediaKeywordsReview;
 import com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeCpcMinBidsResponse;
 import com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeOfRecommendedKeywordsResult;
+import com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeRetailMediaKeywordsReviewResult;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -2631,6 +2634,147 @@ public class CampaignApi {
         return localVarCall;
     }
     /**
+     * Build call for inReviewReportV1
+     * @param accountId The account to generate a report for (required)
+     * @param offset Offset for pagination (optional, default to 0)
+     * @param limit Number of items per page (optional, default to 25)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call inReviewReportV1Call(Long accountId, Integer offset, Integer limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/accounts/{account-id}/keywords/in-review-report"
+            .replace("{" + "account-id" + "}", localVarApiClient.escapeString(accountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call inReviewReportV1ValidateBeforeCall(Long accountId, Integer offset, Integer limit, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountId' is set
+        if (accountId == null) {
+            throw new ApiException("Missing the required parameter 'accountId' when calling inReviewReportV1(Async)");
+        }
+
+        return inReviewReportV1Call(accountId, offset, limit, _callback);
+
+    }
+
+    /**
+     * 
+     * Generate a list of reports for line items which contain one or more actionable keyword reviews
+     * @param accountId The account to generate a report for (required)
+     * @param offset Offset for pagination (optional, default to 0)
+     * @param limit Number of items per page (optional, default to 25)
+     * @return EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata inReviewReportV1(Long accountId, Integer offset, Integer limit) throws ApiException {
+        ApiResponse<EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata> localVarResp = inReviewReportV1WithHttpInfo(accountId, offset, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Generate a list of reports for line items which contain one or more actionable keyword reviews
+     * @param accountId The account to generate a report for (required)
+     * @param offset Offset for pagination (optional, default to 0)
+     * @param limit Number of items per page (optional, default to 25)
+     * @return ApiResponse&lt;EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata> inReviewReportV1WithHttpInfo(Long accountId, Integer offset, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = inReviewReportV1ValidateBeforeCall(accountId, offset, limit, null);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Generate a list of reports for line items which contain one or more actionable keyword reviews
+     * @param accountId The account to generate a report for (required)
+     * @param offset Offset for pagination (optional, default to 0)
+     * @param limit Number of items per page (optional, default to 25)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call inReviewReportV1Async(Long accountId, Integer offset, Integer limit, final ApiCallback<EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = inReviewReportV1ValidateBeforeCall(accountId, offset, limit, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for pausePromotedProducts
      * @param lineItemId ID of the line item (required)
      * @param promotedProductResourceCollectionInput Request body whose {data} contains an array of promoted products. (optional)
@@ -5078,6 +5222,139 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = unpausePromotedProductsValidateBeforeCall(lineItemId, promotedProductResourceCollectionInput, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateKeywordReviewsV1
+     * @param lineItemId The line item to update keyword review statuses for (required)
+     * @param valueResourceInputRetailMediaKeywordsReview Request object containing a list of Phrase-ReviewState pairs to update (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateKeywordReviewsV1Call(Long lineItemId, ValueResourceInputRetailMediaKeywordsReview valueResourceInputRetailMediaKeywordsReview, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valueResourceInputRetailMediaKeywordsReview;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/line-items/{line-item-id}/keywords/review"
+            .replace("{" + "line-item-id" + "}", localVarApiClient.escapeString(lineItemId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateKeywordReviewsV1ValidateBeforeCall(Long lineItemId, ValueResourceInputRetailMediaKeywordsReview valueResourceInputRetailMediaKeywordsReview, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lineItemId' is set
+        if (lineItemId == null) {
+            throw new ApiException("Missing the required parameter 'lineItemId' when calling updateKeywordReviewsV1(Async)");
+        }
+
+        return updateKeywordReviewsV1Call(lineItemId, valueResourceInputRetailMediaKeywordsReview, _callback);
+
+    }
+
+    /**
+     * 
+     * Update the status of keyword reviews under a line item
+     * @param lineItemId The line item to update keyword review statuses for (required)
+     * @param valueResourceInputRetailMediaKeywordsReview Request object containing a list of Phrase-ReviewState pairs to update (optional)
+     * @return ValueResourceOutcomeRetailMediaKeywordsReviewResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValueResourceOutcomeRetailMediaKeywordsReviewResult updateKeywordReviewsV1(Long lineItemId, ValueResourceInputRetailMediaKeywordsReview valueResourceInputRetailMediaKeywordsReview) throws ApiException {
+        ApiResponse<ValueResourceOutcomeRetailMediaKeywordsReviewResult> localVarResp = updateKeywordReviewsV1WithHttpInfo(lineItemId, valueResourceInputRetailMediaKeywordsReview);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Update the status of keyword reviews under a line item
+     * @param lineItemId The line item to update keyword review statuses for (required)
+     * @param valueResourceInputRetailMediaKeywordsReview Request object containing a list of Phrase-ReviewState pairs to update (optional)
+     * @return ApiResponse&lt;ValueResourceOutcomeRetailMediaKeywordsReviewResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValueResourceOutcomeRetailMediaKeywordsReviewResult> updateKeywordReviewsV1WithHttpInfo(Long lineItemId, ValueResourceInputRetailMediaKeywordsReview valueResourceInputRetailMediaKeywordsReview) throws ApiException {
+        okhttp3.Call localVarCall = updateKeywordReviewsV1ValidateBeforeCall(lineItemId, valueResourceInputRetailMediaKeywordsReview, null);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeRetailMediaKeywordsReviewResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Update the status of keyword reviews under a line item
+     * @param lineItemId The line item to update keyword review statuses for (required)
+     * @param valueResourceInputRetailMediaKeywordsReview Request object containing a list of Phrase-ReviewState pairs to update (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateKeywordReviewsV1Async(Long lineItemId, ValueResourceInputRetailMediaKeywordsReview valueResourceInputRetailMediaKeywordsReview, final ApiCallback<ValueResourceOutcomeRetailMediaKeywordsReviewResult> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateKeywordReviewsV1ValidateBeforeCall(lineItemId, valueResourceInputRetailMediaKeywordsReview, _callback);
+        Type localVarReturnType = new TypeToken<ValueResourceOutcomeRetailMediaKeywordsReviewResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

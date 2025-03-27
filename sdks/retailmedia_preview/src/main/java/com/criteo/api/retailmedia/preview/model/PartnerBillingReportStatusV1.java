@@ -55,13 +55,13 @@ public class PartnerBillingReportStatusV1 {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    PENDING("Pending"),
+    PENDING("pending"),
     
-    SUCCESS("Success"),
+    SUCCESS("success"),
     
-    FAILED("Failed"),
+    FAILED("failed"),
     
-    EXPIRED("Expired");
+    EXPIRED("expired");
 
     private String value;
 

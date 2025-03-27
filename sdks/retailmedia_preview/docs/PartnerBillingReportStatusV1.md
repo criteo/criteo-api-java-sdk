@@ -18,10 +18,10 @@ Status info of a Partner Billing Report.
 
 | Name | Value |
 |---- | -----|
-| PENDING | &quot;Pending&quot; |
-| SUCCESS | &quot;Success&quot; |
-| FAILED | &quot;Failed&quot; |
-| EXPIRED | &quot;Expired&quot; |
+| PENDING | &quot;pending&quot; |
+| SUCCESS | &quot;success&quot; |
+| FAILED | &quot;failed&quot; |
+| EXPIRED | &quot;expired&quot; |
 
 
 

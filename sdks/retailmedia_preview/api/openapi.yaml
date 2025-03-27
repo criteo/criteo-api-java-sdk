@@ -878,6 +878,61 @@ paths:
       - Campaign
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/keywords/in-review-report:
+    get:
+      description: Generate a list of reports for line items which contain one or
+        more actionable keyword reviews
+      operationId: InReviewReportV1
+      parameters:
+      - description: The account to generate a report for
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      - description: Offset for pagination
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        style: form
+      - description: Number of items per page
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          format: int32
+          maximum: 50
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
   /preview/retail-media/line-items/{id}/keywords:
     get:
       description: Fetch keywords associated with the specified line item
@@ -977,6 +1032,54 @@ paths:
       tags:
       - Campaign
       x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/line-items/{line-item-id}/keywords/review:
+    post:
+      description: Update the status of keyword reviews under a line item
+      operationId: UpdateKeywordReviewsV1
+      parameters:
+      - description: The line item to update keyword review statuses for
+        explode: false
+        in: path
+        name: line-item-id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputRetailMediaKeywordsReview'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputRetailMediaKeywordsReview'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputRetailMediaKeywordsReview'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputRetailMediaKeywordsReview'
+        description: Request object containing a list of Phrase-ReviewState pairs
+          to update
+        x-bodyName: keywordReviewSetStateRequest
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeRetailMediaKeywordsReviewResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeRetailMediaKeywordsReviewResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeRetailMediaKeywordsReviewResult'
+          description: Success
+      tags:
+      - Campaign
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/retail-media/line-items/{line-item-id}/products:
     get:
@@ -1208,7 +1311,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -1245,7 +1347,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -1299,7 +1400,6 @@ paths:
           minimum: 0.0
           type: integer
         style: form
-        x-nullable: false
       - description: The maximum number of results to return with each call. Must
           be greater than zero.
         explode: true
@@ -1313,17 +1413,14 @@ paths:
           minimum: 1.0
           type: integer
         style: form
-        x-nullable: false
       requestBody:
         content:
           application/json:
             schema:
               items:
                 type: string
-                x-nullable: false
               type: array
               uniqueItems: false
-              x-nullable: false
         description: The list of SKU keys to retrieve sku information
         x-nullable: false
         x-bodyName: skuKeys
@@ -1356,7 +1453,6 @@ paths:
           minimum: 0.0
           type: integer
         style: form
-        x-nullable: false
       - description: The maximum number of results to return with each call. Must
           be greater than zero.
         explode: true
@@ -1370,7 +1466,6 @@ paths:
           minimum: 1.0
           type: integer
         style: form
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -1404,7 +1499,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The client id/retailer id for which skus should be searched for.
         explode: false
         in: path
@@ -1413,7 +1507,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The start position in the overall list of matches. Must be zero
           or greater.
         explode: true
@@ -1425,7 +1518,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       - description: The maximum number of results to return with each call. Must
           be greater than zero.
         explode: true
@@ -1439,7 +1531,6 @@ paths:
           minimum: 1.0
           type: integer
         style: form
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -1473,7 +1564,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The client id/retailer id for which skus should be searched for.
         explode: false
         in: path
@@ -1482,7 +1572,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The start position in the overall list of matches. Must be zero
           or greater.
         explode: true
@@ -1494,7 +1583,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       - description: "The maximum number of results to return with each call. Must\
           \ be greater than zero and less than 1500. 10,000 records deep is the max\
           \ limit."
@@ -1509,7 +1597,6 @@ paths:
           minimum: 1.0
           type: integer
         style: form
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -1542,7 +1629,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -1573,7 +1659,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The fields in the response that is to be included
         explode: true
         in: query
@@ -1584,7 +1669,6 @@ paths:
             type: string
           type: array
         style: form
-        x-nullable: false
       responses:
         "200":
           content:
@@ -1612,7 +1696,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -1641,7 +1724,6 @@ paths:
           format: int32
           type: integer
         style: simple
-        x-nullable: false
       - description: "Filter to narrow down brands [first-party|third-party|first-and-third-party].\
           \ Defaults to first-and-third-party"
         explode: true
@@ -1655,7 +1737,6 @@ paths:
           - first-and-third-party
           type: string
         style: form
-        x-nullable: false
       - description: " Filter to narrow down brands [all|uc|retailer]. Defaults to\
           \ uc"
         explode: true
@@ -1669,7 +1750,6 @@ paths:
           - retailer
           type: string
         style: form
-        x-nullable: false
       responses:
         "200":
           content:
@@ -1694,7 +1774,6 @@ paths:
           format: int32
           type: integer
         style: simple
-        x-nullable: false
       - description: The seller id or seller name which should be validated.
         explode: false
         in: path
@@ -1703,7 +1782,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -2692,7 +2770,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The ids that you would like to limit your result set to
         explode: true
         in: query
@@ -2703,7 +2780,6 @@ paths:
             type: string
           type: array
         style: form
-        x-nullable: false
       - description: The 0 indexed page index you would like to receive given the
           page size
         explode: true
@@ -2715,7 +2791,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       - description: The maximum number of items you would like to receive in this
           request
         explode: true
@@ -2727,7 +2802,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       responses:
         "200":
           content:
@@ -2756,7 +2830,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -2797,7 +2870,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The balance id
         explode: false
         in: path
@@ -2806,7 +2878,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -2835,7 +2906,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The balance to change the dates
         explode: false
         in: path
@@ -2844,7 +2914,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -2884,7 +2953,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The balance to change the dates
         explode: false
         in: path
@@ -2893,7 +2961,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -2935,7 +3002,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: The ids that you would like to limit your result set to
         explode: true
         in: query
@@ -2946,7 +3012,6 @@ paths:
             type: string
           type: array
         style: form
-        x-nullable: false
       - description: The 0 indexed page index you would like to receive given the
           page size
         explode: true
@@ -2957,7 +3022,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       - description: The maximum number of items you would like to receive in this
           request
         explode: true
@@ -2968,7 +3032,6 @@ paths:
           format: int32
           type: integer
         style: form
-        x-nullable: false
       responses:
         "200":
           content:
@@ -2997,7 +3060,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -3037,7 +3099,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -3066,7 +3127,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -3104,7 +3164,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -3128,7 +3187,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -3161,7 +3219,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: Sequential id of the product button
         explode: false
         in: path
@@ -3170,7 +3227,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           description: Success
@@ -3189,7 +3245,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: Sequential id of the product button
         explode: false
         in: path
@@ -3198,7 +3253,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -3221,7 +3275,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       - description: Sequential id of the product button
         explode: false
         in: path
@@ -3230,7 +3283,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -3263,7 +3315,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       responses:
         "200":
           content:
@@ -3292,7 +3343,6 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: false
       requestBody:
         content:
           application/json:
@@ -4518,31 +4568,26 @@ components:
           format: int64
           nullable: true
           type: string
-          x-nullable: true
         numberOfProductsInTheBatch:
           description: The number of products present in the batch.
           format: int32
           nullable: true
           type: string
-          x-nullable: true
         numberOfProductsUpserted:
           description: The number of products upserted.
           format: int32
           nullable: true
           type: string
-          x-nullable: true
         numberOfProductsDeleted:
           description: The number of products deleted.
           format: int32
           nullable: true
           type: string
-          x-nullable: true
         numberOfProductsWithErrors:
           description: The number of products with errors.
           format: int32
           nullable: true
           type: string
-          x-nullable: true
         errorDetails:
           description: The list of errors with details.
           items:
@@ -4553,7 +4598,6 @@ components:
           format: int32
           nullable: true
           type: string
-          x-nullable: true
         warningDetails:
           description: The list of Warnings with details.
           items:
@@ -7940,6 +7984,105 @@ components:
       - skuId
       type: object
       x-used-in-response: true
+    EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities and metadata.
+      example:
+        data:
+        - attributes:
+            accountId: accountId
+            lineItemId: lineItemId
+            accountName: accountName
+            lineItemName: lineItemName
+            campaignId: campaignId
+            retailerName: retailerName
+            countKeywords: 0
+            retailerId: retailerId
+            campaignName: campaignName
+          id: id
+          type: type
+        - attributes:
+            accountId: accountId
+            lineItemId: lineItemId
+            accountName: accountName
+            lineItemName: lineItemName
+            campaignId: campaignId
+            retailerName: retailerName
+            countKeywords: 0
+            retailerId: retailerId
+            campaignName: campaignName
+          id: id
+          type: type
+        meta:
+          offset: 6
+          count: 0
+          limit: 1
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        meta:
+          $ref: '#/components/schemas/Metadata'
+        data:
+          items:
+            $ref: '#/components/schemas/EntityResourceLineItemKeywordReviewReport'
+          nullable: true
+          type: array
+          x-optional-in-response: true
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
     KeywordsModelResponse:
       additionalProperties: false
       description: Response object containing keywords associated with a line item.
@@ -8086,6 +8229,78 @@ components:
         warnings:
           items:
             $ref: '#/components/schemas/RmcaCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
+    ValueResourceOutcomeRetailMediaKeywordsReviewResult:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value object.
+      example:
+        data:
+          attributes:
+            keywords:
+            - phrase: phrase
+              reviewState: Unknown
+            - phrase: phrase
+              reviewState: Unknown
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          type: unknown
+          title: title
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceRetailMediaKeywordsReviewResult'
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
           nullable: true
           readOnly: true
           type: array
@@ -8281,6 +8496,24 @@ components:
           $ref: '#/components/schemas/SetBidsModelResource'
       type: object
       x-used-in-request: true
+    ValueResourceInputRetailMediaKeywordsReview:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value objects.
+      example:
+        data:
+          attributes:
+            keywords:
+            - phrase: phrase
+              reviewState: Unknown
+            - phrase: phrase
+              reviewState: Unknown
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceRetailMediaKeywordsReview'
+      type: object
+      x-used-in-request: true
     PromotedProductResourceCollectionInput:
       additionalProperties: false
       description: "Request object containing promoted products to be appended, deleted,\
@@ -8306,6 +8539,37 @@ components:
           type: array
       type: object
       x-used-in-request: true
+    EntityResourceLineItemKeywordReviewReport:
+      additionalProperties: false
+      description: "A domain entity exposed by the API, identified by a unique id."
+      example:
+        attributes:
+          accountId: accountId
+          lineItemId: lineItemId
+          accountName: accountName
+          lineItemName: lineItemName
+          campaignId: campaignId
+          retailerName: retailerName
+          countKeywords: 0
+          retailerId: retailerId
+          campaignName: campaignName
+        id: id
+        type: type
+      properties:
+        id:
+          description: Unique id of the entity.
+          nullable: true
+          type: string
+          x-optional-in-response: true
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+          x-optional-in-response: true
+        attributes:
+          $ref: '#/components/schemas/LineItemKeywordReviewReport'
+      type: object
+      x-used-in-response: true
     KeywordsModelResource:
       additionalProperties: false
       description: Resource object containing keywords associated with a line item.
@@ -8423,6 +8687,29 @@ components:
           x-optional-in-response: true
       type: object
       x-used-in-response: true
+    ValueResourceRetailMediaKeywordsReviewResult:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          keywords:
+          - phrase: phrase
+            reviewState: Unknown
+          - phrase: phrase
+            reviewState: Unknown
+        type: type
+      nullable: true
+      properties:
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+          x-optional-in-response: true
+        attributes:
+          $ref: '#/components/schemas/RetailMediaKeywordsReviewResult'
+      type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     ProductMetadata:
       additionalProperties: false
       description: Metadata about the response. Used for pagination.
@@ -8533,6 +8820,89 @@ components:
           $ref: '#/components/schemas/SetBidsModel'
       type: object
       x-used-in-request: true
+    ValueResourceRetailMediaKeywordsReview:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          keywords:
+          - phrase: phrase
+            reviewState: Unknown
+          - phrase: phrase
+            reviewState: Unknown
+        type: type
+      properties:
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+        attributes:
+          $ref: '#/components/schemas/RetailMediaKeywordsReview'
+      type: object
+      x-used-in-request: true
+    LineItemKeywordReviewReport:
+      additionalProperties: false
+      description: Reports on a line item which contains one or more actionable keyword
+        reviews
+      example:
+        accountId: accountId
+        lineItemId: lineItemId
+        accountName: accountName
+        lineItemName: lineItemName
+        campaignId: campaignId
+        retailerName: retailerName
+        countKeywords: 0
+        retailerId: retailerId
+        campaignName: campaignName
+      nullable: true
+      properties:
+        lineItemId:
+          description: External ID of the line item that this report is for
+          type: string
+        lineItemName:
+          description: Name of the line item that this report is for
+          type: string
+        retailerId:
+          description: Retailer ID connected to the line item this report is for
+          type: string
+        retailerName:
+          description: Name of the retailer connected to the line item this report
+            is for
+          type: string
+        campaignId:
+          description: External ID of the campaign containing the line item this report
+            is for
+          type: string
+        campaignName:
+          description: Name of the campaign containing the line item this report is
+            for
+          type: string
+        accountId:
+          description: External ID of the account containing the campaign containing
+            the line item this report is for
+          type: string
+        accountName:
+          description: Name of the account containing the campaign containing the
+            line item this report is for
+          type: string
+        countKeywords:
+          description: Number of PositiveExactMatch keywords on this line item that
+            are in either "InReview" or "Pending" state
+          format: int32
+          type: integer
+      required:
+      - accountId
+      - accountName
+      - campaignId
+      - campaignName
+      - countKeywords
+      - lineItemId
+      - lineItemName
+      - retailerId
+      - retailerName
+      type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     KeywordsModel:
       additionalProperties: false
       description: The keywords associated with a line item.
@@ -8571,6 +8941,30 @@ components:
           nullable: true
           type: array
           x-optional-in-response: true
+      type: object
+      x-used-in-response: true
+      x-optional-in-response: true
+    RetailMediaKeywordsReviewResult:
+      additionalProperties: false
+      description: "Response object for approval of keyword reviews, containing a\
+        \ list of Phrase-ReviewState pairs"
+      example:
+        keywords:
+        - phrase: phrase
+          reviewState: Unknown
+        - phrase: phrase
+          reviewState: Unknown
+      nullable: true
+      properties:
+        keywords:
+          description: List of Phrase-ReviewState pairs describing keyword review
+            updates which were performed
+          items:
+            $ref: '#/components/schemas/ReviewSetState'
+          minItems: 1
+          type: array
+      required:
+      - keywords
       type: object
       x-used-in-response: true
       x-optional-in-response: true
@@ -8638,6 +9032,28 @@ components:
           type: array
       type: object
       x-used-in-request: true
+    RetailMediaKeywordsReview:
+      additionalProperties: false
+      description: "Request object for approval of keyword reviews, containing a list\
+        \ of Phrase-ReviewState pairs"
+      example:
+        keywords:
+        - phrase: phrase
+          reviewState: Unknown
+        - phrase: phrase
+          reviewState: Unknown
+      properties:
+        keywords:
+          description: List of Phrase-ReviewState pairs describing keyword review
+            updates to perform
+          items:
+            $ref: '#/components/schemas/ReviewSetState'
+          minItems: 1
+          type: array
+      required:
+      - keywords
+      type: object
+      x-used-in-request: true
     KeywordDataModel:
       additionalProperties: false
       description: A single keyword and associated bid override
@@ -8675,6 +9091,33 @@ components:
           format: date-time
           type: string
       type: object
+    ReviewSetState:
+      additionalProperties: false
+      description: A Phrase-ReviewState pair describing an update to a keyword review
+      example:
+        phrase: phrase
+        reviewState: Unknown
+      properties:
+        phrase:
+          description: Normalized key phrase for keyword review to update
+          type: string
+        reviewState:
+          description: Keyword review state to set for a phrase
+          enum:
+          - Unknown
+          - InReview
+          - Recommended
+          - Approved
+          - AutoApproved
+          - Rejected
+          - AutoRejected
+          type: string
+      required:
+      - phrase
+      - reviewState
+      type: object
+      x-used-in-request: true
+      x-used-in-response: true
     LineItemProductStatus:
       description: The status of a promoted product in the context of the line item.
       enum:
@@ -8846,7 +9289,6 @@ components:
           type: array
           x-optional-in-response: true
       type: object
-      x-nullable: true
       x-used-in-response: true
     SkuDataPreviewListResponse:
       description: Data model for a list of response resources
@@ -8949,21 +9391,17 @@ components:
           items:
             $ref: '#/components/schemas/ResourceOfSkuDataPreview'
           type: array
-          x-nullable: false
         warnings:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     SkuSlimDataPreviewListResponse:
       description: Data model for a list of response resources
@@ -9050,21 +9488,17 @@ components:
           items:
             $ref: '#/components/schemas/ResourceOfSkuSlimDataPreview'
           type: array
-          x-nullable: false
         warnings:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     SkuSlimDataV2ListResponse:
       description: Data model for a list of response resources
@@ -9147,21 +9581,17 @@ components:
           items:
             $ref: '#/components/schemas/ResourceOfSkuSlimDataV2'
           type: array
-          x-nullable: false
         warnings:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     CpcRateCardPreviewResponse:
       description: Data model for response resource
@@ -9228,15 +9658,12 @@ components:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     PlacementPreviewListResponse:
       description: Data model for a list of response resources
@@ -9303,21 +9730,17 @@ components:
           items:
             $ref: '#/components/schemas/ResourceOfPlacementPreview'
           type: array
-          x-nullable: false
         warnings:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     BrandPreviewListResponse:
       description: Data model for a list of response resources
@@ -9378,21 +9801,17 @@ components:
           items:
             $ref: '#/components/schemas/ResourceOfBrandPreview'
           type: array
-          x-nullable: false
         warnings:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     SellerPreviewResponse:
       description: Data model for response resource
@@ -9452,15 +9871,12 @@ components:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     JsonApiRequestOfBrandCatalogRequestV2:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
@@ -9484,7 +9900,6 @@ components:
         data:
           $ref: '#/components/schemas/JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2'
       type: object
-      x-nullable: true
       x-used-in-request: true
     JsonApiRequestOfSellerCatalogRequestV2:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
@@ -9507,7 +9922,6 @@ components:
         data:
           $ref: '#/components/schemas/JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2'
       type: object
-      x-nullable: true
       x-used-in-request: true
     SkuSearchRequestPreviewRequest:
       description: Data model for an input resource
@@ -9533,7 +9947,6 @@ components:
         data:
           $ref: '#/components/schemas/ResourceOfSkuSearchRequestPreview'
       type: object
-      x-nullable: false
       x-used-in-request: true
     SkuSearchRequestSlimPreviewRequest:
       description: Data model for an input resource
@@ -9550,7 +9963,6 @@ components:
         data:
           $ref: '#/components/schemas/ResourceOfSkuSearchRequestSlimPreview'
       type: object
-      x-nullable: false
       x-used-in-request: true
     SkuSearchRequestSlimV2PreviewRequest:
       description: Data model for an input resource
@@ -9567,7 +9979,6 @@ components:
         data:
           $ref: '#/components/schemas/ResourceOfSkuSearchRequestSlimV2Preview'
       type: object
-      x-nullable: false
       x-used-in-request: true
     ResourceOfCatalogStatusV2:
       description: A class that represents a domain entity exposed by an API
@@ -9596,7 +10007,6 @@ components:
           type: string
           x-optional-in-response: true
       type: object
-      x-nullable: true
       x-used-in-response: true
     ResourceOfSkuDataPreview:
       description: Data model for a Resource
@@ -9640,7 +10050,6 @@ components:
         attributes:
           $ref: '#/components/schemas/SkuDataPreview'
       type: object
-      x-nullable: false
       x-used-in-response: true
     ProblemDetails:
       description: Data model for common error or warning
@@ -9679,38 +10088,29 @@ components:
           - quota
           - validation
           type: string
-          x-nullable: false
         code:
           description: "A machine-readable  error code, expressed as a string value."
           type: string
-          x-nullable: false
         instance:
           description: A URI that identifies the specific occurrence of the problem.
           type: string
-          x-nullable: false
         title:
           description: A short human-readable description of the problem type
           type: string
-          x-nullable: false
         detail:
           description: A human-readable explanation specific to this occurrence of
             the problem
           type: string
-          x-nullable: false
         source:
           additionalProperties:
             type: string
-            x-nullable: false
           description: A machine-readable structure to reference to the exact location(s)
             causing the error(s)
           type: object
-          x-nullable: false
         stackTrace:
           description: "Technical information, only used in non-prod environments"
           type: string
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     ResourceOfSkuSlimDataPreview:
       description: Data model for a Resource
@@ -9746,7 +10146,6 @@ components:
           type: string
           x-optional-in-response: true
       type: object
-      x-nullable: false
       x-used-in-response: true
     ResourceOfSkuSlimDataV2:
       description: Data model for a Resource
@@ -9780,7 +10179,6 @@ components:
           type: string
           x-optional-in-response: true
       type: object
-      x-nullable: false
       x-used-in-response: true
     ResourceOfCpcRateCardPreview:
       description: Data model for a Resource
@@ -9810,7 +10208,6 @@ components:
           type: string
           x-optional-in-response: true
       type: object
-      x-nullable: false
       x-used-in-response: true
     ResourceOfPlacementPreview:
       description: Data model for a Resource
@@ -9836,7 +10233,6 @@ components:
           type: string
           x-optional-in-response: true
       type: object
-      x-nullable: false
       x-used-in-response: true
     ResourceOfBrandPreview:
       description: Data model for a Resource
@@ -9859,7 +10255,6 @@ components:
           type: string
           x-optional-in-response: true
       type: object
-      x-nullable: false
       x-used-in-response: true
     ResourceOfSellerPreview:
       description: Data model for a Resource
@@ -9882,7 +10277,6 @@ components:
         attributes:
           $ref: '#/components/schemas/SellerPreview'
       type: object
-      x-nullable: false
       x-used-in-response: true
     JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
@@ -9908,7 +10302,6 @@ components:
       required:
       - type
       type: object
-      x-nullable: false
       x-used-in-request: true
     JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
@@ -9933,7 +10326,6 @@ components:
       required:
       - type
       type: object
-      x-nullable: false
       x-used-in-request: true
     ResourceOfSkuSearchRequestPreview:
       description: Data model for a Resource
@@ -9964,7 +10356,6 @@ components:
         attributes:
           $ref: '#/components/schemas/SkuSearchRequestPreview'
       type: object
-      x-nullable: false
       x-used-in-request: true
     ResourceOfSkuSearchRequestSlimPreview:
       description: Data model for a Resource
@@ -9986,7 +10377,6 @@ components:
           description: Canonical type name of the entity
           type: string
       type: object
-      x-nullable: false
       x-used-in-request: true
     ResourceOfSkuSearchRequestSlimV2Preview:
       description: Data model for a Resource
@@ -10008,7 +10398,6 @@ components:
           description: Canonical type name of the entity
           type: string
       type: object
-      x-nullable: false
       x-used-in-request: true
     CatalogStatusV2:
       description: The status of an asynchronous request to generate a catalog
@@ -10064,7 +10453,6 @@ components:
       - createdAt
       - status
       type: object
-      x-nullable: false
       x-used-in-response: true
     SkuDataPreview:
       description: Metadata and usage info of a sku search
@@ -10095,113 +10483,91 @@ components:
         skuKey:
           description: The product SKU Key.
           type: string
-          x-nullable: false
         name:
           description: A short product name.
           maxLength: 1000
           minLength: 0
           type: string
-          x-nullable: false
         description:
           description: A product description.
           nullable: true
           type: string
-          x-nullable: true
         categoryId:
           description: The category Id.
           type: string
-          x-nullable: false
         category:
           description: The full category breadcrumb in the retailers catalog.
           maxLength: 1000
           minLength: 0
           nullable: true
           type: string
-          x-nullable: true
         isSellerSku:
           description: An indication of if the sku is seller sku.
           type: boolean
-          x-nullable: false
         isBuybox:
           description: Whether the Sku is a Buybox Winner.
           type: boolean
-          x-nullable: false
         sellerId:
           description: The id of the seller.
           nullable: true
           type: string
-          x-nullable: true
         sellerName:
           description: The name of the seller.
           nullable: true
           type: string
-          x-nullable: true
         brandId:
           description: The global brand id associated to the product.
           type: string
-          x-nullable: false
         brandName:
           description: The name of the global brand.
           maxLength: 120
           minLength: 0
           type: string
-          x-nullable: false
         retailerId:
           description: The identifier for the retailer the product is listed by.
           type: string
-          x-nullable: false
         retailerName:
           description: The retailer name.
           maxLength: 100
           minLength: 0
           type: string
-          x-nullable: false
         price:
           description: The price of the product on the retailer site.
           format: double
           type: number
-          x-nullable: false
         isInStock:
           description: An indication of if the retailer currently has the product
             in stock.
           type: boolean
-          x-nullable: false
         gtin:
           description: A GTIN identifier for the product if available. Covers variations
             such as EANs and UPCs.
           nullable: true
           type: string
-          x-nullable: true
         mpn:
           description: The MPN for the product if available.
           nullable: true
           type: string
-          x-nullable: true
         modelNumber:
           description: The Model Number for the product if available.
           nullable: true
           type: string
-          x-nullable: true
         parentId:
           description: The ParentId for the product if available.
           nullable: true
           type: string
-          x-nullable: true
         imageUrl:
           description: An http image resource provided by the retailer.
           type: string
-          x-nullable: false
         productPage:
           description: The product page URL
           nullable: true
           type: string
-          x-nullable: true
         updatedAt:
           description: The last time this product was updated in the Retail Media
             Catalog. Represented as a UTC ISO8601 string.
           format: date-time
           type: string
-          x-nullable: false
       required:
       - brandId
       - brandName
@@ -10213,7 +10579,6 @@ components:
       - skuKey
       - updatedAt
       type: object
-      x-nullable: false
       x-used-in-response: true
     SkuSlimDataPreview:
       description: Slim  version of Sku Data model
@@ -10238,72 +10603,58 @@ components:
           maxLength: 1000
           minLength: 0
           type: string
-          x-nullable: false
         categoryId:
           description: The category Id.
           type: string
-          x-nullable: false
         globalCategoryId:
           description: The global category Id.
           type: string
-          x-nullable: false
         category:
           description: The full category breadcrumb in the retailers catalog.
           maxLength: 1000
           minLength: 0
           type: string
-          x-nullable: false
         globalBrandId:
           description: The global brand id associated to the product.
           type: string
-          x-nullable: false
         globalBrandName:
           description: The name of the global brand.
           maxLength: 120
           minLength: 0
           type: string
-          x-nullable: false
         retailerBrandId:
           description: The retailer brand id associated to the product.
           type: string
-          x-nullable: false
         retailerBrandName:
           description: The name of the retailer brand.
           maxLength: 120
           minLength: 0
           type: string
-          x-nullable: false
         price:
           description: The price of the product on the retailer site. Can be omitted
             in certain circumstances
           format: double
           nullable: true
           type: number
-          x-nullable: true
         isInStock:
           description: An indication of if the retailer currently has the product
             in stock.
           type: boolean
-          x-nullable: false
         gtin:
           description: A GTIN identifier for the product if available. Covers variations
             such as EANs and UPCs.
           type: string
-          x-nullable: false
         mpn:
           description: The MPN for the product if available.
           type: string
-          x-nullable: false
         imageUrl:
           description: An http image resource provided by the retailer.
           type: string
-          x-nullable: false
         updatedAt:
           description: The last time this product was updated in the Retail Media
             Catalog. Represented as a UTC ISO8601 string.
           format: date-time
           type: string
-          x-nullable: false
       required:
       - categoryId
       - globalBrandId
@@ -10312,7 +10663,6 @@ components:
       - price
       - updatedAt
       type: object
-      x-nullable: false
       x-used-in-response: true
     SkuSlimDataV2:
       description: Slim  version of Sku Data model
@@ -10335,12 +10685,10 @@ components:
           maxLength: 1000
           minLength: 0
           type: string
-          x-nullable: false
         description:
           description: A short description of the product.
           nullable: true
           type: string
-          x-nullable: true
         category:
           $ref: '#/components/schemas/Category'
         brand:
@@ -10351,39 +10699,32 @@ components:
           format: double
           nullable: true
           type: number
-          x-nullable: true
         isInStock:
           description: An indication of if the retailer currently has the product
             in stock.
           type: boolean
-          x-nullable: false
         gtin:
           description: A GTIN identifier for the product if available. Covers variations
             such as EANs and UPCs.
           nullable: true
           type: string
-          x-nullable: true
         mpn:
           description: The MPN for the product if available.
           nullable: true
           type: string
-          x-nullable: true
         imageUrl:
           description: An http image resource provided by the retailer.
           type: string
-          x-nullable: false
         updatedAt:
           description: The last time this product was updated in the Retail Media
             Catalog. Represented as a UTC ISO8601 string.
           format: date-time
           type: string
-          x-nullable: false
       required:
       - isInStock
       - price
       - updatedAt
       type: object
-      x-nullable: false
       x-used-in-response: true
     CpcRateCardPreview:
       description: Represents all minimum cpc rates for a retailer and category id
@@ -10401,27 +10742,22 @@ components:
           description: retailer minimum cpc bid
           format: double
           type: number
-          x-nullable: false
         categoryMinimumCpcBids:
           additionalProperties:
             format: double
             type: number
-            x-nullable: false
           description: map of category id to minimum cpc bids
           nullable: true
           type: object
-          x-nullable: true
         categories:
           additionalProperties:
             $ref: '#/components/schemas/Category202204'
           description: map of category id to category values
           nullable: true
           type: object
-          x-nullable: true
       required:
       - retailerMinimumCpcBid
       type: object
-      x-nullable: false
       x-used-in-response: true
     PlacementPreview:
       description: Ad Placement information on a page
@@ -10434,11 +10770,9 @@ components:
         name:
           description: Name of the placement
           type: string
-          x-nullable: false
         retailerId:
           description: Retailer Id
           type: string
-          x-nullable: false
         pageType:
           description: Page Type
           enum:
@@ -10453,7 +10787,6 @@ components:
           - Merchandising
           - Deals
           type: string
-          x-nullable: false
         pageEnvironmentType:
           description: Page Environment
           enum:
@@ -10466,14 +10799,12 @@ components:
           - iOS
           - Android
           type: string
-          x-nullable: false
       required:
       - name
       - pageEnvironmentType
       - pageType
       - retailerId
       type: object
-      x-nullable: false
       x-used-in-response: true
     BrandPreview:
       description: Retail media brands
@@ -10483,11 +10814,9 @@ components:
         name:
           description: Brand Name
           type: string
-          x-nullable: false
       required:
       - name
       type: object
-      x-nullable: false
       x-used-in-response: true
     SellerPreview:
       description: Retail media Seller Id and Name
@@ -10497,9 +10826,7 @@ components:
         name:
           description: Seller Name
           type: string
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     BrandCatalogRequestV2:
       description: A request for a catalog under the specified format.
@@ -10548,7 +10875,6 @@ components:
             type: string
           type: array
       type: object
-      x-nullable: true
       x-used-in-request: true
     SellerCatalogRequestV2:
       description: Used to request a catalog of seller SKUs
@@ -10588,7 +10914,6 @@ components:
             type: string
           type: array
       type: object
-      x-nullable: true
       x-used-in-request: true
     SkuSearchRequestPreview:
       description: A request for sku by sellers or brands.
@@ -10611,26 +10936,21 @@ components:
           description: "Query string to search for across SKU's properties (gtin,\
             \ mpn, feed ID, Title, and Description)"
           type: string
-          x-nullable: false
         retailerId:
           description: Retailer Id
           format: long-id
           type: string
-          x-nullable: false
         sellers:
           description: A list of seller names and/or seller Id's
           items:
             type: string
-            x-nullable: false
           type: array
-          x-nullable: false
         brandIds:
           description: A list of brand Id's
           items:
             format: long-id
             type: string
           type: array
-          x-nullable: false
         skuType:
           default: brand
           description: Enum to set isSellerSku field
@@ -10639,7 +10959,6 @@ components:
           - seller
           - all
           type: string
-          x-nullable: false
         productIdType:
           default: skuKey
           description: "Type of product Ids to search for(SkuKey, SkuId, Gtin, Mpn,\
@@ -10652,20 +10971,16 @@ components:
           - skuId
           - parentId
           type: string
-          x-nullable: false
         productIds:
           description: "A list of product Id's, if not passed ignore and search by\
             \ QueryString"
           items:
             type: string
-            x-nullable: false
           type: array
-          x-nullable: false
       required:
       - queryString
       - retailerId
       type: object
-      x-nullable: false
       x-used-in-request: true
     SkuSearchRequestSlimPreview:
       description: A request for sku by search text and brand ids.
@@ -10679,19 +10994,16 @@ components:
           description: "Query string to search for across SKU's properties (gtin,\
             \ mpn, feed ID, Title, and Description)"
           type: string
-          x-nullable: false
         limitResultsToSkusWithBrandIds:
           description: A list of brand Id's to limit the search results to
           items:
             format: long-id
             type: string
           type: array
-          x-nullable: false
       required:
       - limitResultsToSkusWithBrandIds
       - searchString
       type: object
-      x-nullable: false
       x-used-in-request: true
     SkuSearchRequestSlimV2Preview:
       description: A request for sku by search text and brand ids.
@@ -10705,18 +11017,15 @@ components:
           description: "Query string to search for across SKU's properties (gtin,\
             \ mpn, feed ID, Title, and Description)"
           type: string
-          x-nullable: false
         brandId:
           description: A list of brand Id's to limit the search results to
           items:
             format: long-id
             type: string
           type: array
-          x-nullable: false
       required:
       - searchString
       type: object
-      x-nullable: false
       x-used-in-request: true
     Category:
       description: Retailer Category.
@@ -10729,9 +11038,7 @@ components:
           minLength: 0
           nullable: true
           type: string
-          x-nullable: true
       type: object
-      x-nullable: false
       x-used-in-response: true
     Brand:
       description: Brand of the product.
@@ -10743,9 +11050,7 @@ components:
           maxLength: 120
           minLength: 0
           type: string
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     Category202204:
       description: "List of retailer's categories, including the full hierarchy of\
@@ -10758,21 +11063,17 @@ components:
         text:
           description: Category Text
           type: string
-          x-nullable: false
         name:
           description: Category Name
           type: string
-          x-nullable: false
         parentId:
           description: Category ParentId
           type: string
-          x-nullable: false
       required:
       - name
       - parentId
       - text
       type: object
-      x-nullable: false
     SellerIdentifierV2:
       description: Identifies a Unique Seller
       example:
@@ -10789,7 +11090,6 @@ components:
       - retailerId
       - sellerId
       type: object
-      x-nullable: false
       x-used-in-request: true
     Creative2Response:
       additionalProperties: false
@@ -14459,7 +14759,7 @@ components:
           attributes:
             createdAt: 2000-01-23T04:56:07.000+00:00
             errorMessage: errorMessage
-            status: Pending
+            status: pending
           id: id
           type: type
         warnings:
@@ -14550,7 +14850,7 @@ components:
         attributes:
           createdAt: 2000-01-23T04:56:07.000+00:00
           errorMessage: errorMessage
-          status: Pending
+          status: pending
         id: id
         type: type
       nullable: true
@@ -14600,16 +14900,16 @@ components:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
         errorMessage: errorMessage
-        status: Pending
+        status: pending
       nullable: true
       properties:
         status:
           description: Status of the report.
           enum:
-          - Pending
-          - Success
-          - Failed
-          - Expired
+          - pending
+          - success
+          - failed
+          - expired
           type: string
         errorMessage:
           description: Possible error message along with the status.
@@ -14769,19 +15069,16 @@ components:
           items:
             $ref: '#/components/schemas/ResourceOfBalanceResponseV2'
           type: array
-          x-nullable: false
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
       x-used-in-response: true
     BalanceResponseV2Response:
@@ -14857,15 +15154,12 @@ components:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: true
       x-used-in-response: true
     PreferredLineItemV2PagedListResponse:
       description: Data model for a paged list of response resources
@@ -14987,21 +15281,17 @@ components:
           items:
             $ref: '#/components/schemas/ResourceOfPreferredLineItemV2'
           type: array
-          x-nullable: false
         warnings:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     PreferredLineItemV2Response:
       description: A top-level object that encapsulates a Criteo API response for
@@ -15088,15 +15378,12 @@ components:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/CommonProblem'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     JsonApiSingleResponseOfLineItemBidMultipliersV2:
       description: A JSON:API wrapper class to add one JSON:API <typeparamref name="T"
@@ -15173,7 +15460,6 @@ components:
       required:
       - data
       type: object
-      x-nullable: false
       x-used-in-response: true
     LineItemBidMultipliersV2Response:
       description: A top-level object that encapsulates a Criteo API response for
@@ -15256,7 +15542,6 @@ components:
           type: array
           x-optional-in-response: true
       type: object
-      x-nullable: true
       x-used-in-response: true
     ProductButtonListResponse:
       description: Data model for a list of response resources
@@ -15329,21 +15614,17 @@ components:
           items:
             $ref: '#/components/schemas/ResourceOfProductButtonResponse'
           type: array
-          x-nullable: false
         warnings:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
         errors:
           items:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     CreateBalanceV2Request:
       description: A top-level object that encapsulates a Criteo API request for a
@@ -15430,7 +15711,6 @@ components:
         data:
           $ref: '#/components/schemas/InputResourceOfPreferredLineItemCreateModelV2'
       type: object
-      x-nullable: false
       x-used-in-request: true
     LineItemBidMultipliersV2Request:
       description: A top-level object that encapsulates a Criteo API request for a
@@ -15457,7 +15737,6 @@ components:
         data:
           $ref: '#/components/schemas/ResourceOfLineItemBidMultipliersV2'
       type: object
-      x-nullable: true
       x-used-in-request: true
     ProductButtonListRequest:
       description: Data model for a list of input resources
@@ -15486,9 +15765,7 @@ components:
           items:
             $ref: '#/components/schemas/ResourceOfProductButtonRequest'
           type: array
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-request: true
     ProductButtonRequest:
       description: Data model for an input resource
@@ -15507,7 +15784,6 @@ components:
         data:
           $ref: '#/components/schemas/ResourceOfProductButtonRequest'
       type: object
-      x-nullable: false
       x-used-in-request: true
     PreferredLineItemUpdateModelV2Request:
       description: Data model for an input resource
@@ -15540,7 +15816,6 @@ components:
         data:
           $ref: '#/components/schemas/ResourceOfPreferredLineItemUpdateModelV2'
       type: object
-      x-nullable: false
       x-used-in-request: true
     PageMetadata:
       description: Metadata related to the current request
@@ -15556,33 +15831,26 @@ components:
           format: int64
           nullable: true
           type: integer
-          x-nullable: true
         currentPageSize:
           format: int32
           type: integer
-          x-nullable: false
         currentPageIndex:
           format: int32
           type: integer
-          x-nullable: false
         totalPages:
           format: int64
           nullable: true
           type: integer
-          x-nullable: true
         nextPage:
           nullable: true
           type: string
-          x-nullable: true
         previousPage:
           nullable: true
           type: string
-          x-nullable: true
       required:
       - currentPageIndex
       - currentPageSize
       type: object
-      x-nullable: false
       x-used-in-response: true
     ResourceOfBalanceResponseV2:
       description: A class that represents a domain entity exposed by an API
@@ -15669,7 +15937,6 @@ components:
         attributes:
           $ref: '#/components/schemas/ExternalPreferredLineItemV2'
       type: object
-      x-nullable: true
       x-used-in-response: true
     JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultipliersV2:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
@@ -15697,7 +15964,6 @@ components:
       required:
       - type
       type: object
-      x-nullable: false
       x-used-in-response: true
     CommonError:
       description: A JSON:API Common error structure
@@ -15716,7 +15982,6 @@ components:
           description: (REQUIRED) The Correlation ID provided by the Gateway. It is
             also a unique identifier for this particular occurrence of the problem.
           type: string
-          x-nullable: false
         type:
           description: (REQUIRED) The classification of the error.
           enum:
@@ -15729,42 +15994,33 @@ components:
           - quota
           - validation
           type: string
-          x-nullable: false
         code:
           description: "(REQUIRED) A machine-readable unique error code, expressed\
             \ as a string value. The format used must be kabab-case."
           type: string
-          x-nullable: false
         instance:
           description: (REQUIRED) A URI reference that identifies the specific occurrence
             of the problem.
           type: string
-          x-nullable: false
         title:
           description: "(RECOMMENDED) A short, human-readable summary of the problem\
             \ type."
           type: string
-          x-nullable: false
         detail:
           description: (RECOMMENDED) A human-readable explanation specific to this
             occurrence of the problem.
           type: string
-          x-nullable: false
         source:
           additionalProperties:
             type: string
-            x-nullable: false
           description: (OPTIONAL) A machine-readable structure to reference to the
             exact location(s) causing the error(s)
           type: object
-          x-nullable: false
         stackTrace:
           description: (NEVER IN PRODUCTION) A human-readable stacktrace produced
             by the implementation technology
           type: string
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     CommonWarning:
       description: A JSON:API Base common warning
@@ -15783,7 +16039,6 @@ components:
           description: (REQUIRED) The Correlation ID provided by the Gateway. It is
             also a unique identifier for this particular occurrence of the problem.
           type: string
-          x-nullable: false
         type:
           description: (REQUIRED) The classification of the error.
           enum:
@@ -15796,42 +16051,33 @@ components:
           - quota
           - validation
           type: string
-          x-nullable: false
         code:
           description: "(REQUIRED) A machine-readable unique error code, expressed\
             \ as a string value. The format used must be kabab-case."
           type: string
-          x-nullable: false
         instance:
           description: (REQUIRED) A URI reference that identifies the specific occurrence
             of the problem.
           type: string
-          x-nullable: false
         title:
           description: "(RECOMMENDED) A short, human-readable summary of the problem\
             \ type."
           type: string
-          x-nullable: false
         detail:
           description: (RECOMMENDED) A human-readable explanation specific to this
             occurrence of the problem.
           type: string
-          x-nullable: false
         source:
           additionalProperties:
             type: string
-            x-nullable: false
           description: (OPTIONAL) A machine-readable structure to reference to the
             exact location(s) causing the error(s)
           type: object
-          x-nullable: false
         stackTrace:
           description: (NEVER IN PRODUCTION) A human-readable stacktrace produced
             by the implementation technology
           type: string
-          x-nullable: false
       type: object
-      x-nullable: false
       x-used-in-response: true
     ResourceOfLineItemBidMultipliersV2:
       description: A class that represents a domain entity exposed by an API
@@ -15866,7 +16112,6 @@ components:
           type: string
           x-optional-in-response: true
       type: object
-      x-nullable: true
       x-used-in-request: true
       x-used-in-response: true
     ResourceOfProductButtonResponse:
@@ -15896,7 +16141,6 @@ components:
           type: string
           x-optional-in-response: true
       type: object
-      x-nullable: false
       x-used-in-response: true
     ResourceOfCreateBalanceV2:
       description: A class that represents a domain entity exposed by an API
@@ -15993,11 +16237,9 @@ components:
       properties:
         type:
           type: string
-          x-nullable: false
         attributes:
           $ref: '#/components/schemas/ExternalPreferredLineItemCreateModelV2'
       type: object
-      x-nullable: false
       x-used-in-request: true
     ResourceOfProductButtonRequest:
       description: Data model for a Resource
@@ -16021,7 +16263,6 @@ components:
           description: Canonical type name of the entity
           type: string
       type: object
-      x-nullable: false
       x-used-in-request: true
     ResourceOfPreferredLineItemUpdateModelV2:
       description: Data model for a Resource
@@ -16059,7 +16300,6 @@ components:
         attributes:
           $ref: '#/components/schemas/ExternalPreferredLineItemUpdateModelV2'
       type: object
-      x-nullable: false
       x-used-in-request: true
     BalanceResponseV2:
       description: A Retail Media Balance used to determine the funds available for
@@ -16084,46 +16324,38 @@ components:
         name:
           description: Name of the balance.
           type: string
-          x-nullable: false
         poNumber:
           description: Purchase Order number.
           nullable: true
           type: string
-          x-nullable: true
         memo:
           description: Memo.
           nullable: true
           type: string
-          x-nullable: true
         deposited:
           description: Amount of billable funds allotted to the balance.
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         spent:
           description: Amount of spent funds of the balance.
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         remaining:
           description: Amount of remaining funds of the balance.
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         startDate:
           description: Start date of the balance in the format YYYY-MM-DD.
           format: date
           type: string
-          x-nullable: false
         endDate:
           description: End date of the balance in the format YYYY-MM-DD.
           format: date
           nullable: true
           type: string
-          x-nullable: true
         status:
           description: Status of the balance.
           enum:
@@ -16132,17 +16364,14 @@ components:
           - active
           - ended
           type: string
-          x-nullable: false
         createdAt:
           description: Creation time of the balance.
           format: date-time
           type: string
-          x-nullable: false
         updatedAt:
           description: Update time of the balance.
           format: date-time
           type: string
-          x-nullable: false
         balanceType:
           description: Type of the balance.
           enum:
@@ -16150,7 +16379,6 @@ components:
           - capped
           - uncapped
           type: string
-          x-nullable: false
         spendType:
           description: Spend Type of the balance.
           enum:
@@ -16158,7 +16386,6 @@ components:
           - Offsite
           - OffsiteAwareness
           type: string
-          x-nullable: false
         privateMarketBillingType:
           description: Billing type for Private Market of the balance.
           enum:
@@ -16167,7 +16394,6 @@ components:
           - billByCriteo
           - unknown
           type: string
-          x-nullable: false
       required:
       - balanceType
       - name
@@ -16213,7 +16439,6 @@ components:
           maxLength: 255
           minLength: 0
           type: string
-          x-nullable: false
         startDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
@@ -16237,7 +16462,6 @@ components:
           - archived
           - noFunds
           type: string
-          x-nullable: false
         pacing:
           enum:
           - unknown
@@ -16245,7 +16469,6 @@ components:
           - accelerated
           nullable: true
           type: string
-          x-nullable: true
         capping:
           $ref: '#/components/schemas/ExternalLineItemCappingV2'
         page:
@@ -16253,45 +16476,36 @@ components:
         targetRetailerId:
           format: long-id
           type: string
-          x-nullable: false
         budget:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         campaignId:
           format: long-id
           type: string
-          x-nullable: false
         budgetSpent:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         budgetRemaining:
           format: decimal
           nullable: true
           type: number
-          x-nullable: true
         createdAt:
           format: date-time
           type: string
-          x-nullable: false
         updatedAt:
           format: date-time
           type: string
-          x-nullable: false
         creativeId:
           description: External creative Id
           format: long-id
           nullable: true
           type: string
-          x-nullable: true
         id:
           description: Id of the entity
           nullable: true
           type: string
-          x-nullable: true
       required:
       - campaignId
       - createdAt
@@ -16302,7 +16516,6 @@ components:
       - targetRetailerId
       - updatedAt
       type: object
-      x-nullable: false
       x-used-in-response: true
     ExternalLineItemBidMultipliersV2:
       description: The Bid Multiplier Entity of a LineItem
@@ -16391,9 +16604,7 @@ components:
           description: Id of the entity
           nullable: true
           type: string
-          x-nullable: true
       type: object
-      x-nullable: true
       x-used-in-response: true
       x-used-in-request: true
     ExternalProductButtonResponse:
@@ -16410,28 +16621,22 @@ components:
         name:
           description: Name of the Product Button
           type: string
-          x-nullable: false
         backgroundImage:
           description: URL of the background image
           type: string
-          x-nullable: false
         rank:
           description: Rank of the Product Button
           format: int32
           type: integer
-          x-nullable: false
         isMandatory:
           description: If the Product Button is Mandatory
           format: int32
           type: integer
-          x-nullable: false
         skus:
           description: List of skus on the Product Button
           items:
             type: string
-            x-nullable: false
           type: array
-          x-nullable: false
       required:
       - backgroundImage
       - isMandatory
@@ -16439,7 +16644,6 @@ components:
       - rank
       - skus
       type: object
-      x-nullable: false
       x-used-in-response: true
     CreateBalanceV2:
       description: An object that represents the available options to set when creating
@@ -16456,12 +16660,10 @@ components:
         name:
           description: Name of the balance.
           type: string
-          x-nullable: false
         poNumber:
           description: Purchase Order number.
           nullable: true
           type: string
-          x-nullable: true
         deposited:
           description: Amount of billable funds allotted to the balance.
           format: decimal
@@ -16470,13 +16672,11 @@ components:
           description: Start date of the balance in the format YYYY-MM-DD.
           format: date
           type: string
-          x-nullable: false
         endDate:
           description: End date of the balance in the format YYYY-MM-DD.
           format: date
           nullable: true
           type: string
-          x-nullable: true
         spendType:
           description: Type of the balance spend.
           enum:
@@ -16484,12 +16684,10 @@ components:
           - Offsite
           - OffsiteAwareness
           type: string
-          x-nullable: false
         memo:
           description: Memo
           nullable: true
           type: string
-          x-nullable: true
       required:
       - name
       - spendType
@@ -16510,27 +16708,22 @@ components:
           description: Name of the balance.
           nullable: true
           type: string
-          x-nullable: true
         poNumber:
           description: Purchase Order number.
           nullable: true
           type: string
-          x-nullable: true
         startDate:
           description: Start date of the balance in the format YYYY-MM-DD.
           nullable: true
           type: string
-          x-nullable: true
         endDate:
           description: End date of the balance in the format YYYY-MM-DD.
           nullable: true
           type: string
-          x-nullable: true
         memo:
           description: Memo.
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-request: true
     ChangeDatesOfBalanceV2:
@@ -16545,17 +16738,14 @@ components:
           description: Start date of the balance in the format YYYY-MM-DD.
           nullable: true
           type: string
-          x-nullable: true
         endDate:
           description: End date of the balance in the format YYYY-MM-DD.
           nullable: true
           type: string
-          x-nullable: true
         memo:
           description: Memo.
           nullable: true
           type: string
-          x-nullable: true
       type: object
       x-used-in-request: true
     ExternalPreferredLineItemCreateModelV2:
@@ -16587,7 +16777,6 @@ components:
           maxLength: 255
           minLength: 0
           type: string
-          x-nullable: false
         startDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
@@ -16611,7 +16800,6 @@ components:
           - archived
           - noFunds
           type: string
-          x-nullable: false
         pacing:
           description: Line Item Pacing Enum
           enum:
@@ -16619,7 +16807,6 @@ components:
           - standard
           - accelerated
           type: string
-          x-nullable: false
         capping:
           $ref: '#/components/schemas/ExternalLineItemCappingV2'
         page:
@@ -16627,16 +16814,13 @@ components:
         targetRetailerId:
           format: long-id
           type: string
-          x-nullable: false
         budget:
           format: double
           type: number
-          x-nullable: false
         creativeId:
           format: long-id
           nullable: true
           type: string
-          x-nullable: true
       required:
       - budget
       - endDate
@@ -16646,7 +16830,6 @@ components:
       - startDate
       - targetRetailerId
       type: object
-      x-nullable: false
       x-used-in-request: true
     ExternalProductButtonRequest:
       description: The Product Button entity used for input
@@ -16661,30 +16844,24 @@ components:
         name:
           description: Name of the Product Button
           type: string
-          x-nullable: false
         backgroundImage:
           description: URL of the background image
           type: string
-          x-nullable: false
         isMandatory:
           description: If the Product Button is Mandatory
           format: int32
           type: integer
-          x-nullable: false
         skus:
           description: List of skus on the Product Button
           items:
             type: string
-            x-nullable: false
           type: array
-          x-nullable: false
       required:
       - backgroundImage
       - isMandatory
       - name
       - skus
       type: object
-      x-nullable: false
       x-used-in-request: true
     ExternalPreferredLineItemUpdateModelV2:
       description: Model used to update a preferred line item
@@ -16714,7 +16891,6 @@ components:
           maxLength: 255
           minLength: 0
           type: string
-          x-nullable: false
         startDate:
           description: "Represents the Date as a year, month, and day in the format\
             \ YYYY-MM-DD"
@@ -16738,7 +16914,6 @@ components:
           - archived
           - noFunds
           type: string
-          x-nullable: false
         pacing:
           default: accelerated
           enum:
@@ -16746,7 +16921,6 @@ components:
           - standard
           - accelerated
           type: string
-          x-nullable: false
         capping:
           $ref: '#/components/schemas/ExternalLineItemCappingV2'
         page:
@@ -16754,19 +16928,16 @@ components:
         budget:
           format: double
           type: number
-          x-nullable: false
         creativeId:
           format: long-id
           nullable: true
           type: string
-          x-nullable: true
       required:
       - endDate
       - name
       - startDate
       - status
       type: object
-      x-nullable: false
       x-used-in-request: true
     ExternalLineItemCappingV2:
       description: Frequency Capping for a Preferred Line Item
@@ -16781,16 +16952,13 @@ components:
           - day
           - session
           type: string
-          x-nullable: false
         count:
           format: int32
           type: integer
-          x-nullable: false
       required:
       - count
       - type
       type: object
-      x-nullable: false
       x-used-in-response: true
       x-used-in-request: true
     ExternalLineItemPageV2:
@@ -16823,23 +16991,18 @@ components:
           - searchBar
           - categoryMenu
           type: string
-          x-nullable: false
         categories:
           items:
             $ref: '#/components/schemas/ExternalLineItemPageCategoryV2'
           nullable: true
           type: array
-          x-nullable: true
         searchKeywords:
           items:
             type: string
-            x-nullable: false
           type: array
-          x-nullable: false
       required:
       - pageType
       type: object
-      x-nullable: false
       x-used-in-response: true
       x-used-in-request: true
     ExternalLineItemPageCategoryV2:
@@ -16850,15 +17013,12 @@ components:
       properties:
         categoryId:
           type: string
-          x-nullable: false
         includeChildren:
           default: true
           type: boolean
-          x-nullable: false
       required:
       - categoryId
       type: object
-      x-nullable: false
       x-used-in-response: true
       x-used-in-request: true
     EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata:
