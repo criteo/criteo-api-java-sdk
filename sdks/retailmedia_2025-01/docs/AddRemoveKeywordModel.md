@@ -8,9 +8,9 @@ A single keyword to be added or removed
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**phrase** | **String** |  |  [optional] |
-|**matchType** | **MatchTypeModel** |  |  [optional] |
 |**isDeleted** | **Boolean** |  |  [optional] |
+|**matchType** | **MatchTypeModel** |  |  [optional] |
+|**phrase** | **String** |  |  [optional] |
 
 
 

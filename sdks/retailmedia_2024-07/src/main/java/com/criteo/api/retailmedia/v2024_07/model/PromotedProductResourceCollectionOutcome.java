@@ -54,21 +54,21 @@ import com.criteo.api.retailmedia.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PromotedProductResourceCollectionOutcome {
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private List<PromotedProductResource> data = null;
+
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<RmcaCommonProblem> errors = null;
-
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<RmcaCommonProblem> warnings = null;
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
   private ProductMetadata meta;
 
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private List<PromotedProductResource> data = null;
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<RmcaCommonProblem> warnings = null;
 
   public PromotedProductResourceCollectionOutcome() {
   }
@@ -82,54 +82,6 @@ public class PromotedProductResourceCollectionOutcome {
     this.errors = errors;
     this.warnings = warnings;
   }
-
-   /**
-   * Get errors
-   * @return errors
-  **/
-  @javax.annotation.Nullable
-
-  public List<RmcaCommonProblem> getErrors() {
-    return errors;
-  }
-
-
-
-
-   /**
-   * Get warnings
-   * @return warnings
-  **/
-  @javax.annotation.Nullable
-
-  public List<RmcaCommonProblem> getWarnings() {
-    return warnings;
-  }
-
-
-
-
-  public PromotedProductResourceCollectionOutcome meta(ProductMetadata meta) {
-    
-    this.meta = meta;
-    return this;
-  }
-
-   /**
-   * Get meta
-   * @return meta
-  **/
-  @javax.annotation.Nullable
-
-  public ProductMetadata getMeta() {
-    return meta;
-  }
-
-
-  public void setMeta(ProductMetadata meta) {
-    this.meta = meta;
-  }
-
 
   public PromotedProductResourceCollectionOutcome data(List<PromotedProductResource> data) {
     
@@ -161,6 +113,54 @@ public class PromotedProductResourceCollectionOutcome {
   }
 
 
+   /**
+   * Get errors
+   * @return errors
+  **/
+  @javax.annotation.Nullable
+
+  public List<RmcaCommonProblem> getErrors() {
+    return errors;
+  }
+
+
+
+
+  public PromotedProductResourceCollectionOutcome meta(ProductMetadata meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nullable
+
+  public ProductMetadata getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(ProductMetadata meta) {
+    this.meta = meta;
+  }
+
+
+   /**
+   * Get warnings
+   * @return warnings
+  **/
+  @javax.annotation.Nullable
+
+  public List<RmcaCommonProblem> getWarnings() {
+    return warnings;
+  }
+
+
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -171,10 +171,10 @@ public class PromotedProductResourceCollectionOutcome {
       return false;
     }
     PromotedProductResourceCollectionOutcome promotedProductResourceCollectionOutcome = (PromotedProductResourceCollectionOutcome) o;
-    return Objects.equals(this.errors, promotedProductResourceCollectionOutcome.errors) &&
-        Objects.equals(this.warnings, promotedProductResourceCollectionOutcome.warnings) &&
+    return Objects.equals(this.data, promotedProductResourceCollectionOutcome.data) &&
+        Objects.equals(this.errors, promotedProductResourceCollectionOutcome.errors) &&
         Objects.equals(this.meta, promotedProductResourceCollectionOutcome.meta) &&
-        Objects.equals(this.data, promotedProductResourceCollectionOutcome.data);
+        Objects.equals(this.warnings, promotedProductResourceCollectionOutcome.warnings);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -183,7 +183,7 @@ public class PromotedProductResourceCollectionOutcome {
 
   @Override
   public int hashCode() {
-    return Objects.hash(errors, warnings, meta, data);
+    return Objects.hash(data, errors, meta, warnings);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -197,10 +197,10 @@ public class PromotedProductResourceCollectionOutcome {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PromotedProductResourceCollectionOutcome {\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
-    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -223,10 +223,10 @@ public class PromotedProductResourceCollectionOutcome {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("errors");
-    openapiFields.add("warnings");
-    openapiFields.add("meta");
     openapiFields.add("data");
+    openapiFields.add("errors");
+    openapiFields.add("meta");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -252,18 +252,6 @@ public class PromotedProductResourceCollectionOutcome {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PromotedProductResourceCollectionOutcome` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-      }
-      // validate the optional field `meta`
-      if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
-        ProductMetadata.validateJsonObject(jsonObj.getAsJsonObject("meta"));
-      }
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
         if (jsonArraydata != null) {
@@ -277,6 +265,18 @@ public class PromotedProductResourceCollectionOutcome {
             PromotedProductResource.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
           };
         }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
+      }
+      // validate the optional field `meta`
+      if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
+        ProductMetadata.validateJsonObject(jsonObj.getAsJsonObject("meta"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
       }
   }
 

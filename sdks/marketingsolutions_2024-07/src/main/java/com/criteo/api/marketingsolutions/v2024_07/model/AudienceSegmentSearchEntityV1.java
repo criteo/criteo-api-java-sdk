@@ -50,13 +50,13 @@ import com.criteo.api.marketingsolutions.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AudienceSegmentSearchEntityV1 {
-  public static final String SERIALIZED_NAME_AUDIENCE_SEGMENT_IDS = "audienceSegmentIds";
-  @SerializedName(SERIALIZED_NAME_AUDIENCE_SEGMENT_IDS)
-  private List<String> audienceSegmentIds = null;
-
   public static final String SERIALIZED_NAME_ADVERTISER_IDS = "advertiserIds";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_IDS)
   private List<String> advertiserIds = null;
+
+  public static final String SERIALIZED_NAME_AUDIENCE_SEGMENT_IDS = "audienceSegmentIds";
+  @SerializedName(SERIALIZED_NAME_AUDIENCE_SEGMENT_IDS)
+  private List<String> audienceSegmentIds = null;
 
   /**
    * Gets or Sets audienceSegmentTypes
@@ -124,36 +124,6 @@ public class AudienceSegmentSearchEntityV1 {
   public AudienceSegmentSearchEntityV1() {
   }
 
-  public AudienceSegmentSearchEntityV1 audienceSegmentIds(List<String> audienceSegmentIds) {
-    
-    this.audienceSegmentIds = audienceSegmentIds;
-    return this;
-  }
-
-  public AudienceSegmentSearchEntityV1 addAudienceSegmentIdsItem(String audienceSegmentIdsItem) {
-    if (this.audienceSegmentIds == null) {
-      this.audienceSegmentIds = new ArrayList<>();
-    }
-    this.audienceSegmentIds.add(audienceSegmentIdsItem);
-    return this;
-  }
-
-   /**
-   * List of segment ids
-   * @return audienceSegmentIds
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getAudienceSegmentIds() {
-    return audienceSegmentIds;
-  }
-
-
-  public void setAudienceSegmentIds(List<String> audienceSegmentIds) {
-    this.audienceSegmentIds = audienceSegmentIds;
-  }
-
-
   public AudienceSegmentSearchEntityV1 advertiserIds(List<String> advertiserIds) {
     
     this.advertiserIds = advertiserIds;
@@ -181,6 +151,36 @@ public class AudienceSegmentSearchEntityV1 {
 
   public void setAdvertiserIds(List<String> advertiserIds) {
     this.advertiserIds = advertiserIds;
+  }
+
+
+  public AudienceSegmentSearchEntityV1 audienceSegmentIds(List<String> audienceSegmentIds) {
+    
+    this.audienceSegmentIds = audienceSegmentIds;
+    return this;
+  }
+
+  public AudienceSegmentSearchEntityV1 addAudienceSegmentIdsItem(String audienceSegmentIdsItem) {
+    if (this.audienceSegmentIds == null) {
+      this.audienceSegmentIds = new ArrayList<>();
+    }
+    this.audienceSegmentIds.add(audienceSegmentIdsItem);
+    return this;
+  }
+
+   /**
+   * List of segment ids
+   * @return audienceSegmentIds
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getAudienceSegmentIds() {
+    return audienceSegmentIds;
+  }
+
+
+  public void setAudienceSegmentIds(List<String> audienceSegmentIds) {
+    this.audienceSegmentIds = audienceSegmentIds;
   }
 
 
@@ -268,23 +268,23 @@ public class AudienceSegmentSearchEntityV1 {
       return false;
     }
     AudienceSegmentSearchEntityV1 audienceSegmentSearchEntityV1 = (AudienceSegmentSearchEntityV1) o;
-    return Objects.equals(this.audienceSegmentIds, audienceSegmentSearchEntityV1.audienceSegmentIds) &&
-        Objects.equals(this.advertiserIds, audienceSegmentSearchEntityV1.advertiserIds) &&
+    return Objects.equals(this.advertiserIds, audienceSegmentSearchEntityV1.advertiserIds) &&
+        Objects.equals(this.audienceSegmentIds, audienceSegmentSearchEntityV1.audienceSegmentIds) &&
         Objects.equals(this.audienceSegmentTypes, audienceSegmentSearchEntityV1.audienceSegmentTypes)&&
         Objects.equals(this.additionalProperties, audienceSegmentSearchEntityV1.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(audienceSegmentIds, advertiserIds, audienceSegmentTypes, additionalProperties);
+    return Objects.hash(advertiserIds, audienceSegmentIds, audienceSegmentTypes, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceSegmentSearchEntityV1 {\n");
-    sb.append("    audienceSegmentIds: ").append(toIndentedString(audienceSegmentIds)).append("\n");
     sb.append("    advertiserIds: ").append(toIndentedString(advertiserIds)).append("\n");
+    sb.append("    audienceSegmentIds: ").append(toIndentedString(audienceSegmentIds)).append("\n");
     sb.append("    audienceSegmentTypes: ").append(toIndentedString(audienceSegmentTypes)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -309,8 +309,8 @@ public class AudienceSegmentSearchEntityV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("audienceSegmentIds");
     openapiFields.add("advertiserIds");
+    openapiFields.add("audienceSegmentIds");
     openapiFields.add("audienceSegmentTypes");
 
     // a set of required properties/fields (JSON key names)
@@ -330,12 +330,12 @@ public class AudienceSegmentSearchEntityV1 {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("audienceSegmentIds") != null && !jsonObj.get("audienceSegmentIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `audienceSegmentIds` to be an array in the JSON string but got `%s`", jsonObj.get("audienceSegmentIds").toString()));
-      }
-      // ensure the optional json data is an array if present
       if (jsonObj.get("advertiserIds") != null && !jsonObj.get("advertiserIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserIds` to be an array in the JSON string but got `%s`", jsonObj.get("advertiserIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("audienceSegmentIds") != null && !jsonObj.get("audienceSegmentIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `audienceSegmentIds` to be an array in the JSON string but got `%s`", jsonObj.get("audienceSegmentIds").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("audienceSegmentTypes") != null && !jsonObj.get("audienceSegmentTypes").isJsonArray()) {

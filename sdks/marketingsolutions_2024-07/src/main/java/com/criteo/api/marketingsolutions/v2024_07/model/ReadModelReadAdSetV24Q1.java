@@ -50,6 +50,10 @@ import com.criteo.api.marketingsolutions.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReadModelReadAdSetV24Q1 {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private ReadAdSetV24Q1 attributes;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -57,10 +61,6 @@ public class ReadModelReadAdSetV24Q1 {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
-
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private ReadAdSetV24Q1 attributes;
 
   public ReadModelReadAdSetV24Q1() {
   }
@@ -74,6 +74,28 @@ public class ReadModelReadAdSetV24Q1 {
     this.id = id;
     this.type = type;
   }
+
+  public ReadModelReadAdSetV24Q1 attributes(ReadAdSetV24Q1 attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+
+  public ReadAdSetV24Q1 getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(ReadAdSetV24Q1 attributes) {
+    this.attributes = attributes;
+  }
+
 
    /**
    * Id of the entity
@@ -99,28 +121,6 @@ public class ReadModelReadAdSetV24Q1 {
   }
 
 
-
-
-  public ReadModelReadAdSetV24Q1 attributes(ReadAdSetV24Q1 attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @javax.annotation.Nullable
-
-  public ReadAdSetV24Q1 getAttributes() {
-    return attributes;
-  }
-
-
-  public void setAttributes(ReadAdSetV24Q1 attributes) {
-    this.attributes = attributes;
-  }
 
   /**
    * A container for additional, undeclared properties.
@@ -177,9 +177,9 @@ public class ReadModelReadAdSetV24Q1 {
       return false;
     }
     ReadModelReadAdSetV24Q1 readModelReadAdSetV24Q1 = (ReadModelReadAdSetV24Q1) o;
-    return Objects.equals(this.id, readModelReadAdSetV24Q1.id) &&
-        Objects.equals(this.type, readModelReadAdSetV24Q1.type) &&
-        Objects.equals(this.attributes, readModelReadAdSetV24Q1.attributes)&&
+    return Objects.equals(this.attributes, readModelReadAdSetV24Q1.attributes) &&
+        Objects.equals(this.id, readModelReadAdSetV24Q1.id) &&
+        Objects.equals(this.type, readModelReadAdSetV24Q1.type)&&
         Objects.equals(this.additionalProperties, readModelReadAdSetV24Q1.additionalProperties);
   }
 
@@ -189,7 +189,7 @@ public class ReadModelReadAdSetV24Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, attributes, additionalProperties);
+    return Objects.hash(attributes, id, type, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -203,9 +203,9 @@ public class ReadModelReadAdSetV24Q1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReadModelReadAdSetV24Q1 {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -229,9 +229,9 @@ public class ReadModelReadAdSetV24Q1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("attributes");
     openapiFields.add("id");
     openapiFields.add("type");
-    openapiFields.add("attributes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -249,15 +249,15 @@ public class ReadModelReadAdSetV24Q1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ReadModelReadAdSetV24Q1 is not found in the empty JSON string", ReadModelReadAdSetV24Q1.openapiRequiredFields.toString()));
         }
       }
+      // validate the optional field `attributes`
+      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
+        ReadAdSetV24Q1.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        ReadAdSetV24Q1.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
   }
 

@@ -8,14 +8,14 @@ Status of an async report request
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**status** | [**StatusEnum**](#StatusEnum) |  |  [optional] |
-|**rowCount** | **Integer** |  |  [optional] |
-|**fileSizeBytes** | **Long** |  |  [optional] |
-|**md5CheckSum** | **String** |  |  [optional] |
 |**createdAt** | **String** |  |  [optional] |
 |**expiresAt** | **String** |  |  [optional] |
-|**message** | **String** |  |  [optional] |
+|**fileSizeBytes** | **Long** |  |  [optional] |
 |**id** | **String** |  |  [optional] |
+|**md5CheckSum** | **String** |  |  [optional] |
+|**message** | **String** |  |  [optional] |
+|**rowCount** | **Integer** |  |  [optional] |
+|**status** | [**StatusEnum**](#StatusEnum) |  |  [optional] |
 
 
 

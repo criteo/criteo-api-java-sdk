@@ -52,13 +52,13 @@ public class ExternalAddFundsToBalance {
   @SerializedName(SERIALIZED_NAME_DELTA_AMOUNT)
   private Double deltaAmount;
 
-  public static final String SERIALIZED_NAME_PO_NUMBER = "poNumber";
-  @SerializedName(SERIALIZED_NAME_PO_NUMBER)
-  private String poNumber;
-
   public static final String SERIALIZED_NAME_MEMO = "memo";
   @SerializedName(SERIALIZED_NAME_MEMO)
   private String memo;
+
+  public static final String SERIALIZED_NAME_PO_NUMBER = "poNumber";
+  @SerializedName(SERIALIZED_NAME_PO_NUMBER)
+  private String poNumber;
 
   public ExternalAddFundsToBalance() {
   }
@@ -85,28 +85,6 @@ public class ExternalAddFundsToBalance {
   }
 
 
-  public ExternalAddFundsToBalance poNumber(String poNumber) {
-    
-    this.poNumber = poNumber;
-    return this;
-  }
-
-   /**
-   * Purchase Order number.
-   * @return poNumber
-  **/
-  @javax.annotation.Nullable
-
-  public String getPoNumber() {
-    return poNumber;
-  }
-
-
-  public void setPoNumber(String poNumber) {
-    this.poNumber = poNumber;
-  }
-
-
   public ExternalAddFundsToBalance memo(String memo) {
     
     this.memo = memo;
@@ -126,6 +104,28 @@ public class ExternalAddFundsToBalance {
 
   public void setMemo(String memo) {
     this.memo = memo;
+  }
+
+
+  public ExternalAddFundsToBalance poNumber(String poNumber) {
+    
+    this.poNumber = poNumber;
+    return this;
+  }
+
+   /**
+   * Purchase Order number.
+   * @return poNumber
+  **/
+  @javax.annotation.Nullable
+
+  public String getPoNumber() {
+    return poNumber;
+  }
+
+
+  public void setPoNumber(String poNumber) {
+    this.poNumber = poNumber;
   }
 
   /**
@@ -184,14 +184,14 @@ public class ExternalAddFundsToBalance {
     }
     ExternalAddFundsToBalance externalAddFundsToBalance = (ExternalAddFundsToBalance) o;
     return Objects.equals(this.deltaAmount, externalAddFundsToBalance.deltaAmount) &&
-        Objects.equals(this.poNumber, externalAddFundsToBalance.poNumber) &&
-        Objects.equals(this.memo, externalAddFundsToBalance.memo)&&
+        Objects.equals(this.memo, externalAddFundsToBalance.memo) &&
+        Objects.equals(this.poNumber, externalAddFundsToBalance.poNumber)&&
         Objects.equals(this.additionalProperties, externalAddFundsToBalance.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(deltaAmount, poNumber, memo, additionalProperties);
+    return Objects.hash(deltaAmount, memo, poNumber, additionalProperties);
   }
 
   @Override
@@ -199,8 +199,8 @@ public class ExternalAddFundsToBalance {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalAddFundsToBalance {\n");
     sb.append("    deltaAmount: ").append(toIndentedString(deltaAmount)).append("\n");
-    sb.append("    poNumber: ").append(toIndentedString(poNumber)).append("\n");
     sb.append("    memo: ").append(toIndentedString(memo)).append("\n");
+    sb.append("    poNumber: ").append(toIndentedString(poNumber)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -225,8 +225,8 @@ public class ExternalAddFundsToBalance {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("deltaAmount");
-    openapiFields.add("poNumber");
     openapiFields.add("memo");
+    openapiFields.add("poNumber");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -253,11 +253,11 @@ public class ExternalAddFundsToBalance {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("poNumber") != null && !jsonObj.get("poNumber").isJsonNull()) && !jsonObj.get("poNumber").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `poNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("poNumber").toString()));
-      }
       if (!jsonObj.get("memo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `memo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memo").toString()));
+      }
+      if ((jsonObj.get("poNumber") != null && !jsonObj.get("poNumber").isJsonNull()) && !jsonObj.get("poNumber").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `poNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("poNumber").toString()));
       }
   }
 

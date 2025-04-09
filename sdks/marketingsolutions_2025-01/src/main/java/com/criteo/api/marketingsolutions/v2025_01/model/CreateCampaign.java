@@ -50,13 +50,13 @@ import com.criteo.api.marketingsolutions.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateCampaign {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
   public static final String SERIALIZED_NAME_ADVERTISER_ID = "advertiserId";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_ID)
   private String advertiserId;
+
+  public static final String SERIALIZED_NAME_BUDGET_AUTOMATION = "budgetAutomation";
+  @SerializedName(SERIALIZED_NAME_BUDGET_AUTOMATION)
+  private BudgetAutomation budgetAutomation;
 
   /**
    * Goal for the marketing campaign
@@ -111,38 +111,16 @@ public class CreateCampaign {
   @SerializedName(SERIALIZED_NAME_GOAL)
   private GoalEnum goal;
 
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
   public static final String SERIALIZED_NAME_SPEND_LIMIT = "spendLimit";
   @SerializedName(SERIALIZED_NAME_SPEND_LIMIT)
   private CreateCampaignSpendLimit spendLimit;
 
-  public static final String SERIALIZED_NAME_BUDGET_AUTOMATION = "budgetAutomation";
-  @SerializedName(SERIALIZED_NAME_BUDGET_AUTOMATION)
-  private BudgetAutomation budgetAutomation;
-
   public CreateCampaign() {
   }
-
-  public CreateCampaign name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Name of the campaign
-   * @return name
-  **/
-  @javax.annotation.Nullable
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
 
   public CreateCampaign advertiserId(String advertiserId) {
     
@@ -163,6 +141,28 @@ public class CreateCampaign {
 
   public void setAdvertiserId(String advertiserId) {
     this.advertiserId = advertiserId;
+  }
+
+
+  public CreateCampaign budgetAutomation(BudgetAutomation budgetAutomation) {
+    
+    this.budgetAutomation = budgetAutomation;
+    return this;
+  }
+
+   /**
+   * Get budgetAutomation
+   * @return budgetAutomation
+  **/
+  @javax.annotation.Nullable
+
+  public BudgetAutomation getBudgetAutomation() {
+    return budgetAutomation;
+  }
+
+
+  public void setBudgetAutomation(BudgetAutomation budgetAutomation) {
+    this.budgetAutomation = budgetAutomation;
   }
 
 
@@ -188,6 +188,28 @@ public class CreateCampaign {
   }
 
 
+  public CreateCampaign name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Name of the campaign
+   * @return name
+  **/
+  @javax.annotation.Nullable
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
   public CreateCampaign spendLimit(CreateCampaignSpendLimit spendLimit) {
     
     this.spendLimit = spendLimit;
@@ -207,28 +229,6 @@ public class CreateCampaign {
 
   public void setSpendLimit(CreateCampaignSpendLimit spendLimit) {
     this.spendLimit = spendLimit;
-  }
-
-
-  public CreateCampaign budgetAutomation(BudgetAutomation budgetAutomation) {
-    
-    this.budgetAutomation = budgetAutomation;
-    return this;
-  }
-
-   /**
-   * Get budgetAutomation
-   * @return budgetAutomation
-  **/
-  @javax.annotation.Nullable
-
-  public BudgetAutomation getBudgetAutomation() {
-    return budgetAutomation;
-  }
-
-
-  public void setBudgetAutomation(BudgetAutomation budgetAutomation) {
-    this.budgetAutomation = budgetAutomation;
   }
 
   /**
@@ -286,28 +286,28 @@ public class CreateCampaign {
       return false;
     }
     CreateCampaign createCampaign = (CreateCampaign) o;
-    return Objects.equals(this.name, createCampaign.name) &&
-        Objects.equals(this.advertiserId, createCampaign.advertiserId) &&
+    return Objects.equals(this.advertiserId, createCampaign.advertiserId) &&
+        Objects.equals(this.budgetAutomation, createCampaign.budgetAutomation) &&
         Objects.equals(this.goal, createCampaign.goal) &&
-        Objects.equals(this.spendLimit, createCampaign.spendLimit) &&
-        Objects.equals(this.budgetAutomation, createCampaign.budgetAutomation)&&
+        Objects.equals(this.name, createCampaign.name) &&
+        Objects.equals(this.spendLimit, createCampaign.spendLimit)&&
         Objects.equals(this.additionalProperties, createCampaign.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, advertiserId, goal, spendLimit, budgetAutomation, additionalProperties);
+    return Objects.hash(advertiserId, budgetAutomation, goal, name, spendLimit, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateCampaign {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
-    sb.append("    goal: ").append(toIndentedString(goal)).append("\n");
-    sb.append("    spendLimit: ").append(toIndentedString(spendLimit)).append("\n");
     sb.append("    budgetAutomation: ").append(toIndentedString(budgetAutomation)).append("\n");
+    sb.append("    goal: ").append(toIndentedString(goal)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    spendLimit: ").append(toIndentedString(spendLimit)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -331,17 +331,17 @@ public class CreateCampaign {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
     openapiFields.add("advertiserId");
-    openapiFields.add("goal");
-    openapiFields.add("spendLimit");
     openapiFields.add("budgetAutomation");
+    openapiFields.add("goal");
+    openapiFields.add("name");
+    openapiFields.add("spendLimit");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
     openapiRequiredFields.add("advertiserId");
     openapiRequiredFields.add("goal");
+    openapiRequiredFields.add("name");
     openapiRequiredFields.add("spendLimit");
   }
 
@@ -364,21 +364,21 @@ public class CreateCampaign {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
       if (!jsonObj.get("advertiserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserId").toString()));
       }
-      if (!jsonObj.get("goal").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `goal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("goal").toString()));
-      }
-      // validate the required field `spendLimit`
-      CreateCampaignSpendLimit.validateJsonObject(jsonObj.getAsJsonObject("spendLimit"));
       // validate the optional field `budgetAutomation`
       if (jsonObj.get("budgetAutomation") != null && !jsonObj.get("budgetAutomation").isJsonNull()) {
         BudgetAutomation.validateJsonObject(jsonObj.getAsJsonObject("budgetAutomation"));
       }
+      if (!jsonObj.get("goal").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `goal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("goal").toString()));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      // validate the required field `spendLimit`
+      CreateCampaignSpendLimit.validateJsonObject(jsonObj.getAsJsonObject("spendLimit"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

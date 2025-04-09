@@ -8,9 +8,9 @@ Resource object containing keywords associated with a line item.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**attributes** | [**KeywordsModel**](KeywordsModel.md) |  |  [optional] |
 |**id** | **String** |  |  [optional] |
 |**type** | **String** |  |  [optional] |
-|**attributes** | [**KeywordsModel**](KeywordsModel.md) |  |  [optional] |
 
 
 

@@ -8,14 +8,14 @@ Data model representing bid multipliers on a line item
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**search** | **Double** |  |  [optional] |
-|**homepage** | **Double** |  |  [optional] |
 |**categories** | **Double** |  |  [optional] |
-|**productDetail** | **Double** |  |  [optional] |
-|**confirmation** | **Double** |  |  [optional] |
-|**merchandising** | **Double** |  |  [optional] |
-|**deals** | **Double** |  |  [optional] |
 |**checkout** | **Double** |  |  [optional] |
+|**confirmation** | **Double** |  |  [optional] |
+|**deals** | **Double** |  |  [optional] |
+|**homepage** | **Double** |  |  [optional] |
+|**merchandising** | **Double** |  |  [optional] |
+|**productDetail** | **Double** |  |  [optional] |
+|**search** | **Double** |  |  [optional] |
 
 
 

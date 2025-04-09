@@ -49,38 +49,16 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SyncCampaignsReportResource {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
-
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private SyncCampaignsReport attributes;
 
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
   public SyncCampaignsReportResource() {
   }
-
-  public SyncCampaignsReportResource type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Get type
-   * @return type
-  **/
-  @javax.annotation.Nullable
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
 
   public SyncCampaignsReportResource attributes(SyncCampaignsReport attributes) {
     
@@ -101,6 +79,28 @@ public class SyncCampaignsReportResource {
 
   public void setAttributes(SyncCampaignsReport attributes) {
     this.attributes = attributes;
+  }
+
+
+  public SyncCampaignsReportResource type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   /**
@@ -158,22 +158,22 @@ public class SyncCampaignsReportResource {
       return false;
     }
     SyncCampaignsReportResource syncCampaignsReportResource = (SyncCampaignsReportResource) o;
-    return Objects.equals(this.type, syncCampaignsReportResource.type) &&
-        Objects.equals(this.attributes, syncCampaignsReportResource.attributes)&&
+    return Objects.equals(this.attributes, syncCampaignsReportResource.attributes) &&
+        Objects.equals(this.type, syncCampaignsReportResource.type)&&
         Objects.equals(this.additionalProperties, syncCampaignsReportResource.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes, additionalProperties);
+    return Objects.hash(attributes, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SyncCampaignsReportResource {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -197,8 +197,8 @@ public class SyncCampaignsReportResource {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
     openapiFields.add("attributes");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -216,12 +216,12 @@ public class SyncCampaignsReportResource {
           throw new IllegalArgumentException(String.format("The required field(s) %s in SyncCampaignsReportResource is not found in the empty JSON string", SyncCampaignsReportResource.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
         SyncCampaignsReport.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

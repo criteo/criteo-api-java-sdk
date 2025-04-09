@@ -8,8 +8,8 @@ A top-level object that encapsulates a Criteo API response for a single value
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** |  |  [optional] |
 |**attributes** | [**AudienceSegmentSearchEntityV1**](AudienceSegmentSearchEntityV1.md) |  |  [optional] |
+|**type** | **String** |  |  [optional] |
 
 
 

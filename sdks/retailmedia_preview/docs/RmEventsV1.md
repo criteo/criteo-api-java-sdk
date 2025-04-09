@@ -8,23 +8,12 @@ Settings to target users based on their behavior
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**shopperActivity** | [**ShopperActivityEnum**](#ShopperActivityEnum) | Reach people who performed specific action |  [optional] |
-|**lookbackDays** | [**LookbackDaysEnum**](#LookbackDaysEnum) | The number of days to look back |  [optional] |
-|**categoryIds** | **List&lt;String&gt;** | The list of category ids |  [optional] |
 |**brandIds** | **List&lt;String&gt;** | The list of brand ids |  [optional] |
-|**minPrice** | **Double** | Minimum price of the products |  [optional] |
+|**categoryIds** | **List&lt;String&gt;** | The list of category ids |  [optional] |
+|**lookbackDays** | [**LookbackDaysEnum**](#LookbackDaysEnum) | The number of days to look back |  [optional] |
 |**maxPrice** | **Double** | Maximum price of the products |  [optional] |
-
-
-
-## Enum: ShopperActivityEnum
-
-| Name | Value |
-|---- | -----|
-| UNKNOWN | &quot;Unknown&quot; |
-| VIEW | &quot;View&quot; |
-| BUY | &quot;Buy&quot; |
-| ADDTOCART | &quot;AddToCart&quot; |
+|**minPrice** | **Double** | Minimum price of the products |  [optional] |
+|**shopperActivity** | [**ShopperActivityEnum**](#ShopperActivityEnum) | Reach people who performed specific action |  [optional] |
 
 
 
@@ -42,6 +31,17 @@ Settings to target users based on their behavior
 | LAST120DAYS | &quot;Last120Days&quot; |
 | LAST150DAYS | &quot;Last150Days&quot; |
 | LAST180DAYS | &quot;Last180Days&quot; |
+
+
+
+## Enum: ShopperActivityEnum
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;Unknown&quot; |
+| VIEW | &quot;View&quot; |
+| BUY | &quot;Buy&quot; |
+| ADDTOCART | &quot;AddToCart&quot; |
 
 
 

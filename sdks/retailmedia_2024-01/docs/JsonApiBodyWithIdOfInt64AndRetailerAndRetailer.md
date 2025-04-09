@@ -8,9 +8,9 @@ A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\" /> with 
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**attributes** | [**ExternalRetailer**](ExternalRetailer.md) |  |  [optional] |
 |**id** | **String** |  |  |
 |**type** | **String** |  |  |
-|**attributes** | [**ExternalRetailer**](ExternalRetailer.md) |  |  [optional] |
 
 
 

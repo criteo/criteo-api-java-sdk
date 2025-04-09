@@ -51,13 +51,13 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PromotedProduct {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
-
   public static final String SERIALIZED_NAME_BID_OVERRIDE = "bidOverride";
   @SerializedName(SERIALIZED_NAME_BID_OVERRIDE)
   private BigDecimal bidOverride;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -65,28 +65,6 @@ public class PromotedProduct {
 
   public PromotedProduct() {
   }
-
-  public PromotedProduct id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * A retailer defined SKU ID for the promoted product.
-   * @return id
-  **/
-  @javax.annotation.Nullable
-
-  public String getId() {
-    return id;
-  }
-
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
 
   public PromotedProduct bidOverride(BigDecimal bidOverride) {
     
@@ -107,6 +85,28 @@ public class PromotedProduct {
 
   public void setBidOverride(BigDecimal bidOverride) {
     this.bidOverride = bidOverride;
+  }
+
+
+  public PromotedProduct id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * A retailer defined SKU ID for the promoted product.
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -142,8 +142,8 @@ public class PromotedProduct {
       return false;
     }
     PromotedProduct promotedProduct = (PromotedProduct) o;
-    return Objects.equals(this.id, promotedProduct.id) &&
-        Objects.equals(this.bidOverride, promotedProduct.bidOverride) &&
+    return Objects.equals(this.bidOverride, promotedProduct.bidOverride) &&
+        Objects.equals(this.id, promotedProduct.id) &&
         Objects.equals(this.status, promotedProduct.status);
   }
 
@@ -153,7 +153,7 @@ public class PromotedProduct {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, bidOverride, status);
+    return Objects.hash(bidOverride, id, status);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -167,8 +167,8 @@ public class PromotedProduct {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PromotedProduct {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    bidOverride: ").append(toIndentedString(bidOverride)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -192,8 +192,8 @@ public class PromotedProduct {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("id");
     openapiFields.add("bidOverride");
+    openapiFields.add("id");
     openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)

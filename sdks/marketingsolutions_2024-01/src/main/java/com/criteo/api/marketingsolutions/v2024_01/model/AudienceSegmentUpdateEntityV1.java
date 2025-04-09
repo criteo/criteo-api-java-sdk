@@ -55,10 +55,6 @@ import com.criteo.api.marketingsolutions.v2024_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AudienceSegmentUpdateEntityV1 {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private NillableString description;
@@ -71,42 +67,24 @@ public class AudienceSegmentUpdateEntityV1 {
   @SerializedName(SERIALIZED_NAME_LOCATION)
   private LocationUpdateV1 location;
 
-  public static final String SERIALIZED_NAME_RETARGETING = "retargeting";
-  @SerializedName(SERIALIZED_NAME_RETARGETING)
-  private RetargetingUpdateV1 retargeting;
-
   public static final String SERIALIZED_NAME_LOOKALIKE = "lookalike";
   @SerializedName(SERIALIZED_NAME_LOOKALIKE)
   private LookalikeUpdateV1 lookalike;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
   public static final String SERIALIZED_NAME_PROSPECTING = "prospecting";
   @SerializedName(SERIALIZED_NAME_PROSPECTING)
   private ProspectingUpdateV1 prospecting;
 
+  public static final String SERIALIZED_NAME_RETARGETING = "retargeting";
+  @SerializedName(SERIALIZED_NAME_RETARGETING)
+  private RetargetingUpdateV1 retargeting;
+
   public AudienceSegmentUpdateEntityV1() {
   }
-
-  public AudienceSegmentUpdateEntityV1 name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Name of the segment
-   * @return name
-  **/
-  @javax.annotation.Nullable
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
 
   public AudienceSegmentUpdateEntityV1 description(NillableString description) {
     
@@ -174,28 +152,6 @@ public class AudienceSegmentUpdateEntityV1 {
   }
 
 
-  public AudienceSegmentUpdateEntityV1 retargeting(RetargetingUpdateV1 retargeting) {
-    
-    this.retargeting = retargeting;
-    return this;
-  }
-
-   /**
-   * Get retargeting
-   * @return retargeting
-  **/
-  @javax.annotation.Nullable
-
-  public RetargetingUpdateV1 getRetargeting() {
-    return retargeting;
-  }
-
-
-  public void setRetargeting(RetargetingUpdateV1 retargeting) {
-    this.retargeting = retargeting;
-  }
-
-
   public AudienceSegmentUpdateEntityV1 lookalike(LookalikeUpdateV1 lookalike) {
     
     this.lookalike = lookalike;
@@ -218,6 +174,28 @@ public class AudienceSegmentUpdateEntityV1 {
   }
 
 
+  public AudienceSegmentUpdateEntityV1 name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Name of the segment
+   * @return name
+  **/
+  @javax.annotation.Nullable
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
   public AudienceSegmentUpdateEntityV1 prospecting(ProspectingUpdateV1 prospecting) {
     
     this.prospecting = prospecting;
@@ -237,6 +215,28 @@ public class AudienceSegmentUpdateEntityV1 {
 
   public void setProspecting(ProspectingUpdateV1 prospecting) {
     this.prospecting = prospecting;
+  }
+
+
+  public AudienceSegmentUpdateEntityV1 retargeting(RetargetingUpdateV1 retargeting) {
+    
+    this.retargeting = retargeting;
+    return this;
+  }
+
+   /**
+   * Get retargeting
+   * @return retargeting
+  **/
+  @javax.annotation.Nullable
+
+  public RetargetingUpdateV1 getRetargeting() {
+    return retargeting;
+  }
+
+
+  public void setRetargeting(RetargetingUpdateV1 retargeting) {
+    this.retargeting = retargeting;
   }
 
   /**
@@ -294,13 +294,13 @@ public class AudienceSegmentUpdateEntityV1 {
       return false;
     }
     AudienceSegmentUpdateEntityV1 audienceSegmentUpdateEntityV1 = (AudienceSegmentUpdateEntityV1) o;
-    return Objects.equals(this.name, audienceSegmentUpdateEntityV1.name) &&
-        Objects.equals(this.description, audienceSegmentUpdateEntityV1.description) &&
+    return Objects.equals(this.description, audienceSegmentUpdateEntityV1.description) &&
         Objects.equals(this.inMarket, audienceSegmentUpdateEntityV1.inMarket) &&
         Objects.equals(this.location, audienceSegmentUpdateEntityV1.location) &&
-        Objects.equals(this.retargeting, audienceSegmentUpdateEntityV1.retargeting) &&
         Objects.equals(this.lookalike, audienceSegmentUpdateEntityV1.lookalike) &&
-        Objects.equals(this.prospecting, audienceSegmentUpdateEntityV1.prospecting)&&
+        Objects.equals(this.name, audienceSegmentUpdateEntityV1.name) &&
+        Objects.equals(this.prospecting, audienceSegmentUpdateEntityV1.prospecting) &&
+        Objects.equals(this.retargeting, audienceSegmentUpdateEntityV1.retargeting)&&
         Objects.equals(this.additionalProperties, audienceSegmentUpdateEntityV1.additionalProperties);
   }
 
@@ -310,7 +310,7 @@ public class AudienceSegmentUpdateEntityV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, inMarket, location, retargeting, lookalike, prospecting, additionalProperties);
+    return Objects.hash(description, inMarket, location, lookalike, name, prospecting, retargeting, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -324,13 +324,13 @@ public class AudienceSegmentUpdateEntityV1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceSegmentUpdateEntityV1 {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    inMarket: ").append(toIndentedString(inMarket)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    retargeting: ").append(toIndentedString(retargeting)).append("\n");
     sb.append("    lookalike: ").append(toIndentedString(lookalike)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    prospecting: ").append(toIndentedString(prospecting)).append("\n");
+    sb.append("    retargeting: ").append(toIndentedString(retargeting)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -354,13 +354,13 @@ public class AudienceSegmentUpdateEntityV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
     openapiFields.add("description");
     openapiFields.add("inMarket");
     openapiFields.add("location");
-    openapiFields.add("retargeting");
     openapiFields.add("lookalike");
+    openapiFields.add("name");
     openapiFields.add("prospecting");
+    openapiFields.add("retargeting");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -378,9 +378,6 @@ public class AudienceSegmentUpdateEntityV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AudienceSegmentUpdateEntityV1 is not found in the empty JSON string", AudienceSegmentUpdateEntityV1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
       // validate the optional field `description`
       if (jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) {
         NillableString.validateJsonObject(jsonObj.getAsJsonObject("description"));
@@ -393,17 +390,20 @@ public class AudienceSegmentUpdateEntityV1 {
       if (jsonObj.get("location") != null && !jsonObj.get("location").isJsonNull()) {
         LocationUpdateV1.validateJsonObject(jsonObj.getAsJsonObject("location"));
       }
-      // validate the optional field `retargeting`
-      if (jsonObj.get("retargeting") != null && !jsonObj.get("retargeting").isJsonNull()) {
-        RetargetingUpdateV1.validateJsonObject(jsonObj.getAsJsonObject("retargeting"));
-      }
       // validate the optional field `lookalike`
       if (jsonObj.get("lookalike") != null && !jsonObj.get("lookalike").isJsonNull()) {
         LookalikeUpdateV1.validateJsonObject(jsonObj.getAsJsonObject("lookalike"));
       }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
       // validate the optional field `prospecting`
       if (jsonObj.get("prospecting") != null && !jsonObj.get("prospecting").isJsonNull()) {
         ProspectingUpdateV1.validateJsonObject(jsonObj.getAsJsonObject("prospecting"));
+      }
+      // validate the optional field `retargeting`
+      if (jsonObj.get("retargeting") != null && !jsonObj.get("retargeting").isJsonNull()) {
+        RetargetingUpdateV1.validateJsonObject(jsonObj.getAsJsonObject("retargeting"));
       }
   }
 

@@ -8,8 +8,8 @@ User Behavior to include and optionally exclude.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**inclusiveSegment** | [**RmLegacySegmentUserBehaviorCreateV2**](RmLegacySegmentUserBehaviorCreateV2.md) |  |  |
 |**exclusiveSegment** | [**RmLegacySegmentUserBehaviorCreateV2**](RmLegacySegmentUserBehaviorCreateV2.md) |  |  [optional] |
+|**inclusiveSegment** | [**RmLegacySegmentUserBehaviorCreateV2**](RmLegacySegmentUserBehaviorCreateV2.md) |  |  |
 
 
 

@@ -8,8 +8,8 @@ Data model for a value type resource
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** |  |  [optional] |
 |**attributes** | [**ExternalAddToBasketIdsUpdateModel202110**](ExternalAddToBasketIdsUpdateModel202110.md) |  |  [optional] |
+|**type** | **String** |  |  [optional] |
 
 
 

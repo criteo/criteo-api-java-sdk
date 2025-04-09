@@ -49,6 +49,81 @@ import com.criteo.api.marketingsolutions.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CriteoApiWarning {
+  /**
+   * A machine-readable error code string in kabab-case. Unique across Criteo
+   */
+  @JsonAdapter(CodeEnum.Adapter.class)
+  public enum CodeEnum {
+    INTERNAL_ERROR("internal-error"),
+    
+    DEPRECATED_FIELD("deprecated-field"),
+    
+    ENDPOINT_DEPRECATED("endpoint-deprecated"),
+    
+    REQUIRED_FIELD("required-field"),
+    
+    INVALID_DATE_FORMAT("invalid-date-format"),
+    
+    INVALID("invalid"),
+    
+    INVALID_RANGED("invalid-ranged"),
+    
+    INVALID_TIMESPAN("invalid-timespan");
+
+    private String value;
+
+    CodeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static CodeEnum fromValue(String value) {
+      for (CodeEnum b : CodeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<CodeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final CodeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public CodeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return CodeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CODE = "code";
+  @SerializedName(SERIALIZED_NAME_CODE)
+  private CodeEnum code;
+
+  public static final String SERIALIZED_NAME_DETAIL = "detail";
+  @SerializedName(SERIALIZED_NAME_DETAIL)
+  private String detail;
+
+  public static final String SERIALIZED_NAME_INSTANCE = "instance";
+  @SerializedName(SERIALIZED_NAME_INSTANCE)
+  private String instance;
+
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
+
   public static final String SERIALIZED_NAME_TRACE_ID = "traceId";
   @SerializedName(SERIALIZED_NAME_TRACE_ID)
   private String traceId;
@@ -114,127 +189,8 @@ public class CriteoApiWarning {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
-  /**
-   * A machine-readable error code string in kabab-case. Unique across Criteo
-   */
-  @JsonAdapter(CodeEnum.Adapter.class)
-  public enum CodeEnum {
-    INTERNAL_ERROR("internal-error"),
-    
-    DEPRECATED_FIELD("deprecated-field"),
-    
-    ENDPOINT_DEPRECATED("endpoint-deprecated"),
-    
-    REQUIRED_FIELD("required-field"),
-    
-    INVALID_DATE_FORMAT("invalid-date-format"),
-    
-    INVALID("invalid"),
-    
-    INVALID_RANGED("invalid-ranged"),
-    
-    INVALID_TIMESPAN("invalid-timespan");
-
-    private String value;
-
-    CodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static CodeEnum fromValue(String value) {
-      for (CodeEnum b : CodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<CodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final CodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public CodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return CodeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  private CodeEnum code;
-
-  public static final String SERIALIZED_NAME_INSTANCE = "instance";
-  @SerializedName(SERIALIZED_NAME_INSTANCE)
-  private String instance;
-
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
-
-  public static final String SERIALIZED_NAME_DETAIL = "detail";
-  @SerializedName(SERIALIZED_NAME_DETAIL)
-  private String detail;
-
   public CriteoApiWarning() {
   }
-
-  public CriteoApiWarning traceId(String traceId) {
-    
-    this.traceId = traceId;
-    return this;
-  }
-
-   /**
-   * The correlation ID provided by the gateway
-   * @return traceId
-  **/
-  @javax.annotation.Nullable
-
-  public String getTraceId() {
-    return traceId;
-  }
-
-
-  public void setTraceId(String traceId) {
-    this.traceId = traceId;
-  }
-
-
-  public CriteoApiWarning type(TypeEnum type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * A machine-readable code specifying error category
-   * @return type
-  **/
-  @javax.annotation.Nullable
-
-  public TypeEnum getType() {
-    return type;
-  }
-
-
-  public void setType(TypeEnum type) {
-    this.type = type;
-  }
-
 
   public CriteoApiWarning code(CodeEnum code) {
     
@@ -255,6 +211,28 @@ public class CriteoApiWarning {
 
   public void setCode(CodeEnum code) {
     this.code = code;
+  }
+
+
+  public CriteoApiWarning detail(String detail) {
+    
+    this.detail = detail;
+    return this;
+  }
+
+   /**
+   * A human-readable explanation specific to this occurrence of the problem.
+   * @return detail
+  **/
+  @javax.annotation.Nullable
+
+  public String getDetail() {
+    return detail;
+  }
+
+
+  public void setDetail(String detail) {
+    this.detail = detail;
   }
 
 
@@ -302,25 +280,47 @@ public class CriteoApiWarning {
   }
 
 
-  public CriteoApiWarning detail(String detail) {
+  public CriteoApiWarning traceId(String traceId) {
     
-    this.detail = detail;
+    this.traceId = traceId;
     return this;
   }
 
    /**
-   * A human-readable explanation specific to this occurrence of the problem.
-   * @return detail
+   * The correlation ID provided by the gateway
+   * @return traceId
   **/
   @javax.annotation.Nullable
 
-  public String getDetail() {
-    return detail;
+  public String getTraceId() {
+    return traceId;
   }
 
 
-  public void setDetail(String detail) {
-    this.detail = detail;
+  public void setTraceId(String traceId) {
+    this.traceId = traceId;
+  }
+
+
+  public CriteoApiWarning type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * A machine-readable code specifying error category
+   * @return type
+  **/
+  @javax.annotation.Nullable
+
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
   }
 
   /**
@@ -378,12 +378,12 @@ public class CriteoApiWarning {
       return false;
     }
     CriteoApiWarning criteoApiWarning = (CriteoApiWarning) o;
-    return Objects.equals(this.traceId, criteoApiWarning.traceId) &&
-        Objects.equals(this.type, criteoApiWarning.type) &&
-        Objects.equals(this.code, criteoApiWarning.code) &&
+    return Objects.equals(this.code, criteoApiWarning.code) &&
+        Objects.equals(this.detail, criteoApiWarning.detail) &&
         Objects.equals(this.instance, criteoApiWarning.instance) &&
         Objects.equals(this.title, criteoApiWarning.title) &&
-        Objects.equals(this.detail, criteoApiWarning.detail)&&
+        Objects.equals(this.traceId, criteoApiWarning.traceId) &&
+        Objects.equals(this.type, criteoApiWarning.type)&&
         Objects.equals(this.additionalProperties, criteoApiWarning.additionalProperties);
   }
 
@@ -393,7 +393,7 @@ public class CriteoApiWarning {
 
   @Override
   public int hashCode() {
-    return Objects.hash(traceId, type, code, instance, title, detail, additionalProperties);
+    return Objects.hash(code, detail, instance, title, traceId, type, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -407,12 +407,12 @@ public class CriteoApiWarning {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CriteoApiWarning {\n");
-    sb.append("    traceId: ").append(toIndentedString(traceId)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
     sb.append("    instance: ").append(toIndentedString(instance)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
+    sb.append("    traceId: ").append(toIndentedString(traceId)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -436,12 +436,12 @@ public class CriteoApiWarning {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("traceId");
-    openapiFields.add("type");
     openapiFields.add("code");
+    openapiFields.add("detail");
     openapiFields.add("instance");
     openapiFields.add("title");
-    openapiFields.add("detail");
+    openapiFields.add("traceId");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -459,14 +459,11 @@ public class CriteoApiWarning {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CriteoApiWarning is not found in the empty JSON string", CriteoApiWarning.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("traceId") != null && !jsonObj.get("traceId").isJsonNull()) && !jsonObj.get("traceId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `traceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("traceId").toString()));
-      }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      }
+      if ((jsonObj.get("detail") != null && !jsonObj.get("detail").isJsonNull()) && !jsonObj.get("detail").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `detail` to be a primitive type in the JSON string but got `%s`", jsonObj.get("detail").toString()));
       }
       if ((jsonObj.get("instance") != null && !jsonObj.get("instance").isJsonNull()) && !jsonObj.get("instance").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instance").toString()));
@@ -474,8 +471,11 @@ public class CriteoApiWarning {
       if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
       }
-      if ((jsonObj.get("detail") != null && !jsonObj.get("detail").isJsonNull()) && !jsonObj.get("detail").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `detail` to be a primitive type in the JSON string but got `%s`", jsonObj.get("detail").toString()));
+      if ((jsonObj.get("traceId") != null && !jsonObj.get("traceId").isJsonNull()) && !jsonObj.get("traceId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `traceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("traceId").toString()));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

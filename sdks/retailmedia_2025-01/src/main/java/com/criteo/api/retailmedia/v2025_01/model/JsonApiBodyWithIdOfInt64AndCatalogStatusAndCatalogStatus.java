@@ -49,6 +49,10 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private ExternalCatalogStatus attributes;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -57,12 +61,30 @@ public class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private ExternalCatalogStatus attributes;
-
   public JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus() {
   }
+
+  public JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus attributes(ExternalCatalogStatus attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+
+  public ExternalCatalogStatus getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(ExternalCatalogStatus attributes) {
+    this.attributes = attributes;
+  }
+
 
   public JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus id(String id) {
     
@@ -105,28 +127,6 @@ public class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus {
 
   public void setType(String type) {
     this.type = type;
-  }
-
-
-  public JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus attributes(ExternalCatalogStatus attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @javax.annotation.Nullable
-
-  public ExternalCatalogStatus getAttributes() {
-    return attributes;
-  }
-
-
-  public void setAttributes(ExternalCatalogStatus attributes) {
-    this.attributes = attributes;
   }
 
   /**
@@ -184,24 +184,24 @@ public class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus {
       return false;
     }
     JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus jsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus = (JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus) o;
-    return Objects.equals(this.id, jsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus.id) &&
-        Objects.equals(this.type, jsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus.type) &&
-        Objects.equals(this.attributes, jsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus.attributes)&&
+    return Objects.equals(this.attributes, jsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus.attributes) &&
+        Objects.equals(this.id, jsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus.id) &&
+        Objects.equals(this.type, jsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus.type)&&
         Objects.equals(this.additionalProperties, jsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, attributes, additionalProperties);
+    return Objects.hash(attributes, id, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -225,9 +225,9 @@ public class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("attributes");
     openapiFields.add("id");
     openapiFields.add("type");
-    openapiFields.add("attributes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -254,15 +254,15 @@ public class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      // validate the optional field `attributes`
+      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
+        ExternalCatalogStatus.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
       if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        ExternalCatalogStatus.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
   }
 

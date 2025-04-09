@@ -53,21 +53,25 @@ import com.criteo.api.marketingsolutions.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReadAdSetV24Q1 {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
   public static final String SERIALIZED_NAME_ADVERTISER_ID = "advertiserId";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_ID)
   private String advertiserId;
 
-  public static final String SERIALIZED_NAME_DATASET_ID = "datasetId";
-  @SerializedName(SERIALIZED_NAME_DATASET_ID)
-  private String datasetId;
+  public static final String SERIALIZED_NAME_BIDDING = "bidding";
+  @SerializedName(SERIALIZED_NAME_BIDDING)
+  private ReadAdSetBiddingV24Q1 bidding;
+
+  public static final String SERIALIZED_NAME_BUDGET = "budget";
+  @SerializedName(SERIALIZED_NAME_BUDGET)
+  private ReadAdSetBudgetV24Q1 budget;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
   private String campaignId;
+
+  public static final String SERIALIZED_NAME_DATASET_ID = "datasetId";
+  @SerializedName(SERIALIZED_NAME_DATASET_ID)
+  private String datasetId;
 
   /**
    * Gets or Sets destinationEnvironment
@@ -121,6 +125,61 @@ public class ReadAdSetV24Q1 {
   public static final String SERIALIZED_NAME_DESTINATION_ENVIRONMENT = "destinationEnvironment";
   @SerializedName(SERIALIZED_NAME_DESTINATION_ENVIRONMENT)
   private DestinationEnvironmentEnum destinationEnvironment;
+
+  /**
+   * Gets or Sets mediaType
+   */
+  @JsonAdapter(MediaTypeEnum.Adapter.class)
+  public enum MediaTypeEnum {
+    DISPLAY("display"),
+    
+    VIDEO("video");
+
+    private String value;
+
+    MediaTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static MediaTypeEnum fromValue(String value) {
+      for (MediaTypeEnum b : MediaTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<MediaTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final MediaTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public MediaTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return MediaTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_MEDIA_TYPE = "mediaType";
+  @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
+  private MediaTypeEnum mediaType;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
   /**
    * Gets or Sets objective
@@ -195,68 +254,9 @@ public class ReadAdSetV24Q1 {
   @SerializedName(SERIALIZED_NAME_SCHEDULE)
   private ReadAdSetScheduleV24Q1 schedule;
 
-  public static final String SERIALIZED_NAME_BIDDING = "bidding";
-  @SerializedName(SERIALIZED_NAME_BIDDING)
-  private ReadAdSetBiddingV24Q1 bidding;
-
   public static final String SERIALIZED_NAME_TARGETING = "targeting";
   @SerializedName(SERIALIZED_NAME_TARGETING)
   private AdSetTargetingV24Q1 targeting;
-
-  public static final String SERIALIZED_NAME_BUDGET = "budget";
-  @SerializedName(SERIALIZED_NAME_BUDGET)
-  private ReadAdSetBudgetV24Q1 budget;
-
-  /**
-   * Gets or Sets mediaType
-   */
-  @JsonAdapter(MediaTypeEnum.Adapter.class)
-  public enum MediaTypeEnum {
-    DISPLAY("display"),
-    
-    VIDEO("video");
-
-    private String value;
-
-    MediaTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static MediaTypeEnum fromValue(String value) {
-      for (MediaTypeEnum b : MediaTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<MediaTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final MediaTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public MediaTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return MediaTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_MEDIA_TYPE = "mediaType";
-  @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
-  private MediaTypeEnum mediaType;
 
   /**
    * Gets or Sets videoChannel
@@ -312,28 +312,6 @@ public class ReadAdSetV24Q1 {
   public ReadAdSetV24Q1() {
   }
 
-  public ReadAdSetV24Q1 name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nullable
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
   public ReadAdSetV24Q1 advertiserId(String advertiserId) {
     
     this.advertiserId = advertiserId;
@@ -356,25 +334,47 @@ public class ReadAdSetV24Q1 {
   }
 
 
-  public ReadAdSetV24Q1 datasetId(String datasetId) {
+  public ReadAdSetV24Q1 bidding(ReadAdSetBiddingV24Q1 bidding) {
     
-    this.datasetId = datasetId;
+    this.bidding = bidding;
     return this;
   }
 
    /**
-   * Get datasetId
-   * @return datasetId
+   * Get bidding
+   * @return bidding
   **/
   @javax.annotation.Nullable
 
-  public String getDatasetId() {
-    return datasetId;
+  public ReadAdSetBiddingV24Q1 getBidding() {
+    return bidding;
   }
 
 
-  public void setDatasetId(String datasetId) {
-    this.datasetId = datasetId;
+  public void setBidding(ReadAdSetBiddingV24Q1 bidding) {
+    this.bidding = bidding;
+  }
+
+
+  public ReadAdSetV24Q1 budget(ReadAdSetBudgetV24Q1 budget) {
+    
+    this.budget = budget;
+    return this;
+  }
+
+   /**
+   * Get budget
+   * @return budget
+  **/
+  @javax.annotation.Nullable
+
+  public ReadAdSetBudgetV24Q1 getBudget() {
+    return budget;
+  }
+
+
+  public void setBudget(ReadAdSetBudgetV24Q1 budget) {
+    this.budget = budget;
   }
 
 
@@ -400,6 +400,28 @@ public class ReadAdSetV24Q1 {
   }
 
 
+  public ReadAdSetV24Q1 datasetId(String datasetId) {
+    
+    this.datasetId = datasetId;
+    return this;
+  }
+
+   /**
+   * Get datasetId
+   * @return datasetId
+  **/
+  @javax.annotation.Nullable
+
+  public String getDatasetId() {
+    return datasetId;
+  }
+
+
+  public void setDatasetId(String datasetId) {
+    this.datasetId = datasetId;
+  }
+
+
   public ReadAdSetV24Q1 destinationEnvironment(DestinationEnvironmentEnum destinationEnvironment) {
     
     this.destinationEnvironment = destinationEnvironment;
@@ -419,6 +441,50 @@ public class ReadAdSetV24Q1 {
 
   public void setDestinationEnvironment(DestinationEnvironmentEnum destinationEnvironment) {
     this.destinationEnvironment = destinationEnvironment;
+  }
+
+
+  public ReadAdSetV24Q1 mediaType(MediaTypeEnum mediaType) {
+    
+    this.mediaType = mediaType;
+    return this;
+  }
+
+   /**
+   * Get mediaType
+   * @return mediaType
+  **/
+  @javax.annotation.Nullable
+
+  public MediaTypeEnum getMediaType() {
+    return mediaType;
+  }
+
+
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+  }
+
+
+  public ReadAdSetV24Q1 name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @javax.annotation.Nullable
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -466,28 +532,6 @@ public class ReadAdSetV24Q1 {
   }
 
 
-  public ReadAdSetV24Q1 bidding(ReadAdSetBiddingV24Q1 bidding) {
-    
-    this.bidding = bidding;
-    return this;
-  }
-
-   /**
-   * Get bidding
-   * @return bidding
-  **/
-  @javax.annotation.Nullable
-
-  public ReadAdSetBiddingV24Q1 getBidding() {
-    return bidding;
-  }
-
-
-  public void setBidding(ReadAdSetBiddingV24Q1 bidding) {
-    this.bidding = bidding;
-  }
-
-
   public ReadAdSetV24Q1 targeting(AdSetTargetingV24Q1 targeting) {
     
     this.targeting = targeting;
@@ -507,50 +551,6 @@ public class ReadAdSetV24Q1 {
 
   public void setTargeting(AdSetTargetingV24Q1 targeting) {
     this.targeting = targeting;
-  }
-
-
-  public ReadAdSetV24Q1 budget(ReadAdSetBudgetV24Q1 budget) {
-    
-    this.budget = budget;
-    return this;
-  }
-
-   /**
-   * Get budget
-   * @return budget
-  **/
-  @javax.annotation.Nullable
-
-  public ReadAdSetBudgetV24Q1 getBudget() {
-    return budget;
-  }
-
-
-  public void setBudget(ReadAdSetBudgetV24Q1 budget) {
-    this.budget = budget;
-  }
-
-
-  public ReadAdSetV24Q1 mediaType(MediaTypeEnum mediaType) {
-    
-    this.mediaType = mediaType;
-    return this;
-  }
-
-   /**
-   * Get mediaType
-   * @return mediaType
-  **/
-  @javax.annotation.Nullable
-
-  public MediaTypeEnum getMediaType() {
-    return mediaType;
-  }
-
-
-  public void setMediaType(MediaTypeEnum mediaType) {
-    this.mediaType = mediaType;
   }
 
 
@@ -630,17 +630,17 @@ public class ReadAdSetV24Q1 {
       return false;
     }
     ReadAdSetV24Q1 readAdSetV24Q1 = (ReadAdSetV24Q1) o;
-    return Objects.equals(this.name, readAdSetV24Q1.name) &&
-        Objects.equals(this.advertiserId, readAdSetV24Q1.advertiserId) &&
-        Objects.equals(this.datasetId, readAdSetV24Q1.datasetId) &&
+    return Objects.equals(this.advertiserId, readAdSetV24Q1.advertiserId) &&
+        Objects.equals(this.bidding, readAdSetV24Q1.bidding) &&
+        Objects.equals(this.budget, readAdSetV24Q1.budget) &&
         Objects.equals(this.campaignId, readAdSetV24Q1.campaignId) &&
+        Objects.equals(this.datasetId, readAdSetV24Q1.datasetId) &&
         Objects.equals(this.destinationEnvironment, readAdSetV24Q1.destinationEnvironment) &&
+        Objects.equals(this.mediaType, readAdSetV24Q1.mediaType) &&
+        Objects.equals(this.name, readAdSetV24Q1.name) &&
         Objects.equals(this.objective, readAdSetV24Q1.objective) &&
         Objects.equals(this.schedule, readAdSetV24Q1.schedule) &&
-        Objects.equals(this.bidding, readAdSetV24Q1.bidding) &&
         Objects.equals(this.targeting, readAdSetV24Q1.targeting) &&
-        Objects.equals(this.budget, readAdSetV24Q1.budget) &&
-        Objects.equals(this.mediaType, readAdSetV24Q1.mediaType) &&
         Objects.equals(this.videoChannel, readAdSetV24Q1.videoChannel)&&
         Objects.equals(this.additionalProperties, readAdSetV24Q1.additionalProperties);
   }
@@ -651,7 +651,7 @@ public class ReadAdSetV24Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, advertiserId, datasetId, campaignId, destinationEnvironment, objective, schedule, bidding, targeting, budget, mediaType, videoChannel, additionalProperties);
+    return Objects.hash(advertiserId, bidding, budget, campaignId, datasetId, destinationEnvironment, mediaType, name, objective, schedule, targeting, videoChannel, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -665,17 +665,17 @@ public class ReadAdSetV24Q1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReadAdSetV24Q1 {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
-    sb.append("    datasetId: ").append(toIndentedString(datasetId)).append("\n");
+    sb.append("    bidding: ").append(toIndentedString(bidding)).append("\n");
+    sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    datasetId: ").append(toIndentedString(datasetId)).append("\n");
     sb.append("    destinationEnvironment: ").append(toIndentedString(destinationEnvironment)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    objective: ").append(toIndentedString(objective)).append("\n");
     sb.append("    schedule: ").append(toIndentedString(schedule)).append("\n");
-    sb.append("    bidding: ").append(toIndentedString(bidding)).append("\n");
     sb.append("    targeting: ").append(toIndentedString(targeting)).append("\n");
-    sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
-    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("    videoChannel: ").append(toIndentedString(videoChannel)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -700,17 +700,17 @@ public class ReadAdSetV24Q1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
     openapiFields.add("advertiserId");
-    openapiFields.add("datasetId");
+    openapiFields.add("bidding");
+    openapiFields.add("budget");
     openapiFields.add("campaignId");
+    openapiFields.add("datasetId");
     openapiFields.add("destinationEnvironment");
+    openapiFields.add("mediaType");
+    openapiFields.add("name");
     openapiFields.add("objective");
     openapiFields.add("schedule");
-    openapiFields.add("bidding");
     openapiFields.add("targeting");
-    openapiFields.add("budget");
-    openapiFields.add("mediaType");
     openapiFields.add("videoChannel");
 
     // a set of required properties/fields (JSON key names)
@@ -729,20 +729,31 @@ public class ReadAdSetV24Q1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ReadAdSetV24Q1 is not found in the empty JSON string", ReadAdSetV24Q1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
       if ((jsonObj.get("advertiserId") != null && !jsonObj.get("advertiserId").isJsonNull()) && !jsonObj.get("advertiserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserId").toString()));
       }
-      if ((jsonObj.get("datasetId") != null && !jsonObj.get("datasetId").isJsonNull()) && !jsonObj.get("datasetId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `datasetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("datasetId").toString()));
+      // validate the optional field `bidding`
+      if (jsonObj.get("bidding") != null && !jsonObj.get("bidding").isJsonNull()) {
+        ReadAdSetBiddingV24Q1.validateJsonObject(jsonObj.getAsJsonObject("bidding"));
+      }
+      // validate the optional field `budget`
+      if (jsonObj.get("budget") != null && !jsonObj.get("budget").isJsonNull()) {
+        ReadAdSetBudgetV24Q1.validateJsonObject(jsonObj.getAsJsonObject("budget"));
       }
       if ((jsonObj.get("campaignId") != null && !jsonObj.get("campaignId").isJsonNull()) && !jsonObj.get("campaignId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
       }
+      if ((jsonObj.get("datasetId") != null && !jsonObj.get("datasetId").isJsonNull()) && !jsonObj.get("datasetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `datasetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("datasetId").toString()));
+      }
       if ((jsonObj.get("destinationEnvironment") != null && !jsonObj.get("destinationEnvironment").isJsonNull()) && !jsonObj.get("destinationEnvironment").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `destinationEnvironment` to be a primitive type in the JSON string but got `%s`", jsonObj.get("destinationEnvironment").toString()));
+      }
+      if ((jsonObj.get("mediaType") != null && !jsonObj.get("mediaType").isJsonNull()) && !jsonObj.get("mediaType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `mediaType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mediaType").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("objective") != null && !jsonObj.get("objective").isJsonNull()) && !jsonObj.get("objective").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `objective` to be a primitive type in the JSON string but got `%s`", jsonObj.get("objective").toString()));
@@ -751,20 +762,9 @@ public class ReadAdSetV24Q1 {
       if (jsonObj.get("schedule") != null && !jsonObj.get("schedule").isJsonNull()) {
         ReadAdSetScheduleV24Q1.validateJsonObject(jsonObj.getAsJsonObject("schedule"));
       }
-      // validate the optional field `bidding`
-      if (jsonObj.get("bidding") != null && !jsonObj.get("bidding").isJsonNull()) {
-        ReadAdSetBiddingV24Q1.validateJsonObject(jsonObj.getAsJsonObject("bidding"));
-      }
       // validate the optional field `targeting`
       if (jsonObj.get("targeting") != null && !jsonObj.get("targeting").isJsonNull()) {
         AdSetTargetingV24Q1.validateJsonObject(jsonObj.getAsJsonObject("targeting"));
-      }
-      // validate the optional field `budget`
-      if (jsonObj.get("budget") != null && !jsonObj.get("budget").isJsonNull()) {
-        ReadAdSetBudgetV24Q1.validateJsonObject(jsonObj.getAsJsonObject("budget"));
-      }
-      if ((jsonObj.get("mediaType") != null && !jsonObj.get("mediaType").isJsonNull()) && !jsonObj.get("mediaType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `mediaType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mediaType").toString()));
       }
       if ((jsonObj.get("videoChannel") != null && !jsonObj.get("videoChannel").isJsonNull()) && !jsonObj.get("videoChannel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `videoChannel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("videoChannel").toString()));

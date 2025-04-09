@@ -51,16 +51,38 @@ import com.criteo.api.marketingsolutions.v2024_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ImageSetBase64 {
-  public static final String SERIALIZED_NAME_IMAGE_BASE64_STRINGS = "imageBase64Strings";
-  @SerializedName(SERIALIZED_NAME_IMAGE_BASE64_STRINGS)
-  private List<String> imageBase64Strings = new ArrayList<>();
-
   public static final String SERIALIZED_NAME_HEADLINE_TEXT = "headlineText";
   @SerializedName(SERIALIZED_NAME_HEADLINE_TEXT)
   private String headlineText;
 
+  public static final String SERIALIZED_NAME_IMAGE_BASE64_STRINGS = "imageBase64Strings";
+  @SerializedName(SERIALIZED_NAME_IMAGE_BASE64_STRINGS)
+  private List<String> imageBase64Strings = new ArrayList<>();
+
   public ImageSetBase64() {
   }
+
+  public ImageSetBase64 headlineText(String headlineText) {
+    
+    this.headlineText = headlineText;
+    return this;
+  }
+
+   /**
+   * The headline of the image set
+   * @return headlineText
+  **/
+  @javax.annotation.Nullable
+
+  public String getHeadlineText() {
+    return headlineText;
+  }
+
+
+  public void setHeadlineText(String headlineText) {
+    this.headlineText = headlineText;
+  }
+
 
   public ImageSetBase64 imageBase64Strings(List<String> imageBase64Strings) {
     
@@ -86,28 +108,6 @@ public class ImageSetBase64 {
 
   public void setImageBase64Strings(List<String> imageBase64Strings) {
     this.imageBase64Strings = imageBase64Strings;
-  }
-
-
-  public ImageSetBase64 headlineText(String headlineText) {
-    
-    this.headlineText = headlineText;
-    return this;
-  }
-
-   /**
-   * The headline of the image set
-   * @return headlineText
-  **/
-  @javax.annotation.Nullable
-
-  public String getHeadlineText() {
-    return headlineText;
-  }
-
-
-  public void setHeadlineText(String headlineText) {
-    this.headlineText = headlineText;
   }
 
   /**
@@ -165,8 +165,8 @@ public class ImageSetBase64 {
       return false;
     }
     ImageSetBase64 imageSetBase64 = (ImageSetBase64) o;
-    return Objects.equals(this.imageBase64Strings, imageSetBase64.imageBase64Strings) &&
-        Objects.equals(this.headlineText, imageSetBase64.headlineText)&&
+    return Objects.equals(this.headlineText, imageSetBase64.headlineText) &&
+        Objects.equals(this.imageBase64Strings, imageSetBase64.imageBase64Strings)&&
         Objects.equals(this.additionalProperties, imageSetBase64.additionalProperties);
   }
 
@@ -176,7 +176,7 @@ public class ImageSetBase64 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(imageBase64Strings, headlineText, additionalProperties);
+    return Objects.hash(headlineText, imageBase64Strings, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -190,8 +190,8 @@ public class ImageSetBase64 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ImageSetBase64 {\n");
-    sb.append("    imageBase64Strings: ").append(toIndentedString(imageBase64Strings)).append("\n");
     sb.append("    headlineText: ").append(toIndentedString(headlineText)).append("\n");
+    sb.append("    imageBase64Strings: ").append(toIndentedString(imageBase64Strings)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -215,8 +215,8 @@ public class ImageSetBase64 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("imageBase64Strings");
     openapiFields.add("headlineText");
+    openapiFields.add("imageBase64Strings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -242,14 +242,14 @@ public class ImageSetBase64 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      if ((jsonObj.get("headlineText") != null && !jsonObj.get("headlineText").isJsonNull()) && !jsonObj.get("headlineText").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `headlineText` to be a primitive type in the JSON string but got `%s`", jsonObj.get("headlineText").toString()));
+      }
       // ensure the required json array is present
       if (jsonObj.get("imageBase64Strings") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("imageBase64Strings").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `imageBase64Strings` to be an array in the JSON string but got `%s`", jsonObj.get("imageBase64Strings").toString()));
-      }
-      if ((jsonObj.get("headlineText") != null && !jsonObj.get("headlineText").isJsonNull()) && !jsonObj.get("headlineText").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `headlineText` to be a primitive type in the JSON string but got `%s`", jsonObj.get("headlineText").toString()));
       }
   }
 

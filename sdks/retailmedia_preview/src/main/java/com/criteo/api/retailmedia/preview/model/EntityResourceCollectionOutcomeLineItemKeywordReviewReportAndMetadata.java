@@ -54,56 +54,34 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata {
-  public static final String SERIALIZED_NAME_META = "meta";
-  @SerializedName(SERIALIZED_NAME_META)
-  private Metadata meta;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<EntityResourceLineItemKeywordReviewReport> data = null;
 
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<SdkApiRestCommonProblem> warnings = null;
-
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<SdkApiRestCommonProblem> errors = null;
+
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private Metadata meta;
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<SdkApiRestCommonProblem> warnings = null;
 
   public EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata() {
   }
 
   
   public EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata(
-     List<SdkApiRestCommonProblem> warnings, 
-     List<SdkApiRestCommonProblem> errors
+     List<SdkApiRestCommonProblem> errors, 
+     List<SdkApiRestCommonProblem> warnings
   ) {
     this();
-    this.warnings = warnings;
     this.errors = errors;
+    this.warnings = warnings;
   }
-
-  public EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata meta(Metadata meta) {
-    
-    this.meta = meta;
-    return this;
-  }
-
-   /**
-   * Get meta
-   * @return meta
-  **/
-  @javax.annotation.Nullable
-
-  public Metadata getMeta() {
-    return meta;
-  }
-
-
-  public void setMeta(Metadata meta) {
-    this.meta = meta;
-  }
-
 
   public EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata data(List<EntityResourceLineItemKeywordReviewReport> data) {
     
@@ -136,19 +114,6 @@ public class EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetada
 
 
    /**
-   * Warnings that occured during this call.
-   * @return warnings
-  **/
-  @javax.annotation.Nullable
-
-  public List<SdkApiRestCommonProblem> getWarnings() {
-    return warnings;
-  }
-
-
-
-
-   /**
    * Errors that occured during this call.
    * @return errors
   **/
@@ -156,6 +121,41 @@ public class EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetada
 
   public List<SdkApiRestCommonProblem> getErrors() {
     return errors;
+  }
+
+
+
+
+  public EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata meta(Metadata meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nullable
+
+  public Metadata getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(Metadata meta) {
+    this.meta = meta;
+  }
+
+
+   /**
+   * Warnings that occured during this call.
+   * @return warnings
+  **/
+  @javax.annotation.Nullable
+
+  public List<SdkApiRestCommonProblem> getWarnings() {
+    return warnings;
   }
 
 
@@ -171,10 +171,10 @@ public class EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetada
       return false;
     }
     EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata entityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata = (EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata) o;
-    return Objects.equals(this.meta, entityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata.meta) &&
-        Objects.equals(this.data, entityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata.data) &&
-        Objects.equals(this.warnings, entityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata.warnings) &&
-        Objects.equals(this.errors, entityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata.errors);
+    return Objects.equals(this.data, entityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata.data) &&
+        Objects.equals(this.errors, entityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata.errors) &&
+        Objects.equals(this.meta, entityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata.meta) &&
+        Objects.equals(this.warnings, entityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata.warnings);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -183,7 +183,7 @@ public class EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetada
 
   @Override
   public int hashCode() {
-    return Objects.hash(meta, data, warnings, errors);
+    return Objects.hash(data, errors, meta, warnings);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -197,10 +197,10 @@ public class EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetada
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata {\n");
-    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -223,10 +223,10 @@ public class EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetada
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("meta");
     openapiFields.add("data");
-    openapiFields.add("warnings");
     openapiFields.add("errors");
+    openapiFields.add("meta");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -252,10 +252,6 @@ public class EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetada
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      // validate the optional field `meta`
-      if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
-        Metadata.validateJsonObject(jsonObj.getAsJsonObject("meta"));
-      }
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
         if (jsonArraydata != null) {
@@ -270,20 +266,6 @@ public class EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetada
           };
         }
       }
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
-        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
-        if (jsonArraywarnings != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("warnings").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-          }
-
-          // validate the optional field `warnings` (array)
-          for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            SdkApiRestCommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
-          };
-        }
-      }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
         if (jsonArrayerrors != null) {
@@ -295,6 +277,24 @@ public class EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetada
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
             SdkApiRestCommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+          };
+        }
+      }
+      // validate the optional field `meta`
+      if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
+        Metadata.validateJsonObject(jsonObj.getAsJsonObject("meta"));
+      }
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            SdkApiRestCommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }

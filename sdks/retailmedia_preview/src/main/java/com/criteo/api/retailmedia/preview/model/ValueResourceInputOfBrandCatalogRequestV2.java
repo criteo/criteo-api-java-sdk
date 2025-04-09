@@ -15,13 +15,14 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2;
+import com.criteo.api.retailmedia.preview.model.ValueResourceOfBrandCatalogRequestV2;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -45,18 +46,18 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * A JSON:API wrapper class to format a &lt;typeparamref name&#x3D;\&quot;TAttributes\&quot; /&gt; with Type, and Attributes properties
+ * A top-level object that encapsulates a Criteo API request for a single value objects.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class JsonApiRequestOfBrandCatalogRequestV2 {
+public class ValueResourceInputOfBrandCatalogRequestV2 {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 data;
+  private ValueResourceOfBrandCatalogRequestV2 data;
 
-  public JsonApiRequestOfBrandCatalogRequestV2() {
+  public ValueResourceInputOfBrandCatalogRequestV2() {
   }
 
-  public JsonApiRequestOfBrandCatalogRequestV2 data(JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 data) {
+  public ValueResourceInputOfBrandCatalogRequestV2 data(ValueResourceOfBrandCatalogRequestV2 data) {
     
     this.data = data;
     return this;
@@ -68,12 +69,12 @@ public class JsonApiRequestOfBrandCatalogRequestV2 {
   **/
   @javax.annotation.Nullable
 
-  public JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 getData() {
+  public ValueResourceOfBrandCatalogRequestV2 getData() {
     return data;
   }
 
 
-  public void setData(JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 data) {
+  public void setData(ValueResourceOfBrandCatalogRequestV2 data) {
     this.data = data;
   }
 
@@ -90,9 +91,9 @@ public class JsonApiRequestOfBrandCatalogRequestV2 {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the JsonApiRequestOfBrandCatalogRequestV2 instance itself
+   * @return the ValueResourceInputOfBrandCatalogRequestV2 instance itself
    */
-  public JsonApiRequestOfBrandCatalogRequestV2 putAdditionalProperty(String key, Object value) {
+  public ValueResourceInputOfBrandCatalogRequestV2 putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -131,9 +132,13 @@ public class JsonApiRequestOfBrandCatalogRequestV2 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    JsonApiRequestOfBrandCatalogRequestV2 jsonApiRequestOfBrandCatalogRequestV2 = (JsonApiRequestOfBrandCatalogRequestV2) o;
-    return Objects.equals(this.data, jsonApiRequestOfBrandCatalogRequestV2.data)&&
-        Objects.equals(this.additionalProperties, jsonApiRequestOfBrandCatalogRequestV2.additionalProperties);
+    ValueResourceInputOfBrandCatalogRequestV2 valueResourceInputOfBrandCatalogRequestV2 = (ValueResourceInputOfBrandCatalogRequestV2) o;
+    return Objects.equals(this.data, valueResourceInputOfBrandCatalogRequestV2.data)&&
+        Objects.equals(this.additionalProperties, valueResourceInputOfBrandCatalogRequestV2.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
@@ -141,10 +146,17 @@ public class JsonApiRequestOfBrandCatalogRequestV2 {
     return Objects.hash(data, additionalProperties);
   }
 
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+  }
+
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class JsonApiRequestOfBrandCatalogRequestV2 {\n");
+    sb.append("class ValueResourceInputOfBrandCatalogRequestV2 {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -179,17 +191,17 @@ public class JsonApiRequestOfBrandCatalogRequestV2 {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to JsonApiRequestOfBrandCatalogRequestV2
+  * @throws IOException if the JSON Object is invalid with respect to ValueResourceInputOfBrandCatalogRequestV2
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!JsonApiRequestOfBrandCatalogRequestV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in JsonApiRequestOfBrandCatalogRequestV2 is not found in the empty JSON string", JsonApiRequestOfBrandCatalogRequestV2.openapiRequiredFields.toString()));
+        if (!ValueResourceInputOfBrandCatalogRequestV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ValueResourceInputOfBrandCatalogRequestV2 is not found in the empty JSON string", ValueResourceInputOfBrandCatalogRequestV2.openapiRequiredFields.toString()));
         }
       }
       // validate the optional field `data`
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2.validateJsonObject(jsonObj.getAsJsonObject("data"));
+        ValueResourceOfBrandCatalogRequestV2.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
   }
 
@@ -197,16 +209,16 @@ public class JsonApiRequestOfBrandCatalogRequestV2 {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!JsonApiRequestOfBrandCatalogRequestV2.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'JsonApiRequestOfBrandCatalogRequestV2' and its subtypes
+       if (!ValueResourceInputOfBrandCatalogRequestV2.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ValueResourceInputOfBrandCatalogRequestV2' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<JsonApiRequestOfBrandCatalogRequestV2> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(JsonApiRequestOfBrandCatalogRequestV2.class));
+       final TypeAdapter<ValueResourceInputOfBrandCatalogRequestV2> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ValueResourceInputOfBrandCatalogRequestV2.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<JsonApiRequestOfBrandCatalogRequestV2>() {
+       return (TypeAdapter<T>) new TypeAdapter<ValueResourceInputOfBrandCatalogRequestV2>() {
            @Override
-           public void write(JsonWriter out, JsonApiRequestOfBrandCatalogRequestV2 value) throws IOException {
+           public void write(JsonWriter out, ValueResourceInputOfBrandCatalogRequestV2 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -229,11 +241,11 @@ public class JsonApiRequestOfBrandCatalogRequestV2 {
            }
 
            @Override
-           public JsonApiRequestOfBrandCatalogRequestV2 read(JsonReader in) throws IOException {
+           public ValueResourceInputOfBrandCatalogRequestV2 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             JsonApiRequestOfBrandCatalogRequestV2 instance = thisAdapter.fromJsonTree(jsonObj);
+             ValueResourceInputOfBrandCatalogRequestV2 instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -260,18 +272,18 @@ public class JsonApiRequestOfBrandCatalogRequestV2 {
   }
 
  /**
-  * Create an instance of JsonApiRequestOfBrandCatalogRequestV2 given an JSON string
+  * Create an instance of ValueResourceInputOfBrandCatalogRequestV2 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of JsonApiRequestOfBrandCatalogRequestV2
-  * @throws IOException if the JSON string is invalid with respect to JsonApiRequestOfBrandCatalogRequestV2
+  * @return An instance of ValueResourceInputOfBrandCatalogRequestV2
+  * @throws IOException if the JSON string is invalid with respect to ValueResourceInputOfBrandCatalogRequestV2
   */
-  public static JsonApiRequestOfBrandCatalogRequestV2 fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, JsonApiRequestOfBrandCatalogRequestV2.class);
+  public static ValueResourceInputOfBrandCatalogRequestV2 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ValueResourceInputOfBrandCatalogRequestV2.class);
   }
 
  /**
-  * Convert an instance of JsonApiRequestOfBrandCatalogRequestV2 to an JSON string
+  * Convert an instance of ValueResourceInputOfBrandCatalogRequestV2 to an JSON string
   *
   * @return JSON string
   */

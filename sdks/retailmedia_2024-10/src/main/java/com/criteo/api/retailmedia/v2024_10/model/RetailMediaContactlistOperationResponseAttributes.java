@@ -56,14 +56,6 @@ public class RetailMediaContactlistOperationResponseAttributes {
   @SerializedName(SERIALIZED_NAME_CONTACT_LIST_ID)
   private Long contactListId;
 
-  public static final String SERIALIZED_NAME_OPERATION = "operation";
-  @SerializedName(SERIALIZED_NAME_OPERATION)
-  private String operation;
-
-  public static final String SERIALIZED_NAME_REQUEST_DATE = "requestDate";
-  @SerializedName(SERIALIZED_NAME_REQUEST_DATE)
-  private OffsetDateTime requestDate;
-
   public static final String SERIALIZED_NAME_IDENTIFIER_TYPE = "identifierType";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_TYPE)
   private String identifierType;
@@ -75,6 +67,14 @@ public class RetailMediaContactlistOperationResponseAttributes {
   public static final String SERIALIZED_NAME_NB_VALID_IDENTIFIERS = "nbValidIdentifiers";
   @SerializedName(SERIALIZED_NAME_NB_VALID_IDENTIFIERS)
   private Integer nbValidIdentifiers;
+
+  public static final String SERIALIZED_NAME_OPERATION = "operation";
+  @SerializedName(SERIALIZED_NAME_OPERATION)
+  private String operation;
+
+  public static final String SERIALIZED_NAME_REQUEST_DATE = "requestDate";
+  @SerializedName(SERIALIZED_NAME_REQUEST_DATE)
+  private OffsetDateTime requestDate;
 
   public static final String SERIALIZED_NAME_SAMPLE_INVALID_IDENTIFIERS = "sampleInvalidIdentifiers";
   @SerializedName(SERIALIZED_NAME_SAMPLE_INVALID_IDENTIFIERS)
@@ -102,50 +102,6 @@ public class RetailMediaContactlistOperationResponseAttributes {
 
   public void setContactListId(Long contactListId) {
     this.contactListId = contactListId;
-  }
-
-
-  public RetailMediaContactlistOperationResponseAttributes operation(String operation) {
-    
-    this.operation = operation;
-    return this;
-  }
-
-   /**
-   * The action recorded
-   * @return operation
-  **/
-  @javax.annotation.Nonnull
-
-  public String getOperation() {
-    return operation;
-  }
-
-
-  public void setOperation(String operation) {
-    this.operation = operation;
-  }
-
-
-  public RetailMediaContactlistOperationResponseAttributes requestDate(OffsetDateTime requestDate) {
-    
-    this.requestDate = requestDate;
-    return this;
-  }
-
-   /**
-   * When the action was recorded
-   * @return requestDate
-  **/
-  @javax.annotation.Nonnull
-
-  public OffsetDateTime getRequestDate() {
-    return requestDate;
-  }
-
-
-  public void setRequestDate(OffsetDateTime requestDate) {
-    this.requestDate = requestDate;
   }
 
 
@@ -212,6 +168,50 @@ public class RetailMediaContactlistOperationResponseAttributes {
 
   public void setNbValidIdentifiers(Integer nbValidIdentifiers) {
     this.nbValidIdentifiers = nbValidIdentifiers;
+  }
+
+
+  public RetailMediaContactlistOperationResponseAttributes operation(String operation) {
+    
+    this.operation = operation;
+    return this;
+  }
+
+   /**
+   * The action recorded
+   * @return operation
+  **/
+  @javax.annotation.Nonnull
+
+  public String getOperation() {
+    return operation;
+  }
+
+
+  public void setOperation(String operation) {
+    this.operation = operation;
+  }
+
+
+  public RetailMediaContactlistOperationResponseAttributes requestDate(OffsetDateTime requestDate) {
+    
+    this.requestDate = requestDate;
+    return this;
+  }
+
+   /**
+   * When the action was recorded
+   * @return requestDate
+  **/
+  @javax.annotation.Nonnull
+
+  public OffsetDateTime getRequestDate() {
+    return requestDate;
+  }
+
+
+  public void setRequestDate(OffsetDateTime requestDate) {
+    this.requestDate = requestDate;
   }
 
 
@@ -300,11 +300,11 @@ public class RetailMediaContactlistOperationResponseAttributes {
     }
     RetailMediaContactlistOperationResponseAttributes retailMediaContactlistOperationResponseAttributes = (RetailMediaContactlistOperationResponseAttributes) o;
     return Objects.equals(this.contactListId, retailMediaContactlistOperationResponseAttributes.contactListId) &&
-        Objects.equals(this.operation, retailMediaContactlistOperationResponseAttributes.operation) &&
-        Objects.equals(this.requestDate, retailMediaContactlistOperationResponseAttributes.requestDate) &&
         Objects.equals(this.identifierType, retailMediaContactlistOperationResponseAttributes.identifierType) &&
         Objects.equals(this.nbInvalidIdentifiers, retailMediaContactlistOperationResponseAttributes.nbInvalidIdentifiers) &&
         Objects.equals(this.nbValidIdentifiers, retailMediaContactlistOperationResponseAttributes.nbValidIdentifiers) &&
+        Objects.equals(this.operation, retailMediaContactlistOperationResponseAttributes.operation) &&
+        Objects.equals(this.requestDate, retailMediaContactlistOperationResponseAttributes.requestDate) &&
         Objects.equals(this.sampleInvalidIdentifiers, retailMediaContactlistOperationResponseAttributes.sampleInvalidIdentifiers)&&
         Objects.equals(this.additionalProperties, retailMediaContactlistOperationResponseAttributes.additionalProperties);
   }
@@ -315,7 +315,7 @@ public class RetailMediaContactlistOperationResponseAttributes {
 
   @Override
   public int hashCode() {
-    return Objects.hash(contactListId, operation, requestDate, identifierType, nbInvalidIdentifiers, nbValidIdentifiers, sampleInvalidIdentifiers, additionalProperties);
+    return Objects.hash(contactListId, identifierType, nbInvalidIdentifiers, nbValidIdentifiers, operation, requestDate, sampleInvalidIdentifiers, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -330,11 +330,11 @@ public class RetailMediaContactlistOperationResponseAttributes {
     StringBuilder sb = new StringBuilder();
     sb.append("class RetailMediaContactlistOperationResponseAttributes {\n");
     sb.append("    contactListId: ").append(toIndentedString(contactListId)).append("\n");
-    sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    requestDate: ").append(toIndentedString(requestDate)).append("\n");
     sb.append("    identifierType: ").append(toIndentedString(identifierType)).append("\n");
     sb.append("    nbInvalidIdentifiers: ").append(toIndentedString(nbInvalidIdentifiers)).append("\n");
     sb.append("    nbValidIdentifiers: ").append(toIndentedString(nbValidIdentifiers)).append("\n");
+    sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
+    sb.append("    requestDate: ").append(toIndentedString(requestDate)).append("\n");
     sb.append("    sampleInvalidIdentifiers: ").append(toIndentedString(sampleInvalidIdentifiers)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -360,11 +360,11 @@ public class RetailMediaContactlistOperationResponseAttributes {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("contactListId");
-    openapiFields.add("operation");
-    openapiFields.add("requestDate");
     openapiFields.add("identifierType");
     openapiFields.add("nbInvalidIdentifiers");
     openapiFields.add("nbValidIdentifiers");
+    openapiFields.add("operation");
+    openapiFields.add("requestDate");
     openapiFields.add("sampleInvalidIdentifiers");
 
     // a set of required properties/fields (JSON key names)
@@ -393,11 +393,11 @@ public class RetailMediaContactlistOperationResponseAttributes {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("operation").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `operation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operation").toString()));
-      }
       if ((jsonObj.get("identifierType") != null && !jsonObj.get("identifierType").isJsonNull()) && !jsonObj.get("identifierType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `identifierType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierType").toString()));
+      }
+      if (!jsonObj.get("operation").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `operation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operation").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("sampleInvalidIdentifiers") != null && !jsonObj.get("sampleInvalidIdentifiers").isJsonArray()) {

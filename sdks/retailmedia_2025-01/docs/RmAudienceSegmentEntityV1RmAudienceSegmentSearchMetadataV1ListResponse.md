@@ -8,10 +8,10 @@ A top-level object that encapsulates a Criteo API response for several entities 
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**meta** | [**RmAudienceSegmentSearchMetadataV1**](RmAudienceSegmentSearchMetadataV1.md) |  |  [optional] |
 |**data** | [**List&lt;RmAudienceSegmentEntityV1Resource&gt;**](RmAudienceSegmentEntityV1Resource.md) |  |  [optional] |
-|**warnings** | [**List&lt;CommonProblem&gt;**](CommonProblem.md) |  |  [optional] [readonly] |
 |**errors** | [**List&lt;CommonProblem&gt;**](CommonProblem.md) |  |  [optional] [readonly] |
+|**meta** | [**RmAudienceSegmentSearchMetadataV1**](RmAudienceSegmentSearchMetadataV1.md) |  |  [optional] |
+|**warnings** | [**List&lt;CommonProblem&gt;**](CommonProblem.md) |  |  [optional] [readonly] |
 
 
 

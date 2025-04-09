@@ -49,6 +49,10 @@ import com.criteo.api.marketingsolutions.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReadModelAdSetIdV24Q1 {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private Object attributes;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -56,10 +60,6 @@ public class ReadModelAdSetIdV24Q1 {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
-
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private Object attributes;
 
   public ReadModelAdSetIdV24Q1() {
   }
@@ -73,6 +73,28 @@ public class ReadModelAdSetIdV24Q1 {
     this.id = id;
     this.type = type;
   }
+
+  public ReadModelAdSetIdV24Q1 attributes(Object attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * ad set id model
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+
+  public Object getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(Object attributes) {
+    this.attributes = attributes;
+  }
+
 
    /**
    * Id of the entity
@@ -98,28 +120,6 @@ public class ReadModelAdSetIdV24Q1 {
   }
 
 
-
-
-  public ReadModelAdSetIdV24Q1 attributes(Object attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * ad set id model
-   * @return attributes
-  **/
-  @javax.annotation.Nullable
-
-  public Object getAttributes() {
-    return attributes;
-  }
-
-
-  public void setAttributes(Object attributes) {
-    this.attributes = attributes;
-  }
 
   /**
    * A container for additional, undeclared properties.
@@ -176,9 +176,9 @@ public class ReadModelAdSetIdV24Q1 {
       return false;
     }
     ReadModelAdSetIdV24Q1 readModelAdSetIdV24Q1 = (ReadModelAdSetIdV24Q1) o;
-    return Objects.equals(this.id, readModelAdSetIdV24Q1.id) &&
-        Objects.equals(this.type, readModelAdSetIdV24Q1.type) &&
-        Objects.equals(this.attributes, readModelAdSetIdV24Q1.attributes)&&
+    return Objects.equals(this.attributes, readModelAdSetIdV24Q1.attributes) &&
+        Objects.equals(this.id, readModelAdSetIdV24Q1.id) &&
+        Objects.equals(this.type, readModelAdSetIdV24Q1.type)&&
         Objects.equals(this.additionalProperties, readModelAdSetIdV24Q1.additionalProperties);
   }
 
@@ -188,7 +188,7 @@ public class ReadModelAdSetIdV24Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, attributes, additionalProperties);
+    return Objects.hash(attributes, id, type, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -202,9 +202,9 @@ public class ReadModelAdSetIdV24Q1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReadModelAdSetIdV24Q1 {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -228,9 +228,9 @@ public class ReadModelAdSetIdV24Q1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("attributes");
     openapiFields.add("id");
     openapiFields.add("type");
-    openapiFields.add("attributes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

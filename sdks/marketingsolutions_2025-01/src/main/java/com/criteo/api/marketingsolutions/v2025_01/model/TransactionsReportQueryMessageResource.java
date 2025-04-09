@@ -50,38 +50,16 @@ import com.criteo.api.marketingsolutions.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TransactionsReportQueryMessageResource {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
-
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private TransactionsReportQueryMessage attributes;
 
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
   public TransactionsReportQueryMessageResource() {
   }
-
-  public TransactionsReportQueryMessageResource type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Type of the resource.
-   * @return type
-  **/
-  @javax.annotation.Nullable
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
 
   public TransactionsReportQueryMessageResource attributes(TransactionsReportQueryMessage attributes) {
     
@@ -105,6 +83,28 @@ public class TransactionsReportQueryMessageResource {
   }
 
 
+  public TransactionsReportQueryMessageResource type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Type of the resource.
+   * @return type
+  **/
+  @javax.annotation.Nullable
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -115,8 +115,8 @@ public class TransactionsReportQueryMessageResource {
       return false;
     }
     TransactionsReportQueryMessageResource transactionsReportQueryMessageResource = (TransactionsReportQueryMessageResource) o;
-    return Objects.equals(this.type, transactionsReportQueryMessageResource.type) &&
-        Objects.equals(this.attributes, transactionsReportQueryMessageResource.attributes);
+    return Objects.equals(this.attributes, transactionsReportQueryMessageResource.attributes) &&
+        Objects.equals(this.type, transactionsReportQueryMessageResource.type);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -125,7 +125,7 @@ public class TransactionsReportQueryMessageResource {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes);
+    return Objects.hash(attributes, type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -139,8 +139,8 @@ public class TransactionsReportQueryMessageResource {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TransactionsReportQueryMessageResource {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -163,8 +163,8 @@ public class TransactionsReportQueryMessageResource {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
     openapiFields.add("attributes");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -190,12 +190,12 @@ public class TransactionsReportQueryMessageResource {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TransactionsReportQueryMessageResource` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
         TransactionsReportQueryMessage.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

@@ -56,14 +56,6 @@ public class PartnerBillingReportRequestV1 {
   @SerializedName(SERIALIZED_NAME_ACCOUNT_IDS)
   private List<String> accountIds = null;
 
-  public static final String SERIALIZED_NAME_RETAILER_IDS = "retailerIds";
-  @SerializedName(SERIALIZED_NAME_RETAILER_IDS)
-  private List<Integer> retailerIds = null;
-
-  public static final String SERIALIZED_NAME_START_DATE = "startDate";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private LocalDate startDate;
-
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private LocalDate endDate;
@@ -117,7 +109,15 @@ public class PartnerBillingReportRequestV1 {
 
   public static final String SERIALIZED_NAME_FORMAT = "format";
   @SerializedName(SERIALIZED_NAME_FORMAT)
-  private FormatEnum format;
+  private FormatEnum format = FormatEnum.JSON;
+
+  public static final String SERIALIZED_NAME_RETAILER_IDS = "retailerIds";
+  @SerializedName(SERIALIZED_NAME_RETAILER_IDS)
+  private List<Integer> retailerIds = null;
+
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private LocalDate startDate;
 
   public PartnerBillingReportRequestV1() {
   }
@@ -149,6 +149,50 @@ public class PartnerBillingReportRequestV1 {
 
   public void setAccountIds(List<String> accountIds) {
     this.accountIds = accountIds;
+  }
+
+
+  public PartnerBillingReportRequestV1 endDate(LocalDate endDate) {
+    
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * End date of the report (ISO 8601 format, e.g. YYYY-MM-DD).
+   * @return endDate
+  **/
+  @javax.annotation.Nonnull
+
+  public LocalDate getEndDate() {
+    return endDate;
+  }
+
+
+  public void setEndDate(LocalDate endDate) {
+    this.endDate = endDate;
+  }
+
+
+  public PartnerBillingReportRequestV1 format(FormatEnum format) {
+    
+    this.format = format;
+    return this;
+  }
+
+   /**
+   * Format type of the report.
+   * @return format
+  **/
+  @javax.annotation.Nullable
+
+  public FormatEnum getFormat() {
+    return format;
+  }
+
+
+  public void setFormat(FormatEnum format) {
+    this.format = format;
   }
 
 
@@ -204,50 +248,6 @@ public class PartnerBillingReportRequestV1 {
   }
 
 
-  public PartnerBillingReportRequestV1 endDate(LocalDate endDate) {
-    
-    this.endDate = endDate;
-    return this;
-  }
-
-   /**
-   * End date of the report (ISO 8601 format, e.g. YYYY-MM-DD).
-   * @return endDate
-  **/
-  @javax.annotation.Nonnull
-
-  public LocalDate getEndDate() {
-    return endDate;
-  }
-
-
-  public void setEndDate(LocalDate endDate) {
-    this.endDate = endDate;
-  }
-
-
-  public PartnerBillingReportRequestV1 format(FormatEnum format) {
-    
-    this.format = format;
-    return this;
-  }
-
-   /**
-   * Format type of the report.
-   * @return format
-  **/
-  @javax.annotation.Nonnull
-
-  public FormatEnum getFormat() {
-    return format;
-  }
-
-
-  public void setFormat(FormatEnum format) {
-    this.format = format;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -259,10 +259,10 @@ public class PartnerBillingReportRequestV1 {
     }
     PartnerBillingReportRequestV1 partnerBillingReportRequestV1 = (PartnerBillingReportRequestV1) o;
     return Objects.equals(this.accountIds, partnerBillingReportRequestV1.accountIds) &&
-        Objects.equals(this.retailerIds, partnerBillingReportRequestV1.retailerIds) &&
-        Objects.equals(this.startDate, partnerBillingReportRequestV1.startDate) &&
         Objects.equals(this.endDate, partnerBillingReportRequestV1.endDate) &&
-        Objects.equals(this.format, partnerBillingReportRequestV1.format);
+        Objects.equals(this.format, partnerBillingReportRequestV1.format) &&
+        Objects.equals(this.retailerIds, partnerBillingReportRequestV1.retailerIds) &&
+        Objects.equals(this.startDate, partnerBillingReportRequestV1.startDate);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -271,7 +271,7 @@ public class PartnerBillingReportRequestV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountIds, retailerIds, startDate, endDate, format);
+    return Objects.hash(accountIds, endDate, format, retailerIds, startDate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -286,10 +286,10 @@ public class PartnerBillingReportRequestV1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class PartnerBillingReportRequestV1 {\n");
     sb.append("    accountIds: ").append(toIndentedString(accountIds)).append("\n");
-    sb.append("    retailerIds: ").append(toIndentedString(retailerIds)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    retailerIds: ").append(toIndentedString(retailerIds)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -313,16 +313,15 @@ public class PartnerBillingReportRequestV1 {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("accountIds");
-    openapiFields.add("retailerIds");
-    openapiFields.add("startDate");
     openapiFields.add("endDate");
     openapiFields.add("format");
+    openapiFields.add("retailerIds");
+    openapiFields.add("startDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("endDate");
-    openapiRequiredFields.add("format");
+    openapiRequiredFields.add("startDate");
   }
 
  /**
@@ -356,12 +355,12 @@ public class PartnerBillingReportRequestV1 {
       if (jsonObj.get("accountIds") != null && !jsonObj.get("accountIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountIds` to be an array in the JSON string but got `%s`", jsonObj.get("accountIds").toString()));
       }
+      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
+      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("retailerIds") != null && !jsonObj.get("retailerIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerIds` to be an array in the JSON string but got `%s`", jsonObj.get("retailerIds").toString()));
-      }
-      if (!jsonObj.get("format").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
       }
   }
 

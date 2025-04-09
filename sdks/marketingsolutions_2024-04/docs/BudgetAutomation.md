@@ -8,8 +8,8 @@ The campaign budget automation model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**enabled** | **Boolean** |  |  [optional] |
 |**automatedBudgetConfiguration** | [**AutomatedBudgetConfiguration**](AutomatedBudgetConfiguration.md) |  |  [optional] |
+|**enabled** | **Boolean** |  |  [optional] |
 
 
 

@@ -52,17 +52,86 @@ import com.criteo.api.retailmedia.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalPreferredLineItemUpdateModel202110 {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_BUDGET = "budget";
+  @SerializedName(SERIALIZED_NAME_BUDGET)
+  private Double budget;
 
-  public static final String SERIALIZED_NAME_START_DATE = "startDate";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private LocalDate startDate;
+  public static final String SERIALIZED_NAME_CAPPING = "capping";
+  @SerializedName(SERIALIZED_NAME_CAPPING)
+  private ExternalLineItemCapping202110 capping;
+
+  public static final String SERIALIZED_NAME_CREATIVE_ID = "creativeId";
+  @SerializedName(SERIALIZED_NAME_CREATIVE_ID)
+  private String creativeId;
 
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private LocalDate endDate;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  /**
+   * Gets or Sets pacing
+   */
+  @JsonAdapter(PacingEnum.Adapter.class)
+  public enum PacingEnum {
+    UNKNOWN("unknown"),
+    
+    STANDARD("standard"),
+    
+    ACCELERATED("accelerated");
+
+    private String value;
+
+    PacingEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PacingEnum fromValue(String value) {
+      for (PacingEnum b : PacingEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<PacingEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PacingEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PacingEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return PacingEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_PACING = "pacing";
+  @SerializedName(SERIALIZED_NAME_PACING)
+  private PacingEnum pacing = PacingEnum.ACCELERATED;
+
+  public static final String SERIALIZED_NAME_PAGE = "page";
+  @SerializedName(SERIALIZED_NAME_PAGE)
+  private ExternalLineItemPage202110 page;
+
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private LocalDate startDate;
 
   /**
    * Gets or Sets status
@@ -129,185 +198,28 @@ public class ExternalPreferredLineItemUpdateModel202110 {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
-  /**
-   * Gets or Sets pacing
-   */
-  @JsonAdapter(PacingEnum.Adapter.class)
-  public enum PacingEnum {
-    UNKNOWN("unknown"),
-    
-    STANDARD("standard"),
-    
-    ACCELERATED("accelerated");
-
-    private String value;
-
-    PacingEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static PacingEnum fromValue(String value) {
-      for (PacingEnum b : PacingEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<PacingEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PacingEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PacingEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PacingEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_PACING = "pacing";
-  @SerializedName(SERIALIZED_NAME_PACING)
-  private PacingEnum pacing = PacingEnum.ACCELERATED;
-
-  public static final String SERIALIZED_NAME_CAPPING = "capping";
-  @SerializedName(SERIALIZED_NAME_CAPPING)
-  private ExternalLineItemCapping202110 capping;
-
-  public static final String SERIALIZED_NAME_PAGE = "page";
-  @SerializedName(SERIALIZED_NAME_PAGE)
-  private ExternalLineItemPage202110 page;
-
-  public static final String SERIALIZED_NAME_BUDGET = "budget";
-  @SerializedName(SERIALIZED_NAME_BUDGET)
-  private Double budget;
-
-  public static final String SERIALIZED_NAME_CREATIVE_ID = "creativeId";
-  @SerializedName(SERIALIZED_NAME_CREATIVE_ID)
-  private String creativeId;
-
   public ExternalPreferredLineItemUpdateModel202110() {
   }
 
-  public ExternalPreferredLineItemUpdateModel202110 name(String name) {
+  public ExternalPreferredLineItemUpdateModel202110 budget(Double budget) {
     
-    this.name = name;
+    this.budget = budget;
     return this;
   }
 
    /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public ExternalPreferredLineItemUpdateModel202110 startDate(LocalDate startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
-   * @return startDate
-  **/
-  @javax.annotation.Nonnull
-
-  public LocalDate getStartDate() {
-    return startDate;
-  }
-
-
-  public void setStartDate(LocalDate startDate) {
-    this.startDate = startDate;
-  }
-
-
-  public ExternalPreferredLineItemUpdateModel202110 endDate(LocalDate endDate) {
-    
-    this.endDate = endDate;
-    return this;
-  }
-
-   /**
-   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
-   * @return endDate
-  **/
-  @javax.annotation.Nonnull
-
-  public LocalDate getEndDate() {
-    return endDate;
-  }
-
-
-  public void setEndDate(LocalDate endDate) {
-    this.endDate = endDate;
-  }
-
-
-  public ExternalPreferredLineItemUpdateModel202110 status(StatusEnum status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
-
-
-  public ExternalPreferredLineItemUpdateModel202110 pacing(PacingEnum pacing) {
-    
-    this.pacing = pacing;
-    return this;
-  }
-
-   /**
-   * Get pacing
-   * @return pacing
+   * Get budget
+   * @return budget
   **/
   @javax.annotation.Nullable
 
-  public PacingEnum getPacing() {
-    return pacing;
+  public Double getBudget() {
+    return budget;
   }
 
 
-  public void setPacing(PacingEnum pacing) {
-    this.pacing = pacing;
+  public void setBudget(Double budget) {
+    this.budget = budget;
   }
 
 
@@ -333,6 +245,94 @@ public class ExternalPreferredLineItemUpdateModel202110 {
   }
 
 
+  public ExternalPreferredLineItemUpdateModel202110 creativeId(String creativeId) {
+    
+    this.creativeId = creativeId;
+    return this;
+  }
+
+   /**
+   * Get creativeId
+   * @return creativeId
+  **/
+  @javax.annotation.Nullable
+
+  public String getCreativeId() {
+    return creativeId;
+  }
+
+
+  public void setCreativeId(String creativeId) {
+    this.creativeId = creativeId;
+  }
+
+
+  public ExternalPreferredLineItemUpdateModel202110 endDate(LocalDate endDate) {
+    
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
+   * @return endDate
+  **/
+  @javax.annotation.Nonnull
+
+  public LocalDate getEndDate() {
+    return endDate;
+  }
+
+
+  public void setEndDate(LocalDate endDate) {
+    this.endDate = endDate;
+  }
+
+
+  public ExternalPreferredLineItemUpdateModel202110 name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public ExternalPreferredLineItemUpdateModel202110 pacing(PacingEnum pacing) {
+    
+    this.pacing = pacing;
+    return this;
+  }
+
+   /**
+   * Get pacing
+   * @return pacing
+  **/
+  @javax.annotation.Nullable
+
+  public PacingEnum getPacing() {
+    return pacing;
+  }
+
+
+  public void setPacing(PacingEnum pacing) {
+    this.pacing = pacing;
+  }
+
+
   public ExternalPreferredLineItemUpdateModel202110 page(ExternalLineItemPage202110 page) {
     
     this.page = page;
@@ -355,47 +355,47 @@ public class ExternalPreferredLineItemUpdateModel202110 {
   }
 
 
-  public ExternalPreferredLineItemUpdateModel202110 budget(Double budget) {
+  public ExternalPreferredLineItemUpdateModel202110 startDate(LocalDate startDate) {
     
-    this.budget = budget;
+    this.startDate = startDate;
     return this;
   }
 
    /**
-   * Get budget
-   * @return budget
+   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
+   * @return startDate
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public Double getBudget() {
-    return budget;
+  public LocalDate getStartDate() {
+    return startDate;
   }
 
 
-  public void setBudget(Double budget) {
-    this.budget = budget;
+  public void setStartDate(LocalDate startDate) {
+    this.startDate = startDate;
   }
 
 
-  public ExternalPreferredLineItemUpdateModel202110 creativeId(String creativeId) {
+  public ExternalPreferredLineItemUpdateModel202110 status(StatusEnum status) {
     
-    this.creativeId = creativeId;
+    this.status = status;
     return this;
   }
 
    /**
-   * Get creativeId
-   * @return creativeId
+   * Get status
+   * @return status
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public String getCreativeId() {
-    return creativeId;
+  public StatusEnum getStatus() {
+    return status;
   }
 
 
-  public void setCreativeId(String creativeId) {
-    this.creativeId = creativeId;
+  public void setStatus(StatusEnum status) {
+    this.status = status;
   }
 
   /**
@@ -453,15 +453,15 @@ public class ExternalPreferredLineItemUpdateModel202110 {
       return false;
     }
     ExternalPreferredLineItemUpdateModel202110 externalPreferredLineItemUpdateModel202110 = (ExternalPreferredLineItemUpdateModel202110) o;
-    return Objects.equals(this.name, externalPreferredLineItemUpdateModel202110.name) &&
-        Objects.equals(this.startDate, externalPreferredLineItemUpdateModel202110.startDate) &&
-        Objects.equals(this.endDate, externalPreferredLineItemUpdateModel202110.endDate) &&
-        Objects.equals(this.status, externalPreferredLineItemUpdateModel202110.status) &&
-        Objects.equals(this.pacing, externalPreferredLineItemUpdateModel202110.pacing) &&
+    return Objects.equals(this.budget, externalPreferredLineItemUpdateModel202110.budget) &&
         Objects.equals(this.capping, externalPreferredLineItemUpdateModel202110.capping) &&
+        Objects.equals(this.creativeId, externalPreferredLineItemUpdateModel202110.creativeId) &&
+        Objects.equals(this.endDate, externalPreferredLineItemUpdateModel202110.endDate) &&
+        Objects.equals(this.name, externalPreferredLineItemUpdateModel202110.name) &&
+        Objects.equals(this.pacing, externalPreferredLineItemUpdateModel202110.pacing) &&
         Objects.equals(this.page, externalPreferredLineItemUpdateModel202110.page) &&
-        Objects.equals(this.budget, externalPreferredLineItemUpdateModel202110.budget) &&
-        Objects.equals(this.creativeId, externalPreferredLineItemUpdateModel202110.creativeId)&&
+        Objects.equals(this.startDate, externalPreferredLineItemUpdateModel202110.startDate) &&
+        Objects.equals(this.status, externalPreferredLineItemUpdateModel202110.status)&&
         Objects.equals(this.additionalProperties, externalPreferredLineItemUpdateModel202110.additionalProperties);
   }
 
@@ -471,7 +471,7 @@ public class ExternalPreferredLineItemUpdateModel202110 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, startDate, endDate, status, pacing, capping, page, budget, creativeId, additionalProperties);
+    return Objects.hash(budget, capping, creativeId, endDate, name, pacing, page, startDate, status, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -485,15 +485,15 @@ public class ExternalPreferredLineItemUpdateModel202110 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalPreferredLineItemUpdateModel202110 {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    pacing: ").append(toIndentedString(pacing)).append("\n");
-    sb.append("    capping: ").append(toIndentedString(capping)).append("\n");
-    sb.append("    page: ").append(toIndentedString(page)).append("\n");
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
+    sb.append("    capping: ").append(toIndentedString(capping)).append("\n");
     sb.append("    creativeId: ").append(toIndentedString(creativeId)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    pacing: ").append(toIndentedString(pacing)).append("\n");
+    sb.append("    page: ").append(toIndentedString(page)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -517,21 +517,21 @@ public class ExternalPreferredLineItemUpdateModel202110 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("startDate");
-    openapiFields.add("endDate");
-    openapiFields.add("status");
-    openapiFields.add("pacing");
-    openapiFields.add("capping");
-    openapiFields.add("page");
     openapiFields.add("budget");
+    openapiFields.add("capping");
     openapiFields.add("creativeId");
+    openapiFields.add("endDate");
+    openapiFields.add("name");
+    openapiFields.add("pacing");
+    openapiFields.add("page");
+    openapiFields.add("startDate");
+    openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("endDate");
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("startDate");
-    openapiRequiredFields.add("endDate");
     openapiRequiredFields.add("status");
   }
 
@@ -554,25 +554,25 @@ public class ExternalPreferredLineItemUpdateModel202110 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if (!jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
-      }
-      if ((jsonObj.get("pacing") != null && !jsonObj.get("pacing").isJsonNull()) && !jsonObj.get("pacing").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pacing` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pacing").toString()));
-      }
       // validate the optional field `capping`
       if (jsonObj.get("capping") != null && !jsonObj.get("capping").isJsonNull()) {
         ExternalLineItemCapping202110.validateJsonObject(jsonObj.getAsJsonObject("capping"));
+      }
+      if ((jsonObj.get("creativeId") != null && !jsonObj.get("creativeId").isJsonNull()) && !jsonObj.get("creativeId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `creativeId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creativeId").toString()));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("pacing") != null && !jsonObj.get("pacing").isJsonNull()) && !jsonObj.get("pacing").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pacing` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pacing").toString()));
       }
       // validate the optional field `page`
       if (jsonObj.get("page") != null && !jsonObj.get("page").isJsonNull()) {
         ExternalLineItemPage202110.validateJsonObject(jsonObj.getAsJsonObject("page"));
       }
-      if ((jsonObj.get("creativeId") != null && !jsonObj.get("creativeId").isJsonNull()) && !jsonObj.get("creativeId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `creativeId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creativeId").toString()));
+      if (!jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
   }
 

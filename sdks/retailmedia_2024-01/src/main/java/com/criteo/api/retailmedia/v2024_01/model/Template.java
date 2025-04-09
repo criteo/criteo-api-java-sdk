@@ -53,6 +53,14 @@ import com.criteo.api.retailmedia.v2024_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Template {
+  public static final String SERIALIZED_NAME_ALL_COLLECTIONS_MANDATORY = "allCollectionsMandatory";
+  @SerializedName(SERIALIZED_NAME_ALL_COLLECTIONS_MANDATORY)
+  private Boolean allCollectionsMandatory;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
+
   /**
    * The kind of creative this template can be used to build.
    */
@@ -120,202 +128,40 @@ public class Template {
   @SerializedName(SERIALIZED_NAME_CREATIVE_FORMAT)
   private CreativeFormatEnum creativeFormat;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  public static final String SERIALIZED_NAME_SKU_COLLECTION_MIN = "skuCollectionMin";
-  @SerializedName(SERIALIZED_NAME_SKU_COLLECTION_MIN)
-  private Integer skuCollectionMin;
-
-  public static final String SERIALIZED_NAME_SKU_COLLECTION_MAX = "skuCollectionMax";
-  @SerializedName(SERIALIZED_NAME_SKU_COLLECTION_MAX)
-  private Integer skuCollectionMax;
-
-  public static final String SERIALIZED_NAME_SKU_PER_COLLECTION_MIN = "skuPerCollectionMin";
-  @SerializedName(SERIALIZED_NAME_SKU_PER_COLLECTION_MIN)
-  private Integer skuPerCollectionMin;
-
-  public static final String SERIALIZED_NAME_SKU_PER_COLLECTION_MAX = "skuPerCollectionMax";
-  @SerializedName(SERIALIZED_NAME_SKU_PER_COLLECTION_MAX)
-  private Integer skuPerCollectionMax;
-
   public static final String SERIALIZED_NAME_DISPLAYABLE_SKUS_MAX = "displayableSkusMax";
   @SerializedName(SERIALIZED_NAME_DISPLAYABLE_SKUS_MAX)
   private Integer displayableSkusMax;
 
-  public static final String SERIALIZED_NAME_ALL_COLLECTIONS_MANDATORY = "allCollectionsMandatory";
-  @SerializedName(SERIALIZED_NAME_ALL_COLLECTIONS_MANDATORY)
-  private Boolean allCollectionsMandatory;
-
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
-
-  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
-  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
-  private OffsetDateTime updatedAt;
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
   public static final String SERIALIZED_NAME_SECTIONS = "sections";
   @SerializedName(SERIALIZED_NAME_SECTIONS)
   private List<Section> sections = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_SKU_COLLECTION_MAX = "skuCollectionMax";
+  @SerializedName(SERIALIZED_NAME_SKU_COLLECTION_MAX)
+  private Integer skuCollectionMax;
+
+  public static final String SERIALIZED_NAME_SKU_COLLECTION_MIN = "skuCollectionMin";
+  @SerializedName(SERIALIZED_NAME_SKU_COLLECTION_MIN)
+  private Integer skuCollectionMin;
+
+  public static final String SERIALIZED_NAME_SKU_PER_COLLECTION_MAX = "skuPerCollectionMax";
+  @SerializedName(SERIALIZED_NAME_SKU_PER_COLLECTION_MAX)
+  private Integer skuPerCollectionMax;
+
+  public static final String SERIALIZED_NAME_SKU_PER_COLLECTION_MIN = "skuPerCollectionMin";
+  @SerializedName(SERIALIZED_NAME_SKU_PER_COLLECTION_MIN)
+  private Integer skuPerCollectionMin;
+
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  private OffsetDateTime updatedAt;
+
   public Template() {
   }
-
-  public Template creativeFormat(CreativeFormatEnum creativeFormat) {
-    
-    this.creativeFormat = creativeFormat;
-    return this;
-  }
-
-   /**
-   * The kind of creative this template can be used to build.
-   * @return creativeFormat
-  **/
-  @javax.annotation.Nonnull
-
-  public CreativeFormatEnum getCreativeFormat() {
-    return creativeFormat;
-  }
-
-
-  public void setCreativeFormat(CreativeFormatEnum creativeFormat) {
-    this.creativeFormat = creativeFormat;
-  }
-
-
-  public Template name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * The name of the template
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public Template skuCollectionMin(Integer skuCollectionMin) {
-    
-    this.skuCollectionMin = skuCollectionMin;
-    return this;
-  }
-
-   /**
-   * Minimum number of skus in the collection
-   * @return skuCollectionMin
-  **/
-  @javax.annotation.Nonnull
-
-  public Integer getSkuCollectionMin() {
-    return skuCollectionMin;
-  }
-
-
-  public void setSkuCollectionMin(Integer skuCollectionMin) {
-    this.skuCollectionMin = skuCollectionMin;
-  }
-
-
-  public Template skuCollectionMax(Integer skuCollectionMax) {
-    
-    this.skuCollectionMax = skuCollectionMax;
-    return this;
-  }
-
-   /**
-   * Maximum number of skus in the collection
-   * @return skuCollectionMax
-  **/
-  @javax.annotation.Nullable
-
-  public Integer getSkuCollectionMax() {
-    return skuCollectionMax;
-  }
-
-
-  public void setSkuCollectionMax(Integer skuCollectionMax) {
-    this.skuCollectionMax = skuCollectionMax;
-  }
-
-
-  public Template skuPerCollectionMin(Integer skuPerCollectionMin) {
-    
-    this.skuPerCollectionMin = skuPerCollectionMin;
-    return this;
-  }
-
-   /**
-   * Minimum number of skus per collection
-   * @return skuPerCollectionMin
-  **/
-  @javax.annotation.Nonnull
-
-  public Integer getSkuPerCollectionMin() {
-    return skuPerCollectionMin;
-  }
-
-
-  public void setSkuPerCollectionMin(Integer skuPerCollectionMin) {
-    this.skuPerCollectionMin = skuPerCollectionMin;
-  }
-
-
-  public Template skuPerCollectionMax(Integer skuPerCollectionMax) {
-    
-    this.skuPerCollectionMax = skuPerCollectionMax;
-    return this;
-  }
-
-   /**
-   * Maximum number of skus per collection
-   * @return skuPerCollectionMax
-  **/
-  @javax.annotation.Nullable
-
-  public Integer getSkuPerCollectionMax() {
-    return skuPerCollectionMax;
-  }
-
-
-  public void setSkuPerCollectionMax(Integer skuPerCollectionMax) {
-    this.skuPerCollectionMax = skuPerCollectionMax;
-  }
-
-
-  public Template displayableSkusMax(Integer displayableSkusMax) {
-    
-    this.displayableSkusMax = displayableSkusMax;
-    return this;
-  }
-
-   /**
-   * Maximum number of displayable skus
-   * @return displayableSkusMax
-  **/
-  @javax.annotation.Nullable
-
-  public Integer getDisplayableSkusMax() {
-    return displayableSkusMax;
-  }
-
-
-  public void setDisplayableSkusMax(Integer displayableSkusMax) {
-    this.displayableSkusMax = displayableSkusMax;
-  }
-
 
   public Template allCollectionsMandatory(Boolean allCollectionsMandatory) {
     
@@ -361,25 +207,69 @@ public class Template {
   }
 
 
-  public Template updatedAt(OffsetDateTime updatedAt) {
+  public Template creativeFormat(CreativeFormatEnum creativeFormat) {
     
-    this.updatedAt = updatedAt;
+    this.creativeFormat = creativeFormat;
     return this;
   }
 
    /**
-   * The time at which the template was updated
-   * @return updatedAt
+   * The kind of creative this template can be used to build.
+   * @return creativeFormat
   **/
   @javax.annotation.Nonnull
 
-  public OffsetDateTime getUpdatedAt() {
-    return updatedAt;
+  public CreativeFormatEnum getCreativeFormat() {
+    return creativeFormat;
   }
 
 
-  public void setUpdatedAt(OffsetDateTime updatedAt) {
-    this.updatedAt = updatedAt;
+  public void setCreativeFormat(CreativeFormatEnum creativeFormat) {
+    this.creativeFormat = creativeFormat;
+  }
+
+
+  public Template displayableSkusMax(Integer displayableSkusMax) {
+    
+    this.displayableSkusMax = displayableSkusMax;
+    return this;
+  }
+
+   /**
+   * Maximum number of displayable skus
+   * @return displayableSkusMax
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getDisplayableSkusMax() {
+    return displayableSkusMax;
+  }
+
+
+  public void setDisplayableSkusMax(Integer displayableSkusMax) {
+    this.displayableSkusMax = displayableSkusMax;
+  }
+
+
+  public Template name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * The name of the template
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -410,6 +300,116 @@ public class Template {
   }
 
 
+  public Template skuCollectionMax(Integer skuCollectionMax) {
+    
+    this.skuCollectionMax = skuCollectionMax;
+    return this;
+  }
+
+   /**
+   * Maximum number of skus in the collection
+   * @return skuCollectionMax
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getSkuCollectionMax() {
+    return skuCollectionMax;
+  }
+
+
+  public void setSkuCollectionMax(Integer skuCollectionMax) {
+    this.skuCollectionMax = skuCollectionMax;
+  }
+
+
+  public Template skuCollectionMin(Integer skuCollectionMin) {
+    
+    this.skuCollectionMin = skuCollectionMin;
+    return this;
+  }
+
+   /**
+   * Minimum number of skus in the collection
+   * @return skuCollectionMin
+  **/
+  @javax.annotation.Nonnull
+
+  public Integer getSkuCollectionMin() {
+    return skuCollectionMin;
+  }
+
+
+  public void setSkuCollectionMin(Integer skuCollectionMin) {
+    this.skuCollectionMin = skuCollectionMin;
+  }
+
+
+  public Template skuPerCollectionMax(Integer skuPerCollectionMax) {
+    
+    this.skuPerCollectionMax = skuPerCollectionMax;
+    return this;
+  }
+
+   /**
+   * Maximum number of skus per collection
+   * @return skuPerCollectionMax
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getSkuPerCollectionMax() {
+    return skuPerCollectionMax;
+  }
+
+
+  public void setSkuPerCollectionMax(Integer skuPerCollectionMax) {
+    this.skuPerCollectionMax = skuPerCollectionMax;
+  }
+
+
+  public Template skuPerCollectionMin(Integer skuPerCollectionMin) {
+    
+    this.skuPerCollectionMin = skuPerCollectionMin;
+    return this;
+  }
+
+   /**
+   * Minimum number of skus per collection
+   * @return skuPerCollectionMin
+  **/
+  @javax.annotation.Nonnull
+
+  public Integer getSkuPerCollectionMin() {
+    return skuPerCollectionMin;
+  }
+
+
+  public void setSkuPerCollectionMin(Integer skuPerCollectionMin) {
+    this.skuPerCollectionMin = skuPerCollectionMin;
+  }
+
+
+  public Template updatedAt(OffsetDateTime updatedAt) {
+    
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * The time at which the template was updated
+   * @return updatedAt
+  **/
+  @javax.annotation.Nonnull
+
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -420,17 +420,17 @@ public class Template {
       return false;
     }
     Template template = (Template) o;
-    return Objects.equals(this.creativeFormat, template.creativeFormat) &&
-        Objects.equals(this.name, template.name) &&
-        Objects.equals(this.skuCollectionMin, template.skuCollectionMin) &&
-        Objects.equals(this.skuCollectionMax, template.skuCollectionMax) &&
-        Objects.equals(this.skuPerCollectionMin, template.skuPerCollectionMin) &&
-        Objects.equals(this.skuPerCollectionMax, template.skuPerCollectionMax) &&
-        Objects.equals(this.displayableSkusMax, template.displayableSkusMax) &&
-        Objects.equals(this.allCollectionsMandatory, template.allCollectionsMandatory) &&
+    return Objects.equals(this.allCollectionsMandatory, template.allCollectionsMandatory) &&
         Objects.equals(this.createdAt, template.createdAt) &&
-        Objects.equals(this.updatedAt, template.updatedAt) &&
-        Objects.equals(this.sections, template.sections);
+        Objects.equals(this.creativeFormat, template.creativeFormat) &&
+        Objects.equals(this.displayableSkusMax, template.displayableSkusMax) &&
+        Objects.equals(this.name, template.name) &&
+        Objects.equals(this.sections, template.sections) &&
+        Objects.equals(this.skuCollectionMax, template.skuCollectionMax) &&
+        Objects.equals(this.skuCollectionMin, template.skuCollectionMin) &&
+        Objects.equals(this.skuPerCollectionMax, template.skuPerCollectionMax) &&
+        Objects.equals(this.skuPerCollectionMin, template.skuPerCollectionMin) &&
+        Objects.equals(this.updatedAt, template.updatedAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -439,7 +439,7 @@ public class Template {
 
   @Override
   public int hashCode() {
-    return Objects.hash(creativeFormat, name, skuCollectionMin, skuCollectionMax, skuPerCollectionMin, skuPerCollectionMax, displayableSkusMax, allCollectionsMandatory, createdAt, updatedAt, sections);
+    return Objects.hash(allCollectionsMandatory, createdAt, creativeFormat, displayableSkusMax, name, sections, skuCollectionMax, skuCollectionMin, skuPerCollectionMax, skuPerCollectionMin, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -453,17 +453,17 @@ public class Template {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Template {\n");
-    sb.append("    creativeFormat: ").append(toIndentedString(creativeFormat)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    skuCollectionMin: ").append(toIndentedString(skuCollectionMin)).append("\n");
-    sb.append("    skuCollectionMax: ").append(toIndentedString(skuCollectionMax)).append("\n");
-    sb.append("    skuPerCollectionMin: ").append(toIndentedString(skuPerCollectionMin)).append("\n");
-    sb.append("    skuPerCollectionMax: ").append(toIndentedString(skuPerCollectionMax)).append("\n");
-    sb.append("    displayableSkusMax: ").append(toIndentedString(displayableSkusMax)).append("\n");
     sb.append("    allCollectionsMandatory: ").append(toIndentedString(allCollectionsMandatory)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    creativeFormat: ").append(toIndentedString(creativeFormat)).append("\n");
+    sb.append("    displayableSkusMax: ").append(toIndentedString(displayableSkusMax)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    sections: ").append(toIndentedString(sections)).append("\n");
+    sb.append("    skuCollectionMax: ").append(toIndentedString(skuCollectionMax)).append("\n");
+    sb.append("    skuCollectionMin: ").append(toIndentedString(skuCollectionMin)).append("\n");
+    sb.append("    skuPerCollectionMax: ").append(toIndentedString(skuPerCollectionMax)).append("\n");
+    sb.append("    skuPerCollectionMin: ").append(toIndentedString(skuPerCollectionMin)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -486,28 +486,28 @@ public class Template {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("creativeFormat");
-    openapiFields.add("name");
-    openapiFields.add("skuCollectionMin");
-    openapiFields.add("skuCollectionMax");
-    openapiFields.add("skuPerCollectionMin");
-    openapiFields.add("skuPerCollectionMax");
-    openapiFields.add("displayableSkusMax");
     openapiFields.add("allCollectionsMandatory");
     openapiFields.add("createdAt");
-    openapiFields.add("updatedAt");
+    openapiFields.add("creativeFormat");
+    openapiFields.add("displayableSkusMax");
+    openapiFields.add("name");
     openapiFields.add("sections");
+    openapiFields.add("skuCollectionMax");
+    openapiFields.add("skuCollectionMin");
+    openapiFields.add("skuPerCollectionMax");
+    openapiFields.add("skuPerCollectionMin");
+    openapiFields.add("updatedAt");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("creativeFormat");
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("skuCollectionMin");
-    openapiRequiredFields.add("skuPerCollectionMin");
     openapiRequiredFields.add("allCollectionsMandatory");
     openapiRequiredFields.add("createdAt");
-    openapiRequiredFields.add("updatedAt");
+    openapiRequiredFields.add("creativeFormat");
+    openapiRequiredFields.add("name");
     openapiRequiredFields.add("sections");
+    openapiRequiredFields.add("skuCollectionMin");
+    openapiRequiredFields.add("skuPerCollectionMin");
+    openapiRequiredFields.add("updatedAt");
   }
 
  /**

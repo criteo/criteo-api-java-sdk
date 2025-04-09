@@ -48,84 +48,40 @@ import com.criteo.api.retailmedia.v2024_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class LineItemBidMultipliers {
-  public static final String SERIALIZED_NAME_SEARCH = "search";
-  @SerializedName(SERIALIZED_NAME_SEARCH)
-  private Double search;
-
-  public static final String SERIALIZED_NAME_HOMEPAGE = "homepage";
-  @SerializedName(SERIALIZED_NAME_HOMEPAGE)
-  private Double homepage;
-
   public static final String SERIALIZED_NAME_CATEGORIES = "categories";
   @SerializedName(SERIALIZED_NAME_CATEGORIES)
   private Double categories;
-
-  public static final String SERIALIZED_NAME_PRODUCT_DETAIL = "productDetail";
-  @SerializedName(SERIALIZED_NAME_PRODUCT_DETAIL)
-  private Double productDetail;
-
-  public static final String SERIALIZED_NAME_CONFIRMATION = "confirmation";
-  @SerializedName(SERIALIZED_NAME_CONFIRMATION)
-  private Double confirmation;
-
-  public static final String SERIALIZED_NAME_MERCHANDISING = "merchandising";
-  @SerializedName(SERIALIZED_NAME_MERCHANDISING)
-  private Double merchandising;
-
-  public static final String SERIALIZED_NAME_DEALS = "deals";
-  @SerializedName(SERIALIZED_NAME_DEALS)
-  private Double deals;
 
   public static final String SERIALIZED_NAME_CHECKOUT = "checkout";
   @SerializedName(SERIALIZED_NAME_CHECKOUT)
   private Double checkout;
 
+  public static final String SERIALIZED_NAME_CONFIRMATION = "confirmation";
+  @SerializedName(SERIALIZED_NAME_CONFIRMATION)
+  private Double confirmation;
+
+  public static final String SERIALIZED_NAME_DEALS = "deals";
+  @SerializedName(SERIALIZED_NAME_DEALS)
+  private Double deals;
+
+  public static final String SERIALIZED_NAME_HOMEPAGE = "homepage";
+  @SerializedName(SERIALIZED_NAME_HOMEPAGE)
+  private Double homepage;
+
+  public static final String SERIALIZED_NAME_MERCHANDISING = "merchandising";
+  @SerializedName(SERIALIZED_NAME_MERCHANDISING)
+  private Double merchandising;
+
+  public static final String SERIALIZED_NAME_PRODUCT_DETAIL = "productDetail";
+  @SerializedName(SERIALIZED_NAME_PRODUCT_DETAIL)
+  private Double productDetail;
+
+  public static final String SERIALIZED_NAME_SEARCH = "search";
+  @SerializedName(SERIALIZED_NAME_SEARCH)
+  private Double search;
+
   public LineItemBidMultipliers() {
   }
-
-  public LineItemBidMultipliers search(Double search) {
-    
-    this.search = search;
-    return this;
-  }
-
-   /**
-   * Get search
-   * @return search
-  **/
-  @javax.annotation.Nullable
-
-  public Double getSearch() {
-    return search;
-  }
-
-
-  public void setSearch(Double search) {
-    this.search = search;
-  }
-
-
-  public LineItemBidMultipliers homepage(Double homepage) {
-    
-    this.homepage = homepage;
-    return this;
-  }
-
-   /**
-   * Get homepage
-   * @return homepage
-  **/
-  @javax.annotation.Nullable
-
-  public Double getHomepage() {
-    return homepage;
-  }
-
-
-  public void setHomepage(Double homepage) {
-    this.homepage = homepage;
-  }
-
 
   public LineItemBidMultipliers categories(Double categories) {
     
@@ -149,25 +105,25 @@ public class LineItemBidMultipliers {
   }
 
 
-  public LineItemBidMultipliers productDetail(Double productDetail) {
+  public LineItemBidMultipliers checkout(Double checkout) {
     
-    this.productDetail = productDetail;
+    this.checkout = checkout;
     return this;
   }
 
    /**
-   * Get productDetail
-   * @return productDetail
+   * Get checkout
+   * @return checkout
   **/
   @javax.annotation.Nullable
 
-  public Double getProductDetail() {
-    return productDetail;
+  public Double getCheckout() {
+    return checkout;
   }
 
 
-  public void setProductDetail(Double productDetail) {
-    this.productDetail = productDetail;
+  public void setCheckout(Double checkout) {
+    this.checkout = checkout;
   }
 
 
@@ -193,28 +149,6 @@ public class LineItemBidMultipliers {
   }
 
 
-  public LineItemBidMultipliers merchandising(Double merchandising) {
-    
-    this.merchandising = merchandising;
-    return this;
-  }
-
-   /**
-   * Get merchandising
-   * @return merchandising
-  **/
-  @javax.annotation.Nullable
-
-  public Double getMerchandising() {
-    return merchandising;
-  }
-
-
-  public void setMerchandising(Double merchandising) {
-    this.merchandising = merchandising;
-  }
-
-
   public LineItemBidMultipliers deals(Double deals) {
     
     this.deals = deals;
@@ -237,25 +171,91 @@ public class LineItemBidMultipliers {
   }
 
 
-  public LineItemBidMultipliers checkout(Double checkout) {
+  public LineItemBidMultipliers homepage(Double homepage) {
     
-    this.checkout = checkout;
+    this.homepage = homepage;
     return this;
   }
 
    /**
-   * Get checkout
-   * @return checkout
+   * Get homepage
+   * @return homepage
   **/
   @javax.annotation.Nullable
 
-  public Double getCheckout() {
-    return checkout;
+  public Double getHomepage() {
+    return homepage;
   }
 
 
-  public void setCheckout(Double checkout) {
-    this.checkout = checkout;
+  public void setHomepage(Double homepage) {
+    this.homepage = homepage;
+  }
+
+
+  public LineItemBidMultipliers merchandising(Double merchandising) {
+    
+    this.merchandising = merchandising;
+    return this;
+  }
+
+   /**
+   * Get merchandising
+   * @return merchandising
+  **/
+  @javax.annotation.Nullable
+
+  public Double getMerchandising() {
+    return merchandising;
+  }
+
+
+  public void setMerchandising(Double merchandising) {
+    this.merchandising = merchandising;
+  }
+
+
+  public LineItemBidMultipliers productDetail(Double productDetail) {
+    
+    this.productDetail = productDetail;
+    return this;
+  }
+
+   /**
+   * Get productDetail
+   * @return productDetail
+  **/
+  @javax.annotation.Nullable
+
+  public Double getProductDetail() {
+    return productDetail;
+  }
+
+
+  public void setProductDetail(Double productDetail) {
+    this.productDetail = productDetail;
+  }
+
+
+  public LineItemBidMultipliers search(Double search) {
+    
+    this.search = search;
+    return this;
+  }
+
+   /**
+   * Get search
+   * @return search
+  **/
+  @javax.annotation.Nullable
+
+  public Double getSearch() {
+    return search;
+  }
+
+
+  public void setSearch(Double search) {
+    this.search = search;
   }
 
   /**
@@ -313,34 +313,34 @@ public class LineItemBidMultipliers {
       return false;
     }
     LineItemBidMultipliers lineItemBidMultipliers = (LineItemBidMultipliers) o;
-    return Objects.equals(this.search, lineItemBidMultipliers.search) &&
-        Objects.equals(this.homepage, lineItemBidMultipliers.homepage) &&
-        Objects.equals(this.categories, lineItemBidMultipliers.categories) &&
-        Objects.equals(this.productDetail, lineItemBidMultipliers.productDetail) &&
+    return Objects.equals(this.categories, lineItemBidMultipliers.categories) &&
+        Objects.equals(this.checkout, lineItemBidMultipliers.checkout) &&
         Objects.equals(this.confirmation, lineItemBidMultipliers.confirmation) &&
-        Objects.equals(this.merchandising, lineItemBidMultipliers.merchandising) &&
         Objects.equals(this.deals, lineItemBidMultipliers.deals) &&
-        Objects.equals(this.checkout, lineItemBidMultipliers.checkout)&&
+        Objects.equals(this.homepage, lineItemBidMultipliers.homepage) &&
+        Objects.equals(this.merchandising, lineItemBidMultipliers.merchandising) &&
+        Objects.equals(this.productDetail, lineItemBidMultipliers.productDetail) &&
+        Objects.equals(this.search, lineItemBidMultipliers.search)&&
         Objects.equals(this.additionalProperties, lineItemBidMultipliers.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(search, homepage, categories, productDetail, confirmation, merchandising, deals, checkout, additionalProperties);
+    return Objects.hash(categories, checkout, confirmation, deals, homepage, merchandising, productDetail, search, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LineItemBidMultipliers {\n");
-    sb.append("    search: ").append(toIndentedString(search)).append("\n");
-    sb.append("    homepage: ").append(toIndentedString(homepage)).append("\n");
     sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
-    sb.append("    productDetail: ").append(toIndentedString(productDetail)).append("\n");
-    sb.append("    confirmation: ").append(toIndentedString(confirmation)).append("\n");
-    sb.append("    merchandising: ").append(toIndentedString(merchandising)).append("\n");
-    sb.append("    deals: ").append(toIndentedString(deals)).append("\n");
     sb.append("    checkout: ").append(toIndentedString(checkout)).append("\n");
+    sb.append("    confirmation: ").append(toIndentedString(confirmation)).append("\n");
+    sb.append("    deals: ").append(toIndentedString(deals)).append("\n");
+    sb.append("    homepage: ").append(toIndentedString(homepage)).append("\n");
+    sb.append("    merchandising: ").append(toIndentedString(merchandising)).append("\n");
+    sb.append("    productDetail: ").append(toIndentedString(productDetail)).append("\n");
+    sb.append("    search: ").append(toIndentedString(search)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -364,14 +364,14 @@ public class LineItemBidMultipliers {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("search");
-    openapiFields.add("homepage");
     openapiFields.add("categories");
-    openapiFields.add("productDetail");
-    openapiFields.add("confirmation");
-    openapiFields.add("merchandising");
-    openapiFields.add("deals");
     openapiFields.add("checkout");
+    openapiFields.add("confirmation");
+    openapiFields.add("deals");
+    openapiFields.add("homepage");
+    openapiFields.add("merchandising");
+    openapiFields.add("productDetail");
+    openapiFields.add("search");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -51,40 +51,40 @@ import com.criteo.api.marketingsolutions.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AudienceUpdateEntityV1 {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_ALGEBRA = "algebra";
+  @SerializedName(SERIALIZED_NAME_ALGEBRA)
+  private AlgebraNodeV1 algebra;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private NillableString description;
 
-  public static final String SERIALIZED_NAME_ALGEBRA = "algebra";
-  @SerializedName(SERIALIZED_NAME_ALGEBRA)
-  private AlgebraNodeV1 algebra;
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
   public AudienceUpdateEntityV1() {
   }
 
-  public AudienceUpdateEntityV1 name(String name) {
+  public AudienceUpdateEntityV1 algebra(AlgebraNodeV1 algebra) {
     
-    this.name = name;
+    this.algebra = algebra;
     return this;
   }
 
    /**
-   * Name of the audience
-   * @return name
+   * Get algebra
+   * @return algebra
   **/
   @javax.annotation.Nullable
 
-  public String getName() {
-    return name;
+  public AlgebraNodeV1 getAlgebra() {
+    return algebra;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
+  public void setAlgebra(AlgebraNodeV1 algebra) {
+    this.algebra = algebra;
   }
 
 
@@ -110,25 +110,25 @@ public class AudienceUpdateEntityV1 {
   }
 
 
-  public AudienceUpdateEntityV1 algebra(AlgebraNodeV1 algebra) {
+  public AudienceUpdateEntityV1 name(String name) {
     
-    this.algebra = algebra;
+    this.name = name;
     return this;
   }
 
    /**
-   * Get algebra
-   * @return algebra
+   * Name of the audience
+   * @return name
   **/
   @javax.annotation.Nullable
 
-  public AlgebraNodeV1 getAlgebra() {
-    return algebra;
+  public String getName() {
+    return name;
   }
 
 
-  public void setAlgebra(AlgebraNodeV1 algebra) {
-    this.algebra = algebra;
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
@@ -186,9 +186,9 @@ public class AudienceUpdateEntityV1 {
       return false;
     }
     AudienceUpdateEntityV1 audienceUpdateEntityV1 = (AudienceUpdateEntityV1) o;
-    return Objects.equals(this.name, audienceUpdateEntityV1.name) &&
+    return Objects.equals(this.algebra, audienceUpdateEntityV1.algebra) &&
         Objects.equals(this.description, audienceUpdateEntityV1.description) &&
-        Objects.equals(this.algebra, audienceUpdateEntityV1.algebra)&&
+        Objects.equals(this.name, audienceUpdateEntityV1.name)&&
         Objects.equals(this.additionalProperties, audienceUpdateEntityV1.additionalProperties);
   }
 
@@ -198,7 +198,7 @@ public class AudienceUpdateEntityV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, algebra, additionalProperties);
+    return Objects.hash(algebra, description, name, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -212,9 +212,9 @@ public class AudienceUpdateEntityV1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceUpdateEntityV1 {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    algebra: ").append(toIndentedString(algebra)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -238,9 +238,9 @@ public class AudienceUpdateEntityV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("description");
     openapiFields.add("algebra");
+    openapiFields.add("description");
+    openapiFields.add("name");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -258,16 +258,16 @@ public class AudienceUpdateEntityV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AudienceUpdateEntityV1 is not found in the empty JSON string", AudienceUpdateEntityV1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      // validate the optional field `algebra`
+      if (jsonObj.get("algebra") != null && !jsonObj.get("algebra").isJsonNull()) {
+        AlgebraNodeV1.validateJsonObject(jsonObj.getAsJsonObject("algebra"));
       }
       // validate the optional field `description`
       if (jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) {
         NillableString.validateJsonObject(jsonObj.getAsJsonObject("description"));
       }
-      // validate the optional field `algebra`
-      if (jsonObj.get("algebra") != null && !jsonObj.get("algebra").isJsonNull()) {
-        AlgebraNodeV1.validateJsonObject(jsonObj.getAsJsonObject("algebra"));
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
   }
 

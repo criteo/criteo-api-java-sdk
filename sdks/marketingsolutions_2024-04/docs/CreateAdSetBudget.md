@@ -8,31 +8,11 @@ ad set budget create model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**budgetStrategy** | [**BudgetStrategyEnum**](#BudgetStrategyEnum) |  |  |
-|**budgetRenewal** | [**BudgetRenewalEnum**](#BudgetRenewalEnum) |  |  [optional] |
+|**budgetAmount** | **Double** |  |  [optional] |
 |**budgetDeliverySmoothing** | [**BudgetDeliverySmoothingEnum**](#BudgetDeliverySmoothingEnum) |  |  [optional] |
 |**budgetDeliveryWeek** | [**BudgetDeliveryWeekEnum**](#BudgetDeliveryWeekEnum) |  |  [optional] |
-|**budgetAmount** | **Double** |  |  [optional] |
-
-
-
-## Enum: BudgetStrategyEnum
-
-| Name | Value |
-|---- | -----|
-| CAPPED | &quot;capped&quot; |
-| UNCAPPED | &quot;uncapped&quot; |
-
-
-
-## Enum: BudgetRenewalEnum
-
-| Name | Value |
-|---- | -----|
-| UNDEFINED | &quot;undefined&quot; |
-| DAILY | &quot;daily&quot; |
-| MONTHLY | &quot;monthly&quot; |
-| LIFETIME | &quot;lifetime&quot; |
+|**budgetRenewal** | [**BudgetRenewalEnum**](#BudgetRenewalEnum) |  |  [optional] |
+|**budgetStrategy** | [**BudgetStrategyEnum**](#BudgetStrategyEnum) |  |  |
 
 
 
@@ -57,6 +37,26 @@ ad set budget create model
 | FRIDAYTOTHURSDAY | &quot;fridayToThursday&quot; |
 | SATURDAYTOFRIDAY | &quot;saturdayToFriday&quot; |
 | SUNDAYTOSATURDAY | &quot;sundayToSaturday&quot; |
+
+
+
+## Enum: BudgetRenewalEnum
+
+| Name | Value |
+|---- | -----|
+| UNDEFINED | &quot;undefined&quot; |
+| DAILY | &quot;daily&quot; |
+| MONTHLY | &quot;monthly&quot; |
+| LIFETIME | &quot;lifetime&quot; |
+
+
+
+## Enum: BudgetStrategyEnum
+
+| Name | Value |
+|---- | -----|
+| CAPPED | &quot;capped&quot; |
+| UNCAPPED | &quot;uncapped&quot; |
 
 
 

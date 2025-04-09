@@ -8,8 +8,8 @@ Data model for a value type resource
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** |  |  [optional] |
 |**attributes** | [**ExternalKeywordTarget202110**](ExternalKeywordTarget202110.md) |  |  [optional] |
+|**type** | **String** |  |  [optional] |
 
 
 

@@ -49,38 +49,16 @@ import com.criteo.api.marketingsolutions.v2024_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Size {
-  public static final String SERIALIZED_NAME_WIDTH = "width";
-  @SerializedName(SERIALIZED_NAME_WIDTH)
-  private Integer width;
-
   public static final String SERIALIZED_NAME_HEIGHT = "height";
   @SerializedName(SERIALIZED_NAME_HEIGHT)
   private Integer height;
 
+  public static final String SERIALIZED_NAME_WIDTH = "width";
+  @SerializedName(SERIALIZED_NAME_WIDTH)
+  private Integer width;
+
   public Size() {
   }
-
-  public Size width(Integer width) {
-    
-    this.width = width;
-    return this;
-  }
-
-   /**
-   * Get width
-   * @return width
-  **/
-  @javax.annotation.Nullable
-
-  public Integer getWidth() {
-    return width;
-  }
-
-
-  public void setWidth(Integer width) {
-    this.width = width;
-  }
-
 
   public Size height(Integer height) {
     
@@ -101,6 +79,28 @@ public class Size {
 
   public void setHeight(Integer height) {
     this.height = height;
+  }
+
+
+  public Size width(Integer width) {
+    
+    this.width = width;
+    return this;
+  }
+
+   /**
+   * Get width
+   * @return width
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getWidth() {
+    return width;
+  }
+
+
+  public void setWidth(Integer width) {
+    this.width = width;
   }
 
   /**
@@ -158,8 +158,8 @@ public class Size {
       return false;
     }
     Size size = (Size) o;
-    return Objects.equals(this.width, size.width) &&
-        Objects.equals(this.height, size.height)&&
+    return Objects.equals(this.height, size.height) &&
+        Objects.equals(this.width, size.width)&&
         Objects.equals(this.additionalProperties, size.additionalProperties);
   }
 
@@ -169,7 +169,7 @@ public class Size {
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, additionalProperties);
+    return Objects.hash(height, width, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -183,8 +183,8 @@ public class Size {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Size {\n");
-    sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
+    sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -208,8 +208,8 @@ public class Size {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("width");
     openapiFields.add("height");
+    openapiFields.add("width");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

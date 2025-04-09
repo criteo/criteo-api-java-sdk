@@ -51,60 +51,13 @@ import com.criteo.api.retailmedia.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RmEventsV1 {
-  /**
-   * Reach people who performed specific action
-   */
-  @JsonAdapter(ShopperActivityEnum.Adapter.class)
-  public enum ShopperActivityEnum {
-    UNKNOWN("Unknown"),
-    
-    VIEW("View"),
-    
-    BUY("Buy"),
-    
-    ADDTOCART("AddToCart");
+  public static final String SERIALIZED_NAME_BRAND_IDS = "brandIds";
+  @SerializedName(SERIALIZED_NAME_BRAND_IDS)
+  private List<String> brandIds = null;
 
-    private String value;
-
-    ShopperActivityEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ShopperActivityEnum fromValue(String value) {
-      for (ShopperActivityEnum b : ShopperActivityEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<ShopperActivityEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ShopperActivityEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ShopperActivityEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ShopperActivityEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_SHOPPER_ACTIVITY = "shopperActivity";
-  @SerializedName(SERIALIZED_NAME_SHOPPER_ACTIVITY)
-  private ShopperActivityEnum shopperActivity;
+  public static final String SERIALIZED_NAME_CATEGORY_IDS = "categoryIds";
+  @SerializedName(SERIALIZED_NAME_CATEGORY_IDS)
+  private List<String> categoryIds = null;
 
   /**
    * The number of days to look back
@@ -173,66 +126,99 @@ public class RmEventsV1 {
   @SerializedName(SERIALIZED_NAME_LOOKBACK_DAYS)
   private LookbackDaysEnum lookbackDays;
 
-  public static final String SERIALIZED_NAME_CATEGORY_IDS = "categoryIds";
-  @SerializedName(SERIALIZED_NAME_CATEGORY_IDS)
-  private List<String> categoryIds = null;
-
-  public static final String SERIALIZED_NAME_BRAND_IDS = "brandIds";
-  @SerializedName(SERIALIZED_NAME_BRAND_IDS)
-  private List<String> brandIds = null;
+  public static final String SERIALIZED_NAME_MAX_PRICE = "maxPrice";
+  @SerializedName(SERIALIZED_NAME_MAX_PRICE)
+  private Double maxPrice;
 
   public static final String SERIALIZED_NAME_MIN_PRICE = "minPrice";
   @SerializedName(SERIALIZED_NAME_MIN_PRICE)
   private Double minPrice;
 
-  public static final String SERIALIZED_NAME_MAX_PRICE = "maxPrice";
-  @SerializedName(SERIALIZED_NAME_MAX_PRICE)
-  private Double maxPrice;
+  /**
+   * Reach people who performed specific action
+   */
+  @JsonAdapter(ShopperActivityEnum.Adapter.class)
+  public enum ShopperActivityEnum {
+    UNKNOWN("Unknown"),
+    
+    VIEW("View"),
+    
+    BUY("Buy"),
+    
+    ADDTOCART("AddToCart");
+
+    private String value;
+
+    ShopperActivityEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ShopperActivityEnum fromValue(String value) {
+      for (ShopperActivityEnum b : ShopperActivityEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<ShopperActivityEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ShopperActivityEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ShopperActivityEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ShopperActivityEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_SHOPPER_ACTIVITY = "shopperActivity";
+  @SerializedName(SERIALIZED_NAME_SHOPPER_ACTIVITY)
+  private ShopperActivityEnum shopperActivity;
 
   public RmEventsV1() {
   }
 
-  public RmEventsV1 shopperActivity(ShopperActivityEnum shopperActivity) {
+  public RmEventsV1 brandIds(List<String> brandIds) {
     
-    this.shopperActivity = shopperActivity;
+    this.brandIds = brandIds;
+    return this;
+  }
+
+  public RmEventsV1 addBrandIdsItem(String brandIdsItem) {
+    if (this.brandIds == null) {
+      this.brandIds = null;
+    }
+    this.brandIds.add(brandIdsItem);
     return this;
   }
 
    /**
-   * Reach people who performed specific action
-   * @return shopperActivity
+   * The list of brand ids
+   * @return brandIds
   **/
   @javax.annotation.Nullable
 
-  public ShopperActivityEnum getShopperActivity() {
-    return shopperActivity;
+  public List<String> getBrandIds() {
+    return brandIds;
   }
 
 
-  public void setShopperActivity(ShopperActivityEnum shopperActivity) {
-    this.shopperActivity = shopperActivity;
-  }
-
-
-  public RmEventsV1 lookbackDays(LookbackDaysEnum lookbackDays) {
-    
-    this.lookbackDays = lookbackDays;
-    return this;
-  }
-
-   /**
-   * The number of days to look back
-   * @return lookbackDays
-  **/
-  @javax.annotation.Nullable
-
-  public LookbackDaysEnum getLookbackDays() {
-    return lookbackDays;
-  }
-
-
-  public void setLookbackDays(LookbackDaysEnum lookbackDays) {
-    this.lookbackDays = lookbackDays;
+  public void setBrandIds(List<String> brandIds) {
+    this.brandIds = brandIds;
   }
 
 
@@ -266,33 +252,47 @@ public class RmEventsV1 {
   }
 
 
-  public RmEventsV1 brandIds(List<String> brandIds) {
+  public RmEventsV1 lookbackDays(LookbackDaysEnum lookbackDays) {
     
-    this.brandIds = brandIds;
-    return this;
-  }
-
-  public RmEventsV1 addBrandIdsItem(String brandIdsItem) {
-    if (this.brandIds == null) {
-      this.brandIds = null;
-    }
-    this.brandIds.add(brandIdsItem);
+    this.lookbackDays = lookbackDays;
     return this;
   }
 
    /**
-   * The list of brand ids
-   * @return brandIds
+   * The number of days to look back
+   * @return lookbackDays
   **/
   @javax.annotation.Nullable
 
-  public List<String> getBrandIds() {
-    return brandIds;
+  public LookbackDaysEnum getLookbackDays() {
+    return lookbackDays;
   }
 
 
-  public void setBrandIds(List<String> brandIds) {
-    this.brandIds = brandIds;
+  public void setLookbackDays(LookbackDaysEnum lookbackDays) {
+    this.lookbackDays = lookbackDays;
+  }
+
+
+  public RmEventsV1 maxPrice(Double maxPrice) {
+    
+    this.maxPrice = maxPrice;
+    return this;
+  }
+
+   /**
+   * Maximum price of the products
+   * @return maxPrice
+  **/
+  @javax.annotation.Nullable
+
+  public Double getMaxPrice() {
+    return maxPrice;
+  }
+
+
+  public void setMaxPrice(Double maxPrice) {
+    this.maxPrice = maxPrice;
   }
 
 
@@ -318,25 +318,25 @@ public class RmEventsV1 {
   }
 
 
-  public RmEventsV1 maxPrice(Double maxPrice) {
+  public RmEventsV1 shopperActivity(ShopperActivityEnum shopperActivity) {
     
-    this.maxPrice = maxPrice;
+    this.shopperActivity = shopperActivity;
     return this;
   }
 
    /**
-   * Maximum price of the products
-   * @return maxPrice
+   * Reach people who performed specific action
+   * @return shopperActivity
   **/
   @javax.annotation.Nullable
 
-  public Double getMaxPrice() {
-    return maxPrice;
+  public ShopperActivityEnum getShopperActivity() {
+    return shopperActivity;
   }
 
 
-  public void setMaxPrice(Double maxPrice) {
-    this.maxPrice = maxPrice;
+  public void setShopperActivity(ShopperActivityEnum shopperActivity) {
+    this.shopperActivity = shopperActivity;
   }
 
   /**
@@ -394,12 +394,12 @@ public class RmEventsV1 {
       return false;
     }
     RmEventsV1 rmEventsV1 = (RmEventsV1) o;
-    return Objects.equals(this.shopperActivity, rmEventsV1.shopperActivity) &&
-        Objects.equals(this.lookbackDays, rmEventsV1.lookbackDays) &&
+    return Objects.equals(this.brandIds, rmEventsV1.brandIds) &&
         Objects.equals(this.categoryIds, rmEventsV1.categoryIds) &&
-        Objects.equals(this.brandIds, rmEventsV1.brandIds) &&
+        Objects.equals(this.lookbackDays, rmEventsV1.lookbackDays) &&
+        Objects.equals(this.maxPrice, rmEventsV1.maxPrice) &&
         Objects.equals(this.minPrice, rmEventsV1.minPrice) &&
-        Objects.equals(this.maxPrice, rmEventsV1.maxPrice)&&
+        Objects.equals(this.shopperActivity, rmEventsV1.shopperActivity)&&
         Objects.equals(this.additionalProperties, rmEventsV1.additionalProperties);
   }
 
@@ -409,7 +409,7 @@ public class RmEventsV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(shopperActivity, lookbackDays, categoryIds, brandIds, minPrice, maxPrice, additionalProperties);
+    return Objects.hash(brandIds, categoryIds, lookbackDays, maxPrice, minPrice, shopperActivity, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -423,12 +423,12 @@ public class RmEventsV1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RmEventsV1 {\n");
-    sb.append("    shopperActivity: ").append(toIndentedString(shopperActivity)).append("\n");
-    sb.append("    lookbackDays: ").append(toIndentedString(lookbackDays)).append("\n");
-    sb.append("    categoryIds: ").append(toIndentedString(categoryIds)).append("\n");
     sb.append("    brandIds: ").append(toIndentedString(brandIds)).append("\n");
-    sb.append("    minPrice: ").append(toIndentedString(minPrice)).append("\n");
+    sb.append("    categoryIds: ").append(toIndentedString(categoryIds)).append("\n");
+    sb.append("    lookbackDays: ").append(toIndentedString(lookbackDays)).append("\n");
     sb.append("    maxPrice: ").append(toIndentedString(maxPrice)).append("\n");
+    sb.append("    minPrice: ").append(toIndentedString(minPrice)).append("\n");
+    sb.append("    shopperActivity: ").append(toIndentedString(shopperActivity)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -452,12 +452,12 @@ public class RmEventsV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("shopperActivity");
-    openapiFields.add("lookbackDays");
-    openapiFields.add("categoryIds");
     openapiFields.add("brandIds");
-    openapiFields.add("minPrice");
+    openapiFields.add("categoryIds");
+    openapiFields.add("lookbackDays");
     openapiFields.add("maxPrice");
+    openapiFields.add("minPrice");
+    openapiFields.add("shopperActivity");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -475,19 +475,19 @@ public class RmEventsV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in RmEventsV1 is not found in the empty JSON string", RmEventsV1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("shopperActivity") != null && !jsonObj.get("shopperActivity").isJsonNull()) && !jsonObj.get("shopperActivity").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `shopperActivity` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shopperActivity").toString()));
-      }
-      if ((jsonObj.get("lookbackDays") != null && !jsonObj.get("lookbackDays").isJsonNull()) && !jsonObj.get("lookbackDays").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lookbackDays` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lookbackDays").toString()));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `brandIds` to be an array in the JSON string but got `%s`", jsonObj.get("brandIds").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("categoryIds") != null && !jsonObj.get("categoryIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `categoryIds` to be an array in the JSON string but got `%s`", jsonObj.get("categoryIds").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `brandIds` to be an array in the JSON string but got `%s`", jsonObj.get("brandIds").toString()));
+      if ((jsonObj.get("lookbackDays") != null && !jsonObj.get("lookbackDays").isJsonNull()) && !jsonObj.get("lookbackDays").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `lookbackDays` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lookbackDays").toString()));
+      }
+      if ((jsonObj.get("shopperActivity") != null && !jsonObj.get("shopperActivity").isJsonNull()) && !jsonObj.get("shopperActivity").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `shopperActivity` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shopperActivity").toString()));
       }
   }
 

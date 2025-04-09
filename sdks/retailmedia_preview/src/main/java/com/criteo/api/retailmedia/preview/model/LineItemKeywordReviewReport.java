@@ -48,6 +48,26 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class LineItemKeywordReviewReport {
+  public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+  private String accountId;
+
+  public static final String SERIALIZED_NAME_ACCOUNT_NAME = "accountName";
+  @SerializedName(SERIALIZED_NAME_ACCOUNT_NAME)
+  private String accountName;
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
+  private String campaignId;
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_NAME = "campaignName";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_NAME)
+  private String campaignName;
+
+  public static final String SERIALIZED_NAME_COUNT_KEYWORDS = "countKeywords";
+  @SerializedName(SERIALIZED_NAME_COUNT_KEYWORDS)
+  private Integer countKeywords;
+
   public static final String SERIALIZED_NAME_LINE_ITEM_ID = "lineItemId";
   @SerializedName(SERIALIZED_NAME_LINE_ITEM_ID)
   private String lineItemId;
@@ -64,28 +84,118 @@ public class LineItemKeywordReviewReport {
   @SerializedName(SERIALIZED_NAME_RETAILER_NAME)
   private String retailerName;
 
-  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private String campaignId;
-
-  public static final String SERIALIZED_NAME_CAMPAIGN_NAME = "campaignName";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_NAME)
-  private String campaignName;
-
-  public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
-  @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
-  private String accountId;
-
-  public static final String SERIALIZED_NAME_ACCOUNT_NAME = "accountName";
-  @SerializedName(SERIALIZED_NAME_ACCOUNT_NAME)
-  private String accountName;
-
-  public static final String SERIALIZED_NAME_COUNT_KEYWORDS = "countKeywords";
-  @SerializedName(SERIALIZED_NAME_COUNT_KEYWORDS)
-  private Integer countKeywords;
-
   public LineItemKeywordReviewReport() {
   }
+
+  public LineItemKeywordReviewReport accountId(String accountId) {
+    
+    this.accountId = accountId;
+    return this;
+  }
+
+   /**
+   * External ID of the account containing the campaign containing the line item this report is for
+   * @return accountId
+  **/
+  @javax.annotation.Nonnull
+
+  public String getAccountId() {
+    return accountId;
+  }
+
+
+  public void setAccountId(String accountId) {
+    this.accountId = accountId;
+  }
+
+
+  public LineItemKeywordReviewReport accountName(String accountName) {
+    
+    this.accountName = accountName;
+    return this;
+  }
+
+   /**
+   * Name of the account containing the campaign containing the line item this report is for
+   * @return accountName
+  **/
+  @javax.annotation.Nonnull
+
+  public String getAccountName() {
+    return accountName;
+  }
+
+
+  public void setAccountName(String accountName) {
+    this.accountName = accountName;
+  }
+
+
+  public LineItemKeywordReviewReport campaignId(String campaignId) {
+    
+    this.campaignId = campaignId;
+    return this;
+  }
+
+   /**
+   * External ID of the campaign containing the line item this report is for
+   * @return campaignId
+  **/
+  @javax.annotation.Nonnull
+
+  public String getCampaignId() {
+    return campaignId;
+  }
+
+
+  public void setCampaignId(String campaignId) {
+    this.campaignId = campaignId;
+  }
+
+
+  public LineItemKeywordReviewReport campaignName(String campaignName) {
+    
+    this.campaignName = campaignName;
+    return this;
+  }
+
+   /**
+   * Name of the campaign containing the line item this report is for
+   * @return campaignName
+  **/
+  @javax.annotation.Nonnull
+
+  public String getCampaignName() {
+    return campaignName;
+  }
+
+
+  public void setCampaignName(String campaignName) {
+    this.campaignName = campaignName;
+  }
+
+
+  public LineItemKeywordReviewReport countKeywords(Integer countKeywords) {
+    
+    this.countKeywords = countKeywords;
+    return this;
+  }
+
+   /**
+   * Number of PositiveExactMatch keywords on this line item that are in either \&quot;InReview\&quot; or \&quot;Pending\&quot; state
+   * @return countKeywords
+  **/
+  @javax.annotation.Nonnull
+
+  public Integer getCountKeywords() {
+    return countKeywords;
+  }
+
+
+  public void setCountKeywords(Integer countKeywords) {
+    this.countKeywords = countKeywords;
+  }
+
 
   public LineItemKeywordReviewReport lineItemId(String lineItemId) {
     
@@ -175,116 +285,6 @@ public class LineItemKeywordReviewReport {
   }
 
 
-  public LineItemKeywordReviewReport campaignId(String campaignId) {
-    
-    this.campaignId = campaignId;
-    return this;
-  }
-
-   /**
-   * External ID of the campaign containing the line item this report is for
-   * @return campaignId
-  **/
-  @javax.annotation.Nonnull
-
-  public String getCampaignId() {
-    return campaignId;
-  }
-
-
-  public void setCampaignId(String campaignId) {
-    this.campaignId = campaignId;
-  }
-
-
-  public LineItemKeywordReviewReport campaignName(String campaignName) {
-    
-    this.campaignName = campaignName;
-    return this;
-  }
-
-   /**
-   * Name of the campaign containing the line item this report is for
-   * @return campaignName
-  **/
-  @javax.annotation.Nonnull
-
-  public String getCampaignName() {
-    return campaignName;
-  }
-
-
-  public void setCampaignName(String campaignName) {
-    this.campaignName = campaignName;
-  }
-
-
-  public LineItemKeywordReviewReport accountId(String accountId) {
-    
-    this.accountId = accountId;
-    return this;
-  }
-
-   /**
-   * External ID of the account containing the campaign containing the line item this report is for
-   * @return accountId
-  **/
-  @javax.annotation.Nonnull
-
-  public String getAccountId() {
-    return accountId;
-  }
-
-
-  public void setAccountId(String accountId) {
-    this.accountId = accountId;
-  }
-
-
-  public LineItemKeywordReviewReport accountName(String accountName) {
-    
-    this.accountName = accountName;
-    return this;
-  }
-
-   /**
-   * Name of the account containing the campaign containing the line item this report is for
-   * @return accountName
-  **/
-  @javax.annotation.Nonnull
-
-  public String getAccountName() {
-    return accountName;
-  }
-
-
-  public void setAccountName(String accountName) {
-    this.accountName = accountName;
-  }
-
-
-  public LineItemKeywordReviewReport countKeywords(Integer countKeywords) {
-    
-    this.countKeywords = countKeywords;
-    return this;
-  }
-
-   /**
-   * Number of PositiveExactMatch keywords on this line item that are in either \&quot;InReview\&quot; or \&quot;Pending\&quot; state
-   * @return countKeywords
-  **/
-  @javax.annotation.Nonnull
-
-  public Integer getCountKeywords() {
-    return countKeywords;
-  }
-
-
-  public void setCountKeywords(Integer countKeywords) {
-    this.countKeywords = countKeywords;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -295,35 +295,35 @@ public class LineItemKeywordReviewReport {
       return false;
     }
     LineItemKeywordReviewReport lineItemKeywordReviewReport = (LineItemKeywordReviewReport) o;
-    return Objects.equals(this.lineItemId, lineItemKeywordReviewReport.lineItemId) &&
-        Objects.equals(this.lineItemName, lineItemKeywordReviewReport.lineItemName) &&
-        Objects.equals(this.retailerId, lineItemKeywordReviewReport.retailerId) &&
-        Objects.equals(this.retailerName, lineItemKeywordReviewReport.retailerName) &&
+    return Objects.equals(this.accountId, lineItemKeywordReviewReport.accountId) &&
+        Objects.equals(this.accountName, lineItemKeywordReviewReport.accountName) &&
         Objects.equals(this.campaignId, lineItemKeywordReviewReport.campaignId) &&
         Objects.equals(this.campaignName, lineItemKeywordReviewReport.campaignName) &&
-        Objects.equals(this.accountId, lineItemKeywordReviewReport.accountId) &&
-        Objects.equals(this.accountName, lineItemKeywordReviewReport.accountName) &&
-        Objects.equals(this.countKeywords, lineItemKeywordReviewReport.countKeywords);
+        Objects.equals(this.countKeywords, lineItemKeywordReviewReport.countKeywords) &&
+        Objects.equals(this.lineItemId, lineItemKeywordReviewReport.lineItemId) &&
+        Objects.equals(this.lineItemName, lineItemKeywordReviewReport.lineItemName) &&
+        Objects.equals(this.retailerId, lineItemKeywordReviewReport.retailerId) &&
+        Objects.equals(this.retailerName, lineItemKeywordReviewReport.retailerName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lineItemId, lineItemName, retailerId, retailerName, campaignId, campaignName, accountId, accountName, countKeywords);
+    return Objects.hash(accountId, accountName, campaignId, campaignName, countKeywords, lineItemId, lineItemName, retailerId, retailerName);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LineItemKeywordReviewReport {\n");
+    sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
+    sb.append("    accountName: ").append(toIndentedString(accountName)).append("\n");
+    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    campaignName: ").append(toIndentedString(campaignName)).append("\n");
+    sb.append("    countKeywords: ").append(toIndentedString(countKeywords)).append("\n");
     sb.append("    lineItemId: ").append(toIndentedString(lineItemId)).append("\n");
     sb.append("    lineItemName: ").append(toIndentedString(lineItemName)).append("\n");
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    retailerName: ").append(toIndentedString(retailerName)).append("\n");
-    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
-    sb.append("    campaignName: ").append(toIndentedString(campaignName)).append("\n");
-    sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
-    sb.append("    accountName: ").append(toIndentedString(accountName)).append("\n");
-    sb.append("    countKeywords: ").append(toIndentedString(countKeywords)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -346,27 +346,27 @@ public class LineItemKeywordReviewReport {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("accountId");
+    openapiFields.add("accountName");
+    openapiFields.add("campaignId");
+    openapiFields.add("campaignName");
+    openapiFields.add("countKeywords");
     openapiFields.add("lineItemId");
     openapiFields.add("lineItemName");
     openapiFields.add("retailerId");
     openapiFields.add("retailerName");
-    openapiFields.add("campaignId");
-    openapiFields.add("campaignName");
-    openapiFields.add("accountId");
-    openapiFields.add("accountName");
-    openapiFields.add("countKeywords");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("accountId");
+    openapiRequiredFields.add("accountName");
+    openapiRequiredFields.add("campaignId");
+    openapiRequiredFields.add("campaignName");
+    openapiRequiredFields.add("countKeywords");
     openapiRequiredFields.add("lineItemId");
     openapiRequiredFields.add("lineItemName");
     openapiRequiredFields.add("retailerId");
     openapiRequiredFields.add("retailerName");
-    openapiRequiredFields.add("campaignId");
-    openapiRequiredFields.add("campaignName");
-    openapiRequiredFields.add("accountId");
-    openapiRequiredFields.add("accountName");
-    openapiRequiredFields.add("countKeywords");
   }
 
  /**
@@ -396,6 +396,18 @@ public class LineItemKeywordReviewReport {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      if (!jsonObj.get("accountId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
+      }
+      if (!jsonObj.get("accountName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `accountName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountName").toString()));
+      }
+      if (!jsonObj.get("campaignId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
+      }
+      if (!jsonObj.get("campaignName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `campaignName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignName").toString()));
+      }
       if (!jsonObj.get("lineItemId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `lineItemId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lineItemId").toString()));
       }
@@ -407,18 +419,6 @@ public class LineItemKeywordReviewReport {
       }
       if (!jsonObj.get("retailerName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerName").toString()));
-      }
-      if (!jsonObj.get("campaignId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
-      }
-      if (!jsonObj.get("campaignName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaignName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignName").toString()));
-      }
-      if (!jsonObj.get("accountId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
-      }
-      if (!jsonObj.get("accountName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `accountName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountName").toString()));
       }
   }
 

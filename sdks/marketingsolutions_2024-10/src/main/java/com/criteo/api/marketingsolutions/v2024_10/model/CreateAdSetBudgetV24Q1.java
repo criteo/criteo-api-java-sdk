@@ -49,113 +49,9 @@ import com.criteo.api.marketingsolutions.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateAdSetBudgetV24Q1 {
-  /**
-   * Gets or Sets budgetStrategy
-   */
-  @JsonAdapter(BudgetStrategyEnum.Adapter.class)
-  public enum BudgetStrategyEnum {
-    CAPPED("capped"),
-    
-    UNCAPPED("uncapped");
-
-    private String value;
-
-    BudgetStrategyEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static BudgetStrategyEnum fromValue(String value) {
-      for (BudgetStrategyEnum b : BudgetStrategyEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<BudgetStrategyEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final BudgetStrategyEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public BudgetStrategyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return BudgetStrategyEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_BUDGET_STRATEGY = "budgetStrategy";
-  @SerializedName(SERIALIZED_NAME_BUDGET_STRATEGY)
-  private BudgetStrategyEnum budgetStrategy;
-
-  /**
-   * Gets or Sets budgetRenewal
-   */
-  @JsonAdapter(BudgetRenewalEnum.Adapter.class)
-  public enum BudgetRenewalEnum {
-    UNDEFINED("undefined"),
-    
-    DAILY("daily"),
-    
-    MONTHLY("monthly"),
-    
-    LIFETIME("lifetime"),
-    
-    WEEKLY("weekly");
-
-    private String value;
-
-    BudgetRenewalEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static BudgetRenewalEnum fromValue(String value) {
-      for (BudgetRenewalEnum b : BudgetRenewalEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<BudgetRenewalEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final BudgetRenewalEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public BudgetRenewalEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return BudgetRenewalEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_BUDGET_RENEWAL = "budgetRenewal";
-  @SerializedName(SERIALIZED_NAME_BUDGET_RENEWAL)
-  private BudgetRenewalEnum budgetRenewal;
+  public static final String SERIALIZED_NAME_BUDGET_AMOUNT = "budgetAmount";
+  @SerializedName(SERIALIZED_NAME_BUDGET_AMOUNT)
+  private Double budgetAmount;
 
   /**
    * Gets or Sets budgetDeliverySmoothing
@@ -271,54 +167,136 @@ public class CreateAdSetBudgetV24Q1 {
   @SerializedName(SERIALIZED_NAME_BUDGET_DELIVERY_WEEK)
   private BudgetDeliveryWeekEnum budgetDeliveryWeek;
 
-  public static final String SERIALIZED_NAME_BUDGET_AMOUNT = "budgetAmount";
-  @SerializedName(SERIALIZED_NAME_BUDGET_AMOUNT)
-  private Double budgetAmount;
+  /**
+   * Gets or Sets budgetRenewal
+   */
+  @JsonAdapter(BudgetRenewalEnum.Adapter.class)
+  public enum BudgetRenewalEnum {
+    UNDEFINED("undefined"),
+    
+    DAILY("daily"),
+    
+    MONTHLY("monthly"),
+    
+    LIFETIME("lifetime"),
+    
+    WEEKLY("weekly");
+
+    private String value;
+
+    BudgetRenewalEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static BudgetRenewalEnum fromValue(String value) {
+      for (BudgetRenewalEnum b : BudgetRenewalEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<BudgetRenewalEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final BudgetRenewalEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public BudgetRenewalEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return BudgetRenewalEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_BUDGET_RENEWAL = "budgetRenewal";
+  @SerializedName(SERIALIZED_NAME_BUDGET_RENEWAL)
+  private BudgetRenewalEnum budgetRenewal;
+
+  /**
+   * Gets or Sets budgetStrategy
+   */
+  @JsonAdapter(BudgetStrategyEnum.Adapter.class)
+  public enum BudgetStrategyEnum {
+    CAPPED("capped"),
+    
+    UNCAPPED("uncapped");
+
+    private String value;
+
+    BudgetStrategyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static BudgetStrategyEnum fromValue(String value) {
+      for (BudgetStrategyEnum b : BudgetStrategyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<BudgetStrategyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final BudgetStrategyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public BudgetStrategyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return BudgetStrategyEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_BUDGET_STRATEGY = "budgetStrategy";
+  @SerializedName(SERIALIZED_NAME_BUDGET_STRATEGY)
+  private BudgetStrategyEnum budgetStrategy;
 
   public CreateAdSetBudgetV24Q1() {
   }
 
-  public CreateAdSetBudgetV24Q1 budgetStrategy(BudgetStrategyEnum budgetStrategy) {
+  public CreateAdSetBudgetV24Q1 budgetAmount(Double budgetAmount) {
     
-    this.budgetStrategy = budgetStrategy;
+    this.budgetAmount = budgetAmount;
     return this;
   }
 
    /**
-   * Get budgetStrategy
-   * @return budgetStrategy
-  **/
-  @javax.annotation.Nonnull
-
-  public BudgetStrategyEnum getBudgetStrategy() {
-    return budgetStrategy;
-  }
-
-
-  public void setBudgetStrategy(BudgetStrategyEnum budgetStrategy) {
-    this.budgetStrategy = budgetStrategy;
-  }
-
-
-  public CreateAdSetBudgetV24Q1 budgetRenewal(BudgetRenewalEnum budgetRenewal) {
-    
-    this.budgetRenewal = budgetRenewal;
-    return this;
-  }
-
-   /**
-   * Get budgetRenewal
-   * @return budgetRenewal
+   * Get budgetAmount
+   * @return budgetAmount
   **/
   @javax.annotation.Nullable
 
-  public BudgetRenewalEnum getBudgetRenewal() {
-    return budgetRenewal;
+  public Double getBudgetAmount() {
+    return budgetAmount;
   }
 
 
-  public void setBudgetRenewal(BudgetRenewalEnum budgetRenewal) {
-    this.budgetRenewal = budgetRenewal;
+  public void setBudgetAmount(Double budgetAmount) {
+    this.budgetAmount = budgetAmount;
   }
 
 
@@ -366,25 +344,47 @@ public class CreateAdSetBudgetV24Q1 {
   }
 
 
-  public CreateAdSetBudgetV24Q1 budgetAmount(Double budgetAmount) {
+  public CreateAdSetBudgetV24Q1 budgetRenewal(BudgetRenewalEnum budgetRenewal) {
     
-    this.budgetAmount = budgetAmount;
+    this.budgetRenewal = budgetRenewal;
     return this;
   }
 
    /**
-   * Get budgetAmount
-   * @return budgetAmount
+   * Get budgetRenewal
+   * @return budgetRenewal
   **/
   @javax.annotation.Nullable
 
-  public Double getBudgetAmount() {
-    return budgetAmount;
+  public BudgetRenewalEnum getBudgetRenewal() {
+    return budgetRenewal;
   }
 
 
-  public void setBudgetAmount(Double budgetAmount) {
-    this.budgetAmount = budgetAmount;
+  public void setBudgetRenewal(BudgetRenewalEnum budgetRenewal) {
+    this.budgetRenewal = budgetRenewal;
+  }
+
+
+  public CreateAdSetBudgetV24Q1 budgetStrategy(BudgetStrategyEnum budgetStrategy) {
+    
+    this.budgetStrategy = budgetStrategy;
+    return this;
+  }
+
+   /**
+   * Get budgetStrategy
+   * @return budgetStrategy
+  **/
+  @javax.annotation.Nonnull
+
+  public BudgetStrategyEnum getBudgetStrategy() {
+    return budgetStrategy;
+  }
+
+
+  public void setBudgetStrategy(BudgetStrategyEnum budgetStrategy) {
+    this.budgetStrategy = budgetStrategy;
   }
 
   /**
@@ -442,11 +442,11 @@ public class CreateAdSetBudgetV24Q1 {
       return false;
     }
     CreateAdSetBudgetV24Q1 createAdSetBudgetV24Q1 = (CreateAdSetBudgetV24Q1) o;
-    return Objects.equals(this.budgetStrategy, createAdSetBudgetV24Q1.budgetStrategy) &&
-        Objects.equals(this.budgetRenewal, createAdSetBudgetV24Q1.budgetRenewal) &&
+    return Objects.equals(this.budgetAmount, createAdSetBudgetV24Q1.budgetAmount) &&
         Objects.equals(this.budgetDeliverySmoothing, createAdSetBudgetV24Q1.budgetDeliverySmoothing) &&
         Objects.equals(this.budgetDeliveryWeek, createAdSetBudgetV24Q1.budgetDeliveryWeek) &&
-        Objects.equals(this.budgetAmount, createAdSetBudgetV24Q1.budgetAmount)&&
+        Objects.equals(this.budgetRenewal, createAdSetBudgetV24Q1.budgetRenewal) &&
+        Objects.equals(this.budgetStrategy, createAdSetBudgetV24Q1.budgetStrategy)&&
         Objects.equals(this.additionalProperties, createAdSetBudgetV24Q1.additionalProperties);
   }
 
@@ -456,7 +456,7 @@ public class CreateAdSetBudgetV24Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(budgetStrategy, budgetRenewal, budgetDeliverySmoothing, budgetDeliveryWeek, budgetAmount, additionalProperties);
+    return Objects.hash(budgetAmount, budgetDeliverySmoothing, budgetDeliveryWeek, budgetRenewal, budgetStrategy, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -470,11 +470,11 @@ public class CreateAdSetBudgetV24Q1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAdSetBudgetV24Q1 {\n");
-    sb.append("    budgetStrategy: ").append(toIndentedString(budgetStrategy)).append("\n");
-    sb.append("    budgetRenewal: ").append(toIndentedString(budgetRenewal)).append("\n");
+    sb.append("    budgetAmount: ").append(toIndentedString(budgetAmount)).append("\n");
     sb.append("    budgetDeliverySmoothing: ").append(toIndentedString(budgetDeliverySmoothing)).append("\n");
     sb.append("    budgetDeliveryWeek: ").append(toIndentedString(budgetDeliveryWeek)).append("\n");
-    sb.append("    budgetAmount: ").append(toIndentedString(budgetAmount)).append("\n");
+    sb.append("    budgetRenewal: ").append(toIndentedString(budgetRenewal)).append("\n");
+    sb.append("    budgetStrategy: ").append(toIndentedString(budgetStrategy)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -498,11 +498,11 @@ public class CreateAdSetBudgetV24Q1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("budgetStrategy");
-    openapiFields.add("budgetRenewal");
+    openapiFields.add("budgetAmount");
     openapiFields.add("budgetDeliverySmoothing");
     openapiFields.add("budgetDeliveryWeek");
-    openapiFields.add("budgetAmount");
+    openapiFields.add("budgetRenewal");
+    openapiFields.add("budgetStrategy");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -528,17 +528,17 @@ public class CreateAdSetBudgetV24Q1 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("budgetStrategy").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `budgetStrategy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("budgetStrategy").toString()));
-      }
-      if ((jsonObj.get("budgetRenewal") != null && !jsonObj.get("budgetRenewal").isJsonNull()) && !jsonObj.get("budgetRenewal").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `budgetRenewal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("budgetRenewal").toString()));
-      }
       if ((jsonObj.get("budgetDeliverySmoothing") != null && !jsonObj.get("budgetDeliverySmoothing").isJsonNull()) && !jsonObj.get("budgetDeliverySmoothing").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `budgetDeliverySmoothing` to be a primitive type in the JSON string but got `%s`", jsonObj.get("budgetDeliverySmoothing").toString()));
       }
       if ((jsonObj.get("budgetDeliveryWeek") != null && !jsonObj.get("budgetDeliveryWeek").isJsonNull()) && !jsonObj.get("budgetDeliveryWeek").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `budgetDeliveryWeek` to be a primitive type in the JSON string but got `%s`", jsonObj.get("budgetDeliveryWeek").toString()));
+      }
+      if ((jsonObj.get("budgetRenewal") != null && !jsonObj.get("budgetRenewal").isJsonNull()) && !jsonObj.get("budgetRenewal").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `budgetRenewal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("budgetRenewal").toString()));
+      }
+      if (!jsonObj.get("budgetStrategy").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `budgetStrategy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("budgetStrategy").toString()));
       }
   }
 

@@ -8,16 +8,16 @@ ad set read model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** |  |  [optional] |
 |**advertiserId** | **String** |  |  [optional] |
-|**datasetId** | **String** |  |  [optional] |
-|**campaignId** | **String** |  |  [optional] |
-|**destinationEnvironment** | [**DestinationEnvironmentEnum**](#DestinationEnvironmentEnum) |  |  [optional] |
-|**schedule** | [**ReadAdSetSchedule**](ReadAdSetSchedule.md) |  |  [optional] |
 |**bidding** | [**ReadAdSetBidding**](ReadAdSetBidding.md) |  |  [optional] |
-|**targeting** | [**AdSetTargeting**](AdSetTargeting.md) |  |  [optional] |
 |**budget** | [**ReadAdSetBudget**](ReadAdSetBudget.md) |  |  [optional] |
+|**campaignId** | **String** |  |  [optional] |
+|**datasetId** | **String** |  |  [optional] |
+|**destinationEnvironment** | [**DestinationEnvironmentEnum**](#DestinationEnvironmentEnum) |  |  [optional] |
 |**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) |  |  [optional] |
+|**name** | **String** |  |  [optional] |
+|**schedule** | [**ReadAdSetSchedule**](ReadAdSetSchedule.md) |  |  [optional] |
+|**targeting** | [**AdSetTargeting**](AdSetTargeting.md) |  |  [optional] |
 
 
 

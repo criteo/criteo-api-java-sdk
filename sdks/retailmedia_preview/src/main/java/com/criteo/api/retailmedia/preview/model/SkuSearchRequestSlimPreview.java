@@ -50,38 +50,16 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SkuSearchRequestSlimPreview {
-  public static final String SERIALIZED_NAME_SEARCH_STRING = "searchString";
-  @SerializedName(SERIALIZED_NAME_SEARCH_STRING)
-  private String searchString;
-
   public static final String SERIALIZED_NAME_LIMIT_RESULTS_TO_SKUS_WITH_BRAND_IDS = "limitResultsToSkusWithBrandIds";
   @SerializedName(SERIALIZED_NAME_LIMIT_RESULTS_TO_SKUS_WITH_BRAND_IDS)
   private List<String> limitResultsToSkusWithBrandIds = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_SEARCH_STRING = "searchString";
+  @SerializedName(SERIALIZED_NAME_SEARCH_STRING)
+  private String searchString;
+
   public SkuSearchRequestSlimPreview() {
   }
-
-  public SkuSearchRequestSlimPreview searchString(String searchString) {
-    
-    this.searchString = searchString;
-    return this;
-  }
-
-   /**
-   * Query string to search for across SKU&#39;s properties (gtin, mpn, feed ID, Title, and Description)
-   * @return searchString
-  **/
-  @javax.annotation.Nonnull
-
-  public String getSearchString() {
-    return searchString;
-  }
-
-
-  public void setSearchString(String searchString) {
-    this.searchString = searchString;
-  }
-
 
   public SkuSearchRequestSlimPreview limitResultsToSkusWithBrandIds(List<String> limitResultsToSkusWithBrandIds) {
     
@@ -107,6 +85,28 @@ public class SkuSearchRequestSlimPreview {
 
   public void setLimitResultsToSkusWithBrandIds(List<String> limitResultsToSkusWithBrandIds) {
     this.limitResultsToSkusWithBrandIds = limitResultsToSkusWithBrandIds;
+  }
+
+
+  public SkuSearchRequestSlimPreview searchString(String searchString) {
+    
+    this.searchString = searchString;
+    return this;
+  }
+
+   /**
+   * Query string to search for across SKU&#39;s properties (gtin, mpn, feed ID, Title, and Description)
+   * @return searchString
+  **/
+  @javax.annotation.Nonnull
+
+  public String getSearchString() {
+    return searchString;
+  }
+
+
+  public void setSearchString(String searchString) {
+    this.searchString = searchString;
   }
 
   /**
@@ -164,22 +164,22 @@ public class SkuSearchRequestSlimPreview {
       return false;
     }
     SkuSearchRequestSlimPreview skuSearchRequestSlimPreview = (SkuSearchRequestSlimPreview) o;
-    return Objects.equals(this.searchString, skuSearchRequestSlimPreview.searchString) &&
-        Objects.equals(this.limitResultsToSkusWithBrandIds, skuSearchRequestSlimPreview.limitResultsToSkusWithBrandIds)&&
+    return Objects.equals(this.limitResultsToSkusWithBrandIds, skuSearchRequestSlimPreview.limitResultsToSkusWithBrandIds) &&
+        Objects.equals(this.searchString, skuSearchRequestSlimPreview.searchString)&&
         Objects.equals(this.additionalProperties, skuSearchRequestSlimPreview.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(searchString, limitResultsToSkusWithBrandIds, additionalProperties);
+    return Objects.hash(limitResultsToSkusWithBrandIds, searchString, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SkuSearchRequestSlimPreview {\n");
-    sb.append("    searchString: ").append(toIndentedString(searchString)).append("\n");
     sb.append("    limitResultsToSkusWithBrandIds: ").append(toIndentedString(limitResultsToSkusWithBrandIds)).append("\n");
+    sb.append("    searchString: ").append(toIndentedString(searchString)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -203,13 +203,13 @@ public class SkuSearchRequestSlimPreview {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("searchString");
     openapiFields.add("limitResultsToSkusWithBrandIds");
+    openapiFields.add("searchString");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("searchString");
     openapiRequiredFields.add("limitResultsToSkusWithBrandIds");
+    openapiRequiredFields.add("searchString");
   }
 
  /**
@@ -231,14 +231,14 @@ public class SkuSearchRequestSlimPreview {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("searchString").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `searchString` to be a primitive type in the JSON string but got `%s`", jsonObj.get("searchString").toString()));
-      }
       // ensure the required json array is present
       if (jsonObj.get("limitResultsToSkusWithBrandIds") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("limitResultsToSkusWithBrandIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `limitResultsToSkusWithBrandIds` to be an array in the JSON string but got `%s`", jsonObj.get("limitResultsToSkusWithBrandIds").toString()));
+      }
+      if (!jsonObj.get("searchString").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `searchString` to be a primitive type in the JSON string but got `%s`", jsonObj.get("searchString").toString()));
       }
   }
 

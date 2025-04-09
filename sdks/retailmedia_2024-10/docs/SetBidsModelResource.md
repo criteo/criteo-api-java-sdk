@@ -8,9 +8,9 @@ Resource object containing keywords and their associated bid overrides
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**attributes** | [**SetBidsModel**](SetBidsModel.md) |  |  [optional] |
 |**id** | **String** |  |  [optional] |
 |**type** | **String** |  |  [optional] |
-|**attributes** | [**SetBidsModel**](SetBidsModel.md) |  |  [optional] |
 
 
 

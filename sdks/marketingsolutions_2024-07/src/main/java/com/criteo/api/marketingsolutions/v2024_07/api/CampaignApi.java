@@ -642,8 +642,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -715,8 +715,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -735,8 +735,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -757,8 +757,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Category Bids for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -779,8 +779,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -852,8 +852,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -872,8 +872,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -894,8 +894,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of Display Multipliers for all valid Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -1179,8 +1179,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -1257,8 +1257,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -1278,8 +1278,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -1301,8 +1301,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Category Bids for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -1324,8 +1324,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -1402,8 +1402,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -1423,8 +1423,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -1446,8 +1446,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> List of updated Display Multipliers for given Categories associated to an Ad Set. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
@@ -1469,8 +1469,8 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call searchAdSetsV24Q1Call(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1, final ApiCallback _callback) throws ApiException {
@@ -1540,8 +1540,8 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public ResponsesReadAdSetV24Q1 searchAdSetsV24Q1(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1) throws ApiException {
@@ -1560,8 +1560,8 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ResponsesReadAdSetV24Q1> searchAdSetsV24Q1WithHttpInfo(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1) throws ApiException {
@@ -1582,8 +1582,8 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the ad sets </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> The API client is not authorized to access this resource or the resource does not exist. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call searchAdSetsV24Q1Async(AdSetSearchRequestV24Q1 adSetSearchRequestV24Q1, final ApiCallback<ResponsesReadAdSetV24Q1> _callback) throws ApiException {
@@ -1604,8 +1604,8 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call searchCampaignsV23Q1Call(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback _callback) throws ApiException {
@@ -1675,8 +1675,8 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public CampaignV23Q1ListResponse searchCampaignsV23Q1(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1) throws ApiException {
@@ -1695,8 +1695,8 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<CampaignV23Q1ListResponse> searchCampaignsV23Q1WithHttpInfo(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1) throws ApiException {
@@ -1717,8 +1717,8 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> data for the campaigns </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> The API client is not properly authenticated. </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call searchCampaignsV23Q1Async(CampaignSearchRequestV23Q1 campaignSearchRequestV23Q1, final ApiCallback<CampaignV23Q1ListResponse> _callback) throws ApiException {

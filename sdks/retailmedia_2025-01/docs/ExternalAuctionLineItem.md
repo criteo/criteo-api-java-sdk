@@ -8,24 +8,24 @@ A Retail Media Auction Line Item used to hold bid settings for one or many promo
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**bidStrategy** | [**BidStrategyEnum**](#BidStrategyEnum) |  |  [optional] |
+|**budget** | **BigDecimal** |  |  [optional] |
+|**budgetRemaining** | **BigDecimal** |  |  |
+|**budgetSpent** | **Double** |  |  [optional] |
+|**campaignId** | **String** |  |  |
+|**createdAt** | **OffsetDateTime** |  |  |
+|**dailyPacing** | **BigDecimal** |  |  [optional] |
+|**endDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  [optional] |
+|**id** | **String** | Id of the entity |  [optional] |
+|**isAutoDailyPacing** | **Boolean** |  |  [optional] |
+|**maxBid** | **BigDecimal** |  |  [optional] |
+|**monthlyPacing** | **BigDecimal** |  |  [optional] |
 |**name** | **String** |  |  |
 |**startDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
-|**endDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  [optional] |
-|**maxBid** | **BigDecimal** |  |  [optional] |
-|**budget** | **BigDecimal** |  |  [optional] |
-|**monthlyPacing** | **BigDecimal** |  |  [optional] |
-|**dailyPacing** | **BigDecimal** |  |  [optional] |
-|**bidStrategy** | [**BidStrategyEnum**](#BidStrategyEnum) |  |  [optional] |
-|**targetRetailerId** | **String** |  |  |
 |**status** | [**StatusEnum**](#StatusEnum) |  |  [optional] |
 |**targetBid** | **BigDecimal** |  |  [optional] |
-|**isAutoDailyPacing** | **Boolean** |  |  [optional] |
-|**campaignId** | **String** |  |  |
-|**budgetSpent** | **Double** |  |  [optional] |
-|**budgetRemaining** | **BigDecimal** |  |  |
-|**createdAt** | **OffsetDateTime** |  |  |
+|**targetRetailerId** | **String** |  |  |
 |**updatedAt** | **OffsetDateTime** |  |  |
-|**id** | **String** | Id of the entity |  [optional] |
 
 
 

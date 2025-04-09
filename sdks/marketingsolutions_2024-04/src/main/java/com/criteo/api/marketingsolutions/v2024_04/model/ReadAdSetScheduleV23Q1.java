@@ -50,14 +50,6 @@ import com.criteo.api.marketingsolutions.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReadAdSetScheduleV23Q1 {
-  public static final String SERIALIZED_NAME_START_DATE = "startDate";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private NillableDateTime startDate;
-
-  public static final String SERIALIZED_NAME_END_DATE = "endDate";
-  @SerializedName(SERIALIZED_NAME_END_DATE)
-  private NillableDateTime endDate;
-
   /**
    * Gets or Sets activationStatus
    */
@@ -176,52 +168,16 @@ public class ReadAdSetScheduleV23Q1 {
   @SerializedName(SERIALIZED_NAME_DELIVERY_STATUS)
   private DeliveryStatusEnum deliveryStatus;
 
+  public static final String SERIALIZED_NAME_END_DATE = "endDate";
+  @SerializedName(SERIALIZED_NAME_END_DATE)
+  private NillableDateTime endDate;
+
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private NillableDateTime startDate;
+
   public ReadAdSetScheduleV23Q1() {
   }
-
-  public ReadAdSetScheduleV23Q1 startDate(NillableDateTime startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * Get startDate
-   * @return startDate
-  **/
-  @javax.annotation.Nullable
-
-  public NillableDateTime getStartDate() {
-    return startDate;
-  }
-
-
-  public void setStartDate(NillableDateTime startDate) {
-    this.startDate = startDate;
-  }
-
-
-  public ReadAdSetScheduleV23Q1 endDate(NillableDateTime endDate) {
-    
-    this.endDate = endDate;
-    return this;
-  }
-
-   /**
-   * Get endDate
-   * @return endDate
-  **/
-  @javax.annotation.Nullable
-
-  public NillableDateTime getEndDate() {
-    return endDate;
-  }
-
-
-  public void setEndDate(NillableDateTime endDate) {
-    this.endDate = endDate;
-  }
-
 
   public ReadAdSetScheduleV23Q1 activationStatus(ActivationStatusEnum activationStatus) {
     
@@ -264,6 +220,50 @@ public class ReadAdSetScheduleV23Q1 {
 
   public void setDeliveryStatus(DeliveryStatusEnum deliveryStatus) {
     this.deliveryStatus = deliveryStatus;
+  }
+
+
+  public ReadAdSetScheduleV23Q1 endDate(NillableDateTime endDate) {
+    
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * Get endDate
+   * @return endDate
+  **/
+  @javax.annotation.Nullable
+
+  public NillableDateTime getEndDate() {
+    return endDate;
+  }
+
+
+  public void setEndDate(NillableDateTime endDate) {
+    this.endDate = endDate;
+  }
+
+
+  public ReadAdSetScheduleV23Q1 startDate(NillableDateTime startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Get startDate
+   * @return startDate
+  **/
+  @javax.annotation.Nullable
+
+  public NillableDateTime getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(NillableDateTime startDate) {
+    this.startDate = startDate;
   }
 
   /**
@@ -321,10 +321,10 @@ public class ReadAdSetScheduleV23Q1 {
       return false;
     }
     ReadAdSetScheduleV23Q1 readAdSetScheduleV23Q1 = (ReadAdSetScheduleV23Q1) o;
-    return Objects.equals(this.startDate, readAdSetScheduleV23Q1.startDate) &&
+    return Objects.equals(this.activationStatus, readAdSetScheduleV23Q1.activationStatus) &&
+        Objects.equals(this.deliveryStatus, readAdSetScheduleV23Q1.deliveryStatus) &&
         Objects.equals(this.endDate, readAdSetScheduleV23Q1.endDate) &&
-        Objects.equals(this.activationStatus, readAdSetScheduleV23Q1.activationStatus) &&
-        Objects.equals(this.deliveryStatus, readAdSetScheduleV23Q1.deliveryStatus)&&
+        Objects.equals(this.startDate, readAdSetScheduleV23Q1.startDate)&&
         Objects.equals(this.additionalProperties, readAdSetScheduleV23Q1.additionalProperties);
   }
 
@@ -334,7 +334,7 @@ public class ReadAdSetScheduleV23Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, activationStatus, deliveryStatus, additionalProperties);
+    return Objects.hash(activationStatus, deliveryStatus, endDate, startDate, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -348,10 +348,10 @@ public class ReadAdSetScheduleV23Q1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReadAdSetScheduleV23Q1 {\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    activationStatus: ").append(toIndentedString(activationStatus)).append("\n");
     sb.append("    deliveryStatus: ").append(toIndentedString(deliveryStatus)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -375,10 +375,10 @@ public class ReadAdSetScheduleV23Q1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("startDate");
-    openapiFields.add("endDate");
     openapiFields.add("activationStatus");
     openapiFields.add("deliveryStatus");
+    openapiFields.add("endDate");
+    openapiFields.add("startDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -396,19 +396,19 @@ public class ReadAdSetScheduleV23Q1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ReadAdSetScheduleV23Q1 is not found in the empty JSON string", ReadAdSetScheduleV23Q1.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `startDate`
-      if (jsonObj.get("startDate") != null && !jsonObj.get("startDate").isJsonNull()) {
-        NillableDateTime.validateJsonObject(jsonObj.getAsJsonObject("startDate"));
-      }
-      // validate the optional field `endDate`
-      if (jsonObj.get("endDate") != null && !jsonObj.get("endDate").isJsonNull()) {
-        NillableDateTime.validateJsonObject(jsonObj.getAsJsonObject("endDate"));
-      }
       if ((jsonObj.get("activationStatus") != null && !jsonObj.get("activationStatus").isJsonNull()) && !jsonObj.get("activationStatus").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `activationStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("activationStatus").toString()));
       }
       if ((jsonObj.get("deliveryStatus") != null && !jsonObj.get("deliveryStatus").isJsonNull()) && !jsonObj.get("deliveryStatus").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `deliveryStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deliveryStatus").toString()));
+      }
+      // validate the optional field `endDate`
+      if (jsonObj.get("endDate") != null && !jsonObj.get("endDate").isJsonNull()) {
+        NillableDateTime.validateJsonObject(jsonObj.getAsJsonObject("endDate"));
+      }
+      // validate the optional field `startDate`
+      if (jsonObj.get("startDate") != null && !jsonObj.get("startDate").isJsonNull()) {
+        NillableDateTime.validateJsonObject(jsonObj.getAsJsonObject("startDate"));
       }
   }
 

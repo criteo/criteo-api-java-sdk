@@ -50,13 +50,13 @@ import com.criteo.api.marketingsolutions.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProspectingUpdateV1 {
-  public static final String SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MIN = "daysSinceLastVisitMin";
-  @SerializedName(SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MIN)
-  private NillableInt32 daysSinceLastVisitMin;
-
   public static final String SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MAX = "daysSinceLastVisitMax";
   @SerializedName(SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MAX)
   private NillableInt32 daysSinceLastVisitMax;
+
+  public static final String SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MIN = "daysSinceLastVisitMin";
+  @SerializedName(SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MIN)
+  private NillableInt32 daysSinceLastVisitMin;
 
   /**
    * Type of users to target
@@ -112,28 +112,6 @@ public class ProspectingUpdateV1 {
   public ProspectingUpdateV1() {
   }
 
-  public ProspectingUpdateV1 daysSinceLastVisitMin(NillableInt32 daysSinceLastVisitMin) {
-    
-    this.daysSinceLastVisitMin = daysSinceLastVisitMin;
-    return this;
-  }
-
-   /**
-   * Get daysSinceLastVisitMin
-   * @return daysSinceLastVisitMin
-  **/
-  @javax.annotation.Nullable
-
-  public NillableInt32 getDaysSinceLastVisitMin() {
-    return daysSinceLastVisitMin;
-  }
-
-
-  public void setDaysSinceLastVisitMin(NillableInt32 daysSinceLastVisitMin) {
-    this.daysSinceLastVisitMin = daysSinceLastVisitMin;
-  }
-
-
   public ProspectingUpdateV1 daysSinceLastVisitMax(NillableInt32 daysSinceLastVisitMax) {
     
     this.daysSinceLastVisitMax = daysSinceLastVisitMax;
@@ -153,6 +131,28 @@ public class ProspectingUpdateV1 {
 
   public void setDaysSinceLastVisitMax(NillableInt32 daysSinceLastVisitMax) {
     this.daysSinceLastVisitMax = daysSinceLastVisitMax;
+  }
+
+
+  public ProspectingUpdateV1 daysSinceLastVisitMin(NillableInt32 daysSinceLastVisitMin) {
+    
+    this.daysSinceLastVisitMin = daysSinceLastVisitMin;
+    return this;
+  }
+
+   /**
+   * Get daysSinceLastVisitMin
+   * @return daysSinceLastVisitMin
+  **/
+  @javax.annotation.Nullable
+
+  public NillableInt32 getDaysSinceLastVisitMin() {
+    return daysSinceLastVisitMin;
+  }
+
+
+  public void setDaysSinceLastVisitMin(NillableInt32 daysSinceLastVisitMin) {
+    this.daysSinceLastVisitMin = daysSinceLastVisitMin;
   }
 
 
@@ -232,8 +232,8 @@ public class ProspectingUpdateV1 {
       return false;
     }
     ProspectingUpdateV1 prospectingUpdateV1 = (ProspectingUpdateV1) o;
-    return Objects.equals(this.daysSinceLastVisitMin, prospectingUpdateV1.daysSinceLastVisitMin) &&
-        Objects.equals(this.daysSinceLastVisitMax, prospectingUpdateV1.daysSinceLastVisitMax) &&
+    return Objects.equals(this.daysSinceLastVisitMax, prospectingUpdateV1.daysSinceLastVisitMax) &&
+        Objects.equals(this.daysSinceLastVisitMin, prospectingUpdateV1.daysSinceLastVisitMin) &&
         Objects.equals(this.usersType, prospectingUpdateV1.usersType)&&
         Objects.equals(this.additionalProperties, prospectingUpdateV1.additionalProperties);
   }
@@ -244,7 +244,7 @@ public class ProspectingUpdateV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(daysSinceLastVisitMin, daysSinceLastVisitMax, usersType, additionalProperties);
+    return Objects.hash(daysSinceLastVisitMax, daysSinceLastVisitMin, usersType, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -258,8 +258,8 @@ public class ProspectingUpdateV1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProspectingUpdateV1 {\n");
-    sb.append("    daysSinceLastVisitMin: ").append(toIndentedString(daysSinceLastVisitMin)).append("\n");
     sb.append("    daysSinceLastVisitMax: ").append(toIndentedString(daysSinceLastVisitMax)).append("\n");
+    sb.append("    daysSinceLastVisitMin: ").append(toIndentedString(daysSinceLastVisitMin)).append("\n");
     sb.append("    usersType: ").append(toIndentedString(usersType)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -284,8 +284,8 @@ public class ProspectingUpdateV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("daysSinceLastVisitMin");
     openapiFields.add("daysSinceLastVisitMax");
+    openapiFields.add("daysSinceLastVisitMin");
     openapiFields.add("usersType");
 
     // a set of required properties/fields (JSON key names)
@@ -304,13 +304,13 @@ public class ProspectingUpdateV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ProspectingUpdateV1 is not found in the empty JSON string", ProspectingUpdateV1.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `daysSinceLastVisitMin`
-      if (jsonObj.get("daysSinceLastVisitMin") != null && !jsonObj.get("daysSinceLastVisitMin").isJsonNull()) {
-        NillableInt32.validateJsonObject(jsonObj.getAsJsonObject("daysSinceLastVisitMin"));
-      }
       // validate the optional field `daysSinceLastVisitMax`
       if (jsonObj.get("daysSinceLastVisitMax") != null && !jsonObj.get("daysSinceLastVisitMax").isJsonNull()) {
         NillableInt32.validateJsonObject(jsonObj.getAsJsonObject("daysSinceLastVisitMax"));
+      }
+      // validate the optional field `daysSinceLastVisitMin`
+      if (jsonObj.get("daysSinceLastVisitMin") != null && !jsonObj.get("daysSinceLastVisitMin").isJsonNull()) {
+        NillableInt32.validateJsonObject(jsonObj.getAsJsonObject("daysSinceLastVisitMin"));
       }
       if ((jsonObj.get("usersType") != null && !jsonObj.get("usersType").isJsonNull()) && !jsonObj.get("usersType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `usersType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("usersType").toString()));

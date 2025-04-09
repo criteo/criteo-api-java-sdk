@@ -49,6 +49,34 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class StatusResponse {
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private String createdAt;
+
+  public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
+  @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
+  private String expiresAt;
+
+  public static final String SERIALIZED_NAME_FILE_SIZE_BYTES = "fileSizeBytes";
+  @SerializedName(SERIALIZED_NAME_FILE_SIZE_BYTES)
+  private Long fileSizeBytes;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
+  public static final String SERIALIZED_NAME_MD5_CHECK_SUM = "md5CheckSum";
+  @SerializedName(SERIALIZED_NAME_MD5_CHECK_SUM)
+  private String md5CheckSum;
+
+  public static final String SERIALIZED_NAME_MESSAGE = "message";
+  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  private String message;
+
+  public static final String SERIALIZED_NAME_ROW_COUNT = "rowCount";
+  @SerializedName(SERIALIZED_NAME_ROW_COUNT)
+  private Integer rowCount;
+
   /**
    * Gets or Sets status
    */
@@ -104,124 +132,8 @@ public class StatusResponse {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
-  public static final String SERIALIZED_NAME_ROW_COUNT = "rowCount";
-  @SerializedName(SERIALIZED_NAME_ROW_COUNT)
-  private Integer rowCount;
-
-  public static final String SERIALIZED_NAME_FILE_SIZE_BYTES = "fileSizeBytes";
-  @SerializedName(SERIALIZED_NAME_FILE_SIZE_BYTES)
-  private Long fileSizeBytes;
-
-  public static final String SERIALIZED_NAME_MD5_CHECK_SUM = "md5CheckSum";
-  @SerializedName(SERIALIZED_NAME_MD5_CHECK_SUM)
-  private String md5CheckSum;
-
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private String createdAt;
-
-  public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
-  @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
-  private String expiresAt;
-
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
-  private String message;
-
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
-
   public StatusResponse() {
   }
-
-  public StatusResponse status(StatusEnum status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nullable
-
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
-
-
-  public StatusResponse rowCount(Integer rowCount) {
-    
-    this.rowCount = rowCount;
-    return this;
-  }
-
-   /**
-   * Get rowCount
-   * @return rowCount
-  **/
-  @javax.annotation.Nullable
-
-  public Integer getRowCount() {
-    return rowCount;
-  }
-
-
-  public void setRowCount(Integer rowCount) {
-    this.rowCount = rowCount;
-  }
-
-
-  public StatusResponse fileSizeBytes(Long fileSizeBytes) {
-    
-    this.fileSizeBytes = fileSizeBytes;
-    return this;
-  }
-
-   /**
-   * Get fileSizeBytes
-   * @return fileSizeBytes
-  **/
-  @javax.annotation.Nullable
-
-  public Long getFileSizeBytes() {
-    return fileSizeBytes;
-  }
-
-
-  public void setFileSizeBytes(Long fileSizeBytes) {
-    this.fileSizeBytes = fileSizeBytes;
-  }
-
-
-  public StatusResponse md5CheckSum(String md5CheckSum) {
-    
-    this.md5CheckSum = md5CheckSum;
-    return this;
-  }
-
-   /**
-   * Get md5CheckSum
-   * @return md5CheckSum
-  **/
-  @javax.annotation.Nullable
-
-  public String getMd5CheckSum() {
-    return md5CheckSum;
-  }
-
-
-  public void setMd5CheckSum(String md5CheckSum) {
-    this.md5CheckSum = md5CheckSum;
-  }
-
 
   public StatusResponse createdAt(String createdAt) {
     
@@ -267,25 +179,25 @@ public class StatusResponse {
   }
 
 
-  public StatusResponse message(String message) {
+  public StatusResponse fileSizeBytes(Long fileSizeBytes) {
     
-    this.message = message;
+    this.fileSizeBytes = fileSizeBytes;
     return this;
   }
 
    /**
-   * Get message
-   * @return message
+   * Get fileSizeBytes
+   * @return fileSizeBytes
   **/
   @javax.annotation.Nullable
 
-  public String getMessage() {
-    return message;
+  public Long getFileSizeBytes() {
+    return fileSizeBytes;
   }
 
 
-  public void setMessage(String message) {
-    this.message = message;
+  public void setFileSizeBytes(Long fileSizeBytes) {
+    this.fileSizeBytes = fileSizeBytes;
   }
 
 
@@ -308,6 +220,94 @@ public class StatusResponse {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+
+  public StatusResponse md5CheckSum(String md5CheckSum) {
+    
+    this.md5CheckSum = md5CheckSum;
+    return this;
+  }
+
+   /**
+   * Get md5CheckSum
+   * @return md5CheckSum
+  **/
+  @javax.annotation.Nullable
+
+  public String getMd5CheckSum() {
+    return md5CheckSum;
+  }
+
+
+  public void setMd5CheckSum(String md5CheckSum) {
+    this.md5CheckSum = md5CheckSum;
+  }
+
+
+  public StatusResponse message(String message) {
+    
+    this.message = message;
+    return this;
+  }
+
+   /**
+   * Get message
+   * @return message
+  **/
+  @javax.annotation.Nullable
+
+  public String getMessage() {
+    return message;
+  }
+
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+
+  public StatusResponse rowCount(Integer rowCount) {
+    
+    this.rowCount = rowCount;
+    return this;
+  }
+
+   /**
+   * Get rowCount
+   * @return rowCount
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getRowCount() {
+    return rowCount;
+  }
+
+
+  public void setRowCount(Integer rowCount) {
+    this.rowCount = rowCount;
+  }
+
+
+  public StatusResponse status(StatusEnum status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nullable
+
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
   }
 
   /**
@@ -365,14 +365,14 @@ public class StatusResponse {
       return false;
     }
     StatusResponse statusResponse = (StatusResponse) o;
-    return Objects.equals(this.status, statusResponse.status) &&
-        Objects.equals(this.rowCount, statusResponse.rowCount) &&
-        Objects.equals(this.fileSizeBytes, statusResponse.fileSizeBytes) &&
-        Objects.equals(this.md5CheckSum, statusResponse.md5CheckSum) &&
-        Objects.equals(this.createdAt, statusResponse.createdAt) &&
+    return Objects.equals(this.createdAt, statusResponse.createdAt) &&
         Objects.equals(this.expiresAt, statusResponse.expiresAt) &&
+        Objects.equals(this.fileSizeBytes, statusResponse.fileSizeBytes) &&
+        Objects.equals(this.id, statusResponse.id) &&
+        Objects.equals(this.md5CheckSum, statusResponse.md5CheckSum) &&
         Objects.equals(this.message, statusResponse.message) &&
-        Objects.equals(this.id, statusResponse.id)&&
+        Objects.equals(this.rowCount, statusResponse.rowCount) &&
+        Objects.equals(this.status, statusResponse.status)&&
         Objects.equals(this.additionalProperties, statusResponse.additionalProperties);
   }
 
@@ -382,7 +382,7 @@ public class StatusResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, rowCount, fileSizeBytes, md5CheckSum, createdAt, expiresAt, message, id, additionalProperties);
+    return Objects.hash(createdAt, expiresAt, fileSizeBytes, id, md5CheckSum, message, rowCount, status, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -396,14 +396,14 @@ public class StatusResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class StatusResponse {\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    rowCount: ").append(toIndentedString(rowCount)).append("\n");
-    sb.append("    fileSizeBytes: ").append(toIndentedString(fileSizeBytes)).append("\n");
-    sb.append("    md5CheckSum: ").append(toIndentedString(md5CheckSum)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    fileSizeBytes: ").append(toIndentedString(fileSizeBytes)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    md5CheckSum: ").append(toIndentedString(md5CheckSum)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    rowCount: ").append(toIndentedString(rowCount)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -427,14 +427,14 @@ public class StatusResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("status");
-    openapiFields.add("rowCount");
-    openapiFields.add("fileSizeBytes");
-    openapiFields.add("md5CheckSum");
     openapiFields.add("createdAt");
     openapiFields.add("expiresAt");
-    openapiFields.add("message");
+    openapiFields.add("fileSizeBytes");
     openapiFields.add("id");
+    openapiFields.add("md5CheckSum");
+    openapiFields.add("message");
+    openapiFields.add("rowCount");
+    openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -452,23 +452,23 @@ public class StatusResponse {
           throw new IllegalArgumentException(String.format("The required field(s) %s in StatusResponse is not found in the empty JSON string", StatusResponse.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
-      }
-      if ((jsonObj.get("md5CheckSum") != null && !jsonObj.get("md5CheckSum").isJsonNull()) && !jsonObj.get("md5CheckSum").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `md5CheckSum` to be a primitive type in the JSON string but got `%s`", jsonObj.get("md5CheckSum").toString()));
-      }
       if ((jsonObj.get("createdAt") != null && !jsonObj.get("createdAt").isJsonNull()) && !jsonObj.get("createdAt").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `createdAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdAt").toString()));
       }
       if ((jsonObj.get("expiresAt") != null && !jsonObj.get("expiresAt").isJsonNull()) && !jsonObj.get("expiresAt").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `expiresAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("expiresAt").toString()));
       }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("md5CheckSum") != null && !jsonObj.get("md5CheckSum").isJsonNull()) && !jsonObj.get("md5CheckSum").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `md5CheckSum` to be a primitive type in the JSON string but got `%s`", jsonObj.get("md5CheckSum").toString()));
+      }
       if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
       }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
   }
 

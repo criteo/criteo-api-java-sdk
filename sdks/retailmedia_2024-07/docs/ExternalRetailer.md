@@ -8,8 +8,8 @@ A Retail Media Retailer used to represent a selection of products from multiple 
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** |  |  |
 |**campaignEligibilities** | [**List&lt;CampaignEligibilitiesEnum&gt;**](#List&lt;CampaignEligibilitiesEnum&gt;) |  |  [optional] |
+|**name** | **String** |  |  |
 
 
 

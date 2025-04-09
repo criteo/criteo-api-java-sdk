@@ -50,21 +50,21 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalProductButtonResponse {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
   public static final String SERIALIZED_NAME_BACKGROUND_IMAGE = "backgroundImage";
   @SerializedName(SERIALIZED_NAME_BACKGROUND_IMAGE)
   private String backgroundImage;
 
-  public static final String SERIALIZED_NAME_RANK = "rank";
-  @SerializedName(SERIALIZED_NAME_RANK)
-  private Integer rank;
-
   public static final String SERIALIZED_NAME_IS_MANDATORY = "isMandatory";
   @SerializedName(SERIALIZED_NAME_IS_MANDATORY)
   private Integer isMandatory;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_RANK = "rank";
+  @SerializedName(SERIALIZED_NAME_RANK)
+  private Integer rank;
 
   public static final String SERIALIZED_NAME_SKUS = "skus";
   @SerializedName(SERIALIZED_NAME_SKUS)
@@ -72,28 +72,6 @@ public class ExternalProductButtonResponse {
 
   public ExternalProductButtonResponse() {
   }
-
-  public ExternalProductButtonResponse name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Name of the Product Button
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
 
   public ExternalProductButtonResponse backgroundImage(String backgroundImage) {
     
@@ -117,28 +95,6 @@ public class ExternalProductButtonResponse {
   }
 
 
-  public ExternalProductButtonResponse rank(Integer rank) {
-    
-    this.rank = rank;
-    return this;
-  }
-
-   /**
-   * Rank of the Product Button
-   * @return rank
-  **/
-  @javax.annotation.Nonnull
-
-  public Integer getRank() {
-    return rank;
-  }
-
-
-  public void setRank(Integer rank) {
-    this.rank = rank;
-  }
-
-
   public ExternalProductButtonResponse isMandatory(Integer isMandatory) {
     
     this.isMandatory = isMandatory;
@@ -158,6 +114,50 @@ public class ExternalProductButtonResponse {
 
   public void setIsMandatory(Integer isMandatory) {
     this.isMandatory = isMandatory;
+  }
+
+
+  public ExternalProductButtonResponse name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Name of the Product Button
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public ExternalProductButtonResponse rank(Integer rank) {
+    
+    this.rank = rank;
+    return this;
+  }
+
+   /**
+   * Rank of the Product Button
+   * @return rank
+  **/
+  @javax.annotation.Nonnull
+
+  public Integer getRank() {
+    return rank;
+  }
+
+
+  public void setRank(Integer rank) {
+    this.rank = rank;
   }
 
 
@@ -242,27 +242,27 @@ public class ExternalProductButtonResponse {
       return false;
     }
     ExternalProductButtonResponse externalProductButtonResponse = (ExternalProductButtonResponse) o;
-    return Objects.equals(this.name, externalProductButtonResponse.name) &&
-        Objects.equals(this.backgroundImage, externalProductButtonResponse.backgroundImage) &&
-        Objects.equals(this.rank, externalProductButtonResponse.rank) &&
+    return Objects.equals(this.backgroundImage, externalProductButtonResponse.backgroundImage) &&
         Objects.equals(this.isMandatory, externalProductButtonResponse.isMandatory) &&
+        Objects.equals(this.name, externalProductButtonResponse.name) &&
+        Objects.equals(this.rank, externalProductButtonResponse.rank) &&
         Objects.equals(this.skus, externalProductButtonResponse.skus)&&
         Objects.equals(this.additionalProperties, externalProductButtonResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, backgroundImage, rank, isMandatory, skus, additionalProperties);
+    return Objects.hash(backgroundImage, isMandatory, name, rank, skus, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalProductButtonResponse {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    backgroundImage: ").append(toIndentedString(backgroundImage)).append("\n");
-    sb.append("    rank: ").append(toIndentedString(rank)).append("\n");
     sb.append("    isMandatory: ").append(toIndentedString(isMandatory)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    rank: ").append(toIndentedString(rank)).append("\n");
     sb.append("    skus: ").append(toIndentedString(skus)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -287,18 +287,18 @@ public class ExternalProductButtonResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
     openapiFields.add("backgroundImage");
-    openapiFields.add("rank");
     openapiFields.add("isMandatory");
+    openapiFields.add("name");
+    openapiFields.add("rank");
     openapiFields.add("skus");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
     openapiRequiredFields.add("backgroundImage");
-    openapiRequiredFields.add("rank");
     openapiRequiredFields.add("isMandatory");
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("rank");
     openapiRequiredFields.add("skus");
   }
 
@@ -321,11 +321,11 @@ public class ExternalProductButtonResponse {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
       if (!jsonObj.get("backgroundImage").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `backgroundImage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("backgroundImage").toString()));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // ensure the required json array is present
       if (jsonObj.get("skus") == null) {

@@ -8,9 +8,9 @@ Audience of people of interest for a marketer.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** | Name of the audience |  [optional] |
-|**description** | [**NillableString**](NillableString.md) |  |  [optional] |
 |**algebra** | [**AlgebraNodeV1**](AlgebraNodeV1.md) |  |  [optional] |
+|**description** | [**NillableString**](NillableString.md) |  |  [optional] |
+|**name** | **String** | Name of the audience |  [optional] |
 
 
 

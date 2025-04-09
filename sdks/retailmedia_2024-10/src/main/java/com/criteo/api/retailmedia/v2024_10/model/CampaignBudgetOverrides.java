@@ -52,43 +52,16 @@ import com.criteo.api.retailmedia.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CampaignBudgetOverrides {
-  public static final String SERIALIZED_NAME_MONTHLY_BUDGET_OVERRIDES = "monthlyBudgetOverrides";
-  @SerializedName(SERIALIZED_NAME_MONTHLY_BUDGET_OVERRIDES)
-  private List<CampaignMonthlyBudgetOverride> monthlyBudgetOverrides = new ArrayList<>();
-
   public static final String SERIALIZED_NAME_DAILY_BUDGET_OVERRIDES = "dailyBudgetOverrides";
   @SerializedName(SERIALIZED_NAME_DAILY_BUDGET_OVERRIDES)
   private List<CampaignDailyBudgetOverride> dailyBudgetOverrides = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_MONTHLY_BUDGET_OVERRIDES = "monthlyBudgetOverrides";
+  @SerializedName(SERIALIZED_NAME_MONTHLY_BUDGET_OVERRIDES)
+  private List<CampaignMonthlyBudgetOverride> monthlyBudgetOverrides = new ArrayList<>();
+
   public CampaignBudgetOverrides() {
   }
-
-  public CampaignBudgetOverrides monthlyBudgetOverrides(List<CampaignMonthlyBudgetOverride> monthlyBudgetOverrides) {
-    
-    this.monthlyBudgetOverrides = monthlyBudgetOverrides;
-    return this;
-  }
-
-  public CampaignBudgetOverrides addMonthlyBudgetOverridesItem(CampaignMonthlyBudgetOverride monthlyBudgetOverridesItem) {
-    this.monthlyBudgetOverrides.add(monthlyBudgetOverridesItem);
-    return this;
-  }
-
-   /**
-   * Campaign budget override monthly part, chronological order restricted.
-   * @return monthlyBudgetOverrides
-  **/
-  @javax.annotation.Nonnull
-
-  public List<CampaignMonthlyBudgetOverride> getMonthlyBudgetOverrides() {
-    return monthlyBudgetOverrides;
-  }
-
-
-  public void setMonthlyBudgetOverrides(List<CampaignMonthlyBudgetOverride> monthlyBudgetOverrides) {
-    this.monthlyBudgetOverrides = monthlyBudgetOverrides;
-  }
-
 
   public CampaignBudgetOverrides dailyBudgetOverrides(List<CampaignDailyBudgetOverride> dailyBudgetOverrides) {
     
@@ -117,6 +90,33 @@ public class CampaignBudgetOverrides {
   }
 
 
+  public CampaignBudgetOverrides monthlyBudgetOverrides(List<CampaignMonthlyBudgetOverride> monthlyBudgetOverrides) {
+    
+    this.monthlyBudgetOverrides = monthlyBudgetOverrides;
+    return this;
+  }
+
+  public CampaignBudgetOverrides addMonthlyBudgetOverridesItem(CampaignMonthlyBudgetOverride monthlyBudgetOverridesItem) {
+    this.monthlyBudgetOverrides.add(monthlyBudgetOverridesItem);
+    return this;
+  }
+
+   /**
+   * Campaign budget override monthly part, chronological order restricted.
+   * @return monthlyBudgetOverrides
+  **/
+  @javax.annotation.Nonnull
+
+  public List<CampaignMonthlyBudgetOverride> getMonthlyBudgetOverrides() {
+    return monthlyBudgetOverrides;
+  }
+
+
+  public void setMonthlyBudgetOverrides(List<CampaignMonthlyBudgetOverride> monthlyBudgetOverrides) {
+    this.monthlyBudgetOverrides = monthlyBudgetOverrides;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -127,21 +127,21 @@ public class CampaignBudgetOverrides {
       return false;
     }
     CampaignBudgetOverrides campaignBudgetOverrides = (CampaignBudgetOverrides) o;
-    return Objects.equals(this.monthlyBudgetOverrides, campaignBudgetOverrides.monthlyBudgetOverrides) &&
-        Objects.equals(this.dailyBudgetOverrides, campaignBudgetOverrides.dailyBudgetOverrides);
+    return Objects.equals(this.dailyBudgetOverrides, campaignBudgetOverrides.dailyBudgetOverrides) &&
+        Objects.equals(this.monthlyBudgetOverrides, campaignBudgetOverrides.monthlyBudgetOverrides);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(monthlyBudgetOverrides, dailyBudgetOverrides);
+    return Objects.hash(dailyBudgetOverrides, monthlyBudgetOverrides);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignBudgetOverrides {\n");
-    sb.append("    monthlyBudgetOverrides: ").append(toIndentedString(monthlyBudgetOverrides)).append("\n");
     sb.append("    dailyBudgetOverrides: ").append(toIndentedString(dailyBudgetOverrides)).append("\n");
+    sb.append("    monthlyBudgetOverrides: ").append(toIndentedString(monthlyBudgetOverrides)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -164,13 +164,13 @@ public class CampaignBudgetOverrides {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("monthlyBudgetOverrides");
     openapiFields.add("dailyBudgetOverrides");
+    openapiFields.add("monthlyBudgetOverrides");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("monthlyBudgetOverrides");
     openapiRequiredFields.add("dailyBudgetOverrides");
+    openapiRequiredFields.add("monthlyBudgetOverrides");
   }
 
  /**
@@ -201,16 +201,6 @@ public class CampaignBudgetOverrides {
         }
       }
       // ensure the json data is an array
-      if (!jsonObj.get("monthlyBudgetOverrides").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `monthlyBudgetOverrides` to be an array in the JSON string but got `%s`", jsonObj.get("monthlyBudgetOverrides").toString()));
-      }
-
-      JsonArray jsonArraymonthlyBudgetOverrides = jsonObj.getAsJsonArray("monthlyBudgetOverrides");
-      // validate the required field `monthlyBudgetOverrides` (array)
-      for (int i = 0; i < jsonArraymonthlyBudgetOverrides.size(); i++) {
-        CampaignMonthlyBudgetOverride.validateJsonObject(jsonArraymonthlyBudgetOverrides.get(i).getAsJsonObject());
-      };
-      // ensure the json data is an array
       if (!jsonObj.get("dailyBudgetOverrides").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `dailyBudgetOverrides` to be an array in the JSON string but got `%s`", jsonObj.get("dailyBudgetOverrides").toString()));
       }
@@ -219,6 +209,16 @@ public class CampaignBudgetOverrides {
       // validate the required field `dailyBudgetOverrides` (array)
       for (int i = 0; i < jsonArraydailyBudgetOverrides.size(); i++) {
         CampaignDailyBudgetOverride.validateJsonObject(jsonArraydailyBudgetOverrides.get(i).getAsJsonObject());
+      };
+      // ensure the json data is an array
+      if (!jsonObj.get("monthlyBudgetOverrides").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `monthlyBudgetOverrides` to be an array in the JSON string but got `%s`", jsonObj.get("monthlyBudgetOverrides").toString()));
+      }
+
+      JsonArray jsonArraymonthlyBudgetOverrides = jsonObj.getAsJsonArray("monthlyBudgetOverrides");
+      // validate the required field `monthlyBudgetOverrides` (array)
+      for (int i = 0; i < jsonArraymonthlyBudgetOverrides.size(); i++) {
+        CampaignMonthlyBudgetOverride.validateJsonObject(jsonArraymonthlyBudgetOverrides.get(i).getAsJsonObject());
       };
   }
 

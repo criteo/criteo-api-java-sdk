@@ -9,8 +9,8 @@ Available filters to perform a search on audience segments. If present, the filt
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**audienceSegmentIds** | **List&lt;String&gt;** | List of segment ids |  [optional] |
-|**retailerIds** | **List&lt;String&gt;** | List of retailer ids |  [optional] |
 |**audienceSegmentTypes** | [**List&lt;AudienceSegmentTypesEnum&gt;**](#List&lt;AudienceSegmentTypesEnum&gt;) | List of segment types |  [optional] |
+|**retailerIds** | **List&lt;String&gt;** | List of retailer ids |  [optional] |
 
 
 

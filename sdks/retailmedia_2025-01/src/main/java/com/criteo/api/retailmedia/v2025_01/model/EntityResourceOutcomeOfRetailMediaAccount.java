@@ -57,25 +57,25 @@ public class EntityResourceOutcomeOfRetailMediaAccount {
   @SerializedName(SERIALIZED_NAME_DATA)
   private EntityResourceOfRetailMediaAccount data;
 
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<SdkApiRestCommonProblem> warnings = null;
-
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<SdkApiRestCommonProblem> errors = null;
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<SdkApiRestCommonProblem> warnings = null;
 
   public EntityResourceOutcomeOfRetailMediaAccount() {
   }
 
   
   public EntityResourceOutcomeOfRetailMediaAccount(
-     List<SdkApiRestCommonProblem> warnings, 
-     List<SdkApiRestCommonProblem> errors
+     List<SdkApiRestCommonProblem> errors, 
+     List<SdkApiRestCommonProblem> warnings
   ) {
     this();
-    this.warnings = warnings;
     this.errors = errors;
+    this.warnings = warnings;
   }
 
   public EntityResourceOutcomeOfRetailMediaAccount data(EntityResourceOfRetailMediaAccount data) {
@@ -101,19 +101,6 @@ public class EntityResourceOutcomeOfRetailMediaAccount {
 
 
    /**
-   * Warnings that occured during this call.
-   * @return warnings
-  **/
-  @javax.annotation.Nullable
-
-  public List<SdkApiRestCommonProblem> getWarnings() {
-    return warnings;
-  }
-
-
-
-
-   /**
    * Errors that occured during this call.
    * @return errors
   **/
@@ -121,6 +108,19 @@ public class EntityResourceOutcomeOfRetailMediaAccount {
 
   public List<SdkApiRestCommonProblem> getErrors() {
     return errors;
+  }
+
+
+
+
+   /**
+   * Warnings that occured during this call.
+   * @return warnings
+  **/
+  @javax.annotation.Nullable
+
+  public List<SdkApiRestCommonProblem> getWarnings() {
+    return warnings;
   }
 
 
@@ -137,8 +137,8 @@ public class EntityResourceOutcomeOfRetailMediaAccount {
     }
     EntityResourceOutcomeOfRetailMediaAccount entityResourceOutcomeOfRetailMediaAccount = (EntityResourceOutcomeOfRetailMediaAccount) o;
     return Objects.equals(this.data, entityResourceOutcomeOfRetailMediaAccount.data) &&
-        Objects.equals(this.warnings, entityResourceOutcomeOfRetailMediaAccount.warnings) &&
-        Objects.equals(this.errors, entityResourceOutcomeOfRetailMediaAccount.errors);
+        Objects.equals(this.errors, entityResourceOutcomeOfRetailMediaAccount.errors) &&
+        Objects.equals(this.warnings, entityResourceOutcomeOfRetailMediaAccount.warnings);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -147,7 +147,7 @@ public class EntityResourceOutcomeOfRetailMediaAccount {
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, warnings, errors);
+    return Objects.hash(data, errors, warnings);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -162,8 +162,8 @@ public class EntityResourceOutcomeOfRetailMediaAccount {
     StringBuilder sb = new StringBuilder();
     sb.append("class EntityResourceOutcomeOfRetailMediaAccount {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -187,8 +187,8 @@ public class EntityResourceOutcomeOfRetailMediaAccount {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("data");
-    openapiFields.add("warnings");
     openapiFields.add("errors");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -218,20 +218,6 @@ public class EntityResourceOutcomeOfRetailMediaAccount {
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         EntityResourceOfRetailMediaAccount.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
-        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
-        if (jsonArraywarnings != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("warnings").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-          }
-
-          // validate the optional field `warnings` (array)
-          for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            SdkApiRestCommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
-          };
-        }
-      }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
         if (jsonArrayerrors != null) {
@@ -243,6 +229,20 @@ public class EntityResourceOutcomeOfRetailMediaAccount {
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
             SdkApiRestCommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            SdkApiRestCommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }

@@ -54,10 +54,6 @@ public class RmAudienceSegmentSearchEntityV1 {
   @SerializedName(SERIALIZED_NAME_AUDIENCE_SEGMENT_IDS)
   private List<String> audienceSegmentIds = null;
 
-  public static final String SERIALIZED_NAME_RETAILER_IDS = "retailerIds";
-  @SerializedName(SERIALIZED_NAME_RETAILER_IDS)
-  private List<String> retailerIds = null;
-
   /**
    * Gets or Sets audienceSegmentTypes
    */
@@ -111,6 +107,10 @@ public class RmAudienceSegmentSearchEntityV1 {
   @SerializedName(SERIALIZED_NAME_AUDIENCE_SEGMENT_TYPES)
   private List<AudienceSegmentTypesEnum> audienceSegmentTypes = null;
 
+  public static final String SERIALIZED_NAME_RETAILER_IDS = "retailerIds";
+  @SerializedName(SERIALIZED_NAME_RETAILER_IDS)
+  private List<String> retailerIds = null;
+
   public RmAudienceSegmentSearchEntityV1() {
   }
 
@@ -144,36 +144,6 @@ public class RmAudienceSegmentSearchEntityV1 {
   }
 
 
-  public RmAudienceSegmentSearchEntityV1 retailerIds(List<String> retailerIds) {
-    
-    this.retailerIds = retailerIds;
-    return this;
-  }
-
-  public RmAudienceSegmentSearchEntityV1 addRetailerIdsItem(String retailerIdsItem) {
-    if (this.retailerIds == null) {
-      this.retailerIds = new ArrayList<>();
-    }
-    this.retailerIds.add(retailerIdsItem);
-    return this;
-  }
-
-   /**
-   * List of retailer ids
-   * @return retailerIds
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getRetailerIds() {
-    return retailerIds;
-  }
-
-
-  public void setRetailerIds(List<String> retailerIds) {
-    this.retailerIds = retailerIds;
-  }
-
-
   public RmAudienceSegmentSearchEntityV1 audienceSegmentTypes(List<AudienceSegmentTypesEnum> audienceSegmentTypes) {
     
     this.audienceSegmentTypes = audienceSegmentTypes;
@@ -201,6 +171,36 @@ public class RmAudienceSegmentSearchEntityV1 {
 
   public void setAudienceSegmentTypes(List<AudienceSegmentTypesEnum> audienceSegmentTypes) {
     this.audienceSegmentTypes = audienceSegmentTypes;
+  }
+
+
+  public RmAudienceSegmentSearchEntityV1 retailerIds(List<String> retailerIds) {
+    
+    this.retailerIds = retailerIds;
+    return this;
+  }
+
+  public RmAudienceSegmentSearchEntityV1 addRetailerIdsItem(String retailerIdsItem) {
+    if (this.retailerIds == null) {
+      this.retailerIds = new ArrayList<>();
+    }
+    this.retailerIds.add(retailerIdsItem);
+    return this;
+  }
+
+   /**
+   * List of retailer ids
+   * @return retailerIds
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getRetailerIds() {
+    return retailerIds;
+  }
+
+
+  public void setRetailerIds(List<String> retailerIds) {
+    this.retailerIds = retailerIds;
   }
 
   /**
@@ -259,14 +259,14 @@ public class RmAudienceSegmentSearchEntityV1 {
     }
     RmAudienceSegmentSearchEntityV1 rmAudienceSegmentSearchEntityV1 = (RmAudienceSegmentSearchEntityV1) o;
     return Objects.equals(this.audienceSegmentIds, rmAudienceSegmentSearchEntityV1.audienceSegmentIds) &&
-        Objects.equals(this.retailerIds, rmAudienceSegmentSearchEntityV1.retailerIds) &&
-        Objects.equals(this.audienceSegmentTypes, rmAudienceSegmentSearchEntityV1.audienceSegmentTypes)&&
+        Objects.equals(this.audienceSegmentTypes, rmAudienceSegmentSearchEntityV1.audienceSegmentTypes) &&
+        Objects.equals(this.retailerIds, rmAudienceSegmentSearchEntityV1.retailerIds)&&
         Objects.equals(this.additionalProperties, rmAudienceSegmentSearchEntityV1.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(audienceSegmentIds, retailerIds, audienceSegmentTypes, additionalProperties);
+    return Objects.hash(audienceSegmentIds, audienceSegmentTypes, retailerIds, additionalProperties);
   }
 
   @Override
@@ -274,8 +274,8 @@ public class RmAudienceSegmentSearchEntityV1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class RmAudienceSegmentSearchEntityV1 {\n");
     sb.append("    audienceSegmentIds: ").append(toIndentedString(audienceSegmentIds)).append("\n");
-    sb.append("    retailerIds: ").append(toIndentedString(retailerIds)).append("\n");
     sb.append("    audienceSegmentTypes: ").append(toIndentedString(audienceSegmentTypes)).append("\n");
+    sb.append("    retailerIds: ").append(toIndentedString(retailerIds)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -300,8 +300,8 @@ public class RmAudienceSegmentSearchEntityV1 {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("audienceSegmentIds");
-    openapiFields.add("retailerIds");
     openapiFields.add("audienceSegmentTypes");
+    openapiFields.add("retailerIds");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -324,12 +324,12 @@ public class RmAudienceSegmentSearchEntityV1 {
         throw new IllegalArgumentException(String.format("Expected the field `audienceSegmentIds` to be an array in the JSON string but got `%s`", jsonObj.get("audienceSegmentIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("retailerIds") != null && !jsonObj.get("retailerIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `retailerIds` to be an array in the JSON string but got `%s`", jsonObj.get("retailerIds").toString()));
-      }
-      // ensure the optional json data is an array if present
       if (jsonObj.get("audienceSegmentTypes") != null && !jsonObj.get("audienceSegmentTypes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `audienceSegmentTypes` to be an array in the JSON string but got `%s`", jsonObj.get("audienceSegmentTypes").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("retailerIds") != null && !jsonObj.get("retailerIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `retailerIds` to be an array in the JSON string but got `%s`", jsonObj.get("retailerIds").toString()));
       }
   }
 

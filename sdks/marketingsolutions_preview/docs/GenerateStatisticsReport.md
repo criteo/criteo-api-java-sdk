@@ -8,16 +8,16 @@ Request attributes for async statistics report
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**startDate** | **OffsetDateTime** | Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
-|**endDate** | **OffsetDateTime** | End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
-|**advertiserIds** | **List&lt;String&gt;** | The list of advertiser ids |  [optional] |
-|**timezone** | **String** | The timezone used for the report. Timezone Database format (Tz). |  [optional] |
-|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | The dimensions for the report. |  |
-|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | The list of metrics to report. |  |
-|**currency** | **String** | The currency used for the report. ISO 4217 code (three-letter capitals). |  [optional] |
 |**adSetIds** | **List&lt;String&gt;** | The list of adSets ids. If empty, all the adSets will be fetched |  [optional] |
 |**adSetNames** | **List&lt;String&gt;** | The list of adSets names. If empty, all the adSets will be fetched |  [optional] |
 |**adSetStatus** | **List&lt;String&gt;** | The list of adSets status. If empty, all the adSets will be fetched |  [optional] |
+|**advertiserIds** | **List&lt;String&gt;** | The list of advertiser ids |  [optional] |
+|**currency** | **String** | The currency used for the report. ISO 4217 code (three-letter capitals). |  [optional] |
+|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | The dimensions for the report. |  |
+|**endDate** | **OffsetDateTime** | End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
+|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | The list of metrics to report. |  |
+|**startDate** | **OffsetDateTime** | Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
+|**timezone** | **String** | The timezone used for the report. Timezone Database format (Tz). |  [optional] |
 
 
 

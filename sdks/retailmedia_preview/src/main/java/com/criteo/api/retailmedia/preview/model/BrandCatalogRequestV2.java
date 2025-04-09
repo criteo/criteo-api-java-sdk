@@ -55,14 +55,6 @@ public class BrandCatalogRequestV2 {
   @SerializedName(SERIALIZED_NAME_BRAND_ID_FILTER)
   private List<String> brandIdFilter = null;
 
-  public static final String SERIALIZED_NAME_RETAILER_ID_FILTER = "retailerIdFilter";
-  @SerializedName(SERIALIZED_NAME_RETAILER_ID_FILTER)
-  private List<Integer> retailerIdFilter = null;
-
-  public static final String SERIALIZED_NAME_MODIFIED_AFTER = "modifiedAfter";
-  @SerializedName(SERIALIZED_NAME_MODIFIED_AFTER)
-  private OffsetDateTime modifiedAfter;
-
   /**
    * Gets or Sets includeFields
    */
@@ -74,7 +66,7 @@ public class BrandCatalogRequestV2 {
     
     IMAGEURL("ImageUrl"),
     
-    GLOBALCATEGORYID("GlobalCategoryId"),
+    GOOGLECATEGORY("GoogleCategory"),
     
     RETAILERNAME("RetailerName"),
     
@@ -124,6 +116,14 @@ public class BrandCatalogRequestV2 {
   @SerializedName(SERIALIZED_NAME_INCLUDE_FIELDS)
   private List<IncludeFieldsEnum> includeFields = null;
 
+  public static final String SERIALIZED_NAME_MODIFIED_AFTER = "modifiedAfter";
+  @SerializedName(SERIALIZED_NAME_MODIFIED_AFTER)
+  private OffsetDateTime modifiedAfter;
+
+  public static final String SERIALIZED_NAME_RETAILER_ID_FILTER = "retailerIdFilter";
+  @SerializedName(SERIALIZED_NAME_RETAILER_ID_FILTER)
+  private List<Integer> retailerIdFilter = null;
+
   public BrandCatalogRequestV2() {
   }
 
@@ -157,58 +157,6 @@ public class BrandCatalogRequestV2 {
   }
 
 
-  public BrandCatalogRequestV2 retailerIdFilter(List<Integer> retailerIdFilter) {
-    
-    this.retailerIdFilter = retailerIdFilter;
-    return this;
-  }
-
-  public BrandCatalogRequestV2 addRetailerIdFilterItem(Integer retailerIdFilterItem) {
-    if (this.retailerIdFilter == null) {
-      this.retailerIdFilter = new ArrayList<>();
-    }
-    this.retailerIdFilter.add(retailerIdFilterItem);
-    return this;
-  }
-
-   /**
-   * The retailer ids to filter the catalog by.
-   * @return retailerIdFilter
-  **/
-  @javax.annotation.Nullable
-
-  public List<Integer> getRetailerIdFilter() {
-    return retailerIdFilter;
-  }
-
-
-  public void setRetailerIdFilter(List<Integer> retailerIdFilter) {
-    this.retailerIdFilter = retailerIdFilter;
-  }
-
-
-  public BrandCatalogRequestV2 modifiedAfter(OffsetDateTime modifiedAfter) {
-    
-    this.modifiedAfter = modifiedAfter;
-    return this;
-  }
-
-   /**
-   * Only products modified after this time will be returned.
-   * @return modifiedAfter
-  **/
-  @javax.annotation.Nullable
-
-  public OffsetDateTime getModifiedAfter() {
-    return modifiedAfter;
-  }
-
-
-  public void setModifiedAfter(OffsetDateTime modifiedAfter) {
-    this.modifiedAfter = modifiedAfter;
-  }
-
-
   public BrandCatalogRequestV2 includeFields(List<IncludeFieldsEnum> includeFields) {
     
     this.includeFields = includeFields;
@@ -236,6 +184,58 @@ public class BrandCatalogRequestV2 {
 
   public void setIncludeFields(List<IncludeFieldsEnum> includeFields) {
     this.includeFields = includeFields;
+  }
+
+
+  public BrandCatalogRequestV2 modifiedAfter(OffsetDateTime modifiedAfter) {
+    
+    this.modifiedAfter = modifiedAfter;
+    return this;
+  }
+
+   /**
+   * Only products modified after this time will be returned.
+   * @return modifiedAfter
+  **/
+  @javax.annotation.Nullable
+
+  public OffsetDateTime getModifiedAfter() {
+    return modifiedAfter;
+  }
+
+
+  public void setModifiedAfter(OffsetDateTime modifiedAfter) {
+    this.modifiedAfter = modifiedAfter;
+  }
+
+
+  public BrandCatalogRequestV2 retailerIdFilter(List<Integer> retailerIdFilter) {
+    
+    this.retailerIdFilter = retailerIdFilter;
+    return this;
+  }
+
+  public BrandCatalogRequestV2 addRetailerIdFilterItem(Integer retailerIdFilterItem) {
+    if (this.retailerIdFilter == null) {
+      this.retailerIdFilter = new ArrayList<>();
+    }
+    this.retailerIdFilter.add(retailerIdFilterItem);
+    return this;
+  }
+
+   /**
+   * The retailer ids to filter the catalog by.
+   * @return retailerIdFilter
+  **/
+  @javax.annotation.Nullable
+
+  public List<Integer> getRetailerIdFilter() {
+    return retailerIdFilter;
+  }
+
+
+  public void setRetailerIdFilter(List<Integer> retailerIdFilter) {
+    this.retailerIdFilter = retailerIdFilter;
   }
 
   /**
@@ -294,15 +294,15 @@ public class BrandCatalogRequestV2 {
     }
     BrandCatalogRequestV2 brandCatalogRequestV2 = (BrandCatalogRequestV2) o;
     return Objects.equals(this.brandIdFilter, brandCatalogRequestV2.brandIdFilter) &&
-        Objects.equals(this.retailerIdFilter, brandCatalogRequestV2.retailerIdFilter) &&
+        Objects.equals(this.includeFields, brandCatalogRequestV2.includeFields) &&
         Objects.equals(this.modifiedAfter, brandCatalogRequestV2.modifiedAfter) &&
-        Objects.equals(this.includeFields, brandCatalogRequestV2.includeFields)&&
+        Objects.equals(this.retailerIdFilter, brandCatalogRequestV2.retailerIdFilter)&&
         Objects.equals(this.additionalProperties, brandCatalogRequestV2.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(brandIdFilter, retailerIdFilter, modifiedAfter, includeFields, additionalProperties);
+    return Objects.hash(brandIdFilter, includeFields, modifiedAfter, retailerIdFilter, additionalProperties);
   }
 
   @Override
@@ -310,9 +310,9 @@ public class BrandCatalogRequestV2 {
     StringBuilder sb = new StringBuilder();
     sb.append("class BrandCatalogRequestV2 {\n");
     sb.append("    brandIdFilter: ").append(toIndentedString(brandIdFilter)).append("\n");
-    sb.append("    retailerIdFilter: ").append(toIndentedString(retailerIdFilter)).append("\n");
-    sb.append("    modifiedAfter: ").append(toIndentedString(modifiedAfter)).append("\n");
     sb.append("    includeFields: ").append(toIndentedString(includeFields)).append("\n");
+    sb.append("    modifiedAfter: ").append(toIndentedString(modifiedAfter)).append("\n");
+    sb.append("    retailerIdFilter: ").append(toIndentedString(retailerIdFilter)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -337,9 +337,9 @@ public class BrandCatalogRequestV2 {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("brandIdFilter");
-    openapiFields.add("retailerIdFilter");
-    openapiFields.add("modifiedAfter");
     openapiFields.add("includeFields");
+    openapiFields.add("modifiedAfter");
+    openapiFields.add("retailerIdFilter");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -362,12 +362,12 @@ public class BrandCatalogRequestV2 {
         throw new IllegalArgumentException(String.format("Expected the field `brandIdFilter` to be an array in the JSON string but got `%s`", jsonObj.get("brandIdFilter").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("retailerIdFilter") != null && !jsonObj.get("retailerIdFilter").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `retailerIdFilter` to be an array in the JSON string but got `%s`", jsonObj.get("retailerIdFilter").toString()));
-      }
-      // ensure the optional json data is an array if present
       if (jsonObj.get("includeFields") != null && !jsonObj.get("includeFields").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `includeFields` to be an array in the JSON string but got `%s`", jsonObj.get("includeFields").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("retailerIdFilter") != null && !jsonObj.get("retailerIdFilter").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `retailerIdFilter` to be an array in the JSON string but got `%s`", jsonObj.get("retailerIdFilter").toString()));
       }
   }
 

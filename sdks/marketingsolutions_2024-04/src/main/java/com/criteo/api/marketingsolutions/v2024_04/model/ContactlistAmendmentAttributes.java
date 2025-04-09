@@ -50,56 +50,13 @@ import com.criteo.api.marketingsolutions.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ContactlistAmendmentAttributes {
-  /**
-   * Operation to add or remove users
-   */
-  @JsonAdapter(OperationEnum.Adapter.class)
-  public enum OperationEnum {
-    ADD("add"),
-    
-    REMOVE("remove");
+  public static final String SERIALIZED_NAME_GUM_CALLER_ID = "gumCallerId";
+  @SerializedName(SERIALIZED_NAME_GUM_CALLER_ID)
+  private Integer gumCallerId;
 
-    private String value;
-
-    OperationEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static OperationEnum fromValue(String value) {
-      for (OperationEnum b : OperationEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<OperationEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final OperationEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public OperationEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return OperationEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_OPERATION = "operation";
-  @SerializedName(SERIALIZED_NAME_OPERATION)
-  private OperationEnum operation;
+  public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
+  @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
+  private List<String> identifiers = new ArrayList<>();
 
   /**
    * What type of identifiers are used
@@ -158,58 +115,79 @@ public class ContactlistAmendmentAttributes {
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_TYPE)
   private IdentifierTypeEnum identifierType;
 
-  public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
-  @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
-  private List<String> identifiers = new ArrayList<>();
+  /**
+   * Operation to add or remove users
+   */
+  @JsonAdapter(OperationEnum.Adapter.class)
+  public enum OperationEnum {
+    ADD("add"),
+    
+    REMOVE("remove");
 
-  public static final String SERIALIZED_NAME_GUM_CALLER_ID = "gumCallerId";
-  @SerializedName(SERIALIZED_NAME_GUM_CALLER_ID)
-  private Integer gumCallerId;
+    private String value;
+
+    OperationEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static OperationEnum fromValue(String value) {
+      for (OperationEnum b : OperationEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<OperationEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final OperationEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public OperationEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return OperationEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_OPERATION = "operation";
+  @SerializedName(SERIALIZED_NAME_OPERATION)
+  private OperationEnum operation;
 
   public ContactlistAmendmentAttributes() {
   }
 
-  public ContactlistAmendmentAttributes operation(OperationEnum operation) {
+  public ContactlistAmendmentAttributes gumCallerId(Integer gumCallerId) {
     
-    this.operation = operation;
+    this.gumCallerId = gumCallerId;
     return this;
   }
 
    /**
-   * Operation to add or remove users
-   * @return operation
-  **/
-  @javax.annotation.Nonnull
-
-  public OperationEnum getOperation() {
-    return operation;
-  }
-
-
-  public void setOperation(OperationEnum operation) {
-    this.operation = operation;
-  }
-
-
-  public ContactlistAmendmentAttributes identifierType(IdentifierTypeEnum identifierType) {
-    
-    this.identifierType = identifierType;
-    return this;
-  }
-
-   /**
-   * What type of identifiers are used
-   * @return identifierType
+   * The Gum caller id of the advertiser patching identifiers of type Gum
+   * @return gumCallerId
   **/
   @javax.annotation.Nullable
 
-  public IdentifierTypeEnum getIdentifierType() {
-    return identifierType;
+  public Integer getGumCallerId() {
+    return gumCallerId;
   }
 
 
-  public void setIdentifierType(IdentifierTypeEnum identifierType) {
-    this.identifierType = identifierType;
+  public void setGumCallerId(Integer gumCallerId) {
+    this.gumCallerId = gumCallerId;
   }
 
 
@@ -240,25 +218,47 @@ public class ContactlistAmendmentAttributes {
   }
 
 
-  public ContactlistAmendmentAttributes gumCallerId(Integer gumCallerId) {
+  public ContactlistAmendmentAttributes identifierType(IdentifierTypeEnum identifierType) {
     
-    this.gumCallerId = gumCallerId;
+    this.identifierType = identifierType;
     return this;
   }
 
    /**
-   * The Gum caller id of the advertiser patching identifiers of type Gum
-   * @return gumCallerId
+   * What type of identifiers are used
+   * @return identifierType
   **/
   @javax.annotation.Nullable
 
-  public Integer getGumCallerId() {
-    return gumCallerId;
+  public IdentifierTypeEnum getIdentifierType() {
+    return identifierType;
   }
 
 
-  public void setGumCallerId(Integer gumCallerId) {
-    this.gumCallerId = gumCallerId;
+  public void setIdentifierType(IdentifierTypeEnum identifierType) {
+    this.identifierType = identifierType;
+  }
+
+
+  public ContactlistAmendmentAttributes operation(OperationEnum operation) {
+    
+    this.operation = operation;
+    return this;
+  }
+
+   /**
+   * Operation to add or remove users
+   * @return operation
+  **/
+  @javax.annotation.Nonnull
+
+  public OperationEnum getOperation() {
+    return operation;
+  }
+
+
+  public void setOperation(OperationEnum operation) {
+    this.operation = operation;
   }
 
   /**
@@ -316,26 +316,26 @@ public class ContactlistAmendmentAttributes {
       return false;
     }
     ContactlistAmendmentAttributes contactlistAmendmentAttributes = (ContactlistAmendmentAttributes) o;
-    return Objects.equals(this.operation, contactlistAmendmentAttributes.operation) &&
-        Objects.equals(this.identifierType, contactlistAmendmentAttributes.identifierType) &&
+    return Objects.equals(this.gumCallerId, contactlistAmendmentAttributes.gumCallerId) &&
         Objects.equals(this.identifiers, contactlistAmendmentAttributes.identifiers) &&
-        Objects.equals(this.gumCallerId, contactlistAmendmentAttributes.gumCallerId)&&
+        Objects.equals(this.identifierType, contactlistAmendmentAttributes.identifierType) &&
+        Objects.equals(this.operation, contactlistAmendmentAttributes.operation)&&
         Objects.equals(this.additionalProperties, contactlistAmendmentAttributes.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(operation, identifierType, identifiers, gumCallerId, additionalProperties);
+    return Objects.hash(gumCallerId, identifiers, identifierType, operation, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ContactlistAmendmentAttributes {\n");
-    sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
-    sb.append("    identifierType: ").append(toIndentedString(identifierType)).append("\n");
-    sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("    gumCallerId: ").append(toIndentedString(gumCallerId)).append("\n");
+    sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
+    sb.append("    identifierType: ").append(toIndentedString(identifierType)).append("\n");
+    sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -359,15 +359,15 @@ public class ContactlistAmendmentAttributes {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("operation");
-    openapiFields.add("identifierType");
-    openapiFields.add("identifiers");
     openapiFields.add("gumCallerId");
+    openapiFields.add("identifiers");
+    openapiFields.add("identifierType");
+    openapiFields.add("operation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("operation");
     openapiRequiredFields.add("identifiers");
+    openapiRequiredFields.add("operation");
   }
 
  /**
@@ -389,17 +389,17 @@ public class ContactlistAmendmentAttributes {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("operation").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `operation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operation").toString()));
-      }
-      if ((jsonObj.get("identifierType") != null && !jsonObj.get("identifierType").isJsonNull()) && !jsonObj.get("identifierType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `identifierType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierType").toString()));
-      }
       // ensure the required json array is present
       if (jsonObj.get("identifiers") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("identifiers").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `identifiers` to be an array in the JSON string but got `%s`", jsonObj.get("identifiers").toString()));
+      }
+      if ((jsonObj.get("identifierType") != null && !jsonObj.get("identifierType").isJsonNull()) && !jsonObj.get("identifierType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `identifierType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierType").toString()));
+      }
+      if (!jsonObj.get("operation").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `operation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operation").toString()));
       }
   }
 

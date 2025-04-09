@@ -8,20 +8,10 @@ User Behavior Details.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**userAction** | [**UserActionEnum**](#UserActionEnum) | Type of shopper activity used to generate the audience. |  |
-|**lookbackWindow** | [**LookbackWindowEnum**](#LookbackWindowEnum) | Length of lookback window |  |
-|**categoryIds** | **Set&lt;Integer&gt;** | The categories to target |  [optional] |
 |**brandIds** | **Set&lt;Long&gt;** | The brands to target |  [optional] |
-
-
-
-## Enum: UserActionEnum
-
-| Name | Value |
-|---- | -----|
-| BUY | &quot;buy&quot; |
-| VIEW | &quot;view&quot; |
-| ADDTOCART | &quot;addToCart&quot; |
+|**categoryIds** | **Set&lt;Integer&gt;** | The categories to target |  [optional] |
+|**lookbackWindow** | [**LookbackWindowEnum**](#LookbackWindowEnum) | Length of lookback window |  |
+|**userAction** | [**UserActionEnum**](#UserActionEnum) | Type of shopper activity used to generate the audience. |  |
 
 
 
@@ -38,6 +28,16 @@ User Behavior Details.
 | P120D | &quot;P120D&quot; |
 | P150D | &quot;P150D&quot; |
 | P180D | &quot;P180D&quot; |
+
+
+
+## Enum: UserActionEnum
+
+| Name | Value |
+|---- | -----|
+| BUY | &quot;buy&quot; |
+| VIEW | &quot;view&quot; |
+| ADDTOCART | &quot;addToCart&quot; |
 
 
 

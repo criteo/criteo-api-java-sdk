@@ -48,6 +48,14 @@ import com.criteo.api.retailmedia.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class VideoVariableValue {
+  public static final String SERIALIZED_NAME_DURATION = "duration";
+  @SerializedName(SERIALIZED_NAME_DURATION)
+  private String duration;
+
+  public static final String SERIALIZED_NAME_HEIGHT = "height";
+  @SerializedName(SERIALIZED_NAME_HEIGHT)
+  private Integer height;
+
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
   private String url;
@@ -56,16 +64,52 @@ public class VideoVariableValue {
   @SerializedName(SERIALIZED_NAME_WIDTH)
   private Integer width;
 
-  public static final String SERIALIZED_NAME_HEIGHT = "height";
-  @SerializedName(SERIALIZED_NAME_HEIGHT)
-  private Integer height;
-
-  public static final String SERIALIZED_NAME_DURATION = "duration";
-  @SerializedName(SERIALIZED_NAME_DURATION)
-  private String duration;
-
   public VideoVariableValue() {
   }
+
+  public VideoVariableValue duration(String duration) {
+    
+    this.duration = duration;
+    return this;
+  }
+
+   /**
+   * The video&#39;s duration
+   * @return duration
+  **/
+  @javax.annotation.Nonnull
+
+  public String getDuration() {
+    return duration;
+  }
+
+
+  public void setDuration(String duration) {
+    this.duration = duration;
+  }
+
+
+  public VideoVariableValue height(Integer height) {
+    
+    this.height = height;
+    return this;
+  }
+
+   /**
+   * The video&#39;s height
+   * @return height
+  **/
+  @javax.annotation.Nonnull
+
+  public Integer getHeight() {
+    return height;
+  }
+
+
+  public void setHeight(Integer height) {
+    this.height = height;
+  }
+
 
   public VideoVariableValue url(String url) {
     
@@ -111,50 +155,6 @@ public class VideoVariableValue {
   }
 
 
-  public VideoVariableValue height(Integer height) {
-    
-    this.height = height;
-    return this;
-  }
-
-   /**
-   * The video&#39;s height
-   * @return height
-  **/
-  @javax.annotation.Nonnull
-
-  public Integer getHeight() {
-    return height;
-  }
-
-
-  public void setHeight(Integer height) {
-    this.height = height;
-  }
-
-
-  public VideoVariableValue duration(String duration) {
-    
-    this.duration = duration;
-    return this;
-  }
-
-   /**
-   * The video&#39;s duration
-   * @return duration
-  **/
-  @javax.annotation.Nonnull
-
-  public String getDuration() {
-    return duration;
-  }
-
-
-  public void setDuration(String duration) {
-    this.duration = duration;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -165,25 +165,25 @@ public class VideoVariableValue {
       return false;
     }
     VideoVariableValue videoVariableValue = (VideoVariableValue) o;
-    return Objects.equals(this.url, videoVariableValue.url) &&
-        Objects.equals(this.width, videoVariableValue.width) &&
+    return Objects.equals(this.duration, videoVariableValue.duration) &&
         Objects.equals(this.height, videoVariableValue.height) &&
-        Objects.equals(this.duration, videoVariableValue.duration);
+        Objects.equals(this.url, videoVariableValue.url) &&
+        Objects.equals(this.width, videoVariableValue.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(url, width, height, duration);
+    return Objects.hash(duration, height, url, width);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class VideoVariableValue {\n");
+    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+    sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
-    sb.append("    height: ").append(toIndentedString(height)).append("\n");
-    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -206,17 +206,17 @@ public class VideoVariableValue {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("duration");
+    openapiFields.add("height");
     openapiFields.add("url");
     openapiFields.add("width");
-    openapiFields.add("height");
-    openapiFields.add("duration");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("duration");
+    openapiRequiredFields.add("height");
     openapiRequiredFields.add("url");
     openapiRequiredFields.add("width");
-    openapiRequiredFields.add("height");
-    openapiRequiredFields.add("duration");
   }
 
  /**
@@ -246,11 +246,11 @@ public class VideoVariableValue {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
-      }
       if (!jsonObj.get("duration").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `duration` to be a primitive type in the JSON string but got `%s`", jsonObj.get("duration").toString()));
+      }
+      if (!jsonObj.get("url").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
       }
   }
 

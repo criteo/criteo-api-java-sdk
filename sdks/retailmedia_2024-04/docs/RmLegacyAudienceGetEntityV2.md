@@ -8,10 +8,10 @@ Audience definition of people of interest for a marketer
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**retailerId** | **String** | ID of the retailer associated with this audience |  |
-|**userBehaviorDetails** | [**RmLegacyAudienceUserBehaviorDetailsV2**](RmLegacyAudienceUserBehaviorDetailsV2.md) |  |  [optional] |
 |**customerListDetails** | [**RmLegacySegmentCustomerList**](RmLegacySegmentCustomerList.md) |  |  [optional] |
 |**name** | **String** | Name of the audience |  |
+|**retailerId** | **String** | ID of the retailer associated with this audience |  |
+|**userBehaviorDetails** | [**RmLegacyAudienceUserBehaviorDetailsV2**](RmLegacyAudienceUserBehaviorDetailsV2.md) |  |  [optional] |
 
 
 

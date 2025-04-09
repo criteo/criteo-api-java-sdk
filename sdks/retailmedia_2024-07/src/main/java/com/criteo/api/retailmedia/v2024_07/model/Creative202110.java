@@ -52,9 +52,25 @@ import com.criteo.api.retailmedia.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Creative202110 {
+  public static final String SERIALIZED_NAME_ASSOCIATED_LINE_ITEM_IDS = "associatedLineItemIds";
+  @SerializedName(SERIALIZED_NAME_ASSOCIATED_LINE_ITEM_IDS)
+  private List<String> associatedLineItemIds = null;
+
+  public static final String SERIALIZED_NAME_BRAND_ID = "brandId";
+  @SerializedName(SERIALIZED_NAME_BRAND_ID)
+  private Long brandId;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
+
+  public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
+  @SerializedName(SERIALIZED_NAME_RETAILER_ID)
+  private Integer retailerId;
 
   /**
    * Gets or Sets status
@@ -111,112 +127,12 @@ public class Creative202110 {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
-  public static final String SERIALIZED_NAME_BRAND_ID = "brandId";
-  @SerializedName(SERIALIZED_NAME_BRAND_ID)
-  private Long brandId;
-
-  public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
-  @SerializedName(SERIALIZED_NAME_RETAILER_ID)
-  private Integer retailerId;
-
-  public static final String SERIALIZED_NAME_ASSOCIATED_LINE_ITEM_IDS = "associatedLineItemIds";
-  @SerializedName(SERIALIZED_NAME_ASSOCIATED_LINE_ITEM_IDS)
-  private List<String> associatedLineItemIds = null;
-
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
   public Creative202110() {
   }
-
-  public Creative202110 name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public Creative202110 status(StatusEnum status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
-
-
-  public Creative202110 brandId(Long brandId) {
-    
-    this.brandId = brandId;
-    return this;
-  }
-
-   /**
-   * Get brandId
-   * @return brandId
-  **/
-  @javax.annotation.Nullable
-
-  public Long getBrandId() {
-    return brandId;
-  }
-
-
-  public void setBrandId(Long brandId) {
-    this.brandId = brandId;
-  }
-
-
-  public Creative202110 retailerId(Integer retailerId) {
-    
-    this.retailerId = retailerId;
-    return this;
-  }
-
-   /**
-   * Get retailerId
-   * @return retailerId
-  **/
-  @javax.annotation.Nonnull
-
-  public Integer getRetailerId() {
-    return retailerId;
-  }
-
-
-  public void setRetailerId(Integer retailerId) {
-    this.retailerId = retailerId;
-  }
-
 
   public Creative202110 associatedLineItemIds(List<String> associatedLineItemIds) {
     
@@ -245,6 +161,116 @@ public class Creative202110 {
 
   public void setAssociatedLineItemIds(List<String> associatedLineItemIds) {
     this.associatedLineItemIds = associatedLineItemIds;
+  }
+
+
+  public Creative202110 brandId(Long brandId) {
+    
+    this.brandId = brandId;
+    return this;
+  }
+
+   /**
+   * Get brandId
+   * @return brandId
+  **/
+  @javax.annotation.Nullable
+
+  public Long getBrandId() {
+    return brandId;
+  }
+
+
+  public void setBrandId(Long brandId) {
+    this.brandId = brandId;
+  }
+
+
+  public Creative202110 id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Id of the entity
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  public Creative202110 name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public Creative202110 retailerId(Integer retailerId) {
+    
+    this.retailerId = retailerId;
+    return this;
+  }
+
+   /**
+   * Get retailerId
+   * @return retailerId
+  **/
+  @javax.annotation.Nonnull
+
+  public Integer getRetailerId() {
+    return retailerId;
+  }
+
+
+  public void setRetailerId(Integer retailerId) {
+    this.retailerId = retailerId;
+  }
+
+
+  public Creative202110 status(StatusEnum status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
   }
 
 
@@ -280,11 +306,12 @@ public class Creative202110 {
       return false;
     }
     Creative202110 creative202110 = (Creative202110) o;
-    return Objects.equals(this.name, creative202110.name) &&
-        Objects.equals(this.status, creative202110.status) &&
+    return Objects.equals(this.associatedLineItemIds, creative202110.associatedLineItemIds) &&
         Objects.equals(this.brandId, creative202110.brandId) &&
+        Objects.equals(this.id, creative202110.id) &&
+        Objects.equals(this.name, creative202110.name) &&
         Objects.equals(this.retailerId, creative202110.retailerId) &&
-        Objects.equals(this.associatedLineItemIds, creative202110.associatedLineItemIds) &&
+        Objects.equals(this.status, creative202110.status) &&
         Objects.equals(this.updatedAt, creative202110.updatedAt);
   }
 
@@ -294,7 +321,7 @@ public class Creative202110 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, status, brandId, retailerId, associatedLineItemIds, updatedAt);
+    return Objects.hash(associatedLineItemIds, brandId, id, name, retailerId, status, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -308,11 +335,12 @@ public class Creative202110 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Creative202110 {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    brandId: ").append(toIndentedString(brandId)).append("\n");
-    sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    associatedLineItemIds: ").append(toIndentedString(associatedLineItemIds)).append("\n");
+    sb.append("    brandId: ").append(toIndentedString(brandId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -336,18 +364,19 @@ public class Creative202110 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("status");
-    openapiFields.add("brandId");
-    openapiFields.add("retailerId");
     openapiFields.add("associatedLineItemIds");
+    openapiFields.add("brandId");
+    openapiFields.add("id");
+    openapiFields.add("name");
+    openapiFields.add("retailerId");
+    openapiFields.add("status");
     openapiFields.add("updatedAt");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("name");
-    openapiRequiredFields.add("status");
     openapiRequiredFields.add("retailerId");
+    openapiRequiredFields.add("status");
   }
 
  /**
@@ -377,15 +406,18 @@ public class Creative202110 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("associatedLineItemIds") != null && !jsonObj.get("associatedLineItemIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `associatedLineItemIds` to be an array in the JSON string but got `%s`", jsonObj.get("associatedLineItemIds").toString()));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("associatedLineItemIds") != null && !jsonObj.get("associatedLineItemIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `associatedLineItemIds` to be an array in the JSON string but got `%s`", jsonObj.get("associatedLineItemIds").toString()));
       }
   }
 

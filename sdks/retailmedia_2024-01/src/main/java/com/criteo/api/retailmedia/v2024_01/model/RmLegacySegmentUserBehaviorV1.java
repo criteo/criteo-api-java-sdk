@@ -52,59 +52,6 @@ import com.criteo.api.retailmedia.v2024_01.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RmLegacySegmentUserBehaviorV1 {
   /**
-   * Type of shopper activity used to generate the audience.
-   */
-  @JsonAdapter(UserTypeEnum.Adapter.class)
-  public enum UserTypeEnum {
-    VIEWER("viewer"),
-    
-    BUYER("buyer"),
-    
-    ADDTOCARTER("addToCarter");
-
-    private String value;
-
-    UserTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static UserTypeEnum fromValue(String value) {
-      for (UserTypeEnum b : UserTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<UserTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final UserTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public UserTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return UserTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_USER_TYPE = "userType";
-  @SerializedName(SERIALIZED_NAME_USER_TYPE)
-  private UserTypeEnum userType;
-
-  /**
    * Length of lookback window
    */
   @JsonAdapter(LookbackWindowEnum.Adapter.class)
@@ -169,6 +116,10 @@ public class RmLegacySegmentUserBehaviorV1 {
   @SerializedName(SERIALIZED_NAME_LOOKBACK_WINDOW)
   private LookbackWindowEnum lookbackWindow;
 
+  public static final String SERIALIZED_NAME_TARGET_IDS = "targetIds";
+  @SerializedName(SERIALIZED_NAME_TARGET_IDS)
+  private Set<String> targetIds = null;
+
   /**
    * Type of target
    */
@@ -220,34 +171,61 @@ public class RmLegacySegmentUserBehaviorV1 {
   @SerializedName(SERIALIZED_NAME_TARGET_TYPE)
   private TargetTypeEnum targetType;
 
-  public static final String SERIALIZED_NAME_TARGET_IDS = "targetIds";
-  @SerializedName(SERIALIZED_NAME_TARGET_IDS)
-  private Set<String> targetIds = null;
+  /**
+   * Type of shopper activity used to generate the audience.
+   */
+  @JsonAdapter(UserTypeEnum.Adapter.class)
+  public enum UserTypeEnum {
+    VIEWER("viewer"),
+    
+    BUYER("buyer"),
+    
+    ADDTOCARTER("addToCarter");
+
+    private String value;
+
+    UserTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static UserTypeEnum fromValue(String value) {
+      for (UserTypeEnum b : UserTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<UserTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final UserTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public UserTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return UserTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_USER_TYPE = "userType";
+  @SerializedName(SERIALIZED_NAME_USER_TYPE)
+  private UserTypeEnum userType;
 
   public RmLegacySegmentUserBehaviorV1() {
   }
-
-  public RmLegacySegmentUserBehaviorV1 userType(UserTypeEnum userType) {
-    
-    this.userType = userType;
-    return this;
-  }
-
-   /**
-   * Type of shopper activity used to generate the audience.
-   * @return userType
-  **/
-  @javax.annotation.Nonnull
-
-  public UserTypeEnum getUserType() {
-    return userType;
-  }
-
-
-  public void setUserType(UserTypeEnum userType) {
-    this.userType = userType;
-  }
-
 
   public RmLegacySegmentUserBehaviorV1 lookbackWindow(LookbackWindowEnum lookbackWindow) {
     
@@ -268,28 +246,6 @@ public class RmLegacySegmentUserBehaviorV1 {
 
   public void setLookbackWindow(LookbackWindowEnum lookbackWindow) {
     this.lookbackWindow = lookbackWindow;
-  }
-
-
-  public RmLegacySegmentUserBehaviorV1 targetType(TargetTypeEnum targetType) {
-    
-    this.targetType = targetType;
-    return this;
-  }
-
-   /**
-   * Type of target
-   * @return targetType
-  **/
-  @javax.annotation.Nullable
-
-  public TargetTypeEnum getTargetType() {
-    return targetType;
-  }
-
-
-  public void setTargetType(TargetTypeEnum targetType) {
-    this.targetType = targetType;
   }
 
 
@@ -320,6 +276,50 @@ public class RmLegacySegmentUserBehaviorV1 {
 
   public void setTargetIds(Set<String> targetIds) {
     this.targetIds = targetIds;
+  }
+
+
+  public RmLegacySegmentUserBehaviorV1 targetType(TargetTypeEnum targetType) {
+    
+    this.targetType = targetType;
+    return this;
+  }
+
+   /**
+   * Type of target
+   * @return targetType
+  **/
+  @javax.annotation.Nullable
+
+  public TargetTypeEnum getTargetType() {
+    return targetType;
+  }
+
+
+  public void setTargetType(TargetTypeEnum targetType) {
+    this.targetType = targetType;
+  }
+
+
+  public RmLegacySegmentUserBehaviorV1 userType(UserTypeEnum userType) {
+    
+    this.userType = userType;
+    return this;
+  }
+
+   /**
+   * Type of shopper activity used to generate the audience.
+   * @return userType
+  **/
+  @javax.annotation.Nonnull
+
+  public UserTypeEnum getUserType() {
+    return userType;
+  }
+
+
+  public void setUserType(UserTypeEnum userType) {
+    this.userType = userType;
   }
 
   /**
@@ -377,10 +377,10 @@ public class RmLegacySegmentUserBehaviorV1 {
       return false;
     }
     RmLegacySegmentUserBehaviorV1 rmLegacySegmentUserBehaviorV1 = (RmLegacySegmentUserBehaviorV1) o;
-    return Objects.equals(this.userType, rmLegacySegmentUserBehaviorV1.userType) &&
-        Objects.equals(this.lookbackWindow, rmLegacySegmentUserBehaviorV1.lookbackWindow) &&
+    return Objects.equals(this.lookbackWindow, rmLegacySegmentUserBehaviorV1.lookbackWindow) &&
+        Objects.equals(this.targetIds, rmLegacySegmentUserBehaviorV1.targetIds) &&
         Objects.equals(this.targetType, rmLegacySegmentUserBehaviorV1.targetType) &&
-        Objects.equals(this.targetIds, rmLegacySegmentUserBehaviorV1.targetIds)&&
+        Objects.equals(this.userType, rmLegacySegmentUserBehaviorV1.userType)&&
         Objects.equals(this.additionalProperties, rmLegacySegmentUserBehaviorV1.additionalProperties);
   }
 
@@ -390,7 +390,7 @@ public class RmLegacySegmentUserBehaviorV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(userType, lookbackWindow, targetType, targetIds, additionalProperties);
+    return Objects.hash(lookbackWindow, targetIds, targetType, userType, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -404,10 +404,10 @@ public class RmLegacySegmentUserBehaviorV1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RmLegacySegmentUserBehaviorV1 {\n");
-    sb.append("    userType: ").append(toIndentedString(userType)).append("\n");
     sb.append("    lookbackWindow: ").append(toIndentedString(lookbackWindow)).append("\n");
-    sb.append("    targetType: ").append(toIndentedString(targetType)).append("\n");
     sb.append("    targetIds: ").append(toIndentedString(targetIds)).append("\n");
+    sb.append("    targetType: ").append(toIndentedString(targetType)).append("\n");
+    sb.append("    userType: ").append(toIndentedString(userType)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -431,15 +431,15 @@ public class RmLegacySegmentUserBehaviorV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("userType");
     openapiFields.add("lookbackWindow");
-    openapiFields.add("targetType");
     openapiFields.add("targetIds");
+    openapiFields.add("targetType");
+    openapiFields.add("userType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("userType");
     openapiRequiredFields.add("lookbackWindow");
+    openapiRequiredFields.add("userType");
   }
 
  /**
@@ -461,18 +461,18 @@ public class RmLegacySegmentUserBehaviorV1 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("userType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `userType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userType").toString()));
-      }
       if (!jsonObj.get("lookbackWindow").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `lookbackWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lookbackWindow").toString()));
-      }
-      if ((jsonObj.get("targetType") != null && !jsonObj.get("targetType").isJsonNull()) && !jsonObj.get("targetType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `targetType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("targetType").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("targetIds") != null && !jsonObj.get("targetIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `targetIds` to be an array in the JSON string but got `%s`", jsonObj.get("targetIds").toString()));
+      }
+      if ((jsonObj.get("targetType") != null && !jsonObj.get("targetType").isJsonNull()) && !jsonObj.get("targetType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `targetType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("targetType").toString()));
+      }
+      if (!jsonObj.get("userType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `userType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userType").toString()));
       }
   }
 

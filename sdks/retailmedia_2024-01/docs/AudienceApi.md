@@ -108,7 +108,7 @@ public class Example {
 
 ## legacyGetAudienceV1
 
-> RmLegacyAudienceGetEntityV1ListResponse legacyGetAudienceV1(accountId, limitToId, pageSize, pageIndex)
+> RmLegacyAudienceGetEntityV1ListResponse legacyGetAudienceV1(accountId, limitToId, pageIndex, pageSize)
 
 
 
@@ -155,10 +155,10 @@ public class Example {
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         Long accountId = 56L; // Long | ID of the account to which this audience belongs.
         List<Integer> limitToId = Arrays.asList(); // List<Integer> | Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId=1&limitToId=2
-        Integer pageSize = 56; // Integer | Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page.
         Integer pageIndex = 56; // Integer | Returns the specified page of results given a pageSize; pages are 0-indexed.
+        Integer pageSize = 56; // Integer | Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page.
         try {
-            RmLegacyAudienceGetEntityV1ListResponse result = apiInstance.legacyGetAudienceV1(accountId, limitToId, pageSize, pageIndex);
+            RmLegacyAudienceGetEntityV1ListResponse result = apiInstance.legacyGetAudienceV1(accountId, limitToId, pageIndex, pageSize);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AudienceApi#legacyGetAudienceV1");
@@ -178,8 +178,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **Long**| ID of the account to which this audience belongs. | |
 | **limitToId** | [**List&lt;Integer&gt;**](Integer.md)| Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 | [optional] |
-| **pageSize** | **Integer**| Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. | [optional] |
 | **pageIndex** | **Integer**| Returns the specified page of results given a pageSize; pages are 0-indexed. | [optional] |
+| **pageSize** | **Integer**| Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. | [optional] |
 
 ### Return type
 
@@ -206,7 +206,7 @@ public class Example {
 
 ## legacyGetAudienceV2
 
-> RmLegacyAudienceGetEntityV2ListResponse legacyGetAudienceV2(accountId, limitToId, pageSize, pageIndex)
+> RmLegacyAudienceGetEntityV2ListResponse legacyGetAudienceV2(accountId, limitToId, pageIndex, pageSize)
 
 
 
@@ -253,10 +253,10 @@ public class Example {
         AudienceApi apiInstance = new AudienceApi(defaultClient);
         Long accountId = 56L; // Long | ID of the account to which this audience belongs.
         List<Integer> limitToId = Arrays.asList(); // List<Integer> | Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId=1&limitToId=2
-        Integer pageSize = 56; // Integer | Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page.
         Integer pageIndex = 56; // Integer | Returns the specified page of results given a pageSize; pages are 0-indexed.
+        Integer pageSize = 56; // Integer | Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page.
         try {
-            RmLegacyAudienceGetEntityV2ListResponse result = apiInstance.legacyGetAudienceV2(accountId, limitToId, pageSize, pageIndex);
+            RmLegacyAudienceGetEntityV2ListResponse result = apiInstance.legacyGetAudienceV2(accountId, limitToId, pageIndex, pageSize);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AudienceApi#legacyGetAudienceV2");
@@ -276,8 +276,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **Long**| ID of the account to which this audience belongs. | |
 | **limitToId** | [**List&lt;Integer&gt;**](Integer.md)| Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 | [optional] |
-| **pageSize** | **Integer**| Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. | [optional] |
 | **pageIndex** | **Integer**| Returns the specified page of results given a pageSize; pages are 0-indexed. | [optional] |
+| **pageSize** | **Integer**| Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. | [optional] |
 
 ### Return type
 

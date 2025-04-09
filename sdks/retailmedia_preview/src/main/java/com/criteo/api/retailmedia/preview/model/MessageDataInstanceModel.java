@@ -50,38 +50,16 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MessageDataInstanceModel {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type = "Message";
-
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private Message attributes;
 
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type = "Message";
+
   public MessageDataInstanceModel() {
   }
-
-  public MessageDataInstanceModel type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Get type
-   * @return type
-  **/
-  @javax.annotation.Nullable
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
 
   public MessageDataInstanceModel attributes(Message attributes) {
     
@@ -102,6 +80,28 @@ public class MessageDataInstanceModel {
 
   public void setAttributes(Message attributes) {
     this.attributes = attributes;
+  }
+
+
+  public MessageDataInstanceModel type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   /**
@@ -159,8 +159,8 @@ public class MessageDataInstanceModel {
       return false;
     }
     MessageDataInstanceModel messageDataInstanceModel = (MessageDataInstanceModel) o;
-    return Objects.equals(this.type, messageDataInstanceModel.type) &&
-        Objects.equals(this.attributes, messageDataInstanceModel.attributes)&&
+    return Objects.equals(this.attributes, messageDataInstanceModel.attributes) &&
+        Objects.equals(this.type, messageDataInstanceModel.type)&&
         Objects.equals(this.additionalProperties, messageDataInstanceModel.additionalProperties);
   }
 
@@ -170,7 +170,7 @@ public class MessageDataInstanceModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes, additionalProperties);
+    return Objects.hash(attributes, type, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -184,8 +184,8 @@ public class MessageDataInstanceModel {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class MessageDataInstanceModel {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -209,8 +209,8 @@ public class MessageDataInstanceModel {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
     openapiFields.add("attributes");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -236,11 +236,11 @@ public class MessageDataInstanceModel {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      // validate the required field `attributes`
+      Message.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      // validate the required field `attributes`
-      Message.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

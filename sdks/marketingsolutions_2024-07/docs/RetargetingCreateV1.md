@@ -8,9 +8,9 @@ Settings to target users based on its type and days since last visit.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**visitorsType** | [**VisitorsTypeEnum**](#VisitorsTypeEnum) | Types of visitors. |  |
-|**daysSinceLastVisitMin** | **Integer** | Minimum number of days since last visit to partner. |  |
 |**daysSinceLastVisitMax** | **Integer** | Maximum number of days since last visit to partner. |  |
+|**daysSinceLastVisitMin** | **Integer** | Minimum number of days since last visit to partner. |  |
+|**visitorsType** | [**VisitorsTypeEnum**](#VisitorsTypeEnum) | Types of visitors. |  |
 
 
 

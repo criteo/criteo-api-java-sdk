@@ -8,20 +8,10 @@ Audience definition of people based on what they visited
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**userType** | [**UserTypeEnum**](#UserTypeEnum) | Type of shopper activity used to generate the audience. |  |
 |**lookbackWindow** | [**LookbackWindowEnum**](#LookbackWindowEnum) | Length of lookback window |  |
-|**targetType** | [**TargetTypeEnum**](#TargetTypeEnum) | Type of target |  [optional] |
 |**targetIds** | **Set&lt;String&gt;** | The categories to target |  [optional] |
-
-
-
-## Enum: UserTypeEnum
-
-| Name | Value |
-|---- | -----|
-| VIEWER | &quot;viewer&quot; |
-| BUYER | &quot;buyer&quot; |
-| ADDTOCARTER | &quot;addToCarter&quot; |
+|**targetType** | [**TargetTypeEnum**](#TargetTypeEnum) | Type of target |  [optional] |
+|**userType** | [**UserTypeEnum**](#UserTypeEnum) | Type of shopper activity used to generate the audience. |  |
 
 
 
@@ -47,6 +37,16 @@ Audience definition of people based on what they visited
 |---- | -----|
 | BRAND | &quot;brand&quot; |
 | CATEGORY | &quot;category&quot; |
+
+
+
+## Enum: UserTypeEnum
+
+| Name | Value |
+|---- | -----|
+| VIEWER | &quot;viewer&quot; |
+| BUYER | &quot;buyer&quot; |
+| ADDTOCARTER | &quot;addToCarter&quot; |
 
 
 

@@ -8,9 +8,9 @@ Response object for line item bid multiplier calls
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**attributes** | [**LineItemBidMultipliers**](LineItemBidMultipliers.md) |  |  [optional] |
 |**id** | **String** |  |  |
 |**type** | **String** |  |  |
-|**attributes** | [**LineItemBidMultipliers**](LineItemBidMultipliers.md) |  |  [optional] |
 
 
 

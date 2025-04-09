@@ -8,8 +8,8 @@ an API answer message
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** |  |  [optional] |
 |**attributes** | [**Message**](Message.md) |  |  |
+|**type** | **String** |  |  [optional] |
 
 
 

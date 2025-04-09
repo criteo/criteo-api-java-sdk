@@ -52,41 +52,41 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SkuSlimDataV2 {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
+  public static final String SERIALIZED_NAME_BRAND = "brand";
+  @SerializedName(SERIALIZED_NAME_BRAND)
+  private Brand brand;
 
   public static final String SERIALIZED_NAME_CATEGORY = "category";
   @SerializedName(SERIALIZED_NAME_CATEGORY)
   private Category category;
 
-  public static final String SERIALIZED_NAME_BRAND = "brand";
-  @SerializedName(SERIALIZED_NAME_BRAND)
-  private Brand brand;
-
-  public static final String SERIALIZED_NAME_PRICE = "price";
-  @SerializedName(SERIALIZED_NAME_PRICE)
-  private Double price;
-
-  public static final String SERIALIZED_NAME_IS_IN_STOCK = "isInStock";
-  @SerializedName(SERIALIZED_NAME_IS_IN_STOCK)
-  private Boolean isInStock;
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
 
   public static final String SERIALIZED_NAME_GTIN = "gtin";
   @SerializedName(SERIALIZED_NAME_GTIN)
   private String gtin;
 
+  public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
+  @SerializedName(SERIALIZED_NAME_IMAGE_URL)
+  private String imageUrl;
+
+  public static final String SERIALIZED_NAME_IS_IN_STOCK = "isInStock";
+  @SerializedName(SERIALIZED_NAME_IS_IN_STOCK)
+  private Boolean isInStock;
+
   public static final String SERIALIZED_NAME_MPN = "mpn";
   @SerializedName(SERIALIZED_NAME_MPN)
   private String mpn;
 
-  public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
-  @SerializedName(SERIALIZED_NAME_IMAGE_URL)
-  private String imageUrl;
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_PRICE = "price";
+  @SerializedName(SERIALIZED_NAME_PRICE)
+  private Double price;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
@@ -95,47 +95,25 @@ public class SkuSlimDataV2 {
   public SkuSlimDataV2() {
   }
 
-  public SkuSlimDataV2 name(String name) {
+  public SkuSlimDataV2 brand(Brand brand) {
     
-    this.name = name;
+    this.brand = brand;
     return this;
   }
 
    /**
-   * A short product name.
-   * @return name
+   * Get brand
+   * @return brand
   **/
   @javax.annotation.Nullable
 
-  public String getName() {
-    return name;
+  public Brand getBrand() {
+    return brand;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public SkuSlimDataV2 description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * A short description of the product.
-   * @return description
-  **/
-  @javax.annotation.Nullable
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  public void setDescription(String description) {
-    this.description = description;
+  public void setBrand(Brand brand) {
+    this.brand = brand;
   }
 
 
@@ -161,69 +139,25 @@ public class SkuSlimDataV2 {
   }
 
 
-  public SkuSlimDataV2 brand(Brand brand) {
+  public SkuSlimDataV2 description(String description) {
     
-    this.brand = brand;
+    this.description = description;
     return this;
   }
 
    /**
-   * Get brand
-   * @return brand
+   * A short description of the product.
+   * @return description
   **/
   @javax.annotation.Nullable
 
-  public Brand getBrand() {
-    return brand;
+  public String getDescription() {
+    return description;
   }
 
 
-  public void setBrand(Brand brand) {
-    this.brand = brand;
-  }
-
-
-  public SkuSlimDataV2 price(Double price) {
-    
-    this.price = price;
-    return this;
-  }
-
-   /**
-   * The price of the product on the retailer site. Can be omitted in certain circumstances
-   * @return price
-  **/
-  @javax.annotation.Nullable
-
-  public Double getPrice() {
-    return price;
-  }
-
-
-  public void setPrice(Double price) {
-    this.price = price;
-  }
-
-
-  public SkuSlimDataV2 isInStock(Boolean isInStock) {
-    
-    this.isInStock = isInStock;
-    return this;
-  }
-
-   /**
-   * An indication of if the retailer currently has the product in stock.
-   * @return isInStock
-  **/
-  @javax.annotation.Nonnull
-
-  public Boolean getIsInStock() {
-    return isInStock;
-  }
-
-
-  public void setIsInStock(Boolean isInStock) {
-    this.isInStock = isInStock;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -249,6 +183,50 @@ public class SkuSlimDataV2 {
   }
 
 
+  public SkuSlimDataV2 imageUrl(String imageUrl) {
+    
+    this.imageUrl = imageUrl;
+    return this;
+  }
+
+   /**
+   * An http image resource provided by the retailer.
+   * @return imageUrl
+  **/
+  @javax.annotation.Nullable
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+  }
+
+
+  public SkuSlimDataV2 isInStock(Boolean isInStock) {
+    
+    this.isInStock = isInStock;
+    return this;
+  }
+
+   /**
+   * An indication of if the retailer currently has the product in stock.
+   * @return isInStock
+  **/
+  @javax.annotation.Nonnull
+
+  public Boolean getIsInStock() {
+    return isInStock;
+  }
+
+
+  public void setIsInStock(Boolean isInStock) {
+    this.isInStock = isInStock;
+  }
+
+
   public SkuSlimDataV2 mpn(String mpn) {
     
     this.mpn = mpn;
@@ -271,25 +249,47 @@ public class SkuSlimDataV2 {
   }
 
 
-  public SkuSlimDataV2 imageUrl(String imageUrl) {
+  public SkuSlimDataV2 name(String name) {
     
-    this.imageUrl = imageUrl;
+    this.name = name;
     return this;
   }
 
    /**
-   * An http image resource provided by the retailer.
-   * @return imageUrl
+   * A short product name.
+   * @return name
   **/
   @javax.annotation.Nullable
 
-  public String getImageUrl() {
-    return imageUrl;
+  public String getName() {
+    return name;
   }
 
 
-  public void setImageUrl(String imageUrl) {
-    this.imageUrl = imageUrl;
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public SkuSlimDataV2 price(Double price) {
+    
+    this.price = price;
+    return this;
+  }
+
+   /**
+   * The price of the product on the retailer site. Can be omitted in certain circumstances
+   * @return price
+  **/
+  @javax.annotation.Nullable
+
+  public Double getPrice() {
+    return price;
+  }
+
+
+  public void setPrice(Double price) {
+    this.price = price;
   }
 
 
@@ -369,15 +369,15 @@ public class SkuSlimDataV2 {
       return false;
     }
     SkuSlimDataV2 skuSlimDataV2 = (SkuSlimDataV2) o;
-    return Objects.equals(this.name, skuSlimDataV2.name) &&
-        Objects.equals(this.description, skuSlimDataV2.description) &&
+    return Objects.equals(this.brand, skuSlimDataV2.brand) &&
         Objects.equals(this.category, skuSlimDataV2.category) &&
-        Objects.equals(this.brand, skuSlimDataV2.brand) &&
-        Objects.equals(this.price, skuSlimDataV2.price) &&
-        Objects.equals(this.isInStock, skuSlimDataV2.isInStock) &&
+        Objects.equals(this.description, skuSlimDataV2.description) &&
         Objects.equals(this.gtin, skuSlimDataV2.gtin) &&
-        Objects.equals(this.mpn, skuSlimDataV2.mpn) &&
         Objects.equals(this.imageUrl, skuSlimDataV2.imageUrl) &&
+        Objects.equals(this.isInStock, skuSlimDataV2.isInStock) &&
+        Objects.equals(this.mpn, skuSlimDataV2.mpn) &&
+        Objects.equals(this.name, skuSlimDataV2.name) &&
+        Objects.equals(this.price, skuSlimDataV2.price) &&
         Objects.equals(this.updatedAt, skuSlimDataV2.updatedAt)&&
         Objects.equals(this.additionalProperties, skuSlimDataV2.additionalProperties);
   }
@@ -388,7 +388,7 @@ public class SkuSlimDataV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, category, brand, price, isInStock, gtin, mpn, imageUrl, updatedAt, additionalProperties);
+    return Objects.hash(brand, category, description, gtin, imageUrl, isInStock, mpn, name, price, updatedAt, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -402,15 +402,15 @@ public class SkuSlimDataV2 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SkuSlimDataV2 {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
-    sb.append("    price: ").append(toIndentedString(price)).append("\n");
-    sb.append("    isInStock: ").append(toIndentedString(isInStock)).append("\n");
+    sb.append("    category: ").append(toIndentedString(category)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    gtin: ").append(toIndentedString(gtin)).append("\n");
-    sb.append("    mpn: ").append(toIndentedString(mpn)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
+    sb.append("    isInStock: ").append(toIndentedString(isInStock)).append("\n");
+    sb.append("    mpn: ").append(toIndentedString(mpn)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -435,21 +435,21 @@ public class SkuSlimDataV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("description");
-    openapiFields.add("category");
     openapiFields.add("brand");
-    openapiFields.add("price");
-    openapiFields.add("isInStock");
+    openapiFields.add("category");
+    openapiFields.add("description");
     openapiFields.add("gtin");
-    openapiFields.add("mpn");
     openapiFields.add("imageUrl");
+    openapiFields.add("isInStock");
+    openapiFields.add("mpn");
+    openapiFields.add("name");
+    openapiFields.add("price");
     openapiFields.add("updatedAt");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("price");
     openapiRequiredFields.add("isInStock");
+    openapiRequiredFields.add("price");
     openapiRequiredFields.add("updatedAt");
   }
 
@@ -472,28 +472,28 @@ public class SkuSlimDataV2 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      // validate the optional field `brand`
+      if (jsonObj.get("brand") != null && !jsonObj.get("brand").isJsonNull()) {
+        Brand.validateJsonObject(jsonObj.getAsJsonObject("brand"));
       }
       // validate the optional field `category`
       if (jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) {
         Category.validateJsonObject(jsonObj.getAsJsonObject("category"));
       }
-      // validate the optional field `brand`
-      if (jsonObj.get("brand") != null && !jsonObj.get("brand").isJsonNull()) {
-        Brand.validateJsonObject(jsonObj.getAsJsonObject("brand"));
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       if ((jsonObj.get("gtin") != null && !jsonObj.get("gtin").isJsonNull()) && !jsonObj.get("gtin").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `gtin` to be a primitive type in the JSON string but got `%s`", jsonObj.get("gtin").toString()));
       }
+      if ((jsonObj.get("imageUrl") != null && !jsonObj.get("imageUrl").isJsonNull()) && !jsonObj.get("imageUrl").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `imageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("imageUrl").toString()));
+      }
       if ((jsonObj.get("mpn") != null && !jsonObj.get("mpn").isJsonNull()) && !jsonObj.get("mpn").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `mpn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mpn").toString()));
       }
-      if ((jsonObj.get("imageUrl") != null && !jsonObj.get("imageUrl").isJsonNull()) && !jsonObj.get("imageUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `imageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("imageUrl").toString()));
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
   }
 

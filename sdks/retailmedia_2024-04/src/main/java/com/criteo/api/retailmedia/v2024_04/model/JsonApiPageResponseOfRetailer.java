@@ -55,24 +55,51 @@ import com.criteo.api.retailmedia.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class JsonApiPageResponseOfRetailer {
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private List<JsonApiBodyWithIdOfInt64AndRetailerAndRetailer> data = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<CommonError> errors = null;
-
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<CommonWarning> warnings = null;
 
   public static final String SERIALIZED_NAME_METADATA = "metadata";
   @SerializedName(SERIALIZED_NAME_METADATA)
   private PageMetadata metadata;
 
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private List<JsonApiBodyWithIdOfInt64AndRetailerAndRetailer> data = new ArrayList<>();
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<CommonWarning> warnings = null;
 
   public JsonApiPageResponseOfRetailer() {
   }
+
+  public JsonApiPageResponseOfRetailer data(List<JsonApiBodyWithIdOfInt64AndRetailerAndRetailer> data) {
+    
+    this.data = data;
+    return this;
+  }
+
+  public JsonApiPageResponseOfRetailer addDataItem(JsonApiBodyWithIdOfInt64AndRetailerAndRetailer dataItem) {
+    this.data.add(dataItem);
+    return this;
+  }
+
+   /**
+   * Get data
+   * @return data
+  **/
+  @javax.annotation.Nonnull
+
+  public List<JsonApiBodyWithIdOfInt64AndRetailerAndRetailer> getData() {
+    return data;
+  }
+
+
+  public void setData(List<JsonApiBodyWithIdOfInt64AndRetailerAndRetailer> data) {
+    this.data = data;
+  }
+
 
   public JsonApiPageResponseOfRetailer errors(List<CommonError> errors) {
     
@@ -101,6 +128,28 @@ public class JsonApiPageResponseOfRetailer {
 
   public void setErrors(List<CommonError> errors) {
     this.errors = errors;
+  }
+
+
+  public JsonApiPageResponseOfRetailer metadata(PageMetadata metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * Get metadata
+   * @return metadata
+  **/
+  @javax.annotation.Nonnull
+
+  public PageMetadata getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(PageMetadata metadata) {
+    this.metadata = metadata;
   }
 
 
@@ -134,55 +183,6 @@ public class JsonApiPageResponseOfRetailer {
   }
 
 
-  public JsonApiPageResponseOfRetailer metadata(PageMetadata metadata) {
-    
-    this.metadata = metadata;
-    return this;
-  }
-
-   /**
-   * Get metadata
-   * @return metadata
-  **/
-  @javax.annotation.Nonnull
-
-  public PageMetadata getMetadata() {
-    return metadata;
-  }
-
-
-  public void setMetadata(PageMetadata metadata) {
-    this.metadata = metadata;
-  }
-
-
-  public JsonApiPageResponseOfRetailer data(List<JsonApiBodyWithIdOfInt64AndRetailerAndRetailer> data) {
-    
-    this.data = data;
-    return this;
-  }
-
-  public JsonApiPageResponseOfRetailer addDataItem(JsonApiBodyWithIdOfInt64AndRetailerAndRetailer dataItem) {
-    this.data.add(dataItem);
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @javax.annotation.Nonnull
-
-  public List<JsonApiBodyWithIdOfInt64AndRetailerAndRetailer> getData() {
-    return data;
-  }
-
-
-  public void setData(List<JsonApiBodyWithIdOfInt64AndRetailerAndRetailer> data) {
-    this.data = data;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -193,10 +193,10 @@ public class JsonApiPageResponseOfRetailer {
       return false;
     }
     JsonApiPageResponseOfRetailer jsonApiPageResponseOfRetailer = (JsonApiPageResponseOfRetailer) o;
-    return Objects.equals(this.errors, jsonApiPageResponseOfRetailer.errors) &&
-        Objects.equals(this.warnings, jsonApiPageResponseOfRetailer.warnings) &&
+    return Objects.equals(this.data, jsonApiPageResponseOfRetailer.data) &&
+        Objects.equals(this.errors, jsonApiPageResponseOfRetailer.errors) &&
         Objects.equals(this.metadata, jsonApiPageResponseOfRetailer.metadata) &&
-        Objects.equals(this.data, jsonApiPageResponseOfRetailer.data);
+        Objects.equals(this.warnings, jsonApiPageResponseOfRetailer.warnings);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -205,7 +205,7 @@ public class JsonApiPageResponseOfRetailer {
 
   @Override
   public int hashCode() {
-    return Objects.hash(errors, warnings, metadata, data);
+    return Objects.hash(data, errors, metadata, warnings);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -219,10 +219,10 @@ public class JsonApiPageResponseOfRetailer {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JsonApiPageResponseOfRetailer {\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
-    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -245,15 +245,15 @@ public class JsonApiPageResponseOfRetailer {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("errors");
-    openapiFields.add("warnings");
-    openapiFields.add("metadata");
     openapiFields.add("data");
+    openapiFields.add("errors");
+    openapiFields.add("metadata");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("metadata");
     openapiRequiredFields.add("data");
+    openapiRequiredFields.add("metadata");
   }
 
  /**
@@ -283,6 +283,16 @@ public class JsonApiPageResponseOfRetailer {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      // ensure the json data is an array
+      if (!jsonObj.get("data").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
+      }
+
+      JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
+      // validate the required field `data` (array)
+      for (int i = 0; i < jsonArraydata.size(); i++) {
+        JsonApiBodyWithIdOfInt64AndRetailerAndRetailer.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
+      };
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
         if (jsonArrayerrors != null) {
@@ -297,6 +307,8 @@ public class JsonApiPageResponseOfRetailer {
           };
         }
       }
+      // validate the required field `metadata`
+      PageMetadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
       if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
         JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
         if (jsonArraywarnings != null) {
@@ -311,18 +323,6 @@ public class JsonApiPageResponseOfRetailer {
           };
         }
       }
-      // validate the required field `metadata`
-      PageMetadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
-      // ensure the json data is an array
-      if (!jsonObj.get("data").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
-      }
-
-      JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
-      // validate the required field `data` (array)
-      for (int i = 0; i < jsonArraydata.size(); i++) {
-        JsonApiBodyWithIdOfInt64AndRetailerAndRetailer.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
-      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

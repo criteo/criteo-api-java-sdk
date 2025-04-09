@@ -49,14 +49,6 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MessageError {
-  public static final String SERIALIZED_NAME_TRACE_ID = "traceId";
-  @SerializedName(SERIALIZED_NAME_TRACE_ID)
-  private String traceId;
-
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
-
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
   private String code;
@@ -65,52 +57,16 @@ public class MessageError {
   @SerializedName(SERIALIZED_NAME_INSTANCE)
   private String instance;
 
+  public static final String SERIALIZED_NAME_TRACE_ID = "traceId";
+  @SerializedName(SERIALIZED_NAME_TRACE_ID)
+  private String traceId;
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
   public MessageError() {
   }
-
-  public MessageError traceId(String traceId) {
-    
-    this.traceId = traceId;
-    return this;
-  }
-
-   /**
-   * correlation ID, unique to each request
-   * @return traceId
-  **/
-  @javax.annotation.Nullable
-
-  public String getTraceId() {
-    return traceId;
-  }
-
-
-  public void setTraceId(String traceId) {
-    this.traceId = traceId;
-  }
-
-
-  public MessageError type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * error category
-   * @return type
-  **/
-  @javax.annotation.Nullable
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
 
   public MessageError code(String code) {
     
@@ -153,6 +109,50 @@ public class MessageError {
 
   public void setInstance(String instance) {
     this.instance = instance;
+  }
+
+
+  public MessageError traceId(String traceId) {
+    
+    this.traceId = traceId;
+    return this;
+  }
+
+   /**
+   * correlation ID, unique to each request
+   * @return traceId
+  **/
+  @javax.annotation.Nullable
+
+  public String getTraceId() {
+    return traceId;
+  }
+
+
+  public void setTraceId(String traceId) {
+    this.traceId = traceId;
+  }
+
+
+  public MessageError type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * error category
+   * @return type
+  **/
+  @javax.annotation.Nullable
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   /**
@@ -210,10 +210,10 @@ public class MessageError {
       return false;
     }
     MessageError messageError = (MessageError) o;
-    return Objects.equals(this.traceId, messageError.traceId) &&
-        Objects.equals(this.type, messageError.type) &&
-        Objects.equals(this.code, messageError.code) &&
-        Objects.equals(this.instance, messageError.instance)&&
+    return Objects.equals(this.code, messageError.code) &&
+        Objects.equals(this.instance, messageError.instance) &&
+        Objects.equals(this.traceId, messageError.traceId) &&
+        Objects.equals(this.type, messageError.type)&&
         Objects.equals(this.additionalProperties, messageError.additionalProperties);
   }
 
@@ -223,7 +223,7 @@ public class MessageError {
 
   @Override
   public int hashCode() {
-    return Objects.hash(traceId, type, code, instance, additionalProperties);
+    return Objects.hash(code, instance, traceId, type, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -237,10 +237,10 @@ public class MessageError {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class MessageError {\n");
-    sb.append("    traceId: ").append(toIndentedString(traceId)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    instance: ").append(toIndentedString(instance)).append("\n");
+    sb.append("    traceId: ").append(toIndentedString(traceId)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -264,10 +264,10 @@ public class MessageError {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("traceId");
-    openapiFields.add("type");
     openapiFields.add("code");
     openapiFields.add("instance");
+    openapiFields.add("traceId");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -285,17 +285,17 @@ public class MessageError {
           throw new IllegalArgumentException(String.format("The required field(s) %s in MessageError is not found in the empty JSON string", MessageError.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("traceId") != null && !jsonObj.get("traceId").isJsonNull()) && !jsonObj.get("traceId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `traceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("traceId").toString()));
-      }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
       if ((jsonObj.get("instance") != null && !jsonObj.get("instance").isJsonNull()) && !jsonObj.get("instance").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instance").toString()));
+      }
+      if ((jsonObj.get("traceId") != null && !jsonObj.get("traceId").isJsonNull()) && !jsonObj.get("traceId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `traceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("traceId").toString()));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

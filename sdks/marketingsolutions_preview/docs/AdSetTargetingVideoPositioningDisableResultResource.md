@@ -8,8 +8,8 @@ A class that represents a ValueType in a guild compliant way
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** |  |  [optional] |
 |**attributes** | **Object** | Result of the AdSetTargetingVideoPositioning deletion |  [optional] |
+|**type** | **String** |  |  [optional] |
 
 
 

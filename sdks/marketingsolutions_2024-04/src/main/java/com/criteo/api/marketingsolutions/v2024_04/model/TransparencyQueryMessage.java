@@ -49,6 +49,10 @@ import com.criteo.api.marketingsolutions.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TransparencyQueryMessage {
+  public static final String SERIALIZED_NAME_END_DATE = "endDate";
+  @SerializedName(SERIALIZED_NAME_END_DATE)
+  private OffsetDateTime endDate;
+
   public static final String SERIALIZED_NAME_SHOULD_DISPLAY_PRODUCT_IDS = "shouldDisplayProductIds";
   @SerializedName(SERIALIZED_NAME_SHOULD_DISPLAY_PRODUCT_IDS)
   private Boolean shouldDisplayProductIds = false;
@@ -57,12 +61,30 @@ public class TransparencyQueryMessage {
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private OffsetDateTime startDate;
 
-  public static final String SERIALIZED_NAME_END_DATE = "endDate";
-  @SerializedName(SERIALIZED_NAME_END_DATE)
-  private OffsetDateTime endDate;
-
   public TransparencyQueryMessage() {
   }
+
+  public TransparencyQueryMessage endDate(OffsetDateTime endDate) {
+    
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.
+   * @return endDate
+  **/
+  @javax.annotation.Nonnull
+
+  public OffsetDateTime getEndDate() {
+    return endDate;
+  }
+
+
+  public void setEndDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
+  }
+
 
   public TransparencyQueryMessage shouldDisplayProductIds(Boolean shouldDisplayProductIds) {
     
@@ -108,28 +130,6 @@ public class TransparencyQueryMessage {
   }
 
 
-  public TransparencyQueryMessage endDate(OffsetDateTime endDate) {
-    
-    this.endDate = endDate;
-    return this;
-  }
-
-   /**
-   * End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.
-   * @return endDate
-  **/
-  @javax.annotation.Nonnull
-
-  public OffsetDateTime getEndDate() {
-    return endDate;
-  }
-
-
-  public void setEndDate(OffsetDateTime endDate) {
-    this.endDate = endDate;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -140,23 +140,23 @@ public class TransparencyQueryMessage {
       return false;
     }
     TransparencyQueryMessage transparencyQueryMessage = (TransparencyQueryMessage) o;
-    return Objects.equals(this.shouldDisplayProductIds, transparencyQueryMessage.shouldDisplayProductIds) &&
-        Objects.equals(this.startDate, transparencyQueryMessage.startDate) &&
-        Objects.equals(this.endDate, transparencyQueryMessage.endDate);
+    return Objects.equals(this.endDate, transparencyQueryMessage.endDate) &&
+        Objects.equals(this.shouldDisplayProductIds, transparencyQueryMessage.shouldDisplayProductIds) &&
+        Objects.equals(this.startDate, transparencyQueryMessage.startDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(shouldDisplayProductIds, startDate, endDate);
+    return Objects.hash(endDate, shouldDisplayProductIds, startDate);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TransparencyQueryMessage {\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    shouldDisplayProductIds: ").append(toIndentedString(shouldDisplayProductIds)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -179,14 +179,14 @@ public class TransparencyQueryMessage {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("endDate");
     openapiFields.add("shouldDisplayProductIds");
     openapiFields.add("startDate");
-    openapiFields.add("endDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("endDate");
+    openapiRequiredFields.add("startDate");
   }
 
  /**

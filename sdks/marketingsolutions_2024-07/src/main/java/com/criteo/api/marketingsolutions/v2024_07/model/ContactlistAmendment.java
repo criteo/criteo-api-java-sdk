@@ -49,38 +49,16 @@ import com.criteo.api.marketingsolutions.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ContactlistAmendment {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
-
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private ContactlistAmendmentAttributes attributes;
 
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
   public ContactlistAmendment() {
   }
-
-  public ContactlistAmendment type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * User List
-   * @return type
-  **/
-  @javax.annotation.Nonnull
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
 
   public ContactlistAmendment attributes(ContactlistAmendmentAttributes attributes) {
     
@@ -101,6 +79,28 @@ public class ContactlistAmendment {
 
   public void setAttributes(ContactlistAmendmentAttributes attributes) {
     this.attributes = attributes;
+  }
+
+
+  public ContactlistAmendment type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * User List
+   * @return type
+  **/
+  @javax.annotation.Nonnull
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   /**
@@ -158,22 +158,22 @@ public class ContactlistAmendment {
       return false;
     }
     ContactlistAmendment contactlistAmendment = (ContactlistAmendment) o;
-    return Objects.equals(this.type, contactlistAmendment.type) &&
-        Objects.equals(this.attributes, contactlistAmendment.attributes)&&
+    return Objects.equals(this.attributes, contactlistAmendment.attributes) &&
+        Objects.equals(this.type, contactlistAmendment.type)&&
         Objects.equals(this.additionalProperties, contactlistAmendment.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes, additionalProperties);
+    return Objects.hash(attributes, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ContactlistAmendment {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -197,13 +197,13 @@ public class ContactlistAmendment {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
     openapiFields.add("attributes");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("type");
     openapiRequiredFields.add("attributes");
+    openapiRequiredFields.add("type");
   }
 
  /**
@@ -225,11 +225,11 @@ public class ContactlistAmendment {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      // validate the required field `attributes`
+      ContactlistAmendmentAttributes.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      // validate the required field `attributes`
-      ContactlistAmendmentAttributes.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

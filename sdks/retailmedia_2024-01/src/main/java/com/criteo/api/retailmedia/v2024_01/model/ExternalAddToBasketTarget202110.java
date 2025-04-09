@@ -50,6 +50,14 @@ import com.criteo.api.retailmedia.v2024_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalAddToBasketTarget202110 {
+  public static final String SERIALIZED_NAME_CATEGORY_IDS = "categoryIds";
+  @SerializedName(SERIALIZED_NAME_CATEGORY_IDS)
+  private List<String> categoryIds = null;
+
+  public static final String SERIALIZED_NAME_PRODUCT_IDS = "productIds";
+  @SerializedName(SERIALIZED_NAME_PRODUCT_IDS)
+  private List<String> productIds = null;
+
   /**
    * Scope of the add to basket target
    */
@@ -103,36 +111,36 @@ public class ExternalAddToBasketTarget202110 {
   @SerializedName(SERIALIZED_NAME_SCOPE)
   private ScopeEnum scope;
 
-  public static final String SERIALIZED_NAME_PRODUCT_IDS = "productIds";
-  @SerializedName(SERIALIZED_NAME_PRODUCT_IDS)
-  private List<String> productIds = null;
-
-  public static final String SERIALIZED_NAME_CATEGORY_IDS = "categoryIds";
-  @SerializedName(SERIALIZED_NAME_CATEGORY_IDS)
-  private List<String> categoryIds = null;
-
   public ExternalAddToBasketTarget202110() {
   }
 
-  public ExternalAddToBasketTarget202110 scope(ScopeEnum scope) {
+  public ExternalAddToBasketTarget202110 categoryIds(List<String> categoryIds) {
     
-    this.scope = scope;
+    this.categoryIds = categoryIds;
+    return this;
+  }
+
+  public ExternalAddToBasketTarget202110 addCategoryIdsItem(String categoryIdsItem) {
+    if (this.categoryIds == null) {
+      this.categoryIds = new ArrayList<>();
+    }
+    this.categoryIds.add(categoryIdsItem);
     return this;
   }
 
    /**
-   * Scope of the add to basket target
-   * @return scope
+   * Category ids that add to basket should target
+   * @return categoryIds
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public ScopeEnum getScope() {
-    return scope;
+  public List<String> getCategoryIds() {
+    return categoryIds;
   }
 
 
-  public void setScope(ScopeEnum scope) {
-    this.scope = scope;
+  public void setCategoryIds(List<String> categoryIds) {
+    this.categoryIds = categoryIds;
   }
 
 
@@ -166,33 +174,25 @@ public class ExternalAddToBasketTarget202110 {
   }
 
 
-  public ExternalAddToBasketTarget202110 categoryIds(List<String> categoryIds) {
+  public ExternalAddToBasketTarget202110 scope(ScopeEnum scope) {
     
-    this.categoryIds = categoryIds;
-    return this;
-  }
-
-  public ExternalAddToBasketTarget202110 addCategoryIdsItem(String categoryIdsItem) {
-    if (this.categoryIds == null) {
-      this.categoryIds = new ArrayList<>();
-    }
-    this.categoryIds.add(categoryIdsItem);
+    this.scope = scope;
     return this;
   }
 
    /**
-   * Category ids that add to basket should target
-   * @return categoryIds
+   * Scope of the add to basket target
+   * @return scope
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public List<String> getCategoryIds() {
-    return categoryIds;
+  public ScopeEnum getScope() {
+    return scope;
   }
 
 
-  public void setCategoryIds(List<String> categoryIds) {
-    this.categoryIds = categoryIds;
+  public void setScope(ScopeEnum scope) {
+    this.scope = scope;
   }
 
   /**
@@ -250,24 +250,24 @@ public class ExternalAddToBasketTarget202110 {
       return false;
     }
     ExternalAddToBasketTarget202110 externalAddToBasketTarget202110 = (ExternalAddToBasketTarget202110) o;
-    return Objects.equals(this.scope, externalAddToBasketTarget202110.scope) &&
+    return Objects.equals(this.categoryIds, externalAddToBasketTarget202110.categoryIds) &&
         Objects.equals(this.productIds, externalAddToBasketTarget202110.productIds) &&
-        Objects.equals(this.categoryIds, externalAddToBasketTarget202110.categoryIds)&&
+        Objects.equals(this.scope, externalAddToBasketTarget202110.scope)&&
         Objects.equals(this.additionalProperties, externalAddToBasketTarget202110.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(scope, productIds, categoryIds, additionalProperties);
+    return Objects.hash(categoryIds, productIds, scope, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalAddToBasketTarget202110 {\n");
-    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
-    sb.append("    productIds: ").append(toIndentedString(productIds)).append("\n");
     sb.append("    categoryIds: ").append(toIndentedString(categoryIds)).append("\n");
+    sb.append("    productIds: ").append(toIndentedString(productIds)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -291,9 +291,9 @@ public class ExternalAddToBasketTarget202110 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("scope");
-    openapiFields.add("productIds");
     openapiFields.add("categoryIds");
+    openapiFields.add("productIds");
+    openapiFields.add("scope");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -319,16 +319,16 @@ public class ExternalAddToBasketTarget202110 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("scope").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("categoryIds") != null && !jsonObj.get("categoryIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `categoryIds` to be an array in the JSON string but got `%s`", jsonObj.get("categoryIds").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("productIds") != null && !jsonObj.get("productIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `productIds` to be an array in the JSON string but got `%s`", jsonObj.get("productIds").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("categoryIds") != null && !jsonObj.get("categoryIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `categoryIds` to be an array in the JSON string but got `%s`", jsonObj.get("categoryIds").toString()));
+      if (!jsonObj.get("scope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
   }
 

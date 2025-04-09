@@ -49,6 +49,14 @@ import com.criteo.api.retailmedia.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateBalanceModelV2 {
+  public static final String SERIALIZED_NAME_END_DATE = "endDate";
+  @SerializedName(SERIALIZED_NAME_END_DATE)
+  private String endDate;
+
+  public static final String SERIALIZED_NAME_MEMO = "memo";
+  @SerializedName(SERIALIZED_NAME_MEMO)
+  private String memo;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -61,16 +69,52 @@ public class UpdateBalanceModelV2 {
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private String startDate;
 
-  public static final String SERIALIZED_NAME_END_DATE = "endDate";
-  @SerializedName(SERIALIZED_NAME_END_DATE)
-  private String endDate;
-
-  public static final String SERIALIZED_NAME_MEMO = "memo";
-  @SerializedName(SERIALIZED_NAME_MEMO)
-  private String memo;
-
   public UpdateBalanceModelV2() {
   }
+
+  public UpdateBalanceModelV2 endDate(String endDate) {
+    
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * End date of the balance in the format YYYY-MM-DD.
+   * @return endDate
+  **/
+  @javax.annotation.Nullable
+
+  public String getEndDate() {
+    return endDate;
+  }
+
+
+  public void setEndDate(String endDate) {
+    this.endDate = endDate;
+  }
+
+
+  public UpdateBalanceModelV2 memo(String memo) {
+    
+    this.memo = memo;
+    return this;
+  }
+
+   /**
+   * Memo.
+   * @return memo
+  **/
+  @javax.annotation.Nullable
+
+  public String getMemo() {
+    return memo;
+  }
+
+
+  public void setMemo(String memo) {
+    this.memo = memo;
+  }
+
 
   public UpdateBalanceModelV2 name(String name) {
     
@@ -137,50 +181,6 @@ public class UpdateBalanceModelV2 {
     this.startDate = startDate;
   }
 
-
-  public UpdateBalanceModelV2 endDate(String endDate) {
-    
-    this.endDate = endDate;
-    return this;
-  }
-
-   /**
-   * End date of the balance in the format YYYY-MM-DD.
-   * @return endDate
-  **/
-  @javax.annotation.Nullable
-
-  public String getEndDate() {
-    return endDate;
-  }
-
-
-  public void setEndDate(String endDate) {
-    this.endDate = endDate;
-  }
-
-
-  public UpdateBalanceModelV2 memo(String memo) {
-    
-    this.memo = memo;
-    return this;
-  }
-
-   /**
-   * Memo.
-   * @return memo
-  **/
-  @javax.annotation.Nullable
-
-  public String getMemo() {
-    return memo;
-  }
-
-
-  public void setMemo(String memo) {
-    this.memo = memo;
-  }
-
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -236,11 +236,11 @@ public class UpdateBalanceModelV2 {
       return false;
     }
     UpdateBalanceModelV2 updateBalanceModelV2 = (UpdateBalanceModelV2) o;
-    return Objects.equals(this.name, updateBalanceModelV2.name) &&
+    return Objects.equals(this.endDate, updateBalanceModelV2.endDate) &&
+        Objects.equals(this.memo, updateBalanceModelV2.memo) &&
+        Objects.equals(this.name, updateBalanceModelV2.name) &&
         Objects.equals(this.poNumber, updateBalanceModelV2.poNumber) &&
-        Objects.equals(this.startDate, updateBalanceModelV2.startDate) &&
-        Objects.equals(this.endDate, updateBalanceModelV2.endDate) &&
-        Objects.equals(this.memo, updateBalanceModelV2.memo)&&
+        Objects.equals(this.startDate, updateBalanceModelV2.startDate)&&
         Objects.equals(this.additionalProperties, updateBalanceModelV2.additionalProperties);
   }
 
@@ -250,7 +250,7 @@ public class UpdateBalanceModelV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, poNumber, startDate, endDate, memo, additionalProperties);
+    return Objects.hash(endDate, memo, name, poNumber, startDate, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -264,11 +264,11 @@ public class UpdateBalanceModelV2 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateBalanceModelV2 {\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    memo: ").append(toIndentedString(memo)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    poNumber: ").append(toIndentedString(poNumber)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("    memo: ").append(toIndentedString(memo)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -292,11 +292,11 @@ public class UpdateBalanceModelV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("endDate");
+    openapiFields.add("memo");
     openapiFields.add("name");
     openapiFields.add("poNumber");
     openapiFields.add("startDate");
-    openapiFields.add("endDate");
-    openapiFields.add("memo");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -314,6 +314,12 @@ public class UpdateBalanceModelV2 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateBalanceModelV2 is not found in the empty JSON string", UpdateBalanceModelV2.openapiRequiredFields.toString()));
         }
       }
+      if ((jsonObj.get("endDate") != null && !jsonObj.get("endDate").isJsonNull()) && !jsonObj.get("endDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `endDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endDate").toString()));
+      }
+      if ((jsonObj.get("memo") != null && !jsonObj.get("memo").isJsonNull()) && !jsonObj.get("memo").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `memo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memo").toString()));
+      }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
@@ -322,12 +328,6 @@ public class UpdateBalanceModelV2 {
       }
       if ((jsonObj.get("startDate") != null && !jsonObj.get("startDate").isJsonNull()) && !jsonObj.get("startDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
-      }
-      if ((jsonObj.get("endDate") != null && !jsonObj.get("endDate").isJsonNull()) && !jsonObj.get("endDate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `endDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endDate").toString()));
-      }
-      if ((jsonObj.get("memo") != null && !jsonObj.get("memo").isJsonNull()) && !jsonObj.get("memo").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `memo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memo").toString()));
       }
   }
 

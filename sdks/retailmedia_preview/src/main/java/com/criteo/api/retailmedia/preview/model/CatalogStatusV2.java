@@ -50,6 +50,26 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CatalogStatusV2 {
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
+
+  public static final String SERIALIZED_NAME_FILE_SIZE_BYTES = "fileSizeBytes";
+  @SerializedName(SERIALIZED_NAME_FILE_SIZE_BYTES)
+  private Integer fileSizeBytes;
+
+  public static final String SERIALIZED_NAME_MD5_CHECKSUM = "md5Checksum";
+  @SerializedName(SERIALIZED_NAME_MD5_CHECKSUM)
+  private String md5Checksum;
+
+  public static final String SERIALIZED_NAME_MESSAGE = "message";
+  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  private String message;
+
+  public static final String SERIALIZED_NAME_ROW_COUNT = "rowCount";
+  @SerializedName(SERIALIZED_NAME_ROW_COUNT)
+  private Integer rowCount;
+
   /**
    * An enumeration of the status of the catalog.
    */
@@ -107,70 +127,28 @@ public class CatalogStatusV2 {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
-  public static final String SERIALIZED_NAME_ROW_COUNT = "rowCount";
-  @SerializedName(SERIALIZED_NAME_ROW_COUNT)
-  private Integer rowCount;
-
-  public static final String SERIALIZED_NAME_FILE_SIZE_BYTES = "fileSizeBytes";
-  @SerializedName(SERIALIZED_NAME_FILE_SIZE_BYTES)
-  private Integer fileSizeBytes;
-
-  public static final String SERIALIZED_NAME_MD5_CHECKSUM = "md5Checksum";
-  @SerializedName(SERIALIZED_NAME_MD5_CHECKSUM)
-  private String md5Checksum;
-
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
-
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
-  private String message;
-
   public CatalogStatusV2() {
   }
 
-  public CatalogStatusV2 status(StatusEnum status) {
+  public CatalogStatusV2 createdAt(OffsetDateTime createdAt) {
     
-    this.status = status;
+    this.createdAt = createdAt;
     return this;
   }
 
    /**
-   * An enumeration of the status of the catalog.
-   * @return status
+   * The time this catalog was created. Represented as a UTC ISO8601 string.
+   * @return createdAt
   **/
   @javax.annotation.Nonnull
 
-  public StatusEnum getStatus() {
-    return status;
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
   }
 
 
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
-
-
-  public CatalogStatusV2 rowCount(Integer rowCount) {
-    
-    this.rowCount = rowCount;
-    return this;
-  }
-
-   /**
-   * An indication of the number of products contained in this catalog. Available when  this catalog reaches a success status.
-   * @return rowCount
-  **/
-  @javax.annotation.Nullable
-
-  public Integer getRowCount() {
-    return rowCount;
-  }
-
-
-  public void setRowCount(Integer rowCount) {
-    this.rowCount = rowCount;
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
   }
 
 
@@ -218,28 +196,6 @@ public class CatalogStatusV2 {
   }
 
 
-  public CatalogStatusV2 createdAt(OffsetDateTime createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * The time this catalog was created. Represented as a UTC ISO8601 string.
-   * @return createdAt
-  **/
-  @javax.annotation.Nonnull
-
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
   public CatalogStatusV2 message(String message) {
     
     this.message = message;
@@ -259,6 +215,50 @@ public class CatalogStatusV2 {
 
   public void setMessage(String message) {
     this.message = message;
+  }
+
+
+  public CatalogStatusV2 rowCount(Integer rowCount) {
+    
+    this.rowCount = rowCount;
+    return this;
+  }
+
+   /**
+   * An indication of the number of products contained in this catalog. Available when  this catalog reaches a success status.
+   * @return rowCount
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getRowCount() {
+    return rowCount;
+  }
+
+
+  public void setRowCount(Integer rowCount) {
+    this.rowCount = rowCount;
+  }
+
+
+  public CatalogStatusV2 status(StatusEnum status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * An enumeration of the status of the catalog.
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
   }
 
   /**
@@ -316,12 +316,12 @@ public class CatalogStatusV2 {
       return false;
     }
     CatalogStatusV2 catalogStatusV2 = (CatalogStatusV2) o;
-    return Objects.equals(this.status, catalogStatusV2.status) &&
-        Objects.equals(this.rowCount, catalogStatusV2.rowCount) &&
+    return Objects.equals(this.createdAt, catalogStatusV2.createdAt) &&
         Objects.equals(this.fileSizeBytes, catalogStatusV2.fileSizeBytes) &&
         Objects.equals(this.md5Checksum, catalogStatusV2.md5Checksum) &&
-        Objects.equals(this.createdAt, catalogStatusV2.createdAt) &&
-        Objects.equals(this.message, catalogStatusV2.message)&&
+        Objects.equals(this.message, catalogStatusV2.message) &&
+        Objects.equals(this.rowCount, catalogStatusV2.rowCount) &&
+        Objects.equals(this.status, catalogStatusV2.status)&&
         Objects.equals(this.additionalProperties, catalogStatusV2.additionalProperties);
   }
 
@@ -331,7 +331,7 @@ public class CatalogStatusV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, rowCount, fileSizeBytes, md5Checksum, createdAt, message, additionalProperties);
+    return Objects.hash(createdAt, fileSizeBytes, md5Checksum, message, rowCount, status, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -345,12 +345,12 @@ public class CatalogStatusV2 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogStatusV2 {\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    rowCount: ").append(toIndentedString(rowCount)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    fileSizeBytes: ").append(toIndentedString(fileSizeBytes)).append("\n");
     sb.append("    md5Checksum: ").append(toIndentedString(md5Checksum)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    rowCount: ").append(toIndentedString(rowCount)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -374,17 +374,17 @@ public class CatalogStatusV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("status");
-    openapiFields.add("rowCount");
+    openapiFields.add("createdAt");
     openapiFields.add("fileSizeBytes");
     openapiFields.add("md5Checksum");
-    openapiFields.add("createdAt");
     openapiFields.add("message");
+    openapiFields.add("rowCount");
+    openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("status");
     openapiRequiredFields.add("createdAt");
+    openapiRequiredFields.add("status");
   }
 
  /**
@@ -406,14 +406,14 @@ public class CatalogStatusV2 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
-      }
       if ((jsonObj.get("md5Checksum") != null && !jsonObj.get("md5Checksum").isJsonNull()) && !jsonObj.get("md5Checksum").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `md5Checksum` to be a primitive type in the JSON string but got `%s`", jsonObj.get("md5Checksum").toString()));
       }
       if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+      }
+      if (!jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
   }
 

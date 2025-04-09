@@ -8,9 +8,9 @@ Represents a filter value for a blocklist or allowlist rule
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**value** | **String** | Could be a domain or a bundle depending on the context |  [optional] |
-|**readOnly** | **Boolean** |  |  [optional] |
 |**active** | **Boolean** |  |  [optional] |
+|**readOnly** | **Boolean** |  |  [optional] |
+|**value** | **String** | Could be a domain or a bundle depending on the context |  [optional] |
 
 
 

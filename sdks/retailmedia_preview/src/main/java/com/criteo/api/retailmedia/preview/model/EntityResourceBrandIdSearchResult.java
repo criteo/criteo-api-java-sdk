@@ -50,6 +50,10 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class EntityResourceBrandIdSearchResult {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private BrandIdSearchResult attributes;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -58,12 +62,30 @@ public class EntityResourceBrandIdSearchResult {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private BrandIdSearchResult attributes;
-
   public EntityResourceBrandIdSearchResult() {
   }
+
+  public EntityResourceBrandIdSearchResult attributes(BrandIdSearchResult attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+
+  public BrandIdSearchResult getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(BrandIdSearchResult attributes) {
+    this.attributes = attributes;
+  }
+
 
   public EntityResourceBrandIdSearchResult id(String id) {
     
@@ -109,28 +131,6 @@ public class EntityResourceBrandIdSearchResult {
   }
 
 
-  public EntityResourceBrandIdSearchResult attributes(BrandIdSearchResult attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @javax.annotation.Nullable
-
-  public BrandIdSearchResult getAttributes() {
-    return attributes;
-  }
-
-
-  public void setAttributes(BrandIdSearchResult attributes) {
-    this.attributes = attributes;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -141,9 +141,9 @@ public class EntityResourceBrandIdSearchResult {
       return false;
     }
     EntityResourceBrandIdSearchResult entityResourceBrandIdSearchResult = (EntityResourceBrandIdSearchResult) o;
-    return Objects.equals(this.id, entityResourceBrandIdSearchResult.id) &&
-        Objects.equals(this.type, entityResourceBrandIdSearchResult.type) &&
-        Objects.equals(this.attributes, entityResourceBrandIdSearchResult.attributes);
+    return Objects.equals(this.attributes, entityResourceBrandIdSearchResult.attributes) &&
+        Objects.equals(this.id, entityResourceBrandIdSearchResult.id) &&
+        Objects.equals(this.type, entityResourceBrandIdSearchResult.type);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -152,7 +152,7 @@ public class EntityResourceBrandIdSearchResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, attributes);
+    return Objects.hash(attributes, id, type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -166,9 +166,9 @@ public class EntityResourceBrandIdSearchResult {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EntityResourceBrandIdSearchResult {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -191,9 +191,9 @@ public class EntityResourceBrandIdSearchResult {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("attributes");
     openapiFields.add("id");
     openapiFields.add("type");
-    openapiFields.add("attributes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -219,15 +219,15 @@ public class EntityResourceBrandIdSearchResult {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `EntityResourceBrandIdSearchResult` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
+      // validate the optional field `attributes`
+      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
+        BrandIdSearchResult.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        BrandIdSearchResult.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
   }
 

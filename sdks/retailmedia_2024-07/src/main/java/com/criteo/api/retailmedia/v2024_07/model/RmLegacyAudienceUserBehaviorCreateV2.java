@@ -50,38 +50,16 @@ import com.criteo.api.retailmedia.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RmLegacyAudienceUserBehaviorCreateV2 {
-  public static final String SERIALIZED_NAME_INCLUSIVE_SEGMENT = "inclusiveSegment";
-  @SerializedName(SERIALIZED_NAME_INCLUSIVE_SEGMENT)
-  private RmLegacySegmentUserBehaviorCreateV2 inclusiveSegment;
-
   public static final String SERIALIZED_NAME_EXCLUSIVE_SEGMENT = "exclusiveSegment";
   @SerializedName(SERIALIZED_NAME_EXCLUSIVE_SEGMENT)
   private RmLegacySegmentUserBehaviorCreateV2 exclusiveSegment;
 
+  public static final String SERIALIZED_NAME_INCLUSIVE_SEGMENT = "inclusiveSegment";
+  @SerializedName(SERIALIZED_NAME_INCLUSIVE_SEGMENT)
+  private RmLegacySegmentUserBehaviorCreateV2 inclusiveSegment;
+
   public RmLegacyAudienceUserBehaviorCreateV2() {
   }
-
-  public RmLegacyAudienceUserBehaviorCreateV2 inclusiveSegment(RmLegacySegmentUserBehaviorCreateV2 inclusiveSegment) {
-    
-    this.inclusiveSegment = inclusiveSegment;
-    return this;
-  }
-
-   /**
-   * Get inclusiveSegment
-   * @return inclusiveSegment
-  **/
-  @javax.annotation.Nullable
-
-  public RmLegacySegmentUserBehaviorCreateV2 getInclusiveSegment() {
-    return inclusiveSegment;
-  }
-
-
-  public void setInclusiveSegment(RmLegacySegmentUserBehaviorCreateV2 inclusiveSegment) {
-    this.inclusiveSegment = inclusiveSegment;
-  }
-
 
   public RmLegacyAudienceUserBehaviorCreateV2 exclusiveSegment(RmLegacySegmentUserBehaviorCreateV2 exclusiveSegment) {
     
@@ -102,6 +80,28 @@ public class RmLegacyAudienceUserBehaviorCreateV2 {
 
   public void setExclusiveSegment(RmLegacySegmentUserBehaviorCreateV2 exclusiveSegment) {
     this.exclusiveSegment = exclusiveSegment;
+  }
+
+
+  public RmLegacyAudienceUserBehaviorCreateV2 inclusiveSegment(RmLegacySegmentUserBehaviorCreateV2 inclusiveSegment) {
+    
+    this.inclusiveSegment = inclusiveSegment;
+    return this;
+  }
+
+   /**
+   * Get inclusiveSegment
+   * @return inclusiveSegment
+  **/
+  @javax.annotation.Nullable
+
+  public RmLegacySegmentUserBehaviorCreateV2 getInclusiveSegment() {
+    return inclusiveSegment;
+  }
+
+
+  public void setInclusiveSegment(RmLegacySegmentUserBehaviorCreateV2 inclusiveSegment) {
+    this.inclusiveSegment = inclusiveSegment;
   }
 
   /**
@@ -159,8 +159,8 @@ public class RmLegacyAudienceUserBehaviorCreateV2 {
       return false;
     }
     RmLegacyAudienceUserBehaviorCreateV2 rmLegacyAudienceUserBehaviorCreateV2 = (RmLegacyAudienceUserBehaviorCreateV2) o;
-    return Objects.equals(this.inclusiveSegment, rmLegacyAudienceUserBehaviorCreateV2.inclusiveSegment) &&
-        Objects.equals(this.exclusiveSegment, rmLegacyAudienceUserBehaviorCreateV2.exclusiveSegment)&&
+    return Objects.equals(this.exclusiveSegment, rmLegacyAudienceUserBehaviorCreateV2.exclusiveSegment) &&
+        Objects.equals(this.inclusiveSegment, rmLegacyAudienceUserBehaviorCreateV2.inclusiveSegment)&&
         Objects.equals(this.additionalProperties, rmLegacyAudienceUserBehaviorCreateV2.additionalProperties);
   }
 
@@ -170,7 +170,7 @@ public class RmLegacyAudienceUserBehaviorCreateV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(inclusiveSegment, exclusiveSegment, additionalProperties);
+    return Objects.hash(exclusiveSegment, inclusiveSegment, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -184,8 +184,8 @@ public class RmLegacyAudienceUserBehaviorCreateV2 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RmLegacyAudienceUserBehaviorCreateV2 {\n");
-    sb.append("    inclusiveSegment: ").append(toIndentedString(inclusiveSegment)).append("\n");
     sb.append("    exclusiveSegment: ").append(toIndentedString(exclusiveSegment)).append("\n");
+    sb.append("    inclusiveSegment: ").append(toIndentedString(inclusiveSegment)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -209,8 +209,8 @@ public class RmLegacyAudienceUserBehaviorCreateV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("inclusiveSegment");
     openapiFields.add("exclusiveSegment");
+    openapiFields.add("inclusiveSegment");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -236,12 +236,12 @@ public class RmLegacyAudienceUserBehaviorCreateV2 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      // validate the required field `inclusiveSegment`
-      RmLegacySegmentUserBehaviorCreateV2.validateJsonObject(jsonObj.getAsJsonObject("inclusiveSegment"));
       // validate the optional field `exclusiveSegment`
       if (jsonObj.get("exclusiveSegment") != null && !jsonObj.get("exclusiveSegment").isJsonNull()) {
         RmLegacySegmentUserBehaviorCreateV2.validateJsonObject(jsonObj.getAsJsonObject("exclusiveSegment"));
       }
+      // validate the required field `inclusiveSegment`
+      RmLegacySegmentUserBehaviorCreateV2.validateJsonObject(jsonObj.getAsJsonObject("inclusiveSegment"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

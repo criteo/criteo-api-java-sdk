@@ -8,10 +8,10 @@ Audience of people of interest for a marketer.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** | Name of the audience |  |
-|**description** | **String** | Description of the audience |  [optional] |
 |**advertiserId** | **String** | Advertiser associated to the audience |  |
 |**algebra** | [**AlgebraNodeV1**](AlgebraNodeV1.md) |  |  |
+|**description** | **String** | Description of the audience |  [optional] |
+|**name** | **String** | Name of the audience |  |
 
 
 

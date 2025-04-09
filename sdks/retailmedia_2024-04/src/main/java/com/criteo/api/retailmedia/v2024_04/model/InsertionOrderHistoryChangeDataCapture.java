@@ -51,13 +51,9 @@ import com.criteo.api.retailmedia.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InsertionOrderHistoryChangeDataCapture {
-  public static final String SERIALIZED_NAME_DATE_OF_MODIFICATION = "dateOfModification";
-  @SerializedName(SERIALIZED_NAME_DATE_OF_MODIFICATION)
-  private OffsetDateTime dateOfModification;
-
-  public static final String SERIALIZED_NAME_MODIFIED_BY_USER = "modifiedByUser";
-  @SerializedName(SERIALIZED_NAME_MODIFIED_BY_USER)
-  private String modifiedByUser;
+  public static final String SERIALIZED_NAME_CHANGE_DETAILS = "changeDetails";
+  @SerializedName(SERIALIZED_NAME_CHANGE_DETAILS)
+  private ChangeDetails changeDetails;
 
   /**
    * Represent the type of change states of the history.
@@ -128,58 +124,40 @@ public class InsertionOrderHistoryChangeDataCapture {
   @SerializedName(SERIALIZED_NAME_CHANGE_TYPE)
   private ChangeTypeEnum changeType;
 
-  public static final String SERIALIZED_NAME_CHANGE_DETAILS = "changeDetails";
-  @SerializedName(SERIALIZED_NAME_CHANGE_DETAILS)
-  private ChangeDetails changeDetails;
+  public static final String SERIALIZED_NAME_DATE_OF_MODIFICATION = "dateOfModification";
+  @SerializedName(SERIALIZED_NAME_DATE_OF_MODIFICATION)
+  private OffsetDateTime dateOfModification;
 
   public static final String SERIALIZED_NAME_MEMO = "memo";
   @SerializedName(SERIALIZED_NAME_MEMO)
   private String memo;
 
+  public static final String SERIALIZED_NAME_MODIFIED_BY_USER = "modifiedByUser";
+  @SerializedName(SERIALIZED_NAME_MODIFIED_BY_USER)
+  private String modifiedByUser;
+
   public InsertionOrderHistoryChangeDataCapture() {
   }
 
-  public InsertionOrderHistoryChangeDataCapture dateOfModification(OffsetDateTime dateOfModification) {
+  public InsertionOrderHistoryChangeDataCapture changeDetails(ChangeDetails changeDetails) {
     
-    this.dateOfModification = dateOfModification;
+    this.changeDetails = changeDetails;
     return this;
   }
 
    /**
-   * Date when data change has occured.
-   * @return dateOfModification
+   * Get changeDetails
+   * @return changeDetails
   **/
   @javax.annotation.Nonnull
 
-  public OffsetDateTime getDateOfModification() {
-    return dateOfModification;
+  public ChangeDetails getChangeDetails() {
+    return changeDetails;
   }
 
 
-  public void setDateOfModification(OffsetDateTime dateOfModification) {
-    this.dateOfModification = dateOfModification;
-  }
-
-
-  public InsertionOrderHistoryChangeDataCapture modifiedByUser(String modifiedByUser) {
-    
-    this.modifiedByUser = modifiedByUser;
-    return this;
-  }
-
-   /**
-   * User name who modified the insertion order.
-   * @return modifiedByUser
-  **/
-  @javax.annotation.Nonnull
-
-  public String getModifiedByUser() {
-    return modifiedByUser;
-  }
-
-
-  public void setModifiedByUser(String modifiedByUser) {
-    this.modifiedByUser = modifiedByUser;
+  public void setChangeDetails(ChangeDetails changeDetails) {
+    this.changeDetails = changeDetails;
   }
 
 
@@ -205,25 +183,25 @@ public class InsertionOrderHistoryChangeDataCapture {
   }
 
 
-  public InsertionOrderHistoryChangeDataCapture changeDetails(ChangeDetails changeDetails) {
+  public InsertionOrderHistoryChangeDataCapture dateOfModification(OffsetDateTime dateOfModification) {
     
-    this.changeDetails = changeDetails;
+    this.dateOfModification = dateOfModification;
     return this;
   }
 
    /**
-   * Get changeDetails
-   * @return changeDetails
+   * Date when data change has occured.
+   * @return dateOfModification
   **/
   @javax.annotation.Nonnull
 
-  public ChangeDetails getChangeDetails() {
-    return changeDetails;
+  public OffsetDateTime getDateOfModification() {
+    return dateOfModification;
   }
 
 
-  public void setChangeDetails(ChangeDetails changeDetails) {
-    this.changeDetails = changeDetails;
+  public void setDateOfModification(OffsetDateTime dateOfModification) {
+    this.dateOfModification = dateOfModification;
   }
 
 
@@ -249,6 +227,28 @@ public class InsertionOrderHistoryChangeDataCapture {
   }
 
 
+  public InsertionOrderHistoryChangeDataCapture modifiedByUser(String modifiedByUser) {
+    
+    this.modifiedByUser = modifiedByUser;
+    return this;
+  }
+
+   /**
+   * User name who modified the insertion order.
+   * @return modifiedByUser
+  **/
+  @javax.annotation.Nonnull
+
+  public String getModifiedByUser() {
+    return modifiedByUser;
+  }
+
+
+  public void setModifiedByUser(String modifiedByUser) {
+    this.modifiedByUser = modifiedByUser;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -259,11 +259,11 @@ public class InsertionOrderHistoryChangeDataCapture {
       return false;
     }
     InsertionOrderHistoryChangeDataCapture insertionOrderHistoryChangeDataCapture = (InsertionOrderHistoryChangeDataCapture) o;
-    return Objects.equals(this.dateOfModification, insertionOrderHistoryChangeDataCapture.dateOfModification) &&
-        Objects.equals(this.modifiedByUser, insertionOrderHistoryChangeDataCapture.modifiedByUser) &&
+    return Objects.equals(this.changeDetails, insertionOrderHistoryChangeDataCapture.changeDetails) &&
         Objects.equals(this.changeType, insertionOrderHistoryChangeDataCapture.changeType) &&
-        Objects.equals(this.changeDetails, insertionOrderHistoryChangeDataCapture.changeDetails) &&
-        Objects.equals(this.memo, insertionOrderHistoryChangeDataCapture.memo);
+        Objects.equals(this.dateOfModification, insertionOrderHistoryChangeDataCapture.dateOfModification) &&
+        Objects.equals(this.memo, insertionOrderHistoryChangeDataCapture.memo) &&
+        Objects.equals(this.modifiedByUser, insertionOrderHistoryChangeDataCapture.modifiedByUser);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -272,7 +272,7 @@ public class InsertionOrderHistoryChangeDataCapture {
 
   @Override
   public int hashCode() {
-    return Objects.hash(dateOfModification, modifiedByUser, changeType, changeDetails, memo);
+    return Objects.hash(changeDetails, changeType, dateOfModification, memo, modifiedByUser);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -286,11 +286,11 @@ public class InsertionOrderHistoryChangeDataCapture {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InsertionOrderHistoryChangeDataCapture {\n");
-    sb.append("    dateOfModification: ").append(toIndentedString(dateOfModification)).append("\n");
-    sb.append("    modifiedByUser: ").append(toIndentedString(modifiedByUser)).append("\n");
-    sb.append("    changeType: ").append(toIndentedString(changeType)).append("\n");
     sb.append("    changeDetails: ").append(toIndentedString(changeDetails)).append("\n");
+    sb.append("    changeType: ").append(toIndentedString(changeType)).append("\n");
+    sb.append("    dateOfModification: ").append(toIndentedString(dateOfModification)).append("\n");
     sb.append("    memo: ").append(toIndentedString(memo)).append("\n");
+    sb.append("    modifiedByUser: ").append(toIndentedString(modifiedByUser)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -313,18 +313,18 @@ public class InsertionOrderHistoryChangeDataCapture {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("dateOfModification");
-    openapiFields.add("modifiedByUser");
-    openapiFields.add("changeType");
     openapiFields.add("changeDetails");
+    openapiFields.add("changeType");
+    openapiFields.add("dateOfModification");
     openapiFields.add("memo");
+    openapiFields.add("modifiedByUser");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("changeDetails");
+    openapiRequiredFields.add("changeType");
     openapiRequiredFields.add("dateOfModification");
     openapiRequiredFields.add("modifiedByUser");
-    openapiRequiredFields.add("changeType");
-    openapiRequiredFields.add("changeDetails");
   }
 
  /**
@@ -354,16 +354,16 @@ public class InsertionOrderHistoryChangeDataCapture {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("modifiedByUser").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `modifiedByUser` to be a primitive type in the JSON string but got `%s`", jsonObj.get("modifiedByUser").toString()));
-      }
+      // validate the required field `changeDetails`
+      ChangeDetails.validateJsonObject(jsonObj.getAsJsonObject("changeDetails"));
       if (!jsonObj.get("changeType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `changeType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("changeType").toString()));
       }
-      // validate the required field `changeDetails`
-      ChangeDetails.validateJsonObject(jsonObj.getAsJsonObject("changeDetails"));
       if ((jsonObj.get("memo") != null && !jsonObj.get("memo").isJsonNull()) && !jsonObj.get("memo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `memo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memo").toString()));
+      }
+      if (!jsonObj.get("modifiedByUser").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `modifiedByUser` to be a primitive type in the JSON string but got `%s`", jsonObj.get("modifiedByUser").toString()));
       }
   }
 

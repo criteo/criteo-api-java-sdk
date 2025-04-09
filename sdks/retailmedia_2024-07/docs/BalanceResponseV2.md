@@ -8,31 +8,20 @@ A Retail Media Balance used to determine the funds available for any or all camp
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**balanceType** | [**BalanceTypeEnum**](#BalanceTypeEnum) | Type of the balance. |  |
+|**createdAt** | **OffsetDateTime** | Creation time of the balance. |  [optional] |
+|**deposited** | **BigDecimal** | Amount of billable funds allotted to the balance. |  [optional] |
+|**endDate** | **LocalDate** | End date of the balance in the format YYYY-MM-DD. |  [optional] |
+|**memo** | **String** | Memo. |  [optional] |
 |**name** | **String** | Name of the balance. |  |
 |**poNumber** | **String** | Purchase Order number. |  [optional] |
-|**memo** | **String** | Memo. |  [optional] |
-|**deposited** | **BigDecimal** | Amount of billable funds allotted to the balance. |  [optional] |
-|**spent** | **BigDecimal** | Amount of spent funds of the balance. |  [optional] |
-|**remaining** | **BigDecimal** | Amount of remaining funds of the balance. |  [optional] |
-|**startDate** | **LocalDate** | Start date of the balance in the format YYYY-MM-DD. |  |
-|**endDate** | **LocalDate** | End date of the balance in the format YYYY-MM-DD. |  [optional] |
-|**status** | [**StatusEnum**](#StatusEnum) | Status of the balance. |  [optional] |
-|**createdAt** | **OffsetDateTime** | Creation time of the balance. |  [optional] |
-|**updatedAt** | **OffsetDateTime** | Update time of the balance. |  [optional] |
-|**balanceType** | [**BalanceTypeEnum**](#BalanceTypeEnum) | Type of the balance. |  |
-|**spendType** | [**SpendTypeEnum**](#SpendTypeEnum) | Spend Type of the balance. |  |
 |**privateMarketBillingType** | [**PrivateMarketBillingTypeEnum**](#PrivateMarketBillingTypeEnum) | Billing type for Private Market of the balance. |  |
-
-
-
-## Enum: StatusEnum
-
-| Name | Value |
-|---- | -----|
-| UNKNOWN | &quot;unknown&quot; |
-| SCHEDULED | &quot;scheduled&quot; |
-| ACTIVE | &quot;active&quot; |
-| ENDED | &quot;ended&quot; |
+|**remaining** | **BigDecimal** | Amount of remaining funds of the balance. |  [optional] |
+|**spendType** | [**SpendTypeEnum**](#SpendTypeEnum) | Spend Type of the balance. |  |
+|**spent** | **BigDecimal** | Amount of spent funds of the balance. |  [optional] |
+|**startDate** | **LocalDate** | Start date of the balance in the format YYYY-MM-DD. |  |
+|**status** | [**StatusEnum**](#StatusEnum) | Status of the balance. |  [optional] |
+|**updatedAt** | **OffsetDateTime** | Update time of the balance. |  [optional] |
 
 
 
@@ -46,6 +35,17 @@ A Retail Media Balance used to determine the funds available for any or all camp
 
 
 
+## Enum: PrivateMarketBillingTypeEnum
+
+| Name | Value |
+|---- | -----|
+| NOTAPPLICABLE | &quot;notApplicable&quot; |
+| BILLBYRETAILER | &quot;billByRetailer&quot; |
+| BILLBYCRITEO | &quot;billByCriteo&quot; |
+| UNKNOWN | &quot;unknown&quot; |
+
+
+
 ## Enum: SpendTypeEnum
 
 | Name | Value |
@@ -56,14 +56,14 @@ A Retail Media Balance used to determine the funds available for any or all camp
 
 
 
-## Enum: PrivateMarketBillingTypeEnum
+## Enum: StatusEnum
 
 | Name | Value |
 |---- | -----|
-| NOTAPPLICABLE | &quot;notApplicable&quot; |
-| BILLBYRETAILER | &quot;billByRetailer&quot; |
-| BILLBYCRITEO | &quot;billByCriteo&quot; |
 | UNKNOWN | &quot;unknown&quot; |
+| SCHEDULED | &quot;scheduled&quot; |
+| ACTIVE | &quot;active&quot; |
+| ENDED | &quot;ended&quot; |
 
 
 

@@ -49,38 +49,16 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Installment {
-  public static final String SERIALIZED_NAME_MONTHS = "months";
-  @SerializedName(SERIALIZED_NAME_MONTHS)
-  private Long months;
-
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private Price amount;
 
+  public static final String SERIALIZED_NAME_MONTHS = "months";
+  @SerializedName(SERIALIZED_NAME_MONTHS)
+  private Long months;
+
   public Installment() {
   }
-
-  public Installment months(Long months) {
-    
-    this.months = months;
-    return this;
-  }
-
-   /**
-   * The number of installments the buyer has to pay.
-   * @return months
-  **/
-  @javax.annotation.Nullable
-
-  public Long getMonths() {
-    return months;
-  }
-
-
-  public void setMonths(Long months) {
-    this.months = months;
-  }
-
 
   public Installment amount(Price amount) {
     
@@ -101,6 +79,28 @@ public class Installment {
 
   public void setAmount(Price amount) {
     this.amount = amount;
+  }
+
+
+  public Installment months(Long months) {
+    
+    this.months = months;
+    return this;
+  }
+
+   /**
+   * The number of installments the buyer has to pay.
+   * @return months
+  **/
+  @javax.annotation.Nullable
+
+  public Long getMonths() {
+    return months;
+  }
+
+
+  public void setMonths(Long months) {
+    this.months = months;
   }
 
   /**
@@ -158,22 +158,22 @@ public class Installment {
       return false;
     }
     Installment installment = (Installment) o;
-    return Objects.equals(this.months, installment.months) &&
-        Objects.equals(this.amount, installment.amount)&&
+    return Objects.equals(this.amount, installment.amount) &&
+        Objects.equals(this.months, installment.months)&&
         Objects.equals(this.additionalProperties, installment.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(months, amount, additionalProperties);
+    return Objects.hash(amount, months, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Installment {\n");
-    sb.append("    months: ").append(toIndentedString(months)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    months: ").append(toIndentedString(months)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -197,8 +197,8 @@ public class Installment {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("months");
     openapiFields.add("amount");
+    openapiFields.add("months");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

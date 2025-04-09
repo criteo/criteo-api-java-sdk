@@ -8,17 +8,17 @@ This is the message defining the query for Adset report
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**advertiserIds** | **String** | The comma-separated list of advertiser ids. If empty, all the advertisers in the portfolio will be used |  [optional] |
 |**adSetIds** | **List&lt;String&gt;** | list of adSets ids. If empty, all the adSets will be fetched |  [optional] |
 |**adSetNames** | **List&lt;String&gt;** | list of adSets names. If empty, all the adSets will be fetched |  [optional] |
 |**adSetStatus** | **List&lt;String&gt;** | list of adSets status. If empty, all the adSets will be fetched |  [optional] |
-|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | The dimensions for the report. |  |
-|**metrics** | **List&lt;String&gt;** | The list of metrics to report. |  |
+|**advertiserIds** | **String** | The comma-separated list of advertiser ids. If empty, all the advertisers in the portfolio will be used |  [optional] |
 |**currency** | **String** | The currency used for the report. ISO 4217 code (three-letter capitals). |  |
-|**format** | **String** | The file format of the generated report: csv, xml, excel or json. |  |
-|**timezone** | **String** | The timezone used for the report. Timezone Database format (Tz). |  [optional] |
-|**startDate** | **OffsetDateTime** | Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
+|**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | The dimensions for the report. |  |
 |**endDate** | **OffsetDateTime** | End date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
+|**format** | **String** | The file format of the generated report: csv, xml, excel or json. |  |
+|**metrics** | **List&lt;String&gt;** | The list of metrics to report. |  |
+|**startDate** | **OffsetDateTime** | Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored. |  |
+|**timezone** | **String** | The timezone used for the report. Timezone Database format (Tz). |  [optional] |
 
 
 

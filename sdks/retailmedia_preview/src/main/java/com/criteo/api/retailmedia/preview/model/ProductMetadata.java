@@ -49,17 +49,17 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProductMetadata {
-  public static final String SERIALIZED_NAME_OFFSET = "offset";
-  @SerializedName(SERIALIZED_NAME_OFFSET)
-  private Integer offset;
+  public static final String SERIALIZED_NAME_COUNT = "count";
+  @SerializedName(SERIALIZED_NAME_COUNT)
+  private Integer count;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   private Integer limit;
 
-  public static final String SERIALIZED_NAME_COUNT = "count";
-  @SerializedName(SERIALIZED_NAME_COUNT)
-  private Integer count;
+  public static final String SERIALIZED_NAME_OFFSET = "offset";
+  @SerializedName(SERIALIZED_NAME_OFFSET)
+  private Integer offset;
 
   public static final String SERIALIZED_NAME_RESPONSE_COUNT = "responseCount";
   @SerializedName(SERIALIZED_NAME_RESPONSE_COUNT)
@@ -68,25 +68,25 @@ public class ProductMetadata {
   public ProductMetadata() {
   }
 
-  public ProductMetadata offset(Integer offset) {
+  public ProductMetadata count(Integer count) {
     
-    this.offset = offset;
+    this.count = count;
     return this;
   }
 
    /**
-   * Zero based offset of the first item in the response.
-   * @return offset
+   * Total number of items available.
+   * @return count
   **/
   @javax.annotation.Nullable
 
-  public Integer getOffset() {
-    return offset;
+  public Integer getCount() {
+    return count;
   }
 
 
-  public void setOffset(Integer offset) {
-    this.offset = offset;
+  public void setCount(Integer count) {
+    this.count = count;
   }
 
 
@@ -112,25 +112,25 @@ public class ProductMetadata {
   }
 
 
-  public ProductMetadata count(Integer count) {
+  public ProductMetadata offset(Integer offset) {
     
-    this.count = count;
+    this.offset = offset;
     return this;
   }
 
    /**
-   * Total number of items available.
-   * @return count
+   * Zero based offset of the first item in the response.
+   * @return offset
   **/
   @javax.annotation.Nullable
 
-  public Integer getCount() {
-    return count;
+  public Integer getOffset() {
+    return offset;
   }
 
 
-  public void setCount(Integer count) {
-    this.count = count;
+  public void setOffset(Integer offset) {
+    this.offset = offset;
   }
 
 
@@ -166,9 +166,9 @@ public class ProductMetadata {
       return false;
     }
     ProductMetadata productMetadata = (ProductMetadata) o;
-    return Objects.equals(this.offset, productMetadata.offset) &&
+    return Objects.equals(this.count, productMetadata.count) &&
         Objects.equals(this.limit, productMetadata.limit) &&
-        Objects.equals(this.count, productMetadata.count) &&
+        Objects.equals(this.offset, productMetadata.offset) &&
         Objects.equals(this.responseCount, productMetadata.responseCount);
   }
 
@@ -178,7 +178,7 @@ public class ProductMetadata {
 
   @Override
   public int hashCode() {
-    return Objects.hash(offset, limit, count, responseCount);
+    return Objects.hash(count, limit, offset, responseCount);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -192,9 +192,9 @@ public class ProductMetadata {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductMetadata {\n");
-    sb.append("    offset: ").append(toIndentedString(offset)).append("\n");
-    sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
+    sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
+    sb.append("    offset: ").append(toIndentedString(offset)).append("\n");
     sb.append("    responseCount: ").append(toIndentedString(responseCount)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -218,9 +218,9 @@ public class ProductMetadata {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("offset");
-    openapiFields.add("limit");
     openapiFields.add("count");
+    openapiFields.add("limit");
+    openapiFields.add("offset");
     openapiFields.add("responseCount");
 
     // a set of required properties/fields (JSON key names)

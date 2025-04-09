@@ -8,8 +8,8 @@ an API recommendation request
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** |  |  [optional] |
 |**attributes** | [**InbotDiscussion**](InbotDiscussion.md) |  |  |
+|**type** | **String** |  |  [optional] |
 
 
 

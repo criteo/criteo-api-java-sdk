@@ -8,8 +8,8 @@ Settings to target prospecting users to website visitors.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**daysSinceLastVisitMin** | **Integer** | When non buyers are included, include users who visited your website before this number of days |  [optional] |
 |**daysSinceLastVisitMax** | **Integer** | When non buyers are included, include users who visited your website after this number of days |  [optional] |
+|**daysSinceLastVisitMin** | **Integer** | When non buyers are included, include users who visited your website before this number of days |  [optional] |
 |**usersType** | [**UsersTypeEnum**](#UsersTypeEnum) | Type of users to target |  |
 
 

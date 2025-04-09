@@ -57,25 +57,25 @@ public class ValueResourceOutcomeOfRecommendedKeywordsResult {
   @SerializedName(SERIALIZED_NAME_DATA)
   private ValueResourceOfRecommendedKeywordsResult data;
 
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<CommonProblem> warnings = null;
-
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<CommonProblem> errors = null;
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<CommonProblem> warnings = null;
 
   public ValueResourceOutcomeOfRecommendedKeywordsResult() {
   }
 
   
   public ValueResourceOutcomeOfRecommendedKeywordsResult(
-     List<CommonProblem> warnings, 
-     List<CommonProblem> errors
+     List<CommonProblem> errors, 
+     List<CommonProblem> warnings
   ) {
     this();
-    this.warnings = warnings;
     this.errors = errors;
+    this.warnings = warnings;
   }
 
   public ValueResourceOutcomeOfRecommendedKeywordsResult data(ValueResourceOfRecommendedKeywordsResult data) {
@@ -101,19 +101,6 @@ public class ValueResourceOutcomeOfRecommendedKeywordsResult {
 
 
    /**
-   * Get warnings
-   * @return warnings
-  **/
-  @javax.annotation.Nullable
-
-  public List<CommonProblem> getWarnings() {
-    return warnings;
-  }
-
-
-
-
-   /**
    * Get errors
    * @return errors
   **/
@@ -121,6 +108,19 @@ public class ValueResourceOutcomeOfRecommendedKeywordsResult {
 
   public List<CommonProblem> getErrors() {
     return errors;
+  }
+
+
+
+
+   /**
+   * Get warnings
+   * @return warnings
+  **/
+  @javax.annotation.Nullable
+
+  public List<CommonProblem> getWarnings() {
+    return warnings;
   }
 
 
@@ -137,8 +137,8 @@ public class ValueResourceOutcomeOfRecommendedKeywordsResult {
     }
     ValueResourceOutcomeOfRecommendedKeywordsResult valueResourceOutcomeOfRecommendedKeywordsResult = (ValueResourceOutcomeOfRecommendedKeywordsResult) o;
     return Objects.equals(this.data, valueResourceOutcomeOfRecommendedKeywordsResult.data) &&
-        Objects.equals(this.warnings, valueResourceOutcomeOfRecommendedKeywordsResult.warnings) &&
-        Objects.equals(this.errors, valueResourceOutcomeOfRecommendedKeywordsResult.errors);
+        Objects.equals(this.errors, valueResourceOutcomeOfRecommendedKeywordsResult.errors) &&
+        Objects.equals(this.warnings, valueResourceOutcomeOfRecommendedKeywordsResult.warnings);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -147,7 +147,7 @@ public class ValueResourceOutcomeOfRecommendedKeywordsResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, warnings, errors);
+    return Objects.hash(data, errors, warnings);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -162,8 +162,8 @@ public class ValueResourceOutcomeOfRecommendedKeywordsResult {
     StringBuilder sb = new StringBuilder();
     sb.append("class ValueResourceOutcomeOfRecommendedKeywordsResult {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -187,8 +187,8 @@ public class ValueResourceOutcomeOfRecommendedKeywordsResult {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("data");
-    openapiFields.add("warnings");
     openapiFields.add("errors");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -218,20 +218,6 @@ public class ValueResourceOutcomeOfRecommendedKeywordsResult {
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         ValueResourceOfRecommendedKeywordsResult.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
-        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
-        if (jsonArraywarnings != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("warnings").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-          }
-
-          // validate the optional field `warnings` (array)
-          for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
-          };
-        }
-      }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
         if (jsonArrayerrors != null) {
@@ -243,6 +229,20 @@ public class ValueResourceOutcomeOfRecommendedKeywordsResult {
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
             CommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }

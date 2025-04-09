@@ -245,8 +245,8 @@ public class AudienceApi {
      * Build call for legacyGetAudienceV1
      * @param accountId ID of the account to which this audience belongs. (required)
      * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -259,7 +259,7 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call legacyGetAudienceV1Call(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call legacyGetAudienceV1Call(Long accountId, List<Integer> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -289,12 +289,12 @@ public class AudienceApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "limitToId", limitToId));
         }
 
-        if (pageSize != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
-        }
-
         if (pageIndex != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageIndex", pageIndex));
+        }
+
+        if (pageSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
         }
 
         final String[] localVarAccepts = {
@@ -319,13 +319,13 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call legacyGetAudienceV1ValidateBeforeCall(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call legacyGetAudienceV1ValidateBeforeCall(Long accountId, List<Integer> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling legacyGetAudienceV1(Async)");
         }
 
-        return legacyGetAudienceV1Call(accountId, limitToId, pageSize, pageIndex, _callback);
+        return legacyGetAudienceV1Call(accountId, limitToId, pageIndex, pageSize, _callback);
 
     }
 
@@ -334,8 +334,8 @@ public class AudienceApi {
      * Get a page of Audiences. (deprecated Public API)
      * @param accountId ID of the account to which this audience belongs. (required)
      * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @return RmLegacyAudienceGetEntityV1ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -347,8 +347,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public RmLegacyAudienceGetEntityV1ListResponse legacyGetAudienceV1(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex) throws ApiException {
-        ApiResponse<RmLegacyAudienceGetEntityV1ListResponse> localVarResp = legacyGetAudienceV1WithHttpInfo(accountId, limitToId, pageSize, pageIndex);
+    public RmLegacyAudienceGetEntityV1ListResponse legacyGetAudienceV1(Long accountId, List<Integer> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
+        ApiResponse<RmLegacyAudienceGetEntityV1ListResponse> localVarResp = legacyGetAudienceV1WithHttpInfo(accountId, limitToId, pageIndex, pageSize);
         return localVarResp.getData();
     }
 
@@ -357,8 +357,8 @@ public class AudienceApi {
      * Get a page of Audiences. (deprecated Public API)
      * @param accountId ID of the account to which this audience belongs. (required)
      * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @return ApiResponse&lt;RmLegacyAudienceGetEntityV1ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -370,8 +370,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RmLegacyAudienceGetEntityV1ListResponse> legacyGetAudienceV1WithHttpInfo(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex) throws ApiException {
-        okhttp3.Call localVarCall = legacyGetAudienceV1ValidateBeforeCall(accountId, limitToId, pageSize, pageIndex, null);
+    public ApiResponse<RmLegacyAudienceGetEntityV1ListResponse> legacyGetAudienceV1WithHttpInfo(Long accountId, List<Integer> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
+        okhttp3.Call localVarCall = legacyGetAudienceV1ValidateBeforeCall(accountId, limitToId, pageIndex, pageSize, null);
         Type localVarReturnType = new TypeToken<RmLegacyAudienceGetEntityV1ListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -381,8 +381,8 @@ public class AudienceApi {
      * Get a page of Audiences. (deprecated Public API)
      * @param accountId ID of the account to which this audience belongs. (required)
      * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -395,9 +395,9 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call legacyGetAudienceV1Async(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex, final ApiCallback<RmLegacyAudienceGetEntityV1ListResponse> _callback) throws ApiException {
+    public okhttp3.Call legacyGetAudienceV1Async(Long accountId, List<Integer> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback<RmLegacyAudienceGetEntityV1ListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = legacyGetAudienceV1ValidateBeforeCall(accountId, limitToId, pageSize, pageIndex, _callback);
+        okhttp3.Call localVarCall = legacyGetAudienceV1ValidateBeforeCall(accountId, limitToId, pageIndex, pageSize, _callback);
         Type localVarReturnType = new TypeToken<RmLegacyAudienceGetEntityV1ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -406,8 +406,8 @@ public class AudienceApi {
      * Build call for legacyGetAudienceV2
      * @param accountId ID of the account to which this audience belongs. (required)
      * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -420,7 +420,7 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call legacyGetAudienceV2Call(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call legacyGetAudienceV2Call(Long accountId, List<Integer> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -450,12 +450,12 @@ public class AudienceApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "limitToId", limitToId));
         }
 
-        if (pageSize != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
-        }
-
         if (pageIndex != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageIndex", pageIndex));
+        }
+
+        if (pageSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
         }
 
         final String[] localVarAccepts = {
@@ -480,13 +480,13 @@ public class AudienceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call legacyGetAudienceV2ValidateBeforeCall(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call legacyGetAudienceV2ValidateBeforeCall(Long accountId, List<Integer> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling legacyGetAudienceV2(Async)");
         }
 
-        return legacyGetAudienceV2Call(accountId, limitToId, pageSize, pageIndex, _callback);
+        return legacyGetAudienceV2Call(accountId, limitToId, pageIndex, pageSize, _callback);
 
     }
 
@@ -495,8 +495,8 @@ public class AudienceApi {
      * Get a page of Audiences. (deprecated Public API)
      * @param accountId ID of the account to which this audience belongs. (required)
      * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @return RmLegacyAudienceGetEntityV2ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -508,8 +508,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public RmLegacyAudienceGetEntityV2ListResponse legacyGetAudienceV2(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex) throws ApiException {
-        ApiResponse<RmLegacyAudienceGetEntityV2ListResponse> localVarResp = legacyGetAudienceV2WithHttpInfo(accountId, limitToId, pageSize, pageIndex);
+    public RmLegacyAudienceGetEntityV2ListResponse legacyGetAudienceV2(Long accountId, List<Integer> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
+        ApiResponse<RmLegacyAudienceGetEntityV2ListResponse> localVarResp = legacyGetAudienceV2WithHttpInfo(accountId, limitToId, pageIndex, pageSize);
         return localVarResp.getData();
     }
 
@@ -518,8 +518,8 @@ public class AudienceApi {
      * Get a page of Audiences. (deprecated Public API)
      * @param accountId ID of the account to which this audience belongs. (required)
      * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @return ApiResponse&lt;RmLegacyAudienceGetEntityV2ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -531,8 +531,8 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RmLegacyAudienceGetEntityV2ListResponse> legacyGetAudienceV2WithHttpInfo(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex) throws ApiException {
-        okhttp3.Call localVarCall = legacyGetAudienceV2ValidateBeforeCall(accountId, limitToId, pageSize, pageIndex, null);
+    public ApiResponse<RmLegacyAudienceGetEntityV2ListResponse> legacyGetAudienceV2WithHttpInfo(Long accountId, List<Integer> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
+        okhttp3.Call localVarCall = legacyGetAudienceV2ValidateBeforeCall(accountId, limitToId, pageIndex, pageSize, null);
         Type localVarReturnType = new TypeToken<RmLegacyAudienceGetEntityV2ListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -542,8 +542,8 @@ public class AudienceApi {
      * Get a page of Audiences. (deprecated Public API)
      * @param accountId ID of the account to which this audience belongs. (required)
      * @param limitToId Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param pageIndex Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param pageSize Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -556,9 +556,9 @@ public class AudienceApi {
         <tr><td> 403 </td><td> The API client is not authorized to access this resource. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call legacyGetAudienceV2Async(Long accountId, List<Integer> limitToId, Integer pageSize, Integer pageIndex, final ApiCallback<RmLegacyAudienceGetEntityV2ListResponse> _callback) throws ApiException {
+    public okhttp3.Call legacyGetAudienceV2Async(Long accountId, List<Integer> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback<RmLegacyAudienceGetEntityV2ListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = legacyGetAudienceV2ValidateBeforeCall(accountId, limitToId, pageSize, pageIndex, _callback);
+        okhttp3.Call localVarCall = legacyGetAudienceV2ValidateBeforeCall(accountId, limitToId, pageIndex, pageSize, _callback);
         Type localVarReturnType = new TypeToken<RmLegacyAudienceGetEntityV2ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

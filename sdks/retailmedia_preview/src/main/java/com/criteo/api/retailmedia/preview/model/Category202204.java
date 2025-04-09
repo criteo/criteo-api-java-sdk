@@ -48,10 +48,6 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Category202204 {
-  public static final String SERIALIZED_NAME_TEXT = "text";
-  @SerializedName(SERIALIZED_NAME_TEXT)
-  private String text;
-
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -60,30 +56,12 @@ public class Category202204 {
   @SerializedName(SERIALIZED_NAME_PARENT_ID)
   private String parentId;
 
+  public static final String SERIALIZED_NAME_TEXT = "text";
+  @SerializedName(SERIALIZED_NAME_TEXT)
+  private String text;
+
   public Category202204() {
   }
-
-  public Category202204 text(String text) {
-    
-    this.text = text;
-    return this;
-  }
-
-   /**
-   * Category Text
-   * @return text
-  **/
-  @javax.annotation.Nonnull
-
-  public String getText() {
-    return text;
-  }
-
-
-  public void setText(String text) {
-    this.text = text;
-  }
-
 
   public Category202204 name(String name) {
     
@@ -126,6 +104,28 @@ public class Category202204 {
 
   public void setParentId(String parentId) {
     this.parentId = parentId;
+  }
+
+
+  public Category202204 text(String text) {
+    
+    this.text = text;
+    return this;
+  }
+
+   /**
+   * Category Text
+   * @return text
+  **/
+  @javax.annotation.Nonnull
+
+  public String getText() {
+    return text;
+  }
+
+
+  public void setText(String text) {
+    this.text = text;
   }
 
   /**
@@ -183,24 +183,24 @@ public class Category202204 {
       return false;
     }
     Category202204 category202204 = (Category202204) o;
-    return Objects.equals(this.text, category202204.text) &&
-        Objects.equals(this.name, category202204.name) &&
-        Objects.equals(this.parentId, category202204.parentId)&&
+    return Objects.equals(this.name, category202204.name) &&
+        Objects.equals(this.parentId, category202204.parentId) &&
+        Objects.equals(this.text, category202204.text)&&
         Objects.equals(this.additionalProperties, category202204.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, name, parentId, additionalProperties);
+    return Objects.hash(name, parentId, text, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Category202204 {\n");
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -224,15 +224,15 @@ public class Category202204 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("text");
     openapiFields.add("name");
     openapiFields.add("parentId");
+    openapiFields.add("text");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("text");
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("parentId");
+    openapiRequiredFields.add("text");
   }
 
  /**
@@ -254,14 +254,14 @@ public class Category202204 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("text").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
-      }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if (!jsonObj.get("parentId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `parentId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("parentId").toString()));
+      }
+      if (!jsonObj.get("text").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
       }
   }
 

@@ -8,9 +8,9 @@ Generic Criteo API successful data model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | [**TypeEnum**](#TypeEnum) | A string containing the entity type |  |
-|**id** | **String** | A opaque string containing the unique Id of the entity |  |
 |**attributes** | [**Dataset**](Dataset.md) |  |  [optional] |
+|**id** | **String** | A opaque string containing the unique Id of the entity |  |
+|**type** | [**TypeEnum**](#TypeEnum) | A string containing the entity type |  |
 
 
 

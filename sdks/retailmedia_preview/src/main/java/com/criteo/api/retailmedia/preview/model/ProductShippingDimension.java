@@ -48,38 +48,16 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProductShippingDimension {
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
-  private Double value;
-
   public static final String SERIALIZED_NAME_UNIT = "unit";
   @SerializedName(SERIALIZED_NAME_UNIT)
   private String unit;
 
+  public static final String SERIALIZED_NAME_VALUE = "value";
+  @SerializedName(SERIALIZED_NAME_VALUE)
+  private Double value;
+
   public ProductShippingDimension() {
   }
-
-  public ProductShippingDimension value(Double value) {
-    
-    this.value = value;
-    return this;
-  }
-
-   /**
-   * The dimension of the product used to calculate the shipping cost of the item.
-   * @return value
-  **/
-  @javax.annotation.Nullable
-
-  public Double getValue() {
-    return value;
-  }
-
-
-  public void setValue(Double value) {
-    this.value = value;
-  }
-
 
   public ProductShippingDimension unit(String unit) {
     
@@ -100,6 +78,28 @@ public class ProductShippingDimension {
 
   public void setUnit(String unit) {
     this.unit = unit;
+  }
+
+
+  public ProductShippingDimension value(Double value) {
+    
+    this.value = value;
+    return this;
+  }
+
+   /**
+   * The dimension of the product used to calculate the shipping cost of the item.
+   * @return value
+  **/
+  @javax.annotation.Nullable
+
+  public Double getValue() {
+    return value;
+  }
+
+
+  public void setValue(Double value) {
+    this.value = value;
   }
 
   /**
@@ -157,22 +157,22 @@ public class ProductShippingDimension {
       return false;
     }
     ProductShippingDimension productShippingDimension = (ProductShippingDimension) o;
-    return Objects.equals(this.value, productShippingDimension.value) &&
-        Objects.equals(this.unit, productShippingDimension.unit)&&
+    return Objects.equals(this.unit, productShippingDimension.unit) &&
+        Objects.equals(this.value, productShippingDimension.value)&&
         Objects.equals(this.additionalProperties, productShippingDimension.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value, unit, additionalProperties);
+    return Objects.hash(unit, value, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductShippingDimension {\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    unit: ").append(toIndentedString(unit)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -196,8 +196,8 @@ public class ProductShippingDimension {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("value");
     openapiFields.add("unit");
+    openapiFields.add("value");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

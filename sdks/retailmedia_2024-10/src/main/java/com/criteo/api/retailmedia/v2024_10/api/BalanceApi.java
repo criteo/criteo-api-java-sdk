@@ -514,9 +514,9 @@ public class BalanceApi {
     /**
      * Build call for getBalanceHistory
      * @param balanceId Balance id. (required)
-     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param limit The number of elements to be returned. (optional, default to 25)
      * @param limitToChangeTypes Comma separated change types string that will be queried. (optional)
+     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -526,7 +526,7 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBalanceHistoryCall(String balanceId, Integer offset, Integer limit, String limitToChangeTypes, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBalanceHistoryCall(String balanceId, Integer limit, String limitToChangeTypes, Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -552,16 +552,16 @@ public class BalanceApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (offset != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
-        }
-
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
         if (limitToChangeTypes != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limitToChangeTypes", limitToChangeTypes));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
         }
 
         final String[] localVarAccepts = {
@@ -584,13 +584,13 @@ public class BalanceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBalanceHistoryValidateBeforeCall(String balanceId, Integer offset, Integer limit, String limitToChangeTypes, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBalanceHistoryValidateBeforeCall(String balanceId, Integer limit, String limitToChangeTypes, Integer offset, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'balanceId' is set
         if (balanceId == null) {
             throw new ApiException("Missing the required parameter 'balanceId' when calling getBalanceHistory(Async)");
         }
 
-        return getBalanceHistoryCall(balanceId, offset, limit, limitToChangeTypes, _callback);
+        return getBalanceHistoryCall(balanceId, limit, limitToChangeTypes, offset, _callback);
 
     }
 
@@ -598,9 +598,9 @@ public class BalanceApi {
      * 
      * Gets the balance&#39;s historical change data.
      * @param balanceId Balance id. (required)
-     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param limit The number of elements to be returned. (optional, default to 25)
      * @param limitToChangeTypes Comma separated change types string that will be queried. (optional)
+     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @return PageOfBalanceHistoryChangeDataCaptureV1
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -609,8 +609,8 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public PageOfBalanceHistoryChangeDataCaptureV1 getBalanceHistory(String balanceId, Integer offset, Integer limit, String limitToChangeTypes) throws ApiException {
-        ApiResponse<PageOfBalanceHistoryChangeDataCaptureV1> localVarResp = getBalanceHistoryWithHttpInfo(balanceId, offset, limit, limitToChangeTypes);
+    public PageOfBalanceHistoryChangeDataCaptureV1 getBalanceHistory(String balanceId, Integer limit, String limitToChangeTypes, Integer offset) throws ApiException {
+        ApiResponse<PageOfBalanceHistoryChangeDataCaptureV1> localVarResp = getBalanceHistoryWithHttpInfo(balanceId, limit, limitToChangeTypes, offset);
         return localVarResp.getData();
     }
 
@@ -618,9 +618,9 @@ public class BalanceApi {
      * 
      * Gets the balance&#39;s historical change data.
      * @param balanceId Balance id. (required)
-     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param limit The number of elements to be returned. (optional, default to 25)
      * @param limitToChangeTypes Comma separated change types string that will be queried. (optional)
+     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @return ApiResponse&lt;PageOfBalanceHistoryChangeDataCaptureV1&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -629,8 +629,8 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PageOfBalanceHistoryChangeDataCaptureV1> getBalanceHistoryWithHttpInfo(String balanceId, Integer offset, Integer limit, String limitToChangeTypes) throws ApiException {
-        okhttp3.Call localVarCall = getBalanceHistoryValidateBeforeCall(balanceId, offset, limit, limitToChangeTypes, null);
+    public ApiResponse<PageOfBalanceHistoryChangeDataCaptureV1> getBalanceHistoryWithHttpInfo(String balanceId, Integer limit, String limitToChangeTypes, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = getBalanceHistoryValidateBeforeCall(balanceId, limit, limitToChangeTypes, offset, null);
         Type localVarReturnType = new TypeToken<PageOfBalanceHistoryChangeDataCaptureV1>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -639,9 +639,9 @@ public class BalanceApi {
      *  (asynchronously)
      * Gets the balance&#39;s historical change data.
      * @param balanceId Balance id. (required)
-     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param limit The number of elements to be returned. (optional, default to 25)
      * @param limitToChangeTypes Comma separated change types string that will be queried. (optional)
+     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -651,9 +651,9 @@ public class BalanceApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBalanceHistoryAsync(String balanceId, Integer offset, Integer limit, String limitToChangeTypes, final ApiCallback<PageOfBalanceHistoryChangeDataCaptureV1> _callback) throws ApiException {
+    public okhttp3.Call getBalanceHistoryAsync(String balanceId, Integer limit, String limitToChangeTypes, Integer offset, final ApiCallback<PageOfBalanceHistoryChangeDataCaptureV1> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getBalanceHistoryValidateBeforeCall(balanceId, offset, limit, limitToChangeTypes, _callback);
+        okhttp3.Call localVarCall = getBalanceHistoryValidateBeforeCall(balanceId, limit, limitToChangeTypes, offset, _callback);
         Type localVarReturnType = new TypeToken<PageOfBalanceHistoryChangeDataCaptureV1>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

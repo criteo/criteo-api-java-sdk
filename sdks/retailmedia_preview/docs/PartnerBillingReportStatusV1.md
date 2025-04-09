@@ -8,9 +8,9 @@ Status info of a Partner Billing Report.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**status** | [**StatusEnum**](#StatusEnum) | Status of the report. |  |
-|**errorMessage** | **String** | Possible error message along with the status. |  [optional] |
 |**createdAt** | **OffsetDateTime** | The date when the report request is created. |  |
+|**errorMessage** | **String** | Possible error message along with the status. |  [optional] |
+|**status** | [**StatusEnum**](#StatusEnum) | Status of the report. |  |
 
 
 

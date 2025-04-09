@@ -8,8 +8,8 @@ Data model for a value type resource
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** |  |  [optional] |
 |**attributes** | [**ExternalStoreIdsUpdateModel202110**](ExternalStoreIdsUpdateModel202110.md) |  |  [optional] |
+|**type** | **String** |  |  [optional] |
 
 
 

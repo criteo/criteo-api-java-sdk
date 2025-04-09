@@ -49,38 +49,16 @@ import com.criteo.api.marketingsolutions.v2024_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateCoupon {
-  public static final String SERIALIZED_NAME_START_DATE = "startDate";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private String startDate;
-
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private String endDate;
 
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private String startDate;
+
   public UpdateCoupon() {
   }
-
-  public UpdateCoupon startDate(String startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * The date when the Coupon will be launched  String must be in ISO8601 format
-   * @return startDate
-  **/
-  @javax.annotation.Nonnull
-
-  public String getStartDate() {
-    return startDate;
-  }
-
-
-  public void setStartDate(String startDate) {
-    this.startDate = startDate;
-  }
-
 
   public UpdateCoupon endDate(String endDate) {
     
@@ -101,6 +79,28 @@ public class UpdateCoupon {
 
   public void setEndDate(String endDate) {
     this.endDate = endDate;
+  }
+
+
+  public UpdateCoupon startDate(String startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * The date when the Coupon will be launched  String must be in ISO8601 format
+   * @return startDate
+  **/
+  @javax.annotation.Nonnull
+
+  public String getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
   }
 
   /**
@@ -158,8 +158,8 @@ public class UpdateCoupon {
       return false;
     }
     UpdateCoupon updateCoupon = (UpdateCoupon) o;
-    return Objects.equals(this.startDate, updateCoupon.startDate) &&
-        Objects.equals(this.endDate, updateCoupon.endDate)&&
+    return Objects.equals(this.endDate, updateCoupon.endDate) &&
+        Objects.equals(this.startDate, updateCoupon.startDate)&&
         Objects.equals(this.additionalProperties, updateCoupon.additionalProperties);
   }
 
@@ -169,7 +169,7 @@ public class UpdateCoupon {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, additionalProperties);
+    return Objects.hash(endDate, startDate, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -183,8 +183,8 @@ public class UpdateCoupon {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateCoupon {\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -208,8 +208,8 @@ public class UpdateCoupon {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("startDate");
     openapiFields.add("endDate");
+    openapiFields.add("startDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -235,11 +235,11 @@ public class UpdateCoupon {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("startDate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
-      }
       if ((jsonObj.get("endDate") != null && !jsonObj.get("endDate").isJsonNull()) && !jsonObj.get("endDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `endDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endDate").toString()));
+      }
+      if (!jsonObj.get("startDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
       }
   }
 

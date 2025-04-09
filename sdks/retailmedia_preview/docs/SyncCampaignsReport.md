@@ -8,54 +8,18 @@ Campaigns report body request
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report, if no dimensions/metrics are provided, falls back to summary reportType |  [optional] |
-|**campaignIds** | **List&lt;String&gt;** | Campaign ids to filter |  [optional] |
 |**accountId** | **String** | Account id to report on |  |
-|**clickAttributionWindow** | [**ClickAttributionWindowEnum**](#ClickAttributionWindowEnum) | Click attribution window |  [optional] |
-|**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) | View attribution window |  [optional] |
+|**campaignIds** | **List&lt;String&gt;** | Campaign ids to filter |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays |  [optional] |
-|**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
+|**clickAttributionWindow** | [**ClickAttributionWindowEnum**](#ClickAttributionWindowEnum) | Click attribution window |  [optional] |
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  [optional] |
-|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  [optional] |
-|**startDate** | **OffsetDateTime** | Start date |  |
 |**endDate** | **OffsetDateTime** | End date |  |
+|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  [optional] |
+|**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report, if no dimensions/metrics are provided, falls back to summary reportType |  [optional] |
+|**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
+|**startDate** | **OffsetDateTime** | Start date |  |
 |**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
-
-
-
-## Enum: ReportTypeEnum
-
-| Name | Value |
-|---- | -----|
-| SUMMARY | &quot;summary&quot; |
-| PAGETYPE | &quot;pageType&quot; |
-| PRODUCTCATEGORY | &quot;productCategory&quot; |
-| PRODUCT | &quot;product&quot; |
-| ENVIRONMENT | &quot;environment&quot; |
-| SERVEDCATEGORY | &quot;servedCategory&quot; |
-
-
-
-## Enum: ClickAttributionWindowEnum
-
-| Name | Value |
-|---- | -----|
-| NONE | &quot;none&quot; |
-| _7D | &quot;7D&quot; |
-| _14D | &quot;14D&quot; |
-| _30D | &quot;30D&quot; |
-
-
-
-## Enum: ViewAttributionWindowEnum
-
-| Name | Value |
-|---- | -----|
-| NONE | &quot;none&quot; |
-| _1D | &quot;1D&quot; |
-| _7D | &quot;7D&quot; |
-| _14D | &quot;14D&quot; |
-| _30D | &quot;30D&quot; |
+|**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) | View attribution window |  [optional] |
 
 
 
@@ -69,13 +33,14 @@ Campaigns report body request
 
 
 
-## Enum: SalesChannelEnum
+## Enum: ClickAttributionWindowEnum
 
 | Name | Value |
 |---- | -----|
-| ALL | &quot;all&quot; |
-| OFFLINE | &quot;offline&quot; |
-| ONLINE | &quot;online&quot; |
+| NONE | &quot;none&quot; |
+| _7D | &quot;7D&quot; |
+| _14D | &quot;14D&quot; |
+| _30D | &quot;30D&quot; |
 
 
 
@@ -127,6 +92,41 @@ Campaigns report body request
 | ROAS | &quot;roas&quot; |
 | UNIQUEVISITORS | &quot;uniqueVisitors&quot; |
 | FREQUENCY | &quot;frequency&quot; |
+
+
+
+## Enum: ReportTypeEnum
+
+| Name | Value |
+|---- | -----|
+| SUMMARY | &quot;summary&quot; |
+| PAGETYPE | &quot;pageType&quot; |
+| PRODUCTCATEGORY | &quot;productCategory&quot; |
+| PRODUCT | &quot;product&quot; |
+| ENVIRONMENT | &quot;environment&quot; |
+| SERVEDCATEGORY | &quot;servedCategory&quot; |
+
+
+
+## Enum: SalesChannelEnum
+
+| Name | Value |
+|---- | -----|
+| ALL | &quot;all&quot; |
+| OFFLINE | &quot;offline&quot; |
+| ONLINE | &quot;online&quot; |
+
+
+
+## Enum: ViewAttributionWindowEnum
+
+| Name | Value |
+|---- | -----|
+| NONE | &quot;none&quot; |
+| _1D | &quot;1D&quot; |
+| _7D | &quot;7D&quot; |
+| _14D | &quot;14D&quot; |
+| _30D | &quot;30D&quot; |
 
 
 

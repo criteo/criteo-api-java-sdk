@@ -54,56 +54,34 @@ import com.criteo.api.marketingsolutions.v2024_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse {
-  public static final String SERIALIZED_NAME_META = "meta";
-  @SerializedName(SERIALIZED_NAME_META)
-  private AudienceSegmentSearchMetadataV1 meta;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<AudienceSegmentEntityV1Resource> data = null;
 
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<CommonProblem> warnings = null;
-
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<CommonProblem> errors = null;
+
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private AudienceSegmentSearchMetadataV1 meta;
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<CommonProblem> warnings = null;
 
   public AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse() {
   }
 
   
   public AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse(
-     List<CommonProblem> warnings, 
-     List<CommonProblem> errors
+     List<CommonProblem> errors, 
+     List<CommonProblem> warnings
   ) {
     this();
-    this.warnings = warnings;
     this.errors = errors;
+    this.warnings = warnings;
   }
-
-  public AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse meta(AudienceSegmentSearchMetadataV1 meta) {
-    
-    this.meta = meta;
-    return this;
-  }
-
-   /**
-   * Get meta
-   * @return meta
-  **/
-  @javax.annotation.Nullable
-
-  public AudienceSegmentSearchMetadataV1 getMeta() {
-    return meta;
-  }
-
-
-  public void setMeta(AudienceSegmentSearchMetadataV1 meta) {
-    this.meta = meta;
-  }
-
 
   public AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse data(List<AudienceSegmentEntityV1Resource> data) {
     
@@ -136,19 +114,6 @@ public class AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse 
 
 
    /**
-   * Get warnings
-   * @return warnings
-  **/
-  @javax.annotation.Nullable
-
-  public List<CommonProblem> getWarnings() {
-    return warnings;
-  }
-
-
-
-
-   /**
    * Get errors
    * @return errors
   **/
@@ -156,6 +121,41 @@ public class AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse 
 
   public List<CommonProblem> getErrors() {
     return errors;
+  }
+
+
+
+
+  public AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse meta(AudienceSegmentSearchMetadataV1 meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nullable
+
+  public AudienceSegmentSearchMetadataV1 getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(AudienceSegmentSearchMetadataV1 meta) {
+    this.meta = meta;
+  }
+
+
+   /**
+   * Get warnings
+   * @return warnings
+  **/
+  @javax.annotation.Nullable
+
+  public List<CommonProblem> getWarnings() {
+    return warnings;
   }
 
 
@@ -215,10 +215,10 @@ public class AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse 
       return false;
     }
     AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse audienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse = (AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse) o;
-    return Objects.equals(this.meta, audienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse.meta) &&
-        Objects.equals(this.data, audienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse.data) &&
-        Objects.equals(this.warnings, audienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse.warnings) &&
-        Objects.equals(this.errors, audienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse.errors)&&
+    return Objects.equals(this.data, audienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse.data) &&
+        Objects.equals(this.errors, audienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse.errors) &&
+        Objects.equals(this.meta, audienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse.meta) &&
+        Objects.equals(this.warnings, audienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse.warnings)&&
         Objects.equals(this.additionalProperties, audienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse.additionalProperties);
   }
 
@@ -228,7 +228,7 @@ public class AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse 
 
   @Override
   public int hashCode() {
-    return Objects.hash(meta, data, warnings, errors, additionalProperties);
+    return Objects.hash(data, errors, meta, warnings, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -242,10 +242,10 @@ public class AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse 
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse {\n");
-    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -269,10 +269,10 @@ public class AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse 
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("meta");
     openapiFields.add("data");
-    openapiFields.add("warnings");
     openapiFields.add("errors");
+    openapiFields.add("meta");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -290,10 +290,6 @@ public class AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse 
           throw new IllegalArgumentException(String.format("The required field(s) %s in AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse is not found in the empty JSON string", AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `meta`
-      if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
-        AudienceSegmentSearchMetadataV1.validateJsonObject(jsonObj.getAsJsonObject("meta"));
-      }
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
         if (jsonArraydata != null) {
@@ -308,20 +304,6 @@ public class AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse 
           };
         }
       }
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
-        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
-        if (jsonArraywarnings != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("warnings").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-          }
-
-          // validate the optional field `warnings` (array)
-          for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
-          };
-        }
-      }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
         if (jsonArrayerrors != null) {
@@ -333,6 +315,24 @@ public class AudienceSegmentEntityV1AudienceSegmentSearchMetadataV1ListResponse 
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
             CommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+          };
+        }
+      }
+      // validate the optional field `meta`
+      if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
+        AudienceSegmentSearchMetadataV1.validateJsonObject(jsonObj.getAsJsonObject("meta"));
+      }
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }

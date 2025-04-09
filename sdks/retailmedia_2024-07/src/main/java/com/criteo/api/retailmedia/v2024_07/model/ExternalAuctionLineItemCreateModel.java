@@ -51,6 +51,85 @@ import com.criteo.api.retailmedia.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalAuctionLineItemCreateModel {
+  /**
+   * Gets or Sets bidStrategy
+   */
+  @JsonAdapter(BidStrategyEnum.Adapter.class)
+  public enum BidStrategyEnum {
+    UNKNOWN("unknown"),
+    
+    CONVERSION("conversion"),
+    
+    CLICKS("clicks"),
+    
+    REVENUE("revenue");
+
+    private String value;
+
+    BidStrategyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static BidStrategyEnum fromValue(String value) {
+      for (BidStrategyEnum b : BidStrategyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<BidStrategyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final BidStrategyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public BidStrategyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return BidStrategyEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_BID_STRATEGY = "bidStrategy";
+  @SerializedName(SERIALIZED_NAME_BID_STRATEGY)
+  private BidStrategyEnum bidStrategy = BidStrategyEnum.CONVERSION;
+
+  public static final String SERIALIZED_NAME_BUDGET = "budget";
+  @SerializedName(SERIALIZED_NAME_BUDGET)
+  private BigDecimal budget;
+
+  public static final String SERIALIZED_NAME_DAILY_PACING = "dailyPacing";
+  @SerializedName(SERIALIZED_NAME_DAILY_PACING)
+  private BigDecimal dailyPacing;
+
+  public static final String SERIALIZED_NAME_END_DATE = "endDate";
+  @SerializedName(SERIALIZED_NAME_END_DATE)
+  private LocalDate endDate;
+
+  public static final String SERIALIZED_NAME_IS_AUTO_DAILY_PACING = "isAutoDailyPacing";
+  @SerializedName(SERIALIZED_NAME_IS_AUTO_DAILY_PACING)
+  private Boolean isAutoDailyPacing = false;
+
+  public static final String SERIALIZED_NAME_MAX_BID = "maxBid";
+  @SerializedName(SERIALIZED_NAME_MAX_BID)
+  private BigDecimal maxBid;
+
+  public static final String SERIALIZED_NAME_MONTHLY_PACING = "monthlyPacing";
+  @SerializedName(SERIALIZED_NAME_MONTHLY_PACING)
+  private BigDecimal monthlyPacing;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -58,10 +137,6 @@ public class ExternalAuctionLineItemCreateModel {
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private LocalDate startDate;
-
-  public static final String SERIALIZED_NAME_END_DATE = "endDate";
-  @SerializedName(SERIALIZED_NAME_END_DATE)
-  private LocalDate endDate;
 
   /**
    * Gets or Sets status
@@ -128,199 +203,36 @@ public class ExternalAuctionLineItemCreateModel {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
-  public static final String SERIALIZED_NAME_TARGET_RETAILER_ID = "targetRetailerId";
-  @SerializedName(SERIALIZED_NAME_TARGET_RETAILER_ID)
-  private String targetRetailerId;
-
-  public static final String SERIALIZED_NAME_BUDGET = "budget";
-  @SerializedName(SERIALIZED_NAME_BUDGET)
-  private BigDecimal budget;
-
   public static final String SERIALIZED_NAME_TARGET_BID = "targetBid";
   @SerializedName(SERIALIZED_NAME_TARGET_BID)
   private BigDecimal targetBid;
 
-  public static final String SERIALIZED_NAME_MAX_BID = "maxBid";
-  @SerializedName(SERIALIZED_NAME_MAX_BID)
-  private BigDecimal maxBid;
-
-  public static final String SERIALIZED_NAME_MONTHLY_PACING = "monthlyPacing";
-  @SerializedName(SERIALIZED_NAME_MONTHLY_PACING)
-  private BigDecimal monthlyPacing;
-
-  public static final String SERIALIZED_NAME_DAILY_PACING = "dailyPacing";
-  @SerializedName(SERIALIZED_NAME_DAILY_PACING)
-  private BigDecimal dailyPacing;
-
-  public static final String SERIALIZED_NAME_IS_AUTO_DAILY_PACING = "isAutoDailyPacing";
-  @SerializedName(SERIALIZED_NAME_IS_AUTO_DAILY_PACING)
-  private Boolean isAutoDailyPacing = false;
-
-  /**
-   * Gets or Sets bidStrategy
-   */
-  @JsonAdapter(BidStrategyEnum.Adapter.class)
-  public enum BidStrategyEnum {
-    UNKNOWN("unknown"),
-    
-    CONVERSION("conversion"),
-    
-    CLICKS("clicks"),
-    
-    REVENUE("revenue");
-
-    private String value;
-
-    BidStrategyEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static BidStrategyEnum fromValue(String value) {
-      for (BidStrategyEnum b : BidStrategyEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<BidStrategyEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final BidStrategyEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public BidStrategyEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return BidStrategyEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_BID_STRATEGY = "bidStrategy";
-  @SerializedName(SERIALIZED_NAME_BID_STRATEGY)
-  private BidStrategyEnum bidStrategy = BidStrategyEnum.CONVERSION;
+  public static final String SERIALIZED_NAME_TARGET_RETAILER_ID = "targetRetailerId";
+  @SerializedName(SERIALIZED_NAME_TARGET_RETAILER_ID)
+  private String targetRetailerId;
 
   public ExternalAuctionLineItemCreateModel() {
   }
 
-  public ExternalAuctionLineItemCreateModel name(String name) {
+  public ExternalAuctionLineItemCreateModel bidStrategy(BidStrategyEnum bidStrategy) {
     
-    this.name = name;
+    this.bidStrategy = bidStrategy;
     return this;
   }
 
    /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public ExternalAuctionLineItemCreateModel startDate(LocalDate startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
-   * @return startDate
-  **/
-  @javax.annotation.Nonnull
-
-  public LocalDate getStartDate() {
-    return startDate;
-  }
-
-
-  public void setStartDate(LocalDate startDate) {
-    this.startDate = startDate;
-  }
-
-
-  public ExternalAuctionLineItemCreateModel endDate(LocalDate endDate) {
-    
-    this.endDate = endDate;
-    return this;
-  }
-
-   /**
-   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
-   * @return endDate
+   * Get bidStrategy
+   * @return bidStrategy
   **/
   @javax.annotation.Nullable
 
-  public LocalDate getEndDate() {
-    return endDate;
+  public BidStrategyEnum getBidStrategy() {
+    return bidStrategy;
   }
 
 
-  public void setEndDate(LocalDate endDate) {
-    this.endDate = endDate;
-  }
-
-
-  public ExternalAuctionLineItemCreateModel status(StatusEnum status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @javax.annotation.Nullable
-
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
-
-
-  public ExternalAuctionLineItemCreateModel targetRetailerId(String targetRetailerId) {
-    
-    this.targetRetailerId = targetRetailerId;
-    return this;
-  }
-
-   /**
-   * Get targetRetailerId
-   * @return targetRetailerId
-  **/
-  @javax.annotation.Nonnull
-
-  public String getTargetRetailerId() {
-    return targetRetailerId;
-  }
-
-
-  public void setTargetRetailerId(String targetRetailerId) {
-    this.targetRetailerId = targetRetailerId;
+  public void setBidStrategy(BidStrategyEnum bidStrategy) {
+    this.bidStrategy = bidStrategy;
   }
 
 
@@ -346,25 +258,69 @@ public class ExternalAuctionLineItemCreateModel {
   }
 
 
-  public ExternalAuctionLineItemCreateModel targetBid(BigDecimal targetBid) {
+  public ExternalAuctionLineItemCreateModel dailyPacing(BigDecimal dailyPacing) {
     
-    this.targetBid = targetBid;
+    this.dailyPacing = dailyPacing;
     return this;
   }
 
    /**
-   * Get targetBid
-   * @return targetBid
+   * Get dailyPacing
+   * @return dailyPacing
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getTargetBid() {
-    return targetBid;
+  public BigDecimal getDailyPacing() {
+    return dailyPacing;
   }
 
 
-  public void setTargetBid(BigDecimal targetBid) {
-    this.targetBid = targetBid;
+  public void setDailyPacing(BigDecimal dailyPacing) {
+    this.dailyPacing = dailyPacing;
+  }
+
+
+  public ExternalAuctionLineItemCreateModel endDate(LocalDate endDate) {
+    
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
+   * @return endDate
+  **/
+  @javax.annotation.Nullable
+
+  public LocalDate getEndDate() {
+    return endDate;
+  }
+
+
+  public void setEndDate(LocalDate endDate) {
+    this.endDate = endDate;
+  }
+
+
+  public ExternalAuctionLineItemCreateModel isAutoDailyPacing(Boolean isAutoDailyPacing) {
+    
+    this.isAutoDailyPacing = isAutoDailyPacing;
+    return this;
+  }
+
+   /**
+   * Get isAutoDailyPacing
+   * @return isAutoDailyPacing
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getIsAutoDailyPacing() {
+    return isAutoDailyPacing;
+  }
+
+
+  public void setIsAutoDailyPacing(Boolean isAutoDailyPacing) {
+    this.isAutoDailyPacing = isAutoDailyPacing;
   }
 
 
@@ -412,69 +368,113 @@ public class ExternalAuctionLineItemCreateModel {
   }
 
 
-  public ExternalAuctionLineItemCreateModel dailyPacing(BigDecimal dailyPacing) {
+  public ExternalAuctionLineItemCreateModel name(String name) {
     
-    this.dailyPacing = dailyPacing;
+    this.name = name;
     return this;
   }
 
    /**
-   * Get dailyPacing
-   * @return dailyPacing
+   * Get name
+   * @return name
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public BigDecimal getDailyPacing() {
-    return dailyPacing;
+  public String getName() {
+    return name;
   }
 
 
-  public void setDailyPacing(BigDecimal dailyPacing) {
-    this.dailyPacing = dailyPacing;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
-  public ExternalAuctionLineItemCreateModel isAutoDailyPacing(Boolean isAutoDailyPacing) {
+  public ExternalAuctionLineItemCreateModel startDate(LocalDate startDate) {
     
-    this.isAutoDailyPacing = isAutoDailyPacing;
+    this.startDate = startDate;
     return this;
   }
 
    /**
-   * Get isAutoDailyPacing
-   * @return isAutoDailyPacing
+   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
+   * @return startDate
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public Boolean getIsAutoDailyPacing() {
-    return isAutoDailyPacing;
+  public LocalDate getStartDate() {
+    return startDate;
   }
 
 
-  public void setIsAutoDailyPacing(Boolean isAutoDailyPacing) {
-    this.isAutoDailyPacing = isAutoDailyPacing;
+  public void setStartDate(LocalDate startDate) {
+    this.startDate = startDate;
   }
 
 
-  public ExternalAuctionLineItemCreateModel bidStrategy(BidStrategyEnum bidStrategy) {
+  public ExternalAuctionLineItemCreateModel status(StatusEnum status) {
     
-    this.bidStrategy = bidStrategy;
+    this.status = status;
     return this;
   }
 
    /**
-   * Get bidStrategy
-   * @return bidStrategy
+   * Get status
+   * @return status
   **/
   @javax.annotation.Nullable
 
-  public BidStrategyEnum getBidStrategy() {
-    return bidStrategy;
+  public StatusEnum getStatus() {
+    return status;
   }
 
 
-  public void setBidStrategy(BidStrategyEnum bidStrategy) {
-    this.bidStrategy = bidStrategy;
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
+
+  public ExternalAuctionLineItemCreateModel targetBid(BigDecimal targetBid) {
+    
+    this.targetBid = targetBid;
+    return this;
+  }
+
+   /**
+   * Get targetBid
+   * @return targetBid
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getTargetBid() {
+    return targetBid;
+  }
+
+
+  public void setTargetBid(BigDecimal targetBid) {
+    this.targetBid = targetBid;
+  }
+
+
+  public ExternalAuctionLineItemCreateModel targetRetailerId(String targetRetailerId) {
+    
+    this.targetRetailerId = targetRetailerId;
+    return this;
+  }
+
+   /**
+   * Get targetRetailerId
+   * @return targetRetailerId
+  **/
+  @javax.annotation.Nonnull
+
+  public String getTargetRetailerId() {
+    return targetRetailerId;
+  }
+
+
+  public void setTargetRetailerId(String targetRetailerId) {
+    this.targetRetailerId = targetRetailerId;
   }
 
   /**
@@ -532,18 +532,18 @@ public class ExternalAuctionLineItemCreateModel {
       return false;
     }
     ExternalAuctionLineItemCreateModel externalAuctionLineItemCreateModel = (ExternalAuctionLineItemCreateModel) o;
-    return Objects.equals(this.name, externalAuctionLineItemCreateModel.name) &&
-        Objects.equals(this.startDate, externalAuctionLineItemCreateModel.startDate) &&
-        Objects.equals(this.endDate, externalAuctionLineItemCreateModel.endDate) &&
-        Objects.equals(this.status, externalAuctionLineItemCreateModel.status) &&
-        Objects.equals(this.targetRetailerId, externalAuctionLineItemCreateModel.targetRetailerId) &&
+    return Objects.equals(this.bidStrategy, externalAuctionLineItemCreateModel.bidStrategy) &&
         Objects.equals(this.budget, externalAuctionLineItemCreateModel.budget) &&
-        Objects.equals(this.targetBid, externalAuctionLineItemCreateModel.targetBid) &&
+        Objects.equals(this.dailyPacing, externalAuctionLineItemCreateModel.dailyPacing) &&
+        Objects.equals(this.endDate, externalAuctionLineItemCreateModel.endDate) &&
+        Objects.equals(this.isAutoDailyPacing, externalAuctionLineItemCreateModel.isAutoDailyPacing) &&
         Objects.equals(this.maxBid, externalAuctionLineItemCreateModel.maxBid) &&
         Objects.equals(this.monthlyPacing, externalAuctionLineItemCreateModel.monthlyPacing) &&
-        Objects.equals(this.dailyPacing, externalAuctionLineItemCreateModel.dailyPacing) &&
-        Objects.equals(this.isAutoDailyPacing, externalAuctionLineItemCreateModel.isAutoDailyPacing) &&
-        Objects.equals(this.bidStrategy, externalAuctionLineItemCreateModel.bidStrategy)&&
+        Objects.equals(this.name, externalAuctionLineItemCreateModel.name) &&
+        Objects.equals(this.startDate, externalAuctionLineItemCreateModel.startDate) &&
+        Objects.equals(this.status, externalAuctionLineItemCreateModel.status) &&
+        Objects.equals(this.targetBid, externalAuctionLineItemCreateModel.targetBid) &&
+        Objects.equals(this.targetRetailerId, externalAuctionLineItemCreateModel.targetRetailerId)&&
         Objects.equals(this.additionalProperties, externalAuctionLineItemCreateModel.additionalProperties);
   }
 
@@ -553,7 +553,7 @@ public class ExternalAuctionLineItemCreateModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, startDate, endDate, status, targetRetailerId, budget, targetBid, maxBid, monthlyPacing, dailyPacing, isAutoDailyPacing, bidStrategy, additionalProperties);
+    return Objects.hash(bidStrategy, budget, dailyPacing, endDate, isAutoDailyPacing, maxBid, monthlyPacing, name, startDate, status, targetBid, targetRetailerId, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -567,18 +567,18 @@ public class ExternalAuctionLineItemCreateModel {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalAuctionLineItemCreateModel {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    targetRetailerId: ").append(toIndentedString(targetRetailerId)).append("\n");
+    sb.append("    bidStrategy: ").append(toIndentedString(bidStrategy)).append("\n");
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
-    sb.append("    targetBid: ").append(toIndentedString(targetBid)).append("\n");
+    sb.append("    dailyPacing: ").append(toIndentedString(dailyPacing)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    isAutoDailyPacing: ").append(toIndentedString(isAutoDailyPacing)).append("\n");
     sb.append("    maxBid: ").append(toIndentedString(maxBid)).append("\n");
     sb.append("    monthlyPacing: ").append(toIndentedString(monthlyPacing)).append("\n");
-    sb.append("    dailyPacing: ").append(toIndentedString(dailyPacing)).append("\n");
-    sb.append("    isAutoDailyPacing: ").append(toIndentedString(isAutoDailyPacing)).append("\n");
-    sb.append("    bidStrategy: ").append(toIndentedString(bidStrategy)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    targetBid: ").append(toIndentedString(targetBid)).append("\n");
+    sb.append("    targetRetailerId: ").append(toIndentedString(targetRetailerId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -602,18 +602,18 @@ public class ExternalAuctionLineItemCreateModel {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("startDate");
-    openapiFields.add("endDate");
-    openapiFields.add("status");
-    openapiFields.add("targetRetailerId");
+    openapiFields.add("bidStrategy");
     openapiFields.add("budget");
-    openapiFields.add("targetBid");
+    openapiFields.add("dailyPacing");
+    openapiFields.add("endDate");
+    openapiFields.add("isAutoDailyPacing");
     openapiFields.add("maxBid");
     openapiFields.add("monthlyPacing");
-    openapiFields.add("dailyPacing");
-    openapiFields.add("isAutoDailyPacing");
-    openapiFields.add("bidStrategy");
+    openapiFields.add("name");
+    openapiFields.add("startDate");
+    openapiFields.add("status");
+    openapiFields.add("targetBid");
+    openapiFields.add("targetRetailerId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -641,6 +641,9 @@ public class ExternalAuctionLineItemCreateModel {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      if ((jsonObj.get("bidStrategy") != null && !jsonObj.get("bidStrategy").isJsonNull()) && !jsonObj.get("bidStrategy").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `bidStrategy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bidStrategy").toString()));
+      }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
@@ -649,9 +652,6 @@ public class ExternalAuctionLineItemCreateModel {
       }
       if (!jsonObj.get("targetRetailerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `targetRetailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("targetRetailerId").toString()));
-      }
-      if ((jsonObj.get("bidStrategy") != null && !jsonObj.get("bidStrategy").isJsonNull()) && !jsonObj.get("bidStrategy").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `bidStrategy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bidStrategy").toString()));
       }
   }
 

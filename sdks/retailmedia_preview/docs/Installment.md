@@ -8,8 +8,8 @@ Defines the installment of a product.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**months** | **Long** | The number of installments the buyer has to pay. |  [optional] |
 |**amount** | [**Price**](Price.md) |  |  [optional] |
+|**months** | **Long** | The number of installments the buyer has to pay. |  [optional] |
 
 
 

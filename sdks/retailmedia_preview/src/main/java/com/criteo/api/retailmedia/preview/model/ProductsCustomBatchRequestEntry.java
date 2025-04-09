@@ -53,6 +53,14 @@ public class ProductsCustomBatchRequestEntry {
   @SerializedName(SERIALIZED_NAME_BATCH_ID)
   private Long batchId;
 
+  public static final String SERIALIZED_NAME_FEED_ID = "feedId";
+  @SerializedName(SERIALIZED_NAME_FEED_ID)
+  private String feedId;
+
+  public static final String SERIALIZED_NAME_ITEM_GROUP_ID = "itemGroupId";
+  @SerializedName(SERIALIZED_NAME_ITEM_GROUP_ID)
+  private String itemGroupId;
+
   public static final String SERIALIZED_NAME_MERCHANT_ID = "merchantId";
   @SerializedName(SERIALIZED_NAME_MERCHANT_ID)
   private Integer merchantId;
@@ -108,21 +116,13 @@ public class ProductsCustomBatchRequestEntry {
   @SerializedName(SERIALIZED_NAME_METHOD)
   private MethodEnum method;
 
-  public static final String SERIALIZED_NAME_PRODUCT_ID = "productId";
-  @SerializedName(SERIALIZED_NAME_PRODUCT_ID)
-  private String productId;
-
-  public static final String SERIALIZED_NAME_ITEM_GROUP_ID = "itemGroupId";
-  @SerializedName(SERIALIZED_NAME_ITEM_GROUP_ID)
-  private String itemGroupId;
-
   public static final String SERIALIZED_NAME_PRODUCT = "product";
   @SerializedName(SERIALIZED_NAME_PRODUCT)
   private Product product;
 
-  public static final String SERIALIZED_NAME_FEED_ID = "feedId";
-  @SerializedName(SERIALIZED_NAME_FEED_ID)
-  private String feedId;
+  public static final String SERIALIZED_NAME_PRODUCT_ID = "productId";
+  @SerializedName(SERIALIZED_NAME_PRODUCT_ID)
+  private String productId;
 
   public ProductsCustomBatchRequestEntry() {
   }
@@ -146,6 +146,50 @@ public class ProductsCustomBatchRequestEntry {
 
   public void setBatchId(Long batchId) {
     this.batchId = batchId;
+  }
+
+
+  public ProductsCustomBatchRequestEntry feedId(String feedId) {
+    
+    this.feedId = feedId;
+    return this;
+  }
+
+   /**
+   * Not used by Criteo.
+   * @return feedId
+  **/
+  @javax.annotation.Nullable
+
+  public String getFeedId() {
+    return feedId;
+  }
+
+
+  public void setFeedId(String feedId) {
+    this.feedId = feedId;
+  }
+
+
+  public ProductsCustomBatchRequestEntry itemGroupId(String itemGroupId) {
+    
+    this.itemGroupId = itemGroupId;
+    return this;
+  }
+
+   /**
+   * Deprecated (providing this information is no more needed, this field will be removed in next release). The itemGroupId of the product to delete. To be defined when the method is delete and the product is a variant.
+   * @return itemGroupId
+  **/
+  @javax.annotation.Nullable
+
+  public String getItemGroupId() {
+    return itemGroupId;
+  }
+
+
+  public void setItemGroupId(String itemGroupId) {
+    this.itemGroupId = itemGroupId;
   }
 
 
@@ -193,50 +237,6 @@ public class ProductsCustomBatchRequestEntry {
   }
 
 
-  public ProductsCustomBatchRequestEntry productId(String productId) {
-    
-    this.productId = productId;
-    return this;
-  }
-
-   /**
-   * The Product ID to delete. Only defined if the method is delete.
-   * @return productId
-  **/
-  @javax.annotation.Nullable
-
-  public String getProductId() {
-    return productId;
-  }
-
-
-  public void setProductId(String productId) {
-    this.productId = productId;
-  }
-
-
-  public ProductsCustomBatchRequestEntry itemGroupId(String itemGroupId) {
-    
-    this.itemGroupId = itemGroupId;
-    return this;
-  }
-
-   /**
-   * Deprecated (providing this information is no more needed, this field will be removed in next release). The itemGroupId of the product to delete. To be defined when the method is delete and the product is a variant.
-   * @return itemGroupId
-  **/
-  @javax.annotation.Nullable
-
-  public String getItemGroupId() {
-    return itemGroupId;
-  }
-
-
-  public void setItemGroupId(String itemGroupId) {
-    this.itemGroupId = itemGroupId;
-  }
-
-
   public ProductsCustomBatchRequestEntry product(Product product) {
     
     this.product = product;
@@ -259,25 +259,25 @@ public class ProductsCustomBatchRequestEntry {
   }
 
 
-  public ProductsCustomBatchRequestEntry feedId(String feedId) {
+  public ProductsCustomBatchRequestEntry productId(String productId) {
     
-    this.feedId = feedId;
+    this.productId = productId;
     return this;
   }
 
    /**
-   * Not used by Criteo.
-   * @return feedId
+   * The Product ID to delete. Only defined if the method is delete.
+   * @return productId
   **/
   @javax.annotation.Nullable
 
-  public String getFeedId() {
-    return feedId;
+  public String getProductId() {
+    return productId;
   }
 
 
-  public void setFeedId(String feedId) {
-    this.feedId = feedId;
+  public void setProductId(String productId) {
+    this.productId = productId;
   }
 
   /**
@@ -336,18 +336,18 @@ public class ProductsCustomBatchRequestEntry {
     }
     ProductsCustomBatchRequestEntry productsCustomBatchRequestEntry = (ProductsCustomBatchRequestEntry) o;
     return Objects.equals(this.batchId, productsCustomBatchRequestEntry.batchId) &&
+        Objects.equals(this.feedId, productsCustomBatchRequestEntry.feedId) &&
+        Objects.equals(this.itemGroupId, productsCustomBatchRequestEntry.itemGroupId) &&
         Objects.equals(this.merchantId, productsCustomBatchRequestEntry.merchantId) &&
         Objects.equals(this.method, productsCustomBatchRequestEntry.method) &&
-        Objects.equals(this.productId, productsCustomBatchRequestEntry.productId) &&
-        Objects.equals(this.itemGroupId, productsCustomBatchRequestEntry.itemGroupId) &&
         Objects.equals(this.product, productsCustomBatchRequestEntry.product) &&
-        Objects.equals(this.feedId, productsCustomBatchRequestEntry.feedId)&&
+        Objects.equals(this.productId, productsCustomBatchRequestEntry.productId)&&
         Objects.equals(this.additionalProperties, productsCustomBatchRequestEntry.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(batchId, merchantId, method, productId, itemGroupId, product, feedId, additionalProperties);
+    return Objects.hash(batchId, feedId, itemGroupId, merchantId, method, product, productId, additionalProperties);
   }
 
   @Override
@@ -355,12 +355,12 @@ public class ProductsCustomBatchRequestEntry {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductsCustomBatchRequestEntry {\n");
     sb.append("    batchId: ").append(toIndentedString(batchId)).append("\n");
+    sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    itemGroupId: ").append(toIndentedString(itemGroupId)).append("\n");
     sb.append("    merchantId: ").append(toIndentedString(merchantId)).append("\n");
     sb.append("    method: ").append(toIndentedString(method)).append("\n");
-    sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
-    sb.append("    itemGroupId: ").append(toIndentedString(itemGroupId)).append("\n");
     sb.append("    product: ").append(toIndentedString(product)).append("\n");
-    sb.append("    feedId: ").append(toIndentedString(feedId)).append("\n");
+    sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -385,12 +385,12 @@ public class ProductsCustomBatchRequestEntry {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("batchId");
+    openapiFields.add("feedId");
+    openapiFields.add("itemGroupId");
     openapiFields.add("merchantId");
     openapiFields.add("method");
-    openapiFields.add("productId");
-    openapiFields.add("itemGroupId");
     openapiFields.add("product");
-    openapiFields.add("feedId");
+    openapiFields.add("productId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -417,21 +417,21 @@ public class ProductsCustomBatchRequestEntry {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("method").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `method` to be a primitive type in the JSON string but got `%s`", jsonObj.get("method").toString()));
-      }
-      if ((jsonObj.get("productId") != null && !jsonObj.get("productId").isJsonNull()) && !jsonObj.get("productId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `productId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productId").toString()));
+      if ((jsonObj.get("feedId") != null && !jsonObj.get("feedId").isJsonNull()) && !jsonObj.get("feedId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `feedId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("feedId").toString()));
       }
       if ((jsonObj.get("itemGroupId") != null && !jsonObj.get("itemGroupId").isJsonNull()) && !jsonObj.get("itemGroupId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `itemGroupId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("itemGroupId").toString()));
+      }
+      if (!jsonObj.get("method").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `method` to be a primitive type in the JSON string but got `%s`", jsonObj.get("method").toString()));
       }
       // validate the optional field `product`
       if (jsonObj.get("product") != null && !jsonObj.get("product").isJsonNull()) {
         Product.validateJsonObject(jsonObj.getAsJsonObject("product"));
       }
-      if ((jsonObj.get("feedId") != null && !jsonObj.get("feedId").isJsonNull()) && !jsonObj.get("feedId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `feedId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("feedId").toString()));
+      if ((jsonObj.get("productId") != null && !jsonObj.get("productId").isJsonNull()) && !jsonObj.get("productId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `productId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productId").toString()));
       }
   }
 

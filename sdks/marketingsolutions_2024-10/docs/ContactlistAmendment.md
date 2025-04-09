@@ -8,8 +8,8 @@ Parameters for the amendment of a contactlist
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** | User List |  |
 |**attributes** | [**ContactlistAmendmentAttributes**](ContactlistAmendmentAttributes.md) |  |  |
+|**type** | **String** | User List |  |
 
 
 

@@ -53,6 +53,14 @@ public class ApplicationSummaryModel {
   @SerializedName(SERIALIZED_NAME_APPLICATION_ID)
   private Integer applicationId;
 
+  public static final String SERIALIZED_NAME_CRITEO_SERVICE = "criteoService";
+  @SerializedName(SERIALIZED_NAME_CRITEO_SERVICE)
+  private String criteoService;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -60,14 +68,6 @@ public class ApplicationSummaryModel {
   public static final String SERIALIZED_NAME_ORGANIZATION_ID = "organizationId";
   @SerializedName(SERIALIZED_NAME_ORGANIZATION_ID)
   private Integer organizationId;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
-
-  public static final String SERIALIZED_NAME_CRITEO_SERVICE = "criteoService";
-  @SerializedName(SERIALIZED_NAME_CRITEO_SERVICE)
-  private String criteoService;
 
   public ApplicationSummaryModel() {
   }
@@ -91,6 +91,50 @@ public class ApplicationSummaryModel {
 
   public void setApplicationId(Integer applicationId) {
     this.applicationId = applicationId;
+  }
+
+
+  public ApplicationSummaryModel criteoService(String criteoService) {
+    
+    this.criteoService = criteoService;
+    return this;
+  }
+
+   /**
+   * Get criteoService
+   * @return criteoService
+  **/
+  @javax.annotation.Nullable
+
+  public String getCriteoService() {
+    return criteoService;
+  }
+
+
+  public void setCriteoService(String criteoService) {
+    this.criteoService = criteoService;
+  }
+
+
+  public ApplicationSummaryModel description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Get description
+   * @return description
+  **/
+  @javax.annotation.Nullable
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -135,50 +179,6 @@ public class ApplicationSummaryModel {
 
   public void setOrganizationId(Integer organizationId) {
     this.organizationId = organizationId;
-  }
-
-
-  public ApplicationSummaryModel description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Get description
-   * @return description
-  **/
-  @javax.annotation.Nullable
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-
-  public ApplicationSummaryModel criteoService(String criteoService) {
-    
-    this.criteoService = criteoService;
-    return this;
-  }
-
-   /**
-   * Get criteoService
-   * @return criteoService
-  **/
-  @javax.annotation.Nullable
-
-  public String getCriteoService() {
-    return criteoService;
-  }
-
-
-  public void setCriteoService(String criteoService) {
-    this.criteoService = criteoService;
   }
 
   /**
@@ -237,10 +237,10 @@ public class ApplicationSummaryModel {
     }
     ApplicationSummaryModel applicationSummaryModel = (ApplicationSummaryModel) o;
     return Objects.equals(this.applicationId, applicationSummaryModel.applicationId) &&
-        Objects.equals(this.name, applicationSummaryModel.name) &&
-        Objects.equals(this.organizationId, applicationSummaryModel.organizationId) &&
+        Objects.equals(this.criteoService, applicationSummaryModel.criteoService) &&
         Objects.equals(this.description, applicationSummaryModel.description) &&
-        Objects.equals(this.criteoService, applicationSummaryModel.criteoService)&&
+        Objects.equals(this.name, applicationSummaryModel.name) &&
+        Objects.equals(this.organizationId, applicationSummaryModel.organizationId)&&
         Objects.equals(this.additionalProperties, applicationSummaryModel.additionalProperties);
   }
 
@@ -250,7 +250,7 @@ public class ApplicationSummaryModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(applicationId, name, organizationId, description, criteoService, additionalProperties);
+    return Objects.hash(applicationId, criteoService, description, name, organizationId, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -265,10 +265,10 @@ public class ApplicationSummaryModel {
     StringBuilder sb = new StringBuilder();
     sb.append("class ApplicationSummaryModel {\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
+    sb.append("    criteoService: ").append(toIndentedString(criteoService)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    criteoService: ").append(toIndentedString(criteoService)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -293,10 +293,10 @@ public class ApplicationSummaryModel {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("applicationId");
+    openapiFields.add("criteoService");
+    openapiFields.add("description");
     openapiFields.add("name");
     openapiFields.add("organizationId");
-    openapiFields.add("description");
-    openapiFields.add("criteoService");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -314,14 +314,14 @@ public class ApplicationSummaryModel {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ApplicationSummaryModel is not found in the empty JSON string", ApplicationSummaryModel.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if ((jsonObj.get("criteoService") != null && !jsonObj.get("criteoService").isJsonNull()) && !jsonObj.get("criteoService").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `criteoService` to be a primitive type in the JSON string but got `%s`", jsonObj.get("criteoService").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if ((jsonObj.get("criteoService") != null && !jsonObj.get("criteoService").isJsonNull()) && !jsonObj.get("criteoService").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `criteoService` to be a primitive type in the JSON string but got `%s`", jsonObj.get("criteoService").toString()));
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
   }
 

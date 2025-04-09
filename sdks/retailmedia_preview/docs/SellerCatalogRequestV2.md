@@ -8,9 +8,9 @@ Used to request a catalog of seller SKUs
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**sellers** | [**List&lt;SellerIdentifierV2&gt;**](SellerIdentifierV2.md) | A list of sellers to restrict the catalog to. |  [optional] |
-|**modifiedAfter** | **OffsetDateTime** | Only products modified after this time will be returned. |  [optional] |
 |**includeFields** | [**List&lt;IncludeFieldsEnum&gt;**](#List&lt;IncludeFieldsEnum&gt;) | Out of the optional fields, only the ones specified will be included in the catalog generated. |  [optional] |
+|**modifiedAfter** | **OffsetDateTime** | Only products modified after this time will be returned. |  [optional] |
+|**sellers** | [**List&lt;SellerIdentifierV2&gt;**](SellerIdentifierV2.md) | A list of sellers to restrict the catalog to. |  [optional] |
 
 
 

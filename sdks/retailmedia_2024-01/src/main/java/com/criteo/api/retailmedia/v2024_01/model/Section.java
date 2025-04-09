@@ -52,10 +52,6 @@ import com.criteo.api.retailmedia.v2024_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Section {
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
-
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
@@ -64,30 +60,12 @@ public class Section {
   @SerializedName(SERIALIZED_NAME_TEMPLATE_VARIABLES)
   private List<TemplateVariable> templateVariables = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
+
   public Section() {
   }
-
-  public Section title(String title) {
-    
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * Get title
-   * @return title
-  **/
-  @javax.annotation.Nullable
-
-  public String getTitle() {
-    return title;
-  }
-
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
 
   public Section description(String description) {
     
@@ -138,6 +116,28 @@ public class Section {
   }
 
 
+  public Section title(String title) {
+    
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * Get title
+   * @return title
+  **/
+  @javax.annotation.Nullable
+
+  public String getTitle() {
+    return title;
+  }
+
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -148,9 +148,9 @@ public class Section {
       return false;
     }
     Section section = (Section) o;
-    return Objects.equals(this.title, section.title) &&
-        Objects.equals(this.description, section.description) &&
-        Objects.equals(this.templateVariables, section.templateVariables);
+    return Objects.equals(this.description, section.description) &&
+        Objects.equals(this.templateVariables, section.templateVariables) &&
+        Objects.equals(this.title, section.title);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -159,7 +159,7 @@ public class Section {
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, description, templateVariables);
+    return Objects.hash(description, templateVariables, title);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -173,9 +173,9 @@ public class Section {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Section {\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    templateVariables: ").append(toIndentedString(templateVariables)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -198,9 +198,9 @@ public class Section {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("title");
     openapiFields.add("description");
     openapiFields.add("templateVariables");
+    openapiFields.add("title");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -234,9 +234,6 @@ public class Section {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
-      }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
@@ -250,6 +247,9 @@ public class Section {
       for (int i = 0; i < jsonArraytemplateVariables.size(); i++) {
         TemplateVariable.validateJsonObject(jsonArraytemplateVariables.get(i).getAsJsonObject());
       };
+      if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

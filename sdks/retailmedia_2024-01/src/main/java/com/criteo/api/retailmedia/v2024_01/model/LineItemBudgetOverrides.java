@@ -52,43 +52,16 @@ import com.criteo.api.retailmedia.v2024_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class LineItemBudgetOverrides {
-  public static final String SERIALIZED_NAME_MONTHLY_LINE_ITEM_BUDGET_OVERRIDES = "monthlyLineItemBudgetOverrides";
-  @SerializedName(SERIALIZED_NAME_MONTHLY_LINE_ITEM_BUDGET_OVERRIDES)
-  private List<MonthlyLineItemBudegetOverride> monthlyLineItemBudgetOverrides = new ArrayList<>();
-
   public static final String SERIALIZED_NAME_DAILY_LINE_ITEM_BUDGET_OVERRIDES = "dailyLineItemBudgetOverrides";
   @SerializedName(SERIALIZED_NAME_DAILY_LINE_ITEM_BUDGET_OVERRIDES)
   private List<DailyLineItemBudgetOverride> dailyLineItemBudgetOverrides = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_MONTHLY_LINE_ITEM_BUDGET_OVERRIDES = "monthlyLineItemBudgetOverrides";
+  @SerializedName(SERIALIZED_NAME_MONTHLY_LINE_ITEM_BUDGET_OVERRIDES)
+  private List<MonthlyLineItemBudegetOverride> monthlyLineItemBudgetOverrides = new ArrayList<>();
+
   public LineItemBudgetOverrides() {
   }
-
-  public LineItemBudgetOverrides monthlyLineItemBudgetOverrides(List<MonthlyLineItemBudegetOverride> monthlyLineItemBudgetOverrides) {
-    
-    this.monthlyLineItemBudgetOverrides = monthlyLineItemBudgetOverrides;
-    return this;
-  }
-
-  public LineItemBudgetOverrides addMonthlyLineItemBudgetOverridesItem(MonthlyLineItemBudegetOverride monthlyLineItemBudgetOverridesItem) {
-    this.monthlyLineItemBudgetOverrides.add(monthlyLineItemBudgetOverridesItem);
-    return this;
-  }
-
-   /**
-   * Line item budget override monthly part, chronological order restricted.
-   * @return monthlyLineItemBudgetOverrides
-  **/
-  @javax.annotation.Nonnull
-
-  public List<MonthlyLineItemBudegetOverride> getMonthlyLineItemBudgetOverrides() {
-    return monthlyLineItemBudgetOverrides;
-  }
-
-
-  public void setMonthlyLineItemBudgetOverrides(List<MonthlyLineItemBudegetOverride> monthlyLineItemBudgetOverrides) {
-    this.monthlyLineItemBudgetOverrides = monthlyLineItemBudgetOverrides;
-  }
-
 
   public LineItemBudgetOverrides dailyLineItemBudgetOverrides(List<DailyLineItemBudgetOverride> dailyLineItemBudgetOverrides) {
     
@@ -117,6 +90,33 @@ public class LineItemBudgetOverrides {
   }
 
 
+  public LineItemBudgetOverrides monthlyLineItemBudgetOverrides(List<MonthlyLineItemBudegetOverride> monthlyLineItemBudgetOverrides) {
+    
+    this.monthlyLineItemBudgetOverrides = monthlyLineItemBudgetOverrides;
+    return this;
+  }
+
+  public LineItemBudgetOverrides addMonthlyLineItemBudgetOverridesItem(MonthlyLineItemBudegetOverride monthlyLineItemBudgetOverridesItem) {
+    this.monthlyLineItemBudgetOverrides.add(monthlyLineItemBudgetOverridesItem);
+    return this;
+  }
+
+   /**
+   * Line item budget override monthly part, chronological order restricted.
+   * @return monthlyLineItemBudgetOverrides
+  **/
+  @javax.annotation.Nonnull
+
+  public List<MonthlyLineItemBudegetOverride> getMonthlyLineItemBudgetOverrides() {
+    return monthlyLineItemBudgetOverrides;
+  }
+
+
+  public void setMonthlyLineItemBudgetOverrides(List<MonthlyLineItemBudegetOverride> monthlyLineItemBudgetOverrides) {
+    this.monthlyLineItemBudgetOverrides = monthlyLineItemBudgetOverrides;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -127,21 +127,21 @@ public class LineItemBudgetOverrides {
       return false;
     }
     LineItemBudgetOverrides lineItemBudgetOverrides = (LineItemBudgetOverrides) o;
-    return Objects.equals(this.monthlyLineItemBudgetOverrides, lineItemBudgetOverrides.monthlyLineItemBudgetOverrides) &&
-        Objects.equals(this.dailyLineItemBudgetOverrides, lineItemBudgetOverrides.dailyLineItemBudgetOverrides);
+    return Objects.equals(this.dailyLineItemBudgetOverrides, lineItemBudgetOverrides.dailyLineItemBudgetOverrides) &&
+        Objects.equals(this.monthlyLineItemBudgetOverrides, lineItemBudgetOverrides.monthlyLineItemBudgetOverrides);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(monthlyLineItemBudgetOverrides, dailyLineItemBudgetOverrides);
+    return Objects.hash(dailyLineItemBudgetOverrides, monthlyLineItemBudgetOverrides);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LineItemBudgetOverrides {\n");
-    sb.append("    monthlyLineItemBudgetOverrides: ").append(toIndentedString(monthlyLineItemBudgetOverrides)).append("\n");
     sb.append("    dailyLineItemBudgetOverrides: ").append(toIndentedString(dailyLineItemBudgetOverrides)).append("\n");
+    sb.append("    monthlyLineItemBudgetOverrides: ").append(toIndentedString(monthlyLineItemBudgetOverrides)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -164,13 +164,13 @@ public class LineItemBudgetOverrides {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("monthlyLineItemBudgetOverrides");
     openapiFields.add("dailyLineItemBudgetOverrides");
+    openapiFields.add("monthlyLineItemBudgetOverrides");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("monthlyLineItemBudgetOverrides");
     openapiRequiredFields.add("dailyLineItemBudgetOverrides");
+    openapiRequiredFields.add("monthlyLineItemBudgetOverrides");
   }
 
  /**
@@ -201,16 +201,6 @@ public class LineItemBudgetOverrides {
         }
       }
       // ensure the json data is an array
-      if (!jsonObj.get("monthlyLineItemBudgetOverrides").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `monthlyLineItemBudgetOverrides` to be an array in the JSON string but got `%s`", jsonObj.get("monthlyLineItemBudgetOverrides").toString()));
-      }
-
-      JsonArray jsonArraymonthlyLineItemBudgetOverrides = jsonObj.getAsJsonArray("monthlyLineItemBudgetOverrides");
-      // validate the required field `monthlyLineItemBudgetOverrides` (array)
-      for (int i = 0; i < jsonArraymonthlyLineItemBudgetOverrides.size(); i++) {
-        MonthlyLineItemBudegetOverride.validateJsonObject(jsonArraymonthlyLineItemBudgetOverrides.get(i).getAsJsonObject());
-      };
-      // ensure the json data is an array
       if (!jsonObj.get("dailyLineItemBudgetOverrides").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `dailyLineItemBudgetOverrides` to be an array in the JSON string but got `%s`", jsonObj.get("dailyLineItemBudgetOverrides").toString()));
       }
@@ -219,6 +209,16 @@ public class LineItemBudgetOverrides {
       // validate the required field `dailyLineItemBudgetOverrides` (array)
       for (int i = 0; i < jsonArraydailyLineItemBudgetOverrides.size(); i++) {
         DailyLineItemBudgetOverride.validateJsonObject(jsonArraydailyLineItemBudgetOverrides.get(i).getAsJsonObject());
+      };
+      // ensure the json data is an array
+      if (!jsonObj.get("monthlyLineItemBudgetOverrides").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `monthlyLineItemBudgetOverrides` to be an array in the JSON string but got `%s`", jsonObj.get("monthlyLineItemBudgetOverrides").toString()));
+      }
+
+      JsonArray jsonArraymonthlyLineItemBudgetOverrides = jsonObj.getAsJsonArray("monthlyLineItemBudgetOverrides");
+      // validate the required field `monthlyLineItemBudgetOverrides` (array)
+      for (int i = 0; i < jsonArraymonthlyLineItemBudgetOverrides.size(); i++) {
+        MonthlyLineItemBudegetOverride.validateJsonObject(jsonArraymonthlyLineItemBudgetOverrides.get(i).getAsJsonObject());
       };
   }
 

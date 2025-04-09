@@ -51,13 +51,13 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProductRecommendation {
-  public static final String SERIALIZED_NAME_RATIONALE = "rationale";
-  @SerializedName(SERIALIZED_NAME_RATIONALE)
-  private String rationale;
+  public static final String SERIALIZED_NAME_BRAND = "brand";
+  @SerializedName(SERIALIZED_NAME_BRAND)
+  private String brand;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_CURRENCY = "currency";
+  @SerializedName(SERIALIZED_NAME_CURRENCY)
+  private String currency;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -67,66 +67,66 @@ public class ProductRecommendation {
   @SerializedName(SERIALIZED_NAME_IMAGE_URL)
   private URI imageUrl;
 
-  public static final String SERIALIZED_NAME_URL = "url";
-  @SerializedName(SERIALIZED_NAME_URL)
-  private URI url;
-
-  public static final String SERIALIZED_NAME_BRAND = "brand";
-  @SerializedName(SERIALIZED_NAME_BRAND)
-  private String brand;
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
   private BigDecimal price;
 
-  public static final String SERIALIZED_NAME_CURRENCY = "currency";
-  @SerializedName(SERIALIZED_NAME_CURRENCY)
-  private String currency;
+  public static final String SERIALIZED_NAME_RATIONALE = "rationale";
+  @SerializedName(SERIALIZED_NAME_RATIONALE)
+  private String rationale;
+
+  public static final String SERIALIZED_NAME_URL = "url";
+  @SerializedName(SERIALIZED_NAME_URL)
+  private URI url;
 
   public ProductRecommendation() {
   }
 
-  public ProductRecommendation rationale(String rationale) {
+  public ProductRecommendation brand(String brand) {
     
-    this.rationale = rationale;
+    this.brand = brand;
     return this;
   }
 
    /**
-   * reason for this recommendation, given by the bot
-   * @return rationale
-  **/
-  @javax.annotation.Nonnull
-
-  public String getRationale() {
-    return rationale;
-  }
-
-
-  public void setRationale(String rationale) {
-    this.rationale = rationale;
-  }
-
-
-  public ProductRecommendation name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * name of the product
-   * @return name
+   * brand of the product
+   * @return brand
   **/
   @javax.annotation.Nullable
 
-  public String getName() {
-    return name;
+  public String getBrand() {
+    return brand;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
+  public void setBrand(String brand) {
+    this.brand = brand;
+  }
+
+
+  public ProductRecommendation currency(String currency) {
+    
+    this.currency = currency;
+    return this;
+  }
+
+   /**
+   * currency of the price of the product
+   * @return currency
+  **/
+  @javax.annotation.Nullable
+
+  public String getCurrency() {
+    return currency;
+  }
+
+
+  public void setCurrency(String currency) {
+    this.currency = currency;
   }
 
 
@@ -174,47 +174,25 @@ public class ProductRecommendation {
   }
 
 
-  public ProductRecommendation url(URI url) {
+  public ProductRecommendation name(String name) {
     
-    this.url = url;
+    this.name = name;
     return this;
   }
 
    /**
-   * url of the product on the retailer website
-   * @return url
+   * name of the product
+   * @return name
   **/
   @javax.annotation.Nullable
 
-  public URI getUrl() {
-    return url;
+  public String getName() {
+    return name;
   }
 
 
-  public void setUrl(URI url) {
-    this.url = url;
-  }
-
-
-  public ProductRecommendation brand(String brand) {
-    
-    this.brand = brand;
-    return this;
-  }
-
-   /**
-   * brand of the product
-   * @return brand
-  **/
-  @javax.annotation.Nullable
-
-  public String getBrand() {
-    return brand;
-  }
-
-
-  public void setBrand(String brand) {
-    this.brand = brand;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -240,25 +218,47 @@ public class ProductRecommendation {
   }
 
 
-  public ProductRecommendation currency(String currency) {
+  public ProductRecommendation rationale(String rationale) {
     
-    this.currency = currency;
+    this.rationale = rationale;
     return this;
   }
 
    /**
-   * currency of the price of the product
-   * @return currency
+   * reason for this recommendation, given by the bot
+   * @return rationale
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public String getCurrency() {
-    return currency;
+  public String getRationale() {
+    return rationale;
   }
 
 
-  public void setCurrency(String currency) {
-    this.currency = currency;
+  public void setRationale(String rationale) {
+    this.rationale = rationale;
+  }
+
+
+  public ProductRecommendation url(URI url) {
+    
+    this.url = url;
+    return this;
+  }
+
+   /**
+   * url of the product on the retailer website
+   * @return url
+  **/
+  @javax.annotation.Nullable
+
+  public URI getUrl() {
+    return url;
+  }
+
+
+  public void setUrl(URI url) {
+    this.url = url;
   }
 
   /**
@@ -316,14 +316,14 @@ public class ProductRecommendation {
       return false;
     }
     ProductRecommendation productRecommendation = (ProductRecommendation) o;
-    return Objects.equals(this.rationale, productRecommendation.rationale) &&
-        Objects.equals(this.name, productRecommendation.name) &&
+    return Objects.equals(this.brand, productRecommendation.brand) &&
+        Objects.equals(this.currency, productRecommendation.currency) &&
         Objects.equals(this.description, productRecommendation.description) &&
         Objects.equals(this.imageUrl, productRecommendation.imageUrl) &&
-        Objects.equals(this.url, productRecommendation.url) &&
-        Objects.equals(this.brand, productRecommendation.brand) &&
+        Objects.equals(this.name, productRecommendation.name) &&
         Objects.equals(this.price, productRecommendation.price) &&
-        Objects.equals(this.currency, productRecommendation.currency)&&
+        Objects.equals(this.rationale, productRecommendation.rationale) &&
+        Objects.equals(this.url, productRecommendation.url)&&
         Objects.equals(this.additionalProperties, productRecommendation.additionalProperties);
   }
 
@@ -333,7 +333,7 @@ public class ProductRecommendation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(rationale, name, description, imageUrl, url, brand, price, currency, additionalProperties);
+    return Objects.hash(brand, currency, description, imageUrl, name, price, rationale, url, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -347,14 +347,14 @@ public class ProductRecommendation {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductRecommendation {\n");
-    sb.append("    rationale: ").append(toIndentedString(rationale)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
+    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    rationale: ").append(toIndentedString(rationale)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -378,14 +378,14 @@ public class ProductRecommendation {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("rationale");
-    openapiFields.add("name");
+    openapiFields.add("brand");
+    openapiFields.add("currency");
     openapiFields.add("description");
     openapiFields.add("imageUrl");
-    openapiFields.add("url");
-    openapiFields.add("brand");
+    openapiFields.add("name");
     openapiFields.add("price");
-    openapiFields.add("currency");
+    openapiFields.add("rationale");
+    openapiFields.add("url");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -411,11 +411,11 @@ public class ProductRecommendation {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("rationale").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `rationale` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rationale").toString()));
+      if ((jsonObj.get("brand") != null && !jsonObj.get("brand").isJsonNull()) && !jsonObj.get("brand").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `brand` to be a primitive type in the JSON string but got `%s`", jsonObj.get("brand").toString()));
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
@@ -423,14 +423,14 @@ public class ProductRecommendation {
       if ((jsonObj.get("imageUrl") != null && !jsonObj.get("imageUrl").isJsonNull()) && !jsonObj.get("imageUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `imageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("imageUrl").toString()));
       }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if (!jsonObj.get("rationale").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `rationale` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rationale").toString()));
+      }
       if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
-      }
-      if ((jsonObj.get("brand") != null && !jsonObj.get("brand").isJsonNull()) && !jsonObj.get("brand").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `brand` to be a primitive type in the JSON string but got `%s`", jsonObj.get("brand").toString()));
-      }
-      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
   }
 

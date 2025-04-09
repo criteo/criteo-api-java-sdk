@@ -50,40 +50,40 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RmAudienceSegmentUpdateEntityV1 {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_CONTACT_LIST = "contactList";
+  @SerializedName(SERIALIZED_NAME_CONTACT_LIST)
+  private Object contactList;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private NillableString description;
 
-  public static final String SERIALIZED_NAME_CONTACT_LIST = "contactList";
-  @SerializedName(SERIALIZED_NAME_CONTACT_LIST)
-  private Object contactList;
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
   public RmAudienceSegmentUpdateEntityV1() {
   }
 
-  public RmAudienceSegmentUpdateEntityV1 name(String name) {
+  public RmAudienceSegmentUpdateEntityV1 contactList(Object contactList) {
     
-    this.name = name;
+    this.contactList = contactList;
     return this;
   }
 
    /**
-   * Name of the segment
-   * @return name
+   * Settings to update the contact list of the segment
+   * @return contactList
   **/
   @javax.annotation.Nullable
 
-  public String getName() {
-    return name;
+  public Object getContactList() {
+    return contactList;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
+  public void setContactList(Object contactList) {
+    this.contactList = contactList;
   }
 
 
@@ -109,25 +109,25 @@ public class RmAudienceSegmentUpdateEntityV1 {
   }
 
 
-  public RmAudienceSegmentUpdateEntityV1 contactList(Object contactList) {
+  public RmAudienceSegmentUpdateEntityV1 name(String name) {
     
-    this.contactList = contactList;
+    this.name = name;
     return this;
   }
 
    /**
-   * Settings to update the contact list of the segment
-   * @return contactList
+   * Name of the segment
+   * @return name
   **/
   @javax.annotation.Nullable
 
-  public Object getContactList() {
-    return contactList;
+  public String getName() {
+    return name;
   }
 
 
-  public void setContactList(Object contactList) {
-    this.contactList = contactList;
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
@@ -185,9 +185,9 @@ public class RmAudienceSegmentUpdateEntityV1 {
       return false;
     }
     RmAudienceSegmentUpdateEntityV1 rmAudienceSegmentUpdateEntityV1 = (RmAudienceSegmentUpdateEntityV1) o;
-    return Objects.equals(this.name, rmAudienceSegmentUpdateEntityV1.name) &&
+    return Objects.equals(this.contactList, rmAudienceSegmentUpdateEntityV1.contactList) &&
         Objects.equals(this.description, rmAudienceSegmentUpdateEntityV1.description) &&
-        Objects.equals(this.contactList, rmAudienceSegmentUpdateEntityV1.contactList)&&
+        Objects.equals(this.name, rmAudienceSegmentUpdateEntityV1.name)&&
         Objects.equals(this.additionalProperties, rmAudienceSegmentUpdateEntityV1.additionalProperties);
   }
 
@@ -197,7 +197,7 @@ public class RmAudienceSegmentUpdateEntityV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, contactList, additionalProperties);
+    return Objects.hash(contactList, description, name, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -211,9 +211,9 @@ public class RmAudienceSegmentUpdateEntityV1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RmAudienceSegmentUpdateEntityV1 {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    contactList: ").append(toIndentedString(contactList)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -237,9 +237,9 @@ public class RmAudienceSegmentUpdateEntityV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("description");
     openapiFields.add("contactList");
+    openapiFields.add("description");
+    openapiFields.add("name");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -257,12 +257,12 @@ public class RmAudienceSegmentUpdateEntityV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in RmAudienceSegmentUpdateEntityV1 is not found in the empty JSON string", RmAudienceSegmentUpdateEntityV1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
       // validate the optional field `description`
       if (jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) {
         NillableString.validateJsonObject(jsonObj.getAsJsonObject("description"));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
   }
 

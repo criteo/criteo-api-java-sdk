@@ -50,38 +50,16 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
-
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private SellerCatalogRequest attributes;
 
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
   public JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest() {
   }
-
-  public JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Get type
-   * @return type
-  **/
-  @javax.annotation.Nonnull
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
 
   public JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest attributes(SellerCatalogRequest attributes) {
     
@@ -102,6 +80,28 @@ public class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest {
 
   public void setAttributes(SellerCatalogRequest attributes) {
     this.attributes = attributes;
+  }
+
+
+  public JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nonnull
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   /**
@@ -159,8 +159,8 @@ public class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest {
       return false;
     }
     JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest jsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest = (JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest) o;
-    return Objects.equals(this.type, jsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest.type) &&
-        Objects.equals(this.attributes, jsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest.attributes)&&
+    return Objects.equals(this.attributes, jsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest.attributes) &&
+        Objects.equals(this.type, jsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest.type)&&
         Objects.equals(this.additionalProperties, jsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest.additionalProperties);
   }
 
@@ -170,7 +170,7 @@ public class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes, additionalProperties);
+    return Objects.hash(attributes, type, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -184,8 +184,8 @@ public class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -209,8 +209,8 @@ public class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
     openapiFields.add("attributes");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -236,12 +236,12 @@ public class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
         SellerCatalogRequest.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

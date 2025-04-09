@@ -51,58 +51,13 @@ import com.criteo.api.retailmedia.v2024_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RmLegacySegmentUserBehaviorV2 {
-  /**
-   * Type of shopper activity used to generate the audience.
-   */
-  @JsonAdapter(UserActionEnum.Adapter.class)
-  public enum UserActionEnum {
-    BUY("buy"),
-    
-    VIEW("view"),
-    
-    ADDTOCART("addToCart");
+  public static final String SERIALIZED_NAME_BRAND_IDS = "brandIds";
+  @SerializedName(SERIALIZED_NAME_BRAND_IDS)
+  private Set<Long> brandIds = null;
 
-    private String value;
-
-    UserActionEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static UserActionEnum fromValue(String value) {
-      for (UserActionEnum b : UserActionEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<UserActionEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final UserActionEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public UserActionEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return UserActionEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_USER_ACTION = "userAction";
-  @SerializedName(SERIALIZED_NAME_USER_ACTION)
-  private UserActionEnum userAction;
+  public static final String SERIALIZED_NAME_CATEGORY_IDS = "categoryIds";
+  @SerializedName(SERIALIZED_NAME_CATEGORY_IDS)
+  private Set<Integer> categoryIds = null;
 
   /**
    * Length of lookback window
@@ -169,66 +124,97 @@ public class RmLegacySegmentUserBehaviorV2 {
   @SerializedName(SERIALIZED_NAME_LOOKBACK_WINDOW)
   private LookbackWindowEnum lookbackWindow;
 
-  public static final String SERIALIZED_NAME_CATEGORY_IDS = "categoryIds";
-  @SerializedName(SERIALIZED_NAME_CATEGORY_IDS)
-  private Set<Integer> categoryIds = null;
-
-  public static final String SERIALIZED_NAME_BRAND_IDS = "brandIds";
-  @SerializedName(SERIALIZED_NAME_BRAND_IDS)
-  private Set<Long> brandIds = null;
+  public static final String SERIALIZED_NAME_MAX_PRICE = "maxPrice";
+  @SerializedName(SERIALIZED_NAME_MAX_PRICE)
+  private Double maxPrice;
 
   public static final String SERIALIZED_NAME_MIN_PRICE = "minPrice";
   @SerializedName(SERIALIZED_NAME_MIN_PRICE)
   private Double minPrice;
 
-  public static final String SERIALIZED_NAME_MAX_PRICE = "maxPrice";
-  @SerializedName(SERIALIZED_NAME_MAX_PRICE)
-  private Double maxPrice;
+  /**
+   * Type of shopper activity used to generate the audience.
+   */
+  @JsonAdapter(UserActionEnum.Adapter.class)
+  public enum UserActionEnum {
+    BUY("buy"),
+    
+    VIEW("view"),
+    
+    ADDTOCART("addToCart");
+
+    private String value;
+
+    UserActionEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static UserActionEnum fromValue(String value) {
+      for (UserActionEnum b : UserActionEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<UserActionEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final UserActionEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public UserActionEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return UserActionEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_USER_ACTION = "userAction";
+  @SerializedName(SERIALIZED_NAME_USER_ACTION)
+  private UserActionEnum userAction;
 
   public RmLegacySegmentUserBehaviorV2() {
   }
 
-  public RmLegacySegmentUserBehaviorV2 userAction(UserActionEnum userAction) {
+  public RmLegacySegmentUserBehaviorV2 brandIds(Set<Long> brandIds) {
     
-    this.userAction = userAction;
+    this.brandIds = brandIds;
+    return this;
+  }
+
+  public RmLegacySegmentUserBehaviorV2 addBrandIdsItem(Long brandIdsItem) {
+    if (this.brandIds == null) {
+      this.brandIds = null;
+    }
+    this.brandIds.add(brandIdsItem);
     return this;
   }
 
    /**
-   * Type of shopper activity used to generate the audience.
-   * @return userAction
+   * The brands to target
+   * @return brandIds
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public UserActionEnum getUserAction() {
-    return userAction;
+  public Set<Long> getBrandIds() {
+    return brandIds;
   }
 
 
-  public void setUserAction(UserActionEnum userAction) {
-    this.userAction = userAction;
-  }
-
-
-  public RmLegacySegmentUserBehaviorV2 lookbackWindow(LookbackWindowEnum lookbackWindow) {
-    
-    this.lookbackWindow = lookbackWindow;
-    return this;
-  }
-
-   /**
-   * Length of lookback window
-   * @return lookbackWindow
-  **/
-  @javax.annotation.Nonnull
-
-  public LookbackWindowEnum getLookbackWindow() {
-    return lookbackWindow;
-  }
-
-
-  public void setLookbackWindow(LookbackWindowEnum lookbackWindow) {
-    this.lookbackWindow = lookbackWindow;
+  public void setBrandIds(Set<Long> brandIds) {
+    this.brandIds = brandIds;
   }
 
 
@@ -262,33 +248,47 @@ public class RmLegacySegmentUserBehaviorV2 {
   }
 
 
-  public RmLegacySegmentUserBehaviorV2 brandIds(Set<Long> brandIds) {
+  public RmLegacySegmentUserBehaviorV2 lookbackWindow(LookbackWindowEnum lookbackWindow) {
     
-    this.brandIds = brandIds;
-    return this;
-  }
-
-  public RmLegacySegmentUserBehaviorV2 addBrandIdsItem(Long brandIdsItem) {
-    if (this.brandIds == null) {
-      this.brandIds = null;
-    }
-    this.brandIds.add(brandIdsItem);
+    this.lookbackWindow = lookbackWindow;
     return this;
   }
 
    /**
-   * The brands to target
-   * @return brandIds
+   * Length of lookback window
+   * @return lookbackWindow
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public Set<Long> getBrandIds() {
-    return brandIds;
+  public LookbackWindowEnum getLookbackWindow() {
+    return lookbackWindow;
   }
 
 
-  public void setBrandIds(Set<Long> brandIds) {
-    this.brandIds = brandIds;
+  public void setLookbackWindow(LookbackWindowEnum lookbackWindow) {
+    this.lookbackWindow = lookbackWindow;
+  }
+
+
+  public RmLegacySegmentUserBehaviorV2 maxPrice(Double maxPrice) {
+    
+    this.maxPrice = maxPrice;
+    return this;
+  }
+
+   /**
+   * The max price of targeted skus.
+   * @return maxPrice
+  **/
+  @javax.annotation.Nullable
+
+  public Double getMaxPrice() {
+    return maxPrice;
+  }
+
+
+  public void setMaxPrice(Double maxPrice) {
+    this.maxPrice = maxPrice;
   }
 
 
@@ -314,25 +314,25 @@ public class RmLegacySegmentUserBehaviorV2 {
   }
 
 
-  public RmLegacySegmentUserBehaviorV2 maxPrice(Double maxPrice) {
+  public RmLegacySegmentUserBehaviorV2 userAction(UserActionEnum userAction) {
     
-    this.maxPrice = maxPrice;
+    this.userAction = userAction;
     return this;
   }
 
    /**
-   * The max price of targeted skus.
-   * @return maxPrice
+   * Type of shopper activity used to generate the audience.
+   * @return userAction
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public Double getMaxPrice() {
-    return maxPrice;
+  public UserActionEnum getUserAction() {
+    return userAction;
   }
 
 
-  public void setMaxPrice(Double maxPrice) {
-    this.maxPrice = maxPrice;
+  public void setUserAction(UserActionEnum userAction) {
+    this.userAction = userAction;
   }
 
   /**
@@ -390,12 +390,12 @@ public class RmLegacySegmentUserBehaviorV2 {
       return false;
     }
     RmLegacySegmentUserBehaviorV2 rmLegacySegmentUserBehaviorV2 = (RmLegacySegmentUserBehaviorV2) o;
-    return Objects.equals(this.userAction, rmLegacySegmentUserBehaviorV2.userAction) &&
-        Objects.equals(this.lookbackWindow, rmLegacySegmentUserBehaviorV2.lookbackWindow) &&
+    return Objects.equals(this.brandIds, rmLegacySegmentUserBehaviorV2.brandIds) &&
         Objects.equals(this.categoryIds, rmLegacySegmentUserBehaviorV2.categoryIds) &&
-        Objects.equals(this.brandIds, rmLegacySegmentUserBehaviorV2.brandIds) &&
+        Objects.equals(this.lookbackWindow, rmLegacySegmentUserBehaviorV2.lookbackWindow) &&
+        Objects.equals(this.maxPrice, rmLegacySegmentUserBehaviorV2.maxPrice) &&
         Objects.equals(this.minPrice, rmLegacySegmentUserBehaviorV2.minPrice) &&
-        Objects.equals(this.maxPrice, rmLegacySegmentUserBehaviorV2.maxPrice)&&
+        Objects.equals(this.userAction, rmLegacySegmentUserBehaviorV2.userAction)&&
         Objects.equals(this.additionalProperties, rmLegacySegmentUserBehaviorV2.additionalProperties);
   }
 
@@ -405,7 +405,7 @@ public class RmLegacySegmentUserBehaviorV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(userAction, lookbackWindow, categoryIds, brandIds, minPrice, maxPrice, additionalProperties);
+    return Objects.hash(brandIds, categoryIds, lookbackWindow, maxPrice, minPrice, userAction, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -419,12 +419,12 @@ public class RmLegacySegmentUserBehaviorV2 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RmLegacySegmentUserBehaviorV2 {\n");
-    sb.append("    userAction: ").append(toIndentedString(userAction)).append("\n");
-    sb.append("    lookbackWindow: ").append(toIndentedString(lookbackWindow)).append("\n");
-    sb.append("    categoryIds: ").append(toIndentedString(categoryIds)).append("\n");
     sb.append("    brandIds: ").append(toIndentedString(brandIds)).append("\n");
-    sb.append("    minPrice: ").append(toIndentedString(minPrice)).append("\n");
+    sb.append("    categoryIds: ").append(toIndentedString(categoryIds)).append("\n");
+    sb.append("    lookbackWindow: ").append(toIndentedString(lookbackWindow)).append("\n");
     sb.append("    maxPrice: ").append(toIndentedString(maxPrice)).append("\n");
+    sb.append("    minPrice: ").append(toIndentedString(minPrice)).append("\n");
+    sb.append("    userAction: ").append(toIndentedString(userAction)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -448,17 +448,17 @@ public class RmLegacySegmentUserBehaviorV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("userAction");
-    openapiFields.add("lookbackWindow");
-    openapiFields.add("categoryIds");
     openapiFields.add("brandIds");
-    openapiFields.add("minPrice");
+    openapiFields.add("categoryIds");
+    openapiFields.add("lookbackWindow");
     openapiFields.add("maxPrice");
+    openapiFields.add("minPrice");
+    openapiFields.add("userAction");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("userAction");
     openapiRequiredFields.add("lookbackWindow");
+    openapiRequiredFields.add("userAction");
   }
 
  /**
@@ -480,19 +480,19 @@ public class RmLegacySegmentUserBehaviorV2 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("userAction").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `userAction` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userAction").toString()));
-      }
-      if (!jsonObj.get("lookbackWindow").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lookbackWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lookbackWindow").toString()));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `brandIds` to be an array in the JSON string but got `%s`", jsonObj.get("brandIds").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("categoryIds") != null && !jsonObj.get("categoryIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `categoryIds` to be an array in the JSON string but got `%s`", jsonObj.get("categoryIds").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `brandIds` to be an array in the JSON string but got `%s`", jsonObj.get("brandIds").toString()));
+      if (!jsonObj.get("lookbackWindow").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `lookbackWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lookbackWindow").toString()));
+      }
+      if (!jsonObj.get("userAction").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `userAction` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userAction").toString()));
       }
   }
 

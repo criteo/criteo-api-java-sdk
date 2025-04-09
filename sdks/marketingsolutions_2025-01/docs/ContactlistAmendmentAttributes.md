@@ -8,19 +8,10 @@ the name of the entity type
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**operation** | [**OperationEnum**](#OperationEnum) | Operation to add or remove users |  |
-|**identifierType** | [**IdentifierTypeEnum**](#IdentifierTypeEnum) | What type of identifiers are used |  [optional] |
-|**identifiers** | **List&lt;String&gt;** | The users to add or remove, each in the schema specified |  |
 |**gumCallerId** | **Integer** | The Gum caller id of the advertiser patching identifiers of type Gum |  [optional] |
-
-
-
-## Enum: OperationEnum
-
-| Name | Value |
-|---- | -----|
-| ADD | &quot;add&quot; |
-| REMOVE | &quot;remove&quot; |
+|**identifiers** | **List&lt;String&gt;** | The users to add or remove, each in the schema specified |  |
+|**identifierType** | [**IdentifierTypeEnum**](#IdentifierTypeEnum) | What type of identifiers are used |  [optional] |
+|**operation** | [**OperationEnum**](#OperationEnum) | Operation to add or remove users |  |
 
 
 
@@ -33,6 +24,15 @@ the name of the entity type
 | IDENTITYLINK | &quot;identityLink&quot; |
 | GUM | &quot;gum&quot; |
 | PHONENUMBER | &quot;phoneNumber&quot; |
+
+
+
+## Enum: OperationEnum
+
+| Name | Value |
+|---- | -----|
+| ADD | &quot;add&quot; |
+| REMOVE | &quot;remove&quot; |
 
 
 

@@ -53,6 +53,10 @@ import com.criteo.api.retailmedia.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class KeywordsModelResponse {
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private KeywordsModelResource data;
+
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<RmcaCommonProblem> errors = null;
@@ -60,10 +64,6 @@ public class KeywordsModelResponse {
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
   private List<RmcaCommonProblem> warnings = null;
-
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private KeywordsModelResource data;
 
   public KeywordsModelResponse() {
   }
@@ -77,6 +77,28 @@ public class KeywordsModelResponse {
     this.errors = errors;
     this.warnings = warnings;
   }
+
+  public KeywordsModelResponse data(KeywordsModelResource data) {
+    
+    this.data = data;
+    return this;
+  }
+
+   /**
+   * Get data
+   * @return data
+  **/
+  @javax.annotation.Nullable
+
+  public KeywordsModelResource getData() {
+    return data;
+  }
+
+
+  public void setData(KeywordsModelResource data) {
+    this.data = data;
+  }
+
 
    /**
    * Get errors
@@ -104,28 +126,6 @@ public class KeywordsModelResponse {
 
 
 
-  public KeywordsModelResponse data(KeywordsModelResource data) {
-    
-    this.data = data;
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @javax.annotation.Nullable
-
-  public KeywordsModelResource getData() {
-    return data;
-  }
-
-
-  public void setData(KeywordsModelResource data) {
-    this.data = data;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -136,9 +136,9 @@ public class KeywordsModelResponse {
       return false;
     }
     KeywordsModelResponse keywordsModelResponse = (KeywordsModelResponse) o;
-    return Objects.equals(this.errors, keywordsModelResponse.errors) &&
-        Objects.equals(this.warnings, keywordsModelResponse.warnings) &&
-        Objects.equals(this.data, keywordsModelResponse.data);
+    return Objects.equals(this.data, keywordsModelResponse.data) &&
+        Objects.equals(this.errors, keywordsModelResponse.errors) &&
+        Objects.equals(this.warnings, keywordsModelResponse.warnings);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -147,7 +147,7 @@ public class KeywordsModelResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(errors, warnings, data);
+    return Objects.hash(data, errors, warnings);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -161,9 +161,9 @@ public class KeywordsModelResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class KeywordsModelResponse {\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -186,9 +186,9 @@ public class KeywordsModelResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("data");
     openapiFields.add("errors");
     openapiFields.add("warnings");
-    openapiFields.add("data");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -214,6 +214,10 @@ public class KeywordsModelResponse {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `KeywordsModelResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
+      // validate the optional field `data`
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        KeywordsModelResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
+      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
@@ -221,10 +225,6 @@ public class KeywordsModelResponse {
       // ensure the optional json data is an array if present
       if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-      }
-      // validate the optional field `data`
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        KeywordsModelResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
   }
 

@@ -31,7 +31,9 @@ import com.criteo.api.retailmedia.preview.model.AsyncAccountsReportRequest;
 import com.criteo.api.retailmedia.preview.model.AsyncCampaignsReportRequest;
 import com.criteo.api.retailmedia.preview.model.AsyncFillRateReportRequest;
 import com.criteo.api.retailmedia.preview.model.AsyncLineItemsReportRequest;
+import com.criteo.api.retailmedia.preview.model.AsyncOffsiteReportRequest;
 import com.criteo.api.retailmedia.preview.model.AsyncReportResponse;
+import java.io.File;
 import com.criteo.api.retailmedia.preview.model.ReportOutcome;
 import com.criteo.api.retailmedia.preview.model.ReportResponse;
 import com.criteo.api.retailmedia.preview.model.SyncAttributedTransactionsReportRequest;
@@ -627,6 +629,142 @@ public class AnalyticsApi {
         return localVarCall;
     }
     /**
+     * Build call for generateAsyncOffsiteReport
+     * @param asyncOffsiteReportRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call generateAsyncOffsiteReportCall(AsyncOffsiteReportRequest asyncOffsiteReportRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = asyncOffsiteReportRequest;
+
+        // create path and map variables
+        String localVarPath = "/preview/retail-media/reports/offsite";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call generateAsyncOffsiteReportValidateBeforeCall(AsyncOffsiteReportRequest asyncOffsiteReportRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'asyncOffsiteReportRequest' is set
+        if (asyncOffsiteReportRequest == null) {
+            throw new ApiException("Missing the required parameter 'asyncOffsiteReportRequest' when calling generateAsyncOffsiteReport(Async)");
+        }
+
+        return generateAsyncOffsiteReportCall(asyncOffsiteReportRequest, _callback);
+
+    }
+
+    /**
+     * 
+     * Returns an asynchronous Offsite Activity Report This endpoint is subject to specific rate limits.
+     * @param asyncOffsiteReportRequest  (required)
+     * @return AsyncReportResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public AsyncReportResponse generateAsyncOffsiteReport(AsyncOffsiteReportRequest asyncOffsiteReportRequest) throws ApiException {
+        ApiResponse<AsyncReportResponse> localVarResp = generateAsyncOffsiteReportWithHttpInfo(asyncOffsiteReportRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Returns an asynchronous Offsite Activity Report This endpoint is subject to specific rate limits.
+     * @param asyncOffsiteReportRequest  (required)
+     * @return ApiResponse&lt;AsyncReportResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AsyncReportResponse> generateAsyncOffsiteReportWithHttpInfo(AsyncOffsiteReportRequest asyncOffsiteReportRequest) throws ApiException {
+        okhttp3.Call localVarCall = generateAsyncOffsiteReportValidateBeforeCall(asyncOffsiteReportRequest, null);
+        Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Returns an asynchronous Offsite Activity Report This endpoint is subject to specific rate limits.
+     * @param asyncOffsiteReportRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call generateAsyncOffsiteReportAsync(AsyncOffsiteReportRequest asyncOffsiteReportRequest, final ApiCallback<AsyncReportResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = generateAsyncOffsiteReportValidateBeforeCall(asyncOffsiteReportRequest, _callback);
+        Type localVarReturnType = new TypeToken<AsyncReportResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for generateSyncAttributedTransactionsReport
      * @param syncAttributedTransactionsReportRequest  (required)
      * @param _callback Callback for upload/download progress
@@ -1110,7 +1248,7 @@ public class AnalyticsApi {
      * 
      * Returns the output of an async report
      * @param reportId The ID of the report to retrieve (required)
-     * @return String
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1120,8 +1258,8 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public String getAsyncExportOutput(String reportId) throws ApiException {
-        ApiResponse<String> localVarResp = getAsyncExportOutputWithHttpInfo(reportId);
+    public File getAsyncExportOutput(String reportId) throws ApiException {
+        ApiResponse<File> localVarResp = getAsyncExportOutputWithHttpInfo(reportId);
         return localVarResp.getData();
     }
 
@@ -1129,7 +1267,7 @@ public class AnalyticsApi {
      * 
      * Returns the output of an async report
      * @param reportId The ID of the report to retrieve (required)
-     * @return ApiResponse&lt;String&gt;
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1139,9 +1277,9 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<String> getAsyncExportOutputWithHttpInfo(String reportId) throws ApiException {
+    public ApiResponse<File> getAsyncExportOutputWithHttpInfo(String reportId) throws ApiException {
         okhttp3.Call localVarCall = getAsyncExportOutputValidateBeforeCall(reportId, null);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1160,10 +1298,10 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAsyncExportOutputAsync(String reportId, final ApiCallback<String> _callback) throws ApiException {
+    public okhttp3.Call getAsyncExportOutputAsync(String reportId, final ApiCallback<File> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAsyncExportOutputValidateBeforeCall(reportId, _callback);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

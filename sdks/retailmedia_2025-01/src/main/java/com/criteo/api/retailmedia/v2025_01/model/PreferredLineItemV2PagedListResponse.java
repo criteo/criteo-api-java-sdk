@@ -53,56 +53,34 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PreferredLineItemV2PagedListResponse {
-  public static final String SERIALIZED_NAME_METADATA = "metadata";
-  @SerializedName(SERIALIZED_NAME_METADATA)
-  private PageMetadata metadata;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<ResourceOfPreferredLineItemV2> data = null;
 
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<CommonProblem> warnings = null;
-
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<CommonProblem> errors = null;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private PageMetadata metadata;
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<CommonProblem> warnings = null;
 
   public PreferredLineItemV2PagedListResponse() {
   }
 
   
   public PreferredLineItemV2PagedListResponse(
-     List<CommonProblem> warnings, 
-     List<CommonProblem> errors
+     List<CommonProblem> errors, 
+     List<CommonProblem> warnings
   ) {
     this();
-    this.warnings = warnings;
     this.errors = errors;
+    this.warnings = warnings;
   }
-
-  public PreferredLineItemV2PagedListResponse metadata(PageMetadata metadata) {
-    
-    this.metadata = metadata;
-    return this;
-  }
-
-   /**
-   * Get metadata
-   * @return metadata
-  **/
-  @javax.annotation.Nullable
-
-  public PageMetadata getMetadata() {
-    return metadata;
-  }
-
-
-  public void setMetadata(PageMetadata metadata) {
-    this.metadata = metadata;
-  }
-
 
   public PreferredLineItemV2PagedListResponse data(List<ResourceOfPreferredLineItemV2> data) {
     
@@ -135,19 +113,6 @@ public class PreferredLineItemV2PagedListResponse {
 
 
    /**
-   * Get warnings
-   * @return warnings
-  **/
-  @javax.annotation.Nullable
-
-  public List<CommonProblem> getWarnings() {
-    return warnings;
-  }
-
-
-
-
-   /**
    * Get errors
    * @return errors
   **/
@@ -155,6 +120,41 @@ public class PreferredLineItemV2PagedListResponse {
 
   public List<CommonProblem> getErrors() {
     return errors;
+  }
+
+
+
+
+  public PreferredLineItemV2PagedListResponse metadata(PageMetadata metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * Get metadata
+   * @return metadata
+  **/
+  @javax.annotation.Nullable
+
+  public PageMetadata getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(PageMetadata metadata) {
+    this.metadata = metadata;
+  }
+
+
+   /**
+   * Get warnings
+   * @return warnings
+  **/
+  @javax.annotation.Nullable
+
+  public List<CommonProblem> getWarnings() {
+    return warnings;
   }
 
 
@@ -214,26 +214,26 @@ public class PreferredLineItemV2PagedListResponse {
       return false;
     }
     PreferredLineItemV2PagedListResponse preferredLineItemV2PagedListResponse = (PreferredLineItemV2PagedListResponse) o;
-    return Objects.equals(this.metadata, preferredLineItemV2PagedListResponse.metadata) &&
-        Objects.equals(this.data, preferredLineItemV2PagedListResponse.data) &&
-        Objects.equals(this.warnings, preferredLineItemV2PagedListResponse.warnings) &&
-        Objects.equals(this.errors, preferredLineItemV2PagedListResponse.errors)&&
+    return Objects.equals(this.data, preferredLineItemV2PagedListResponse.data) &&
+        Objects.equals(this.errors, preferredLineItemV2PagedListResponse.errors) &&
+        Objects.equals(this.metadata, preferredLineItemV2PagedListResponse.metadata) &&
+        Objects.equals(this.warnings, preferredLineItemV2PagedListResponse.warnings)&&
         Objects.equals(this.additionalProperties, preferredLineItemV2PagedListResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(metadata, data, warnings, errors, additionalProperties);
+    return Objects.hash(data, errors, metadata, warnings, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PreferredLineItemV2PagedListResponse {\n");
-    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -257,10 +257,10 @@ public class PreferredLineItemV2PagedListResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("metadata");
     openapiFields.add("data");
-    openapiFields.add("warnings");
     openapiFields.add("errors");
+    openapiFields.add("metadata");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -278,10 +278,6 @@ public class PreferredLineItemV2PagedListResponse {
           throw new IllegalArgumentException(String.format("The required field(s) %s in PreferredLineItemV2PagedListResponse is not found in the empty JSON string", PreferredLineItemV2PagedListResponse.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `metadata`
-      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
-        PageMetadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
-      }
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
         if (jsonArraydata != null) {
@@ -296,20 +292,6 @@ public class PreferredLineItemV2PagedListResponse {
           };
         }
       }
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
-        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
-        if (jsonArraywarnings != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("warnings").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-          }
-
-          // validate the optional field `warnings` (array)
-          for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
-          };
-        }
-      }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
         if (jsonArrayerrors != null) {
@@ -321,6 +303,24 @@ public class PreferredLineItemV2PagedListResponse {
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
             CommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+          };
+        }
+      }
+      // validate the optional field `metadata`
+      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
+        PageMetadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
+      }
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }

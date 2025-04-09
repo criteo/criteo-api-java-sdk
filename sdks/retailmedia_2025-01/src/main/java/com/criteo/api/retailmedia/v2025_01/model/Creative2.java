@@ -54,92 +54,13 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Creative2 {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  /**
-   * Creative Status
-   */
-  @JsonAdapter(StatusEnum.Adapter.class)
-  public enum StatusEnum {
-    READY("Ready"),
-    
-    INUSE("InUse"),
-    
-    ARCHIVED("Archived"),
-    
-    DELETED("Deleted");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<StatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StatusEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private StatusEnum status;
-
-  public static final String SERIALIZED_NAME_BRAND_ID = "brandId";
-  @SerializedName(SERIALIZED_NAME_BRAND_ID)
-  private Long brandId;
-
-  public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
-  @SerializedName(SERIALIZED_NAME_RETAILER_ID)
-  private Integer retailerId;
-
-  public static final String SERIALIZED_NAME_TEMPLATE_ID = "templateId";
-  @SerializedName(SERIALIZED_NAME_TEMPLATE_ID)
-  private Integer templateId;
-
-  public static final String SERIALIZED_NAME_TEMPLATE_NAME = "templateName";
-  @SerializedName(SERIALIZED_NAME_TEMPLATE_NAME)
-  private String templateName;
-
-  public static final String SERIALIZED_NAME_FORMAT_ID = "formatId";
-  @SerializedName(SERIALIZED_NAME_FORMAT_ID)
-  private Integer formatId;
-
   public static final String SERIALIZED_NAME_ASSOCIATED_LINE_ITEM_IDS = "associatedLineItemIds";
   @SerializedName(SERIALIZED_NAME_ASSOCIATED_LINE_ITEM_IDS)
   private List<String> associatedLineItemIds = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
-  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
-  private OffsetDateTime updatedAt;
+  public static final String SERIALIZED_NAME_BRAND_ID = "brandId";
+  @SerializedName(SERIALIZED_NAME_BRAND_ID)
+  private Long brandId;
 
   /**
    * Creative format type
@@ -212,170 +133,95 @@ public class Creative2 {
   @SerializedName(SERIALIZED_NAME_ENVIRONMENTS)
   private List<PageTypeEnvironment2> environments = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_TEMPLATE_VARIABLE_VALUES = "templateVariableValues";
-  @SerializedName(SERIALIZED_NAME_TEMPLATE_VARIABLE_VALUES)
-  private List<TemplateVariableValue> templateVariableValues = new ArrayList<>();
+  public static final String SERIALIZED_NAME_FORMAT_ID = "formatId";
+  @SerializedName(SERIALIZED_NAME_FORMAT_ID)
+  private Integer formatId;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
+  @SerializedName(SERIALIZED_NAME_RETAILER_ID)
+  private Integer retailerId;
+
+  /**
+   * Creative Status
+   */
+  @JsonAdapter(StatusEnum.Adapter.class)
+  public enum StatusEnum {
+    READY("Ready"),
+    
+    INUSE("InUse"),
+    
+    ARCHIVED("Archived"),
+    
+    DELETED("Deleted");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StatusEnum fromValue(String value) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<StatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return StatusEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private StatusEnum status;
+
+  public static final String SERIALIZED_NAME_TEMPLATE_ID = "templateId";
+  @SerializedName(SERIALIZED_NAME_TEMPLATE_ID)
+  private Integer templateId;
+
+  public static final String SERIALIZED_NAME_TEMPLATE_NAME = "templateName";
+  @SerializedName(SERIALIZED_NAME_TEMPLATE_NAME)
+  private String templateName;
+
+  public static final String SERIALIZED_NAME_TEMPLATE_VARIABLE_VALUES = "templateVariableValues";
+  @SerializedName(SERIALIZED_NAME_TEMPLATE_VARIABLE_VALUES)
+  private List<TemplateVariableValue> templateVariableValues = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  private OffsetDateTime updatedAt;
+
   public Creative2() {
   }
-
-  public Creative2 name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Name
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public Creative2 status(StatusEnum status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Creative Status
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
-
-
-  public Creative2 brandId(Long brandId) {
-    
-    this.brandId = brandId;
-    return this;
-  }
-
-   /**
-   * Brand Id
-   * @return brandId
-  **/
-  @javax.annotation.Nonnull
-
-  public Long getBrandId() {
-    return brandId;
-  }
-
-
-  public void setBrandId(Long brandId) {
-    this.brandId = brandId;
-  }
-
-
-  public Creative2 retailerId(Integer retailerId) {
-    
-    this.retailerId = retailerId;
-    return this;
-  }
-
-   /**
-   * Retailer Id
-   * @return retailerId
-  **/
-  @javax.annotation.Nonnull
-
-  public Integer getRetailerId() {
-    return retailerId;
-  }
-
-
-  public void setRetailerId(Integer retailerId) {
-    this.retailerId = retailerId;
-  }
-
-
-  public Creative2 templateId(Integer templateId) {
-    
-    this.templateId = templateId;
-    return this;
-  }
-
-   /**
-   * Template Id
-   * @return templateId
-  **/
-  @javax.annotation.Nonnull
-
-  public Integer getTemplateId() {
-    return templateId;
-  }
-
-
-  public void setTemplateId(Integer templateId) {
-    this.templateId = templateId;
-  }
-
-
-  public Creative2 templateName(String templateName) {
-    
-    this.templateName = templateName;
-    return this;
-  }
-
-   /**
-   * Template Name
-   * @return templateName
-  **/
-  @javax.annotation.Nonnull
-
-  public String getTemplateName() {
-    return templateName;
-  }
-
-
-  public void setTemplateName(String templateName) {
-    this.templateName = templateName;
-  }
-
-
-  public Creative2 formatId(Integer formatId) {
-    
-    this.formatId = formatId;
-    return this;
-  }
-
-   /**
-   * Format Id
-   * @return formatId
-  **/
-  @javax.annotation.Nonnull
-
-  public Integer getFormatId() {
-    return formatId;
-  }
-
-
-  public void setFormatId(Integer formatId) {
-    this.formatId = formatId;
-  }
-
 
   public Creative2 associatedLineItemIds(List<String> associatedLineItemIds) {
     
@@ -404,25 +250,25 @@ public class Creative2 {
   }
 
 
-  public Creative2 updatedAt(OffsetDateTime updatedAt) {
+  public Creative2 brandId(Long brandId) {
     
-    this.updatedAt = updatedAt;
+    this.brandId = brandId;
     return this;
   }
 
    /**
-   * Updated at time
-   * @return updatedAt
+   * Brand Id
+   * @return brandId
   **/
   @javax.annotation.Nonnull
 
-  public OffsetDateTime getUpdatedAt() {
-    return updatedAt;
+  public Long getBrandId() {
+    return brandId;
   }
 
 
-  public void setUpdatedAt(OffsetDateTime updatedAt) {
-    this.updatedAt = updatedAt;
+  public void setBrandId(Long brandId) {
+    this.brandId = brandId;
   }
 
 
@@ -475,6 +321,160 @@ public class Creative2 {
   }
 
 
+  public Creative2 formatId(Integer formatId) {
+    
+    this.formatId = formatId;
+    return this;
+  }
+
+   /**
+   * Format Id
+   * @return formatId
+  **/
+  @javax.annotation.Nonnull
+
+  public Integer getFormatId() {
+    return formatId;
+  }
+
+
+  public void setFormatId(Integer formatId) {
+    this.formatId = formatId;
+  }
+
+
+  public Creative2 id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Id of the entity
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  public Creative2 name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Name
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public Creative2 retailerId(Integer retailerId) {
+    
+    this.retailerId = retailerId;
+    return this;
+  }
+
+   /**
+   * Retailer Id
+   * @return retailerId
+  **/
+  @javax.annotation.Nonnull
+
+  public Integer getRetailerId() {
+    return retailerId;
+  }
+
+
+  public void setRetailerId(Integer retailerId) {
+    this.retailerId = retailerId;
+  }
+
+
+  public Creative2 status(StatusEnum status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Creative Status
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
+
+  public Creative2 templateId(Integer templateId) {
+    
+    this.templateId = templateId;
+    return this;
+  }
+
+   /**
+   * Template Id
+   * @return templateId
+  **/
+  @javax.annotation.Nonnull
+
+  public Integer getTemplateId() {
+    return templateId;
+  }
+
+
+  public void setTemplateId(Integer templateId) {
+    this.templateId = templateId;
+  }
+
+
+  public Creative2 templateName(String templateName) {
+    
+    this.templateName = templateName;
+    return this;
+  }
+
+   /**
+   * Template Name
+   * @return templateName
+  **/
+  @javax.annotation.Nonnull
+
+  public String getTemplateName() {
+    return templateName;
+  }
+
+
+  public void setTemplateName(String templateName) {
+    this.templateName = templateName;
+  }
+
+
   public Creative2 templateVariableValues(List<TemplateVariableValue> templateVariableValues) {
     
     this.templateVariableValues = templateVariableValues;
@@ -502,25 +502,25 @@ public class Creative2 {
   }
 
 
-  public Creative2 id(String id) {
+  public Creative2 updatedAt(OffsetDateTime updatedAt) {
     
-    this.id = id;
+    this.updatedAt = updatedAt;
     return this;
   }
 
    /**
-   * Id of the entity
-   * @return id
+   * Updated at time
+   * @return updatedAt
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public String getId() {
-    return id;
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
   }
 
 
-  public void setId(String id) {
-    this.id = id;
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
   }
 
 
@@ -534,19 +534,19 @@ public class Creative2 {
       return false;
     }
     Creative2 creative2 = (Creative2) o;
-    return Objects.equals(this.name, creative2.name) &&
-        Objects.equals(this.status, creative2.status) &&
+    return Objects.equals(this.associatedLineItemIds, creative2.associatedLineItemIds) &&
         Objects.equals(this.brandId, creative2.brandId) &&
-        Objects.equals(this.retailerId, creative2.retailerId) &&
-        Objects.equals(this.templateId, creative2.templateId) &&
-        Objects.equals(this.templateName, creative2.templateName) &&
-        Objects.equals(this.formatId, creative2.formatId) &&
-        Objects.equals(this.associatedLineItemIds, creative2.associatedLineItemIds) &&
-        Objects.equals(this.updatedAt, creative2.updatedAt) &&
         Objects.equals(this.creativeFormatV2Type, creative2.creativeFormatV2Type) &&
         Objects.equals(this.environments, creative2.environments) &&
+        Objects.equals(this.formatId, creative2.formatId) &&
+        Objects.equals(this.id, creative2.id) &&
+        Objects.equals(this.name, creative2.name) &&
+        Objects.equals(this.retailerId, creative2.retailerId) &&
+        Objects.equals(this.status, creative2.status) &&
+        Objects.equals(this.templateId, creative2.templateId) &&
+        Objects.equals(this.templateName, creative2.templateName) &&
         Objects.equals(this.templateVariableValues, creative2.templateVariableValues) &&
-        Objects.equals(this.id, creative2.id);
+        Objects.equals(this.updatedAt, creative2.updatedAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -555,7 +555,7 @@ public class Creative2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, status, brandId, retailerId, templateId, templateName, formatId, associatedLineItemIds, updatedAt, creativeFormatV2Type, environments, templateVariableValues, id);
+    return Objects.hash(associatedLineItemIds, brandId, creativeFormatV2Type, environments, formatId, id, name, retailerId, status, templateId, templateName, templateVariableValues, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -569,19 +569,19 @@ public class Creative2 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Creative2 {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    brandId: ").append(toIndentedString(brandId)).append("\n");
-    sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
-    sb.append("    templateId: ").append(toIndentedString(templateId)).append("\n");
-    sb.append("    templateName: ").append(toIndentedString(templateName)).append("\n");
-    sb.append("    formatId: ").append(toIndentedString(formatId)).append("\n");
     sb.append("    associatedLineItemIds: ").append(toIndentedString(associatedLineItemIds)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    brandId: ").append(toIndentedString(brandId)).append("\n");
     sb.append("    creativeFormatV2Type: ").append(toIndentedString(creativeFormatV2Type)).append("\n");
     sb.append("    environments: ").append(toIndentedString(environments)).append("\n");
-    sb.append("    templateVariableValues: ").append(toIndentedString(templateVariableValues)).append("\n");
+    sb.append("    formatId: ").append(toIndentedString(formatId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    templateId: ").append(toIndentedString(templateId)).append("\n");
+    sb.append("    templateName: ").append(toIndentedString(templateName)).append("\n");
+    sb.append("    templateVariableValues: ").append(toIndentedString(templateVariableValues)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -604,34 +604,34 @@ public class Creative2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("status");
-    openapiFields.add("brandId");
-    openapiFields.add("retailerId");
-    openapiFields.add("templateId");
-    openapiFields.add("templateName");
-    openapiFields.add("formatId");
     openapiFields.add("associatedLineItemIds");
-    openapiFields.add("updatedAt");
+    openapiFields.add("brandId");
     openapiFields.add("creativeFormatV2Type");
     openapiFields.add("environments");
-    openapiFields.add("templateVariableValues");
+    openapiFields.add("formatId");
     openapiFields.add("id");
+    openapiFields.add("name");
+    openapiFields.add("retailerId");
+    openapiFields.add("status");
+    openapiFields.add("templateId");
+    openapiFields.add("templateName");
+    openapiFields.add("templateVariableValues");
+    openapiFields.add("updatedAt");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("status");
-    openapiRequiredFields.add("brandId");
-    openapiRequiredFields.add("retailerId");
-    openapiRequiredFields.add("templateId");
-    openapiRequiredFields.add("templateName");
-    openapiRequiredFields.add("formatId");
     openapiRequiredFields.add("associatedLineItemIds");
-    openapiRequiredFields.add("updatedAt");
+    openapiRequiredFields.add("brandId");
     openapiRequiredFields.add("creativeFormatV2Type");
     openapiRequiredFields.add("environments");
+    openapiRequiredFields.add("formatId");
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("retailerId");
+    openapiRequiredFields.add("status");
+    openapiRequiredFields.add("templateId");
+    openapiRequiredFields.add("templateName");
     openapiRequiredFields.add("templateVariableValues");
+    openapiRequiredFields.add("updatedAt");
   }
 
  /**
@@ -661,15 +661,6 @@ public class Creative2 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if (!jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
-      }
-      if (!jsonObj.get("templateName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `templateName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("templateName").toString()));
-      }
       // ensure the required json array is present
       if (jsonObj.get("associatedLineItemIds") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
@@ -689,6 +680,18 @@ public class Creative2 {
       for (int i = 0; i < jsonArrayenvironments.size(); i++) {
         PageTypeEnvironment2.validateJsonObject(jsonArrayenvironments.get(i).getAsJsonObject());
       };
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if (!jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      if (!jsonObj.get("templateName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `templateName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("templateName").toString()));
+      }
       // ensure the json data is an array
       if (!jsonObj.get("templateVariableValues").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `templateVariableValues` to be an array in the JSON string but got `%s`", jsonObj.get("templateVariableValues").toString()));
@@ -699,9 +702,6 @@ public class Creative2 {
       for (int i = 0; i < jsonArraytemplateVariableValues.size(); i++) {
         TemplateVariableValue.validateJsonObject(jsonArraytemplateVariableValues.get(i).getAsJsonObject());
       };
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

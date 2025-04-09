@@ -8,17 +8,17 @@ A template for creating creatives.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**creativeFormat** | [**CreativeFormatEnum**](#CreativeFormatEnum) | The kind of creative this template can be used to build. |  |
-|**name** | **String** | The name of the template |  |
-|**skuCollectionMin** | **Integer** | Minimum number of skus in the collection |  |
-|**skuCollectionMax** | **Integer** | Maximum number of skus in the collection |  [optional] |
-|**skuPerCollectionMin** | **Integer** | Minimum number of skus per collection |  |
-|**skuPerCollectionMax** | **Integer** | Maximum number of skus per collection |  [optional] |
-|**displayableSkusMax** | **Integer** | Maximum number of displayable skus |  [optional] |
 |**allCollectionsMandatory** | **Boolean** | Marks whether or not all collections are mandatory |  |
 |**createdAt** | **OffsetDateTime** | The time at which the template was created |  |
-|**updatedAt** | **OffsetDateTime** | The time at which the template was updated |  |
+|**creativeFormat** | [**CreativeFormatEnum**](#CreativeFormatEnum) | The kind of creative this template can be used to build. |  |
+|**displayableSkusMax** | **Integer** | Maximum number of displayable skus |  [optional] |
+|**name** | **String** | The name of the template |  |
 |**sections** | [**List&lt;Section&gt;**](Section.md) | The sections holding various template variables |  |
+|**skuCollectionMax** | **Integer** | Maximum number of skus in the collection |  [optional] |
+|**skuCollectionMin** | **Integer** | Minimum number of skus in the collection |  |
+|**skuPerCollectionMax** | **Integer** | Maximum number of skus per collection |  [optional] |
+|**skuPerCollectionMin** | **Integer** | Minimum number of skus per collection |  |
+|**updatedAt** | **OffsetDateTime** | The time at which the template was updated |  |
 
 
 

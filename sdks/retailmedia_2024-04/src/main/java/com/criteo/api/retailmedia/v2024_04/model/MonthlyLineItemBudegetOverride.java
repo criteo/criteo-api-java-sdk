@@ -50,10 +50,6 @@ import com.criteo.api.retailmedia.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MonthlyLineItemBudegetOverride {
-  public static final String SERIALIZED_NAME_START_MONTH = "startMonth";
-  @SerializedName(SERIALIZED_NAME_START_MONTH)
-  private OffsetDateTime startMonth;
-
   public static final String SERIALIZED_NAME_DURATION = "duration";
   @SerializedName(SERIALIZED_NAME_DURATION)
   private String duration;
@@ -61,6 +57,10 @@ public class MonthlyLineItemBudegetOverride {
   public static final String SERIALIZED_NAME_MAX_MONTHLY_SPEND = "maxMonthlySpend";
   @SerializedName(SERIALIZED_NAME_MAX_MONTHLY_SPEND)
   private Double maxMonthlySpend;
+
+  public static final String SERIALIZED_NAME_START_MONTH = "startMonth";
+  @SerializedName(SERIALIZED_NAME_START_MONTH)
+  private OffsetDateTime startMonth;
 
   /**
    * Monthly budget override computed status.
@@ -118,28 +118,6 @@ public class MonthlyLineItemBudegetOverride {
   public MonthlyLineItemBudegetOverride() {
   }
 
-  public MonthlyLineItemBudegetOverride startMonth(OffsetDateTime startMonth) {
-    
-    this.startMonth = startMonth;
-    return this;
-  }
-
-   /**
-   * Monthly budget override start month, format \&quot;yyyy-MM\&quot;. If it is null, the StartMonth would be the following month of the last item in the override sequence.
-   * @return startMonth
-  **/
-  @javax.annotation.Nullable
-
-  public OffsetDateTime getStartMonth() {
-    return startMonth;
-  }
-
-
-  public void setStartMonth(OffsetDateTime startMonth) {
-    this.startMonth = startMonth;
-  }
-
-
   public MonthlyLineItemBudegetOverride duration(String duration) {
     
     this.duration = duration;
@@ -184,6 +162,28 @@ public class MonthlyLineItemBudegetOverride {
   }
 
 
+  public MonthlyLineItemBudegetOverride startMonth(OffsetDateTime startMonth) {
+    
+    this.startMonth = startMonth;
+    return this;
+  }
+
+   /**
+   * Monthly budget override start month, format \&quot;yyyy-MM\&quot;. If it is null, the StartMonth would be the following month of the last item in the override sequence.
+   * @return startMonth
+  **/
+  @javax.annotation.Nullable
+
+  public OffsetDateTime getStartMonth() {
+    return startMonth;
+  }
+
+
+  public void setStartMonth(OffsetDateTime startMonth) {
+    this.startMonth = startMonth;
+  }
+
+
   public MonthlyLineItemBudegetOverride status(StatusEnum status) {
     
     this.status = status;
@@ -216,9 +216,9 @@ public class MonthlyLineItemBudegetOverride {
       return false;
     }
     MonthlyLineItemBudegetOverride monthlyLineItemBudegetOverride = (MonthlyLineItemBudegetOverride) o;
-    return Objects.equals(this.startMonth, monthlyLineItemBudegetOverride.startMonth) &&
-        Objects.equals(this.duration, monthlyLineItemBudegetOverride.duration) &&
+    return Objects.equals(this.duration, monthlyLineItemBudegetOverride.duration) &&
         Objects.equals(this.maxMonthlySpend, monthlyLineItemBudegetOverride.maxMonthlySpend) &&
+        Objects.equals(this.startMonth, monthlyLineItemBudegetOverride.startMonth) &&
         Objects.equals(this.status, monthlyLineItemBudegetOverride.status);
   }
 
@@ -228,7 +228,7 @@ public class MonthlyLineItemBudegetOverride {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startMonth, duration, maxMonthlySpend, status);
+    return Objects.hash(duration, maxMonthlySpend, startMonth, status);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -242,9 +242,9 @@ public class MonthlyLineItemBudegetOverride {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class MonthlyLineItemBudegetOverride {\n");
-    sb.append("    startMonth: ").append(toIndentedString(startMonth)).append("\n");
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("    maxMonthlySpend: ").append(toIndentedString(maxMonthlySpend)).append("\n");
+    sb.append("    startMonth: ").append(toIndentedString(startMonth)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -268,9 +268,9 @@ public class MonthlyLineItemBudegetOverride {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("startMonth");
     openapiFields.add("duration");
     openapiFields.add("maxMonthlySpend");
+    openapiFields.add("startMonth");
     openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)

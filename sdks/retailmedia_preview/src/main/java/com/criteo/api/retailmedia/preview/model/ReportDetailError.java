@@ -48,6 +48,14 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReportDetailError {
+  public static final String SERIALIZED_NAME_IS_SERVER_RELATED = "isServerRelated";
+  @SerializedName(SERIALIZED_NAME_IS_SERVER_RELATED)
+  private Boolean isServerRelated;
+
+  public static final String SERIALIZED_NAME_MESSAGE = "message";
+  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  private String message;
+
   /**
    * Gets or Sets type
    */
@@ -127,36 +135,28 @@ public class ReportDetailError {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
-  private String message;
-
-  public static final String SERIALIZED_NAME_IS_SERVER_RELATED = "isServerRelated";
-  @SerializedName(SERIALIZED_NAME_IS_SERVER_RELATED)
-  private Boolean isServerRelated;
-
   public ReportDetailError() {
   }
 
-  public ReportDetailError type(TypeEnum type) {
+  public ReportDetailError isServerRelated(Boolean isServerRelated) {
     
-    this.type = type;
+    this.isServerRelated = isServerRelated;
     return this;
   }
 
    /**
-   * Get type
-   * @return type
+   * Get isServerRelated
+   * @return isServerRelated
   **/
   @javax.annotation.Nonnull
 
-  public TypeEnum getType() {
-    return type;
+  public Boolean getIsServerRelated() {
+    return isServerRelated;
   }
 
 
-  public void setType(TypeEnum type) {
-    this.type = type;
+  public void setIsServerRelated(Boolean isServerRelated) {
+    this.isServerRelated = isServerRelated;
   }
 
 
@@ -182,25 +182,25 @@ public class ReportDetailError {
   }
 
 
-  public ReportDetailError isServerRelated(Boolean isServerRelated) {
+  public ReportDetailError type(TypeEnum type) {
     
-    this.isServerRelated = isServerRelated;
+    this.type = type;
     return this;
   }
 
    /**
-   * Get isServerRelated
-   * @return isServerRelated
+   * Get type
+   * @return type
   **/
   @javax.annotation.Nonnull
 
-  public Boolean getIsServerRelated() {
-    return isServerRelated;
+  public TypeEnum getType() {
+    return type;
   }
 
 
-  public void setIsServerRelated(Boolean isServerRelated) {
-    this.isServerRelated = isServerRelated;
+  public void setType(TypeEnum type) {
+    this.type = type;
   }
 
   /**
@@ -258,24 +258,24 @@ public class ReportDetailError {
       return false;
     }
     ReportDetailError reportDetailError = (ReportDetailError) o;
-    return Objects.equals(this.type, reportDetailError.type) &&
+    return Objects.equals(this.isServerRelated, reportDetailError.isServerRelated) &&
         Objects.equals(this.message, reportDetailError.message) &&
-        Objects.equals(this.isServerRelated, reportDetailError.isServerRelated)&&
+        Objects.equals(this.type, reportDetailError.type)&&
         Objects.equals(this.additionalProperties, reportDetailError.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, message, isServerRelated, additionalProperties);
+    return Objects.hash(isServerRelated, message, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReportDetailError {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    isServerRelated: ").append(toIndentedString(isServerRelated)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -299,15 +299,15 @@ public class ReportDetailError {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
-    openapiFields.add("message");
     openapiFields.add("isServerRelated");
+    openapiFields.add("message");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("message");
     openapiRequiredFields.add("isServerRelated");
+    openapiRequiredFields.add("message");
+    openapiRequiredFields.add("type");
   }
 
  /**
@@ -329,11 +329,11 @@ public class ReportDetailError {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       if (!jsonObj.get("message").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+      }
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

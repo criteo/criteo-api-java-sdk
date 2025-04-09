@@ -51,6 +51,10 @@ import com.criteo.api.retailmedia.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RmLegacyAudienceGetEntityV1 {
+  public static final String SERIALIZED_NAME_CUSTOMER_LIST_DETAILS = "customerListDetails";
+  @SerializedName(SERIALIZED_NAME_CUSTOMER_LIST_DETAILS)
+  private RmLegacySegmentCustomerList customerListDetails;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -63,12 +67,30 @@ public class RmLegacyAudienceGetEntityV1 {
   @SerializedName(SERIALIZED_NAME_USER_BEHAVIOR_DETAILS)
   private RmLegacySegmentUserBehaviorV1 userBehaviorDetails;
 
-  public static final String SERIALIZED_NAME_CUSTOMER_LIST_DETAILS = "customerListDetails";
-  @SerializedName(SERIALIZED_NAME_CUSTOMER_LIST_DETAILS)
-  private RmLegacySegmentCustomerList customerListDetails;
-
   public RmLegacyAudienceGetEntityV1() {
   }
+
+  public RmLegacyAudienceGetEntityV1 customerListDetails(RmLegacySegmentCustomerList customerListDetails) {
+    
+    this.customerListDetails = customerListDetails;
+    return this;
+  }
+
+   /**
+   * Get customerListDetails
+   * @return customerListDetails
+  **/
+  @javax.annotation.Nullable
+
+  public RmLegacySegmentCustomerList getCustomerListDetails() {
+    return customerListDetails;
+  }
+
+
+  public void setCustomerListDetails(RmLegacySegmentCustomerList customerListDetails) {
+    this.customerListDetails = customerListDetails;
+  }
+
 
   public RmLegacyAudienceGetEntityV1 name(String name) {
     
@@ -135,28 +157,6 @@ public class RmLegacyAudienceGetEntityV1 {
     this.userBehaviorDetails = userBehaviorDetails;
   }
 
-
-  public RmLegacyAudienceGetEntityV1 customerListDetails(RmLegacySegmentCustomerList customerListDetails) {
-    
-    this.customerListDetails = customerListDetails;
-    return this;
-  }
-
-   /**
-   * Get customerListDetails
-   * @return customerListDetails
-  **/
-  @javax.annotation.Nullable
-
-  public RmLegacySegmentCustomerList getCustomerListDetails() {
-    return customerListDetails;
-  }
-
-
-  public void setCustomerListDetails(RmLegacySegmentCustomerList customerListDetails) {
-    this.customerListDetails = customerListDetails;
-  }
-
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -212,10 +212,10 @@ public class RmLegacyAudienceGetEntityV1 {
       return false;
     }
     RmLegacyAudienceGetEntityV1 rmLegacyAudienceGetEntityV1 = (RmLegacyAudienceGetEntityV1) o;
-    return Objects.equals(this.name, rmLegacyAudienceGetEntityV1.name) &&
+    return Objects.equals(this.customerListDetails, rmLegacyAudienceGetEntityV1.customerListDetails) &&
+        Objects.equals(this.name, rmLegacyAudienceGetEntityV1.name) &&
         Objects.equals(this.retailerId, rmLegacyAudienceGetEntityV1.retailerId) &&
-        Objects.equals(this.userBehaviorDetails, rmLegacyAudienceGetEntityV1.userBehaviorDetails) &&
-        Objects.equals(this.customerListDetails, rmLegacyAudienceGetEntityV1.customerListDetails)&&
+        Objects.equals(this.userBehaviorDetails, rmLegacyAudienceGetEntityV1.userBehaviorDetails)&&
         Objects.equals(this.additionalProperties, rmLegacyAudienceGetEntityV1.additionalProperties);
   }
 
@@ -225,7 +225,7 @@ public class RmLegacyAudienceGetEntityV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, retailerId, userBehaviorDetails, customerListDetails, additionalProperties);
+    return Objects.hash(customerListDetails, name, retailerId, userBehaviorDetails, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -239,10 +239,10 @@ public class RmLegacyAudienceGetEntityV1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RmLegacyAudienceGetEntityV1 {\n");
+    sb.append("    customerListDetails: ").append(toIndentedString(customerListDetails)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    userBehaviorDetails: ").append(toIndentedString(userBehaviorDetails)).append("\n");
-    sb.append("    customerListDetails: ").append(toIndentedString(customerListDetails)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -266,10 +266,10 @@ public class RmLegacyAudienceGetEntityV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("customerListDetails");
     openapiFields.add("name");
     openapiFields.add("retailerId");
     openapiFields.add("userBehaviorDetails");
-    openapiFields.add("customerListDetails");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -296,6 +296,10 @@ public class RmLegacyAudienceGetEntityV1 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      // validate the optional field `customerListDetails`
+      if (jsonObj.get("customerListDetails") != null && !jsonObj.get("customerListDetails").isJsonNull()) {
+        RmLegacySegmentCustomerList.validateJsonObject(jsonObj.getAsJsonObject("customerListDetails"));
+      }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
@@ -305,10 +309,6 @@ public class RmLegacyAudienceGetEntityV1 {
       // validate the optional field `userBehaviorDetails`
       if (jsonObj.get("userBehaviorDetails") != null && !jsonObj.get("userBehaviorDetails").isJsonNull()) {
         RmLegacySegmentUserBehaviorV1.validateJsonObject(jsonObj.getAsJsonObject("userBehaviorDetails"));
-      }
-      // validate the optional field `customerListDetails`
-      if (jsonObj.get("customerListDetails") != null && !jsonObj.get("customerListDetails").isJsonNull()) {
-        RmLegacySegmentCustomerList.validateJsonObject(jsonObj.getAsJsonObject("customerListDetails"));
       }
   }
 

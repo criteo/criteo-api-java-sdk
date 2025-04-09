@@ -49,21 +49,13 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PageMetadata {
-  public static final String SERIALIZED_NAME_TOTAL_ITEMS_ACROSS_ALL_PAGES = "totalItemsAcrossAllPages";
-  @SerializedName(SERIALIZED_NAME_TOTAL_ITEMS_ACROSS_ALL_PAGES)
-  private Long totalItemsAcrossAllPages;
-
-  public static final String SERIALIZED_NAME_CURRENT_PAGE_SIZE = "currentPageSize";
-  @SerializedName(SERIALIZED_NAME_CURRENT_PAGE_SIZE)
-  private Integer currentPageSize;
-
   public static final String SERIALIZED_NAME_CURRENT_PAGE_INDEX = "currentPageIndex";
   @SerializedName(SERIALIZED_NAME_CURRENT_PAGE_INDEX)
   private Integer currentPageIndex;
 
-  public static final String SERIALIZED_NAME_TOTAL_PAGES = "totalPages";
-  @SerializedName(SERIALIZED_NAME_TOTAL_PAGES)
-  private Long totalPages;
+  public static final String SERIALIZED_NAME_CURRENT_PAGE_SIZE = "currentPageSize";
+  @SerializedName(SERIALIZED_NAME_CURRENT_PAGE_SIZE)
+  private Integer currentPageSize;
 
   public static final String SERIALIZED_NAME_NEXT_PAGE = "nextPage";
   @SerializedName(SERIALIZED_NAME_NEXT_PAGE)
@@ -73,52 +65,16 @@ public class PageMetadata {
   @SerializedName(SERIALIZED_NAME_PREVIOUS_PAGE)
   private String previousPage;
 
+  public static final String SERIALIZED_NAME_TOTAL_ITEMS_ACROSS_ALL_PAGES = "totalItemsAcrossAllPages";
+  @SerializedName(SERIALIZED_NAME_TOTAL_ITEMS_ACROSS_ALL_PAGES)
+  private Long totalItemsAcrossAllPages;
+
+  public static final String SERIALIZED_NAME_TOTAL_PAGES = "totalPages";
+  @SerializedName(SERIALIZED_NAME_TOTAL_PAGES)
+  private Long totalPages;
+
   public PageMetadata() {
   }
-
-  public PageMetadata totalItemsAcrossAllPages(Long totalItemsAcrossAllPages) {
-    
-    this.totalItemsAcrossAllPages = totalItemsAcrossAllPages;
-    return this;
-  }
-
-   /**
-   * Get totalItemsAcrossAllPages
-   * @return totalItemsAcrossAllPages
-  **/
-  @javax.annotation.Nullable
-
-  public Long getTotalItemsAcrossAllPages() {
-    return totalItemsAcrossAllPages;
-  }
-
-
-  public void setTotalItemsAcrossAllPages(Long totalItemsAcrossAllPages) {
-    this.totalItemsAcrossAllPages = totalItemsAcrossAllPages;
-  }
-
-
-  public PageMetadata currentPageSize(Integer currentPageSize) {
-    
-    this.currentPageSize = currentPageSize;
-    return this;
-  }
-
-   /**
-   * Get currentPageSize
-   * @return currentPageSize
-  **/
-  @javax.annotation.Nonnull
-
-  public Integer getCurrentPageSize() {
-    return currentPageSize;
-  }
-
-
-  public void setCurrentPageSize(Integer currentPageSize) {
-    this.currentPageSize = currentPageSize;
-  }
-
 
   public PageMetadata currentPageIndex(Integer currentPageIndex) {
     
@@ -142,25 +98,25 @@ public class PageMetadata {
   }
 
 
-  public PageMetadata totalPages(Long totalPages) {
+  public PageMetadata currentPageSize(Integer currentPageSize) {
     
-    this.totalPages = totalPages;
+    this.currentPageSize = currentPageSize;
     return this;
   }
 
    /**
-   * Get totalPages
-   * @return totalPages
+   * Get currentPageSize
+   * @return currentPageSize
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public Long getTotalPages() {
-    return totalPages;
+  public Integer getCurrentPageSize() {
+    return currentPageSize;
   }
 
 
-  public void setTotalPages(Long totalPages) {
-    this.totalPages = totalPages;
+  public void setCurrentPageSize(Integer currentPageSize) {
+    this.currentPageSize = currentPageSize;
   }
 
 
@@ -208,6 +164,50 @@ public class PageMetadata {
   }
 
 
+  public PageMetadata totalItemsAcrossAllPages(Long totalItemsAcrossAllPages) {
+    
+    this.totalItemsAcrossAllPages = totalItemsAcrossAllPages;
+    return this;
+  }
+
+   /**
+   * Get totalItemsAcrossAllPages
+   * @return totalItemsAcrossAllPages
+  **/
+  @javax.annotation.Nullable
+
+  public Long getTotalItemsAcrossAllPages() {
+    return totalItemsAcrossAllPages;
+  }
+
+
+  public void setTotalItemsAcrossAllPages(Long totalItemsAcrossAllPages) {
+    this.totalItemsAcrossAllPages = totalItemsAcrossAllPages;
+  }
+
+
+  public PageMetadata totalPages(Long totalPages) {
+    
+    this.totalPages = totalPages;
+    return this;
+  }
+
+   /**
+   * Get totalPages
+   * @return totalPages
+  **/
+  @javax.annotation.Nullable
+
+  public Long getTotalPages() {
+    return totalPages;
+  }
+
+
+  public void setTotalPages(Long totalPages) {
+    this.totalPages = totalPages;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -218,12 +218,12 @@ public class PageMetadata {
       return false;
     }
     PageMetadata pageMetadata = (PageMetadata) o;
-    return Objects.equals(this.totalItemsAcrossAllPages, pageMetadata.totalItemsAcrossAllPages) &&
+    return Objects.equals(this.currentPageIndex, pageMetadata.currentPageIndex) &&
         Objects.equals(this.currentPageSize, pageMetadata.currentPageSize) &&
-        Objects.equals(this.currentPageIndex, pageMetadata.currentPageIndex) &&
-        Objects.equals(this.totalPages, pageMetadata.totalPages) &&
         Objects.equals(this.nextPage, pageMetadata.nextPage) &&
-        Objects.equals(this.previousPage, pageMetadata.previousPage);
+        Objects.equals(this.previousPage, pageMetadata.previousPage) &&
+        Objects.equals(this.totalItemsAcrossAllPages, pageMetadata.totalItemsAcrossAllPages) &&
+        Objects.equals(this.totalPages, pageMetadata.totalPages);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -232,7 +232,7 @@ public class PageMetadata {
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalItemsAcrossAllPages, currentPageSize, currentPageIndex, totalPages, nextPage, previousPage);
+    return Objects.hash(currentPageIndex, currentPageSize, nextPage, previousPage, totalItemsAcrossAllPages, totalPages);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -246,12 +246,12 @@ public class PageMetadata {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PageMetadata {\n");
-    sb.append("    totalItemsAcrossAllPages: ").append(toIndentedString(totalItemsAcrossAllPages)).append("\n");
-    sb.append("    currentPageSize: ").append(toIndentedString(currentPageSize)).append("\n");
     sb.append("    currentPageIndex: ").append(toIndentedString(currentPageIndex)).append("\n");
-    sb.append("    totalPages: ").append(toIndentedString(totalPages)).append("\n");
+    sb.append("    currentPageSize: ").append(toIndentedString(currentPageSize)).append("\n");
     sb.append("    nextPage: ").append(toIndentedString(nextPage)).append("\n");
     sb.append("    previousPage: ").append(toIndentedString(previousPage)).append("\n");
+    sb.append("    totalItemsAcrossAllPages: ").append(toIndentedString(totalItemsAcrossAllPages)).append("\n");
+    sb.append("    totalPages: ").append(toIndentedString(totalPages)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -274,17 +274,17 @@ public class PageMetadata {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("totalItemsAcrossAllPages");
-    openapiFields.add("currentPageSize");
     openapiFields.add("currentPageIndex");
-    openapiFields.add("totalPages");
+    openapiFields.add("currentPageSize");
     openapiFields.add("nextPage");
     openapiFields.add("previousPage");
+    openapiFields.add("totalItemsAcrossAllPages");
+    openapiFields.add("totalPages");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("currentPageSize");
     openapiRequiredFields.add("currentPageIndex");
+    openapiRequiredFields.add("currentPageSize");
   }
 
  /**

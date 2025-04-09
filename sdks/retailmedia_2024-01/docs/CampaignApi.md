@@ -1251,7 +1251,7 @@ public class Example {
 
 ## getApi202204ExternalCategories
 
-> Category202204ListResponse getApi202204ExternalCategories(retailerId, textSubstring, pageIndex, pageSize)
+> Category202204ListResponse getApi202204ExternalCategories(pageIndex, pageSize, retailerId, textSubstring)
 
 
 
@@ -1296,12 +1296,12 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer retailerId = 56; // Integer | The retailer id for which Categories fetched
-        String textSubstring = "textSubstring_example"; // String | Query string to search across Categories
         Integer pageIndex = 0; // Integer | The start position in the overall list of matches. Must be zero or greater.
         Integer pageSize = 100; // Integer | The maximum number of results to return with each call. Must be greater than zero.
+        Integer retailerId = 56; // Integer | The retailer id for which Categories fetched
+        String textSubstring = "textSubstring_example"; // String | Query string to search across Categories
         try {
-            Category202204ListResponse result = apiInstance.getApi202204ExternalCategories(retailerId, textSubstring, pageIndex, pageSize);
+            Category202204ListResponse result = apiInstance.getApi202204ExternalCategories(pageIndex, pageSize, retailerId, textSubstring);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getApi202204ExternalCategories");
@@ -1319,10 +1319,10 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| The retailer id for which Categories fetched | [optional] |
-| **textSubstring** | **String**| Query string to search across Categories | [optional] |
 | **pageIndex** | **Integer**| The start position in the overall list of matches. Must be zero or greater. | [optional] [default to 0] |
 | **pageSize** | **Integer**| The maximum number of results to return with each call. Must be greater than zero. | [optional] [default to 100] |
+| **retailerId** | **Integer**| The retailer id for which Categories fetched | [optional] |
+| **textSubstring** | **String**| Query string to search across Categories | [optional] |
 
 ### Return type
 
@@ -2260,7 +2260,7 @@ public class Example {
 
 ## getApiV2ExternalAccountLineItemsByAccountId
 
-> CommonLineItemPagedListResponse getApiV2ExternalAccountLineItemsByAccountId(accountId, limitToCampaignId, limitToType, limitToId, pageIndex, pageSize)
+> CommonLineItemPagedListResponse getApiV2ExternalAccountLineItemsByAccountId(accountId, limitToCampaignId, limitToId, limitToType, pageIndex, pageSize)
 
 
 
@@ -2307,12 +2307,12 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String accountId = "accountId_example"; // String | The given account id
         List<String> limitToCampaignId = Arrays.asList(); // List<String> | The campaign ids that you would like to limit your result set to
-        String limitToType = "Unknown"; // String | The campaign types that you would like to limit your result set to
         List<String> limitToId = Arrays.asList(); // List<String> | The ids that you would like to limit your result set to
+        String limitToType = "Unknown"; // String | The campaign types that you would like to limit your result set to
         Integer pageIndex = 56; // Integer | The 0 indexed page index you would like to receive given the page size
         Integer pageSize = 56; // Integer | The maximum number of items you would like to receive in this request
         try {
-            CommonLineItemPagedListResponse result = apiInstance.getApiV2ExternalAccountLineItemsByAccountId(accountId, limitToCampaignId, limitToType, limitToId, pageIndex, pageSize);
+            CommonLineItemPagedListResponse result = apiInstance.getApiV2ExternalAccountLineItemsByAccountId(accountId, limitToCampaignId, limitToId, limitToType, pageIndex, pageSize);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getApiV2ExternalAccountLineItemsByAccountId");
@@ -2332,8 +2332,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| The given account id | |
 | **limitToCampaignId** | [**List&lt;String&gt;**](String.md)| The campaign ids that you would like to limit your result set to | [optional] |
-| **limitToType** | **String**| The campaign types that you would like to limit your result set to | [optional] [enum: Unknown, Auction, Preferred] |
 | **limitToId** | [**List&lt;String&gt;**](String.md)| The ids that you would like to limit your result set to | [optional] |
+| **limitToType** | **String**| The campaign types that you would like to limit your result set to | [optional] [enum: Unknown, Auction, Preferred] |
 | **pageIndex** | **Integer**| The 0 indexed page index you would like to receive given the page size | [optional] |
 | **pageSize** | **Integer**| The maximum number of items you would like to receive in this request | [optional] |
 

@@ -8,8 +8,8 @@ A wrapper class to return a single page of items with metadata for offset and li
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**meta** | [**Metadata**](Metadata.md) |  |  |
 |**data** | [**List&lt;BalanceHistoryChangeDataCaptureV1&gt;**](BalanceHistoryChangeDataCaptureV1.md) |  |  |
+|**meta** | [**Metadata**](Metadata.md) |  |  |
 
 
 

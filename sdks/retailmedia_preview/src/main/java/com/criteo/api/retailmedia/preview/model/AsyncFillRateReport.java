@@ -51,10 +51,6 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AsyncFillRateReport {
-  public static final String SERIALIZED_NAME_SUPPLY_ACCOUNT_IDS = "supplyAccountIds";
-  @SerializedName(SERIALIZED_NAME_SUPPLY_ACCOUNT_IDS)
-  private List<String> supplyAccountIds = new ArrayList<>();
-
   /**
    * Gets or Sets dimensions
    */
@@ -121,6 +117,65 @@ public class AsyncFillRateReport {
   public static final String SERIALIZED_NAME_DIMENSIONS = "dimensions";
   @SerializedName(SERIALIZED_NAME_DIMENSIONS)
   private List<DimensionsEnum> dimensions = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_END_DATE = "endDate";
+  @SerializedName(SERIALIZED_NAME_END_DATE)
+  private OffsetDateTime endDate;
+
+  /**
+   * Format of the output
+   */
+  @JsonAdapter(FormatEnum.Adapter.class)
+  public enum FormatEnum {
+    JSON("json"),
+    
+    JSON_COMPACT("json-compact"),
+    
+    JSON_NEWLINE("json-newline"),
+    
+    CSV("csv");
+
+    private String value;
+
+    FormatEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static FormatEnum fromValue(String value) {
+      for (FormatEnum b : FormatEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<FormatEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final FormatEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public FormatEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return FormatEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_FORMAT = "format";
+  @SerializedName(SERIALIZED_NAME_FORMAT)
+  private FormatEnum format = FormatEnum.JSON;
 
   /**
    * Gets or Sets metrics
@@ -211,68 +266,13 @@ public class AsyncFillRateReport {
   @SerializedName(SERIALIZED_NAME_METRICS)
   private List<MetricsEnum> metrics = new ArrayList<>();
 
-  /**
-   * Format of the output
-   */
-  @JsonAdapter(FormatEnum.Adapter.class)
-  public enum FormatEnum {
-    JSON("json"),
-    
-    JSON_COMPACT("json-compact"),
-    
-    JSON_NEWLINE("json-newline"),
-    
-    CSV("csv");
-
-    private String value;
-
-    FormatEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static FormatEnum fromValue(String value) {
-      for (FormatEnum b : FormatEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<FormatEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final FormatEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public FormatEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return FormatEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_FORMAT = "format";
-  @SerializedName(SERIALIZED_NAME_FORMAT)
-  private FormatEnum format = FormatEnum.JSON;
-
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private OffsetDateTime startDate;
 
-  public static final String SERIALIZED_NAME_END_DATE = "endDate";
-  @SerializedName(SERIALIZED_NAME_END_DATE)
-  private OffsetDateTime endDate;
+  public static final String SERIALIZED_NAME_SUPPLY_ACCOUNT_IDS = "supplyAccountIds";
+  @SerializedName(SERIALIZED_NAME_SUPPLY_ACCOUNT_IDS)
+  private List<String> supplyAccountIds = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
   @SerializedName(SERIALIZED_NAME_TIMEZONE)
@@ -280,33 +280,6 @@ public class AsyncFillRateReport {
 
   public AsyncFillRateReport() {
   }
-
-  public AsyncFillRateReport supplyAccountIds(List<String> supplyAccountIds) {
-    
-    this.supplyAccountIds = supplyAccountIds;
-    return this;
-  }
-
-  public AsyncFillRateReport addSupplyAccountIdsItem(String supplyAccountIdsItem) {
-    this.supplyAccountIds.add(supplyAccountIdsItem);
-    return this;
-  }
-
-   /**
-   * Supply account ids to report on
-   * @return supplyAccountIds
-  **/
-  @javax.annotation.Nonnull
-
-  public List<String> getSupplyAccountIds() {
-    return supplyAccountIds;
-  }
-
-
-  public void setSupplyAccountIds(List<String> supplyAccountIds) {
-    this.supplyAccountIds = supplyAccountIds;
-  }
-
 
   public AsyncFillRateReport dimensions(List<DimensionsEnum> dimensions) {
     
@@ -332,6 +305,50 @@ public class AsyncFillRateReport {
 
   public void setDimensions(List<DimensionsEnum> dimensions) {
     this.dimensions = dimensions;
+  }
+
+
+  public AsyncFillRateReport endDate(OffsetDateTime endDate) {
+    
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * End date
+   * @return endDate
+  **/
+  @javax.annotation.Nonnull
+
+  public OffsetDateTime getEndDate() {
+    return endDate;
+  }
+
+
+  public void setEndDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
+  }
+
+
+  public AsyncFillRateReport format(FormatEnum format) {
+    
+    this.format = format;
+    return this;
+  }
+
+   /**
+   * Format of the output
+   * @return format
+  **/
+  @javax.annotation.Nullable
+
+  public FormatEnum getFormat() {
+    return format;
+  }
+
+
+  public void setFormat(FormatEnum format) {
+    this.format = format;
   }
 
 
@@ -362,28 +379,6 @@ public class AsyncFillRateReport {
   }
 
 
-  public AsyncFillRateReport format(FormatEnum format) {
-    
-    this.format = format;
-    return this;
-  }
-
-   /**
-   * Format of the output
-   * @return format
-  **/
-  @javax.annotation.Nullable
-
-  public FormatEnum getFormat() {
-    return format;
-  }
-
-
-  public void setFormat(FormatEnum format) {
-    this.format = format;
-  }
-
-
   public AsyncFillRateReport startDate(OffsetDateTime startDate) {
     
     this.startDate = startDate;
@@ -406,25 +401,30 @@ public class AsyncFillRateReport {
   }
 
 
-  public AsyncFillRateReport endDate(OffsetDateTime endDate) {
+  public AsyncFillRateReport supplyAccountIds(List<String> supplyAccountIds) {
     
-    this.endDate = endDate;
+    this.supplyAccountIds = supplyAccountIds;
+    return this;
+  }
+
+  public AsyncFillRateReport addSupplyAccountIdsItem(String supplyAccountIdsItem) {
+    this.supplyAccountIds.add(supplyAccountIdsItem);
     return this;
   }
 
    /**
-   * End date
-   * @return endDate
+   * Supply account ids to report on
+   * @return supplyAccountIds
   **/
   @javax.annotation.Nonnull
 
-  public OffsetDateTime getEndDate() {
-    return endDate;
+  public List<String> getSupplyAccountIds() {
+    return supplyAccountIds;
   }
 
 
-  public void setEndDate(OffsetDateTime endDate) {
-    this.endDate = endDate;
+  public void setSupplyAccountIds(List<String> supplyAccountIds) {
+    this.supplyAccountIds = supplyAccountIds;
   }
 
 
@@ -504,31 +504,31 @@ public class AsyncFillRateReport {
       return false;
     }
     AsyncFillRateReport asyncFillRateReport = (AsyncFillRateReport) o;
-    return Objects.equals(this.supplyAccountIds, asyncFillRateReport.supplyAccountIds) &&
-        Objects.equals(this.dimensions, asyncFillRateReport.dimensions) &&
-        Objects.equals(this.metrics, asyncFillRateReport.metrics) &&
-        Objects.equals(this.format, asyncFillRateReport.format) &&
-        Objects.equals(this.startDate, asyncFillRateReport.startDate) &&
+    return Objects.equals(this.dimensions, asyncFillRateReport.dimensions) &&
         Objects.equals(this.endDate, asyncFillRateReport.endDate) &&
+        Objects.equals(this.format, asyncFillRateReport.format) &&
+        Objects.equals(this.metrics, asyncFillRateReport.metrics) &&
+        Objects.equals(this.startDate, asyncFillRateReport.startDate) &&
+        Objects.equals(this.supplyAccountIds, asyncFillRateReport.supplyAccountIds) &&
         Objects.equals(this.timezone, asyncFillRateReport.timezone)&&
         Objects.equals(this.additionalProperties, asyncFillRateReport.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(supplyAccountIds, dimensions, metrics, format, startDate, endDate, timezone, additionalProperties);
+    return Objects.hash(dimensions, endDate, format, metrics, startDate, supplyAccountIds, timezone, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AsyncFillRateReport {\n");
-    sb.append("    supplyAccountIds: ").append(toIndentedString(supplyAccountIds)).append("\n");
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
-    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    supplyAccountIds: ").append(toIndentedString(supplyAccountIds)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -553,21 +553,21 @@ public class AsyncFillRateReport {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("supplyAccountIds");
     openapiFields.add("dimensions");
-    openapiFields.add("metrics");
-    openapiFields.add("format");
-    openapiFields.add("startDate");
     openapiFields.add("endDate");
+    openapiFields.add("format");
+    openapiFields.add("metrics");
+    openapiFields.add("startDate");
+    openapiFields.add("supplyAccountIds");
     openapiFields.add("timezone");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("supplyAccountIds");
     openapiRequiredFields.add("dimensions");
+    openapiRequiredFields.add("endDate");
     openapiRequiredFields.add("metrics");
     openapiRequiredFields.add("startDate");
-    openapiRequiredFields.add("endDate");
+    openapiRequiredFields.add("supplyAccountIds");
   }
 
  /**
@@ -590,16 +590,13 @@ public class AsyncFillRateReport {
         }
       }
       // ensure the required json array is present
-      if (jsonObj.get("supplyAccountIds") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("supplyAccountIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `supplyAccountIds` to be an array in the JSON string but got `%s`", jsonObj.get("supplyAccountIds").toString()));
-      }
-      // ensure the required json array is present
       if (jsonObj.get("dimensions") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("dimensions").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `dimensions` to be an array in the JSON string but got `%s`", jsonObj.get("dimensions").toString()));
+      }
+      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
       }
       // ensure the required json array is present
       if (jsonObj.get("metrics") == null) {
@@ -607,8 +604,11 @@ public class AsyncFillRateReport {
       } else if (!jsonObj.get("metrics").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));
       }
-      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
+      // ensure the required json array is present
+      if (jsonObj.get("supplyAccountIds") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("supplyAccountIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `supplyAccountIds` to be an array in the JSON string but got `%s`", jsonObj.get("supplyAccountIds").toString()));
       }
       if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));

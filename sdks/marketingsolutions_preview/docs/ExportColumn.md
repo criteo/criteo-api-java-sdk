@@ -8,42 +8,16 @@ Description of a column from an async report request
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** |  |  [optional] |
-|**title** | **String** |  |  [optional] |
-|**description** | **String** |  |  [optional] |
-|**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
-|**role** | [**RoleEnum**](#RoleEnum) |  |  [optional] |
-|**relatedTo** | [**RelatedToEnum**](#RelatedToEnum) |  |  [optional] |
-|**timezone** | **String** |  |  [optional] |
-|**duration** | **String** |  |  [optional] |
 |**currency** | **String** |  |  [optional] |
 |**deprecated** | **Boolean** |  |  [optional] |
-
-
-
-## Enum: TypeEnum
-
-| Name | Value |
-|---- | -----|
-| BOOLEAN | &quot;Boolean&quot; |
-| NUMBER | &quot;Number&quot; |
-| MONEY | &quot;Money&quot; |
-| STRING | &quot;String&quot; |
-| DATE | &quot;Date&quot; |
-| DATETIME | &quot;DateTime&quot; |
-| INTERVAL | &quot;Interval&quot; |
-| DURATION | &quot;Duration&quot; |
-
-
-
-## Enum: RoleEnum
-
-| Name | Value |
-|---- | -----|
-| DIMENSION | &quot;Dimension&quot; |
-| PROPERTY | &quot;Property&quot; |
-| INTERVAL | &quot;Interval&quot; |
-| METRIC | &quot;Metric&quot; |
+|**description** | **String** |  |  [optional] |
+|**duration** | **String** |  |  [optional] |
+|**name** | **String** |  |  [optional] |
+|**relatedTo** | [**RelatedToEnum**](#RelatedToEnum) |  |  [optional] |
+|**role** | [**RoleEnum**](#RoleEnum) |  |  [optional] |
+|**timezone** | **String** |  |  [optional] |
+|**title** | **String** |  |  [optional] |
+|**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
 
 
 
@@ -97,6 +71,32 @@ Description of a column from an async report request
 | ENVIRONMENT | &quot;Environment&quot; |
 | ADCHANNEL | &quot;AdChannel&quot; |
 | ADSOCIALNETWORK | &quot;AdSocialNetwork&quot; |
+
+
+
+## Enum: RoleEnum
+
+| Name | Value |
+|---- | -----|
+| DIMENSION | &quot;Dimension&quot; |
+| PROPERTY | &quot;Property&quot; |
+| INTERVAL | &quot;Interval&quot; |
+| METRIC | &quot;Metric&quot; |
+
+
+
+## Enum: TypeEnum
+
+| Name | Value |
+|---- | -----|
+| BOOLEAN | &quot;Boolean&quot; |
+| NUMBER | &quot;Number&quot; |
+| MONEY | &quot;Money&quot; |
+| STRING | &quot;String&quot; |
+| DATE | &quot;Date&quot; |
+| DATETIME | &quot;DateTime&quot; |
+| INTERVAL | &quot;Interval&quot; |
+| DURATION | &quot;Duration&quot; |
 
 
 

@@ -52,39 +52,26 @@ import com.criteo.api.retailmedia.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReportOutcome {
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<CommonProblem> warnings = null;
-
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<CommonProblem> errors = null;
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<CommonProblem> warnings = null;
 
   public ReportOutcome() {
   }
 
   
   public ReportOutcome(
-     List<CommonProblem> warnings, 
-     List<CommonProblem> errors
+     List<CommonProblem> errors, 
+     List<CommonProblem> warnings
   ) {
     this();
-    this.warnings = warnings;
     this.errors = errors;
+    this.warnings = warnings;
   }
-
-   /**
-   * Get warnings
-   * @return warnings
-  **/
-  @javax.annotation.Nullable
-
-  public List<CommonProblem> getWarnings() {
-    return warnings;
-  }
-
-
-
 
    /**
    * Get errors
@@ -94,6 +81,19 @@ public class ReportOutcome {
 
   public List<CommonProblem> getErrors() {
     return errors;
+  }
+
+
+
+
+   /**
+   * Get warnings
+   * @return warnings
+  **/
+  @javax.annotation.Nullable
+
+  public List<CommonProblem> getWarnings() {
+    return warnings;
   }
 
 
@@ -153,8 +153,8 @@ public class ReportOutcome {
       return false;
     }
     ReportOutcome reportOutcome = (ReportOutcome) o;
-    return Objects.equals(this.warnings, reportOutcome.warnings) &&
-        Objects.equals(this.errors, reportOutcome.errors)&&
+    return Objects.equals(this.errors, reportOutcome.errors) &&
+        Objects.equals(this.warnings, reportOutcome.warnings)&&
         Objects.equals(this.additionalProperties, reportOutcome.additionalProperties);
   }
 
@@ -164,7 +164,7 @@ public class ReportOutcome {
 
   @Override
   public int hashCode() {
-    return Objects.hash(warnings, errors, additionalProperties);
+    return Objects.hash(errors, warnings, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -178,8 +178,8 @@ public class ReportOutcome {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReportOutcome {\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -203,8 +203,8 @@ public class ReportOutcome {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("warnings");
     openapiFields.add("errors");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -222,20 +222,6 @@ public class ReportOutcome {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ReportOutcome is not found in the empty JSON string", ReportOutcome.openapiRequiredFields.toString()));
         }
       }
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
-        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
-        if (jsonArraywarnings != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("warnings").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-          }
-
-          // validate the optional field `warnings` (array)
-          for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
-          };
-        }
-      }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
         if (jsonArrayerrors != null) {
@@ -247,6 +233,20 @@ public class ReportOutcome {
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
             CommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }

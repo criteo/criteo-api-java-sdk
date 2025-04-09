@@ -8,9 +8,9 @@ Resource object containing a promoted product.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**attributes** | [**PromotedProduct**](PromotedProduct.md) |  |  [optional] |
 |**id** | **String** |  |  [optional] |
 |**type** | **String** |  |  [optional] |
-|**attributes** | [**PromotedProduct**](PromotedProduct.md) |  |  [optional] |
 
 
 

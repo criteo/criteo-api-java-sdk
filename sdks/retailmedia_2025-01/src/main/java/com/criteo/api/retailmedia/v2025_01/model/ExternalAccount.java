@@ -51,62 +51,29 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalAccount {
+  public static final String SERIALIZED_NAME_COMPANY_NAME = "companyName";
+  @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
+  private String companyName;
+
+  public static final String SERIALIZED_NAME_COUNTRIES = "countries";
+  @SerializedName(SERIALIZED_NAME_COUNTRIES)
+  private List<String> countries = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_CURRENCY = "currency";
+  @SerializedName(SERIALIZED_NAME_CURRENCY)
+  private String currency;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  /**
-   * Gets or Sets type
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    UNKNOWN("unknown"),
-    
-    SUPPLY("supply"),
-    
-    DEMAND("demand");
+  public static final String SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME = "onBehalfCompanyName";
+  @SerializedName(SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME)
+  private String onBehalfCompanyName;
 
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private TypeEnum type;
+  public static final String SERIALIZED_NAME_PARENT_ACCOUNT_LABEL = "parentAccountLabel";
+  @SerializedName(SERIALIZED_NAME_PARENT_ACCOUNT_LABEL)
+  private String parentAccountLabel;
 
   /**
    * Gets or Sets subtype
@@ -161,96 +128,85 @@ public class ExternalAccount {
   @SerializedName(SERIALIZED_NAME_SUBTYPE)
   private SubtypeEnum subtype;
 
-  public static final String SERIALIZED_NAME_COUNTRIES = "countries";
-  @SerializedName(SERIALIZED_NAME_COUNTRIES)
-  private List<String> countries = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_CURRENCY = "currency";
-  @SerializedName(SERIALIZED_NAME_CURRENCY)
-  private String currency;
-
-  public static final String SERIALIZED_NAME_PARENT_ACCOUNT_LABEL = "parentAccountLabel";
-  @SerializedName(SERIALIZED_NAME_PARENT_ACCOUNT_LABEL)
-  private String parentAccountLabel;
-
   public static final String SERIALIZED_NAME_TIME_ZONE = "timeZone";
   @SerializedName(SERIALIZED_NAME_TIME_ZONE)
   private String timeZone;
 
-  public static final String SERIALIZED_NAME_COMPANY_NAME = "companyName";
-  @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
-  private String companyName;
+  /**
+   * Gets or Sets type
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    UNKNOWN("unknown"),
+    
+    SUPPLY("supply"),
+    
+    DEMAND("demand");
 
-  public static final String SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME = "onBehalfCompanyName";
-  @SerializedName(SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME)
-  private String onBehalfCompanyName;
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type;
 
   public ExternalAccount() {
   }
 
-  public ExternalAccount name(String name) {
+  public ExternalAccount companyName(String companyName) {
     
-    this.name = name;
+    this.companyName = companyName;
     return this;
   }
 
    /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public ExternalAccount type(TypeEnum type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Get type
-   * @return type
-  **/
-  @javax.annotation.Nonnull
-
-  public TypeEnum getType() {
-    return type;
-  }
-
-
-  public void setType(TypeEnum type) {
-    this.type = type;
-  }
-
-
-  public ExternalAccount subtype(SubtypeEnum subtype) {
-    
-    this.subtype = subtype;
-    return this;
-  }
-
-   /**
-   * Get subtype
-   * @return subtype
+   * Get companyName
+   * @return companyName
   **/
   @javax.annotation.Nullable
 
-  public SubtypeEnum getSubtype() {
-    return subtype;
+  public String getCompanyName() {
+    return companyName;
   }
 
 
-  public void setSubtype(SubtypeEnum subtype) {
-    this.subtype = subtype;
+  public void setCompanyName(String companyName) {
+    this.companyName = companyName;
   }
 
 
@@ -303,69 +259,25 @@ public class ExternalAccount {
   }
 
 
-  public ExternalAccount parentAccountLabel(String parentAccountLabel) {
+  public ExternalAccount name(String name) {
     
-    this.parentAccountLabel = parentAccountLabel;
+    this.name = name;
     return this;
   }
 
    /**
-   * Get parentAccountLabel
-   * @return parentAccountLabel
+   * Get name
+   * @return name
   **/
   @javax.annotation.Nonnull
 
-  public String getParentAccountLabel() {
-    return parentAccountLabel;
+  public String getName() {
+    return name;
   }
 
 
-  public void setParentAccountLabel(String parentAccountLabel) {
-    this.parentAccountLabel = parentAccountLabel;
-  }
-
-
-  public ExternalAccount timeZone(String timeZone) {
-    
-    this.timeZone = timeZone;
-    return this;
-  }
-
-   /**
-   * Get timeZone
-   * @return timeZone
-  **/
-  @javax.annotation.Nonnull
-
-  public String getTimeZone() {
-    return timeZone;
-  }
-
-
-  public void setTimeZone(String timeZone) {
-    this.timeZone = timeZone;
-  }
-
-
-  public ExternalAccount companyName(String companyName) {
-    
-    this.companyName = companyName;
-    return this;
-  }
-
-   /**
-   * Get companyName
-   * @return companyName
-  **/
-  @javax.annotation.Nullable
-
-  public String getCompanyName() {
-    return companyName;
-  }
-
-
-  public void setCompanyName(String companyName) {
-    this.companyName = companyName;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -391,6 +303,94 @@ public class ExternalAccount {
   }
 
 
+  public ExternalAccount parentAccountLabel(String parentAccountLabel) {
+    
+    this.parentAccountLabel = parentAccountLabel;
+    return this;
+  }
+
+   /**
+   * Get parentAccountLabel
+   * @return parentAccountLabel
+  **/
+  @javax.annotation.Nonnull
+
+  public String getParentAccountLabel() {
+    return parentAccountLabel;
+  }
+
+
+  public void setParentAccountLabel(String parentAccountLabel) {
+    this.parentAccountLabel = parentAccountLabel;
+  }
+
+
+  public ExternalAccount subtype(SubtypeEnum subtype) {
+    
+    this.subtype = subtype;
+    return this;
+  }
+
+   /**
+   * Get subtype
+   * @return subtype
+  **/
+  @javax.annotation.Nullable
+
+  public SubtypeEnum getSubtype() {
+    return subtype;
+  }
+
+
+  public void setSubtype(SubtypeEnum subtype) {
+    this.subtype = subtype;
+  }
+
+
+  public ExternalAccount timeZone(String timeZone) {
+    
+    this.timeZone = timeZone;
+    return this;
+  }
+
+   /**
+   * Get timeZone
+   * @return timeZone
+  **/
+  @javax.annotation.Nonnull
+
+  public String getTimeZone() {
+    return timeZone;
+  }
+
+
+  public void setTimeZone(String timeZone) {
+    this.timeZone = timeZone;
+  }
+
+
+  public ExternalAccount type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nonnull
+
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -401,15 +401,15 @@ public class ExternalAccount {
       return false;
     }
     ExternalAccount externalAccount = (ExternalAccount) o;
-    return Objects.equals(this.name, externalAccount.name) &&
-        Objects.equals(this.type, externalAccount.type) &&
-        Objects.equals(this.subtype, externalAccount.subtype) &&
+    return Objects.equals(this.companyName, externalAccount.companyName) &&
         Objects.equals(this.countries, externalAccount.countries) &&
         Objects.equals(this.currency, externalAccount.currency) &&
+        Objects.equals(this.name, externalAccount.name) &&
+        Objects.equals(this.onBehalfCompanyName, externalAccount.onBehalfCompanyName) &&
         Objects.equals(this.parentAccountLabel, externalAccount.parentAccountLabel) &&
+        Objects.equals(this.subtype, externalAccount.subtype) &&
         Objects.equals(this.timeZone, externalAccount.timeZone) &&
-        Objects.equals(this.companyName, externalAccount.companyName) &&
-        Objects.equals(this.onBehalfCompanyName, externalAccount.onBehalfCompanyName);
+        Objects.equals(this.type, externalAccount.type);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -418,7 +418,7 @@ public class ExternalAccount {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, subtype, countries, currency, parentAccountLabel, timeZone, companyName, onBehalfCompanyName);
+    return Objects.hash(companyName, countries, currency, name, onBehalfCompanyName, parentAccountLabel, subtype, timeZone, type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -432,15 +432,15 @@ public class ExternalAccount {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalAccount {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    subtype: ").append(toIndentedString(subtype)).append("\n");
+    sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
     sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
-    sb.append("    parentAccountLabel: ").append(toIndentedString(parentAccountLabel)).append("\n");
-    sb.append("    timeZone: ").append(toIndentedString(timeZone)).append("\n");
-    sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    onBehalfCompanyName: ").append(toIndentedString(onBehalfCompanyName)).append("\n");
+    sb.append("    parentAccountLabel: ").append(toIndentedString(parentAccountLabel)).append("\n");
+    sb.append("    subtype: ").append(toIndentedString(subtype)).append("\n");
+    sb.append("    timeZone: ").append(toIndentedString(timeZone)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -463,24 +463,24 @@ public class ExternalAccount {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("type");
-    openapiFields.add("subtype");
+    openapiFields.add("companyName");
     openapiFields.add("countries");
     openapiFields.add("currency");
-    openapiFields.add("parentAccountLabel");
-    openapiFields.add("timeZone");
-    openapiFields.add("companyName");
+    openapiFields.add("name");
     openapiFields.add("onBehalfCompanyName");
+    openapiFields.add("parentAccountLabel");
+    openapiFields.add("subtype");
+    openapiFields.add("timeZone");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("type");
     openapiRequiredFields.add("countries");
     openapiRequiredFields.add("currency");
+    openapiRequiredFields.add("name");
     openapiRequiredFields.add("parentAccountLabel");
     openapiRequiredFields.add("timeZone");
+    openapiRequiredFields.add("type");
   }
 
  /**
@@ -510,14 +510,8 @@ public class ExternalAccount {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      if ((jsonObj.get("subtype") != null && !jsonObj.get("subtype").isJsonNull()) && !jsonObj.get("subtype").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `subtype` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subtype").toString()));
+      if ((jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) && !jsonObj.get("companyName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
       }
       // ensure the required json array is present
       if (jsonObj.get("countries") == null) {
@@ -528,17 +522,23 @@ public class ExternalAccount {
       if (!jsonObj.get("currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("onBehalfCompanyName") != null && !jsonObj.get("onBehalfCompanyName").isJsonNull()) && !jsonObj.get("onBehalfCompanyName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `onBehalfCompanyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("onBehalfCompanyName").toString()));
+      }
       if (!jsonObj.get("parentAccountLabel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `parentAccountLabel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("parentAccountLabel").toString()));
+      }
+      if ((jsonObj.get("subtype") != null && !jsonObj.get("subtype").isJsonNull()) && !jsonObj.get("subtype").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `subtype` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subtype").toString()));
       }
       if (!jsonObj.get("timeZone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `timeZone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timeZone").toString()));
       }
-      if ((jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) && !jsonObj.get("companyName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
-      }
-      if ((jsonObj.get("onBehalfCompanyName") != null && !jsonObj.get("onBehalfCompanyName").isJsonNull()) && !jsonObj.get("onBehalfCompanyName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `onBehalfCompanyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("onBehalfCompanyName").toString()));
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

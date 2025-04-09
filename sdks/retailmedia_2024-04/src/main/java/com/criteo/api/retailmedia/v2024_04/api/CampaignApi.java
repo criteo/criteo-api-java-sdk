@@ -1831,10 +1831,10 @@ public class CampaignApi {
     }
     /**
      * Build call for getApi202204ExternalCategories
-     * @param retailerId The retailer id for which Categories fetched (optional)
-     * @param textSubstring Query string to search across Categories (optional)
      * @param pageIndex The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param pageSize The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
+     * @param retailerId The retailer id for which Categories fetched (optional)
+     * @param textSubstring Query string to search across Categories (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1844,7 +1844,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Categories found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApi202204ExternalCategoriesCall(Integer retailerId, String textSubstring, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getApi202204ExternalCategoriesCall(Integer pageIndex, Integer pageSize, Integer retailerId, String textSubstring, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1869,20 +1869,20 @@ public class CampaignApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (retailerId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("retailerId", retailerId));
-        }
-
-        if (textSubstring != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("textSubstring", textSubstring));
-        }
-
         if (pageIndex != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageIndex", pageIndex));
         }
 
         if (pageSize != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
+        }
+
+        if (retailerId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("retailerId", retailerId));
+        }
+
+        if (textSubstring != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("textSubstring", textSubstring));
         }
 
         final String[] localVarAccepts = {
@@ -1905,18 +1905,18 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getApi202204ExternalCategoriesValidateBeforeCall(Integer retailerId, String textSubstring, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        return getApi202204ExternalCategoriesCall(retailerId, textSubstring, pageIndex, pageSize, _callback);
+    private okhttp3.Call getApi202204ExternalCategoriesValidateBeforeCall(Integer pageIndex, Integer pageSize, Integer retailerId, String textSubstring, final ApiCallback _callback) throws ApiException {
+        return getApi202204ExternalCategoriesCall(pageIndex, pageSize, retailerId, textSubstring, _callback);
 
     }
 
     /**
      * 
      * Endpoint to search categories by text and retailer.
-     * @param retailerId The retailer id for which Categories fetched (optional)
-     * @param textSubstring Query string to search across Categories (optional)
      * @param pageIndex The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param pageSize The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
+     * @param retailerId The retailer id for which Categories fetched (optional)
+     * @param textSubstring Query string to search across Categories (optional)
      * @return Category202204ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1925,18 +1925,18 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Categories found. </td><td>  -  </td></tr>
      </table>
      */
-    public Category202204ListResponse getApi202204ExternalCategories(Integer retailerId, String textSubstring, Integer pageIndex, Integer pageSize) throws ApiException {
-        ApiResponse<Category202204ListResponse> localVarResp = getApi202204ExternalCategoriesWithHttpInfo(retailerId, textSubstring, pageIndex, pageSize);
+    public Category202204ListResponse getApi202204ExternalCategories(Integer pageIndex, Integer pageSize, Integer retailerId, String textSubstring) throws ApiException {
+        ApiResponse<Category202204ListResponse> localVarResp = getApi202204ExternalCategoriesWithHttpInfo(pageIndex, pageSize, retailerId, textSubstring);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Endpoint to search categories by text and retailer.
-     * @param retailerId The retailer id for which Categories fetched (optional)
-     * @param textSubstring Query string to search across Categories (optional)
      * @param pageIndex The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param pageSize The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
+     * @param retailerId The retailer id for which Categories fetched (optional)
+     * @param textSubstring Query string to search across Categories (optional)
      * @return ApiResponse&lt;Category202204ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1945,8 +1945,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Categories found. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Category202204ListResponse> getApi202204ExternalCategoriesWithHttpInfo(Integer retailerId, String textSubstring, Integer pageIndex, Integer pageSize) throws ApiException {
-        okhttp3.Call localVarCall = getApi202204ExternalCategoriesValidateBeforeCall(retailerId, textSubstring, pageIndex, pageSize, null);
+    public ApiResponse<Category202204ListResponse> getApi202204ExternalCategoriesWithHttpInfo(Integer pageIndex, Integer pageSize, Integer retailerId, String textSubstring) throws ApiException {
+        okhttp3.Call localVarCall = getApi202204ExternalCategoriesValidateBeforeCall(pageIndex, pageSize, retailerId, textSubstring, null);
         Type localVarReturnType = new TypeToken<Category202204ListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1954,10 +1954,10 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Endpoint to search categories by text and retailer.
-     * @param retailerId The retailer id for which Categories fetched (optional)
-     * @param textSubstring Query string to search across Categories (optional)
      * @param pageIndex The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param pageSize The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
+     * @param retailerId The retailer id for which Categories fetched (optional)
+     * @param textSubstring Query string to search across Categories (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1967,9 +1967,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Categories found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApi202204ExternalCategoriesAsync(Integer retailerId, String textSubstring, Integer pageIndex, Integer pageSize, final ApiCallback<Category202204ListResponse> _callback) throws ApiException {
+    public okhttp3.Call getApi202204ExternalCategoriesAsync(Integer pageIndex, Integer pageSize, Integer retailerId, String textSubstring, final ApiCallback<Category202204ListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getApi202204ExternalCategoriesValidateBeforeCall(retailerId, textSubstring, pageIndex, pageSize, _callback);
+        okhttp3.Call localVarCall = getApi202204ExternalCategoriesValidateBeforeCall(pageIndex, pageSize, retailerId, textSubstring, _callback);
         Type localVarReturnType = new TypeToken<Category202204ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3321,8 +3321,8 @@ public class CampaignApi {
      * Build call for getApiV2ExternalAccountLineItemsByAccountId
      * @param accountId The given account id (required)
      * @param limitToCampaignId The campaign ids that you would like to limit your result set to (optional)
-     * @param limitToType The campaign types that you would like to limit your result set to (optional)
      * @param limitToId The ids that you would like to limit your result set to (optional)
+     * @param limitToType The campaign types that you would like to limit your result set to (optional)
      * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional)
      * @param pageSize The maximum number of items you would like to receive in this request (optional)
      * @param _callback Callback for upload/download progress
@@ -3334,7 +3334,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApiV2ExternalAccountLineItemsByAccountIdCall(String accountId, List<String> limitToCampaignId, String limitToType, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getApiV2ExternalAccountLineItemsByAccountIdCall(String accountId, List<String> limitToCampaignId, List<String> limitToId, String limitToType, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3364,12 +3364,12 @@ public class CampaignApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "limitToCampaignId", limitToCampaignId));
         }
 
-        if (limitToType != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limitToType", limitToType));
-        }
-
         if (limitToId != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "limitToId", limitToId));
+        }
+
+        if (limitToType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limitToType", limitToType));
         }
 
         if (pageIndex != null) {
@@ -3400,13 +3400,13 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getApiV2ExternalAccountLineItemsByAccountIdValidateBeforeCall(String accountId, List<String> limitToCampaignId, String limitToType, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getApiV2ExternalAccountLineItemsByAccountIdValidateBeforeCall(String accountId, List<String> limitToCampaignId, List<String> limitToId, String limitToType, Integer pageIndex, Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getApiV2ExternalAccountLineItemsByAccountId(Async)");
         }
 
-        return getApiV2ExternalAccountLineItemsByAccountIdCall(accountId, limitToCampaignId, limitToType, limitToId, pageIndex, pageSize, _callback);
+        return getApiV2ExternalAccountLineItemsByAccountIdCall(accountId, limitToCampaignId, limitToId, limitToType, pageIndex, pageSize, _callback);
 
     }
 
@@ -3415,8 +3415,8 @@ public class CampaignApi {
      * Gets page of line item objects for the given account id
      * @param accountId The given account id (required)
      * @param limitToCampaignId The campaign ids that you would like to limit your result set to (optional)
-     * @param limitToType The campaign types that you would like to limit your result set to (optional)
      * @param limitToId The ids that you would like to limit your result set to (optional)
+     * @param limitToType The campaign types that you would like to limit your result set to (optional)
      * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional)
      * @param pageSize The maximum number of items you would like to receive in this request (optional)
      * @return CommonLineItemPagedListResponse
@@ -3427,8 +3427,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public CommonLineItemPagedListResponse getApiV2ExternalAccountLineItemsByAccountId(String accountId, List<String> limitToCampaignId, String limitToType, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
-        ApiResponse<CommonLineItemPagedListResponse> localVarResp = getApiV2ExternalAccountLineItemsByAccountIdWithHttpInfo(accountId, limitToCampaignId, limitToType, limitToId, pageIndex, pageSize);
+    public CommonLineItemPagedListResponse getApiV2ExternalAccountLineItemsByAccountId(String accountId, List<String> limitToCampaignId, List<String> limitToId, String limitToType, Integer pageIndex, Integer pageSize) throws ApiException {
+        ApiResponse<CommonLineItemPagedListResponse> localVarResp = getApiV2ExternalAccountLineItemsByAccountIdWithHttpInfo(accountId, limitToCampaignId, limitToId, limitToType, pageIndex, pageSize);
         return localVarResp.getData();
     }
 
@@ -3437,8 +3437,8 @@ public class CampaignApi {
      * Gets page of line item objects for the given account id
      * @param accountId The given account id (required)
      * @param limitToCampaignId The campaign ids that you would like to limit your result set to (optional)
-     * @param limitToType The campaign types that you would like to limit your result set to (optional)
      * @param limitToId The ids that you would like to limit your result set to (optional)
+     * @param limitToType The campaign types that you would like to limit your result set to (optional)
      * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional)
      * @param pageSize The maximum number of items you would like to receive in this request (optional)
      * @return ApiResponse&lt;CommonLineItemPagedListResponse&gt;
@@ -3449,8 +3449,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CommonLineItemPagedListResponse> getApiV2ExternalAccountLineItemsByAccountIdWithHttpInfo(String accountId, List<String> limitToCampaignId, String limitToType, List<String> limitToId, Integer pageIndex, Integer pageSize) throws ApiException {
-        okhttp3.Call localVarCall = getApiV2ExternalAccountLineItemsByAccountIdValidateBeforeCall(accountId, limitToCampaignId, limitToType, limitToId, pageIndex, pageSize, null);
+    public ApiResponse<CommonLineItemPagedListResponse> getApiV2ExternalAccountLineItemsByAccountIdWithHttpInfo(String accountId, List<String> limitToCampaignId, List<String> limitToId, String limitToType, Integer pageIndex, Integer pageSize) throws ApiException {
+        okhttp3.Call localVarCall = getApiV2ExternalAccountLineItemsByAccountIdValidateBeforeCall(accountId, limitToCampaignId, limitToId, limitToType, pageIndex, pageSize, null);
         Type localVarReturnType = new TypeToken<CommonLineItemPagedListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3460,8 +3460,8 @@ public class CampaignApi {
      * Gets page of line item objects for the given account id
      * @param accountId The given account id (required)
      * @param limitToCampaignId The campaign ids that you would like to limit your result set to (optional)
-     * @param limitToType The campaign types that you would like to limit your result set to (optional)
      * @param limitToId The ids that you would like to limit your result set to (optional)
+     * @param limitToType The campaign types that you would like to limit your result set to (optional)
      * @param pageIndex The 0 indexed page index you would like to receive given the page size (optional)
      * @param pageSize The maximum number of items you would like to receive in this request (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -3473,9 +3473,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApiV2ExternalAccountLineItemsByAccountIdAsync(String accountId, List<String> limitToCampaignId, String limitToType, List<String> limitToId, Integer pageIndex, Integer pageSize, final ApiCallback<CommonLineItemPagedListResponse> _callback) throws ApiException {
+    public okhttp3.Call getApiV2ExternalAccountLineItemsByAccountIdAsync(String accountId, List<String> limitToCampaignId, List<String> limitToId, String limitToType, Integer pageIndex, Integer pageSize, final ApiCallback<CommonLineItemPagedListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getApiV2ExternalAccountLineItemsByAccountIdValidateBeforeCall(accountId, limitToCampaignId, limitToType, limitToId, pageIndex, pageSize, _callback);
+        okhttp3.Call localVarCall = getApiV2ExternalAccountLineItemsByAccountIdValidateBeforeCall(accountId, limitToCampaignId, limitToId, limitToType, pageIndex, pageSize, _callback);
         Type localVarReturnType = new TypeToken<CommonLineItemPagedListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4007,9 +4007,9 @@ public class CampaignApi {
     /**
      * Build call for getInsertionOrderHistoryChangeDataCapture
      * @param insertionOrderId External insertion order id. (required)
-     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param limit The number of elements to be returned. (optional, default to 25)
      * @param limitToChangeTypes Comma separated change types string that will be queried. (optional)
+     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4019,7 +4019,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInsertionOrderHistoryChangeDataCaptureCall(String insertionOrderId, Integer offset, Integer limit, String limitToChangeTypes, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getInsertionOrderHistoryChangeDataCaptureCall(String insertionOrderId, Integer limit, String limitToChangeTypes, Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4045,16 +4045,16 @@ public class CampaignApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (offset != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
-        }
-
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
         if (limitToChangeTypes != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limitToChangeTypes", limitToChangeTypes));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
         }
 
         final String[] localVarAccepts = {
@@ -4077,13 +4077,13 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInsertionOrderHistoryChangeDataCaptureValidateBeforeCall(String insertionOrderId, Integer offset, Integer limit, String limitToChangeTypes, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getInsertionOrderHistoryChangeDataCaptureValidateBeforeCall(String insertionOrderId, Integer limit, String limitToChangeTypes, Integer offset, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'insertionOrderId' is set
         if (insertionOrderId == null) {
             throw new ApiException("Missing the required parameter 'insertionOrderId' when calling getInsertionOrderHistoryChangeDataCapture(Async)");
         }
 
-        return getInsertionOrderHistoryChangeDataCaptureCall(insertionOrderId, offset, limit, limitToChangeTypes, _callback);
+        return getInsertionOrderHistoryChangeDataCaptureCall(insertionOrderId, limit, limitToChangeTypes, offset, _callback);
 
     }
 
@@ -4091,9 +4091,9 @@ public class CampaignApi {
      * 
      * Gets the balance&#39;s historical data change capture.
      * @param insertionOrderId External insertion order id. (required)
-     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param limit The number of elements to be returned. (optional, default to 25)
      * @param limitToChangeTypes Comma separated change types string that will be queried. (optional)
+     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @return PageOfInsertionOrderHistoryChangeDataCapture
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4102,8 +4102,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public PageOfInsertionOrderHistoryChangeDataCapture getInsertionOrderHistoryChangeDataCapture(String insertionOrderId, Integer offset, Integer limit, String limitToChangeTypes) throws ApiException {
-        ApiResponse<PageOfInsertionOrderHistoryChangeDataCapture> localVarResp = getInsertionOrderHistoryChangeDataCaptureWithHttpInfo(insertionOrderId, offset, limit, limitToChangeTypes);
+    public PageOfInsertionOrderHistoryChangeDataCapture getInsertionOrderHistoryChangeDataCapture(String insertionOrderId, Integer limit, String limitToChangeTypes, Integer offset) throws ApiException {
+        ApiResponse<PageOfInsertionOrderHistoryChangeDataCapture> localVarResp = getInsertionOrderHistoryChangeDataCaptureWithHttpInfo(insertionOrderId, limit, limitToChangeTypes, offset);
         return localVarResp.getData();
     }
 
@@ -4111,9 +4111,9 @@ public class CampaignApi {
      * 
      * Gets the balance&#39;s historical data change capture.
      * @param insertionOrderId External insertion order id. (required)
-     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param limit The number of elements to be returned. (optional, default to 25)
      * @param limitToChangeTypes Comma separated change types string that will be queried. (optional)
+     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @return ApiResponse&lt;PageOfInsertionOrderHistoryChangeDataCapture&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -4122,8 +4122,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PageOfInsertionOrderHistoryChangeDataCapture> getInsertionOrderHistoryChangeDataCaptureWithHttpInfo(String insertionOrderId, Integer offset, Integer limit, String limitToChangeTypes) throws ApiException {
-        okhttp3.Call localVarCall = getInsertionOrderHistoryChangeDataCaptureValidateBeforeCall(insertionOrderId, offset, limit, limitToChangeTypes, null);
+    public ApiResponse<PageOfInsertionOrderHistoryChangeDataCapture> getInsertionOrderHistoryChangeDataCaptureWithHttpInfo(String insertionOrderId, Integer limit, String limitToChangeTypes, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = getInsertionOrderHistoryChangeDataCaptureValidateBeforeCall(insertionOrderId, limit, limitToChangeTypes, offset, null);
         Type localVarReturnType = new TypeToken<PageOfInsertionOrderHistoryChangeDataCapture>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4132,9 +4132,9 @@ public class CampaignApi {
      *  (asynchronously)
      * Gets the balance&#39;s historical data change capture.
      * @param insertionOrderId External insertion order id. (required)
-     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param limit The number of elements to be returned. (optional, default to 25)
      * @param limitToChangeTypes Comma separated change types string that will be queried. (optional)
+     * @param offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4144,9 +4144,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInsertionOrderHistoryChangeDataCaptureAsync(String insertionOrderId, Integer offset, Integer limit, String limitToChangeTypes, final ApiCallback<PageOfInsertionOrderHistoryChangeDataCapture> _callback) throws ApiException {
+    public okhttp3.Call getInsertionOrderHistoryChangeDataCaptureAsync(String insertionOrderId, Integer limit, String limitToChangeTypes, Integer offset, final ApiCallback<PageOfInsertionOrderHistoryChangeDataCapture> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInsertionOrderHistoryChangeDataCaptureValidateBeforeCall(insertionOrderId, offset, limit, limitToChangeTypes, _callback);
+        okhttp3.Call localVarCall = getInsertionOrderHistoryChangeDataCaptureValidateBeforeCall(insertionOrderId, limit, limitToChangeTypes, offset, _callback);
         Type localVarReturnType = new TypeToken<PageOfInsertionOrderHistoryChangeDataCapture>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

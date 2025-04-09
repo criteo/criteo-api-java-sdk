@@ -57,29 +57,9 @@ public class RmAudienceEntityV1 {
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
   private String accountId;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
-
-  public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
-  @SerializedName(SERIALIZED_NAME_RETAILER_ID)
-  private String retailerId;
-
-  public static final String SERIALIZED_NAME_CREATED_BY_ID = "createdById";
-  @SerializedName(SERIALIZED_NAME_CREATED_BY_ID)
-  private String createdById;
-
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
-
-  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
-  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
-  private OffsetDateTime updatedAt;
+  public static final String SERIALIZED_NAME_ALGEBRA = "algebra";
+  @SerializedName(SERIALIZED_NAME_ALGEBRA)
+  private RmAlgebraNodeV1 algebra;
 
   /**
    * Gets or Sets channels
@@ -134,9 +114,29 @@ public class RmAudienceEntityV1 {
   @SerializedName(SERIALIZED_NAME_CHANNELS)
   private List<ChannelsEnum> channels = null;
 
-  public static final String SERIALIZED_NAME_ALGEBRA = "algebra";
-  @SerializedName(SERIALIZED_NAME_ALGEBRA)
-  private RmAlgebraNodeV1 algebra;
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
+
+  public static final String SERIALIZED_NAME_CREATED_BY_ID = "createdById";
+  @SerializedName(SERIALIZED_NAME_CREATED_BY_ID)
+  private String createdById;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
+  @SerializedName(SERIALIZED_NAME_RETAILER_ID)
+  private String retailerId;
+
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  private OffsetDateTime updatedAt;
 
   public RmAudienceEntityV1() {
   }
@@ -163,135 +163,25 @@ public class RmAudienceEntityV1 {
   }
 
 
-  public RmAudienceEntityV1 name(String name) {
+  public RmAudienceEntityV1 algebra(RmAlgebraNodeV1 algebra) {
     
-    this.name = name;
+    this.algebra = algebra;
     return this;
   }
 
    /**
-   * Name of the audience
-   * @return name
+   * Get algebra
+   * @return algebra
   **/
   @javax.annotation.Nullable
 
-  public String getName() {
-    return name;
+  public RmAlgebraNodeV1 getAlgebra() {
+    return algebra;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public RmAudienceEntityV1 description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Description of the audience
-   * @return description
-  **/
-  @javax.annotation.Nullable
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-
-  public RmAudienceEntityV1 retailerId(String retailerId) {
-    
-    this.retailerId = retailerId;
-    return this;
-  }
-
-   /**
-   * Retailer  associated to the audience
-   * @return retailerId
-  **/
-  @javax.annotation.Nullable
-
-  public String getRetailerId() {
-    return retailerId;
-  }
-
-
-  public void setRetailerId(String retailerId) {
-    this.retailerId = retailerId;
-  }
-
-
-  public RmAudienceEntityV1 createdById(String createdById) {
-    
-    this.createdById = createdById;
-    return this;
-  }
-
-   /**
-   * User that created the audience
-   * @return createdById
-  **/
-  @javax.annotation.Nullable
-
-  public String getCreatedById() {
-    return createdById;
-  }
-
-
-  public void setCreatedById(String createdById) {
-    this.createdById = createdById;
-  }
-
-
-  public RmAudienceEntityV1 createdAt(OffsetDateTime createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * ISO-8601 timestamp in UTC of audience creation (read-only)
-   * @return createdAt
-  **/
-  @javax.annotation.Nullable
-
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
-  public RmAudienceEntityV1 updatedAt(OffsetDateTime updatedAt) {
-    
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-   /**
-   * ISO-8601 timestamp in UTC of audience update (read-only)
-   * @return updatedAt
-  **/
-  @javax.annotation.Nullable
-
-  public OffsetDateTime getUpdatedAt() {
-    return updatedAt;
-  }
-
-
-  public void setUpdatedAt(OffsetDateTime updatedAt) {
-    this.updatedAt = updatedAt;
+  public void setAlgebra(RmAlgebraNodeV1 algebra) {
+    this.algebra = algebra;
   }
 
 
@@ -325,25 +215,135 @@ public class RmAudienceEntityV1 {
   }
 
 
-  public RmAudienceEntityV1 algebra(RmAlgebraNodeV1 algebra) {
+  public RmAudienceEntityV1 createdAt(OffsetDateTime createdAt) {
     
-    this.algebra = algebra;
+    this.createdAt = createdAt;
     return this;
   }
 
    /**
-   * Get algebra
-   * @return algebra
+   * ISO-8601 timestamp in UTC of audience creation (read-only)
+   * @return createdAt
   **/
   @javax.annotation.Nullable
 
-  public RmAlgebraNodeV1 getAlgebra() {
-    return algebra;
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
   }
 
 
-  public void setAlgebra(RmAlgebraNodeV1 algebra) {
-    this.algebra = algebra;
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public RmAudienceEntityV1 createdById(String createdById) {
+    
+    this.createdById = createdById;
+    return this;
+  }
+
+   /**
+   * User that created the audience
+   * @return createdById
+  **/
+  @javax.annotation.Nullable
+
+  public String getCreatedById() {
+    return createdById;
+  }
+
+
+  public void setCreatedById(String createdById) {
+    this.createdById = createdById;
+  }
+
+
+  public RmAudienceEntityV1 description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Description of the audience
+   * @return description
+  **/
+  @javax.annotation.Nullable
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
+  public RmAudienceEntityV1 name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Name of the audience
+   * @return name
+  **/
+  @javax.annotation.Nullable
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public RmAudienceEntityV1 retailerId(String retailerId) {
+    
+    this.retailerId = retailerId;
+    return this;
+  }
+
+   /**
+   * Retailer  associated to the audience
+   * @return retailerId
+  **/
+  @javax.annotation.Nullable
+
+  public String getRetailerId() {
+    return retailerId;
+  }
+
+
+  public void setRetailerId(String retailerId) {
+    this.retailerId = retailerId;
+  }
+
+
+  public RmAudienceEntityV1 updatedAt(OffsetDateTime updatedAt) {
+    
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * ISO-8601 timestamp in UTC of audience update (read-only)
+   * @return updatedAt
+  **/
+  @javax.annotation.Nullable
+
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
   }
 
   /**
@@ -402,14 +402,14 @@ public class RmAudienceEntityV1 {
     }
     RmAudienceEntityV1 rmAudienceEntityV1 = (RmAudienceEntityV1) o;
     return Objects.equals(this.accountId, rmAudienceEntityV1.accountId) &&
-        Objects.equals(this.name, rmAudienceEntityV1.name) &&
-        Objects.equals(this.description, rmAudienceEntityV1.description) &&
-        Objects.equals(this.retailerId, rmAudienceEntityV1.retailerId) &&
-        Objects.equals(this.createdById, rmAudienceEntityV1.createdById) &&
-        Objects.equals(this.createdAt, rmAudienceEntityV1.createdAt) &&
-        Objects.equals(this.updatedAt, rmAudienceEntityV1.updatedAt) &&
+        Objects.equals(this.algebra, rmAudienceEntityV1.algebra) &&
         Objects.equals(this.channels, rmAudienceEntityV1.channels) &&
-        Objects.equals(this.algebra, rmAudienceEntityV1.algebra)&&
+        Objects.equals(this.createdAt, rmAudienceEntityV1.createdAt) &&
+        Objects.equals(this.createdById, rmAudienceEntityV1.createdById) &&
+        Objects.equals(this.description, rmAudienceEntityV1.description) &&
+        Objects.equals(this.name, rmAudienceEntityV1.name) &&
+        Objects.equals(this.retailerId, rmAudienceEntityV1.retailerId) &&
+        Objects.equals(this.updatedAt, rmAudienceEntityV1.updatedAt)&&
         Objects.equals(this.additionalProperties, rmAudienceEntityV1.additionalProperties);
   }
 
@@ -419,7 +419,7 @@ public class RmAudienceEntityV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, name, description, retailerId, createdById, createdAt, updatedAt, channels, algebra, additionalProperties);
+    return Objects.hash(accountId, algebra, channels, createdAt, createdById, description, name, retailerId, updatedAt, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -434,14 +434,14 @@ public class RmAudienceEntityV1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class RmAudienceEntityV1 {\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
-    sb.append("    createdById: ").append(toIndentedString(createdById)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    channels: ").append(toIndentedString(channels)).append("\n");
     sb.append("    algebra: ").append(toIndentedString(algebra)).append("\n");
+    sb.append("    channels: ").append(toIndentedString(channels)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    createdById: ").append(toIndentedString(createdById)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -466,14 +466,14 @@ public class RmAudienceEntityV1 {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("accountId");
-    openapiFields.add("name");
-    openapiFields.add("description");
-    openapiFields.add("retailerId");
-    openapiFields.add("createdById");
-    openapiFields.add("createdAt");
-    openapiFields.add("updatedAt");
-    openapiFields.add("channels");
     openapiFields.add("algebra");
+    openapiFields.add("channels");
+    openapiFields.add("createdAt");
+    openapiFields.add("createdById");
+    openapiFields.add("description");
+    openapiFields.add("name");
+    openapiFields.add("retailerId");
+    openapiFields.add("updatedAt");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -494,25 +494,25 @@ public class RmAudienceEntityV1 {
       if ((jsonObj.get("accountId") != null && !jsonObj.get("accountId").isJsonNull()) && !jsonObj.get("accountId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      if ((jsonObj.get("retailerId") != null && !jsonObj.get("retailerId").isJsonNull()) && !jsonObj.get("retailerId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `retailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerId").toString()));
-      }
-      if ((jsonObj.get("createdById") != null && !jsonObj.get("createdById").isJsonNull()) && !jsonObj.get("createdById").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `createdById` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdById").toString()));
+      // validate the optional field `algebra`
+      if (jsonObj.get("algebra") != null && !jsonObj.get("algebra").isJsonNull()) {
+        RmAlgebraNodeV1.validateJsonObject(jsonObj.getAsJsonObject("algebra"));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("channels") != null && !jsonObj.get("channels").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `channels` to be an array in the JSON string but got `%s`", jsonObj.get("channels").toString()));
       }
-      // validate the optional field `algebra`
-      if (jsonObj.get("algebra") != null && !jsonObj.get("algebra").isJsonNull()) {
-        RmAlgebraNodeV1.validateJsonObject(jsonObj.getAsJsonObject("algebra"));
+      if ((jsonObj.get("createdById") != null && !jsonObj.get("createdById").isJsonNull()) && !jsonObj.get("createdById").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `createdById` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdById").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("retailerId") != null && !jsonObj.get("retailerId").isJsonNull()) && !jsonObj.get("retailerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `retailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerId").toString()));
       }
   }
 

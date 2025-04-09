@@ -15,14 +15,13 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.CatalogStatusV2;
+import com.criteo.api.retailmedia.preview.model.AsyncOffsiteReport;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,26 +45,22 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * A class that represents a domain entity exposed by an API
+ * A top-level object that encapsulates a Criteo API response for a single value
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ResourceOfCatalogStatusV2 {
+public class AsyncOffsiteReportResource {
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private CatalogStatusV2 attributes;
-
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
+  private AsyncOffsiteReport attributes;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public ResourceOfCatalogStatusV2() {
+  public AsyncOffsiteReportResource() {
   }
 
-  public ResourceOfCatalogStatusV2 attributes(CatalogStatusV2 attributes) {
+  public AsyncOffsiteReportResource attributes(AsyncOffsiteReport attributes) {
     
     this.attributes = attributes;
     return this;
@@ -77,46 +72,24 @@ public class ResourceOfCatalogStatusV2 {
   **/
   @javax.annotation.Nullable
 
-  public CatalogStatusV2 getAttributes() {
+  public AsyncOffsiteReport getAttributes() {
     return attributes;
   }
 
 
-  public void setAttributes(CatalogStatusV2 attributes) {
+  public void setAttributes(AsyncOffsiteReport attributes) {
     this.attributes = attributes;
   }
 
 
-  public ResourceOfCatalogStatusV2 id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Id of the entity
-   * @return id
-  **/
-  @javax.annotation.Nullable
-
-  public String getId() {
-    return id;
-  }
-
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-
-  public ResourceOfCatalogStatusV2 type(String type) {
+  public AsyncOffsiteReportResource type(String type) {
     
     this.type = type;
     return this;
   }
 
    /**
-   * Canonical type name of the entity
+   * Get type
    * @return type
   **/
   @javax.annotation.Nullable
@@ -143,9 +116,9 @@ public class ResourceOfCatalogStatusV2 {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ResourceOfCatalogStatusV2 instance itself
+   * @return the AsyncOffsiteReportResource instance itself
    */
-  public ResourceOfCatalogStatusV2 putAdditionalProperty(String key, Object value) {
+  public AsyncOffsiteReportResource putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -184,35 +157,22 @@ public class ResourceOfCatalogStatusV2 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ResourceOfCatalogStatusV2 resourceOfCatalogStatusV2 = (ResourceOfCatalogStatusV2) o;
-    return Objects.equals(this.attributes, resourceOfCatalogStatusV2.attributes) &&
-        Objects.equals(this.id, resourceOfCatalogStatusV2.id) &&
-        Objects.equals(this.type, resourceOfCatalogStatusV2.type)&&
-        Objects.equals(this.additionalProperties, resourceOfCatalogStatusV2.additionalProperties);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    AsyncOffsiteReportResource asyncOffsiteReportResource = (AsyncOffsiteReportResource) o;
+    return Objects.equals(this.attributes, asyncOffsiteReportResource.attributes) &&
+        Objects.equals(this.type, asyncOffsiteReportResource.type)&&
+        Objects.equals(this.additionalProperties, asyncOffsiteReportResource.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, id, type, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(attributes, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ResourceOfCatalogStatusV2 {\n");
+    sb.append("class AsyncOffsiteReportResource {\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -238,7 +198,6 @@ public class ResourceOfCatalogStatusV2 {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("attributes");
-    openapiFields.add("id");
     openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
@@ -249,20 +208,17 @@ public class ResourceOfCatalogStatusV2 {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ResourceOfCatalogStatusV2
+  * @throws IOException if the JSON Object is invalid with respect to AsyncOffsiteReportResource
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ResourceOfCatalogStatusV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ResourceOfCatalogStatusV2 is not found in the empty JSON string", ResourceOfCatalogStatusV2.openapiRequiredFields.toString()));
+        if (!AsyncOffsiteReportResource.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AsyncOffsiteReportResource is not found in the empty JSON string", AsyncOffsiteReportResource.openapiRequiredFields.toString()));
         }
       }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        CatalogStatusV2.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
-      }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        AsyncOffsiteReport.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
@@ -273,16 +229,16 @@ public class ResourceOfCatalogStatusV2 {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ResourceOfCatalogStatusV2.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ResourceOfCatalogStatusV2' and its subtypes
+       if (!AsyncOffsiteReportResource.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AsyncOffsiteReportResource' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ResourceOfCatalogStatusV2> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ResourceOfCatalogStatusV2.class));
+       final TypeAdapter<AsyncOffsiteReportResource> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AsyncOffsiteReportResource.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ResourceOfCatalogStatusV2>() {
+       return (TypeAdapter<T>) new TypeAdapter<AsyncOffsiteReportResource>() {
            @Override
-           public void write(JsonWriter out, ResourceOfCatalogStatusV2 value) throws IOException {
+           public void write(JsonWriter out, AsyncOffsiteReportResource value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -305,11 +261,11 @@ public class ResourceOfCatalogStatusV2 {
            }
 
            @Override
-           public ResourceOfCatalogStatusV2 read(JsonReader in) throws IOException {
+           public AsyncOffsiteReportResource read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             ResourceOfCatalogStatusV2 instance = thisAdapter.fromJsonTree(jsonObj);
+             AsyncOffsiteReportResource instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -336,18 +292,18 @@ public class ResourceOfCatalogStatusV2 {
   }
 
  /**
-  * Create an instance of ResourceOfCatalogStatusV2 given an JSON string
+  * Create an instance of AsyncOffsiteReportResource given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ResourceOfCatalogStatusV2
-  * @throws IOException if the JSON string is invalid with respect to ResourceOfCatalogStatusV2
+  * @return An instance of AsyncOffsiteReportResource
+  * @throws IOException if the JSON string is invalid with respect to AsyncOffsiteReportResource
   */
-  public static ResourceOfCatalogStatusV2 fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ResourceOfCatalogStatusV2.class);
+  public static AsyncOffsiteReportResource fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AsyncOffsiteReportResource.class);
   }
 
  /**
-  * Convert an instance of ResourceOfCatalogStatusV2 to an JSON string
+  * Convert an instance of AsyncOffsiteReportResource to an JSON string
   *
   * @return JSON string
   */

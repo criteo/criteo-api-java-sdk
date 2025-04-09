@@ -8,9 +8,9 @@ List of retailer's categories, including the full hierarchy of categories and th
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**text** | **String** | Category Text |  |
 |**name** | **String** | Category Name |  |
 |**parentId** | **String** | Category ParentId |  |
+|**text** | **String** | Category Text |  |
 
 
 

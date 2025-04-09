@@ -8,8 +8,8 @@ ad set schedule create model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**startDate** | **OffsetDateTime** |  |  |
 |**endDate** | **OffsetDateTime** |  |  [optional] |
+|**startDate** | **OffsetDateTime** |  |  |
 
 
 

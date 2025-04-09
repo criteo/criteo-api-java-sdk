@@ -15,16 +15,13 @@ package com.criteo.api.retailmedia.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.retailmedia.preview.model.CommonProblem;
-import com.criteo.api.retailmedia.preview.model.ResourceOfCatalogStatusV2;
+import com.criteo.api.retailmedia.preview.model.ValueResourceOfSellerCatalogRequestV2;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -49,36 +46,18 @@ import java.util.Set;
 import com.criteo.api.retailmedia.preview.JSON;
 
 /**
- * A top-level object that encapsulates a Criteo API response for a single entity
+ * A top-level object that encapsulates a Criteo API request for a single value objects.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class CatalogStatusV2Response {
+public class ValueResourceInputOfSellerCatalogRequestV2 {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private ResourceOfCatalogStatusV2 data;
+  private ValueResourceOfSellerCatalogRequestV2 data;
 
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<CommonProblem> warnings = null;
-
-  public static final String SERIALIZED_NAME_ERRORS = "errors";
-  @SerializedName(SERIALIZED_NAME_ERRORS)
-  private List<CommonProblem> errors = null;
-
-  public CatalogStatusV2Response() {
+  public ValueResourceInputOfSellerCatalogRequestV2() {
   }
 
-  
-  public CatalogStatusV2Response(
-     List<CommonProblem> warnings, 
-     List<CommonProblem> errors
-  ) {
-    this();
-    this.warnings = warnings;
-    this.errors = errors;
-  }
-
-  public CatalogStatusV2Response data(ResourceOfCatalogStatusV2 data) {
+  public ValueResourceInputOfSellerCatalogRequestV2 data(ValueResourceOfSellerCatalogRequestV2 data) {
     
     this.data = data;
     return this;
@@ -90,40 +69,14 @@ public class CatalogStatusV2Response {
   **/
   @javax.annotation.Nullable
 
-  public ResourceOfCatalogStatusV2 getData() {
+  public ValueResourceOfSellerCatalogRequestV2 getData() {
     return data;
   }
 
 
-  public void setData(ResourceOfCatalogStatusV2 data) {
+  public void setData(ValueResourceOfSellerCatalogRequestV2 data) {
     this.data = data;
   }
-
-
-   /**
-   * Get warnings
-   * @return warnings
-  **/
-  @javax.annotation.Nullable
-
-  public List<CommonProblem> getWarnings() {
-    return warnings;
-  }
-
-
-
-
-   /**
-   * Get errors
-   * @return errors
-  **/
-  @javax.annotation.Nullable
-
-  public List<CommonProblem> getErrors() {
-    return errors;
-  }
-
-
 
   /**
    * A container for additional, undeclared properties.
@@ -138,9 +91,9 @@ public class CatalogStatusV2Response {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the CatalogStatusV2Response instance itself
+   * @return the ValueResourceInputOfSellerCatalogRequestV2 instance itself
    */
-  public CatalogStatusV2Response putAdditionalProperty(String key, Object value) {
+  public ValueResourceInputOfSellerCatalogRequestV2 putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -179,11 +132,9 @@ public class CatalogStatusV2Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CatalogStatusV2Response catalogStatusV2Response = (CatalogStatusV2Response) o;
-    return Objects.equals(this.data, catalogStatusV2Response.data) &&
-        Objects.equals(this.warnings, catalogStatusV2Response.warnings) &&
-        Objects.equals(this.errors, catalogStatusV2Response.errors)&&
-        Objects.equals(this.additionalProperties, catalogStatusV2Response.additionalProperties);
+    ValueResourceInputOfSellerCatalogRequestV2 valueResourceInputOfSellerCatalogRequestV2 = (ValueResourceInputOfSellerCatalogRequestV2) o;
+    return Objects.equals(this.data, valueResourceInputOfSellerCatalogRequestV2.data)&&
+        Objects.equals(this.additionalProperties, valueResourceInputOfSellerCatalogRequestV2.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -192,7 +143,7 @@ public class CatalogStatusV2Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, warnings, errors, additionalProperties);
+    return Objects.hash(data, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -205,10 +156,8 @@ public class CatalogStatusV2Response {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CatalogStatusV2Response {\n");
+    sb.append("class ValueResourceInputOfSellerCatalogRequestV2 {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -233,8 +182,6 @@ public class CatalogStatusV2Response {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("data");
-    openapiFields.add("warnings");
-    openapiFields.add("errors");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -244,45 +191,17 @@ public class CatalogStatusV2Response {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CatalogStatusV2Response
+  * @throws IOException if the JSON Object is invalid with respect to ValueResourceInputOfSellerCatalogRequestV2
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!CatalogStatusV2Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogStatusV2Response is not found in the empty JSON string", CatalogStatusV2Response.openapiRequiredFields.toString()));
+        if (!ValueResourceInputOfSellerCatalogRequestV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ValueResourceInputOfSellerCatalogRequestV2 is not found in the empty JSON string", ValueResourceInputOfSellerCatalogRequestV2.openapiRequiredFields.toString()));
         }
       }
       // validate the optional field `data`
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        ResourceOfCatalogStatusV2.validateJsonObject(jsonObj.getAsJsonObject("data"));
-      }
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
-        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
-        if (jsonArraywarnings != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("warnings").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-          }
-
-          // validate the optional field `warnings` (array)
-          for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
-          };
-        }
-      }
-      if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
-        JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
-        if (jsonArrayerrors != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("errors").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
-          }
-
-          // validate the optional field `errors` (array)
-          for (int i = 0; i < jsonArrayerrors.size(); i++) {
-            CommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
-          };
-        }
+        ValueResourceOfSellerCatalogRequestV2.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
   }
 
@@ -290,16 +209,16 @@ public class CatalogStatusV2Response {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CatalogStatusV2Response.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CatalogStatusV2Response' and its subtypes
+       if (!ValueResourceInputOfSellerCatalogRequestV2.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ValueResourceInputOfSellerCatalogRequestV2' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CatalogStatusV2Response> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CatalogStatusV2Response.class));
+       final TypeAdapter<ValueResourceInputOfSellerCatalogRequestV2> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ValueResourceInputOfSellerCatalogRequestV2.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CatalogStatusV2Response>() {
+       return (TypeAdapter<T>) new TypeAdapter<ValueResourceInputOfSellerCatalogRequestV2>() {
            @Override
-           public void write(JsonWriter out, CatalogStatusV2Response value) throws IOException {
+           public void write(JsonWriter out, ValueResourceInputOfSellerCatalogRequestV2 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -322,11 +241,11 @@ public class CatalogStatusV2Response {
            }
 
            @Override
-           public CatalogStatusV2Response read(JsonReader in) throws IOException {
+           public ValueResourceInputOfSellerCatalogRequestV2 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             CatalogStatusV2Response instance = thisAdapter.fromJsonTree(jsonObj);
+             ValueResourceInputOfSellerCatalogRequestV2 instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -353,18 +272,18 @@ public class CatalogStatusV2Response {
   }
 
  /**
-  * Create an instance of CatalogStatusV2Response given an JSON string
+  * Create an instance of ValueResourceInputOfSellerCatalogRequestV2 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of CatalogStatusV2Response
-  * @throws IOException if the JSON string is invalid with respect to CatalogStatusV2Response
+  * @return An instance of ValueResourceInputOfSellerCatalogRequestV2
+  * @throws IOException if the JSON string is invalid with respect to ValueResourceInputOfSellerCatalogRequestV2
   */
-  public static CatalogStatusV2Response fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CatalogStatusV2Response.class);
+  public static ValueResourceInputOfSellerCatalogRequestV2 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ValueResourceInputOfSellerCatalogRequestV2.class);
   }
 
  /**
-  * Convert an instance of CatalogStatusV2Response to an JSON string
+  * Convert an instance of ValueResourceInputOfSellerCatalogRequestV2 to an JSON string
   *
   * @return JSON string
   */

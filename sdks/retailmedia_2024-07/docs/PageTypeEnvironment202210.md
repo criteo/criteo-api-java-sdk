@@ -8,8 +8,22 @@ The PageType-Environment Tuples for creatives
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**pageType** | [**PageTypeEnum**](#PageTypeEnum) | Creative PageType |  [optional] |
 |**environments** | [**List&lt;EnvironmentsEnum&gt;**](#List&lt;EnvironmentsEnum&gt;) | List of environments per PageType |  [optional] |
+|**pageType** | [**PageTypeEnum**](#PageTypeEnum) | Creative PageType |  [optional] |
+
+
+
+## Enum: List&lt;EnvironmentsEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| WEB | &quot;Web&quot; |
+| MOBILE | &quot;Mobile&quot; |
+| APP | &quot;App&quot; |
+| LOCKOUT | &quot;Lockout&quot; |
+| MIXED | &quot;Mixed&quot; |
+| IOS | &quot;iOS&quot; |
+| ANDROID | &quot;Android&quot; |
 
 
 
@@ -26,20 +40,6 @@ The PageType-Environment Tuples for creatives
 | CONFIRMATION | &quot;Confirmation&quot; |
 | MERCHANDISING | &quot;Merchandising&quot; |
 | DEALS | &quot;Deals&quot; |
-
-
-
-## Enum: List&lt;EnvironmentsEnum&gt;
-
-| Name | Value |
-|---- | -----|
-| WEB | &quot;Web&quot; |
-| MOBILE | &quot;Mobile&quot; |
-| APP | &quot;App&quot; |
-| LOCKOUT | &quot;Lockout&quot; |
-| MIXED | &quot;Mixed&quot; |
-| IOS | &quot;iOS&quot; |
-| ANDROID | &quot;Android&quot; |
 
 
 

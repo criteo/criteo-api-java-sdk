@@ -51,16 +51,38 @@ import com.criteo.api.marketingsolutions.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ImageAttributes {
-  public static final String SERIALIZED_NAME_URLS = "urls";
-  @SerializedName(SERIALIZED_NAME_URLS)
-  private List<String> urls = null;
-
   public static final String SERIALIZED_NAME_LANDING_PAGE_URL = "landingPageUrl";
   @SerializedName(SERIALIZED_NAME_LANDING_PAGE_URL)
   private String landingPageUrl;
 
+  public static final String SERIALIZED_NAME_URLS = "urls";
+  @SerializedName(SERIALIZED_NAME_URLS)
+  private List<String> urls = null;
+
   public ImageAttributes() {
   }
+
+  public ImageAttributes landingPageUrl(String landingPageUrl) {
+    
+    this.landingPageUrl = landingPageUrl;
+    return this;
+  }
+
+   /**
+   * Web redirection of the landing page url
+   * @return landingPageUrl
+  **/
+  @javax.annotation.Nullable
+
+  public String getLandingPageUrl() {
+    return landingPageUrl;
+  }
+
+
+  public void setLandingPageUrl(String landingPageUrl) {
+    this.landingPageUrl = landingPageUrl;
+  }
+
 
   public ImageAttributes urls(List<String> urls) {
     
@@ -89,28 +111,6 @@ public class ImageAttributes {
 
   public void setUrls(List<String> urls) {
     this.urls = urls;
-  }
-
-
-  public ImageAttributes landingPageUrl(String landingPageUrl) {
-    
-    this.landingPageUrl = landingPageUrl;
-    return this;
-  }
-
-   /**
-   * Web redirection of the landing page url
-   * @return landingPageUrl
-  **/
-  @javax.annotation.Nullable
-
-  public String getLandingPageUrl() {
-    return landingPageUrl;
-  }
-
-
-  public void setLandingPageUrl(String landingPageUrl) {
-    this.landingPageUrl = landingPageUrl;
   }
 
   /**
@@ -168,8 +168,8 @@ public class ImageAttributes {
       return false;
     }
     ImageAttributes imageAttributes = (ImageAttributes) o;
-    return Objects.equals(this.urls, imageAttributes.urls) &&
-        Objects.equals(this.landingPageUrl, imageAttributes.landingPageUrl)&&
+    return Objects.equals(this.landingPageUrl, imageAttributes.landingPageUrl) &&
+        Objects.equals(this.urls, imageAttributes.urls)&&
         Objects.equals(this.additionalProperties, imageAttributes.additionalProperties);
   }
 
@@ -179,7 +179,7 @@ public class ImageAttributes {
 
   @Override
   public int hashCode() {
-    return Objects.hash(urls, landingPageUrl, additionalProperties);
+    return Objects.hash(landingPageUrl, urls, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -193,8 +193,8 @@ public class ImageAttributes {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ImageAttributes {\n");
-    sb.append("    urls: ").append(toIndentedString(urls)).append("\n");
     sb.append("    landingPageUrl: ").append(toIndentedString(landingPageUrl)).append("\n");
+    sb.append("    urls: ").append(toIndentedString(urls)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -218,8 +218,8 @@ public class ImageAttributes {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("urls");
     openapiFields.add("landingPageUrl");
+    openapiFields.add("urls");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -237,12 +237,12 @@ public class ImageAttributes {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ImageAttributes is not found in the empty JSON string", ImageAttributes.openapiRequiredFields.toString()));
         }
       }
+      if ((jsonObj.get("landingPageUrl") != null && !jsonObj.get("landingPageUrl").isJsonNull()) && !jsonObj.get("landingPageUrl").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `landingPageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("landingPageUrl").toString()));
+      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("urls") != null && !jsonObj.get("urls").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `urls` to be an array in the JSON string but got `%s`", jsonObj.get("urls").toString()));
-      }
-      if ((jsonObj.get("landingPageUrl") != null && !jsonObj.get("landingPageUrl").isJsonNull()) && !jsonObj.get("landingPageUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `landingPageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("landingPageUrl").toString()));
       }
   }
 

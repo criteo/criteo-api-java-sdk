@@ -51,10 +51,6 @@ import com.criteo.api.marketingsolutions.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateImageSlide {
-  public static final String SERIALIZED_NAME_WIDTH = "width";
-  @SerializedName(SERIALIZED_NAME_WIDTH)
-  private Integer width;
-
   public static final String SERIALIZED_NAME_HEIGHT = "height";
   @SerializedName(SERIALIZED_NAME_HEIGHT)
   private Integer height;
@@ -63,30 +59,12 @@ public class CreateImageSlide {
   @SerializedName(SERIALIZED_NAME_SLIDE_BASE64_STRINGS)
   private List<String> slideBase64Strings = null;
 
+  public static final String SERIALIZED_NAME_WIDTH = "width";
+  @SerializedName(SERIALIZED_NAME_WIDTH)
+  private Integer width;
+
   public CreateImageSlide() {
   }
-
-  public CreateImageSlide width(Integer width) {
-    
-    this.width = width;
-    return this;
-  }
-
-   /**
-   * Width of the Coupon slide
-   * @return width
-  **/
-  @javax.annotation.Nullable
-
-  public Integer getWidth() {
-    return width;
-  }
-
-
-  public void setWidth(Integer width) {
-    this.width = width;
-  }
-
 
   public CreateImageSlide height(Integer height) {
     
@@ -137,6 +115,28 @@ public class CreateImageSlide {
 
   public void setSlideBase64Strings(List<String> slideBase64Strings) {
     this.slideBase64Strings = slideBase64Strings;
+  }
+
+
+  public CreateImageSlide width(Integer width) {
+    
+    this.width = width;
+    return this;
+  }
+
+   /**
+   * Width of the Coupon slide
+   * @return width
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getWidth() {
+    return width;
+  }
+
+
+  public void setWidth(Integer width) {
+    this.width = width;
   }
 
   /**
@@ -194,9 +194,9 @@ public class CreateImageSlide {
       return false;
     }
     CreateImageSlide createImageSlide = (CreateImageSlide) o;
-    return Objects.equals(this.width, createImageSlide.width) &&
-        Objects.equals(this.height, createImageSlide.height) &&
-        Objects.equals(this.slideBase64Strings, createImageSlide.slideBase64Strings)&&
+    return Objects.equals(this.height, createImageSlide.height) &&
+        Objects.equals(this.slideBase64Strings, createImageSlide.slideBase64Strings) &&
+        Objects.equals(this.width, createImageSlide.width)&&
         Objects.equals(this.additionalProperties, createImageSlide.additionalProperties);
   }
 
@@ -206,7 +206,7 @@ public class CreateImageSlide {
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, slideBase64Strings, additionalProperties);
+    return Objects.hash(height, slideBase64Strings, width, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -220,9 +220,9 @@ public class CreateImageSlide {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateImageSlide {\n");
-    sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    slideBase64Strings: ").append(toIndentedString(slideBase64Strings)).append("\n");
+    sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -246,9 +246,9 @@ public class CreateImageSlide {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("width");
     openapiFields.add("height");
     openapiFields.add("slideBase64Strings");
+    openapiFields.add("width");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

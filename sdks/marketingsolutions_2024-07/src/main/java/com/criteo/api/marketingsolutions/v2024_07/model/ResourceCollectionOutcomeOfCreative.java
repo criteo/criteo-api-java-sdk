@@ -57,25 +57,25 @@ public class ResourceCollectionOutcomeOfCreative {
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<ResourceOfCreative> data = null;
 
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<CommonProblem> warnings = null;
-
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<CommonProblem> errors = null;
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<CommonProblem> warnings = null;
 
   public ResourceCollectionOutcomeOfCreative() {
   }
 
   
   public ResourceCollectionOutcomeOfCreative(
-     List<CommonProblem> warnings, 
-     List<CommonProblem> errors
+     List<CommonProblem> errors, 
+     List<CommonProblem> warnings
   ) {
     this();
-    this.warnings = warnings;
     this.errors = errors;
+    this.warnings = warnings;
   }
 
   public ResourceCollectionOutcomeOfCreative data(List<ResourceOfCreative> data) {
@@ -109,19 +109,6 @@ public class ResourceCollectionOutcomeOfCreative {
 
 
    /**
-   * Get warnings
-   * @return warnings
-  **/
-  @javax.annotation.Nullable
-
-  public List<CommonProblem> getWarnings() {
-    return warnings;
-  }
-
-
-
-
-   /**
    * Get errors
    * @return errors
   **/
@@ -129,6 +116,19 @@ public class ResourceCollectionOutcomeOfCreative {
 
   public List<CommonProblem> getErrors() {
     return errors;
+  }
+
+
+
+
+   /**
+   * Get warnings
+   * @return warnings
+  **/
+  @javax.annotation.Nullable
+
+  public List<CommonProblem> getWarnings() {
+    return warnings;
   }
 
 
@@ -189,8 +189,8 @@ public class ResourceCollectionOutcomeOfCreative {
     }
     ResourceCollectionOutcomeOfCreative resourceCollectionOutcomeOfCreative = (ResourceCollectionOutcomeOfCreative) o;
     return Objects.equals(this.data, resourceCollectionOutcomeOfCreative.data) &&
-        Objects.equals(this.warnings, resourceCollectionOutcomeOfCreative.warnings) &&
-        Objects.equals(this.errors, resourceCollectionOutcomeOfCreative.errors)&&
+        Objects.equals(this.errors, resourceCollectionOutcomeOfCreative.errors) &&
+        Objects.equals(this.warnings, resourceCollectionOutcomeOfCreative.warnings)&&
         Objects.equals(this.additionalProperties, resourceCollectionOutcomeOfCreative.additionalProperties);
   }
 
@@ -200,7 +200,7 @@ public class ResourceCollectionOutcomeOfCreative {
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, warnings, errors, additionalProperties);
+    return Objects.hash(data, errors, warnings, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -215,8 +215,8 @@ public class ResourceCollectionOutcomeOfCreative {
     StringBuilder sb = new StringBuilder();
     sb.append("class ResourceCollectionOutcomeOfCreative {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -241,8 +241,8 @@ public class ResourceCollectionOutcomeOfCreative {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("data");
-    openapiFields.add("warnings");
     openapiFields.add("errors");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -274,20 +274,6 @@ public class ResourceCollectionOutcomeOfCreative {
           };
         }
       }
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
-        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
-        if (jsonArraywarnings != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("warnings").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-          }
-
-          // validate the optional field `warnings` (array)
-          for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
-          };
-        }
-      }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
         if (jsonArrayerrors != null) {
@@ -299,6 +285,20 @@ public class ResourceCollectionOutcomeOfCreative {
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
             CommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }

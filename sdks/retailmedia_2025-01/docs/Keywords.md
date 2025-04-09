@@ -8,12 +8,23 @@ Data associated with a normalized keyword phrase
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**reviewState** | [**ReviewStateEnum**](#ReviewStateEnum) | Review status of the keyword |  [optional] |
-|**matchType** | [**MatchTypeEnum**](#MatchTypeEnum) | The matching algorthim to be use when comparing this keyword with the shopper search phrase |  [optional] |
 |**bid** | **Double** | The bid to use when a positive keyword matches the shopper search phrase |  [optional] |
-|**inputKeywords** | [**InputKeywords**](InputKeywords.md) |  |  [optional] |
 |**createdAt** | **OffsetDateTime** | The time at which this keyword was created in UTC |  [optional] |
+|**inputKeywords** | [**InputKeywords**](InputKeywords.md) |  |  [optional] |
+|**matchType** | [**MatchTypeEnum**](#MatchTypeEnum) | The matching algorthim to be use when comparing this keyword with the shopper search phrase |  [optional] |
+|**reviewState** | [**ReviewStateEnum**](#ReviewStateEnum) | Review status of the keyword |  [optional] |
 |**updatedAt** | **OffsetDateTime** | The time at which the keyword was last modified in UTC |  [optional] |
+
+
+
+## Enum: MatchTypeEnum
+
+| Name | Value |
+|---- | -----|
+| POSITIVEEXACTMATCH | &quot;PositiveExactMatch&quot; |
+| NEGATIVEEXACTMATCH | &quot;NegativeExactMatch&quot; |
+| NEGATIVEBROADMATCH | &quot;NegativeBroadMatch&quot; |
+| UNKNOWN | &quot;Unknown&quot; |
 
 
 
@@ -28,17 +39,6 @@ Data associated with a normalized keyword phrase
 | REJECTED | &quot;Rejected&quot; |
 | AUTOREJECTED | &quot;AutoRejected&quot; |
 | UNKOWN | &quot;Unkown&quot; |
-
-
-
-## Enum: MatchTypeEnum
-
-| Name | Value |
-|---- | -----|
-| POSITIVEEXACTMATCH | &quot;PositiveExactMatch&quot; |
-| NEGATIVEEXACTMATCH | &quot;NegativeExactMatch&quot; |
-| NEGATIVEBROADMATCH | &quot;NegativeBroadMatch&quot; |
-| UNKNOWN | &quot;Unknown&quot; |
 
 
 

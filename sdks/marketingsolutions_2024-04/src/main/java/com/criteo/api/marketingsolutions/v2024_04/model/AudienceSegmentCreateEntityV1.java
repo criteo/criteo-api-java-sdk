@@ -53,88 +53,44 @@ import com.criteo.api.marketingsolutions.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AudienceSegmentCreateEntityV1 {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
-
   public static final String SERIALIZED_NAME_ADVERTISER_ID = "advertiserId";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_ID)
   private String advertiserId;
-
-  public static final String SERIALIZED_NAME_IN_MARKET = "inMarket";
-  @SerializedName(SERIALIZED_NAME_IN_MARKET)
-  private InMarketCreateV1 inMarket;
-
-  public static final String SERIALIZED_NAME_PROSPECTING = "prospecting";
-  @SerializedName(SERIALIZED_NAME_PROSPECTING)
-  private ProspectingCreateV1 prospecting;
 
   public static final String SERIALIZED_NAME_CONTACT_LIST = "contactList";
   @SerializedName(SERIALIZED_NAME_CONTACT_LIST)
   private Object contactList;
 
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
+  public static final String SERIALIZED_NAME_IN_MARKET = "inMarket";
+  @SerializedName(SERIALIZED_NAME_IN_MARKET)
+  private InMarketCreateV1 inMarket;
+
   public static final String SERIALIZED_NAME_LOCATION = "location";
   @SerializedName(SERIALIZED_NAME_LOCATION)
   private LocationCreateV1 location;
-
-  public static final String SERIALIZED_NAME_RETARGETING = "retargeting";
-  @SerializedName(SERIALIZED_NAME_RETARGETING)
-  private RetargetingCreateV1 retargeting;
 
   public static final String SERIALIZED_NAME_LOOKALIKE = "lookalike";
   @SerializedName(SERIALIZED_NAME_LOOKALIKE)
   private LookalikeCreateV1 lookalike;
 
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_PROSPECTING = "prospecting";
+  @SerializedName(SERIALIZED_NAME_PROSPECTING)
+  private ProspectingCreateV1 prospecting;
+
+  public static final String SERIALIZED_NAME_RETARGETING = "retargeting";
+  @SerializedName(SERIALIZED_NAME_RETARGETING)
+  private RetargetingCreateV1 retargeting;
+
   public AudienceSegmentCreateEntityV1() {
   }
-
-  public AudienceSegmentCreateEntityV1 name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Name of the segment
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public AudienceSegmentCreateEntityV1 description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Description of the segment
-   * @return description
-  **/
-  @javax.annotation.Nullable
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
 
   public AudienceSegmentCreateEntityV1 advertiserId(String advertiserId) {
     
@@ -155,50 +111,6 @@ public class AudienceSegmentCreateEntityV1 {
 
   public void setAdvertiserId(String advertiserId) {
     this.advertiserId = advertiserId;
-  }
-
-
-  public AudienceSegmentCreateEntityV1 inMarket(InMarketCreateV1 inMarket) {
-    
-    this.inMarket = inMarket;
-    return this;
-  }
-
-   /**
-   * Get inMarket
-   * @return inMarket
-  **/
-  @javax.annotation.Nullable
-
-  public InMarketCreateV1 getInMarket() {
-    return inMarket;
-  }
-
-
-  public void setInMarket(InMarketCreateV1 inMarket) {
-    this.inMarket = inMarket;
-  }
-
-
-  public AudienceSegmentCreateEntityV1 prospecting(ProspectingCreateV1 prospecting) {
-    
-    this.prospecting = prospecting;
-    return this;
-  }
-
-   /**
-   * Get prospecting
-   * @return prospecting
-  **/
-  @javax.annotation.Nullable
-
-  public ProspectingCreateV1 getProspecting() {
-    return prospecting;
-  }
-
-
-  public void setProspecting(ProspectingCreateV1 prospecting) {
-    this.prospecting = prospecting;
   }
 
 
@@ -224,6 +136,50 @@ public class AudienceSegmentCreateEntityV1 {
   }
 
 
+  public AudienceSegmentCreateEntityV1 description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Description of the segment
+   * @return description
+  **/
+  @javax.annotation.Nullable
+
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
+  public AudienceSegmentCreateEntityV1 inMarket(InMarketCreateV1 inMarket) {
+    
+    this.inMarket = inMarket;
+    return this;
+  }
+
+   /**
+   * Get inMarket
+   * @return inMarket
+  **/
+  @javax.annotation.Nullable
+
+  public InMarketCreateV1 getInMarket() {
+    return inMarket;
+  }
+
+
+  public void setInMarket(InMarketCreateV1 inMarket) {
+    this.inMarket = inMarket;
+  }
+
+
   public AudienceSegmentCreateEntityV1 location(LocationCreateV1 location) {
     
     this.location = location;
@@ -246,28 +202,6 @@ public class AudienceSegmentCreateEntityV1 {
   }
 
 
-  public AudienceSegmentCreateEntityV1 retargeting(RetargetingCreateV1 retargeting) {
-    
-    this.retargeting = retargeting;
-    return this;
-  }
-
-   /**
-   * Get retargeting
-   * @return retargeting
-  **/
-  @javax.annotation.Nullable
-
-  public RetargetingCreateV1 getRetargeting() {
-    return retargeting;
-  }
-
-
-  public void setRetargeting(RetargetingCreateV1 retargeting) {
-    this.retargeting = retargeting;
-  }
-
-
   public AudienceSegmentCreateEntityV1 lookalike(LookalikeCreateV1 lookalike) {
     
     this.lookalike = lookalike;
@@ -287,6 +221,72 @@ public class AudienceSegmentCreateEntityV1 {
 
   public void setLookalike(LookalikeCreateV1 lookalike) {
     this.lookalike = lookalike;
+  }
+
+
+  public AudienceSegmentCreateEntityV1 name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Name of the segment
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public AudienceSegmentCreateEntityV1 prospecting(ProspectingCreateV1 prospecting) {
+    
+    this.prospecting = prospecting;
+    return this;
+  }
+
+   /**
+   * Get prospecting
+   * @return prospecting
+  **/
+  @javax.annotation.Nullable
+
+  public ProspectingCreateV1 getProspecting() {
+    return prospecting;
+  }
+
+
+  public void setProspecting(ProspectingCreateV1 prospecting) {
+    this.prospecting = prospecting;
+  }
+
+
+  public AudienceSegmentCreateEntityV1 retargeting(RetargetingCreateV1 retargeting) {
+    
+    this.retargeting = retargeting;
+    return this;
+  }
+
+   /**
+   * Get retargeting
+   * @return retargeting
+  **/
+  @javax.annotation.Nullable
+
+  public RetargetingCreateV1 getRetargeting() {
+    return retargeting;
+  }
+
+
+  public void setRetargeting(RetargetingCreateV1 retargeting) {
+    this.retargeting = retargeting;
   }
 
   /**
@@ -344,36 +344,36 @@ public class AudienceSegmentCreateEntityV1 {
       return false;
     }
     AudienceSegmentCreateEntityV1 audienceSegmentCreateEntityV1 = (AudienceSegmentCreateEntityV1) o;
-    return Objects.equals(this.name, audienceSegmentCreateEntityV1.name) &&
-        Objects.equals(this.description, audienceSegmentCreateEntityV1.description) &&
-        Objects.equals(this.advertiserId, audienceSegmentCreateEntityV1.advertiserId) &&
-        Objects.equals(this.inMarket, audienceSegmentCreateEntityV1.inMarket) &&
-        Objects.equals(this.prospecting, audienceSegmentCreateEntityV1.prospecting) &&
+    return Objects.equals(this.advertiserId, audienceSegmentCreateEntityV1.advertiserId) &&
         Objects.equals(this.contactList, audienceSegmentCreateEntityV1.contactList) &&
+        Objects.equals(this.description, audienceSegmentCreateEntityV1.description) &&
+        Objects.equals(this.inMarket, audienceSegmentCreateEntityV1.inMarket) &&
         Objects.equals(this.location, audienceSegmentCreateEntityV1.location) &&
-        Objects.equals(this.retargeting, audienceSegmentCreateEntityV1.retargeting) &&
-        Objects.equals(this.lookalike, audienceSegmentCreateEntityV1.lookalike)&&
+        Objects.equals(this.lookalike, audienceSegmentCreateEntityV1.lookalike) &&
+        Objects.equals(this.name, audienceSegmentCreateEntityV1.name) &&
+        Objects.equals(this.prospecting, audienceSegmentCreateEntityV1.prospecting) &&
+        Objects.equals(this.retargeting, audienceSegmentCreateEntityV1.retargeting)&&
         Objects.equals(this.additionalProperties, audienceSegmentCreateEntityV1.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, advertiserId, inMarket, prospecting, contactList, location, retargeting, lookalike, additionalProperties);
+    return Objects.hash(advertiserId, contactList, description, inMarket, location, lookalike, name, prospecting, retargeting, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceSegmentCreateEntityV1 {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
-    sb.append("    inMarket: ").append(toIndentedString(inMarket)).append("\n");
-    sb.append("    prospecting: ").append(toIndentedString(prospecting)).append("\n");
     sb.append("    contactList: ").append(toIndentedString(contactList)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    inMarket: ").append(toIndentedString(inMarket)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    retargeting: ").append(toIndentedString(retargeting)).append("\n");
     sb.append("    lookalike: ").append(toIndentedString(lookalike)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    prospecting: ").append(toIndentedString(prospecting)).append("\n");
+    sb.append("    retargeting: ").append(toIndentedString(retargeting)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -397,20 +397,20 @@ public class AudienceSegmentCreateEntityV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("description");
     openapiFields.add("advertiserId");
-    openapiFields.add("inMarket");
-    openapiFields.add("prospecting");
     openapiFields.add("contactList");
+    openapiFields.add("description");
+    openapiFields.add("inMarket");
     openapiFields.add("location");
-    openapiFields.add("retargeting");
     openapiFields.add("lookalike");
+    openapiFields.add("name");
+    openapiFields.add("prospecting");
+    openapiFields.add("retargeting");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
     openapiRequiredFields.add("advertiserId");
+    openapiRequiredFields.add("name");
   }
 
  /**
@@ -432,34 +432,34 @@ public class AudienceSegmentCreateEntityV1 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if (!jsonObj.get("advertiserId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `advertiserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserId").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      if (!jsonObj.get("advertiserId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `advertiserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserId").toString()));
       }
       // validate the optional field `inMarket`
       if (jsonObj.get("inMarket") != null && !jsonObj.get("inMarket").isJsonNull()) {
         InMarketCreateV1.validateJsonObject(jsonObj.getAsJsonObject("inMarket"));
       }
-      // validate the optional field `prospecting`
-      if (jsonObj.get("prospecting") != null && !jsonObj.get("prospecting").isJsonNull()) {
-        ProspectingCreateV1.validateJsonObject(jsonObj.getAsJsonObject("prospecting"));
-      }
       // validate the optional field `location`
       if (jsonObj.get("location") != null && !jsonObj.get("location").isJsonNull()) {
         LocationCreateV1.validateJsonObject(jsonObj.getAsJsonObject("location"));
       }
-      // validate the optional field `retargeting`
-      if (jsonObj.get("retargeting") != null && !jsonObj.get("retargeting").isJsonNull()) {
-        RetargetingCreateV1.validateJsonObject(jsonObj.getAsJsonObject("retargeting"));
-      }
       // validate the optional field `lookalike`
       if (jsonObj.get("lookalike") != null && !jsonObj.get("lookalike").isJsonNull()) {
         LookalikeCreateV1.validateJsonObject(jsonObj.getAsJsonObject("lookalike"));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      // validate the optional field `prospecting`
+      if (jsonObj.get("prospecting") != null && !jsonObj.get("prospecting").isJsonNull()) {
+        ProspectingCreateV1.validateJsonObject(jsonObj.getAsJsonObject("prospecting"));
+      }
+      // validate the optional field `retargeting`
+      if (jsonObj.get("retargeting") != null && !jsonObj.get("retargeting").isJsonNull()) {
+        RetargetingCreateV1.validateJsonObject(jsonObj.getAsJsonObject("retargeting"));
       }
   }
 

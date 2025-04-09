@@ -49,21 +49,13 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SkuSlimDataPreview {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_CATEGORY = "category";
+  @SerializedName(SERIALIZED_NAME_CATEGORY)
+  private String category;
 
   public static final String SERIALIZED_NAME_CATEGORY_ID = "categoryId";
   @SerializedName(SERIALIZED_NAME_CATEGORY_ID)
   private String categoryId;
-
-  public static final String SERIALIZED_NAME_GLOBAL_CATEGORY_ID = "globalCategoryId";
-  @SerializedName(SERIALIZED_NAME_GLOBAL_CATEGORY_ID)
-  private String globalCategoryId;
-
-  public static final String SERIALIZED_NAME_CATEGORY = "category";
-  @SerializedName(SERIALIZED_NAME_CATEGORY)
-  private String category;
 
   public static final String SERIALIZED_NAME_GLOBAL_BRAND_ID = "globalBrandId";
   @SerializedName(SERIALIZED_NAME_GLOBAL_BRAND_ID)
@@ -73,6 +65,34 @@ public class SkuSlimDataPreview {
   @SerializedName(SERIALIZED_NAME_GLOBAL_BRAND_NAME)
   private String globalBrandName;
 
+  public static final String SERIALIZED_NAME_GLOBAL_CATEGORY_ID = "globalCategoryId";
+  @SerializedName(SERIALIZED_NAME_GLOBAL_CATEGORY_ID)
+  private String globalCategoryId;
+
+  public static final String SERIALIZED_NAME_GTIN = "gtin";
+  @SerializedName(SERIALIZED_NAME_GTIN)
+  private String gtin;
+
+  public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
+  @SerializedName(SERIALIZED_NAME_IMAGE_URL)
+  private String imageUrl;
+
+  public static final String SERIALIZED_NAME_IS_IN_STOCK = "isInStock";
+  @SerializedName(SERIALIZED_NAME_IS_IN_STOCK)
+  private Boolean isInStock;
+
+  public static final String SERIALIZED_NAME_MPN = "mpn";
+  @SerializedName(SERIALIZED_NAME_MPN)
+  private String mpn;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_PRICE = "price";
+  @SerializedName(SERIALIZED_NAME_PRICE)
+  private Double price;
+
   public static final String SERIALIZED_NAME_RETAILER_BRAND_ID = "retailerBrandId";
   @SerializedName(SERIALIZED_NAME_RETAILER_BRAND_ID)
   private String retailerBrandId;
@@ -81,26 +101,6 @@ public class SkuSlimDataPreview {
   @SerializedName(SERIALIZED_NAME_RETAILER_BRAND_NAME)
   private String retailerBrandName;
 
-  public static final String SERIALIZED_NAME_PRICE = "price";
-  @SerializedName(SERIALIZED_NAME_PRICE)
-  private Double price;
-
-  public static final String SERIALIZED_NAME_IS_IN_STOCK = "isInStock";
-  @SerializedName(SERIALIZED_NAME_IS_IN_STOCK)
-  private Boolean isInStock;
-
-  public static final String SERIALIZED_NAME_GTIN = "gtin";
-  @SerializedName(SERIALIZED_NAME_GTIN)
-  private String gtin;
-
-  public static final String SERIALIZED_NAME_MPN = "mpn";
-  @SerializedName(SERIALIZED_NAME_MPN)
-  private String mpn;
-
-  public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
-  @SerializedName(SERIALIZED_NAME_IMAGE_URL)
-  private String imageUrl;
-
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
@@ -108,25 +108,25 @@ public class SkuSlimDataPreview {
   public SkuSlimDataPreview() {
   }
 
-  public SkuSlimDataPreview name(String name) {
+  public SkuSlimDataPreview category(String category) {
     
-    this.name = name;
+    this.category = category;
     return this;
   }
 
    /**
-   * A short product name.
-   * @return name
+   * The full category breadcrumb in the retailers catalog.
+   * @return category
   **/
   @javax.annotation.Nullable
 
-  public String getName() {
-    return name;
+  public String getCategory() {
+    return category;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
+  public void setCategory(String category) {
+    this.category = category;
   }
 
 
@@ -149,50 +149,6 @@ public class SkuSlimDataPreview {
 
   public void setCategoryId(String categoryId) {
     this.categoryId = categoryId;
-  }
-
-
-  public SkuSlimDataPreview globalCategoryId(String globalCategoryId) {
-    
-    this.globalCategoryId = globalCategoryId;
-    return this;
-  }
-
-   /**
-   * The global category Id.
-   * @return globalCategoryId
-  **/
-  @javax.annotation.Nullable
-
-  public String getGlobalCategoryId() {
-    return globalCategoryId;
-  }
-
-
-  public void setGlobalCategoryId(String globalCategoryId) {
-    this.globalCategoryId = globalCategoryId;
-  }
-
-
-  public SkuSlimDataPreview category(String category) {
-    
-    this.category = category;
-    return this;
-  }
-
-   /**
-   * The full category breadcrumb in the retailers catalog.
-   * @return category
-  **/
-  @javax.annotation.Nullable
-
-  public String getCategory() {
-    return category;
-  }
-
-
-  public void setCategory(String category) {
-    this.category = category;
   }
 
 
@@ -240,6 +196,160 @@ public class SkuSlimDataPreview {
   }
 
 
+  public SkuSlimDataPreview globalCategoryId(String globalCategoryId) {
+    
+    this.globalCategoryId = globalCategoryId;
+    return this;
+  }
+
+   /**
+   * The global category Id.
+   * @return globalCategoryId
+  **/
+  @javax.annotation.Nullable
+
+  public String getGlobalCategoryId() {
+    return globalCategoryId;
+  }
+
+
+  public void setGlobalCategoryId(String globalCategoryId) {
+    this.globalCategoryId = globalCategoryId;
+  }
+
+
+  public SkuSlimDataPreview gtin(String gtin) {
+    
+    this.gtin = gtin;
+    return this;
+  }
+
+   /**
+   * A GTIN identifier for the product if available. Covers variations such as EANs and UPCs.
+   * @return gtin
+  **/
+  @javax.annotation.Nullable
+
+  public String getGtin() {
+    return gtin;
+  }
+
+
+  public void setGtin(String gtin) {
+    this.gtin = gtin;
+  }
+
+
+  public SkuSlimDataPreview imageUrl(String imageUrl) {
+    
+    this.imageUrl = imageUrl;
+    return this;
+  }
+
+   /**
+   * An http image resource provided by the retailer.
+   * @return imageUrl
+  **/
+  @javax.annotation.Nullable
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+  }
+
+
+  public SkuSlimDataPreview isInStock(Boolean isInStock) {
+    
+    this.isInStock = isInStock;
+    return this;
+  }
+
+   /**
+   * An indication of if the retailer currently has the product in stock.
+   * @return isInStock
+  **/
+  @javax.annotation.Nonnull
+
+  public Boolean getIsInStock() {
+    return isInStock;
+  }
+
+
+  public void setIsInStock(Boolean isInStock) {
+    this.isInStock = isInStock;
+  }
+
+
+  public SkuSlimDataPreview mpn(String mpn) {
+    
+    this.mpn = mpn;
+    return this;
+  }
+
+   /**
+   * The MPN for the product if available.
+   * @return mpn
+  **/
+  @javax.annotation.Nullable
+
+  public String getMpn() {
+    return mpn;
+  }
+
+
+  public void setMpn(String mpn) {
+    this.mpn = mpn;
+  }
+
+
+  public SkuSlimDataPreview name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * A short product name.
+   * @return name
+  **/
+  @javax.annotation.Nullable
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public SkuSlimDataPreview price(Double price) {
+    
+    this.price = price;
+    return this;
+  }
+
+   /**
+   * The price of the product on the retailer site. Can be omitted in certain circumstances
+   * @return price
+  **/
+  @javax.annotation.Nullable
+
+  public Double getPrice() {
+    return price;
+  }
+
+
+  public void setPrice(Double price) {
+    this.price = price;
+  }
+
+
   public SkuSlimDataPreview retailerBrandId(String retailerBrandId) {
     
     this.retailerBrandId = retailerBrandId;
@@ -281,116 +391,6 @@ public class SkuSlimDataPreview {
 
   public void setRetailerBrandName(String retailerBrandName) {
     this.retailerBrandName = retailerBrandName;
-  }
-
-
-  public SkuSlimDataPreview price(Double price) {
-    
-    this.price = price;
-    return this;
-  }
-
-   /**
-   * The price of the product on the retailer site. Can be omitted in certain circumstances
-   * @return price
-  **/
-  @javax.annotation.Nullable
-
-  public Double getPrice() {
-    return price;
-  }
-
-
-  public void setPrice(Double price) {
-    this.price = price;
-  }
-
-
-  public SkuSlimDataPreview isInStock(Boolean isInStock) {
-    
-    this.isInStock = isInStock;
-    return this;
-  }
-
-   /**
-   * An indication of if the retailer currently has the product in stock.
-   * @return isInStock
-  **/
-  @javax.annotation.Nonnull
-
-  public Boolean getIsInStock() {
-    return isInStock;
-  }
-
-
-  public void setIsInStock(Boolean isInStock) {
-    this.isInStock = isInStock;
-  }
-
-
-  public SkuSlimDataPreview gtin(String gtin) {
-    
-    this.gtin = gtin;
-    return this;
-  }
-
-   /**
-   * A GTIN identifier for the product if available. Covers variations such as EANs and UPCs.
-   * @return gtin
-  **/
-  @javax.annotation.Nullable
-
-  public String getGtin() {
-    return gtin;
-  }
-
-
-  public void setGtin(String gtin) {
-    this.gtin = gtin;
-  }
-
-
-  public SkuSlimDataPreview mpn(String mpn) {
-    
-    this.mpn = mpn;
-    return this;
-  }
-
-   /**
-   * The MPN for the product if available.
-   * @return mpn
-  **/
-  @javax.annotation.Nullable
-
-  public String getMpn() {
-    return mpn;
-  }
-
-
-  public void setMpn(String mpn) {
-    this.mpn = mpn;
-  }
-
-
-  public SkuSlimDataPreview imageUrl(String imageUrl) {
-    
-    this.imageUrl = imageUrl;
-    return this;
-  }
-
-   /**
-   * An http image resource provided by the retailer.
-   * @return imageUrl
-  **/
-  @javax.annotation.Nullable
-
-  public String getImageUrl() {
-    return imageUrl;
-  }
-
-
-  public void setImageUrl(String imageUrl) {
-    this.imageUrl = imageUrl;
   }
 
 
@@ -470,45 +470,45 @@ public class SkuSlimDataPreview {
       return false;
     }
     SkuSlimDataPreview skuSlimDataPreview = (SkuSlimDataPreview) o;
-    return Objects.equals(this.name, skuSlimDataPreview.name) &&
+    return Objects.equals(this.category, skuSlimDataPreview.category) &&
         Objects.equals(this.categoryId, skuSlimDataPreview.categoryId) &&
-        Objects.equals(this.globalCategoryId, skuSlimDataPreview.globalCategoryId) &&
-        Objects.equals(this.category, skuSlimDataPreview.category) &&
         Objects.equals(this.globalBrandId, skuSlimDataPreview.globalBrandId) &&
         Objects.equals(this.globalBrandName, skuSlimDataPreview.globalBrandName) &&
+        Objects.equals(this.globalCategoryId, skuSlimDataPreview.globalCategoryId) &&
+        Objects.equals(this.gtin, skuSlimDataPreview.gtin) &&
+        Objects.equals(this.imageUrl, skuSlimDataPreview.imageUrl) &&
+        Objects.equals(this.isInStock, skuSlimDataPreview.isInStock) &&
+        Objects.equals(this.mpn, skuSlimDataPreview.mpn) &&
+        Objects.equals(this.name, skuSlimDataPreview.name) &&
+        Objects.equals(this.price, skuSlimDataPreview.price) &&
         Objects.equals(this.retailerBrandId, skuSlimDataPreview.retailerBrandId) &&
         Objects.equals(this.retailerBrandName, skuSlimDataPreview.retailerBrandName) &&
-        Objects.equals(this.price, skuSlimDataPreview.price) &&
-        Objects.equals(this.isInStock, skuSlimDataPreview.isInStock) &&
-        Objects.equals(this.gtin, skuSlimDataPreview.gtin) &&
-        Objects.equals(this.mpn, skuSlimDataPreview.mpn) &&
-        Objects.equals(this.imageUrl, skuSlimDataPreview.imageUrl) &&
         Objects.equals(this.updatedAt, skuSlimDataPreview.updatedAt)&&
         Objects.equals(this.additionalProperties, skuSlimDataPreview.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, categoryId, globalCategoryId, category, globalBrandId, globalBrandName, retailerBrandId, retailerBrandName, price, isInStock, gtin, mpn, imageUrl, updatedAt, additionalProperties);
+    return Objects.hash(category, categoryId, globalBrandId, globalBrandName, globalCategoryId, gtin, imageUrl, isInStock, mpn, name, price, retailerBrandId, retailerBrandName, updatedAt, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SkuSlimDataPreview {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
-    sb.append("    globalCategoryId: ").append(toIndentedString(globalCategoryId)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
+    sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
     sb.append("    globalBrandId: ").append(toIndentedString(globalBrandId)).append("\n");
     sb.append("    globalBrandName: ").append(toIndentedString(globalBrandName)).append("\n");
+    sb.append("    globalCategoryId: ").append(toIndentedString(globalCategoryId)).append("\n");
+    sb.append("    gtin: ").append(toIndentedString(gtin)).append("\n");
+    sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
+    sb.append("    isInStock: ").append(toIndentedString(isInStock)).append("\n");
+    sb.append("    mpn: ").append(toIndentedString(mpn)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    retailerBrandId: ").append(toIndentedString(retailerBrandId)).append("\n");
     sb.append("    retailerBrandName: ").append(toIndentedString(retailerBrandName)).append("\n");
-    sb.append("    price: ").append(toIndentedString(price)).append("\n");
-    sb.append("    isInStock: ").append(toIndentedString(isInStock)).append("\n");
-    sb.append("    gtin: ").append(toIndentedString(gtin)).append("\n");
-    sb.append("    mpn: ").append(toIndentedString(mpn)).append("\n");
-    sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -533,19 +533,19 @@ public class SkuSlimDataPreview {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("categoryId");
-    openapiFields.add("globalCategoryId");
     openapiFields.add("category");
+    openapiFields.add("categoryId");
     openapiFields.add("globalBrandId");
     openapiFields.add("globalBrandName");
+    openapiFields.add("globalCategoryId");
+    openapiFields.add("gtin");
+    openapiFields.add("imageUrl");
+    openapiFields.add("isInStock");
+    openapiFields.add("mpn");
+    openapiFields.add("name");
+    openapiFields.add("price");
     openapiFields.add("retailerBrandId");
     openapiFields.add("retailerBrandName");
-    openapiFields.add("price");
-    openapiFields.add("isInStock");
-    openapiFields.add("gtin");
-    openapiFields.add("mpn");
-    openapiFields.add("imageUrl");
     openapiFields.add("updatedAt");
 
     // a set of required properties/fields (JSON key names)
@@ -553,8 +553,8 @@ public class SkuSlimDataPreview {
     openapiRequiredFields.add("categoryId");
     openapiRequiredFields.add("globalBrandId");
     openapiRequiredFields.add("globalBrandName");
-    openapiRequiredFields.add("price");
     openapiRequiredFields.add("isInStock");
+    openapiRequiredFields.add("price");
     openapiRequiredFields.add("updatedAt");
   }
 
@@ -577,17 +577,11 @@ public class SkuSlimDataPreview {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
       }
       if (!jsonObj.get("categoryId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `categoryId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("categoryId").toString()));
-      }
-      if ((jsonObj.get("globalCategoryId") != null && !jsonObj.get("globalCategoryId").isJsonNull()) && !jsonObj.get("globalCategoryId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `globalCategoryId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("globalCategoryId").toString()));
-      }
-      if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
       }
       if (!jsonObj.get("globalBrandId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `globalBrandId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("globalBrandId").toString()));
@@ -595,20 +589,26 @@ public class SkuSlimDataPreview {
       if (!jsonObj.get("globalBrandName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `globalBrandName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("globalBrandName").toString()));
       }
+      if ((jsonObj.get("globalCategoryId") != null && !jsonObj.get("globalCategoryId").isJsonNull()) && !jsonObj.get("globalCategoryId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `globalCategoryId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("globalCategoryId").toString()));
+      }
+      if ((jsonObj.get("gtin") != null && !jsonObj.get("gtin").isJsonNull()) && !jsonObj.get("gtin").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `gtin` to be a primitive type in the JSON string but got `%s`", jsonObj.get("gtin").toString()));
+      }
+      if ((jsonObj.get("imageUrl") != null && !jsonObj.get("imageUrl").isJsonNull()) && !jsonObj.get("imageUrl").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `imageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("imageUrl").toString()));
+      }
+      if ((jsonObj.get("mpn") != null && !jsonObj.get("mpn").isJsonNull()) && !jsonObj.get("mpn").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `mpn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mpn").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
       if ((jsonObj.get("retailerBrandId") != null && !jsonObj.get("retailerBrandId").isJsonNull()) && !jsonObj.get("retailerBrandId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerBrandId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerBrandId").toString()));
       }
       if ((jsonObj.get("retailerBrandName") != null && !jsonObj.get("retailerBrandName").isJsonNull()) && !jsonObj.get("retailerBrandName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerBrandName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerBrandName").toString()));
-      }
-      if ((jsonObj.get("gtin") != null && !jsonObj.get("gtin").isJsonNull()) && !jsonObj.get("gtin").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `gtin` to be a primitive type in the JSON string but got `%s`", jsonObj.get("gtin").toString()));
-      }
-      if ((jsonObj.get("mpn") != null && !jsonObj.get("mpn").isJsonNull()) && !jsonObj.get("mpn").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `mpn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mpn").toString()));
-      }
-      if ((jsonObj.get("imageUrl") != null && !jsonObj.get("imageUrl").isJsonNull()) && !jsonObj.get("imageUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `imageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("imageUrl").toString()));
       }
   }
 

@@ -53,56 +53,34 @@ import com.criteo.api.retailmedia.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PagedResourceCollectionOutcomeOfBalanceResponseV2 {
-  public static final String SERIALIZED_NAME_METADATA = "metadata";
-  @SerializedName(SERIALIZED_NAME_METADATA)
-  private PageMetadata metadata;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<ResourceOfBalanceResponseV2> data = null;
 
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<CommonProblem> warnings = null;
-
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<CommonProblem> errors = null;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private PageMetadata metadata;
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<CommonProblem> warnings = null;
 
   public PagedResourceCollectionOutcomeOfBalanceResponseV2() {
   }
 
   
   public PagedResourceCollectionOutcomeOfBalanceResponseV2(
-     List<CommonProblem> warnings, 
-     List<CommonProblem> errors
+     List<CommonProblem> errors, 
+     List<CommonProblem> warnings
   ) {
     this();
-    this.warnings = warnings;
     this.errors = errors;
+    this.warnings = warnings;
   }
-
-  public PagedResourceCollectionOutcomeOfBalanceResponseV2 metadata(PageMetadata metadata) {
-    
-    this.metadata = metadata;
-    return this;
-  }
-
-   /**
-   * Get metadata
-   * @return metadata
-  **/
-  @javax.annotation.Nullable
-
-  public PageMetadata getMetadata() {
-    return metadata;
-  }
-
-
-  public void setMetadata(PageMetadata metadata) {
-    this.metadata = metadata;
-  }
-
 
   public PagedResourceCollectionOutcomeOfBalanceResponseV2 data(List<ResourceOfBalanceResponseV2> data) {
     
@@ -135,19 +113,6 @@ public class PagedResourceCollectionOutcomeOfBalanceResponseV2 {
 
 
    /**
-   * Get warnings
-   * @return warnings
-  **/
-  @javax.annotation.Nullable
-
-  public List<CommonProblem> getWarnings() {
-    return warnings;
-  }
-
-
-
-
-   /**
    * Get errors
    * @return errors
   **/
@@ -155,6 +120,41 @@ public class PagedResourceCollectionOutcomeOfBalanceResponseV2 {
 
   public List<CommonProblem> getErrors() {
     return errors;
+  }
+
+
+
+
+  public PagedResourceCollectionOutcomeOfBalanceResponseV2 metadata(PageMetadata metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * Get metadata
+   * @return metadata
+  **/
+  @javax.annotation.Nullable
+
+  public PageMetadata getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(PageMetadata metadata) {
+    this.metadata = metadata;
+  }
+
+
+   /**
+   * Get warnings
+   * @return warnings
+  **/
+  @javax.annotation.Nullable
+
+  public List<CommonProblem> getWarnings() {
+    return warnings;
   }
 
 
@@ -214,26 +214,26 @@ public class PagedResourceCollectionOutcomeOfBalanceResponseV2 {
       return false;
     }
     PagedResourceCollectionOutcomeOfBalanceResponseV2 pagedResourceCollectionOutcomeOfBalanceResponseV2 = (PagedResourceCollectionOutcomeOfBalanceResponseV2) o;
-    return Objects.equals(this.metadata, pagedResourceCollectionOutcomeOfBalanceResponseV2.metadata) &&
-        Objects.equals(this.data, pagedResourceCollectionOutcomeOfBalanceResponseV2.data) &&
-        Objects.equals(this.warnings, pagedResourceCollectionOutcomeOfBalanceResponseV2.warnings) &&
-        Objects.equals(this.errors, pagedResourceCollectionOutcomeOfBalanceResponseV2.errors)&&
+    return Objects.equals(this.data, pagedResourceCollectionOutcomeOfBalanceResponseV2.data) &&
+        Objects.equals(this.errors, pagedResourceCollectionOutcomeOfBalanceResponseV2.errors) &&
+        Objects.equals(this.metadata, pagedResourceCollectionOutcomeOfBalanceResponseV2.metadata) &&
+        Objects.equals(this.warnings, pagedResourceCollectionOutcomeOfBalanceResponseV2.warnings)&&
         Objects.equals(this.additionalProperties, pagedResourceCollectionOutcomeOfBalanceResponseV2.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(metadata, data, warnings, errors, additionalProperties);
+    return Objects.hash(data, errors, metadata, warnings, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PagedResourceCollectionOutcomeOfBalanceResponseV2 {\n");
-    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -257,10 +257,10 @@ public class PagedResourceCollectionOutcomeOfBalanceResponseV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("metadata");
     openapiFields.add("data");
-    openapiFields.add("warnings");
     openapiFields.add("errors");
+    openapiFields.add("metadata");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -278,10 +278,6 @@ public class PagedResourceCollectionOutcomeOfBalanceResponseV2 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in PagedResourceCollectionOutcomeOfBalanceResponseV2 is not found in the empty JSON string", PagedResourceCollectionOutcomeOfBalanceResponseV2.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `metadata`
-      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
-        PageMetadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
-      }
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
         if (jsonArraydata != null) {
@@ -296,20 +292,6 @@ public class PagedResourceCollectionOutcomeOfBalanceResponseV2 {
           };
         }
       }
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
-        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
-        if (jsonArraywarnings != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("warnings").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-          }
-
-          // validate the optional field `warnings` (array)
-          for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
-          };
-        }
-      }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
         if (jsonArrayerrors != null) {
@@ -321,6 +303,24 @@ public class PagedResourceCollectionOutcomeOfBalanceResponseV2 {
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
             CommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+          };
+        }
+      }
+      // validate the optional field `metadata`
+      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
+        PageMetadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
+      }
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }

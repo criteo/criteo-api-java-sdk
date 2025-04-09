@@ -8,11 +8,11 @@ Data model represents the data change capture of balance history.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**dateOfModification** | **OffsetDateTime** | Date when data change has occured. |  |
-|**modifiedByUser** | **String** | Username who modified the insertion order. |  |
-|**changeType** | [**ChangeTypeEnum**](#ChangeTypeEnum) | Represent the type of change states of the history. |  |
 |**changeDetails** | [**ChangeDetailsV1**](ChangeDetailsV1.md) |  |  |
+|**changeType** | [**ChangeTypeEnum**](#ChangeTypeEnum) | Represent the type of change states of the history. |  |
+|**dateOfModification** | **OffsetDateTime** | Date when data change has occured. |  |
 |**memo** | **String** | Memo associate with the insertion order modification. |  [optional] |
+|**modifiedByUser** | **String** | Username who modified the insertion order. |  |
 
 
 

@@ -8,8 +8,8 @@ A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\" /> with 
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** |  |  |
 |**attributes** | [**CampaignAttributesV202301**](CampaignAttributesV202301.md) |  |  [optional] |
+|**type** | **String** |  |  |
 
 
 

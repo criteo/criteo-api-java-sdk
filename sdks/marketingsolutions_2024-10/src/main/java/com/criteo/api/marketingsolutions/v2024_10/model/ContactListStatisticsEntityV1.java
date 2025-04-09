@@ -49,6 +49,10 @@ import com.criteo.api.marketingsolutions.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ContactListStatisticsEntityV1 {
+  public static final String SERIALIZED_NAME_MATCH_RATE = "matchRate";
+  @SerializedName(SERIALIZED_NAME_MATCH_RATE)
+  private Double matchRate;
+
   public static final String SERIALIZED_NAME_NUMBER_OF_IDENTIFIERS = "numberOfIdentifiers";
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_IDENTIFIERS)
   private Integer numberOfIdentifiers;
@@ -57,12 +61,30 @@ public class ContactListStatisticsEntityV1 {
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_MATCHES)
   private Integer numberOfMatches;
 
-  public static final String SERIALIZED_NAME_MATCH_RATE = "matchRate";
-  @SerializedName(SERIALIZED_NAME_MATCH_RATE)
-  private Double matchRate;
-
   public ContactListStatisticsEntityV1() {
   }
+
+  public ContactListStatisticsEntityV1 matchRate(Double matchRate) {
+    
+    this.matchRate = matchRate;
+    return this;
+  }
+
+   /**
+   * Percentage of matched identifiers in the contact list.  Can differ from matches/identifiers depending on the contact list type.
+   * @return matchRate
+  **/
+  @javax.annotation.Nullable
+
+  public Double getMatchRate() {
+    return matchRate;
+  }
+
+
+  public void setMatchRate(Double matchRate) {
+    this.matchRate = matchRate;
+  }
+
 
   public ContactListStatisticsEntityV1 numberOfIdentifiers(Integer numberOfIdentifiers) {
     
@@ -105,28 +127,6 @@ public class ContactListStatisticsEntityV1 {
 
   public void setNumberOfMatches(Integer numberOfMatches) {
     this.numberOfMatches = numberOfMatches;
-  }
-
-
-  public ContactListStatisticsEntityV1 matchRate(Double matchRate) {
-    
-    this.matchRate = matchRate;
-    return this;
-  }
-
-   /**
-   * Percentage of matched identifiers in the contact list.  Can differ from matches/identifiers depending on the contact list type.
-   * @return matchRate
-  **/
-  @javax.annotation.Nullable
-
-  public Double getMatchRate() {
-    return matchRate;
-  }
-
-
-  public void setMatchRate(Double matchRate) {
-    this.matchRate = matchRate;
   }
 
   /**
@@ -184,9 +184,9 @@ public class ContactListStatisticsEntityV1 {
       return false;
     }
     ContactListStatisticsEntityV1 contactListStatisticsEntityV1 = (ContactListStatisticsEntityV1) o;
-    return Objects.equals(this.numberOfIdentifiers, contactListStatisticsEntityV1.numberOfIdentifiers) &&
-        Objects.equals(this.numberOfMatches, contactListStatisticsEntityV1.numberOfMatches) &&
-        Objects.equals(this.matchRate, contactListStatisticsEntityV1.matchRate)&&
+    return Objects.equals(this.matchRate, contactListStatisticsEntityV1.matchRate) &&
+        Objects.equals(this.numberOfIdentifiers, contactListStatisticsEntityV1.numberOfIdentifiers) &&
+        Objects.equals(this.numberOfMatches, contactListStatisticsEntityV1.numberOfMatches)&&
         Objects.equals(this.additionalProperties, contactListStatisticsEntityV1.additionalProperties);
   }
 
@@ -196,7 +196,7 @@ public class ContactListStatisticsEntityV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(numberOfIdentifiers, numberOfMatches, matchRate, additionalProperties);
+    return Objects.hash(matchRate, numberOfIdentifiers, numberOfMatches, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -210,9 +210,9 @@ public class ContactListStatisticsEntityV1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ContactListStatisticsEntityV1 {\n");
+    sb.append("    matchRate: ").append(toIndentedString(matchRate)).append("\n");
     sb.append("    numberOfIdentifiers: ").append(toIndentedString(numberOfIdentifiers)).append("\n");
     sb.append("    numberOfMatches: ").append(toIndentedString(numberOfMatches)).append("\n");
-    sb.append("    matchRate: ").append(toIndentedString(matchRate)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -236,9 +236,9 @@ public class ContactListStatisticsEntityV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("matchRate");
     openapiFields.add("numberOfIdentifiers");
     openapiFields.add("numberOfMatches");
-    openapiFields.add("matchRate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

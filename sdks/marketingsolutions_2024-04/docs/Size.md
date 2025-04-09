@@ -8,8 +8,8 @@ Size entity containing width and height of the creative
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**width** | **Integer** |  |  [optional] |
 |**height** | **Integer** |  |  [optional] |
+|**width** | **Integer** |  |  [optional] |
 
 
 

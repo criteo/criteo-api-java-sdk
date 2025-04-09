@@ -9,8 +9,8 @@ Targeting configuration of the ad set
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**deliveryLimitations** | [**AdSetDeliveryLimitations**](AdSetDeliveryLimitations.md) |  |  [optional] |
-|**geoLocation** | [**CreateAdSetGeoLocation**](CreateAdSetGeoLocation.md) |  |  [optional] |
 |**frequencyCapping** | [**AdSetFrequencyCapping**](AdSetFrequencyCapping.md) |  |  |
+|**geoLocation** | [**CreateAdSetGeoLocation**](CreateAdSetGeoLocation.md) |  |  [optional] |
 
 
 

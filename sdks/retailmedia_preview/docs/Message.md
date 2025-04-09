@@ -8,8 +8,8 @@ message of the discussion
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**userMessage** | **String** | user prompt |  [optional] |
 |**botMessage** | [**BotMessage**](BotMessage.md) |  |  [optional] |
+|**userMessage** | **String** | user prompt |  [optional] |
 
 
 

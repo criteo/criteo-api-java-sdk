@@ -50,6 +50,18 @@ import com.criteo.api.marketingsolutions.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class EntityOfPortfolioMessage {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private PortfolioMessage attributes;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private Object meta;
+
   /**
    * A string containing the entity type
    */
@@ -117,40 +129,28 @@ public class EntityOfPortfolioMessage {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
-
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private PortfolioMessage attributes;
-
-  public static final String SERIALIZED_NAME_META = "meta";
-  @SerializedName(SERIALIZED_NAME_META)
-  private Object meta;
-
   public EntityOfPortfolioMessage() {
   }
 
-  public EntityOfPortfolioMessage type(TypeEnum type) {
+  public EntityOfPortfolioMessage attributes(PortfolioMessage attributes) {
     
-    this.type = type;
+    this.attributes = attributes;
     return this;
   }
 
    /**
-   * A string containing the entity type
-   * @return type
+   * Get attributes
+   * @return attributes
   **/
   @javax.annotation.Nullable
 
-  public TypeEnum getType() {
-    return type;
+  public PortfolioMessage getAttributes() {
+    return attributes;
   }
 
 
-  public void setType(TypeEnum type) {
-    this.type = type;
+  public void setAttributes(PortfolioMessage attributes) {
+    this.attributes = attributes;
   }
 
 
@@ -176,28 +176,6 @@ public class EntityOfPortfolioMessage {
   }
 
 
-  public EntityOfPortfolioMessage attributes(PortfolioMessage attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @javax.annotation.Nullable
-
-  public PortfolioMessage getAttributes() {
-    return attributes;
-  }
-
-
-  public void setAttributes(PortfolioMessage attributes) {
-    this.attributes = attributes;
-  }
-
-
   public EntityOfPortfolioMessage meta(Object meta) {
     
     this.meta = meta;
@@ -217,6 +195,28 @@ public class EntityOfPortfolioMessage {
 
   public void setMeta(Object meta) {
     this.meta = meta;
+  }
+
+
+  public EntityOfPortfolioMessage type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * A string containing the entity type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
   }
 
   /**
@@ -274,10 +274,10 @@ public class EntityOfPortfolioMessage {
       return false;
     }
     EntityOfPortfolioMessage entityOfPortfolioMessage = (EntityOfPortfolioMessage) o;
-    return Objects.equals(this.type, entityOfPortfolioMessage.type) &&
+    return Objects.equals(this.attributes, entityOfPortfolioMessage.attributes) &&
         Objects.equals(this.id, entityOfPortfolioMessage.id) &&
-        Objects.equals(this.attributes, entityOfPortfolioMessage.attributes) &&
-        Objects.equals(this.meta, entityOfPortfolioMessage.meta)&&
+        Objects.equals(this.meta, entityOfPortfolioMessage.meta) &&
+        Objects.equals(this.type, entityOfPortfolioMessage.type)&&
         Objects.equals(this.additionalProperties, entityOfPortfolioMessage.additionalProperties);
   }
 
@@ -287,7 +287,7 @@ public class EntityOfPortfolioMessage {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, id, attributes, meta, additionalProperties);
+    return Objects.hash(attributes, id, meta, type, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -301,10 +301,10 @@ public class EntityOfPortfolioMessage {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EntityOfPortfolioMessage {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -328,10 +328,10 @@ public class EntityOfPortfolioMessage {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
-    openapiFields.add("id");
     openapiFields.add("attributes");
+    openapiFields.add("id");
     openapiFields.add("meta");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -349,15 +349,15 @@ public class EntityOfPortfolioMessage {
           throw new IllegalArgumentException(String.format("The required field(s) %s in EntityOfPortfolioMessage is not found in the empty JSON string", EntityOfPortfolioMessage.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      // validate the optional field `attributes`
+      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
+        PortfolioMessage.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        PortfolioMessage.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

@@ -52,10 +52,6 @@ import com.criteo.api.retailmedia.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ChoiceVariableSpecification {
-  public static final String SERIALIZED_NAME_OPTIONS = "options";
-  @SerializedName(SERIALIZED_NAME_OPTIONS)
-  private List<ChoiceOption> options = new ArrayList<>();
-
   public static final String SERIALIZED_NAME_MAX_SELECTED = "maxSelected";
   @SerializedName(SERIALIZED_NAME_MAX_SELECTED)
   private Integer maxSelected;
@@ -64,35 +60,12 @@ public class ChoiceVariableSpecification {
   @SerializedName(SERIALIZED_NAME_MIN_SELECTED)
   private Integer minSelected;
 
+  public static final String SERIALIZED_NAME_OPTIONS = "options";
+  @SerializedName(SERIALIZED_NAME_OPTIONS)
+  private List<ChoiceOption> options = new ArrayList<>();
+
   public ChoiceVariableSpecification() {
   }
-
-  public ChoiceVariableSpecification options(List<ChoiceOption> options) {
-    
-    this.options = options;
-    return this;
-  }
-
-  public ChoiceVariableSpecification addOptionsItem(ChoiceOption optionsItem) {
-    this.options.add(optionsItem);
-    return this;
-  }
-
-   /**
-   * The available options
-   * @return options
-  **/
-  @javax.annotation.Nonnull
-
-  public List<ChoiceOption> getOptions() {
-    return options;
-  }
-
-
-  public void setOptions(List<ChoiceOption> options) {
-    this.options = options;
-  }
-
 
   public ChoiceVariableSpecification maxSelected(Integer maxSelected) {
     
@@ -138,6 +111,33 @@ public class ChoiceVariableSpecification {
   }
 
 
+  public ChoiceVariableSpecification options(List<ChoiceOption> options) {
+    
+    this.options = options;
+    return this;
+  }
+
+  public ChoiceVariableSpecification addOptionsItem(ChoiceOption optionsItem) {
+    this.options.add(optionsItem);
+    return this;
+  }
+
+   /**
+   * The available options
+   * @return options
+  **/
+  @javax.annotation.Nonnull
+
+  public List<ChoiceOption> getOptions() {
+    return options;
+  }
+
+
+  public void setOptions(List<ChoiceOption> options) {
+    this.options = options;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -148,9 +148,9 @@ public class ChoiceVariableSpecification {
       return false;
     }
     ChoiceVariableSpecification choiceVariableSpecification = (ChoiceVariableSpecification) o;
-    return Objects.equals(this.options, choiceVariableSpecification.options) &&
-        Objects.equals(this.maxSelected, choiceVariableSpecification.maxSelected) &&
-        Objects.equals(this.minSelected, choiceVariableSpecification.minSelected);
+    return Objects.equals(this.maxSelected, choiceVariableSpecification.maxSelected) &&
+        Objects.equals(this.minSelected, choiceVariableSpecification.minSelected) &&
+        Objects.equals(this.options, choiceVariableSpecification.options);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -159,7 +159,7 @@ public class ChoiceVariableSpecification {
 
   @Override
   public int hashCode() {
-    return Objects.hash(options, maxSelected, minSelected);
+    return Objects.hash(maxSelected, minSelected, options);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -173,9 +173,9 @@ public class ChoiceVariableSpecification {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ChoiceVariableSpecification {\n");
-    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    maxSelected: ").append(toIndentedString(maxSelected)).append("\n");
     sb.append("    minSelected: ").append(toIndentedString(minSelected)).append("\n");
+    sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -198,9 +198,9 @@ public class ChoiceVariableSpecification {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("options");
     openapiFields.add("maxSelected");
     openapiFields.add("minSelected");
+    openapiFields.add("options");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

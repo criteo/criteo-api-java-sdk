@@ -58,13 +58,82 @@ public class RmAudienceSegmentEntityV1 {
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
   private String accountId;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  /**
+   * Gets or Sets channels
+   */
+  @JsonAdapter(ChannelsEnum.Adapter.class)
+  public enum ChannelsEnum {
+    UNKNOWN("Unknown"),
+    
+    ONSITE("Onsite"),
+    
+    OFFSITE("Offsite");
+
+    private String value;
+
+    ChannelsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ChannelsEnum fromValue(String value) {
+      for (ChannelsEnum b : ChannelsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ChannelsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ChannelsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ChannelsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ChannelsEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CHANNELS = "channels";
+  @SerializedName(SERIALIZED_NAME_CHANNELS)
+  private List<ChannelsEnum> channels = null;
+
+  public static final String SERIALIZED_NAME_CONTACT_LIST = "contactList";
+  @SerializedName(SERIALIZED_NAME_CONTACT_LIST)
+  private RmContactListV1 contactList;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
+
+  public static final String SERIALIZED_NAME_CREATED_BY_ID = "createdById";
+  @SerializedName(SERIALIZED_NAME_CREATED_BY_ID)
+  private String createdById;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_EVENTS = "events";
+  @SerializedName(SERIALIZED_NAME_EVENTS)
+  private RmEventsV1 events;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
   public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
   @SerializedName(SERIALIZED_NAME_RETAILER_ID)
@@ -123,78 +192,9 @@ public class RmAudienceSegmentEntityV1 {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
-
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
-
-  public static final String SERIALIZED_NAME_CREATED_BY_ID = "createdById";
-  @SerializedName(SERIALIZED_NAME_CREATED_BY_ID)
-  private String createdById;
-
-  public static final String SERIALIZED_NAME_CONTACT_LIST = "contactList";
-  @SerializedName(SERIALIZED_NAME_CONTACT_LIST)
-  private RmContactListV1 contactList;
-
-  public static final String SERIALIZED_NAME_EVENTS = "events";
-  @SerializedName(SERIALIZED_NAME_EVENTS)
-  private RmEventsV1 events;
-
-  /**
-   * Gets or Sets channels
-   */
-  @JsonAdapter(ChannelsEnum.Adapter.class)
-  public enum ChannelsEnum {
-    UNKNOWN("Unknown"),
-    
-    ONSITE("Onsite"),
-    
-    OFFSITE("Offsite");
-
-    private String value;
-
-    ChannelsEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ChannelsEnum fromValue(String value) {
-      for (ChannelsEnum b : ChannelsEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ChannelsEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ChannelsEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ChannelsEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ChannelsEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_CHANNELS = "channels";
-  @SerializedName(SERIALIZED_NAME_CHANNELS)
-  private List<ChannelsEnum> channels = null;
 
   public RmAudienceSegmentEntityV1() {
   }
@@ -221,25 +221,99 @@ public class RmAudienceSegmentEntityV1 {
   }
 
 
-  public RmAudienceSegmentEntityV1 name(String name) {
+  public RmAudienceSegmentEntityV1 channels(List<ChannelsEnum> channels) {
     
-    this.name = name;
+    this.channels = channels;
+    return this;
+  }
+
+  public RmAudienceSegmentEntityV1 addChannelsItem(ChannelsEnum channelsItem) {
+    if (this.channels == null) {
+      this.channels = null;
+    }
+    this.channels.add(channelsItem);
     return this;
   }
 
    /**
-   * Name of the segment
-   * @return name
+   * Channels associated to the segment (read-only)
+   * @return channels
   **/
   @javax.annotation.Nullable
 
-  public String getName() {
-    return name;
+  public List<ChannelsEnum> getChannels() {
+    return channels;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
+  public void setChannels(List<ChannelsEnum> channels) {
+    this.channels = channels;
+  }
+
+
+  public RmAudienceSegmentEntityV1 contactList(RmContactListV1 contactList) {
+    
+    this.contactList = contactList;
+    return this;
+  }
+
+   /**
+   * Get contactList
+   * @return contactList
+  **/
+  @javax.annotation.Nullable
+
+  public RmContactListV1 getContactList() {
+    return contactList;
+  }
+
+
+  public void setContactList(RmContactListV1 contactList) {
+    this.contactList = contactList;
+  }
+
+
+  public RmAudienceSegmentEntityV1 createdAt(OffsetDateTime createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * ISO-8601 timestamp in UTC of segment creation (read-only)
+   * @return createdAt
+  **/
+  @javax.annotation.Nullable
+
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public RmAudienceSegmentEntityV1 createdById(String createdById) {
+    
+    this.createdById = createdById;
+    return this;
+  }
+
+   /**
+   * User that created the segment
+   * @return createdById
+  **/
+  @javax.annotation.Nullable
+
+  public String getCreatedById() {
+    return createdById;
+  }
+
+
+  public void setCreatedById(String createdById) {
+    this.createdById = createdById;
   }
 
 
@@ -262,6 +336,50 @@ public class RmAudienceSegmentEntityV1 {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  public RmAudienceSegmentEntityV1 events(RmEventsV1 events) {
+    
+    this.events = events;
+    return this;
+  }
+
+   /**
+   * Get events
+   * @return events
+  **/
+  @javax.annotation.Nullable
+
+  public RmEventsV1 getEvents() {
+    return events;
+  }
+
+
+  public void setEvents(RmEventsV1 events) {
+    this.events = events;
+  }
+
+
+  public RmAudienceSegmentEntityV1 name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Name of the segment
+   * @return name
+  **/
+  @javax.annotation.Nullable
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -309,28 +427,6 @@ public class RmAudienceSegmentEntityV1 {
   }
 
 
-  public RmAudienceSegmentEntityV1 createdAt(OffsetDateTime createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * ISO-8601 timestamp in UTC of segment creation (read-only)
-   * @return createdAt
-  **/
-  @javax.annotation.Nullable
-
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
   public RmAudienceSegmentEntityV1 updatedAt(OffsetDateTime updatedAt) {
     
     this.updatedAt = updatedAt;
@@ -350,102 +446,6 @@ public class RmAudienceSegmentEntityV1 {
 
   public void setUpdatedAt(OffsetDateTime updatedAt) {
     this.updatedAt = updatedAt;
-  }
-
-
-  public RmAudienceSegmentEntityV1 createdById(String createdById) {
-    
-    this.createdById = createdById;
-    return this;
-  }
-
-   /**
-   * User that created the segment
-   * @return createdById
-  **/
-  @javax.annotation.Nullable
-
-  public String getCreatedById() {
-    return createdById;
-  }
-
-
-  public void setCreatedById(String createdById) {
-    this.createdById = createdById;
-  }
-
-
-  public RmAudienceSegmentEntityV1 contactList(RmContactListV1 contactList) {
-    
-    this.contactList = contactList;
-    return this;
-  }
-
-   /**
-   * Get contactList
-   * @return contactList
-  **/
-  @javax.annotation.Nullable
-
-  public RmContactListV1 getContactList() {
-    return contactList;
-  }
-
-
-  public void setContactList(RmContactListV1 contactList) {
-    this.contactList = contactList;
-  }
-
-
-  public RmAudienceSegmentEntityV1 events(RmEventsV1 events) {
-    
-    this.events = events;
-    return this;
-  }
-
-   /**
-   * Get events
-   * @return events
-  **/
-  @javax.annotation.Nullable
-
-  public RmEventsV1 getEvents() {
-    return events;
-  }
-
-
-  public void setEvents(RmEventsV1 events) {
-    this.events = events;
-  }
-
-
-  public RmAudienceSegmentEntityV1 channels(List<ChannelsEnum> channels) {
-    
-    this.channels = channels;
-    return this;
-  }
-
-  public RmAudienceSegmentEntityV1 addChannelsItem(ChannelsEnum channelsItem) {
-    if (this.channels == null) {
-      this.channels = null;
-    }
-    this.channels.add(channelsItem);
-    return this;
-  }
-
-   /**
-   * Channels associated to the segment (read-only)
-   * @return channels
-  **/
-  @javax.annotation.Nullable
-
-  public List<ChannelsEnum> getChannels() {
-    return channels;
-  }
-
-
-  public void setChannels(List<ChannelsEnum> channels) {
-    this.channels = channels;
   }
 
   /**
@@ -504,16 +504,16 @@ public class RmAudienceSegmentEntityV1 {
     }
     RmAudienceSegmentEntityV1 rmAudienceSegmentEntityV1 = (RmAudienceSegmentEntityV1) o;
     return Objects.equals(this.accountId, rmAudienceSegmentEntityV1.accountId) &&
-        Objects.equals(this.name, rmAudienceSegmentEntityV1.name) &&
+        Objects.equals(this.channels, rmAudienceSegmentEntityV1.channels) &&
+        Objects.equals(this.contactList, rmAudienceSegmentEntityV1.contactList) &&
+        Objects.equals(this.createdAt, rmAudienceSegmentEntityV1.createdAt) &&
+        Objects.equals(this.createdById, rmAudienceSegmentEntityV1.createdById) &&
         Objects.equals(this.description, rmAudienceSegmentEntityV1.description) &&
+        Objects.equals(this.events, rmAudienceSegmentEntityV1.events) &&
+        Objects.equals(this.name, rmAudienceSegmentEntityV1.name) &&
         Objects.equals(this.retailerId, rmAudienceSegmentEntityV1.retailerId) &&
         Objects.equals(this.type, rmAudienceSegmentEntityV1.type) &&
-        Objects.equals(this.createdAt, rmAudienceSegmentEntityV1.createdAt) &&
-        Objects.equals(this.updatedAt, rmAudienceSegmentEntityV1.updatedAt) &&
-        Objects.equals(this.createdById, rmAudienceSegmentEntityV1.createdById) &&
-        Objects.equals(this.contactList, rmAudienceSegmentEntityV1.contactList) &&
-        Objects.equals(this.events, rmAudienceSegmentEntityV1.events) &&
-        Objects.equals(this.channels, rmAudienceSegmentEntityV1.channels)&&
+        Objects.equals(this.updatedAt, rmAudienceSegmentEntityV1.updatedAt)&&
         Objects.equals(this.additionalProperties, rmAudienceSegmentEntityV1.additionalProperties);
   }
 
@@ -523,7 +523,7 @@ public class RmAudienceSegmentEntityV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, name, description, retailerId, type, createdAt, updatedAt, createdById, contactList, events, channels, additionalProperties);
+    return Objects.hash(accountId, channels, contactList, createdAt, createdById, description, events, name, retailerId, type, updatedAt, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -538,16 +538,16 @@ public class RmAudienceSegmentEntityV1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class RmAudienceSegmentEntityV1 {\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    channels: ").append(toIndentedString(channels)).append("\n");
+    sb.append("    contactList: ").append(toIndentedString(contactList)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    createdById: ").append(toIndentedString(createdById)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    events: ").append(toIndentedString(events)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    createdById: ").append(toIndentedString(createdById)).append("\n");
-    sb.append("    contactList: ").append(toIndentedString(contactList)).append("\n");
-    sb.append("    events: ").append(toIndentedString(events)).append("\n");
-    sb.append("    channels: ").append(toIndentedString(channels)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -572,16 +572,16 @@ public class RmAudienceSegmentEntityV1 {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("accountId");
-    openapiFields.add("name");
+    openapiFields.add("channels");
+    openapiFields.add("contactList");
+    openapiFields.add("createdAt");
+    openapiFields.add("createdById");
     openapiFields.add("description");
+    openapiFields.add("events");
+    openapiFields.add("name");
     openapiFields.add("retailerId");
     openapiFields.add("type");
-    openapiFields.add("createdAt");
     openapiFields.add("updatedAt");
-    openapiFields.add("createdById");
-    openapiFields.add("contactList");
-    openapiFields.add("events");
-    openapiFields.add("channels");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -602,32 +602,32 @@ public class RmAudienceSegmentEntityV1 {
       if ((jsonObj.get("accountId") != null && !jsonObj.get("accountId").isJsonNull()) && !jsonObj.get("accountId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("channels") != null && !jsonObj.get("channels").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `channels` to be an array in the JSON string but got `%s`", jsonObj.get("channels").toString()));
+      }
+      // validate the optional field `contactList`
+      if (jsonObj.get("contactList") != null && !jsonObj.get("contactList").isJsonNull()) {
+        RmContactListV1.validateJsonObject(jsonObj.getAsJsonObject("contactList"));
+      }
+      if ((jsonObj.get("createdById") != null && !jsonObj.get("createdById").isJsonNull()) && !jsonObj.get("createdById").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `createdById` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdById").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      // validate the optional field `events`
+      if (jsonObj.get("events") != null && !jsonObj.get("events").isJsonNull()) {
+        RmEventsV1.validateJsonObject(jsonObj.getAsJsonObject("events"));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("retailerId") != null && !jsonObj.get("retailerId").isJsonNull()) && !jsonObj.get("retailerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerId").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      if ((jsonObj.get("createdById") != null && !jsonObj.get("createdById").isJsonNull()) && !jsonObj.get("createdById").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `createdById` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdById").toString()));
-      }
-      // validate the optional field `contactList`
-      if (jsonObj.get("contactList") != null && !jsonObj.get("contactList").isJsonNull()) {
-        RmContactListV1.validateJsonObject(jsonObj.getAsJsonObject("contactList"));
-      }
-      // validate the optional field `events`
-      if (jsonObj.get("events") != null && !jsonObj.get("events").isJsonNull()) {
-        RmEventsV1.validateJsonObject(jsonObj.getAsJsonObject("events"));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("channels") != null && !jsonObj.get("channels").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `channels` to be an array in the JSON string but got `%s`", jsonObj.get("channels").toString()));
       }
   }
 

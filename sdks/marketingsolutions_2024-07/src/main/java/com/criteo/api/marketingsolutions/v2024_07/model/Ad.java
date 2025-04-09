@@ -49,21 +49,25 @@ import com.criteo.api.marketingsolutions.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Ad {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
+  public static final String SERIALIZED_NAME_AD_SET_ID = "adSetId";
+  @SerializedName(SERIALIZED_NAME_AD_SET_ID)
+  private String adSetId;
 
   public static final String SERIALIZED_NAME_CREATIVE_ID = "creativeId";
   @SerializedName(SERIALIZED_NAME_CREATIVE_ID)
   private String creativeId;
 
-  public static final String SERIALIZED_NAME_AD_SET_ID = "adSetId";
-  @SerializedName(SERIALIZED_NAME_AD_SET_ID)
-  private String adSetId;
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
+  public static final String SERIALIZED_NAME_END_DATE = "endDate";
+  @SerializedName(SERIALIZED_NAME_END_DATE)
+  private String endDate;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
 
   /**
    * The inventory the Ad belongs to. Possible values are \&quot;Display\&quot; and \&quot;Native\&quot;. This is optional since this doesn&#39;t make sense for every creative type but will throw an error if not set for a dynamic creative.
@@ -118,62 +122,36 @@ public class Ad {
   @SerializedName(SERIALIZED_NAME_INVENTORY_TYPE)
   private InventoryTypeEnum inventoryType;
 
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private String startDate;
 
-  public static final String SERIALIZED_NAME_END_DATE = "endDate";
-  @SerializedName(SERIALIZED_NAME_END_DATE)
-  private String endDate;
-
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
-
   public Ad() {
   }
 
-  public Ad name(String name) {
+  public Ad adSetId(String adSetId) {
     
-    this.name = name;
+    this.adSetId = adSetId;
     return this;
   }
 
    /**
-   * The name of the ad
-   * @return name
+   * The id of the Ad Set binded to this Ad
+   * @return adSetId
   **/
   @javax.annotation.Nullable
 
-  public String getName() {
-    return name;
+  public String getAdSetId() {
+    return adSetId;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public Ad description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * The description of the ad
-   * @return description
-  **/
-  @javax.annotation.Nullable
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  public void setDescription(String description) {
-    this.description = description;
+  public void setAdSetId(String adSetId) {
+    this.adSetId = adSetId;
   }
 
 
@@ -199,69 +177,25 @@ public class Ad {
   }
 
 
-  public Ad adSetId(String adSetId) {
+  public Ad description(String description) {
     
-    this.adSetId = adSetId;
+    this.description = description;
     return this;
   }
 
    /**
-   * The id of the Ad Set binded to this Ad
-   * @return adSetId
+   * The description of the ad
+   * @return description
   **/
   @javax.annotation.Nullable
 
-  public String getAdSetId() {
-    return adSetId;
+  public String getDescription() {
+    return description;
   }
 
 
-  public void setAdSetId(String adSetId) {
-    this.adSetId = adSetId;
-  }
-
-
-  public Ad inventoryType(InventoryTypeEnum inventoryType) {
-    
-    this.inventoryType = inventoryType;
-    return this;
-  }
-
-   /**
-   * The inventory the Ad belongs to. Possible values are \&quot;Display\&quot; and \&quot;Native\&quot;. This is optional since this doesn&#39;t make sense for every creative type but will throw an error if not set for a dynamic creative.
-   * @return inventoryType
-  **/
-  @javax.annotation.Nullable
-
-  public InventoryTypeEnum getInventoryType() {
-    return inventoryType;
-  }
-
-
-  public void setInventoryType(InventoryTypeEnum inventoryType) {
-    this.inventoryType = inventoryType;
-  }
-
-
-  public Ad startDate(String startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * The date when the ad will be launched  String must be in ISO8601 format
-   * @return startDate
-  **/
-  @javax.annotation.Nullable
-
-  public String getStartDate() {
-    return startDate;
-  }
-
-
-  public void setStartDate(String startDate) {
-    this.startDate = startDate;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -306,6 +240,72 @@ public class Ad {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+
+  public Ad inventoryType(InventoryTypeEnum inventoryType) {
+    
+    this.inventoryType = inventoryType;
+    return this;
+  }
+
+   /**
+   * The inventory the Ad belongs to. Possible values are \&quot;Display\&quot; and \&quot;Native\&quot;. This is optional since this doesn&#39;t make sense for every creative type but will throw an error if not set for a dynamic creative.
+   * @return inventoryType
+  **/
+  @javax.annotation.Nullable
+
+  public InventoryTypeEnum getInventoryType() {
+    return inventoryType;
+  }
+
+
+  public void setInventoryType(InventoryTypeEnum inventoryType) {
+    this.inventoryType = inventoryType;
+  }
+
+
+  public Ad name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * The name of the ad
+   * @return name
+  **/
+  @javax.annotation.Nullable
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public Ad startDate(String startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * The date when the ad will be launched  String must be in ISO8601 format
+   * @return startDate
+  **/
+  @javax.annotation.Nullable
+
+  public String getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
   }
 
   /**
@@ -363,14 +363,14 @@ public class Ad {
       return false;
     }
     Ad ad = (Ad) o;
-    return Objects.equals(this.name, ad.name) &&
-        Objects.equals(this.description, ad.description) &&
+    return Objects.equals(this.adSetId, ad.adSetId) &&
         Objects.equals(this.creativeId, ad.creativeId) &&
-        Objects.equals(this.adSetId, ad.adSetId) &&
-        Objects.equals(this.inventoryType, ad.inventoryType) &&
-        Objects.equals(this.startDate, ad.startDate) &&
+        Objects.equals(this.description, ad.description) &&
         Objects.equals(this.endDate, ad.endDate) &&
-        Objects.equals(this.id, ad.id)&&
+        Objects.equals(this.id, ad.id) &&
+        Objects.equals(this.inventoryType, ad.inventoryType) &&
+        Objects.equals(this.name, ad.name) &&
+        Objects.equals(this.startDate, ad.startDate)&&
         Objects.equals(this.additionalProperties, ad.additionalProperties);
   }
 
@@ -380,7 +380,7 @@ public class Ad {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, creativeId, adSetId, inventoryType, startDate, endDate, id, additionalProperties);
+    return Objects.hash(adSetId, creativeId, description, endDate, id, inventoryType, name, startDate, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -394,14 +394,14 @@ public class Ad {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Ad {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    creativeId: ").append(toIndentedString(creativeId)).append("\n");
     sb.append("    adSetId: ").append(toIndentedString(adSetId)).append("\n");
-    sb.append("    inventoryType: ").append(toIndentedString(inventoryType)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    creativeId: ").append(toIndentedString(creativeId)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    inventoryType: ").append(toIndentedString(inventoryType)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -425,14 +425,14 @@ public class Ad {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("description");
-    openapiFields.add("creativeId");
     openapiFields.add("adSetId");
-    openapiFields.add("inventoryType");
-    openapiFields.add("startDate");
+    openapiFields.add("creativeId");
+    openapiFields.add("description");
     openapiFields.add("endDate");
     openapiFields.add("id");
+    openapiFields.add("inventoryType");
+    openapiFields.add("name");
+    openapiFields.add("startDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -450,29 +450,29 @@ public class Ad {
           throw new IllegalArgumentException(String.format("The required field(s) %s in Ad is not found in the empty JSON string", Ad.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      if ((jsonObj.get("adSetId") != null && !jsonObj.get("adSetId").isJsonNull()) && !jsonObj.get("adSetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `adSetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adSetId").toString()));
       }
       if ((jsonObj.get("creativeId") != null && !jsonObj.get("creativeId").isJsonNull()) && !jsonObj.get("creativeId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `creativeId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creativeId").toString()));
       }
-      if ((jsonObj.get("adSetId") != null && !jsonObj.get("adSetId").isJsonNull()) && !jsonObj.get("adSetId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `adSetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adSetId").toString()));
-      }
-      if ((jsonObj.get("inventoryType") != null && !jsonObj.get("inventoryType").isJsonNull()) && !jsonObj.get("inventoryType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `inventoryType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("inventoryType").toString()));
-      }
-      if ((jsonObj.get("startDate") != null && !jsonObj.get("startDate").isJsonNull()) && !jsonObj.get("startDate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       if ((jsonObj.get("endDate") != null && !jsonObj.get("endDate").isJsonNull()) && !jsonObj.get("endDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `endDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endDate").toString()));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("inventoryType") != null && !jsonObj.get("inventoryType").isJsonNull()) && !jsonObj.get("inventoryType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `inventoryType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("inventoryType").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("startDate") != null && !jsonObj.get("startDate").isJsonNull()) && !jsonObj.get("startDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
       }
   }
 

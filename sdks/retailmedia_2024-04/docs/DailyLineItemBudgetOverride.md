@@ -8,9 +8,9 @@ The details for a daily budget override
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**startDate** | **OffsetDateTime** | Daily budget override start date, format \&quot;yyyy-MM-dd\&quot;. If it is null, the StartDate would be the following date of the last item in the override sequence. |  [optional] |
 |**duration** | **String** | The number of DAYs that the override is active from StartDate, e.g. \&quot;1D\&quot;. Must end with &#39;D&#39; or &#39;d&#39;. |  |
 |**maxDailySpend** | **Double** | Daily budget override maximum daily spend amount. |  [optional] |
+|**startDate** | **OffsetDateTime** | Daily budget override start date, format \&quot;yyyy-MM-dd\&quot;. If it is null, the StartDate would be the following date of the last item in the override sequence. |  [optional] |
 |**status** | [**StatusEnum**](#StatusEnum) | Daily budget override computed status. |  [optional] |
 
 

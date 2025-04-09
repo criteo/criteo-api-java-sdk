@@ -51,38 +51,16 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReportDataResponseResource {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
-
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private List<List<Object>> attributes = null;
 
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
   public ReportDataResponseResource() {
   }
-
-  public ReportDataResponseResource type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Get type
-   * @return type
-  **/
-  @javax.annotation.Nullable
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
 
   public ReportDataResponseResource attributes(List<List<Object>> attributes) {
     
@@ -111,6 +89,28 @@ public class ReportDataResponseResource {
 
   public void setAttributes(List<List<Object>> attributes) {
     this.attributes = attributes;
+  }
+
+
+  public ReportDataResponseResource type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   /**
@@ -168,8 +168,8 @@ public class ReportDataResponseResource {
       return false;
     }
     ReportDataResponseResource reportDataResponseResource = (ReportDataResponseResource) o;
-    return Objects.equals(this.type, reportDataResponseResource.type) &&
-        Objects.equals(this.attributes, reportDataResponseResource.attributes)&&
+    return Objects.equals(this.attributes, reportDataResponseResource.attributes) &&
+        Objects.equals(this.type, reportDataResponseResource.type)&&
         Objects.equals(this.additionalProperties, reportDataResponseResource.additionalProperties);
   }
 
@@ -179,7 +179,7 @@ public class ReportDataResponseResource {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes, additionalProperties);
+    return Objects.hash(attributes, type, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -193,8 +193,8 @@ public class ReportDataResponseResource {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReportDataResponseResource {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -218,8 +218,8 @@ public class ReportDataResponseResource {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
     openapiFields.add("attributes");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -237,12 +237,12 @@ public class ReportDataResponseResource {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ReportDataResponseResource is not found in the empty JSON string", ReportDataResponseResource.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `attributes` to be an array in the JSON string but got `%s`", jsonObj.get("attributes").toString()));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

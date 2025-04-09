@@ -24,6 +24,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,6 +52,10 @@ import com.criteo.api.retailmedia.v2024_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalLineItemPage202110 {
+  public static final String SERIALIZED_NAME_CATEGORIES = "categories";
+  @SerializedName(SERIALIZED_NAME_CATEGORIES)
+  private List<ExternalLineItemPageCategory202110> categories = null;
+
   /**
    * Gets or Sets pageType
    */
@@ -114,16 +119,42 @@ public class ExternalLineItemPage202110 {
   @SerializedName(SERIALIZED_NAME_PAGE_TYPE)
   private PageTypeEnum pageType;
 
-  public static final String SERIALIZED_NAME_CATEGORIES = "categories";
-  @SerializedName(SERIALIZED_NAME_CATEGORIES)
-  private List<ExternalLineItemPageCategory202110> categories = null;
-
   public static final String SERIALIZED_NAME_SEARCH_KEYWORDS = "searchKeywords";
   @SerializedName(SERIALIZED_NAME_SEARCH_KEYWORDS)
   private List<String> searchKeywords = null;
 
   public ExternalLineItemPage202110() {
   }
+
+  public ExternalLineItemPage202110 categories(List<ExternalLineItemPageCategory202110> categories) {
+    
+    this.categories = categories;
+    return this;
+  }
+
+  public ExternalLineItemPage202110 addCategoriesItem(ExternalLineItemPageCategory202110 categoriesItem) {
+    if (this.categories == null) {
+      this.categories = null;
+    }
+    this.categories.add(categoriesItem);
+    return this;
+  }
+
+   /**
+   * Get categories
+   * @return categories
+  **/
+  @javax.annotation.Nullable
+
+  public List<ExternalLineItemPageCategory202110> getCategories() {
+    return categories;
+  }
+
+
+  public void setCategories(List<ExternalLineItemPageCategory202110> categories) {
+    this.categories = categories;
+  }
+
 
   public ExternalLineItemPage202110 pageType(PageTypeEnum pageType) {
     
@@ -144,36 +175,6 @@ public class ExternalLineItemPage202110 {
 
   public void setPageType(PageTypeEnum pageType) {
     this.pageType = pageType;
-  }
-
-
-  public ExternalLineItemPage202110 categories(List<ExternalLineItemPageCategory202110> categories) {
-    
-    this.categories = categories;
-    return this;
-  }
-
-  public ExternalLineItemPage202110 addCategoriesItem(ExternalLineItemPageCategory202110 categoriesItem) {
-    if (this.categories == null) {
-      this.categories = new ArrayList<>();
-    }
-    this.categories.add(categoriesItem);
-    return this;
-  }
-
-   /**
-   * Get categories
-   * @return categories
-  **/
-  @javax.annotation.Nullable
-
-  public List<ExternalLineItemPageCategory202110> getCategories() {
-    return categories;
-  }
-
-
-  public void setCategories(List<ExternalLineItemPageCategory202110> categories) {
-    this.categories = categories;
   }
 
 
@@ -261,23 +262,34 @@ public class ExternalLineItemPage202110 {
       return false;
     }
     ExternalLineItemPage202110 externalLineItemPage202110 = (ExternalLineItemPage202110) o;
-    return Objects.equals(this.pageType, externalLineItemPage202110.pageType) &&
-        Objects.equals(this.categories, externalLineItemPage202110.categories) &&
+    return Objects.equals(this.categories, externalLineItemPage202110.categories) &&
+        Objects.equals(this.pageType, externalLineItemPage202110.pageType) &&
         Objects.equals(this.searchKeywords, externalLineItemPage202110.searchKeywords)&&
         Objects.equals(this.additionalProperties, externalLineItemPage202110.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(pageType, categories, searchKeywords, additionalProperties);
+    return Objects.hash(categories, pageType, searchKeywords, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalLineItemPage202110 {\n");
-    sb.append("    pageType: ").append(toIndentedString(pageType)).append("\n");
     sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
+    sb.append("    pageType: ").append(toIndentedString(pageType)).append("\n");
     sb.append("    searchKeywords: ").append(toIndentedString(searchKeywords)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -302,8 +314,8 @@ public class ExternalLineItemPage202110 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("pageType");
     openapiFields.add("categories");
+    openapiFields.add("pageType");
     openapiFields.add("searchKeywords");
 
     // a set of required properties/fields (JSON key names)
@@ -330,9 +342,6 @@ public class ExternalLineItemPage202110 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("pageType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pageType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pageType").toString()));
-      }
       if (jsonObj.get("categories") != null && !jsonObj.get("categories").isJsonNull()) {
         JsonArray jsonArraycategories = jsonObj.getAsJsonArray("categories");
         if (jsonArraycategories != null) {
@@ -346,6 +355,9 @@ public class ExternalLineItemPage202110 {
             ExternalLineItemPageCategory202110.validateJsonObject(jsonArraycategories.get(i).getAsJsonObject());
           };
         }
+      }
+      if (!jsonObj.get("pageType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pageType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pageType").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("searchKeywords") != null && !jsonObj.get("searchKeywords").isJsonArray()) {

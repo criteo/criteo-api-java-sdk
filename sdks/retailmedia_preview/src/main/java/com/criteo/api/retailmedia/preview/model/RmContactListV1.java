@@ -49,10 +49,6 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RmContactListV1 {
-  public static final String SERIALIZED_NAME_IS_READ_ONLY = "isReadOnly";
-  @SerializedName(SERIALIZED_NAME_IS_READ_ONLY)
-  private Boolean isReadOnly;
-
   /**
    * Indicates contact list identifier&#39;s type
    */
@@ -109,6 +105,10 @@ public class RmContactListV1 {
   public static final String SERIALIZED_NAME_IDENTIFIER_TYPE = "identifierType";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_TYPE)
   private IdentifierTypeEnum identifierType;
+
+  public static final String SERIALIZED_NAME_IS_READ_ONLY = "isReadOnly";
+  @SerializedName(SERIALIZED_NAME_IS_READ_ONLY)
+  private Boolean isReadOnly;
 
   /**
    * Indicates if the contact list is shared with other accounts
@@ -168,28 +168,6 @@ public class RmContactListV1 {
   public RmContactListV1() {
   }
 
-  public RmContactListV1 isReadOnly(Boolean isReadOnly) {
-    
-    this.isReadOnly = isReadOnly;
-    return this;
-  }
-
-   /**
-   * Is the segment read-only
-   * @return isReadOnly
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getIsReadOnly() {
-    return isReadOnly;
-  }
-
-
-  public void setIsReadOnly(Boolean isReadOnly) {
-    this.isReadOnly = isReadOnly;
-  }
-
-
   public RmContactListV1 identifierType(IdentifierTypeEnum identifierType) {
     
     this.identifierType = identifierType;
@@ -209,6 +187,28 @@ public class RmContactListV1 {
 
   public void setIdentifierType(IdentifierTypeEnum identifierType) {
     this.identifierType = identifierType;
+  }
+
+
+  public RmContactListV1 isReadOnly(Boolean isReadOnly) {
+    
+    this.isReadOnly = isReadOnly;
+    return this;
+  }
+
+   /**
+   * Is the segment read-only
+   * @return isReadOnly
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getIsReadOnly() {
+    return isReadOnly;
+  }
+
+
+  public void setIsReadOnly(Boolean isReadOnly) {
+    this.isReadOnly = isReadOnly;
   }
 
 
@@ -288,8 +288,8 @@ public class RmContactListV1 {
       return false;
     }
     RmContactListV1 rmContactListV1 = (RmContactListV1) o;
-    return Objects.equals(this.isReadOnly, rmContactListV1.isReadOnly) &&
-        Objects.equals(this.identifierType, rmContactListV1.identifierType) &&
+    return Objects.equals(this.identifierType, rmContactListV1.identifierType) &&
+        Objects.equals(this.isReadOnly, rmContactListV1.isReadOnly) &&
         Objects.equals(this.sharingStatus, rmContactListV1.sharingStatus)&&
         Objects.equals(this.additionalProperties, rmContactListV1.additionalProperties);
   }
@@ -300,7 +300,7 @@ public class RmContactListV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(isReadOnly, identifierType, sharingStatus, additionalProperties);
+    return Objects.hash(identifierType, isReadOnly, sharingStatus, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -314,8 +314,8 @@ public class RmContactListV1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RmContactListV1 {\n");
-    sb.append("    isReadOnly: ").append(toIndentedString(isReadOnly)).append("\n");
     sb.append("    identifierType: ").append(toIndentedString(identifierType)).append("\n");
+    sb.append("    isReadOnly: ").append(toIndentedString(isReadOnly)).append("\n");
     sb.append("    sharingStatus: ").append(toIndentedString(sharingStatus)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -340,8 +340,8 @@ public class RmContactListV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("isReadOnly");
     openapiFields.add("identifierType");
+    openapiFields.add("isReadOnly");
     openapiFields.add("sharingStatus");
 
     // a set of required properties/fields (JSON key names)

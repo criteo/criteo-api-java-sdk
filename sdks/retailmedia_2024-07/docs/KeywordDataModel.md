@@ -8,11 +8,11 @@ A single keyword and associated bid override
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**reviewState** | **ReviewStateModel** |  |  [optional] |
-|**matchType** | **MatchTypeModel** |  |  [optional] |
 |**bid** | **Double** |  |  [optional] |
-|**inputKeywords** | [**InputKeywordsModel**](InputKeywordsModel.md) |  |  [optional] |
 |**createdAt** | **OffsetDateTime** |  |  [optional] |
+|**inputKeywords** | [**InputKeywordsModel**](InputKeywordsModel.md) |  |  [optional] |
+|**matchType** | **MatchTypeModel** |  |  [optional] |
+|**reviewState** | **ReviewStateModel** |  |  [optional] |
 |**updatedAt** | **OffsetDateTime** |  |  [optional] |
 
 

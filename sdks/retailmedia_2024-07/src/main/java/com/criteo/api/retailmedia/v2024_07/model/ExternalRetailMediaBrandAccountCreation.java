@@ -51,90 +51,24 @@ import com.criteo.api.retailmedia.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalRetailMediaBrandAccountCreation {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_BRANDS = "brands";
+  @SerializedName(SERIALIZED_NAME_BRANDS)
+  private List<Long> brands = null;
 
   public static final String SERIALIZED_NAME_COMPANY_NAME = "companyName";
   @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
   private String companyName;
 
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
   public static final String SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME = "onBehalfCompanyName";
   @SerializedName(SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME)
   private String onBehalfCompanyName;
 
-  public static final String SERIALIZED_NAME_BRANDS = "brands";
-  @SerializedName(SERIALIZED_NAME_BRANDS)
-  private List<Long> brands = null;
-
   public ExternalRetailMediaBrandAccountCreation() {
   }
-
-  public ExternalRetailMediaBrandAccountCreation name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * the name of the account, must be unique across all accounts
-   * @return name
-  **/
-  @javax.annotation.Nullable
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public ExternalRetailMediaBrandAccountCreation companyName(String companyName) {
-    
-    this.companyName = companyName;
-    return this;
-  }
-
-   /**
-   * Display name for reporting the owning entity of ads for the Digital Services Act in the European Union
-   * @return companyName
-  **/
-  @javax.annotation.Nullable
-
-  public String getCompanyName() {
-    return companyName;
-  }
-
-
-  public void setCompanyName(String companyName) {
-    this.companyName = companyName;
-  }
-
-
-  public ExternalRetailMediaBrandAccountCreation onBehalfCompanyName(String onBehalfCompanyName) {
-    
-    this.onBehalfCompanyName = onBehalfCompanyName;
-    return this;
-  }
-
-   /**
-   * On behalf entity name of ads for the Digital Services Act
-   * @return onBehalfCompanyName
-  **/
-  @javax.annotation.Nullable
-
-  public String getOnBehalfCompanyName() {
-    return onBehalfCompanyName;
-  }
-
-
-  public void setOnBehalfCompanyName(String onBehalfCompanyName) {
-    this.onBehalfCompanyName = onBehalfCompanyName;
-  }
-
 
   public ExternalRetailMediaBrandAccountCreation brands(List<Long> brands) {
     
@@ -166,6 +100,72 @@ public class ExternalRetailMediaBrandAccountCreation {
   }
 
 
+  public ExternalRetailMediaBrandAccountCreation companyName(String companyName) {
+    
+    this.companyName = companyName;
+    return this;
+  }
+
+   /**
+   * Display name for reporting the owning entity of ads for the Digital Services Act in the European Union
+   * @return companyName
+  **/
+  @javax.annotation.Nullable
+
+  public String getCompanyName() {
+    return companyName;
+  }
+
+
+  public void setCompanyName(String companyName) {
+    this.companyName = companyName;
+  }
+
+
+  public ExternalRetailMediaBrandAccountCreation name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * the name of the account, must be unique across all accounts
+   * @return name
+  **/
+  @javax.annotation.Nullable
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public ExternalRetailMediaBrandAccountCreation onBehalfCompanyName(String onBehalfCompanyName) {
+    
+    this.onBehalfCompanyName = onBehalfCompanyName;
+    return this;
+  }
+
+   /**
+   * On behalf entity name of ads for the Digital Services Act
+   * @return onBehalfCompanyName
+  **/
+  @javax.annotation.Nullable
+
+  public String getOnBehalfCompanyName() {
+    return onBehalfCompanyName;
+  }
+
+
+  public void setOnBehalfCompanyName(String onBehalfCompanyName) {
+    this.onBehalfCompanyName = onBehalfCompanyName;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -176,10 +176,10 @@ public class ExternalRetailMediaBrandAccountCreation {
       return false;
     }
     ExternalRetailMediaBrandAccountCreation externalRetailMediaBrandAccountCreation = (ExternalRetailMediaBrandAccountCreation) o;
-    return Objects.equals(this.name, externalRetailMediaBrandAccountCreation.name) &&
+    return Objects.equals(this.brands, externalRetailMediaBrandAccountCreation.brands) &&
         Objects.equals(this.companyName, externalRetailMediaBrandAccountCreation.companyName) &&
-        Objects.equals(this.onBehalfCompanyName, externalRetailMediaBrandAccountCreation.onBehalfCompanyName) &&
-        Objects.equals(this.brands, externalRetailMediaBrandAccountCreation.brands);
+        Objects.equals(this.name, externalRetailMediaBrandAccountCreation.name) &&
+        Objects.equals(this.onBehalfCompanyName, externalRetailMediaBrandAccountCreation.onBehalfCompanyName);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -188,7 +188,7 @@ public class ExternalRetailMediaBrandAccountCreation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, companyName, onBehalfCompanyName, brands);
+    return Objects.hash(brands, companyName, name, onBehalfCompanyName);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -202,10 +202,10 @@ public class ExternalRetailMediaBrandAccountCreation {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalRetailMediaBrandAccountCreation {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
-    sb.append("    onBehalfCompanyName: ").append(toIndentedString(onBehalfCompanyName)).append("\n");
     sb.append("    brands: ").append(toIndentedString(brands)).append("\n");
+    sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    onBehalfCompanyName: ").append(toIndentedString(onBehalfCompanyName)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -228,10 +228,10 @@ public class ExternalRetailMediaBrandAccountCreation {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("companyName");
-    openapiFields.add("onBehalfCompanyName");
     openapiFields.add("brands");
+    openapiFields.add("companyName");
+    openapiFields.add("name");
+    openapiFields.add("onBehalfCompanyName");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -257,18 +257,18 @@ public class ExternalRetailMediaBrandAccountCreation {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ExternalRetailMediaBrandAccountCreation` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("brands") != null && !jsonObj.get("brands").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `brands` to be an array in the JSON string but got `%s`", jsonObj.get("brands").toString()));
       }
       if ((jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) && !jsonObj.get("companyName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
       }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
       if ((jsonObj.get("onBehalfCompanyName") != null && !jsonObj.get("onBehalfCompanyName").isJsonNull()) && !jsonObj.get("onBehalfCompanyName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `onBehalfCompanyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("onBehalfCompanyName").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("brands") != null && !jsonObj.get("brands").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `brands` to be an array in the JSON string but got `%s`", jsonObj.get("brands").toString()));
       }
   }
 

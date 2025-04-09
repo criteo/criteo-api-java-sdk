@@ -50,38 +50,16 @@ import com.criteo.api.marketingsolutions.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateAdSetScheduleV24Q1 {
-  public static final String SERIALIZED_NAME_START_DATE = "startDate";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private OffsetDateTime startDate;
-
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private OffsetDateTime endDate;
 
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private OffsetDateTime startDate;
+
   public CreateAdSetScheduleV24Q1() {
   }
-
-  public CreateAdSetScheduleV24Q1 startDate(OffsetDateTime startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * Get startDate
-   * @return startDate
-  **/
-  @javax.annotation.Nonnull
-
-  public OffsetDateTime getStartDate() {
-    return startDate;
-  }
-
-
-  public void setStartDate(OffsetDateTime startDate) {
-    this.startDate = startDate;
-  }
-
 
   public CreateAdSetScheduleV24Q1 endDate(OffsetDateTime endDate) {
     
@@ -102,6 +80,28 @@ public class CreateAdSetScheduleV24Q1 {
 
   public void setEndDate(OffsetDateTime endDate) {
     this.endDate = endDate;
+  }
+
+
+  public CreateAdSetScheduleV24Q1 startDate(OffsetDateTime startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Get startDate
+   * @return startDate
+  **/
+  @javax.annotation.Nonnull
+
+  public OffsetDateTime getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
   }
 
   /**
@@ -159,8 +159,8 @@ public class CreateAdSetScheduleV24Q1 {
       return false;
     }
     CreateAdSetScheduleV24Q1 createAdSetScheduleV24Q1 = (CreateAdSetScheduleV24Q1) o;
-    return Objects.equals(this.startDate, createAdSetScheduleV24Q1.startDate) &&
-        Objects.equals(this.endDate, createAdSetScheduleV24Q1.endDate)&&
+    return Objects.equals(this.endDate, createAdSetScheduleV24Q1.endDate) &&
+        Objects.equals(this.startDate, createAdSetScheduleV24Q1.startDate)&&
         Objects.equals(this.additionalProperties, createAdSetScheduleV24Q1.additionalProperties);
   }
 
@@ -170,7 +170,7 @@ public class CreateAdSetScheduleV24Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, additionalProperties);
+    return Objects.hash(endDate, startDate, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -184,8 +184,8 @@ public class CreateAdSetScheduleV24Q1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAdSetScheduleV24Q1 {\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -209,8 +209,8 @@ public class CreateAdSetScheduleV24Q1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("startDate");
     openapiFields.add("endDate");
+    openapiFields.add("startDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

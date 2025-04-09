@@ -53,25 +53,25 @@ import com.criteo.api.retailmedia.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class KeywordDataModel {
-  public static final String SERIALIZED_NAME_REVIEW_STATE = "reviewState";
-  @SerializedName(SERIALIZED_NAME_REVIEW_STATE)
-  private ReviewStateModel reviewState;
-
-  public static final String SERIALIZED_NAME_MATCH_TYPE = "matchType";
-  @SerializedName(SERIALIZED_NAME_MATCH_TYPE)
-  private MatchTypeModel matchType;
-
   public static final String SERIALIZED_NAME_BID = "bid";
   @SerializedName(SERIALIZED_NAME_BID)
   private Double bid;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
 
   public static final String SERIALIZED_NAME_INPUT_KEYWORDS = "inputKeywords";
   @SerializedName(SERIALIZED_NAME_INPUT_KEYWORDS)
   private InputKeywordsModel inputKeywords;
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
+  public static final String SERIALIZED_NAME_MATCH_TYPE = "matchType";
+  @SerializedName(SERIALIZED_NAME_MATCH_TYPE)
+  private MatchTypeModel matchType;
+
+  public static final String SERIALIZED_NAME_REVIEW_STATE = "reviewState";
+  @SerializedName(SERIALIZED_NAME_REVIEW_STATE)
+  private ReviewStateModel reviewState;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
@@ -79,50 +79,6 @@ public class KeywordDataModel {
 
   public KeywordDataModel() {
   }
-
-  public KeywordDataModel reviewState(ReviewStateModel reviewState) {
-    
-    this.reviewState = reviewState;
-    return this;
-  }
-
-   /**
-   * Get reviewState
-   * @return reviewState
-  **/
-  @javax.annotation.Nullable
-
-  public ReviewStateModel getReviewState() {
-    return reviewState;
-  }
-
-
-  public void setReviewState(ReviewStateModel reviewState) {
-    this.reviewState = reviewState;
-  }
-
-
-  public KeywordDataModel matchType(MatchTypeModel matchType) {
-    
-    this.matchType = matchType;
-    return this;
-  }
-
-   /**
-   * Get matchType
-   * @return matchType
-  **/
-  @javax.annotation.Nullable
-
-  public MatchTypeModel getMatchType() {
-    return matchType;
-  }
-
-
-  public void setMatchType(MatchTypeModel matchType) {
-    this.matchType = matchType;
-  }
-
 
   public KeywordDataModel bid(Double bid) {
     
@@ -143,6 +99,28 @@ public class KeywordDataModel {
 
   public void setBid(Double bid) {
     this.bid = bid;
+  }
+
+
+  public KeywordDataModel createdAt(OffsetDateTime createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nullable
+
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
   }
 
 
@@ -168,25 +146,47 @@ public class KeywordDataModel {
   }
 
 
-  public KeywordDataModel createdAt(OffsetDateTime createdAt) {
+  public KeywordDataModel matchType(MatchTypeModel matchType) {
     
-    this.createdAt = createdAt;
+    this.matchType = matchType;
     return this;
   }
 
    /**
-   * Get createdAt
-   * @return createdAt
+   * Get matchType
+   * @return matchType
   **/
   @javax.annotation.Nullable
 
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
+  public MatchTypeModel getMatchType() {
+    return matchType;
   }
 
 
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
+  public void setMatchType(MatchTypeModel matchType) {
+    this.matchType = matchType;
+  }
+
+
+  public KeywordDataModel reviewState(ReviewStateModel reviewState) {
+    
+    this.reviewState = reviewState;
+    return this;
+  }
+
+   /**
+   * Get reviewState
+   * @return reviewState
+  **/
+  @javax.annotation.Nullable
+
+  public ReviewStateModel getReviewState() {
+    return reviewState;
+  }
+
+
+  public void setReviewState(ReviewStateModel reviewState) {
+    this.reviewState = reviewState;
   }
 
 
@@ -222,11 +222,11 @@ public class KeywordDataModel {
       return false;
     }
     KeywordDataModel keywordDataModel = (KeywordDataModel) o;
-    return Objects.equals(this.reviewState, keywordDataModel.reviewState) &&
-        Objects.equals(this.matchType, keywordDataModel.matchType) &&
-        Objects.equals(this.bid, keywordDataModel.bid) &&
-        Objects.equals(this.inputKeywords, keywordDataModel.inputKeywords) &&
+    return Objects.equals(this.bid, keywordDataModel.bid) &&
         Objects.equals(this.createdAt, keywordDataModel.createdAt) &&
+        Objects.equals(this.inputKeywords, keywordDataModel.inputKeywords) &&
+        Objects.equals(this.matchType, keywordDataModel.matchType) &&
+        Objects.equals(this.reviewState, keywordDataModel.reviewState) &&
         Objects.equals(this.updatedAt, keywordDataModel.updatedAt);
   }
 
@@ -236,7 +236,7 @@ public class KeywordDataModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(reviewState, matchType, bid, inputKeywords, createdAt, updatedAt);
+    return Objects.hash(bid, createdAt, inputKeywords, matchType, reviewState, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -250,11 +250,11 @@ public class KeywordDataModel {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class KeywordDataModel {\n");
-    sb.append("    reviewState: ").append(toIndentedString(reviewState)).append("\n");
-    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
     sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
-    sb.append("    inputKeywords: ").append(toIndentedString(inputKeywords)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    inputKeywords: ").append(toIndentedString(inputKeywords)).append("\n");
+    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
+    sb.append("    reviewState: ").append(toIndentedString(reviewState)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -278,11 +278,11 @@ public class KeywordDataModel {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("reviewState");
-    openapiFields.add("matchType");
     openapiFields.add("bid");
-    openapiFields.add("inputKeywords");
     openapiFields.add("createdAt");
+    openapiFields.add("inputKeywords");
+    openapiFields.add("matchType");
+    openapiFields.add("reviewState");
     openapiFields.add("updatedAt");
 
     // a set of required properties/fields (JSON key names)

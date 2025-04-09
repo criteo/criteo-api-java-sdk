@@ -56,13 +56,13 @@ public class CreateAdSetTargetingV24Q1 {
   @SerializedName(SERIALIZED_NAME_DELIVERY_LIMITATIONS)
   private AdSetDeliveryLimitationsV24Q1 deliveryLimitations;
 
-  public static final String SERIALIZED_NAME_GEO_LOCATION = "geoLocation";
-  @SerializedName(SERIALIZED_NAME_GEO_LOCATION)
-  private CreateAdSetGeoLocationV24Q1 geoLocation;
-
   public static final String SERIALIZED_NAME_FREQUENCY_CAPPING = "frequencyCapping";
   @SerializedName(SERIALIZED_NAME_FREQUENCY_CAPPING)
   private AdSetFrequencyCappingV24Q1 frequencyCapping;
+
+  public static final String SERIALIZED_NAME_GEO_LOCATION = "geoLocation";
+  @SerializedName(SERIALIZED_NAME_GEO_LOCATION)
+  private CreateAdSetGeoLocationV24Q1 geoLocation;
 
   public CreateAdSetTargetingV24Q1() {
   }
@@ -89,28 +89,6 @@ public class CreateAdSetTargetingV24Q1 {
   }
 
 
-  public CreateAdSetTargetingV24Q1 geoLocation(CreateAdSetGeoLocationV24Q1 geoLocation) {
-    
-    this.geoLocation = geoLocation;
-    return this;
-  }
-
-   /**
-   * Get geoLocation
-   * @return geoLocation
-  **/
-  @javax.annotation.Nullable
-
-  public CreateAdSetGeoLocationV24Q1 getGeoLocation() {
-    return geoLocation;
-  }
-
-
-  public void setGeoLocation(CreateAdSetGeoLocationV24Q1 geoLocation) {
-    this.geoLocation = geoLocation;
-  }
-
-
   public CreateAdSetTargetingV24Q1 frequencyCapping(AdSetFrequencyCappingV24Q1 frequencyCapping) {
     
     this.frequencyCapping = frequencyCapping;
@@ -130,6 +108,28 @@ public class CreateAdSetTargetingV24Q1 {
 
   public void setFrequencyCapping(AdSetFrequencyCappingV24Q1 frequencyCapping) {
     this.frequencyCapping = frequencyCapping;
+  }
+
+
+  public CreateAdSetTargetingV24Q1 geoLocation(CreateAdSetGeoLocationV24Q1 geoLocation) {
+    
+    this.geoLocation = geoLocation;
+    return this;
+  }
+
+   /**
+   * Get geoLocation
+   * @return geoLocation
+  **/
+  @javax.annotation.Nullable
+
+  public CreateAdSetGeoLocationV24Q1 getGeoLocation() {
+    return geoLocation;
+  }
+
+
+  public void setGeoLocation(CreateAdSetGeoLocationV24Q1 geoLocation) {
+    this.geoLocation = geoLocation;
   }
 
   /**
@@ -188,8 +188,8 @@ public class CreateAdSetTargetingV24Q1 {
     }
     CreateAdSetTargetingV24Q1 createAdSetTargetingV24Q1 = (CreateAdSetTargetingV24Q1) o;
     return Objects.equals(this.deliveryLimitations, createAdSetTargetingV24Q1.deliveryLimitations) &&
-        Objects.equals(this.geoLocation, createAdSetTargetingV24Q1.geoLocation) &&
-        Objects.equals(this.frequencyCapping, createAdSetTargetingV24Q1.frequencyCapping)&&
+        Objects.equals(this.frequencyCapping, createAdSetTargetingV24Q1.frequencyCapping) &&
+        Objects.equals(this.geoLocation, createAdSetTargetingV24Q1.geoLocation)&&
         Objects.equals(this.additionalProperties, createAdSetTargetingV24Q1.additionalProperties);
   }
 
@@ -199,7 +199,7 @@ public class CreateAdSetTargetingV24Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(deliveryLimitations, geoLocation, frequencyCapping, additionalProperties);
+    return Objects.hash(deliveryLimitations, frequencyCapping, geoLocation, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -214,8 +214,8 @@ public class CreateAdSetTargetingV24Q1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAdSetTargetingV24Q1 {\n");
     sb.append("    deliveryLimitations: ").append(toIndentedString(deliveryLimitations)).append("\n");
-    sb.append("    geoLocation: ").append(toIndentedString(geoLocation)).append("\n");
     sb.append("    frequencyCapping: ").append(toIndentedString(frequencyCapping)).append("\n");
+    sb.append("    geoLocation: ").append(toIndentedString(geoLocation)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -240,8 +240,8 @@ public class CreateAdSetTargetingV24Q1 {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("deliveryLimitations");
-    openapiFields.add("geoLocation");
     openapiFields.add("frequencyCapping");
+    openapiFields.add("geoLocation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -271,12 +271,12 @@ public class CreateAdSetTargetingV24Q1 {
       if (jsonObj.get("deliveryLimitations") != null && !jsonObj.get("deliveryLimitations").isJsonNull()) {
         AdSetDeliveryLimitationsV24Q1.validateJsonObject(jsonObj.getAsJsonObject("deliveryLimitations"));
       }
+      // validate the required field `frequencyCapping`
+      AdSetFrequencyCappingV24Q1.validateJsonObject(jsonObj.getAsJsonObject("frequencyCapping"));
       // validate the optional field `geoLocation`
       if (jsonObj.get("geoLocation") != null && !jsonObj.get("geoLocation").isJsonNull()) {
         CreateAdSetGeoLocationV24Q1.validateJsonObject(jsonObj.getAsJsonObject("geoLocation"));
       }
-      // validate the required field `frequencyCapping`
-      AdSetFrequencyCappingV24Q1.validateJsonObject(jsonObj.getAsJsonObject("frequencyCapping"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -8,12 +8,12 @@ Metadata related to the current request
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**totalItemsAcrossAllPages** | **Long** |  |  [optional] |
-|**currentPageSize** | **Integer** |  |  |
 |**currentPageIndex** | **Integer** |  |  |
-|**totalPages** | **Long** |  |  [optional] |
+|**currentPageSize** | **Integer** |  |  |
 |**nextPage** | **String** |  |  [optional] |
 |**previousPage** | **String** |  |  [optional] |
+|**totalItemsAcrossAllPages** | **Long** |  |  [optional] |
+|**totalPages** | **Long** |  |  [optional] |
 
 
 

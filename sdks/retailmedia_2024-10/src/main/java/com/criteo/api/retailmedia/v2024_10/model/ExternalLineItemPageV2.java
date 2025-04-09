@@ -52,6 +52,10 @@ import com.criteo.api.retailmedia.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalLineItemPageV2 {
+  public static final String SERIALIZED_NAME_CATEGORIES = "categories";
+  @SerializedName(SERIALIZED_NAME_CATEGORIES)
+  private List<ExternalLineItemPageCategoryV2> categories = null;
+
   /**
    * Page Type Enum
    */
@@ -125,38 +129,12 @@ public class ExternalLineItemPageV2 {
   @SerializedName(SERIALIZED_NAME_PAGE_TYPE)
   private PageTypeEnum pageType;
 
-  public static final String SERIALIZED_NAME_CATEGORIES = "categories";
-  @SerializedName(SERIALIZED_NAME_CATEGORIES)
-  private List<ExternalLineItemPageCategoryV2> categories = null;
-
   public static final String SERIALIZED_NAME_SEARCH_KEYWORDS = "searchKeywords";
   @SerializedName(SERIALIZED_NAME_SEARCH_KEYWORDS)
   private List<String> searchKeywords = null;
 
   public ExternalLineItemPageV2() {
   }
-
-  public ExternalLineItemPageV2 pageType(PageTypeEnum pageType) {
-    
-    this.pageType = pageType;
-    return this;
-  }
-
-   /**
-   * Page Type Enum
-   * @return pageType
-  **/
-  @javax.annotation.Nonnull
-
-  public PageTypeEnum getPageType() {
-    return pageType;
-  }
-
-
-  public void setPageType(PageTypeEnum pageType) {
-    this.pageType = pageType;
-  }
-
 
   public ExternalLineItemPageV2 categories(List<ExternalLineItemPageCategoryV2> categories) {
     
@@ -188,6 +166,28 @@ public class ExternalLineItemPageV2 {
   }
 
 
+  public ExternalLineItemPageV2 pageType(PageTypeEnum pageType) {
+    
+    this.pageType = pageType;
+    return this;
+  }
+
+   /**
+   * Page Type Enum
+   * @return pageType
+  **/
+  @javax.annotation.Nonnull
+
+  public PageTypeEnum getPageType() {
+    return pageType;
+  }
+
+
+  public void setPageType(PageTypeEnum pageType) {
+    this.pageType = pageType;
+  }
+
+
   public ExternalLineItemPageV2 searchKeywords(List<String> searchKeywords) {
     
     this.searchKeywords = searchKeywords;
@@ -196,7 +196,7 @@ public class ExternalLineItemPageV2 {
 
   public ExternalLineItemPageV2 addSearchKeywordsItem(String searchKeywordsItem) {
     if (this.searchKeywords == null) {
-      this.searchKeywords = new ArrayList<>();
+      this.searchKeywords = null;
     }
     this.searchKeywords.add(searchKeywordsItem);
     return this;
@@ -272,8 +272,8 @@ public class ExternalLineItemPageV2 {
       return false;
     }
     ExternalLineItemPageV2 externalLineItemPageV2 = (ExternalLineItemPageV2) o;
-    return Objects.equals(this.pageType, externalLineItemPageV2.pageType) &&
-        Objects.equals(this.categories, externalLineItemPageV2.categories) &&
+    return Objects.equals(this.categories, externalLineItemPageV2.categories) &&
+        Objects.equals(this.pageType, externalLineItemPageV2.pageType) &&
         Objects.equals(this.searchKeywords, externalLineItemPageV2.searchKeywords)&&
         Objects.equals(this.additionalProperties, externalLineItemPageV2.additionalProperties);
   }
@@ -284,7 +284,7 @@ public class ExternalLineItemPageV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(pageType, categories, searchKeywords, additionalProperties);
+    return Objects.hash(categories, pageType, searchKeywords, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -298,8 +298,8 @@ public class ExternalLineItemPageV2 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalLineItemPageV2 {\n");
-    sb.append("    pageType: ").append(toIndentedString(pageType)).append("\n");
     sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
+    sb.append("    pageType: ").append(toIndentedString(pageType)).append("\n");
     sb.append("    searchKeywords: ").append(toIndentedString(searchKeywords)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -324,8 +324,8 @@ public class ExternalLineItemPageV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("pageType");
     openapiFields.add("categories");
+    openapiFields.add("pageType");
     openapiFields.add("searchKeywords");
 
     // a set of required properties/fields (JSON key names)
@@ -352,9 +352,6 @@ public class ExternalLineItemPageV2 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("pageType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pageType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pageType").toString()));
-      }
       if (jsonObj.get("categories") != null && !jsonObj.get("categories").isJsonNull()) {
         JsonArray jsonArraycategories = jsonObj.getAsJsonArray("categories");
         if (jsonArraycategories != null) {
@@ -368,6 +365,9 @@ public class ExternalLineItemPageV2 {
             ExternalLineItemPageCategoryV2.validateJsonObject(jsonArraycategories.get(i).getAsJsonObject());
           };
         }
+      }
+      if (!jsonObj.get("pageType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pageType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pageType").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("searchKeywords") != null && !jsonObj.get("searchKeywords").isJsonArray()) {

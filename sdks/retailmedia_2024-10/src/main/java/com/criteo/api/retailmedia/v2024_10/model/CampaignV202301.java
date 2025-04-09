@@ -57,17 +57,171 @@ public class CampaignV202301 {
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
   private String accountId;
 
-  public static final String SERIALIZED_NAME_PROMOTED_BRAND_IDS = "promotedBrandIds";
-  @SerializedName(SERIALIZED_NAME_PROMOTED_BRAND_IDS)
-  private List<String> promotedBrandIds = new ArrayList<>();
+  public static final String SERIALIZED_NAME_BUDGET = "budget";
+  @SerializedName(SERIALIZED_NAME_BUDGET)
+  private BigDecimal budget;
+
+  public static final String SERIALIZED_NAME_BUDGET_REMAINING = "budgetRemaining";
+  @SerializedName(SERIALIZED_NAME_BUDGET_REMAINING)
+  private BigDecimal budgetRemaining;
 
   public static final String SERIALIZED_NAME_BUDGET_SPENT = "budgetSpent";
   @SerializedName(SERIALIZED_NAME_BUDGET_SPENT)
   private BigDecimal budgetSpent;
 
-  public static final String SERIALIZED_NAME_BUDGET_REMAINING = "budgetRemaining";
-  @SerializedName(SERIALIZED_NAME_BUDGET_REMAINING)
-  private BigDecimal budgetRemaining;
+  /**
+   * Gets or Sets clickAttributionScope
+   */
+  @JsonAdapter(ClickAttributionScopeEnum.Adapter.class)
+  public enum ClickAttributionScopeEnum {
+    UNKNOWN("unknown"),
+    
+    SAMESKU("sameSku"),
+    
+    SAMESKUCATEGORY("sameSkuCategory"),
+    
+    SAMESKUCATEGORYBRAND("sameSkuCategoryBrand");
+
+    private String value;
+
+    ClickAttributionScopeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ClickAttributionScopeEnum fromValue(String value) {
+      for (ClickAttributionScopeEnum b : ClickAttributionScopeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<ClickAttributionScopeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ClickAttributionScopeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ClickAttributionScopeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ClickAttributionScopeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CLICK_ATTRIBUTION_SCOPE = "clickAttributionScope";
+  @SerializedName(SERIALIZED_NAME_CLICK_ATTRIBUTION_SCOPE)
+  private ClickAttributionScopeEnum clickAttributionScope;
+
+  /**
+   * Gets or Sets clickAttributionWindow
+   */
+  @JsonAdapter(ClickAttributionWindowEnum.Adapter.class)
+  public enum ClickAttributionWindowEnum {
+    _7D("7D"),
+    
+    _14D("14D"),
+    
+    _30D("30D"),
+    
+    UNKNOWN("unknown");
+
+    private String value;
+
+    ClickAttributionWindowEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ClickAttributionWindowEnum fromValue(String value) {
+      for (ClickAttributionWindowEnum b : ClickAttributionWindowEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ClickAttributionWindowEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ClickAttributionWindowEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ClickAttributionWindowEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ClickAttributionWindowEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CLICK_ATTRIBUTION_WINDOW = "clickAttributionWindow";
+  @SerializedName(SERIALIZED_NAME_CLICK_ATTRIBUTION_WINDOW)
+  private ClickAttributionWindowEnum clickAttributionWindow = ClickAttributionWindowEnum._30D;
+
+  public static final String SERIALIZED_NAME_COMPANY_NAME = "companyName";
+  @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
+  private String companyName;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
+
+  public static final String SERIALIZED_NAME_DAILY_PACING = "dailyPacing";
+  @SerializedName(SERIALIZED_NAME_DAILY_PACING)
+  private BigDecimal dailyPacing;
+
+  public static final String SERIALIZED_NAME_DRAWABLE_BALANCE_IDS = "drawableBalanceIds";
+  @SerializedName(SERIALIZED_NAME_DRAWABLE_BALANCE_IDS)
+  private List<String> drawableBalanceIds = null;
+
+  public static final String SERIALIZED_NAME_END_DATE = "endDate";
+  @SerializedName(SERIALIZED_NAME_END_DATE)
+  private OffsetDateTime endDate;
+
+  public static final String SERIALIZED_NAME_IS_AUTO_DAILY_PACING = "isAutoDailyPacing";
+  @SerializedName(SERIALIZED_NAME_IS_AUTO_DAILY_PACING)
+  private Boolean isAutoDailyPacing;
+
+  public static final String SERIALIZED_NAME_MONTHLY_PACING = "monthlyPacing";
+  @SerializedName(SERIALIZED_NAME_MONTHLY_PACING)
+  private BigDecimal monthlyPacing;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME = "onBehalfCompanyName";
+  @SerializedName(SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME)
+  private String onBehalfCompanyName;
+
+  public static final String SERIALIZED_NAME_PROMOTED_BRAND_IDS = "promotedBrandIds";
+  @SerializedName(SERIALIZED_NAME_PROMOTED_BRAND_IDS)
+  private List<String> promotedBrandIds = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private OffsetDateTime startDate;
 
   /**
    * Gets or Sets status
@@ -126,14 +280,6 @@ public class CampaignV202301 {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
-
-  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
-  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
-  private OffsetDateTime updatedAt;
-
   /**
    * Gets or Sets type
    */
@@ -187,26 +333,26 @@ public class CampaignV202301 {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type = TypeEnum.AUCTION;
 
-  public static final String SERIALIZED_NAME_DRAWABLE_BALANCE_IDS = "drawableBalanceIds";
-  @SerializedName(SERIALIZED_NAME_DRAWABLE_BALANCE_IDS)
-  private List<String> drawableBalanceIds = null;
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+  private OffsetDateTime updatedAt;
 
   /**
-   * Gets or Sets clickAttributionWindow
+   * Gets or Sets viewAttributionScope
    */
-  @JsonAdapter(ClickAttributionWindowEnum.Adapter.class)
-  public enum ClickAttributionWindowEnum {
-    _7D("7D"),
+  @JsonAdapter(ViewAttributionScopeEnum.Adapter.class)
+  public enum ViewAttributionScopeEnum {
+    UNKNOWN("unknown"),
     
-    _14D("14D"),
+    SAMESKU("sameSku"),
     
-    _30D("30D"),
+    SAMESKUCATEGORY("sameSkuCategory"),
     
-    UNKNOWN("unknown");
+    SAMESKUCATEGORYBRAND("sameSkuCategoryBrand");
 
     private String value;
 
-    ClickAttributionWindowEnum(String value) {
+    ViewAttributionScopeEnum(String value) {
       this.value = value;
     }
 
@@ -219,32 +365,32 @@ public class CampaignV202301 {
       return String.valueOf(value);
     }
 
-    public static ClickAttributionWindowEnum fromValue(String value) {
-      for (ClickAttributionWindowEnum b : ClickAttributionWindowEnum.values()) {
+    public static ViewAttributionScopeEnum fromValue(String value) {
+      for (ViewAttributionScopeEnum b : ViewAttributionScopeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return null;
     }
 
-    public static class Adapter extends TypeAdapter<ClickAttributionWindowEnum> {
+    public static class Adapter extends TypeAdapter<ViewAttributionScopeEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final ClickAttributionWindowEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final ViewAttributionScopeEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public ClickAttributionWindowEnum read(final JsonReader jsonReader) throws IOException {
+      public ViewAttributionScopeEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return ClickAttributionWindowEnum.fromValue(value);
+        return ViewAttributionScopeEnum.fromValue(value);
       }
     }
   }
 
-  public static final String SERIALIZED_NAME_CLICK_ATTRIBUTION_WINDOW = "clickAttributionWindow";
-  @SerializedName(SERIALIZED_NAME_CLICK_ATTRIBUTION_WINDOW)
-  private ClickAttributionWindowEnum clickAttributionWindow = ClickAttributionWindowEnum._30D;
+  public static final String SERIALIZED_NAME_VIEW_ATTRIBUTION_SCOPE = "viewAttributionScope";
+  @SerializedName(SERIALIZED_NAME_VIEW_ATTRIBUTION_SCOPE)
+  private ViewAttributionScopeEnum viewAttributionScope;
 
   /**
    * Gets or Sets viewAttributionWindow
@@ -305,152 +451,6 @@ public class CampaignV202301 {
   @SerializedName(SERIALIZED_NAME_VIEW_ATTRIBUTION_WINDOW)
   private ViewAttributionWindowEnum viewAttributionWindow = ViewAttributionWindowEnum.NONE;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  public static final String SERIALIZED_NAME_BUDGET = "budget";
-  @SerializedName(SERIALIZED_NAME_BUDGET)
-  private BigDecimal budget;
-
-  public static final String SERIALIZED_NAME_MONTHLY_PACING = "monthlyPacing";
-  @SerializedName(SERIALIZED_NAME_MONTHLY_PACING)
-  private BigDecimal monthlyPacing;
-
-  public static final String SERIALIZED_NAME_DAILY_PACING = "dailyPacing";
-  @SerializedName(SERIALIZED_NAME_DAILY_PACING)
-  private BigDecimal dailyPacing;
-
-  public static final String SERIALIZED_NAME_IS_AUTO_DAILY_PACING = "isAutoDailyPacing";
-  @SerializedName(SERIALIZED_NAME_IS_AUTO_DAILY_PACING)
-  private Boolean isAutoDailyPacing;
-
-  public static final String SERIALIZED_NAME_START_DATE = "startDate";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private OffsetDateTime startDate;
-
-  public static final String SERIALIZED_NAME_END_DATE = "endDate";
-  @SerializedName(SERIALIZED_NAME_END_DATE)
-  private OffsetDateTime endDate;
-
-  /**
-   * Gets or Sets clickAttributionScope
-   */
-  @JsonAdapter(ClickAttributionScopeEnum.Adapter.class)
-  public enum ClickAttributionScopeEnum {
-    UNKNOWN("unknown"),
-    
-    SAMESKU("sameSku"),
-    
-    SAMESKUCATEGORY("sameSkuCategory"),
-    
-    SAMESKUCATEGORYBRAND("sameSkuCategoryBrand");
-
-    private String value;
-
-    ClickAttributionScopeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ClickAttributionScopeEnum fromValue(String value) {
-      for (ClickAttributionScopeEnum b : ClickAttributionScopeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<ClickAttributionScopeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ClickAttributionScopeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ClickAttributionScopeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ClickAttributionScopeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_CLICK_ATTRIBUTION_SCOPE = "clickAttributionScope";
-  @SerializedName(SERIALIZED_NAME_CLICK_ATTRIBUTION_SCOPE)
-  private ClickAttributionScopeEnum clickAttributionScope;
-
-  /**
-   * Gets or Sets viewAttributionScope
-   */
-  @JsonAdapter(ViewAttributionScopeEnum.Adapter.class)
-  public enum ViewAttributionScopeEnum {
-    UNKNOWN("unknown"),
-    
-    SAMESKU("sameSku"),
-    
-    SAMESKUCATEGORY("sameSkuCategory"),
-    
-    SAMESKUCATEGORYBRAND("sameSkuCategoryBrand");
-
-    private String value;
-
-    ViewAttributionScopeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ViewAttributionScopeEnum fromValue(String value) {
-      for (ViewAttributionScopeEnum b : ViewAttributionScopeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<ViewAttributionScopeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ViewAttributionScopeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ViewAttributionScopeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ViewAttributionScopeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_VIEW_ATTRIBUTION_SCOPE = "viewAttributionScope";
-  @SerializedName(SERIALIZED_NAME_VIEW_ATTRIBUTION_SCOPE)
-  private ViewAttributionScopeEnum viewAttributionScope;
-
-  public static final String SERIALIZED_NAME_COMPANY_NAME = "companyName";
-  @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
-  private String companyName;
-
-  public static final String SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME = "onBehalfCompanyName";
-  @SerializedName(SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME)
-  private String onBehalfCompanyName;
-
   public CampaignV202301() {
   }
 
@@ -476,52 +476,25 @@ public class CampaignV202301 {
   }
 
 
-  public CampaignV202301 promotedBrandIds(List<String> promotedBrandIds) {
+  public CampaignV202301 budget(BigDecimal budget) {
     
-    this.promotedBrandIds = promotedBrandIds;
-    return this;
-  }
-
-  public CampaignV202301 addPromotedBrandIdsItem(String promotedBrandIdsItem) {
-    this.promotedBrandIds.add(promotedBrandIdsItem);
+    this.budget = budget;
     return this;
   }
 
    /**
-   * Get promotedBrandIds
-   * @return promotedBrandIds
-  **/
-  @javax.annotation.Nonnull
-
-  public List<String> getPromotedBrandIds() {
-    return promotedBrandIds;
-  }
-
-
-  public void setPromotedBrandIds(List<String> promotedBrandIds) {
-    this.promotedBrandIds = promotedBrandIds;
-  }
-
-
-  public CampaignV202301 budgetSpent(BigDecimal budgetSpent) {
-    
-    this.budgetSpent = budgetSpent;
-    return this;
-  }
-
-   /**
-   * Get budgetSpent
-   * @return budgetSpent
+   * Get budget
+   * @return budget
   **/
   @javax.annotation.Nullable
 
-  public BigDecimal getBudgetSpent() {
-    return budgetSpent;
+  public BigDecimal getBudget() {
+    return budget;
   }
 
 
-  public void setBudgetSpent(BigDecimal budgetSpent) {
-    this.budgetSpent = budgetSpent;
+  public void setBudget(BigDecimal budget) {
+    this.budget = budget;
   }
 
 
@@ -547,25 +520,91 @@ public class CampaignV202301 {
   }
 
 
-  public CampaignV202301 status(StatusEnum status) {
+  public CampaignV202301 budgetSpent(BigDecimal budgetSpent) {
     
-    this.status = status;
+    this.budgetSpent = budgetSpent;
     return this;
   }
 
    /**
-   * Get status
-   * @return status
+   * Get budgetSpent
+   * @return budgetSpent
   **/
   @javax.annotation.Nullable
 
-  public StatusEnum getStatus() {
-    return status;
+  public BigDecimal getBudgetSpent() {
+    return budgetSpent;
   }
 
 
-  public void setStatus(StatusEnum status) {
-    this.status = status;
+  public void setBudgetSpent(BigDecimal budgetSpent) {
+    this.budgetSpent = budgetSpent;
+  }
+
+
+  public CampaignV202301 clickAttributionScope(ClickAttributionScopeEnum clickAttributionScope) {
+    
+    this.clickAttributionScope = clickAttributionScope;
+    return this;
+  }
+
+   /**
+   * Get clickAttributionScope
+   * @return clickAttributionScope
+  **/
+  @javax.annotation.Nullable
+
+  public ClickAttributionScopeEnum getClickAttributionScope() {
+    return clickAttributionScope;
+  }
+
+
+  public void setClickAttributionScope(ClickAttributionScopeEnum clickAttributionScope) {
+    this.clickAttributionScope = clickAttributionScope;
+  }
+
+
+  public CampaignV202301 clickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
+    
+    this.clickAttributionWindow = clickAttributionWindow;
+    return this;
+  }
+
+   /**
+   * Get clickAttributionWindow
+   * @return clickAttributionWindow
+  **/
+  @javax.annotation.Nullable
+
+  public ClickAttributionWindowEnum getClickAttributionWindow() {
+    return clickAttributionWindow;
+  }
+
+
+  public void setClickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
+    this.clickAttributionWindow = clickAttributionWindow;
+  }
+
+
+  public CampaignV202301 companyName(String companyName) {
+    
+    this.companyName = companyName;
+    return this;
+  }
+
+   /**
+   * Get companyName
+   * @return companyName
+  **/
+  @javax.annotation.Nullable
+
+  public String getCompanyName() {
+    return companyName;
+  }
+
+
+  public void setCompanyName(String companyName) {
+    this.companyName = companyName;
   }
 
 
@@ -591,47 +630,25 @@ public class CampaignV202301 {
   }
 
 
-  public CampaignV202301 updatedAt(OffsetDateTime updatedAt) {
+  public CampaignV202301 dailyPacing(BigDecimal dailyPacing) {
     
-    this.updatedAt = updatedAt;
+    this.dailyPacing = dailyPacing;
     return this;
   }
 
    /**
-   * Get updatedAt
-   * @return updatedAt
-  **/
-  @javax.annotation.Nonnull
-
-  public OffsetDateTime getUpdatedAt() {
-    return updatedAt;
-  }
-
-
-  public void setUpdatedAt(OffsetDateTime updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-
-  public CampaignV202301 type(TypeEnum type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Get type
-   * @return type
+   * Get dailyPacing
+   * @return dailyPacing
   **/
   @javax.annotation.Nullable
 
-  public TypeEnum getType() {
-    return type;
+  public BigDecimal getDailyPacing() {
+    return dailyPacing;
   }
 
 
-  public void setType(TypeEnum type) {
-    this.type = type;
+  public void setDailyPacing(BigDecimal dailyPacing) {
+    this.dailyPacing = dailyPacing;
   }
 
 
@@ -665,135 +682,25 @@ public class CampaignV202301 {
   }
 
 
-  public CampaignV202301 clickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
+  public CampaignV202301 endDate(OffsetDateTime endDate) {
     
-    this.clickAttributionWindow = clickAttributionWindow;
+    this.endDate = endDate;
     return this;
   }
 
    /**
-   * Get clickAttributionWindow
-   * @return clickAttributionWindow
+   * Get endDate
+   * @return endDate
   **/
   @javax.annotation.Nullable
 
-  public ClickAttributionWindowEnum getClickAttributionWindow() {
-    return clickAttributionWindow;
+  public OffsetDateTime getEndDate() {
+    return endDate;
   }
 
 
-  public void setClickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
-    this.clickAttributionWindow = clickAttributionWindow;
-  }
-
-
-  public CampaignV202301 viewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
-    
-    this.viewAttributionWindow = viewAttributionWindow;
-    return this;
-  }
-
-   /**
-   * Get viewAttributionWindow
-   * @return viewAttributionWindow
-  **/
-  @javax.annotation.Nullable
-
-  public ViewAttributionWindowEnum getViewAttributionWindow() {
-    return viewAttributionWindow;
-  }
-
-
-  public void setViewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
-    this.viewAttributionWindow = viewAttributionWindow;
-  }
-
-
-  public CampaignV202301 name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public CampaignV202301 budget(BigDecimal budget) {
-    
-    this.budget = budget;
-    return this;
-  }
-
-   /**
-   * Get budget
-   * @return budget
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getBudget() {
-    return budget;
-  }
-
-
-  public void setBudget(BigDecimal budget) {
-    this.budget = budget;
-  }
-
-
-  public CampaignV202301 monthlyPacing(BigDecimal monthlyPacing) {
-    
-    this.monthlyPacing = monthlyPacing;
-    return this;
-  }
-
-   /**
-   * Get monthlyPacing
-   * @return monthlyPacing
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getMonthlyPacing() {
-    return monthlyPacing;
-  }
-
-
-  public void setMonthlyPacing(BigDecimal monthlyPacing) {
-    this.monthlyPacing = monthlyPacing;
-  }
-
-
-  public CampaignV202301 dailyPacing(BigDecimal dailyPacing) {
-    
-    this.dailyPacing = dailyPacing;
-    return this;
-  }
-
-   /**
-   * Get dailyPacing
-   * @return dailyPacing
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getDailyPacing() {
-    return dailyPacing;
-  }
-
-
-  public void setDailyPacing(BigDecimal dailyPacing) {
-    this.dailyPacing = dailyPacing;
+  public void setEndDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
   }
 
 
@@ -819,6 +726,99 @@ public class CampaignV202301 {
   }
 
 
+  public CampaignV202301 monthlyPacing(BigDecimal monthlyPacing) {
+    
+    this.monthlyPacing = monthlyPacing;
+    return this;
+  }
+
+   /**
+   * Get monthlyPacing
+   * @return monthlyPacing
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getMonthlyPacing() {
+    return monthlyPacing;
+  }
+
+
+  public void setMonthlyPacing(BigDecimal monthlyPacing) {
+    this.monthlyPacing = monthlyPacing;
+  }
+
+
+  public CampaignV202301 name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public CampaignV202301 onBehalfCompanyName(String onBehalfCompanyName) {
+    
+    this.onBehalfCompanyName = onBehalfCompanyName;
+    return this;
+  }
+
+   /**
+   * Get onBehalfCompanyName
+   * @return onBehalfCompanyName
+  **/
+  @javax.annotation.Nullable
+
+  public String getOnBehalfCompanyName() {
+    return onBehalfCompanyName;
+  }
+
+
+  public void setOnBehalfCompanyName(String onBehalfCompanyName) {
+    this.onBehalfCompanyName = onBehalfCompanyName;
+  }
+
+
+  public CampaignV202301 promotedBrandIds(List<String> promotedBrandIds) {
+    
+    this.promotedBrandIds = promotedBrandIds;
+    return this;
+  }
+
+  public CampaignV202301 addPromotedBrandIdsItem(String promotedBrandIdsItem) {
+    this.promotedBrandIds.add(promotedBrandIdsItem);
+    return this;
+  }
+
+   /**
+   * Get promotedBrandIds
+   * @return promotedBrandIds
+  **/
+  @javax.annotation.Nonnull
+
+  public List<String> getPromotedBrandIds() {
+    return promotedBrandIds;
+  }
+
+
+  public void setPromotedBrandIds(List<String> promotedBrandIds) {
+    this.promotedBrandIds = promotedBrandIds;
+  }
+
+
   public CampaignV202301 startDate(OffsetDateTime startDate) {
     
     this.startDate = startDate;
@@ -841,47 +841,69 @@ public class CampaignV202301 {
   }
 
 
-  public CampaignV202301 endDate(OffsetDateTime endDate) {
+  public CampaignV202301 status(StatusEnum status) {
     
-    this.endDate = endDate;
+    this.status = status;
     return this;
   }
 
    /**
-   * Get endDate
-   * @return endDate
+   * Get status
+   * @return status
   **/
   @javax.annotation.Nullable
 
-  public OffsetDateTime getEndDate() {
-    return endDate;
+  public StatusEnum getStatus() {
+    return status;
   }
 
 
-  public void setEndDate(OffsetDateTime endDate) {
-    this.endDate = endDate;
+  public void setStatus(StatusEnum status) {
+    this.status = status;
   }
 
 
-  public CampaignV202301 clickAttributionScope(ClickAttributionScopeEnum clickAttributionScope) {
+  public CampaignV202301 type(TypeEnum type) {
     
-    this.clickAttributionScope = clickAttributionScope;
+    this.type = type;
     return this;
   }
 
    /**
-   * Get clickAttributionScope
-   * @return clickAttributionScope
+   * Get type
+   * @return type
   **/
   @javax.annotation.Nullable
 
-  public ClickAttributionScopeEnum getClickAttributionScope() {
-    return clickAttributionScope;
+  public TypeEnum getType() {
+    return type;
   }
 
 
-  public void setClickAttributionScope(ClickAttributionScopeEnum clickAttributionScope) {
-    this.clickAttributionScope = clickAttributionScope;
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
+  public CampaignV202301 updatedAt(OffsetDateTime updatedAt) {
+    
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * Get updatedAt
+   * @return updatedAt
+  **/
+  @javax.annotation.Nonnull
+
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
   }
 
 
@@ -907,47 +929,25 @@ public class CampaignV202301 {
   }
 
 
-  public CampaignV202301 companyName(String companyName) {
+  public CampaignV202301 viewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
     
-    this.companyName = companyName;
+    this.viewAttributionWindow = viewAttributionWindow;
     return this;
   }
 
    /**
-   * Get companyName
-   * @return companyName
+   * Get viewAttributionWindow
+   * @return viewAttributionWindow
   **/
   @javax.annotation.Nullable
 
-  public String getCompanyName() {
-    return companyName;
+  public ViewAttributionWindowEnum getViewAttributionWindow() {
+    return viewAttributionWindow;
   }
 
 
-  public void setCompanyName(String companyName) {
-    this.companyName = companyName;
-  }
-
-
-  public CampaignV202301 onBehalfCompanyName(String onBehalfCompanyName) {
-    
-    this.onBehalfCompanyName = onBehalfCompanyName;
-    return this;
-  }
-
-   /**
-   * Get onBehalfCompanyName
-   * @return onBehalfCompanyName
-  **/
-  @javax.annotation.Nullable
-
-  public String getOnBehalfCompanyName() {
-    return onBehalfCompanyName;
-  }
-
-
-  public void setOnBehalfCompanyName(String onBehalfCompanyName) {
-    this.onBehalfCompanyName = onBehalfCompanyName;
+  public void setViewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
+    this.viewAttributionWindow = viewAttributionWindow;
   }
 
   /**
@@ -1006,27 +1006,27 @@ public class CampaignV202301 {
     }
     CampaignV202301 campaignV202301 = (CampaignV202301) o;
     return Objects.equals(this.accountId, campaignV202301.accountId) &&
-        Objects.equals(this.promotedBrandIds, campaignV202301.promotedBrandIds) &&
-        Objects.equals(this.budgetSpent, campaignV202301.budgetSpent) &&
-        Objects.equals(this.budgetRemaining, campaignV202301.budgetRemaining) &&
-        Objects.equals(this.status, campaignV202301.status) &&
-        Objects.equals(this.createdAt, campaignV202301.createdAt) &&
-        Objects.equals(this.updatedAt, campaignV202301.updatedAt) &&
-        Objects.equals(this.type, campaignV202301.type) &&
-        Objects.equals(this.drawableBalanceIds, campaignV202301.drawableBalanceIds) &&
-        Objects.equals(this.clickAttributionWindow, campaignV202301.clickAttributionWindow) &&
-        Objects.equals(this.viewAttributionWindow, campaignV202301.viewAttributionWindow) &&
-        Objects.equals(this.name, campaignV202301.name) &&
         Objects.equals(this.budget, campaignV202301.budget) &&
-        Objects.equals(this.monthlyPacing, campaignV202301.monthlyPacing) &&
-        Objects.equals(this.dailyPacing, campaignV202301.dailyPacing) &&
-        Objects.equals(this.isAutoDailyPacing, campaignV202301.isAutoDailyPacing) &&
-        Objects.equals(this.startDate, campaignV202301.startDate) &&
-        Objects.equals(this.endDate, campaignV202301.endDate) &&
+        Objects.equals(this.budgetRemaining, campaignV202301.budgetRemaining) &&
+        Objects.equals(this.budgetSpent, campaignV202301.budgetSpent) &&
         Objects.equals(this.clickAttributionScope, campaignV202301.clickAttributionScope) &&
-        Objects.equals(this.viewAttributionScope, campaignV202301.viewAttributionScope) &&
+        Objects.equals(this.clickAttributionWindow, campaignV202301.clickAttributionWindow) &&
         Objects.equals(this.companyName, campaignV202301.companyName) &&
-        Objects.equals(this.onBehalfCompanyName, campaignV202301.onBehalfCompanyName)&&
+        Objects.equals(this.createdAt, campaignV202301.createdAt) &&
+        Objects.equals(this.dailyPacing, campaignV202301.dailyPacing) &&
+        Objects.equals(this.drawableBalanceIds, campaignV202301.drawableBalanceIds) &&
+        Objects.equals(this.endDate, campaignV202301.endDate) &&
+        Objects.equals(this.isAutoDailyPacing, campaignV202301.isAutoDailyPacing) &&
+        Objects.equals(this.monthlyPacing, campaignV202301.monthlyPacing) &&
+        Objects.equals(this.name, campaignV202301.name) &&
+        Objects.equals(this.onBehalfCompanyName, campaignV202301.onBehalfCompanyName) &&
+        Objects.equals(this.promotedBrandIds, campaignV202301.promotedBrandIds) &&
+        Objects.equals(this.startDate, campaignV202301.startDate) &&
+        Objects.equals(this.status, campaignV202301.status) &&
+        Objects.equals(this.type, campaignV202301.type) &&
+        Objects.equals(this.updatedAt, campaignV202301.updatedAt) &&
+        Objects.equals(this.viewAttributionScope, campaignV202301.viewAttributionScope) &&
+        Objects.equals(this.viewAttributionWindow, campaignV202301.viewAttributionWindow)&&
         Objects.equals(this.additionalProperties, campaignV202301.additionalProperties);
   }
 
@@ -1036,7 +1036,7 @@ public class CampaignV202301 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, promotedBrandIds, budgetSpent, budgetRemaining, status, createdAt, updatedAt, type, drawableBalanceIds, clickAttributionWindow, viewAttributionWindow, name, budget, monthlyPacing, dailyPacing, isAutoDailyPacing, startDate, endDate, clickAttributionScope, viewAttributionScope, companyName, onBehalfCompanyName, additionalProperties);
+    return Objects.hash(accountId, budget, budgetRemaining, budgetSpent, clickAttributionScope, clickAttributionWindow, companyName, createdAt, dailyPacing, drawableBalanceIds, endDate, isAutoDailyPacing, monthlyPacing, name, onBehalfCompanyName, promotedBrandIds, startDate, status, type, updatedAt, viewAttributionScope, viewAttributionWindow, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1051,27 +1051,27 @@ public class CampaignV202301 {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignV202301 {\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
-    sb.append("    promotedBrandIds: ").append(toIndentedString(promotedBrandIds)).append("\n");
-    sb.append("    budgetSpent: ").append(toIndentedString(budgetSpent)).append("\n");
-    sb.append("    budgetRemaining: ").append(toIndentedString(budgetRemaining)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    drawableBalanceIds: ").append(toIndentedString(drawableBalanceIds)).append("\n");
-    sb.append("    clickAttributionWindow: ").append(toIndentedString(clickAttributionWindow)).append("\n");
-    sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
-    sb.append("    monthlyPacing: ").append(toIndentedString(monthlyPacing)).append("\n");
-    sb.append("    dailyPacing: ").append(toIndentedString(dailyPacing)).append("\n");
-    sb.append("    isAutoDailyPacing: ").append(toIndentedString(isAutoDailyPacing)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    budgetRemaining: ").append(toIndentedString(budgetRemaining)).append("\n");
+    sb.append("    budgetSpent: ").append(toIndentedString(budgetSpent)).append("\n");
     sb.append("    clickAttributionScope: ").append(toIndentedString(clickAttributionScope)).append("\n");
-    sb.append("    viewAttributionScope: ").append(toIndentedString(viewAttributionScope)).append("\n");
+    sb.append("    clickAttributionWindow: ").append(toIndentedString(clickAttributionWindow)).append("\n");
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    dailyPacing: ").append(toIndentedString(dailyPacing)).append("\n");
+    sb.append("    drawableBalanceIds: ").append(toIndentedString(drawableBalanceIds)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    isAutoDailyPacing: ").append(toIndentedString(isAutoDailyPacing)).append("\n");
+    sb.append("    monthlyPacing: ").append(toIndentedString(monthlyPacing)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    onBehalfCompanyName: ").append(toIndentedString(onBehalfCompanyName)).append("\n");
+    sb.append("    promotedBrandIds: ").append(toIndentedString(promotedBrandIds)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    viewAttributionScope: ").append(toIndentedString(viewAttributionScope)).append("\n");
+    sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1096,40 +1096,40 @@ public class CampaignV202301 {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("accountId");
-    openapiFields.add("promotedBrandIds");
-    openapiFields.add("budgetSpent");
-    openapiFields.add("budgetRemaining");
-    openapiFields.add("status");
-    openapiFields.add("createdAt");
-    openapiFields.add("updatedAt");
-    openapiFields.add("type");
-    openapiFields.add("drawableBalanceIds");
-    openapiFields.add("clickAttributionWindow");
-    openapiFields.add("viewAttributionWindow");
-    openapiFields.add("name");
     openapiFields.add("budget");
-    openapiFields.add("monthlyPacing");
-    openapiFields.add("dailyPacing");
-    openapiFields.add("isAutoDailyPacing");
-    openapiFields.add("startDate");
-    openapiFields.add("endDate");
+    openapiFields.add("budgetRemaining");
+    openapiFields.add("budgetSpent");
     openapiFields.add("clickAttributionScope");
-    openapiFields.add("viewAttributionScope");
+    openapiFields.add("clickAttributionWindow");
     openapiFields.add("companyName");
+    openapiFields.add("createdAt");
+    openapiFields.add("dailyPacing");
+    openapiFields.add("drawableBalanceIds");
+    openapiFields.add("endDate");
+    openapiFields.add("isAutoDailyPacing");
+    openapiFields.add("monthlyPacing");
+    openapiFields.add("name");
     openapiFields.add("onBehalfCompanyName");
+    openapiFields.add("promotedBrandIds");
+    openapiFields.add("startDate");
+    openapiFields.add("status");
+    openapiFields.add("type");
+    openapiFields.add("updatedAt");
+    openapiFields.add("viewAttributionScope");
+    openapiFields.add("viewAttributionWindow");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("accountId");
-    openapiRequiredFields.add("promotedBrandIds");
-    openapiRequiredFields.add("budgetSpent");
     openapiRequiredFields.add("budgetRemaining");
+    openapiRequiredFields.add("budgetSpent");
     openapiRequiredFields.add("createdAt");
-    openapiRequiredFields.add("updatedAt");
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("isAutoDailyPacing");
-    openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("endDate");
+    openapiRequiredFields.add("isAutoDailyPacing");
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("promotedBrandIds");
+    openapiRequiredFields.add("startDate");
+    openapiRequiredFields.add("updatedAt");
   }
 
  /**
@@ -1154,6 +1154,25 @@ public class CampaignV202301 {
       if (!jsonObj.get("accountId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
       }
+      if ((jsonObj.get("clickAttributionScope") != null && !jsonObj.get("clickAttributionScope").isJsonNull()) && !jsonObj.get("clickAttributionScope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `clickAttributionScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionScope").toString()));
+      }
+      if ((jsonObj.get("clickAttributionWindow") != null && !jsonObj.get("clickAttributionWindow").isJsonNull()) && !jsonObj.get("clickAttributionWindow").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `clickAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionWindow").toString()));
+      }
+      if ((jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) && !jsonObj.get("companyName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("drawableBalanceIds") != null && !jsonObj.get("drawableBalanceIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `drawableBalanceIds` to be an array in the JSON string but got `%s`", jsonObj.get("drawableBalanceIds").toString()));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("onBehalfCompanyName") != null && !jsonObj.get("onBehalfCompanyName").isJsonNull()) && !jsonObj.get("onBehalfCompanyName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `onBehalfCompanyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("onBehalfCompanyName").toString()));
+      }
       // ensure the required json array is present
       if (jsonObj.get("promotedBrandIds") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
@@ -1166,30 +1185,11 @@ public class CampaignV202301 {
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("drawableBalanceIds") != null && !jsonObj.get("drawableBalanceIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `drawableBalanceIds` to be an array in the JSON string but got `%s`", jsonObj.get("drawableBalanceIds").toString()));
-      }
-      if ((jsonObj.get("clickAttributionWindow") != null && !jsonObj.get("clickAttributionWindow").isJsonNull()) && !jsonObj.get("clickAttributionWindow").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `clickAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionWindow").toString()));
-      }
-      if ((jsonObj.get("viewAttributionWindow") != null && !jsonObj.get("viewAttributionWindow").isJsonNull()) && !jsonObj.get("viewAttributionWindow").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `viewAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewAttributionWindow").toString()));
-      }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("clickAttributionScope") != null && !jsonObj.get("clickAttributionScope").isJsonNull()) && !jsonObj.get("clickAttributionScope").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `clickAttributionScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionScope").toString()));
-      }
       if ((jsonObj.get("viewAttributionScope") != null && !jsonObj.get("viewAttributionScope").isJsonNull()) && !jsonObj.get("viewAttributionScope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `viewAttributionScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewAttributionScope").toString()));
       }
-      if ((jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) && !jsonObj.get("companyName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
-      }
-      if ((jsonObj.get("onBehalfCompanyName") != null && !jsonObj.get("onBehalfCompanyName").isJsonNull()) && !jsonObj.get("onBehalfCompanyName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `onBehalfCompanyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("onBehalfCompanyName").toString()));
+      if ((jsonObj.get("viewAttributionWindow") != null && !jsonObj.get("viewAttributionWindow").isJsonNull()) && !jsonObj.get("viewAttributionWindow").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `viewAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewAttributionWindow").toString()));
       }
   }
 

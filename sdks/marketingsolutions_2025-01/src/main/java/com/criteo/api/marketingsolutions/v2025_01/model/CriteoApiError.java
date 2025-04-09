@@ -51,6 +51,85 @@ import com.criteo.api.marketingsolutions.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CriteoApiError {
+  /**
+   * A machine-readable error code string in kabab-case. Unique across Criteo
+   */
+  @JsonAdapter(CodeEnum.Adapter.class)
+  public enum CodeEnum {
+    INTERNAL_ERROR("internal-error"),
+    
+    DEPRECATED_FIELD("deprecated-field"),
+    
+    ENDPOINT_DEPRECATED("endpoint-deprecated"),
+    
+    REQUIRED_FIELD("required-field"),
+    
+    INVALID_DATE_FORMAT("invalid-date-format"),
+    
+    INVALID("invalid"),
+    
+    INVALID_RANGED("invalid-ranged"),
+    
+    INVALID_TIMESPAN("invalid-timespan");
+
+    private String value;
+
+    CodeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static CodeEnum fromValue(String value) {
+      for (CodeEnum b : CodeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<CodeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final CodeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public CodeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return CodeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CODE = "code";
+  @SerializedName(SERIALIZED_NAME_CODE)
+  private CodeEnum code;
+
+  public static final String SERIALIZED_NAME_DETAIL = "detail";
+  @SerializedName(SERIALIZED_NAME_DETAIL)
+  private String detail;
+
+  public static final String SERIALIZED_NAME_INSTANCE = "instance";
+  @SerializedName(SERIALIZED_NAME_INSTANCE)
+  private String instance;
+
+  public static final String SERIALIZED_NAME_SOURCE = "source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  private Map<String, String> source = null;
+
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
+
   public static final String SERIALIZED_NAME_TRACE_ID = "traceId";
   @SerializedName(SERIALIZED_NAME_TRACE_ID)
   private String traceId;
@@ -116,87 +195,126 @@ public class CriteoApiError {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
-  /**
-   * A machine-readable error code string in kabab-case. Unique across Criteo
-   */
-  @JsonAdapter(CodeEnum.Adapter.class)
-  public enum CodeEnum {
-    INTERNAL_ERROR("internal-error"),
-    
-    DEPRECATED_FIELD("deprecated-field"),
-    
-    ENDPOINT_DEPRECATED("endpoint-deprecated"),
-    
-    REQUIRED_FIELD("required-field"),
-    
-    INVALID_DATE_FORMAT("invalid-date-format"),
-    
-    INVALID("invalid"),
-    
-    INVALID_RANGED("invalid-ranged"),
-    
-    INVALID_TIMESPAN("invalid-timespan");
-
-    private String value;
-
-    CodeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static CodeEnum fromValue(String value) {
-      for (CodeEnum b : CodeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<CodeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final CodeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public CodeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return CodeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  private CodeEnum code;
-
-  public static final String SERIALIZED_NAME_INSTANCE = "instance";
-  @SerializedName(SERIALIZED_NAME_INSTANCE)
-  private String instance;
-
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
-
-  public static final String SERIALIZED_NAME_DETAIL = "detail";
-  @SerializedName(SERIALIZED_NAME_DETAIL)
-  private String detail;
-
-  public static final String SERIALIZED_NAME_SOURCE = "source";
-  @SerializedName(SERIALIZED_NAME_SOURCE)
-  private Map<String, String> source = null;
-
   public CriteoApiError() {
   }
+
+  public CriteoApiError code(CodeEnum code) {
+    
+    this.code = code;
+    return this;
+  }
+
+   /**
+   * A machine-readable error code string in kabab-case. Unique across Criteo
+   * @return code
+  **/
+  @javax.annotation.Nullable
+
+  public CodeEnum getCode() {
+    return code;
+  }
+
+
+  public void setCode(CodeEnum code) {
+    this.code = code;
+  }
+
+
+  public CriteoApiError detail(String detail) {
+    
+    this.detail = detail;
+    return this;
+  }
+
+   /**
+   * A human-readable explanation specific to this occurrence of the problem.
+   * @return detail
+  **/
+  @javax.annotation.Nullable
+
+  public String getDetail() {
+    return detail;
+  }
+
+
+  public void setDetail(String detail) {
+    this.detail = detail;
+  }
+
+
+  public CriteoApiError instance(String instance) {
+    
+    this.instance = instance;
+    return this;
+  }
+
+   /**
+   * A URI reference that identifies the specific occurrence of the problem
+   * @return instance
+  **/
+  @javax.annotation.Nullable
+
+  public String getInstance() {
+    return instance;
+  }
+
+
+  public void setInstance(String instance) {
+    this.instance = instance;
+  }
+
+
+  public CriteoApiError source(Map<String, String> source) {
+    
+    this.source = source;
+    return this;
+  }
+
+  public CriteoApiError putSourceItem(String key, String sourceItem) {
+    if (this.source == null) {
+      this.source = null;
+    }
+    this.source.put(key, sourceItem);
+    return this;
+  }
+
+   /**
+   * A machine-readable structure to reference to the exact location(s) causing the error(s).
+   * @return source
+  **/
+  @javax.annotation.Nullable
+
+  public Map<String, String> getSource() {
+    return source;
+  }
+
+
+  public void setSource(Map<String, String> source) {
+    this.source = source;
+  }
+
+
+  public CriteoApiError title(String title) {
+    
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * A short, human-readable remarks of the problem type.
+   * @return title
+  **/
+  @javax.annotation.Nullable
+
+  public String getTitle() {
+    return title;
+  }
+
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
 
   public CriteoApiError traceId(String traceId) {
     
@@ -239,124 +357,6 @@ public class CriteoApiError {
 
   public void setType(TypeEnum type) {
     this.type = type;
-  }
-
-
-  public CriteoApiError code(CodeEnum code) {
-    
-    this.code = code;
-    return this;
-  }
-
-   /**
-   * A machine-readable error code string in kabab-case. Unique across Criteo
-   * @return code
-  **/
-  @javax.annotation.Nullable
-
-  public CodeEnum getCode() {
-    return code;
-  }
-
-
-  public void setCode(CodeEnum code) {
-    this.code = code;
-  }
-
-
-  public CriteoApiError instance(String instance) {
-    
-    this.instance = instance;
-    return this;
-  }
-
-   /**
-   * A URI reference that identifies the specific occurrence of the problem
-   * @return instance
-  **/
-  @javax.annotation.Nullable
-
-  public String getInstance() {
-    return instance;
-  }
-
-
-  public void setInstance(String instance) {
-    this.instance = instance;
-  }
-
-
-  public CriteoApiError title(String title) {
-    
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * A short, human-readable remarks of the problem type.
-   * @return title
-  **/
-  @javax.annotation.Nullable
-
-  public String getTitle() {
-    return title;
-  }
-
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-
-  public CriteoApiError detail(String detail) {
-    
-    this.detail = detail;
-    return this;
-  }
-
-   /**
-   * A human-readable explanation specific to this occurrence of the problem.
-   * @return detail
-  **/
-  @javax.annotation.Nullable
-
-  public String getDetail() {
-    return detail;
-  }
-
-
-  public void setDetail(String detail) {
-    this.detail = detail;
-  }
-
-
-  public CriteoApiError source(Map<String, String> source) {
-    
-    this.source = source;
-    return this;
-  }
-
-  public CriteoApiError putSourceItem(String key, String sourceItem) {
-    if (this.source == null) {
-      this.source = null;
-    }
-    this.source.put(key, sourceItem);
-    return this;
-  }
-
-   /**
-   * A machine-readable structure to reference to the exact location(s) causing the error(s).
-   * @return source
-  **/
-  @javax.annotation.Nullable
-
-  public Map<String, String> getSource() {
-    return source;
-  }
-
-
-  public void setSource(Map<String, String> source) {
-    this.source = source;
   }
 
   /**
@@ -414,13 +414,13 @@ public class CriteoApiError {
       return false;
     }
     CriteoApiError criteoApiError = (CriteoApiError) o;
-    return Objects.equals(this.traceId, criteoApiError.traceId) &&
-        Objects.equals(this.type, criteoApiError.type) &&
-        Objects.equals(this.code, criteoApiError.code) &&
-        Objects.equals(this.instance, criteoApiError.instance) &&
-        Objects.equals(this.title, criteoApiError.title) &&
+    return Objects.equals(this.code, criteoApiError.code) &&
         Objects.equals(this.detail, criteoApiError.detail) &&
-        Objects.equals(this.source, criteoApiError.source)&&
+        Objects.equals(this.instance, criteoApiError.instance) &&
+        Objects.equals(this.source, criteoApiError.source) &&
+        Objects.equals(this.title, criteoApiError.title) &&
+        Objects.equals(this.traceId, criteoApiError.traceId) &&
+        Objects.equals(this.type, criteoApiError.type)&&
         Objects.equals(this.additionalProperties, criteoApiError.additionalProperties);
   }
 
@@ -430,7 +430,7 @@ public class CriteoApiError {
 
   @Override
   public int hashCode() {
-    return Objects.hash(traceId, type, code, instance, title, detail, source, additionalProperties);
+    return Objects.hash(code, detail, instance, source, title, traceId, type, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -444,13 +444,13 @@ public class CriteoApiError {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CriteoApiError {\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
+    sb.append("    instance: ").append(toIndentedString(instance)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    traceId: ").append(toIndentedString(traceId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    instance: ").append(toIndentedString(instance)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
-    sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -474,13 +474,13 @@ public class CriteoApiError {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("code");
+    openapiFields.add("detail");
+    openapiFields.add("instance");
+    openapiFields.add("source");
+    openapiFields.add("title");
     openapiFields.add("traceId");
     openapiFields.add("type");
-    openapiFields.add("code");
-    openapiFields.add("instance");
-    openapiFields.add("title");
-    openapiFields.add("detail");
-    openapiFields.add("source");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -498,14 +498,11 @@ public class CriteoApiError {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CriteoApiError is not found in the empty JSON string", CriteoApiError.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("traceId") != null && !jsonObj.get("traceId").isJsonNull()) && !jsonObj.get("traceId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `traceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("traceId").toString()));
-      }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      }
+      if ((jsonObj.get("detail") != null && !jsonObj.get("detail").isJsonNull()) && !jsonObj.get("detail").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `detail` to be a primitive type in the JSON string but got `%s`", jsonObj.get("detail").toString()));
       }
       if ((jsonObj.get("instance") != null && !jsonObj.get("instance").isJsonNull()) && !jsonObj.get("instance").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instance").toString()));
@@ -513,8 +510,11 @@ public class CriteoApiError {
       if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
       }
-      if ((jsonObj.get("detail") != null && !jsonObj.get("detail").isJsonNull()) && !jsonObj.get("detail").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `detail` to be a primitive type in the JSON string but got `%s`", jsonObj.get("detail").toString()));
+      if ((jsonObj.get("traceId") != null && !jsonObj.get("traceId").isJsonNull()) && !jsonObj.get("traceId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `traceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("traceId").toString()));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

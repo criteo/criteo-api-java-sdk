@@ -50,6 +50,18 @@ import com.criteo.api.retailmedia.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalCreateBalance {
+  public static final String SERIALIZED_NAME_DEPOSITED = "deposited";
+  @SerializedName(SERIALIZED_NAME_DEPOSITED)
+  private BigDecimal deposited;
+
+  public static final String SERIALIZED_NAME_END_DATE = "endDate";
+  @SerializedName(SERIALIZED_NAME_END_DATE)
+  private LocalDate endDate;
+
+  public static final String SERIALIZED_NAME_MEMO = "memo";
+  @SerializedName(SERIALIZED_NAME_MEMO)
+  private String memo;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -58,17 +70,9 @@ public class ExternalCreateBalance {
   @SerializedName(SERIALIZED_NAME_PO_NUMBER)
   private String poNumber;
 
-  public static final String SERIALIZED_NAME_DEPOSITED = "deposited";
-  @SerializedName(SERIALIZED_NAME_DEPOSITED)
-  private BigDecimal deposited;
-
-  public static final String SERIALIZED_NAME_START_DATE = "startDate";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private LocalDate startDate;
-
-  public static final String SERIALIZED_NAME_END_DATE = "endDate";
-  @SerializedName(SERIALIZED_NAME_END_DATE)
-  private LocalDate endDate;
+  public static final String SERIALIZED_NAME_SALES_FORCE_ID = "salesForceId";
+  @SerializedName(SERIALIZED_NAME_SALES_FORCE_ID)
+  private String salesForceId;
 
   /**
    * Type of the balance spend.
@@ -123,16 +127,78 @@ public class ExternalCreateBalance {
   @SerializedName(SERIALIZED_NAME_SPEND_TYPE)
   private SpendTypeEnum spendType;
 
-  public static final String SERIALIZED_NAME_MEMO = "memo";
-  @SerializedName(SERIALIZED_NAME_MEMO)
-  private String memo;
-
-  public static final String SERIALIZED_NAME_SALES_FORCE_ID = "salesForceId";
-  @SerializedName(SERIALIZED_NAME_SALES_FORCE_ID)
-  private String salesForceId;
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private LocalDate startDate;
 
   public ExternalCreateBalance() {
   }
+
+  public ExternalCreateBalance deposited(BigDecimal deposited) {
+    
+    this.deposited = deposited;
+    return this;
+  }
+
+   /**
+   * Amount of billable funds allotted to the balance.
+   * @return deposited
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getDeposited() {
+    return deposited;
+  }
+
+
+  public void setDeposited(BigDecimal deposited) {
+    this.deposited = deposited;
+  }
+
+
+  public ExternalCreateBalance endDate(LocalDate endDate) {
+    
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
+   * @return endDate
+  **/
+  @javax.annotation.Nonnull
+
+  public LocalDate getEndDate() {
+    return endDate;
+  }
+
+
+  public void setEndDate(LocalDate endDate) {
+    this.endDate = endDate;
+  }
+
+
+  public ExternalCreateBalance memo(String memo) {
+    
+    this.memo = memo;
+    return this;
+  }
+
+   /**
+   * Memo
+   * @return memo
+  **/
+  @javax.annotation.Nonnull
+
+  public String getMemo() {
+    return memo;
+  }
+
+
+  public void setMemo(String memo) {
+    this.memo = memo;
+  }
+
 
   public ExternalCreateBalance name(String name) {
     
@@ -178,69 +244,25 @@ public class ExternalCreateBalance {
   }
 
 
-  public ExternalCreateBalance deposited(BigDecimal deposited) {
+  public ExternalCreateBalance salesForceId(String salesForceId) {
     
-    this.deposited = deposited;
+    this.salesForceId = salesForceId;
     return this;
   }
 
    /**
-   * Amount of billable funds allotted to the balance.
-   * @return deposited
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getDeposited() {
-    return deposited;
-  }
-
-
-  public void setDeposited(BigDecimal deposited) {
-    this.deposited = deposited;
-  }
-
-
-  public ExternalCreateBalance startDate(LocalDate startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
-   * @return startDate
+   * SalesForceId the balance is linked to.
+   * @return salesForceId
   **/
   @javax.annotation.Nonnull
 
-  public LocalDate getStartDate() {
-    return startDate;
+  public String getSalesForceId() {
+    return salesForceId;
   }
 
 
-  public void setStartDate(LocalDate startDate) {
-    this.startDate = startDate;
-  }
-
-
-  public ExternalCreateBalance endDate(LocalDate endDate) {
-    
-    this.endDate = endDate;
-    return this;
-  }
-
-   /**
-   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
-   * @return endDate
-  **/
-  @javax.annotation.Nonnull
-
-  public LocalDate getEndDate() {
-    return endDate;
-  }
-
-
-  public void setEndDate(LocalDate endDate) {
-    this.endDate = endDate;
+  public void setSalesForceId(String salesForceId) {
+    this.salesForceId = salesForceId;
   }
 
 
@@ -266,47 +288,25 @@ public class ExternalCreateBalance {
   }
 
 
-  public ExternalCreateBalance memo(String memo) {
+  public ExternalCreateBalance startDate(LocalDate startDate) {
     
-    this.memo = memo;
+    this.startDate = startDate;
     return this;
   }
 
    /**
-   * Memo
-   * @return memo
+   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
+   * @return startDate
   **/
   @javax.annotation.Nonnull
 
-  public String getMemo() {
-    return memo;
+  public LocalDate getStartDate() {
+    return startDate;
   }
 
 
-  public void setMemo(String memo) {
-    this.memo = memo;
-  }
-
-
-  public ExternalCreateBalance salesForceId(String salesForceId) {
-    
-    this.salesForceId = salesForceId;
-    return this;
-  }
-
-   /**
-   * SalesForceId the balance is linked to.
-   * @return salesForceId
-  **/
-  @javax.annotation.Nonnull
-
-  public String getSalesForceId() {
-    return salesForceId;
-  }
-
-
-  public void setSalesForceId(String salesForceId) {
-    this.salesForceId = salesForceId;
+  public void setStartDate(LocalDate startDate) {
+    this.startDate = startDate;
   }
 
   /**
@@ -364,34 +364,34 @@ public class ExternalCreateBalance {
       return false;
     }
     ExternalCreateBalance externalCreateBalance = (ExternalCreateBalance) o;
-    return Objects.equals(this.name, externalCreateBalance.name) &&
-        Objects.equals(this.poNumber, externalCreateBalance.poNumber) &&
-        Objects.equals(this.deposited, externalCreateBalance.deposited) &&
-        Objects.equals(this.startDate, externalCreateBalance.startDate) &&
+    return Objects.equals(this.deposited, externalCreateBalance.deposited) &&
         Objects.equals(this.endDate, externalCreateBalance.endDate) &&
-        Objects.equals(this.spendType, externalCreateBalance.spendType) &&
         Objects.equals(this.memo, externalCreateBalance.memo) &&
-        Objects.equals(this.salesForceId, externalCreateBalance.salesForceId)&&
+        Objects.equals(this.name, externalCreateBalance.name) &&
+        Objects.equals(this.poNumber, externalCreateBalance.poNumber) &&
+        Objects.equals(this.salesForceId, externalCreateBalance.salesForceId) &&
+        Objects.equals(this.spendType, externalCreateBalance.spendType) &&
+        Objects.equals(this.startDate, externalCreateBalance.startDate)&&
         Objects.equals(this.additionalProperties, externalCreateBalance.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, poNumber, deposited, startDate, endDate, spendType, memo, salesForceId, additionalProperties);
+    return Objects.hash(deposited, endDate, memo, name, poNumber, salesForceId, spendType, startDate, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalCreateBalance {\n");
+    sb.append("    deposited: ").append(toIndentedString(deposited)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    memo: ").append(toIndentedString(memo)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    poNumber: ").append(toIndentedString(poNumber)).append("\n");
-    sb.append("    deposited: ").append(toIndentedString(deposited)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("    spendType: ").append(toIndentedString(spendType)).append("\n");
-    sb.append("    memo: ").append(toIndentedString(memo)).append("\n");
     sb.append("    salesForceId: ").append(toIndentedString(salesForceId)).append("\n");
+    sb.append("    spendType: ").append(toIndentedString(spendType)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -415,24 +415,24 @@ public class ExternalCreateBalance {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("deposited");
+    openapiFields.add("endDate");
+    openapiFields.add("memo");
     openapiFields.add("name");
     openapiFields.add("poNumber");
-    openapiFields.add("deposited");
-    openapiFields.add("startDate");
-    openapiFields.add("endDate");
-    openapiFields.add("spendType");
-    openapiFields.add("memo");
     openapiFields.add("salesForceId");
+    openapiFields.add("spendType");
+    openapiFields.add("startDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
     openapiRequiredFields.add("deposited");
-    openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("endDate");
-    openapiRequiredFields.add("spendType");
     openapiRequiredFields.add("memo");
+    openapiRequiredFields.add("name");
     openapiRequiredFields.add("salesForceId");
+    openapiRequiredFields.add("spendType");
+    openapiRequiredFields.add("startDate");
   }
 
  /**
@@ -454,20 +454,20 @@ public class ExternalCreateBalance {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      if (!jsonObj.get("memo").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `memo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memo").toString()));
+      }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("poNumber") != null && !jsonObj.get("poNumber").isJsonNull()) && !jsonObj.get("poNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `poNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("poNumber").toString()));
       }
-      if (!jsonObj.get("spendType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `spendType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("spendType").toString()));
-      }
-      if (!jsonObj.get("memo").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `memo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memo").toString()));
-      }
       if (!jsonObj.get("salesForceId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `salesForceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("salesForceId").toString()));
+      }
+      if (!jsonObj.get("spendType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `spendType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("spendType").toString()));
       }
   }
 

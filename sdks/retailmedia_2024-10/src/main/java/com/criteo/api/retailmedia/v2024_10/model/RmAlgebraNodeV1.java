@@ -55,17 +55,17 @@ public class RmAlgebraNodeV1 {
   @SerializedName(SERIALIZED_NAME_AND)
   private List<RmAlgebraNodeV1> and = null;
 
-  public static final String SERIALIZED_NAME_OR = "or";
-  @SerializedName(SERIALIZED_NAME_OR)
-  private List<RmAlgebraNodeV1> or = null;
+  public static final String SERIALIZED_NAME_AUDIENCE_SEGMENT_ID = "audienceSegmentId";
+  @SerializedName(SERIALIZED_NAME_AUDIENCE_SEGMENT_ID)
+  private String audienceSegmentId;
 
   public static final String SERIALIZED_NAME_NOT = "not";
   @SerializedName(SERIALIZED_NAME_NOT)
   private RmAlgebraNodeV1 not;
 
-  public static final String SERIALIZED_NAME_AUDIENCE_SEGMENT_ID = "audienceSegmentId";
-  @SerializedName(SERIALIZED_NAME_AUDIENCE_SEGMENT_ID)
-  private String audienceSegmentId;
+  public static final String SERIALIZED_NAME_OR = "or";
+  @SerializedName(SERIALIZED_NAME_OR)
+  private List<RmAlgebraNodeV1> or = null;
 
   public RmAlgebraNodeV1() {
   }
@@ -100,6 +100,50 @@ public class RmAlgebraNodeV1 {
   }
 
 
+  public RmAlgebraNodeV1 audienceSegmentId(String audienceSegmentId) {
+    
+    this.audienceSegmentId = audienceSegmentId;
+    return this;
+  }
+
+   /**
+   * Get audienceSegmentId
+   * @return audienceSegmentId
+  **/
+  @javax.annotation.Nullable
+
+  public String getAudienceSegmentId() {
+    return audienceSegmentId;
+  }
+
+
+  public void setAudienceSegmentId(String audienceSegmentId) {
+    this.audienceSegmentId = audienceSegmentId;
+  }
+
+
+  public RmAlgebraNodeV1 not(RmAlgebraNodeV1 not) {
+    
+    this.not = not;
+    return this;
+  }
+
+   /**
+   * Get not
+   * @return not
+  **/
+  @javax.annotation.Nullable
+
+  public RmAlgebraNodeV1 getNot() {
+    return not;
+  }
+
+
+  public void setNot(RmAlgebraNodeV1 not) {
+    this.not = not;
+  }
+
+
   public RmAlgebraNodeV1 or(List<RmAlgebraNodeV1> or) {
     
     this.or = or;
@@ -127,50 +171,6 @@ public class RmAlgebraNodeV1 {
 
   public void setOr(List<RmAlgebraNodeV1> or) {
     this.or = or;
-  }
-
-
-  public RmAlgebraNodeV1 not(RmAlgebraNodeV1 not) {
-    
-    this.not = not;
-    return this;
-  }
-
-   /**
-   * Get not
-   * @return not
-  **/
-  @javax.annotation.Nullable
-
-  public RmAlgebraNodeV1 getNot() {
-    return not;
-  }
-
-
-  public void setNot(RmAlgebraNodeV1 not) {
-    this.not = not;
-  }
-
-
-  public RmAlgebraNodeV1 audienceSegmentId(String audienceSegmentId) {
-    
-    this.audienceSegmentId = audienceSegmentId;
-    return this;
-  }
-
-   /**
-   * Get audienceSegmentId
-   * @return audienceSegmentId
-  **/
-  @javax.annotation.Nullable
-
-  public String getAudienceSegmentId() {
-    return audienceSegmentId;
-  }
-
-
-  public void setAudienceSegmentId(String audienceSegmentId) {
-    this.audienceSegmentId = audienceSegmentId;
   }
 
   /**
@@ -229,9 +229,9 @@ public class RmAlgebraNodeV1 {
     }
     RmAlgebraNodeV1 rmAlgebraNodeV1 = (RmAlgebraNodeV1) o;
     return Objects.equals(this.and, rmAlgebraNodeV1.and) &&
-        Objects.equals(this.or, rmAlgebraNodeV1.or) &&
+        Objects.equals(this.audienceSegmentId, rmAlgebraNodeV1.audienceSegmentId) &&
         Objects.equals(this.not, rmAlgebraNodeV1.not) &&
-        Objects.equals(this.audienceSegmentId, rmAlgebraNodeV1.audienceSegmentId)&&
+        Objects.equals(this.or, rmAlgebraNodeV1.or)&&
         Objects.equals(this.additionalProperties, rmAlgebraNodeV1.additionalProperties);
   }
 
@@ -241,7 +241,7 @@ public class RmAlgebraNodeV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(and, or, not, audienceSegmentId, additionalProperties);
+    return Objects.hash(and, audienceSegmentId, not, or, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -256,9 +256,9 @@ public class RmAlgebraNodeV1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class RmAlgebraNodeV1 {\n");
     sb.append("    and: ").append(toIndentedString(and)).append("\n");
-    sb.append("    or: ").append(toIndentedString(or)).append("\n");
-    sb.append("    not: ").append(toIndentedString(not)).append("\n");
     sb.append("    audienceSegmentId: ").append(toIndentedString(audienceSegmentId)).append("\n");
+    sb.append("    not: ").append(toIndentedString(not)).append("\n");
+    sb.append("    or: ").append(toIndentedString(or)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -283,9 +283,9 @@ public class RmAlgebraNodeV1 {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("and");
-    openapiFields.add("or");
-    openapiFields.add("not");
     openapiFields.add("audienceSegmentId");
+    openapiFields.add("not");
+    openapiFields.add("or");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -317,6 +317,13 @@ public class RmAlgebraNodeV1 {
           };
         }
       }
+      if ((jsonObj.get("audienceSegmentId") != null && !jsonObj.get("audienceSegmentId").isJsonNull()) && !jsonObj.get("audienceSegmentId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `audienceSegmentId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("audienceSegmentId").toString()));
+      }
+      // validate the optional field `not`
+      if (jsonObj.get("not") != null && !jsonObj.get("not").isJsonNull()) {
+        RmAlgebraNodeV1.validateJsonObject(jsonObj.getAsJsonObject("not"));
+      }
       if (jsonObj.get("or") != null && !jsonObj.get("or").isJsonNull()) {
         JsonArray jsonArrayor = jsonObj.getAsJsonArray("or");
         if (jsonArrayor != null) {
@@ -330,13 +337,6 @@ public class RmAlgebraNodeV1 {
             RmAlgebraNodeV1.validateJsonObject(jsonArrayor.get(i).getAsJsonObject());
           };
         }
-      }
-      // validate the optional field `not`
-      if (jsonObj.get("not") != null && !jsonObj.get("not").isJsonNull()) {
-        RmAlgebraNodeV1.validateJsonObject(jsonObj.getAsJsonObject("not"));
-      }
-      if ((jsonObj.get("audienceSegmentId") != null && !jsonObj.get("audienceSegmentId").isJsonNull()) && !jsonObj.get("audienceSegmentId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `audienceSegmentId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("audienceSegmentId").toString()));
       }
   }
 

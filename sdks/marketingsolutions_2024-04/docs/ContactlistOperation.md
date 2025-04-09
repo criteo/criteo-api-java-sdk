@@ -8,8 +8,8 @@ Response definition of a contactlist operation
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** | the name of the entity type |  |
 |**attributes** | [**ContactlistOperationAttributes**](ContactlistOperationAttributes.md) |  |  |
+|**type** | **String** | the name of the entity type |  |
 
 
 

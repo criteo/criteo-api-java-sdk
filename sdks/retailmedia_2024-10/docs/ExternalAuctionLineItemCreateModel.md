@@ -8,18 +8,29 @@ Model to create a retail media auction line item
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** |  |  |
-|**startDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
-|**endDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  [optional] |
-|**status** | [**StatusEnum**](#StatusEnum) |  |  [optional] |
-|**targetRetailerId** | **String** |  |  |
+|**bidStrategy** | [**BidStrategyEnum**](#BidStrategyEnum) |  |  [optional] |
 |**budget** | **BigDecimal** |  |  [optional] |
-|**targetBid** | **BigDecimal** |  |  [optional] |
+|**dailyPacing** | **BigDecimal** |  |  [optional] |
+|**endDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  [optional] |
+|**isAutoDailyPacing** | **Boolean** |  |  [optional] |
 |**maxBid** | **BigDecimal** |  |  [optional] |
 |**monthlyPacing** | **BigDecimal** |  |  [optional] |
-|**dailyPacing** | **BigDecimal** |  |  [optional] |
-|**isAutoDailyPacing** | **Boolean** |  |  [optional] |
-|**bidStrategy** | [**BidStrategyEnum**](#BidStrategyEnum) |  |  [optional] |
+|**name** | **String** |  |  |
+|**startDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
+|**status** | [**StatusEnum**](#StatusEnum) |  |  [optional] |
+|**targetBid** | **BigDecimal** |  |  [optional] |
+|**targetRetailerId** | **String** |  |  |
+
+
+
+## Enum: BidStrategyEnum
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| CONVERSION | &quot;conversion&quot; |
+| CLICKS | &quot;clicks&quot; |
+| REVENUE | &quot;revenue&quot; |
 
 
 
@@ -36,17 +47,6 @@ Model to create a retail media auction line item
 | ENDED | &quot;ended&quot; |
 | ARCHIVED | &quot;archived&quot; |
 | NOFUNDS | &quot;noFunds&quot; |
-
-
-
-## Enum: BidStrategyEnum
-
-| Name | Value |
-|---- | -----|
-| UNKNOWN | &quot;unknown&quot; |
-| CONVERSION | &quot;conversion&quot; |
-| CLICKS | &quot;clicks&quot; |
-| REVENUE | &quot;revenue&quot; |
 
 
 

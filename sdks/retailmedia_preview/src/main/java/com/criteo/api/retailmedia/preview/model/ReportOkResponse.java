@@ -52,6 +52,34 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReportOkResponse {
+  public static final String SERIALIZED_NAME_ERROR_DETAILS = "errorDetails";
+  @SerializedName(SERIALIZED_NAME_ERROR_DETAILS)
+  private List<ReportDetailErrors> errorDetails = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_IMPORT_REQUEST_TIMESTAMP = "importRequestTimestamp";
+  @SerializedName(SERIALIZED_NAME_IMPORT_REQUEST_TIMESTAMP)
+  private String importRequestTimestamp;
+
+  public static final String SERIALIZED_NAME_NUMBER_OF_PRODUCTS_DELETED = "numberOfProductsDeleted";
+  @SerializedName(SERIALIZED_NAME_NUMBER_OF_PRODUCTS_DELETED)
+  private String numberOfProductsDeleted;
+
+  public static final String SERIALIZED_NAME_NUMBER_OF_PRODUCTS_IN_THE_BATCH = "numberOfProductsInTheBatch";
+  @SerializedName(SERIALIZED_NAME_NUMBER_OF_PRODUCTS_IN_THE_BATCH)
+  private String numberOfProductsInTheBatch;
+
+  public static final String SERIALIZED_NAME_NUMBER_OF_PRODUCTS_UPSERTED = "numberOfProductsUpserted";
+  @SerializedName(SERIALIZED_NAME_NUMBER_OF_PRODUCTS_UPSERTED)
+  private String numberOfProductsUpserted;
+
+  public static final String SERIALIZED_NAME_NUMBER_OF_PRODUCTS_WITH_ERRORS = "numberOfProductsWithErrors";
+  @SerializedName(SERIALIZED_NAME_NUMBER_OF_PRODUCTS_WITH_ERRORS)
+  private String numberOfProductsWithErrors;
+
+  public static final String SERIALIZED_NAME_NUMBER_OF_PRODUCTS_WITH_WARNINGS = "numberOfProductsWithWarnings";
+  @SerializedName(SERIALIZED_NAME_NUMBER_OF_PRODUCTS_WITH_WARNINGS)
+  private String numberOfProductsWithWarnings;
+
   /**
    * The status of the operation. The operation is completed when the status is one of (VALIDATED,VALIDATED_WITH_ERRORS,FAILED)
    */
@@ -109,34 +137,6 @@ public class ReportOkResponse {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
-  public static final String SERIALIZED_NAME_IMPORT_REQUEST_TIMESTAMP = "importRequestTimestamp";
-  @SerializedName(SERIALIZED_NAME_IMPORT_REQUEST_TIMESTAMP)
-  private String importRequestTimestamp;
-
-  public static final String SERIALIZED_NAME_NUMBER_OF_PRODUCTS_IN_THE_BATCH = "numberOfProductsInTheBatch";
-  @SerializedName(SERIALIZED_NAME_NUMBER_OF_PRODUCTS_IN_THE_BATCH)
-  private String numberOfProductsInTheBatch;
-
-  public static final String SERIALIZED_NAME_NUMBER_OF_PRODUCTS_UPSERTED = "numberOfProductsUpserted";
-  @SerializedName(SERIALIZED_NAME_NUMBER_OF_PRODUCTS_UPSERTED)
-  private String numberOfProductsUpserted;
-
-  public static final String SERIALIZED_NAME_NUMBER_OF_PRODUCTS_DELETED = "numberOfProductsDeleted";
-  @SerializedName(SERIALIZED_NAME_NUMBER_OF_PRODUCTS_DELETED)
-  private String numberOfProductsDeleted;
-
-  public static final String SERIALIZED_NAME_NUMBER_OF_PRODUCTS_WITH_ERRORS = "numberOfProductsWithErrors";
-  @SerializedName(SERIALIZED_NAME_NUMBER_OF_PRODUCTS_WITH_ERRORS)
-  private String numberOfProductsWithErrors;
-
-  public static final String SERIALIZED_NAME_ERROR_DETAILS = "errorDetails";
-  @SerializedName(SERIALIZED_NAME_ERROR_DETAILS)
-  private List<ReportDetailErrors> errorDetails = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_NUMBER_OF_PRODUCTS_WITH_WARNINGS = "numberOfProductsWithWarnings";
-  @SerializedName(SERIALIZED_NAME_NUMBER_OF_PRODUCTS_WITH_WARNINGS)
-  private String numberOfProductsWithWarnings;
-
   public static final String SERIALIZED_NAME_WARNING_DETAILS = "warningDetails";
   @SerializedName(SERIALIZED_NAME_WARNING_DETAILS)
   private List<ReportDetailWarnings> warningDetails = new ArrayList<>();
@@ -144,25 +144,30 @@ public class ReportOkResponse {
   public ReportOkResponse() {
   }
 
-  public ReportOkResponse status(StatusEnum status) {
+  public ReportOkResponse errorDetails(List<ReportDetailErrors> errorDetails) {
     
-    this.status = status;
+    this.errorDetails = errorDetails;
+    return this;
+  }
+
+  public ReportOkResponse addErrorDetailsItem(ReportDetailErrors errorDetailsItem) {
+    this.errorDetails.add(errorDetailsItem);
     return this;
   }
 
    /**
-   * The status of the operation. The operation is completed when the status is one of (VALIDATED,VALIDATED_WITH_ERRORS,FAILED)
-   * @return status
+   * The list of errors with details.
+   * @return errorDetails
   **/
   @javax.annotation.Nonnull
 
-  public StatusEnum getStatus() {
-    return status;
+  public List<ReportDetailErrors> getErrorDetails() {
+    return errorDetails;
   }
 
 
-  public void setStatus(StatusEnum status) {
-    this.status = status;
+  public void setErrorDetails(List<ReportDetailErrors> errorDetails) {
+    this.errorDetails = errorDetails;
   }
 
 
@@ -185,6 +190,28 @@ public class ReportOkResponse {
 
   public void setImportRequestTimestamp(String importRequestTimestamp) {
     this.importRequestTimestamp = importRequestTimestamp;
+  }
+
+
+  public ReportOkResponse numberOfProductsDeleted(String numberOfProductsDeleted) {
+    
+    this.numberOfProductsDeleted = numberOfProductsDeleted;
+    return this;
+  }
+
+   /**
+   * The number of products deleted.
+   * @return numberOfProductsDeleted
+  **/
+  @javax.annotation.Nullable
+
+  public String getNumberOfProductsDeleted() {
+    return numberOfProductsDeleted;
+  }
+
+
+  public void setNumberOfProductsDeleted(String numberOfProductsDeleted) {
+    this.numberOfProductsDeleted = numberOfProductsDeleted;
   }
 
 
@@ -232,28 +259,6 @@ public class ReportOkResponse {
   }
 
 
-  public ReportOkResponse numberOfProductsDeleted(String numberOfProductsDeleted) {
-    
-    this.numberOfProductsDeleted = numberOfProductsDeleted;
-    return this;
-  }
-
-   /**
-   * The number of products deleted.
-   * @return numberOfProductsDeleted
-  **/
-  @javax.annotation.Nullable
-
-  public String getNumberOfProductsDeleted() {
-    return numberOfProductsDeleted;
-  }
-
-
-  public void setNumberOfProductsDeleted(String numberOfProductsDeleted) {
-    this.numberOfProductsDeleted = numberOfProductsDeleted;
-  }
-
-
   public ReportOkResponse numberOfProductsWithErrors(String numberOfProductsWithErrors) {
     
     this.numberOfProductsWithErrors = numberOfProductsWithErrors;
@@ -276,33 +281,6 @@ public class ReportOkResponse {
   }
 
 
-  public ReportOkResponse errorDetails(List<ReportDetailErrors> errorDetails) {
-    
-    this.errorDetails = errorDetails;
-    return this;
-  }
-
-  public ReportOkResponse addErrorDetailsItem(ReportDetailErrors errorDetailsItem) {
-    this.errorDetails.add(errorDetailsItem);
-    return this;
-  }
-
-   /**
-   * The list of errors with details.
-   * @return errorDetails
-  **/
-  @javax.annotation.Nonnull
-
-  public List<ReportDetailErrors> getErrorDetails() {
-    return errorDetails;
-  }
-
-
-  public void setErrorDetails(List<ReportDetailErrors> errorDetails) {
-    this.errorDetails = errorDetails;
-  }
-
-
   public ReportOkResponse numberOfProductsWithWarnings(String numberOfProductsWithWarnings) {
     
     this.numberOfProductsWithWarnings = numberOfProductsWithWarnings;
@@ -322,6 +300,28 @@ public class ReportOkResponse {
 
   public void setNumberOfProductsWithWarnings(String numberOfProductsWithWarnings) {
     this.numberOfProductsWithWarnings = numberOfProductsWithWarnings;
+  }
+
+
+  public ReportOkResponse status(StatusEnum status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * The status of the operation. The operation is completed when the status is one of (VALIDATED,VALIDATED_WITH_ERRORS,FAILED)
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
   }
 
 
@@ -406,35 +406,35 @@ public class ReportOkResponse {
       return false;
     }
     ReportOkResponse reportOkResponse = (ReportOkResponse) o;
-    return Objects.equals(this.status, reportOkResponse.status) &&
+    return Objects.equals(this.errorDetails, reportOkResponse.errorDetails) &&
         Objects.equals(this.importRequestTimestamp, reportOkResponse.importRequestTimestamp) &&
+        Objects.equals(this.numberOfProductsDeleted, reportOkResponse.numberOfProductsDeleted) &&
         Objects.equals(this.numberOfProductsInTheBatch, reportOkResponse.numberOfProductsInTheBatch) &&
         Objects.equals(this.numberOfProductsUpserted, reportOkResponse.numberOfProductsUpserted) &&
-        Objects.equals(this.numberOfProductsDeleted, reportOkResponse.numberOfProductsDeleted) &&
         Objects.equals(this.numberOfProductsWithErrors, reportOkResponse.numberOfProductsWithErrors) &&
-        Objects.equals(this.errorDetails, reportOkResponse.errorDetails) &&
         Objects.equals(this.numberOfProductsWithWarnings, reportOkResponse.numberOfProductsWithWarnings) &&
+        Objects.equals(this.status, reportOkResponse.status) &&
         Objects.equals(this.warningDetails, reportOkResponse.warningDetails)&&
         Objects.equals(this.additionalProperties, reportOkResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, importRequestTimestamp, numberOfProductsInTheBatch, numberOfProductsUpserted, numberOfProductsDeleted, numberOfProductsWithErrors, errorDetails, numberOfProductsWithWarnings, warningDetails, additionalProperties);
+    return Objects.hash(errorDetails, importRequestTimestamp, numberOfProductsDeleted, numberOfProductsInTheBatch, numberOfProductsUpserted, numberOfProductsWithErrors, numberOfProductsWithWarnings, status, warningDetails, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReportOkResponse {\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    errorDetails: ").append(toIndentedString(errorDetails)).append("\n");
     sb.append("    importRequestTimestamp: ").append(toIndentedString(importRequestTimestamp)).append("\n");
+    sb.append("    numberOfProductsDeleted: ").append(toIndentedString(numberOfProductsDeleted)).append("\n");
     sb.append("    numberOfProductsInTheBatch: ").append(toIndentedString(numberOfProductsInTheBatch)).append("\n");
     sb.append("    numberOfProductsUpserted: ").append(toIndentedString(numberOfProductsUpserted)).append("\n");
-    sb.append("    numberOfProductsDeleted: ").append(toIndentedString(numberOfProductsDeleted)).append("\n");
     sb.append("    numberOfProductsWithErrors: ").append(toIndentedString(numberOfProductsWithErrors)).append("\n");
-    sb.append("    errorDetails: ").append(toIndentedString(errorDetails)).append("\n");
     sb.append("    numberOfProductsWithWarnings: ").append(toIndentedString(numberOfProductsWithWarnings)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    warningDetails: ").append(toIndentedString(warningDetails)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -459,26 +459,26 @@ public class ReportOkResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("status");
+    openapiFields.add("errorDetails");
     openapiFields.add("importRequestTimestamp");
+    openapiFields.add("numberOfProductsDeleted");
     openapiFields.add("numberOfProductsInTheBatch");
     openapiFields.add("numberOfProductsUpserted");
-    openapiFields.add("numberOfProductsDeleted");
     openapiFields.add("numberOfProductsWithErrors");
-    openapiFields.add("errorDetails");
     openapiFields.add("numberOfProductsWithWarnings");
+    openapiFields.add("status");
     openapiFields.add("warningDetails");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("status");
+    openapiRequiredFields.add("errorDetails");
     openapiRequiredFields.add("importRequestTimestamp");
+    openapiRequiredFields.add("numberOfProductsDeleted");
     openapiRequiredFields.add("numberOfProductsInTheBatch");
     openapiRequiredFields.add("numberOfProductsUpserted");
-    openapiRequiredFields.add("numberOfProductsDeleted");
     openapiRequiredFields.add("numberOfProductsWithErrors");
-    openapiRequiredFields.add("errorDetails");
     openapiRequiredFields.add("numberOfProductsWithWarnings");
+    openapiRequiredFields.add("status");
     openapiRequiredFields.add("warningDetails");
   }
 
@@ -501,24 +501,6 @@ public class ReportOkResponse {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
-      }
-      if (!jsonObj.get("importRequestTimestamp").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `importRequestTimestamp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("importRequestTimestamp").toString()));
-      }
-      if (!jsonObj.get("numberOfProductsInTheBatch").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `numberOfProductsInTheBatch` to be a primitive type in the JSON string but got `%s`", jsonObj.get("numberOfProductsInTheBatch").toString()));
-      }
-      if (!jsonObj.get("numberOfProductsUpserted").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `numberOfProductsUpserted` to be a primitive type in the JSON string but got `%s`", jsonObj.get("numberOfProductsUpserted").toString()));
-      }
-      if (!jsonObj.get("numberOfProductsDeleted").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `numberOfProductsDeleted` to be a primitive type in the JSON string but got `%s`", jsonObj.get("numberOfProductsDeleted").toString()));
-      }
-      if (!jsonObj.get("numberOfProductsWithErrors").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `numberOfProductsWithErrors` to be a primitive type in the JSON string but got `%s`", jsonObj.get("numberOfProductsWithErrors").toString()));
-      }
       // ensure the json data is an array
       if (!jsonObj.get("errorDetails").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `errorDetails` to be an array in the JSON string but got `%s`", jsonObj.get("errorDetails").toString()));
@@ -529,8 +511,26 @@ public class ReportOkResponse {
       for (int i = 0; i < jsonArrayerrorDetails.size(); i++) {
         ReportDetailErrors.validateJsonObject(jsonArrayerrorDetails.get(i).getAsJsonObject());
       };
+      if (!jsonObj.get("importRequestTimestamp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `importRequestTimestamp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("importRequestTimestamp").toString()));
+      }
+      if (!jsonObj.get("numberOfProductsDeleted").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `numberOfProductsDeleted` to be a primitive type in the JSON string but got `%s`", jsonObj.get("numberOfProductsDeleted").toString()));
+      }
+      if (!jsonObj.get("numberOfProductsInTheBatch").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `numberOfProductsInTheBatch` to be a primitive type in the JSON string but got `%s`", jsonObj.get("numberOfProductsInTheBatch").toString()));
+      }
+      if (!jsonObj.get("numberOfProductsUpserted").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `numberOfProductsUpserted` to be a primitive type in the JSON string but got `%s`", jsonObj.get("numberOfProductsUpserted").toString()));
+      }
+      if (!jsonObj.get("numberOfProductsWithErrors").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `numberOfProductsWithErrors` to be a primitive type in the JSON string but got `%s`", jsonObj.get("numberOfProductsWithErrors").toString()));
+      }
       if (!jsonObj.get("numberOfProductsWithWarnings").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `numberOfProductsWithWarnings` to be a primitive type in the JSON string but got `%s`", jsonObj.get("numberOfProductsWithWarnings").toString()));
+      }
+      if (!jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       // ensure the json data is an array
       if (!jsonObj.get("warningDetails").isJsonArray()) {

@@ -8,9 +8,9 @@ read model data for resources
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**attributes** | [**ReadAdSetV23Q1**](ReadAdSetV23Q1.md) |  |  [optional] |
 |**id** | **String** | Id of the entity |  [optional] [readonly] |
 |**type** | **String** |  |  [optional] [readonly] |
-|**attributes** | [**ReadAdSetV23Q1**](ReadAdSetV23Q1.md) |  |  [optional] |
 
 
 

@@ -49,38 +49,16 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
-
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private ExternalCatalogRequest attributes;
 
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
   public JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest() {
   }
-
-  public JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Get type
-   * @return type
-  **/
-  @javax.annotation.Nonnull
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
 
   public JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest attributes(ExternalCatalogRequest attributes) {
     
@@ -101,6 +79,28 @@ public class JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest {
 
   public void setAttributes(ExternalCatalogRequest attributes) {
     this.attributes = attributes;
+  }
+
+
+  public JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nonnull
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   /**
@@ -158,22 +158,22 @@ public class JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest {
       return false;
     }
     JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest jsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest = (JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest) o;
-    return Objects.equals(this.type, jsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest.type) &&
-        Objects.equals(this.attributes, jsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest.attributes)&&
+    return Objects.equals(this.attributes, jsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest.attributes) &&
+        Objects.equals(this.type, jsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest.type)&&
         Objects.equals(this.additionalProperties, jsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes, additionalProperties);
+    return Objects.hash(attributes, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -197,8 +197,8 @@ public class JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
     openapiFields.add("attributes");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -224,12 +224,12 @@ public class JsonApiBodyWithoutIdOfCatalogRequestAndCatalogRequest {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
         ExternalCatalogRequest.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

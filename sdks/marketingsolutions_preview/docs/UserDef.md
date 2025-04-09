@@ -8,8 +8,8 @@ User definition with an identifier (email, uid...) and attributes (key, value)
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**identifier** | **String** |  |  |
 |**attributes** | [**List&lt;Attribute&gt;**](Attribute.md) |  |  |
+|**identifier** | **String** |  |  |
 
 
 

@@ -8,11 +8,11 @@ Settings to target users based on high shopping intents and demographics.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**country** | **String** |  |  |
+|**brandIds** | **Set&lt;String&gt;** |  |  [optional] |
 |**buyingPower** | [**Set&lt;BuyingPowerEnum&gt;**](#Set&lt;BuyingPowerEnum&gt;) |  |  [optional] |
+|**country** | **String** |  |  |
 |**gender** | [**GenderEnum**](#GenderEnum) |  |  [optional] |
 |**interestIds** | **Set&lt;String&gt;** |  |  [optional] |
-|**brandIds** | **Set&lt;String&gt;** |  |  [optional] |
 |**priceRange** | [**Set&lt;PriceRangeEnum&gt;**](#Set&lt;PriceRangeEnum&gt;) |  |  [optional] |
 
 

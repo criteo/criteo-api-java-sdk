@@ -51,188 +51,13 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SyncLineItemsReport {
-  /**
-   * Type of report, if no dimensions/metrics are provided, falls back to summary reportType
-   */
-  @JsonAdapter(ReportTypeEnum.Adapter.class)
-  public enum ReportTypeEnum {
-    SUMMARY("summary"),
-    
-    PAGETYPE("pageType"),
-    
-    PRODUCTCATEGORY("productCategory"),
-    
-    PRODUCT("product"),
-    
-    ENVIRONMENT("environment"),
-    
-    SERVEDCATEGORY("servedCategory");
-
-    private String value;
-
-    ReportTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ReportTypeEnum fromValue(String value) {
-      for (ReportTypeEnum b : ReportTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ReportTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ReportTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ReportTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ReportTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_REPORT_TYPE = "reportType";
-  @SerializedName(SERIALIZED_NAME_REPORT_TYPE)
-  private ReportTypeEnum reportType = ReportTypeEnum.SUMMARY;
-
-  public static final String SERIALIZED_NAME_LINE_ITEM_IDS = "lineItemIds";
-  @SerializedName(SERIALIZED_NAME_LINE_ITEM_IDS)
-  private List<String> lineItemIds = null;
-
-  public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
-  private List<String> campaignIds = null;
-
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
   private String accountId;
 
-  /**
-   * Click attribution window
-   */
-  @JsonAdapter(ClickAttributionWindowEnum.Adapter.class)
-  public enum ClickAttributionWindowEnum {
-    NONE("none"),
-    
-    _7D("7D"),
-    
-    _14D("14D"),
-    
-    _30D("30D");
-
-    private String value;
-
-    ClickAttributionWindowEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ClickAttributionWindowEnum fromValue(String value) {
-      for (ClickAttributionWindowEnum b : ClickAttributionWindowEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ClickAttributionWindowEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ClickAttributionWindowEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ClickAttributionWindowEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ClickAttributionWindowEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_CLICK_ATTRIBUTION_WINDOW = "clickAttributionWindow";
-  @SerializedName(SERIALIZED_NAME_CLICK_ATTRIBUTION_WINDOW)
-  private ClickAttributionWindowEnum clickAttributionWindow = ClickAttributionWindowEnum.NONE;
-
-  /**
-   * View attribution window
-   */
-  @JsonAdapter(ViewAttributionWindowEnum.Adapter.class)
-  public enum ViewAttributionWindowEnum {
-    NONE("none"),
-    
-    _1D("1D"),
-    
-    _7D("7D"),
-    
-    _14D("14D"),
-    
-    _30D("30D");
-
-    private String value;
-
-    ViewAttributionWindowEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ViewAttributionWindowEnum fromValue(String value) {
-      for (ViewAttributionWindowEnum b : ViewAttributionWindowEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ViewAttributionWindowEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ViewAttributionWindowEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ViewAttributionWindowEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ViewAttributionWindowEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_VIEW_ATTRIBUTION_WINDOW = "viewAttributionWindow";
-  @SerializedName(SERIALIZED_NAME_VIEW_ATTRIBUTION_WINDOW)
-  private ViewAttributionWindowEnum viewAttributionWindow = ViewAttributionWindowEnum.NONE;
+  public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
+  private List<String> campaignIds = null;
 
   /**
    * Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays
@@ -288,19 +113,21 @@ public class SyncLineItemsReport {
   private CampaignTypeEnum campaignType = CampaignTypeEnum.ALL;
 
   /**
-   * Filter on specific sales channel: offline or online
+   * Click attribution window
    */
-  @JsonAdapter(SalesChannelEnum.Adapter.class)
-  public enum SalesChannelEnum {
-    ALL("all"),
+  @JsonAdapter(ClickAttributionWindowEnum.Adapter.class)
+  public enum ClickAttributionWindowEnum {
+    NONE("none"),
     
-    OFFLINE("offline"),
+    _7D("7D"),
     
-    ONLINE("online");
+    _14D("14D"),
+    
+    _30D("30D");
 
     private String value;
 
-    SalesChannelEnum(String value) {
+    ClickAttributionWindowEnum(String value) {
       this.value = value;
     }
 
@@ -313,8 +140,8 @@ public class SyncLineItemsReport {
       return String.valueOf(value);
     }
 
-    public static SalesChannelEnum fromValue(String value) {
-      for (SalesChannelEnum b : SalesChannelEnum.values()) {
+    public static ClickAttributionWindowEnum fromValue(String value) {
+      for (ClickAttributionWindowEnum b : ClickAttributionWindowEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -322,23 +149,23 @@ public class SyncLineItemsReport {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<SalesChannelEnum> {
+    public static class Adapter extends TypeAdapter<ClickAttributionWindowEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final SalesChannelEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final ClickAttributionWindowEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public SalesChannelEnum read(final JsonReader jsonReader) throws IOException {
+      public ClickAttributionWindowEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return SalesChannelEnum.fromValue(value);
+        return ClickAttributionWindowEnum.fromValue(value);
       }
     }
   }
 
-  public static final String SERIALIZED_NAME_SALES_CHANNEL = "salesChannel";
-  @SerializedName(SERIALIZED_NAME_SALES_CHANNEL)
-  private SalesChannelEnum salesChannel = SalesChannelEnum.ALL;
+  public static final String SERIALIZED_NAME_CLICK_ATTRIBUTION_WINDOW = "clickAttributionWindow";
+  @SerializedName(SERIALIZED_NAME_CLICK_ATTRIBUTION_WINDOW)
+  private ClickAttributionWindowEnum clickAttributionWindow = ClickAttributionWindowEnum.NONE;
 
   /**
    * Gets or Sets dimensions
@@ -431,6 +258,14 @@ public class SyncLineItemsReport {
   @SerializedName(SERIALIZED_NAME_DIMENSIONS)
   private List<DimensionsEnum> dimensions = null;
 
+  public static final String SERIALIZED_NAME_END_DATE = "endDate";
+  @SerializedName(SERIALIZED_NAME_END_DATE)
+  private OffsetDateTime endDate;
+
+  public static final String SERIALIZED_NAME_LINE_ITEM_IDS = "lineItemIds";
+  @SerializedName(SERIALIZED_NAME_LINE_ITEM_IDS)
+  private List<String> lineItemIds = null;
+
   /**
    * Gets or Sets metrics
    */
@@ -508,70 +343,205 @@ public class SyncLineItemsReport {
   @SerializedName(SERIALIZED_NAME_METRICS)
   private List<MetricsEnum> metrics = null;
 
+  /**
+   * Type of report, if no dimensions/metrics are provided, falls back to summary reportType
+   */
+  @JsonAdapter(ReportTypeEnum.Adapter.class)
+  public enum ReportTypeEnum {
+    SUMMARY("summary"),
+    
+    PAGETYPE("pageType"),
+    
+    PRODUCTCATEGORY("productCategory"),
+    
+    PRODUCT("product"),
+    
+    ENVIRONMENT("environment"),
+    
+    SERVEDCATEGORY("servedCategory");
+
+    private String value;
+
+    ReportTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ReportTypeEnum fromValue(String value) {
+      for (ReportTypeEnum b : ReportTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ReportTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ReportTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ReportTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ReportTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_REPORT_TYPE = "reportType";
+  @SerializedName(SERIALIZED_NAME_REPORT_TYPE)
+  private ReportTypeEnum reportType = ReportTypeEnum.SUMMARY;
+
+  /**
+   * Filter on specific sales channel: offline or online
+   */
+  @JsonAdapter(SalesChannelEnum.Adapter.class)
+  public enum SalesChannelEnum {
+    ALL("all"),
+    
+    OFFLINE("offline"),
+    
+    ONLINE("online");
+
+    private String value;
+
+    SalesChannelEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static SalesChannelEnum fromValue(String value) {
+      for (SalesChannelEnum b : SalesChannelEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<SalesChannelEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SalesChannelEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SalesChannelEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return SalesChannelEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_SALES_CHANNEL = "salesChannel";
+  @SerializedName(SERIALIZED_NAME_SALES_CHANNEL)
+  private SalesChannelEnum salesChannel = SalesChannelEnum.ALL;
+
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private OffsetDateTime startDate;
-
-  public static final String SERIALIZED_NAME_END_DATE = "endDate";
-  @SerializedName(SERIALIZED_NAME_END_DATE)
-  private OffsetDateTime endDate;
 
   public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
   @SerializedName(SERIALIZED_NAME_TIMEZONE)
   private String timezone = "UTC";
 
+  /**
+   * View attribution window
+   */
+  @JsonAdapter(ViewAttributionWindowEnum.Adapter.class)
+  public enum ViewAttributionWindowEnum {
+    NONE("none"),
+    
+    _1D("1D"),
+    
+    _7D("7D"),
+    
+    _14D("14D"),
+    
+    _30D("30D");
+
+    private String value;
+
+    ViewAttributionWindowEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ViewAttributionWindowEnum fromValue(String value) {
+      for (ViewAttributionWindowEnum b : ViewAttributionWindowEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ViewAttributionWindowEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ViewAttributionWindowEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ViewAttributionWindowEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ViewAttributionWindowEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_VIEW_ATTRIBUTION_WINDOW = "viewAttributionWindow";
+  @SerializedName(SERIALIZED_NAME_VIEW_ATTRIBUTION_WINDOW)
+  private ViewAttributionWindowEnum viewAttributionWindow = ViewAttributionWindowEnum.NONE;
+
   public SyncLineItemsReport() {
   }
 
-  public SyncLineItemsReport reportType(ReportTypeEnum reportType) {
+  public SyncLineItemsReport accountId(String accountId) {
     
-    this.reportType = reportType;
+    this.accountId = accountId;
     return this;
   }
 
    /**
-   * Type of report, if no dimensions/metrics are provided, falls back to summary reportType
-   * @return reportType
+   * Account id to report on
+   * @return accountId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public ReportTypeEnum getReportType() {
-    return reportType;
+  public String getAccountId() {
+    return accountId;
   }
 
 
-  public void setReportType(ReportTypeEnum reportType) {
-    this.reportType = reportType;
-  }
-
-
-  public SyncLineItemsReport lineItemIds(List<String> lineItemIds) {
-    
-    this.lineItemIds = lineItemIds;
-    return this;
-  }
-
-  public SyncLineItemsReport addLineItemIdsItem(String lineItemIdsItem) {
-    if (this.lineItemIds == null) {
-      this.lineItemIds = new ArrayList<>();
-    }
-    this.lineItemIds.add(lineItemIdsItem);
-    return this;
-  }
-
-   /**
-   * Line Item ids to filter
-   * @return lineItemIds
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getLineItemIds() {
-    return lineItemIds;
-  }
-
-
-  public void setLineItemIds(List<String> lineItemIds) {
-    this.lineItemIds = lineItemIds;
+  public void setAccountId(String accountId) {
+    this.accountId = accountId;
   }
 
 
@@ -605,72 +575,6 @@ public class SyncLineItemsReport {
   }
 
 
-  public SyncLineItemsReport accountId(String accountId) {
-    
-    this.accountId = accountId;
-    return this;
-  }
-
-   /**
-   * Account id to report on
-   * @return accountId
-  **/
-  @javax.annotation.Nonnull
-
-  public String getAccountId() {
-    return accountId;
-  }
-
-
-  public void setAccountId(String accountId) {
-    this.accountId = accountId;
-  }
-
-
-  public SyncLineItemsReport clickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
-    
-    this.clickAttributionWindow = clickAttributionWindow;
-    return this;
-  }
-
-   /**
-   * Click attribution window
-   * @return clickAttributionWindow
-  **/
-  @javax.annotation.Nullable
-
-  public ClickAttributionWindowEnum getClickAttributionWindow() {
-    return clickAttributionWindow;
-  }
-
-
-  public void setClickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
-    this.clickAttributionWindow = clickAttributionWindow;
-  }
-
-
-  public SyncLineItemsReport viewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
-    
-    this.viewAttributionWindow = viewAttributionWindow;
-    return this;
-  }
-
-   /**
-   * View attribution window
-   * @return viewAttributionWindow
-  **/
-  @javax.annotation.Nullable
-
-  public ViewAttributionWindowEnum getViewAttributionWindow() {
-    return viewAttributionWindow;
-  }
-
-
-  public void setViewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
-    this.viewAttributionWindow = viewAttributionWindow;
-  }
-
-
   public SyncLineItemsReport campaignType(CampaignTypeEnum campaignType) {
     
     this.campaignType = campaignType;
@@ -693,25 +597,25 @@ public class SyncLineItemsReport {
   }
 
 
-  public SyncLineItemsReport salesChannel(SalesChannelEnum salesChannel) {
+  public SyncLineItemsReport clickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
     
-    this.salesChannel = salesChannel;
+    this.clickAttributionWindow = clickAttributionWindow;
     return this;
   }
 
    /**
-   * Filter on specific sales channel: offline or online
-   * @return salesChannel
+   * Click attribution window
+   * @return clickAttributionWindow
   **/
   @javax.annotation.Nullable
 
-  public SalesChannelEnum getSalesChannel() {
-    return salesChannel;
+  public ClickAttributionWindowEnum getClickAttributionWindow() {
+    return clickAttributionWindow;
   }
 
 
-  public void setSalesChannel(SalesChannelEnum salesChannel) {
-    this.salesChannel = salesChannel;
+  public void setClickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
+    this.clickAttributionWindow = clickAttributionWindow;
   }
 
 
@@ -745,6 +649,58 @@ public class SyncLineItemsReport {
   }
 
 
+  public SyncLineItemsReport endDate(OffsetDateTime endDate) {
+    
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * End date
+   * @return endDate
+  **/
+  @javax.annotation.Nonnull
+
+  public OffsetDateTime getEndDate() {
+    return endDate;
+  }
+
+
+  public void setEndDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
+  }
+
+
+  public SyncLineItemsReport lineItemIds(List<String> lineItemIds) {
+    
+    this.lineItemIds = lineItemIds;
+    return this;
+  }
+
+  public SyncLineItemsReport addLineItemIdsItem(String lineItemIdsItem) {
+    if (this.lineItemIds == null) {
+      this.lineItemIds = new ArrayList<>();
+    }
+    this.lineItemIds.add(lineItemIdsItem);
+    return this;
+  }
+
+   /**
+   * Line Item ids to filter
+   * @return lineItemIds
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getLineItemIds() {
+    return lineItemIds;
+  }
+
+
+  public void setLineItemIds(List<String> lineItemIds) {
+    this.lineItemIds = lineItemIds;
+  }
+
+
   public SyncLineItemsReport metrics(List<MetricsEnum> metrics) {
     
     this.metrics = metrics;
@@ -775,6 +731,50 @@ public class SyncLineItemsReport {
   }
 
 
+  public SyncLineItemsReport reportType(ReportTypeEnum reportType) {
+    
+    this.reportType = reportType;
+    return this;
+  }
+
+   /**
+   * Type of report, if no dimensions/metrics are provided, falls back to summary reportType
+   * @return reportType
+  **/
+  @javax.annotation.Nullable
+
+  public ReportTypeEnum getReportType() {
+    return reportType;
+  }
+
+
+  public void setReportType(ReportTypeEnum reportType) {
+    this.reportType = reportType;
+  }
+
+
+  public SyncLineItemsReport salesChannel(SalesChannelEnum salesChannel) {
+    
+    this.salesChannel = salesChannel;
+    return this;
+  }
+
+   /**
+   * Filter on specific sales channel: offline or online
+   * @return salesChannel
+  **/
+  @javax.annotation.Nullable
+
+  public SalesChannelEnum getSalesChannel() {
+    return salesChannel;
+  }
+
+
+  public void setSalesChannel(SalesChannelEnum salesChannel) {
+    this.salesChannel = salesChannel;
+  }
+
+
   public SyncLineItemsReport startDate(OffsetDateTime startDate) {
     
     this.startDate = startDate;
@@ -797,28 +797,6 @@ public class SyncLineItemsReport {
   }
 
 
-  public SyncLineItemsReport endDate(OffsetDateTime endDate) {
-    
-    this.endDate = endDate;
-    return this;
-  }
-
-   /**
-   * End date
-   * @return endDate
-  **/
-  @javax.annotation.Nonnull
-
-  public OffsetDateTime getEndDate() {
-    return endDate;
-  }
-
-
-  public void setEndDate(OffsetDateTime endDate) {
-    this.endDate = endDate;
-  }
-
-
   public SyncLineItemsReport timezone(String timezone) {
     
     this.timezone = timezone;
@@ -838,6 +816,28 @@ public class SyncLineItemsReport {
 
   public void setTimezone(String timezone) {
     this.timezone = timezone;
+  }
+
+
+  public SyncLineItemsReport viewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
+    
+    this.viewAttributionWindow = viewAttributionWindow;
+    return this;
+  }
+
+   /**
+   * View attribution window
+   * @return viewAttributionWindow
+  **/
+  @javax.annotation.Nullable
+
+  public ViewAttributionWindowEnum getViewAttributionWindow() {
+    return viewAttributionWindow;
+  }
+
+
+  public void setViewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
+    this.viewAttributionWindow = viewAttributionWindow;
   }
 
   /**
@@ -895,44 +895,44 @@ public class SyncLineItemsReport {
       return false;
     }
     SyncLineItemsReport syncLineItemsReport = (SyncLineItemsReport) o;
-    return Objects.equals(this.reportType, syncLineItemsReport.reportType) &&
-        Objects.equals(this.lineItemIds, syncLineItemsReport.lineItemIds) &&
+    return Objects.equals(this.accountId, syncLineItemsReport.accountId) &&
         Objects.equals(this.campaignIds, syncLineItemsReport.campaignIds) &&
-        Objects.equals(this.accountId, syncLineItemsReport.accountId) &&
-        Objects.equals(this.clickAttributionWindow, syncLineItemsReport.clickAttributionWindow) &&
-        Objects.equals(this.viewAttributionWindow, syncLineItemsReport.viewAttributionWindow) &&
         Objects.equals(this.campaignType, syncLineItemsReport.campaignType) &&
-        Objects.equals(this.salesChannel, syncLineItemsReport.salesChannel) &&
+        Objects.equals(this.clickAttributionWindow, syncLineItemsReport.clickAttributionWindow) &&
         Objects.equals(this.dimensions, syncLineItemsReport.dimensions) &&
-        Objects.equals(this.metrics, syncLineItemsReport.metrics) &&
-        Objects.equals(this.startDate, syncLineItemsReport.startDate) &&
         Objects.equals(this.endDate, syncLineItemsReport.endDate) &&
-        Objects.equals(this.timezone, syncLineItemsReport.timezone)&&
+        Objects.equals(this.lineItemIds, syncLineItemsReport.lineItemIds) &&
+        Objects.equals(this.metrics, syncLineItemsReport.metrics) &&
+        Objects.equals(this.reportType, syncLineItemsReport.reportType) &&
+        Objects.equals(this.salesChannel, syncLineItemsReport.salesChannel) &&
+        Objects.equals(this.startDate, syncLineItemsReport.startDate) &&
+        Objects.equals(this.timezone, syncLineItemsReport.timezone) &&
+        Objects.equals(this.viewAttributionWindow, syncLineItemsReport.viewAttributionWindow)&&
         Objects.equals(this.additionalProperties, syncLineItemsReport.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportType, lineItemIds, campaignIds, accountId, clickAttributionWindow, viewAttributionWindow, campaignType, salesChannel, dimensions, metrics, startDate, endDate, timezone, additionalProperties);
+    return Objects.hash(accountId, campaignIds, campaignType, clickAttributionWindow, dimensions, endDate, lineItemIds, metrics, reportType, salesChannel, startDate, timezone, viewAttributionWindow, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SyncLineItemsReport {\n");
-    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
-    sb.append("    lineItemIds: ").append(toIndentedString(lineItemIds)).append("\n");
-    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
-    sb.append("    clickAttributionWindow: ").append(toIndentedString(clickAttributionWindow)).append("\n");
-    sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
+    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
-    sb.append("    salesChannel: ").append(toIndentedString(salesChannel)).append("\n");
+    sb.append("    clickAttributionWindow: ").append(toIndentedString(clickAttributionWindow)).append("\n");
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
-    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    lineItemIds: ").append(toIndentedString(lineItemIds)).append("\n");
+    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
+    sb.append("    reportType: ").append(toIndentedString(reportType)).append("\n");
+    sb.append("    salesChannel: ").append(toIndentedString(salesChannel)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
+    sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -956,25 +956,25 @@ public class SyncLineItemsReport {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("reportType");
-    openapiFields.add("lineItemIds");
-    openapiFields.add("campaignIds");
     openapiFields.add("accountId");
-    openapiFields.add("clickAttributionWindow");
-    openapiFields.add("viewAttributionWindow");
+    openapiFields.add("campaignIds");
     openapiFields.add("campaignType");
-    openapiFields.add("salesChannel");
+    openapiFields.add("clickAttributionWindow");
     openapiFields.add("dimensions");
-    openapiFields.add("metrics");
-    openapiFields.add("startDate");
     openapiFields.add("endDate");
+    openapiFields.add("lineItemIds");
+    openapiFields.add("metrics");
+    openapiFields.add("reportType");
+    openapiFields.add("salesChannel");
+    openapiFields.add("startDate");
     openapiFields.add("timezone");
+    openapiFields.add("viewAttributionWindow");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("accountId");
-    openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("endDate");
+    openapiRequiredFields.add("startDate");
   }
 
  /**
@@ -996,42 +996,42 @@ public class SyncLineItemsReport {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("reportType") != null && !jsonObj.get("reportType").isJsonNull()) && !jsonObj.get("reportType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `reportType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reportType").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("lineItemIds") != null && !jsonObj.get("lineItemIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lineItemIds` to be an array in the JSON string but got `%s`", jsonObj.get("lineItemIds").toString()));
+      if (!jsonObj.get("accountId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("campaignIds") != null && !jsonObj.get("campaignIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignIds` to be an array in the JSON string but got `%s`", jsonObj.get("campaignIds").toString()));
       }
-      if (!jsonObj.get("accountId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `accountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountId").toString()));
-      }
-      if ((jsonObj.get("clickAttributionWindow") != null && !jsonObj.get("clickAttributionWindow").isJsonNull()) && !jsonObj.get("clickAttributionWindow").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `clickAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionWindow").toString()));
-      }
-      if ((jsonObj.get("viewAttributionWindow") != null && !jsonObj.get("viewAttributionWindow").isJsonNull()) && !jsonObj.get("viewAttributionWindow").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `viewAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewAttributionWindow").toString()));
-      }
       if ((jsonObj.get("campaignType") != null && !jsonObj.get("campaignType").isJsonNull()) && !jsonObj.get("campaignType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignType").toString()));
       }
-      if ((jsonObj.get("salesChannel") != null && !jsonObj.get("salesChannel").isJsonNull()) && !jsonObj.get("salesChannel").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `salesChannel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("salesChannel").toString()));
+      if ((jsonObj.get("clickAttributionWindow") != null && !jsonObj.get("clickAttributionWindow").isJsonNull()) && !jsonObj.get("clickAttributionWindow").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `clickAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionWindow").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `dimensions` to be an array in the JSON string but got `%s`", jsonObj.get("dimensions").toString()));
       }
       // ensure the optional json data is an array if present
+      if (jsonObj.get("lineItemIds") != null && !jsonObj.get("lineItemIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `lineItemIds` to be an array in the JSON string but got `%s`", jsonObj.get("lineItemIds").toString()));
+      }
+      // ensure the optional json data is an array if present
       if (jsonObj.get("metrics") != null && !jsonObj.get("metrics").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));
       }
+      if ((jsonObj.get("reportType") != null && !jsonObj.get("reportType").isJsonNull()) && !jsonObj.get("reportType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reportType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reportType").toString()));
+      }
+      if ((jsonObj.get("salesChannel") != null && !jsonObj.get("salesChannel").isJsonNull()) && !jsonObj.get("salesChannel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `salesChannel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("salesChannel").toString()));
+      }
       if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));
+      }
+      if ((jsonObj.get("viewAttributionWindow") != null && !jsonObj.get("viewAttributionWindow").isJsonNull()) && !jsonObj.get("viewAttributionWindow").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `viewAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewAttributionWindow").toString()));
       }
   }
 

@@ -50,40 +50,40 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AddRemoveKeywordModel {
-  public static final String SERIALIZED_NAME_PHRASE = "phrase";
-  @SerializedName(SERIALIZED_NAME_PHRASE)
-  private String phrase;
+  public static final String SERIALIZED_NAME_IS_DELETED = "isDeleted";
+  @SerializedName(SERIALIZED_NAME_IS_DELETED)
+  private Boolean isDeleted;
 
   public static final String SERIALIZED_NAME_MATCH_TYPE = "matchType";
   @SerializedName(SERIALIZED_NAME_MATCH_TYPE)
   private MatchTypeModel matchType;
 
-  public static final String SERIALIZED_NAME_IS_DELETED = "isDeleted";
-  @SerializedName(SERIALIZED_NAME_IS_DELETED)
-  private Boolean isDeleted;
+  public static final String SERIALIZED_NAME_PHRASE = "phrase";
+  @SerializedName(SERIALIZED_NAME_PHRASE)
+  private String phrase;
 
   public AddRemoveKeywordModel() {
   }
 
-  public AddRemoveKeywordModel phrase(String phrase) {
+  public AddRemoveKeywordModel isDeleted(Boolean isDeleted) {
     
-    this.phrase = phrase;
+    this.isDeleted = isDeleted;
     return this;
   }
 
    /**
-   * Get phrase
-   * @return phrase
+   * Get isDeleted
+   * @return isDeleted
   **/
   @javax.annotation.Nullable
 
-  public String getPhrase() {
-    return phrase;
+  public Boolean getIsDeleted() {
+    return isDeleted;
   }
 
 
-  public void setPhrase(String phrase) {
-    this.phrase = phrase;
+  public void setIsDeleted(Boolean isDeleted) {
+    this.isDeleted = isDeleted;
   }
 
 
@@ -109,25 +109,25 @@ public class AddRemoveKeywordModel {
   }
 
 
-  public AddRemoveKeywordModel isDeleted(Boolean isDeleted) {
+  public AddRemoveKeywordModel phrase(String phrase) {
     
-    this.isDeleted = isDeleted;
+    this.phrase = phrase;
     return this;
   }
 
    /**
-   * Get isDeleted
-   * @return isDeleted
+   * Get phrase
+   * @return phrase
   **/
   @javax.annotation.Nullable
 
-  public Boolean getIsDeleted() {
-    return isDeleted;
+  public String getPhrase() {
+    return phrase;
   }
 
 
-  public void setIsDeleted(Boolean isDeleted) {
-    this.isDeleted = isDeleted;
+  public void setPhrase(String phrase) {
+    this.phrase = phrase;
   }
 
 
@@ -141,9 +141,9 @@ public class AddRemoveKeywordModel {
       return false;
     }
     AddRemoveKeywordModel addRemoveKeywordModel = (AddRemoveKeywordModel) o;
-    return Objects.equals(this.phrase, addRemoveKeywordModel.phrase) &&
+    return Objects.equals(this.isDeleted, addRemoveKeywordModel.isDeleted) &&
         Objects.equals(this.matchType, addRemoveKeywordModel.matchType) &&
-        Objects.equals(this.isDeleted, addRemoveKeywordModel.isDeleted);
+        Objects.equals(this.phrase, addRemoveKeywordModel.phrase);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -152,7 +152,7 @@ public class AddRemoveKeywordModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(phrase, matchType, isDeleted);
+    return Objects.hash(isDeleted, matchType, phrase);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -166,9 +166,9 @@ public class AddRemoveKeywordModel {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AddRemoveKeywordModel {\n");
-    sb.append("    phrase: ").append(toIndentedString(phrase)).append("\n");
-    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
     sb.append("    isDeleted: ").append(toIndentedString(isDeleted)).append("\n");
+    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
+    sb.append("    phrase: ").append(toIndentedString(phrase)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -191,9 +191,9 @@ public class AddRemoveKeywordModel {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("phrase");
-    openapiFields.add("matchType");
     openapiFields.add("isDeleted");
+    openapiFields.add("matchType");
+    openapiFields.add("phrase");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -8,28 +8,18 @@ A common line item to hold line item information shared between preferred and au
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** |  |  |
-|**type** | [**TypeEnum**](#TypeEnum) |  |  |
-|**startDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
+|**budget** | **BigDecimal** |  |  [optional] |
+|**budgetRemaining** | **BigDecimal** |  |  |
+|**budgetSpent** | **Double** |  |  [optional] |
+|**campaignId** | **String** |  |  |
+|**createdAt** | **OffsetDateTime** |  |  |
 |**endDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  [optional] |
+|**name** | **String** |  |  |
+|**startDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
 |**status** | [**StatusEnum**](#StatusEnum) |  |  [optional] |
 |**targetRetailerId** | **String** |  |  |
-|**budget** | **BigDecimal** |  |  [optional] |
-|**campaignId** | **String** |  |  |
-|**budgetSpent** | **Double** |  |  [optional] |
-|**budgetRemaining** | **BigDecimal** |  |  |
-|**createdAt** | **OffsetDateTime** |  |  |
+|**type** | [**TypeEnum**](#TypeEnum) |  |  |
 |**updatedAt** | **OffsetDateTime** |  |  |
-
-
-
-## Enum: TypeEnum
-
-| Name | Value |
-|---- | -----|
-| UNKNOWN | &quot;unknown&quot; |
-| AUCTION | &quot;auction&quot; |
-| PREFERRED | &quot;preferred&quot; |
 
 
 
@@ -46,6 +36,16 @@ A common line item to hold line item information shared between preferred and au
 | ENDED | &quot;ended&quot; |
 | ARCHIVED | &quot;archived&quot; |
 | NOFUNDS | &quot;noFunds&quot; |
+
+
+
+## Enum: TypeEnum
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| AUCTION | &quot;auction&quot; |
+| PREFERRED | &quot;preferred&quot; |
 
 
 

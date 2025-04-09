@@ -51,6 +51,73 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Keywords {
+  public static final String SERIALIZED_NAME_BID = "bid";
+  @SerializedName(SERIALIZED_NAME_BID)
+  private Double bid;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
+
+  public static final String SERIALIZED_NAME_INPUT_KEYWORDS = "inputKeywords";
+  @SerializedName(SERIALIZED_NAME_INPUT_KEYWORDS)
+  private InputKeywords inputKeywords;
+
+  /**
+   * The matching algorthim to be use when comparing this keyword with the shopper search phrase
+   */
+  @JsonAdapter(MatchTypeEnum.Adapter.class)
+  public enum MatchTypeEnum {
+    POSITIVEEXACTMATCH("PositiveExactMatch"),
+    
+    NEGATIVEEXACTMATCH("NegativeExactMatch"),
+    
+    NEGATIVEBROADMATCH("NegativeBroadMatch"),
+    
+    UNKNOWN("Unknown");
+
+    private String value;
+
+    MatchTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static MatchTypeEnum fromValue(String value) {
+      for (MatchTypeEnum b : MatchTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<MatchTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final MatchTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public MatchTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return MatchTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_MATCH_TYPE = "matchType";
+  @SerializedName(SERIALIZED_NAME_MATCH_TYPE)
+  private MatchTypeEnum matchType;
+
   /**
    * Review status of the keyword
    */
@@ -112,123 +179,12 @@ public class Keywords {
   @SerializedName(SERIALIZED_NAME_REVIEW_STATE)
   private ReviewStateEnum reviewState;
 
-  /**
-   * The matching algorthim to be use when comparing this keyword with the shopper search phrase
-   */
-  @JsonAdapter(MatchTypeEnum.Adapter.class)
-  public enum MatchTypeEnum {
-    POSITIVEEXACTMATCH("PositiveExactMatch"),
-    
-    NEGATIVEEXACTMATCH("NegativeExactMatch"),
-    
-    NEGATIVEBROADMATCH("NegativeBroadMatch"),
-    
-    UNKNOWN("Unknown");
-
-    private String value;
-
-    MatchTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static MatchTypeEnum fromValue(String value) {
-      for (MatchTypeEnum b : MatchTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<MatchTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final MatchTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public MatchTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return MatchTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_MATCH_TYPE = "matchType";
-  @SerializedName(SERIALIZED_NAME_MATCH_TYPE)
-  private MatchTypeEnum matchType;
-
-  public static final String SERIALIZED_NAME_BID = "bid";
-  @SerializedName(SERIALIZED_NAME_BID)
-  private Double bid;
-
-  public static final String SERIALIZED_NAME_INPUT_KEYWORDS = "inputKeywords";
-  @SerializedName(SERIALIZED_NAME_INPUT_KEYWORDS)
-  private InputKeywords inputKeywords;
-
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
-
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
   public Keywords() {
   }
-
-  public Keywords reviewState(ReviewStateEnum reviewState) {
-    
-    this.reviewState = reviewState;
-    return this;
-  }
-
-   /**
-   * Review status of the keyword
-   * @return reviewState
-  **/
-  @javax.annotation.Nullable
-
-  public ReviewStateEnum getReviewState() {
-    return reviewState;
-  }
-
-
-  public void setReviewState(ReviewStateEnum reviewState) {
-    this.reviewState = reviewState;
-  }
-
-
-  public Keywords matchType(MatchTypeEnum matchType) {
-    
-    this.matchType = matchType;
-    return this;
-  }
-
-   /**
-   * The matching algorthim to be use when comparing this keyword with the shopper search phrase
-   * @return matchType
-  **/
-  @javax.annotation.Nullable
-
-  public MatchTypeEnum getMatchType() {
-    return matchType;
-  }
-
-
-  public void setMatchType(MatchTypeEnum matchType) {
-    this.matchType = matchType;
-  }
-
 
   public Keywords bid(Double bid) {
     
@@ -249,6 +205,28 @@ public class Keywords {
 
   public void setBid(Double bid) {
     this.bid = bid;
+  }
+
+
+  public Keywords createdAt(OffsetDateTime createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * The time at which this keyword was created in UTC
+   * @return createdAt
+  **/
+  @javax.annotation.Nullable
+
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
   }
 
 
@@ -274,25 +252,47 @@ public class Keywords {
   }
 
 
-  public Keywords createdAt(OffsetDateTime createdAt) {
+  public Keywords matchType(MatchTypeEnum matchType) {
     
-    this.createdAt = createdAt;
+    this.matchType = matchType;
     return this;
   }
 
    /**
-   * The time at which this keyword was created in UTC
-   * @return createdAt
+   * The matching algorthim to be use when comparing this keyword with the shopper search phrase
+   * @return matchType
   **/
   @javax.annotation.Nullable
 
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
+  public MatchTypeEnum getMatchType() {
+    return matchType;
   }
 
 
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
+  public void setMatchType(MatchTypeEnum matchType) {
+    this.matchType = matchType;
+  }
+
+
+  public Keywords reviewState(ReviewStateEnum reviewState) {
+    
+    this.reviewState = reviewState;
+    return this;
+  }
+
+   /**
+   * Review status of the keyword
+   * @return reviewState
+  **/
+  @javax.annotation.Nullable
+
+  public ReviewStateEnum getReviewState() {
+    return reviewState;
+  }
+
+
+  public void setReviewState(ReviewStateEnum reviewState) {
+    this.reviewState = reviewState;
   }
 
 
@@ -328,11 +328,11 @@ public class Keywords {
       return false;
     }
     Keywords keywords = (Keywords) o;
-    return Objects.equals(this.reviewState, keywords.reviewState) &&
-        Objects.equals(this.matchType, keywords.matchType) &&
-        Objects.equals(this.bid, keywords.bid) &&
-        Objects.equals(this.inputKeywords, keywords.inputKeywords) &&
+    return Objects.equals(this.bid, keywords.bid) &&
         Objects.equals(this.createdAt, keywords.createdAt) &&
+        Objects.equals(this.inputKeywords, keywords.inputKeywords) &&
+        Objects.equals(this.matchType, keywords.matchType) &&
+        Objects.equals(this.reviewState, keywords.reviewState) &&
         Objects.equals(this.updatedAt, keywords.updatedAt);
   }
 
@@ -342,7 +342,7 @@ public class Keywords {
 
   @Override
   public int hashCode() {
-    return Objects.hash(reviewState, matchType, bid, inputKeywords, createdAt, updatedAt);
+    return Objects.hash(bid, createdAt, inputKeywords, matchType, reviewState, updatedAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -356,11 +356,11 @@ public class Keywords {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Keywords {\n");
-    sb.append("    reviewState: ").append(toIndentedString(reviewState)).append("\n");
-    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
     sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
-    sb.append("    inputKeywords: ").append(toIndentedString(inputKeywords)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    inputKeywords: ").append(toIndentedString(inputKeywords)).append("\n");
+    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
+    sb.append("    reviewState: ").append(toIndentedString(reviewState)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -384,11 +384,11 @@ public class Keywords {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("reviewState");
-    openapiFields.add("matchType");
     openapiFields.add("bid");
-    openapiFields.add("inputKeywords");
     openapiFields.add("createdAt");
+    openapiFields.add("inputKeywords");
+    openapiFields.add("matchType");
+    openapiFields.add("reviewState");
     openapiFields.add("updatedAt");
 
     // a set of required properties/fields (JSON key names)
@@ -415,15 +415,15 @@ public class Keywords {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Keywords` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("reviewState") != null && !jsonObj.get("reviewState").isJsonNull()) && !jsonObj.get("reviewState").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `reviewState` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reviewState").toString()));
+      // validate the optional field `inputKeywords`
+      if (jsonObj.get("inputKeywords") != null && !jsonObj.get("inputKeywords").isJsonNull()) {
+        InputKeywords.validateJsonObject(jsonObj.getAsJsonObject("inputKeywords"));
       }
       if ((jsonObj.get("matchType") != null && !jsonObj.get("matchType").isJsonNull()) && !jsonObj.get("matchType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `matchType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("matchType").toString()));
       }
-      // validate the optional field `inputKeywords`
-      if (jsonObj.get("inputKeywords") != null && !jsonObj.get("inputKeywords").isJsonNull()) {
-        InputKeywords.validateJsonObject(jsonObj.getAsJsonObject("inputKeywords"));
+      if ((jsonObj.get("reviewState") != null && !jsonObj.get("reviewState").isJsonNull()) && !jsonObj.get("reviewState").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reviewState` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reviewState").toString()));
       }
   }
 

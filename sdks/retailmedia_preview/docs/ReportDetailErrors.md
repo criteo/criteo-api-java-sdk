@@ -8,8 +8,8 @@ A list of errors on a batch operation.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**productId** | **String** | The product ID in lowercase |  |
 |**errors** | [**List&lt;ReportDetailError&gt;**](ReportDetailError.md) |  |  |
+|**productId** | **String** | The product ID in lowercase |  |
 
 
 

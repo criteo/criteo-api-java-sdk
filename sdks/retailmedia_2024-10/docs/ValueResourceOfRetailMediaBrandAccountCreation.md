@@ -8,8 +8,8 @@ A value resource exposed by the API.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** | Type of the resource. |  [optional] |
 |**attributes** | [**ExternalRetailMediaBrandAccountCreation**](ExternalRetailMediaBrandAccountCreation.md) |  |  [optional] |
+|**type** | **String** | Type of the resource. |  [optional] |
 
 
 

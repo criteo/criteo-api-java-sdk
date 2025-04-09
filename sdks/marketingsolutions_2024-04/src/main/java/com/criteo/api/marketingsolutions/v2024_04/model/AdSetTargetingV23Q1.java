@@ -56,13 +56,13 @@ public class AdSetTargetingV23Q1 {
   @SerializedName(SERIALIZED_NAME_DELIVERY_LIMITATIONS)
   private AdSetDeliveryLimitationsV23Q1 deliveryLimitations;
 
-  public static final String SERIALIZED_NAME_GEO_LOCATION = "geoLocation";
-  @SerializedName(SERIALIZED_NAME_GEO_LOCATION)
-  private AdSetGeoLocationV23Q1 geoLocation;
-
   public static final String SERIALIZED_NAME_FREQUENCY_CAPPING = "frequencyCapping";
   @SerializedName(SERIALIZED_NAME_FREQUENCY_CAPPING)
   private AdSetFrequencyCappingV23Q1 frequencyCapping;
+
+  public static final String SERIALIZED_NAME_GEO_LOCATION = "geoLocation";
+  @SerializedName(SERIALIZED_NAME_GEO_LOCATION)
+  private AdSetGeoLocationV23Q1 geoLocation;
 
   public AdSetTargetingV23Q1() {
   }
@@ -89,28 +89,6 @@ public class AdSetTargetingV23Q1 {
   }
 
 
-  public AdSetTargetingV23Q1 geoLocation(AdSetGeoLocationV23Q1 geoLocation) {
-    
-    this.geoLocation = geoLocation;
-    return this;
-  }
-
-   /**
-   * Get geoLocation
-   * @return geoLocation
-  **/
-  @javax.annotation.Nullable
-
-  public AdSetGeoLocationV23Q1 getGeoLocation() {
-    return geoLocation;
-  }
-
-
-  public void setGeoLocation(AdSetGeoLocationV23Q1 geoLocation) {
-    this.geoLocation = geoLocation;
-  }
-
-
   public AdSetTargetingV23Q1 frequencyCapping(AdSetFrequencyCappingV23Q1 frequencyCapping) {
     
     this.frequencyCapping = frequencyCapping;
@@ -130,6 +108,28 @@ public class AdSetTargetingV23Q1 {
 
   public void setFrequencyCapping(AdSetFrequencyCappingV23Q1 frequencyCapping) {
     this.frequencyCapping = frequencyCapping;
+  }
+
+
+  public AdSetTargetingV23Q1 geoLocation(AdSetGeoLocationV23Q1 geoLocation) {
+    
+    this.geoLocation = geoLocation;
+    return this;
+  }
+
+   /**
+   * Get geoLocation
+   * @return geoLocation
+  **/
+  @javax.annotation.Nullable
+
+  public AdSetGeoLocationV23Q1 getGeoLocation() {
+    return geoLocation;
+  }
+
+
+  public void setGeoLocation(AdSetGeoLocationV23Q1 geoLocation) {
+    this.geoLocation = geoLocation;
   }
 
   /**
@@ -188,8 +188,8 @@ public class AdSetTargetingV23Q1 {
     }
     AdSetTargetingV23Q1 adSetTargetingV23Q1 = (AdSetTargetingV23Q1) o;
     return Objects.equals(this.deliveryLimitations, adSetTargetingV23Q1.deliveryLimitations) &&
-        Objects.equals(this.geoLocation, adSetTargetingV23Q1.geoLocation) &&
-        Objects.equals(this.frequencyCapping, adSetTargetingV23Q1.frequencyCapping)&&
+        Objects.equals(this.frequencyCapping, adSetTargetingV23Q1.frequencyCapping) &&
+        Objects.equals(this.geoLocation, adSetTargetingV23Q1.geoLocation)&&
         Objects.equals(this.additionalProperties, adSetTargetingV23Q1.additionalProperties);
   }
 
@@ -199,7 +199,7 @@ public class AdSetTargetingV23Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(deliveryLimitations, geoLocation, frequencyCapping, additionalProperties);
+    return Objects.hash(deliveryLimitations, frequencyCapping, geoLocation, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -214,8 +214,8 @@ public class AdSetTargetingV23Q1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdSetTargetingV23Q1 {\n");
     sb.append("    deliveryLimitations: ").append(toIndentedString(deliveryLimitations)).append("\n");
-    sb.append("    geoLocation: ").append(toIndentedString(geoLocation)).append("\n");
     sb.append("    frequencyCapping: ").append(toIndentedString(frequencyCapping)).append("\n");
+    sb.append("    geoLocation: ").append(toIndentedString(geoLocation)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -240,8 +240,8 @@ public class AdSetTargetingV23Q1 {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("deliveryLimitations");
-    openapiFields.add("geoLocation");
     openapiFields.add("frequencyCapping");
+    openapiFields.add("geoLocation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -263,13 +263,13 @@ public class AdSetTargetingV23Q1 {
       if (jsonObj.get("deliveryLimitations") != null && !jsonObj.get("deliveryLimitations").isJsonNull()) {
         AdSetDeliveryLimitationsV23Q1.validateJsonObject(jsonObj.getAsJsonObject("deliveryLimitations"));
       }
-      // validate the optional field `geoLocation`
-      if (jsonObj.get("geoLocation") != null && !jsonObj.get("geoLocation").isJsonNull()) {
-        AdSetGeoLocationV23Q1.validateJsonObject(jsonObj.getAsJsonObject("geoLocation"));
-      }
       // validate the optional field `frequencyCapping`
       if (jsonObj.get("frequencyCapping") != null && !jsonObj.get("frequencyCapping").isJsonNull()) {
         AdSetFrequencyCappingV23Q1.validateJsonObject(jsonObj.getAsJsonObject("frequencyCapping"));
+      }
+      // validate the optional field `geoLocation`
+      if (jsonObj.get("geoLocation") != null && !jsonObj.get("geoLocation").isJsonNull()) {
+        AdSetGeoLocationV23Q1.validateJsonObject(jsonObj.getAsJsonObject("geoLocation"));
       }
   }
 

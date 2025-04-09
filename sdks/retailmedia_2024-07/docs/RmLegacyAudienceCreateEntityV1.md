@@ -8,22 +8,12 @@ Audience definition
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**userType** | [**UserTypeEnum**](#UserTypeEnum) | Type of the user |  |
-|**lookbackWindow** | [**LookbackWindowEnum**](#LookbackWindowEnum) | Length of lookback window |  |
 |**brandIds** | **Set&lt;Long&gt;** | The brands to target |  [optional] |
 |**categoryIds** | **Set&lt;Integer&gt;** | The categories to target |  [optional] |
-|**retailerId** | **Long** | ID of the retailer associated with this audience |  |
+|**lookbackWindow** | [**LookbackWindowEnum**](#LookbackWindowEnum) | Length of lookback window |  |
 |**name** | **String** | Name of the audience |  |
-
-
-
-## Enum: UserTypeEnum
-
-| Name | Value |
-|---- | -----|
-| VIEWER | &quot;viewer&quot; |
-| BUYER | &quot;buyer&quot; |
-| ADDTOCARTER | &quot;addToCarter&quot; |
+|**retailerId** | **Long** | ID of the retailer associated with this audience |  |
+|**userType** | [**UserTypeEnum**](#UserTypeEnum) | Type of the user |  |
 
 
 
@@ -40,6 +30,16 @@ Audience definition
 | P120D | &quot;P120D&quot; |
 | P150D | &quot;P150D&quot; |
 | P180D | &quot;P180D&quot; |
+
+
+
+## Enum: UserTypeEnum
+
+| Name | Value |
+|---- | -----|
+| VIEWER | &quot;viewer&quot; |
+| BUYER | &quot;buyer&quot; |
+| ADDTOCARTER | &quot;addToCarter&quot; |
 
 
 

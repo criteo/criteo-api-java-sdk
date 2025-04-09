@@ -50,38 +50,16 @@ import com.criteo.api.retailmedia.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ValueResourceOfRetailMediaBrandAccountCreation {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
-
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private ExternalRetailMediaBrandAccountCreation attributes;
 
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
   public ValueResourceOfRetailMediaBrandAccountCreation() {
   }
-
-  public ValueResourceOfRetailMediaBrandAccountCreation type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Type of the resource.
-   * @return type
-  **/
-  @javax.annotation.Nullable
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
 
   public ValueResourceOfRetailMediaBrandAccountCreation attributes(ExternalRetailMediaBrandAccountCreation attributes) {
     
@@ -105,6 +83,28 @@ public class ValueResourceOfRetailMediaBrandAccountCreation {
   }
 
 
+  public ValueResourceOfRetailMediaBrandAccountCreation type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Type of the resource.
+   * @return type
+  **/
+  @javax.annotation.Nullable
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -115,8 +115,8 @@ public class ValueResourceOfRetailMediaBrandAccountCreation {
       return false;
     }
     ValueResourceOfRetailMediaBrandAccountCreation valueResourceOfRetailMediaBrandAccountCreation = (ValueResourceOfRetailMediaBrandAccountCreation) o;
-    return Objects.equals(this.type, valueResourceOfRetailMediaBrandAccountCreation.type) &&
-        Objects.equals(this.attributes, valueResourceOfRetailMediaBrandAccountCreation.attributes);
+    return Objects.equals(this.attributes, valueResourceOfRetailMediaBrandAccountCreation.attributes) &&
+        Objects.equals(this.type, valueResourceOfRetailMediaBrandAccountCreation.type);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -125,7 +125,7 @@ public class ValueResourceOfRetailMediaBrandAccountCreation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes);
+    return Objects.hash(attributes, type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -139,8 +139,8 @@ public class ValueResourceOfRetailMediaBrandAccountCreation {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ValueResourceOfRetailMediaBrandAccountCreation {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -163,8 +163,8 @@ public class ValueResourceOfRetailMediaBrandAccountCreation {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
     openapiFields.add("attributes");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -190,12 +190,12 @@ public class ValueResourceOfRetailMediaBrandAccountCreation {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValueResourceOfRetailMediaBrandAccountCreation` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
         ExternalRetailMediaBrandAccountCreation.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

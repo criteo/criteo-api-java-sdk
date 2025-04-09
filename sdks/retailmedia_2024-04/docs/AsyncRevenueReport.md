@@ -8,69 +8,28 @@ Async Revenue report body request
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**ids** | **List&lt;String&gt;** | Supply account ids to report on |  [optional] |
-|**id** | **String** | Supply account id to report on |  [optional] |
-|**retailerIds** | **List&lt;String&gt;** | Retailer ids to filter |  [optional] |
 |**accountIds** | **List&lt;String&gt;** | Account ids to filter |  [optional] |
-|**campaignIds** | **List&lt;String&gt;** | Campaign ids to filter |  [optional] |
-|**lineItemIds** | **List&lt;String&gt;** | Line item ids to filter |  [optional] |
-|**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report |  [optional] |
-|**revenueType** | [**RevenueTypeEnum**](#RevenueTypeEnum) | Type of revenue |  [optional] |
-|**soldBy** | [**SoldByEnum**](#SoldByEnum) | Filter on the seller: Indirect Sold, Direct Sold or Private Market |  [optional] |
-|**buyType** | [**BuyTypeEnum**](#BuyTypeEnum) | Filter on buy type: Auction, Preferred Deals or Sponsorship |  [optional] |
 |**advertiserTypes** | [**List&lt;AdvertiserTypesEnum&gt;**](#List&lt;AdvertiserTypesEnum&gt;) | Filter on the type of advertiser: retailer, brand, seller |  [optional] |
-|**skuRelations** | [**List&lt;SkuRelationsEnum&gt;**](#List&lt;SkuRelationsEnum&gt;) | Filter on sku relations: Same SKU, Same Parent SKU, Same Category, Same Brand or Same Seller |  [optional] |
-|**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
+|**buyType** | [**BuyTypeEnum**](#BuyTypeEnum) | Filter on buy type: Auction, Preferred Deals or Sponsorship |  [optional] |
+|**campaignIds** | **List&lt;String&gt;** | Campaign ids to filter |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays |  [optional] |
-|**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
 |**clickAttributionWindow** | [**ClickAttributionWindowEnum**](#ClickAttributionWindowEnum) | Click attribution window |  [optional] |
-|**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) | View attribution window |  [optional] |
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  [optional] |
-|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  [optional] |
-|**startDate** | **OffsetDateTime** | Start date |  |
 |**endDate** | **OffsetDateTime** | End date |  |
+|**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
+|**id** | **String** | Supply account id to report on |  [optional] |
+|**ids** | **List&lt;String&gt;** | Supply account ids to report on |  [optional] |
+|**lineItemIds** | **List&lt;String&gt;** | Line item ids to filter |  [optional] |
+|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  [optional] |
+|**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report |  [optional] |
+|**retailerIds** | **List&lt;String&gt;** | Retailer ids to filter |  [optional] |
+|**revenueType** | [**RevenueTypeEnum**](#RevenueTypeEnum) | Type of revenue |  [optional] |
+|**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
+|**skuRelations** | [**List&lt;SkuRelationsEnum&gt;**](#List&lt;SkuRelationsEnum&gt;) | Filter on sku relations: Same SKU, Same Parent SKU, Same Category, Same Brand or Same Seller |  [optional] |
+|**soldBy** | [**SoldByEnum**](#SoldByEnum) | Filter on the seller: Indirect Sold, Direct Sold or Private Market |  [optional] |
+|**startDate** | **OffsetDateTime** | Start date |  |
 |**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
-
-
-
-## Enum: ReportTypeEnum
-
-| Name | Value |
-|---- | -----|
-| ADVERTISER | &quot;advertiser&quot; |
-| ENVIRONMENT | &quot;environment&quot; |
-| PAGETYPE | &quot;pageType&quot; |
-| PRODUCTCATEGORY | &quot;productCategory&quot; |
-| BRAND | &quot;brand&quot; |
-
-
-
-## Enum: RevenueTypeEnum
-
-| Name | Value |
-|---- | -----|
-| AUCTION | &quot;auction&quot; |
-| PREFERRED | &quot;preferred&quot; |
-
-
-
-## Enum: SoldByEnum
-
-| Name | Value |
-|---- | -----|
-| DIRECTSOLD | &quot;directSold&quot; |
-| INDIRECTSOLD | &quot;indirectSold&quot; |
-| PRIVATEMARKET | &quot;privateMarket&quot; |
-
-
-
-## Enum: BuyTypeEnum
-
-| Name | Value |
-|---- | -----|
-| AUCTION | &quot;auction&quot; |
-| PREFERREDDEALS | &quot;preferredDeals&quot; |
-| SPONSORSHIP | &quot;sponsorship&quot; |
+|**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) | View attribution window |  [optional] |
 
 
 
@@ -84,26 +43,13 @@ Async Revenue report body request
 
 
 
-## Enum: List&lt;SkuRelationsEnum&gt;
+## Enum: BuyTypeEnum
 
 | Name | Value |
 |---- | -----|
-| SAMESKU | &quot;sameSku&quot; |
-| SAMEPARENTSKU | &quot;sameParentSku&quot; |
-| SAMECATEGORY | &quot;sameCategory&quot; |
-| SAMEBRAND | &quot;sameBrand&quot; |
-| SAMESELLER | &quot;sameSeller&quot; |
-
-
-
-## Enum: FormatEnum
-
-| Name | Value |
-|---- | -----|
-| JSON | &quot;json&quot; |
-| JSON_COMPACT | &quot;json-compact&quot; |
-| JSON_NEWLINE | &quot;json-newline&quot; |
-| CSV | &quot;csv&quot; |
+| AUCTION | &quot;auction&quot; |
+| PREFERREDDEALS | &quot;preferredDeals&quot; |
+| SPONSORSHIP | &quot;sponsorship&quot; |
 
 
 
@@ -117,33 +63,11 @@ Async Revenue report body request
 
 
 
-## Enum: SalesChannelEnum
-
-| Name | Value |
-|---- | -----|
-| ALL | &quot;all&quot; |
-| OFFLINE | &quot;offline&quot; |
-| ONLINE | &quot;online&quot; |
-
-
-
 ## Enum: ClickAttributionWindowEnum
 
 | Name | Value |
 |---- | -----|
 | NONE | &quot;none&quot; |
-| _7D | &quot;7D&quot; |
-| _14D | &quot;14D&quot; |
-| _30D | &quot;30D&quot; |
-
-
-
-## Enum: ViewAttributionWindowEnum
-
-| Name | Value |
-|---- | -----|
-| NONE | &quot;none&quot; |
-| _1D | &quot;1D&quot; |
 | _7D | &quot;7D&quot; |
 | _14D | &quot;14D&quot; |
 | _30D | &quot;30D&quot; |
@@ -212,6 +136,17 @@ Async Revenue report body request
 
 
 
+## Enum: FormatEnum
+
+| Name | Value |
+|---- | -----|
+| JSON | &quot;json&quot; |
+| JSON_COMPACT | &quot;json-compact&quot; |
+| JSON_NEWLINE | &quot;json-newline&quot; |
+| CSV | &quot;csv&quot; |
+
+
+
 ## Enum: List&lt;MetricsEnum&gt;
 
 | Name | Value |
@@ -260,6 +195,71 @@ Async Revenue report body request
 | VIDEOCPCV | &quot;videoCPCV&quot; |
 | UNIQUEVISITORS | &quot;uniqueVisitors&quot; |
 | FREQUENCY | &quot;frequency&quot; |
+
+
+
+## Enum: ReportTypeEnum
+
+| Name | Value |
+|---- | -----|
+| ADVERTISER | &quot;advertiser&quot; |
+| ENVIRONMENT | &quot;environment&quot; |
+| PAGETYPE | &quot;pageType&quot; |
+| PRODUCTCATEGORY | &quot;productCategory&quot; |
+| BRAND | &quot;brand&quot; |
+
+
+
+## Enum: RevenueTypeEnum
+
+| Name | Value |
+|---- | -----|
+| AUCTION | &quot;auction&quot; |
+| PREFERRED | &quot;preferred&quot; |
+
+
+
+## Enum: SalesChannelEnum
+
+| Name | Value |
+|---- | -----|
+| ALL | &quot;all&quot; |
+| OFFLINE | &quot;offline&quot; |
+| ONLINE | &quot;online&quot; |
+
+
+
+## Enum: List&lt;SkuRelationsEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| SAMESKU | &quot;sameSku&quot; |
+| SAMEPARENTSKU | &quot;sameParentSku&quot; |
+| SAMECATEGORY | &quot;sameCategory&quot; |
+| SAMEBRAND | &quot;sameBrand&quot; |
+| SAMESELLER | &quot;sameSeller&quot; |
+
+
+
+## Enum: SoldByEnum
+
+| Name | Value |
+|---- | -----|
+| DIRECTSOLD | &quot;directSold&quot; |
+| INDIRECTSOLD | &quot;indirectSold&quot; |
+| PRIVATEMARKET | &quot;privateMarket&quot; |
+
+
+
+## Enum: ViewAttributionWindowEnum
+
+| Name | Value |
+|---- | -----|
+| NONE | &quot;none&quot; |
+| _1D | &quot;1D&quot; |
+| _7D | &quot;7D&quot; |
+| _14D | &quot;14D&quot; |
+| _30D | &quot;30D&quot; |
 
 
 

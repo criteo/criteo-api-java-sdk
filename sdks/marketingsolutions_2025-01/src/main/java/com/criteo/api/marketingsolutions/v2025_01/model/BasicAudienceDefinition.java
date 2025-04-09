@@ -50,6 +50,10 @@ import com.criteo.api.marketingsolutions.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BasicAudienceDefinition {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private AudienceNameDescription attributes;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -58,12 +62,30 @@ public class BasicAudienceDefinition {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private AudienceNameDescription attributes;
-
   public BasicAudienceDefinition() {
   }
+
+  public BasicAudienceDefinition attributes(AudienceNameDescription attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+
+  public AudienceNameDescription getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(AudienceNameDescription attributes) {
+    this.attributes = attributes;
+  }
+
 
   public BasicAudienceDefinition id(String id) {
     
@@ -106,28 +128,6 @@ public class BasicAudienceDefinition {
 
   public void setType(String type) {
     this.type = type;
-  }
-
-
-  public BasicAudienceDefinition attributes(AudienceNameDescription attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @javax.annotation.Nullable
-
-  public AudienceNameDescription getAttributes() {
-    return attributes;
-  }
-
-
-  public void setAttributes(AudienceNameDescription attributes) {
-    this.attributes = attributes;
   }
 
   /**
@@ -185,9 +185,9 @@ public class BasicAudienceDefinition {
       return false;
     }
     BasicAudienceDefinition basicAudienceDefinition = (BasicAudienceDefinition) o;
-    return Objects.equals(this.id, basicAudienceDefinition.id) &&
-        Objects.equals(this.type, basicAudienceDefinition.type) &&
-        Objects.equals(this.attributes, basicAudienceDefinition.attributes)&&
+    return Objects.equals(this.attributes, basicAudienceDefinition.attributes) &&
+        Objects.equals(this.id, basicAudienceDefinition.id) &&
+        Objects.equals(this.type, basicAudienceDefinition.type)&&
         Objects.equals(this.additionalProperties, basicAudienceDefinition.additionalProperties);
   }
 
@@ -197,7 +197,7 @@ public class BasicAudienceDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, attributes, additionalProperties);
+    return Objects.hash(attributes, id, type, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -211,9 +211,9 @@ public class BasicAudienceDefinition {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BasicAudienceDefinition {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -237,9 +237,9 @@ public class BasicAudienceDefinition {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("attributes");
     openapiFields.add("id");
     openapiFields.add("type");
-    openapiFields.add("attributes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -266,15 +266,15 @@ public class BasicAudienceDefinition {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      // validate the optional field `attributes`
+      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
+        AudienceNameDescription.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
       if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        AudienceNameDescription.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
   }
 

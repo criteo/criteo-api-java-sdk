@@ -50,6 +50,10 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ResourceOfSkuDataPreview {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private SkuDataPreview attributes;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -58,12 +62,30 @@ public class ResourceOfSkuDataPreview {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private SkuDataPreview attributes;
-
   public ResourceOfSkuDataPreview() {
   }
+
+  public ResourceOfSkuDataPreview attributes(SkuDataPreview attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+
+  public SkuDataPreview getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(SkuDataPreview attributes) {
+    this.attributes = attributes;
+  }
+
 
   public ResourceOfSkuDataPreview id(String id) {
     
@@ -106,28 +128,6 @@ public class ResourceOfSkuDataPreview {
 
   public void setType(String type) {
     this.type = type;
-  }
-
-
-  public ResourceOfSkuDataPreview attributes(SkuDataPreview attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @javax.annotation.Nullable
-
-  public SkuDataPreview getAttributes() {
-    return attributes;
-  }
-
-
-  public void setAttributes(SkuDataPreview attributes) {
-    this.attributes = attributes;
   }
 
   /**
@@ -185,9 +185,9 @@ public class ResourceOfSkuDataPreview {
       return false;
     }
     ResourceOfSkuDataPreview resourceOfSkuDataPreview = (ResourceOfSkuDataPreview) o;
-    return Objects.equals(this.id, resourceOfSkuDataPreview.id) &&
-        Objects.equals(this.type, resourceOfSkuDataPreview.type) &&
-        Objects.equals(this.attributes, resourceOfSkuDataPreview.attributes)&&
+    return Objects.equals(this.attributes, resourceOfSkuDataPreview.attributes) &&
+        Objects.equals(this.id, resourceOfSkuDataPreview.id) &&
+        Objects.equals(this.type, resourceOfSkuDataPreview.type)&&
         Objects.equals(this.additionalProperties, resourceOfSkuDataPreview.additionalProperties);
   }
 
@@ -197,7 +197,7 @@ public class ResourceOfSkuDataPreview {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, attributes, additionalProperties);
+    return Objects.hash(attributes, id, type, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -211,9 +211,9 @@ public class ResourceOfSkuDataPreview {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ResourceOfSkuDataPreview {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -237,9 +237,9 @@ public class ResourceOfSkuDataPreview {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("attributes");
     openapiFields.add("id");
     openapiFields.add("type");
-    openapiFields.add("attributes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -257,15 +257,15 @@ public class ResourceOfSkuDataPreview {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ResourceOfSkuDataPreview is not found in the empty JSON string", ResourceOfSkuDataPreview.openapiRequiredFields.toString()));
         }
       }
+      // validate the optional field `attributes`
+      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
+        SkuDataPreview.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        SkuDataPreview.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
   }
 

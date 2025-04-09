@@ -8,9 +8,9 @@ An object that represents the required (ClientId and CallbackUrl) and optional (
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**clientId** | **String** |  |  |
-|**callbackUrl** | **String** |  |  |
 |**callbackState** | **String** |  |  [optional] |
+|**callbackUrl** | **String** |  |  |
+|**clientId** | **String** |  |  |
 
 
 

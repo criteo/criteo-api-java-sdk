@@ -52,34 +52,6 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalAuctionLineItem {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  public static final String SERIALIZED_NAME_START_DATE = "startDate";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private LocalDate startDate;
-
-  public static final String SERIALIZED_NAME_END_DATE = "endDate";
-  @SerializedName(SERIALIZED_NAME_END_DATE)
-  private LocalDate endDate;
-
-  public static final String SERIALIZED_NAME_MAX_BID = "maxBid";
-  @SerializedName(SERIALIZED_NAME_MAX_BID)
-  private BigDecimal maxBid;
-
-  public static final String SERIALIZED_NAME_BUDGET = "budget";
-  @SerializedName(SERIALIZED_NAME_BUDGET)
-  private BigDecimal budget;
-
-  public static final String SERIALIZED_NAME_MONTHLY_PACING = "monthlyPacing";
-  @SerializedName(SERIALIZED_NAME_MONTHLY_PACING)
-  private BigDecimal monthlyPacing;
-
-  public static final String SERIALIZED_NAME_DAILY_PACING = "dailyPacing";
-  @SerializedName(SERIALIZED_NAME_DAILY_PACING)
-  private BigDecimal dailyPacing;
-
   /**
    * Gets or Sets bidStrategy
    */
@@ -135,9 +107,57 @@ public class ExternalAuctionLineItem {
   @SerializedName(SERIALIZED_NAME_BID_STRATEGY)
   private BidStrategyEnum bidStrategy = BidStrategyEnum.CONVERSION;
 
-  public static final String SERIALIZED_NAME_TARGET_RETAILER_ID = "targetRetailerId";
-  @SerializedName(SERIALIZED_NAME_TARGET_RETAILER_ID)
-  private String targetRetailerId;
+  public static final String SERIALIZED_NAME_BUDGET = "budget";
+  @SerializedName(SERIALIZED_NAME_BUDGET)
+  private BigDecimal budget;
+
+  public static final String SERIALIZED_NAME_BUDGET_REMAINING = "budgetRemaining";
+  @SerializedName(SERIALIZED_NAME_BUDGET_REMAINING)
+  private BigDecimal budgetRemaining;
+
+  public static final String SERIALIZED_NAME_BUDGET_SPENT = "budgetSpent";
+  @SerializedName(SERIALIZED_NAME_BUDGET_SPENT)
+  private Double budgetSpent;
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
+  private String campaignId;
+
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
+
+  public static final String SERIALIZED_NAME_DAILY_PACING = "dailyPacing";
+  @SerializedName(SERIALIZED_NAME_DAILY_PACING)
+  private BigDecimal dailyPacing;
+
+  public static final String SERIALIZED_NAME_END_DATE = "endDate";
+  @SerializedName(SERIALIZED_NAME_END_DATE)
+  private LocalDate endDate;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
+  public static final String SERIALIZED_NAME_IS_AUTO_DAILY_PACING = "isAutoDailyPacing";
+  @SerializedName(SERIALIZED_NAME_IS_AUTO_DAILY_PACING)
+  private Boolean isAutoDailyPacing = false;
+
+  public static final String SERIALIZED_NAME_MAX_BID = "maxBid";
+  @SerializedName(SERIALIZED_NAME_MAX_BID)
+  private BigDecimal maxBid;
+
+  public static final String SERIALIZED_NAME_MONTHLY_PACING = "monthlyPacing";
+  @SerializedName(SERIALIZED_NAME_MONTHLY_PACING)
+  private BigDecimal monthlyPacing;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private LocalDate startDate;
 
   /**
    * Gets or Sets status
@@ -208,36 +228,280 @@ public class ExternalAuctionLineItem {
   @SerializedName(SERIALIZED_NAME_TARGET_BID)
   private BigDecimal targetBid;
 
-  public static final String SERIALIZED_NAME_IS_AUTO_DAILY_PACING = "isAutoDailyPacing";
-  @SerializedName(SERIALIZED_NAME_IS_AUTO_DAILY_PACING)
-  private Boolean isAutoDailyPacing = false;
-
-  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private String campaignId;
-
-  public static final String SERIALIZED_NAME_BUDGET_SPENT = "budgetSpent";
-  @SerializedName(SERIALIZED_NAME_BUDGET_SPENT)
-  private Double budgetSpent;
-
-  public static final String SERIALIZED_NAME_BUDGET_REMAINING = "budgetRemaining";
-  @SerializedName(SERIALIZED_NAME_BUDGET_REMAINING)
-  private BigDecimal budgetRemaining;
-
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
+  public static final String SERIALIZED_NAME_TARGET_RETAILER_ID = "targetRetailerId";
+  @SerializedName(SERIALIZED_NAME_TARGET_RETAILER_ID)
+  private String targetRetailerId;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private OffsetDateTime updatedAt;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
-
   public ExternalAuctionLineItem() {
   }
+
+  public ExternalAuctionLineItem bidStrategy(BidStrategyEnum bidStrategy) {
+    
+    this.bidStrategy = bidStrategy;
+    return this;
+  }
+
+   /**
+   * Get bidStrategy
+   * @return bidStrategy
+  **/
+  @javax.annotation.Nullable
+
+  public BidStrategyEnum getBidStrategy() {
+    return bidStrategy;
+  }
+
+
+  public void setBidStrategy(BidStrategyEnum bidStrategy) {
+    this.bidStrategy = bidStrategy;
+  }
+
+
+  public ExternalAuctionLineItem budget(BigDecimal budget) {
+    
+    this.budget = budget;
+    return this;
+  }
+
+   /**
+   * Get budget
+   * @return budget
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getBudget() {
+    return budget;
+  }
+
+
+  public void setBudget(BigDecimal budget) {
+    this.budget = budget;
+  }
+
+
+  public ExternalAuctionLineItem budgetRemaining(BigDecimal budgetRemaining) {
+    
+    this.budgetRemaining = budgetRemaining;
+    return this;
+  }
+
+   /**
+   * Get budgetRemaining
+   * @return budgetRemaining
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getBudgetRemaining() {
+    return budgetRemaining;
+  }
+
+
+  public void setBudgetRemaining(BigDecimal budgetRemaining) {
+    this.budgetRemaining = budgetRemaining;
+  }
+
+
+  public ExternalAuctionLineItem budgetSpent(Double budgetSpent) {
+    
+    this.budgetSpent = budgetSpent;
+    return this;
+  }
+
+   /**
+   * Get budgetSpent
+   * @return budgetSpent
+  **/
+  @javax.annotation.Nullable
+
+  public Double getBudgetSpent() {
+    return budgetSpent;
+  }
+
+
+  public void setBudgetSpent(Double budgetSpent) {
+    this.budgetSpent = budgetSpent;
+  }
+
+
+  public ExternalAuctionLineItem campaignId(String campaignId) {
+    
+    this.campaignId = campaignId;
+    return this;
+  }
+
+   /**
+   * Get campaignId
+   * @return campaignId
+  **/
+  @javax.annotation.Nonnull
+
+  public String getCampaignId() {
+    return campaignId;
+  }
+
+
+  public void setCampaignId(String campaignId) {
+    this.campaignId = campaignId;
+  }
+
+
+  public ExternalAuctionLineItem createdAt(OffsetDateTime createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @javax.annotation.Nonnull
+
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+
+  public ExternalAuctionLineItem dailyPacing(BigDecimal dailyPacing) {
+    
+    this.dailyPacing = dailyPacing;
+    return this;
+  }
+
+   /**
+   * Get dailyPacing
+   * @return dailyPacing
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getDailyPacing() {
+    return dailyPacing;
+  }
+
+
+  public void setDailyPacing(BigDecimal dailyPacing) {
+    this.dailyPacing = dailyPacing;
+  }
+
+
+  public ExternalAuctionLineItem endDate(LocalDate endDate) {
+    
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
+   * @return endDate
+  **/
+  @javax.annotation.Nullable
+
+  public LocalDate getEndDate() {
+    return endDate;
+  }
+
+
+  public void setEndDate(LocalDate endDate) {
+    this.endDate = endDate;
+  }
+
+
+  public ExternalAuctionLineItem id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Id of the entity
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  public ExternalAuctionLineItem isAutoDailyPacing(Boolean isAutoDailyPacing) {
+    
+    this.isAutoDailyPacing = isAutoDailyPacing;
+    return this;
+  }
+
+   /**
+   * Get isAutoDailyPacing
+   * @return isAutoDailyPacing
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getIsAutoDailyPacing() {
+    return isAutoDailyPacing;
+  }
+
+
+  public void setIsAutoDailyPacing(Boolean isAutoDailyPacing) {
+    this.isAutoDailyPacing = isAutoDailyPacing;
+  }
+
+
+  public ExternalAuctionLineItem maxBid(BigDecimal maxBid) {
+    
+    this.maxBid = maxBid;
+    return this;
+  }
+
+   /**
+   * Get maxBid
+   * @return maxBid
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getMaxBid() {
+    return maxBid;
+  }
+
+
+  public void setMaxBid(BigDecimal maxBid) {
+    this.maxBid = maxBid;
+  }
+
+
+  public ExternalAuctionLineItem monthlyPacing(BigDecimal monthlyPacing) {
+    
+    this.monthlyPacing = monthlyPacing;
+    return this;
+  }
+
+   /**
+   * Get monthlyPacing
+   * @return monthlyPacing
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getMonthlyPacing() {
+    return monthlyPacing;
+  }
+
+
+  public void setMonthlyPacing(BigDecimal monthlyPacing) {
+    this.monthlyPacing = monthlyPacing;
+  }
+
 
   public ExternalAuctionLineItem name(String name) {
     
@@ -280,160 +544,6 @@ public class ExternalAuctionLineItem {
 
   public void setStartDate(LocalDate startDate) {
     this.startDate = startDate;
-  }
-
-
-  public ExternalAuctionLineItem endDate(LocalDate endDate) {
-    
-    this.endDate = endDate;
-    return this;
-  }
-
-   /**
-   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
-   * @return endDate
-  **/
-  @javax.annotation.Nullable
-
-  public LocalDate getEndDate() {
-    return endDate;
-  }
-
-
-  public void setEndDate(LocalDate endDate) {
-    this.endDate = endDate;
-  }
-
-
-  public ExternalAuctionLineItem maxBid(BigDecimal maxBid) {
-    
-    this.maxBid = maxBid;
-    return this;
-  }
-
-   /**
-   * Get maxBid
-   * @return maxBid
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getMaxBid() {
-    return maxBid;
-  }
-
-
-  public void setMaxBid(BigDecimal maxBid) {
-    this.maxBid = maxBid;
-  }
-
-
-  public ExternalAuctionLineItem budget(BigDecimal budget) {
-    
-    this.budget = budget;
-    return this;
-  }
-
-   /**
-   * Get budget
-   * @return budget
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getBudget() {
-    return budget;
-  }
-
-
-  public void setBudget(BigDecimal budget) {
-    this.budget = budget;
-  }
-
-
-  public ExternalAuctionLineItem monthlyPacing(BigDecimal monthlyPacing) {
-    
-    this.monthlyPacing = monthlyPacing;
-    return this;
-  }
-
-   /**
-   * Get monthlyPacing
-   * @return monthlyPacing
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getMonthlyPacing() {
-    return monthlyPacing;
-  }
-
-
-  public void setMonthlyPacing(BigDecimal monthlyPacing) {
-    this.monthlyPacing = monthlyPacing;
-  }
-
-
-  public ExternalAuctionLineItem dailyPacing(BigDecimal dailyPacing) {
-    
-    this.dailyPacing = dailyPacing;
-    return this;
-  }
-
-   /**
-   * Get dailyPacing
-   * @return dailyPacing
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getDailyPacing() {
-    return dailyPacing;
-  }
-
-
-  public void setDailyPacing(BigDecimal dailyPacing) {
-    this.dailyPacing = dailyPacing;
-  }
-
-
-  public ExternalAuctionLineItem bidStrategy(BidStrategyEnum bidStrategy) {
-    
-    this.bidStrategy = bidStrategy;
-    return this;
-  }
-
-   /**
-   * Get bidStrategy
-   * @return bidStrategy
-  **/
-  @javax.annotation.Nullable
-
-  public BidStrategyEnum getBidStrategy() {
-    return bidStrategy;
-  }
-
-
-  public void setBidStrategy(BidStrategyEnum bidStrategy) {
-    this.bidStrategy = bidStrategy;
-  }
-
-
-  public ExternalAuctionLineItem targetRetailerId(String targetRetailerId) {
-    
-    this.targetRetailerId = targetRetailerId;
-    return this;
-  }
-
-   /**
-   * Get targetRetailerId
-   * @return targetRetailerId
-  **/
-  @javax.annotation.Nonnull
-
-  public String getTargetRetailerId() {
-    return targetRetailerId;
-  }
-
-
-  public void setTargetRetailerId(String targetRetailerId) {
-    this.targetRetailerId = targetRetailerId;
   }
 
 
@@ -481,113 +591,25 @@ public class ExternalAuctionLineItem {
   }
 
 
-  public ExternalAuctionLineItem isAutoDailyPacing(Boolean isAutoDailyPacing) {
+  public ExternalAuctionLineItem targetRetailerId(String targetRetailerId) {
     
-    this.isAutoDailyPacing = isAutoDailyPacing;
+    this.targetRetailerId = targetRetailerId;
     return this;
   }
 
    /**
-   * Get isAutoDailyPacing
-   * @return isAutoDailyPacing
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getIsAutoDailyPacing() {
-    return isAutoDailyPacing;
-  }
-
-
-  public void setIsAutoDailyPacing(Boolean isAutoDailyPacing) {
-    this.isAutoDailyPacing = isAutoDailyPacing;
-  }
-
-
-  public ExternalAuctionLineItem campaignId(String campaignId) {
-    
-    this.campaignId = campaignId;
-    return this;
-  }
-
-   /**
-   * Get campaignId
-   * @return campaignId
+   * Get targetRetailerId
+   * @return targetRetailerId
   **/
   @javax.annotation.Nonnull
 
-  public String getCampaignId() {
-    return campaignId;
+  public String getTargetRetailerId() {
+    return targetRetailerId;
   }
 
 
-  public void setCampaignId(String campaignId) {
-    this.campaignId = campaignId;
-  }
-
-
-  public ExternalAuctionLineItem budgetSpent(Double budgetSpent) {
-    
-    this.budgetSpent = budgetSpent;
-    return this;
-  }
-
-   /**
-   * Get budgetSpent
-   * @return budgetSpent
-  **/
-  @javax.annotation.Nullable
-
-  public Double getBudgetSpent() {
-    return budgetSpent;
-  }
-
-
-  public void setBudgetSpent(Double budgetSpent) {
-    this.budgetSpent = budgetSpent;
-  }
-
-
-  public ExternalAuctionLineItem budgetRemaining(BigDecimal budgetRemaining) {
-    
-    this.budgetRemaining = budgetRemaining;
-    return this;
-  }
-
-   /**
-   * Get budgetRemaining
-   * @return budgetRemaining
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getBudgetRemaining() {
-    return budgetRemaining;
-  }
-
-
-  public void setBudgetRemaining(BigDecimal budgetRemaining) {
-    this.budgetRemaining = budgetRemaining;
-  }
-
-
-  public ExternalAuctionLineItem createdAt(OffsetDateTime createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @javax.annotation.Nonnull
-
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
+  public void setTargetRetailerId(String targetRetailerId) {
+    this.targetRetailerId = targetRetailerId;
   }
 
 
@@ -610,28 +632,6 @@ public class ExternalAuctionLineItem {
 
   public void setUpdatedAt(OffsetDateTime updatedAt) {
     this.updatedAt = updatedAt;
-  }
-
-
-  public ExternalAuctionLineItem id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Id of the entity
-   * @return id
-  **/
-  @javax.annotation.Nullable
-
-  public String getId() {
-    return id;
-  }
-
-
-  public void setId(String id) {
-    this.id = id;
   }
 
   /**
@@ -689,24 +689,24 @@ public class ExternalAuctionLineItem {
       return false;
     }
     ExternalAuctionLineItem externalAuctionLineItem = (ExternalAuctionLineItem) o;
-    return Objects.equals(this.name, externalAuctionLineItem.name) &&
-        Objects.equals(this.startDate, externalAuctionLineItem.startDate) &&
-        Objects.equals(this.endDate, externalAuctionLineItem.endDate) &&
-        Objects.equals(this.maxBid, externalAuctionLineItem.maxBid) &&
+    return Objects.equals(this.bidStrategy, externalAuctionLineItem.bidStrategy) &&
         Objects.equals(this.budget, externalAuctionLineItem.budget) &&
-        Objects.equals(this.monthlyPacing, externalAuctionLineItem.monthlyPacing) &&
+        Objects.equals(this.budgetRemaining, externalAuctionLineItem.budgetRemaining) &&
+        Objects.equals(this.budgetSpent, externalAuctionLineItem.budgetSpent) &&
+        Objects.equals(this.campaignId, externalAuctionLineItem.campaignId) &&
+        Objects.equals(this.createdAt, externalAuctionLineItem.createdAt) &&
         Objects.equals(this.dailyPacing, externalAuctionLineItem.dailyPacing) &&
-        Objects.equals(this.bidStrategy, externalAuctionLineItem.bidStrategy) &&
-        Objects.equals(this.targetRetailerId, externalAuctionLineItem.targetRetailerId) &&
+        Objects.equals(this.endDate, externalAuctionLineItem.endDate) &&
+        Objects.equals(this.id, externalAuctionLineItem.id) &&
+        Objects.equals(this.isAutoDailyPacing, externalAuctionLineItem.isAutoDailyPacing) &&
+        Objects.equals(this.maxBid, externalAuctionLineItem.maxBid) &&
+        Objects.equals(this.monthlyPacing, externalAuctionLineItem.monthlyPacing) &&
+        Objects.equals(this.name, externalAuctionLineItem.name) &&
+        Objects.equals(this.startDate, externalAuctionLineItem.startDate) &&
         Objects.equals(this.status, externalAuctionLineItem.status) &&
         Objects.equals(this.targetBid, externalAuctionLineItem.targetBid) &&
-        Objects.equals(this.isAutoDailyPacing, externalAuctionLineItem.isAutoDailyPacing) &&
-        Objects.equals(this.campaignId, externalAuctionLineItem.campaignId) &&
-        Objects.equals(this.budgetSpent, externalAuctionLineItem.budgetSpent) &&
-        Objects.equals(this.budgetRemaining, externalAuctionLineItem.budgetRemaining) &&
-        Objects.equals(this.createdAt, externalAuctionLineItem.createdAt) &&
-        Objects.equals(this.updatedAt, externalAuctionLineItem.updatedAt) &&
-        Objects.equals(this.id, externalAuctionLineItem.id)&&
+        Objects.equals(this.targetRetailerId, externalAuctionLineItem.targetRetailerId) &&
+        Objects.equals(this.updatedAt, externalAuctionLineItem.updatedAt)&&
         Objects.equals(this.additionalProperties, externalAuctionLineItem.additionalProperties);
   }
 
@@ -716,7 +716,7 @@ public class ExternalAuctionLineItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, startDate, endDate, maxBid, budget, monthlyPacing, dailyPacing, bidStrategy, targetRetailerId, status, targetBid, isAutoDailyPacing, campaignId, budgetSpent, budgetRemaining, createdAt, updatedAt, id, additionalProperties);
+    return Objects.hash(bidStrategy, budget, budgetRemaining, budgetSpent, campaignId, createdAt, dailyPacing, endDate, id, isAutoDailyPacing, maxBid, monthlyPacing, name, startDate, status, targetBid, targetRetailerId, updatedAt, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -730,24 +730,24 @@ public class ExternalAuctionLineItem {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalAuctionLineItem {\n");
+    sb.append("    bidStrategy: ").append(toIndentedString(bidStrategy)).append("\n");
+    sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
+    sb.append("    budgetRemaining: ").append(toIndentedString(budgetRemaining)).append("\n");
+    sb.append("    budgetSpent: ").append(toIndentedString(budgetSpent)).append("\n");
+    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    dailyPacing: ").append(toIndentedString(dailyPacing)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    isAutoDailyPacing: ").append(toIndentedString(isAutoDailyPacing)).append("\n");
+    sb.append("    maxBid: ").append(toIndentedString(maxBid)).append("\n");
+    sb.append("    monthlyPacing: ").append(toIndentedString(monthlyPacing)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("    maxBid: ").append(toIndentedString(maxBid)).append("\n");
-    sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
-    sb.append("    monthlyPacing: ").append(toIndentedString(monthlyPacing)).append("\n");
-    sb.append("    dailyPacing: ").append(toIndentedString(dailyPacing)).append("\n");
-    sb.append("    bidStrategy: ").append(toIndentedString(bidStrategy)).append("\n");
-    sb.append("    targetRetailerId: ").append(toIndentedString(targetRetailerId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    targetBid: ").append(toIndentedString(targetBid)).append("\n");
-    sb.append("    isAutoDailyPacing: ").append(toIndentedString(isAutoDailyPacing)).append("\n");
-    sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
-    sb.append("    budgetSpent: ").append(toIndentedString(budgetSpent)).append("\n");
-    sb.append("    budgetRemaining: ").append(toIndentedString(budgetRemaining)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    targetRetailerId: ").append(toIndentedString(targetRetailerId)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -771,33 +771,33 @@ public class ExternalAuctionLineItem {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("bidStrategy");
+    openapiFields.add("budget");
+    openapiFields.add("budgetRemaining");
+    openapiFields.add("budgetSpent");
+    openapiFields.add("campaignId");
+    openapiFields.add("createdAt");
+    openapiFields.add("dailyPacing");
+    openapiFields.add("endDate");
+    openapiFields.add("id");
+    openapiFields.add("isAutoDailyPacing");
+    openapiFields.add("maxBid");
+    openapiFields.add("monthlyPacing");
     openapiFields.add("name");
     openapiFields.add("startDate");
-    openapiFields.add("endDate");
-    openapiFields.add("maxBid");
-    openapiFields.add("budget");
-    openapiFields.add("monthlyPacing");
-    openapiFields.add("dailyPacing");
-    openapiFields.add("bidStrategy");
-    openapiFields.add("targetRetailerId");
     openapiFields.add("status");
     openapiFields.add("targetBid");
-    openapiFields.add("isAutoDailyPacing");
-    openapiFields.add("campaignId");
-    openapiFields.add("budgetSpent");
-    openapiFields.add("budgetRemaining");
-    openapiFields.add("createdAt");
+    openapiFields.add("targetRetailerId");
     openapiFields.add("updatedAt");
-    openapiFields.add("id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("budgetRemaining");
+    openapiRequiredFields.add("campaignId");
+    openapiRequiredFields.add("createdAt");
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("targetRetailerId");
-    openapiRequiredFields.add("campaignId");
-    openapiRequiredFields.add("budgetRemaining");
-    openapiRequiredFields.add("createdAt");
     openapiRequiredFields.add("updatedAt");
   }
 
@@ -820,23 +820,23 @@ public class ExternalAuctionLineItem {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
       if ((jsonObj.get("bidStrategy") != null && !jsonObj.get("bidStrategy").isJsonNull()) && !jsonObj.get("bidStrategy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `bidStrategy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bidStrategy").toString()));
-      }
-      if (!jsonObj.get("targetRetailerId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `targetRetailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("targetRetailerId").toString()));
-      }
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       if (!jsonObj.get("campaignId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      if (!jsonObj.get("targetRetailerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `targetRetailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("targetRetailerId").toString()));
       }
   }
 

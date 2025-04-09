@@ -48,6 +48,10 @@ import com.criteo.api.retailmedia.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalLineItemCappingV2 {
+  public static final String SERIALIZED_NAME_COUNT = "count";
+  @SerializedName(SERIALIZED_NAME_COUNT)
+  private Integer count;
+
   /**
    * Line Item Capping Type Enum
    */
@@ -101,34 +105,8 @@ public class ExternalLineItemCappingV2 {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
-  public static final String SERIALIZED_NAME_COUNT = "count";
-  @SerializedName(SERIALIZED_NAME_COUNT)
-  private Integer count;
-
   public ExternalLineItemCappingV2() {
   }
-
-  public ExternalLineItemCappingV2 type(TypeEnum type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Line Item Capping Type Enum
-   * @return type
-  **/
-  @javax.annotation.Nonnull
-
-  public TypeEnum getType() {
-    return type;
-  }
-
-
-  public void setType(TypeEnum type) {
-    this.type = type;
-  }
-
 
   public ExternalLineItemCappingV2 count(Integer count) {
     
@@ -149,6 +127,28 @@ public class ExternalLineItemCappingV2 {
 
   public void setCount(Integer count) {
     this.count = count;
+  }
+
+
+  public ExternalLineItemCappingV2 type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Line Item Capping Type Enum
+   * @return type
+  **/
+  @javax.annotation.Nonnull
+
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
   }
 
   /**
@@ -206,22 +206,22 @@ public class ExternalLineItemCappingV2 {
       return false;
     }
     ExternalLineItemCappingV2 externalLineItemCappingV2 = (ExternalLineItemCappingV2) o;
-    return Objects.equals(this.type, externalLineItemCappingV2.type) &&
-        Objects.equals(this.count, externalLineItemCappingV2.count)&&
+    return Objects.equals(this.count, externalLineItemCappingV2.count) &&
+        Objects.equals(this.type, externalLineItemCappingV2.type)&&
         Objects.equals(this.additionalProperties, externalLineItemCappingV2.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, count, additionalProperties);
+    return Objects.hash(count, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalLineItemCappingV2 {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -245,13 +245,13 @@ public class ExternalLineItemCappingV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
     openapiFields.add("count");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("type");
     openapiRequiredFields.add("count");
+    openapiRequiredFields.add("type");
   }
 
  /**

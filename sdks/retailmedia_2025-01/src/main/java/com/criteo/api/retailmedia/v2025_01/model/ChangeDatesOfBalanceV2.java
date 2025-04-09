@@ -49,10 +49,6 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ChangeDatesOfBalanceV2 {
-  public static final String SERIALIZED_NAME_START_DATE = "startDate";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private String startDate;
-
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private String endDate;
@@ -61,30 +57,12 @@ public class ChangeDatesOfBalanceV2 {
   @SerializedName(SERIALIZED_NAME_MEMO)
   private String memo;
 
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private String startDate;
+
   public ChangeDatesOfBalanceV2() {
   }
-
-  public ChangeDatesOfBalanceV2 startDate(String startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * Start date of the balance in the format YYYY-MM-DD.
-   * @return startDate
-  **/
-  @javax.annotation.Nullable
-
-  public String getStartDate() {
-    return startDate;
-  }
-
-
-  public void setStartDate(String startDate) {
-    this.startDate = startDate;
-  }
-
 
   public ChangeDatesOfBalanceV2 endDate(String endDate) {
     
@@ -127,6 +105,28 @@ public class ChangeDatesOfBalanceV2 {
 
   public void setMemo(String memo) {
     this.memo = memo;
+  }
+
+
+  public ChangeDatesOfBalanceV2 startDate(String startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Start date of the balance in the format YYYY-MM-DD.
+   * @return startDate
+  **/
+  @javax.annotation.Nullable
+
+  public String getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
   }
 
   /**
@@ -184,9 +184,9 @@ public class ChangeDatesOfBalanceV2 {
       return false;
     }
     ChangeDatesOfBalanceV2 changeDatesOfBalanceV2 = (ChangeDatesOfBalanceV2) o;
-    return Objects.equals(this.startDate, changeDatesOfBalanceV2.startDate) &&
-        Objects.equals(this.endDate, changeDatesOfBalanceV2.endDate) &&
-        Objects.equals(this.memo, changeDatesOfBalanceV2.memo)&&
+    return Objects.equals(this.endDate, changeDatesOfBalanceV2.endDate) &&
+        Objects.equals(this.memo, changeDatesOfBalanceV2.memo) &&
+        Objects.equals(this.startDate, changeDatesOfBalanceV2.startDate)&&
         Objects.equals(this.additionalProperties, changeDatesOfBalanceV2.additionalProperties);
   }
 
@@ -196,7 +196,7 @@ public class ChangeDatesOfBalanceV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, memo, additionalProperties);
+    return Objects.hash(endDate, memo, startDate, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -210,9 +210,9 @@ public class ChangeDatesOfBalanceV2 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ChangeDatesOfBalanceV2 {\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    memo: ").append(toIndentedString(memo)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -236,9 +236,9 @@ public class ChangeDatesOfBalanceV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("startDate");
     openapiFields.add("endDate");
     openapiFields.add("memo");
+    openapiFields.add("startDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -256,14 +256,14 @@ public class ChangeDatesOfBalanceV2 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ChangeDatesOfBalanceV2 is not found in the empty JSON string", ChangeDatesOfBalanceV2.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("startDate") != null && !jsonObj.get("startDate").isJsonNull()) && !jsonObj.get("startDate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
-      }
       if ((jsonObj.get("endDate") != null && !jsonObj.get("endDate").isJsonNull()) && !jsonObj.get("endDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `endDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endDate").toString()));
       }
       if ((jsonObj.get("memo") != null && !jsonObj.get("memo").isJsonNull()) && !jsonObj.get("memo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `memo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memo").toString()));
+      }
+      if ((jsonObj.get("startDate") != null && !jsonObj.get("startDate").isJsonNull()) && !jsonObj.get("startDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
       }
   }
 

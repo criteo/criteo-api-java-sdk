@@ -51,46 +51,16 @@ import com.criteo.api.marketingsolutions.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CouponSupportedSizes {
-  public static final String SERIALIZED_NAME_LOGO_ZONE = "logoZone";
-  @SerializedName(SERIALIZED_NAME_LOGO_ZONE)
-  private List<String> logoZone = null;
-
   public static final String SERIALIZED_NAME_FULL_FRAME = "fullFrame";
   @SerializedName(SERIALIZED_NAME_FULL_FRAME)
   private List<String> fullFrame = null;
 
+  public static final String SERIALIZED_NAME_LOGO_ZONE = "logoZone";
+  @SerializedName(SERIALIZED_NAME_LOGO_ZONE)
+  private List<String> logoZone = null;
+
   public CouponSupportedSizes() {
   }
-
-  public CouponSupportedSizes logoZone(List<String> logoZone) {
-    
-    this.logoZone = logoZone;
-    return this;
-  }
-
-  public CouponSupportedSizes addLogoZoneItem(String logoZoneItem) {
-    if (this.logoZone == null) {
-      this.logoZone = null;
-    }
-    this.logoZone.add(logoZoneItem);
-    return this;
-  }
-
-   /**
-   * Array of LogoZone sizes as string in width x height format
-   * @return logoZone
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getLogoZone() {
-    return logoZone;
-  }
-
-
-  public void setLogoZone(List<String> logoZone) {
-    this.logoZone = logoZone;
-  }
-
 
   public CouponSupportedSizes fullFrame(List<String> fullFrame) {
     
@@ -119,6 +89,36 @@ public class CouponSupportedSizes {
 
   public void setFullFrame(List<String> fullFrame) {
     this.fullFrame = fullFrame;
+  }
+
+
+  public CouponSupportedSizes logoZone(List<String> logoZone) {
+    
+    this.logoZone = logoZone;
+    return this;
+  }
+
+  public CouponSupportedSizes addLogoZoneItem(String logoZoneItem) {
+    if (this.logoZone == null) {
+      this.logoZone = null;
+    }
+    this.logoZone.add(logoZoneItem);
+    return this;
+  }
+
+   /**
+   * Array of LogoZone sizes as string in width x height format
+   * @return logoZone
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getLogoZone() {
+    return logoZone;
+  }
+
+
+  public void setLogoZone(List<String> logoZone) {
+    this.logoZone = logoZone;
   }
 
   /**
@@ -176,8 +176,8 @@ public class CouponSupportedSizes {
       return false;
     }
     CouponSupportedSizes couponSupportedSizes = (CouponSupportedSizes) o;
-    return Objects.equals(this.logoZone, couponSupportedSizes.logoZone) &&
-        Objects.equals(this.fullFrame, couponSupportedSizes.fullFrame)&&
+    return Objects.equals(this.fullFrame, couponSupportedSizes.fullFrame) &&
+        Objects.equals(this.logoZone, couponSupportedSizes.logoZone)&&
         Objects.equals(this.additionalProperties, couponSupportedSizes.additionalProperties);
   }
 
@@ -187,7 +187,7 @@ public class CouponSupportedSizes {
 
   @Override
   public int hashCode() {
-    return Objects.hash(logoZone, fullFrame, additionalProperties);
+    return Objects.hash(fullFrame, logoZone, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -201,8 +201,8 @@ public class CouponSupportedSizes {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CouponSupportedSizes {\n");
-    sb.append("    logoZone: ").append(toIndentedString(logoZone)).append("\n");
     sb.append("    fullFrame: ").append(toIndentedString(fullFrame)).append("\n");
+    sb.append("    logoZone: ").append(toIndentedString(logoZone)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -226,8 +226,8 @@ public class CouponSupportedSizes {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("logoZone");
     openapiFields.add("fullFrame");
+    openapiFields.add("logoZone");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -246,12 +246,12 @@ public class CouponSupportedSizes {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("logoZone") != null && !jsonObj.get("logoZone").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `logoZone` to be an array in the JSON string but got `%s`", jsonObj.get("logoZone").toString()));
-      }
-      // ensure the optional json data is an array if present
       if (jsonObj.get("fullFrame") != null && !jsonObj.get("fullFrame").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `fullFrame` to be an array in the JSON string but got `%s`", jsonObj.get("fullFrame").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("logoZone") != null && !jsonObj.get("logoZone").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `logoZone` to be an array in the JSON string but got `%s`", jsonObj.get("logoZone").toString()));
       }
   }
 

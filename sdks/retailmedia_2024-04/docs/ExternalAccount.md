@@ -8,25 +8,15 @@ A Retail Media Account used to launch campaigns and line items
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** |  |  |
-|**type** | [**TypeEnum**](#TypeEnum) |  |  |
-|**subtype** | [**SubtypeEnum**](#SubtypeEnum) |  |  [optional] |
+|**companyName** | **String** |  |  [optional] |
 |**countries** | **List&lt;String&gt;** |  |  |
 |**currency** | **String** |  |  |
-|**parentAccountLabel** | **String** |  |  |
-|**timeZone** | **String** |  |  |
-|**companyName** | **String** |  |  [optional] |
+|**name** | **String** |  |  |
 |**onBehalfCompanyName** | **String** |  |  [optional] |
-
-
-
-## Enum: TypeEnum
-
-| Name | Value |
-|---- | -----|
-| UNKNOWN | &quot;unknown&quot; |
-| SUPPLY | &quot;supply&quot; |
-| DEMAND | &quot;demand&quot; |
+|**parentAccountLabel** | **String** |  |  |
+|**subtype** | [**SubtypeEnum**](#SubtypeEnum) |  |  [optional] |
+|**timeZone** | **String** |  |  |
+|**type** | [**TypeEnum**](#TypeEnum) |  |  |
 
 
 
@@ -37,6 +27,16 @@ A Retail Media Account used to launch campaigns and line items
 | UNKNOWN | &quot;unknown&quot; |
 | BRAND | &quot;brand&quot; |
 | SELLER | &quot;seller&quot; |
+
+
+
+## Enum: TypeEnum
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| SUPPLY | &quot;supply&quot; |
+| DEMAND | &quot;demand&quot; |
 
 
 

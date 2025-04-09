@@ -9,8 +9,8 @@ Data model for response resource
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**data** | [**ResourceOfBalanceResponse**](ResourceOfBalanceResponse.md) |  |  [optional] |
-|**warnings** | [**List&lt;CommonProblem&gt;**](CommonProblem.md) |  |  [optional] [readonly] |
 |**errors** | [**List&lt;CommonProblem&gt;**](CommonProblem.md) |  |  [optional] [readonly] |
+|**warnings** | [**List&lt;CommonProblem&gt;**](CommonProblem.md) |  |  [optional] [readonly] |
 
 
 

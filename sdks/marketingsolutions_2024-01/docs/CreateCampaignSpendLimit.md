@@ -8,18 +8,9 @@ campaign spend limit create model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**spendLimitType** | [**SpendLimitTypeEnum**](#SpendLimitTypeEnum) | Whether your spend limit is capped or not |  |
-|**spendLimitRenewal** | [**SpendLimitRenewalEnum**](#SpendLimitRenewalEnum) | The pace of the spend limit renewal |  [optional] |
 |**spendLimitAmount** | **Double** | The amount of the spend limit. null if spendLimitType is uncapped. |  [optional] |
-
-
-
-## Enum: SpendLimitTypeEnum
-
-| Name | Value |
-|---- | -----|
-| CAPPED | &quot;capped&quot; |
-| UNCAPPED | &quot;uncapped&quot; |
+|**spendLimitRenewal** | [**SpendLimitRenewalEnum**](#SpendLimitRenewalEnum) | The pace of the spend limit renewal |  [optional] |
+|**spendLimitType** | [**SpendLimitTypeEnum**](#SpendLimitTypeEnum) | Whether your spend limit is capped or not |  |
 
 
 
@@ -31,6 +22,15 @@ campaign spend limit create model
 | DAILY | &quot;daily&quot; |
 | MONTHLY | &quot;monthly&quot; |
 | LIFETIME | &quot;lifetime&quot; |
+
+
+
+## Enum: SpendLimitTypeEnum
+
+| Name | Value |
+|---- | -----|
+| CAPPED | &quot;capped&quot; |
+| UNCAPPED | &quot;uncapped&quot; |
 
 
 

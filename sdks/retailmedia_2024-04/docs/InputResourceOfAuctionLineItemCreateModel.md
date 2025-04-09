@@ -8,8 +8,8 @@ Data model for a Resource
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** |  |  [optional] |
 |**attributes** | [**ExternalAuctionLineItemCreateModel**](ExternalAuctionLineItemCreateModel.md) |  |  [optional] |
+|**type** | **String** |  |  [optional] |
 
 
 

@@ -49,38 +49,16 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InputResourceOfPreferredLineItemCreateModelV2 {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
-
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private ExternalPreferredLineItemCreateModelV2 attributes;
 
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
   public InputResourceOfPreferredLineItemCreateModelV2() {
   }
-
-  public InputResourceOfPreferredLineItemCreateModelV2 type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Get type
-   * @return type
-  **/
-  @javax.annotation.Nullable
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
 
   public InputResourceOfPreferredLineItemCreateModelV2 attributes(ExternalPreferredLineItemCreateModelV2 attributes) {
     
@@ -101,6 +79,28 @@ public class InputResourceOfPreferredLineItemCreateModelV2 {
 
   public void setAttributes(ExternalPreferredLineItemCreateModelV2 attributes) {
     this.attributes = attributes;
+  }
+
+
+  public InputResourceOfPreferredLineItemCreateModelV2 type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   /**
@@ -158,22 +158,22 @@ public class InputResourceOfPreferredLineItemCreateModelV2 {
       return false;
     }
     InputResourceOfPreferredLineItemCreateModelV2 inputResourceOfPreferredLineItemCreateModelV2 = (InputResourceOfPreferredLineItemCreateModelV2) o;
-    return Objects.equals(this.type, inputResourceOfPreferredLineItemCreateModelV2.type) &&
-        Objects.equals(this.attributes, inputResourceOfPreferredLineItemCreateModelV2.attributes)&&
+    return Objects.equals(this.attributes, inputResourceOfPreferredLineItemCreateModelV2.attributes) &&
+        Objects.equals(this.type, inputResourceOfPreferredLineItemCreateModelV2.type)&&
         Objects.equals(this.additionalProperties, inputResourceOfPreferredLineItemCreateModelV2.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes, additionalProperties);
+    return Objects.hash(attributes, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InputResourceOfPreferredLineItemCreateModelV2 {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -197,8 +197,8 @@ public class InputResourceOfPreferredLineItemCreateModelV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
     openapiFields.add("attributes");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -216,12 +216,12 @@ public class InputResourceOfPreferredLineItemCreateModelV2 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in InputResourceOfPreferredLineItemCreateModelV2 is not found in the empty JSON string", InputResourceOfPreferredLineItemCreateModelV2.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
         ExternalPreferredLineItemCreateModelV2.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

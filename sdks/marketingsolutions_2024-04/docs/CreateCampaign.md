@@ -8,11 +8,11 @@ Campaign create model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** | Name of the campaign |  |
 |**advertiserId** | **String** | Advertiser id this campaign belongs to |  |
-|**goal** | [**GoalEnum**](#GoalEnum) | Goal for the marketing campaign |  |
-|**spendLimit** | [**CreateCampaignSpendLimit**](CreateCampaignSpendLimit.md) |  |  |
 |**budgetAutomation** | [**BudgetAutomation**](BudgetAutomation.md) |  |  [optional] |
+|**goal** | [**GoalEnum**](#GoalEnum) | Goal for the marketing campaign |  |
+|**name** | **String** | Name of the campaign |  |
+|**spendLimit** | [**CreateCampaignSpendLimit**](CreateCampaignSpendLimit.md) |  |  |
 
 
 

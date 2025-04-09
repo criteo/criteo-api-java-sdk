@@ -8,12 +8,12 @@ Async FillRate report body request
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**supplyAccountIds** | **List&lt;String&gt;** | Supply account ids to report on |  |
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  |
-|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  |
-|**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
-|**startDate** | **OffsetDateTime** | Start date |  |
 |**endDate** | **OffsetDateTime** | End date |  |
+|**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
+|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  |
+|**startDate** | **OffsetDateTime** | Start date |  |
+|**supplyAccountIds** | **List&lt;String&gt;** | Supply account ids to report on |  |
 |**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
 
 
@@ -32,6 +32,17 @@ Async FillRate report body request
 | SERVEDCATEGORY | &quot;servedCategory&quot; |
 | RETAILERCATEGORYID | &quot;retailerCategoryId&quot; |
 | RETAILERCATEGORYNAME | &quot;retailerCategoryName&quot; |
+
+
+
+## Enum: FormatEnum
+
+| Name | Value |
+|---- | -----|
+| JSON | &quot;json&quot; |
+| JSON_COMPACT | &quot;json-compact&quot; |
+| JSON_NEWLINE | &quot;json-newline&quot; |
+| CSV | &quot;csv&quot; |
 
 
 
@@ -60,17 +71,6 @@ Async FillRate report body request
 | NETREVENUE | &quot;netRevenue&quot; |
 | UNIQUEVISITORS | &quot;uniqueVisitors&quot; |
 | FREQUENCY | &quot;frequency&quot; |
-
-
-
-## Enum: FormatEnum
-
-| Name | Value |
-|---- | -----|
-| JSON | &quot;json&quot; |
-| JSON_COMPACT | &quot;json-compact&quot; |
-| JSON_NEWLINE | &quot;json-newline&quot; |
-| CSV | &quot;csv&quot; |
 
 
 

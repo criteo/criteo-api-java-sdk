@@ -48,38 +48,16 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProductUnitPricingMeasure {
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
-  private Double value;
-
   public static final String SERIALIZED_NAME_UNIT = "unit";
   @SerializedName(SERIALIZED_NAME_UNIT)
   private String unit;
 
+  public static final String SERIALIZED_NAME_VALUE = "value";
+  @SerializedName(SERIALIZED_NAME_VALUE)
+  private Double value;
+
   public ProductUnitPricingMeasure() {
   }
-
-  public ProductUnitPricingMeasure value(Double value) {
-    
-    this.value = value;
-    return this;
-  }
-
-   /**
-   * The measurement of an item.
-   * @return value
-  **/
-  @javax.annotation.Nullable
-
-  public Double getValue() {
-    return value;
-  }
-
-
-  public void setValue(Double value) {
-    this.value = value;
-  }
-
 
   public ProductUnitPricingMeasure unit(String unit) {
     
@@ -100,6 +78,28 @@ public class ProductUnitPricingMeasure {
 
   public void setUnit(String unit) {
     this.unit = unit;
+  }
+
+
+  public ProductUnitPricingMeasure value(Double value) {
+    
+    this.value = value;
+    return this;
+  }
+
+   /**
+   * The measurement of an item.
+   * @return value
+  **/
+  @javax.annotation.Nullable
+
+  public Double getValue() {
+    return value;
+  }
+
+
+  public void setValue(Double value) {
+    this.value = value;
   }
 
   /**
@@ -157,22 +157,22 @@ public class ProductUnitPricingMeasure {
       return false;
     }
     ProductUnitPricingMeasure productUnitPricingMeasure = (ProductUnitPricingMeasure) o;
-    return Objects.equals(this.value, productUnitPricingMeasure.value) &&
-        Objects.equals(this.unit, productUnitPricingMeasure.unit)&&
+    return Objects.equals(this.unit, productUnitPricingMeasure.unit) &&
+        Objects.equals(this.value, productUnitPricingMeasure.value)&&
         Objects.equals(this.additionalProperties, productUnitPricingMeasure.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value, unit, additionalProperties);
+    return Objects.hash(unit, value, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductUnitPricingMeasure {\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    unit: ").append(toIndentedString(unit)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -196,8 +196,8 @@ public class ProductUnitPricingMeasure {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("value");
     openapiFields.add("unit");
+    openapiFields.add("value");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -54,56 +54,34 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata {
-  public static final String SERIALIZED_NAME_METADATA = "metadata";
-  @SerializedName(SERIALIZED_NAME_METADATA)
-  private PagingOffsetLimitMetadata metadata;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<EntityResourceBrandIdSearchResult> data = null;
 
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<SdkApiRestCommonProblem> warnings = null;
-
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<SdkApiRestCommonProblem> errors = null;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private PagingOffsetLimitMetadata metadata;
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<SdkApiRestCommonProblem> warnings = null;
 
   public EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata() {
   }
 
   
   public EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata(
-     List<SdkApiRestCommonProblem> warnings, 
-     List<SdkApiRestCommonProblem> errors
+     List<SdkApiRestCommonProblem> errors, 
+     List<SdkApiRestCommonProblem> warnings
   ) {
     this();
-    this.warnings = warnings;
     this.errors = errors;
+    this.warnings = warnings;
   }
-
-  public EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata metadata(PagingOffsetLimitMetadata metadata) {
-    
-    this.metadata = metadata;
-    return this;
-  }
-
-   /**
-   * Get metadata
-   * @return metadata
-  **/
-  @javax.annotation.Nullable
-
-  public PagingOffsetLimitMetadata getMetadata() {
-    return metadata;
-  }
-
-
-  public void setMetadata(PagingOffsetLimitMetadata metadata) {
-    this.metadata = metadata;
-  }
-
 
   public EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata data(List<EntityResourceBrandIdSearchResult> data) {
     
@@ -136,19 +114,6 @@ public class EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimit
 
 
    /**
-   * Warnings that occured during this call.
-   * @return warnings
-  **/
-  @javax.annotation.Nullable
-
-  public List<SdkApiRestCommonProblem> getWarnings() {
-    return warnings;
-  }
-
-
-
-
-   /**
    * Errors that occured during this call.
    * @return errors
   **/
@@ -156,6 +121,41 @@ public class EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimit
 
   public List<SdkApiRestCommonProblem> getErrors() {
     return errors;
+  }
+
+
+
+
+  public EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata metadata(PagingOffsetLimitMetadata metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * Get metadata
+   * @return metadata
+  **/
+  @javax.annotation.Nullable
+
+  public PagingOffsetLimitMetadata getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(PagingOffsetLimitMetadata metadata) {
+    this.metadata = metadata;
+  }
+
+
+   /**
+   * Warnings that occured during this call.
+   * @return warnings
+  **/
+  @javax.annotation.Nullable
+
+  public List<SdkApiRestCommonProblem> getWarnings() {
+    return warnings;
   }
 
 
@@ -171,10 +171,10 @@ public class EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimit
       return false;
     }
     EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata entityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata = (EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata) o;
-    return Objects.equals(this.metadata, entityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.metadata) &&
-        Objects.equals(this.data, entityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.data) &&
-        Objects.equals(this.warnings, entityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.warnings) &&
-        Objects.equals(this.errors, entityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.errors);
+    return Objects.equals(this.data, entityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.data) &&
+        Objects.equals(this.errors, entityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.errors) &&
+        Objects.equals(this.metadata, entityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.metadata) &&
+        Objects.equals(this.warnings, entityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.warnings);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -183,7 +183,7 @@ public class EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimit
 
   @Override
   public int hashCode() {
-    return Objects.hash(metadata, data, warnings, errors);
+    return Objects.hash(data, errors, metadata, warnings);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -197,10 +197,10 @@ public class EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimit
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata {\n");
-    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -223,10 +223,10 @@ public class EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimit
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("metadata");
     openapiFields.add("data");
-    openapiFields.add("warnings");
     openapiFields.add("errors");
+    openapiFields.add("metadata");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -252,10 +252,6 @@ public class EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimit
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      // validate the optional field `metadata`
-      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
-        PagingOffsetLimitMetadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
-      }
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
         if (jsonArraydata != null) {
@@ -270,20 +266,6 @@ public class EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimit
           };
         }
       }
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
-        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
-        if (jsonArraywarnings != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("warnings").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-          }
-
-          // validate the optional field `warnings` (array)
-          for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            SdkApiRestCommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
-          };
-        }
-      }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
         if (jsonArrayerrors != null) {
@@ -295,6 +277,24 @@ public class EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimit
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
             SdkApiRestCommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+          };
+        }
+      }
+      // validate the optional field `metadata`
+      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
+        PagingOffsetLimitMetadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
+      }
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            SdkApiRestCommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }

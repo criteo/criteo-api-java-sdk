@@ -49,10 +49,6 @@ import com.criteo.api.retailmedia.v2024_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalChangeDatesOfBalance {
-  public static final String SERIALIZED_NAME_START_DATE = "startDate";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private LocalDate startDate;
-
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private LocalDate endDate;
@@ -61,30 +57,12 @@ public class ExternalChangeDatesOfBalance {
   @SerializedName(SERIALIZED_NAME_MEMO)
   private String memo;
 
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private LocalDate startDate;
+
   public ExternalChangeDatesOfBalance() {
   }
-
-  public ExternalChangeDatesOfBalance startDate(LocalDate startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
-   * @return startDate
-  **/
-  @javax.annotation.Nonnull
-
-  public LocalDate getStartDate() {
-    return startDate;
-  }
-
-
-  public void setStartDate(LocalDate startDate) {
-    this.startDate = startDate;
-  }
-
 
   public ExternalChangeDatesOfBalance endDate(LocalDate endDate) {
     
@@ -127,6 +105,28 @@ public class ExternalChangeDatesOfBalance {
 
   public void setMemo(String memo) {
     this.memo = memo;
+  }
+
+
+  public ExternalChangeDatesOfBalance startDate(LocalDate startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
+   * @return startDate
+  **/
+  @javax.annotation.Nonnull
+
+  public LocalDate getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(LocalDate startDate) {
+    this.startDate = startDate;
   }
 
   /**
@@ -184,24 +184,24 @@ public class ExternalChangeDatesOfBalance {
       return false;
     }
     ExternalChangeDatesOfBalance externalChangeDatesOfBalance = (ExternalChangeDatesOfBalance) o;
-    return Objects.equals(this.startDate, externalChangeDatesOfBalance.startDate) &&
-        Objects.equals(this.endDate, externalChangeDatesOfBalance.endDate) &&
-        Objects.equals(this.memo, externalChangeDatesOfBalance.memo)&&
+    return Objects.equals(this.endDate, externalChangeDatesOfBalance.endDate) &&
+        Objects.equals(this.memo, externalChangeDatesOfBalance.memo) &&
+        Objects.equals(this.startDate, externalChangeDatesOfBalance.startDate)&&
         Objects.equals(this.additionalProperties, externalChangeDatesOfBalance.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, memo, additionalProperties);
+    return Objects.hash(endDate, memo, startDate, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalChangeDatesOfBalance {\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    memo: ").append(toIndentedString(memo)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -225,15 +225,15 @@ public class ExternalChangeDatesOfBalance {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("startDate");
     openapiFields.add("endDate");
     openapiFields.add("memo");
+    openapiFields.add("startDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("endDate");
     openapiRequiredFields.add("memo");
+    openapiRequiredFields.add("startDate");
   }
 
  /**

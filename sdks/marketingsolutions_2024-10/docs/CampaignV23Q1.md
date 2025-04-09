@@ -8,12 +8,12 @@ campaign read model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** |  |  [optional] |
 |**advertiserId** | **String** |  |  [optional] |
-|**spendLimit** | [**CampaignSpendLimitV23Q1**](CampaignSpendLimitV23Q1.md) |  |  [optional] |
-|**goal** | [**GoalEnum**](#GoalEnum) |  |  [optional] |
 |**budgetAutomation** | [**CampaignBudgetAutomationV23Q1**](CampaignBudgetAutomationV23Q1.md) |  |  [optional] |
+|**goal** | [**GoalEnum**](#GoalEnum) |  |  [optional] |
 |**id** | **String** | Id of the entity (duplicate of the parent id). |  [optional] |
+|**name** | **String** |  |  [optional] |
+|**spendLimit** | [**CampaignSpendLimitV23Q1**](CampaignSpendLimitV23Q1.md) |  |  [optional] |
 
 
 

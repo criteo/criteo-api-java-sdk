@@ -50,6 +50,10 @@ import com.criteo.api.retailmedia.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalAudienceTarget202110 {
+  public static final String SERIALIZED_NAME_AUDIENCE_IDS = "audienceIds";
+  @SerializedName(SERIALIZED_NAME_AUDIENCE_IDS)
+  private List<String> audienceIds = new ArrayList<>();
+
   /**
    * Scope of the audience target
    */
@@ -103,34 +107,8 @@ public class ExternalAudienceTarget202110 {
   @SerializedName(SERIALIZED_NAME_SCOPE)
   private ScopeEnum scope;
 
-  public static final String SERIALIZED_NAME_AUDIENCE_IDS = "audienceIds";
-  @SerializedName(SERIALIZED_NAME_AUDIENCE_IDS)
-  private List<String> audienceIds = new ArrayList<>();
-
   public ExternalAudienceTarget202110() {
   }
-
-  public ExternalAudienceTarget202110 scope(ScopeEnum scope) {
-    
-    this.scope = scope;
-    return this;
-  }
-
-   /**
-   * Scope of the audience target
-   * @return scope
-  **/
-  @javax.annotation.Nonnull
-
-  public ScopeEnum getScope() {
-    return scope;
-  }
-
-
-  public void setScope(ScopeEnum scope) {
-    this.scope = scope;
-  }
-
 
   public ExternalAudienceTarget202110 audienceIds(List<String> audienceIds) {
     
@@ -156,6 +134,28 @@ public class ExternalAudienceTarget202110 {
 
   public void setAudienceIds(List<String> audienceIds) {
     this.audienceIds = audienceIds;
+  }
+
+
+  public ExternalAudienceTarget202110 scope(ScopeEnum scope) {
+    
+    this.scope = scope;
+    return this;
+  }
+
+   /**
+   * Scope of the audience target
+   * @return scope
+  **/
+  @javax.annotation.Nonnull
+
+  public ScopeEnum getScope() {
+    return scope;
+  }
+
+
+  public void setScope(ScopeEnum scope) {
+    this.scope = scope;
   }
 
   /**
@@ -213,22 +213,22 @@ public class ExternalAudienceTarget202110 {
       return false;
     }
     ExternalAudienceTarget202110 externalAudienceTarget202110 = (ExternalAudienceTarget202110) o;
-    return Objects.equals(this.scope, externalAudienceTarget202110.scope) &&
-        Objects.equals(this.audienceIds, externalAudienceTarget202110.audienceIds)&&
+    return Objects.equals(this.audienceIds, externalAudienceTarget202110.audienceIds) &&
+        Objects.equals(this.scope, externalAudienceTarget202110.scope)&&
         Objects.equals(this.additionalProperties, externalAudienceTarget202110.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(scope, audienceIds, additionalProperties);
+    return Objects.hash(audienceIds, scope, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalAudienceTarget202110 {\n");
-    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    audienceIds: ").append(toIndentedString(audienceIds)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -252,13 +252,13 @@ public class ExternalAudienceTarget202110 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("scope");
     openapiFields.add("audienceIds");
+    openapiFields.add("scope");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("scope");
     openapiRequiredFields.add("audienceIds");
+    openapiRequiredFields.add("scope");
   }
 
  /**
@@ -280,14 +280,14 @@ public class ExternalAudienceTarget202110 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("scope").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
-      }
       // ensure the required json array is present
       if (jsonObj.get("audienceIds") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("audienceIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `audienceIds` to be an array in the JSON string but got `%s`", jsonObj.get("audienceIds").toString()));
+      }
+      if (!jsonObj.get("scope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
   }
 

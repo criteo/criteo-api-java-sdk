@@ -54,10 +54,6 @@ public class RmLegacyAudienceGetEntityV1Resource {
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private RmLegacyAudienceGetEntityV1 attributes;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
-
   /**
    * Type of the audience.
    */
@@ -109,6 +105,10 @@ public class RmLegacyAudienceGetEntityV1Resource {
   @SerializedName(SERIALIZED_NAME_AUDIENCE_TYPE)
   private AudienceTypeEnum audienceType;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
@@ -138,28 +138,6 @@ public class RmLegacyAudienceGetEntityV1Resource {
   }
 
 
-  public RmLegacyAudienceGetEntityV1Resource id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Unique identifier of this resource.
-   * @return id
-  **/
-  @javax.annotation.Nullable
-
-  public String getId() {
-    return id;
-  }
-
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-
   public RmLegacyAudienceGetEntityV1Resource audienceType(AudienceTypeEnum audienceType) {
     
     this.audienceType = audienceType;
@@ -179,6 +157,28 @@ public class RmLegacyAudienceGetEntityV1Resource {
 
   public void setAudienceType(AudienceTypeEnum audienceType) {
     this.audienceType = audienceType;
+  }
+
+
+  public RmLegacyAudienceGetEntityV1Resource id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Unique identifier of this resource.
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -259,8 +259,8 @@ public class RmLegacyAudienceGetEntityV1Resource {
     }
     RmLegacyAudienceGetEntityV1Resource rmLegacyAudienceGetEntityV1Resource = (RmLegacyAudienceGetEntityV1Resource) o;
     return Objects.equals(this.attributes, rmLegacyAudienceGetEntityV1Resource.attributes) &&
-        Objects.equals(this.id, rmLegacyAudienceGetEntityV1Resource.id) &&
         Objects.equals(this.audienceType, rmLegacyAudienceGetEntityV1Resource.audienceType) &&
+        Objects.equals(this.id, rmLegacyAudienceGetEntityV1Resource.id) &&
         Objects.equals(this.type, rmLegacyAudienceGetEntityV1Resource.type)&&
         Objects.equals(this.additionalProperties, rmLegacyAudienceGetEntityV1Resource.additionalProperties);
   }
@@ -271,7 +271,7 @@ public class RmLegacyAudienceGetEntityV1Resource {
 
   @Override
   public int hashCode() {
-    return Objects.hash(attributes, id, audienceType, type, additionalProperties);
+    return Objects.hash(attributes, audienceType, id, type, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -286,8 +286,8 @@ public class RmLegacyAudienceGetEntityV1Resource {
     StringBuilder sb = new StringBuilder();
     sb.append("class RmLegacyAudienceGetEntityV1Resource {\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    audienceType: ").append(toIndentedString(audienceType)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -313,8 +313,8 @@ public class RmLegacyAudienceGetEntityV1Resource {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("attributes");
-    openapiFields.add("id");
     openapiFields.add("audienceType");
+    openapiFields.add("id");
     openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
@@ -337,11 +337,11 @@ public class RmLegacyAudienceGetEntityV1Resource {
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
         RmLegacyAudienceGetEntityV1.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
       if ((jsonObj.get("audienceType") != null && !jsonObj.get("audienceType").isJsonNull()) && !jsonObj.get("audienceType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `audienceType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("audienceType").toString()));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

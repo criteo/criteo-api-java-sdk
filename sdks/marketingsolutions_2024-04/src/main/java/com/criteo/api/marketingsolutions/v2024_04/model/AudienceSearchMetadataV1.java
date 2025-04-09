@@ -49,10 +49,6 @@ import com.criteo.api.marketingsolutions.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AudienceSearchMetadataV1 {
-  public static final String SERIALIZED_NAME_TOTAL_ITEMS = "totalItems";
-  @SerializedName(SERIALIZED_NAME_TOTAL_ITEMS)
-  private Integer totalItems;
-
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   private Integer limit;
@@ -61,30 +57,12 @@ public class AudienceSearchMetadataV1 {
   @SerializedName(SERIALIZED_NAME_OFFSET)
   private Integer offset;
 
+  public static final String SERIALIZED_NAME_TOTAL_ITEMS = "totalItems";
+  @SerializedName(SERIALIZED_NAME_TOTAL_ITEMS)
+  private Integer totalItems;
+
   public AudienceSearchMetadataV1() {
   }
-
-  public AudienceSearchMetadataV1 totalItems(Integer totalItems) {
-    
-    this.totalItems = totalItems;
-    return this;
-  }
-
-   /**
-   * Total number of items
-   * @return totalItems
-  **/
-  @javax.annotation.Nullable
-
-  public Integer getTotalItems() {
-    return totalItems;
-  }
-
-
-  public void setTotalItems(Integer totalItems) {
-    this.totalItems = totalItems;
-  }
-
 
   public AudienceSearchMetadataV1 limit(Integer limit) {
     
@@ -127,6 +105,28 @@ public class AudienceSearchMetadataV1 {
 
   public void setOffset(Integer offset) {
     this.offset = offset;
+  }
+
+
+  public AudienceSearchMetadataV1 totalItems(Integer totalItems) {
+    
+    this.totalItems = totalItems;
+    return this;
+  }
+
+   /**
+   * Total number of items
+   * @return totalItems
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getTotalItems() {
+    return totalItems;
+  }
+
+
+  public void setTotalItems(Integer totalItems) {
+    this.totalItems = totalItems;
   }
 
   /**
@@ -184,9 +184,9 @@ public class AudienceSearchMetadataV1 {
       return false;
     }
     AudienceSearchMetadataV1 audienceSearchMetadataV1 = (AudienceSearchMetadataV1) o;
-    return Objects.equals(this.totalItems, audienceSearchMetadataV1.totalItems) &&
-        Objects.equals(this.limit, audienceSearchMetadataV1.limit) &&
-        Objects.equals(this.offset, audienceSearchMetadataV1.offset)&&
+    return Objects.equals(this.limit, audienceSearchMetadataV1.limit) &&
+        Objects.equals(this.offset, audienceSearchMetadataV1.offset) &&
+        Objects.equals(this.totalItems, audienceSearchMetadataV1.totalItems)&&
         Objects.equals(this.additionalProperties, audienceSearchMetadataV1.additionalProperties);
   }
 
@@ -196,7 +196,7 @@ public class AudienceSearchMetadataV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalItems, limit, offset, additionalProperties);
+    return Objects.hash(limit, offset, totalItems, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -210,9 +210,9 @@ public class AudienceSearchMetadataV1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceSearchMetadataV1 {\n");
-    sb.append("    totalItems: ").append(toIndentedString(totalItems)).append("\n");
     sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
     sb.append("    offset: ").append(toIndentedString(offset)).append("\n");
+    sb.append("    totalItems: ").append(toIndentedString(totalItems)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -236,9 +236,9 @@ public class AudienceSearchMetadataV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("totalItems");
     openapiFields.add("limit");
     openapiFields.add("offset");
+    openapiFields.add("totalItems");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

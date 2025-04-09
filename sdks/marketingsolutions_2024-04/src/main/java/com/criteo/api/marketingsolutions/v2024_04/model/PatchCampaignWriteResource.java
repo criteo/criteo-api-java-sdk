@@ -50,6 +50,10 @@ import com.criteo.api.marketingsolutions.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PatchCampaignWriteResource {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private PatchCampaign attributes;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -58,12 +62,30 @@ public class PatchCampaignWriteResource {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private PatchCampaign attributes;
-
   public PatchCampaignWriteResource() {
   }
+
+  public PatchCampaignWriteResource attributes(PatchCampaign attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+
+  public PatchCampaign getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(PatchCampaign attributes) {
+    this.attributes = attributes;
+  }
+
 
   public PatchCampaignWriteResource id(String id) {
     
@@ -106,28 +128,6 @@ public class PatchCampaignWriteResource {
 
   public void setType(String type) {
     this.type = type;
-  }
-
-
-  public PatchCampaignWriteResource attributes(PatchCampaign attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @javax.annotation.Nullable
-
-  public PatchCampaign getAttributes() {
-    return attributes;
-  }
-
-
-  public void setAttributes(PatchCampaign attributes) {
-    this.attributes = attributes;
   }
 
   /**
@@ -185,9 +185,9 @@ public class PatchCampaignWriteResource {
       return false;
     }
     PatchCampaignWriteResource patchCampaignWriteResource = (PatchCampaignWriteResource) o;
-    return Objects.equals(this.id, patchCampaignWriteResource.id) &&
-        Objects.equals(this.type, patchCampaignWriteResource.type) &&
-        Objects.equals(this.attributes, patchCampaignWriteResource.attributes)&&
+    return Objects.equals(this.attributes, patchCampaignWriteResource.attributes) &&
+        Objects.equals(this.id, patchCampaignWriteResource.id) &&
+        Objects.equals(this.type, patchCampaignWriteResource.type)&&
         Objects.equals(this.additionalProperties, patchCampaignWriteResource.additionalProperties);
   }
 
@@ -197,7 +197,7 @@ public class PatchCampaignWriteResource {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, attributes, additionalProperties);
+    return Objects.hash(attributes, id, type, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -211,9 +211,9 @@ public class PatchCampaignWriteResource {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PatchCampaignWriteResource {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -237,9 +237,9 @@ public class PatchCampaignWriteResource {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("attributes");
     openapiFields.add("id");
     openapiFields.add("type");
-    openapiFields.add("attributes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -257,15 +257,15 @@ public class PatchCampaignWriteResource {
           throw new IllegalArgumentException(String.format("The required field(s) %s in PatchCampaignWriteResource is not found in the empty JSON string", PatchCampaignWriteResource.openapiRequiredFields.toString()));
         }
       }
+      // validate the optional field `attributes`
+      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
+        PatchCampaign.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        PatchCampaign.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
   }
 

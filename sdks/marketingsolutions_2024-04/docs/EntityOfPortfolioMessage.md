@@ -8,10 +8,10 @@ Generic Criteo API successful data model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | [**TypeEnum**](#TypeEnum) | A string containing the entity type |  [optional] |
-|**id** | **String** | A opaque string containing the unique Id of the entity |  [optional] |
 |**attributes** | [**PortfolioMessage**](PortfolioMessage.md) |  |  [optional] |
+|**id** | **String** | A opaque string containing the unique Id of the entity |  [optional] |
 |**meta** | **Object** | A meta object that contains application-specific metadata |  [optional] |
+|**type** | [**TypeEnum**](#TypeEnum) | A string containing the entity type |  [optional] |
 
 
 

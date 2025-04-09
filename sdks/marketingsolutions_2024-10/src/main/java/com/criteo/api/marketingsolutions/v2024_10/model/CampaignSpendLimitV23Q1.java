@@ -50,56 +50,9 @@ import com.criteo.api.marketingsolutions.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CampaignSpendLimitV23Q1 {
-  /**
-   * Gets or Sets spendLimitType
-   */
-  @JsonAdapter(SpendLimitTypeEnum.Adapter.class)
-  public enum SpendLimitTypeEnum {
-    CAPPED("capped"),
-    
-    UNCAPPED("uncapped");
-
-    private String value;
-
-    SpendLimitTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SpendLimitTypeEnum fromValue(String value) {
-      for (SpendLimitTypeEnum b : SpendLimitTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<SpendLimitTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SpendLimitTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SpendLimitTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SpendLimitTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_SPEND_LIMIT_TYPE = "spendLimitType";
-  @SerializedName(SERIALIZED_NAME_SPEND_LIMIT_TYPE)
-  private SpendLimitTypeEnum spendLimitType;
+  public static final String SERIALIZED_NAME_SPEND_LIMIT_AMOUNT = "spendLimitAmount";
+  @SerializedName(SERIALIZED_NAME_SPEND_LIMIT_AMOUNT)
+  private NillableDecimal spendLimitAmount;
 
   /**
    * Gets or Sets spendLimitRenewal
@@ -156,32 +109,79 @@ public class CampaignSpendLimitV23Q1 {
   @SerializedName(SERIALIZED_NAME_SPEND_LIMIT_RENEWAL)
   private SpendLimitRenewalEnum spendLimitRenewal;
 
-  public static final String SERIALIZED_NAME_SPEND_LIMIT_AMOUNT = "spendLimitAmount";
-  @SerializedName(SERIALIZED_NAME_SPEND_LIMIT_AMOUNT)
-  private NillableDecimal spendLimitAmount;
+  /**
+   * Gets or Sets spendLimitType
+   */
+  @JsonAdapter(SpendLimitTypeEnum.Adapter.class)
+  public enum SpendLimitTypeEnum {
+    CAPPED("capped"),
+    
+    UNCAPPED("uncapped");
+
+    private String value;
+
+    SpendLimitTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static SpendLimitTypeEnum fromValue(String value) {
+      for (SpendLimitTypeEnum b : SpendLimitTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<SpendLimitTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SpendLimitTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SpendLimitTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return SpendLimitTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_SPEND_LIMIT_TYPE = "spendLimitType";
+  @SerializedName(SERIALIZED_NAME_SPEND_LIMIT_TYPE)
+  private SpendLimitTypeEnum spendLimitType;
 
   public CampaignSpendLimitV23Q1() {
   }
 
-  public CampaignSpendLimitV23Q1 spendLimitType(SpendLimitTypeEnum spendLimitType) {
+  public CampaignSpendLimitV23Q1 spendLimitAmount(NillableDecimal spendLimitAmount) {
     
-    this.spendLimitType = spendLimitType;
+    this.spendLimitAmount = spendLimitAmount;
     return this;
   }
 
    /**
-   * Get spendLimitType
-   * @return spendLimitType
+   * Get spendLimitAmount
+   * @return spendLimitAmount
   **/
   @javax.annotation.Nullable
 
-  public SpendLimitTypeEnum getSpendLimitType() {
-    return spendLimitType;
+  public NillableDecimal getSpendLimitAmount() {
+    return spendLimitAmount;
   }
 
 
-  public void setSpendLimitType(SpendLimitTypeEnum spendLimitType) {
-    this.spendLimitType = spendLimitType;
+  public void setSpendLimitAmount(NillableDecimal spendLimitAmount) {
+    this.spendLimitAmount = spendLimitAmount;
   }
 
 
@@ -207,25 +207,25 @@ public class CampaignSpendLimitV23Q1 {
   }
 
 
-  public CampaignSpendLimitV23Q1 spendLimitAmount(NillableDecimal spendLimitAmount) {
+  public CampaignSpendLimitV23Q1 spendLimitType(SpendLimitTypeEnum spendLimitType) {
     
-    this.spendLimitAmount = spendLimitAmount;
+    this.spendLimitType = spendLimitType;
     return this;
   }
 
    /**
-   * Get spendLimitAmount
-   * @return spendLimitAmount
+   * Get spendLimitType
+   * @return spendLimitType
   **/
   @javax.annotation.Nullable
 
-  public NillableDecimal getSpendLimitAmount() {
-    return spendLimitAmount;
+  public SpendLimitTypeEnum getSpendLimitType() {
+    return spendLimitType;
   }
 
 
-  public void setSpendLimitAmount(NillableDecimal spendLimitAmount) {
-    this.spendLimitAmount = spendLimitAmount;
+  public void setSpendLimitType(SpendLimitTypeEnum spendLimitType) {
+    this.spendLimitType = spendLimitType;
   }
 
   /**
@@ -283,9 +283,9 @@ public class CampaignSpendLimitV23Q1 {
       return false;
     }
     CampaignSpendLimitV23Q1 campaignSpendLimitV23Q1 = (CampaignSpendLimitV23Q1) o;
-    return Objects.equals(this.spendLimitType, campaignSpendLimitV23Q1.spendLimitType) &&
+    return Objects.equals(this.spendLimitAmount, campaignSpendLimitV23Q1.spendLimitAmount) &&
         Objects.equals(this.spendLimitRenewal, campaignSpendLimitV23Q1.spendLimitRenewal) &&
-        Objects.equals(this.spendLimitAmount, campaignSpendLimitV23Q1.spendLimitAmount)&&
+        Objects.equals(this.spendLimitType, campaignSpendLimitV23Q1.spendLimitType)&&
         Objects.equals(this.additionalProperties, campaignSpendLimitV23Q1.additionalProperties);
   }
 
@@ -295,7 +295,7 @@ public class CampaignSpendLimitV23Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(spendLimitType, spendLimitRenewal, spendLimitAmount, additionalProperties);
+    return Objects.hash(spendLimitAmount, spendLimitRenewal, spendLimitType, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -309,9 +309,9 @@ public class CampaignSpendLimitV23Q1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignSpendLimitV23Q1 {\n");
-    sb.append("    spendLimitType: ").append(toIndentedString(spendLimitType)).append("\n");
-    sb.append("    spendLimitRenewal: ").append(toIndentedString(spendLimitRenewal)).append("\n");
     sb.append("    spendLimitAmount: ").append(toIndentedString(spendLimitAmount)).append("\n");
+    sb.append("    spendLimitRenewal: ").append(toIndentedString(spendLimitRenewal)).append("\n");
+    sb.append("    spendLimitType: ").append(toIndentedString(spendLimitType)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -335,9 +335,9 @@ public class CampaignSpendLimitV23Q1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("spendLimitType");
-    openapiFields.add("spendLimitRenewal");
     openapiFields.add("spendLimitAmount");
+    openapiFields.add("spendLimitRenewal");
+    openapiFields.add("spendLimitType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -355,15 +355,15 @@ public class CampaignSpendLimitV23Q1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignSpendLimitV23Q1 is not found in the empty JSON string", CampaignSpendLimitV23Q1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("spendLimitType") != null && !jsonObj.get("spendLimitType").isJsonNull()) && !jsonObj.get("spendLimitType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `spendLimitType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("spendLimitType").toString()));
+      // validate the optional field `spendLimitAmount`
+      if (jsonObj.get("spendLimitAmount") != null && !jsonObj.get("spendLimitAmount").isJsonNull()) {
+        NillableDecimal.validateJsonObject(jsonObj.getAsJsonObject("spendLimitAmount"));
       }
       if ((jsonObj.get("spendLimitRenewal") != null && !jsonObj.get("spendLimitRenewal").isJsonNull()) && !jsonObj.get("spendLimitRenewal").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `spendLimitRenewal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("spendLimitRenewal").toString()));
       }
-      // validate the optional field `spendLimitAmount`
-      if (jsonObj.get("spendLimitAmount") != null && !jsonObj.get("spendLimitAmount").isJsonNull()) {
-        NillableDecimal.validateJsonObject(jsonObj.getAsJsonObject("spendLimitAmount"));
+      if ((jsonObj.get("spendLimitType") != null && !jsonObj.get("spendLimitType").isJsonNull()) && !jsonObj.get("spendLimitType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `spendLimitType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("spendLimitType").toString()));
       }
   }
 

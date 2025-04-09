@@ -8,29 +8,19 @@ A creative entity
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** | Name |  |
-|**status** | [**StatusEnum**](#StatusEnum) | Creative Status |  |
-|**brandId** | **Long** | Brand Id |  [optional] |
-|**retailerId** | **Integer** | Retailer Id |  |
-|**templateId** | **Integer** | Template Id |  |
-|**templateName** | **String** | Template Name |  |
-|**formatId** | **Integer** | Format Id |  |
 |**associatedLineItemIds** | **List&lt;String&gt;** | Associated Line Item Ids |  [optional] |
-|**updatedAt** | **OffsetDateTime** | Updated at time |  [optional] |
+|**brandId** | **Long** | Brand Id |  [optional] |
 |**creativeFormatType** | [**CreativeFormatTypeEnum**](#CreativeFormatTypeEnum) | Creative format type |  |
 |**environments** | [**List&lt;PageTypeEnvironment202210&gt;**](PageTypeEnvironment202210.md) | Environment type (e.g. mobile, web, app) |  |
+|**formatId** | **Integer** | Format Id |  |
+|**id** | **String** | Id of the entity |  [optional] |
+|**name** | **String** | Name |  |
+|**retailerId** | **Integer** | Retailer Id |  |
+|**status** | [**StatusEnum**](#StatusEnum) | Creative Status |  |
+|**templateId** | **Integer** | Template Id |  |
+|**templateName** | **String** | Template Name |  |
 |**templateVariableValues** | [**List&lt;TemplateVariableValue&gt;**](TemplateVariableValue.md) | The template chosen values |  |
-
-
-
-## Enum: StatusEnum
-
-| Name | Value |
-|---- | -----|
-| READY | &quot;Ready&quot; |
-| IN_USE | &quot;In_Use&quot; |
-| ARCHIVED | &quot;Archived&quot; |
-| DELETED | &quot;Deleted&quot; |
+|**updatedAt** | **OffsetDateTime** | Updated at time |  [optional] |
 
 
 
@@ -48,6 +38,17 @@ A creative entity
 | CUSTOM | &quot;CUSTOM&quot; |
 | DISPLAYPANEL | &quot;DisplayPanel&quot; |
 | DIGITALSHELFTALKER | &quot;DigitalShelfTalker&quot; |
+
+
+
+## Enum: StatusEnum
+
+| Name | Value |
+|---- | -----|
+| READY | &quot;Ready&quot; |
+| IN_USE | &quot;In_Use&quot; |
+| ARCHIVED | &quot;Archived&quot; |
+| DELETED | &quot;Deleted&quot; |
 
 
 

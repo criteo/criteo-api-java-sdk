@@ -52,17 +52,86 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalPreferredLineItemCreateModelV2 {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_BUDGET = "budget";
+  @SerializedName(SERIALIZED_NAME_BUDGET)
+  private Double budget;
 
-  public static final String SERIALIZED_NAME_START_DATE = "startDate";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private LocalDate startDate;
+  public static final String SERIALIZED_NAME_CAPPING = "capping";
+  @SerializedName(SERIALIZED_NAME_CAPPING)
+  private ExternalLineItemCappingV2 capping;
+
+  public static final String SERIALIZED_NAME_CREATIVE_ID = "creativeId";
+  @SerializedName(SERIALIZED_NAME_CREATIVE_ID)
+  private String creativeId;
 
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private LocalDate endDate;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  /**
+   * Line Item Pacing Enum
+   */
+  @JsonAdapter(PacingEnum.Adapter.class)
+  public enum PacingEnum {
+    UNKNOWN("unknown"),
+    
+    STANDARD("standard"),
+    
+    ACCELERATED("accelerated");
+
+    private String value;
+
+    PacingEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PacingEnum fromValue(String value) {
+      for (PacingEnum b : PacingEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<PacingEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PacingEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PacingEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return PacingEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_PACING = "pacing";
+  @SerializedName(SERIALIZED_NAME_PACING)
+  private PacingEnum pacing;
+
+  public static final String SERIALIZED_NAME_PAGE = "page";
+  @SerializedName(SERIALIZED_NAME_PAGE)
+  private ExternalLineItemPageV2 page;
+
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private LocalDate startDate;
 
   /**
    * Line Item Status Enum
@@ -129,189 +198,32 @@ public class ExternalPreferredLineItemCreateModelV2 {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
-  /**
-   * Line Item Pacing Enum
-   */
-  @JsonAdapter(PacingEnum.Adapter.class)
-  public enum PacingEnum {
-    UNKNOWN("unknown"),
-    
-    STANDARD("standard"),
-    
-    ACCELERATED("accelerated");
-
-    private String value;
-
-    PacingEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static PacingEnum fromValue(String value) {
-      for (PacingEnum b : PacingEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<PacingEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PacingEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PacingEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PacingEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_PACING = "pacing";
-  @SerializedName(SERIALIZED_NAME_PACING)
-  private PacingEnum pacing;
-
-  public static final String SERIALIZED_NAME_CAPPING = "capping";
-  @SerializedName(SERIALIZED_NAME_CAPPING)
-  private ExternalLineItemCappingV2 capping;
-
-  public static final String SERIALIZED_NAME_PAGE = "page";
-  @SerializedName(SERIALIZED_NAME_PAGE)
-  private ExternalLineItemPageV2 page;
-
   public static final String SERIALIZED_NAME_TARGET_RETAILER_ID = "targetRetailerId";
   @SerializedName(SERIALIZED_NAME_TARGET_RETAILER_ID)
   private String targetRetailerId;
 
-  public static final String SERIALIZED_NAME_BUDGET = "budget";
-  @SerializedName(SERIALIZED_NAME_BUDGET)
-  private Double budget;
-
-  public static final String SERIALIZED_NAME_CREATIVE_ID = "creativeId";
-  @SerializedName(SERIALIZED_NAME_CREATIVE_ID)
-  private String creativeId;
-
   public ExternalPreferredLineItemCreateModelV2() {
   }
 
-  public ExternalPreferredLineItemCreateModelV2 name(String name) {
+  public ExternalPreferredLineItemCreateModelV2 budget(Double budget) {
     
-    this.name = name;
+    this.budget = budget;
     return this;
   }
 
    /**
-   * Get name
-   * @return name
+   * Get budget
+   * @return budget
   **/
   @javax.annotation.Nonnull
 
-  public String getName() {
-    return name;
+  public Double getBudget() {
+    return budget;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public ExternalPreferredLineItemCreateModelV2 startDate(LocalDate startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
-   * @return startDate
-  **/
-  @javax.annotation.Nonnull
-
-  public LocalDate getStartDate() {
-    return startDate;
-  }
-
-
-  public void setStartDate(LocalDate startDate) {
-    this.startDate = startDate;
-  }
-
-
-  public ExternalPreferredLineItemCreateModelV2 endDate(LocalDate endDate) {
-    
-    this.endDate = endDate;
-    return this;
-  }
-
-   /**
-   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
-   * @return endDate
-  **/
-  @javax.annotation.Nonnull
-
-  public LocalDate getEndDate() {
-    return endDate;
-  }
-
-
-  public void setEndDate(LocalDate endDate) {
-    this.endDate = endDate;
-  }
-
-
-  public ExternalPreferredLineItemCreateModelV2 status(StatusEnum status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Line Item Status Enum
-   * @return status
-  **/
-  @javax.annotation.Nullable
-
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
-
-
-  public ExternalPreferredLineItemCreateModelV2 pacing(PacingEnum pacing) {
-    
-    this.pacing = pacing;
-    return this;
-  }
-
-   /**
-   * Line Item Pacing Enum
-   * @return pacing
-  **/
-  @javax.annotation.Nonnull
-
-  public PacingEnum getPacing() {
-    return pacing;
-  }
-
-
-  public void setPacing(PacingEnum pacing) {
-    this.pacing = pacing;
+  public void setBudget(Double budget) {
+    this.budget = budget;
   }
 
 
@@ -337,6 +249,94 @@ public class ExternalPreferredLineItemCreateModelV2 {
   }
 
 
+  public ExternalPreferredLineItemCreateModelV2 creativeId(String creativeId) {
+    
+    this.creativeId = creativeId;
+    return this;
+  }
+
+   /**
+   * Get creativeId
+   * @return creativeId
+  **/
+  @javax.annotation.Nullable
+
+  public String getCreativeId() {
+    return creativeId;
+  }
+
+
+  public void setCreativeId(String creativeId) {
+    this.creativeId = creativeId;
+  }
+
+
+  public ExternalPreferredLineItemCreateModelV2 endDate(LocalDate endDate) {
+    
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
+   * @return endDate
+  **/
+  @javax.annotation.Nonnull
+
+  public LocalDate getEndDate() {
+    return endDate;
+  }
+
+
+  public void setEndDate(LocalDate endDate) {
+    this.endDate = endDate;
+  }
+
+
+  public ExternalPreferredLineItemCreateModelV2 name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public ExternalPreferredLineItemCreateModelV2 pacing(PacingEnum pacing) {
+    
+    this.pacing = pacing;
+    return this;
+  }
+
+   /**
+   * Line Item Pacing Enum
+   * @return pacing
+  **/
+  @javax.annotation.Nonnull
+
+  public PacingEnum getPacing() {
+    return pacing;
+  }
+
+
+  public void setPacing(PacingEnum pacing) {
+    this.pacing = pacing;
+  }
+
+
   public ExternalPreferredLineItemCreateModelV2 page(ExternalLineItemPageV2 page) {
     
     this.page = page;
@@ -359,6 +359,50 @@ public class ExternalPreferredLineItemCreateModelV2 {
   }
 
 
+  public ExternalPreferredLineItemCreateModelV2 startDate(LocalDate startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Represents the Date as a year, month, and day in the format YYYY-MM-DD
+   * @return startDate
+  **/
+  @javax.annotation.Nonnull
+
+  public LocalDate getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(LocalDate startDate) {
+    this.startDate = startDate;
+  }
+
+
+  public ExternalPreferredLineItemCreateModelV2 status(StatusEnum status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Line Item Status Enum
+   * @return status
+  **/
+  @javax.annotation.Nullable
+
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
+
   public ExternalPreferredLineItemCreateModelV2 targetRetailerId(String targetRetailerId) {
     
     this.targetRetailerId = targetRetailerId;
@@ -378,50 +422,6 @@ public class ExternalPreferredLineItemCreateModelV2 {
 
   public void setTargetRetailerId(String targetRetailerId) {
     this.targetRetailerId = targetRetailerId;
-  }
-
-
-  public ExternalPreferredLineItemCreateModelV2 budget(Double budget) {
-    
-    this.budget = budget;
-    return this;
-  }
-
-   /**
-   * Get budget
-   * @return budget
-  **/
-  @javax.annotation.Nonnull
-
-  public Double getBudget() {
-    return budget;
-  }
-
-
-  public void setBudget(Double budget) {
-    this.budget = budget;
-  }
-
-
-  public ExternalPreferredLineItemCreateModelV2 creativeId(String creativeId) {
-    
-    this.creativeId = creativeId;
-    return this;
-  }
-
-   /**
-   * Get creativeId
-   * @return creativeId
-  **/
-  @javax.annotation.Nullable
-
-  public String getCreativeId() {
-    return creativeId;
-  }
-
-
-  public void setCreativeId(String creativeId) {
-    this.creativeId = creativeId;
   }
 
   /**
@@ -479,16 +479,16 @@ public class ExternalPreferredLineItemCreateModelV2 {
       return false;
     }
     ExternalPreferredLineItemCreateModelV2 externalPreferredLineItemCreateModelV2 = (ExternalPreferredLineItemCreateModelV2) o;
-    return Objects.equals(this.name, externalPreferredLineItemCreateModelV2.name) &&
-        Objects.equals(this.startDate, externalPreferredLineItemCreateModelV2.startDate) &&
-        Objects.equals(this.endDate, externalPreferredLineItemCreateModelV2.endDate) &&
-        Objects.equals(this.status, externalPreferredLineItemCreateModelV2.status) &&
-        Objects.equals(this.pacing, externalPreferredLineItemCreateModelV2.pacing) &&
+    return Objects.equals(this.budget, externalPreferredLineItemCreateModelV2.budget) &&
         Objects.equals(this.capping, externalPreferredLineItemCreateModelV2.capping) &&
+        Objects.equals(this.creativeId, externalPreferredLineItemCreateModelV2.creativeId) &&
+        Objects.equals(this.endDate, externalPreferredLineItemCreateModelV2.endDate) &&
+        Objects.equals(this.name, externalPreferredLineItemCreateModelV2.name) &&
+        Objects.equals(this.pacing, externalPreferredLineItemCreateModelV2.pacing) &&
         Objects.equals(this.page, externalPreferredLineItemCreateModelV2.page) &&
-        Objects.equals(this.targetRetailerId, externalPreferredLineItemCreateModelV2.targetRetailerId) &&
-        Objects.equals(this.budget, externalPreferredLineItemCreateModelV2.budget) &&
-        Objects.equals(this.creativeId, externalPreferredLineItemCreateModelV2.creativeId)&&
+        Objects.equals(this.startDate, externalPreferredLineItemCreateModelV2.startDate) &&
+        Objects.equals(this.status, externalPreferredLineItemCreateModelV2.status) &&
+        Objects.equals(this.targetRetailerId, externalPreferredLineItemCreateModelV2.targetRetailerId)&&
         Objects.equals(this.additionalProperties, externalPreferredLineItemCreateModelV2.additionalProperties);
   }
 
@@ -498,7 +498,7 @@ public class ExternalPreferredLineItemCreateModelV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, startDate, endDate, status, pacing, capping, page, targetRetailerId, budget, creativeId, additionalProperties);
+    return Objects.hash(budget, capping, creativeId, endDate, name, pacing, page, startDate, status, targetRetailerId, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -512,16 +512,16 @@ public class ExternalPreferredLineItemCreateModelV2 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalPreferredLineItemCreateModelV2 {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    pacing: ").append(toIndentedString(pacing)).append("\n");
-    sb.append("    capping: ").append(toIndentedString(capping)).append("\n");
-    sb.append("    page: ").append(toIndentedString(page)).append("\n");
-    sb.append("    targetRetailerId: ").append(toIndentedString(targetRetailerId)).append("\n");
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
+    sb.append("    capping: ").append(toIndentedString(capping)).append("\n");
     sb.append("    creativeId: ").append(toIndentedString(creativeId)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    pacing: ").append(toIndentedString(pacing)).append("\n");
+    sb.append("    page: ").append(toIndentedString(page)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    targetRetailerId: ").append(toIndentedString(targetRetailerId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -545,26 +545,26 @@ public class ExternalPreferredLineItemCreateModelV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("startDate");
-    openapiFields.add("endDate");
-    openapiFields.add("status");
-    openapiFields.add("pacing");
-    openapiFields.add("capping");
-    openapiFields.add("page");
-    openapiFields.add("targetRetailerId");
     openapiFields.add("budget");
+    openapiFields.add("capping");
     openapiFields.add("creativeId");
+    openapiFields.add("endDate");
+    openapiFields.add("name");
+    openapiFields.add("pacing");
+    openapiFields.add("page");
+    openapiFields.add("startDate");
+    openapiFields.add("status");
+    openapiFields.add("targetRetailerId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("startDate");
+    openapiRequiredFields.add("budget");
     openapiRequiredFields.add("endDate");
+    openapiRequiredFields.add("name");
     openapiRequiredFields.add("pacing");
     openapiRequiredFields.add("page");
+    openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("targetRetailerId");
-    openapiRequiredFields.add("budget");
   }
 
  /**
@@ -586,26 +586,26 @@ public class ExternalPreferredLineItemCreateModelV2 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
-      }
-      if (!jsonObj.get("pacing").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pacing` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pacing").toString()));
-      }
       // validate the optional field `capping`
       if (jsonObj.get("capping") != null && !jsonObj.get("capping").isJsonNull()) {
         ExternalLineItemCappingV2.validateJsonObject(jsonObj.getAsJsonObject("capping"));
       }
-      // validate the required field `page`
-      ExternalLineItemPageV2.validateJsonObject(jsonObj.getAsJsonObject("page"));
-      if (!jsonObj.get("targetRetailerId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `targetRetailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("targetRetailerId").toString()));
-      }
       if ((jsonObj.get("creativeId") != null && !jsonObj.get("creativeId").isJsonNull()) && !jsonObj.get("creativeId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `creativeId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creativeId").toString()));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if (!jsonObj.get("pacing").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pacing` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pacing").toString()));
+      }
+      // validate the required field `page`
+      ExternalLineItemPageV2.validateJsonObject(jsonObj.getAsJsonObject("page"));
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      if (!jsonObj.get("targetRetailerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `targetRetailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("targetRetailerId").toString()));
       }
   }
 

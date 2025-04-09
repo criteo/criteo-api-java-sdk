@@ -51,38 +51,16 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReportDetailErrors {
-  public static final String SERIALIZED_NAME_PRODUCT_ID = "productId";
-  @SerializedName(SERIALIZED_NAME_PRODUCT_ID)
-  private String productId;
-
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<ReportDetailError> errors = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_PRODUCT_ID = "productId";
+  @SerializedName(SERIALIZED_NAME_PRODUCT_ID)
+  private String productId;
+
   public ReportDetailErrors() {
   }
-
-  public ReportDetailErrors productId(String productId) {
-    
-    this.productId = productId;
-    return this;
-  }
-
-   /**
-   * The product ID in lowercase
-   * @return productId
-  **/
-  @javax.annotation.Nonnull
-
-  public String getProductId() {
-    return productId;
-  }
-
-
-  public void setProductId(String productId) {
-    this.productId = productId;
-  }
-
 
   public ReportDetailErrors errors(List<ReportDetailError> errors) {
     
@@ -108,6 +86,28 @@ public class ReportDetailErrors {
 
   public void setErrors(List<ReportDetailError> errors) {
     this.errors = errors;
+  }
+
+
+  public ReportDetailErrors productId(String productId) {
+    
+    this.productId = productId;
+    return this;
+  }
+
+   /**
+   * The product ID in lowercase
+   * @return productId
+  **/
+  @javax.annotation.Nonnull
+
+  public String getProductId() {
+    return productId;
+  }
+
+
+  public void setProductId(String productId) {
+    this.productId = productId;
   }
 
   /**
@@ -165,22 +165,22 @@ public class ReportDetailErrors {
       return false;
     }
     ReportDetailErrors reportDetailErrors = (ReportDetailErrors) o;
-    return Objects.equals(this.productId, reportDetailErrors.productId) &&
-        Objects.equals(this.errors, reportDetailErrors.errors)&&
+    return Objects.equals(this.errors, reportDetailErrors.errors) &&
+        Objects.equals(this.productId, reportDetailErrors.productId)&&
         Objects.equals(this.additionalProperties, reportDetailErrors.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(productId, errors, additionalProperties);
+    return Objects.hash(errors, productId, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReportDetailErrors {\n");
-    sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -204,13 +204,13 @@ public class ReportDetailErrors {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("productId");
     openapiFields.add("errors");
+    openapiFields.add("productId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("productId");
     openapiRequiredFields.add("errors");
+    openapiRequiredFields.add("productId");
   }
 
  /**
@@ -232,9 +232,6 @@ public class ReportDetailErrors {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("productId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `productId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productId").toString()));
-      }
       // ensure the json data is an array
       if (!jsonObj.get("errors").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
@@ -245,6 +242,9 @@ public class ReportDetailErrors {
       for (int i = 0; i < jsonArrayerrors.size(); i++) {
         ReportDetailError.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
       };
+      if (!jsonObj.get("productId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `productId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productId").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

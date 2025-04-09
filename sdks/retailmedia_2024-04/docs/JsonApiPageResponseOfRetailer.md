@@ -8,10 +8,10 @@ A wrapper class to return a single page of <typeparamref name=\"T\" /> with meta
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**errors** | [**List&lt;CommonError&gt;**](CommonError.md) |  |  [optional] |
-|**warnings** | [**List&lt;CommonWarning&gt;**](CommonWarning.md) |  |  [optional] |
-|**metadata** | [**PageMetadata**](PageMetadata.md) |  |  |
 |**data** | [**List&lt;JsonApiBodyWithIdOfInt64AndRetailerAndRetailer&gt;**](JsonApiBodyWithIdOfInt64AndRetailerAndRetailer.md) |  |  |
+|**errors** | [**List&lt;CommonError&gt;**](CommonError.md) |  |  [optional] |
+|**metadata** | [**PageMetadata**](PageMetadata.md) |  |  |
+|**warnings** | [**List&lt;CommonWarning&gt;**](CommonWarning.md) |  |  [optional] |
 
 
 

@@ -50,6 +50,10 @@ import com.criteo.api.marketingsolutions.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReadModelReadAdSet {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private ReadAdSet attributes;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -57,10 +61,6 @@ public class ReadModelReadAdSet {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
-
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private ReadAdSet attributes;
 
   public ReadModelReadAdSet() {
   }
@@ -74,6 +74,28 @@ public class ReadModelReadAdSet {
     this.id = id;
     this.type = type;
   }
+
+  public ReadModelReadAdSet attributes(ReadAdSet attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+
+  public ReadAdSet getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(ReadAdSet attributes) {
+    this.attributes = attributes;
+  }
+
 
    /**
    * Id of the entity
@@ -99,28 +121,6 @@ public class ReadModelReadAdSet {
   }
 
 
-
-
-  public ReadModelReadAdSet attributes(ReadAdSet attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @javax.annotation.Nullable
-
-  public ReadAdSet getAttributes() {
-    return attributes;
-  }
-
-
-  public void setAttributes(ReadAdSet attributes) {
-    this.attributes = attributes;
-  }
 
   /**
    * A container for additional, undeclared properties.
@@ -177,9 +177,9 @@ public class ReadModelReadAdSet {
       return false;
     }
     ReadModelReadAdSet readModelReadAdSet = (ReadModelReadAdSet) o;
-    return Objects.equals(this.id, readModelReadAdSet.id) &&
-        Objects.equals(this.type, readModelReadAdSet.type) &&
-        Objects.equals(this.attributes, readModelReadAdSet.attributes)&&
+    return Objects.equals(this.attributes, readModelReadAdSet.attributes) &&
+        Objects.equals(this.id, readModelReadAdSet.id) &&
+        Objects.equals(this.type, readModelReadAdSet.type)&&
         Objects.equals(this.additionalProperties, readModelReadAdSet.additionalProperties);
   }
 
@@ -189,7 +189,7 @@ public class ReadModelReadAdSet {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, attributes, additionalProperties);
+    return Objects.hash(attributes, id, type, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -203,9 +203,9 @@ public class ReadModelReadAdSet {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReadModelReadAdSet {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -229,9 +229,9 @@ public class ReadModelReadAdSet {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("attributes");
     openapiFields.add("id");
     openapiFields.add("type");
-    openapiFields.add("attributes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -249,15 +249,15 @@ public class ReadModelReadAdSet {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ReadModelReadAdSet is not found in the empty JSON string", ReadModelReadAdSet.openapiRequiredFields.toString()));
         }
       }
+      // validate the optional field `attributes`
+      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
+        ReadAdSet.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        ReadAdSet.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
   }
 

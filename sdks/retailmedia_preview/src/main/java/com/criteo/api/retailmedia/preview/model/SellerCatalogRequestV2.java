@@ -52,14 +52,6 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SellerCatalogRequestV2 {
-  public static final String SERIALIZED_NAME_SELLERS = "sellers";
-  @SerializedName(SERIALIZED_NAME_SELLERS)
-  private List<SellerIdentifierV2> sellers = null;
-
-  public static final String SERIALIZED_NAME_MODIFIED_AFTER = "modifiedAfter";
-  @SerializedName(SERIALIZED_NAME_MODIFIED_AFTER)
-  private OffsetDateTime modifiedAfter;
-
   /**
    * Gets or Sets includeFields
    */
@@ -121,60 +113,16 @@ public class SellerCatalogRequestV2 {
   @SerializedName(SERIALIZED_NAME_INCLUDE_FIELDS)
   private List<IncludeFieldsEnum> includeFields = null;
 
+  public static final String SERIALIZED_NAME_MODIFIED_AFTER = "modifiedAfter";
+  @SerializedName(SERIALIZED_NAME_MODIFIED_AFTER)
+  private OffsetDateTime modifiedAfter;
+
+  public static final String SERIALIZED_NAME_SELLERS = "sellers";
+  @SerializedName(SERIALIZED_NAME_SELLERS)
+  private List<SellerIdentifierV2> sellers = null;
+
   public SellerCatalogRequestV2() {
   }
-
-  public SellerCatalogRequestV2 sellers(List<SellerIdentifierV2> sellers) {
-    
-    this.sellers = sellers;
-    return this;
-  }
-
-  public SellerCatalogRequestV2 addSellersItem(SellerIdentifierV2 sellersItem) {
-    if (this.sellers == null) {
-      this.sellers = new ArrayList<>();
-    }
-    this.sellers.add(sellersItem);
-    return this;
-  }
-
-   /**
-   * A list of sellers to restrict the catalog to.
-   * @return sellers
-  **/
-  @javax.annotation.Nullable
-
-  public List<SellerIdentifierV2> getSellers() {
-    return sellers;
-  }
-
-
-  public void setSellers(List<SellerIdentifierV2> sellers) {
-    this.sellers = sellers;
-  }
-
-
-  public SellerCatalogRequestV2 modifiedAfter(OffsetDateTime modifiedAfter) {
-    
-    this.modifiedAfter = modifiedAfter;
-    return this;
-  }
-
-   /**
-   * Only products modified after this time will be returned.
-   * @return modifiedAfter
-  **/
-  @javax.annotation.Nullable
-
-  public OffsetDateTime getModifiedAfter() {
-    return modifiedAfter;
-  }
-
-
-  public void setModifiedAfter(OffsetDateTime modifiedAfter) {
-    this.modifiedAfter = modifiedAfter;
-  }
-
 
   public SellerCatalogRequestV2 includeFields(List<IncludeFieldsEnum> includeFields) {
     
@@ -203,6 +151,58 @@ public class SellerCatalogRequestV2 {
 
   public void setIncludeFields(List<IncludeFieldsEnum> includeFields) {
     this.includeFields = includeFields;
+  }
+
+
+  public SellerCatalogRequestV2 modifiedAfter(OffsetDateTime modifiedAfter) {
+    
+    this.modifiedAfter = modifiedAfter;
+    return this;
+  }
+
+   /**
+   * Only products modified after this time will be returned.
+   * @return modifiedAfter
+  **/
+  @javax.annotation.Nullable
+
+  public OffsetDateTime getModifiedAfter() {
+    return modifiedAfter;
+  }
+
+
+  public void setModifiedAfter(OffsetDateTime modifiedAfter) {
+    this.modifiedAfter = modifiedAfter;
+  }
+
+
+  public SellerCatalogRequestV2 sellers(List<SellerIdentifierV2> sellers) {
+    
+    this.sellers = sellers;
+    return this;
+  }
+
+  public SellerCatalogRequestV2 addSellersItem(SellerIdentifierV2 sellersItem) {
+    if (this.sellers == null) {
+      this.sellers = new ArrayList<>();
+    }
+    this.sellers.add(sellersItem);
+    return this;
+  }
+
+   /**
+   * A list of sellers to restrict the catalog to.
+   * @return sellers
+  **/
+  @javax.annotation.Nullable
+
+  public List<SellerIdentifierV2> getSellers() {
+    return sellers;
+  }
+
+
+  public void setSellers(List<SellerIdentifierV2> sellers) {
+    this.sellers = sellers;
   }
 
   /**
@@ -260,24 +260,24 @@ public class SellerCatalogRequestV2 {
       return false;
     }
     SellerCatalogRequestV2 sellerCatalogRequestV2 = (SellerCatalogRequestV2) o;
-    return Objects.equals(this.sellers, sellerCatalogRequestV2.sellers) &&
+    return Objects.equals(this.includeFields, sellerCatalogRequestV2.includeFields) &&
         Objects.equals(this.modifiedAfter, sellerCatalogRequestV2.modifiedAfter) &&
-        Objects.equals(this.includeFields, sellerCatalogRequestV2.includeFields)&&
+        Objects.equals(this.sellers, sellerCatalogRequestV2.sellers)&&
         Objects.equals(this.additionalProperties, sellerCatalogRequestV2.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sellers, modifiedAfter, includeFields, additionalProperties);
+    return Objects.hash(includeFields, modifiedAfter, sellers, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SellerCatalogRequestV2 {\n");
-    sb.append("    sellers: ").append(toIndentedString(sellers)).append("\n");
-    sb.append("    modifiedAfter: ").append(toIndentedString(modifiedAfter)).append("\n");
     sb.append("    includeFields: ").append(toIndentedString(includeFields)).append("\n");
+    sb.append("    modifiedAfter: ").append(toIndentedString(modifiedAfter)).append("\n");
+    sb.append("    sellers: ").append(toIndentedString(sellers)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -301,9 +301,9 @@ public class SellerCatalogRequestV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("sellers");
-    openapiFields.add("modifiedAfter");
     openapiFields.add("includeFields");
+    openapiFields.add("modifiedAfter");
+    openapiFields.add("sellers");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -321,6 +321,10 @@ public class SellerCatalogRequestV2 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in SellerCatalogRequestV2 is not found in the empty JSON string", SellerCatalogRequestV2.openapiRequiredFields.toString()));
         }
       }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("includeFields") != null && !jsonObj.get("includeFields").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `includeFields` to be an array in the JSON string but got `%s`", jsonObj.get("includeFields").toString()));
+      }
       if (jsonObj.get("sellers") != null && !jsonObj.get("sellers").isJsonNull()) {
         JsonArray jsonArraysellers = jsonObj.getAsJsonArray("sellers");
         if (jsonArraysellers != null) {
@@ -334,10 +338,6 @@ public class SellerCatalogRequestV2 {
             SellerIdentifierV2.validateJsonObject(jsonArraysellers.get(i).getAsJsonObject());
           };
         }
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("includeFields") != null && !jsonObj.get("includeFields").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `includeFields` to be an array in the JSON string but got `%s`", jsonObj.get("includeFields").toString()));
       }
   }
 

@@ -8,10 +8,10 @@ A value of a template video variable
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**duration** | **String** | The video&#39;s duration |  |
+|**height** | **Integer** | The video&#39;s height |  |
 |**url** | **String** | The vast video url |  |
 |**width** | **Integer** | The video&#39;s width |  |
-|**height** | **Integer** | The video&#39;s height |  |
-|**duration** | **String** | The video&#39;s duration |  |
 
 
 

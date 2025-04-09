@@ -52,40 +52,48 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CpcRateCardPreview {
-  public static final String SERIALIZED_NAME_RETAILER_MINIMUM_CPC_BID = "retailerMinimumCpcBid";
-  @SerializedName(SERIALIZED_NAME_RETAILER_MINIMUM_CPC_BID)
-  private Double retailerMinimumCpcBid;
+  public static final String SERIALIZED_NAME_CATEGORIES = "categories";
+  @SerializedName(SERIALIZED_NAME_CATEGORIES)
+  private Map<String, Category202204> categories = null;
 
   public static final String SERIALIZED_NAME_CATEGORY_MINIMUM_CPC_BIDS = "categoryMinimumCpcBids";
   @SerializedName(SERIALIZED_NAME_CATEGORY_MINIMUM_CPC_BIDS)
   private Map<String, Double> categoryMinimumCpcBids = null;
 
-  public static final String SERIALIZED_NAME_CATEGORIES = "categories";
-  @SerializedName(SERIALIZED_NAME_CATEGORIES)
-  private Map<String, Category202204> categories = null;
+  public static final String SERIALIZED_NAME_RETAILER_MINIMUM_CPC_BID = "retailerMinimumCpcBid";
+  @SerializedName(SERIALIZED_NAME_RETAILER_MINIMUM_CPC_BID)
+  private Double retailerMinimumCpcBid;
 
   public CpcRateCardPreview() {
   }
 
-  public CpcRateCardPreview retailerMinimumCpcBid(Double retailerMinimumCpcBid) {
+  public CpcRateCardPreview categories(Map<String, Category202204> categories) {
     
-    this.retailerMinimumCpcBid = retailerMinimumCpcBid;
+    this.categories = categories;
+    return this;
+  }
+
+  public CpcRateCardPreview putCategoriesItem(String key, Category202204 categoriesItem) {
+    if (this.categories == null) {
+      this.categories = null;
+    }
+    this.categories.put(key, categoriesItem);
     return this;
   }
 
    /**
-   * retailer minimum cpc bid
-   * @return retailerMinimumCpcBid
+   * map of category id to category values
+   * @return categories
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public Double getRetailerMinimumCpcBid() {
-    return retailerMinimumCpcBid;
+  public Map<String, Category202204> getCategories() {
+    return categories;
   }
 
 
-  public void setRetailerMinimumCpcBid(Double retailerMinimumCpcBid) {
-    this.retailerMinimumCpcBid = retailerMinimumCpcBid;
+  public void setCategories(Map<String, Category202204> categories) {
+    this.categories = categories;
   }
 
 
@@ -119,33 +127,25 @@ public class CpcRateCardPreview {
   }
 
 
-  public CpcRateCardPreview categories(Map<String, Category202204> categories) {
+  public CpcRateCardPreview retailerMinimumCpcBid(Double retailerMinimumCpcBid) {
     
-    this.categories = categories;
-    return this;
-  }
-
-  public CpcRateCardPreview putCategoriesItem(String key, Category202204 categoriesItem) {
-    if (this.categories == null) {
-      this.categories = null;
-    }
-    this.categories.put(key, categoriesItem);
+    this.retailerMinimumCpcBid = retailerMinimumCpcBid;
     return this;
   }
 
    /**
-   * map of category id to category values
-   * @return categories
+   * retailer minimum cpc bid
+   * @return retailerMinimumCpcBid
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public Map<String, Category202204> getCategories() {
-    return categories;
+  public Double getRetailerMinimumCpcBid() {
+    return retailerMinimumCpcBid;
   }
 
 
-  public void setCategories(Map<String, Category202204> categories) {
-    this.categories = categories;
+  public void setRetailerMinimumCpcBid(Double retailerMinimumCpcBid) {
+    this.retailerMinimumCpcBid = retailerMinimumCpcBid;
   }
 
   /**
@@ -203,9 +203,9 @@ public class CpcRateCardPreview {
       return false;
     }
     CpcRateCardPreview cpcRateCardPreview = (CpcRateCardPreview) o;
-    return Objects.equals(this.retailerMinimumCpcBid, cpcRateCardPreview.retailerMinimumCpcBid) &&
+    return Objects.equals(this.categories, cpcRateCardPreview.categories) &&
         Objects.equals(this.categoryMinimumCpcBids, cpcRateCardPreview.categoryMinimumCpcBids) &&
-        Objects.equals(this.categories, cpcRateCardPreview.categories)&&
+        Objects.equals(this.retailerMinimumCpcBid, cpcRateCardPreview.retailerMinimumCpcBid)&&
         Objects.equals(this.additionalProperties, cpcRateCardPreview.additionalProperties);
   }
 
@@ -215,7 +215,7 @@ public class CpcRateCardPreview {
 
   @Override
   public int hashCode() {
-    return Objects.hash(retailerMinimumCpcBid, categoryMinimumCpcBids, categories, additionalProperties);
+    return Objects.hash(categories, categoryMinimumCpcBids, retailerMinimumCpcBid, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -229,9 +229,9 @@ public class CpcRateCardPreview {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CpcRateCardPreview {\n");
-    sb.append("    retailerMinimumCpcBid: ").append(toIndentedString(retailerMinimumCpcBid)).append("\n");
-    sb.append("    categoryMinimumCpcBids: ").append(toIndentedString(categoryMinimumCpcBids)).append("\n");
     sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
+    sb.append("    categoryMinimumCpcBids: ").append(toIndentedString(categoryMinimumCpcBids)).append("\n");
+    sb.append("    retailerMinimumCpcBid: ").append(toIndentedString(retailerMinimumCpcBid)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -255,9 +255,9 @@ public class CpcRateCardPreview {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("retailerMinimumCpcBid");
-    openapiFields.add("categoryMinimumCpcBids");
     openapiFields.add("categories");
+    openapiFields.add("categoryMinimumCpcBids");
+    openapiFields.add("retailerMinimumCpcBid");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

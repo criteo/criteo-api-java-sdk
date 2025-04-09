@@ -8,18 +8,9 @@ ad set delivery limitations model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**environments** | [**List&lt;EnvironmentsEnum&gt;**](#List&lt;EnvironmentsEnum&gt;) |  |  [optional] |
 |**devices** | [**List&lt;DevicesEnum&gt;**](#List&lt;DevicesEnum&gt;) |  |  [optional] |
+|**environments** | [**List&lt;EnvironmentsEnum&gt;**](#List&lt;EnvironmentsEnum&gt;) |  |  [optional] |
 |**operatingSystems** | [**List&lt;OperatingSystemsEnum&gt;**](#List&lt;OperatingSystemsEnum&gt;) |  |  [optional] |
-
-
-
-## Enum: List&lt;EnvironmentsEnum&gt;
-
-| Name | Value |
-|---- | -----|
-| WEB | &quot;web&quot; |
-| INAPP | &quot;inApp&quot; |
 
 
 
@@ -31,6 +22,15 @@ ad set delivery limitations model
 | DESKTOP | &quot;desktop&quot; |
 | MOBILE | &quot;mobile&quot; |
 | TABLET | &quot;tablet&quot; |
+
+
+
+## Enum: List&lt;EnvironmentsEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| WEB | &quot;web&quot; |
+| INAPP | &quot;inApp&quot; |
 
 
 

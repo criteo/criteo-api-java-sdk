@@ -8,8 +8,8 @@ Request data of retail media contact list amendment
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** | User List |  [optional] |
 |**attributes** | [**RetailMediaContactlistAmendmentAttributes**](RetailMediaContactlistAmendmentAttributes.md) |  |  |
+|**type** | **String** | User List |  [optional] |
 
 
 

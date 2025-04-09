@@ -8,22 +8,9 @@ Encapsulate a product rule
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**operator** | [**OperatorEnum**](#OperatorEnum) | The operator used with the field |  [optional] |
 |**field** | [**FieldEnum**](#FieldEnum) | The field on which we want to apply the rule |  [optional] |
+|**operator** | [**OperatorEnum**](#OperatorEnum) | The operator used with the field |  [optional] |
 |**values** | **List&lt;String&gt;** | The values on which we want to apply the rule |  [optional] |
-
-
-
-## Enum: OperatorEnum
-
-| Name | Value |
-|---- | -----|
-| ISIN | &quot;IsIn&quot; |
-| ISNOTIN | &quot;IsNotIn&quot; |
-| BETWEEN | &quot;Between&quot; |
-| NOTBETWEEN | &quot;NotBetween&quot; |
-| LESSTHAN | &quot;LessThan&quot; |
-| GREATERTHAN | &quot;GreaterThan&quot; |
 
 
 
@@ -43,6 +30,19 @@ Encapsulate a product rule
 | CUSTOMLABEL2 | &quot;CustomLabel2&quot; |
 | CUSTOMLABEL3 | &quot;CustomLabel3&quot; |
 | CUSTOMLABEL4 | &quot;CustomLabel4&quot; |
+
+
+
+## Enum: OperatorEnum
+
+| Name | Value |
+|---- | -----|
+| ISIN | &quot;IsIn&quot; |
+| ISNOTIN | &quot;IsNotIn&quot; |
+| BETWEEN | &quot;Between&quot; |
+| NOTBETWEEN | &quot;NotBetween&quot; |
+| LESSTHAN | &quot;LessThan&quot; |
+| GREATERTHAN | &quot;GreaterThan&quot; |
 
 
 

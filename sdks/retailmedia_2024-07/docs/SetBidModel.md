@@ -8,8 +8,8 @@ A single keyword and associated bid override
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**phrase** | **String** |  |  [optional] |
 |**bid** | **Double** |  |  [optional] |
+|**phrase** | **String** |  |  [optional] |
 
 
 

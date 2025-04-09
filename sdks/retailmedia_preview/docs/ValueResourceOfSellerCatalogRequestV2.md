@@ -1,15 +1,15 @@
 
 
-# JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2
+# ValueResourceOfSellerCatalogRequestV2
 
-A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\" /> with Type, and  Attributes properties
+A value resource exposed by the API.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** |  |  |
 |**attributes** | [**SellerCatalogRequestV2**](SellerCatalogRequestV2.md) |  |  [optional] |
+|**type** | **String** | The Type of the resource. |  [optional] |
 
 
 

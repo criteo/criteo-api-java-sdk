@@ -8,22 +8,32 @@ A Retail Media Preferred Line Item used to hold bid settings for one or many pro
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** |  |  |
-|**startDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
-|**endDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
-|**status** | [**StatusEnum**](#StatusEnum) | Line Item Status Enum |  |
-|**pacing** | [**PacingEnum**](#PacingEnum) |  |  [optional] |
-|**capping** | [**ExternalLineItemCappingV2**](ExternalLineItemCappingV2.md) |  |  [optional] |
-|**page** | [**ExternalLineItemPageV2**](ExternalLineItemPageV2.md) |  |  [optional] |
-|**targetRetailerId** | **String** |  |  |
 |**budget** | **BigDecimal** |  |  [optional] |
-|**campaignId** | **String** |  |  |
-|**budgetSpent** | **BigDecimal** |  |  [optional] |
 |**budgetRemaining** | **BigDecimal** |  |  [optional] |
+|**budgetSpent** | **BigDecimal** |  |  [optional] |
+|**campaignId** | **String** |  |  |
+|**capping** | [**ExternalLineItemCappingV2**](ExternalLineItemCappingV2.md) |  |  [optional] |
 |**createdAt** | **OffsetDateTime** |  |  |
-|**updatedAt** | **OffsetDateTime** |  |  |
 |**creativeId** | **String** | External creative Id |  [optional] |
+|**endDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
 |**id** | **String** | Id of the entity |  [optional] |
+|**name** | **String** |  |  |
+|**pacing** | [**PacingEnum**](#PacingEnum) |  |  [optional] |
+|**page** | [**ExternalLineItemPageV2**](ExternalLineItemPageV2.md) |  |  [optional] |
+|**startDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
+|**status** | [**StatusEnum**](#StatusEnum) | Line Item Status Enum |  |
+|**targetRetailerId** | **String** |  |  |
+|**updatedAt** | **OffsetDateTime** |  |  |
+
+
+
+## Enum: PacingEnum
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| STANDARD | &quot;standard&quot; |
+| ACCELERATED | &quot;accelerated&quot; |
 
 
 
@@ -40,16 +50,6 @@ A Retail Media Preferred Line Item used to hold bid settings for one or many pro
 | ENDED | &quot;ended&quot; |
 | ARCHIVED | &quot;archived&quot; |
 | NOFUNDS | &quot;noFunds&quot; |
-
-
-
-## Enum: PacingEnum
-
-| Name | Value |
-|---- | -----|
-| UNKNOWN | &quot;unknown&quot; |
-| STANDARD | &quot;standard&quot; |
-| ACCELERATED | &quot;accelerated&quot; |
 
 
 

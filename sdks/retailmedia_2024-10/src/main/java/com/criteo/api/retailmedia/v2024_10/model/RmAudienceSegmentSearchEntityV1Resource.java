@@ -49,38 +49,16 @@ import com.criteo.api.retailmedia.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RmAudienceSegmentSearchEntityV1Resource {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
-
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private RmAudienceSegmentSearchEntityV1 attributes;
 
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
   public RmAudienceSegmentSearchEntityV1Resource() {
   }
-
-  public RmAudienceSegmentSearchEntityV1Resource type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Get type
-   * @return type
-  **/
-  @javax.annotation.Nullable
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
 
   public RmAudienceSegmentSearchEntityV1Resource attributes(RmAudienceSegmentSearchEntityV1 attributes) {
     
@@ -101,6 +79,28 @@ public class RmAudienceSegmentSearchEntityV1Resource {
 
   public void setAttributes(RmAudienceSegmentSearchEntityV1 attributes) {
     this.attributes = attributes;
+  }
+
+
+  public RmAudienceSegmentSearchEntityV1Resource type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   /**
@@ -158,22 +158,22 @@ public class RmAudienceSegmentSearchEntityV1Resource {
       return false;
     }
     RmAudienceSegmentSearchEntityV1Resource rmAudienceSegmentSearchEntityV1Resource = (RmAudienceSegmentSearchEntityV1Resource) o;
-    return Objects.equals(this.type, rmAudienceSegmentSearchEntityV1Resource.type) &&
-        Objects.equals(this.attributes, rmAudienceSegmentSearchEntityV1Resource.attributes)&&
+    return Objects.equals(this.attributes, rmAudienceSegmentSearchEntityV1Resource.attributes) &&
+        Objects.equals(this.type, rmAudienceSegmentSearchEntityV1Resource.type)&&
         Objects.equals(this.additionalProperties, rmAudienceSegmentSearchEntityV1Resource.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes, additionalProperties);
+    return Objects.hash(attributes, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RmAudienceSegmentSearchEntityV1Resource {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -197,8 +197,8 @@ public class RmAudienceSegmentSearchEntityV1Resource {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
     openapiFields.add("attributes");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -216,12 +216,12 @@ public class RmAudienceSegmentSearchEntityV1Resource {
           throw new IllegalArgumentException(String.format("The required field(s) %s in RmAudienceSegmentSearchEntityV1Resource is not found in the empty JSON string", RmAudienceSegmentSearchEntityV1Resource.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
         RmAudienceSegmentSearchEntityV1.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

@@ -1606,8 +1606,8 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of Category Bids for all valid Categories associated to an Ad Set. |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
 | **400** | Bad Request |  -  |
+| **401** | The API client is not properly authenticated. |  -  |
 | **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
@@ -1698,8 +1698,8 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of Display Multipliers for all valid Categories associated to an Ad Set. |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
 | **400** | Bad Request |  -  |
+| **401** | The API client is not properly authenticated. |  -  |
 | **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
@@ -2061,8 +2061,8 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of updated Category Bids for given Categories associated to an Ad Set. |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
 | **400** | Bad Request |  -  |
+| **401** | The API client is not properly authenticated. |  -  |
 | **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
@@ -2155,8 +2155,8 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | List of updated Display Multipliers for given Categories associated to an Ad Set. |  -  |
-| **401** | The API client is not properly authenticated. |  -  |
 | **400** | Bad Request |  -  |
+| **401** | The API client is not properly authenticated. |  -  |
 | **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
@@ -2997,8 +2997,8 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | data for the ad sets |  -  |
 | **400** | Bad Request |  -  |
-| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 | **401** | The API client is not properly authenticated. |  -  |
+| **403** | The API client is not authorized to access this resource or the resource does not exist. |  -  |
 
 
 ## searchCampaignsV23Q1
@@ -3089,8 +3089,8 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | data for the campaigns |  -  |
 | **400** | Bad Request |  -  |
-| **403** | Forbidden |  -  |
 | **401** | The API client is not properly authenticated. |  -  |
+| **403** | Forbidden |  -  |
 
 
 ## setAdSetTargetingDealIds

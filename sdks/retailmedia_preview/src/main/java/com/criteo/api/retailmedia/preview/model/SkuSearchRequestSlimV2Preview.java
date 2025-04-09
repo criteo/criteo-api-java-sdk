@@ -50,38 +50,16 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SkuSearchRequestSlimV2Preview {
-  public static final String SERIALIZED_NAME_SEARCH_STRING = "searchString";
-  @SerializedName(SERIALIZED_NAME_SEARCH_STRING)
-  private String searchString;
-
   public static final String SERIALIZED_NAME_BRAND_ID = "brandId";
   @SerializedName(SERIALIZED_NAME_BRAND_ID)
   private List<String> brandId = null;
 
+  public static final String SERIALIZED_NAME_SEARCH_STRING = "searchString";
+  @SerializedName(SERIALIZED_NAME_SEARCH_STRING)
+  private String searchString;
+
   public SkuSearchRequestSlimV2Preview() {
   }
-
-  public SkuSearchRequestSlimV2Preview searchString(String searchString) {
-    
-    this.searchString = searchString;
-    return this;
-  }
-
-   /**
-   * Query string to search for across SKU&#39;s properties (gtin, mpn, feed ID, Title, and Description)
-   * @return searchString
-  **/
-  @javax.annotation.Nonnull
-
-  public String getSearchString() {
-    return searchString;
-  }
-
-
-  public void setSearchString(String searchString) {
-    this.searchString = searchString;
-  }
-
 
   public SkuSearchRequestSlimV2Preview brandId(List<String> brandId) {
     
@@ -110,6 +88,28 @@ public class SkuSearchRequestSlimV2Preview {
 
   public void setBrandId(List<String> brandId) {
     this.brandId = brandId;
+  }
+
+
+  public SkuSearchRequestSlimV2Preview searchString(String searchString) {
+    
+    this.searchString = searchString;
+    return this;
+  }
+
+   /**
+   * Query string to search for across SKU&#39;s properties (gtin, mpn, feed ID, Title, and Description)
+   * @return searchString
+  **/
+  @javax.annotation.Nonnull
+
+  public String getSearchString() {
+    return searchString;
+  }
+
+
+  public void setSearchString(String searchString) {
+    this.searchString = searchString;
   }
 
   /**
@@ -167,22 +167,22 @@ public class SkuSearchRequestSlimV2Preview {
       return false;
     }
     SkuSearchRequestSlimV2Preview skuSearchRequestSlimV2Preview = (SkuSearchRequestSlimV2Preview) o;
-    return Objects.equals(this.searchString, skuSearchRequestSlimV2Preview.searchString) &&
-        Objects.equals(this.brandId, skuSearchRequestSlimV2Preview.brandId)&&
+    return Objects.equals(this.brandId, skuSearchRequestSlimV2Preview.brandId) &&
+        Objects.equals(this.searchString, skuSearchRequestSlimV2Preview.searchString)&&
         Objects.equals(this.additionalProperties, skuSearchRequestSlimV2Preview.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(searchString, brandId, additionalProperties);
+    return Objects.hash(brandId, searchString, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SkuSearchRequestSlimV2Preview {\n");
-    sb.append("    searchString: ").append(toIndentedString(searchString)).append("\n");
     sb.append("    brandId: ").append(toIndentedString(brandId)).append("\n");
+    sb.append("    searchString: ").append(toIndentedString(searchString)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -206,8 +206,8 @@ public class SkuSearchRequestSlimV2Preview {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("searchString");
     openapiFields.add("brandId");
+    openapiFields.add("searchString");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -233,12 +233,12 @@ public class SkuSearchRequestSlimV2Preview {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("searchString").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `searchString` to be a primitive type in the JSON string but got `%s`", jsonObj.get("searchString").toString()));
-      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("brandId") != null && !jsonObj.get("brandId").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `brandId` to be an array in the JSON string but got `%s`", jsonObj.get("brandId").toString()));
+      }
+      if (!jsonObj.get("searchString").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `searchString` to be a primitive type in the JSON string but got `%s`", jsonObj.get("searchString").toString()));
       }
   }
 

@@ -52,13 +52,13 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreativeCreateModel202207 {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
   public static final String SERIALIZED_NAME_BRAND_ID = "brandId";
   @SerializedName(SERIALIZED_NAME_BRAND_ID)
   private Long brandId;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
   public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
   @SerializedName(SERIALIZED_NAME_RETAILER_ID)
@@ -74,28 +74,6 @@ public class CreativeCreateModel202207 {
 
   public CreativeCreateModel202207() {
   }
-
-  public CreativeCreateModel202207 name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * The name of the creative
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
 
   public CreativeCreateModel202207 brandId(Long brandId) {
     
@@ -116,6 +94,28 @@ public class CreativeCreateModel202207 {
 
   public void setBrandId(Long brandId) {
     this.brandId = brandId;
+  }
+
+
+  public CreativeCreateModel202207 name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * The name of the creative
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -200,8 +200,8 @@ public class CreativeCreateModel202207 {
       return false;
     }
     CreativeCreateModel202207 creativeCreateModel202207 = (CreativeCreateModel202207) o;
-    return Objects.equals(this.name, creativeCreateModel202207.name) &&
-        Objects.equals(this.brandId, creativeCreateModel202207.brandId) &&
+    return Objects.equals(this.brandId, creativeCreateModel202207.brandId) &&
+        Objects.equals(this.name, creativeCreateModel202207.name) &&
         Objects.equals(this.retailerId, creativeCreateModel202207.retailerId) &&
         Objects.equals(this.templateId, creativeCreateModel202207.templateId) &&
         Objects.equals(this.templateVariableValues, creativeCreateModel202207.templateVariableValues);
@@ -213,7 +213,7 @@ public class CreativeCreateModel202207 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, brandId, retailerId, templateId, templateVariableValues);
+    return Objects.hash(brandId, name, retailerId, templateId, templateVariableValues);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -227,8 +227,8 @@ public class CreativeCreateModel202207 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreativeCreateModel202207 {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    brandId: ").append(toIndentedString(brandId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    templateId: ").append(toIndentedString(templateId)).append("\n");
     sb.append("    templateVariableValues: ").append(toIndentedString(templateVariableValues)).append("\n");
@@ -254,8 +254,8 @@ public class CreativeCreateModel202207 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
     openapiFields.add("brandId");
+    openapiFields.add("name");
     openapiFields.add("retailerId");
     openapiFields.add("templateId");
     openapiFields.add("templateVariableValues");

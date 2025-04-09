@@ -52,17 +52,76 @@ import com.criteo.api.marketingsolutions.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateAdSet {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_BIDDING = "bidding";
+  @SerializedName(SERIALIZED_NAME_BIDDING)
+  private CreateAdSetBidding bidding;
+
+  public static final String SERIALIZED_NAME_BUDGET = "budget";
+  @SerializedName(SERIALIZED_NAME_BUDGET)
+  private CreateAdSetBudget budget;
+
+  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
+  private String campaignId;
 
   public static final String SERIALIZED_NAME_DATASET_ID = "datasetId";
   @SerializedName(SERIALIZED_NAME_DATASET_ID)
   private String datasetId;
 
-  public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private String campaignId;
+  /**
+   * Media type for the ad set
+   */
+  @JsonAdapter(MediaTypeEnum.Adapter.class)
+  public enum MediaTypeEnum {
+    DISPLAY("display"),
+    
+    VIDEO("video");
+
+    private String value;
+
+    MediaTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static MediaTypeEnum fromValue(String value) {
+      for (MediaTypeEnum b : MediaTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<MediaTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final MediaTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public MediaTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return MediaTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_MEDIA_TYPE = "mediaType";
+  @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
+  private MediaTypeEnum mediaType;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
   /**
    * Objective of the ad set
@@ -137,95 +196,80 @@ public class CreateAdSet {
   @SerializedName(SERIALIZED_NAME_SCHEDULE)
   private CreateAdSetSchedule schedule;
 
-  public static final String SERIALIZED_NAME_BIDDING = "bidding";
-  @SerializedName(SERIALIZED_NAME_BIDDING)
-  private CreateAdSetBidding bidding;
-
   public static final String SERIALIZED_NAME_TARGETING = "targeting";
   @SerializedName(SERIALIZED_NAME_TARGETING)
   private CreateAdSetTargeting targeting;
-
-  public static final String SERIALIZED_NAME_BUDGET = "budget";
-  @SerializedName(SERIALIZED_NAME_BUDGET)
-  private CreateAdSetBudget budget;
 
   public static final String SERIALIZED_NAME_TRACKING_CODE = "trackingCode";
   @SerializedName(SERIALIZED_NAME_TRACKING_CODE)
   private String trackingCode;
 
-  /**
-   * Media type for the ad set
-   */
-  @JsonAdapter(MediaTypeEnum.Adapter.class)
-  public enum MediaTypeEnum {
-    DISPLAY("display"),
-    
-    VIDEO("video");
-
-    private String value;
-
-    MediaTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static MediaTypeEnum fromValue(String value) {
-      for (MediaTypeEnum b : MediaTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<MediaTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final MediaTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public MediaTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return MediaTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_MEDIA_TYPE = "mediaType";
-  @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
-  private MediaTypeEnum mediaType;
-
   public CreateAdSet() {
   }
 
-  public CreateAdSet name(String name) {
+  public CreateAdSet bidding(CreateAdSetBidding bidding) {
     
-    this.name = name;
+    this.bidding = bidding;
     return this;
   }
 
    /**
-   * Name of the ad set
-   * @return name
+   * Get bidding
+   * @return bidding
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public String getName() {
-    return name;
+  public CreateAdSetBidding getBidding() {
+    return bidding;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
+  public void setBidding(CreateAdSetBidding bidding) {
+    this.bidding = bidding;
+  }
+
+
+  public CreateAdSet budget(CreateAdSetBudget budget) {
+    
+    this.budget = budget;
+    return this;
+  }
+
+   /**
+   * Get budget
+   * @return budget
+  **/
+  @javax.annotation.Nullable
+
+  public CreateAdSetBudget getBudget() {
+    return budget;
+  }
+
+
+  public void setBudget(CreateAdSetBudget budget) {
+    this.budget = budget;
+  }
+
+
+  public CreateAdSet campaignId(String campaignId) {
+    
+    this.campaignId = campaignId;
+    return this;
+  }
+
+   /**
+   * Campaign id this ad set belongs to
+   * @return campaignId
+  **/
+  @javax.annotation.Nullable
+
+  public String getCampaignId() {
+    return campaignId;
+  }
+
+
+  public void setCampaignId(String campaignId) {
+    this.campaignId = campaignId;
   }
 
 
@@ -251,25 +295,47 @@ public class CreateAdSet {
   }
 
 
-  public CreateAdSet campaignId(String campaignId) {
+  public CreateAdSet mediaType(MediaTypeEnum mediaType) {
     
-    this.campaignId = campaignId;
+    this.mediaType = mediaType;
     return this;
   }
 
    /**
-   * Campaign id this ad set belongs to
-   * @return campaignId
+   * Media type for the ad set
+   * @return mediaType
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public String getCampaignId() {
-    return campaignId;
+  public MediaTypeEnum getMediaType() {
+    return mediaType;
   }
 
 
-  public void setCampaignId(String campaignId) {
-    this.campaignId = campaignId;
+  public void setMediaType(MediaTypeEnum mediaType) {
+    this.mediaType = mediaType;
+  }
+
+
+  public CreateAdSet name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Name of the ad set
+   * @return name
+  **/
+  @javax.annotation.Nullable
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -317,28 +383,6 @@ public class CreateAdSet {
   }
 
 
-  public CreateAdSet bidding(CreateAdSetBidding bidding) {
-    
-    this.bidding = bidding;
-    return this;
-  }
-
-   /**
-   * Get bidding
-   * @return bidding
-  **/
-  @javax.annotation.Nonnull
-
-  public CreateAdSetBidding getBidding() {
-    return bidding;
-  }
-
-
-  public void setBidding(CreateAdSetBidding bidding) {
-    this.bidding = bidding;
-  }
-
-
   public CreateAdSet targeting(CreateAdSetTargeting targeting) {
     
     this.targeting = targeting;
@@ -361,28 +405,6 @@ public class CreateAdSet {
   }
 
 
-  public CreateAdSet budget(CreateAdSetBudget budget) {
-    
-    this.budget = budget;
-    return this;
-  }
-
-   /**
-   * Get budget
-   * @return budget
-  **/
-  @javax.annotation.Nullable
-
-  public CreateAdSetBudget getBudget() {
-    return budget;
-  }
-
-
-  public void setBudget(CreateAdSetBudget budget) {
-    this.budget = budget;
-  }
-
-
   public CreateAdSet trackingCode(String trackingCode) {
     
     this.trackingCode = trackingCode;
@@ -402,28 +424,6 @@ public class CreateAdSet {
 
   public void setTrackingCode(String trackingCode) {
     this.trackingCode = trackingCode;
-  }
-
-
-  public CreateAdSet mediaType(MediaTypeEnum mediaType) {
-    
-    this.mediaType = mediaType;
-    return this;
-  }
-
-   /**
-   * Media type for the ad set
-   * @return mediaType
-  **/
-  @javax.annotation.Nonnull
-
-  public MediaTypeEnum getMediaType() {
-    return mediaType;
-  }
-
-
-  public void setMediaType(MediaTypeEnum mediaType) {
-    this.mediaType = mediaType;
   }
 
   /**
@@ -481,38 +481,38 @@ public class CreateAdSet {
       return false;
     }
     CreateAdSet createAdSet = (CreateAdSet) o;
-    return Objects.equals(this.name, createAdSet.name) &&
-        Objects.equals(this.datasetId, createAdSet.datasetId) &&
+    return Objects.equals(this.bidding, createAdSet.bidding) &&
+        Objects.equals(this.budget, createAdSet.budget) &&
         Objects.equals(this.campaignId, createAdSet.campaignId) &&
+        Objects.equals(this.datasetId, createAdSet.datasetId) &&
+        Objects.equals(this.mediaType, createAdSet.mediaType) &&
+        Objects.equals(this.name, createAdSet.name) &&
         Objects.equals(this.objective, createAdSet.objective) &&
         Objects.equals(this.schedule, createAdSet.schedule) &&
-        Objects.equals(this.bidding, createAdSet.bidding) &&
         Objects.equals(this.targeting, createAdSet.targeting) &&
-        Objects.equals(this.budget, createAdSet.budget) &&
-        Objects.equals(this.trackingCode, createAdSet.trackingCode) &&
-        Objects.equals(this.mediaType, createAdSet.mediaType)&&
+        Objects.equals(this.trackingCode, createAdSet.trackingCode)&&
         Objects.equals(this.additionalProperties, createAdSet.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, datasetId, campaignId, objective, schedule, bidding, targeting, budget, trackingCode, mediaType, additionalProperties);
+    return Objects.hash(bidding, budget, campaignId, datasetId, mediaType, name, objective, schedule, targeting, trackingCode, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAdSet {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    datasetId: ").append(toIndentedString(datasetId)).append("\n");
+    sb.append("    bidding: ").append(toIndentedString(bidding)).append("\n");
+    sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
+    sb.append("    datasetId: ").append(toIndentedString(datasetId)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    objective: ").append(toIndentedString(objective)).append("\n");
     sb.append("    schedule: ").append(toIndentedString(schedule)).append("\n");
-    sb.append("    bidding: ").append(toIndentedString(bidding)).append("\n");
     sb.append("    targeting: ").append(toIndentedString(targeting)).append("\n");
-    sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
     sb.append("    trackingCode: ").append(toIndentedString(trackingCode)).append("\n");
-    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -536,28 +536,28 @@ public class CreateAdSet {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("datasetId");
+    openapiFields.add("bidding");
+    openapiFields.add("budget");
     openapiFields.add("campaignId");
+    openapiFields.add("datasetId");
+    openapiFields.add("mediaType");
+    openapiFields.add("name");
     openapiFields.add("objective");
     openapiFields.add("schedule");
-    openapiFields.add("bidding");
     openapiFields.add("targeting");
-    openapiFields.add("budget");
     openapiFields.add("trackingCode");
-    openapiFields.add("mediaType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("datasetId");
+    openapiRequiredFields.add("bidding");
     openapiRequiredFields.add("campaignId");
+    openapiRequiredFields.add("datasetId");
+    openapiRequiredFields.add("mediaType");
+    openapiRequiredFields.add("name");
     openapiRequiredFields.add("objective");
     openapiRequiredFields.add("schedule");
-    openapiRequiredFields.add("bidding");
     openapiRequiredFields.add("targeting");
     openapiRequiredFields.add("trackingCode");
-    openapiRequiredFields.add("mediaType");
   }
 
  /**
@@ -579,33 +579,33 @@ public class CreateAdSet {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      // validate the required field `bidding`
+      CreateAdSetBidding.validateJsonObject(jsonObj.getAsJsonObject("bidding"));
+      // validate the optional field `budget`
+      if (jsonObj.get("budget") != null && !jsonObj.get("budget").isJsonNull()) {
+        CreateAdSetBudget.validateJsonObject(jsonObj.getAsJsonObject("budget"));
+      }
+      if (!jsonObj.get("campaignId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
       }
       if (!jsonObj.get("datasetId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `datasetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("datasetId").toString()));
       }
-      if (!jsonObj.get("campaignId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
+      if (!jsonObj.get("mediaType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `mediaType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mediaType").toString()));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if (!jsonObj.get("objective").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `objective` to be a primitive type in the JSON string but got `%s`", jsonObj.get("objective").toString()));
       }
       // validate the required field `schedule`
       CreateAdSetSchedule.validateJsonObject(jsonObj.getAsJsonObject("schedule"));
-      // validate the required field `bidding`
-      CreateAdSetBidding.validateJsonObject(jsonObj.getAsJsonObject("bidding"));
       // validate the required field `targeting`
       CreateAdSetTargeting.validateJsonObject(jsonObj.getAsJsonObject("targeting"));
-      // validate the optional field `budget`
-      if (jsonObj.get("budget") != null && !jsonObj.get("budget").isJsonNull()) {
-        CreateAdSetBudget.validateJsonObject(jsonObj.getAsJsonObject("budget"));
-      }
       if (!jsonObj.get("trackingCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `trackingCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("trackingCode").toString()));
-      }
-      if (!jsonObj.get("mediaType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `mediaType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mediaType").toString()));
       }
   }
 

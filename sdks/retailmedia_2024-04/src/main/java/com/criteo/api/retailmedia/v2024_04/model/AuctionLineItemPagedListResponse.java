@@ -53,56 +53,34 @@ import com.criteo.api.retailmedia.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AuctionLineItemPagedListResponse {
-  public static final String SERIALIZED_NAME_METADATA = "metadata";
-  @SerializedName(SERIALIZED_NAME_METADATA)
-  private PageMetadata metadata;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<ResourceOfAuctionLineItem> data = null;
 
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<ProblemDetails> warnings = null;
-
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<ProblemDetails> errors = null;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private PageMetadata metadata;
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<ProblemDetails> warnings = null;
 
   public AuctionLineItemPagedListResponse() {
   }
 
   
   public AuctionLineItemPagedListResponse(
-     List<ProblemDetails> warnings, 
-     List<ProblemDetails> errors
+     List<ProblemDetails> errors, 
+     List<ProblemDetails> warnings
   ) {
     this();
-    this.warnings = warnings;
     this.errors = errors;
+    this.warnings = warnings;
   }
-
-  public AuctionLineItemPagedListResponse metadata(PageMetadata metadata) {
-    
-    this.metadata = metadata;
-    return this;
-  }
-
-   /**
-   * Get metadata
-   * @return metadata
-  **/
-  @javax.annotation.Nullable
-
-  public PageMetadata getMetadata() {
-    return metadata;
-  }
-
-
-  public void setMetadata(PageMetadata metadata) {
-    this.metadata = metadata;
-  }
-
 
   public AuctionLineItemPagedListResponse data(List<ResourceOfAuctionLineItem> data) {
     
@@ -135,19 +113,6 @@ public class AuctionLineItemPagedListResponse {
 
 
    /**
-   * Get warnings
-   * @return warnings
-  **/
-  @javax.annotation.Nullable
-
-  public List<ProblemDetails> getWarnings() {
-    return warnings;
-  }
-
-
-
-
-   /**
    * Get errors
    * @return errors
   **/
@@ -155,6 +120,41 @@ public class AuctionLineItemPagedListResponse {
 
   public List<ProblemDetails> getErrors() {
     return errors;
+  }
+
+
+
+
+  public AuctionLineItemPagedListResponse metadata(PageMetadata metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * Get metadata
+   * @return metadata
+  **/
+  @javax.annotation.Nullable
+
+  public PageMetadata getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(PageMetadata metadata) {
+    this.metadata = metadata;
+  }
+
+
+   /**
+   * Get warnings
+   * @return warnings
+  **/
+  @javax.annotation.Nullable
+
+  public List<ProblemDetails> getWarnings() {
+    return warnings;
   }
 
 
@@ -214,26 +214,26 @@ public class AuctionLineItemPagedListResponse {
       return false;
     }
     AuctionLineItemPagedListResponse auctionLineItemPagedListResponse = (AuctionLineItemPagedListResponse) o;
-    return Objects.equals(this.metadata, auctionLineItemPagedListResponse.metadata) &&
-        Objects.equals(this.data, auctionLineItemPagedListResponse.data) &&
-        Objects.equals(this.warnings, auctionLineItemPagedListResponse.warnings) &&
-        Objects.equals(this.errors, auctionLineItemPagedListResponse.errors)&&
+    return Objects.equals(this.data, auctionLineItemPagedListResponse.data) &&
+        Objects.equals(this.errors, auctionLineItemPagedListResponse.errors) &&
+        Objects.equals(this.metadata, auctionLineItemPagedListResponse.metadata) &&
+        Objects.equals(this.warnings, auctionLineItemPagedListResponse.warnings)&&
         Objects.equals(this.additionalProperties, auctionLineItemPagedListResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(metadata, data, warnings, errors, additionalProperties);
+    return Objects.hash(data, errors, metadata, warnings, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AuctionLineItemPagedListResponse {\n");
-    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -257,10 +257,10 @@ public class AuctionLineItemPagedListResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("metadata");
     openapiFields.add("data");
-    openapiFields.add("warnings");
     openapiFields.add("errors");
+    openapiFields.add("metadata");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -278,10 +278,6 @@ public class AuctionLineItemPagedListResponse {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AuctionLineItemPagedListResponse is not found in the empty JSON string", AuctionLineItemPagedListResponse.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `metadata`
-      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
-        PageMetadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
-      }
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
         if (jsonArraydata != null) {
@@ -296,20 +292,6 @@ public class AuctionLineItemPagedListResponse {
           };
         }
       }
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
-        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
-        if (jsonArraywarnings != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("warnings").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-          }
-
-          // validate the optional field `warnings` (array)
-          for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            ProblemDetails.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
-          };
-        }
-      }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
         if (jsonArrayerrors != null) {
@@ -321,6 +303,24 @@ public class AuctionLineItemPagedListResponse {
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
             ProblemDetails.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+          };
+        }
+      }
+      // validate the optional field `metadata`
+      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
+        PageMetadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
+      }
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            ProblemDetails.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }

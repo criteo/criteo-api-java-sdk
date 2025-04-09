@@ -29,7 +29,6 @@ import java.io.IOException;
 
 import com.criteo.api.retailmedia.preview.model.AddRemoveKeywordsModelRequest;
 import com.criteo.api.retailmedia.preview.model.BrandPreviewListResponse;
-import com.criteo.api.retailmedia.preview.model.CatalogStatusV2Response;
 import com.criteo.api.retailmedia.preview.model.CpcRateCardPreviewResponse;
 import com.criteo.api.retailmedia.preview.model.Creative2ListResponse;
 import com.criteo.api.retailmedia.preview.model.Creative2Response;
@@ -37,8 +36,7 @@ import com.criteo.api.retailmedia.preview.model.CreativeCreateModel2;
 import com.criteo.api.retailmedia.preview.model.CreativeUpdateModel2;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata;
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata;
-import com.criteo.api.retailmedia.preview.model.JsonApiRequestOfBrandCatalogRequestV2;
-import com.criteo.api.retailmedia.preview.model.JsonApiRequestOfSellerCatalogRequestV2;
+import com.criteo.api.retailmedia.preview.model.EntityResourceOutcomeOfCatalogStatusV2;
 import com.criteo.api.retailmedia.preview.model.JsonApiSingleResponseOfLineItemBidMultipliersV2;
 import com.criteo.api.retailmedia.preview.model.KeywordsModelResponse;
 import com.criteo.api.retailmedia.preview.model.LineItemBidMultipliersV2Request;
@@ -65,6 +63,8 @@ import com.criteo.api.retailmedia.preview.model.SkuSlimDataPreviewListResponse;
 import com.criteo.api.retailmedia.preview.model.SkuSlimDataV2ListResponse;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputBrandIdSearchRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputCpcMinBidsRequest;
+import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfBrandCatalogRequestV2;
+import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfSellerCatalogRequestV2;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputRetailMediaKeywordsReview;
 import com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeCpcMinBidsResponse;
 import com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeOfRecommendedKeywordsResult;
@@ -256,8 +256,8 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Promoted products appended to the line item with warnings </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
@@ -329,8 +329,8 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Promoted products appended to the line item with warnings </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
@@ -350,8 +350,8 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Promoted products appended to the line item with warnings </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
@@ -373,8 +373,8 @@ public class CampaignApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Promoted products appended to the line item with warnings </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> Promoted products appended to the line item </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid request body </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
@@ -776,9 +776,9 @@ public class CampaignApi {
     /**
      * Build call for fetchPromotedProducts
      * @param lineItemId ID of the line item. (required)
-     * @param offset Offset of the first item to fetch. Defaults to zero. (optional)
-     * @param limit Maximum page size to fetch. Defaults to 500. (optional)
      * @param fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
+     * @param limit Maximum page size to fetch. Defaults to 500. (optional)
+     * @param offset Offset of the first item to fetch. Defaults to zero. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -789,7 +789,7 @@ public class CampaignApi {
         <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call fetchPromotedProductsCall(String lineItemId, Integer offset, Integer limit, String fields, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call fetchPromotedProductsCall(String lineItemId, String fields, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -815,16 +815,16 @@ public class CampaignApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (offset != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        if (fields != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("fields", fields));
         }
 
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
-        if (fields != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("fields", fields));
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
         }
 
         final String[] localVarAccepts = {
@@ -847,13 +847,13 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call fetchPromotedProductsValidateBeforeCall(String lineItemId, Integer offset, Integer limit, String fields, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call fetchPromotedProductsValidateBeforeCall(String lineItemId, String fields, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'lineItemId' is set
         if (lineItemId == null) {
             throw new ApiException("Missing the required parameter 'lineItemId' when calling fetchPromotedProducts(Async)");
         }
 
-        return fetchPromotedProductsCall(lineItemId, offset, limit, fields, _callback);
+        return fetchPromotedProductsCall(lineItemId, fields, limit, offset, _callback);
 
     }
 
@@ -861,9 +861,9 @@ public class CampaignApi {
      * 
      * Retrieve a page of promoted products for a line item
      * @param lineItemId ID of the line item. (required)
-     * @param offset Offset of the first item to fetch. Defaults to zero. (optional)
-     * @param limit Maximum page size to fetch. Defaults to 500. (optional)
      * @param fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
+     * @param limit Maximum page size to fetch. Defaults to 500. (optional)
+     * @param offset Offset of the first item to fetch. Defaults to zero. (optional)
      * @return PromotedProductResourceCollectionOutcome
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -873,8 +873,8 @@ public class CampaignApi {
         <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
-    public PromotedProductResourceCollectionOutcome fetchPromotedProducts(String lineItemId, Integer offset, Integer limit, String fields) throws ApiException {
-        ApiResponse<PromotedProductResourceCollectionOutcome> localVarResp = fetchPromotedProductsWithHttpInfo(lineItemId, offset, limit, fields);
+    public PromotedProductResourceCollectionOutcome fetchPromotedProducts(String lineItemId, String fields, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<PromotedProductResourceCollectionOutcome> localVarResp = fetchPromotedProductsWithHttpInfo(lineItemId, fields, limit, offset);
         return localVarResp.getData();
     }
 
@@ -882,9 +882,9 @@ public class CampaignApi {
      * 
      * Retrieve a page of promoted products for a line item
      * @param lineItemId ID of the line item. (required)
-     * @param offset Offset of the first item to fetch. Defaults to zero. (optional)
-     * @param limit Maximum page size to fetch. Defaults to 500. (optional)
      * @param fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
+     * @param limit Maximum page size to fetch. Defaults to 500. (optional)
+     * @param offset Offset of the first item to fetch. Defaults to zero. (optional)
      * @return ApiResponse&lt;PromotedProductResourceCollectionOutcome&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -894,8 +894,8 @@ public class CampaignApi {
         <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PromotedProductResourceCollectionOutcome> fetchPromotedProductsWithHttpInfo(String lineItemId, Integer offset, Integer limit, String fields) throws ApiException {
-        okhttp3.Call localVarCall = fetchPromotedProductsValidateBeforeCall(lineItemId, offset, limit, fields, null);
+    public ApiResponse<PromotedProductResourceCollectionOutcome> fetchPromotedProductsWithHttpInfo(String lineItemId, String fields, Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = fetchPromotedProductsValidateBeforeCall(lineItemId, fields, limit, offset, null);
         Type localVarReturnType = new TypeToken<PromotedProductResourceCollectionOutcome>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -904,9 +904,9 @@ public class CampaignApi {
      *  (asynchronously)
      * Retrieve a page of promoted products for a line item
      * @param lineItemId ID of the line item. (required)
-     * @param offset Offset of the first item to fetch. Defaults to zero. (optional)
-     * @param limit Maximum page size to fetch. Defaults to 500. (optional)
      * @param fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
+     * @param limit Maximum page size to fetch. Defaults to 500. (optional)
+     * @param offset Offset of the first item to fetch. Defaults to zero. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -917,9 +917,9 @@ public class CampaignApi {
         <tr><td> 403 </td><td> Invalid external line item ID </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call fetchPromotedProductsAsync(String lineItemId, Integer offset, Integer limit, String fields, final ApiCallback<PromotedProductResourceCollectionOutcome> _callback) throws ApiException {
+    public okhttp3.Call fetchPromotedProductsAsync(String lineItemId, String fields, Integer limit, Integer offset, final ApiCallback<PromotedProductResourceCollectionOutcome> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = fetchPromotedProductsValidateBeforeCall(lineItemId, offset, limit, fields, _callback);
+        okhttp3.Call localVarCall = fetchPromotedProductsValidateBeforeCall(lineItemId, fields, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<PromotedProductResourceCollectionOutcome>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1190,6 +1190,8 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request found. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getApiExternalV2CatalogStatusByCatalogIdCall(String catalogId, final ApiCallback _callback) throws ApiException {
@@ -1254,16 +1256,18 @@ public class CampaignApi {
      * 
      * Check the status of a catalog request.
      * @param catalogId A catalog ID returned from an account catalog request. (required)
-     * @return CatalogStatusV2Response
+     * @return EntityResourceOutcomeOfCatalogStatusV2
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request found. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogStatusV2Response getApiExternalV2CatalogStatusByCatalogId(String catalogId) throws ApiException {
-        ApiResponse<CatalogStatusV2Response> localVarResp = getApiExternalV2CatalogStatusByCatalogIdWithHttpInfo(catalogId);
+    public EntityResourceOutcomeOfCatalogStatusV2 getApiExternalV2CatalogStatusByCatalogId(String catalogId) throws ApiException {
+        ApiResponse<EntityResourceOutcomeOfCatalogStatusV2> localVarResp = getApiExternalV2CatalogStatusByCatalogIdWithHttpInfo(catalogId);
         return localVarResp.getData();
     }
 
@@ -1271,17 +1275,19 @@ public class CampaignApi {
      * 
      * Check the status of a catalog request.
      * @param catalogId A catalog ID returned from an account catalog request. (required)
-     * @return ApiResponse&lt;CatalogStatusV2Response&gt;
+     * @return ApiResponse&lt;EntityResourceOutcomeOfCatalogStatusV2&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request found. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogStatusV2Response> getApiExternalV2CatalogStatusByCatalogIdWithHttpInfo(String catalogId) throws ApiException {
+    public ApiResponse<EntityResourceOutcomeOfCatalogStatusV2> getApiExternalV2CatalogStatusByCatalogIdWithHttpInfo(String catalogId) throws ApiException {
         okhttp3.Call localVarCall = getApiExternalV2CatalogStatusByCatalogIdValidateBeforeCall(catalogId, null);
-        Type localVarReturnType = new TypeToken<CatalogStatusV2Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfCatalogStatusV2>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1296,20 +1302,22 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request found. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApiExternalV2CatalogStatusByCatalogIdAsync(String catalogId, final ApiCallback<CatalogStatusV2Response> _callback) throws ApiException {
+    public okhttp3.Call getApiExternalV2CatalogStatusByCatalogIdAsync(String catalogId, final ApiCallback<EntityResourceOutcomeOfCatalogStatusV2> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getApiExternalV2CatalogStatusByCatalogIdValidateBeforeCall(catalogId, _callback);
-        Type localVarReturnType = new TypeToken<CatalogStatusV2Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfCatalogStatusV2>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for getApiV1ExternalRetailerBrandsByRetailerId
      * @param retailerId The retailer id for which brands should be fetched. (required)
-     * @param skuStockTypeFilter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional)
      * @param brandType  Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional)
+     * @param skuStockTypeFilter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1319,7 +1327,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Brands found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApiV1ExternalRetailerBrandsByRetailerIdCall(Integer retailerId, String skuStockTypeFilter, String brandType, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getApiV1ExternalRetailerBrandsByRetailerIdCall(Integer retailerId, String brandType, String skuStockTypeFilter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1345,12 +1353,12 @@ public class CampaignApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (skuStockTypeFilter != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sku-stock-type-filter", skuStockTypeFilter));
-        }
-
         if (brandType != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("brand-type", brandType));
+        }
+
+        if (skuStockTypeFilter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sku-stock-type-filter", skuStockTypeFilter));
         }
 
         final String[] localVarAccepts = {
@@ -1373,13 +1381,13 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getApiV1ExternalRetailerBrandsByRetailerIdValidateBeforeCall(Integer retailerId, String skuStockTypeFilter, String brandType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getApiV1ExternalRetailerBrandsByRetailerIdValidateBeforeCall(Integer retailerId, String brandType, String skuStockTypeFilter, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'retailerId' is set
         if (retailerId == null) {
             throw new ApiException("Missing the required parameter 'retailerId' when calling getApiV1ExternalRetailerBrandsByRetailerId(Async)");
         }
 
-        return getApiV1ExternalRetailerBrandsByRetailerIdCall(retailerId, skuStockTypeFilter, brandType, _callback);
+        return getApiV1ExternalRetailerBrandsByRetailerIdCall(retailerId, brandType, skuStockTypeFilter, _callback);
 
     }
 
@@ -1387,8 +1395,8 @@ public class CampaignApi {
      * 
      * Gets the brands for the given retailer
      * @param retailerId The retailer id for which brands should be fetched. (required)
-     * @param skuStockTypeFilter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional)
      * @param brandType  Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional)
+     * @param skuStockTypeFilter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional)
      * @return BrandPreviewListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1397,8 +1405,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Brands found. </td><td>  -  </td></tr>
      </table>
      */
-    public BrandPreviewListResponse getApiV1ExternalRetailerBrandsByRetailerId(Integer retailerId, String skuStockTypeFilter, String brandType) throws ApiException {
-        ApiResponse<BrandPreviewListResponse> localVarResp = getApiV1ExternalRetailerBrandsByRetailerIdWithHttpInfo(retailerId, skuStockTypeFilter, brandType);
+    public BrandPreviewListResponse getApiV1ExternalRetailerBrandsByRetailerId(Integer retailerId, String brandType, String skuStockTypeFilter) throws ApiException {
+        ApiResponse<BrandPreviewListResponse> localVarResp = getApiV1ExternalRetailerBrandsByRetailerIdWithHttpInfo(retailerId, brandType, skuStockTypeFilter);
         return localVarResp.getData();
     }
 
@@ -1406,8 +1414,8 @@ public class CampaignApi {
      * 
      * Gets the brands for the given retailer
      * @param retailerId The retailer id for which brands should be fetched. (required)
-     * @param skuStockTypeFilter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional)
      * @param brandType  Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional)
+     * @param skuStockTypeFilter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional)
      * @return ApiResponse&lt;BrandPreviewListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1416,8 +1424,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Brands found. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BrandPreviewListResponse> getApiV1ExternalRetailerBrandsByRetailerIdWithHttpInfo(Integer retailerId, String skuStockTypeFilter, String brandType) throws ApiException {
-        okhttp3.Call localVarCall = getApiV1ExternalRetailerBrandsByRetailerIdValidateBeforeCall(retailerId, skuStockTypeFilter, brandType, null);
+    public ApiResponse<BrandPreviewListResponse> getApiV1ExternalRetailerBrandsByRetailerIdWithHttpInfo(Integer retailerId, String brandType, String skuStockTypeFilter) throws ApiException {
+        okhttp3.Call localVarCall = getApiV1ExternalRetailerBrandsByRetailerIdValidateBeforeCall(retailerId, brandType, skuStockTypeFilter, null);
         Type localVarReturnType = new TypeToken<BrandPreviewListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1426,8 +1434,8 @@ public class CampaignApi {
      *  (asynchronously)
      * Gets the brands for the given retailer
      * @param retailerId The retailer id for which brands should be fetched. (required)
-     * @param skuStockTypeFilter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional)
      * @param brandType  Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional)
+     * @param skuStockTypeFilter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1437,9 +1445,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Brands found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getApiV1ExternalRetailerBrandsByRetailerIdAsync(Integer retailerId, String skuStockTypeFilter, String brandType, final ApiCallback<BrandPreviewListResponse> _callback) throws ApiException {
+    public okhttp3.Call getApiV1ExternalRetailerBrandsByRetailerIdAsync(Integer retailerId, String brandType, String skuStockTypeFilter, final ApiCallback<BrandPreviewListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getApiV1ExternalRetailerBrandsByRetailerIdValidateBeforeCall(retailerId, skuStockTypeFilter, brandType, _callback);
+        okhttp3.Call localVarCall = getApiV1ExternalRetailerBrandsByRetailerIdValidateBeforeCall(retailerId, brandType, skuStockTypeFilter, _callback);
         Type localVarReturnType = new TypeToken<BrandPreviewListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2636,8 +2644,8 @@ public class CampaignApi {
     /**
      * Build call for inReviewReportV1
      * @param accountId The account to generate a report for (required)
-     * @param offset Offset for pagination (optional, default to 0)
      * @param limit Number of items per page (optional, default to 25)
+     * @param offset Offset for pagination (optional, default to 0)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2647,7 +2655,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call inReviewReportV1Call(Long accountId, Integer offset, Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call inReviewReportV1Call(Long accountId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2673,12 +2681,12 @@ public class CampaignApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (offset != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
-        }
-
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
         }
 
         final String[] localVarAccepts = {
@@ -2703,13 +2711,13 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call inReviewReportV1ValidateBeforeCall(Long accountId, Integer offset, Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call inReviewReportV1ValidateBeforeCall(Long accountId, Integer limit, Integer offset, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling inReviewReportV1(Async)");
         }
 
-        return inReviewReportV1Call(accountId, offset, limit, _callback);
+        return inReviewReportV1Call(accountId, limit, offset, _callback);
 
     }
 
@@ -2717,8 +2725,8 @@ public class CampaignApi {
      * 
      * Generate a list of reports for line items which contain one or more actionable keyword reviews
      * @param accountId The account to generate a report for (required)
-     * @param offset Offset for pagination (optional, default to 0)
      * @param limit Number of items per page (optional, default to 25)
+     * @param offset Offset for pagination (optional, default to 0)
      * @return EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2727,8 +2735,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata inReviewReportV1(Long accountId, Integer offset, Integer limit) throws ApiException {
-        ApiResponse<EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata> localVarResp = inReviewReportV1WithHttpInfo(accountId, offset, limit);
+    public EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata inReviewReportV1(Long accountId, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata> localVarResp = inReviewReportV1WithHttpInfo(accountId, limit, offset);
         return localVarResp.getData();
     }
 
@@ -2736,8 +2744,8 @@ public class CampaignApi {
      * 
      * Generate a list of reports for line items which contain one or more actionable keyword reviews
      * @param accountId The account to generate a report for (required)
-     * @param offset Offset for pagination (optional, default to 0)
      * @param limit Number of items per page (optional, default to 25)
+     * @param offset Offset for pagination (optional, default to 0)
      * @return ApiResponse&lt;EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2746,8 +2754,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata> inReviewReportV1WithHttpInfo(Long accountId, Integer offset, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = inReviewReportV1ValidateBeforeCall(accountId, offset, limit, null);
+    public ApiResponse<EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata> inReviewReportV1WithHttpInfo(Long accountId, Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = inReviewReportV1ValidateBeforeCall(accountId, limit, offset, null);
         Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2756,8 +2764,8 @@ public class CampaignApi {
      *  (asynchronously)
      * Generate a list of reports for line items which contain one or more actionable keyword reviews
      * @param accountId The account to generate a report for (required)
-     * @param offset Offset for pagination (optional, default to 0)
      * @param limit Number of items per page (optional, default to 25)
+     * @param offset Offset for pagination (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2767,9 +2775,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call inReviewReportV1Async(Long accountId, Integer offset, Integer limit, final ApiCallback<EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata> _callback) throws ApiException {
+    public okhttp3.Call inReviewReportV1Async(Long accountId, Integer limit, Integer offset, final ApiCallback<EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = inReviewReportV1ValidateBeforeCall(accountId, offset, limit, _callback);
+        okhttp3.Call localVarCall = inReviewReportV1ValidateBeforeCall(accountId, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3174,7 +3182,7 @@ public class CampaignApi {
     /**
      * Build call for postApiExternalV2AccountBrandCatalogExportByAccountId
      * @param accountId The account to request the catalog for. (required)
-     * @param jsonApiRequestOfBrandCatalogRequestV2  (optional)
+     * @param valueResourceInputOfBrandCatalogRequestV2  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3182,9 +3190,11 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postApiExternalV2AccountBrandCatalogExportByAccountIdCall(String accountId, JsonApiRequestOfBrandCatalogRequestV2 jsonApiRequestOfBrandCatalogRequestV2, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postApiExternalV2AccountBrandCatalogExportByAccountIdCall(String accountId, ValueResourceInputOfBrandCatalogRequestV2 valueResourceInputOfBrandCatalogRequestV2, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3198,7 +3208,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = jsonApiRequestOfBrandCatalogRequestV2;
+        Object localVarPostBody = valueResourceInputOfBrandCatalogRequestV2;
 
         // create path and map variables
         String localVarPath = "/preview/retail-media/accounts/{accountId}/brand-catalog-export"
@@ -3233,13 +3243,13 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postApiExternalV2AccountBrandCatalogExportByAccountIdValidateBeforeCall(String accountId, JsonApiRequestOfBrandCatalogRequestV2 jsonApiRequestOfBrandCatalogRequestV2, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postApiExternalV2AccountBrandCatalogExportByAccountIdValidateBeforeCall(String accountId, ValueResourceInputOfBrandCatalogRequestV2 valueResourceInputOfBrandCatalogRequestV2, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling postApiExternalV2AccountBrandCatalogExportByAccountId(Async)");
         }
 
-        return postApiExternalV2AccountBrandCatalogExportByAccountIdCall(accountId, jsonApiRequestOfBrandCatalogRequestV2, _callback);
+        return postApiExternalV2AccountBrandCatalogExportByAccountIdCall(accountId, valueResourceInputOfBrandCatalogRequestV2, _callback);
 
     }
 
@@ -3247,17 +3257,19 @@ public class CampaignApi {
      * 
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
-     * @param jsonApiRequestOfBrandCatalogRequestV2  (optional)
-     * @return CatalogStatusV2Response
+     * @param valueResourceInputOfBrandCatalogRequestV2  (optional)
+     * @return EntityResourceOutcomeOfCatalogStatusV2
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogStatusV2Response postApiExternalV2AccountBrandCatalogExportByAccountId(String accountId, JsonApiRequestOfBrandCatalogRequestV2 jsonApiRequestOfBrandCatalogRequestV2) throws ApiException {
-        ApiResponse<CatalogStatusV2Response> localVarResp = postApiExternalV2AccountBrandCatalogExportByAccountIdWithHttpInfo(accountId, jsonApiRequestOfBrandCatalogRequestV2);
+    public EntityResourceOutcomeOfCatalogStatusV2 postApiExternalV2AccountBrandCatalogExportByAccountId(String accountId, ValueResourceInputOfBrandCatalogRequestV2 valueResourceInputOfBrandCatalogRequestV2) throws ApiException {
+        ApiResponse<EntityResourceOutcomeOfCatalogStatusV2> localVarResp = postApiExternalV2AccountBrandCatalogExportByAccountIdWithHttpInfo(accountId, valueResourceInputOfBrandCatalogRequestV2);
         return localVarResp.getData();
     }
 
@@ -3265,18 +3277,20 @@ public class CampaignApi {
      * 
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
-     * @param jsonApiRequestOfBrandCatalogRequestV2  (optional)
-     * @return ApiResponse&lt;CatalogStatusV2Response&gt;
+     * @param valueResourceInputOfBrandCatalogRequestV2  (optional)
+     * @return ApiResponse&lt;EntityResourceOutcomeOfCatalogStatusV2&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogStatusV2Response> postApiExternalV2AccountBrandCatalogExportByAccountIdWithHttpInfo(String accountId, JsonApiRequestOfBrandCatalogRequestV2 jsonApiRequestOfBrandCatalogRequestV2) throws ApiException {
-        okhttp3.Call localVarCall = postApiExternalV2AccountBrandCatalogExportByAccountIdValidateBeforeCall(accountId, jsonApiRequestOfBrandCatalogRequestV2, null);
-        Type localVarReturnType = new TypeToken<CatalogStatusV2Response>(){}.getType();
+    public ApiResponse<EntityResourceOutcomeOfCatalogStatusV2> postApiExternalV2AccountBrandCatalogExportByAccountIdWithHttpInfo(String accountId, ValueResourceInputOfBrandCatalogRequestV2 valueResourceInputOfBrandCatalogRequestV2) throws ApiException {
+        okhttp3.Call localVarCall = postApiExternalV2AccountBrandCatalogExportByAccountIdValidateBeforeCall(accountId, valueResourceInputOfBrandCatalogRequestV2, null);
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfCatalogStatusV2>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3284,7 +3298,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
-     * @param jsonApiRequestOfBrandCatalogRequestV2  (optional)
+     * @param valueResourceInputOfBrandCatalogRequestV2  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3292,19 +3306,21 @@ public class CampaignApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postApiExternalV2AccountBrandCatalogExportByAccountIdAsync(String accountId, JsonApiRequestOfBrandCatalogRequestV2 jsonApiRequestOfBrandCatalogRequestV2, final ApiCallback<CatalogStatusV2Response> _callback) throws ApiException {
+    public okhttp3.Call postApiExternalV2AccountBrandCatalogExportByAccountIdAsync(String accountId, ValueResourceInputOfBrandCatalogRequestV2 valueResourceInputOfBrandCatalogRequestV2, final ApiCallback<EntityResourceOutcomeOfCatalogStatusV2> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postApiExternalV2AccountBrandCatalogExportByAccountIdValidateBeforeCall(accountId, jsonApiRequestOfBrandCatalogRequestV2, _callback);
-        Type localVarReturnType = new TypeToken<CatalogStatusV2Response>(){}.getType();
+        okhttp3.Call localVarCall = postApiExternalV2AccountBrandCatalogExportByAccountIdValidateBeforeCall(accountId, valueResourceInputOfBrandCatalogRequestV2, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfCatalogStatusV2>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postApiExternalV2AccountSellerCatalogExportByAccountId
      * @param accountId The account to request the catalog for. (required)
-     * @param jsonApiRequestOfSellerCatalogRequestV2  (optional)
+     * @param valueResourceInputOfSellerCatalogRequestV2  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3313,9 +3329,10 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postApiExternalV2AccountSellerCatalogExportByAccountIdCall(String accountId, JsonApiRequestOfSellerCatalogRequestV2 jsonApiRequestOfSellerCatalogRequestV2, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postApiExternalV2AccountSellerCatalogExportByAccountIdCall(String accountId, ValueResourceInputOfSellerCatalogRequestV2 valueResourceInputOfSellerCatalogRequestV2, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3329,7 +3346,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = jsonApiRequestOfSellerCatalogRequestV2;
+        Object localVarPostBody = valueResourceInputOfSellerCatalogRequestV2;
 
         // create path and map variables
         String localVarPath = "/preview/retail-media/accounts/{accountId}/seller-catalog-export"
@@ -3364,13 +3381,13 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postApiExternalV2AccountSellerCatalogExportByAccountIdValidateBeforeCall(String accountId, JsonApiRequestOfSellerCatalogRequestV2 jsonApiRequestOfSellerCatalogRequestV2, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postApiExternalV2AccountSellerCatalogExportByAccountIdValidateBeforeCall(String accountId, ValueResourceInputOfSellerCatalogRequestV2 valueResourceInputOfSellerCatalogRequestV2, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling postApiExternalV2AccountSellerCatalogExportByAccountId(Async)");
         }
 
-        return postApiExternalV2AccountSellerCatalogExportByAccountIdCall(accountId, jsonApiRequestOfSellerCatalogRequestV2, _callback);
+        return postApiExternalV2AccountSellerCatalogExportByAccountIdCall(accountId, valueResourceInputOfSellerCatalogRequestV2, _callback);
 
     }
 
@@ -3378,18 +3395,19 @@ public class CampaignApi {
      * 
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
-     * @param jsonApiRequestOfSellerCatalogRequestV2  (optional)
-     * @return CatalogStatusV2Response
+     * @param valueResourceInputOfSellerCatalogRequestV2  (optional)
+     * @return EntityResourceOutcomeOfCatalogStatusV2
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogStatusV2Response postApiExternalV2AccountSellerCatalogExportByAccountId(String accountId, JsonApiRequestOfSellerCatalogRequestV2 jsonApiRequestOfSellerCatalogRequestV2) throws ApiException {
-        ApiResponse<CatalogStatusV2Response> localVarResp = postApiExternalV2AccountSellerCatalogExportByAccountIdWithHttpInfo(accountId, jsonApiRequestOfSellerCatalogRequestV2);
+    public EntityResourceOutcomeOfCatalogStatusV2 postApiExternalV2AccountSellerCatalogExportByAccountId(String accountId, ValueResourceInputOfSellerCatalogRequestV2 valueResourceInputOfSellerCatalogRequestV2) throws ApiException {
+        ApiResponse<EntityResourceOutcomeOfCatalogStatusV2> localVarResp = postApiExternalV2AccountSellerCatalogExportByAccountIdWithHttpInfo(accountId, valueResourceInputOfSellerCatalogRequestV2);
         return localVarResp.getData();
     }
 
@@ -3397,19 +3415,20 @@ public class CampaignApi {
      * 
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
-     * @param jsonApiRequestOfSellerCatalogRequestV2  (optional)
-     * @return ApiResponse&lt;CatalogStatusV2Response&gt;
+     * @param valueResourceInputOfSellerCatalogRequestV2  (optional)
+     * @return ApiResponse&lt;EntityResourceOutcomeOfCatalogStatusV2&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogStatusV2Response> postApiExternalV2AccountSellerCatalogExportByAccountIdWithHttpInfo(String accountId, JsonApiRequestOfSellerCatalogRequestV2 jsonApiRequestOfSellerCatalogRequestV2) throws ApiException {
-        okhttp3.Call localVarCall = postApiExternalV2AccountSellerCatalogExportByAccountIdValidateBeforeCall(accountId, jsonApiRequestOfSellerCatalogRequestV2, null);
-        Type localVarReturnType = new TypeToken<CatalogStatusV2Response>(){}.getType();
+    public ApiResponse<EntityResourceOutcomeOfCatalogStatusV2> postApiExternalV2AccountSellerCatalogExportByAccountIdWithHttpInfo(String accountId, ValueResourceInputOfSellerCatalogRequestV2 valueResourceInputOfSellerCatalogRequestV2) throws ApiException {
+        okhttp3.Call localVarCall = postApiExternalV2AccountSellerCatalogExportByAccountIdValidateBeforeCall(accountId, valueResourceInputOfSellerCatalogRequestV2, null);
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfCatalogStatusV2>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3417,7 +3436,7 @@ public class CampaignApi {
      *  (asynchronously)
      * Create a request for a Catalog available to the indicated account.
      * @param accountId The account to request the catalog for. (required)
-     * @param jsonApiRequestOfSellerCatalogRequestV2  (optional)
+     * @param valueResourceInputOfSellerCatalogRequestV2  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3426,12 +3445,13 @@ public class CampaignApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Catalog request successfully created </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postApiExternalV2AccountSellerCatalogExportByAccountIdAsync(String accountId, JsonApiRequestOfSellerCatalogRequestV2 jsonApiRequestOfSellerCatalogRequestV2, final ApiCallback<CatalogStatusV2Response> _callback) throws ApiException {
+    public okhttp3.Call postApiExternalV2AccountSellerCatalogExportByAccountIdAsync(String accountId, ValueResourceInputOfSellerCatalogRequestV2 valueResourceInputOfSellerCatalogRequestV2, final ApiCallback<EntityResourceOutcomeOfCatalogStatusV2> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postApiExternalV2AccountSellerCatalogExportByAccountIdValidateBeforeCall(accountId, jsonApiRequestOfSellerCatalogRequestV2, _callback);
-        Type localVarReturnType = new TypeToken<CatalogStatusV2Response>(){}.getType();
+        okhttp3.Call localVarCall = postApiExternalV2AccountSellerCatalogExportByAccountIdValidateBeforeCall(accountId, valueResourceInputOfSellerCatalogRequestV2, _callback);
+        Type localVarReturnType = new TypeToken<EntityResourceOutcomeOfCatalogStatusV2>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3707,8 +3727,8 @@ public class CampaignApi {
      * Build call for postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId
      * @param accountId The account for which skus should be searched for. (required)
      * @param retailerId The client id/retailer id for which skus should be searched for. (required)
-     * @param offset The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param limit The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
+     * @param offset The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param skuSearchRequestSlimPreviewRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3719,7 +3739,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Skus found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerIdCall(String accountId, String retailerId, Integer offset, Integer limit, SkuSearchRequestSlimPreviewRequest skuSearchRequestSlimPreviewRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerIdCall(String accountId, String retailerId, Integer limit, Integer offset, SkuSearchRequestSlimPreviewRequest skuSearchRequestSlimPreviewRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3746,12 +3766,12 @@ public class CampaignApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (offset != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
-        }
-
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
         }
 
         final String[] localVarAccepts = {
@@ -3775,7 +3795,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerIdValidateBeforeCall(String accountId, String retailerId, Integer offset, Integer limit, SkuSearchRequestSlimPreviewRequest skuSearchRequestSlimPreviewRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerIdValidateBeforeCall(String accountId, String retailerId, Integer limit, Integer offset, SkuSearchRequestSlimPreviewRequest skuSearchRequestSlimPreviewRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId(Async)");
@@ -3786,7 +3806,7 @@ public class CampaignApi {
             throw new ApiException("Missing the required parameter 'retailerId' when calling postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId(Async)");
         }
 
-        return postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerIdCall(accountId, retailerId, offset, limit, skuSearchRequestSlimPreviewRequest, _callback);
+        return postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerIdCall(accountId, retailerId, limit, offset, skuSearchRequestSlimPreviewRequest, _callback);
 
     }
 
@@ -3795,8 +3815,8 @@ public class CampaignApi {
      * Endpoint to search skus by text, account and retailer with an option to filter by brands id&#39;s.
      * @param accountId The account for which skus should be searched for. (required)
      * @param retailerId The client id/retailer id for which skus should be searched for. (required)
-     * @param offset The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param limit The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
+     * @param offset The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param skuSearchRequestSlimPreviewRequest  (optional)
      * @return SkuSlimDataPreviewListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3806,8 +3826,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Skus found. </td><td>  -  </td></tr>
      </table>
      */
-    public SkuSlimDataPreviewListResponse postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId(String accountId, String retailerId, Integer offset, Integer limit, SkuSearchRequestSlimPreviewRequest skuSearchRequestSlimPreviewRequest) throws ApiException {
-        ApiResponse<SkuSlimDataPreviewListResponse> localVarResp = postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerIdWithHttpInfo(accountId, retailerId, offset, limit, skuSearchRequestSlimPreviewRequest);
+    public SkuSlimDataPreviewListResponse postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId(String accountId, String retailerId, Integer limit, Integer offset, SkuSearchRequestSlimPreviewRequest skuSearchRequestSlimPreviewRequest) throws ApiException {
+        ApiResponse<SkuSlimDataPreviewListResponse> localVarResp = postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerIdWithHttpInfo(accountId, retailerId, limit, offset, skuSearchRequestSlimPreviewRequest);
         return localVarResp.getData();
     }
 
@@ -3816,8 +3836,8 @@ public class CampaignApi {
      * Endpoint to search skus by text, account and retailer with an option to filter by brands id&#39;s.
      * @param accountId The account for which skus should be searched for. (required)
      * @param retailerId The client id/retailer id for which skus should be searched for. (required)
-     * @param offset The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param limit The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
+     * @param offset The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param skuSearchRequestSlimPreviewRequest  (optional)
      * @return ApiResponse&lt;SkuSlimDataPreviewListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3827,8 +3847,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Skus found. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SkuSlimDataPreviewListResponse> postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerIdWithHttpInfo(String accountId, String retailerId, Integer offset, Integer limit, SkuSearchRequestSlimPreviewRequest skuSearchRequestSlimPreviewRequest) throws ApiException {
-        okhttp3.Call localVarCall = postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerIdValidateBeforeCall(accountId, retailerId, offset, limit, skuSearchRequestSlimPreviewRequest, null);
+    public ApiResponse<SkuSlimDataPreviewListResponse> postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerIdWithHttpInfo(String accountId, String retailerId, Integer limit, Integer offset, SkuSearchRequestSlimPreviewRequest skuSearchRequestSlimPreviewRequest) throws ApiException {
+        okhttp3.Call localVarCall = postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerIdValidateBeforeCall(accountId, retailerId, limit, offset, skuSearchRequestSlimPreviewRequest, null);
         Type localVarReturnType = new TypeToken<SkuSlimDataPreviewListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3838,8 +3858,8 @@ public class CampaignApi {
      * Endpoint to search skus by text, account and retailer with an option to filter by brands id&#39;s.
      * @param accountId The account for which skus should be searched for. (required)
      * @param retailerId The client id/retailer id for which skus should be searched for. (required)
-     * @param offset The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param limit The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
+     * @param offset The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param skuSearchRequestSlimPreviewRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3850,9 +3870,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Skus found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerIdAsync(String accountId, String retailerId, Integer offset, Integer limit, SkuSearchRequestSlimPreviewRequest skuSearchRequestSlimPreviewRequest, final ApiCallback<SkuSlimDataPreviewListResponse> _callback) throws ApiException {
+    public okhttp3.Call postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerIdAsync(String accountId, String retailerId, Integer limit, Integer offset, SkuSearchRequestSlimPreviewRequest skuSearchRequestSlimPreviewRequest, final ApiCallback<SkuSlimDataPreviewListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerIdValidateBeforeCall(accountId, retailerId, offset, limit, skuSearchRequestSlimPreviewRequest, _callback);
+        okhttp3.Call localVarCall = postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerIdValidateBeforeCall(accountId, retailerId, limit, offset, skuSearchRequestSlimPreviewRequest, _callback);
         Type localVarReturnType = new TypeToken<SkuSlimDataPreviewListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3860,9 +3880,9 @@ public class CampaignApi {
     /**
      * Build call for postApiV1ExternalCatalogsSkuSearchRetailerByRetailerId
      * @param retailerId The client id/retailer id for which skus should be searched for. (required)
-     * @param xOriginAccount The account id of the initiator of the call. (optional)
-     * @param offset The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param limit The maximum number of results to return with each call. Must be greater than zero and less than 1500. 10,000 records deep is the max limit. (optional, default to 100)
+     * @param offset The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
+     * @param xOriginAccount The account id of the initiator of the call. (optional)
      * @param skuSearchRequestSlimV2PreviewRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3873,7 +3893,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Skus found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postApiV1ExternalCatalogsSkuSearchRetailerByRetailerIdCall(String retailerId, String xOriginAccount, Integer offset, Integer limit, SkuSearchRequestSlimV2PreviewRequest skuSearchRequestSlimV2PreviewRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postApiV1ExternalCatalogsSkuSearchRetailerByRetailerIdCall(String retailerId, Integer limit, Integer offset, String xOriginAccount, SkuSearchRequestSlimV2PreviewRequest skuSearchRequestSlimV2PreviewRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3899,12 +3919,12 @@ public class CampaignApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (offset != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
-        }
-
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
         }
 
         if (xOriginAccount != null) {
@@ -3932,13 +3952,13 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postApiV1ExternalCatalogsSkuSearchRetailerByRetailerIdValidateBeforeCall(String retailerId, String xOriginAccount, Integer offset, Integer limit, SkuSearchRequestSlimV2PreviewRequest skuSearchRequestSlimV2PreviewRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postApiV1ExternalCatalogsSkuSearchRetailerByRetailerIdValidateBeforeCall(String retailerId, Integer limit, Integer offset, String xOriginAccount, SkuSearchRequestSlimV2PreviewRequest skuSearchRequestSlimV2PreviewRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'retailerId' is set
         if (retailerId == null) {
             throw new ApiException("Missing the required parameter 'retailerId' when calling postApiV1ExternalCatalogsSkuSearchRetailerByRetailerId(Async)");
         }
 
-        return postApiV1ExternalCatalogsSkuSearchRetailerByRetailerIdCall(retailerId, xOriginAccount, offset, limit, skuSearchRequestSlimV2PreviewRequest, _callback);
+        return postApiV1ExternalCatalogsSkuSearchRetailerByRetailerIdCall(retailerId, limit, offset, xOriginAccount, skuSearchRequestSlimV2PreviewRequest, _callback);
 
     }
 
@@ -3946,9 +3966,9 @@ public class CampaignApi {
      * 
      * Endpoint to search skus by text for a retailer with an option to filter by brands id&#39;s.
      * @param retailerId The client id/retailer id for which skus should be searched for. (required)
-     * @param xOriginAccount The account id of the initiator of the call. (optional)
-     * @param offset The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param limit The maximum number of results to return with each call. Must be greater than zero and less than 1500. 10,000 records deep is the max limit. (optional, default to 100)
+     * @param offset The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
+     * @param xOriginAccount The account id of the initiator of the call. (optional)
      * @param skuSearchRequestSlimV2PreviewRequest  (optional)
      * @return SkuSlimDataV2ListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3958,8 +3978,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Skus found. </td><td>  -  </td></tr>
      </table>
      */
-    public SkuSlimDataV2ListResponse postApiV1ExternalCatalogsSkuSearchRetailerByRetailerId(String retailerId, String xOriginAccount, Integer offset, Integer limit, SkuSearchRequestSlimV2PreviewRequest skuSearchRequestSlimV2PreviewRequest) throws ApiException {
-        ApiResponse<SkuSlimDataV2ListResponse> localVarResp = postApiV1ExternalCatalogsSkuSearchRetailerByRetailerIdWithHttpInfo(retailerId, xOriginAccount, offset, limit, skuSearchRequestSlimV2PreviewRequest);
+    public SkuSlimDataV2ListResponse postApiV1ExternalCatalogsSkuSearchRetailerByRetailerId(String retailerId, Integer limit, Integer offset, String xOriginAccount, SkuSearchRequestSlimV2PreviewRequest skuSearchRequestSlimV2PreviewRequest) throws ApiException {
+        ApiResponse<SkuSlimDataV2ListResponse> localVarResp = postApiV1ExternalCatalogsSkuSearchRetailerByRetailerIdWithHttpInfo(retailerId, limit, offset, xOriginAccount, skuSearchRequestSlimV2PreviewRequest);
         return localVarResp.getData();
     }
 
@@ -3967,9 +3987,9 @@ public class CampaignApi {
      * 
      * Endpoint to search skus by text for a retailer with an option to filter by brands id&#39;s.
      * @param retailerId The client id/retailer id for which skus should be searched for. (required)
-     * @param xOriginAccount The account id of the initiator of the call. (optional)
-     * @param offset The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param limit The maximum number of results to return with each call. Must be greater than zero and less than 1500. 10,000 records deep is the max limit. (optional, default to 100)
+     * @param offset The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
+     * @param xOriginAccount The account id of the initiator of the call. (optional)
      * @param skuSearchRequestSlimV2PreviewRequest  (optional)
      * @return ApiResponse&lt;SkuSlimDataV2ListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3979,8 +3999,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Skus found. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SkuSlimDataV2ListResponse> postApiV1ExternalCatalogsSkuSearchRetailerByRetailerIdWithHttpInfo(String retailerId, String xOriginAccount, Integer offset, Integer limit, SkuSearchRequestSlimV2PreviewRequest skuSearchRequestSlimV2PreviewRequest) throws ApiException {
-        okhttp3.Call localVarCall = postApiV1ExternalCatalogsSkuSearchRetailerByRetailerIdValidateBeforeCall(retailerId, xOriginAccount, offset, limit, skuSearchRequestSlimV2PreviewRequest, null);
+    public ApiResponse<SkuSlimDataV2ListResponse> postApiV1ExternalCatalogsSkuSearchRetailerByRetailerIdWithHttpInfo(String retailerId, Integer limit, Integer offset, String xOriginAccount, SkuSearchRequestSlimV2PreviewRequest skuSearchRequestSlimV2PreviewRequest) throws ApiException {
+        okhttp3.Call localVarCall = postApiV1ExternalCatalogsSkuSearchRetailerByRetailerIdValidateBeforeCall(retailerId, limit, offset, xOriginAccount, skuSearchRequestSlimV2PreviewRequest, null);
         Type localVarReturnType = new TypeToken<SkuSlimDataV2ListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3989,9 +4009,9 @@ public class CampaignApi {
      *  (asynchronously)
      * Endpoint to search skus by text for a retailer with an option to filter by brands id&#39;s.
      * @param retailerId The client id/retailer id for which skus should be searched for. (required)
-     * @param xOriginAccount The account id of the initiator of the call. (optional)
-     * @param offset The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param limit The maximum number of results to return with each call. Must be greater than zero and less than 1500. 10,000 records deep is the max limit. (optional, default to 100)
+     * @param offset The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
+     * @param xOriginAccount The account id of the initiator of the call. (optional)
      * @param skuSearchRequestSlimV2PreviewRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4002,9 +4022,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Skus found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postApiV1ExternalCatalogsSkuSearchRetailerByRetailerIdAsync(String retailerId, String xOriginAccount, Integer offset, Integer limit, SkuSearchRequestSlimV2PreviewRequest skuSearchRequestSlimV2PreviewRequest, final ApiCallback<SkuSlimDataV2ListResponse> _callback) throws ApiException {
+    public okhttp3.Call postApiV1ExternalCatalogsSkuSearchRetailerByRetailerIdAsync(String retailerId, Integer limit, Integer offset, String xOriginAccount, SkuSearchRequestSlimV2PreviewRequest skuSearchRequestSlimV2PreviewRequest, final ApiCallback<SkuSlimDataV2ListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postApiV1ExternalCatalogsSkuSearchRetailerByRetailerIdValidateBeforeCall(retailerId, xOriginAccount, offset, limit, skuSearchRequestSlimV2PreviewRequest, _callback);
+        okhttp3.Call localVarCall = postApiV1ExternalCatalogsSkuSearchRetailerByRetailerIdValidateBeforeCall(retailerId, limit, offset, xOriginAccount, skuSearchRequestSlimV2PreviewRequest, _callback);
         Type localVarReturnType = new TypeToken<SkuSlimDataV2ListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4823,8 +4843,8 @@ public class CampaignApi {
     }
     /**
      * Build call for searchBrandsByNameAsyncV1
-     * @param offset offset of paginated results (optional, default to 0)
      * @param limit the number of brands to return (optional, default to 25)
+     * @param offset offset of paginated results (optional, default to 0)
      * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -4835,7 +4855,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchBrandsByNameAsyncV1Call(Integer offset, Integer limit, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchBrandsByNameAsyncV1Call(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4860,12 +4880,12 @@ public class CampaignApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (offset != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
-        }
-
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
         }
 
         final String[] localVarAccepts = {
@@ -4894,16 +4914,16 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchBrandsByNameAsyncV1ValidateBeforeCall(Integer offset, Integer limit, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback _callback) throws ApiException {
-        return searchBrandsByNameAsyncV1Call(offset, limit, valueResourceInputBrandIdSearchRequest, _callback);
+    private okhttp3.Call searchBrandsByNameAsyncV1ValidateBeforeCall(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback _callback) throws ApiException {
+        return searchBrandsByNameAsyncV1Call(limit, offset, valueResourceInputBrandIdSearchRequest, _callback);
 
     }
 
     /**
      * 
      * Search for brands given a retailer ID and search term.
-     * @param offset offset of paginated results (optional, default to 0)
      * @param limit the number of brands to return (optional, default to 25)
+     * @param offset offset of paginated results (optional, default to 0)
      * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
      * @return EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4913,16 +4933,16 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata searchBrandsByNameAsyncV1(Integer offset, Integer limit, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest) throws ApiException {
-        ApiResponse<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> localVarResp = searchBrandsByNameAsyncV1WithHttpInfo(offset, limit, valueResourceInputBrandIdSearchRequest);
+    public EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata searchBrandsByNameAsyncV1(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest) throws ApiException {
+        ApiResponse<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> localVarResp = searchBrandsByNameAsyncV1WithHttpInfo(limit, offset, valueResourceInputBrandIdSearchRequest);
         return localVarResp.getData();
     }
 
     /**
      * 
      * Search for brands given a retailer ID and search term.
-     * @param offset offset of paginated results (optional, default to 0)
      * @param limit the number of brands to return (optional, default to 25)
+     * @param offset offset of paginated results (optional, default to 0)
      * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
      * @return ApiResponse&lt;EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4932,8 +4952,8 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> searchBrandsByNameAsyncV1WithHttpInfo(Integer offset, Integer limit, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest) throws ApiException {
-        okhttp3.Call localVarCall = searchBrandsByNameAsyncV1ValidateBeforeCall(offset, limit, valueResourceInputBrandIdSearchRequest, null);
+    public ApiResponse<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> searchBrandsByNameAsyncV1WithHttpInfo(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest) throws ApiException {
+        okhttp3.Call localVarCall = searchBrandsByNameAsyncV1ValidateBeforeCall(limit, offset, valueResourceInputBrandIdSearchRequest, null);
         Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4941,8 +4961,8 @@ public class CampaignApi {
     /**
      *  (asynchronously)
      * Search for brands given a retailer ID and search term.
-     * @param offset offset of paginated results (optional, default to 0)
      * @param limit the number of brands to return (optional, default to 25)
+     * @param offset offset of paginated results (optional, default to 0)
      * @param valueResourceInputBrandIdSearchRequest BrandIdSearchRequest which contains the request parameters (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4953,9 +4973,9 @@ public class CampaignApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchBrandsByNameAsyncV1Async(Integer offset, Integer limit, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> _callback) throws ApiException {
+    public okhttp3.Call searchBrandsByNameAsyncV1Async(Integer limit, Integer offset, ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest, final ApiCallback<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchBrandsByNameAsyncV1ValidateBeforeCall(offset, limit, valueResourceInputBrandIdSearchRequest, _callback);
+        okhttp3.Call localVarCall = searchBrandsByNameAsyncV1ValidateBeforeCall(limit, offset, valueResourceInputBrandIdSearchRequest, _callback);
         Type localVarReturnType = new TypeToken<EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

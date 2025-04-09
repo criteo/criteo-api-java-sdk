@@ -8,30 +8,19 @@ A creative entity
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** | Name |  |
-|**status** | [**StatusEnum**](#StatusEnum) | Creative Status |  |
-|**brandId** | **Long** | Brand Id |  |
-|**retailerId** | **Integer** | Retailer Id |  |
-|**templateId** | **Integer** | Template Id |  |
-|**templateName** | **String** | Template Name |  |
-|**formatId** | **Integer** | Format Id |  |
 |**associatedLineItemIds** | **List&lt;String&gt;** | Associated Line Item Ids |  |
-|**updatedAt** | **OffsetDateTime** | Updated at time |  |
+|**brandId** | **Long** | Brand Id |  |
 |**creativeFormatV2Type** | [**CreativeFormatV2TypeEnum**](#CreativeFormatV2TypeEnum) | Creative format type |  |
 |**environments** | [**List&lt;PageTypeEnvironment2&gt;**](PageTypeEnvironment2.md) | Environment type (e.g. mobile, web, app) |  |
-|**templateVariableValues** | [**List&lt;TemplateVariableValue&gt;**](TemplateVariableValue.md) | The template chosen values |  |
+|**formatId** | **Integer** | Format Id |  |
 |**id** | **String** | Id of the entity |  [optional] |
-
-
-
-## Enum: StatusEnum
-
-| Name | Value |
-|---- | -----|
-| READY | &quot;Ready&quot; |
-| INUSE | &quot;InUse&quot; |
-| ARCHIVED | &quot;Archived&quot; |
-| DELETED | &quot;Deleted&quot; |
+|**name** | **String** | Name |  |
+|**retailerId** | **Integer** | Retailer Id |  |
+|**status** | [**StatusEnum**](#StatusEnum) | Creative Status |  |
+|**templateId** | **Integer** | Template Id |  |
+|**templateName** | **String** | Template Name |  |
+|**templateVariableValues** | [**List&lt;TemplateVariableValue&gt;**](TemplateVariableValue.md) | The template chosen values |  |
+|**updatedAt** | **OffsetDateTime** | Updated at time |  |
 
 
 
@@ -49,6 +38,17 @@ A creative entity
 | CUSTOM | &quot;Custom&quot; |
 | DISPLAYPANEL | &quot;DisplayPanel&quot; |
 | DIGITALSHELFTALKER | &quot;DigitalShelfTalker&quot; |
+
+
+
+## Enum: StatusEnum
+
+| Name | Value |
+|---- | -----|
+| READY | &quot;Ready&quot; |
+| INUSE | &quot;InUse&quot; |
+| ARCHIVED | &quot;Archived&quot; |
+| DELETED | &quot;Deleted&quot; |
 
 
 

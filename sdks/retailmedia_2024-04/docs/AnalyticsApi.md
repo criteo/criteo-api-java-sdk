@@ -287,7 +287,7 @@ public class Example {
 
 ## getAsyncExportOutput
 
-> String getAsyncExportOutput(reportId)
+> File getAsyncExportOutput(reportId)
 
 
 
@@ -334,7 +334,7 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         String reportId = "reportId_example"; // String | The ID of the report to retrieve
         try {
-            String result = apiInstance.getAsyncExportOutput(reportId);
+            File result = apiInstance.getAsyncExportOutput(reportId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalyticsApi#getAsyncExportOutput");
@@ -356,7 +356,7 @@ public class Example {
 
 ### Return type
 
-**String**
+[**File**](File.md)
 
 ### Authorization
 

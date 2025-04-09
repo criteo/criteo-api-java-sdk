@@ -48,21 +48,9 @@ import com.criteo.api.marketingsolutions.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdaptiveColors {
-  public static final String SERIALIZED_NAME_LOGO_AREA_AND_TITLE_COLOR = "logoAreaAndTitleColor";
-  @SerializedName(SERIALIZED_NAME_LOGO_AREA_AND_TITLE_COLOR)
-  private String logoAreaAndTitleColor;
-
   public static final String SERIALIZED_NAME_BACKGROUND_COLOR = "backgroundColor";
   @SerializedName(SERIALIZED_NAME_BACKGROUND_COLOR)
   private String backgroundColor;
-
-  public static final String SERIALIZED_NAME_TEXT1_COLOR = "text1Color";
-  @SerializedName(SERIALIZED_NAME_TEXT1_COLOR)
-  private String text1Color;
-
-  public static final String SERIALIZED_NAME_TEXT2_COLOR = "text2Color";
-  @SerializedName(SERIALIZED_NAME_TEXT2_COLOR)
-  private String text2Color;
 
   public static final String SERIALIZED_NAME_CTA_BACKGROUND_COLOR = "ctaBackgroundColor";
   @SerializedName(SERIALIZED_NAME_CTA_BACKGROUND_COLOR)
@@ -72,30 +60,20 @@ public class AdaptiveColors {
   @SerializedName(SERIALIZED_NAME_CTA_TEXT_COLOR)
   private String ctaTextColor;
 
+  public static final String SERIALIZED_NAME_LOGO_AREA_AND_TITLE_COLOR = "logoAreaAndTitleColor";
+  @SerializedName(SERIALIZED_NAME_LOGO_AREA_AND_TITLE_COLOR)
+  private String logoAreaAndTitleColor;
+
+  public static final String SERIALIZED_NAME_TEXT1_COLOR = "text1Color";
+  @SerializedName(SERIALIZED_NAME_TEXT1_COLOR)
+  private String text1Color;
+
+  public static final String SERIALIZED_NAME_TEXT2_COLOR = "text2Color";
+  @SerializedName(SERIALIZED_NAME_TEXT2_COLOR)
+  private String text2Color;
+
   public AdaptiveColors() {
   }
-
-  public AdaptiveColors logoAreaAndTitleColor(String logoAreaAndTitleColor) {
-    
-    this.logoAreaAndTitleColor = logoAreaAndTitleColor;
-    return this;
-  }
-
-   /**
-   * Color of the creative&#39;s logo area.  A valid RGB24 color in hexadecimal (e.g. \&quot;AB00FF\&quot;).
-   * @return logoAreaAndTitleColor
-  **/
-  @javax.annotation.Nonnull
-
-  public String getLogoAreaAndTitleColor() {
-    return logoAreaAndTitleColor;
-  }
-
-
-  public void setLogoAreaAndTitleColor(String logoAreaAndTitleColor) {
-    this.logoAreaAndTitleColor = logoAreaAndTitleColor;
-  }
-
 
   public AdaptiveColors backgroundColor(String backgroundColor) {
     
@@ -116,50 +94,6 @@ public class AdaptiveColors {
 
   public void setBackgroundColor(String backgroundColor) {
     this.backgroundColor = backgroundColor;
-  }
-
-
-  public AdaptiveColors text1Color(String text1Color) {
-    
-    this.text1Color = text1Color;
-    return this;
-  }
-
-   /**
-   * Color of the headline and the description texts.  A valid RGB24 color in hexadecimal (e.g. \&quot;AB00FF\&quot;)
-   * @return text1Color
-  **/
-  @javax.annotation.Nonnull
-
-  public String getText1Color() {
-    return text1Color;
-  }
-
-
-  public void setText1Color(String text1Color) {
-    this.text1Color = text1Color;
-  }
-
-
-  public AdaptiveColors text2Color(String text2Color) {
-    
-    this.text2Color = text2Color;
-    return this;
-  }
-
-   /**
-   * Color of the image set&#39;s headline text.  A valid RGB24 color in hexadecimal (e.g. \&quot;AB00FF\&quot;)
-   * @return text2Color
-  **/
-  @javax.annotation.Nonnull
-
-  public String getText2Color() {
-    return text2Color;
-  }
-
-
-  public void setText2Color(String text2Color) {
-    this.text2Color = text2Color;
   }
 
 
@@ -204,6 +138,72 @@ public class AdaptiveColors {
 
   public void setCtaTextColor(String ctaTextColor) {
     this.ctaTextColor = ctaTextColor;
+  }
+
+
+  public AdaptiveColors logoAreaAndTitleColor(String logoAreaAndTitleColor) {
+    
+    this.logoAreaAndTitleColor = logoAreaAndTitleColor;
+    return this;
+  }
+
+   /**
+   * Color of the creative&#39;s logo area.  A valid RGB24 color in hexadecimal (e.g. \&quot;AB00FF\&quot;).
+   * @return logoAreaAndTitleColor
+  **/
+  @javax.annotation.Nonnull
+
+  public String getLogoAreaAndTitleColor() {
+    return logoAreaAndTitleColor;
+  }
+
+
+  public void setLogoAreaAndTitleColor(String logoAreaAndTitleColor) {
+    this.logoAreaAndTitleColor = logoAreaAndTitleColor;
+  }
+
+
+  public AdaptiveColors text1Color(String text1Color) {
+    
+    this.text1Color = text1Color;
+    return this;
+  }
+
+   /**
+   * Color of the headline and the description texts.  A valid RGB24 color in hexadecimal (e.g. \&quot;AB00FF\&quot;)
+   * @return text1Color
+  **/
+  @javax.annotation.Nonnull
+
+  public String getText1Color() {
+    return text1Color;
+  }
+
+
+  public void setText1Color(String text1Color) {
+    this.text1Color = text1Color;
+  }
+
+
+  public AdaptiveColors text2Color(String text2Color) {
+    
+    this.text2Color = text2Color;
+    return this;
+  }
+
+   /**
+   * Color of the image set&#39;s headline text.  A valid RGB24 color in hexadecimal (e.g. \&quot;AB00FF\&quot;)
+   * @return text2Color
+  **/
+  @javax.annotation.Nonnull
+
+  public String getText2Color() {
+    return text2Color;
+  }
+
+
+  public void setText2Color(String text2Color) {
+    this.text2Color = text2Color;
   }
 
   /**
@@ -261,30 +261,30 @@ public class AdaptiveColors {
       return false;
     }
     AdaptiveColors adaptiveColors = (AdaptiveColors) o;
-    return Objects.equals(this.logoAreaAndTitleColor, adaptiveColors.logoAreaAndTitleColor) &&
-        Objects.equals(this.backgroundColor, adaptiveColors.backgroundColor) &&
-        Objects.equals(this.text1Color, adaptiveColors.text1Color) &&
-        Objects.equals(this.text2Color, adaptiveColors.text2Color) &&
+    return Objects.equals(this.backgroundColor, adaptiveColors.backgroundColor) &&
         Objects.equals(this.ctaBackgroundColor, adaptiveColors.ctaBackgroundColor) &&
-        Objects.equals(this.ctaTextColor, adaptiveColors.ctaTextColor)&&
+        Objects.equals(this.ctaTextColor, adaptiveColors.ctaTextColor) &&
+        Objects.equals(this.logoAreaAndTitleColor, adaptiveColors.logoAreaAndTitleColor) &&
+        Objects.equals(this.text1Color, adaptiveColors.text1Color) &&
+        Objects.equals(this.text2Color, adaptiveColors.text2Color)&&
         Objects.equals(this.additionalProperties, adaptiveColors.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(logoAreaAndTitleColor, backgroundColor, text1Color, text2Color, ctaBackgroundColor, ctaTextColor, additionalProperties);
+    return Objects.hash(backgroundColor, ctaBackgroundColor, ctaTextColor, logoAreaAndTitleColor, text1Color, text2Color, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdaptiveColors {\n");
-    sb.append("    logoAreaAndTitleColor: ").append(toIndentedString(logoAreaAndTitleColor)).append("\n");
     sb.append("    backgroundColor: ").append(toIndentedString(backgroundColor)).append("\n");
-    sb.append("    text1Color: ").append(toIndentedString(text1Color)).append("\n");
-    sb.append("    text2Color: ").append(toIndentedString(text2Color)).append("\n");
     sb.append("    ctaBackgroundColor: ").append(toIndentedString(ctaBackgroundColor)).append("\n");
     sb.append("    ctaTextColor: ").append(toIndentedString(ctaTextColor)).append("\n");
+    sb.append("    logoAreaAndTitleColor: ").append(toIndentedString(logoAreaAndTitleColor)).append("\n");
+    sb.append("    text1Color: ").append(toIndentedString(text1Color)).append("\n");
+    sb.append("    text2Color: ").append(toIndentedString(text2Color)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -308,21 +308,21 @@ public class AdaptiveColors {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("logoAreaAndTitleColor");
     openapiFields.add("backgroundColor");
-    openapiFields.add("text1Color");
-    openapiFields.add("text2Color");
     openapiFields.add("ctaBackgroundColor");
     openapiFields.add("ctaTextColor");
+    openapiFields.add("logoAreaAndTitleColor");
+    openapiFields.add("text1Color");
+    openapiFields.add("text2Color");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("logoAreaAndTitleColor");
     openapiRequiredFields.add("backgroundColor");
-    openapiRequiredFields.add("text1Color");
-    openapiRequiredFields.add("text2Color");
     openapiRequiredFields.add("ctaBackgroundColor");
     openapiRequiredFields.add("ctaTextColor");
+    openapiRequiredFields.add("logoAreaAndTitleColor");
+    openapiRequiredFields.add("text1Color");
+    openapiRequiredFields.add("text2Color");
   }
 
  /**
@@ -344,23 +344,23 @@ public class AdaptiveColors {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("logoAreaAndTitleColor").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `logoAreaAndTitleColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logoAreaAndTitleColor").toString()));
-      }
       if (!jsonObj.get("backgroundColor").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `backgroundColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("backgroundColor").toString()));
-      }
-      if (!jsonObj.get("text1Color").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `text1Color` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text1Color").toString()));
-      }
-      if (!jsonObj.get("text2Color").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `text2Color` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text2Color").toString()));
       }
       if (!jsonObj.get("ctaBackgroundColor").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ctaBackgroundColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ctaBackgroundColor").toString()));
       }
       if (!jsonObj.get("ctaTextColor").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ctaTextColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ctaTextColor").toString()));
+      }
+      if (!jsonObj.get("logoAreaAndTitleColor").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `logoAreaAndTitleColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logoAreaAndTitleColor").toString()));
+      }
+      if (!jsonObj.get("text1Color").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `text1Color` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text1Color").toString()));
+      }
+      if (!jsonObj.get("text2Color").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `text2Color` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text2Color").toString()));
       }
   }
 

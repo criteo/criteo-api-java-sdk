@@ -8,11 +8,12 @@ Metadata and usage info of a preferred deals creative
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** |  |  |
-|**status** | [**StatusEnum**](#StatusEnum) |  |  |
-|**brandId** | **Long** |  |  [optional] |
-|**retailerId** | **Integer** |  |  |
 |**associatedLineItemIds** | **List&lt;String&gt;** |  |  [optional] |
+|**brandId** | **Long** |  |  [optional] |
+|**id** | **String** | Id of the entity |  [optional] |
+|**name** | **String** |  |  |
+|**retailerId** | **Integer** |  |  |
+|**status** | [**StatusEnum**](#StatusEnum) |  |  |
 |**updatedAt** | **OffsetDateTime** |  |  [optional] |
 
 

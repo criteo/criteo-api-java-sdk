@@ -51,10 +51,6 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalRetailer {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
   /**
    * Gets or Sets campaignEligibilities
    */
@@ -112,30 +108,12 @@ public class ExternalRetailer {
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ELIGIBILITIES)
   private List<CampaignEligibilitiesEnum> campaignEligibilities = null;
 
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
   public ExternalRetailer() {
   }
-
-  public ExternalRetailer name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
 
   public ExternalRetailer campaignEligibilities(List<CampaignEligibilitiesEnum> campaignEligibilities) {
     
@@ -167,6 +145,28 @@ public class ExternalRetailer {
   }
 
 
+  public ExternalRetailer name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -177,8 +177,8 @@ public class ExternalRetailer {
       return false;
     }
     ExternalRetailer externalRetailer = (ExternalRetailer) o;
-    return Objects.equals(this.name, externalRetailer.name) &&
-        Objects.equals(this.campaignEligibilities, externalRetailer.campaignEligibilities);
+    return Objects.equals(this.campaignEligibilities, externalRetailer.campaignEligibilities) &&
+        Objects.equals(this.name, externalRetailer.name);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -187,7 +187,7 @@ public class ExternalRetailer {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, campaignEligibilities);
+    return Objects.hash(campaignEligibilities, name);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -201,8 +201,8 @@ public class ExternalRetailer {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalRetailer {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    campaignEligibilities: ").append(toIndentedString(campaignEligibilities)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -225,8 +225,8 @@ public class ExternalRetailer {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
     openapiFields.add("campaignEligibilities");
+    openapiFields.add("name");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -260,12 +260,12 @@ public class ExternalRetailer {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("campaignEligibilities") != null && !jsonObj.get("campaignEligibilities").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignEligibilities` to be an array in the JSON string but got `%s`", jsonObj.get("campaignEligibilities").toString()));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
   }
 

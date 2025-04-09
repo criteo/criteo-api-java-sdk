@@ -50,10 +50,6 @@ import com.criteo.api.retailmedia.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CampaignDailyBudgetOverride {
-  public static final String SERIALIZED_NAME_START_DATE = "startDate";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private OffsetDateTime startDate;
-
   public static final String SERIALIZED_NAME_DURATION = "duration";
   @SerializedName(SERIALIZED_NAME_DURATION)
   private String duration;
@@ -61,6 +57,10 @@ public class CampaignDailyBudgetOverride {
   public static final String SERIALIZED_NAME_MAX_DAILY_SPEND = "maxDailySpend";
   @SerializedName(SERIALIZED_NAME_MAX_DAILY_SPEND)
   private Double maxDailySpend;
+
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private OffsetDateTime startDate;
 
   /**
    * Daily budget override computed status.
@@ -118,28 +118,6 @@ public class CampaignDailyBudgetOverride {
   public CampaignDailyBudgetOverride() {
   }
 
-  public CampaignDailyBudgetOverride startDate(OffsetDateTime startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * Daily budget override start date, format \&quot;yyyy-MM-dd\&quot;. If it is null, the StartDate would be the following date of the last item in the override sequence.
-   * @return startDate
-  **/
-  @javax.annotation.Nullable
-
-  public OffsetDateTime getStartDate() {
-    return startDate;
-  }
-
-
-  public void setStartDate(OffsetDateTime startDate) {
-    this.startDate = startDate;
-  }
-
-
   public CampaignDailyBudgetOverride duration(String duration) {
     
     this.duration = duration;
@@ -184,6 +162,28 @@ public class CampaignDailyBudgetOverride {
   }
 
 
+  public CampaignDailyBudgetOverride startDate(OffsetDateTime startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Daily budget override start date, format \&quot;yyyy-MM-dd\&quot;. If it is null, the StartDate would be the following date of the last item in the override sequence.
+   * @return startDate
+  **/
+  @javax.annotation.Nullable
+
+  public OffsetDateTime getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+
   public CampaignDailyBudgetOverride status(StatusEnum status) {
     
     this.status = status;
@@ -216,9 +216,9 @@ public class CampaignDailyBudgetOverride {
       return false;
     }
     CampaignDailyBudgetOverride campaignDailyBudgetOverride = (CampaignDailyBudgetOverride) o;
-    return Objects.equals(this.startDate, campaignDailyBudgetOverride.startDate) &&
-        Objects.equals(this.duration, campaignDailyBudgetOverride.duration) &&
+    return Objects.equals(this.duration, campaignDailyBudgetOverride.duration) &&
         Objects.equals(this.maxDailySpend, campaignDailyBudgetOverride.maxDailySpend) &&
+        Objects.equals(this.startDate, campaignDailyBudgetOverride.startDate) &&
         Objects.equals(this.status, campaignDailyBudgetOverride.status);
   }
 
@@ -228,7 +228,7 @@ public class CampaignDailyBudgetOverride {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, duration, maxDailySpend, status);
+    return Objects.hash(duration, maxDailySpend, startDate, status);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -242,9 +242,9 @@ public class CampaignDailyBudgetOverride {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignDailyBudgetOverride {\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("    maxDailySpend: ").append(toIndentedString(maxDailySpend)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -268,9 +268,9 @@ public class CampaignDailyBudgetOverride {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("startDate");
     openapiFields.add("duration");
     openapiFields.add("maxDailySpend");
+    openapiFields.add("startDate");
     openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)

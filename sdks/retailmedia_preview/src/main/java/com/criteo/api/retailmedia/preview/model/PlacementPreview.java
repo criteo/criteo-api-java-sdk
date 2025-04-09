@@ -52,9 +52,68 @@ public class PlacementPreview {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
-  @SerializedName(SERIALIZED_NAME_RETAILER_ID)
-  private String retailerId;
+  /**
+   * Page Environment
+   */
+  @JsonAdapter(PageEnvironmentTypeEnum.Adapter.class)
+  public enum PageEnvironmentTypeEnum {
+    UNKNOWN("Unknown"),
+    
+    WEB("Web"),
+    
+    MOBILE("Mobile"),
+    
+    APP("App"),
+    
+    LOCKOUT("Lockout"),
+    
+    MIXED("Mixed"),
+    
+    IOS("iOS"),
+    
+    ANDROID("Android");
+
+    private String value;
+
+    PageEnvironmentTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PageEnvironmentTypeEnum fromValue(String value) {
+      for (PageEnvironmentTypeEnum b : PageEnvironmentTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<PageEnvironmentTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PageEnvironmentTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PageEnvironmentTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return PageEnvironmentTypeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_PAGE_ENVIRONMENT_TYPE = "pageEnvironmentType";
+  @SerializedName(SERIALIZED_NAME_PAGE_ENVIRONMENT_TYPE)
+  private PageEnvironmentTypeEnum pageEnvironmentType;
 
   /**
    * Page Type
@@ -123,68 +182,9 @@ public class PlacementPreview {
   @SerializedName(SERIALIZED_NAME_PAGE_TYPE)
   private PageTypeEnum pageType;
 
-  /**
-   * Page Environment
-   */
-  @JsonAdapter(PageEnvironmentTypeEnum.Adapter.class)
-  public enum PageEnvironmentTypeEnum {
-    UNKNOWN("Unknown"),
-    
-    WEB("Web"),
-    
-    MOBILE("Mobile"),
-    
-    APP("App"),
-    
-    LOCKOUT("Lockout"),
-    
-    MIXED("Mixed"),
-    
-    IOS("iOS"),
-    
-    ANDROID("Android");
-
-    private String value;
-
-    PageEnvironmentTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static PageEnvironmentTypeEnum fromValue(String value) {
-      for (PageEnvironmentTypeEnum b : PageEnvironmentTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<PageEnvironmentTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final PageEnvironmentTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public PageEnvironmentTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return PageEnvironmentTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_PAGE_ENVIRONMENT_TYPE = "pageEnvironmentType";
-  @SerializedName(SERIALIZED_NAME_PAGE_ENVIRONMENT_TYPE)
-  private PageEnvironmentTypeEnum pageEnvironmentType;
+  public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
+  @SerializedName(SERIALIZED_NAME_RETAILER_ID)
+  private String retailerId;
 
   public PlacementPreview() {
   }
@@ -211,25 +211,25 @@ public class PlacementPreview {
   }
 
 
-  public PlacementPreview retailerId(String retailerId) {
+  public PlacementPreview pageEnvironmentType(PageEnvironmentTypeEnum pageEnvironmentType) {
     
-    this.retailerId = retailerId;
+    this.pageEnvironmentType = pageEnvironmentType;
     return this;
   }
 
    /**
-   * Retailer Id
-   * @return retailerId
+   * Page Environment
+   * @return pageEnvironmentType
   **/
   @javax.annotation.Nonnull
 
-  public String getRetailerId() {
-    return retailerId;
+  public PageEnvironmentTypeEnum getPageEnvironmentType() {
+    return pageEnvironmentType;
   }
 
 
-  public void setRetailerId(String retailerId) {
-    this.retailerId = retailerId;
+  public void setPageEnvironmentType(PageEnvironmentTypeEnum pageEnvironmentType) {
+    this.pageEnvironmentType = pageEnvironmentType;
   }
 
 
@@ -255,25 +255,25 @@ public class PlacementPreview {
   }
 
 
-  public PlacementPreview pageEnvironmentType(PageEnvironmentTypeEnum pageEnvironmentType) {
+  public PlacementPreview retailerId(String retailerId) {
     
-    this.pageEnvironmentType = pageEnvironmentType;
+    this.retailerId = retailerId;
     return this;
   }
 
    /**
-   * Page Environment
-   * @return pageEnvironmentType
+   * Retailer Id
+   * @return retailerId
   **/
   @javax.annotation.Nonnull
 
-  public PageEnvironmentTypeEnum getPageEnvironmentType() {
-    return pageEnvironmentType;
+  public String getRetailerId() {
+    return retailerId;
   }
 
 
-  public void setPageEnvironmentType(PageEnvironmentTypeEnum pageEnvironmentType) {
-    this.pageEnvironmentType = pageEnvironmentType;
+  public void setRetailerId(String retailerId) {
+    this.retailerId = retailerId;
   }
 
   /**
@@ -332,15 +332,15 @@ public class PlacementPreview {
     }
     PlacementPreview placementPreview = (PlacementPreview) o;
     return Objects.equals(this.name, placementPreview.name) &&
-        Objects.equals(this.retailerId, placementPreview.retailerId) &&
+        Objects.equals(this.pageEnvironmentType, placementPreview.pageEnvironmentType) &&
         Objects.equals(this.pageType, placementPreview.pageType) &&
-        Objects.equals(this.pageEnvironmentType, placementPreview.pageEnvironmentType)&&
+        Objects.equals(this.retailerId, placementPreview.retailerId)&&
         Objects.equals(this.additionalProperties, placementPreview.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, retailerId, pageType, pageEnvironmentType, additionalProperties);
+    return Objects.hash(name, pageEnvironmentType, pageType, retailerId, additionalProperties);
   }
 
   @Override
@@ -348,9 +348,9 @@ public class PlacementPreview {
     StringBuilder sb = new StringBuilder();
     sb.append("class PlacementPreview {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
-    sb.append("    pageType: ").append(toIndentedString(pageType)).append("\n");
     sb.append("    pageEnvironmentType: ").append(toIndentedString(pageEnvironmentType)).append("\n");
+    sb.append("    pageType: ").append(toIndentedString(pageType)).append("\n");
+    sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -375,16 +375,16 @@ public class PlacementPreview {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("name");
-    openapiFields.add("retailerId");
-    openapiFields.add("pageType");
     openapiFields.add("pageEnvironmentType");
+    openapiFields.add("pageType");
+    openapiFields.add("retailerId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("name");
-    openapiRequiredFields.add("retailerId");
-    openapiRequiredFields.add("pageType");
     openapiRequiredFields.add("pageEnvironmentType");
+    openapiRequiredFields.add("pageType");
+    openapiRequiredFields.add("retailerId");
   }
 
  /**
@@ -409,14 +409,14 @@ public class PlacementPreview {
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if (!jsonObj.get("retailerId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `retailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerId").toString()));
+      if (!jsonObj.get("pageEnvironmentType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pageEnvironmentType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pageEnvironmentType").toString()));
       }
       if (!jsonObj.get("pageType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `pageType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pageType").toString()));
       }
-      if (!jsonObj.get("pageEnvironmentType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pageEnvironmentType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pageEnvironmentType").toString()));
+      if (!jsonObj.get("retailerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `retailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerId").toString()));
       }
   }
 

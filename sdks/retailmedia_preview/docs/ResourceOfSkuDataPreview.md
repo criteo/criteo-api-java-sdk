@@ -8,9 +8,9 @@ Data model for a Resource
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**attributes** | [**SkuDataPreview**](SkuDataPreview.md) |  |  [optional] |
 |**id** | **String** | Id of the entity |  [optional] |
 |**type** | **String** | Canonical type name of the entity |  [optional] |
-|**attributes** | [**SkuDataPreview**](SkuDataPreview.md) |  |  [optional] |
 
 
 

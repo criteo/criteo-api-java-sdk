@@ -50,6 +50,10 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class JsonApiBodyWithIdOfInt64AndRetailerAndRetailer {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private ExternalRetailer attributes;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -58,12 +62,30 @@ public class JsonApiBodyWithIdOfInt64AndRetailerAndRetailer {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private ExternalRetailer attributes;
-
   public JsonApiBodyWithIdOfInt64AndRetailerAndRetailer() {
   }
+
+  public JsonApiBodyWithIdOfInt64AndRetailerAndRetailer attributes(ExternalRetailer attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+
+  public ExternalRetailer getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(ExternalRetailer attributes) {
+    this.attributes = attributes;
+  }
+
 
   public JsonApiBodyWithIdOfInt64AndRetailerAndRetailer id(String id) {
     
@@ -109,28 +131,6 @@ public class JsonApiBodyWithIdOfInt64AndRetailerAndRetailer {
   }
 
 
-  public JsonApiBodyWithIdOfInt64AndRetailerAndRetailer attributes(ExternalRetailer attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @javax.annotation.Nullable
-
-  public ExternalRetailer getAttributes() {
-    return attributes;
-  }
-
-
-  public void setAttributes(ExternalRetailer attributes) {
-    this.attributes = attributes;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -141,9 +141,9 @@ public class JsonApiBodyWithIdOfInt64AndRetailerAndRetailer {
       return false;
     }
     JsonApiBodyWithIdOfInt64AndRetailerAndRetailer jsonApiBodyWithIdOfInt64AndRetailerAndRetailer = (JsonApiBodyWithIdOfInt64AndRetailerAndRetailer) o;
-    return Objects.equals(this.id, jsonApiBodyWithIdOfInt64AndRetailerAndRetailer.id) &&
-        Objects.equals(this.type, jsonApiBodyWithIdOfInt64AndRetailerAndRetailer.type) &&
-        Objects.equals(this.attributes, jsonApiBodyWithIdOfInt64AndRetailerAndRetailer.attributes);
+    return Objects.equals(this.attributes, jsonApiBodyWithIdOfInt64AndRetailerAndRetailer.attributes) &&
+        Objects.equals(this.id, jsonApiBodyWithIdOfInt64AndRetailerAndRetailer.id) &&
+        Objects.equals(this.type, jsonApiBodyWithIdOfInt64AndRetailerAndRetailer.type);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -152,7 +152,7 @@ public class JsonApiBodyWithIdOfInt64AndRetailerAndRetailer {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, attributes);
+    return Objects.hash(attributes, id, type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -166,9 +166,9 @@ public class JsonApiBodyWithIdOfInt64AndRetailerAndRetailer {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JsonApiBodyWithIdOfInt64AndRetailerAndRetailer {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -191,9 +191,9 @@ public class JsonApiBodyWithIdOfInt64AndRetailerAndRetailer {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("attributes");
     openapiFields.add("id");
     openapiFields.add("type");
-    openapiFields.add("attributes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -228,15 +228,15 @@ public class JsonApiBodyWithIdOfInt64AndRetailerAndRetailer {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      // validate the optional field `attributes`
+      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
+        ExternalRetailer.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
       if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        ExternalRetailer.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
   }
 

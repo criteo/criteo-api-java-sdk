@@ -48,38 +48,16 @@ import com.criteo.api.retailmedia.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RmLegacySegmentCustomerList {
-  public static final String SERIALIZED_NAME_SIZE = "size";
-  @SerializedName(SERIALIZED_NAME_SIZE)
-  private String size;
-
   public static final String SERIALIZED_NAME_IS_SHARED = "isShared";
   @SerializedName(SERIALIZED_NAME_IS_SHARED)
   private Boolean isShared;
 
+  public static final String SERIALIZED_NAME_SIZE = "size";
+  @SerializedName(SERIALIZED_NAME_SIZE)
+  private String size;
+
   public RmLegacySegmentCustomerList() {
   }
-
-  public RmLegacySegmentCustomerList size(String size) {
-    
-    this.size = size;
-    return this;
-  }
-
-   /**
-   * Number of users in the customer list audience.
-   * @return size
-  **/
-  @javax.annotation.Nonnull
-
-  public String getSize() {
-    return size;
-  }
-
-
-  public void setSize(String size) {
-    this.size = size;
-  }
-
 
   public RmLegacySegmentCustomerList isShared(Boolean isShared) {
     
@@ -100,6 +78,28 @@ public class RmLegacySegmentCustomerList {
 
   public void setIsShared(Boolean isShared) {
     this.isShared = isShared;
+  }
+
+
+  public RmLegacySegmentCustomerList size(String size) {
+    
+    this.size = size;
+    return this;
+  }
+
+   /**
+   * Number of users in the customer list audience.
+   * @return size
+  **/
+  @javax.annotation.Nonnull
+
+  public String getSize() {
+    return size;
+  }
+
+
+  public void setSize(String size) {
+    this.size = size;
   }
 
   /**
@@ -157,22 +157,22 @@ public class RmLegacySegmentCustomerList {
       return false;
     }
     RmLegacySegmentCustomerList rmLegacySegmentCustomerList = (RmLegacySegmentCustomerList) o;
-    return Objects.equals(this.size, rmLegacySegmentCustomerList.size) &&
-        Objects.equals(this.isShared, rmLegacySegmentCustomerList.isShared)&&
+    return Objects.equals(this.isShared, rmLegacySegmentCustomerList.isShared) &&
+        Objects.equals(this.size, rmLegacySegmentCustomerList.size)&&
         Objects.equals(this.additionalProperties, rmLegacySegmentCustomerList.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(size, isShared, additionalProperties);
+    return Objects.hash(isShared, size, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RmLegacySegmentCustomerList {\n");
-    sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    isShared: ").append(toIndentedString(isShared)).append("\n");
+    sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -196,13 +196,13 @@ public class RmLegacySegmentCustomerList {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("size");
     openapiFields.add("isShared");
+    openapiFields.add("size");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("size");
     openapiRequiredFields.add("isShared");
+    openapiRequiredFields.add("size");
   }
 
  /**

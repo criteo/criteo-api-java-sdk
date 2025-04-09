@@ -8,8 +8,8 @@ Data model for a value type resource
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** |  |  [optional] |
 |**attributes** | [**ExternalAudienceIdsUpdateModel202110**](ExternalAudienceIdsUpdateModel202110.md) |  |  [optional] |
+|**type** | **String** |  |  [optional] |
 
 
 

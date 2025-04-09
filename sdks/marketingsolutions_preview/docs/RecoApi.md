@@ -103,8 +103,8 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Product set created successfully |  -  |
 | **400** | Unable to parse the request parameters |  -  |
-| **422** | Cannot process entity content |  -  |
 | **403** | Operation forbidden |  -  |
+| **422** | Cannot process entity content |  -  |
 | **500** | Internal Error |  -  |
 
 

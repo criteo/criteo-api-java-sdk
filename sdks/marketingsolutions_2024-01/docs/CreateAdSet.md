@@ -8,16 +8,25 @@ ad set create model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** | Name of the ad set |  |
-|**datasetId** | **String** | Dataset id of this ad set |  |
+|**bidding** | [**CreateAdSetBidding**](CreateAdSetBidding.md) |  |  |
+|**budget** | [**CreateAdSetBudget**](CreateAdSetBudget.md) |  |  [optional] |
 |**campaignId** | **String** | Campaign id this ad set belongs to |  |
+|**datasetId** | **String** | Dataset id of this ad set |  |
+|**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) | Media type for the ad set |  |
+|**name** | **String** | Name of the ad set |  |
 |**objective** | [**ObjectiveEnum**](#ObjectiveEnum) | Objective of the ad set |  |
 |**schedule** | [**CreateAdSetSchedule**](CreateAdSetSchedule.md) |  |  |
-|**bidding** | [**CreateAdSetBidding**](CreateAdSetBidding.md) |  |  |
 |**targeting** | [**CreateAdSetTargeting**](CreateAdSetTargeting.md) |  |  |
-|**budget** | [**CreateAdSetBudget**](CreateAdSetBudget.md) |  |  [optional] |
 |**trackingCode** | **String** | The click tracking code associated to this Ad Set. |  |
-|**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) | Media type for the ad set |  |
+
+
+
+## Enum: MediaTypeEnum
+
+| Name | Value |
+|---- | -----|
+| DISPLAY | &quot;display&quot; |
+| VIDEO | &quot;video&quot; |
 
 
 
@@ -36,15 +45,6 @@ ad set create model
 | REACH | &quot;reach&quot; |
 | VISITS | &quot;visits&quot; |
 | VIDEOVIEWS | &quot;videoViews&quot; |
-
-
-
-## Enum: MediaTypeEnum
-
-| Name | Value |
-|---- | -----|
-| DISPLAY | &quot;display&quot; |
-| VIDEO | &quot;video&quot; |
 
 
 

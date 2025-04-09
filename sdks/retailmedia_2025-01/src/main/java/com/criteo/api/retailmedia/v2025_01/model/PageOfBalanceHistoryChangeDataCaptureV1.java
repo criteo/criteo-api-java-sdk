@@ -52,38 +52,16 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PageOfBalanceHistoryChangeDataCaptureV1 {
-  public static final String SERIALIZED_NAME_META = "meta";
-  @SerializedName(SERIALIZED_NAME_META)
-  private Metadata meta;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<BalanceHistoryChangeDataCaptureV1> data = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private Metadata meta;
+
   public PageOfBalanceHistoryChangeDataCaptureV1() {
   }
-
-  public PageOfBalanceHistoryChangeDataCaptureV1 meta(Metadata meta) {
-    
-    this.meta = meta;
-    return this;
-  }
-
-   /**
-   * Get meta
-   * @return meta
-  **/
-  @javax.annotation.Nonnull
-
-  public Metadata getMeta() {
-    return meta;
-  }
-
-
-  public void setMeta(Metadata meta) {
-    this.meta = meta;
-  }
-
 
   public PageOfBalanceHistoryChangeDataCaptureV1 data(List<BalanceHistoryChangeDataCaptureV1> data) {
     
@@ -112,6 +90,28 @@ public class PageOfBalanceHistoryChangeDataCaptureV1 {
   }
 
 
+  public PageOfBalanceHistoryChangeDataCaptureV1 meta(Metadata meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nonnull
+
+  public Metadata getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(Metadata meta) {
+    this.meta = meta;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -122,21 +122,21 @@ public class PageOfBalanceHistoryChangeDataCaptureV1 {
       return false;
     }
     PageOfBalanceHistoryChangeDataCaptureV1 pageOfBalanceHistoryChangeDataCaptureV1 = (PageOfBalanceHistoryChangeDataCaptureV1) o;
-    return Objects.equals(this.meta, pageOfBalanceHistoryChangeDataCaptureV1.meta) &&
-        Objects.equals(this.data, pageOfBalanceHistoryChangeDataCaptureV1.data);
+    return Objects.equals(this.data, pageOfBalanceHistoryChangeDataCaptureV1.data) &&
+        Objects.equals(this.meta, pageOfBalanceHistoryChangeDataCaptureV1.meta);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(meta, data);
+    return Objects.hash(data, meta);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PageOfBalanceHistoryChangeDataCaptureV1 {\n");
-    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -159,13 +159,13 @@ public class PageOfBalanceHistoryChangeDataCaptureV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("meta");
     openapiFields.add("data");
+    openapiFields.add("meta");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("meta");
     openapiRequiredFields.add("data");
+    openapiRequiredFields.add("meta");
   }
 
  /**
@@ -195,8 +195,6 @@ public class PageOfBalanceHistoryChangeDataCaptureV1 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      // validate the required field `meta`
-      Metadata.validateJsonObject(jsonObj.getAsJsonObject("meta"));
       // ensure the json data is an array
       if (!jsonObj.get("data").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
@@ -207,6 +205,8 @@ public class PageOfBalanceHistoryChangeDataCaptureV1 {
       for (int i = 0; i < jsonArraydata.size(); i++) {
         BalanceHistoryChangeDataCaptureV1.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
       };
+      // validate the required field `meta`
+      Metadata.validateJsonObject(jsonObj.getAsJsonObject("meta"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

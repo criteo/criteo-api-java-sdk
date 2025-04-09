@@ -51,46 +51,16 @@ import com.criteo.api.marketingsolutions.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CampaignSearchFiltersV23Q1 {
-  public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
-  @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
-  private List<String> campaignIds = null;
-
   public static final String SERIALIZED_NAME_ADVERTISER_IDS = "advertiserIds";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_IDS)
   private List<String> advertiserIds = null;
 
+  public static final String SERIALIZED_NAME_CAMPAIGN_IDS = "campaignIds";
+  @SerializedName(SERIALIZED_NAME_CAMPAIGN_IDS)
+  private List<String> campaignIds = null;
+
   public CampaignSearchFiltersV23Q1() {
   }
-
-  public CampaignSearchFiltersV23Q1 campaignIds(List<String> campaignIds) {
-    
-    this.campaignIds = campaignIds;
-    return this;
-  }
-
-  public CampaignSearchFiltersV23Q1 addCampaignIdsItem(String campaignIdsItem) {
-    if (this.campaignIds == null) {
-      this.campaignIds = null;
-    }
-    this.campaignIds.add(campaignIdsItem);
-    return this;
-  }
-
-   /**
-   * Get campaignIds
-   * @return campaignIds
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getCampaignIds() {
-    return campaignIds;
-  }
-
-
-  public void setCampaignIds(List<String> campaignIds) {
-    this.campaignIds = campaignIds;
-  }
-
 
   public CampaignSearchFiltersV23Q1 advertiserIds(List<String> advertiserIds) {
     
@@ -119,6 +89,36 @@ public class CampaignSearchFiltersV23Q1 {
 
   public void setAdvertiserIds(List<String> advertiserIds) {
     this.advertiserIds = advertiserIds;
+  }
+
+
+  public CampaignSearchFiltersV23Q1 campaignIds(List<String> campaignIds) {
+    
+    this.campaignIds = campaignIds;
+    return this;
+  }
+
+  public CampaignSearchFiltersV23Q1 addCampaignIdsItem(String campaignIdsItem) {
+    if (this.campaignIds == null) {
+      this.campaignIds = null;
+    }
+    this.campaignIds.add(campaignIdsItem);
+    return this;
+  }
+
+   /**
+   * Get campaignIds
+   * @return campaignIds
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getCampaignIds() {
+    return campaignIds;
+  }
+
+
+  public void setCampaignIds(List<String> campaignIds) {
+    this.campaignIds = campaignIds;
   }
 
   /**
@@ -176,8 +176,8 @@ public class CampaignSearchFiltersV23Q1 {
       return false;
     }
     CampaignSearchFiltersV23Q1 campaignSearchFiltersV23Q1 = (CampaignSearchFiltersV23Q1) o;
-    return Objects.equals(this.campaignIds, campaignSearchFiltersV23Q1.campaignIds) &&
-        Objects.equals(this.advertiserIds, campaignSearchFiltersV23Q1.advertiserIds)&&
+    return Objects.equals(this.advertiserIds, campaignSearchFiltersV23Q1.advertiserIds) &&
+        Objects.equals(this.campaignIds, campaignSearchFiltersV23Q1.campaignIds)&&
         Objects.equals(this.additionalProperties, campaignSearchFiltersV23Q1.additionalProperties);
   }
 
@@ -187,7 +187,7 @@ public class CampaignSearchFiltersV23Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignIds, advertiserIds, additionalProperties);
+    return Objects.hash(advertiserIds, campaignIds, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -201,8 +201,8 @@ public class CampaignSearchFiltersV23Q1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignSearchFiltersV23Q1 {\n");
-    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
     sb.append("    advertiserIds: ").append(toIndentedString(advertiserIds)).append("\n");
+    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -226,8 +226,8 @@ public class CampaignSearchFiltersV23Q1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("campaignIds");
     openapiFields.add("advertiserIds");
+    openapiFields.add("campaignIds");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -246,12 +246,12 @@ public class CampaignSearchFiltersV23Q1 {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("campaignIds") != null && !jsonObj.get("campaignIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaignIds` to be an array in the JSON string but got `%s`", jsonObj.get("campaignIds").toString()));
-      }
-      // ensure the optional json data is an array if present
       if (jsonObj.get("advertiserIds") != null && !jsonObj.get("advertiserIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserIds` to be an array in the JSON string but got `%s`", jsonObj.get("advertiserIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("campaignIds") != null && !jsonObj.get("campaignIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `campaignIds` to be an array in the JSON string but got `%s`", jsonObj.get("campaignIds").toString()));
       }
   }
 

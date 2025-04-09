@@ -49,38 +49,16 @@ import com.criteo.api.marketingsolutions.v2024_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdSetCategoryBid {
-  public static final String SERIALIZED_NAME_CATEGORY_NAME = "categoryName";
-  @SerializedName(SERIALIZED_NAME_CATEGORY_NAME)
-  private String categoryName;
-
   public static final String SERIALIZED_NAME_BID_AMOUNT = "bidAmount";
   @SerializedName(SERIALIZED_NAME_BID_AMOUNT)
   private Double bidAmount;
 
+  public static final String SERIALIZED_NAME_CATEGORY_NAME = "categoryName";
+  @SerializedName(SERIALIZED_NAME_CATEGORY_NAME)
+  private String categoryName;
+
   public AdSetCategoryBid() {
   }
-
-  public AdSetCategoryBid categoryName(String categoryName) {
-    
-    this.categoryName = categoryName;
-    return this;
-  }
-
-   /**
-   * The name of the Category to which the Category Bid has been applied.
-   * @return categoryName
-  **/
-  @javax.annotation.Nullable
-
-  public String getCategoryName() {
-    return categoryName;
-  }
-
-
-  public void setCategoryName(String categoryName) {
-    this.categoryName = categoryName;
-  }
-
 
   public AdSetCategoryBid bidAmount(Double bidAmount) {
     
@@ -101,6 +79,28 @@ public class AdSetCategoryBid {
 
   public void setBidAmount(Double bidAmount) {
     this.bidAmount = bidAmount;
+  }
+
+
+  public AdSetCategoryBid categoryName(String categoryName) {
+    
+    this.categoryName = categoryName;
+    return this;
+  }
+
+   /**
+   * The name of the Category to which the Category Bid has been applied.
+   * @return categoryName
+  **/
+  @javax.annotation.Nullable
+
+  public String getCategoryName() {
+    return categoryName;
+  }
+
+
+  public void setCategoryName(String categoryName) {
+    this.categoryName = categoryName;
   }
 
   /**
@@ -158,8 +158,8 @@ public class AdSetCategoryBid {
       return false;
     }
     AdSetCategoryBid adSetCategoryBid = (AdSetCategoryBid) o;
-    return Objects.equals(this.categoryName, adSetCategoryBid.categoryName) &&
-        Objects.equals(this.bidAmount, adSetCategoryBid.bidAmount)&&
+    return Objects.equals(this.bidAmount, adSetCategoryBid.bidAmount) &&
+        Objects.equals(this.categoryName, adSetCategoryBid.categoryName)&&
         Objects.equals(this.additionalProperties, adSetCategoryBid.additionalProperties);
   }
 
@@ -169,7 +169,7 @@ public class AdSetCategoryBid {
 
   @Override
   public int hashCode() {
-    return Objects.hash(categoryName, bidAmount, additionalProperties);
+    return Objects.hash(bidAmount, categoryName, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -183,8 +183,8 @@ public class AdSetCategoryBid {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdSetCategoryBid {\n");
-    sb.append("    categoryName: ").append(toIndentedString(categoryName)).append("\n");
     sb.append("    bidAmount: ").append(toIndentedString(bidAmount)).append("\n");
+    sb.append("    categoryName: ").append(toIndentedString(categoryName)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -208,8 +208,8 @@ public class AdSetCategoryBid {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("categoryName");
     openapiFields.add("bidAmount");
+    openapiFields.add("categoryName");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -8,6 +8,7 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**generateAsyncCampaignsReport**](AnalyticsApi.md#generateAsyncCampaignsReport) | **POST** /preview/retail-media/reports/campaigns |  |
 | [**generateAsyncFillRateReport**](AnalyticsApi.md#generateAsyncFillRateReport) | **POST** /preview/retail-media/reports/fillrate |  |
 | [**generateAsyncLineItemsReport**](AnalyticsApi.md#generateAsyncLineItemsReport) | **POST** /preview/retail-media/reports/line-items |  |
+| [**generateAsyncOffsiteReport**](AnalyticsApi.md#generateAsyncOffsiteReport) | **POST** /preview/retail-media/reports/offsite |  |
 | [**generateSyncAttributedTransactionsReport**](AnalyticsApi.md#generateSyncAttributedTransactionsReport) | **POST** /preview/retail-media/reports/sync/attributed-transactions |  |
 | [**generateSyncCampaignsReport**](AnalyticsApi.md#generateSyncCampaignsReport) | **POST** /preview/retail-media/reports/sync/campaigns |  |
 | [**generateSyncLineItemsReport**](AnalyticsApi.md#generateSyncLineItemsReport) | **POST** /preview/retail-media/reports/sync/line-items |  |
@@ -380,6 +381,97 @@ public class Example {
 | **403** | Forbidden |  -  |
 
 
+## generateAsyncOffsiteReport
+
+> AsyncReportResponse generateAsyncOffsiteReport(asyncOffsiteReportRequest)
+
+
+
+Returns an asynchronous Offsite Activity Report This endpoint is subject to specific rate limits.
+
+### Example
+
+```java
+package com.criteo.api.retailmedia.preview;
+
+import com.criteo.api.retailmedia.preview.ApiClient;
+import com.criteo.api.retailmedia.preview.ApiClientBuilder;
+import com.criteo.api.retailmedia.preview.ApiException;
+import com.criteo.api.retailmedia.preview.Configuration;
+import com.criteo.api.retailmedia.preview.auth.*;
+import com.criteo.api.retailmedia.preview.model.*;
+import com.criteo.api.retailmedia.preview.api.AnalyticsApi;
+
+public class Example {
+    public static void main(String[] args) {
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Configure OAuth2, two options:
+        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
+        String clientId = "YOUR CLIENT ID";
+        String clientSecret = "YOUR CLIENT SECRET";
+        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
+        
+        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
+        // ApiClient defaultClient = Configuration.getDefaultApiClient();
+        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
+        // oauth.setAccessToken("YOUR ACCESS TOKEN");
+
+        AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
+        AsyncOffsiteReportRequest asyncOffsiteReportRequest = new AsyncOffsiteReportRequest(); // AsyncOffsiteReportRequest | 
+        try {
+            AsyncReportResponse result = apiInstance.generateAsyncOffsiteReport(asyncOffsiteReportRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AnalyticsApi#generateAsyncOffsiteReport");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asyncOffsiteReportRequest** | [**AsyncOffsiteReportRequest**](AsyncOffsiteReportRequest.md)|  | |
+
+### Return type
+
+[**AsyncReportResponse**](AsyncReportResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth), [oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+| **400** | Bad Request |  -  |
+| **403** | Forbidden |  -  |
+
+
 ## generateSyncAttributedTransactionsReport
 
 > ReportResponse generateSyncAttributedTransactionsReport(syncAttributedTransactionsReportRequest)
@@ -655,7 +747,7 @@ public class Example {
 
 ## getAsyncExportOutput
 
-> String getAsyncExportOutput(reportId)
+> File getAsyncExportOutput(reportId)
 
 
 
@@ -702,7 +794,7 @@ public class Example {
         AnalyticsApi apiInstance = new AnalyticsApi(defaultClient);
         String reportId = "reportId_example"; // String | The ID of the report to retrieve
         try {
-            String result = apiInstance.getAsyncExportOutput(reportId);
+            File result = apiInstance.getAsyncExportOutput(reportId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalyticsApi#getAsyncExportOutput");
@@ -724,7 +816,7 @@ public class Example {
 
 ### Return type
 
-**String**
+[**File**](File.md)
 
 ### Authorization
 

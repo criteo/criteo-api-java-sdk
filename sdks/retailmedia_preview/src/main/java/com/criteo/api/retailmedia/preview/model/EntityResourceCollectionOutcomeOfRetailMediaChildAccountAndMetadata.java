@@ -54,56 +54,34 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata {
-  public static final String SERIALIZED_NAME_METADATA = "metadata";
-  @SerializedName(SERIALIZED_NAME_METADATA)
-  private Metadata metadata;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<EntityResourceOfRetailMediaChildAccount> data = null;
 
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<SdkApiRestCommonProblem> warnings = null;
-
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<SdkApiRestCommonProblem> errors = null;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Metadata metadata;
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<SdkApiRestCommonProblem> warnings = null;
 
   public EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata() {
   }
 
   
   public EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata(
-     List<SdkApiRestCommonProblem> warnings, 
-     List<SdkApiRestCommonProblem> errors
+     List<SdkApiRestCommonProblem> errors, 
+     List<SdkApiRestCommonProblem> warnings
   ) {
     this();
-    this.warnings = warnings;
     this.errors = errors;
+    this.warnings = warnings;
   }
-
-  public EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata metadata(Metadata metadata) {
-    
-    this.metadata = metadata;
-    return this;
-  }
-
-   /**
-   * Get metadata
-   * @return metadata
-  **/
-  @javax.annotation.Nullable
-
-  public Metadata getMetadata() {
-    return metadata;
-  }
-
-
-  public void setMetadata(Metadata metadata) {
-    this.metadata = metadata;
-  }
-
 
   public EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata data(List<EntityResourceOfRetailMediaChildAccount> data) {
     
@@ -136,19 +114,6 @@ public class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
 
 
    /**
-   * Warnings that occured during this call.
-   * @return warnings
-  **/
-  @javax.annotation.Nullable
-
-  public List<SdkApiRestCommonProblem> getWarnings() {
-    return warnings;
-  }
-
-
-
-
-   /**
    * Errors that occured during this call.
    * @return errors
   **/
@@ -156,6 +121,41 @@ public class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
 
   public List<SdkApiRestCommonProblem> getErrors() {
     return errors;
+  }
+
+
+
+
+  public EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata metadata(Metadata metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * Get metadata
+   * @return metadata
+  **/
+  @javax.annotation.Nullable
+
+  public Metadata getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(Metadata metadata) {
+    this.metadata = metadata;
+  }
+
+
+   /**
+   * Warnings that occured during this call.
+   * @return warnings
+  **/
+  @javax.annotation.Nullable
+
+  public List<SdkApiRestCommonProblem> getWarnings() {
+    return warnings;
   }
 
 
@@ -171,10 +171,10 @@ public class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
       return false;
     }
     EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata entityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata = (EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata) o;
-    return Objects.equals(this.metadata, entityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.metadata) &&
-        Objects.equals(this.data, entityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.data) &&
-        Objects.equals(this.warnings, entityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.warnings) &&
-        Objects.equals(this.errors, entityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.errors);
+    return Objects.equals(this.data, entityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.data) &&
+        Objects.equals(this.errors, entityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.errors) &&
+        Objects.equals(this.metadata, entityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.metadata) &&
+        Objects.equals(this.warnings, entityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.warnings);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -183,7 +183,7 @@ public class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
 
   @Override
   public int hashCode() {
-    return Objects.hash(metadata, data, warnings, errors);
+    return Objects.hash(data, errors, metadata, warnings);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -197,10 +197,10 @@ public class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata {\n");
-    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -223,10 +223,10 @@ public class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("metadata");
     openapiFields.add("data");
-    openapiFields.add("warnings");
     openapiFields.add("errors");
+    openapiFields.add("metadata");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -252,10 +252,6 @@ public class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      // validate the optional field `metadata`
-      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
-        Metadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
-      }
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
         if (jsonArraydata != null) {
@@ -270,20 +266,6 @@ public class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
           };
         }
       }
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
-        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
-        if (jsonArraywarnings != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("warnings").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-          }
-
-          // validate the optional field `warnings` (array)
-          for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            SdkApiRestCommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
-          };
-        }
-      }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
         if (jsonArrayerrors != null) {
@@ -295,6 +277,24 @@ public class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
             SdkApiRestCommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+          };
+        }
+      }
+      // validate the optional field `metadata`
+      if (jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) {
+        Metadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
+      }
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            SdkApiRestCommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }

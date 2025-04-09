@@ -50,100 +50,56 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalLineItemBidMultipliersV2 {
-  public static final String SERIALIZED_NAME_SEARCH = "search";
-  @SerializedName(SERIALIZED_NAME_SEARCH)
-  private BigDecimal search;
-
-  public static final String SERIALIZED_NAME_HOME = "home";
-  @SerializedName(SERIALIZED_NAME_HOME)
-  private BigDecimal home;
-
   public static final String SERIALIZED_NAME_CATEGORY = "category";
   @SerializedName(SERIALIZED_NAME_CATEGORY)
   private BigDecimal category;
-
-  public static final String SERIALIZED_NAME_PRODUCT_DETAIL = "productDetail";
-  @SerializedName(SERIALIZED_NAME_PRODUCT_DETAIL)
-  private BigDecimal productDetail;
-
-  public static final String SERIALIZED_NAME_CONFIRMATION = "confirmation";
-  @SerializedName(SERIALIZED_NAME_CONFIRMATION)
-  private BigDecimal confirmation;
-
-  public static final String SERIALIZED_NAME_MERCHANDISING = "merchandising";
-  @SerializedName(SERIALIZED_NAME_MERCHANDISING)
-  private BigDecimal merchandising;
-
-  public static final String SERIALIZED_NAME_DEALS = "deals";
-  @SerializedName(SERIALIZED_NAME_DEALS)
-  private BigDecimal deals;
-
-  public static final String SERIALIZED_NAME_CHECKOUT = "checkout";
-  @SerializedName(SERIALIZED_NAME_CHECKOUT)
-  private BigDecimal checkout;
-
-  public static final String SERIALIZED_NAME_FAVORITES = "favorites";
-  @SerializedName(SERIALIZED_NAME_FAVORITES)
-  private BigDecimal favorites;
-
-  public static final String SERIALIZED_NAME_SEARCH_BAR = "searchBar";
-  @SerializedName(SERIALIZED_NAME_SEARCH_BAR)
-  private BigDecimal searchBar;
 
   public static final String SERIALIZED_NAME_CATEGORY_MENU = "categoryMenu";
   @SerializedName(SERIALIZED_NAME_CATEGORY_MENU)
   private BigDecimal categoryMenu;
 
+  public static final String SERIALIZED_NAME_CHECKOUT = "checkout";
+  @SerializedName(SERIALIZED_NAME_CHECKOUT)
+  private BigDecimal checkout;
+
+  public static final String SERIALIZED_NAME_CONFIRMATION = "confirmation";
+  @SerializedName(SERIALIZED_NAME_CONFIRMATION)
+  private BigDecimal confirmation;
+
+  public static final String SERIALIZED_NAME_DEALS = "deals";
+  @SerializedName(SERIALIZED_NAME_DEALS)
+  private BigDecimal deals;
+
+  public static final String SERIALIZED_NAME_FAVORITES = "favorites";
+  @SerializedName(SERIALIZED_NAME_FAVORITES)
+  private BigDecimal favorites;
+
+  public static final String SERIALIZED_NAME_HOME = "home";
+  @SerializedName(SERIALIZED_NAME_HOME)
+  private BigDecimal home;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
+  public static final String SERIALIZED_NAME_MERCHANDISING = "merchandising";
+  @SerializedName(SERIALIZED_NAME_MERCHANDISING)
+  private BigDecimal merchandising;
+
+  public static final String SERIALIZED_NAME_PRODUCT_DETAIL = "productDetail";
+  @SerializedName(SERIALIZED_NAME_PRODUCT_DETAIL)
+  private BigDecimal productDetail;
+
+  public static final String SERIALIZED_NAME_SEARCH = "search";
+  @SerializedName(SERIALIZED_NAME_SEARCH)
+  private BigDecimal search;
+
+  public static final String SERIALIZED_NAME_SEARCH_BAR = "searchBar";
+  @SerializedName(SERIALIZED_NAME_SEARCH_BAR)
+  private BigDecimal searchBar;
+
   public ExternalLineItemBidMultipliersV2() {
   }
-
-  public ExternalLineItemBidMultipliersV2 search(BigDecimal search) {
-    
-    this.search = search;
-    return this;
-  }
-
-   /**
-   * Search Page Type Bid Multiplier
-   * @return search
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getSearch() {
-    return search;
-  }
-
-
-  public void setSearch(BigDecimal search) {
-    this.search = search;
-  }
-
-
-  public ExternalLineItemBidMultipliersV2 home(BigDecimal home) {
-    
-    this.home = home;
-    return this;
-  }
-
-   /**
-   * Home Page Type Bid Multiplier
-   * @return home
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getHome() {
-    return home;
-  }
-
-
-  public void setHome(BigDecimal home) {
-    this.home = home;
-  }
-
 
   public ExternalLineItemBidMultipliersV2 category(BigDecimal category) {
     
@@ -164,160 +120,6 @@ public class ExternalLineItemBidMultipliersV2 {
 
   public void setCategory(BigDecimal category) {
     this.category = category;
-  }
-
-
-  public ExternalLineItemBidMultipliersV2 productDetail(BigDecimal productDetail) {
-    
-    this.productDetail = productDetail;
-    return this;
-  }
-
-   /**
-   * ProductDetail Page Type Bid Multiplier
-   * @return productDetail
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getProductDetail() {
-    return productDetail;
-  }
-
-
-  public void setProductDetail(BigDecimal productDetail) {
-    this.productDetail = productDetail;
-  }
-
-
-  public ExternalLineItemBidMultipliersV2 confirmation(BigDecimal confirmation) {
-    
-    this.confirmation = confirmation;
-    return this;
-  }
-
-   /**
-   * Confirmation Page Type Bid Multiplier
-   * @return confirmation
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getConfirmation() {
-    return confirmation;
-  }
-
-
-  public void setConfirmation(BigDecimal confirmation) {
-    this.confirmation = confirmation;
-  }
-
-
-  public ExternalLineItemBidMultipliersV2 merchandising(BigDecimal merchandising) {
-    
-    this.merchandising = merchandising;
-    return this;
-  }
-
-   /**
-   * Merchandising Page Type Bid Multiplier
-   * @return merchandising
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getMerchandising() {
-    return merchandising;
-  }
-
-
-  public void setMerchandising(BigDecimal merchandising) {
-    this.merchandising = merchandising;
-  }
-
-
-  public ExternalLineItemBidMultipliersV2 deals(BigDecimal deals) {
-    
-    this.deals = deals;
-    return this;
-  }
-
-   /**
-   * Deals Page Type Bid Multiplier
-   * @return deals
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getDeals() {
-    return deals;
-  }
-
-
-  public void setDeals(BigDecimal deals) {
-    this.deals = deals;
-  }
-
-
-  public ExternalLineItemBidMultipliersV2 checkout(BigDecimal checkout) {
-    
-    this.checkout = checkout;
-    return this;
-  }
-
-   /**
-   * Checkout Page Type Bid Multiplier
-   * @return checkout
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getCheckout() {
-    return checkout;
-  }
-
-
-  public void setCheckout(BigDecimal checkout) {
-    this.checkout = checkout;
-  }
-
-
-  public ExternalLineItemBidMultipliersV2 favorites(BigDecimal favorites) {
-    
-    this.favorites = favorites;
-    return this;
-  }
-
-   /**
-   * Favorites Page Type Bid Multiplier
-   * @return favorites
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getFavorites() {
-    return favorites;
-  }
-
-
-  public void setFavorites(BigDecimal favorites) {
-    this.favorites = favorites;
-  }
-
-
-  public ExternalLineItemBidMultipliersV2 searchBar(BigDecimal searchBar) {
-    
-    this.searchBar = searchBar;
-    return this;
-  }
-
-   /**
-   * SearchBar Page Type Bid Multiplier
-   * @return searchBar
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getSearchBar() {
-    return searchBar;
-  }
-
-
-  public void setSearchBar(BigDecimal searchBar) {
-    this.searchBar = searchBar;
   }
 
 
@@ -343,6 +145,116 @@ public class ExternalLineItemBidMultipliersV2 {
   }
 
 
+  public ExternalLineItemBidMultipliersV2 checkout(BigDecimal checkout) {
+    
+    this.checkout = checkout;
+    return this;
+  }
+
+   /**
+   * Checkout Page Type Bid Multiplier
+   * @return checkout
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getCheckout() {
+    return checkout;
+  }
+
+
+  public void setCheckout(BigDecimal checkout) {
+    this.checkout = checkout;
+  }
+
+
+  public ExternalLineItemBidMultipliersV2 confirmation(BigDecimal confirmation) {
+    
+    this.confirmation = confirmation;
+    return this;
+  }
+
+   /**
+   * Confirmation Page Type Bid Multiplier
+   * @return confirmation
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getConfirmation() {
+    return confirmation;
+  }
+
+
+  public void setConfirmation(BigDecimal confirmation) {
+    this.confirmation = confirmation;
+  }
+
+
+  public ExternalLineItemBidMultipliersV2 deals(BigDecimal deals) {
+    
+    this.deals = deals;
+    return this;
+  }
+
+   /**
+   * Deals Page Type Bid Multiplier
+   * @return deals
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getDeals() {
+    return deals;
+  }
+
+
+  public void setDeals(BigDecimal deals) {
+    this.deals = deals;
+  }
+
+
+  public ExternalLineItemBidMultipliersV2 favorites(BigDecimal favorites) {
+    
+    this.favorites = favorites;
+    return this;
+  }
+
+   /**
+   * Favorites Page Type Bid Multiplier
+   * @return favorites
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getFavorites() {
+    return favorites;
+  }
+
+
+  public void setFavorites(BigDecimal favorites) {
+    this.favorites = favorites;
+  }
+
+
+  public ExternalLineItemBidMultipliersV2 home(BigDecimal home) {
+    
+    this.home = home;
+    return this;
+  }
+
+   /**
+   * Home Page Type Bid Multiplier
+   * @return home
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getHome() {
+    return home;
+  }
+
+
+  public void setHome(BigDecimal home) {
+    this.home = home;
+  }
+
+
   public ExternalLineItemBidMultipliersV2 id(String id) {
     
     this.id = id;
@@ -362,6 +274,94 @@ public class ExternalLineItemBidMultipliersV2 {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+
+  public ExternalLineItemBidMultipliersV2 merchandising(BigDecimal merchandising) {
+    
+    this.merchandising = merchandising;
+    return this;
+  }
+
+   /**
+   * Merchandising Page Type Bid Multiplier
+   * @return merchandising
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getMerchandising() {
+    return merchandising;
+  }
+
+
+  public void setMerchandising(BigDecimal merchandising) {
+    this.merchandising = merchandising;
+  }
+
+
+  public ExternalLineItemBidMultipliersV2 productDetail(BigDecimal productDetail) {
+    
+    this.productDetail = productDetail;
+    return this;
+  }
+
+   /**
+   * ProductDetail Page Type Bid Multiplier
+   * @return productDetail
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getProductDetail() {
+    return productDetail;
+  }
+
+
+  public void setProductDetail(BigDecimal productDetail) {
+    this.productDetail = productDetail;
+  }
+
+
+  public ExternalLineItemBidMultipliersV2 search(BigDecimal search) {
+    
+    this.search = search;
+    return this;
+  }
+
+   /**
+   * Search Page Type Bid Multiplier
+   * @return search
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getSearch() {
+    return search;
+  }
+
+
+  public void setSearch(BigDecimal search) {
+    this.search = search;
+  }
+
+
+  public ExternalLineItemBidMultipliersV2 searchBar(BigDecimal searchBar) {
+    
+    this.searchBar = searchBar;
+    return this;
+  }
+
+   /**
+   * SearchBar Page Type Bid Multiplier
+   * @return searchBar
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getSearchBar() {
+    return searchBar;
+  }
+
+
+  public void setSearchBar(BigDecimal searchBar) {
+    this.searchBar = searchBar;
   }
 
   /**
@@ -419,18 +419,18 @@ public class ExternalLineItemBidMultipliersV2 {
       return false;
     }
     ExternalLineItemBidMultipliersV2 externalLineItemBidMultipliersV2 = (ExternalLineItemBidMultipliersV2) o;
-    return Objects.equals(this.search, externalLineItemBidMultipliersV2.search) &&
-        Objects.equals(this.home, externalLineItemBidMultipliersV2.home) &&
-        Objects.equals(this.category, externalLineItemBidMultipliersV2.category) &&
-        Objects.equals(this.productDetail, externalLineItemBidMultipliersV2.productDetail) &&
-        Objects.equals(this.confirmation, externalLineItemBidMultipliersV2.confirmation) &&
-        Objects.equals(this.merchandising, externalLineItemBidMultipliersV2.merchandising) &&
-        Objects.equals(this.deals, externalLineItemBidMultipliersV2.deals) &&
-        Objects.equals(this.checkout, externalLineItemBidMultipliersV2.checkout) &&
-        Objects.equals(this.favorites, externalLineItemBidMultipliersV2.favorites) &&
-        Objects.equals(this.searchBar, externalLineItemBidMultipliersV2.searchBar) &&
+    return Objects.equals(this.category, externalLineItemBidMultipliersV2.category) &&
         Objects.equals(this.categoryMenu, externalLineItemBidMultipliersV2.categoryMenu) &&
-        Objects.equals(this.id, externalLineItemBidMultipliersV2.id)&&
+        Objects.equals(this.checkout, externalLineItemBidMultipliersV2.checkout) &&
+        Objects.equals(this.confirmation, externalLineItemBidMultipliersV2.confirmation) &&
+        Objects.equals(this.deals, externalLineItemBidMultipliersV2.deals) &&
+        Objects.equals(this.favorites, externalLineItemBidMultipliersV2.favorites) &&
+        Objects.equals(this.home, externalLineItemBidMultipliersV2.home) &&
+        Objects.equals(this.id, externalLineItemBidMultipliersV2.id) &&
+        Objects.equals(this.merchandising, externalLineItemBidMultipliersV2.merchandising) &&
+        Objects.equals(this.productDetail, externalLineItemBidMultipliersV2.productDetail) &&
+        Objects.equals(this.search, externalLineItemBidMultipliersV2.search) &&
+        Objects.equals(this.searchBar, externalLineItemBidMultipliersV2.searchBar)&&
         Objects.equals(this.additionalProperties, externalLineItemBidMultipliersV2.additionalProperties);
   }
 
@@ -440,7 +440,7 @@ public class ExternalLineItemBidMultipliersV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(search, home, category, productDetail, confirmation, merchandising, deals, checkout, favorites, searchBar, categoryMenu, id, additionalProperties);
+    return Objects.hash(category, categoryMenu, checkout, confirmation, deals, favorites, home, id, merchandising, productDetail, search, searchBar, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -454,18 +454,18 @@ public class ExternalLineItemBidMultipliersV2 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalLineItemBidMultipliersV2 {\n");
-    sb.append("    search: ").append(toIndentedString(search)).append("\n");
-    sb.append("    home: ").append(toIndentedString(home)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
-    sb.append("    productDetail: ").append(toIndentedString(productDetail)).append("\n");
-    sb.append("    confirmation: ").append(toIndentedString(confirmation)).append("\n");
-    sb.append("    merchandising: ").append(toIndentedString(merchandising)).append("\n");
-    sb.append("    deals: ").append(toIndentedString(deals)).append("\n");
-    sb.append("    checkout: ").append(toIndentedString(checkout)).append("\n");
-    sb.append("    favorites: ").append(toIndentedString(favorites)).append("\n");
-    sb.append("    searchBar: ").append(toIndentedString(searchBar)).append("\n");
     sb.append("    categoryMenu: ").append(toIndentedString(categoryMenu)).append("\n");
+    sb.append("    checkout: ").append(toIndentedString(checkout)).append("\n");
+    sb.append("    confirmation: ").append(toIndentedString(confirmation)).append("\n");
+    sb.append("    deals: ").append(toIndentedString(deals)).append("\n");
+    sb.append("    favorites: ").append(toIndentedString(favorites)).append("\n");
+    sb.append("    home: ").append(toIndentedString(home)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    merchandising: ").append(toIndentedString(merchandising)).append("\n");
+    sb.append("    productDetail: ").append(toIndentedString(productDetail)).append("\n");
+    sb.append("    search: ").append(toIndentedString(search)).append("\n");
+    sb.append("    searchBar: ").append(toIndentedString(searchBar)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -489,18 +489,18 @@ public class ExternalLineItemBidMultipliersV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("search");
-    openapiFields.add("home");
     openapiFields.add("category");
-    openapiFields.add("productDetail");
-    openapiFields.add("confirmation");
-    openapiFields.add("merchandising");
-    openapiFields.add("deals");
-    openapiFields.add("checkout");
-    openapiFields.add("favorites");
-    openapiFields.add("searchBar");
     openapiFields.add("categoryMenu");
+    openapiFields.add("checkout");
+    openapiFields.add("confirmation");
+    openapiFields.add("deals");
+    openapiFields.add("favorites");
+    openapiFields.add("home");
     openapiFields.add("id");
+    openapiFields.add("merchandising");
+    openapiFields.add("productDetail");
+    openapiFields.add("search");
+    openapiFields.add("searchBar");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

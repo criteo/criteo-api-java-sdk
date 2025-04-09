@@ -54,24 +54,51 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class JsonApiPageResponseOfCampaignV202301 {
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
+  private List<JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301> data = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<CommonError> errors = null;
-
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<CommonWarning> warnings = null;
 
   public static final String SERIALIZED_NAME_METADATA = "metadata";
   @SerializedName(SERIALIZED_NAME_METADATA)
   private PageMetadata metadata;
 
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private List<JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301> data = new ArrayList<>();
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<CommonWarning> warnings = null;
 
   public JsonApiPageResponseOfCampaignV202301() {
   }
+
+  public JsonApiPageResponseOfCampaignV202301 data(List<JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301> data) {
+    
+    this.data = data;
+    return this;
+  }
+
+  public JsonApiPageResponseOfCampaignV202301 addDataItem(JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301 dataItem) {
+    this.data.add(dataItem);
+    return this;
+  }
+
+   /**
+   * Get data
+   * @return data
+  **/
+  @javax.annotation.Nonnull
+
+  public List<JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301> getData() {
+    return data;
+  }
+
+
+  public void setData(List<JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301> data) {
+    this.data = data;
+  }
+
 
   public JsonApiPageResponseOfCampaignV202301 errors(List<CommonError> errors) {
     
@@ -103,6 +130,28 @@ public class JsonApiPageResponseOfCampaignV202301 {
   }
 
 
+  public JsonApiPageResponseOfCampaignV202301 metadata(PageMetadata metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+   /**
+   * Get metadata
+   * @return metadata
+  **/
+  @javax.annotation.Nonnull
+
+  public PageMetadata getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(PageMetadata metadata) {
+    this.metadata = metadata;
+  }
+
+
   public JsonApiPageResponseOfCampaignV202301 warnings(List<CommonWarning> warnings) {
     
     this.warnings = warnings;
@@ -130,55 +179,6 @@ public class JsonApiPageResponseOfCampaignV202301 {
 
   public void setWarnings(List<CommonWarning> warnings) {
     this.warnings = warnings;
-  }
-
-
-  public JsonApiPageResponseOfCampaignV202301 metadata(PageMetadata metadata) {
-    
-    this.metadata = metadata;
-    return this;
-  }
-
-   /**
-   * Get metadata
-   * @return metadata
-  **/
-  @javax.annotation.Nonnull
-
-  public PageMetadata getMetadata() {
-    return metadata;
-  }
-
-
-  public void setMetadata(PageMetadata metadata) {
-    this.metadata = metadata;
-  }
-
-
-  public JsonApiPageResponseOfCampaignV202301 data(List<JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301> data) {
-    
-    this.data = data;
-    return this;
-  }
-
-  public JsonApiPageResponseOfCampaignV202301 addDataItem(JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301 dataItem) {
-    this.data.add(dataItem);
-    return this;
-  }
-
-   /**
-   * Get data
-   * @return data
-  **/
-  @javax.annotation.Nonnull
-
-  public List<JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301> getData() {
-    return data;
-  }
-
-
-  public void setData(List<JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301> data) {
-    this.data = data;
   }
 
   /**
@@ -236,26 +236,26 @@ public class JsonApiPageResponseOfCampaignV202301 {
       return false;
     }
     JsonApiPageResponseOfCampaignV202301 jsonApiPageResponseOfCampaignV202301 = (JsonApiPageResponseOfCampaignV202301) o;
-    return Objects.equals(this.errors, jsonApiPageResponseOfCampaignV202301.errors) &&
-        Objects.equals(this.warnings, jsonApiPageResponseOfCampaignV202301.warnings) &&
+    return Objects.equals(this.data, jsonApiPageResponseOfCampaignV202301.data) &&
+        Objects.equals(this.errors, jsonApiPageResponseOfCampaignV202301.errors) &&
         Objects.equals(this.metadata, jsonApiPageResponseOfCampaignV202301.metadata) &&
-        Objects.equals(this.data, jsonApiPageResponseOfCampaignV202301.data)&&
+        Objects.equals(this.warnings, jsonApiPageResponseOfCampaignV202301.warnings)&&
         Objects.equals(this.additionalProperties, jsonApiPageResponseOfCampaignV202301.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(errors, warnings, metadata, data, additionalProperties);
+    return Objects.hash(data, errors, metadata, warnings, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JsonApiPageResponseOfCampaignV202301 {\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
-    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -279,15 +279,15 @@ public class JsonApiPageResponseOfCampaignV202301 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("errors");
-    openapiFields.add("warnings");
-    openapiFields.add("metadata");
     openapiFields.add("data");
+    openapiFields.add("errors");
+    openapiFields.add("metadata");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("metadata");
     openapiRequiredFields.add("data");
+    openapiRequiredFields.add("metadata");
   }
 
  /**
@@ -309,6 +309,16 @@ public class JsonApiPageResponseOfCampaignV202301 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      // ensure the json data is an array
+      if (!jsonObj.get("data").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
+      }
+
+      JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
+      // validate the required field `data` (array)
+      for (int i = 0; i < jsonArraydata.size(); i++) {
+        JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
+      };
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
         if (jsonArrayerrors != null) {
@@ -323,6 +333,8 @@ public class JsonApiPageResponseOfCampaignV202301 {
           };
         }
       }
+      // validate the required field `metadata`
+      PageMetadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
       if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
         JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
         if (jsonArraywarnings != null) {
@@ -337,18 +349,6 @@ public class JsonApiPageResponseOfCampaignV202301 {
           };
         }
       }
-      // validate the required field `metadata`
-      PageMetadata.validateJsonObject(jsonObj.getAsJsonObject("metadata"));
-      // ensure the json data is an array
-      if (!jsonObj.get("data").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
-      }
-
-      JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
-      // validate the required field `data` (array)
-      for (int i = 0; i < jsonArraydata.size(); i++) {
-        JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
-      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -52,57 +52,6 @@ import com.criteo.api.marketingsolutions.v2024_07.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdSetDeliveryLimitationsV24Q1 {
   /**
-   * Gets or Sets environments
-   */
-  @JsonAdapter(EnvironmentsEnum.Adapter.class)
-  public enum EnvironmentsEnum {
-    WEB("web"),
-    
-    INAPP("inApp");
-
-    private String value;
-
-    EnvironmentsEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static EnvironmentsEnum fromValue(String value) {
-      for (EnvironmentsEnum b : EnvironmentsEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<EnvironmentsEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final EnvironmentsEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public EnvironmentsEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return EnvironmentsEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_ENVIRONMENTS = "environments";
-  @SerializedName(SERIALIZED_NAME_ENVIRONMENTS)
-  private List<EnvironmentsEnum> environments = null;
-
-  /**
    * Gets or Sets devices
    */
   @JsonAdapter(DevicesEnum.Adapter.class)
@@ -156,6 +105,57 @@ public class AdSetDeliveryLimitationsV24Q1 {
   public static final String SERIALIZED_NAME_DEVICES = "devices";
   @SerializedName(SERIALIZED_NAME_DEVICES)
   private List<DevicesEnum> devices = null;
+
+  /**
+   * Gets or Sets environments
+   */
+  @JsonAdapter(EnvironmentsEnum.Adapter.class)
+  public enum EnvironmentsEnum {
+    WEB("web"),
+    
+    INAPP("inApp");
+
+    private String value;
+
+    EnvironmentsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static EnvironmentsEnum fromValue(String value) {
+      for (EnvironmentsEnum b : EnvironmentsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<EnvironmentsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final EnvironmentsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public EnvironmentsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return EnvironmentsEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ENVIRONMENTS = "environments";
+  @SerializedName(SERIALIZED_NAME_ENVIRONMENTS)
+  private List<EnvironmentsEnum> environments = null;
 
   /**
    * Gets or Sets operatingSystems
@@ -213,36 +213,6 @@ public class AdSetDeliveryLimitationsV24Q1 {
   public AdSetDeliveryLimitationsV24Q1() {
   }
 
-  public AdSetDeliveryLimitationsV24Q1 environments(List<EnvironmentsEnum> environments) {
-    
-    this.environments = environments;
-    return this;
-  }
-
-  public AdSetDeliveryLimitationsV24Q1 addEnvironmentsItem(EnvironmentsEnum environmentsItem) {
-    if (this.environments == null) {
-      this.environments = null;
-    }
-    this.environments.add(environmentsItem);
-    return this;
-  }
-
-   /**
-   * Get environments
-   * @return environments
-  **/
-  @javax.annotation.Nullable
-
-  public List<EnvironmentsEnum> getEnvironments() {
-    return environments;
-  }
-
-
-  public void setEnvironments(List<EnvironmentsEnum> environments) {
-    this.environments = environments;
-  }
-
-
   public AdSetDeliveryLimitationsV24Q1 devices(List<DevicesEnum> devices) {
     
     this.devices = devices;
@@ -270,6 +240,36 @@ public class AdSetDeliveryLimitationsV24Q1 {
 
   public void setDevices(List<DevicesEnum> devices) {
     this.devices = devices;
+  }
+
+
+  public AdSetDeliveryLimitationsV24Q1 environments(List<EnvironmentsEnum> environments) {
+    
+    this.environments = environments;
+    return this;
+  }
+
+  public AdSetDeliveryLimitationsV24Q1 addEnvironmentsItem(EnvironmentsEnum environmentsItem) {
+    if (this.environments == null) {
+      this.environments = null;
+    }
+    this.environments.add(environmentsItem);
+    return this;
+  }
+
+   /**
+   * Get environments
+   * @return environments
+  **/
+  @javax.annotation.Nullable
+
+  public List<EnvironmentsEnum> getEnvironments() {
+    return environments;
+  }
+
+
+  public void setEnvironments(List<EnvironmentsEnum> environments) {
+    this.environments = environments;
   }
 
 
@@ -357,8 +357,8 @@ public class AdSetDeliveryLimitationsV24Q1 {
       return false;
     }
     AdSetDeliveryLimitationsV24Q1 adSetDeliveryLimitationsV24Q1 = (AdSetDeliveryLimitationsV24Q1) o;
-    return Objects.equals(this.environments, adSetDeliveryLimitationsV24Q1.environments) &&
-        Objects.equals(this.devices, adSetDeliveryLimitationsV24Q1.devices) &&
+    return Objects.equals(this.devices, adSetDeliveryLimitationsV24Q1.devices) &&
+        Objects.equals(this.environments, adSetDeliveryLimitationsV24Q1.environments) &&
         Objects.equals(this.operatingSystems, adSetDeliveryLimitationsV24Q1.operatingSystems)&&
         Objects.equals(this.additionalProperties, adSetDeliveryLimitationsV24Q1.additionalProperties);
   }
@@ -369,7 +369,7 @@ public class AdSetDeliveryLimitationsV24Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(environments, devices, operatingSystems, additionalProperties);
+    return Objects.hash(devices, environments, operatingSystems, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -383,8 +383,8 @@ public class AdSetDeliveryLimitationsV24Q1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdSetDeliveryLimitationsV24Q1 {\n");
-    sb.append("    environments: ").append(toIndentedString(environments)).append("\n");
     sb.append("    devices: ").append(toIndentedString(devices)).append("\n");
+    sb.append("    environments: ").append(toIndentedString(environments)).append("\n");
     sb.append("    operatingSystems: ").append(toIndentedString(operatingSystems)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -409,8 +409,8 @@ public class AdSetDeliveryLimitationsV24Q1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("environments");
     openapiFields.add("devices");
+    openapiFields.add("environments");
     openapiFields.add("operatingSystems");
 
     // a set of required properties/fields (JSON key names)
@@ -430,12 +430,12 @@ public class AdSetDeliveryLimitationsV24Q1 {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("environments") != null && !jsonObj.get("environments").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `environments` to be an array in the JSON string but got `%s`", jsonObj.get("environments").toString()));
-      }
-      // ensure the optional json data is an array if present
       if (jsonObj.get("devices") != null && !jsonObj.get("devices").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `devices` to be an array in the JSON string but got `%s`", jsonObj.get("devices").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("environments") != null && !jsonObj.get("environments").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `environments` to be an array in the JSON string but got `%s`", jsonObj.get("environments").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("operatingSystems") != null && !jsonObj.get("operatingSystems").isJsonArray()) {

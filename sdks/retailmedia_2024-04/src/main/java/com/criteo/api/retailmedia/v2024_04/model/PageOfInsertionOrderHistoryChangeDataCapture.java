@@ -52,38 +52,16 @@ import com.criteo.api.retailmedia.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PageOfInsertionOrderHistoryChangeDataCapture {
-  public static final String SERIALIZED_NAME_META = "meta";
-  @SerializedName(SERIALIZED_NAME_META)
-  private Metadata meta;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private List<InsertionOrderHistoryChangeDataCapture> data = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private Metadata meta;
+
   public PageOfInsertionOrderHistoryChangeDataCapture() {
   }
-
-  public PageOfInsertionOrderHistoryChangeDataCapture meta(Metadata meta) {
-    
-    this.meta = meta;
-    return this;
-  }
-
-   /**
-   * Get meta
-   * @return meta
-  **/
-  @javax.annotation.Nonnull
-
-  public Metadata getMeta() {
-    return meta;
-  }
-
-
-  public void setMeta(Metadata meta) {
-    this.meta = meta;
-  }
-
 
   public PageOfInsertionOrderHistoryChangeDataCapture data(List<InsertionOrderHistoryChangeDataCapture> data) {
     
@@ -112,6 +90,28 @@ public class PageOfInsertionOrderHistoryChangeDataCapture {
   }
 
 
+  public PageOfInsertionOrderHistoryChangeDataCapture meta(Metadata meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nonnull
+
+  public Metadata getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(Metadata meta) {
+    this.meta = meta;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -122,21 +122,21 @@ public class PageOfInsertionOrderHistoryChangeDataCapture {
       return false;
     }
     PageOfInsertionOrderHistoryChangeDataCapture pageOfInsertionOrderHistoryChangeDataCapture = (PageOfInsertionOrderHistoryChangeDataCapture) o;
-    return Objects.equals(this.meta, pageOfInsertionOrderHistoryChangeDataCapture.meta) &&
-        Objects.equals(this.data, pageOfInsertionOrderHistoryChangeDataCapture.data);
+    return Objects.equals(this.data, pageOfInsertionOrderHistoryChangeDataCapture.data) &&
+        Objects.equals(this.meta, pageOfInsertionOrderHistoryChangeDataCapture.meta);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(meta, data);
+    return Objects.hash(data, meta);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PageOfInsertionOrderHistoryChangeDataCapture {\n");
-    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -159,13 +159,13 @@ public class PageOfInsertionOrderHistoryChangeDataCapture {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("meta");
     openapiFields.add("data");
+    openapiFields.add("meta");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("meta");
     openapiRequiredFields.add("data");
+    openapiRequiredFields.add("meta");
   }
 
  /**
@@ -195,8 +195,6 @@ public class PageOfInsertionOrderHistoryChangeDataCapture {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      // validate the required field `meta`
-      Metadata.validateJsonObject(jsonObj.getAsJsonObject("meta"));
       // ensure the json data is an array
       if (!jsonObj.get("data").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
@@ -207,6 +205,8 @@ public class PageOfInsertionOrderHistoryChangeDataCapture {
       for (int i = 0; i < jsonArraydata.size(); i++) {
         InsertionOrderHistoryChangeDataCapture.validateJsonObject(jsonArraydata.get(i).getAsJsonObject());
       };
+      // validate the required field `meta`
+      Metadata.validateJsonObject(jsonObj.getAsJsonObject("meta"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

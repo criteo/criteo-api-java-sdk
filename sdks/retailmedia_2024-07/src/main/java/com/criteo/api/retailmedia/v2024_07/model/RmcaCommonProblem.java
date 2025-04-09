@@ -51,6 +51,34 @@ import com.criteo.api.retailmedia.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RmcaCommonProblem {
+  public static final String SERIALIZED_NAME_CODE = "code";
+  @SerializedName(SERIALIZED_NAME_CODE)
+  private String code;
+
+  public static final String SERIALIZED_NAME_DETAIL = "detail";
+  @SerializedName(SERIALIZED_NAME_DETAIL)
+  private String detail;
+
+  public static final String SERIALIZED_NAME_INSTANCE = "instance";
+  @SerializedName(SERIALIZED_NAME_INSTANCE)
+  private String instance;
+
+  public static final String SERIALIZED_NAME_SOURCE = "source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  private Map<String, String> source = null;
+
+  public static final String SERIALIZED_NAME_STACK_TRACE = "stackTrace";
+  @SerializedName(SERIALIZED_NAME_STACK_TRACE)
+  private String stackTrace;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private Integer status;
+
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
+
   public static final String SERIALIZED_NAME_TRACE_ID = "traceId";
   @SerializedName(SERIALIZED_NAME_TRACE_ID)
   private String traceId;
@@ -118,80 +146,8 @@ public class RmcaCommonProblem {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  private String code;
-
-  public static final String SERIALIZED_NAME_INSTANCE = "instance";
-  @SerializedName(SERIALIZED_NAME_INSTANCE)
-  private String instance;
-
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
-
-  public static final String SERIALIZED_NAME_DETAIL = "detail";
-  @SerializedName(SERIALIZED_NAME_DETAIL)
-  private String detail;
-
-  public static final String SERIALIZED_NAME_SOURCE = "source";
-  @SerializedName(SERIALIZED_NAME_SOURCE)
-  private Map<String, String> source = null;
-
-  public static final String SERIALIZED_NAME_STACK_TRACE = "stackTrace";
-  @SerializedName(SERIALIZED_NAME_STACK_TRACE)
-  private String stackTrace;
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private Integer status;
-
   public RmcaCommonProblem() {
   }
-
-  public RmcaCommonProblem traceId(String traceId) {
-    
-    this.traceId = traceId;
-    return this;
-  }
-
-   /**
-   * The request correlation ID this problem comes from.
-   * @return traceId
-  **/
-  @javax.annotation.Nullable
-
-  public String getTraceId() {
-    return traceId;
-  }
-
-
-  public void setTraceId(String traceId) {
-    this.traceId = traceId;
-  }
-
-
-  public RmcaCommonProblem type(TypeEnum type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * The problem&#39;s category.
-   * @return type
-  **/
-  @javax.annotation.Nullable
-
-  public TypeEnum getType() {
-    return type;
-  }
-
-
-  public void setType(TypeEnum type) {
-    this.type = type;
-  }
-
 
   public RmcaCommonProblem code(String code) {
     
@@ -215,50 +171,6 @@ public class RmcaCommonProblem {
   }
 
 
-  public RmcaCommonProblem instance(String instance) {
-    
-    this.instance = instance;
-    return this;
-  }
-
-   /**
-   * A URI that identifies the specific occurrence of the problem.
-   * @return instance
-  **/
-  @javax.annotation.Nullable
-
-  public String getInstance() {
-    return instance;
-  }
-
-
-  public void setInstance(String instance) {
-    this.instance = instance;
-  }
-
-
-  public RmcaCommonProblem title(String title) {
-    
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * A short human-readable description of the problem type
-   * @return title
-  **/
-  @javax.annotation.Nullable
-
-  public String getTitle() {
-    return title;
-  }
-
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-
   public RmcaCommonProblem detail(String detail) {
     
     this.detail = detail;
@@ -278,6 +190,28 @@ public class RmcaCommonProblem {
 
   public void setDetail(String detail) {
     this.detail = detail;
+  }
+
+
+  public RmcaCommonProblem instance(String instance) {
+    
+    this.instance = instance;
+    return this;
+  }
+
+   /**
+   * A URI that identifies the specific occurrence of the problem.
+   * @return instance
+  **/
+  @javax.annotation.Nullable
+
+  public String getInstance() {
+    return instance;
+  }
+
+
+  public void setInstance(String instance) {
+    this.instance = instance;
   }
 
 
@@ -355,6 +289,72 @@ public class RmcaCommonProblem {
   }
 
 
+  public RmcaCommonProblem title(String title) {
+    
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * A short human-readable description of the problem type
+   * @return title
+  **/
+  @javax.annotation.Nullable
+
+  public String getTitle() {
+    return title;
+  }
+
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+
+  public RmcaCommonProblem traceId(String traceId) {
+    
+    this.traceId = traceId;
+    return this;
+  }
+
+   /**
+   * The request correlation ID this problem comes from.
+   * @return traceId
+  **/
+  @javax.annotation.Nullable
+
+  public String getTraceId() {
+    return traceId;
+  }
+
+
+  public void setTraceId(String traceId) {
+    this.traceId = traceId;
+  }
+
+
+  public RmcaCommonProblem type(TypeEnum type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * The problem&#39;s category.
+   * @return type
+  **/
+  @javax.annotation.Nullable
+
+  public TypeEnum getType() {
+    return type;
+  }
+
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -365,15 +365,15 @@ public class RmcaCommonProblem {
       return false;
     }
     RmcaCommonProblem rmcaCommonProblem = (RmcaCommonProblem) o;
-    return Objects.equals(this.traceId, rmcaCommonProblem.traceId) &&
-        Objects.equals(this.type, rmcaCommonProblem.type) &&
-        Objects.equals(this.code, rmcaCommonProblem.code) &&
-        Objects.equals(this.instance, rmcaCommonProblem.instance) &&
-        Objects.equals(this.title, rmcaCommonProblem.title) &&
+    return Objects.equals(this.code, rmcaCommonProblem.code) &&
         Objects.equals(this.detail, rmcaCommonProblem.detail) &&
+        Objects.equals(this.instance, rmcaCommonProblem.instance) &&
         Objects.equals(this.source, rmcaCommonProblem.source) &&
         Objects.equals(this.stackTrace, rmcaCommonProblem.stackTrace) &&
-        Objects.equals(this.status, rmcaCommonProblem.status);
+        Objects.equals(this.status, rmcaCommonProblem.status) &&
+        Objects.equals(this.title, rmcaCommonProblem.title) &&
+        Objects.equals(this.traceId, rmcaCommonProblem.traceId) &&
+        Objects.equals(this.type, rmcaCommonProblem.type);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -382,7 +382,7 @@ public class RmcaCommonProblem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(traceId, type, code, instance, title, detail, source, stackTrace, status);
+    return Objects.hash(code, detail, instance, source, stackTrace, status, title, traceId, type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -396,15 +396,15 @@ public class RmcaCommonProblem {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RmcaCommonProblem {\n");
-    sb.append("    traceId: ").append(toIndentedString(traceId)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    instance: ").append(toIndentedString(instance)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
+    sb.append("    instance: ").append(toIndentedString(instance)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    stackTrace: ").append(toIndentedString(stackTrace)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    traceId: ").append(toIndentedString(traceId)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -427,15 +427,15 @@ public class RmcaCommonProblem {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("traceId");
-    openapiFields.add("type");
     openapiFields.add("code");
-    openapiFields.add("instance");
-    openapiFields.add("title");
     openapiFields.add("detail");
+    openapiFields.add("instance");
     openapiFields.add("source");
     openapiFields.add("stackTrace");
     openapiFields.add("status");
+    openapiFields.add("title");
+    openapiFields.add("traceId");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -461,26 +461,26 @@ public class RmcaCommonProblem {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RmcaCommonProblem` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
+      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      }
+      if ((jsonObj.get("detail") != null && !jsonObj.get("detail").isJsonNull()) && !jsonObj.get("detail").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `detail` to be a primitive type in the JSON string but got `%s`", jsonObj.get("detail").toString()));
+      }
+      if ((jsonObj.get("instance") != null && !jsonObj.get("instance").isJsonNull()) && !jsonObj.get("instance").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instance").toString()));
+      }
+      if ((jsonObj.get("stackTrace") != null && !jsonObj.get("stackTrace").isJsonNull()) && !jsonObj.get("stackTrace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `stackTrace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("stackTrace").toString()));
+      }
+      if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
+      }
       if ((jsonObj.get("traceId") != null && !jsonObj.get("traceId").isJsonNull()) && !jsonObj.get("traceId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `traceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("traceId").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
-      }
-      if ((jsonObj.get("instance") != null && !jsonObj.get("instance").isJsonNull()) && !jsonObj.get("instance").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `instance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instance").toString()));
-      }
-      if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
-      }
-      if ((jsonObj.get("detail") != null && !jsonObj.get("detail").isJsonNull()) && !jsonObj.get("detail").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `detail` to be a primitive type in the JSON string but got `%s`", jsonObj.get("detail").toString()));
-      }
-      if ((jsonObj.get("stackTrace") != null && !jsonObj.get("stackTrace").isJsonNull()) && !jsonObj.get("stackTrace").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `stackTrace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("stackTrace").toString()));
       }
   }
 

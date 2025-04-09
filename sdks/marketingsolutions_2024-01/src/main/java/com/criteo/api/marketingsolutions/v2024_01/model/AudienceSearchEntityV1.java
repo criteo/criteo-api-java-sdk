@@ -50,52 +50,52 @@ import com.criteo.api.marketingsolutions.v2024_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AudienceSearchEntityV1 {
-  public static final String SERIALIZED_NAME_AUDIENCE_IDS = "audienceIds";
-  @SerializedName(SERIALIZED_NAME_AUDIENCE_IDS)
-  private List<String> audienceIds = null;
+  public static final String SERIALIZED_NAME_AD_SET_IDS = "adSetIds";
+  @SerializedName(SERIALIZED_NAME_AD_SET_IDS)
+  private List<String> adSetIds = null;
 
   public static final String SERIALIZED_NAME_ADVERTISER_IDS = "advertiserIds";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_IDS)
   private List<String> advertiserIds = null;
 
+  public static final String SERIALIZED_NAME_AUDIENCE_IDS = "audienceIds";
+  @SerializedName(SERIALIZED_NAME_AUDIENCE_IDS)
+  private List<String> audienceIds = null;
+
   public static final String SERIALIZED_NAME_AUDIENCE_SEGMENT_IDS = "audienceSegmentIds";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_SEGMENT_IDS)
   private List<String> audienceSegmentIds = null;
 
-  public static final String SERIALIZED_NAME_AD_SET_IDS = "adSetIds";
-  @SerializedName(SERIALIZED_NAME_AD_SET_IDS)
-  private List<String> adSetIds = null;
-
   public AudienceSearchEntityV1() {
   }
 
-  public AudienceSearchEntityV1 audienceIds(List<String> audienceIds) {
+  public AudienceSearchEntityV1 adSetIds(List<String> adSetIds) {
     
-    this.audienceIds = audienceIds;
+    this.adSetIds = adSetIds;
     return this;
   }
 
-  public AudienceSearchEntityV1 addAudienceIdsItem(String audienceIdsItem) {
-    if (this.audienceIds == null) {
-      this.audienceIds = new ArrayList<>();
+  public AudienceSearchEntityV1 addAdSetIdsItem(String adSetIdsItem) {
+    if (this.adSetIds == null) {
+      this.adSetIds = new ArrayList<>();
     }
-    this.audienceIds.add(audienceIdsItem);
+    this.adSetIds.add(adSetIdsItem);
     return this;
   }
 
    /**
-   * List of audience ids
-   * @return audienceIds
+   * List of AdSet ids
+   * @return adSetIds
   **/
   @javax.annotation.Nullable
 
-  public List<String> getAudienceIds() {
-    return audienceIds;
+  public List<String> getAdSetIds() {
+    return adSetIds;
   }
 
 
-  public void setAudienceIds(List<String> audienceIds) {
-    this.audienceIds = audienceIds;
+  public void setAdSetIds(List<String> adSetIds) {
+    this.adSetIds = adSetIds;
   }
 
 
@@ -129,6 +129,36 @@ public class AudienceSearchEntityV1 {
   }
 
 
+  public AudienceSearchEntityV1 audienceIds(List<String> audienceIds) {
+    
+    this.audienceIds = audienceIds;
+    return this;
+  }
+
+  public AudienceSearchEntityV1 addAudienceIdsItem(String audienceIdsItem) {
+    if (this.audienceIds == null) {
+      this.audienceIds = new ArrayList<>();
+    }
+    this.audienceIds.add(audienceIdsItem);
+    return this;
+  }
+
+   /**
+   * List of audience ids
+   * @return audienceIds
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getAudienceIds() {
+    return audienceIds;
+  }
+
+
+  public void setAudienceIds(List<String> audienceIds) {
+    this.audienceIds = audienceIds;
+  }
+
+
   public AudienceSearchEntityV1 audienceSegmentIds(List<String> audienceSegmentIds) {
     
     this.audienceSegmentIds = audienceSegmentIds;
@@ -156,36 +186,6 @@ public class AudienceSearchEntityV1 {
 
   public void setAudienceSegmentIds(List<String> audienceSegmentIds) {
     this.audienceSegmentIds = audienceSegmentIds;
-  }
-
-
-  public AudienceSearchEntityV1 adSetIds(List<String> adSetIds) {
-    
-    this.adSetIds = adSetIds;
-    return this;
-  }
-
-  public AudienceSearchEntityV1 addAdSetIdsItem(String adSetIdsItem) {
-    if (this.adSetIds == null) {
-      this.adSetIds = new ArrayList<>();
-    }
-    this.adSetIds.add(adSetIdsItem);
-    return this;
-  }
-
-   /**
-   * List of AdSet ids
-   * @return adSetIds
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getAdSetIds() {
-    return adSetIds;
-  }
-
-
-  public void setAdSetIds(List<String> adSetIds) {
-    this.adSetIds = adSetIds;
   }
 
   /**
@@ -243,26 +243,26 @@ public class AudienceSearchEntityV1 {
       return false;
     }
     AudienceSearchEntityV1 audienceSearchEntityV1 = (AudienceSearchEntityV1) o;
-    return Objects.equals(this.audienceIds, audienceSearchEntityV1.audienceIds) &&
+    return Objects.equals(this.adSetIds, audienceSearchEntityV1.adSetIds) &&
         Objects.equals(this.advertiserIds, audienceSearchEntityV1.advertiserIds) &&
-        Objects.equals(this.audienceSegmentIds, audienceSearchEntityV1.audienceSegmentIds) &&
-        Objects.equals(this.adSetIds, audienceSearchEntityV1.adSetIds)&&
+        Objects.equals(this.audienceIds, audienceSearchEntityV1.audienceIds) &&
+        Objects.equals(this.audienceSegmentIds, audienceSearchEntityV1.audienceSegmentIds)&&
         Objects.equals(this.additionalProperties, audienceSearchEntityV1.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(audienceIds, advertiserIds, audienceSegmentIds, adSetIds, additionalProperties);
+    return Objects.hash(adSetIds, advertiserIds, audienceIds, audienceSegmentIds, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceSearchEntityV1 {\n");
-    sb.append("    audienceIds: ").append(toIndentedString(audienceIds)).append("\n");
-    sb.append("    advertiserIds: ").append(toIndentedString(advertiserIds)).append("\n");
-    sb.append("    audienceSegmentIds: ").append(toIndentedString(audienceSegmentIds)).append("\n");
     sb.append("    adSetIds: ").append(toIndentedString(adSetIds)).append("\n");
+    sb.append("    advertiserIds: ").append(toIndentedString(advertiserIds)).append("\n");
+    sb.append("    audienceIds: ").append(toIndentedString(audienceIds)).append("\n");
+    sb.append("    audienceSegmentIds: ").append(toIndentedString(audienceSegmentIds)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -286,10 +286,10 @@ public class AudienceSearchEntityV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("audienceIds");
-    openapiFields.add("advertiserIds");
-    openapiFields.add("audienceSegmentIds");
     openapiFields.add("adSetIds");
+    openapiFields.add("advertiserIds");
+    openapiFields.add("audienceIds");
+    openapiFields.add("audienceSegmentIds");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -308,20 +308,20 @@ public class AudienceSearchEntityV1 {
         }
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("audienceIds") != null && !jsonObj.get("audienceIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `audienceIds` to be an array in the JSON string but got `%s`", jsonObj.get("audienceIds").toString()));
+      if (jsonObj.get("adSetIds") != null && !jsonObj.get("adSetIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `adSetIds` to be an array in the JSON string but got `%s`", jsonObj.get("adSetIds").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("advertiserIds") != null && !jsonObj.get("advertiserIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserIds` to be an array in the JSON string but got `%s`", jsonObj.get("advertiserIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("audienceSegmentIds") != null && !jsonObj.get("audienceSegmentIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `audienceSegmentIds` to be an array in the JSON string but got `%s`", jsonObj.get("audienceSegmentIds").toString()));
+      if (jsonObj.get("audienceIds") != null && !jsonObj.get("audienceIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `audienceIds` to be an array in the JSON string but got `%s`", jsonObj.get("audienceIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("adSetIds") != null && !jsonObj.get("adSetIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `adSetIds` to be an array in the JSON string but got `%s`", jsonObj.get("adSetIds").toString()));
+      if (jsonObj.get("audienceSegmentIds") != null && !jsonObj.get("audienceSegmentIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `audienceSegmentIds` to be an array in the JSON string but got `%s`", jsonObj.get("audienceSegmentIds").toString()));
       }
   }
 

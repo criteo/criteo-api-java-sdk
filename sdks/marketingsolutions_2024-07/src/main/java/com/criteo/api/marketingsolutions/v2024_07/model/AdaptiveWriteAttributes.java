@@ -54,6 +54,89 @@ import com.criteo.api.marketingsolutions.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdaptiveWriteAttributes {
+  public static final String SERIALIZED_NAME_CALLS_TO_ACTION = "callsToAction";
+  @SerializedName(SERIALIZED_NAME_CALLS_TO_ACTION)
+  private List<String> callsToAction = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_COLORS = "colors";
+  @SerializedName(SERIALIZED_NAME_COLORS)
+  private AdaptiveColors colors;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION_FONT = "descriptionFont";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION_FONT)
+  private String descriptionFont;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION_TEXT = "descriptionText";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION_TEXT)
+  private String descriptionText;
+
+  public static final String SERIALIZED_NAME_HEADLINE_FONT = "headlineFont";
+  @SerializedName(SERIALIZED_NAME_HEADLINE_FONT)
+  private String headlineFont;
+
+  public static final String SERIALIZED_NAME_HEADLINE_TEXT = "headlineText";
+  @SerializedName(SERIALIZED_NAME_HEADLINE_TEXT)
+  private String headlineText;
+
+  /**
+   * Value can be \&quot;ShowFullImage\&quot; or \&quot;ZoomOnImage\&quot;. Choose whether your image set should fit inside the allocated  space (\&quot;ShowFullImage\&quot;) or whether it should fill that space (\&quot;ZoomOnImage\&quot;). If you choose ZoomOnImage, there may be some  image cropping.
+   */
+  @JsonAdapter(ImageDisplayEnum.Adapter.class)
+  public enum ImageDisplayEnum {
+    SHOWFULLIMAGE("ShowFullImage"),
+    
+    ZOOMONIMAGE("ZoomOnImage");
+
+    private String value;
+
+    ImageDisplayEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ImageDisplayEnum fromValue(String value) {
+      for (ImageDisplayEnum b : ImageDisplayEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<ImageDisplayEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ImageDisplayEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ImageDisplayEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ImageDisplayEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_IMAGE_DISPLAY = "imageDisplay";
+  @SerializedName(SERIALIZED_NAME_IMAGE_DISPLAY)
+  private ImageDisplayEnum imageDisplay;
+
+  public static final String SERIALIZED_NAME_IMAGE_SETS_BASE64 = "imageSetsBase64";
+  @SerializedName(SERIALIZED_NAME_IMAGE_SETS_BASE64)
+  private List<ImageSetBase64> imageSetsBase64 = null;
+
+  public static final String SERIALIZED_NAME_LANDING_PAGE_URL = "landingPageUrl";
+  @SerializedName(SERIALIZED_NAME_LANDING_PAGE_URL)
+  private URI landingPageUrl;
+
   /**
    * Gets or Sets layouts
    */
@@ -111,232 +194,12 @@ public class AdaptiveWriteAttributes {
   @SerializedName(SERIALIZED_NAME_LOGO_BASE64_STRING)
   private String logoBase64String;
 
-  public static final String SERIALIZED_NAME_HEADLINE_TEXT = "headlineText";
-  @SerializedName(SERIALIZED_NAME_HEADLINE_TEXT)
-  private String headlineText;
-
-  public static final String SERIALIZED_NAME_HEADLINE_FONT = "headlineFont";
-  @SerializedName(SERIALIZED_NAME_HEADLINE_FONT)
-  private String headlineFont;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION_TEXT = "descriptionText";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION_TEXT)
-  private String descriptionText;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION_FONT = "descriptionFont";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION_FONT)
-  private String descriptionFont;
-
-  public static final String SERIALIZED_NAME_CALLS_TO_ACTION = "callsToAction";
-  @SerializedName(SERIALIZED_NAME_CALLS_TO_ACTION)
-  private List<String> callsToAction = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_COLORS = "colors";
-  @SerializedName(SERIALIZED_NAME_COLORS)
-  private AdaptiveColors colors;
-
-  public static final String SERIALIZED_NAME_IMAGE_SETS_BASE64 = "imageSetsBase64";
-  @SerializedName(SERIALIZED_NAME_IMAGE_SETS_BASE64)
-  private List<ImageSetBase64> imageSetsBase64 = null;
-
-  /**
-   * Value can be \&quot;ShowFullImage\&quot; or \&quot;ZoomOnImage\&quot;. Choose whether your image set should fit inside the allocated  space (\&quot;ShowFullImage\&quot;) or whether it should fill that space (\&quot;ZoomOnImage\&quot;). If you choose ZoomOnImage, there may be some  image cropping.
-   */
-  @JsonAdapter(ImageDisplayEnum.Adapter.class)
-  public enum ImageDisplayEnum {
-    SHOWFULLIMAGE("ShowFullImage"),
-    
-    ZOOMONIMAGE("ZoomOnImage");
-
-    private String value;
-
-    ImageDisplayEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ImageDisplayEnum fromValue(String value) {
-      for (ImageDisplayEnum b : ImageDisplayEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<ImageDisplayEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ImageDisplayEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ImageDisplayEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ImageDisplayEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_IMAGE_DISPLAY = "imageDisplay";
-  @SerializedName(SERIALIZED_NAME_IMAGE_DISPLAY)
-  private ImageDisplayEnum imageDisplay;
-
   public static final String SERIALIZED_NAME_VIDEO_BASE64_STRINGS = "videoBase64Strings";
   @SerializedName(SERIALIZED_NAME_VIDEO_BASE64_STRINGS)
   private List<String> videoBase64Strings = null;
 
-  public static final String SERIALIZED_NAME_LANDING_PAGE_URL = "landingPageUrl";
-  @SerializedName(SERIALIZED_NAME_LANDING_PAGE_URL)
-  private URI landingPageUrl;
-
   public AdaptiveWriteAttributes() {
   }
-
-  public AdaptiveWriteAttributes layouts(List<LayoutsEnum> layouts) {
-    
-    this.layouts = layouts;
-    return this;
-  }
-
-  public AdaptiveWriteAttributes addLayoutsItem(LayoutsEnum layoutsItem) {
-    this.layouts.add(layoutsItem);
-    return this;
-  }
-
-   /**
-   * The Adaptive layouts that are enabled.  It can contain any of the following values: \&quot;Editorial\&quot;, “Montage“, \&quot;InBannerVideo\&quot;.
-   * @return layouts
-  **/
-  @javax.annotation.Nonnull
-
-  public List<LayoutsEnum> getLayouts() {
-    return layouts;
-  }
-
-
-  public void setLayouts(List<LayoutsEnum> layouts) {
-    this.layouts = layouts;
-  }
-
-
-  public AdaptiveWriteAttributes logoBase64String(String logoBase64String) {
-    
-    this.logoBase64String = logoBase64String;
-    return this;
-  }
-
-   /**
-   * Logo image as a base-64 encoded string
-   * @return logoBase64String
-  **/
-  @javax.annotation.Nonnull
-
-  public String getLogoBase64String() {
-    return logoBase64String;
-  }
-
-
-  public void setLogoBase64String(String logoBase64String) {
-    this.logoBase64String = logoBase64String;
-  }
-
-
-  public AdaptiveWriteAttributes headlineText(String headlineText) {
-    
-    this.headlineText = headlineText;
-    return this;
-  }
-
-   /**
-   * The headline text of the banner
-   * @return headlineText
-  **/
-  @javax.annotation.Nonnull
-
-  public String getHeadlineText() {
-    return headlineText;
-  }
-
-
-  public void setHeadlineText(String headlineText) {
-    this.headlineText = headlineText;
-  }
-
-
-  public AdaptiveWriteAttributes headlineFont(String headlineFont) {
-    
-    this.headlineFont = headlineFont;
-    return this;
-  }
-
-   /**
-   * Font of the headline  Valid supported font like \&quot;Arial\&quot;
-   * @return headlineFont
-  **/
-  @javax.annotation.Nonnull
-
-  public String getHeadlineFont() {
-    return headlineFont;
-  }
-
-
-  public void setHeadlineFont(String headlineFont) {
-    this.headlineFont = headlineFont;
-  }
-
-
-  public AdaptiveWriteAttributes descriptionText(String descriptionText) {
-    
-    this.descriptionText = descriptionText;
-    return this;
-  }
-
-   /**
-   * The description text of the banner
-   * @return descriptionText
-  **/
-  @javax.annotation.Nonnull
-
-  public String getDescriptionText() {
-    return descriptionText;
-  }
-
-
-  public void setDescriptionText(String descriptionText) {
-    this.descriptionText = descriptionText;
-  }
-
-
-  public AdaptiveWriteAttributes descriptionFont(String descriptionFont) {
-    
-    this.descriptionFont = descriptionFont;
-    return this;
-  }
-
-   /**
-   * Font of the description  Valid supported font like \&quot;Arial\&quot;
-   * @return descriptionFont
-  **/
-  @javax.annotation.Nonnull
-
-  public String getDescriptionFont() {
-    return descriptionFont;
-  }
-
-
-  public void setDescriptionFont(String descriptionFont) {
-    this.descriptionFont = descriptionFont;
-  }
-
 
   public AdaptiveWriteAttributes callsToAction(List<String> callsToAction) {
     
@@ -387,6 +250,116 @@ public class AdaptiveWriteAttributes {
   }
 
 
+  public AdaptiveWriteAttributes descriptionFont(String descriptionFont) {
+    
+    this.descriptionFont = descriptionFont;
+    return this;
+  }
+
+   /**
+   * Font of the description  Valid supported font like \&quot;Arial\&quot;
+   * @return descriptionFont
+  **/
+  @javax.annotation.Nonnull
+
+  public String getDescriptionFont() {
+    return descriptionFont;
+  }
+
+
+  public void setDescriptionFont(String descriptionFont) {
+    this.descriptionFont = descriptionFont;
+  }
+
+
+  public AdaptiveWriteAttributes descriptionText(String descriptionText) {
+    
+    this.descriptionText = descriptionText;
+    return this;
+  }
+
+   /**
+   * The description text of the banner
+   * @return descriptionText
+  **/
+  @javax.annotation.Nonnull
+
+  public String getDescriptionText() {
+    return descriptionText;
+  }
+
+
+  public void setDescriptionText(String descriptionText) {
+    this.descriptionText = descriptionText;
+  }
+
+
+  public AdaptiveWriteAttributes headlineFont(String headlineFont) {
+    
+    this.headlineFont = headlineFont;
+    return this;
+  }
+
+   /**
+   * Font of the headline  Valid supported font like \&quot;Arial\&quot;
+   * @return headlineFont
+  **/
+  @javax.annotation.Nonnull
+
+  public String getHeadlineFont() {
+    return headlineFont;
+  }
+
+
+  public void setHeadlineFont(String headlineFont) {
+    this.headlineFont = headlineFont;
+  }
+
+
+  public AdaptiveWriteAttributes headlineText(String headlineText) {
+    
+    this.headlineText = headlineText;
+    return this;
+  }
+
+   /**
+   * The headline text of the banner
+   * @return headlineText
+  **/
+  @javax.annotation.Nonnull
+
+  public String getHeadlineText() {
+    return headlineText;
+  }
+
+
+  public void setHeadlineText(String headlineText) {
+    this.headlineText = headlineText;
+  }
+
+
+  public AdaptiveWriteAttributes imageDisplay(ImageDisplayEnum imageDisplay) {
+    
+    this.imageDisplay = imageDisplay;
+    return this;
+  }
+
+   /**
+   * Value can be \&quot;ShowFullImage\&quot; or \&quot;ZoomOnImage\&quot;. Choose whether your image set should fit inside the allocated  space (\&quot;ShowFullImage\&quot;) or whether it should fill that space (\&quot;ZoomOnImage\&quot;). If you choose ZoomOnImage, there may be some  image cropping.
+   * @return imageDisplay
+  **/
+  @javax.annotation.Nullable
+
+  public ImageDisplayEnum getImageDisplay() {
+    return imageDisplay;
+  }
+
+
+  public void setImageDisplay(ImageDisplayEnum imageDisplay) {
+    this.imageDisplay = imageDisplay;
+  }
+
+
   public AdaptiveWriteAttributes imageSetsBase64(List<ImageSetBase64> imageSetsBase64) {
     
     this.imageSetsBase64 = imageSetsBase64;
@@ -417,25 +390,74 @@ public class AdaptiveWriteAttributes {
   }
 
 
-  public AdaptiveWriteAttributes imageDisplay(ImageDisplayEnum imageDisplay) {
+  public AdaptiveWriteAttributes landingPageUrl(URI landingPageUrl) {
     
-    this.imageDisplay = imageDisplay;
+    this.landingPageUrl = landingPageUrl;
     return this;
   }
 
    /**
-   * Value can be \&quot;ShowFullImage\&quot; or \&quot;ZoomOnImage\&quot;. Choose whether your image set should fit inside the allocated  space (\&quot;ShowFullImage\&quot;) or whether it should fill that space (\&quot;ZoomOnImage\&quot;). If you choose ZoomOnImage, there may be some  image cropping.
-   * @return imageDisplay
+   * Web redirection of the landing page url.
+   * @return landingPageUrl
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public ImageDisplayEnum getImageDisplay() {
-    return imageDisplay;
+  public URI getLandingPageUrl() {
+    return landingPageUrl;
   }
 
 
-  public void setImageDisplay(ImageDisplayEnum imageDisplay) {
-    this.imageDisplay = imageDisplay;
+  public void setLandingPageUrl(URI landingPageUrl) {
+    this.landingPageUrl = landingPageUrl;
+  }
+
+
+  public AdaptiveWriteAttributes layouts(List<LayoutsEnum> layouts) {
+    
+    this.layouts = layouts;
+    return this;
+  }
+
+  public AdaptiveWriteAttributes addLayoutsItem(LayoutsEnum layoutsItem) {
+    this.layouts.add(layoutsItem);
+    return this;
+  }
+
+   /**
+   * The Adaptive layouts that are enabled.  It can contain any of the following values: \&quot;Editorial\&quot;, “Montage“, \&quot;InBannerVideo\&quot;.
+   * @return layouts
+  **/
+  @javax.annotation.Nonnull
+
+  public List<LayoutsEnum> getLayouts() {
+    return layouts;
+  }
+
+
+  public void setLayouts(List<LayoutsEnum> layouts) {
+    this.layouts = layouts;
+  }
+
+
+  public AdaptiveWriteAttributes logoBase64String(String logoBase64String) {
+    
+    this.logoBase64String = logoBase64String;
+    return this;
+  }
+
+   /**
+   * Logo image as a base-64 encoded string
+   * @return logoBase64String
+  **/
+  @javax.annotation.Nonnull
+
+  public String getLogoBase64String() {
+    return logoBase64String;
+  }
+
+
+  public void setLogoBase64String(String logoBase64String) {
+    this.logoBase64String = logoBase64String;
   }
 
 
@@ -466,28 +488,6 @@ public class AdaptiveWriteAttributes {
 
   public void setVideoBase64Strings(List<String> videoBase64Strings) {
     this.videoBase64Strings = videoBase64Strings;
-  }
-
-
-  public AdaptiveWriteAttributes landingPageUrl(URI landingPageUrl) {
-    
-    this.landingPageUrl = landingPageUrl;
-    return this;
-  }
-
-   /**
-   * Web redirection of the landing page url.
-   * @return landingPageUrl
-  **/
-  @javax.annotation.Nonnull
-
-  public URI getLandingPageUrl() {
-    return landingPageUrl;
-  }
-
-
-  public void setLandingPageUrl(URI landingPageUrl) {
-    this.landingPageUrl = landingPageUrl;
   }
 
   /**
@@ -545,18 +545,18 @@ public class AdaptiveWriteAttributes {
       return false;
     }
     AdaptiveWriteAttributes adaptiveWriteAttributes = (AdaptiveWriteAttributes) o;
-    return Objects.equals(this.layouts, adaptiveWriteAttributes.layouts) &&
-        Objects.equals(this.logoBase64String, adaptiveWriteAttributes.logoBase64String) &&
-        Objects.equals(this.headlineText, adaptiveWriteAttributes.headlineText) &&
-        Objects.equals(this.headlineFont, adaptiveWriteAttributes.headlineFont) &&
-        Objects.equals(this.descriptionText, adaptiveWriteAttributes.descriptionText) &&
-        Objects.equals(this.descriptionFont, adaptiveWriteAttributes.descriptionFont) &&
-        Objects.equals(this.callsToAction, adaptiveWriteAttributes.callsToAction) &&
+    return Objects.equals(this.callsToAction, adaptiveWriteAttributes.callsToAction) &&
         Objects.equals(this.colors, adaptiveWriteAttributes.colors) &&
-        Objects.equals(this.imageSetsBase64, adaptiveWriteAttributes.imageSetsBase64) &&
+        Objects.equals(this.descriptionFont, adaptiveWriteAttributes.descriptionFont) &&
+        Objects.equals(this.descriptionText, adaptiveWriteAttributes.descriptionText) &&
+        Objects.equals(this.headlineFont, adaptiveWriteAttributes.headlineFont) &&
+        Objects.equals(this.headlineText, adaptiveWriteAttributes.headlineText) &&
         Objects.equals(this.imageDisplay, adaptiveWriteAttributes.imageDisplay) &&
-        Objects.equals(this.videoBase64Strings, adaptiveWriteAttributes.videoBase64Strings) &&
-        Objects.equals(this.landingPageUrl, adaptiveWriteAttributes.landingPageUrl)&&
+        Objects.equals(this.imageSetsBase64, adaptiveWriteAttributes.imageSetsBase64) &&
+        Objects.equals(this.landingPageUrl, adaptiveWriteAttributes.landingPageUrl) &&
+        Objects.equals(this.layouts, adaptiveWriteAttributes.layouts) &&
+        Objects.equals(this.logoBase64String, adaptiveWriteAttributes.logoBase64String) &&
+        Objects.equals(this.videoBase64Strings, adaptiveWriteAttributes.videoBase64Strings)&&
         Objects.equals(this.additionalProperties, adaptiveWriteAttributes.additionalProperties);
   }
 
@@ -566,7 +566,7 @@ public class AdaptiveWriteAttributes {
 
   @Override
   public int hashCode() {
-    return Objects.hash(layouts, logoBase64String, headlineText, headlineFont, descriptionText, descriptionFont, callsToAction, colors, imageSetsBase64, imageDisplay, videoBase64Strings, landingPageUrl, additionalProperties);
+    return Objects.hash(callsToAction, colors, descriptionFont, descriptionText, headlineFont, headlineText, imageDisplay, imageSetsBase64, landingPageUrl, layouts, logoBase64String, videoBase64Strings, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -580,18 +580,18 @@ public class AdaptiveWriteAttributes {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdaptiveWriteAttributes {\n");
-    sb.append("    layouts: ").append(toIndentedString(layouts)).append("\n");
-    sb.append("    logoBase64String: ").append(toIndentedString(logoBase64String)).append("\n");
-    sb.append("    headlineText: ").append(toIndentedString(headlineText)).append("\n");
-    sb.append("    headlineFont: ").append(toIndentedString(headlineFont)).append("\n");
-    sb.append("    descriptionText: ").append(toIndentedString(descriptionText)).append("\n");
-    sb.append("    descriptionFont: ").append(toIndentedString(descriptionFont)).append("\n");
     sb.append("    callsToAction: ").append(toIndentedString(callsToAction)).append("\n");
     sb.append("    colors: ").append(toIndentedString(colors)).append("\n");
-    sb.append("    imageSetsBase64: ").append(toIndentedString(imageSetsBase64)).append("\n");
+    sb.append("    descriptionFont: ").append(toIndentedString(descriptionFont)).append("\n");
+    sb.append("    descriptionText: ").append(toIndentedString(descriptionText)).append("\n");
+    sb.append("    headlineFont: ").append(toIndentedString(headlineFont)).append("\n");
+    sb.append("    headlineText: ").append(toIndentedString(headlineText)).append("\n");
     sb.append("    imageDisplay: ").append(toIndentedString(imageDisplay)).append("\n");
-    sb.append("    videoBase64Strings: ").append(toIndentedString(videoBase64Strings)).append("\n");
+    sb.append("    imageSetsBase64: ").append(toIndentedString(imageSetsBase64)).append("\n");
     sb.append("    landingPageUrl: ").append(toIndentedString(landingPageUrl)).append("\n");
+    sb.append("    layouts: ").append(toIndentedString(layouts)).append("\n");
+    sb.append("    logoBase64String: ").append(toIndentedString(logoBase64String)).append("\n");
+    sb.append("    videoBase64Strings: ").append(toIndentedString(videoBase64Strings)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -615,30 +615,30 @@ public class AdaptiveWriteAttributes {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("layouts");
-    openapiFields.add("logoBase64String");
-    openapiFields.add("headlineText");
-    openapiFields.add("headlineFont");
-    openapiFields.add("descriptionText");
-    openapiFields.add("descriptionFont");
     openapiFields.add("callsToAction");
     openapiFields.add("colors");
-    openapiFields.add("imageSetsBase64");
+    openapiFields.add("descriptionFont");
+    openapiFields.add("descriptionText");
+    openapiFields.add("headlineFont");
+    openapiFields.add("headlineText");
     openapiFields.add("imageDisplay");
-    openapiFields.add("videoBase64Strings");
+    openapiFields.add("imageSetsBase64");
     openapiFields.add("landingPageUrl");
+    openapiFields.add("layouts");
+    openapiFields.add("logoBase64String");
+    openapiFields.add("videoBase64Strings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("layouts");
-    openapiRequiredFields.add("logoBase64String");
-    openapiRequiredFields.add("headlineText");
-    openapiRequiredFields.add("headlineFont");
-    openapiRequiredFields.add("descriptionText");
-    openapiRequiredFields.add("descriptionFont");
     openapiRequiredFields.add("callsToAction");
     openapiRequiredFields.add("colors");
+    openapiRequiredFields.add("descriptionFont");
+    openapiRequiredFields.add("descriptionText");
+    openapiRequiredFields.add("headlineFont");
+    openapiRequiredFields.add("headlineText");
     openapiRequiredFields.add("landingPageUrl");
+    openapiRequiredFields.add("layouts");
+    openapiRequiredFields.add("logoBase64String");
   }
 
  /**
@@ -661,27 +661,6 @@ public class AdaptiveWriteAttributes {
         }
       }
       // ensure the required json array is present
-      if (jsonObj.get("layouts") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("layouts").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `layouts` to be an array in the JSON string but got `%s`", jsonObj.get("layouts").toString()));
-      }
-      if (!jsonObj.get("logoBase64String").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `logoBase64String` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logoBase64String").toString()));
-      }
-      if (!jsonObj.get("headlineText").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `headlineText` to be a primitive type in the JSON string but got `%s`", jsonObj.get("headlineText").toString()));
-      }
-      if (!jsonObj.get("headlineFont").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `headlineFont` to be a primitive type in the JSON string but got `%s`", jsonObj.get("headlineFont").toString()));
-      }
-      if (!jsonObj.get("descriptionText").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `descriptionText` to be a primitive type in the JSON string but got `%s`", jsonObj.get("descriptionText").toString()));
-      }
-      if (!jsonObj.get("descriptionFont").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `descriptionFont` to be a primitive type in the JSON string but got `%s`", jsonObj.get("descriptionFont").toString()));
-      }
-      // ensure the required json array is present
       if (jsonObj.get("callsToAction") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("callsToAction").isJsonArray()) {
@@ -689,6 +668,21 @@ public class AdaptiveWriteAttributes {
       }
       // validate the required field `colors`
       AdaptiveColors.validateJsonObject(jsonObj.getAsJsonObject("colors"));
+      if (!jsonObj.get("descriptionFont").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `descriptionFont` to be a primitive type in the JSON string but got `%s`", jsonObj.get("descriptionFont").toString()));
+      }
+      if (!jsonObj.get("descriptionText").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `descriptionText` to be a primitive type in the JSON string but got `%s`", jsonObj.get("descriptionText").toString()));
+      }
+      if (!jsonObj.get("headlineFont").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `headlineFont` to be a primitive type in the JSON string but got `%s`", jsonObj.get("headlineFont").toString()));
+      }
+      if (!jsonObj.get("headlineText").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `headlineText` to be a primitive type in the JSON string but got `%s`", jsonObj.get("headlineText").toString()));
+      }
+      if ((jsonObj.get("imageDisplay") != null && !jsonObj.get("imageDisplay").isJsonNull()) && !jsonObj.get("imageDisplay").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `imageDisplay` to be a primitive type in the JSON string but got `%s`", jsonObj.get("imageDisplay").toString()));
+      }
       if (jsonObj.get("imageSetsBase64") != null && !jsonObj.get("imageSetsBase64").isJsonNull()) {
         JsonArray jsonArrayimageSetsBase64 = jsonObj.getAsJsonArray("imageSetsBase64");
         if (jsonArrayimageSetsBase64 != null) {
@@ -703,15 +697,21 @@ public class AdaptiveWriteAttributes {
           };
         }
       }
-      if ((jsonObj.get("imageDisplay") != null && !jsonObj.get("imageDisplay").isJsonNull()) && !jsonObj.get("imageDisplay").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `imageDisplay` to be a primitive type in the JSON string but got `%s`", jsonObj.get("imageDisplay").toString()));
+      if (!jsonObj.get("landingPageUrl").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `landingPageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("landingPageUrl").toString()));
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("layouts") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("layouts").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `layouts` to be an array in the JSON string but got `%s`", jsonObj.get("layouts").toString()));
+      }
+      if (!jsonObj.get("logoBase64String").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `logoBase64String` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logoBase64String").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("videoBase64Strings") != null && !jsonObj.get("videoBase64Strings").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `videoBase64Strings` to be an array in the JSON string but got `%s`", jsonObj.get("videoBase64Strings").toString()));
-      }
-      if (!jsonObj.get("landingPageUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `landingPageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("landingPageUrl").toString()));
       }
   }
 

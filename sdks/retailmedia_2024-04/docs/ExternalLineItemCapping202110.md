@@ -8,8 +8,8 @@ Frequency capping for a preferred line item
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | [**TypeEnum**](#TypeEnum) |  |  |
 |**count** | **Integer** |  |  |
+|**type** | [**TypeEnum**](#TypeEnum) |  |  |
 
 
 

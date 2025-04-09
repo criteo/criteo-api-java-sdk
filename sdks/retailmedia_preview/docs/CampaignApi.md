@@ -226,8 +226,8 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | Promoted products appended to the line item |  -  |
 | **200** | Promoted products appended to the line item with warnings |  -  |
+| **204** | Promoted products appended to the line item |  -  |
 | **400** | Invalid request body |  -  |
 | **403** | Invalid external line item ID |  -  |
 
@@ -506,7 +506,7 @@ public class Example {
 
 ## fetchPromotedProducts
 
-> PromotedProductResourceCollectionOutcome fetchPromotedProducts(lineItemId, offset, limit, fields)
+> PromotedProductResourceCollectionOutcome fetchPromotedProducts(lineItemId, fields, limit, offset)
 
 
 
@@ -552,11 +552,11 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String lineItemId = "lineItemId_example"; // String | ID of the line item.
-        Integer offset = 56; // Integer | Offset of the first item to fetch. Defaults to zero.
-        Integer limit = 56; // Integer | Maximum page size to fetch. Defaults to 500.
         String fields = "fields_example"; // String | A comma separated list of attribute names from the response model to compute and return.              Valid values are `status` and `bidOverride` in any order. Defaults to `status`.
+        Integer limit = 56; // Integer | Maximum page size to fetch. Defaults to 500.
+        Integer offset = 56; // Integer | Offset of the first item to fetch. Defaults to zero.
         try {
-            PromotedProductResourceCollectionOutcome result = apiInstance.fetchPromotedProducts(lineItemId, offset, limit, fields);
+            PromotedProductResourceCollectionOutcome result = apiInstance.fetchPromotedProducts(lineItemId, fields, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#fetchPromotedProducts");
@@ -575,9 +575,9 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **lineItemId** | **String**| ID of the line item. | |
-| **offset** | **Integer**| Offset of the first item to fetch. Defaults to zero. | [optional] |
-| **limit** | **Integer**| Maximum page size to fetch. Defaults to 500. | [optional] |
 | **fields** | **String**| A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. | [optional] |
+| **limit** | **Integer**| Maximum page size to fetch. Defaults to 500. | [optional] |
+| **offset** | **Integer**| Offset of the first item to fetch. Defaults to zero. | [optional] |
 
 ### Return type
 
@@ -782,7 +782,7 @@ public class Example {
 
 ## getApiExternalV2CatalogStatusByCatalogId
 
-> CatalogStatusV2Response getApiExternalV2CatalogStatusByCatalogId(catalogId)
+> EntityResourceOutcomeOfCatalogStatusV2 getApiExternalV2CatalogStatusByCatalogId(catalogId)
 
 
 
@@ -829,7 +829,7 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String catalogId = "catalogId_example"; // String | A catalog ID returned from an account catalog request.
         try {
-            CatalogStatusV2Response result = apiInstance.getApiExternalV2CatalogStatusByCatalogId(catalogId);
+            EntityResourceOutcomeOfCatalogStatusV2 result = apiInstance.getApiExternalV2CatalogStatusByCatalogId(catalogId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getApiExternalV2CatalogStatusByCatalogId");
@@ -851,7 +851,7 @@ public class Example {
 
 ### Return type
 
-[**CatalogStatusV2Response**](CatalogStatusV2Response.md)
+[**EntityResourceOutcomeOfCatalogStatusV2**](EntityResourceOutcomeOfCatalogStatusV2.md)
 
 ### Authorization
 
@@ -867,11 +867,13 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Catalog request found. |  -  |
+| **400** | Bad Request |  -  |
+| **403** | Forbidden |  -  |
 
 
 ## getApiV1ExternalRetailerBrandsByRetailerId
 
-> BrandPreviewListResponse getApiV1ExternalRetailerBrandsByRetailerId(retailerId, skuStockTypeFilter, brandType)
+> BrandPreviewListResponse getApiV1ExternalRetailerBrandsByRetailerId(retailerId, brandType, skuStockTypeFilter)
 
 
 
@@ -917,10 +919,10 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Integer retailerId = 56; // Integer | The retailer id for which brands should be fetched.
-        String skuStockTypeFilter = "first-party"; // String | Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party
         String brandType = "all"; // String |  Filter to narrow down brands [all|uc|retailer]. Defaults to uc
+        String skuStockTypeFilter = "first-party"; // String | Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party
         try {
-            BrandPreviewListResponse result = apiInstance.getApiV1ExternalRetailerBrandsByRetailerId(retailerId, skuStockTypeFilter, brandType);
+            BrandPreviewListResponse result = apiInstance.getApiV1ExternalRetailerBrandsByRetailerId(retailerId, brandType, skuStockTypeFilter);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#getApiV1ExternalRetailerBrandsByRetailerId");
@@ -939,8 +941,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **retailerId** | **Integer**| The retailer id for which brands should be fetched. | |
-| **skuStockTypeFilter** | **String**| Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party | [optional] [enum: first-party, third-party, first-and-third-party] |
 | **brandType** | **String**|  Filter to narrow down brands [all|uc|retailer]. Defaults to uc | [optional] [enum: all, uc, retailer] |
+| **skuStockTypeFilter** | **String**| Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party | [optional] [enum: first-party, third-party, first-and-third-party] |
 
 ### Return type
 
@@ -1783,7 +1785,7 @@ public class Example {
 
 ## inReviewReportV1
 
-> EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata inReviewReportV1(accountId, offset, limit)
+> EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata inReviewReportV1(accountId, limit, offset)
 
 
 
@@ -1829,10 +1831,10 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         Long accountId = 56L; // Long | The account to generate a report for
-        Integer offset = 0; // Integer | Offset for pagination
         Integer limit = 25; // Integer | Number of items per page
+        Integer offset = 0; // Integer | Offset for pagination
         try {
-            EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata result = apiInstance.inReviewReportV1(accountId, offset, limit);
+            EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata result = apiInstance.inReviewReportV1(accountId, limit, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#inReviewReportV1");
@@ -1851,8 +1853,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **Long**| The account to generate a report for | |
-| **offset** | **Integer**| Offset for pagination | [optional] [default to 0] |
 | **limit** | **Integer**| Number of items per page | [optional] [default to 25] |
+| **offset** | **Integer**| Offset for pagination | [optional] [default to 0] |
 
 ### Return type
 
@@ -2151,7 +2153,7 @@ public class Example {
 
 ## postApiExternalV2AccountBrandCatalogExportByAccountId
 
-> CatalogStatusV2Response postApiExternalV2AccountBrandCatalogExportByAccountId(accountId, jsonApiRequestOfBrandCatalogRequestV2)
+> EntityResourceOutcomeOfCatalogStatusV2 postApiExternalV2AccountBrandCatalogExportByAccountId(accountId, valueResourceInputOfBrandCatalogRequestV2)
 
 
 
@@ -2197,9 +2199,9 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String accountId = "accountId_example"; // String | The account to request the catalog for.
-        JsonApiRequestOfBrandCatalogRequestV2 jsonApiRequestOfBrandCatalogRequestV2 = new JsonApiRequestOfBrandCatalogRequestV2(); // JsonApiRequestOfBrandCatalogRequestV2 | 
+        ValueResourceInputOfBrandCatalogRequestV2 valueResourceInputOfBrandCatalogRequestV2 = new ValueResourceInputOfBrandCatalogRequestV2(); // ValueResourceInputOfBrandCatalogRequestV2 | 
         try {
-            CatalogStatusV2Response result = apiInstance.postApiExternalV2AccountBrandCatalogExportByAccountId(accountId, jsonApiRequestOfBrandCatalogRequestV2);
+            EntityResourceOutcomeOfCatalogStatusV2 result = apiInstance.postApiExternalV2AccountBrandCatalogExportByAccountId(accountId, valueResourceInputOfBrandCatalogRequestV2);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#postApiExternalV2AccountBrandCatalogExportByAccountId");
@@ -2218,11 +2220,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| The account to request the catalog for. | |
-| **jsonApiRequestOfBrandCatalogRequestV2** | [**JsonApiRequestOfBrandCatalogRequestV2**](JsonApiRequestOfBrandCatalogRequestV2.md)|  | [optional] |
+| **valueResourceInputOfBrandCatalogRequestV2** | [**ValueResourceInputOfBrandCatalogRequestV2**](ValueResourceInputOfBrandCatalogRequestV2.md)|  | [optional] |
 
 ### Return type
 
-[**CatalogStatusV2Response**](CatalogStatusV2Response.md)
+[**EntityResourceOutcomeOfCatalogStatusV2**](EntityResourceOutcomeOfCatalogStatusV2.md)
 
 ### Authorization
 
@@ -2238,11 +2240,13 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Catalog request successfully created |  -  |
+| **400** | Bad Request |  -  |
+| **403** | Forbidden |  -  |
 
 
 ## postApiExternalV2AccountSellerCatalogExportByAccountId
 
-> CatalogStatusV2Response postApiExternalV2AccountSellerCatalogExportByAccountId(accountId, jsonApiRequestOfSellerCatalogRequestV2)
+> EntityResourceOutcomeOfCatalogStatusV2 postApiExternalV2AccountSellerCatalogExportByAccountId(accountId, valueResourceInputOfSellerCatalogRequestV2)
 
 
 
@@ -2288,9 +2292,9 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String accountId = "accountId_example"; // String | The account to request the catalog for.
-        JsonApiRequestOfSellerCatalogRequestV2 jsonApiRequestOfSellerCatalogRequestV2 = new JsonApiRequestOfSellerCatalogRequestV2(); // JsonApiRequestOfSellerCatalogRequestV2 | 
+        ValueResourceInputOfSellerCatalogRequestV2 valueResourceInputOfSellerCatalogRequestV2 = new ValueResourceInputOfSellerCatalogRequestV2(); // ValueResourceInputOfSellerCatalogRequestV2 | 
         try {
-            CatalogStatusV2Response result = apiInstance.postApiExternalV2AccountSellerCatalogExportByAccountId(accountId, jsonApiRequestOfSellerCatalogRequestV2);
+            EntityResourceOutcomeOfCatalogStatusV2 result = apiInstance.postApiExternalV2AccountSellerCatalogExportByAccountId(accountId, valueResourceInputOfSellerCatalogRequestV2);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#postApiExternalV2AccountSellerCatalogExportByAccountId");
@@ -2309,11 +2313,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| The account to request the catalog for. | |
-| **jsonApiRequestOfSellerCatalogRequestV2** | [**JsonApiRequestOfSellerCatalogRequestV2**](JsonApiRequestOfSellerCatalogRequestV2.md)|  | [optional] |
+| **valueResourceInputOfSellerCatalogRequestV2** | [**ValueResourceInputOfSellerCatalogRequestV2**](ValueResourceInputOfSellerCatalogRequestV2.md)|  | [optional] |
 
 ### Return type
 
-[**CatalogStatusV2Response**](CatalogStatusV2Response.md)
+[**EntityResourceOutcomeOfCatalogStatusV2**](EntityResourceOutcomeOfCatalogStatusV2.md)
 
 ### Authorization
 
@@ -2330,6 +2334,7 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Catalog request successfully created |  -  |
 | **400** | Bad Request |  -  |
+| **403** | Forbidden |  -  |
 
 
 ## postApiV1ExternalCatalogsSkuRetrieval
@@ -2520,7 +2525,7 @@ public class Example {
 
 ## postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId
 
-> SkuSlimDataPreviewListResponse postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId(accountId, retailerId, offset, limit, skuSearchRequestSlimPreviewRequest)
+> SkuSlimDataPreviewListResponse postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId(accountId, retailerId, limit, offset, skuSearchRequestSlimPreviewRequest)
 
 
 
@@ -2567,11 +2572,11 @@ public class Example {
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String accountId = "accountId_example"; // String | The account for which skus should be searched for.
         String retailerId = "retailerId_example"; // String | The client id/retailer id for which skus should be searched for.
-        Integer offset = 0; // Integer | The start position in the overall list of matches. Must be zero or greater.
         Integer limit = 100; // Integer | The maximum number of results to return with each call. Must be greater than zero.
+        Integer offset = 0; // Integer | The start position in the overall list of matches. Must be zero or greater.
         SkuSearchRequestSlimPreviewRequest skuSearchRequestSlimPreviewRequest = new SkuSearchRequestSlimPreviewRequest(); // SkuSearchRequestSlimPreviewRequest | 
         try {
-            SkuSlimDataPreviewListResponse result = apiInstance.postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId(accountId, retailerId, offset, limit, skuSearchRequestSlimPreviewRequest);
+            SkuSlimDataPreviewListResponse result = apiInstance.postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId(accountId, retailerId, limit, offset, skuSearchRequestSlimPreviewRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId");
@@ -2591,8 +2596,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **accountId** | **String**| The account for which skus should be searched for. | |
 | **retailerId** | **String**| The client id/retailer id for which skus should be searched for. | |
-| **offset** | **Integer**| The start position in the overall list of matches. Must be zero or greater. | [optional] [default to 0] |
 | **limit** | **Integer**| The maximum number of results to return with each call. Must be greater than zero. | [optional] [default to 100] |
+| **offset** | **Integer**| The start position in the overall list of matches. Must be zero or greater. | [optional] [default to 0] |
 | **skuSearchRequestSlimPreviewRequest** | [**SkuSearchRequestSlimPreviewRequest**](SkuSearchRequestSlimPreviewRequest.md)|  | [optional] |
 
 ### Return type
@@ -2617,7 +2622,7 @@ public class Example {
 
 ## postApiV1ExternalCatalogsSkuSearchRetailerByRetailerId
 
-> SkuSlimDataV2ListResponse postApiV1ExternalCatalogsSkuSearchRetailerByRetailerId(retailerId, xOriginAccount, offset, limit, skuSearchRequestSlimV2PreviewRequest)
+> SkuSlimDataV2ListResponse postApiV1ExternalCatalogsSkuSearchRetailerByRetailerId(retailerId, limit, offset, xOriginAccount, skuSearchRequestSlimV2PreviewRequest)
 
 
 
@@ -2663,12 +2668,12 @@ public class Example {
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
         String retailerId = "retailerId_example"; // String | The client id/retailer id for which skus should be searched for.
-        String xOriginAccount = "xOriginAccount_example"; // String | The account id of the initiator of the call.
-        Integer offset = 0; // Integer | The start position in the overall list of matches. Must be zero or greater.
         Integer limit = 100; // Integer | The maximum number of results to return with each call. Must be greater than zero and less than 1500. 10,000 records deep is the max limit.
+        Integer offset = 0; // Integer | The start position in the overall list of matches. Must be zero or greater.
+        String xOriginAccount = "xOriginAccount_example"; // String | The account id of the initiator of the call.
         SkuSearchRequestSlimV2PreviewRequest skuSearchRequestSlimV2PreviewRequest = new SkuSearchRequestSlimV2PreviewRequest(); // SkuSearchRequestSlimV2PreviewRequest | 
         try {
-            SkuSlimDataV2ListResponse result = apiInstance.postApiV1ExternalCatalogsSkuSearchRetailerByRetailerId(retailerId, xOriginAccount, offset, limit, skuSearchRequestSlimV2PreviewRequest);
+            SkuSlimDataV2ListResponse result = apiInstance.postApiV1ExternalCatalogsSkuSearchRetailerByRetailerId(retailerId, limit, offset, xOriginAccount, skuSearchRequestSlimV2PreviewRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#postApiV1ExternalCatalogsSkuSearchRetailerByRetailerId");
@@ -2687,9 +2692,9 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **retailerId** | **String**| The client id/retailer id for which skus should be searched for. | |
-| **xOriginAccount** | **String**| The account id of the initiator of the call. | [optional] |
-| **offset** | **Integer**| The start position in the overall list of matches. Must be zero or greater. | [optional] [default to 0] |
 | **limit** | **Integer**| The maximum number of results to return with each call. Must be greater than zero and less than 1500. 10,000 records deep is the max limit. | [optional] [default to 100] |
+| **offset** | **Integer**| The start position in the overall list of matches. Must be zero or greater. | [optional] [default to 0] |
+| **xOriginAccount** | **String**| The account id of the initiator of the call. | [optional] |
 | **skuSearchRequestSlimV2PreviewRequest** | [**SkuSearchRequestSlimV2PreviewRequest**](SkuSearchRequestSlimV2PreviewRequest.md)|  | [optional] |
 
 ### Return type
@@ -3266,7 +3271,7 @@ public class Example {
 
 ## searchBrandsByNameAsyncV1
 
-> EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata searchBrandsByNameAsyncV1(offset, limit, valueResourceInputBrandIdSearchRequest)
+> EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata searchBrandsByNameAsyncV1(limit, offset, valueResourceInputBrandIdSearchRequest)
 
 
 
@@ -3311,11 +3316,11 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer offset = 0; // Integer | offset of paginated results
         Integer limit = 25; // Integer | the number of brands to return
+        Integer offset = 0; // Integer | offset of paginated results
         ValueResourceInputBrandIdSearchRequest valueResourceInputBrandIdSearchRequest = new ValueResourceInputBrandIdSearchRequest(); // ValueResourceInputBrandIdSearchRequest | BrandIdSearchRequest which contains the request parameters
         try {
-            EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata result = apiInstance.searchBrandsByNameAsyncV1(offset, limit, valueResourceInputBrandIdSearchRequest);
+            EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata result = apiInstance.searchBrandsByNameAsyncV1(limit, offset, valueResourceInputBrandIdSearchRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CampaignApi#searchBrandsByNameAsyncV1");
@@ -3333,8 +3338,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **offset** | **Integer**| offset of paginated results | [optional] [default to 0] |
 | **limit** | **Integer**| the number of brands to return | [optional] [default to 25] |
+| **offset** | **Integer**| offset of paginated results | [optional] [default to 0] |
 | **valueResourceInputBrandIdSearchRequest** | [**ValueResourceInputBrandIdSearchRequest**](ValueResourceInputBrandIdSearchRequest.md)| BrandIdSearchRequest which contains the request parameters | [optional] |
 
 ### Return type

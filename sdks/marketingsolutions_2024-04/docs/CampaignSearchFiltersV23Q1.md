@@ -8,8 +8,8 @@ filters on campaign
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**campaignIds** | **List&lt;String&gt;** |  |  [optional] |
 |**advertiserIds** | **List&lt;String&gt;** |  |  [optional] |
+|**campaignIds** | **List&lt;String&gt;** |  |  [optional] |
 
 
 

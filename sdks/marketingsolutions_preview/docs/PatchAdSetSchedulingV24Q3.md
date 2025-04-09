@@ -8,8 +8,8 @@ ad set schedule patch model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**startDate** | [**NillableDateTime**](NillableDateTime.md) |  |  [optional] |
 |**endDate** | [**NillableDateTime**](NillableDateTime.md) |  |  [optional] |
+|**startDate** | [**NillableDateTime**](NillableDateTime.md) |  |  [optional] |
 
 
 

@@ -8,8 +8,8 @@ A request for a catalog under the specified format. Currently \"json-newline\" i
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**format** | [**FormatEnum**](#FormatEnum) |  |  [optional] |
 |**brandIdFilter** | **List&lt;String&gt;** |  |  [optional] |
+|**format** | [**FormatEnum**](#FormatEnum) |  |  [optional] |
 
 
 

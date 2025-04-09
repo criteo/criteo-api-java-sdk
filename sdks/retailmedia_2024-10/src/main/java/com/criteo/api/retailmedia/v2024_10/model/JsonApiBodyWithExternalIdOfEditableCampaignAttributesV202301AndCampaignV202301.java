@@ -49,6 +49,10 @@ import com.criteo.api.retailmedia.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class JsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301 {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private EditableCampaignAttributesV202301 attributes;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -57,12 +61,30 @@ public class JsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCamp
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private EditableCampaignAttributesV202301 attributes;
-
   public JsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301() {
   }
+
+  public JsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301 attributes(EditableCampaignAttributesV202301 attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+
+  public EditableCampaignAttributesV202301 getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(EditableCampaignAttributesV202301 attributes) {
+    this.attributes = attributes;
+  }
+
 
   public JsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301 id(String id) {
     
@@ -105,28 +127,6 @@ public class JsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCamp
 
   public void setType(String type) {
     this.type = type;
-  }
-
-
-  public JsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301 attributes(EditableCampaignAttributesV202301 attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @javax.annotation.Nullable
-
-  public EditableCampaignAttributesV202301 getAttributes() {
-    return attributes;
-  }
-
-
-  public void setAttributes(EditableCampaignAttributesV202301 attributes) {
-    this.attributes = attributes;
   }
 
   /**
@@ -184,24 +184,24 @@ public class JsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCamp
       return false;
     }
     JsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301 jsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301 = (JsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301) o;
-    return Objects.equals(this.id, jsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301.id) &&
-        Objects.equals(this.type, jsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301.type) &&
-        Objects.equals(this.attributes, jsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301.attributes)&&
+    return Objects.equals(this.attributes, jsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301.attributes) &&
+        Objects.equals(this.id, jsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301.id) &&
+        Objects.equals(this.type, jsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301.type)&&
         Objects.equals(this.additionalProperties, jsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, attributes, additionalProperties);
+    return Objects.hash(attributes, id, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301 {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -225,9 +225,9 @@ public class JsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCamp
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("attributes");
     openapiFields.add("id");
     openapiFields.add("type");
-    openapiFields.add("attributes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -254,15 +254,15 @@ public class JsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCamp
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      // validate the optional field `attributes`
+      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
+        EditableCampaignAttributesV202301.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
       if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        EditableCampaignAttributesV202301.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
   }
 

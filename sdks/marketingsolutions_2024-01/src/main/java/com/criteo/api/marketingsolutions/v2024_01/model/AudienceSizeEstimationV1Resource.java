@@ -50,38 +50,16 @@ import com.criteo.api.marketingsolutions.v2024_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AudienceSizeEstimationV1Resource {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
-
   public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
   private AudienceSizeEstimationV1 attributes;
 
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
   public AudienceSizeEstimationV1Resource() {
   }
-
-  public AudienceSizeEstimationV1Resource type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Get type
-   * @return type
-  **/
-  @javax.annotation.Nullable
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
 
   public AudienceSizeEstimationV1Resource attributes(AudienceSizeEstimationV1 attributes) {
     
@@ -102,6 +80,28 @@ public class AudienceSizeEstimationV1Resource {
 
   public void setAttributes(AudienceSizeEstimationV1 attributes) {
     this.attributes = attributes;
+  }
+
+
+  public AudienceSizeEstimationV1Resource type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   /**
@@ -159,8 +159,8 @@ public class AudienceSizeEstimationV1Resource {
       return false;
     }
     AudienceSizeEstimationV1Resource audienceSizeEstimationV1Resource = (AudienceSizeEstimationV1Resource) o;
-    return Objects.equals(this.type, audienceSizeEstimationV1Resource.type) &&
-        Objects.equals(this.attributes, audienceSizeEstimationV1Resource.attributes)&&
+    return Objects.equals(this.attributes, audienceSizeEstimationV1Resource.attributes) &&
+        Objects.equals(this.type, audienceSizeEstimationV1Resource.type)&&
         Objects.equals(this.additionalProperties, audienceSizeEstimationV1Resource.additionalProperties);
   }
 
@@ -170,7 +170,7 @@ public class AudienceSizeEstimationV1Resource {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, attributes, additionalProperties);
+    return Objects.hash(attributes, type, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -184,8 +184,8 @@ public class AudienceSizeEstimationV1Resource {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceSizeEstimationV1Resource {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -209,8 +209,8 @@ public class AudienceSizeEstimationV1Resource {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
     openapiFields.add("attributes");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -228,12 +228,12 @@ public class AudienceSizeEstimationV1Resource {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AudienceSizeEstimationV1Resource is not found in the empty JSON string", AudienceSizeEstimationV1Resource.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
         AudienceSizeEstimationV1.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

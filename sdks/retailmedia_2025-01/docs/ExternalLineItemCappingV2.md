@@ -8,8 +8,8 @@ Frequency Capping for a Preferred Line Item
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | [**TypeEnum**](#TypeEnum) | Line Item Capping Type Enum |  |
 |**count** | **Integer** |  |  |
+|**type** | [**TypeEnum**](#TypeEnum) | Line Item Capping Type Enum |  |
 
 
 

@@ -8,8 +8,8 @@ The attributes specific to Image creatives
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**urls** | **List&lt;String&gt;** | Array of images uploaded on demostatic.criteo.com when deploying and then static.criteo.net |  [optional] |
 |**landingPageUrl** | **String** | Web redirection of the landing page url |  [optional] |
+|**urls** | **List&lt;String&gt;** | Array of images uploaded on demostatic.criteo.com when deploying and then static.criteo.net |  [optional] |
 
 
 

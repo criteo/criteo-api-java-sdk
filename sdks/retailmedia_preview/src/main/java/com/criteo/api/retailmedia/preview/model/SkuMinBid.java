@@ -48,38 +48,16 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SkuMinBid {
-  public static final String SERIALIZED_NAME_SKU_ID = "skuId";
-  @SerializedName(SERIALIZED_NAME_SKU_ID)
-  private String skuId;
-
   public static final String SERIALIZED_NAME_MIN_BID = "minBid";
   @SerializedName(SERIALIZED_NAME_MIN_BID)
   private Double minBid;
 
+  public static final String SERIALIZED_NAME_SKU_ID = "skuId";
+  @SerializedName(SERIALIZED_NAME_SKU_ID)
+  private String skuId;
+
   public SkuMinBid() {
   }
-
-  public SkuMinBid skuId(String skuId) {
-    
-    this.skuId = skuId;
-    return this;
-  }
-
-   /**
-   * Sku id.
-   * @return skuId
-  **/
-  @javax.annotation.Nonnull
-
-  public String getSkuId() {
-    return skuId;
-  }
-
-
-  public void setSkuId(String skuId) {
-    this.skuId = skuId;
-  }
-
 
   public SkuMinBid minBid(Double minBid) {
     
@@ -103,6 +81,28 @@ public class SkuMinBid {
   }
 
 
+  public SkuMinBid skuId(String skuId) {
+    
+    this.skuId = skuId;
+    return this;
+  }
+
+   /**
+   * Sku id.
+   * @return skuId
+  **/
+  @javax.annotation.Nonnull
+
+  public String getSkuId() {
+    return skuId;
+  }
+
+
+  public void setSkuId(String skuId) {
+    this.skuId = skuId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -113,21 +113,21 @@ public class SkuMinBid {
       return false;
     }
     SkuMinBid skuMinBid = (SkuMinBid) o;
-    return Objects.equals(this.skuId, skuMinBid.skuId) &&
-        Objects.equals(this.minBid, skuMinBid.minBid);
+    return Objects.equals(this.minBid, skuMinBid.minBid) &&
+        Objects.equals(this.skuId, skuMinBid.skuId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(skuId, minBid);
+    return Objects.hash(minBid, skuId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SkuMinBid {\n");
-    sb.append("    skuId: ").append(toIndentedString(skuId)).append("\n");
     sb.append("    minBid: ").append(toIndentedString(minBid)).append("\n");
+    sb.append("    skuId: ").append(toIndentedString(skuId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -150,13 +150,13 @@ public class SkuMinBid {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("skuId");
     openapiFields.add("minBid");
+    openapiFields.add("skuId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("skuId");
     openapiRequiredFields.add("minBid");
+    openapiRequiredFields.add("skuId");
   }
 
  /**

@@ -51,17 +51,13 @@ import com.criteo.api.marketingsolutions.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CampaignV23Q1 {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
   public static final String SERIALIZED_NAME_ADVERTISER_ID = "advertiserId";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_ID)
   private String advertiserId;
 
-  public static final String SERIALIZED_NAME_SPEND_LIMIT = "spendLimit";
-  @SerializedName(SERIALIZED_NAME_SPEND_LIMIT)
-  private CampaignSpendLimitV23Q1 spendLimit;
+  public static final String SERIALIZED_NAME_BUDGET_AUTOMATION = "budgetAutomation";
+  @SerializedName(SERIALIZED_NAME_BUDGET_AUTOMATION)
+  private CampaignBudgetAutomationV23Q1 budgetAutomation;
 
   /**
    * Gets or Sets goal
@@ -116,38 +112,20 @@ public class CampaignV23Q1 {
   @SerializedName(SERIALIZED_NAME_GOAL)
   private GoalEnum goal;
 
-  public static final String SERIALIZED_NAME_BUDGET_AUTOMATION = "budgetAutomation";
-  @SerializedName(SERIALIZED_NAME_BUDGET_AUTOMATION)
-  private CampaignBudgetAutomationV23Q1 budgetAutomation;
-
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_SPEND_LIMIT = "spendLimit";
+  @SerializedName(SERIALIZED_NAME_SPEND_LIMIT)
+  private CampaignSpendLimitV23Q1 spendLimit;
+
   public CampaignV23Q1() {
   }
-
-  public CampaignV23Q1 name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nullable
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
 
   public CampaignV23Q1 advertiserId(String advertiserId) {
     
@@ -168,50 +146,6 @@ public class CampaignV23Q1 {
 
   public void setAdvertiserId(String advertiserId) {
     this.advertiserId = advertiserId;
-  }
-
-
-  public CampaignV23Q1 spendLimit(CampaignSpendLimitV23Q1 spendLimit) {
-    
-    this.spendLimit = spendLimit;
-    return this;
-  }
-
-   /**
-   * Get spendLimit
-   * @return spendLimit
-  **/
-  @javax.annotation.Nullable
-
-  public CampaignSpendLimitV23Q1 getSpendLimit() {
-    return spendLimit;
-  }
-
-
-  public void setSpendLimit(CampaignSpendLimitV23Q1 spendLimit) {
-    this.spendLimit = spendLimit;
-  }
-
-
-  public CampaignV23Q1 goal(GoalEnum goal) {
-    
-    this.goal = goal;
-    return this;
-  }
-
-   /**
-   * Get goal
-   * @return goal
-  **/
-  @javax.annotation.Nullable
-
-  public GoalEnum getGoal() {
-    return goal;
-  }
-
-
-  public void setGoal(GoalEnum goal) {
-    this.goal = goal;
   }
 
 
@@ -237,6 +171,28 @@ public class CampaignV23Q1 {
   }
 
 
+  public CampaignV23Q1 goal(GoalEnum goal) {
+    
+    this.goal = goal;
+    return this;
+  }
+
+   /**
+   * Get goal
+   * @return goal
+  **/
+  @javax.annotation.Nullable
+
+  public GoalEnum getGoal() {
+    return goal;
+  }
+
+
+  public void setGoal(GoalEnum goal) {
+    this.goal = goal;
+  }
+
+
   public CampaignV23Q1 id(String id) {
     
     this.id = id;
@@ -256,6 +212,50 @@ public class CampaignV23Q1 {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+
+  public CampaignV23Q1 name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @javax.annotation.Nullable
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public CampaignV23Q1 spendLimit(CampaignSpendLimitV23Q1 spendLimit) {
+    
+    this.spendLimit = spendLimit;
+    return this;
+  }
+
+   /**
+   * Get spendLimit
+   * @return spendLimit
+  **/
+  @javax.annotation.Nullable
+
+  public CampaignSpendLimitV23Q1 getSpendLimit() {
+    return spendLimit;
+  }
+
+
+  public void setSpendLimit(CampaignSpendLimitV23Q1 spendLimit) {
+    this.spendLimit = spendLimit;
   }
 
   /**
@@ -313,12 +313,12 @@ public class CampaignV23Q1 {
       return false;
     }
     CampaignV23Q1 campaignV23Q1 = (CampaignV23Q1) o;
-    return Objects.equals(this.name, campaignV23Q1.name) &&
-        Objects.equals(this.advertiserId, campaignV23Q1.advertiserId) &&
-        Objects.equals(this.spendLimit, campaignV23Q1.spendLimit) &&
-        Objects.equals(this.goal, campaignV23Q1.goal) &&
+    return Objects.equals(this.advertiserId, campaignV23Q1.advertiserId) &&
         Objects.equals(this.budgetAutomation, campaignV23Q1.budgetAutomation) &&
-        Objects.equals(this.id, campaignV23Q1.id)&&
+        Objects.equals(this.goal, campaignV23Q1.goal) &&
+        Objects.equals(this.id, campaignV23Q1.id) &&
+        Objects.equals(this.name, campaignV23Q1.name) &&
+        Objects.equals(this.spendLimit, campaignV23Q1.spendLimit)&&
         Objects.equals(this.additionalProperties, campaignV23Q1.additionalProperties);
   }
 
@@ -328,7 +328,7 @@ public class CampaignV23Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, advertiserId, spendLimit, goal, budgetAutomation, id, additionalProperties);
+    return Objects.hash(advertiserId, budgetAutomation, goal, id, name, spendLimit, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -342,12 +342,12 @@ public class CampaignV23Q1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignV23Q1 {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
-    sb.append("    spendLimit: ").append(toIndentedString(spendLimit)).append("\n");
-    sb.append("    goal: ").append(toIndentedString(goal)).append("\n");
     sb.append("    budgetAutomation: ").append(toIndentedString(budgetAutomation)).append("\n");
+    sb.append("    goal: ").append(toIndentedString(goal)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    spendLimit: ").append(toIndentedString(spendLimit)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -371,12 +371,12 @@ public class CampaignV23Q1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
     openapiFields.add("advertiserId");
-    openapiFields.add("spendLimit");
-    openapiFields.add("goal");
     openapiFields.add("budgetAutomation");
+    openapiFields.add("goal");
     openapiFields.add("id");
+    openapiFields.add("name");
+    openapiFields.add("spendLimit");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -394,25 +394,25 @@ public class CampaignV23Q1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignV23Q1 is not found in the empty JSON string", CampaignV23Q1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
       if ((jsonObj.get("advertiserId") != null && !jsonObj.get("advertiserId").isJsonNull()) && !jsonObj.get("advertiserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserId").toString()));
-      }
-      // validate the optional field `spendLimit`
-      if (jsonObj.get("spendLimit") != null && !jsonObj.get("spendLimit").isJsonNull()) {
-        CampaignSpendLimitV23Q1.validateJsonObject(jsonObj.getAsJsonObject("spendLimit"));
-      }
-      if ((jsonObj.get("goal") != null && !jsonObj.get("goal").isJsonNull()) && !jsonObj.get("goal").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `goal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("goal").toString()));
       }
       // validate the optional field `budgetAutomation`
       if (jsonObj.get("budgetAutomation") != null && !jsonObj.get("budgetAutomation").isJsonNull()) {
         CampaignBudgetAutomationV23Q1.validateJsonObject(jsonObj.getAsJsonObject("budgetAutomation"));
       }
+      if ((jsonObj.get("goal") != null && !jsonObj.get("goal").isJsonNull()) && !jsonObj.get("goal").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `goal` to be a primitive type in the JSON string but got `%s`", jsonObj.get("goal").toString()));
+      }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      // validate the optional field `spendLimit`
+      if (jsonObj.get("spendLimit") != null && !jsonObj.get("spendLimit").isJsonNull()) {
+        CampaignSpendLimitV23Q1.validateJsonObject(jsonObj.getAsJsonObject("spendLimit"));
       }
   }
 

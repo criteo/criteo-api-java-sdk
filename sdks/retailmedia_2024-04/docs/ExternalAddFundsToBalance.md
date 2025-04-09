@@ -9,8 +9,8 @@ An object that represents the available options of adding funds to a balance.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**deltaAmount** | **Double** | Amount of billable funds to be added / decreased allotted to the balance. |  |
-|**poNumber** | **String** | Purchase Order number. |  [optional] |
 |**memo** | **String** | Memo |  |
+|**poNumber** | **String** | Purchase Order number. |  [optional] |
 
 
 

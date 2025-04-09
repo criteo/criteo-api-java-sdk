@@ -49,38 +49,16 @@ import com.criteo.api.marketingsolutions.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AudienceNameDescription {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
   public AudienceNameDescription() {
   }
-
-  public AudienceNameDescription name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * The name to designate the audience by
-   * @return name
-  **/
-  @javax.annotation.Nullable
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
 
   public AudienceNameDescription description(String description) {
     
@@ -101,6 +79,28 @@ public class AudienceNameDescription {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  public AudienceNameDescription name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * The name to designate the audience by
+   * @return name
+  **/
+  @javax.annotation.Nullable
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
@@ -158,8 +158,8 @@ public class AudienceNameDescription {
       return false;
     }
     AudienceNameDescription audienceNameDescription = (AudienceNameDescription) o;
-    return Objects.equals(this.name, audienceNameDescription.name) &&
-        Objects.equals(this.description, audienceNameDescription.description)&&
+    return Objects.equals(this.description, audienceNameDescription.description) &&
+        Objects.equals(this.name, audienceNameDescription.name)&&
         Objects.equals(this.additionalProperties, audienceNameDescription.additionalProperties);
   }
 
@@ -169,7 +169,7 @@ public class AudienceNameDescription {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, additionalProperties);
+    return Objects.hash(description, name, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -183,8 +183,8 @@ public class AudienceNameDescription {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceNameDescription {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -208,8 +208,8 @@ public class AudienceNameDescription {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
     openapiFields.add("description");
+    openapiFields.add("name");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -227,11 +227,11 @@ public class AudienceNameDescription {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AudienceNameDescription is not found in the empty JSON string", AudienceNameDescription.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
   }
 

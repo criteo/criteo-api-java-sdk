@@ -8,9 +8,9 @@ Specification of choice variable
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**options** | [**List&lt;ChoiceOption&gt;**](ChoiceOption.md) | The available options |  |
 |**maxSelected** | **Integer** | The maximum number of selectable options |  [optional] |
 |**minSelected** | **Integer** | The minimum number of selectable options |  [optional] |
+|**options** | [**List&lt;ChoiceOption&gt;**](ChoiceOption.md) | The available options |  |
 
 
 

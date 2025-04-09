@@ -8,8 +8,8 @@ Standard envelope for an entity
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** |  |  [optional] |
 |**attributes** | [**TargetingEntity**](TargetingEntity.md) |  |  [optional] |
+|**type** | **String** |  |  [optional] |
 
 
 

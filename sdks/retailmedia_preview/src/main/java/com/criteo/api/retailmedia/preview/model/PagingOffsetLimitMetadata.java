@@ -53,13 +53,13 @@ public class PagingOffsetLimitMetadata {
   @SerializedName(SERIALIZED_NAME_COUNT)
   private Long count;
 
-  public static final String SERIALIZED_NAME_OFFSET = "offset";
-  @SerializedName(SERIALIZED_NAME_OFFSET)
-  private Integer offset;
-
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   private Integer limit;
+
+  public static final String SERIALIZED_NAME_OFFSET = "offset";
+  @SerializedName(SERIALIZED_NAME_OFFSET)
+  private Integer offset;
 
   public PagingOffsetLimitMetadata() {
   }
@@ -86,28 +86,6 @@ public class PagingOffsetLimitMetadata {
   }
 
 
-  public PagingOffsetLimitMetadata offset(Integer offset) {
-    
-    this.offset = offset;
-    return this;
-  }
-
-   /**
-   * The (zero-based) starting offset in the collection.
-   * @return offset
-  **/
-  @javax.annotation.Nonnull
-
-  public Integer getOffset() {
-    return offset;
-  }
-
-
-  public void setOffset(Integer offset) {
-    this.offset = offset;
-  }
-
-
   public PagingOffsetLimitMetadata limit(Integer limit) {
     
     this.limit = limit;
@@ -130,6 +108,28 @@ public class PagingOffsetLimitMetadata {
   }
 
 
+  public PagingOffsetLimitMetadata offset(Integer offset) {
+    
+    this.offset = offset;
+    return this;
+  }
+
+   /**
+   * The (zero-based) starting offset in the collection.
+   * @return offset
+  **/
+  @javax.annotation.Nonnull
+
+  public Integer getOffset() {
+    return offset;
+  }
+
+
+  public void setOffset(Integer offset) {
+    this.offset = offset;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -141,8 +141,8 @@ public class PagingOffsetLimitMetadata {
     }
     PagingOffsetLimitMetadata pagingOffsetLimitMetadata = (PagingOffsetLimitMetadata) o;
     return Objects.equals(this.count, pagingOffsetLimitMetadata.count) &&
-        Objects.equals(this.offset, pagingOffsetLimitMetadata.offset) &&
-        Objects.equals(this.limit, pagingOffsetLimitMetadata.limit);
+        Objects.equals(this.limit, pagingOffsetLimitMetadata.limit) &&
+        Objects.equals(this.offset, pagingOffsetLimitMetadata.offset);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -151,7 +151,7 @@ public class PagingOffsetLimitMetadata {
 
   @Override
   public int hashCode() {
-    return Objects.hash(count, offset, limit);
+    return Objects.hash(count, limit, offset);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -166,8 +166,8 @@ public class PagingOffsetLimitMetadata {
     StringBuilder sb = new StringBuilder();
     sb.append("class PagingOffsetLimitMetadata {\n");
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
-    sb.append("    offset: ").append(toIndentedString(offset)).append("\n");
     sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
+    sb.append("    offset: ").append(toIndentedString(offset)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -191,13 +191,13 @@ public class PagingOffsetLimitMetadata {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("count");
-    openapiFields.add("offset");
     openapiFields.add("limit");
+    openapiFields.add("offset");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("offset");
     openapiRequiredFields.add("limit");
+    openapiRequiredFields.add("offset");
   }
 
  /**

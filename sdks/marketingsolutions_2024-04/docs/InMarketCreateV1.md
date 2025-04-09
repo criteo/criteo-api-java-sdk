@@ -8,11 +8,11 @@ Settings to target users based on high shopping intents and demographics.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**country** | **String** | Reach people of a specific country |  |
+|**brandIds** | **Set&lt;String&gt;** | Choose the brands your segment might be interested in |  [optional] |
 |**buyingPower** | [**Set&lt;BuyingPowerEnum&gt;**](#Set&lt;BuyingPowerEnum&gt;) | Reach people who frequently purchase high price range items to lower price range items |  [optional] |
+|**country** | **String** | Reach people of a specific country |  |
 |**gender** | [**GenderEnum**](#GenderEnum) | Reach people who’ve shown interest in products made for a specific gender |  [optional] |
 |**interestIds** | **Set&lt;String&gt;** | Reach new people based on their interests |  [optional] |
-|**brandIds** | **Set&lt;String&gt;** | Choose the brands your segment might be interested in |  [optional] |
 |**priceRange** | [**Set&lt;PriceRangeEnum&gt;**](#Set&lt;PriceRangeEnum&gt;) | Reach people who’ve shown interest in products within a specific price range |  [optional] |
 
 

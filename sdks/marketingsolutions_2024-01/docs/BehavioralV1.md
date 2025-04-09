@@ -8,10 +8,10 @@ Settings of a behavioral set of users provided by Criteo.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**country** | **String** | The users&#39; country |  [optional] |
 |**category** | [**CategoryEnum**](#CategoryEnum) | The type of behavioral |  |
-|**startDate** | **OffsetDateTime** | Desired date when the behavioral will start |  [optional] |
+|**country** | **String** | The users&#39; country |  [optional] |
 |**endDate** | **OffsetDateTime** | Desired date when the behavioral will end |  [optional] |
+|**startDate** | **OffsetDateTime** | Desired date when the behavioral will start |  [optional] |
 
 
 

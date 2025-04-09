@@ -49,6 +49,10 @@ import com.criteo.api.retailmedia.v2024_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RmLegacyAudienceCreateEntityV2 {
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
   public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
   @SerializedName(SERIALIZED_NAME_RETAILER_ID)
   private Long retailerId;
@@ -57,12 +61,30 @@ public class RmLegacyAudienceCreateEntityV2 {
   @SerializedName(SERIALIZED_NAME_USER_BEHAVIOR_DETAILS)
   private RmLegacyAudienceUserBehaviorCreateV2 userBehaviorDetails;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
   public RmLegacyAudienceCreateEntityV2() {
   }
+
+  public RmLegacyAudienceCreateEntityV2 name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Name of the audience
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   public RmLegacyAudienceCreateEntityV2 retailerId(Long retailerId) {
     
@@ -105,28 +127,6 @@ public class RmLegacyAudienceCreateEntityV2 {
 
   public void setUserBehaviorDetails(RmLegacyAudienceUserBehaviorCreateV2 userBehaviorDetails) {
     this.userBehaviorDetails = userBehaviorDetails;
-  }
-
-
-  public RmLegacyAudienceCreateEntityV2 name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Name of the audience
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
   }
 
   /**
@@ -184,24 +184,24 @@ public class RmLegacyAudienceCreateEntityV2 {
       return false;
     }
     RmLegacyAudienceCreateEntityV2 rmLegacyAudienceCreateEntityV2 = (RmLegacyAudienceCreateEntityV2) o;
-    return Objects.equals(this.retailerId, rmLegacyAudienceCreateEntityV2.retailerId) &&
-        Objects.equals(this.userBehaviorDetails, rmLegacyAudienceCreateEntityV2.userBehaviorDetails) &&
-        Objects.equals(this.name, rmLegacyAudienceCreateEntityV2.name)&&
+    return Objects.equals(this.name, rmLegacyAudienceCreateEntityV2.name) &&
+        Objects.equals(this.retailerId, rmLegacyAudienceCreateEntityV2.retailerId) &&
+        Objects.equals(this.userBehaviorDetails, rmLegacyAudienceCreateEntityV2.userBehaviorDetails)&&
         Objects.equals(this.additionalProperties, rmLegacyAudienceCreateEntityV2.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(retailerId, userBehaviorDetails, name, additionalProperties);
+    return Objects.hash(name, retailerId, userBehaviorDetails, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RmLegacyAudienceCreateEntityV2 {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    userBehaviorDetails: ").append(toIndentedString(userBehaviorDetails)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -225,15 +225,15 @@ public class RmLegacyAudienceCreateEntityV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("name");
     openapiFields.add("retailerId");
     openapiFields.add("userBehaviorDetails");
-    openapiFields.add("name");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("name");
     openapiRequiredFields.add("retailerId");
     openapiRequiredFields.add("userBehaviorDetails");
-    openapiRequiredFields.add("name");
   }
 
  /**
@@ -255,11 +255,11 @@ public class RmLegacyAudienceCreateEntityV2 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      // validate the required field `userBehaviorDetails`
-      RmLegacyAudienceUserBehaviorCreateV2.validateJsonObject(jsonObj.getAsJsonObject("userBehaviorDetails"));
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
+      // validate the required field `userBehaviorDetails`
+      RmLegacyAudienceUserBehaviorCreateV2.validateJsonObject(jsonObj.getAsJsonObject("userBehaviorDetails"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

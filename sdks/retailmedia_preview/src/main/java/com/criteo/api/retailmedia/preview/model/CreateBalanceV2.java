@@ -51,6 +51,18 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateBalanceV2 {
+  public static final String SERIALIZED_NAME_DEPOSITED = "deposited";
+  @SerializedName(SERIALIZED_NAME_DEPOSITED)
+  private BigDecimal deposited;
+
+  public static final String SERIALIZED_NAME_END_DATE = "endDate";
+  @SerializedName(SERIALIZED_NAME_END_DATE)
+  private LocalDate endDate;
+
+  public static final String SERIALIZED_NAME_MEMO = "memo";
+  @SerializedName(SERIALIZED_NAME_MEMO)
+  private String memo;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -58,18 +70,6 @@ public class CreateBalanceV2 {
   public static final String SERIALIZED_NAME_PO_NUMBER = "poNumber";
   @SerializedName(SERIALIZED_NAME_PO_NUMBER)
   private String poNumber;
-
-  public static final String SERIALIZED_NAME_DEPOSITED = "deposited";
-  @SerializedName(SERIALIZED_NAME_DEPOSITED)
-  private BigDecimal deposited;
-
-  public static final String SERIALIZED_NAME_START_DATE = "startDate";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private LocalDate startDate;
-
-  public static final String SERIALIZED_NAME_END_DATE = "endDate";
-  @SerializedName(SERIALIZED_NAME_END_DATE)
-  private LocalDate endDate;
 
   /**
    * Type of the balance spend.
@@ -124,12 +124,78 @@ public class CreateBalanceV2 {
   @SerializedName(SERIALIZED_NAME_SPEND_TYPE)
   private SpendTypeEnum spendType;
 
-  public static final String SERIALIZED_NAME_MEMO = "memo";
-  @SerializedName(SERIALIZED_NAME_MEMO)
-  private String memo;
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private LocalDate startDate;
 
   public CreateBalanceV2() {
   }
+
+  public CreateBalanceV2 deposited(BigDecimal deposited) {
+    
+    this.deposited = deposited;
+    return this;
+  }
+
+   /**
+   * Amount of billable funds allotted to the balance.
+   * @return deposited
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getDeposited() {
+    return deposited;
+  }
+
+
+  public void setDeposited(BigDecimal deposited) {
+    this.deposited = deposited;
+  }
+
+
+  public CreateBalanceV2 endDate(LocalDate endDate) {
+    
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * End date of the balance in the format YYYY-MM-DD.
+   * @return endDate
+  **/
+  @javax.annotation.Nullable
+
+  public LocalDate getEndDate() {
+    return endDate;
+  }
+
+
+  public void setEndDate(LocalDate endDate) {
+    this.endDate = endDate;
+  }
+
+
+  public CreateBalanceV2 memo(String memo) {
+    
+    this.memo = memo;
+    return this;
+  }
+
+   /**
+   * Memo
+   * @return memo
+  **/
+  @javax.annotation.Nullable
+
+  public String getMemo() {
+    return memo;
+  }
+
+
+  public void setMemo(String memo) {
+    this.memo = memo;
+  }
+
 
   public CreateBalanceV2 name(String name) {
     
@@ -175,72 +241,6 @@ public class CreateBalanceV2 {
   }
 
 
-  public CreateBalanceV2 deposited(BigDecimal deposited) {
-    
-    this.deposited = deposited;
-    return this;
-  }
-
-   /**
-   * Amount of billable funds allotted to the balance.
-   * @return deposited
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getDeposited() {
-    return deposited;
-  }
-
-
-  public void setDeposited(BigDecimal deposited) {
-    this.deposited = deposited;
-  }
-
-
-  public CreateBalanceV2 startDate(LocalDate startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * Start date of the balance in the format YYYY-MM-DD.
-   * @return startDate
-  **/
-  @javax.annotation.Nonnull
-
-  public LocalDate getStartDate() {
-    return startDate;
-  }
-
-
-  public void setStartDate(LocalDate startDate) {
-    this.startDate = startDate;
-  }
-
-
-  public CreateBalanceV2 endDate(LocalDate endDate) {
-    
-    this.endDate = endDate;
-    return this;
-  }
-
-   /**
-   * End date of the balance in the format YYYY-MM-DD.
-   * @return endDate
-  **/
-  @javax.annotation.Nullable
-
-  public LocalDate getEndDate() {
-    return endDate;
-  }
-
-
-  public void setEndDate(LocalDate endDate) {
-    this.endDate = endDate;
-  }
-
-
   public CreateBalanceV2 spendType(SpendTypeEnum spendType) {
     
     this.spendType = spendType;
@@ -263,25 +263,25 @@ public class CreateBalanceV2 {
   }
 
 
-  public CreateBalanceV2 memo(String memo) {
+  public CreateBalanceV2 startDate(LocalDate startDate) {
     
-    this.memo = memo;
+    this.startDate = startDate;
     return this;
   }
 
    /**
-   * Memo
-   * @return memo
+   * Start date of the balance in the format YYYY-MM-DD.
+   * @return startDate
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public String getMemo() {
-    return memo;
+  public LocalDate getStartDate() {
+    return startDate;
   }
 
 
-  public void setMemo(String memo) {
-    this.memo = memo;
+  public void setStartDate(LocalDate startDate) {
+    this.startDate = startDate;
   }
 
   /**
@@ -339,13 +339,13 @@ public class CreateBalanceV2 {
       return false;
     }
     CreateBalanceV2 createBalanceV2 = (CreateBalanceV2) o;
-    return Objects.equals(this.name, createBalanceV2.name) &&
-        Objects.equals(this.poNumber, createBalanceV2.poNumber) &&
-        Objects.equals(this.deposited, createBalanceV2.deposited) &&
-        Objects.equals(this.startDate, createBalanceV2.startDate) &&
+    return Objects.equals(this.deposited, createBalanceV2.deposited) &&
         Objects.equals(this.endDate, createBalanceV2.endDate) &&
+        Objects.equals(this.memo, createBalanceV2.memo) &&
+        Objects.equals(this.name, createBalanceV2.name) &&
+        Objects.equals(this.poNumber, createBalanceV2.poNumber) &&
         Objects.equals(this.spendType, createBalanceV2.spendType) &&
-        Objects.equals(this.memo, createBalanceV2.memo)&&
+        Objects.equals(this.startDate, createBalanceV2.startDate)&&
         Objects.equals(this.additionalProperties, createBalanceV2.additionalProperties);
   }
 
@@ -355,7 +355,7 @@ public class CreateBalanceV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, poNumber, deposited, startDate, endDate, spendType, memo, additionalProperties);
+    return Objects.hash(deposited, endDate, memo, name, poNumber, spendType, startDate, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -369,13 +369,13 @@ public class CreateBalanceV2 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateBalanceV2 {\n");
+    sb.append("    deposited: ").append(toIndentedString(deposited)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    memo: ").append(toIndentedString(memo)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    poNumber: ").append(toIndentedString(poNumber)).append("\n");
-    sb.append("    deposited: ").append(toIndentedString(deposited)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    spendType: ").append(toIndentedString(spendType)).append("\n");
-    sb.append("    memo: ").append(toIndentedString(memo)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -399,19 +399,19 @@ public class CreateBalanceV2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("deposited");
+    openapiFields.add("endDate");
+    openapiFields.add("memo");
     openapiFields.add("name");
     openapiFields.add("poNumber");
-    openapiFields.add("deposited");
-    openapiFields.add("startDate");
-    openapiFields.add("endDate");
     openapiFields.add("spendType");
-    openapiFields.add("memo");
+    openapiFields.add("startDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("name");
-    openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("spendType");
+    openapiRequiredFields.add("startDate");
   }
 
  /**
@@ -433,6 +433,9 @@ public class CreateBalanceV2 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      if ((jsonObj.get("memo") != null && !jsonObj.get("memo").isJsonNull()) && !jsonObj.get("memo").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `memo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memo").toString()));
+      }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
@@ -441,9 +444,6 @@ public class CreateBalanceV2 {
       }
       if (!jsonObj.get("spendType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `spendType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("spendType").toString()));
-      }
-      if ((jsonObj.get("memo") != null && !jsonObj.get("memo").isJsonNull()) && !jsonObj.get("memo").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `memo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memo").toString()));
       }
   }
 

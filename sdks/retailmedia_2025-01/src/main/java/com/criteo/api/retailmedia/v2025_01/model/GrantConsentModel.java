@@ -48,40 +48,40 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class GrantConsentModel {
-  public static final String SERIALIZED_NAME_CLIENT_ID = "clientId";
-  @SerializedName(SERIALIZED_NAME_CLIENT_ID)
-  private String clientId;
+  public static final String SERIALIZED_NAME_CALLBACK_STATE = "callbackState";
+  @SerializedName(SERIALIZED_NAME_CALLBACK_STATE)
+  private String callbackState;
 
   public static final String SERIALIZED_NAME_CALLBACK_URL = "callbackUrl";
   @SerializedName(SERIALIZED_NAME_CALLBACK_URL)
   private String callbackUrl;
 
-  public static final String SERIALIZED_NAME_CALLBACK_STATE = "callbackState";
-  @SerializedName(SERIALIZED_NAME_CALLBACK_STATE)
-  private String callbackState;
+  public static final String SERIALIZED_NAME_CLIENT_ID = "clientId";
+  @SerializedName(SERIALIZED_NAME_CLIENT_ID)
+  private String clientId;
 
   public GrantConsentModel() {
   }
 
-  public GrantConsentModel clientId(String clientId) {
+  public GrantConsentModel callbackState(String callbackState) {
     
-    this.clientId = clientId;
+    this.callbackState = callbackState;
     return this;
   }
 
    /**
-   * Get clientId
-   * @return clientId
+   * Get callbackState
+   * @return callbackState
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public String getClientId() {
-    return clientId;
+  public String getCallbackState() {
+    return callbackState;
   }
 
 
-  public void setClientId(String clientId) {
-    this.clientId = clientId;
+  public void setCallbackState(String callbackState) {
+    this.callbackState = callbackState;
   }
 
 
@@ -107,25 +107,25 @@ public class GrantConsentModel {
   }
 
 
-  public GrantConsentModel callbackState(String callbackState) {
+  public GrantConsentModel clientId(String clientId) {
     
-    this.callbackState = callbackState;
+    this.clientId = clientId;
     return this;
   }
 
    /**
-   * Get callbackState
-   * @return callbackState
+   * Get clientId
+   * @return clientId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public String getCallbackState() {
-    return callbackState;
+  public String getClientId() {
+    return clientId;
   }
 
 
-  public void setCallbackState(String callbackState) {
-    this.callbackState = callbackState;
+  public void setClientId(String clientId) {
+    this.clientId = clientId;
   }
 
   /**
@@ -183,24 +183,24 @@ public class GrantConsentModel {
       return false;
     }
     GrantConsentModel grantConsentModel = (GrantConsentModel) o;
-    return Objects.equals(this.clientId, grantConsentModel.clientId) &&
+    return Objects.equals(this.callbackState, grantConsentModel.callbackState) &&
         Objects.equals(this.callbackUrl, grantConsentModel.callbackUrl) &&
-        Objects.equals(this.callbackState, grantConsentModel.callbackState)&&
+        Objects.equals(this.clientId, grantConsentModel.clientId)&&
         Objects.equals(this.additionalProperties, grantConsentModel.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(clientId, callbackUrl, callbackState, additionalProperties);
+    return Objects.hash(callbackState, callbackUrl, clientId, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GrantConsentModel {\n");
-    sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
-    sb.append("    callbackUrl: ").append(toIndentedString(callbackUrl)).append("\n");
     sb.append("    callbackState: ").append(toIndentedString(callbackState)).append("\n");
+    sb.append("    callbackUrl: ").append(toIndentedString(callbackUrl)).append("\n");
+    sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -224,14 +224,14 @@ public class GrantConsentModel {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("clientId");
-    openapiFields.add("callbackUrl");
     openapiFields.add("callbackState");
+    openapiFields.add("callbackUrl");
+    openapiFields.add("clientId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("clientId");
     openapiRequiredFields.add("callbackUrl");
+    openapiRequiredFields.add("clientId");
   }
 
  /**
@@ -253,14 +253,14 @@ public class GrantConsentModel {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("clientId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `clientId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientId").toString()));
+      if ((jsonObj.get("callbackState") != null && !jsonObj.get("callbackState").isJsonNull()) && !jsonObj.get("callbackState").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `callbackState` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callbackState").toString()));
       }
       if (!jsonObj.get("callbackUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `callbackUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callbackUrl").toString()));
       }
-      if ((jsonObj.get("callbackState") != null && !jsonObj.get("callbackState").isJsonNull()) && !jsonObj.get("callbackState").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `callbackState` to be a primitive type in the JSON string but got `%s`", jsonObj.get("callbackState").toString()));
+      if (!jsonObj.get("clientId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `clientId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientId").toString()));
       }
   }
 

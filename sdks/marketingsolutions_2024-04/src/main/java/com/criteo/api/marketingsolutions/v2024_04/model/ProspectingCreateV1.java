@@ -48,13 +48,13 @@ import com.criteo.api.marketingsolutions.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProspectingCreateV1 {
-  public static final String SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MIN = "daysSinceLastVisitMin";
-  @SerializedName(SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MIN)
-  private Integer daysSinceLastVisitMin;
-
   public static final String SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MAX = "daysSinceLastVisitMax";
   @SerializedName(SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MAX)
   private Integer daysSinceLastVisitMax;
+
+  public static final String SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MIN = "daysSinceLastVisitMin";
+  @SerializedName(SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MIN)
+  private Integer daysSinceLastVisitMin;
 
   /**
    * Type of users to target
@@ -110,28 +110,6 @@ public class ProspectingCreateV1 {
   public ProspectingCreateV1() {
   }
 
-  public ProspectingCreateV1 daysSinceLastVisitMin(Integer daysSinceLastVisitMin) {
-    
-    this.daysSinceLastVisitMin = daysSinceLastVisitMin;
-    return this;
-  }
-
-   /**
-   * When non buyers are included, include users who visited your website before this number of days
-   * @return daysSinceLastVisitMin
-  **/
-  @javax.annotation.Nullable
-
-  public Integer getDaysSinceLastVisitMin() {
-    return daysSinceLastVisitMin;
-  }
-
-
-  public void setDaysSinceLastVisitMin(Integer daysSinceLastVisitMin) {
-    this.daysSinceLastVisitMin = daysSinceLastVisitMin;
-  }
-
-
   public ProspectingCreateV1 daysSinceLastVisitMax(Integer daysSinceLastVisitMax) {
     
     this.daysSinceLastVisitMax = daysSinceLastVisitMax;
@@ -151,6 +129,28 @@ public class ProspectingCreateV1 {
 
   public void setDaysSinceLastVisitMax(Integer daysSinceLastVisitMax) {
     this.daysSinceLastVisitMax = daysSinceLastVisitMax;
+  }
+
+
+  public ProspectingCreateV1 daysSinceLastVisitMin(Integer daysSinceLastVisitMin) {
+    
+    this.daysSinceLastVisitMin = daysSinceLastVisitMin;
+    return this;
+  }
+
+   /**
+   * When non buyers are included, include users who visited your website before this number of days
+   * @return daysSinceLastVisitMin
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getDaysSinceLastVisitMin() {
+    return daysSinceLastVisitMin;
+  }
+
+
+  public void setDaysSinceLastVisitMin(Integer daysSinceLastVisitMin) {
+    this.daysSinceLastVisitMin = daysSinceLastVisitMin;
   }
 
 
@@ -230,23 +230,23 @@ public class ProspectingCreateV1 {
       return false;
     }
     ProspectingCreateV1 prospectingCreateV1 = (ProspectingCreateV1) o;
-    return Objects.equals(this.daysSinceLastVisitMin, prospectingCreateV1.daysSinceLastVisitMin) &&
-        Objects.equals(this.daysSinceLastVisitMax, prospectingCreateV1.daysSinceLastVisitMax) &&
+    return Objects.equals(this.daysSinceLastVisitMax, prospectingCreateV1.daysSinceLastVisitMax) &&
+        Objects.equals(this.daysSinceLastVisitMin, prospectingCreateV1.daysSinceLastVisitMin) &&
         Objects.equals(this.usersType, prospectingCreateV1.usersType)&&
         Objects.equals(this.additionalProperties, prospectingCreateV1.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(daysSinceLastVisitMin, daysSinceLastVisitMax, usersType, additionalProperties);
+    return Objects.hash(daysSinceLastVisitMax, daysSinceLastVisitMin, usersType, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProspectingCreateV1 {\n");
-    sb.append("    daysSinceLastVisitMin: ").append(toIndentedString(daysSinceLastVisitMin)).append("\n");
     sb.append("    daysSinceLastVisitMax: ").append(toIndentedString(daysSinceLastVisitMax)).append("\n");
+    sb.append("    daysSinceLastVisitMin: ").append(toIndentedString(daysSinceLastVisitMin)).append("\n");
     sb.append("    usersType: ").append(toIndentedString(usersType)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -271,8 +271,8 @@ public class ProspectingCreateV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("daysSinceLastVisitMin");
     openapiFields.add("daysSinceLastVisitMax");
+    openapiFields.add("daysSinceLastVisitMin");
     openapiFields.add("usersType");
 
     // a set of required properties/fields (JSON key names)

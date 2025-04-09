@@ -54,29 +54,29 @@ public class TransactionsReportQueryMessage {
   @SerializedName(SERIALIZED_NAME_ADVERTISER_IDS)
   private String advertiserIds;
 
-  public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
-  @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
-  private String eventType;
-
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
+
+  public static final String SERIALIZED_NAME_END_DATE = "endDate";
+  @SerializedName(SERIALIZED_NAME_END_DATE)
+  private OffsetDateTime endDate;
+
+  public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
+  @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
+  private String eventType;
 
   public static final String SERIALIZED_NAME_FORMAT = "format";
   @SerializedName(SERIALIZED_NAME_FORMAT)
   private String format;
 
-  public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
-  @SerializedName(SERIALIZED_NAME_TIMEZONE)
-  private String timezone = "UTC";
-
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private OffsetDateTime startDate;
 
-  public static final String SERIALIZED_NAME_END_DATE = "endDate";
-  @SerializedName(SERIALIZED_NAME_END_DATE)
-  private OffsetDateTime endDate;
+  public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
+  @SerializedName(SERIALIZED_NAME_TIMEZONE)
+  private String timezone = "UTC";
 
   public TransactionsReportQueryMessage() {
   }
@@ -103,28 +103,6 @@ public class TransactionsReportQueryMessage {
   }
 
 
-  public TransactionsReportQueryMessage eventType(String eventType) {
-    
-    this.eventType = eventType;
-    return this;
-  }
-
-   /**
-   * Apply a filter on Event type .
-   * @return eventType
-  **/
-  @javax.annotation.Nullable
-
-  public String getEventType() {
-    return eventType;
-  }
-
-
-  public void setEventType(String eventType) {
-    this.eventType = eventType;
-  }
-
-
   public TransactionsReportQueryMessage currency(String currency) {
     
     this.currency = currency;
@@ -144,72 +122,6 @@ public class TransactionsReportQueryMessage {
 
   public void setCurrency(String currency) {
     this.currency = currency;
-  }
-
-
-  public TransactionsReportQueryMessage format(String format) {
-    
-    this.format = format;
-    return this;
-  }
-
-   /**
-   * The file format of the generated report: csv, xml, excel or json.
-   * @return format
-  **/
-  @javax.annotation.Nonnull
-
-  public String getFormat() {
-    return format;
-  }
-
-
-  public void setFormat(String format) {
-    this.format = format;
-  }
-
-
-  public TransactionsReportQueryMessage timezone(String timezone) {
-    
-    this.timezone = timezone;
-    return this;
-  }
-
-   /**
-   * The timezone used for the report. Timezone Database format (Tz).
-   * @return timezone
-  **/
-  @javax.annotation.Nullable
-
-  public String getTimezone() {
-    return timezone;
-  }
-
-
-  public void setTimezone(String timezone) {
-    this.timezone = timezone;
-  }
-
-
-  public TransactionsReportQueryMessage startDate(OffsetDateTime startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.
-   * @return startDate
-  **/
-  @javax.annotation.Nonnull
-
-  public OffsetDateTime getStartDate() {
-    return startDate;
-  }
-
-
-  public void setStartDate(OffsetDateTime startDate) {
-    this.startDate = startDate;
   }
 
 
@@ -235,6 +147,94 @@ public class TransactionsReportQueryMessage {
   }
 
 
+  public TransactionsReportQueryMessage eventType(String eventType) {
+    
+    this.eventType = eventType;
+    return this;
+  }
+
+   /**
+   * Apply a filter on Event type .
+   * @return eventType
+  **/
+  @javax.annotation.Nullable
+
+  public String getEventType() {
+    return eventType;
+  }
+
+
+  public void setEventType(String eventType) {
+    this.eventType = eventType;
+  }
+
+
+  public TransactionsReportQueryMessage format(String format) {
+    
+    this.format = format;
+    return this;
+  }
+
+   /**
+   * The file format of the generated report: csv, xml, excel or json.
+   * @return format
+  **/
+  @javax.annotation.Nonnull
+
+  public String getFormat() {
+    return format;
+  }
+
+
+  public void setFormat(String format) {
+    this.format = format;
+  }
+
+
+  public TransactionsReportQueryMessage startDate(OffsetDateTime startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Start date of the report. Date component of ISO 8061 format, any time or timezone component is ignored.
+   * @return startDate
+  **/
+  @javax.annotation.Nonnull
+
+  public OffsetDateTime getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+
+  public TransactionsReportQueryMessage timezone(String timezone) {
+    
+    this.timezone = timezone;
+    return this;
+  }
+
+   /**
+   * The timezone used for the report. Timezone Database format (Tz).
+   * @return timezone
+  **/
+  @javax.annotation.Nullable
+
+  public String getTimezone() {
+    return timezone;
+  }
+
+
+  public void setTimezone(String timezone) {
+    this.timezone = timezone;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -246,12 +246,12 @@ public class TransactionsReportQueryMessage {
     }
     TransactionsReportQueryMessage transactionsReportQueryMessage = (TransactionsReportQueryMessage) o;
     return Objects.equals(this.advertiserIds, transactionsReportQueryMessage.advertiserIds) &&
-        Objects.equals(this.eventType, transactionsReportQueryMessage.eventType) &&
         Objects.equals(this.currency, transactionsReportQueryMessage.currency) &&
+        Objects.equals(this.endDate, transactionsReportQueryMessage.endDate) &&
+        Objects.equals(this.eventType, transactionsReportQueryMessage.eventType) &&
         Objects.equals(this.format, transactionsReportQueryMessage.format) &&
-        Objects.equals(this.timezone, transactionsReportQueryMessage.timezone) &&
         Objects.equals(this.startDate, transactionsReportQueryMessage.startDate) &&
-        Objects.equals(this.endDate, transactionsReportQueryMessage.endDate);
+        Objects.equals(this.timezone, transactionsReportQueryMessage.timezone);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -260,7 +260,7 @@ public class TransactionsReportQueryMessage {
 
   @Override
   public int hashCode() {
-    return Objects.hash(advertiserIds, eventType, currency, format, timezone, startDate, endDate);
+    return Objects.hash(advertiserIds, currency, endDate, eventType, format, startDate, timezone);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -275,12 +275,12 @@ public class TransactionsReportQueryMessage {
     StringBuilder sb = new StringBuilder();
     sb.append("class TransactionsReportQueryMessage {\n");
     sb.append("    advertiserIds: ").append(toIndentedString(advertiserIds)).append("\n");
-    sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -304,19 +304,19 @@ public class TransactionsReportQueryMessage {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("advertiserIds");
-    openapiFields.add("eventType");
     openapiFields.add("currency");
-    openapiFields.add("format");
-    openapiFields.add("timezone");
-    openapiFields.add("startDate");
     openapiFields.add("endDate");
+    openapiFields.add("eventType");
+    openapiFields.add("format");
+    openapiFields.add("startDate");
+    openapiFields.add("timezone");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("currency");
+    openapiRequiredFields.add("endDate");
     openapiRequiredFields.add("format");
     openapiRequiredFields.add("startDate");
-    openapiRequiredFields.add("endDate");
   }
 
  /**
@@ -349,11 +349,11 @@ public class TransactionsReportQueryMessage {
       if ((jsonObj.get("advertiserIds") != null && !jsonObj.get("advertiserIds").isJsonNull()) && !jsonObj.get("advertiserIds").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserIds` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserIds").toString()));
       }
-      if ((jsonObj.get("eventType") != null && !jsonObj.get("eventType").isJsonNull()) && !jsonObj.get("eventType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `eventType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("eventType").toString()));
-      }
       if (!jsonObj.get("currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
+      }
+      if ((jsonObj.get("eventType") != null && !jsonObj.get("eventType").isJsonNull()) && !jsonObj.get("eventType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `eventType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("eventType").toString()));
       }
       if (!jsonObj.get("format").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));

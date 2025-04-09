@@ -48,21 +48,9 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProductTax {
-  public static final String SERIALIZED_NAME_RATE = "rate";
-  @SerializedName(SERIALIZED_NAME_RATE)
-  private Double rate;
-
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
   private String country;
-
-  public static final String SERIALIZED_NAME_REGION = "region";
-  @SerializedName(SERIALIZED_NAME_REGION)
-  private String region;
-
-  public static final String SERIALIZED_NAME_TAX_SHIP = "taxShip";
-  @SerializedName(SERIALIZED_NAME_TAX_SHIP)
-  private Boolean taxShip;
 
   public static final String SERIALIZED_NAME_LOCATION_ID = "locationId";
   @SerializedName(SERIALIZED_NAME_LOCATION_ID)
@@ -72,30 +60,20 @@ public class ProductTax {
   @SerializedName(SERIALIZED_NAME_POSTAL_CODE)
   private String postalCode;
 
+  public static final String SERIALIZED_NAME_RATE = "rate";
+  @SerializedName(SERIALIZED_NAME_RATE)
+  private Double rate;
+
+  public static final String SERIALIZED_NAME_REGION = "region";
+  @SerializedName(SERIALIZED_NAME_REGION)
+  private String region;
+
+  public static final String SERIALIZED_NAME_TAX_SHIP = "taxShip";
+  @SerializedName(SERIALIZED_NAME_TAX_SHIP)
+  private Boolean taxShip;
+
   public ProductTax() {
   }
-
-  public ProductTax rate(Double rate) {
-    
-    this.rate = rate;
-    return this;
-  }
-
-   /**
-   * The percentage of tax rate that applies to the item price.
-   * @return rate
-  **/
-  @javax.annotation.Nullable
-
-  public Double getRate() {
-    return rate;
-  }
-
-
-  public void setRate(Double rate) {
-    this.rate = rate;
-  }
-
 
   public ProductTax country(String country) {
     
@@ -116,50 +94,6 @@ public class ProductTax {
 
   public void setCountry(String country) {
     this.country = country;
-  }
-
-
-  public ProductTax region(String region) {
-    
-    this.region = region;
-    return this;
-  }
-
-   /**
-   * The geographic region to which the tax rate applies.
-   * @return region
-  **/
-  @javax.annotation.Nullable
-
-  public String getRegion() {
-    return region;
-  }
-
-
-  public void setRegion(String region) {
-    this.region = region;
-  }
-
-
-  public ProductTax taxShip(Boolean taxShip) {
-    
-    this.taxShip = taxShip;
-    return this;
-  }
-
-   /**
-   * Set to true if tax is charged on shipping.
-   * @return taxShip
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getTaxShip() {
-    return taxShip;
-  }
-
-
-  public void setTaxShip(Boolean taxShip) {
-    this.taxShip = taxShip;
   }
 
 
@@ -204,6 +138,72 @@ public class ProductTax {
 
   public void setPostalCode(String postalCode) {
     this.postalCode = postalCode;
+  }
+
+
+  public ProductTax rate(Double rate) {
+    
+    this.rate = rate;
+    return this;
+  }
+
+   /**
+   * The percentage of tax rate that applies to the item price.
+   * @return rate
+  **/
+  @javax.annotation.Nullable
+
+  public Double getRate() {
+    return rate;
+  }
+
+
+  public void setRate(Double rate) {
+    this.rate = rate;
+  }
+
+
+  public ProductTax region(String region) {
+    
+    this.region = region;
+    return this;
+  }
+
+   /**
+   * The geographic region to which the tax rate applies.
+   * @return region
+  **/
+  @javax.annotation.Nullable
+
+  public String getRegion() {
+    return region;
+  }
+
+
+  public void setRegion(String region) {
+    this.region = region;
+  }
+
+
+  public ProductTax taxShip(Boolean taxShip) {
+    
+    this.taxShip = taxShip;
+    return this;
+  }
+
+   /**
+   * Set to true if tax is charged on shipping.
+   * @return taxShip
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getTaxShip() {
+    return taxShip;
+  }
+
+
+  public void setTaxShip(Boolean taxShip) {
+    this.taxShip = taxShip;
   }
 
   /**
@@ -261,30 +261,30 @@ public class ProductTax {
       return false;
     }
     ProductTax productTax = (ProductTax) o;
-    return Objects.equals(this.rate, productTax.rate) &&
-        Objects.equals(this.country, productTax.country) &&
-        Objects.equals(this.region, productTax.region) &&
-        Objects.equals(this.taxShip, productTax.taxShip) &&
+    return Objects.equals(this.country, productTax.country) &&
         Objects.equals(this.locationId, productTax.locationId) &&
-        Objects.equals(this.postalCode, productTax.postalCode)&&
+        Objects.equals(this.postalCode, productTax.postalCode) &&
+        Objects.equals(this.rate, productTax.rate) &&
+        Objects.equals(this.region, productTax.region) &&
+        Objects.equals(this.taxShip, productTax.taxShip)&&
         Objects.equals(this.additionalProperties, productTax.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(rate, country, region, taxShip, locationId, postalCode, additionalProperties);
+    return Objects.hash(country, locationId, postalCode, rate, region, taxShip, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductTax {\n");
-    sb.append("    rate: ").append(toIndentedString(rate)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    region: ").append(toIndentedString(region)).append("\n");
-    sb.append("    taxShip: ").append(toIndentedString(taxShip)).append("\n");
     sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
     sb.append("    postalCode: ").append(toIndentedString(postalCode)).append("\n");
+    sb.append("    rate: ").append(toIndentedString(rate)).append("\n");
+    sb.append("    region: ").append(toIndentedString(region)).append("\n");
+    sb.append("    taxShip: ").append(toIndentedString(taxShip)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -308,12 +308,12 @@ public class ProductTax {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("rate");
     openapiFields.add("country");
-    openapiFields.add("region");
-    openapiFields.add("taxShip");
     openapiFields.add("locationId");
     openapiFields.add("postalCode");
+    openapiFields.add("rate");
+    openapiFields.add("region");
+    openapiFields.add("taxShip");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -334,11 +334,11 @@ public class ProductTax {
       if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
       }
-      if ((jsonObj.get("region") != null && !jsonObj.get("region").isJsonNull()) && !jsonObj.get("region").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `region` to be a primitive type in the JSON string but got `%s`", jsonObj.get("region").toString()));
-      }
       if ((jsonObj.get("postalCode") != null && !jsonObj.get("postalCode").isJsonNull()) && !jsonObj.get("postalCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `postalCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("postalCode").toString()));
+      }
+      if ((jsonObj.get("region") != null && !jsonObj.get("region").isJsonNull()) && !jsonObj.get("region").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `region` to be a primitive type in the JSON string but got `%s`", jsonObj.get("region").toString()));
       }
   }
 

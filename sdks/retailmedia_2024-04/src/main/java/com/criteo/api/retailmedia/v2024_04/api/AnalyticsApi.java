@@ -31,6 +31,7 @@ import com.criteo.api.retailmedia.v2024_04.model.AsyncCampaignsReportRequest;
 import com.criteo.api.retailmedia.v2024_04.model.AsyncLineItemsReportRequest;
 import com.criteo.api.retailmedia.v2024_04.model.AsyncReportResponse;
 import com.criteo.api.retailmedia.v2024_04.model.AsyncRevenueReportRequest;
+import java.io.File;
 import com.criteo.api.retailmedia.v2024_04.model.ReportOutcome;
 
 import java.lang.reflect.Type;
@@ -561,7 +562,7 @@ public class AnalyticsApi {
      * 
      * Returns the output of an async report
      * @param reportId The ID of the report to retrieve (required)
-     * @return String
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -571,8 +572,8 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public String getAsyncExportOutput(String reportId) throws ApiException {
-        ApiResponse<String> localVarResp = getAsyncExportOutputWithHttpInfo(reportId);
+    public File getAsyncExportOutput(String reportId) throws ApiException {
+        ApiResponse<File> localVarResp = getAsyncExportOutputWithHttpInfo(reportId);
         return localVarResp.getData();
     }
 
@@ -580,7 +581,7 @@ public class AnalyticsApi {
      * 
      * Returns the output of an async report
      * @param reportId The ID of the report to retrieve (required)
-     * @return ApiResponse&lt;String&gt;
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -590,9 +591,9 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<String> getAsyncExportOutputWithHttpInfo(String reportId) throws ApiException {
+    public ApiResponse<File> getAsyncExportOutputWithHttpInfo(String reportId) throws ApiException {
         okhttp3.Call localVarCall = getAsyncExportOutputValidateBeforeCall(reportId, null);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -611,10 +612,10 @@ public class AnalyticsApi {
         <tr><td> 403 </td><td> Forbidden </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAsyncExportOutputAsync(String reportId, final ApiCallback<String> _callback) throws ApiException {
+    public okhttp3.Call getAsyncExportOutputAsync(String reportId, final ApiCallback<File> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAsyncExportOutputValidateBeforeCall(reportId, _callback);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

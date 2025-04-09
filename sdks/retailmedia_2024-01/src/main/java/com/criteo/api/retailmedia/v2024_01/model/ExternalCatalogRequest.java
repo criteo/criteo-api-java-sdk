@@ -50,6 +50,10 @@ import com.criteo.api.retailmedia.v2024_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalCatalogRequest {
+  public static final String SERIALIZED_NAME_BRAND_ID_FILTER = "brandIdFilter";
+  @SerializedName(SERIALIZED_NAME_BRAND_ID_FILTER)
+  private List<String> brandIdFilter = null;
+
   /**
    * Gets or Sets format
    */
@@ -99,34 +103,8 @@ public class ExternalCatalogRequest {
   @SerializedName(SERIALIZED_NAME_FORMAT)
   private FormatEnum format = FormatEnum.JSON_NEWLINE;
 
-  public static final String SERIALIZED_NAME_BRAND_ID_FILTER = "brandIdFilter";
-  @SerializedName(SERIALIZED_NAME_BRAND_ID_FILTER)
-  private List<String> brandIdFilter = null;
-
   public ExternalCatalogRequest() {
   }
-
-  public ExternalCatalogRequest format(FormatEnum format) {
-    
-    this.format = format;
-    return this;
-  }
-
-   /**
-   * Get format
-   * @return format
-  **/
-  @javax.annotation.Nullable
-
-  public FormatEnum getFormat() {
-    return format;
-  }
-
-
-  public void setFormat(FormatEnum format) {
-    this.format = format;
-  }
-
 
   public ExternalCatalogRequest brandIdFilter(List<String> brandIdFilter) {
     
@@ -155,6 +133,28 @@ public class ExternalCatalogRequest {
 
   public void setBrandIdFilter(List<String> brandIdFilter) {
     this.brandIdFilter = brandIdFilter;
+  }
+
+
+  public ExternalCatalogRequest format(FormatEnum format) {
+    
+    this.format = format;
+    return this;
+  }
+
+   /**
+   * Get format
+   * @return format
+  **/
+  @javax.annotation.Nullable
+
+  public FormatEnum getFormat() {
+    return format;
+  }
+
+
+  public void setFormat(FormatEnum format) {
+    this.format = format;
   }
 
   /**
@@ -212,22 +212,22 @@ public class ExternalCatalogRequest {
       return false;
     }
     ExternalCatalogRequest externalCatalogRequest = (ExternalCatalogRequest) o;
-    return Objects.equals(this.format, externalCatalogRequest.format) &&
-        Objects.equals(this.brandIdFilter, externalCatalogRequest.brandIdFilter)&&
+    return Objects.equals(this.brandIdFilter, externalCatalogRequest.brandIdFilter) &&
+        Objects.equals(this.format, externalCatalogRequest.format)&&
         Objects.equals(this.additionalProperties, externalCatalogRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(format, brandIdFilter, additionalProperties);
+    return Objects.hash(brandIdFilter, format, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalCatalogRequest {\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    brandIdFilter: ").append(toIndentedString(brandIdFilter)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -251,8 +251,8 @@ public class ExternalCatalogRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("format");
     openapiFields.add("brandIdFilter");
+    openapiFields.add("format");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -270,12 +270,12 @@ public class ExternalCatalogRequest {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalCatalogRequest is not found in the empty JSON string", ExternalCatalogRequest.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
-      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("brandIdFilter") != null && !jsonObj.get("brandIdFilter").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `brandIdFilter` to be an array in the JSON string but got `%s`", jsonObj.get("brandIdFilter").toString()));
+      }
+      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
       }
   }
 

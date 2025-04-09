@@ -201,7 +201,7 @@ public class Example {
 
 ## getBalanceHistory
 
-> PageOfBalanceHistoryChangeDataCaptureV1 getBalanceHistory(balanceId, offset, limit, limitToChangeTypes)
+> PageOfBalanceHistoryChangeDataCaptureV1 getBalanceHistory(balanceId, limit, limitToChangeTypes, offset)
 
 
 
@@ -247,11 +247,11 @@ public class Example {
 
         BalanceApi apiInstance = new BalanceApi(defaultClient);
         String balanceId = "balanceId_example"; // String | Balance id.
-        Integer offset = 0; // Integer | The (zero-based) starting offset in the collection.
         Integer limit = 25; // Integer | The number of elements to be returned.
         String limitToChangeTypes = "limitToChangeTypes_example"; // String | Comma separated change types string that will be queried.
+        Integer offset = 0; // Integer | The (zero-based) starting offset in the collection.
         try {
-            PageOfBalanceHistoryChangeDataCaptureV1 result = apiInstance.getBalanceHistory(balanceId, offset, limit, limitToChangeTypes);
+            PageOfBalanceHistoryChangeDataCaptureV1 result = apiInstance.getBalanceHistory(balanceId, limit, limitToChangeTypes, offset);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BalanceApi#getBalanceHistory");
@@ -270,9 +270,9 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **balanceId** | **String**| Balance id. | |
-| **offset** | **Integer**| The (zero-based) starting offset in the collection. | [optional] [default to 0] |
 | **limit** | **Integer**| The number of elements to be returned. | [optional] [default to 25] |
 | **limitToChangeTypes** | **String**| Comma separated change types string that will be queried. | [optional] |
+| **offset** | **Integer**| The (zero-based) starting offset in the collection. | [optional] [default to 0] |
 
 ### Return type
 

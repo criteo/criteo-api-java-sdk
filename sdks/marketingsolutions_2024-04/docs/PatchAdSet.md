@@ -8,11 +8,11 @@ ad set patch model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**bidding** | [**PatchAdSetBidding**](PatchAdSetBidding.md) |  |  [optional] |
+|**budget** | [**PatchAdSetBudget**](PatchAdSetBudget.md) |  |  [optional] |
 |**name** | **String** |  |  [optional] |
 |**scheduling** | [**PatchAdSetScheduling**](PatchAdSetScheduling.md) |  |  [optional] |
-|**bidding** | [**PatchAdSetBidding**](PatchAdSetBidding.md) |  |  [optional] |
 |**targeting** | [**AdSetTargeting**](AdSetTargeting.md) |  |  [optional] |
-|**budget** | [**PatchAdSetBudget**](PatchAdSetBudget.md) |  |  [optional] |
 
 
 

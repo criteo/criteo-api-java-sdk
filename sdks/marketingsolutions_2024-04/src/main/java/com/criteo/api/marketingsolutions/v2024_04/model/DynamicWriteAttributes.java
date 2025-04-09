@@ -51,17 +51,21 @@ import com.criteo.api.marketingsolutions.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DynamicWriteAttributes {
-  public static final String SERIALIZED_NAME_LOGO_BASE64_STRING = "logoBase64String";
-  @SerializedName(SERIALIZED_NAME_LOGO_BASE64_STRING)
-  private String logoBase64String;
+  public static final String SERIALIZED_NAME_BODY_TEXT_COLOR = "bodyTextColor";
+  @SerializedName(SERIALIZED_NAME_BODY_TEXT_COLOR)
+  private String bodyTextColor;
+
+  public static final String SERIALIZED_NAME_CALLS_TO_ACTION = "callsToAction";
+  @SerializedName(SERIALIZED_NAME_CALLS_TO_ACTION)
+  private List<String> callsToAction = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CREATIVE_BACKGROUND_COLOR = "creativeBackgroundColor";
   @SerializedName(SERIALIZED_NAME_CREATIVE_BACKGROUND_COLOR)
   private String creativeBackgroundColor;
 
-  public static final String SERIALIZED_NAME_BODY_TEXT_COLOR = "bodyTextColor";
-  @SerializedName(SERIALIZED_NAME_BODY_TEXT_COLOR)
-  private String bodyTextColor;
+  public static final String SERIALIZED_NAME_LOGO_BASE64_STRING = "logoBase64String";
+  @SerializedName(SERIALIZED_NAME_LOGO_BASE64_STRING)
+  private String logoBase64String;
 
   public static final String SERIALIZED_NAME_PRICES_COLOR = "pricesColor";
   @SerializedName(SERIALIZED_NAME_PRICES_COLOR)
@@ -70,10 +74,6 @@ public class DynamicWriteAttributes {
   public static final String SERIALIZED_NAME_PRIMARY_FONT = "primaryFont";
   @SerializedName(SERIALIZED_NAME_PRIMARY_FONT)
   private String primaryFont;
-
-  public static final String SERIALIZED_NAME_CALLS_TO_ACTION = "callsToAction";
-  @SerializedName(SERIALIZED_NAME_CALLS_TO_ACTION)
-  private List<String> callsToAction = new ArrayList<>();
 
   /**
    * Value can be \&quot;ShowFullImage\&quot; or \&quot;ZoomOnImage\&quot;. Choose whether your product catalog images should fit inside the allocated  space (\&quot;ShowFullImage\&quot;) or whether they should fill that space (\&quot;ZoomOnImage\&quot;). If you choose ZoomOnImage, there may be some  image cropping.
@@ -129,25 +129,52 @@ public class DynamicWriteAttributes {
   public DynamicWriteAttributes() {
   }
 
-  public DynamicWriteAttributes logoBase64String(String logoBase64String) {
+  public DynamicWriteAttributes bodyTextColor(String bodyTextColor) {
     
-    this.logoBase64String = logoBase64String;
+    this.bodyTextColor = bodyTextColor;
     return this;
   }
 
    /**
-   * Logo image as a base-64 encoded string
-   * @return logoBase64String
+   * Color of the creative&#39;s body text  Valid hexadecimal color (e.g. \&quot;AB00FF\&quot;)
+   * @return bodyTextColor
   **/
   @javax.annotation.Nonnull
 
-  public String getLogoBase64String() {
-    return logoBase64String;
+  public String getBodyTextColor() {
+    return bodyTextColor;
   }
 
 
-  public void setLogoBase64String(String logoBase64String) {
-    this.logoBase64String = logoBase64String;
+  public void setBodyTextColor(String bodyTextColor) {
+    this.bodyTextColor = bodyTextColor;
+  }
+
+
+  public DynamicWriteAttributes callsToAction(List<String> callsToAction) {
+    
+    this.callsToAction = callsToAction;
+    return this;
+  }
+
+  public DynamicWriteAttributes addCallsToActionItem(String callsToActionItem) {
+    this.callsToAction.add(callsToActionItem);
+    return this;
+  }
+
+   /**
+   * A Call-to-Action (CTA) is an action-driven instruction to your audience intended to provoke an immediate  response, such as “Buy now” or “Go!”.
+   * @return callsToAction
+  **/
+  @javax.annotation.Nonnull
+
+  public List<String> getCallsToAction() {
+    return callsToAction;
+  }
+
+
+  public void setCallsToAction(List<String> callsToAction) {
+    this.callsToAction = callsToAction;
   }
 
 
@@ -173,25 +200,25 @@ public class DynamicWriteAttributes {
   }
 
 
-  public DynamicWriteAttributes bodyTextColor(String bodyTextColor) {
+  public DynamicWriteAttributes logoBase64String(String logoBase64String) {
     
-    this.bodyTextColor = bodyTextColor;
+    this.logoBase64String = logoBase64String;
     return this;
   }
 
    /**
-   * Color of the creative&#39;s body text  Valid hexadecimal color (e.g. \&quot;AB00FF\&quot;)
-   * @return bodyTextColor
+   * Logo image as a base-64 encoded string
+   * @return logoBase64String
   **/
   @javax.annotation.Nonnull
 
-  public String getBodyTextColor() {
-    return bodyTextColor;
+  public String getLogoBase64String() {
+    return logoBase64String;
   }
 
 
-  public void setBodyTextColor(String bodyTextColor) {
-    this.bodyTextColor = bodyTextColor;
+  public void setLogoBase64String(String logoBase64String) {
+    this.logoBase64String = logoBase64String;
   }
 
 
@@ -236,33 +263,6 @@ public class DynamicWriteAttributes {
 
   public void setPrimaryFont(String primaryFont) {
     this.primaryFont = primaryFont;
-  }
-
-
-  public DynamicWriteAttributes callsToAction(List<String> callsToAction) {
-    
-    this.callsToAction = callsToAction;
-    return this;
-  }
-
-  public DynamicWriteAttributes addCallsToActionItem(String callsToActionItem) {
-    this.callsToAction.add(callsToActionItem);
-    return this;
-  }
-
-   /**
-   * A Call-to-Action (CTA) is an action-driven instruction to your audience intended to provoke an immediate  response, such as “Buy now” or “Go!”.
-   * @return callsToAction
-  **/
-  @javax.annotation.Nonnull
-
-  public List<String> getCallsToAction() {
-    return callsToAction;
-  }
-
-
-  public void setCallsToAction(List<String> callsToAction) {
-    this.callsToAction = callsToAction;
   }
 
 
@@ -342,12 +342,12 @@ public class DynamicWriteAttributes {
       return false;
     }
     DynamicWriteAttributes dynamicWriteAttributes = (DynamicWriteAttributes) o;
-    return Objects.equals(this.logoBase64String, dynamicWriteAttributes.logoBase64String) &&
+    return Objects.equals(this.bodyTextColor, dynamicWriteAttributes.bodyTextColor) &&
+        Objects.equals(this.callsToAction, dynamicWriteAttributes.callsToAction) &&
         Objects.equals(this.creativeBackgroundColor, dynamicWriteAttributes.creativeBackgroundColor) &&
-        Objects.equals(this.bodyTextColor, dynamicWriteAttributes.bodyTextColor) &&
+        Objects.equals(this.logoBase64String, dynamicWriteAttributes.logoBase64String) &&
         Objects.equals(this.pricesColor, dynamicWriteAttributes.pricesColor) &&
         Objects.equals(this.primaryFont, dynamicWriteAttributes.primaryFont) &&
-        Objects.equals(this.callsToAction, dynamicWriteAttributes.callsToAction) &&
         Objects.equals(this.productImageDisplay, dynamicWriteAttributes.productImageDisplay)&&
         Objects.equals(this.additionalProperties, dynamicWriteAttributes.additionalProperties);
   }
@@ -358,7 +358,7 @@ public class DynamicWriteAttributes {
 
   @Override
   public int hashCode() {
-    return Objects.hash(logoBase64String, creativeBackgroundColor, bodyTextColor, pricesColor, primaryFont, callsToAction, productImageDisplay, additionalProperties);
+    return Objects.hash(bodyTextColor, callsToAction, creativeBackgroundColor, logoBase64String, pricesColor, primaryFont, productImageDisplay, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -372,12 +372,12 @@ public class DynamicWriteAttributes {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DynamicWriteAttributes {\n");
-    sb.append("    logoBase64String: ").append(toIndentedString(logoBase64String)).append("\n");
-    sb.append("    creativeBackgroundColor: ").append(toIndentedString(creativeBackgroundColor)).append("\n");
     sb.append("    bodyTextColor: ").append(toIndentedString(bodyTextColor)).append("\n");
+    sb.append("    callsToAction: ").append(toIndentedString(callsToAction)).append("\n");
+    sb.append("    creativeBackgroundColor: ").append(toIndentedString(creativeBackgroundColor)).append("\n");
+    sb.append("    logoBase64String: ").append(toIndentedString(logoBase64String)).append("\n");
     sb.append("    pricesColor: ").append(toIndentedString(pricesColor)).append("\n");
     sb.append("    primaryFont: ").append(toIndentedString(primaryFont)).append("\n");
-    sb.append("    callsToAction: ").append(toIndentedString(callsToAction)).append("\n");
     sb.append("    productImageDisplay: ").append(toIndentedString(productImageDisplay)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -402,20 +402,20 @@ public class DynamicWriteAttributes {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("logoBase64String");
-    openapiFields.add("creativeBackgroundColor");
     openapiFields.add("bodyTextColor");
+    openapiFields.add("callsToAction");
+    openapiFields.add("creativeBackgroundColor");
+    openapiFields.add("logoBase64String");
     openapiFields.add("pricesColor");
     openapiFields.add("primaryFont");
-    openapiFields.add("callsToAction");
     openapiFields.add("productImageDisplay");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("logoBase64String");
     openapiRequiredFields.add("bodyTextColor");
-    openapiRequiredFields.add("pricesColor");
     openapiRequiredFields.add("callsToAction");
+    openapiRequiredFields.add("logoBase64String");
+    openapiRequiredFields.add("pricesColor");
     openapiRequiredFields.add("productImageDisplay");
   }
 
@@ -438,26 +438,26 @@ public class DynamicWriteAttributes {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("logoBase64String").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `logoBase64String` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logoBase64String").toString()));
-      }
-      if ((jsonObj.get("creativeBackgroundColor") != null && !jsonObj.get("creativeBackgroundColor").isJsonNull()) && !jsonObj.get("creativeBackgroundColor").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `creativeBackgroundColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creativeBackgroundColor").toString()));
-      }
       if (!jsonObj.get("bodyTextColor").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `bodyTextColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bodyTextColor").toString()));
-      }
-      if (!jsonObj.get("pricesColor").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pricesColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pricesColor").toString()));
-      }
-      if ((jsonObj.get("primaryFont") != null && !jsonObj.get("primaryFont").isJsonNull()) && !jsonObj.get("primaryFont").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `primaryFont` to be a primitive type in the JSON string but got `%s`", jsonObj.get("primaryFont").toString()));
       }
       // ensure the required json array is present
       if (jsonObj.get("callsToAction") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("callsToAction").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `callsToAction` to be an array in the JSON string but got `%s`", jsonObj.get("callsToAction").toString()));
+      }
+      if ((jsonObj.get("creativeBackgroundColor") != null && !jsonObj.get("creativeBackgroundColor").isJsonNull()) && !jsonObj.get("creativeBackgroundColor").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `creativeBackgroundColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creativeBackgroundColor").toString()));
+      }
+      if (!jsonObj.get("logoBase64String").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `logoBase64String` to be a primitive type in the JSON string but got `%s`", jsonObj.get("logoBase64String").toString()));
+      }
+      if (!jsonObj.get("pricesColor").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pricesColor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pricesColor").toString()));
+      }
+      if ((jsonObj.get("primaryFont") != null && !jsonObj.get("primaryFont").isJsonNull()) && !jsonObj.get("primaryFont").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `primaryFont` to be a primitive type in the JSON string but got `%s`", jsonObj.get("primaryFont").toString()));
       }
       if (!jsonObj.get("productImageDisplay").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `productImageDisplay` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productImageDisplay").toString()));

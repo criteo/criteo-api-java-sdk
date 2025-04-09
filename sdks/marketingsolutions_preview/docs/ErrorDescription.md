@@ -8,10 +8,10 @@ Error structure representing an error message
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**title** | **String** |  |  [optional] |
-|**instance** | **String** |  |  [optional] |
-|**traceId** | **String** |  |  [optional] |
 |**code** | **String** |  |  [optional] |
+|**instance** | **String** |  |  [optional] |
+|**title** | **String** |  |  [optional] |
+|**traceId** | **String** |  |  [optional] |
 |**type** | **String** |  |  [optional] |
 
 

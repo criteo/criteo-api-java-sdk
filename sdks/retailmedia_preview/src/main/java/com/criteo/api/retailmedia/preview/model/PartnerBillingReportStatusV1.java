@@ -50,6 +50,14 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PartnerBillingReportStatusV1 {
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
+
+  public static final String SERIALIZED_NAME_ERROR_MESSAGE = "errorMessage";
+  @SerializedName(SERIALIZED_NAME_ERROR_MESSAGE)
+  private String errorMessage;
+
   /**
    * Status of the report.
    */
@@ -105,36 +113,28 @@ public class PartnerBillingReportStatusV1 {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private StatusEnum status;
 
-  public static final String SERIALIZED_NAME_ERROR_MESSAGE = "errorMessage";
-  @SerializedName(SERIALIZED_NAME_ERROR_MESSAGE)
-  private String errorMessage;
-
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
-
   public PartnerBillingReportStatusV1() {
   }
 
-  public PartnerBillingReportStatusV1 status(StatusEnum status) {
+  public PartnerBillingReportStatusV1 createdAt(OffsetDateTime createdAt) {
     
-    this.status = status;
+    this.createdAt = createdAt;
     return this;
   }
 
    /**
-   * Status of the report.
-   * @return status
+   * The date when the report request is created.
+   * @return createdAt
   **/
   @javax.annotation.Nonnull
 
-  public StatusEnum getStatus() {
-    return status;
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
   }
 
 
-  public void setStatus(StatusEnum status) {
-    this.status = status;
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
   }
 
 
@@ -160,25 +160,25 @@ public class PartnerBillingReportStatusV1 {
   }
 
 
-  public PartnerBillingReportStatusV1 createdAt(OffsetDateTime createdAt) {
+  public PartnerBillingReportStatusV1 status(StatusEnum status) {
     
-    this.createdAt = createdAt;
+    this.status = status;
     return this;
   }
 
    /**
-   * The date when the report request is created.
-   * @return createdAt
+   * Status of the report.
+   * @return status
   **/
   @javax.annotation.Nonnull
 
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
+  public StatusEnum getStatus() {
+    return status;
   }
 
 
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
+  public void setStatus(StatusEnum status) {
+    this.status = status;
   }
 
 
@@ -192,9 +192,9 @@ public class PartnerBillingReportStatusV1 {
       return false;
     }
     PartnerBillingReportStatusV1 partnerBillingReportStatusV1 = (PartnerBillingReportStatusV1) o;
-    return Objects.equals(this.status, partnerBillingReportStatusV1.status) &&
+    return Objects.equals(this.createdAt, partnerBillingReportStatusV1.createdAt) &&
         Objects.equals(this.errorMessage, partnerBillingReportStatusV1.errorMessage) &&
-        Objects.equals(this.createdAt, partnerBillingReportStatusV1.createdAt);
+        Objects.equals(this.status, partnerBillingReportStatusV1.status);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -203,7 +203,7 @@ public class PartnerBillingReportStatusV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, errorMessage, createdAt);
+    return Objects.hash(createdAt, errorMessage, status);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -217,9 +217,9 @@ public class PartnerBillingReportStatusV1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PartnerBillingReportStatusV1 {\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -242,14 +242,14 @@ public class PartnerBillingReportStatusV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("status");
-    openapiFields.add("errorMessage");
     openapiFields.add("createdAt");
+    openapiFields.add("errorMessage");
+    openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("status");
     openapiRequiredFields.add("createdAt");
+    openapiRequiredFields.add("status");
   }
 
  /**
@@ -279,11 +279,11 @@ public class PartnerBillingReportStatusV1 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
-      }
       if ((jsonObj.get("errorMessage") != null && !jsonObj.get("errorMessage").isJsonNull()) && !jsonObj.get("errorMessage").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `errorMessage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("errorMessage").toString()));
+      }
+      if (!jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
   }
 

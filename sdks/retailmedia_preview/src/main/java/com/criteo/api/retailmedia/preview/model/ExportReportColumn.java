@@ -49,17 +49,88 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExportReportColumn {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_CURRENCY = "currency";
+  @SerializedName(SERIALIZED_NAME_CURRENCY)
+  private String currency;
 
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
+  public static final String SERIALIZED_NAME_DEPRECATED = "deprecated";
+  @SerializedName(SERIALIZED_NAME_DEPRECATED)
+  private Boolean deprecated;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_DURATION = "duration";
+  @SerializedName(SERIALIZED_NAME_DURATION)
+  private String duration;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  /**
+   * Role of the column
+   */
+  @JsonAdapter(RoleEnum.Adapter.class)
+  public enum RoleEnum {
+    DIMENSION("Dimension"),
+    
+    PROPERTY("Property"),
+    
+    INTERVAL("Interval"),
+    
+    METRIC("Metric");
+
+    private String value;
+
+    RoleEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static RoleEnum fromValue(String value) {
+      for (RoleEnum b : RoleEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<RoleEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final RoleEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public RoleEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return RoleEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ROLE = "role";
+  @SerializedName(SERIALIZED_NAME_ROLE)
+  private RoleEnum role;
+
+  public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
+  @SerializedName(SERIALIZED_NAME_TIMEZONE)
+  private String timezone;
+
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  private String title;
 
   /**
    * Type of the column
@@ -124,121 +195,50 @@ public class ExportReportColumn {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
-  /**
-   * Role of the column
-   */
-  @JsonAdapter(RoleEnum.Adapter.class)
-  public enum RoleEnum {
-    DIMENSION("Dimension"),
-    
-    PROPERTY("Property"),
-    
-    INTERVAL("Interval"),
-    
-    METRIC("Metric");
-
-    private String value;
-
-    RoleEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static RoleEnum fromValue(String value) {
-      for (RoleEnum b : RoleEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<RoleEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final RoleEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public RoleEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return RoleEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_ROLE = "role";
-  @SerializedName(SERIALIZED_NAME_ROLE)
-  private RoleEnum role;
-
-  public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
-  @SerializedName(SERIALIZED_NAME_TIMEZONE)
-  private String timezone;
-
-  public static final String SERIALIZED_NAME_DURATION = "duration";
-  @SerializedName(SERIALIZED_NAME_DURATION)
-  private String duration;
-
-  public static final String SERIALIZED_NAME_CURRENCY = "currency";
-  @SerializedName(SERIALIZED_NAME_CURRENCY)
-  private String currency;
-
-  public static final String SERIALIZED_NAME_DEPRECATED = "deprecated";
-  @SerializedName(SERIALIZED_NAME_DEPRECATED)
-  private Boolean deprecated;
-
   public ExportReportColumn() {
   }
 
-  public ExportReportColumn name(String name) {
+  public ExportReportColumn currency(String currency) {
     
-    this.name = name;
+    this.currency = currency;
     return this;
   }
 
    /**
-   * Name of the exported column
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public ExportReportColumn title(String title) {
-    
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * Title of the exported column
-   * @return title
+   * Currency of the column
+   * @return currency
   **/
   @javax.annotation.Nullable
 
-  public String getTitle() {
-    return title;
+  public String getCurrency() {
+    return currency;
   }
 
 
-  public void setTitle(String title) {
-    this.title = title;
+  public void setCurrency(String currency) {
+    this.currency = currency;
+  }
+
+
+  public ExportReportColumn deprecated(Boolean deprecated) {
+    
+    this.deprecated = deprecated;
+    return this;
+  }
+
+   /**
+   * Flag for deprecated column
+   * @return deprecated
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getDeprecated() {
+    return deprecated;
+  }
+
+
+  public void setDeprecated(Boolean deprecated) {
+    this.deprecated = deprecated;
   }
 
 
@@ -264,25 +264,47 @@ public class ExportReportColumn {
   }
 
 
-  public ExportReportColumn type(TypeEnum type) {
+  public ExportReportColumn duration(String duration) {
     
-    this.type = type;
+    this.duration = duration;
     return this;
   }
 
    /**
-   * Type of the column
-   * @return type
+   * Duration of the column
+   * @return duration
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public TypeEnum getType() {
-    return type;
+  public String getDuration() {
+    return duration;
   }
 
 
-  public void setType(TypeEnum type) {
-    this.type = type;
+  public void setDuration(String duration) {
+    this.duration = duration;
+  }
+
+
+  public ExportReportColumn name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Name of the exported column
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -330,69 +352,47 @@ public class ExportReportColumn {
   }
 
 
-  public ExportReportColumn duration(String duration) {
+  public ExportReportColumn title(String title) {
     
-    this.duration = duration;
+    this.title = title;
     return this;
   }
 
    /**
-   * Duration of the column
-   * @return duration
+   * Title of the exported column
+   * @return title
   **/
   @javax.annotation.Nullable
 
-  public String getDuration() {
-    return duration;
+  public String getTitle() {
+    return title;
   }
 
 
-  public void setDuration(String duration) {
-    this.duration = duration;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
 
-  public ExportReportColumn currency(String currency) {
+  public ExportReportColumn type(TypeEnum type) {
     
-    this.currency = currency;
+    this.type = type;
     return this;
   }
 
    /**
-   * Currency of the column
-   * @return currency
+   * Type of the column
+   * @return type
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public String getCurrency() {
-    return currency;
+  public TypeEnum getType() {
+    return type;
   }
 
 
-  public void setCurrency(String currency) {
-    this.currency = currency;
-  }
-
-
-  public ExportReportColumn deprecated(Boolean deprecated) {
-    
-    this.deprecated = deprecated;
-    return this;
-  }
-
-   /**
-   * Flag for deprecated column
-   * @return deprecated
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getDeprecated() {
-    return deprecated;
-  }
-
-
-  public void setDeprecated(Boolean deprecated) {
-    this.deprecated = deprecated;
+  public void setType(TypeEnum type) {
+    this.type = type;
   }
 
   /**
@@ -450,15 +450,15 @@ public class ExportReportColumn {
       return false;
     }
     ExportReportColumn exportReportColumn = (ExportReportColumn) o;
-    return Objects.equals(this.name, exportReportColumn.name) &&
-        Objects.equals(this.title, exportReportColumn.title) &&
+    return Objects.equals(this.currency, exportReportColumn.currency) &&
+        Objects.equals(this.deprecated, exportReportColumn.deprecated) &&
         Objects.equals(this.description, exportReportColumn.description) &&
-        Objects.equals(this.type, exportReportColumn.type) &&
+        Objects.equals(this.duration, exportReportColumn.duration) &&
+        Objects.equals(this.name, exportReportColumn.name) &&
         Objects.equals(this.role, exportReportColumn.role) &&
         Objects.equals(this.timezone, exportReportColumn.timezone) &&
-        Objects.equals(this.duration, exportReportColumn.duration) &&
-        Objects.equals(this.currency, exportReportColumn.currency) &&
-        Objects.equals(this.deprecated, exportReportColumn.deprecated)&&
+        Objects.equals(this.title, exportReportColumn.title) &&
+        Objects.equals(this.type, exportReportColumn.type)&&
         Objects.equals(this.additionalProperties, exportReportColumn.additionalProperties);
   }
 
@@ -468,7 +468,7 @@ public class ExportReportColumn {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, title, description, type, role, timezone, duration, currency, deprecated, additionalProperties);
+    return Objects.hash(currency, deprecated, description, duration, name, role, timezone, title, type, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -482,15 +482,15 @@ public class ExportReportColumn {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExportReportColumn {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    role: ").append(toIndentedString(role)).append("\n");
-    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
-    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    deprecated: ").append(toIndentedString(deprecated)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    role: ").append(toIndentedString(role)).append("\n");
+    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -514,21 +514,21 @@ public class ExportReportColumn {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("title");
-    openapiFields.add("description");
-    openapiFields.add("type");
-    openapiFields.add("role");
-    openapiFields.add("timezone");
-    openapiFields.add("duration");
     openapiFields.add("currency");
     openapiFields.add("deprecated");
+    openapiFields.add("description");
+    openapiFields.add("duration");
+    openapiFields.add("name");
+    openapiFields.add("role");
+    openapiFields.add("timezone");
+    openapiFields.add("title");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("name");
-    openapiRequiredFields.add("type");
     openapiRequiredFields.add("role");
+    openapiRequiredFields.add("type");
   }
 
  /**
@@ -550,17 +550,17 @@ public class ExportReportColumn {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
+      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      if ((jsonObj.get("duration") != null && !jsonObj.get("duration").isJsonNull()) && !jsonObj.get("duration").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `duration` to be a primitive type in the JSON string but got `%s`", jsonObj.get("duration").toString()));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if (!jsonObj.get("role").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `role` to be a primitive type in the JSON string but got `%s`", jsonObj.get("role").toString()));
@@ -568,11 +568,11 @@ public class ExportReportColumn {
       if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));
       }
-      if ((jsonObj.get("duration") != null && !jsonObj.get("duration").isJsonNull()) && !jsonObj.get("duration").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `duration` to be a primitive type in the JSON string but got `%s`", jsonObj.get("duration").toString()));
+      if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
       }
-      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

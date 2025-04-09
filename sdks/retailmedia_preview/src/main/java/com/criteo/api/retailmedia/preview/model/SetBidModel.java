@@ -49,38 +49,16 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SetBidModel {
-  public static final String SERIALIZED_NAME_PHRASE = "phrase";
-  @SerializedName(SERIALIZED_NAME_PHRASE)
-  private String phrase;
-
   public static final String SERIALIZED_NAME_BID = "bid";
   @SerializedName(SERIALIZED_NAME_BID)
   private Double bid;
 
+  public static final String SERIALIZED_NAME_PHRASE = "phrase";
+  @SerializedName(SERIALIZED_NAME_PHRASE)
+  private String phrase;
+
   public SetBidModel() {
   }
-
-  public SetBidModel phrase(String phrase) {
-    
-    this.phrase = phrase;
-    return this;
-  }
-
-   /**
-   * Get phrase
-   * @return phrase
-  **/
-  @javax.annotation.Nullable
-
-  public String getPhrase() {
-    return phrase;
-  }
-
-
-  public void setPhrase(String phrase) {
-    this.phrase = phrase;
-  }
-
 
   public SetBidModel bid(Double bid) {
     
@@ -104,6 +82,28 @@ public class SetBidModel {
   }
 
 
+  public SetBidModel phrase(String phrase) {
+    
+    this.phrase = phrase;
+    return this;
+  }
+
+   /**
+   * Get phrase
+   * @return phrase
+  **/
+  @javax.annotation.Nullable
+
+  public String getPhrase() {
+    return phrase;
+  }
+
+
+  public void setPhrase(String phrase) {
+    this.phrase = phrase;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,8 +114,8 @@ public class SetBidModel {
       return false;
     }
     SetBidModel setBidModel = (SetBidModel) o;
-    return Objects.equals(this.phrase, setBidModel.phrase) &&
-        Objects.equals(this.bid, setBidModel.bid);
+    return Objects.equals(this.bid, setBidModel.bid) &&
+        Objects.equals(this.phrase, setBidModel.phrase);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -124,7 +124,7 @@ public class SetBidModel {
 
   @Override
   public int hashCode() {
-    return Objects.hash(phrase, bid);
+    return Objects.hash(bid, phrase);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -138,8 +138,8 @@ public class SetBidModel {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SetBidModel {\n");
-    sb.append("    phrase: ").append(toIndentedString(phrase)).append("\n");
     sb.append("    bid: ").append(toIndentedString(bid)).append("\n");
+    sb.append("    phrase: ").append(toIndentedString(phrase)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -162,8 +162,8 @@ public class SetBidModel {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("phrase");
     openapiFields.add("bid");
+    openapiFields.add("phrase");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -52,13 +52,13 @@ import com.criteo.api.retailmedia.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalRetailMediaSellerAccountCreation {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
   public static final String SERIALIZED_NAME_COMPANY_NAME = "companyName";
   @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
   private String companyName;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
   public static final String SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME = "onBehalfCompanyName";
   @SerializedName(SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME)
@@ -70,28 +70,6 @@ public class ExternalRetailMediaSellerAccountCreation {
 
   public ExternalRetailMediaSellerAccountCreation() {
   }
-
-  public ExternalRetailMediaSellerAccountCreation name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * the name of the account, must be unique across all accounts
-   * @return name
-  **/
-  @javax.annotation.Nullable
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
 
   public ExternalRetailMediaSellerAccountCreation companyName(String companyName) {
     
@@ -112,6 +90,28 @@ public class ExternalRetailMediaSellerAccountCreation {
 
   public void setCompanyName(String companyName) {
     this.companyName = companyName;
+  }
+
+
+  public ExternalRetailMediaSellerAccountCreation name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * the name of the account, must be unique across all accounts
+   * @return name
+  **/
+  @javax.annotation.Nullable
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -174,8 +174,8 @@ public class ExternalRetailMediaSellerAccountCreation {
       return false;
     }
     ExternalRetailMediaSellerAccountCreation externalRetailMediaSellerAccountCreation = (ExternalRetailMediaSellerAccountCreation) o;
-    return Objects.equals(this.name, externalRetailMediaSellerAccountCreation.name) &&
-        Objects.equals(this.companyName, externalRetailMediaSellerAccountCreation.companyName) &&
+    return Objects.equals(this.companyName, externalRetailMediaSellerAccountCreation.companyName) &&
+        Objects.equals(this.name, externalRetailMediaSellerAccountCreation.name) &&
         Objects.equals(this.onBehalfCompanyName, externalRetailMediaSellerAccountCreation.onBehalfCompanyName) &&
         Objects.equals(this.sellers, externalRetailMediaSellerAccountCreation.sellers);
   }
@@ -186,7 +186,7 @@ public class ExternalRetailMediaSellerAccountCreation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, companyName, onBehalfCompanyName, sellers);
+    return Objects.hash(companyName, name, onBehalfCompanyName, sellers);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -200,8 +200,8 @@ public class ExternalRetailMediaSellerAccountCreation {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalRetailMediaSellerAccountCreation {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    onBehalfCompanyName: ").append(toIndentedString(onBehalfCompanyName)).append("\n");
     sb.append("    sellers: ").append(toIndentedString(sellers)).append("\n");
     sb.append("}");
@@ -226,8 +226,8 @@ public class ExternalRetailMediaSellerAccountCreation {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
     openapiFields.add("companyName");
+    openapiFields.add("name");
     openapiFields.add("onBehalfCompanyName");
     openapiFields.add("sellers");
 
@@ -263,11 +263,11 @@ public class ExternalRetailMediaSellerAccountCreation {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
       if ((jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) && !jsonObj.get("companyName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("onBehalfCompanyName") != null && !jsonObj.get("onBehalfCompanyName").isJsonNull()) && !jsonObj.get("onBehalfCompanyName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `onBehalfCompanyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("onBehalfCompanyName").toString()));

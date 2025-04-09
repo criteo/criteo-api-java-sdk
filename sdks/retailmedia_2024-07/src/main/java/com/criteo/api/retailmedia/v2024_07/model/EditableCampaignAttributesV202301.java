@@ -51,33 +51,64 @@ import com.criteo.api.retailmedia.v2024_07.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class EditableCampaignAttributesV202301 {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
   public static final String SERIALIZED_NAME_BUDGET = "budget";
   @SerializedName(SERIALIZED_NAME_BUDGET)
   private BigDecimal budget;
 
-  public static final String SERIALIZED_NAME_MONTHLY_PACING = "monthlyPacing";
-  @SerializedName(SERIALIZED_NAME_MONTHLY_PACING)
-  private BigDecimal monthlyPacing;
+  /**
+   * Gets or Sets clickAttributionScope
+   */
+  @JsonAdapter(ClickAttributionScopeEnum.Adapter.class)
+  public enum ClickAttributionScopeEnum {
+    UNKNOWN("unknown"),
+    
+    SAMESKU("sameSku"),
+    
+    SAMESKUCATEGORY("sameSkuCategory"),
+    
+    SAMESKUCATEGORYBRAND("sameSkuCategoryBrand");
 
-  public static final String SERIALIZED_NAME_DAILY_PACING = "dailyPacing";
-  @SerializedName(SERIALIZED_NAME_DAILY_PACING)
-  private BigDecimal dailyPacing;
+    private String value;
 
-  public static final String SERIALIZED_NAME_IS_AUTO_DAILY_PACING = "isAutoDailyPacing";
-  @SerializedName(SERIALIZED_NAME_IS_AUTO_DAILY_PACING)
-  private Boolean isAutoDailyPacing;
+    ClickAttributionScopeEnum(String value) {
+      this.value = value;
+    }
 
-  public static final String SERIALIZED_NAME_START_DATE = "startDate";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private OffsetDateTime startDate;
+    public String getValue() {
+      return value;
+    }
 
-  public static final String SERIALIZED_NAME_END_DATE = "endDate";
-  @SerializedName(SERIALIZED_NAME_END_DATE)
-  private OffsetDateTime endDate;
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ClickAttributionScopeEnum fromValue(String value) {
+      for (ClickAttributionScopeEnum b : ClickAttributionScopeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<ClickAttributionScopeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ClickAttributionScopeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ClickAttributionScopeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ClickAttributionScopeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CLICK_ATTRIBUTION_SCOPE = "clickAttributionScope";
+  @SerializedName(SERIALIZED_NAME_CLICK_ATTRIBUTION_SCOPE)
+  private ClickAttributionScopeEnum clickAttributionScope;
 
   /**
    * Gets or Sets clickAttributionWindow
@@ -133,6 +164,93 @@ public class EditableCampaignAttributesV202301 {
   public static final String SERIALIZED_NAME_CLICK_ATTRIBUTION_WINDOW = "clickAttributionWindow";
   @SerializedName(SERIALIZED_NAME_CLICK_ATTRIBUTION_WINDOW)
   private ClickAttributionWindowEnum clickAttributionWindow;
+
+  public static final String SERIALIZED_NAME_COMPANY_NAME = "companyName";
+  @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
+  private String companyName;
+
+  public static final String SERIALIZED_NAME_DAILY_PACING = "dailyPacing";
+  @SerializedName(SERIALIZED_NAME_DAILY_PACING)
+  private BigDecimal dailyPacing;
+
+  public static final String SERIALIZED_NAME_END_DATE = "endDate";
+  @SerializedName(SERIALIZED_NAME_END_DATE)
+  private OffsetDateTime endDate;
+
+  public static final String SERIALIZED_NAME_IS_AUTO_DAILY_PACING = "isAutoDailyPacing";
+  @SerializedName(SERIALIZED_NAME_IS_AUTO_DAILY_PACING)
+  private Boolean isAutoDailyPacing;
+
+  public static final String SERIALIZED_NAME_MONTHLY_PACING = "monthlyPacing";
+  @SerializedName(SERIALIZED_NAME_MONTHLY_PACING)
+  private BigDecimal monthlyPacing;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME = "onBehalfCompanyName";
+  @SerializedName(SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME)
+  private String onBehalfCompanyName;
+
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private OffsetDateTime startDate;
+
+  /**
+   * Gets or Sets viewAttributionScope
+   */
+  @JsonAdapter(ViewAttributionScopeEnum.Adapter.class)
+  public enum ViewAttributionScopeEnum {
+    UNKNOWN("unknown"),
+    
+    SAMESKU("sameSku"),
+    
+    SAMESKUCATEGORY("sameSkuCategory"),
+    
+    SAMESKUCATEGORYBRAND("sameSkuCategoryBrand");
+
+    private String value;
+
+    ViewAttributionScopeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ViewAttributionScopeEnum fromValue(String value) {
+      for (ViewAttributionScopeEnum b : ViewAttributionScopeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<ViewAttributionScopeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ViewAttributionScopeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ViewAttributionScopeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ViewAttributionScopeEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_VIEW_ATTRIBUTION_SCOPE = "viewAttributionScope";
+  @SerializedName(SERIALIZED_NAME_VIEW_ATTRIBUTION_SCOPE)
+  private ViewAttributionScopeEnum viewAttributionScope;
 
   /**
    * Gets or Sets viewAttributionWindow
@@ -193,148 +311,8 @@ public class EditableCampaignAttributesV202301 {
   @SerializedName(SERIALIZED_NAME_VIEW_ATTRIBUTION_WINDOW)
   private ViewAttributionWindowEnum viewAttributionWindow;
 
-  /**
-   * Gets or Sets clickAttributionScope
-   */
-  @JsonAdapter(ClickAttributionScopeEnum.Adapter.class)
-  public enum ClickAttributionScopeEnum {
-    UNKNOWN("unknown"),
-    
-    SAMESKU("sameSku"),
-    
-    SAMESKUCATEGORY("sameSkuCategory"),
-    
-    SAMESKUCATEGORYBRAND("sameSkuCategoryBrand");
-
-    private String value;
-
-    ClickAttributionScopeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ClickAttributionScopeEnum fromValue(String value) {
-      for (ClickAttributionScopeEnum b : ClickAttributionScopeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<ClickAttributionScopeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ClickAttributionScopeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ClickAttributionScopeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ClickAttributionScopeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_CLICK_ATTRIBUTION_SCOPE = "clickAttributionScope";
-  @SerializedName(SERIALIZED_NAME_CLICK_ATTRIBUTION_SCOPE)
-  private ClickAttributionScopeEnum clickAttributionScope;
-
-  /**
-   * Gets or Sets viewAttributionScope
-   */
-  @JsonAdapter(ViewAttributionScopeEnum.Adapter.class)
-  public enum ViewAttributionScopeEnum {
-    UNKNOWN("unknown"),
-    
-    SAMESKU("sameSku"),
-    
-    SAMESKUCATEGORY("sameSkuCategory"),
-    
-    SAMESKUCATEGORYBRAND("sameSkuCategoryBrand");
-
-    private String value;
-
-    ViewAttributionScopeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ViewAttributionScopeEnum fromValue(String value) {
-      for (ViewAttributionScopeEnum b : ViewAttributionScopeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<ViewAttributionScopeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ViewAttributionScopeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ViewAttributionScopeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ViewAttributionScopeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_VIEW_ATTRIBUTION_SCOPE = "viewAttributionScope";
-  @SerializedName(SERIALIZED_NAME_VIEW_ATTRIBUTION_SCOPE)
-  private ViewAttributionScopeEnum viewAttributionScope;
-
-  public static final String SERIALIZED_NAME_COMPANY_NAME = "companyName";
-  @SerializedName(SERIALIZED_NAME_COMPANY_NAME)
-  private String companyName;
-
-  public static final String SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME = "onBehalfCompanyName";
-  @SerializedName(SERIALIZED_NAME_ON_BEHALF_COMPANY_NAME)
-  private String onBehalfCompanyName;
-
   public EditableCampaignAttributesV202301() {
   }
-
-  public EditableCampaignAttributesV202301 name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
 
   public EditableCampaignAttributesV202301 budget(BigDecimal budget) {
     
@@ -355,160 +333,6 @@ public class EditableCampaignAttributesV202301 {
 
   public void setBudget(BigDecimal budget) {
     this.budget = budget;
-  }
-
-
-  public EditableCampaignAttributesV202301 monthlyPacing(BigDecimal monthlyPacing) {
-    
-    this.monthlyPacing = monthlyPacing;
-    return this;
-  }
-
-   /**
-   * Get monthlyPacing
-   * @return monthlyPacing
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getMonthlyPacing() {
-    return monthlyPacing;
-  }
-
-
-  public void setMonthlyPacing(BigDecimal monthlyPacing) {
-    this.monthlyPacing = monthlyPacing;
-  }
-
-
-  public EditableCampaignAttributesV202301 dailyPacing(BigDecimal dailyPacing) {
-    
-    this.dailyPacing = dailyPacing;
-    return this;
-  }
-
-   /**
-   * Get dailyPacing
-   * @return dailyPacing
-  **/
-  @javax.annotation.Nullable
-
-  public BigDecimal getDailyPacing() {
-    return dailyPacing;
-  }
-
-
-  public void setDailyPacing(BigDecimal dailyPacing) {
-    this.dailyPacing = dailyPacing;
-  }
-
-
-  public EditableCampaignAttributesV202301 isAutoDailyPacing(Boolean isAutoDailyPacing) {
-    
-    this.isAutoDailyPacing = isAutoDailyPacing;
-    return this;
-  }
-
-   /**
-   * Get isAutoDailyPacing
-   * @return isAutoDailyPacing
-  **/
-  @javax.annotation.Nonnull
-
-  public Boolean getIsAutoDailyPacing() {
-    return isAutoDailyPacing;
-  }
-
-
-  public void setIsAutoDailyPacing(Boolean isAutoDailyPacing) {
-    this.isAutoDailyPacing = isAutoDailyPacing;
-  }
-
-
-  public EditableCampaignAttributesV202301 startDate(OffsetDateTime startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * Get startDate
-   * @return startDate
-  **/
-  @javax.annotation.Nullable
-
-  public OffsetDateTime getStartDate() {
-    return startDate;
-  }
-
-
-  public void setStartDate(OffsetDateTime startDate) {
-    this.startDate = startDate;
-  }
-
-
-  public EditableCampaignAttributesV202301 endDate(OffsetDateTime endDate) {
-    
-    this.endDate = endDate;
-    return this;
-  }
-
-   /**
-   * Get endDate
-   * @return endDate
-  **/
-  @javax.annotation.Nullable
-
-  public OffsetDateTime getEndDate() {
-    return endDate;
-  }
-
-
-  public void setEndDate(OffsetDateTime endDate) {
-    this.endDate = endDate;
-  }
-
-
-  public EditableCampaignAttributesV202301 clickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
-    
-    this.clickAttributionWindow = clickAttributionWindow;
-    return this;
-  }
-
-   /**
-   * Get clickAttributionWindow
-   * @return clickAttributionWindow
-  **/
-  @javax.annotation.Nonnull
-
-  public ClickAttributionWindowEnum getClickAttributionWindow() {
-    return clickAttributionWindow;
-  }
-
-
-  public void setClickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
-    this.clickAttributionWindow = clickAttributionWindow;
-  }
-
-
-  public EditableCampaignAttributesV202301 viewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
-    
-    this.viewAttributionWindow = viewAttributionWindow;
-    return this;
-  }
-
-   /**
-   * Get viewAttributionWindow
-   * @return viewAttributionWindow
-  **/
-  @javax.annotation.Nonnull
-
-  public ViewAttributionWindowEnum getViewAttributionWindow() {
-    return viewAttributionWindow;
-  }
-
-
-  public void setViewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
-    this.viewAttributionWindow = viewAttributionWindow;
   }
 
 
@@ -534,25 +358,25 @@ public class EditableCampaignAttributesV202301 {
   }
 
 
-  public EditableCampaignAttributesV202301 viewAttributionScope(ViewAttributionScopeEnum viewAttributionScope) {
+  public EditableCampaignAttributesV202301 clickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
     
-    this.viewAttributionScope = viewAttributionScope;
+    this.clickAttributionWindow = clickAttributionWindow;
     return this;
   }
 
    /**
-   * Get viewAttributionScope
-   * @return viewAttributionScope
+   * Get clickAttributionWindow
+   * @return clickAttributionWindow
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public ViewAttributionScopeEnum getViewAttributionScope() {
-    return viewAttributionScope;
+  public ClickAttributionWindowEnum getClickAttributionWindow() {
+    return clickAttributionWindow;
   }
 
 
-  public void setViewAttributionScope(ViewAttributionScopeEnum viewAttributionScope) {
-    this.viewAttributionScope = viewAttributionScope;
+  public void setClickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
+    this.clickAttributionWindow = clickAttributionWindow;
   }
 
 
@@ -578,6 +402,116 @@ public class EditableCampaignAttributesV202301 {
   }
 
 
+  public EditableCampaignAttributesV202301 dailyPacing(BigDecimal dailyPacing) {
+    
+    this.dailyPacing = dailyPacing;
+    return this;
+  }
+
+   /**
+   * Get dailyPacing
+   * @return dailyPacing
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getDailyPacing() {
+    return dailyPacing;
+  }
+
+
+  public void setDailyPacing(BigDecimal dailyPacing) {
+    this.dailyPacing = dailyPacing;
+  }
+
+
+  public EditableCampaignAttributesV202301 endDate(OffsetDateTime endDate) {
+    
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * Get endDate
+   * @return endDate
+  **/
+  @javax.annotation.Nullable
+
+  public OffsetDateTime getEndDate() {
+    return endDate;
+  }
+
+
+  public void setEndDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
+  }
+
+
+  public EditableCampaignAttributesV202301 isAutoDailyPacing(Boolean isAutoDailyPacing) {
+    
+    this.isAutoDailyPacing = isAutoDailyPacing;
+    return this;
+  }
+
+   /**
+   * Get isAutoDailyPacing
+   * @return isAutoDailyPacing
+  **/
+  @javax.annotation.Nonnull
+
+  public Boolean getIsAutoDailyPacing() {
+    return isAutoDailyPacing;
+  }
+
+
+  public void setIsAutoDailyPacing(Boolean isAutoDailyPacing) {
+    this.isAutoDailyPacing = isAutoDailyPacing;
+  }
+
+
+  public EditableCampaignAttributesV202301 monthlyPacing(BigDecimal monthlyPacing) {
+    
+    this.monthlyPacing = monthlyPacing;
+    return this;
+  }
+
+   /**
+   * Get monthlyPacing
+   * @return monthlyPacing
+  **/
+  @javax.annotation.Nullable
+
+  public BigDecimal getMonthlyPacing() {
+    return monthlyPacing;
+  }
+
+
+  public void setMonthlyPacing(BigDecimal monthlyPacing) {
+    this.monthlyPacing = monthlyPacing;
+  }
+
+
+  public EditableCampaignAttributesV202301 name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
   public EditableCampaignAttributesV202301 onBehalfCompanyName(String onBehalfCompanyName) {
     
     this.onBehalfCompanyName = onBehalfCompanyName;
@@ -597,6 +531,72 @@ public class EditableCampaignAttributesV202301 {
 
   public void setOnBehalfCompanyName(String onBehalfCompanyName) {
     this.onBehalfCompanyName = onBehalfCompanyName;
+  }
+
+
+  public EditableCampaignAttributesV202301 startDate(OffsetDateTime startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * Get startDate
+   * @return startDate
+  **/
+  @javax.annotation.Nullable
+
+  public OffsetDateTime getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(OffsetDateTime startDate) {
+    this.startDate = startDate;
+  }
+
+
+  public EditableCampaignAttributesV202301 viewAttributionScope(ViewAttributionScopeEnum viewAttributionScope) {
+    
+    this.viewAttributionScope = viewAttributionScope;
+    return this;
+  }
+
+   /**
+   * Get viewAttributionScope
+   * @return viewAttributionScope
+  **/
+  @javax.annotation.Nullable
+
+  public ViewAttributionScopeEnum getViewAttributionScope() {
+    return viewAttributionScope;
+  }
+
+
+  public void setViewAttributionScope(ViewAttributionScopeEnum viewAttributionScope) {
+    this.viewAttributionScope = viewAttributionScope;
+  }
+
+
+  public EditableCampaignAttributesV202301 viewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
+    
+    this.viewAttributionWindow = viewAttributionWindow;
+    return this;
+  }
+
+   /**
+   * Get viewAttributionWindow
+   * @return viewAttributionWindow
+  **/
+  @javax.annotation.Nonnull
+
+  public ViewAttributionWindowEnum getViewAttributionWindow() {
+    return viewAttributionWindow;
+  }
+
+
+  public void setViewAttributionWindow(ViewAttributionWindowEnum viewAttributionWindow) {
+    this.viewAttributionWindow = viewAttributionWindow;
   }
 
   /**
@@ -654,19 +654,19 @@ public class EditableCampaignAttributesV202301 {
       return false;
     }
     EditableCampaignAttributesV202301 editableCampaignAttributesV202301 = (EditableCampaignAttributesV202301) o;
-    return Objects.equals(this.name, editableCampaignAttributesV202301.name) &&
-        Objects.equals(this.budget, editableCampaignAttributesV202301.budget) &&
-        Objects.equals(this.monthlyPacing, editableCampaignAttributesV202301.monthlyPacing) &&
-        Objects.equals(this.dailyPacing, editableCampaignAttributesV202301.dailyPacing) &&
-        Objects.equals(this.isAutoDailyPacing, editableCampaignAttributesV202301.isAutoDailyPacing) &&
-        Objects.equals(this.startDate, editableCampaignAttributesV202301.startDate) &&
-        Objects.equals(this.endDate, editableCampaignAttributesV202301.endDate) &&
-        Objects.equals(this.clickAttributionWindow, editableCampaignAttributesV202301.clickAttributionWindow) &&
-        Objects.equals(this.viewAttributionWindow, editableCampaignAttributesV202301.viewAttributionWindow) &&
+    return Objects.equals(this.budget, editableCampaignAttributesV202301.budget) &&
         Objects.equals(this.clickAttributionScope, editableCampaignAttributesV202301.clickAttributionScope) &&
-        Objects.equals(this.viewAttributionScope, editableCampaignAttributesV202301.viewAttributionScope) &&
+        Objects.equals(this.clickAttributionWindow, editableCampaignAttributesV202301.clickAttributionWindow) &&
         Objects.equals(this.companyName, editableCampaignAttributesV202301.companyName) &&
-        Objects.equals(this.onBehalfCompanyName, editableCampaignAttributesV202301.onBehalfCompanyName)&&
+        Objects.equals(this.dailyPacing, editableCampaignAttributesV202301.dailyPacing) &&
+        Objects.equals(this.endDate, editableCampaignAttributesV202301.endDate) &&
+        Objects.equals(this.isAutoDailyPacing, editableCampaignAttributesV202301.isAutoDailyPacing) &&
+        Objects.equals(this.monthlyPacing, editableCampaignAttributesV202301.monthlyPacing) &&
+        Objects.equals(this.name, editableCampaignAttributesV202301.name) &&
+        Objects.equals(this.onBehalfCompanyName, editableCampaignAttributesV202301.onBehalfCompanyName) &&
+        Objects.equals(this.startDate, editableCampaignAttributesV202301.startDate) &&
+        Objects.equals(this.viewAttributionScope, editableCampaignAttributesV202301.viewAttributionScope) &&
+        Objects.equals(this.viewAttributionWindow, editableCampaignAttributesV202301.viewAttributionWindow)&&
         Objects.equals(this.additionalProperties, editableCampaignAttributesV202301.additionalProperties);
   }
 
@@ -676,7 +676,7 @@ public class EditableCampaignAttributesV202301 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, budget, monthlyPacing, dailyPacing, isAutoDailyPacing, startDate, endDate, clickAttributionWindow, viewAttributionWindow, clickAttributionScope, viewAttributionScope, companyName, onBehalfCompanyName, additionalProperties);
+    return Objects.hash(budget, clickAttributionScope, clickAttributionWindow, companyName, dailyPacing, endDate, isAutoDailyPacing, monthlyPacing, name, onBehalfCompanyName, startDate, viewAttributionScope, viewAttributionWindow, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -690,19 +690,19 @@ public class EditableCampaignAttributesV202301 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EditableCampaignAttributesV202301 {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
-    sb.append("    monthlyPacing: ").append(toIndentedString(monthlyPacing)).append("\n");
-    sb.append("    dailyPacing: ").append(toIndentedString(dailyPacing)).append("\n");
-    sb.append("    isAutoDailyPacing: ").append(toIndentedString(isAutoDailyPacing)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
-    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
-    sb.append("    clickAttributionWindow: ").append(toIndentedString(clickAttributionWindow)).append("\n");
-    sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
     sb.append("    clickAttributionScope: ").append(toIndentedString(clickAttributionScope)).append("\n");
-    sb.append("    viewAttributionScope: ").append(toIndentedString(viewAttributionScope)).append("\n");
+    sb.append("    clickAttributionWindow: ").append(toIndentedString(clickAttributionWindow)).append("\n");
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
+    sb.append("    dailyPacing: ").append(toIndentedString(dailyPacing)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    isAutoDailyPacing: ").append(toIndentedString(isAutoDailyPacing)).append("\n");
+    sb.append("    monthlyPacing: ").append(toIndentedString(monthlyPacing)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    onBehalfCompanyName: ").append(toIndentedString(onBehalfCompanyName)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    viewAttributionScope: ").append(toIndentedString(viewAttributionScope)).append("\n");
+    sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -726,27 +726,27 @@ public class EditableCampaignAttributesV202301 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
     openapiFields.add("budget");
-    openapiFields.add("monthlyPacing");
-    openapiFields.add("dailyPacing");
-    openapiFields.add("isAutoDailyPacing");
-    openapiFields.add("startDate");
-    openapiFields.add("endDate");
-    openapiFields.add("clickAttributionWindow");
-    openapiFields.add("viewAttributionWindow");
     openapiFields.add("clickAttributionScope");
-    openapiFields.add("viewAttributionScope");
+    openapiFields.add("clickAttributionWindow");
     openapiFields.add("companyName");
+    openapiFields.add("dailyPacing");
+    openapiFields.add("endDate");
+    openapiFields.add("isAutoDailyPacing");
+    openapiFields.add("monthlyPacing");
+    openapiFields.add("name");
     openapiFields.add("onBehalfCompanyName");
+    openapiFields.add("startDate");
+    openapiFields.add("viewAttributionScope");
+    openapiFields.add("viewAttributionWindow");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("isAutoDailyPacing");
-    openapiRequiredFields.add("startDate");
-    openapiRequiredFields.add("endDate");
     openapiRequiredFields.add("clickAttributionWindow");
+    openapiRequiredFields.add("endDate");
+    openapiRequiredFields.add("isAutoDailyPacing");
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("viewAttributionWindow");
   }
 
@@ -769,26 +769,26 @@ public class EditableCampaignAttributesV202301 {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if ((jsonObj.get("clickAttributionScope") != null && !jsonObj.get("clickAttributionScope").isJsonNull()) && !jsonObj.get("clickAttributionScope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `clickAttributionScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionScope").toString()));
       }
       if (!jsonObj.get("clickAttributionWindow").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `clickAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionWindow").toString()));
       }
-      if (!jsonObj.get("viewAttributionWindow").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `viewAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewAttributionWindow").toString()));
+      if ((jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) && !jsonObj.get("companyName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
       }
-      if ((jsonObj.get("clickAttributionScope") != null && !jsonObj.get("clickAttributionScope").isJsonNull()) && !jsonObj.get("clickAttributionScope").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `clickAttributionScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionScope").toString()));
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("onBehalfCompanyName") != null && !jsonObj.get("onBehalfCompanyName").isJsonNull()) && !jsonObj.get("onBehalfCompanyName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `onBehalfCompanyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("onBehalfCompanyName").toString()));
       }
       if ((jsonObj.get("viewAttributionScope") != null && !jsonObj.get("viewAttributionScope").isJsonNull()) && !jsonObj.get("viewAttributionScope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `viewAttributionScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewAttributionScope").toString()));
       }
-      if ((jsonObj.get("companyName") != null && !jsonObj.get("companyName").isJsonNull()) && !jsonObj.get("companyName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `companyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("companyName").toString()));
-      }
-      if ((jsonObj.get("onBehalfCompanyName") != null && !jsonObj.get("onBehalfCompanyName").isJsonNull()) && !jsonObj.get("onBehalfCompanyName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `onBehalfCompanyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("onBehalfCompanyName").toString()));
+      if (!jsonObj.get("viewAttributionWindow").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `viewAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewAttributionWindow").toString()));
       }
   }
 

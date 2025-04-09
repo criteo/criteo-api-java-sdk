@@ -48,6 +48,14 @@ import com.criteo.api.marketingsolutions.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RetargetingCreateV1 {
+  public static final String SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MAX = "daysSinceLastVisitMax";
+  @SerializedName(SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MAX)
+  private Integer daysSinceLastVisitMax;
+
+  public static final String SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MIN = "daysSinceLastVisitMin";
+  @SerializedName(SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MIN)
+  private Integer daysSinceLastVisitMin;
+
   /**
    * Types of visitors.
    */
@@ -101,36 +109,28 @@ public class RetargetingCreateV1 {
   @SerializedName(SERIALIZED_NAME_VISITORS_TYPE)
   private VisitorsTypeEnum visitorsType;
 
-  public static final String SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MIN = "daysSinceLastVisitMin";
-  @SerializedName(SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MIN)
-  private Integer daysSinceLastVisitMin;
-
-  public static final String SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MAX = "daysSinceLastVisitMax";
-  @SerializedName(SERIALIZED_NAME_DAYS_SINCE_LAST_VISIT_MAX)
-  private Integer daysSinceLastVisitMax;
-
   public RetargetingCreateV1() {
   }
 
-  public RetargetingCreateV1 visitorsType(VisitorsTypeEnum visitorsType) {
+  public RetargetingCreateV1 daysSinceLastVisitMax(Integer daysSinceLastVisitMax) {
     
-    this.visitorsType = visitorsType;
+    this.daysSinceLastVisitMax = daysSinceLastVisitMax;
     return this;
   }
 
    /**
-   * Types of visitors.
-   * @return visitorsType
+   * Maximum number of days since last visit to partner.
+   * @return daysSinceLastVisitMax
   **/
   @javax.annotation.Nonnull
 
-  public VisitorsTypeEnum getVisitorsType() {
-    return visitorsType;
+  public Integer getDaysSinceLastVisitMax() {
+    return daysSinceLastVisitMax;
   }
 
 
-  public void setVisitorsType(VisitorsTypeEnum visitorsType) {
-    this.visitorsType = visitorsType;
+  public void setDaysSinceLastVisitMax(Integer daysSinceLastVisitMax) {
+    this.daysSinceLastVisitMax = daysSinceLastVisitMax;
   }
 
 
@@ -156,25 +156,25 @@ public class RetargetingCreateV1 {
   }
 
 
-  public RetargetingCreateV1 daysSinceLastVisitMax(Integer daysSinceLastVisitMax) {
+  public RetargetingCreateV1 visitorsType(VisitorsTypeEnum visitorsType) {
     
-    this.daysSinceLastVisitMax = daysSinceLastVisitMax;
+    this.visitorsType = visitorsType;
     return this;
   }
 
    /**
-   * Maximum number of days since last visit to partner.
-   * @return daysSinceLastVisitMax
+   * Types of visitors.
+   * @return visitorsType
   **/
   @javax.annotation.Nonnull
 
-  public Integer getDaysSinceLastVisitMax() {
-    return daysSinceLastVisitMax;
+  public VisitorsTypeEnum getVisitorsType() {
+    return visitorsType;
   }
 
 
-  public void setDaysSinceLastVisitMax(Integer daysSinceLastVisitMax) {
-    this.daysSinceLastVisitMax = daysSinceLastVisitMax;
+  public void setVisitorsType(VisitorsTypeEnum visitorsType) {
+    this.visitorsType = visitorsType;
   }
 
   /**
@@ -232,24 +232,24 @@ public class RetargetingCreateV1 {
       return false;
     }
     RetargetingCreateV1 retargetingCreateV1 = (RetargetingCreateV1) o;
-    return Objects.equals(this.visitorsType, retargetingCreateV1.visitorsType) &&
+    return Objects.equals(this.daysSinceLastVisitMax, retargetingCreateV1.daysSinceLastVisitMax) &&
         Objects.equals(this.daysSinceLastVisitMin, retargetingCreateV1.daysSinceLastVisitMin) &&
-        Objects.equals(this.daysSinceLastVisitMax, retargetingCreateV1.daysSinceLastVisitMax)&&
+        Objects.equals(this.visitorsType, retargetingCreateV1.visitorsType)&&
         Objects.equals(this.additionalProperties, retargetingCreateV1.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(visitorsType, daysSinceLastVisitMin, daysSinceLastVisitMax, additionalProperties);
+    return Objects.hash(daysSinceLastVisitMax, daysSinceLastVisitMin, visitorsType, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RetargetingCreateV1 {\n");
-    sb.append("    visitorsType: ").append(toIndentedString(visitorsType)).append("\n");
-    sb.append("    daysSinceLastVisitMin: ").append(toIndentedString(daysSinceLastVisitMin)).append("\n");
     sb.append("    daysSinceLastVisitMax: ").append(toIndentedString(daysSinceLastVisitMax)).append("\n");
+    sb.append("    daysSinceLastVisitMin: ").append(toIndentedString(daysSinceLastVisitMin)).append("\n");
+    sb.append("    visitorsType: ").append(toIndentedString(visitorsType)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -273,15 +273,15 @@ public class RetargetingCreateV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("visitorsType");
-    openapiFields.add("daysSinceLastVisitMin");
     openapiFields.add("daysSinceLastVisitMax");
+    openapiFields.add("daysSinceLastVisitMin");
+    openapiFields.add("visitorsType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("visitorsType");
-    openapiRequiredFields.add("daysSinceLastVisitMin");
     openapiRequiredFields.add("daysSinceLastVisitMax");
+    openapiRequiredFields.add("daysSinceLastVisitMin");
+    openapiRequiredFields.add("visitorsType");
   }
 
  /**

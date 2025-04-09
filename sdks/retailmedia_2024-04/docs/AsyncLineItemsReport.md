@@ -8,41 +8,21 @@ Async Line Items report body request
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**ids** | **List&lt;String&gt;** | Line Item ids to report on |  [optional] |
-|**id** | **String** | Line Item id to report on |  [optional] |
-|**searchTermTypes** | [**List&lt;SearchTermTypesEnum&gt;**](#List&lt;SearchTermTypesEnum&gt;) | Filter on the type of search term type: unknown, searched, entered |  [optional] |
-|**searchTermTargetings** | [**List&lt;SearchTermTargetingsEnum&gt;**](#List&lt;SearchTermTargetingsEnum&gt;) | Filter on the type of search term targeting: unknown, automatic, manual |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays |  [optional] |
-|**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
-|**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
-|**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report, if no dimensions/metrics are provided, falls back to summary reportType |  [optional] |
 |**clickAttributionWindow** | [**ClickAttributionWindowEnum**](#ClickAttributionWindowEnum) | Click attribution window |  [optional] |
-|**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) | View attribution window |  [optional] |
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  [optional] |
-|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  [optional] |
-|**startDate** | **OffsetDateTime** | Start date |  |
 |**endDate** | **OffsetDateTime** | End date |  |
+|**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
+|**id** | **String** | Line Item id to report on |  [optional] |
+|**ids** | **List&lt;String&gt;** | Line Item ids to report on |  [optional] |
+|**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  [optional] |
+|**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report, if no dimensions/metrics are provided, falls back to summary reportType |  [optional] |
+|**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
+|**searchTermTargetings** | [**List&lt;SearchTermTargetingsEnum&gt;**](#List&lt;SearchTermTargetingsEnum&gt;) | Filter on the type of search term targeting: unknown, automatic, manual |  [optional] |
+|**searchTermTypes** | [**List&lt;SearchTermTypesEnum&gt;**](#List&lt;SearchTermTypesEnum&gt;) | Filter on the type of search term type: unknown, searched, entered |  [optional] |
+|**startDate** | **OffsetDateTime** | Start date |  |
 |**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
-
-
-
-## Enum: List&lt;SearchTermTypesEnum&gt;
-
-| Name | Value |
-|---- | -----|
-| UNKNOWN | &quot;unknown&quot; |
-| SEARCHED | &quot;searched&quot; |
-| ENTERED | &quot;entered&quot; |
-
-
-
-## Enum: List&lt;SearchTermTargetingsEnum&gt;
-
-| Name | Value |
-|---- | -----|
-| UNKNOWN | &quot;unknown&quot; |
-| AUTOMATIC | &quot;automatic&quot; |
-| MANUAL | &quot;manual&quot; |
+|**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) | View attribution window |  [optional] |
 
 
 
@@ -56,60 +36,11 @@ Async Line Items report body request
 
 
 
-## Enum: SalesChannelEnum
-
-| Name | Value |
-|---- | -----|
-| ALL | &quot;all&quot; |
-| OFFLINE | &quot;offline&quot; |
-| ONLINE | &quot;online&quot; |
-
-
-
-## Enum: FormatEnum
-
-| Name | Value |
-|---- | -----|
-| JSON | &quot;json&quot; |
-| JSON_COMPACT | &quot;json-compact&quot; |
-| JSON_NEWLINE | &quot;json-newline&quot; |
-| CSV | &quot;csv&quot; |
-
-
-
-## Enum: ReportTypeEnum
-
-| Name | Value |
-|---- | -----|
-| SUMMARY | &quot;summary&quot; |
-| PAGETYPE | &quot;pageType&quot; |
-| KEYWORD | &quot;keyword&quot; |
-| PRODUCTCATEGORY | &quot;productCategory&quot; |
-| PRODUCT | &quot;product&quot; |
-| ATTRIBUTEDTRANSACTIONS | &quot;attributedTransactions&quot; |
-| ENVIRONMENT | &quot;environment&quot; |
-| SERVEDCATEGORY | &quot;servedCategory&quot; |
-| CAPOUT | &quot;capout&quot; |
-
-
-
 ## Enum: ClickAttributionWindowEnum
 
 | Name | Value |
 |---- | -----|
 | NONE | &quot;none&quot; |
-| _7D | &quot;7D&quot; |
-| _14D | &quot;14D&quot; |
-| _30D | &quot;30D&quot; |
-
-
-
-## Enum: ViewAttributionWindowEnum
-
-| Name | Value |
-|---- | -----|
-| NONE | &quot;none&quot; |
-| _1D | &quot;1D&quot; |
 | _7D | &quot;7D&quot; |
 | _14D | &quot;14D&quot; |
 | _30D | &quot;30D&quot; |
@@ -155,6 +86,17 @@ Async Line Items report body request
 
 
 
+## Enum: FormatEnum
+
+| Name | Value |
+|---- | -----|
+| JSON | &quot;json&quot; |
+| JSON_COMPACT | &quot;json-compact&quot; |
+| JSON_NEWLINE | &quot;json-newline&quot; |
+| CSV | &quot;csv&quot; |
+
+
+
 ## Enum: List&lt;MetricsEnum&gt;
 
 | Name | Value |
@@ -196,6 +138,64 @@ Async Line Items report body request
 | NEWTOBRANDATTRIBUTEDUNITSRATE | &quot;newToBrandAttributedUnitsRate&quot; |
 | UNIQUEVISITORS | &quot;uniqueVisitors&quot; |
 | FREQUENCY | &quot;frequency&quot; |
+
+
+
+## Enum: ReportTypeEnum
+
+| Name | Value |
+|---- | -----|
+| SUMMARY | &quot;summary&quot; |
+| PAGETYPE | &quot;pageType&quot; |
+| KEYWORD | &quot;keyword&quot; |
+| PRODUCTCATEGORY | &quot;productCategory&quot; |
+| PRODUCT | &quot;product&quot; |
+| ATTRIBUTEDTRANSACTIONS | &quot;attributedTransactions&quot; |
+| ENVIRONMENT | &quot;environment&quot; |
+| SERVEDCATEGORY | &quot;servedCategory&quot; |
+| CAPOUT | &quot;capout&quot; |
+
+
+
+## Enum: SalesChannelEnum
+
+| Name | Value |
+|---- | -----|
+| ALL | &quot;all&quot; |
+| OFFLINE | &quot;offline&quot; |
+| ONLINE | &quot;online&quot; |
+
+
+
+## Enum: List&lt;SearchTermTargetingsEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| AUTOMATIC | &quot;automatic&quot; |
+| MANUAL | &quot;manual&quot; |
+
+
+
+## Enum: List&lt;SearchTermTypesEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| SEARCHED | &quot;searched&quot; |
+| ENTERED | &quot;entered&quot; |
+
+
+
+## Enum: ViewAttributionWindowEnum
+
+| Name | Value |
+|---- | -----|
+| NONE | &quot;none&quot; |
+| _1D | &quot;1D&quot; |
+| _7D | &quot;7D&quot; |
+| _14D | &quot;14D&quot; |
+| _30D | &quot;30D&quot; |
 
 
 

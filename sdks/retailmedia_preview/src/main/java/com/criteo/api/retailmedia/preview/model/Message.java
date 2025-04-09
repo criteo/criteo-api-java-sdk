@@ -50,38 +50,16 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Message {
-  public static final String SERIALIZED_NAME_USER_MESSAGE = "userMessage";
-  @SerializedName(SERIALIZED_NAME_USER_MESSAGE)
-  private String userMessage;
-
   public static final String SERIALIZED_NAME_BOT_MESSAGE = "botMessage";
   @SerializedName(SERIALIZED_NAME_BOT_MESSAGE)
   private BotMessage botMessage;
 
+  public static final String SERIALIZED_NAME_USER_MESSAGE = "userMessage";
+  @SerializedName(SERIALIZED_NAME_USER_MESSAGE)
+  private String userMessage;
+
   public Message() {
   }
-
-  public Message userMessage(String userMessage) {
-    
-    this.userMessage = userMessage;
-    return this;
-  }
-
-   /**
-   * user prompt
-   * @return userMessage
-  **/
-  @javax.annotation.Nullable
-
-  public String getUserMessage() {
-    return userMessage;
-  }
-
-
-  public void setUserMessage(String userMessage) {
-    this.userMessage = userMessage;
-  }
-
 
   public Message botMessage(BotMessage botMessage) {
     
@@ -102,6 +80,28 @@ public class Message {
 
   public void setBotMessage(BotMessage botMessage) {
     this.botMessage = botMessage;
+  }
+
+
+  public Message userMessage(String userMessage) {
+    
+    this.userMessage = userMessage;
+    return this;
+  }
+
+   /**
+   * user prompt
+   * @return userMessage
+  **/
+  @javax.annotation.Nullable
+
+  public String getUserMessage() {
+    return userMessage;
+  }
+
+
+  public void setUserMessage(String userMessage) {
+    this.userMessage = userMessage;
   }
 
   /**
@@ -159,8 +159,8 @@ public class Message {
       return false;
     }
     Message message = (Message) o;
-    return Objects.equals(this.userMessage, message.userMessage) &&
-        Objects.equals(this.botMessage, message.botMessage)&&
+    return Objects.equals(this.botMessage, message.botMessage) &&
+        Objects.equals(this.userMessage, message.userMessage)&&
         Objects.equals(this.additionalProperties, message.additionalProperties);
   }
 
@@ -170,7 +170,7 @@ public class Message {
 
   @Override
   public int hashCode() {
-    return Objects.hash(userMessage, botMessage, additionalProperties);
+    return Objects.hash(botMessage, userMessage, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -184,8 +184,8 @@ public class Message {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Message {\n");
-    sb.append("    userMessage: ").append(toIndentedString(userMessage)).append("\n");
     sb.append("    botMessage: ").append(toIndentedString(botMessage)).append("\n");
+    sb.append("    userMessage: ").append(toIndentedString(userMessage)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -209,8 +209,8 @@ public class Message {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("userMessage");
     openapiFields.add("botMessage");
+    openapiFields.add("userMessage");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -228,12 +228,12 @@ public class Message {
           throw new IllegalArgumentException(String.format("The required field(s) %s in Message is not found in the empty JSON string", Message.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("userMessage") != null && !jsonObj.get("userMessage").isJsonNull()) && !jsonObj.get("userMessage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `userMessage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userMessage").toString()));
-      }
       // validate the optional field `botMessage`
       if (jsonObj.get("botMessage") != null && !jsonObj.get("botMessage").isJsonNull()) {
         BotMessage.validateJsonObject(jsonObj.getAsJsonObject("botMessage"));
+      }
+      if ((jsonObj.get("userMessage") != null && !jsonObj.get("userMessage").isJsonNull()) && !jsonObj.get("userMessage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `userMessage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userMessage").toString()));
       }
   }
 

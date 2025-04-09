@@ -53,6 +53,14 @@ import com.criteo.api.marketingsolutions.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PatchAdSetV24Q1 {
+  public static final String SERIALIZED_NAME_BIDDING = "bidding";
+  @SerializedName(SERIALIZED_NAME_BIDDING)
+  private PatchAdSetBiddingV24Q1 bidding;
+
+  public static final String SERIALIZED_NAME_BUDGET = "budget";
+  @SerializedName(SERIALIZED_NAME_BUDGET)
+  private PatchAdSetBudgetV24Q1 budget;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -61,20 +69,56 @@ public class PatchAdSetV24Q1 {
   @SerializedName(SERIALIZED_NAME_SCHEDULING)
   private PatchAdSetSchedulingV24Q1 scheduling;
 
-  public static final String SERIALIZED_NAME_BIDDING = "bidding";
-  @SerializedName(SERIALIZED_NAME_BIDDING)
-  private PatchAdSetBiddingV24Q1 bidding;
-
   public static final String SERIALIZED_NAME_TARGETING = "targeting";
   @SerializedName(SERIALIZED_NAME_TARGETING)
   private AdSetTargetingV24Q1 targeting;
 
-  public static final String SERIALIZED_NAME_BUDGET = "budget";
-  @SerializedName(SERIALIZED_NAME_BUDGET)
-  private PatchAdSetBudgetV24Q1 budget;
-
   public PatchAdSetV24Q1() {
   }
+
+  public PatchAdSetV24Q1 bidding(PatchAdSetBiddingV24Q1 bidding) {
+    
+    this.bidding = bidding;
+    return this;
+  }
+
+   /**
+   * Get bidding
+   * @return bidding
+  **/
+  @javax.annotation.Nullable
+
+  public PatchAdSetBiddingV24Q1 getBidding() {
+    return bidding;
+  }
+
+
+  public void setBidding(PatchAdSetBiddingV24Q1 bidding) {
+    this.bidding = bidding;
+  }
+
+
+  public PatchAdSetV24Q1 budget(PatchAdSetBudgetV24Q1 budget) {
+    
+    this.budget = budget;
+    return this;
+  }
+
+   /**
+   * Get budget
+   * @return budget
+  **/
+  @javax.annotation.Nullable
+
+  public PatchAdSetBudgetV24Q1 getBudget() {
+    return budget;
+  }
+
+
+  public void setBudget(PatchAdSetBudgetV24Q1 budget) {
+    this.budget = budget;
+  }
+
 
   public PatchAdSetV24Q1 name(String name) {
     
@@ -120,28 +164,6 @@ public class PatchAdSetV24Q1 {
   }
 
 
-  public PatchAdSetV24Q1 bidding(PatchAdSetBiddingV24Q1 bidding) {
-    
-    this.bidding = bidding;
-    return this;
-  }
-
-   /**
-   * Get bidding
-   * @return bidding
-  **/
-  @javax.annotation.Nullable
-
-  public PatchAdSetBiddingV24Q1 getBidding() {
-    return bidding;
-  }
-
-
-  public void setBidding(PatchAdSetBiddingV24Q1 bidding) {
-    this.bidding = bidding;
-  }
-
-
   public PatchAdSetV24Q1 targeting(AdSetTargetingV24Q1 targeting) {
     
     this.targeting = targeting;
@@ -161,28 +183,6 @@ public class PatchAdSetV24Q1 {
 
   public void setTargeting(AdSetTargetingV24Q1 targeting) {
     this.targeting = targeting;
-  }
-
-
-  public PatchAdSetV24Q1 budget(PatchAdSetBudgetV24Q1 budget) {
-    
-    this.budget = budget;
-    return this;
-  }
-
-   /**
-   * Get budget
-   * @return budget
-  **/
-  @javax.annotation.Nullable
-
-  public PatchAdSetBudgetV24Q1 getBudget() {
-    return budget;
-  }
-
-
-  public void setBudget(PatchAdSetBudgetV24Q1 budget) {
-    this.budget = budget;
   }
 
   /**
@@ -240,11 +240,11 @@ public class PatchAdSetV24Q1 {
       return false;
     }
     PatchAdSetV24Q1 patchAdSetV24Q1 = (PatchAdSetV24Q1) o;
-    return Objects.equals(this.name, patchAdSetV24Q1.name) &&
+    return Objects.equals(this.bidding, patchAdSetV24Q1.bidding) &&
+        Objects.equals(this.budget, patchAdSetV24Q1.budget) &&
+        Objects.equals(this.name, patchAdSetV24Q1.name) &&
         Objects.equals(this.scheduling, patchAdSetV24Q1.scheduling) &&
-        Objects.equals(this.bidding, patchAdSetV24Q1.bidding) &&
-        Objects.equals(this.targeting, patchAdSetV24Q1.targeting) &&
-        Objects.equals(this.budget, patchAdSetV24Q1.budget)&&
+        Objects.equals(this.targeting, patchAdSetV24Q1.targeting)&&
         Objects.equals(this.additionalProperties, patchAdSetV24Q1.additionalProperties);
   }
 
@@ -254,7 +254,7 @@ public class PatchAdSetV24Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, scheduling, bidding, targeting, budget, additionalProperties);
+    return Objects.hash(bidding, budget, name, scheduling, targeting, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -268,11 +268,11 @@ public class PatchAdSetV24Q1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PatchAdSetV24Q1 {\n");
+    sb.append("    bidding: ").append(toIndentedString(bidding)).append("\n");
+    sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    scheduling: ").append(toIndentedString(scheduling)).append("\n");
-    sb.append("    bidding: ").append(toIndentedString(bidding)).append("\n");
     sb.append("    targeting: ").append(toIndentedString(targeting)).append("\n");
-    sb.append("    budget: ").append(toIndentedString(budget)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -296,11 +296,11 @@ public class PatchAdSetV24Q1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("bidding");
+    openapiFields.add("budget");
     openapiFields.add("name");
     openapiFields.add("scheduling");
-    openapiFields.add("bidding");
     openapiFields.add("targeting");
-    openapiFields.add("budget");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -318,6 +318,14 @@ public class PatchAdSetV24Q1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in PatchAdSetV24Q1 is not found in the empty JSON string", PatchAdSetV24Q1.openapiRequiredFields.toString()));
         }
       }
+      // validate the optional field `bidding`
+      if (jsonObj.get("bidding") != null && !jsonObj.get("bidding").isJsonNull()) {
+        PatchAdSetBiddingV24Q1.validateJsonObject(jsonObj.getAsJsonObject("bidding"));
+      }
+      // validate the optional field `budget`
+      if (jsonObj.get("budget") != null && !jsonObj.get("budget").isJsonNull()) {
+        PatchAdSetBudgetV24Q1.validateJsonObject(jsonObj.getAsJsonObject("budget"));
+      }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
@@ -325,17 +333,9 @@ public class PatchAdSetV24Q1 {
       if (jsonObj.get("scheduling") != null && !jsonObj.get("scheduling").isJsonNull()) {
         PatchAdSetSchedulingV24Q1.validateJsonObject(jsonObj.getAsJsonObject("scheduling"));
       }
-      // validate the optional field `bidding`
-      if (jsonObj.get("bidding") != null && !jsonObj.get("bidding").isJsonNull()) {
-        PatchAdSetBiddingV24Q1.validateJsonObject(jsonObj.getAsJsonObject("bidding"));
-      }
       // validate the optional field `targeting`
       if (jsonObj.get("targeting") != null && !jsonObj.get("targeting").isJsonNull()) {
         AdSetTargetingV24Q1.validateJsonObject(jsonObj.getAsJsonObject("targeting"));
-      }
-      // validate the optional field `budget`
-      if (jsonObj.get("budget") != null && !jsonObj.get("budget").isJsonNull()) {
-        PatchAdSetBudgetV24Q1.validateJsonObject(jsonObj.getAsJsonObject("budget"));
       }
   }
 

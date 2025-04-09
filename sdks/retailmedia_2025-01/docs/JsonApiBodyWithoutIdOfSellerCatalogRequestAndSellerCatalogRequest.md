@@ -8,8 +8,8 @@ A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\" /> with 
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **String** |  |  |
 |**attributes** | [**SellerCatalogRequest**](SellerCatalogRequest.md) |  |  [optional] |
+|**type** | **String** |  |  |
 
 
 

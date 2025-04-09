@@ -55,14 +55,6 @@ import com.criteo.api.retailmedia.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TemplateVariableValue {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
-
-  public static final String SERIALIZED_NAME_TEXT_VARIABLE_VALUE = "textVariableValue";
-  @SerializedName(SERIALIZED_NAME_TEXT_VARIABLE_VALUE)
-  private TextVariableValue textVariableValue;
-
   public static final String SERIALIZED_NAME_CHOICE_VARIABLE_VALUE = "choiceVariableValue";
   @SerializedName(SERIALIZED_NAME_CHOICE_VARIABLE_VALUE)
   private ChoiceVariableValue choiceVariableValue;
@@ -79,56 +71,20 @@ public class TemplateVariableValue {
   @SerializedName(SERIALIZED_NAME_HYPERLINK_VARIABLE_VALUE)
   private HyperlinkVariableValue hyperlinkVariableValue;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
+  public static final String SERIALIZED_NAME_TEXT_VARIABLE_VALUE = "textVariableValue";
+  @SerializedName(SERIALIZED_NAME_TEXT_VARIABLE_VALUE)
+  private TextVariableValue textVariableValue;
+
   public static final String SERIALIZED_NAME_VIDEO_VARIABLE_VALUE = "videoVariableValue";
   @SerializedName(SERIALIZED_NAME_VIDEO_VARIABLE_VALUE)
   private VideoVariableValue videoVariableValue;
 
   public TemplateVariableValue() {
   }
-
-  public TemplateVariableValue id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * The id of the template variable the value is applied to
-   * @return id
-  **/
-  @javax.annotation.Nonnull
-
-  public String getId() {
-    return id;
-  }
-
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-
-  public TemplateVariableValue textVariableValue(TextVariableValue textVariableValue) {
-    
-    this.textVariableValue = textVariableValue;
-    return this;
-  }
-
-   /**
-   * Get textVariableValue
-   * @return textVariableValue
-  **/
-  @javax.annotation.Nullable
-
-  public TextVariableValue getTextVariableValue() {
-    return textVariableValue;
-  }
-
-
-  public void setTextVariableValue(TextVariableValue textVariableValue) {
-    this.textVariableValue = textVariableValue;
-  }
-
 
   public TemplateVariableValue choiceVariableValue(ChoiceVariableValue choiceVariableValue) {
     
@@ -218,6 +174,50 @@ public class TemplateVariableValue {
   }
 
 
+  public TemplateVariableValue id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * The id of the template variable the value is applied to
+   * @return id
+  **/
+  @javax.annotation.Nonnull
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  public TemplateVariableValue textVariableValue(TextVariableValue textVariableValue) {
+    
+    this.textVariableValue = textVariableValue;
+    return this;
+  }
+
+   /**
+   * Get textVariableValue
+   * @return textVariableValue
+  **/
+  @javax.annotation.Nullable
+
+  public TextVariableValue getTextVariableValue() {
+    return textVariableValue;
+  }
+
+
+  public void setTextVariableValue(TextVariableValue textVariableValue) {
+    this.textVariableValue = textVariableValue;
+  }
+
+
   public TemplateVariableValue videoVariableValue(VideoVariableValue videoVariableValue) {
     
     this.videoVariableValue = videoVariableValue;
@@ -250,12 +250,12 @@ public class TemplateVariableValue {
       return false;
     }
     TemplateVariableValue templateVariableValue = (TemplateVariableValue) o;
-    return Objects.equals(this.id, templateVariableValue.id) &&
-        Objects.equals(this.textVariableValue, templateVariableValue.textVariableValue) &&
-        Objects.equals(this.choiceVariableValue, templateVariableValue.choiceVariableValue) &&
+    return Objects.equals(this.choiceVariableValue, templateVariableValue.choiceVariableValue) &&
         Objects.equals(this.colorVariableValue, templateVariableValue.colorVariableValue) &&
         Objects.equals(this.filesVariableValue, templateVariableValue.filesVariableValue) &&
         Objects.equals(this.hyperlinkVariableValue, templateVariableValue.hyperlinkVariableValue) &&
+        Objects.equals(this.id, templateVariableValue.id) &&
+        Objects.equals(this.textVariableValue, templateVariableValue.textVariableValue) &&
         Objects.equals(this.videoVariableValue, templateVariableValue.videoVariableValue);
   }
 
@@ -265,7 +265,7 @@ public class TemplateVariableValue {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, textVariableValue, choiceVariableValue, colorVariableValue, filesVariableValue, hyperlinkVariableValue, videoVariableValue);
+    return Objects.hash(choiceVariableValue, colorVariableValue, filesVariableValue, hyperlinkVariableValue, id, textVariableValue, videoVariableValue);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -279,12 +279,12 @@ public class TemplateVariableValue {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateVariableValue {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    textVariableValue: ").append(toIndentedString(textVariableValue)).append("\n");
     sb.append("    choiceVariableValue: ").append(toIndentedString(choiceVariableValue)).append("\n");
     sb.append("    colorVariableValue: ").append(toIndentedString(colorVariableValue)).append("\n");
     sb.append("    filesVariableValue: ").append(toIndentedString(filesVariableValue)).append("\n");
     sb.append("    hyperlinkVariableValue: ").append(toIndentedString(hyperlinkVariableValue)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    textVariableValue: ").append(toIndentedString(textVariableValue)).append("\n");
     sb.append("    videoVariableValue: ").append(toIndentedString(videoVariableValue)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -308,12 +308,12 @@ public class TemplateVariableValue {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("textVariableValue");
     openapiFields.add("choiceVariableValue");
     openapiFields.add("colorVariableValue");
     openapiFields.add("filesVariableValue");
     openapiFields.add("hyperlinkVariableValue");
+    openapiFields.add("id");
+    openapiFields.add("textVariableValue");
     openapiFields.add("videoVariableValue");
 
     // a set of required properties/fields (JSON key names)
@@ -348,13 +348,6 @@ public class TemplateVariableValue {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      // validate the optional field `textVariableValue`
-      if (jsonObj.get("textVariableValue") != null && !jsonObj.get("textVariableValue").isJsonNull()) {
-        TextVariableValue.validateJsonObject(jsonObj.getAsJsonObject("textVariableValue"));
-      }
       // validate the optional field `choiceVariableValue`
       if (jsonObj.get("choiceVariableValue") != null && !jsonObj.get("choiceVariableValue").isJsonNull()) {
         ChoiceVariableValue.validateJsonObject(jsonObj.getAsJsonObject("choiceVariableValue"));
@@ -370,6 +363,13 @@ public class TemplateVariableValue {
       // validate the optional field `hyperlinkVariableValue`
       if (jsonObj.get("hyperlinkVariableValue") != null && !jsonObj.get("hyperlinkVariableValue").isJsonNull()) {
         HyperlinkVariableValue.validateJsonObject(jsonObj.getAsJsonObject("hyperlinkVariableValue"));
+      }
+      if (!jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      // validate the optional field `textVariableValue`
+      if (jsonObj.get("textVariableValue") != null && !jsonObj.get("textVariableValue").isJsonNull()) {
+        TextVariableValue.validateJsonObject(jsonObj.getAsJsonObject("textVariableValue"));
       }
       // validate the optional field `videoVariableValue`
       if (jsonObj.get("videoVariableValue") != null && !jsonObj.get("videoVariableValue").isJsonNull()) {

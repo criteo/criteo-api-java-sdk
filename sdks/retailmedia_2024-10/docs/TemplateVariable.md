@@ -8,12 +8,12 @@ A variable in a creative template
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**choiceVariableSpecification** | [**ChoiceVariableSpecification**](ChoiceVariableSpecification.md) |  |  [optional] |
+|**filesVariablesSpecification** | [**FilesVariablesSpecification**](FilesVariablesSpecification.md) |  |  [optional] |
 |**id** | **String** | The id of the variable |  |
 |**required** | **Boolean** | Whether the variable is required |  |
-|**type** | [**TypeEnum**](#TypeEnum) | The type of the variable |  |
-|**choiceVariableSpecification** | [**ChoiceVariableSpecification**](ChoiceVariableSpecification.md) |  |  [optional] |
 |**textVariableSpecification** | [**TextVariableSpecification**](TextVariableSpecification.md) |  |  [optional] |
-|**filesVariablesSpecification** | [**FilesVariablesSpecification**](FilesVariablesSpecification.md) |  |  [optional] |
+|**type** | [**TypeEnum**](#TypeEnum) | The type of the variable |  |
 
 
 

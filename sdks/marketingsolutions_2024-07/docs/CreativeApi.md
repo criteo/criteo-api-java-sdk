@@ -770,7 +770,7 @@ public class Example {
 
 ## generateCreativePreview
 
-> String generateCreativePreview(id, width, height)
+> String generateCreativePreview(id, height, width)
 
 
 
@@ -816,10 +816,10 @@ public class Example {
 
         CreativeApi apiInstance = new CreativeApi(defaultClient);
         String id = "id_example"; // String | The Creative identifier to preview.
-        Integer width = 56; // Integer | The width of the Creative to preview.
         Integer height = 56; // Integer | The height of the Creative to preview.
+        Integer width = 56; // Integer | The width of the Creative to preview.
         try {
-            String result = apiInstance.generateCreativePreview(id, width, height);
+            String result = apiInstance.generateCreativePreview(id, height, width);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CreativeApi#generateCreativePreview");
@@ -838,8 +838,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**| The Creative identifier to preview. | |
-| **width** | **Integer**| The width of the Creative to preview. | [optional] |
 | **height** | **Integer**| The height of the Creative to preview. | [optional] |
+| **width** | **Integer**| The width of the Creative to preview. | [optional] |
 
 ### Return type
 
@@ -1146,7 +1146,7 @@ public class Example {
 
 ## getAdvertiserCouponPreview
 
-> String getAdvertiserCouponPreview(advertiserId, id, width, height)
+> String getAdvertiserCouponPreview(advertiserId, id, height, width)
 
 
 
@@ -1193,10 +1193,10 @@ public class Example {
         CreativeApi apiInstance = new CreativeApi(defaultClient);
         String advertiserId = "advertiserId_example"; // String | The advertiser identifier.
         String id = "id_example"; // String | The Coupon identifier to preview.
-        Integer width = 56; // Integer | The width of the coupon to preview.
         Integer height = 56; // Integer | The height of the coupon to preview.
+        Integer width = 56; // Integer | The width of the coupon to preview.
         try {
-            String result = apiInstance.getAdvertiserCouponPreview(advertiserId, id, width, height);
+            String result = apiInstance.getAdvertiserCouponPreview(advertiserId, id, height, width);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CreativeApi#getAdvertiserCouponPreview");
@@ -1216,8 +1216,8 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **advertiserId** | **String**| The advertiser identifier. | |
 | **id** | **String**| The Coupon identifier to preview. | |
-| **width** | **Integer**| The width of the coupon to preview. | [optional] |
 | **height** | **Integer**| The height of the coupon to preview. | [optional] |
+| **width** | **Integer**| The width of the coupon to preview. | [optional] |
 
 ### Return type
 

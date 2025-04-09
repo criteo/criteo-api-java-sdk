@@ -9,10 +9,10 @@ Used for the /me endpoint. Contains information about the currently authenticate
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**applicationId** | **Integer** |  |  [optional] |
+|**criteoService** | **String** |  |  [optional] |
+|**description** | **String** |  |  [optional] |
 |**name** | **String** |  |  [optional] |
 |**organizationId** | **Integer** |  |  [optional] |
-|**description** | **String** |  |  [optional] |
-|**criteoService** | **String** |  |  [optional] |
 
 
 

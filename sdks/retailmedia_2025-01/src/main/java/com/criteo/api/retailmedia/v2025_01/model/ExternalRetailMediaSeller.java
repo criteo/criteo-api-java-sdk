@@ -48,38 +48,16 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExternalRetailMediaSeller {
-  public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
-  @SerializedName(SERIALIZED_NAME_SELLER_ID)
-  private String sellerId;
-
   public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
   @SerializedName(SERIALIZED_NAME_RETAILER_ID)
   private Integer retailerId;
 
+  public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
+  @SerializedName(SERIALIZED_NAME_SELLER_ID)
+  private String sellerId;
+
   public ExternalRetailMediaSeller() {
   }
-
-  public ExternalRetailMediaSeller sellerId(String sellerId) {
-    
-    this.sellerId = sellerId;
-    return this;
-  }
-
-   /**
-   * the seller id
-   * @return sellerId
-  **/
-  @javax.annotation.Nonnull
-
-  public String getSellerId() {
-    return sellerId;
-  }
-
-
-  public void setSellerId(String sellerId) {
-    this.sellerId = sellerId;
-  }
-
 
   public ExternalRetailMediaSeller retailerId(Integer retailerId) {
     
@@ -103,6 +81,28 @@ public class ExternalRetailMediaSeller {
   }
 
 
+  public ExternalRetailMediaSeller sellerId(String sellerId) {
+    
+    this.sellerId = sellerId;
+    return this;
+  }
+
+   /**
+   * the seller id
+   * @return sellerId
+  **/
+  @javax.annotation.Nonnull
+
+  public String getSellerId() {
+    return sellerId;
+  }
+
+
+  public void setSellerId(String sellerId) {
+    this.sellerId = sellerId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -113,21 +113,21 @@ public class ExternalRetailMediaSeller {
       return false;
     }
     ExternalRetailMediaSeller externalRetailMediaSeller = (ExternalRetailMediaSeller) o;
-    return Objects.equals(this.sellerId, externalRetailMediaSeller.sellerId) &&
-        Objects.equals(this.retailerId, externalRetailMediaSeller.retailerId);
+    return Objects.equals(this.retailerId, externalRetailMediaSeller.retailerId) &&
+        Objects.equals(this.sellerId, externalRetailMediaSeller.sellerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sellerId, retailerId);
+    return Objects.hash(retailerId, sellerId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExternalRetailMediaSeller {\n");
-    sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
+    sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -150,13 +150,13 @@ public class ExternalRetailMediaSeller {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("sellerId");
     openapiFields.add("retailerId");
+    openapiFields.add("sellerId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("sellerId");
     openapiRequiredFields.add("retailerId");
+    openapiRequiredFields.add("sellerId");
   }
 
  /**

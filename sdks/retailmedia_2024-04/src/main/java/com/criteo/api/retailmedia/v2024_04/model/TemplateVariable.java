@@ -52,6 +52,14 @@ import com.criteo.api.retailmedia.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TemplateVariable {
+  public static final String SERIALIZED_NAME_CHOICE_VARIABLE_SPECIFICATION = "choiceVariableSpecification";
+  @SerializedName(SERIALIZED_NAME_CHOICE_VARIABLE_SPECIFICATION)
+  private ChoiceVariableSpecification choiceVariableSpecification;
+
+  public static final String SERIALIZED_NAME_FILES_VARIABLES_SPECIFICATION = "filesVariablesSpecification";
+  @SerializedName(SERIALIZED_NAME_FILES_VARIABLES_SPECIFICATION)
+  private FilesVariablesSpecification filesVariablesSpecification;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -59,6 +67,10 @@ public class TemplateVariable {
   public static final String SERIALIZED_NAME_REQUIRED = "required";
   @SerializedName(SERIALIZED_NAME_REQUIRED)
   private Boolean required;
+
+  public static final String SERIALIZED_NAME_TEXT_VARIABLE_SPECIFICATION = "textVariableSpecification";
+  @SerializedName(SERIALIZED_NAME_TEXT_VARIABLE_SPECIFICATION)
+  private TextVariableSpecification textVariableSpecification;
 
   /**
    * The type of the variable
@@ -117,20 +129,52 @@ public class TemplateVariable {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
-  public static final String SERIALIZED_NAME_CHOICE_VARIABLE_SPECIFICATION = "choiceVariableSpecification";
-  @SerializedName(SERIALIZED_NAME_CHOICE_VARIABLE_SPECIFICATION)
-  private ChoiceVariableSpecification choiceVariableSpecification;
-
-  public static final String SERIALIZED_NAME_TEXT_VARIABLE_SPECIFICATION = "textVariableSpecification";
-  @SerializedName(SERIALIZED_NAME_TEXT_VARIABLE_SPECIFICATION)
-  private TextVariableSpecification textVariableSpecification;
-
-  public static final String SERIALIZED_NAME_FILES_VARIABLES_SPECIFICATION = "filesVariablesSpecification";
-  @SerializedName(SERIALIZED_NAME_FILES_VARIABLES_SPECIFICATION)
-  private FilesVariablesSpecification filesVariablesSpecification;
-
   public TemplateVariable() {
   }
+
+  public TemplateVariable choiceVariableSpecification(ChoiceVariableSpecification choiceVariableSpecification) {
+    
+    this.choiceVariableSpecification = choiceVariableSpecification;
+    return this;
+  }
+
+   /**
+   * Get choiceVariableSpecification
+   * @return choiceVariableSpecification
+  **/
+  @javax.annotation.Nullable
+
+  public ChoiceVariableSpecification getChoiceVariableSpecification() {
+    return choiceVariableSpecification;
+  }
+
+
+  public void setChoiceVariableSpecification(ChoiceVariableSpecification choiceVariableSpecification) {
+    this.choiceVariableSpecification = choiceVariableSpecification;
+  }
+
+
+  public TemplateVariable filesVariablesSpecification(FilesVariablesSpecification filesVariablesSpecification) {
+    
+    this.filesVariablesSpecification = filesVariablesSpecification;
+    return this;
+  }
+
+   /**
+   * Get filesVariablesSpecification
+   * @return filesVariablesSpecification
+  **/
+  @javax.annotation.Nullable
+
+  public FilesVariablesSpecification getFilesVariablesSpecification() {
+    return filesVariablesSpecification;
+  }
+
+
+  public void setFilesVariablesSpecification(FilesVariablesSpecification filesVariablesSpecification) {
+    this.filesVariablesSpecification = filesVariablesSpecification;
+  }
+
 
   public TemplateVariable id(String id) {
     
@@ -176,50 +220,6 @@ public class TemplateVariable {
   }
 
 
-  public TemplateVariable type(TypeEnum type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * The type of the variable
-   * @return type
-  **/
-  @javax.annotation.Nonnull
-
-  public TypeEnum getType() {
-    return type;
-  }
-
-
-  public void setType(TypeEnum type) {
-    this.type = type;
-  }
-
-
-  public TemplateVariable choiceVariableSpecification(ChoiceVariableSpecification choiceVariableSpecification) {
-    
-    this.choiceVariableSpecification = choiceVariableSpecification;
-    return this;
-  }
-
-   /**
-   * Get choiceVariableSpecification
-   * @return choiceVariableSpecification
-  **/
-  @javax.annotation.Nullable
-
-  public ChoiceVariableSpecification getChoiceVariableSpecification() {
-    return choiceVariableSpecification;
-  }
-
-
-  public void setChoiceVariableSpecification(ChoiceVariableSpecification choiceVariableSpecification) {
-    this.choiceVariableSpecification = choiceVariableSpecification;
-  }
-
-
   public TemplateVariable textVariableSpecification(TextVariableSpecification textVariableSpecification) {
     
     this.textVariableSpecification = textVariableSpecification;
@@ -242,25 +242,25 @@ public class TemplateVariable {
   }
 
 
-  public TemplateVariable filesVariablesSpecification(FilesVariablesSpecification filesVariablesSpecification) {
+  public TemplateVariable type(TypeEnum type) {
     
-    this.filesVariablesSpecification = filesVariablesSpecification;
+    this.type = type;
     return this;
   }
 
    /**
-   * Get filesVariablesSpecification
-   * @return filesVariablesSpecification
+   * The type of the variable
+   * @return type
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
-  public FilesVariablesSpecification getFilesVariablesSpecification() {
-    return filesVariablesSpecification;
+  public TypeEnum getType() {
+    return type;
   }
 
 
-  public void setFilesVariablesSpecification(FilesVariablesSpecification filesVariablesSpecification) {
-    this.filesVariablesSpecification = filesVariablesSpecification;
+  public void setType(TypeEnum type) {
+    this.type = type;
   }
 
 
@@ -274,12 +274,12 @@ public class TemplateVariable {
       return false;
     }
     TemplateVariable templateVariable = (TemplateVariable) o;
-    return Objects.equals(this.id, templateVariable.id) &&
+    return Objects.equals(this.choiceVariableSpecification, templateVariable.choiceVariableSpecification) &&
+        Objects.equals(this.filesVariablesSpecification, templateVariable.filesVariablesSpecification) &&
+        Objects.equals(this.id, templateVariable.id) &&
         Objects.equals(this.required, templateVariable.required) &&
-        Objects.equals(this.type, templateVariable.type) &&
-        Objects.equals(this.choiceVariableSpecification, templateVariable.choiceVariableSpecification) &&
         Objects.equals(this.textVariableSpecification, templateVariable.textVariableSpecification) &&
-        Objects.equals(this.filesVariablesSpecification, templateVariable.filesVariablesSpecification);
+        Objects.equals(this.type, templateVariable.type);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -288,7 +288,7 @@ public class TemplateVariable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, required, type, choiceVariableSpecification, textVariableSpecification, filesVariablesSpecification);
+    return Objects.hash(choiceVariableSpecification, filesVariablesSpecification, id, required, textVariableSpecification, type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -302,12 +302,12 @@ public class TemplateVariable {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateVariable {\n");
+    sb.append("    choiceVariableSpecification: ").append(toIndentedString(choiceVariableSpecification)).append("\n");
+    sb.append("    filesVariablesSpecification: ").append(toIndentedString(filesVariablesSpecification)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    required: ").append(toIndentedString(required)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    choiceVariableSpecification: ").append(toIndentedString(choiceVariableSpecification)).append("\n");
     sb.append("    textVariableSpecification: ").append(toIndentedString(textVariableSpecification)).append("\n");
-    sb.append("    filesVariablesSpecification: ").append(toIndentedString(filesVariablesSpecification)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -330,12 +330,12 @@ public class TemplateVariable {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("choiceVariableSpecification");
+    openapiFields.add("filesVariablesSpecification");
     openapiFields.add("id");
     openapiFields.add("required");
-    openapiFields.add("type");
-    openapiFields.add("choiceVariableSpecification");
     openapiFields.add("textVariableSpecification");
-    openapiFields.add("filesVariablesSpecification");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -371,23 +371,23 @@ public class TemplateVariable {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       // validate the optional field `choiceVariableSpecification`
       if (jsonObj.get("choiceVariableSpecification") != null && !jsonObj.get("choiceVariableSpecification").isJsonNull()) {
         ChoiceVariableSpecification.validateJsonObject(jsonObj.getAsJsonObject("choiceVariableSpecification"));
+      }
+      // validate the optional field `filesVariablesSpecification`
+      if (jsonObj.get("filesVariablesSpecification") != null && !jsonObj.get("filesVariablesSpecification").isJsonNull()) {
+        FilesVariablesSpecification.validateJsonObject(jsonObj.getAsJsonObject("filesVariablesSpecification"));
+      }
+      if (!jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       // validate the optional field `textVariableSpecification`
       if (jsonObj.get("textVariableSpecification") != null && !jsonObj.get("textVariableSpecification").isJsonNull()) {
         TextVariableSpecification.validateJsonObject(jsonObj.getAsJsonObject("textVariableSpecification"));
       }
-      // validate the optional field `filesVariablesSpecification`
-      if (jsonObj.get("filesVariablesSpecification") != null && !jsonObj.get("filesVariablesSpecification").isJsonNull()) {
-        FilesVariablesSpecification.validateJsonObject(jsonObj.getAsJsonObject("filesVariablesSpecification"));
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

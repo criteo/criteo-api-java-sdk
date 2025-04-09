@@ -49,6 +49,10 @@ import com.criteo.api.retailmedia.v2024_04.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ResourceOfPreferredLineItemUpdateModel202110 {
+  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+  private ExternalPreferredLineItemUpdateModel202110 attributes;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -57,12 +61,30 @@ public class ResourceOfPreferredLineItemUpdateModel202110 {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
-  @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-  private ExternalPreferredLineItemUpdateModel202110 attributes;
-
   public ResourceOfPreferredLineItemUpdateModel202110() {
   }
+
+  public ResourceOfPreferredLineItemUpdateModel202110 attributes(ExternalPreferredLineItemUpdateModel202110 attributes) {
+    
+    this.attributes = attributes;
+    return this;
+  }
+
+   /**
+   * Get attributes
+   * @return attributes
+  **/
+  @javax.annotation.Nullable
+
+  public ExternalPreferredLineItemUpdateModel202110 getAttributes() {
+    return attributes;
+  }
+
+
+  public void setAttributes(ExternalPreferredLineItemUpdateModel202110 attributes) {
+    this.attributes = attributes;
+  }
+
 
   public ResourceOfPreferredLineItemUpdateModel202110 id(String id) {
     
@@ -105,28 +127,6 @@ public class ResourceOfPreferredLineItemUpdateModel202110 {
 
   public void setType(String type) {
     this.type = type;
-  }
-
-
-  public ResourceOfPreferredLineItemUpdateModel202110 attributes(ExternalPreferredLineItemUpdateModel202110 attributes) {
-    
-    this.attributes = attributes;
-    return this;
-  }
-
-   /**
-   * Get attributes
-   * @return attributes
-  **/
-  @javax.annotation.Nullable
-
-  public ExternalPreferredLineItemUpdateModel202110 getAttributes() {
-    return attributes;
-  }
-
-
-  public void setAttributes(ExternalPreferredLineItemUpdateModel202110 attributes) {
-    this.attributes = attributes;
   }
 
   /**
@@ -184,24 +184,24 @@ public class ResourceOfPreferredLineItemUpdateModel202110 {
       return false;
     }
     ResourceOfPreferredLineItemUpdateModel202110 resourceOfPreferredLineItemUpdateModel202110 = (ResourceOfPreferredLineItemUpdateModel202110) o;
-    return Objects.equals(this.id, resourceOfPreferredLineItemUpdateModel202110.id) &&
-        Objects.equals(this.type, resourceOfPreferredLineItemUpdateModel202110.type) &&
-        Objects.equals(this.attributes, resourceOfPreferredLineItemUpdateModel202110.attributes)&&
+    return Objects.equals(this.attributes, resourceOfPreferredLineItemUpdateModel202110.attributes) &&
+        Objects.equals(this.id, resourceOfPreferredLineItemUpdateModel202110.id) &&
+        Objects.equals(this.type, resourceOfPreferredLineItemUpdateModel202110.type)&&
         Objects.equals(this.additionalProperties, resourceOfPreferredLineItemUpdateModel202110.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, attributes, additionalProperties);
+    return Objects.hash(attributes, id, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ResourceOfPreferredLineItemUpdateModel202110 {\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -225,9 +225,9 @@ public class ResourceOfPreferredLineItemUpdateModel202110 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("attributes");
     openapiFields.add("id");
     openapiFields.add("type");
-    openapiFields.add("attributes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -245,15 +245,15 @@ public class ResourceOfPreferredLineItemUpdateModel202110 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ResourceOfPreferredLineItemUpdateModel202110 is not found in the empty JSON string", ResourceOfPreferredLineItemUpdateModel202110.openapiRequiredFields.toString()));
         }
       }
+      // validate the optional field `attributes`
+      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
+        ExternalPreferredLineItemUpdateModel202110.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
+      }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      // validate the optional field `attributes`
-      if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
-        ExternalPreferredLineItemUpdateModel202110.validateJsonObject(jsonObj.getAsJsonObject("attributes"));
       }
   }
 

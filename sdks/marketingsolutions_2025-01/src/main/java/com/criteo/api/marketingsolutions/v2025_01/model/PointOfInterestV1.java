@@ -49,10 +49,6 @@ import com.criteo.api.marketingsolutions.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PointOfInterestV1 {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
   public static final String SERIALIZED_NAME_LATITUDE = "latitude";
   @SerializedName(SERIALIZED_NAME_LATITUDE)
   private Double latitude;
@@ -61,30 +57,12 @@ public class PointOfInterestV1 {
   @SerializedName(SERIALIZED_NAME_LONGITUDE)
   private Double longitude;
 
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
   public PointOfInterestV1() {
   }
-
-  public PointOfInterestV1 name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Name of the point of interest
-   * @return name
-  **/
-  @javax.annotation.Nullable
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
 
   public PointOfInterestV1 latitude(Double latitude) {
     
@@ -127,6 +105,28 @@ public class PointOfInterestV1 {
 
   public void setLongitude(Double longitude) {
     this.longitude = longitude;
+  }
+
+
+  public PointOfInterestV1 name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Name of the point of interest
+   * @return name
+  **/
+  @javax.annotation.Nullable
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
@@ -184,9 +184,9 @@ public class PointOfInterestV1 {
       return false;
     }
     PointOfInterestV1 pointOfInterestV1 = (PointOfInterestV1) o;
-    return Objects.equals(this.name, pointOfInterestV1.name) &&
-        Objects.equals(this.latitude, pointOfInterestV1.latitude) &&
-        Objects.equals(this.longitude, pointOfInterestV1.longitude)&&
+    return Objects.equals(this.latitude, pointOfInterestV1.latitude) &&
+        Objects.equals(this.longitude, pointOfInterestV1.longitude) &&
+        Objects.equals(this.name, pointOfInterestV1.name)&&
         Objects.equals(this.additionalProperties, pointOfInterestV1.additionalProperties);
   }
 
@@ -196,7 +196,7 @@ public class PointOfInterestV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, latitude, longitude, additionalProperties);
+    return Objects.hash(latitude, longitude, name, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -210,9 +210,9 @@ public class PointOfInterestV1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PointOfInterestV1 {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
     sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -236,9 +236,9 @@ public class PointOfInterestV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
     openapiFields.add("latitude");
     openapiFields.add("longitude");
+    openapiFields.add("name");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

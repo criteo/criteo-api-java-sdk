@@ -53,164 +53,76 @@ import com.criteo.api.marketingsolutions.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Creative {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
-
-  public static final String SERIALIZED_NAME_AUTHOR = "author";
-  @SerializedName(SERIALIZED_NAME_AUTHOR)
-  private String author;
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
-
-  public static final String SERIALIZED_NAME_FORMAT = "format";
-  @SerializedName(SERIALIZED_NAME_FORMAT)
-  private String format;
+  public static final String SERIALIZED_NAME_ADAPTIVE_ATTRIBUTES = "adaptiveAttributes";
+  @SerializedName(SERIALIZED_NAME_ADAPTIVE_ATTRIBUTES)
+  private AdaptiveAttributes adaptiveAttributes;
 
   public static final String SERIALIZED_NAME_ADVERTISER_ID = "advertiserId";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_ID)
   private String advertiserId;
 
+  public static final String SERIALIZED_NAME_AUTHOR = "author";
+  @SerializedName(SERIALIZED_NAME_AUTHOR)
+  private String author;
+
   public static final String SERIALIZED_NAME_DATASET_ID = "datasetId";
   @SerializedName(SERIALIZED_NAME_DATASET_ID)
   private String datasetId;
 
-  public static final String SERIALIZED_NAME_IMAGE_ATTRIBUTES = "imageAttributes";
-  @SerializedName(SERIALIZED_NAME_IMAGE_ATTRIBUTES)
-  private ImageAttributes imageAttributes;
-
-  public static final String SERIALIZED_NAME_HTML_TAG_ATTRIBUTES = "htmlTagAttributes";
-  @SerializedName(SERIALIZED_NAME_HTML_TAG_ATTRIBUTES)
-  private HtmlTagAttributes htmlTagAttributes;
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
 
   public static final String SERIALIZED_NAME_DYNAMIC_ATTRIBUTES = "dynamicAttributes";
   @SerializedName(SERIALIZED_NAME_DYNAMIC_ATTRIBUTES)
   private DynamicAttributes dynamicAttributes;
 
-  public static final String SERIALIZED_NAME_ADAPTIVE_ATTRIBUTES = "adaptiveAttributes";
-  @SerializedName(SERIALIZED_NAME_ADAPTIVE_ATTRIBUTES)
-  private AdaptiveAttributes adaptiveAttributes;
+  public static final String SERIALIZED_NAME_FORMAT = "format";
+  @SerializedName(SERIALIZED_NAME_FORMAT)
+  private String format;
+
+  public static final String SERIALIZED_NAME_HTML_TAG_ATTRIBUTES = "htmlTagAttributes";
+  @SerializedName(SERIALIZED_NAME_HTML_TAG_ATTRIBUTES)
+  private HtmlTagAttributes htmlTagAttributes;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
+  public static final String SERIALIZED_NAME_IMAGE_ATTRIBUTES = "imageAttributes";
+  @SerializedName(SERIALIZED_NAME_IMAGE_ATTRIBUTES)
+  private ImageAttributes imageAttributes;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
+
   public Creative() {
   }
 
-  public Creative name(String name) {
+  public Creative adaptiveAttributes(AdaptiveAttributes adaptiveAttributes) {
     
-    this.name = name;
+    this.adaptiveAttributes = adaptiveAttributes;
     return this;
   }
 
    /**
-   * The name of the creative
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public Creative description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * The description of the creative
-   * @return description
+   * Get adaptiveAttributes
+   * @return adaptiveAttributes
   **/
   @javax.annotation.Nullable
 
-  public String getDescription() {
-    return description;
+  public AdaptiveAttributes getAdaptiveAttributes() {
+    return adaptiveAttributes;
   }
 
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-
-  public Creative author(String author) {
-    
-    this.author = author;
-    return this;
-  }
-
-   /**
-   * The login of the person who created this creative (
-   * @return author
-  **/
-  @javax.annotation.Nonnull
-
-  public String getAuthor() {
-    return author;
-  }
-
-
-  public void setAuthor(String author) {
-    this.author = author;
-  }
-
-
-  public Creative status(String status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * The status of the creative
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-
-  public String getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-
-  public Creative format(String format) {
-    
-    this.format = format;
-    return this;
-  }
-
-   /**
-   * The format of the creative
-   * @return format
-  **/
-  @javax.annotation.Nullable
-
-  public String getFormat() {
-    return format;
-  }
-
-
-  public void setFormat(String format) {
-    this.format = format;
+  public void setAdaptiveAttributes(AdaptiveAttributes adaptiveAttributes) {
+    this.adaptiveAttributes = adaptiveAttributes;
   }
 
 
@@ -236,6 +148,28 @@ public class Creative {
   }
 
 
+  public Creative author(String author) {
+    
+    this.author = author;
+    return this;
+  }
+
+   /**
+   * The login of the person who created this creative (
+   * @return author
+  **/
+  @javax.annotation.Nonnull
+
+  public String getAuthor() {
+    return author;
+  }
+
+
+  public void setAuthor(String author) {
+    this.author = author;
+  }
+
+
   public Creative datasetId(String datasetId) {
     
     this.datasetId = datasetId;
@@ -258,47 +192,25 @@ public class Creative {
   }
 
 
-  public Creative imageAttributes(ImageAttributes imageAttributes) {
+  public Creative description(String description) {
     
-    this.imageAttributes = imageAttributes;
+    this.description = description;
     return this;
   }
 
    /**
-   * Get imageAttributes
-   * @return imageAttributes
+   * The description of the creative
+   * @return description
   **/
   @javax.annotation.Nullable
 
-  public ImageAttributes getImageAttributes() {
-    return imageAttributes;
+  public String getDescription() {
+    return description;
   }
 
 
-  public void setImageAttributes(ImageAttributes imageAttributes) {
-    this.imageAttributes = imageAttributes;
-  }
-
-
-  public Creative htmlTagAttributes(HtmlTagAttributes htmlTagAttributes) {
-    
-    this.htmlTagAttributes = htmlTagAttributes;
-    return this;
-  }
-
-   /**
-   * Get htmlTagAttributes
-   * @return htmlTagAttributes
-  **/
-  @javax.annotation.Nullable
-
-  public HtmlTagAttributes getHtmlTagAttributes() {
-    return htmlTagAttributes;
-  }
-
-
-  public void setHtmlTagAttributes(HtmlTagAttributes htmlTagAttributes) {
-    this.htmlTagAttributes = htmlTagAttributes;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -324,25 +236,47 @@ public class Creative {
   }
 
 
-  public Creative adaptiveAttributes(AdaptiveAttributes adaptiveAttributes) {
+  public Creative format(String format) {
     
-    this.adaptiveAttributes = adaptiveAttributes;
+    this.format = format;
     return this;
   }
 
    /**
-   * Get adaptiveAttributes
-   * @return adaptiveAttributes
+   * The format of the creative
+   * @return format
   **/
   @javax.annotation.Nullable
 
-  public AdaptiveAttributes getAdaptiveAttributes() {
-    return adaptiveAttributes;
+  public String getFormat() {
+    return format;
   }
 
 
-  public void setAdaptiveAttributes(AdaptiveAttributes adaptiveAttributes) {
-    this.adaptiveAttributes = adaptiveAttributes;
+  public void setFormat(String format) {
+    this.format = format;
+  }
+
+
+  public Creative htmlTagAttributes(HtmlTagAttributes htmlTagAttributes) {
+    
+    this.htmlTagAttributes = htmlTagAttributes;
+    return this;
+  }
+
+   /**
+   * Get htmlTagAttributes
+   * @return htmlTagAttributes
+  **/
+  @javax.annotation.Nullable
+
+  public HtmlTagAttributes getHtmlTagAttributes() {
+    return htmlTagAttributes;
+  }
+
+
+  public void setHtmlTagAttributes(HtmlTagAttributes htmlTagAttributes) {
+    this.htmlTagAttributes = htmlTagAttributes;
   }
 
 
@@ -365,6 +299,72 @@ public class Creative {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+
+  public Creative imageAttributes(ImageAttributes imageAttributes) {
+    
+    this.imageAttributes = imageAttributes;
+    return this;
+  }
+
+   /**
+   * Get imageAttributes
+   * @return imageAttributes
+  **/
+  @javax.annotation.Nullable
+
+  public ImageAttributes getImageAttributes() {
+    return imageAttributes;
+  }
+
+
+  public void setImageAttributes(ImageAttributes imageAttributes) {
+    this.imageAttributes = imageAttributes;
+  }
+
+
+  public Creative name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * The name of the creative
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public Creative status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * The status of the creative
+   * @return status
+  **/
+  @javax.annotation.Nonnull
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 
   /**
@@ -422,18 +422,18 @@ public class Creative {
       return false;
     }
     Creative creative = (Creative) o;
-    return Objects.equals(this.name, creative.name) &&
-        Objects.equals(this.description, creative.description) &&
-        Objects.equals(this.author, creative.author) &&
-        Objects.equals(this.status, creative.status) &&
-        Objects.equals(this.format, creative.format) &&
+    return Objects.equals(this.adaptiveAttributes, creative.adaptiveAttributes) &&
         Objects.equals(this.advertiserId, creative.advertiserId) &&
+        Objects.equals(this.author, creative.author) &&
         Objects.equals(this.datasetId, creative.datasetId) &&
-        Objects.equals(this.imageAttributes, creative.imageAttributes) &&
-        Objects.equals(this.htmlTagAttributes, creative.htmlTagAttributes) &&
+        Objects.equals(this.description, creative.description) &&
         Objects.equals(this.dynamicAttributes, creative.dynamicAttributes) &&
-        Objects.equals(this.adaptiveAttributes, creative.adaptiveAttributes) &&
-        Objects.equals(this.id, creative.id)&&
+        Objects.equals(this.format, creative.format) &&
+        Objects.equals(this.htmlTagAttributes, creative.htmlTagAttributes) &&
+        Objects.equals(this.id, creative.id) &&
+        Objects.equals(this.imageAttributes, creative.imageAttributes) &&
+        Objects.equals(this.name, creative.name) &&
+        Objects.equals(this.status, creative.status)&&
         Objects.equals(this.additionalProperties, creative.additionalProperties);
   }
 
@@ -443,7 +443,7 @@ public class Creative {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, author, status, format, advertiserId, datasetId, imageAttributes, htmlTagAttributes, dynamicAttributes, adaptiveAttributes, id, additionalProperties);
+    return Objects.hash(adaptiveAttributes, advertiserId, author, datasetId, description, dynamicAttributes, format, htmlTagAttributes, id, imageAttributes, name, status, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -457,18 +457,18 @@ public class Creative {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Creative {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    author: ").append(toIndentedString(author)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
-    sb.append("    datasetId: ").append(toIndentedString(datasetId)).append("\n");
-    sb.append("    imageAttributes: ").append(toIndentedString(imageAttributes)).append("\n");
-    sb.append("    htmlTagAttributes: ").append(toIndentedString(htmlTagAttributes)).append("\n");
-    sb.append("    dynamicAttributes: ").append(toIndentedString(dynamicAttributes)).append("\n");
     sb.append("    adaptiveAttributes: ").append(toIndentedString(adaptiveAttributes)).append("\n");
+    sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
+    sb.append("    author: ").append(toIndentedString(author)).append("\n");
+    sb.append("    datasetId: ").append(toIndentedString(datasetId)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    dynamicAttributes: ").append(toIndentedString(dynamicAttributes)).append("\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
+    sb.append("    htmlTagAttributes: ").append(toIndentedString(htmlTagAttributes)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    imageAttributes: ").append(toIndentedString(imageAttributes)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -492,25 +492,25 @@ public class Creative {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("description");
-    openapiFields.add("author");
-    openapiFields.add("status");
-    openapiFields.add("format");
-    openapiFields.add("advertiserId");
-    openapiFields.add("datasetId");
-    openapiFields.add("imageAttributes");
-    openapiFields.add("htmlTagAttributes");
-    openapiFields.add("dynamicAttributes");
     openapiFields.add("adaptiveAttributes");
+    openapiFields.add("advertiserId");
+    openapiFields.add("author");
+    openapiFields.add("datasetId");
+    openapiFields.add("description");
+    openapiFields.add("dynamicAttributes");
+    openapiFields.add("format");
+    openapiFields.add("htmlTagAttributes");
     openapiFields.add("id");
+    openapiFields.add("imageAttributes");
+    openapiFields.add("name");
+    openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("author");
-    openapiRequiredFields.add("status");
     openapiRequiredFields.add("advertiserId");
+    openapiRequiredFields.add("author");
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("status");
   }
 
  /**
@@ -532,45 +532,45 @@ public class Creative {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      if (!jsonObj.get("author").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `author` to be a primitive type in the JSON string but got `%s`", jsonObj.get("author").toString()));
-      }
-      if (!jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
-      }
-      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
+      // validate the optional field `adaptiveAttributes`
+      if (jsonObj.get("adaptiveAttributes") != null && !jsonObj.get("adaptiveAttributes").isJsonNull()) {
+        AdaptiveAttributes.validateJsonObject(jsonObj.getAsJsonObject("adaptiveAttributes"));
       }
       if (!jsonObj.get("advertiserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserId").toString()));
       }
+      if (!jsonObj.get("author").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `author` to be a primitive type in the JSON string but got `%s`", jsonObj.get("author").toString()));
+      }
       if ((jsonObj.get("datasetId") != null && !jsonObj.get("datasetId").isJsonNull()) && !jsonObj.get("datasetId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `datasetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("datasetId").toString()));
       }
-      // validate the optional field `imageAttributes`
-      if (jsonObj.get("imageAttributes") != null && !jsonObj.get("imageAttributes").isJsonNull()) {
-        ImageAttributes.validateJsonObject(jsonObj.getAsJsonObject("imageAttributes"));
-      }
-      // validate the optional field `htmlTagAttributes`
-      if (jsonObj.get("htmlTagAttributes") != null && !jsonObj.get("htmlTagAttributes").isJsonNull()) {
-        HtmlTagAttributes.validateJsonObject(jsonObj.getAsJsonObject("htmlTagAttributes"));
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the optional field `dynamicAttributes`
       if (jsonObj.get("dynamicAttributes") != null && !jsonObj.get("dynamicAttributes").isJsonNull()) {
         DynamicAttributes.validateJsonObject(jsonObj.getAsJsonObject("dynamicAttributes"));
       }
-      // validate the optional field `adaptiveAttributes`
-      if (jsonObj.get("adaptiveAttributes") != null && !jsonObj.get("adaptiveAttributes").isJsonNull()) {
-        AdaptiveAttributes.validateJsonObject(jsonObj.getAsJsonObject("adaptiveAttributes"));
+      if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
+      }
+      // validate the optional field `htmlTagAttributes`
+      if (jsonObj.get("htmlTagAttributes") != null && !jsonObj.get("htmlTagAttributes").isJsonNull()) {
+        HtmlTagAttributes.validateJsonObject(jsonObj.getAsJsonObject("htmlTagAttributes"));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      // validate the optional field `imageAttributes`
+      if (jsonObj.get("imageAttributes") != null && !jsonObj.get("imageAttributes").isJsonNull()) {
+        ImageAttributes.validateJsonObject(jsonObj.getAsJsonObject("imageAttributes"));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if (!jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
   }
 

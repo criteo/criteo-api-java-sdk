@@ -54,13 +54,13 @@ public class RmAudienceSearchEntityV1 {
   @SerializedName(SERIALIZED_NAME_AUDIENCE_IDS)
   private List<String> audienceIds = null;
 
-  public static final String SERIALIZED_NAME_RETAILER_IDS = "retailerIds";
-  @SerializedName(SERIALIZED_NAME_RETAILER_IDS)
-  private List<String> retailerIds = null;
-
   public static final String SERIALIZED_NAME_AUDIENCE_SEGMENT_IDS = "audienceSegmentIds";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_SEGMENT_IDS)
   private List<String> audienceSegmentIds = null;
+
+  public static final String SERIALIZED_NAME_RETAILER_IDS = "retailerIds";
+  @SerializedName(SERIALIZED_NAME_RETAILER_IDS)
+  private List<String> retailerIds = null;
 
   public RmAudienceSearchEntityV1() {
   }
@@ -95,36 +95,6 @@ public class RmAudienceSearchEntityV1 {
   }
 
 
-  public RmAudienceSearchEntityV1 retailerIds(List<String> retailerIds) {
-    
-    this.retailerIds = retailerIds;
-    return this;
-  }
-
-  public RmAudienceSearchEntityV1 addRetailerIdsItem(String retailerIdsItem) {
-    if (this.retailerIds == null) {
-      this.retailerIds = new ArrayList<>();
-    }
-    this.retailerIds.add(retailerIdsItem);
-    return this;
-  }
-
-   /**
-   * List of retailer ids
-   * @return retailerIds
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getRetailerIds() {
-    return retailerIds;
-  }
-
-
-  public void setRetailerIds(List<String> retailerIds) {
-    this.retailerIds = retailerIds;
-  }
-
-
   public RmAudienceSearchEntityV1 audienceSegmentIds(List<String> audienceSegmentIds) {
     
     this.audienceSegmentIds = audienceSegmentIds;
@@ -152,6 +122,36 @@ public class RmAudienceSearchEntityV1 {
 
   public void setAudienceSegmentIds(List<String> audienceSegmentIds) {
     this.audienceSegmentIds = audienceSegmentIds;
+  }
+
+
+  public RmAudienceSearchEntityV1 retailerIds(List<String> retailerIds) {
+    
+    this.retailerIds = retailerIds;
+    return this;
+  }
+
+  public RmAudienceSearchEntityV1 addRetailerIdsItem(String retailerIdsItem) {
+    if (this.retailerIds == null) {
+      this.retailerIds = new ArrayList<>();
+    }
+    this.retailerIds.add(retailerIdsItem);
+    return this;
+  }
+
+   /**
+   * List of retailer ids
+   * @return retailerIds
+  **/
+  @javax.annotation.Nullable
+
+  public List<String> getRetailerIds() {
+    return retailerIds;
+  }
+
+
+  public void setRetailerIds(List<String> retailerIds) {
+    this.retailerIds = retailerIds;
   }
 
   /**
@@ -210,14 +210,14 @@ public class RmAudienceSearchEntityV1 {
     }
     RmAudienceSearchEntityV1 rmAudienceSearchEntityV1 = (RmAudienceSearchEntityV1) o;
     return Objects.equals(this.audienceIds, rmAudienceSearchEntityV1.audienceIds) &&
-        Objects.equals(this.retailerIds, rmAudienceSearchEntityV1.retailerIds) &&
-        Objects.equals(this.audienceSegmentIds, rmAudienceSearchEntityV1.audienceSegmentIds)&&
+        Objects.equals(this.audienceSegmentIds, rmAudienceSearchEntityV1.audienceSegmentIds) &&
+        Objects.equals(this.retailerIds, rmAudienceSearchEntityV1.retailerIds)&&
         Objects.equals(this.additionalProperties, rmAudienceSearchEntityV1.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(audienceIds, retailerIds, audienceSegmentIds, additionalProperties);
+    return Objects.hash(audienceIds, audienceSegmentIds, retailerIds, additionalProperties);
   }
 
   @Override
@@ -225,8 +225,8 @@ public class RmAudienceSearchEntityV1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class RmAudienceSearchEntityV1 {\n");
     sb.append("    audienceIds: ").append(toIndentedString(audienceIds)).append("\n");
-    sb.append("    retailerIds: ").append(toIndentedString(retailerIds)).append("\n");
     sb.append("    audienceSegmentIds: ").append(toIndentedString(audienceSegmentIds)).append("\n");
+    sb.append("    retailerIds: ").append(toIndentedString(retailerIds)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -251,8 +251,8 @@ public class RmAudienceSearchEntityV1 {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("audienceIds");
-    openapiFields.add("retailerIds");
     openapiFields.add("audienceSegmentIds");
+    openapiFields.add("retailerIds");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -275,12 +275,12 @@ public class RmAudienceSearchEntityV1 {
         throw new IllegalArgumentException(String.format("Expected the field `audienceIds` to be an array in the JSON string but got `%s`", jsonObj.get("audienceIds").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("retailerIds") != null && !jsonObj.get("retailerIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `retailerIds` to be an array in the JSON string but got `%s`", jsonObj.get("retailerIds").toString()));
-      }
-      // ensure the optional json data is an array if present
       if (jsonObj.get("audienceSegmentIds") != null && !jsonObj.get("audienceSegmentIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `audienceSegmentIds` to be an array in the JSON string but got `%s`", jsonObj.get("audienceSegmentIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("retailerIds") != null && !jsonObj.get("retailerIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `retailerIds` to be an array in the JSON string but got `%s`", jsonObj.get("retailerIds").toString()));
       }
   }
 

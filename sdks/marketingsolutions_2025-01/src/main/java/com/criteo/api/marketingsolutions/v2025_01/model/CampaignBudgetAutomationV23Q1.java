@@ -50,38 +50,16 @@ import com.criteo.api.marketingsolutions.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CampaignBudgetAutomationV23Q1 {
-  public static final String SERIALIZED_NAME_ENABLED = "enabled";
-  @SerializedName(SERIALIZED_NAME_ENABLED)
-  private Boolean enabled;
-
   public static final String SERIALIZED_NAME_AUTOMATED_BUDGET_CONFIGURATION = "automatedBudgetConfiguration";
   @SerializedName(SERIALIZED_NAME_AUTOMATED_BUDGET_CONFIGURATION)
   private AutomatedBudgetConfigurationV23Q1 automatedBudgetConfiguration;
 
+  public static final String SERIALIZED_NAME_ENABLED = "enabled";
+  @SerializedName(SERIALIZED_NAME_ENABLED)
+  private Boolean enabled;
+
   public CampaignBudgetAutomationV23Q1() {
   }
-
-  public CampaignBudgetAutomationV23Q1 enabled(Boolean enabled) {
-    
-    this.enabled = enabled;
-    return this;
-  }
-
-   /**
-   * Get enabled
-   * @return enabled
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getEnabled() {
-    return enabled;
-  }
-
-
-  public void setEnabled(Boolean enabled) {
-    this.enabled = enabled;
-  }
-
 
   public CampaignBudgetAutomationV23Q1 automatedBudgetConfiguration(AutomatedBudgetConfigurationV23Q1 automatedBudgetConfiguration) {
     
@@ -102,6 +80,28 @@ public class CampaignBudgetAutomationV23Q1 {
 
   public void setAutomatedBudgetConfiguration(AutomatedBudgetConfigurationV23Q1 automatedBudgetConfiguration) {
     this.automatedBudgetConfiguration = automatedBudgetConfiguration;
+  }
+
+
+  public CampaignBudgetAutomationV23Q1 enabled(Boolean enabled) {
+    
+    this.enabled = enabled;
+    return this;
+  }
+
+   /**
+   * Get enabled
+   * @return enabled
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getEnabled() {
+    return enabled;
+  }
+
+
+  public void setEnabled(Boolean enabled) {
+    this.enabled = enabled;
   }
 
   /**
@@ -159,8 +159,8 @@ public class CampaignBudgetAutomationV23Q1 {
       return false;
     }
     CampaignBudgetAutomationV23Q1 campaignBudgetAutomationV23Q1 = (CampaignBudgetAutomationV23Q1) o;
-    return Objects.equals(this.enabled, campaignBudgetAutomationV23Q1.enabled) &&
-        Objects.equals(this.automatedBudgetConfiguration, campaignBudgetAutomationV23Q1.automatedBudgetConfiguration)&&
+    return Objects.equals(this.automatedBudgetConfiguration, campaignBudgetAutomationV23Q1.automatedBudgetConfiguration) &&
+        Objects.equals(this.enabled, campaignBudgetAutomationV23Q1.enabled)&&
         Objects.equals(this.additionalProperties, campaignBudgetAutomationV23Q1.additionalProperties);
   }
 
@@ -170,7 +170,7 @@ public class CampaignBudgetAutomationV23Q1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(enabled, automatedBudgetConfiguration, additionalProperties);
+    return Objects.hash(automatedBudgetConfiguration, enabled, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -184,8 +184,8 @@ public class CampaignBudgetAutomationV23Q1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CampaignBudgetAutomationV23Q1 {\n");
-    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    automatedBudgetConfiguration: ").append(toIndentedString(automatedBudgetConfiguration)).append("\n");
+    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -209,8 +209,8 @@ public class CampaignBudgetAutomationV23Q1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("enabled");
     openapiFields.add("automatedBudgetConfiguration");
+    openapiFields.add("enabled");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

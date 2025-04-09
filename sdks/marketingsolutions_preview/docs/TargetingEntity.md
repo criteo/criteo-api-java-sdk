@@ -8,18 +8,9 @@ Represents either an allowlisting or a blocklisting rule
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | [**TypeEnum**](#TypeEnum) | Can be either DOMAIN or BUNDLE |  [optional] |
-|**mode** | [**ModeEnum**](#ModeEnum) | Can be either BLOCKLIST or ALLOWLIST |  [optional] |
 |**data** | [**Set&lt;EntityFilter&gt;**](EntityFilter.md) |  |  [optional] |
-
-
-
-## Enum: TypeEnum
-
-| Name | Value |
-|---- | -----|
-| DOMAIN | &quot;DOMAIN&quot; |
-| BUNDLE | &quot;BUNDLE&quot; |
+|**mode** | [**ModeEnum**](#ModeEnum) | Can be either BLOCKLIST or ALLOWLIST |  [optional] |
+|**type** | [**TypeEnum**](#TypeEnum) | Can be either DOMAIN or BUNDLE |  [optional] |
 
 
 
@@ -29,6 +20,15 @@ Represents either an allowlisting or a blocklisting rule
 |---- | -----|
 | BLOCKLIST | &quot;BLOCKLIST&quot; |
 | ALLOWLIST | &quot;ALLOWLIST&quot; |
+
+
+
+## Enum: TypeEnum
+
+| Name | Value |
+|---- | -----|
+| DOMAIN | &quot;DOMAIN&quot; |
+| BUNDLE | &quot;BUNDLE&quot; |
 
 
 

@@ -8,9 +8,9 @@ A warning on a batch operation.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | [**TypeEnum**](#TypeEnum) |  |  |
-|**message** | **String** |  |  |
 |**isServerRelated** | **Boolean** |  |  |
+|**message** | **String** |  |  |
+|**type** | [**TypeEnum**](#TypeEnum) |  |  |
 
 
 

@@ -52,25 +52,13 @@ import com.criteo.api.marketingsolutions.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateCoupon {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
-
   public static final String SERIALIZED_NAME_AD_SET_ID = "adSetId";
   @SerializedName(SERIALIZED_NAME_AD_SET_ID)
   private String adSetId;
 
-  public static final String SERIALIZED_NAME_LANDING_PAGE_URL = "landingPageUrl";
-  @SerializedName(SERIALIZED_NAME_LANDING_PAGE_URL)
-  private String landingPageUrl;
-
-  public static final String SERIALIZED_NAME_START_DATE = "startDate";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private String startDate;
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
 
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
@@ -131,64 +119,32 @@ public class CreateCoupon {
   @SerializedName(SERIALIZED_NAME_IMAGES)
   private List<CreateImageSlide> images = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_SHOW_EVERY = "showEvery";
-  @SerializedName(SERIALIZED_NAME_SHOW_EVERY)
-  private Integer showEvery;
+  public static final String SERIALIZED_NAME_LANDING_PAGE_URL = "landingPageUrl";
+  @SerializedName(SERIALIZED_NAME_LANDING_PAGE_URL)
+  private String landingPageUrl;
 
-  public static final String SERIALIZED_NAME_SHOW_DURATION = "showDuration";
-  @SerializedName(SERIALIZED_NAME_SHOW_DURATION)
-  private Integer showDuration;
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
   public static final String SERIALIZED_NAME_ROTATIONS_NUMBER = "rotationsNumber";
   @SerializedName(SERIALIZED_NAME_ROTATIONS_NUMBER)
   private Integer rotationsNumber;
 
+  public static final String SERIALIZED_NAME_SHOW_DURATION = "showDuration";
+  @SerializedName(SERIALIZED_NAME_SHOW_DURATION)
+  private Integer showDuration;
+
+  public static final String SERIALIZED_NAME_SHOW_EVERY = "showEvery";
+  @SerializedName(SERIALIZED_NAME_SHOW_EVERY)
+  private Integer showEvery;
+
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private String startDate;
+
   public CreateCoupon() {
   }
-
-  public CreateCoupon name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * The name of the Coupon
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public CreateCoupon description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * The description of the Coupon
-   * @return description
-  **/
-  @javax.annotation.Nullable
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
 
   public CreateCoupon adSetId(String adSetId) {
     
@@ -212,47 +168,25 @@ public class CreateCoupon {
   }
 
 
-  public CreateCoupon landingPageUrl(String landingPageUrl) {
+  public CreateCoupon description(String description) {
     
-    this.landingPageUrl = landingPageUrl;
+    this.description = description;
     return this;
   }
 
    /**
-   * Web redirection of the landing page url
-   * @return landingPageUrl
+   * The description of the Coupon
+   * @return description
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public String getLandingPageUrl() {
-    return landingPageUrl;
+  public String getDescription() {
+    return description;
   }
 
 
-  public void setLandingPageUrl(String landingPageUrl) {
-    this.landingPageUrl = landingPageUrl;
-  }
-
-
-  public CreateCoupon startDate(String startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * The date when the coupon will be launched  String must be in ISO8601 format
-   * @return startDate
-  **/
-  @javax.annotation.Nonnull
-
-  public String getStartDate() {
-    return startDate;
-  }
-
-
-  public void setStartDate(String startDate) {
-    this.startDate = startDate;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -327,27 +261,71 @@ public class CreateCoupon {
   }
 
 
-  public CreateCoupon showEvery(Integer showEvery) {
+  public CreateCoupon landingPageUrl(String landingPageUrl) {
     
-    this.showEvery = showEvery;
+    this.landingPageUrl = landingPageUrl;
     return this;
   }
 
    /**
-   * Show the Coupon every N seconds (between 1 and 10)
-   * minimum: 1
-   * maximum: 10
-   * @return showEvery
+   * Web redirection of the landing page url
+   * @return landingPageUrl
   **/
   @javax.annotation.Nonnull
 
-  public Integer getShowEvery() {
-    return showEvery;
+  public String getLandingPageUrl() {
+    return landingPageUrl;
   }
 
 
-  public void setShowEvery(Integer showEvery) {
-    this.showEvery = showEvery;
+  public void setLandingPageUrl(String landingPageUrl) {
+    this.landingPageUrl = landingPageUrl;
+  }
+
+
+  public CreateCoupon name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * The name of the Coupon
+   * @return name
+  **/
+  @javax.annotation.Nonnull
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+  public CreateCoupon rotationsNumber(Integer rotationsNumber) {
+    
+    this.rotationsNumber = rotationsNumber;
+    return this;
+  }
+
+   /**
+   * Number of rotations for the Coupons (from 1 to 10 times)
+   * minimum: 1
+   * maximum: 10
+   * @return rotationsNumber
+  **/
+  @javax.annotation.Nonnull
+
+  public Integer getRotationsNumber() {
+    return rotationsNumber;
+  }
+
+
+  public void setRotationsNumber(Integer rotationsNumber) {
+    this.rotationsNumber = rotationsNumber;
   }
 
 
@@ -375,27 +353,49 @@ public class CreateCoupon {
   }
 
 
-  public CreateCoupon rotationsNumber(Integer rotationsNumber) {
+  public CreateCoupon showEvery(Integer showEvery) {
     
-    this.rotationsNumber = rotationsNumber;
+    this.showEvery = showEvery;
     return this;
   }
 
    /**
-   * Number of rotations for the Coupons (from 1 to 10 times)
+   * Show the Coupon every N seconds (between 1 and 10)
    * minimum: 1
    * maximum: 10
-   * @return rotationsNumber
+   * @return showEvery
   **/
   @javax.annotation.Nonnull
 
-  public Integer getRotationsNumber() {
-    return rotationsNumber;
+  public Integer getShowEvery() {
+    return showEvery;
   }
 
 
-  public void setRotationsNumber(Integer rotationsNumber) {
-    this.rotationsNumber = rotationsNumber;
+  public void setShowEvery(Integer showEvery) {
+    this.showEvery = showEvery;
+  }
+
+
+  public CreateCoupon startDate(String startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * The date when the coupon will be launched  String must be in ISO8601 format
+   * @return startDate
+  **/
+  @javax.annotation.Nonnull
+
+  public String getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
   }
 
   /**
@@ -453,17 +453,17 @@ public class CreateCoupon {
       return false;
     }
     CreateCoupon createCoupon = (CreateCoupon) o;
-    return Objects.equals(this.name, createCoupon.name) &&
+    return Objects.equals(this.adSetId, createCoupon.adSetId) &&
         Objects.equals(this.description, createCoupon.description) &&
-        Objects.equals(this.adSetId, createCoupon.adSetId) &&
-        Objects.equals(this.landingPageUrl, createCoupon.landingPageUrl) &&
-        Objects.equals(this.startDate, createCoupon.startDate) &&
         Objects.equals(this.endDate, createCoupon.endDate) &&
         Objects.equals(this.format, createCoupon.format) &&
         Objects.equals(this.images, createCoupon.images) &&
-        Objects.equals(this.showEvery, createCoupon.showEvery) &&
+        Objects.equals(this.landingPageUrl, createCoupon.landingPageUrl) &&
+        Objects.equals(this.name, createCoupon.name) &&
+        Objects.equals(this.rotationsNumber, createCoupon.rotationsNumber) &&
         Objects.equals(this.showDuration, createCoupon.showDuration) &&
-        Objects.equals(this.rotationsNumber, createCoupon.rotationsNumber)&&
+        Objects.equals(this.showEvery, createCoupon.showEvery) &&
+        Objects.equals(this.startDate, createCoupon.startDate)&&
         Objects.equals(this.additionalProperties, createCoupon.additionalProperties);
   }
 
@@ -473,7 +473,7 @@ public class CreateCoupon {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, adSetId, landingPageUrl, startDate, endDate, format, images, showEvery, showDuration, rotationsNumber, additionalProperties);
+    return Objects.hash(adSetId, description, endDate, format, images, landingPageUrl, name, rotationsNumber, showDuration, showEvery, startDate, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -487,17 +487,17 @@ public class CreateCoupon {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateCoupon {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    adSetId: ").append(toIndentedString(adSetId)).append("\n");
-    sb.append("    landingPageUrl: ").append(toIndentedString(landingPageUrl)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    images: ").append(toIndentedString(images)).append("\n");
-    sb.append("    showEvery: ").append(toIndentedString(showEvery)).append("\n");
-    sb.append("    showDuration: ").append(toIndentedString(showDuration)).append("\n");
+    sb.append("    landingPageUrl: ").append(toIndentedString(landingPageUrl)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    rotationsNumber: ").append(toIndentedString(rotationsNumber)).append("\n");
+    sb.append("    showDuration: ").append(toIndentedString(showDuration)).append("\n");
+    sb.append("    showEvery: ").append(toIndentedString(showEvery)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -521,29 +521,29 @@ public class CreateCoupon {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("description");
     openapiFields.add("adSetId");
-    openapiFields.add("landingPageUrl");
-    openapiFields.add("startDate");
+    openapiFields.add("description");
     openapiFields.add("endDate");
     openapiFields.add("format");
     openapiFields.add("images");
-    openapiFields.add("showEvery");
-    openapiFields.add("showDuration");
+    openapiFields.add("landingPageUrl");
+    openapiFields.add("name");
     openapiFields.add("rotationsNumber");
+    openapiFields.add("showDuration");
+    openapiFields.add("showEvery");
+    openapiFields.add("startDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
     openapiRequiredFields.add("adSetId");
-    openapiRequiredFields.add("landingPageUrl");
-    openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("format");
     openapiRequiredFields.add("images");
-    openapiRequiredFields.add("showEvery");
-    openapiRequiredFields.add("showDuration");
+    openapiRequiredFields.add("landingPageUrl");
+    openapiRequiredFields.add("name");
     openapiRequiredFields.add("rotationsNumber");
+    openapiRequiredFields.add("showDuration");
+    openapiRequiredFields.add("showEvery");
+    openapiRequiredFields.add("startDate");
   }
 
  /**
@@ -565,20 +565,11 @@ public class CreateCoupon {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
       if (!jsonObj.get("adSetId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `adSetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adSetId").toString()));
       }
-      if (!jsonObj.get("landingPageUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `landingPageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("landingPageUrl").toString()));
-      }
-      if (!jsonObj.get("startDate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       if ((jsonObj.get("endDate") != null && !jsonObj.get("endDate").isJsonNull()) && !jsonObj.get("endDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `endDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endDate").toString()));
@@ -596,6 +587,15 @@ public class CreateCoupon {
       for (int i = 0; i < jsonArrayimages.size(); i++) {
         CreateImageSlide.validateJsonObject(jsonArrayimages.get(i).getAsJsonObject());
       };
+      if (!jsonObj.get("landingPageUrl").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `landingPageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("landingPageUrl").toString()));
+      }
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if (!jsonObj.get("startDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

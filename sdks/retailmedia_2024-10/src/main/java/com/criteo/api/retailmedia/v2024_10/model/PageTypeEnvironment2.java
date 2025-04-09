@@ -52,6 +52,67 @@ import com.criteo.api.retailmedia.v2024_10.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PageTypeEnvironment2 {
   /**
+   * Creative format, defining where the creative can be served
+   */
+  @JsonAdapter(EnvironmentsEnum.Adapter.class)
+  public enum EnvironmentsEnum {
+    WEB("Web"),
+    
+    MOBILE("Mobile"),
+    
+    APP("App"),
+    
+    LOCKOUT("Lockout"),
+    
+    MIXED("Mixed"),
+    
+    IOS("iOS"),
+    
+    ANDROID("Android");
+
+    private String value;
+
+    EnvironmentsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static EnvironmentsEnum fromValue(String value) {
+      for (EnvironmentsEnum b : EnvironmentsEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<EnvironmentsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final EnvironmentsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public EnvironmentsEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return EnvironmentsEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_ENVIRONMENTS = "environments";
+  @SerializedName(SERIALIZED_NAME_ENVIRONMENTS)
+  private List<EnvironmentsEnum> environments = null;
+
+  /**
    * Creative PageType
    */
   @JsonAdapter(PageTypeEnum.Adapter.class)
@@ -124,91 +185,8 @@ public class PageTypeEnvironment2 {
   @SerializedName(SERIALIZED_NAME_PAGE_TYPE)
   private PageTypeEnum pageType;
 
-  /**
-   * Creative format, defining where the creative can be served
-   */
-  @JsonAdapter(EnvironmentsEnum.Adapter.class)
-  public enum EnvironmentsEnum {
-    WEB("Web"),
-    
-    MOBILE("Mobile"),
-    
-    APP("App"),
-    
-    LOCKOUT("Lockout"),
-    
-    MIXED("Mixed"),
-    
-    IOS("iOS"),
-    
-    ANDROID("Android");
-
-    private String value;
-
-    EnvironmentsEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static EnvironmentsEnum fromValue(String value) {
-      for (EnvironmentsEnum b : EnvironmentsEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<EnvironmentsEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final EnvironmentsEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public EnvironmentsEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return EnvironmentsEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_ENVIRONMENTS = "environments";
-  @SerializedName(SERIALIZED_NAME_ENVIRONMENTS)
-  private List<EnvironmentsEnum> environments = null;
-
   public PageTypeEnvironment2() {
   }
-
-  public PageTypeEnvironment2 pageType(PageTypeEnum pageType) {
-    
-    this.pageType = pageType;
-    return this;
-  }
-
-   /**
-   * Creative PageType
-   * @return pageType
-  **/
-  @javax.annotation.Nullable
-
-  public PageTypeEnum getPageType() {
-    return pageType;
-  }
-
-
-  public void setPageType(PageTypeEnum pageType) {
-    this.pageType = pageType;
-  }
-
 
   public PageTypeEnvironment2 environments(List<EnvironmentsEnum> environments) {
     
@@ -240,6 +218,28 @@ public class PageTypeEnvironment2 {
   }
 
 
+  public PageTypeEnvironment2 pageType(PageTypeEnum pageType) {
+    
+    this.pageType = pageType;
+    return this;
+  }
+
+   /**
+   * Creative PageType
+   * @return pageType
+  **/
+  @javax.annotation.Nullable
+
+  public PageTypeEnum getPageType() {
+    return pageType;
+  }
+
+
+  public void setPageType(PageTypeEnum pageType) {
+    this.pageType = pageType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -250,8 +250,8 @@ public class PageTypeEnvironment2 {
       return false;
     }
     PageTypeEnvironment2 pageTypeEnvironment2 = (PageTypeEnvironment2) o;
-    return Objects.equals(this.pageType, pageTypeEnvironment2.pageType) &&
-        Objects.equals(this.environments, pageTypeEnvironment2.environments);
+    return Objects.equals(this.environments, pageTypeEnvironment2.environments) &&
+        Objects.equals(this.pageType, pageTypeEnvironment2.pageType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -260,7 +260,7 @@ public class PageTypeEnvironment2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(pageType, environments);
+    return Objects.hash(environments, pageType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -274,8 +274,8 @@ public class PageTypeEnvironment2 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PageTypeEnvironment2 {\n");
-    sb.append("    pageType: ").append(toIndentedString(pageType)).append("\n");
     sb.append("    environments: ").append(toIndentedString(environments)).append("\n");
+    sb.append("    pageType: ").append(toIndentedString(pageType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -298,8 +298,8 @@ public class PageTypeEnvironment2 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("pageType");
     openapiFields.add("environments");
+    openapiFields.add("pageType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -325,12 +325,12 @@ public class PageTypeEnvironment2 {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PageTypeEnvironment2` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("pageType") != null && !jsonObj.get("pageType").isJsonNull()) && !jsonObj.get("pageType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pageType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pageType").toString()));
-      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("environments") != null && !jsonObj.get("environments").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `environments` to be an array in the JSON string but got `%s`", jsonObj.get("environments").toString()));
+      }
+      if ((jsonObj.get("pageType") != null && !jsonObj.get("pageType").isJsonNull()) && !jsonObj.get("pageType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pageType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pageType").toString()));
       }
   }
 

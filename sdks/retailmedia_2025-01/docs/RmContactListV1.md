@@ -8,8 +8,8 @@ Settings to target users with your contact lists.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**isReadOnly** | **Boolean** | Is the segment read-only |  [optional] |
 |**identifierType** | [**IdentifierTypeEnum**](#IdentifierTypeEnum) | Indicates contact list identifier&#39;s type |  [optional] |
+|**isReadOnly** | **Boolean** | Is the segment read-only |  [optional] |
 |**sharingStatus** | [**SharingStatusEnum**](#SharingStatusEnum) | Indicates if the contact list is shared with other accounts |  [optional] |
 
 

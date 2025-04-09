@@ -52,33 +52,21 @@ import com.criteo.api.marketingsolutions.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Coupon {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
-
-  public static final String SERIALIZED_NAME_AUTHOR = "author";
-  @SerializedName(SERIALIZED_NAME_AUTHOR)
-  private String author;
+  public static final String SERIALIZED_NAME_AD_SET_ID = "adSetId";
+  @SerializedName(SERIALIZED_NAME_AD_SET_ID)
+  private String adSetId;
 
   public static final String SERIALIZED_NAME_ADVERTISER_ID = "advertiserId";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_ID)
   private String advertiserId;
 
-  public static final String SERIALIZED_NAME_AD_SET_ID = "adSetId";
-  @SerializedName(SERIALIZED_NAME_AD_SET_ID)
-  private String adSetId;
+  public static final String SERIALIZED_NAME_AUTHOR = "author";
+  @SerializedName(SERIALIZED_NAME_AUTHOR)
+  private String author;
 
-  public static final String SERIALIZED_NAME_LANDING_PAGE_URL = "landingPageUrl";
-  @SerializedName(SERIALIZED_NAME_LANDING_PAGE_URL)
-  private String landingPageUrl;
-
-  public static final String SERIALIZED_NAME_START_DATE = "startDate";
-  @SerializedName(SERIALIZED_NAME_START_DATE)
-  private String startDate;
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
 
   public static final String SERIALIZED_NAME_END_DATE = "endDate";
   @SerializedName(SERIALIZED_NAME_END_DATE)
@@ -88,96 +76,64 @@ public class Coupon {
   @SerializedName(SERIALIZED_NAME_FORMAT)
   private String format;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
 
   public static final String SERIALIZED_NAME_IMAGES = "images";
   @SerializedName(SERIALIZED_NAME_IMAGES)
   private List<ImageSlide> images = null;
 
-  public static final String SERIALIZED_NAME_SHOW_EVERY = "showEvery";
-  @SerializedName(SERIALIZED_NAME_SHOW_EVERY)
-  private Integer showEvery;
+  public static final String SERIALIZED_NAME_LANDING_PAGE_URL = "landingPageUrl";
+  @SerializedName(SERIALIZED_NAME_LANDING_PAGE_URL)
+  private String landingPageUrl;
 
-  public static final String SERIALIZED_NAME_SHOW_DURATION = "showDuration";
-  @SerializedName(SERIALIZED_NAME_SHOW_DURATION)
-  private Integer showDuration;
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
   public static final String SERIALIZED_NAME_ROTATIONS_NUMBER = "rotationsNumber";
   @SerializedName(SERIALIZED_NAME_ROTATIONS_NUMBER)
   private Integer rotationsNumber;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
+  public static final String SERIALIZED_NAME_SHOW_DURATION = "showDuration";
+  @SerializedName(SERIALIZED_NAME_SHOW_DURATION)
+  private Integer showDuration;
+
+  public static final String SERIALIZED_NAME_SHOW_EVERY = "showEvery";
+  @SerializedName(SERIALIZED_NAME_SHOW_EVERY)
+  private Integer showEvery;
+
+  public static final String SERIALIZED_NAME_START_DATE = "startDate";
+  @SerializedName(SERIALIZED_NAME_START_DATE)
+  private String startDate;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
 
   public Coupon() {
   }
 
-  public Coupon name(String name) {
+  public Coupon adSetId(String adSetId) {
     
-    this.name = name;
+    this.adSetId = adSetId;
     return this;
   }
 
    /**
-   * The name of the Coupon
-   * @return name
+   * The id of the Ad Set on which the Coupon is applied to
+   * @return adSetId
   **/
   @javax.annotation.Nullable
 
-  public String getName() {
-    return name;
+  public String getAdSetId() {
+    return adSetId;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public Coupon description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * The description of the Coupon
-   * @return description
-  **/
-  @javax.annotation.Nullable
-
-  public String getDescription() {
-    return description;
-  }
-
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-
-  public Coupon author(String author) {
-    
-    this.author = author;
-    return this;
-  }
-
-   /**
-   * The login of the person who created this Coupon
-   * @return author
-  **/
-  @javax.annotation.Nullable
-
-  public String getAuthor() {
-    return author;
-  }
-
-
-  public void setAuthor(String author) {
-    this.author = author;
+  public void setAdSetId(String adSetId) {
+    this.adSetId = adSetId;
   }
 
 
@@ -203,69 +159,47 @@ public class Coupon {
   }
 
 
-  public Coupon adSetId(String adSetId) {
+  public Coupon author(String author) {
     
-    this.adSetId = adSetId;
+    this.author = author;
     return this;
   }
 
    /**
-   * The id of the Ad Set on which the Coupon is applied to
-   * @return adSetId
+   * The login of the person who created this Coupon
+   * @return author
   **/
   @javax.annotation.Nullable
 
-  public String getAdSetId() {
-    return adSetId;
+  public String getAuthor() {
+    return author;
   }
 
 
-  public void setAdSetId(String adSetId) {
-    this.adSetId = adSetId;
+  public void setAuthor(String author) {
+    this.author = author;
   }
 
 
-  public Coupon landingPageUrl(String landingPageUrl) {
+  public Coupon description(String description) {
     
-    this.landingPageUrl = landingPageUrl;
+    this.description = description;
     return this;
   }
 
    /**
-   * Web redirection of the landing page url
-   * @return landingPageUrl
+   * The description of the Coupon
+   * @return description
   **/
   @javax.annotation.Nullable
 
-  public String getLandingPageUrl() {
-    return landingPageUrl;
+  public String getDescription() {
+    return description;
   }
 
 
-  public void setLandingPageUrl(String landingPageUrl) {
-    this.landingPageUrl = landingPageUrl;
-  }
-
-
-  public Coupon startDate(String startDate) {
-    
-    this.startDate = startDate;
-    return this;
-  }
-
-   /**
-   * The date when the Coupon will be launched  String must be in ISO8601 format
-   * @return startDate
-  **/
-  @javax.annotation.Nullable
-
-  public String getStartDate() {
-    return startDate;
-  }
-
-
-  public void setStartDate(String startDate) {
-    this.startDate = startDate;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -313,25 +247,25 @@ public class Coupon {
   }
 
 
-  public Coupon status(String status) {
+  public Coupon id(String id) {
     
-    this.status = status;
+    this.id = id;
     return this;
   }
 
    /**
-   * The status of the Coupon
-   * @return status
+   * Unique identifier (duplicate of the parent id).
+   * @return id
   **/
   @javax.annotation.Nullable
 
-  public String getStatus() {
-    return status;
+  public String getId() {
+    return id;
   }
 
 
-  public void setStatus(String status) {
-    this.status = status;
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -365,47 +299,47 @@ public class Coupon {
   }
 
 
-  public Coupon showEvery(Integer showEvery) {
+  public Coupon landingPageUrl(String landingPageUrl) {
     
-    this.showEvery = showEvery;
+    this.landingPageUrl = landingPageUrl;
     return this;
   }
 
    /**
-   * Show the Coupon every N seconds (between 1 and 10)
-   * @return showEvery
+   * Web redirection of the landing page url
+   * @return landingPageUrl
   **/
   @javax.annotation.Nullable
 
-  public Integer getShowEvery() {
-    return showEvery;
+  public String getLandingPageUrl() {
+    return landingPageUrl;
   }
 
 
-  public void setShowEvery(Integer showEvery) {
-    this.showEvery = showEvery;
+  public void setLandingPageUrl(String landingPageUrl) {
+    this.landingPageUrl = landingPageUrl;
   }
 
 
-  public Coupon showDuration(Integer showDuration) {
+  public Coupon name(String name) {
     
-    this.showDuration = showDuration;
+    this.name = name;
     return this;
   }
 
    /**
-   * Show Coupon for a duration of N seconds (between 1 and 5)
-   * @return showDuration
+   * The name of the Coupon
+   * @return name
   **/
   @javax.annotation.Nullable
 
-  public Integer getShowDuration() {
-    return showDuration;
+  public String getName() {
+    return name;
   }
 
 
-  public void setShowDuration(Integer showDuration) {
-    this.showDuration = showDuration;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -431,25 +365,91 @@ public class Coupon {
   }
 
 
-  public Coupon id(String id) {
+  public Coupon showDuration(Integer showDuration) {
     
-    this.id = id;
+    this.showDuration = showDuration;
     return this;
   }
 
    /**
-   * Unique identifier (duplicate of the parent id).
-   * @return id
+   * Show Coupon for a duration of N seconds (between 1 and 5)
+   * @return showDuration
   **/
   @javax.annotation.Nullable
 
-  public String getId() {
-    return id;
+  public Integer getShowDuration() {
+    return showDuration;
   }
 
 
-  public void setId(String id) {
-    this.id = id;
+  public void setShowDuration(Integer showDuration) {
+    this.showDuration = showDuration;
+  }
+
+
+  public Coupon showEvery(Integer showEvery) {
+    
+    this.showEvery = showEvery;
+    return this;
+  }
+
+   /**
+   * Show the Coupon every N seconds (between 1 and 10)
+   * @return showEvery
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getShowEvery() {
+    return showEvery;
+  }
+
+
+  public void setShowEvery(Integer showEvery) {
+    this.showEvery = showEvery;
+  }
+
+
+  public Coupon startDate(String startDate) {
+    
+    this.startDate = startDate;
+    return this;
+  }
+
+   /**
+   * The date when the Coupon will be launched  String must be in ISO8601 format
+   * @return startDate
+  **/
+  @javax.annotation.Nullable
+
+  public String getStartDate() {
+    return startDate;
+  }
+
+
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
+  }
+
+
+  public Coupon status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * The status of the Coupon
+   * @return status
+  **/
+  @javax.annotation.Nullable
+
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 
   /**
@@ -507,21 +507,21 @@ public class Coupon {
       return false;
     }
     Coupon coupon = (Coupon) o;
-    return Objects.equals(this.name, coupon.name) &&
-        Objects.equals(this.description, coupon.description) &&
-        Objects.equals(this.author, coupon.author) &&
+    return Objects.equals(this.adSetId, coupon.adSetId) &&
         Objects.equals(this.advertiserId, coupon.advertiserId) &&
-        Objects.equals(this.adSetId, coupon.adSetId) &&
-        Objects.equals(this.landingPageUrl, coupon.landingPageUrl) &&
-        Objects.equals(this.startDate, coupon.startDate) &&
+        Objects.equals(this.author, coupon.author) &&
+        Objects.equals(this.description, coupon.description) &&
         Objects.equals(this.endDate, coupon.endDate) &&
         Objects.equals(this.format, coupon.format) &&
-        Objects.equals(this.status, coupon.status) &&
+        Objects.equals(this.id, coupon.id) &&
         Objects.equals(this.images, coupon.images) &&
-        Objects.equals(this.showEvery, coupon.showEvery) &&
-        Objects.equals(this.showDuration, coupon.showDuration) &&
+        Objects.equals(this.landingPageUrl, coupon.landingPageUrl) &&
+        Objects.equals(this.name, coupon.name) &&
         Objects.equals(this.rotationsNumber, coupon.rotationsNumber) &&
-        Objects.equals(this.id, coupon.id)&&
+        Objects.equals(this.showDuration, coupon.showDuration) &&
+        Objects.equals(this.showEvery, coupon.showEvery) &&
+        Objects.equals(this.startDate, coupon.startDate) &&
+        Objects.equals(this.status, coupon.status)&&
         Objects.equals(this.additionalProperties, coupon.additionalProperties);
   }
 
@@ -531,7 +531,7 @@ public class Coupon {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, author, advertiserId, adSetId, landingPageUrl, startDate, endDate, format, status, images, showEvery, showDuration, rotationsNumber, id, additionalProperties);
+    return Objects.hash(adSetId, advertiserId, author, description, endDate, format, id, images, landingPageUrl, name, rotationsNumber, showDuration, showEvery, startDate, status, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -545,21 +545,21 @@ public class Coupon {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Coupon {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    author: ").append(toIndentedString(author)).append("\n");
-    sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
     sb.append("    adSetId: ").append(toIndentedString(adSetId)).append("\n");
-    sb.append("    landingPageUrl: ").append(toIndentedString(landingPageUrl)).append("\n");
-    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    advertiserId: ").append(toIndentedString(advertiserId)).append("\n");
+    sb.append("    author: ").append(toIndentedString(author)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    images: ").append(toIndentedString(images)).append("\n");
-    sb.append("    showEvery: ").append(toIndentedString(showEvery)).append("\n");
-    sb.append("    showDuration: ").append(toIndentedString(showDuration)).append("\n");
-    sb.append("    rotationsNumber: ").append(toIndentedString(rotationsNumber)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    images: ").append(toIndentedString(images)).append("\n");
+    sb.append("    landingPageUrl: ").append(toIndentedString(landingPageUrl)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    rotationsNumber: ").append(toIndentedString(rotationsNumber)).append("\n");
+    sb.append("    showDuration: ").append(toIndentedString(showDuration)).append("\n");
+    sb.append("    showEvery: ").append(toIndentedString(showEvery)).append("\n");
+    sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -583,21 +583,21 @@ public class Coupon {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("description");
-    openapiFields.add("author");
-    openapiFields.add("advertiserId");
     openapiFields.add("adSetId");
-    openapiFields.add("landingPageUrl");
-    openapiFields.add("startDate");
+    openapiFields.add("advertiserId");
+    openapiFields.add("author");
+    openapiFields.add("description");
     openapiFields.add("endDate");
     openapiFields.add("format");
-    openapiFields.add("status");
-    openapiFields.add("images");
-    openapiFields.add("showEvery");
-    openapiFields.add("showDuration");
-    openapiFields.add("rotationsNumber");
     openapiFields.add("id");
+    openapiFields.add("images");
+    openapiFields.add("landingPageUrl");
+    openapiFields.add("name");
+    openapiFields.add("rotationsNumber");
+    openapiFields.add("showDuration");
+    openapiFields.add("showEvery");
+    openapiFields.add("startDate");
+    openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -615,26 +615,17 @@ public class Coupon {
           throw new IllegalArgumentException(String.format("The required field(s) %s in Coupon is not found in the empty JSON string", Coupon.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      if ((jsonObj.get("author") != null && !jsonObj.get("author").isJsonNull()) && !jsonObj.get("author").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `author` to be a primitive type in the JSON string but got `%s`", jsonObj.get("author").toString()));
+      if ((jsonObj.get("adSetId") != null && !jsonObj.get("adSetId").isJsonNull()) && !jsonObj.get("adSetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `adSetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adSetId").toString()));
       }
       if ((jsonObj.get("advertiserId") != null && !jsonObj.get("advertiserId").isJsonNull()) && !jsonObj.get("advertiserId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `advertiserId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiserId").toString()));
       }
-      if ((jsonObj.get("adSetId") != null && !jsonObj.get("adSetId").isJsonNull()) && !jsonObj.get("adSetId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `adSetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adSetId").toString()));
+      if ((jsonObj.get("author") != null && !jsonObj.get("author").isJsonNull()) && !jsonObj.get("author").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `author` to be a primitive type in the JSON string but got `%s`", jsonObj.get("author").toString()));
       }
-      if ((jsonObj.get("landingPageUrl") != null && !jsonObj.get("landingPageUrl").isJsonNull()) && !jsonObj.get("landingPageUrl").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `landingPageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("landingPageUrl").toString()));
-      }
-      if ((jsonObj.get("startDate") != null && !jsonObj.get("startDate").isJsonNull()) && !jsonObj.get("startDate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       if ((jsonObj.get("endDate") != null && !jsonObj.get("endDate").isJsonNull()) && !jsonObj.get("endDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `endDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endDate").toString()));
@@ -642,8 +633,8 @@ public class Coupon {
       if ((jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) && !jsonObj.get("format").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `format` to be a primitive type in the JSON string but got `%s`", jsonObj.get("format").toString()));
       }
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if (jsonObj.get("images") != null && !jsonObj.get("images").isJsonNull()) {
         JsonArray jsonArrayimages = jsonObj.getAsJsonArray("images");
@@ -659,8 +650,17 @@ public class Coupon {
           };
         }
       }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      if ((jsonObj.get("landingPageUrl") != null && !jsonObj.get("landingPageUrl").isJsonNull()) && !jsonObj.get("landingPageUrl").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `landingPageUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("landingPageUrl").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("startDate") != null && !jsonObj.get("startDate").isJsonNull()) && !jsonObj.get("startDate").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `startDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startDate").toString()));
+      }
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
   }
 

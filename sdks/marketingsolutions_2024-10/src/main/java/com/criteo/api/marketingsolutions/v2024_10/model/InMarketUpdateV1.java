@@ -52,9 +52,9 @@ import com.criteo.api.marketingsolutions.v2024_10.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InMarketUpdateV1 {
-  public static final String SERIALIZED_NAME_COUNTRY = "country";
-  @SerializedName(SERIALIZED_NAME_COUNTRY)
-  private String country;
+  public static final String SERIALIZED_NAME_BRAND_IDS = "brandIds";
+  @SerializedName(SERIALIZED_NAME_BRAND_IDS)
+  private Set<String> brandIds = null;
 
   /**
    * Gets or Sets buyingPower
@@ -111,6 +111,10 @@ public class InMarketUpdateV1 {
   @SerializedName(SERIALIZED_NAME_BUYING_POWER)
   private Set<BuyingPowerEnum> buyingPower = null;
 
+  public static final String SERIALIZED_NAME_COUNTRY = "country";
+  @SerializedName(SERIALIZED_NAME_COUNTRY)
+  private String country;
+
   public static final String SERIALIZED_NAME_GENDER = "gender";
   @SerializedName(SERIALIZED_NAME_GENDER)
   private NillableGenderV1 gender;
@@ -118,10 +122,6 @@ public class InMarketUpdateV1 {
   public static final String SERIALIZED_NAME_INTEREST_IDS = "interestIds";
   @SerializedName(SERIALIZED_NAME_INTEREST_IDS)
   private Set<String> interestIds = null;
-
-  public static final String SERIALIZED_NAME_BRAND_IDS = "brandIds";
-  @SerializedName(SERIALIZED_NAME_BRAND_IDS)
-  private Set<String> brandIds = null;
 
   /**
    * Gets or Sets priceRange
@@ -179,25 +179,33 @@ public class InMarketUpdateV1 {
   public InMarketUpdateV1() {
   }
 
-  public InMarketUpdateV1 country(String country) {
+  public InMarketUpdateV1 brandIds(Set<String> brandIds) {
     
-    this.country = country;
+    this.brandIds = brandIds;
+    return this;
+  }
+
+  public InMarketUpdateV1 addBrandIdsItem(String brandIdsItem) {
+    if (this.brandIds == null) {
+      this.brandIds = new LinkedHashSet<>();
+    }
+    this.brandIds.add(brandIdsItem);
     return this;
   }
 
    /**
-   * Reach people of a specific country
-   * @return country
+   * Choose the brands your segment might be interested in
+   * @return brandIds
   **/
   @javax.annotation.Nullable
 
-  public String getCountry() {
-    return country;
+  public Set<String> getBrandIds() {
+    return brandIds;
   }
 
 
-  public void setCountry(String country) {
-    this.country = country;
+  public void setBrandIds(Set<String> brandIds) {
+    this.brandIds = brandIds;
   }
 
 
@@ -228,6 +236,28 @@ public class InMarketUpdateV1 {
 
   public void setBuyingPower(Set<BuyingPowerEnum> buyingPower) {
     this.buyingPower = buyingPower;
+  }
+
+
+  public InMarketUpdateV1 country(String country) {
+    
+    this.country = country;
+    return this;
+  }
+
+   /**
+   * Reach people of a specific country
+   * @return country
+  **/
+  @javax.annotation.Nullable
+
+  public String getCountry() {
+    return country;
+  }
+
+
+  public void setCountry(String country) {
+    this.country = country;
   }
 
 
@@ -280,36 +310,6 @@ public class InMarketUpdateV1 {
 
   public void setInterestIds(Set<String> interestIds) {
     this.interestIds = interestIds;
-  }
-
-
-  public InMarketUpdateV1 brandIds(Set<String> brandIds) {
-    
-    this.brandIds = brandIds;
-    return this;
-  }
-
-  public InMarketUpdateV1 addBrandIdsItem(String brandIdsItem) {
-    if (this.brandIds == null) {
-      this.brandIds = new LinkedHashSet<>();
-    }
-    this.brandIds.add(brandIdsItem);
-    return this;
-  }
-
-   /**
-   * Choose the brands your segment might be interested in
-   * @return brandIds
-  **/
-  @javax.annotation.Nullable
-
-  public Set<String> getBrandIds() {
-    return brandIds;
-  }
-
-
-  public void setBrandIds(Set<String> brandIds) {
-    this.brandIds = brandIds;
   }
 
 
@@ -397,11 +397,11 @@ public class InMarketUpdateV1 {
       return false;
     }
     InMarketUpdateV1 inMarketUpdateV1 = (InMarketUpdateV1) o;
-    return Objects.equals(this.country, inMarketUpdateV1.country) &&
+    return Objects.equals(this.brandIds, inMarketUpdateV1.brandIds) &&
         Objects.equals(this.buyingPower, inMarketUpdateV1.buyingPower) &&
+        Objects.equals(this.country, inMarketUpdateV1.country) &&
         Objects.equals(this.gender, inMarketUpdateV1.gender) &&
         Objects.equals(this.interestIds, inMarketUpdateV1.interestIds) &&
-        Objects.equals(this.brandIds, inMarketUpdateV1.brandIds) &&
         Objects.equals(this.priceRange, inMarketUpdateV1.priceRange)&&
         Objects.equals(this.additionalProperties, inMarketUpdateV1.additionalProperties);
   }
@@ -412,7 +412,7 @@ public class InMarketUpdateV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(country, buyingPower, gender, interestIds, brandIds, priceRange, additionalProperties);
+    return Objects.hash(brandIds, buyingPower, country, gender, interestIds, priceRange, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -426,11 +426,11 @@ public class InMarketUpdateV1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InMarketUpdateV1 {\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
+    sb.append("    brandIds: ").append(toIndentedString(brandIds)).append("\n");
     sb.append("    buyingPower: ").append(toIndentedString(buyingPower)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    gender: ").append(toIndentedString(gender)).append("\n");
     sb.append("    interestIds: ").append(toIndentedString(interestIds)).append("\n");
-    sb.append("    brandIds: ").append(toIndentedString(brandIds)).append("\n");
     sb.append("    priceRange: ").append(toIndentedString(priceRange)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -455,11 +455,11 @@ public class InMarketUpdateV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("country");
+    openapiFields.add("brandIds");
     openapiFields.add("buyingPower");
+    openapiFields.add("country");
     openapiFields.add("gender");
     openapiFields.add("interestIds");
-    openapiFields.add("brandIds");
     openapiFields.add("priceRange");
 
     // a set of required properties/fields (JSON key names)
@@ -478,12 +478,16 @@ public class InMarketUpdateV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in InMarketUpdateV1 is not found in the empty JSON string", InMarketUpdateV1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `brandIds` to be an array in the JSON string but got `%s`", jsonObj.get("brandIds").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("buyingPower") != null && !jsonObj.get("buyingPower").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `buyingPower` to be an array in the JSON string but got `%s`", jsonObj.get("buyingPower").toString()));
+      }
+      if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
       }
       // validate the optional field `gender`
       if (jsonObj.get("gender") != null && !jsonObj.get("gender").isJsonNull()) {
@@ -492,10 +496,6 @@ public class InMarketUpdateV1 {
       // ensure the optional json data is an array if present
       if (jsonObj.get("interestIds") != null && !jsonObj.get("interestIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `interestIds` to be an array in the JSON string but got `%s`", jsonObj.get("interestIds").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("brandIds") != null && !jsonObj.get("brandIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `brandIds` to be an array in the JSON string but got `%s`", jsonObj.get("brandIds").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("priceRange") != null && !jsonObj.get("priceRange").isJsonArray()) {

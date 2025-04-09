@@ -8,12 +8,12 @@ Information for creating an advertiser
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**agencyId** | **String** | ID of the agency requesting the advertiser creation |  |
 |**accountName** | **String** | The Account Name; This will not be in fact the Advertiser name |  |
-|**websiteUrl** | **String** | Website url |  |
+|**agencyId** | **String** | ID of the agency requesting the advertiser creation |  |
 |**countryIsoCode** | **String** | Country ISO code |  |
 |**currencyIsoCode** | **String** | Currency ISO code |  |
 |**industryId** | **String** | Industry ID |  |
+|**websiteUrl** | **String** | Website url |  |
 
 
 

@@ -56,13 +56,13 @@ public class AdSetTargeting {
   @SerializedName(SERIALIZED_NAME_DELIVERY_LIMITATIONS)
   private AdSetDeliveryLimitations deliveryLimitations;
 
-  public static final String SERIALIZED_NAME_GEO_LOCATION = "geoLocation";
-  @SerializedName(SERIALIZED_NAME_GEO_LOCATION)
-  private AdSetGeoLocation geoLocation;
-
   public static final String SERIALIZED_NAME_FREQUENCY_CAPPING = "frequencyCapping";
   @SerializedName(SERIALIZED_NAME_FREQUENCY_CAPPING)
   private AdSetFrequencyCapping frequencyCapping;
+
+  public static final String SERIALIZED_NAME_GEO_LOCATION = "geoLocation";
+  @SerializedName(SERIALIZED_NAME_GEO_LOCATION)
+  private AdSetGeoLocation geoLocation;
 
   public AdSetTargeting() {
   }
@@ -89,28 +89,6 @@ public class AdSetTargeting {
   }
 
 
-  public AdSetTargeting geoLocation(AdSetGeoLocation geoLocation) {
-    
-    this.geoLocation = geoLocation;
-    return this;
-  }
-
-   /**
-   * Get geoLocation
-   * @return geoLocation
-  **/
-  @javax.annotation.Nullable
-
-  public AdSetGeoLocation getGeoLocation() {
-    return geoLocation;
-  }
-
-
-  public void setGeoLocation(AdSetGeoLocation geoLocation) {
-    this.geoLocation = geoLocation;
-  }
-
-
   public AdSetTargeting frequencyCapping(AdSetFrequencyCapping frequencyCapping) {
     
     this.frequencyCapping = frequencyCapping;
@@ -130,6 +108,28 @@ public class AdSetTargeting {
 
   public void setFrequencyCapping(AdSetFrequencyCapping frequencyCapping) {
     this.frequencyCapping = frequencyCapping;
+  }
+
+
+  public AdSetTargeting geoLocation(AdSetGeoLocation geoLocation) {
+    
+    this.geoLocation = geoLocation;
+    return this;
+  }
+
+   /**
+   * Get geoLocation
+   * @return geoLocation
+  **/
+  @javax.annotation.Nullable
+
+  public AdSetGeoLocation getGeoLocation() {
+    return geoLocation;
+  }
+
+
+  public void setGeoLocation(AdSetGeoLocation geoLocation) {
+    this.geoLocation = geoLocation;
   }
 
   /**
@@ -188,8 +188,8 @@ public class AdSetTargeting {
     }
     AdSetTargeting adSetTargeting = (AdSetTargeting) o;
     return Objects.equals(this.deliveryLimitations, adSetTargeting.deliveryLimitations) &&
-        Objects.equals(this.geoLocation, adSetTargeting.geoLocation) &&
-        Objects.equals(this.frequencyCapping, adSetTargeting.frequencyCapping)&&
+        Objects.equals(this.frequencyCapping, adSetTargeting.frequencyCapping) &&
+        Objects.equals(this.geoLocation, adSetTargeting.geoLocation)&&
         Objects.equals(this.additionalProperties, adSetTargeting.additionalProperties);
   }
 
@@ -199,7 +199,7 @@ public class AdSetTargeting {
 
   @Override
   public int hashCode() {
-    return Objects.hash(deliveryLimitations, geoLocation, frequencyCapping, additionalProperties);
+    return Objects.hash(deliveryLimitations, frequencyCapping, geoLocation, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -214,8 +214,8 @@ public class AdSetTargeting {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdSetTargeting {\n");
     sb.append("    deliveryLimitations: ").append(toIndentedString(deliveryLimitations)).append("\n");
-    sb.append("    geoLocation: ").append(toIndentedString(geoLocation)).append("\n");
     sb.append("    frequencyCapping: ").append(toIndentedString(frequencyCapping)).append("\n");
+    sb.append("    geoLocation: ").append(toIndentedString(geoLocation)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -240,8 +240,8 @@ public class AdSetTargeting {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("deliveryLimitations");
-    openapiFields.add("geoLocation");
     openapiFields.add("frequencyCapping");
+    openapiFields.add("geoLocation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -263,13 +263,13 @@ public class AdSetTargeting {
       if (jsonObj.get("deliveryLimitations") != null && !jsonObj.get("deliveryLimitations").isJsonNull()) {
         AdSetDeliveryLimitations.validateJsonObject(jsonObj.getAsJsonObject("deliveryLimitations"));
       }
-      // validate the optional field `geoLocation`
-      if (jsonObj.get("geoLocation") != null && !jsonObj.get("geoLocation").isJsonNull()) {
-        AdSetGeoLocation.validateJsonObject(jsonObj.getAsJsonObject("geoLocation"));
-      }
       // validate the optional field `frequencyCapping`
       if (jsonObj.get("frequencyCapping") != null && !jsonObj.get("frequencyCapping").isJsonNull()) {
         AdSetFrequencyCapping.validateJsonObject(jsonObj.getAsJsonObject("frequencyCapping"));
+      }
+      // validate the optional field `geoLocation`
+      if (jsonObj.get("geoLocation") != null && !jsonObj.get("geoLocation").isJsonNull()) {
+        AdSetGeoLocation.validateJsonObject(jsonObj.getAsJsonObject("geoLocation"));
       }
   }
 

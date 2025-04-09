@@ -49,40 +49,40 @@ import com.criteo.api.retailmedia.v2025_01.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ChangeDetailsV1 {
-  public static final String SERIALIZED_NAME_PREVIOUS_VALUE = "previousValue";
-  @SerializedName(SERIALIZED_NAME_PREVIOUS_VALUE)
-  private String previousValue;
+  public static final String SERIALIZED_NAME_CHANGE_VALUE = "changeValue";
+  @SerializedName(SERIALIZED_NAME_CHANGE_VALUE)
+  private String changeValue;
 
   public static final String SERIALIZED_NAME_CURRENT_VALUE = "currentValue";
   @SerializedName(SERIALIZED_NAME_CURRENT_VALUE)
   private String currentValue;
 
-  public static final String SERIALIZED_NAME_CHANGE_VALUE = "changeValue";
-  @SerializedName(SERIALIZED_NAME_CHANGE_VALUE)
-  private String changeValue;
+  public static final String SERIALIZED_NAME_PREVIOUS_VALUE = "previousValue";
+  @SerializedName(SERIALIZED_NAME_PREVIOUS_VALUE)
+  private String previousValue;
 
   public ChangeDetailsV1() {
   }
 
-  public ChangeDetailsV1 previousValue(String previousValue) {
+  public ChangeDetailsV1 changeValue(String changeValue) {
     
-    this.previousValue = previousValue;
+    this.changeValue = changeValue;
     return this;
   }
 
    /**
-   * Previous value of a property of the insertion order.
-   * @return previousValue
+   * Change detail of a property of the insertion order.
+   * @return changeValue
   **/
   @javax.annotation.Nullable
 
-  public String getPreviousValue() {
-    return previousValue;
+  public String getChangeValue() {
+    return changeValue;
   }
 
 
-  public void setPreviousValue(String previousValue) {
-    this.previousValue = previousValue;
+  public void setChangeValue(String changeValue) {
+    this.changeValue = changeValue;
   }
 
 
@@ -108,25 +108,25 @@ public class ChangeDetailsV1 {
   }
 
 
-  public ChangeDetailsV1 changeValue(String changeValue) {
+  public ChangeDetailsV1 previousValue(String previousValue) {
     
-    this.changeValue = changeValue;
+    this.previousValue = previousValue;
     return this;
   }
 
    /**
-   * Change detail of a property of the insertion order.
-   * @return changeValue
+   * Previous value of a property of the insertion order.
+   * @return previousValue
   **/
   @javax.annotation.Nullable
 
-  public String getChangeValue() {
-    return changeValue;
+  public String getPreviousValue() {
+    return previousValue;
   }
 
 
-  public void setChangeValue(String changeValue) {
-    this.changeValue = changeValue;
+  public void setPreviousValue(String previousValue) {
+    this.previousValue = previousValue;
   }
 
 
@@ -140,9 +140,9 @@ public class ChangeDetailsV1 {
       return false;
     }
     ChangeDetailsV1 changeDetailsV1 = (ChangeDetailsV1) o;
-    return Objects.equals(this.previousValue, changeDetailsV1.previousValue) &&
+    return Objects.equals(this.changeValue, changeDetailsV1.changeValue) &&
         Objects.equals(this.currentValue, changeDetailsV1.currentValue) &&
-        Objects.equals(this.changeValue, changeDetailsV1.changeValue);
+        Objects.equals(this.previousValue, changeDetailsV1.previousValue);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -151,7 +151,7 @@ public class ChangeDetailsV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(previousValue, currentValue, changeValue);
+    return Objects.hash(changeValue, currentValue, previousValue);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -165,9 +165,9 @@ public class ChangeDetailsV1 {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ChangeDetailsV1 {\n");
-    sb.append("    previousValue: ").append(toIndentedString(previousValue)).append("\n");
-    sb.append("    currentValue: ").append(toIndentedString(currentValue)).append("\n");
     sb.append("    changeValue: ").append(toIndentedString(changeValue)).append("\n");
+    sb.append("    currentValue: ").append(toIndentedString(currentValue)).append("\n");
+    sb.append("    previousValue: ").append(toIndentedString(previousValue)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -190,9 +190,9 @@ public class ChangeDetailsV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("previousValue");
-    openapiFields.add("currentValue");
     openapiFields.add("changeValue");
+    openapiFields.add("currentValue");
+    openapiFields.add("previousValue");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -218,14 +218,14 @@ public class ChangeDetailsV1 {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ChangeDetailsV1` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("previousValue") != null && !jsonObj.get("previousValue").isJsonNull()) && !jsonObj.get("previousValue").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `previousValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("previousValue").toString()));
+      if ((jsonObj.get("changeValue") != null && !jsonObj.get("changeValue").isJsonNull()) && !jsonObj.get("changeValue").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `changeValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("changeValue").toString()));
       }
       if ((jsonObj.get("currentValue") != null && !jsonObj.get("currentValue").isJsonNull()) && !jsonObj.get("currentValue").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currentValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currentValue").toString()));
       }
-      if ((jsonObj.get("changeValue") != null && !jsonObj.get("changeValue").isJsonNull()) && !jsonObj.get("changeValue").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `changeValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("changeValue").toString()));
+      if ((jsonObj.get("previousValue") != null && !jsonObj.get("previousValue").isJsonNull()) && !jsonObj.get("previousValue").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `previousValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("previousValue").toString()));
       }
   }
 

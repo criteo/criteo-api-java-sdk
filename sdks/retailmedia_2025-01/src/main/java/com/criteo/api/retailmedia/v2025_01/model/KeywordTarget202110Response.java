@@ -56,25 +56,25 @@ public class KeywordTarget202110Response {
   @SerializedName(SERIALIZED_NAME_DATA)
   private ValueTypeResourceOfKeywordTarget202110 data;
 
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<ProblemDetails> warnings = null;
-
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<ProblemDetails> errors = null;
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<ProblemDetails> warnings = null;
 
   public KeywordTarget202110Response() {
   }
 
   
   public KeywordTarget202110Response(
-     List<ProblemDetails> warnings, 
-     List<ProblemDetails> errors
+     List<ProblemDetails> errors, 
+     List<ProblemDetails> warnings
   ) {
     this();
-    this.warnings = warnings;
     this.errors = errors;
+    this.warnings = warnings;
   }
 
   public KeywordTarget202110Response data(ValueTypeResourceOfKeywordTarget202110 data) {
@@ -100,19 +100,6 @@ public class KeywordTarget202110Response {
 
 
    /**
-   * Get warnings
-   * @return warnings
-  **/
-  @javax.annotation.Nullable
-
-  public List<ProblemDetails> getWarnings() {
-    return warnings;
-  }
-
-
-
-
-   /**
    * Get errors
    * @return errors
   **/
@@ -120,6 +107,19 @@ public class KeywordTarget202110Response {
 
   public List<ProblemDetails> getErrors() {
     return errors;
+  }
+
+
+
+
+   /**
+   * Get warnings
+   * @return warnings
+  **/
+  @javax.annotation.Nullable
+
+  public List<ProblemDetails> getWarnings() {
+    return warnings;
   }
 
 
@@ -180,14 +180,14 @@ public class KeywordTarget202110Response {
     }
     KeywordTarget202110Response keywordTarget202110Response = (KeywordTarget202110Response) o;
     return Objects.equals(this.data, keywordTarget202110Response.data) &&
-        Objects.equals(this.warnings, keywordTarget202110Response.warnings) &&
-        Objects.equals(this.errors, keywordTarget202110Response.errors)&&
+        Objects.equals(this.errors, keywordTarget202110Response.errors) &&
+        Objects.equals(this.warnings, keywordTarget202110Response.warnings)&&
         Objects.equals(this.additionalProperties, keywordTarget202110Response.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, warnings, errors, additionalProperties);
+    return Objects.hash(data, errors, warnings, additionalProperties);
   }
 
   @Override
@@ -195,8 +195,8 @@ public class KeywordTarget202110Response {
     StringBuilder sb = new StringBuilder();
     sb.append("class KeywordTarget202110Response {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -221,8 +221,8 @@ public class KeywordTarget202110Response {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("data");
-    openapiFields.add("warnings");
     openapiFields.add("errors");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -244,20 +244,6 @@ public class KeywordTarget202110Response {
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         ValueTypeResourceOfKeywordTarget202110.validateJsonObject(jsonObj.getAsJsonObject("data"));
       }
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
-        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
-        if (jsonArraywarnings != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("warnings").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-          }
-
-          // validate the optional field `warnings` (array)
-          for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            ProblemDetails.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
-          };
-        }
-      }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
         if (jsonArrayerrors != null) {
@@ -269,6 +255,20 @@ public class KeywordTarget202110Response {
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
             ProblemDetails.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            ProblemDetails.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }

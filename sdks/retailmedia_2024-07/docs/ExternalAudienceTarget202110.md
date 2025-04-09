@@ -8,8 +8,8 @@ Identifies audience targeting for a line item
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**scope** | [**ScopeEnum**](#ScopeEnum) | Scope of the audience target |  |
 |**audienceIds** | **List&lt;String&gt;** | Audience ids that should be targeted |  |
+|**scope** | [**ScopeEnum**](#ScopeEnum) | Scope of the audience target |  |
 
 
 

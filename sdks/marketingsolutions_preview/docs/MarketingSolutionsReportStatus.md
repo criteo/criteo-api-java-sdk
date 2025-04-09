@@ -8,8 +8,8 @@ Object containing the status of report request and an associated message.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**status** | [**StatusEnum**](#StatusEnum) |  |  [optional] |
 |**message** | **String** |  |  [optional] |
+|**status** | [**StatusEnum**](#StatusEnum) |  |  [optional] |
 
 
 

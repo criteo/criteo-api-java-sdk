@@ -8,8 +8,8 @@ Page information for a preferred line item
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**pageType** | [**PageTypeEnum**](#PageTypeEnum) |  |  |
 |**categories** | [**List&lt;ExternalLineItemPageCategory202110&gt;**](ExternalLineItemPageCategory202110.md) |  |  [optional] |
+|**pageType** | [**PageTypeEnum**](#PageTypeEnum) |  |  |
 |**searchKeywords** | **List&lt;String&gt;** |  |  [optional] |
 
 

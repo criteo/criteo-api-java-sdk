@@ -58,13 +58,13 @@ public class RetailMediaContactlistOperation {
   @SerializedName(SERIALIZED_NAME_DATA)
   private RetailMediaContactlistOperationResponseAttributes data;
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
-
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<AudienceError> errors = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
 
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
@@ -95,28 +95,6 @@ public class RetailMediaContactlistOperation {
   }
 
 
-  public RetailMediaContactlistOperation type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * the name of the entity type
-   * @return type
-  **/
-  @javax.annotation.Nullable
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
-
   public RetailMediaContactlistOperation errors(List<AudienceError> errors) {
     
     this.errors = errors;
@@ -141,6 +119,28 @@ public class RetailMediaContactlistOperation {
 
   public void setErrors(List<AudienceError> errors) {
     this.errors = errors;
+  }
+
+
+  public RetailMediaContactlistOperation type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * the name of the entity type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
   }
 
 
@@ -226,8 +226,8 @@ public class RetailMediaContactlistOperation {
     }
     RetailMediaContactlistOperation retailMediaContactlistOperation = (RetailMediaContactlistOperation) o;
     return Objects.equals(this.data, retailMediaContactlistOperation.data) &&
-        Objects.equals(this.type, retailMediaContactlistOperation.type) &&
         Objects.equals(this.errors, retailMediaContactlistOperation.errors) &&
+        Objects.equals(this.type, retailMediaContactlistOperation.type) &&
         Objects.equals(this.warnings, retailMediaContactlistOperation.warnings)&&
         Objects.equals(this.additionalProperties, retailMediaContactlistOperation.additionalProperties);
   }
@@ -238,7 +238,7 @@ public class RetailMediaContactlistOperation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, type, errors, warnings, additionalProperties);
+    return Objects.hash(data, errors, type, warnings, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -253,8 +253,8 @@ public class RetailMediaContactlistOperation {
     StringBuilder sb = new StringBuilder();
     sb.append("class RetailMediaContactlistOperation {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -280,8 +280,8 @@ public class RetailMediaContactlistOperation {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("data");
-    openapiFields.add("type");
     openapiFields.add("errors");
+    openapiFields.add("type");
     openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
@@ -312,9 +312,6 @@ public class RetailMediaContactlistOperation {
       }
       // validate the required field `data`
       RetailMediaContactlistOperationResponseAttributes.validateJsonObject(jsonObj.getAsJsonObject("data"));
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       // ensure the json data is an array
       if (!jsonObj.get("errors").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `errors` to be an array in the JSON string but got `%s`", jsonObj.get("errors").toString()));
@@ -325,6 +322,9 @@ public class RetailMediaContactlistOperation {
       for (int i = 0; i < jsonArrayerrors.size(); i++) {
         AudienceError.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
       };
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
       // ensure the json data is an array
       if (!jsonObj.get("warnings").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));

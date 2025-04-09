@@ -8,11 +8,11 @@ Generic Criteo API successful data model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | [**TypeEnum**](#TypeEnum) | A string containing the entity type |  |
-|**id** | **String** | A opaque string containing the unique Id of the entity |  |
 |**attributes** | **Object** | Generic Criteo API successful data model  While others may be computed e.g. lastChangedDate.  Computed attributes are only part of the read model and not part of the write model. |  [optional] |
+|**id** | **String** | A opaque string containing the unique Id of the entity |  |
 |**meta** | **Object** | A meta object that contains application-specific metadata |  [optional] |
 |**relationships** | **Object** | Relationships with this entity |  [optional] |
+|**type** | [**TypeEnum**](#TypeEnum) | A string containing the entity type |  |
 
 
 

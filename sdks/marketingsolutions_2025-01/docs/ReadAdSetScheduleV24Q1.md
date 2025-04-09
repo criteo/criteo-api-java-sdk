@@ -8,10 +8,10 @@ ad set schedule read model
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**startDate** | [**NillableDateTime**](NillableDateTime.md) |  |  [optional] |
-|**endDate** | [**NillableDateTime**](NillableDateTime.md) |  |  [optional] |
 |**activationStatus** | [**ActivationStatusEnum**](#ActivationStatusEnum) |  |  [optional] |
 |**deliveryStatus** | [**DeliveryStatusEnum**](#DeliveryStatusEnum) |  |  [optional] |
+|**endDate** | [**NillableDateTime**](NillableDateTime.md) |  |  [optional] |
+|**startDate** | [**NillableDateTime**](NillableDateTime.md) |  |  [optional] |
 
 
 

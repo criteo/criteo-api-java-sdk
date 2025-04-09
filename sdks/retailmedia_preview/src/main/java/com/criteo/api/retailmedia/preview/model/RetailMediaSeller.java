@@ -49,40 +49,40 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RetailMediaSeller {
-  public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
-  @SerializedName(SERIALIZED_NAME_SELLER_ID)
-  private String sellerId;
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
 
   public static final String SERIALIZED_NAME_RETAILER_ID = "retailerId";
   @SerializedName(SERIALIZED_NAME_RETAILER_ID)
   private Integer retailerId;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
+  @SerializedName(SERIALIZED_NAME_SELLER_ID)
+  private String sellerId;
 
   public RetailMediaSeller() {
   }
 
-  public RetailMediaSeller sellerId(String sellerId) {
+  public RetailMediaSeller name(String name) {
     
-    this.sellerId = sellerId;
+    this.name = name;
     return this;
   }
 
    /**
-   * the seller id
-   * @return sellerId
+   * seller name
+   * @return name
   **/
   @javax.annotation.Nullable
 
-  public String getSellerId() {
-    return sellerId;
+  public String getName() {
+    return name;
   }
 
 
-  public void setSellerId(String sellerId) {
-    this.sellerId = sellerId;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -108,25 +108,25 @@ public class RetailMediaSeller {
   }
 
 
-  public RetailMediaSeller name(String name) {
+  public RetailMediaSeller sellerId(String sellerId) {
     
-    this.name = name;
+    this.sellerId = sellerId;
     return this;
   }
 
    /**
-   * seller name
-   * @return name
+   * the seller id
+   * @return sellerId
   **/
   @javax.annotation.Nullable
 
-  public String getName() {
-    return name;
+  public String getSellerId() {
+    return sellerId;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
+  public void setSellerId(String sellerId) {
+    this.sellerId = sellerId;
   }
 
 
@@ -140,9 +140,9 @@ public class RetailMediaSeller {
       return false;
     }
     RetailMediaSeller retailMediaSeller = (RetailMediaSeller) o;
-    return Objects.equals(this.sellerId, retailMediaSeller.sellerId) &&
+    return Objects.equals(this.name, retailMediaSeller.name) &&
         Objects.equals(this.retailerId, retailMediaSeller.retailerId) &&
-        Objects.equals(this.name, retailMediaSeller.name);
+        Objects.equals(this.sellerId, retailMediaSeller.sellerId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -151,7 +151,7 @@ public class RetailMediaSeller {
 
   @Override
   public int hashCode() {
-    return Objects.hash(sellerId, retailerId, name);
+    return Objects.hash(name, retailerId, sellerId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -165,9 +165,9 @@ public class RetailMediaSeller {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RetailMediaSeller {\n");
-    sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
-    sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
+    sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -190,9 +190,9 @@ public class RetailMediaSeller {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("sellerId");
-    openapiFields.add("retailerId");
     openapiFields.add("name");
+    openapiFields.add("retailerId");
+    openapiFields.add("sellerId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -218,11 +218,11 @@ public class RetailMediaSeller {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RetailMediaSeller` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      if ((jsonObj.get("sellerId") != null && !jsonObj.get("sellerId").isJsonNull()) && !jsonObj.get("sellerId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `sellerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sellerId").toString()));
-      }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("sellerId") != null && !jsonObj.get("sellerId").isJsonNull()) && !jsonObj.get("sellerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sellerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sellerId").toString()));
       }
   }
 

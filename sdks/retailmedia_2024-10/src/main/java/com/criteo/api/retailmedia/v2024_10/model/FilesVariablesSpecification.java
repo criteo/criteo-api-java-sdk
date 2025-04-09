@@ -112,13 +112,13 @@ public class FilesVariablesSpecification {
   @SerializedName(SERIALIZED_NAME_MAX_BYTES)
   private Integer maxBytes;
 
-  public static final String SERIALIZED_NAME_MIN_FILES = "minFiles";
-  @SerializedName(SERIALIZED_NAME_MIN_FILES)
-  private Integer minFiles;
-
   public static final String SERIALIZED_NAME_MAX_FILE = "maxFile";
   @SerializedName(SERIALIZED_NAME_MAX_FILE)
   private Integer maxFile;
+
+  public static final String SERIALIZED_NAME_MIN_FILES = "minFiles";
+  @SerializedName(SERIALIZED_NAME_MIN_FILES)
+  private Integer minFiles;
 
   public FilesVariablesSpecification() {
   }
@@ -172,28 +172,6 @@ public class FilesVariablesSpecification {
   }
 
 
-  public FilesVariablesSpecification minFiles(Integer minFiles) {
-    
-    this.minFiles = minFiles;
-    return this;
-  }
-
-   /**
-   * The minimum amount of files requires
-   * @return minFiles
-  **/
-  @javax.annotation.Nullable
-
-  public Integer getMinFiles() {
-    return minFiles;
-  }
-
-
-  public void setMinFiles(Integer minFiles) {
-    this.minFiles = minFiles;
-  }
-
-
   public FilesVariablesSpecification maxFile(Integer maxFile) {
     
     this.maxFile = maxFile;
@@ -216,6 +194,28 @@ public class FilesVariablesSpecification {
   }
 
 
+  public FilesVariablesSpecification minFiles(Integer minFiles) {
+    
+    this.minFiles = minFiles;
+    return this;
+  }
+
+   /**
+   * The minimum amount of files requires
+   * @return minFiles
+  **/
+  @javax.annotation.Nullable
+
+  public Integer getMinFiles() {
+    return minFiles;
+  }
+
+
+  public void setMinFiles(Integer minFiles) {
+    this.minFiles = minFiles;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -228,8 +228,8 @@ public class FilesVariablesSpecification {
     FilesVariablesSpecification filesVariablesSpecification = (FilesVariablesSpecification) o;
     return Objects.equals(this.extensions, filesVariablesSpecification.extensions) &&
         Objects.equals(this.maxBytes, filesVariablesSpecification.maxBytes) &&
-        Objects.equals(this.minFiles, filesVariablesSpecification.minFiles) &&
-        Objects.equals(this.maxFile, filesVariablesSpecification.maxFile);
+        Objects.equals(this.maxFile, filesVariablesSpecification.maxFile) &&
+        Objects.equals(this.minFiles, filesVariablesSpecification.minFiles);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -238,7 +238,7 @@ public class FilesVariablesSpecification {
 
   @Override
   public int hashCode() {
-    return Objects.hash(extensions, maxBytes, minFiles, maxFile);
+    return Objects.hash(extensions, maxBytes, maxFile, minFiles);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -254,8 +254,8 @@ public class FilesVariablesSpecification {
     sb.append("class FilesVariablesSpecification {\n");
     sb.append("    extensions: ").append(toIndentedString(extensions)).append("\n");
     sb.append("    maxBytes: ").append(toIndentedString(maxBytes)).append("\n");
-    sb.append("    minFiles: ").append(toIndentedString(minFiles)).append("\n");
     sb.append("    maxFile: ").append(toIndentedString(maxFile)).append("\n");
+    sb.append("    minFiles: ").append(toIndentedString(minFiles)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -280,8 +280,8 @@ public class FilesVariablesSpecification {
     openapiFields = new HashSet<String>();
     openapiFields.add("extensions");
     openapiFields.add("maxBytes");
-    openapiFields.add("minFiles");
     openapiFields.add("maxFile");
+    openapiFields.add("minFiles");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

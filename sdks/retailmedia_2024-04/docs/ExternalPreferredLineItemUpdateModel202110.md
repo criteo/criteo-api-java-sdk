@@ -8,15 +8,25 @@ Model used to update a preferred line item
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** |  |  |
-|**startDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
-|**endDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
-|**status** | [**StatusEnum**](#StatusEnum) |  |  |
-|**pacing** | [**PacingEnum**](#PacingEnum) |  |  [optional] |
-|**capping** | [**ExternalLineItemCapping202110**](ExternalLineItemCapping202110.md) |  |  [optional] |
-|**page** | [**ExternalLineItemPage202110**](ExternalLineItemPage202110.md) |  |  [optional] |
 |**budget** | **Double** |  |  [optional] |
+|**capping** | [**ExternalLineItemCapping202110**](ExternalLineItemCapping202110.md) |  |  [optional] |
 |**creativeId** | **String** |  |  [optional] |
+|**endDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
+|**name** | **String** |  |  |
+|**pacing** | [**PacingEnum**](#PacingEnum) |  |  [optional] |
+|**page** | [**ExternalLineItemPage202110**](ExternalLineItemPage202110.md) |  |  [optional] |
+|**startDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
+|**status** | [**StatusEnum**](#StatusEnum) |  |  |
+
+
+
+## Enum: PacingEnum
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| STANDARD | &quot;standard&quot; |
+| ACCELERATED | &quot;accelerated&quot; |
 
 
 
@@ -33,16 +43,6 @@ Model used to update a preferred line item
 | ENDED | &quot;ended&quot; |
 | ARCHIVED | &quot;archived&quot; |
 | NOFUNDS | &quot;noFunds&quot; |
-
-
-
-## Enum: PacingEnum
-
-| Name | Value |
-|---- | -----|
-| UNKNOWN | &quot;unknown&quot; |
-| STANDARD | &quot;standard&quot; |
-| ACCELERATED | &quot;accelerated&quot; |
 
 
 

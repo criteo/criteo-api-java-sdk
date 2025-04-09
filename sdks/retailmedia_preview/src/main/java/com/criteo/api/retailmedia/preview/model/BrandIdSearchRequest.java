@@ -51,14 +51,6 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BrandIdSearchRequest {
-  public static final String SERIALIZED_NAME_RETAILER_IDS = "retailerIds";
-  @SerializedName(SERIALIZED_NAME_RETAILER_IDS)
-  private List<Integer> retailerIds = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
   /**
    * The type of brand, primarily where this brand belongs: UC, Retailer or All (both)
    */
@@ -112,8 +104,60 @@ public class BrandIdSearchRequest {
   @SerializedName(SERIALIZED_NAME_BRAND_TYPE)
   private BrandTypeEnum brandType;
 
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+  public static final String SERIALIZED_NAME_RETAILER_IDS = "retailerIds";
+  @SerializedName(SERIALIZED_NAME_RETAILER_IDS)
+  private List<Integer> retailerIds = new ArrayList<>();
+
   public BrandIdSearchRequest() {
   }
+
+  public BrandIdSearchRequest brandType(BrandTypeEnum brandType) {
+    
+    this.brandType = brandType;
+    return this;
+  }
+
+   /**
+   * The type of brand, primarily where this brand belongs: UC, Retailer or All (both)
+   * @return brandType
+  **/
+  @javax.annotation.Nullable
+
+  public BrandTypeEnum getBrandType() {
+    return brandType;
+  }
+
+
+  public void setBrandType(BrandTypeEnum brandType) {
+    this.brandType = brandType;
+  }
+
+
+  public BrandIdSearchRequest name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * The name of the brand(s) to be searched
+   * @return name
+  **/
+  @javax.annotation.Nullable
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   public BrandIdSearchRequest retailerIds(List<Integer> retailerIds) {
     
@@ -142,50 +186,6 @@ public class BrandIdSearchRequest {
   }
 
 
-  public BrandIdSearchRequest name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * The name of the brand(s) to be searched
-   * @return name
-  **/
-  @javax.annotation.Nullable
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public BrandIdSearchRequest brandType(BrandTypeEnum brandType) {
-    
-    this.brandType = brandType;
-    return this;
-  }
-
-   /**
-   * The type of brand, primarily where this brand belongs: UC, Retailer or All (both)
-   * @return brandType
-  **/
-  @javax.annotation.Nullable
-
-  public BrandTypeEnum getBrandType() {
-    return brandType;
-  }
-
-
-  public void setBrandType(BrandTypeEnum brandType) {
-    this.brandType = brandType;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -196,9 +196,9 @@ public class BrandIdSearchRequest {
       return false;
     }
     BrandIdSearchRequest brandIdSearchRequest = (BrandIdSearchRequest) o;
-    return Objects.equals(this.retailerIds, brandIdSearchRequest.retailerIds) &&
+    return Objects.equals(this.brandType, brandIdSearchRequest.brandType) &&
         Objects.equals(this.name, brandIdSearchRequest.name) &&
-        Objects.equals(this.brandType, brandIdSearchRequest.brandType);
+        Objects.equals(this.retailerIds, brandIdSearchRequest.retailerIds);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -207,7 +207,7 @@ public class BrandIdSearchRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(retailerIds, name, brandType);
+    return Objects.hash(brandType, name, retailerIds);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -221,9 +221,9 @@ public class BrandIdSearchRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BrandIdSearchRequest {\n");
-    sb.append("    retailerIds: ").append(toIndentedString(retailerIds)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    brandType: ").append(toIndentedString(brandType)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    retailerIds: ").append(toIndentedString(retailerIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -246,9 +246,9 @@ public class BrandIdSearchRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("retailerIds");
-    openapiFields.add("name");
     openapiFields.add("brandType");
+    openapiFields.add("name");
+    openapiFields.add("retailerIds");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -282,17 +282,17 @@ public class BrandIdSearchRequest {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      if ((jsonObj.get("brandType") != null && !jsonObj.get("brandType").isJsonNull()) && !jsonObj.get("brandType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `brandType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("brandType").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
       // ensure the required json array is present
       if (jsonObj.get("retailerIds") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("retailerIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerIds` to be an array in the JSON string but got `%s`", jsonObj.get("retailerIds").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("brandType") != null && !jsonObj.get("brandType").isJsonNull()) && !jsonObj.get("brandType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `brandType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("brandType").toString()));
       }
   }
 

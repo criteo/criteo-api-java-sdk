@@ -54,56 +54,34 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReportResponse {
-  public static final String SERIALIZED_NAME_META = "meta";
-  @SerializedName(SERIALIZED_NAME_META)
-  private ExportReportMetaData meta;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   private ReportDataResponseResource data;
 
-  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
-  @SerializedName(SERIALIZED_NAME_WARNINGS)
-  private List<CommonProblem> warnings = null;
-
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<CommonProblem> errors = null;
+
+  public static final String SERIALIZED_NAME_META = "meta";
+  @SerializedName(SERIALIZED_NAME_META)
+  private ExportReportMetaData meta;
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<CommonProblem> warnings = null;
 
   public ReportResponse() {
   }
 
   
   public ReportResponse(
-     List<CommonProblem> warnings, 
-     List<CommonProblem> errors
+     List<CommonProblem> errors, 
+     List<CommonProblem> warnings
   ) {
     this();
-    this.warnings = warnings;
     this.errors = errors;
+    this.warnings = warnings;
   }
-
-  public ReportResponse meta(ExportReportMetaData meta) {
-    
-    this.meta = meta;
-    return this;
-  }
-
-   /**
-   * Get meta
-   * @return meta
-  **/
-  @javax.annotation.Nullable
-
-  public ExportReportMetaData getMeta() {
-    return meta;
-  }
-
-
-  public void setMeta(ExportReportMetaData meta) {
-    this.meta = meta;
-  }
-
 
   public ReportResponse data(ReportDataResponseResource data) {
     
@@ -128,19 +106,6 @@ public class ReportResponse {
 
 
    /**
-   * Get warnings
-   * @return warnings
-  **/
-  @javax.annotation.Nullable
-
-  public List<CommonProblem> getWarnings() {
-    return warnings;
-  }
-
-
-
-
-   /**
    * Get errors
    * @return errors
   **/
@@ -148,6 +113,41 @@ public class ReportResponse {
 
   public List<CommonProblem> getErrors() {
     return errors;
+  }
+
+
+
+
+  public ReportResponse meta(ExportReportMetaData meta) {
+    
+    this.meta = meta;
+    return this;
+  }
+
+   /**
+   * Get meta
+   * @return meta
+  **/
+  @javax.annotation.Nullable
+
+  public ExportReportMetaData getMeta() {
+    return meta;
+  }
+
+
+  public void setMeta(ExportReportMetaData meta) {
+    this.meta = meta;
+  }
+
+
+   /**
+   * Get warnings
+   * @return warnings
+  **/
+  @javax.annotation.Nullable
+
+  public List<CommonProblem> getWarnings() {
+    return warnings;
   }
 
 
@@ -207,10 +207,10 @@ public class ReportResponse {
       return false;
     }
     ReportResponse reportResponse = (ReportResponse) o;
-    return Objects.equals(this.meta, reportResponse.meta) &&
-        Objects.equals(this.data, reportResponse.data) &&
-        Objects.equals(this.warnings, reportResponse.warnings) &&
-        Objects.equals(this.errors, reportResponse.errors)&&
+    return Objects.equals(this.data, reportResponse.data) &&
+        Objects.equals(this.errors, reportResponse.errors) &&
+        Objects.equals(this.meta, reportResponse.meta) &&
+        Objects.equals(this.warnings, reportResponse.warnings)&&
         Objects.equals(this.additionalProperties, reportResponse.additionalProperties);
   }
 
@@ -220,7 +220,7 @@ public class ReportResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(meta, data, warnings, errors, additionalProperties);
+    return Objects.hash(data, errors, meta, warnings, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -234,10 +234,10 @@ public class ReportResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReportResponse {\n");
-    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -261,10 +261,10 @@ public class ReportResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("meta");
     openapiFields.add("data");
-    openapiFields.add("warnings");
     openapiFields.add("errors");
+    openapiFields.add("meta");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -282,27 +282,9 @@ public class ReportResponse {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ReportResponse is not found in the empty JSON string", ReportResponse.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `meta`
-      if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
-        ExportReportMetaData.validateJsonObject(jsonObj.getAsJsonObject("meta"));
-      }
       // validate the optional field `data`
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         ReportDataResponseResource.validateJsonObject(jsonObj.getAsJsonObject("data"));
-      }
-      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
-        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
-        if (jsonArraywarnings != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("warnings").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
-          }
-
-          // validate the optional field `warnings` (array)
-          for (int i = 0; i < jsonArraywarnings.size(); i++) {
-            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
-          };
-        }
       }
       if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
         JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
@@ -315,6 +297,24 @@ public class ReportResponse {
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
             CommonProblem.validateJsonObject(jsonArrayerrors.get(i).getAsJsonObject());
+          };
+        }
+      }
+      // validate the optional field `meta`
+      if (jsonObj.get("meta") != null && !jsonObj.get("meta").isJsonNull()) {
+        ExportReportMetaData.validateJsonObject(jsonObj.getAsJsonObject("meta"));
+      }
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            CommonProblem.validateJsonObject(jsonArraywarnings.get(i).getAsJsonObject());
           };
         }
       }

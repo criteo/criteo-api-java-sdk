@@ -52,6 +52,10 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BotMessage {
+  public static final String SERIALIZED_NAME_CLOSING = "closing";
+  @SerializedName(SERIALIZED_NAME_CLOSING)
+  private String closing;
+
   public static final String SERIALIZED_NAME_OPENING = "opening";
   @SerializedName(SERIALIZED_NAME_OPENING)
   private String opening;
@@ -60,12 +64,30 @@ public class BotMessage {
   @SerializedName(SERIALIZED_NAME_PRODUCT_RECOS)
   private List<ProductRecommendation> productRecos = null;
 
-  public static final String SERIALIZED_NAME_CLOSING = "closing";
-  @SerializedName(SERIALIZED_NAME_CLOSING)
-  private String closing;
-
   public BotMessage() {
   }
+
+  public BotMessage closing(String closing) {
+    
+    this.closing = closing;
+    return this;
+  }
+
+   /**
+   * closing remark from the bot
+   * @return closing
+  **/
+  @javax.annotation.Nullable
+
+  public String getClosing() {
+    return closing;
+  }
+
+
+  public void setClosing(String closing) {
+    this.closing = closing;
+  }
+
 
   public BotMessage opening(String opening) {
     
@@ -116,28 +138,6 @@ public class BotMessage {
 
   public void setProductRecos(List<ProductRecommendation> productRecos) {
     this.productRecos = productRecos;
-  }
-
-
-  public BotMessage closing(String closing) {
-    
-    this.closing = closing;
-    return this;
-  }
-
-   /**
-   * closing remark from the bot
-   * @return closing
-  **/
-  @javax.annotation.Nullable
-
-  public String getClosing() {
-    return closing;
-  }
-
-
-  public void setClosing(String closing) {
-    this.closing = closing;
   }
 
   /**
@@ -195,9 +195,9 @@ public class BotMessage {
       return false;
     }
     BotMessage botMessage = (BotMessage) o;
-    return Objects.equals(this.opening, botMessage.opening) &&
-        Objects.equals(this.productRecos, botMessage.productRecos) &&
-        Objects.equals(this.closing, botMessage.closing)&&
+    return Objects.equals(this.closing, botMessage.closing) &&
+        Objects.equals(this.opening, botMessage.opening) &&
+        Objects.equals(this.productRecos, botMessage.productRecos)&&
         Objects.equals(this.additionalProperties, botMessage.additionalProperties);
   }
 
@@ -207,7 +207,7 @@ public class BotMessage {
 
   @Override
   public int hashCode() {
-    return Objects.hash(opening, productRecos, closing, additionalProperties);
+    return Objects.hash(closing, opening, productRecos, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -221,9 +221,9 @@ public class BotMessage {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BotMessage {\n");
+    sb.append("    closing: ").append(toIndentedString(closing)).append("\n");
     sb.append("    opening: ").append(toIndentedString(opening)).append("\n");
     sb.append("    productRecos: ").append(toIndentedString(productRecos)).append("\n");
-    sb.append("    closing: ").append(toIndentedString(closing)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -247,9 +247,9 @@ public class BotMessage {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("closing");
     openapiFields.add("opening");
     openapiFields.add("productRecos");
-    openapiFields.add("closing");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -267,6 +267,9 @@ public class BotMessage {
           throw new IllegalArgumentException(String.format("The required field(s) %s in BotMessage is not found in the empty JSON string", BotMessage.openapiRequiredFields.toString()));
         }
       }
+      if ((jsonObj.get("closing") != null && !jsonObj.get("closing").isJsonNull()) && !jsonObj.get("closing").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `closing` to be a primitive type in the JSON string but got `%s`", jsonObj.get("closing").toString()));
+      }
       if ((jsonObj.get("opening") != null && !jsonObj.get("opening").isJsonNull()) && !jsonObj.get("opening").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `opening` to be a primitive type in the JSON string but got `%s`", jsonObj.get("opening").toString()));
       }
@@ -283,9 +286,6 @@ public class BotMessage {
             ProductRecommendation.validateJsonObject(jsonArrayproductRecos.get(i).getAsJsonObject());
           };
         }
-      }
-      if ((jsonObj.get("closing") != null && !jsonObj.get("closing").isJsonNull()) && !jsonObj.get("closing").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `closing` to be a primitive type in the JSON string but got `%s`", jsonObj.get("closing").toString()));
       }
   }
 
