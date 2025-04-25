@@ -54,23 +54,9 @@ public class AutomatedBudgetConfigurationV23Q1 {
    */
   @JsonAdapter(AdSetOptimizationObjectiveEnum.Adapter.class)
   public enum AdSetOptimizationObjectiveEnum {
-    CUSTOMACTION("customAction"),
-    
-    CLICKS("clicks"),
-    
     CONVERSIONS("conversions"),
     
-    DISPLAYS("displays"),
-    
-    APPPROMOTION("appPromotion"),
-    
     REVENUE("revenue"),
-    
-    STORECONVERSIONS("storeConversions"),
-    
-    VALUE("value"),
-    
-    REACH("reach"),
     
     VISITS("visits"),
     

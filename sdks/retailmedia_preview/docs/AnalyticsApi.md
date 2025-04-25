@@ -387,7 +387,7 @@ public class Example {
 
 
 
-Returns an asynchronous Offsite Activity Report This endpoint is subject to specific rate limits.
+Returns an asynchronous Offsite Report This endpoint is subject to specific rate limits.
 
 ### Example
 

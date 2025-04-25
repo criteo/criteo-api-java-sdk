@@ -15,14 +15,13 @@ package com.criteo.api.marketingsolutions.preview.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.criteo.api.marketingsolutions.preview.model.AutomatedBudgetConfiguration;
+import com.criteo.api.marketingsolutions.preview.model.BudgetAutomationConfiguration;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,9 +49,9 @@ import com.criteo.api.marketingsolutions.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BudgetAutomation {
-  public static final String SERIALIZED_NAME_AUTOMATED_BUDGET_CONFIGURATION = "automatedBudgetConfiguration";
-  @SerializedName(SERIALIZED_NAME_AUTOMATED_BUDGET_CONFIGURATION)
-  private AutomatedBudgetConfiguration automatedBudgetConfiguration;
+  public static final String SERIALIZED_NAME_BUDGET_CONFIGURATION = "budgetConfiguration";
+  @SerializedName(SERIALIZED_NAME_BUDGET_CONFIGURATION)
+  private BudgetAutomationConfiguration budgetConfiguration;
 
   public static final String SERIALIZED_NAME_ENABLED = "enabled";
   @SerializedName(SERIALIZED_NAME_ENABLED)
@@ -61,25 +60,25 @@ public class BudgetAutomation {
   public BudgetAutomation() {
   }
 
-  public BudgetAutomation automatedBudgetConfiguration(AutomatedBudgetConfiguration automatedBudgetConfiguration) {
+  public BudgetAutomation budgetConfiguration(BudgetAutomationConfiguration budgetConfiguration) {
     
-    this.automatedBudgetConfiguration = automatedBudgetConfiguration;
+    this.budgetConfiguration = budgetConfiguration;
     return this;
   }
 
    /**
-   * Get automatedBudgetConfiguration
-   * @return automatedBudgetConfiguration
+   * Get budgetConfiguration
+   * @return budgetConfiguration
   **/
   @javax.annotation.Nullable
 
-  public AutomatedBudgetConfiguration getAutomatedBudgetConfiguration() {
-    return automatedBudgetConfiguration;
+  public BudgetAutomationConfiguration getBudgetConfiguration() {
+    return budgetConfiguration;
   }
 
 
-  public void setAutomatedBudgetConfiguration(AutomatedBudgetConfiguration automatedBudgetConfiguration) {
-    this.automatedBudgetConfiguration = automatedBudgetConfiguration;
+  public void setBudgetConfiguration(BudgetAutomationConfiguration budgetConfiguration) {
+    this.budgetConfiguration = budgetConfiguration;
   }
 
 
@@ -159,32 +158,21 @@ public class BudgetAutomation {
       return false;
     }
     BudgetAutomation budgetAutomation = (BudgetAutomation) o;
-    return Objects.equals(this.automatedBudgetConfiguration, budgetAutomation.automatedBudgetConfiguration) &&
+    return Objects.equals(this.budgetConfiguration, budgetAutomation.budgetConfiguration) &&
         Objects.equals(this.enabled, budgetAutomation.enabled)&&
         Objects.equals(this.additionalProperties, budgetAutomation.additionalProperties);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
-    return Objects.hash(automatedBudgetConfiguration, enabled, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(budgetConfiguration, enabled, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BudgetAutomation {\n");
-    sb.append("    automatedBudgetConfiguration: ").append(toIndentedString(automatedBudgetConfiguration)).append("\n");
+    sb.append("    budgetConfiguration: ").append(toIndentedString(budgetConfiguration)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -209,7 +197,7 @@ public class BudgetAutomation {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("automatedBudgetConfiguration");
+    openapiFields.add("budgetConfiguration");
     openapiFields.add("enabled");
 
     // a set of required properties/fields (JSON key names)
@@ -228,9 +216,9 @@ public class BudgetAutomation {
           throw new IllegalArgumentException(String.format("The required field(s) %s in BudgetAutomation is not found in the empty JSON string", BudgetAutomation.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `automatedBudgetConfiguration`
-      if (jsonObj.get("automatedBudgetConfiguration") != null && !jsonObj.get("automatedBudgetConfiguration").isJsonNull()) {
-        AutomatedBudgetConfiguration.validateJsonObject(jsonObj.getAsJsonObject("automatedBudgetConfiguration"));
+      // validate the optional field `budgetConfiguration`
+      if (jsonObj.get("budgetConfiguration") != null && !jsonObj.get("budgetConfiguration").isJsonNull()) {
+        BudgetAutomationConfiguration.validateJsonObject(jsonObj.getAsJsonObject("budgetConfiguration"));
       }
   }
 

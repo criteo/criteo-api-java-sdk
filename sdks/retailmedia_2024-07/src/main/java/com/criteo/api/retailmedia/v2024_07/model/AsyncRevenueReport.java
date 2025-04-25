@@ -637,7 +637,7 @@ public class AsyncRevenueReport {
   private List<MetricsEnum> metrics = null;
 
   /**
-   * Type of report
+   * Type of report, if no dimensions and metrics are provided, falls back to advertiser reportType
    */
   @JsonAdapter(ReportTypeEnum.Adapter.class)
   public enum ReportTypeEnum {
@@ -753,11 +753,11 @@ public class AsyncRevenueReport {
    */
   @JsonAdapter(SalesChannelEnum.Adapter.class)
   public enum SalesChannelEnum {
-    ALL("all"),
+    ONLINE("online"),
     
     OFFLINE("offline"),
     
-    ONLINE("online");
+    ALL("all");
 
     private String value;
 
@@ -1328,7 +1328,7 @@ public class AsyncRevenueReport {
   }
 
    /**
-   * Type of report
+   * Type of report, if no dimensions and metrics are provided, falls back to advertiser reportType
    * @return reportType
   **/
   @javax.annotation.Nullable

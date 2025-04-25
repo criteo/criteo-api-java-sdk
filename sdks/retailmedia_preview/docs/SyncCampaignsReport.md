@@ -15,7 +15,7 @@ Campaigns report body request
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  [optional] |
 |**endDate** | **OffsetDateTime** | End date |  |
 |**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  [optional] |
-|**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report, if no dimensions/metrics are provided, falls back to summary reportType |  [optional] |
+|**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report, if no dimensions and metrics are provided, falls back to summary reportType |  [optional] |
 |**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
 |**startDate** | **OffsetDateTime** | Start date |  |
 |**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
@@ -112,9 +112,9 @@ Campaigns report body request
 
 | Name | Value |
 |---- | -----|
-| ALL | &quot;all&quot; |
-| OFFLINE | &quot;offline&quot; |
 | ONLINE | &quot;online&quot; |
+| OFFLINE | &quot;offline&quot; |
+| ALL | &quot;all&quot; |
 
 
 

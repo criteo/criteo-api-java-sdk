@@ -9,14 +9,14 @@ Async Accounts report body request
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**accountIds** | **List&lt;String&gt;** | Account Ids to report on |  |
-|**aggregationLevel** | [**AggregationLevelEnum**](#AggregationLevelEnum) | Level of aggregation, if no dimensions/metrics are provided, falls back to campaign aggregationLevel |  [optional] |
+|**aggregationLevel** | [**AggregationLevelEnum**](#AggregationLevelEnum) | Level of aggregation, if no dimensions and metrics are provided, falls back to campaign aggregationLevel |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays |  [optional] |
 |**clickAttributionWindow** | [**ClickAttributionWindowEnum**](#ClickAttributionWindowEnum) | Click attribution window |  [optional] |
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  [optional] |
 |**endDate** | **OffsetDateTime** | End date |  |
 |**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
 |**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  [optional] |
-|**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report, if no dimensions/metrics are provided, falls back to summary reportType |  [optional] |
+|**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report, if no dimensions and metrics are provided, falls back to summary reportType |  [optional] |
 |**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
 |**searchTermTargetings** | [**List&lt;SearchTermTargetingsEnum&gt;**](#List&lt;SearchTermTargetingsEnum&gt;) | Filter on the type of search term targeting: unknown, automatic, manual |  [optional] |
 |**searchTermTypes** | [**List&lt;SearchTermTypesEnum&gt;**](#List&lt;SearchTermTypesEnum&gt;) | Filter on the type of search term type: unknown, searched, entered |  [optional] |
@@ -170,9 +170,9 @@ Async Accounts report body request
 
 | Name | Value |
 |---- | -----|
-| ALL | &quot;all&quot; |
-| OFFLINE | &quot;offline&quot; |
 | ONLINE | &quot;online&quot; |
+| OFFLINE | &quot;offline&quot; |
+| ALL | &quot;all&quot; |
 
 
 

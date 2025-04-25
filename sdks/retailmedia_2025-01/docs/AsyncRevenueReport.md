@@ -21,7 +21,7 @@ Async Revenue report body request
 |**ids** | **List&lt;String&gt;** | Supply account ids to report on |  [optional] |
 |**lineItemIds** | **List&lt;String&gt;** | Line item ids to filter |  [optional] |
 |**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  [optional] |
-|**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report |  [optional] |
+|**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report, if no dimensions and metrics are provided, falls back to advertiser reportType |  [optional] |
 |**retailerIds** | **List&lt;String&gt;** | Retailer ids to filter |  [optional] |
 |**revenueType** | [**RevenueTypeEnum**](#RevenueTypeEnum) | Type of revenue |  [optional] |
 |**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
@@ -223,9 +223,9 @@ Async Revenue report body request
 
 | Name | Value |
 |---- | -----|
-| ALL | &quot;all&quot; |
-| OFFLINE | &quot;offline&quot; |
 | ONLINE | &quot;online&quot; |
+| OFFLINE | &quot;offline&quot; |
+| ALL | &quot;all&quot; |
 
 
 

@@ -344,7 +344,7 @@ public class SyncLineItemsReport {
   private List<MetricsEnum> metrics = null;
 
   /**
-   * Type of report, if no dimensions/metrics are provided, falls back to summary reportType
+   * Type of report, if no dimensions and metrics are provided, falls back to summary reportType
    */
   @JsonAdapter(ReportTypeEnum.Adapter.class)
   public enum ReportTypeEnum {
@@ -407,11 +407,11 @@ public class SyncLineItemsReport {
    */
   @JsonAdapter(SalesChannelEnum.Adapter.class)
   public enum SalesChannelEnum {
-    ALL("all"),
+    ONLINE("online"),
     
     OFFLINE("offline"),
     
-    ONLINE("online");
+    ALL("all");
 
     private String value;
 
@@ -738,7 +738,7 @@ public class SyncLineItemsReport {
   }
 
    /**
-   * Type of report, if no dimensions/metrics are provided, falls back to summary reportType
+   * Type of report, if no dimensions and metrics are provided, falls back to summary reportType
    * @return reportType
   **/
   @javax.annotation.Nullable

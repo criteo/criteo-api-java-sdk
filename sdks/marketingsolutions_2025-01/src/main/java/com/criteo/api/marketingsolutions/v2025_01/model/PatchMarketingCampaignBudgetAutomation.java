@@ -45,7 +45,7 @@ import java.util.Set;
 import com.criteo.api.marketingsolutions.v2025_01.JSON;
 
 /**
- * patch marketing campaign budet automation model
+ * patch marketing campaign budget automation model
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PatchMarketingCampaignBudgetAutomation {
@@ -53,9 +53,9 @@ public class PatchMarketingCampaignBudgetAutomation {
   @SerializedName(SERIALIZED_NAME_BUDGET_CONFIGURATION)
   private BudgetAutomationConfiguration budgetConfiguration;
 
-  public static final String SERIALIZED_NAME_ENABLE = "enable";
-  @SerializedName(SERIALIZED_NAME_ENABLE)
-  private Boolean enable;
+  public static final String SERIALIZED_NAME_ENABLED = "enabled";
+  @SerializedName(SERIALIZED_NAME_ENABLED)
+  private Boolean enabled;
 
   public PatchMarketingCampaignBudgetAutomation() {
   }
@@ -82,25 +82,25 @@ public class PatchMarketingCampaignBudgetAutomation {
   }
 
 
-  public PatchMarketingCampaignBudgetAutomation enable(Boolean enable) {
+  public PatchMarketingCampaignBudgetAutomation enabled(Boolean enabled) {
     
-    this.enable = enable;
+    this.enabled = enabled;
     return this;
   }
 
    /**
    * Budget automation for the marketing campaign enable
-   * @return enable
+   * @return enabled
   **/
   @javax.annotation.Nullable
 
-  public Boolean getEnable() {
-    return enable;
+  public Boolean getEnabled() {
+    return enabled;
   }
 
 
-  public void setEnable(Boolean enable) {
-    this.enable = enable;
+  public void setEnabled(Boolean enabled) {
+    this.enabled = enabled;
   }
 
   /**
@@ -159,13 +159,13 @@ public class PatchMarketingCampaignBudgetAutomation {
     }
     PatchMarketingCampaignBudgetAutomation patchMarketingCampaignBudgetAutomation = (PatchMarketingCampaignBudgetAutomation) o;
     return Objects.equals(this.budgetConfiguration, patchMarketingCampaignBudgetAutomation.budgetConfiguration) &&
-        Objects.equals(this.enable, patchMarketingCampaignBudgetAutomation.enable)&&
+        Objects.equals(this.enabled, patchMarketingCampaignBudgetAutomation.enabled)&&
         Objects.equals(this.additionalProperties, patchMarketingCampaignBudgetAutomation.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(budgetConfiguration, enable, additionalProperties);
+    return Objects.hash(budgetConfiguration, enabled, additionalProperties);
   }
 
   @Override
@@ -173,7 +173,7 @@ public class PatchMarketingCampaignBudgetAutomation {
     StringBuilder sb = new StringBuilder();
     sb.append("class PatchMarketingCampaignBudgetAutomation {\n");
     sb.append("    budgetConfiguration: ").append(toIndentedString(budgetConfiguration)).append("\n");
-    sb.append("    enable: ").append(toIndentedString(enable)).append("\n");
+    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -198,7 +198,7 @@ public class PatchMarketingCampaignBudgetAutomation {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("budgetConfiguration");
-    openapiFields.add("enable");
+    openapiFields.add("enabled");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

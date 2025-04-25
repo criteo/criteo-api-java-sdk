@@ -101,7 +101,6 @@ docs/AudienceSizeEstimationV1Response.md
 docs/AudienceUpdateEntityV1.md
 docs/AudienceUpdateEntityV1Resource.md
 docs/AudienceWarning.md
-docs/AutomatedBudgetConfiguration.md
 docs/AutomatedBudgetConfigurationV23Q1.md
 docs/BasicAudienceDefinition.md
 docs/BehavioralV1.md
@@ -403,7 +402,6 @@ src/main/java/com/criteo/api/marketingsolutions/v2024_04/model/AudienceSizeEstim
 src/main/java/com/criteo/api/marketingsolutions/v2024_04/model/AudienceUpdateEntityV1.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_04/model/AudienceUpdateEntityV1Resource.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_04/model/AudienceWarning.java
-src/main/java/com/criteo/api/marketingsolutions/v2024_04/model/AutomatedBudgetConfiguration.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_04/model/AutomatedBudgetConfigurationV23Q1.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_04/model/BasicAudienceDefinition.java
 src/main/java/com/criteo/api/marketingsolutions/v2024_04/model/BehavioralV1.java

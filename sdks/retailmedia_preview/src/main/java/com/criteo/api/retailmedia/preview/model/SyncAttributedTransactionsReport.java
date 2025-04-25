@@ -338,11 +338,11 @@ public class SyncAttributedTransactionsReport {
    */
   @JsonAdapter(SalesChannelEnum.Adapter.class)
   public enum SalesChannelEnum {
-    ALL("all"),
+    ONLINE("online"),
     
     OFFLINE("offline"),
     
-    ONLINE("online");
+    ALL("all");
 
     private String value;
 

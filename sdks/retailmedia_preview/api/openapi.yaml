@@ -997,43 +997,6 @@ paths:
       - Campaign
       x-content-type: application/json
       x-accepts: application/json
-  /preview/retail-media/accounts/{accountId}/grant-consent:
-    post:
-      description: Grant consent to a business application on behalf of a Private
-        Market demand account
-      operationId: GrantConsent
-      parameters:
-      - description: The demand account ID on which to grant consent
-        explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/GrantConsentInput'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GrantConsentInput'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/GrantConsentInput'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/GrantConsentInput'
-        x-bodyName: grantConsentInput
-      responses:
-        "204":
-          description: Success
-      summary: ""
-      tags:
-      - Accounts
-      x-content-type: application/json-patch+json
-      x-accepts: application/json
   /preview/retail-media/accounts/{accountId}/seller-catalog-export:
     post:
       description: Create a request for a Catalog available to the indicated account.
@@ -1142,7 +1105,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ValueResourceCollectionOutcomePrivateMarketAccountFees'
+                $ref: '#/components/schemas/ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata'
           description: Success
         "400":
           content:
@@ -2186,29 +2149,6 @@ paths:
       - OnSiteRecommendation
       x-content-type: application/json
       x-accepts: application/json
-  /preview/retail-media/line-items/{externalLineItemId}/keywords/recommended:
-    get:
-      description: Retrieves a collection of recommended keywords for a line item
-      operationId: GetRecommendedKeywords
-      parameters:
-      - description: The external line item identifier
-        explode: false
-        in: path
-        name: externalLineItemId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceOutcomeOfRecommendedKeywordsResult'
-          description: Success
-      tags:
-      - Campaign
-      x-accepts: application/json
   /preview/retail-media/line-items/{id}/keywords:
     get:
       description: Fetch keywords associated with the specified line item
@@ -2305,71 +2245,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResourceOutcome'
           description: Bad Request
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /preview/retail-media/line-items/{line-item-id}/bid-multipliers:
-    get:
-      description: Fetch all bid multipliers for a given line item
-      operationId: GetApiV2ExternalLineItemBidMultipliersByLineItemId
-      parameters:
-      - description: External LineItemId for bid multiplier retrieval
-        explode: false
-        in: path
-        name: line-item-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/JsonApiSingleResponseOfLineItemBidMultipliersV2'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JsonApiSingleResponseOfLineItemBidMultipliersV2'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/JsonApiSingleResponseOfLineItemBidMultipliersV2'
-          description: BidMultipliers Found
-      tags:
-      - Campaign
-      x-accepts: application/json
-    put:
-      description: Updates the bid multipliers for a given line item
-      operationId: PutApiV2ExternalLineItemBidMultipliersByLineItemId
-      parameters:
-      - description: External LineItemId for bid multiplier retrieval
-        explode: false
-        in: path
-        name: line-item-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/LineItemBidMultipliersV2Request'
-        description: New Bid Multipliers to be set
-        x-bodyName: request
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/LineItemBidMultipliersV2Response'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LineItemBidMultipliersV2Response'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/LineItemBidMultipliersV2Response'
-          description: BidMultipliers Updated
       tags:
       - Campaign
       x-content-type: application/json
@@ -3236,7 +3111,7 @@ paths:
   /preview/retail-media/reports/offsite:
     post:
       description: |-
-        Returns an asynchronous Offsite Activity Report
+        Returns an asynchronous Offsite Report
         This endpoint is subject to specific rate limits.
       operationId: GenerateAsyncOffsiteReport
       requestBody:
@@ -3706,11 +3581,16 @@ components:
         accountIds:
         - accountIds
         - accountIds
+        - accountIds
+        - accountIds
+        - accountIds
       properties:
         accountIds:
           description: accounts to update
           items:
             type: string
+          maxItems: 25
+          minItems: 1
           type: array
         fees:
           $ref: '#/components/schemas/PrivateMarketFees'
@@ -4001,7 +3881,7 @@ components:
           type: array
         aggregationLevel:
           default: campaign
-          description: "Level of aggregation, if no dimensions/metrics are provided,\
+          description: "Level of aggregation, if no dimensions and metrics are provided,\
             \ falls back to campaign aggregationLevel"
           enum:
           - campaign
@@ -4121,8 +4001,8 @@ components:
           type: array
         reportType:
           default: summary
-          description: "Type of report, if no dimensions/metrics are provided, falls\
-            \ back to summary reportType"
+          description: "Type of report, if no dimensions and metrics are provided,\
+            \ falls back to summary reportType"
           enum:
           - summary
           - pageType
@@ -4138,9 +4018,9 @@ components:
           default: all
           description: "Filter on specific sales channel: offline or online"
           enum:
-          - all
-          - offline
           - online
+          - offline
+          - all
           type: string
         searchTermTargetings:
           description: "Filter on the type of search term targeting: unknown, automatic,\
@@ -4413,8 +4293,8 @@ components:
           type: array
         reportType:
           default: summary
-          description: "Type of report, if no dimensions/metrics are provided, falls\
-            \ back to summary reportType"
+          description: "Type of report, if no dimensions and metrics are provided,\
+            \ falls back to summary reportType"
           enum:
           - summary
           - pageType
@@ -4430,9 +4310,9 @@ components:
           default: all
           description: "Filter on specific sales channel: offline or online"
           enum:
-          - all
-          - offline
           - online
+          - offline
+          - all
           type: string
         searchTermTargetings:
           description: "Filter on the type of search term targeting: unknown, automatic,\
@@ -4852,8 +4732,8 @@ components:
           type: array
         reportType:
           default: summary
-          description: "Type of report, if no dimensions/metrics are provided, falls\
-            \ back to summary reportType"
+          description: "Type of report, if no dimensions and metrics are provided,\
+            \ falls back to summary reportType"
           enum:
           - summary
           - pageType
@@ -4869,9 +4749,9 @@ components:
           default: all
           description: "Filter on specific sales channel: offline or online"
           enum:
-          - all
-          - offline
           - online
+          - offline
+          - all
           type: string
         searchTermTargetings:
           description: "Filter on the type of search term targeting: unknown, automatic,\
@@ -5003,6 +4883,7 @@ components:
         - lineItemIds
         timezone: UTC
         format: json-compact
+        mediaType: all
         retailerIds:
         - retailerIds
         - retailerIds
@@ -5010,7 +4891,6 @@ components:
         creativeIds:
         - creativeIds
         - creativeIds
-        mediaTypes: all
         accountIds:
         - accountIds
         - accountIds
@@ -5063,7 +4943,7 @@ components:
           - 30D
           type: string
         creativeIds:
-          description: Filter creative ids
+          description: Creative ids to filter
           items:
             type: string
           type: array
@@ -5082,18 +4962,19 @@ components:
             - lineItemName
             - retailerId
             - retailerName
-            - creativeId
-            - creativeName
             - billingType
-            - buyTypeName
             - environment
             - adFormatSize
             - ssp
             - publisher
             - inventoryType
             - mediaType
+            - buyType
             - salesChannel
+            - creativeId
+            - creativeName
             type: string
+          minItems: 1
           type: array
         endDate:
           description: End date
@@ -5113,13 +4994,14 @@ components:
           items:
             type: string
           type: array
-        mediaTypes:
+        mediaType:
           default: all
-          description: Filter by media type
+          description: "Filter on the type of media: unknown, display, video"
           enum:
-          - all
-          - display
+          - unknown
           - video
+          - display
+          - all
           type: string
         metrics:
           description: List of metrics to report on
@@ -5146,14 +5028,15 @@ components:
             - videosPlayedTo50
             - videosPlayedTo75
             - videosPlayedTo100
-            - startingRate
-            - completionRate
+            - videoStartingRate
+            - videoCompletionRate
             - videoCPC
             - videoCPCV
             - visits
             - qualifiedVisits
             - landingRate
             type: string
+          minItems: 1
           type: array
         retailerIds:
           description: Retailer ids to filter
@@ -5164,9 +5047,9 @@ components:
           default: all
           description: "Filter on specific sales channel: offline or online"
           enum:
-          - all
-          - offline
           - online
+          - offline
+          - all
           type: string
         startDate:
           description: Start date
@@ -5174,7 +5057,7 @@ components:
           type: string
         timezone:
           default: UTC
-          description: "Time zone : see Criteo developer portal for supported time\
+          description: "Time zone : see criteo developer portal for supported time\
             \ zones"
           type: string
         viewAttributionWindow:
@@ -5209,6 +5092,7 @@ components:
             - lineItemIds
             timezone: UTC
             format: json-compact
+            mediaType: all
             retailerIds:
             - retailerIds
             - retailerIds
@@ -5216,7 +5100,6 @@ components:
             creativeIds:
             - creativeIds
             - creativeIds
-            mediaTypes: all
             accountIds:
             - accountIds
             - accountIds
@@ -5251,6 +5134,7 @@ components:
           - lineItemIds
           timezone: UTC
           format: json-compact
+          mediaType: all
           retailerIds:
           - retailerIds
           - retailerIds
@@ -5258,7 +5142,6 @@ components:
           creativeIds:
           - creativeIds
           - creativeIds
-          mediaTypes: all
           accountIds:
           - accountIds
           - accountIds
@@ -5853,7 +5736,6 @@ components:
       type: object
       x-used-in-request: true
     BrandIdSearchRequest:
-      additionalProperties: false
       description: An object that represents the request of BrandIdSearch endpoint.
       example:
         brandType: uc
@@ -5886,7 +5768,6 @@ components:
       type: object
       x-used-in-request: true
     BrandIdSearchResult:
-      additionalProperties: false
       description: An object that represents the result from a brand ID search.
       example:
         brandType: brandType
@@ -6194,63 +6075,6 @@ components:
       x-used-in-request: true
       x-used-in-response: true
       x-optional-in-response: true
-    CommonError:
-      description: A JSON:API Common error structure
-      example:
-        traceId: traceId
-        code: code
-        instance: instance
-        detail: detail
-        source:
-          key: source
-        stackTrace: stackTrace
-        title: title
-        type: unknown
-      properties:
-        code:
-          description: "(REQUIRED) A machine-readable unique error code, expressed\
-            \ as a string value. The format used must be kabab-case."
-          type: string
-        detail:
-          description: (RECOMMENDED) A human-readable explanation specific to this
-            occurrence of the problem.
-          type: string
-        instance:
-          description: (REQUIRED) A URI reference that identifies the specific occurrence
-            of the problem.
-          type: string
-        source:
-          additionalProperties:
-            type: string
-          description: (OPTIONAL) A machine-readable structure to reference to the
-            exact location(s) causing the error(s)
-          type: object
-        stackTrace:
-          description: (NEVER IN PRODUCTION) A human-readable stacktrace produced
-            by the implementation technology
-          type: string
-        title:
-          description: "(RECOMMENDED) A short, human-readable summary of the problem\
-            \ type."
-          type: string
-        traceId:
-          description: (REQUIRED) The Correlation ID provided by the Gateway. It is
-            also a unique identifier for this particular occurrence of the problem.
-          type: string
-        type:
-          description: (REQUIRED) The classification of the error.
-          enum:
-          - unknown
-          - access-control
-          - authentication
-          - authorization
-          - availability
-          - deprecation
-          - quota
-          - validation
-          type: string
-      type: object
-      x-used-in-response: true
     CommonProblem:
       description: Common problem object.
       example:
@@ -6323,63 +6147,6 @@ components:
           nullable: true
           type: string
           x-optional-in-response: true
-      type: object
-      x-used-in-response: true
-    CommonWarning:
-      description: A JSON:API Base common warning
-      example:
-        traceId: traceId
-        code: code
-        instance: instance
-        detail: detail
-        source:
-          key: source
-        stackTrace: stackTrace
-        title: title
-        type: unknown
-      properties:
-        code:
-          description: "(REQUIRED) A machine-readable unique error code, expressed\
-            \ as a string value. The format used must be kabab-case."
-          type: string
-        detail:
-          description: (RECOMMENDED) A human-readable explanation specific to this
-            occurrence of the problem.
-          type: string
-        instance:
-          description: (REQUIRED) A URI reference that identifies the specific occurrence
-            of the problem.
-          type: string
-        source:
-          additionalProperties:
-            type: string
-          description: (OPTIONAL) A machine-readable structure to reference to the
-            exact location(s) causing the error(s)
-          type: object
-        stackTrace:
-          description: (NEVER IN PRODUCTION) A human-readable stacktrace produced
-            by the implementation technology
-          type: string
-        title:
-          description: "(RECOMMENDED) A short, human-readable summary of the problem\
-            \ type."
-          type: string
-        traceId:
-          description: (REQUIRED) The Correlation ID provided by the Gateway. It is
-            also a unique identifier for this particular occurrence of the problem.
-          type: string
-        type:
-          description: (REQUIRED) The classification of the error.
-          enum:
-          - unknown
-          - access-control
-          - authentication
-          - authorization
-          - availability
-          - deprecation
-          - quota
-          - validation
-          type: string
       type: object
       x-used-in-response: true
     CpcMinBidsRequest:
@@ -7284,7 +7051,6 @@ components:
       x-used-in-response: true
       x-used-in-request: true
     EntityResourceBrandIdSearchResult:
-      additionalProperties: false
       description: "A domain entity exposed by the API, identified by a unique id."
       example:
         attributes:
@@ -7312,7 +7078,6 @@ components:
       type: object
       x-used-in-response: true
     EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata:
-      additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
         several entities and metadata.
       example:
@@ -7996,96 +7761,6 @@ components:
       type: object
       x-used-in-response: true
       x-optional-in-response: true
-    ExternalLineItemBidMultipliersV2:
-      description: The Bid Multiplier Entity of a LineItem
-      example:
-        favorites: 2.3021358869347655
-        search: 2.027123023002322
-        productDetail: 3.616076749251911
-        deals: 5.637376656633329
-        searchBar: 4.145608029883936
-        categoryMenu: 6.027456183070403
-        confirmation: 5.962133916683182
-        id: id
-        category: 0.8008281904610115
-        checkout: 1.4658129805029452
-        merchandising: 9.301444243932576
-        home: 7.061401241503109
-      nullable: true
-      properties:
-        category:
-          description: Categories Page Type Bid Multiplier
-          format: decimal
-          nullable: true
-          type: number
-          x-optional-in-response: true
-        categoryMenu:
-          description: CategoryMenu Page Type Bid Multiplier
-          format: decimal
-          nullable: true
-          type: number
-          x-optional-in-response: true
-        checkout:
-          description: Checkout Page Type Bid Multiplier
-          format: decimal
-          nullable: true
-          type: number
-          x-optional-in-response: true
-        confirmation:
-          description: Confirmation Page Type Bid Multiplier
-          format: decimal
-          nullable: true
-          type: number
-          x-optional-in-response: true
-        deals:
-          description: Deals Page Type Bid Multiplier
-          format: decimal
-          nullable: true
-          type: number
-          x-optional-in-response: true
-        favorites:
-          description: Favorites Page Type Bid Multiplier
-          format: decimal
-          nullable: true
-          type: number
-          x-optional-in-response: true
-        home:
-          description: Home Page Type Bid Multiplier
-          format: decimal
-          nullable: true
-          type: number
-          x-optional-in-response: true
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-        merchandising:
-          description: Merchandising Page Type Bid Multiplier
-          format: decimal
-          nullable: true
-          type: number
-          x-optional-in-response: true
-        productDetail:
-          description: ProductDetail Page Type Bid Multiplier
-          format: decimal
-          nullable: true
-          type: number
-          x-optional-in-response: true
-        search:
-          description: Search Page Type Bid Multiplier
-          format: decimal
-          nullable: true
-          type: number
-          x-optional-in-response: true
-        searchBar:
-          description: SearchBar Page Type Bid Multiplier
-          format: decimal
-          nullable: true
-          type: number
-          x-optional-in-response: true
-      type: object
-      x-used-in-response: true
-      x-used-in-request: true
     ExternalLineItemCappingV2:
       description: Frequency Capping for a Preferred Line Item
       example:
@@ -8622,56 +8297,6 @@ components:
       x-used-in-request: true
       x-used-in-response: true
       x-optional-in-response: true
-    GrantConsentInput:
-      description: An object that encapsulates GrantConsentModel
-      example:
-        data:
-          attributes:
-            callbackState: callbackState
-            clientId: clientId
-            callbackUrl: callbackUrl
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/GrantConsentModelValueResource'
-      type: object
-      x-used-in-request: true
-    GrantConsentModel:
-      description: An object that represents the required (ClientId and CallbackUrl)
-        and optional (CallbackState) parameters when granting consents on behalf of
-        a Private Market demand account
-      example:
-        callbackState: callbackState
-        clientId: clientId
-        callbackUrl: callbackUrl
-      properties:
-        callbackState:
-          type: string
-        callbackUrl:
-          type: string
-        clientId:
-          type: string
-      required:
-      - callbackUrl
-      - clientId
-      type: object
-      x-used-in-request: true
-    GrantConsentModelValueResource:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value
-      example:
-        attributes:
-          callbackState: callbackState
-          clientId: clientId
-          callbackUrl: callbackUrl
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/GrantConsentModel'
-        type:
-          type: string
-      type: object
-      x-used-in-request: true
     HyperlinkVariableValue:
       additionalProperties: false
       description: A value of a template hyperlink variable
@@ -8863,40 +8488,6 @@ components:
       title: InbotDiscussionDataInstanceModel
       type: object
       x-used-in-request: true
-    InputKeywords:
-      additionalProperties: false
-      description: Keywords submitted by the user binned by type after some cleanup
-        has been performed
-      example:
-        negativeBroad:
-        - negativeBroad
-        - negativeBroad
-        positiveExact:
-        - positiveExact
-        - positiveExact
-        negativeExact:
-        - negativeExact
-        - negativeExact
-      properties:
-        negativeBroad:
-          description: The collection of supplied negative broad phrased
-          items:
-            type: string
-          nullable: true
-          type: array
-        negativeExact:
-          description: The collection of supplied negative exact phrase
-          items:
-            type: string
-          nullable: true
-          type: array
-        positiveExact:
-          description: The collection of supplied positive exact phrases
-          items:
-            type: string
-          nullable: true
-          type: array
-      type: object
     InputKeywordsModel:
       additionalProperties: false
       description: The keywords to be added or removed from a line item.
@@ -8976,109 +8567,6 @@ components:
           type: integer
       type: object
       x-used-in-request: true
-    JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultipliersV2:
-      description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
-        \ /> with external Id, Type, and\r\nAttributes properties"
-      example:
-        attributes:
-          favorites: 2.3021358869347655
-          search: 2.027123023002322
-          productDetail: 3.616076749251911
-          deals: 5.637376656633329
-          searchBar: 4.145608029883936
-          categoryMenu: 6.027456183070403
-          confirmation: 5.962133916683182
-          id: id
-          category: 0.8008281904610115
-          checkout: 1.4658129805029452
-          merchandising: 9.301444243932576
-          home: 7.061401241503109
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ExternalLineItemBidMultipliersV2'
-        type:
-          type: string
-      required:
-      - type
-      type: object
-      x-used-in-response: true
-    JsonApiSingleResponseOfLineItemBidMultipliersV2:
-      description: A JSON:API wrapper class to add one JSON:API <typeparamref name="T"
-        /> within a data property
-      example:
-        data:
-          attributes:
-            favorites: 2.3021358869347655
-            search: 2.027123023002322
-            productDetail: 3.616076749251911
-            deals: 5.637376656633329
-            searchBar: 4.145608029883936
-            categoryMenu: 6.027456183070403
-            confirmation: 5.962133916683182
-            id: id
-            category: 0.8008281904610115
-            checkout: 1.4658129805029452
-            merchandising: 9.301444243932576
-            home: 7.061401241503109
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          $ref: '#/components/schemas/JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultipliersV2'
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonError'
-          nullable: true
-          type: array
-          x-optional-in-response: true
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonWarning'
-          nullable: true
-          type: array
-          x-optional-in-response: true
-      required:
-      - data
-      type: object
-      x-used-in-response: true
     KeywordDataModel:
       additionalProperties: false
       description: A single keyword and associated bid override
@@ -9113,63 +8601,6 @@ components:
         reviewState:
           $ref: '#/components/schemas/ReviewStateModel'
         updatedAt:
-          format: date-time
-          type: string
-      type: object
-    Keywords:
-      additionalProperties: false
-      description: Data associated with a normalized keyword phrase
-      example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        matchType: PositiveExactMatch
-        inputKeywords:
-          negativeBroad:
-          - negativeBroad
-          - negativeBroad
-          positiveExact:
-          - positiveExact
-          - positiveExact
-          negativeExact:
-          - negativeExact
-          - negativeExact
-        bid: 0.8008281904610115
-        reviewState: InReview
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        bid:
-          description: The bid to use when a positive keyword matches the shopper
-            search phrase
-          format: double
-          nullable: true
-          type: number
-        createdAt:
-          description: The time at which this keyword was created in UTC
-          format: date-time
-          type: string
-        inputKeywords:
-          $ref: '#/components/schemas/InputKeywords'
-        matchType:
-          description: The matching algorthim to be use when comparing this keyword
-            with the shopper search phrase
-          enum:
-          - PositiveExactMatch
-          - NegativeExactMatch
-          - NegativeBroadMatch
-          - Unknown
-          type: string
-        reviewState:
-          description: Review status of the keyword
-          enum:
-          - InReview
-          - Recommended
-          - Approved
-          - AutoApproved
-          - Rejected
-          - AutoRejected
-          - Unkown
-          type: string
-        updatedAt:
-          description: The time at which the keyword was last modified in UTC
           format: date-time
           type: string
       type: object
@@ -9339,114 +8770,6 @@ components:
         warnings:
           items:
             $ref: '#/components/schemas/RmcaCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-          x-optional-in-response: true
-      type: object
-      x-used-in-response: true
-    LineItemBidMultipliersV2Request:
-      description: A top-level object that encapsulates a Criteo API request for a
-        single entity
-      example:
-        data:
-          attributes:
-            favorites: 2.3021358869347655
-            search: 2.027123023002322
-            productDetail: 3.616076749251911
-            deals: 5.637376656633329
-            searchBar: 4.145608029883936
-            categoryMenu: 6.027456183070403
-            confirmation: 5.962133916683182
-            id: id
-            category: 0.8008281904610115
-            checkout: 1.4658129805029452
-            merchandising: 9.301444243932576
-            home: 7.061401241503109
-          id: id
-          type: type
-      nullable: true
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfLineItemBidMultipliersV2'
-      type: object
-      x-used-in-request: true
-    LineItemBidMultipliersV2Response:
-      description: A top-level object that encapsulates a Criteo API response for
-        a single entity
-      example:
-        data:
-          attributes:
-            favorites: 2.3021358869347655
-            search: 2.027123023002322
-            productDetail: 3.616076749251911
-            deals: 5.637376656633329
-            searchBar: 4.145608029883936
-            categoryMenu: 6.027456183070403
-            confirmation: 5.962133916683182
-            id: id
-            category: 0.8008281904610115
-            checkout: 1.4658129805029452
-            merchandising: 9.301444243932576
-            home: 7.061401241503109
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      nullable: true
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfLineItemBidMultipliersV2'
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-          x-optional-in-response: true
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array
@@ -10040,7 +9363,6 @@ components:
       type: object
       x-used-in-response: true
     PagingOffsetLimitMetadata:
-      additionalProperties: false
       description: Metadata for paging data.
       example:
         offset: 5
@@ -12383,49 +11705,6 @@ components:
           x-optional-in-response: true
       type: object
       x-used-in-response: true
-    RecommendedKeywordsResult:
-      additionalProperties: false
-      description: Response model for recommended keywords
-      example:
-        keywords:
-          key:
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            matchType: PositiveExactMatch
-            inputKeywords:
-              negativeBroad:
-              - negativeBroad
-              - negativeBroad
-              positiveExact:
-              - positiveExact
-              - positiveExact
-              negativeExact:
-              - negativeExact
-              - negativeExact
-            bid: 0.8008281904610115
-            reviewState: InReview
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-        recommendedKeywords:
-        - recommendedKeywords
-        - recommendedKeywords
-      nullable: true
-      properties:
-        keywords:
-          additionalProperties:
-            $ref: '#/components/schemas/Keywords'
-          description: Dictionary of keywords to their keyword models
-          nullable: true
-          type: object
-          x-optional-in-response: true
-        recommendedKeywords:
-          description: Collection of recommended keywords
-          items:
-            type: string
-          nullable: true
-          type: array
-          x-optional-in-response: true
-      type: object
-      x-used-in-response: true
-      x-optional-in-response: true
     ReportDataResponseResource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
@@ -13000,41 +12279,6 @@ components:
       type: object
       x-used-in-response: true
       x-optional-in-response: true
-    ResourceOfLineItemBidMultipliersV2:
-      description: A class that represents a domain entity exposed by an API
-      example:
-        attributes:
-          favorites: 2.3021358869347655
-          search: 2.027123023002322
-          productDetail: 3.616076749251911
-          deals: 5.637376656633329
-          searchBar: 4.145608029883936
-          categoryMenu: 6.027456183070403
-          confirmation: 5.962133916683182
-          id: id
-          category: 0.8008281904610115
-          checkout: 1.4658129805029452
-          merchandising: 9.301444243932576
-          home: 7.061401241503109
-        id: id
-        type: type
-      nullable: true
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ExternalLineItemBidMultipliersV2'
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-          x-optional-in-response: true
-        type:
-          description: Canonical type name of the entity
-          nullable: true
-          type: string
-          x-optional-in-response: true
-      type: object
-      x-used-in-request: true
-      x-used-in-response: true
     ResourceOfPlacementPreview:
       description: Data model for a Resource
       example:
@@ -16092,6 +15336,7 @@ components:
         gtin:
           description: A GTIN identifier for the product if available. Covers variations
             such as EANs and UPCs.
+          nullable: true
           type: string
         imageUrl:
           description: An http image resource provided by the retailer.
@@ -16102,6 +15347,7 @@ components:
           type: boolean
         mpn:
           description: The MPN for the product if available.
+          nullable: true
           type: string
         name:
           description: A short product name.
@@ -16581,9 +15827,9 @@ components:
           default: all
           description: "Filter on specific sales channel: offline or online"
           enum:
-          - all
-          - offline
           - online
+          - offline
+          - all
           type: string
         startDate:
           description: Start date
@@ -16778,8 +16024,8 @@ components:
           type: array
         reportType:
           default: summary
-          description: "Type of report, if no dimensions/metrics are provided, falls\
-            \ back to summary reportType"
+          description: "Type of report, if no dimensions and metrics are provided,\
+            \ falls back to summary reportType"
           enum:
           - summary
           - pageType
@@ -16792,9 +16038,9 @@ components:
           default: all
           description: "Filter on specific sales channel: offline or online"
           enum:
-          - all
-          - offline
           - online
+          - offline
+          - all
           type: string
         startDate:
           description: Start date
@@ -16993,8 +16239,8 @@ components:
           type: array
         reportType:
           default: summary
-          description: "Type of report, if no dimensions/metrics are provided, falls\
-            \ back to summary reportType"
+          description: "Type of report, if no dimensions and metrics are provided,\
+            \ falls back to summary reportType"
           enum:
           - summary
           - pageType
@@ -17007,9 +16253,9 @@ components:
           default: all
           description: "Filter on specific sales channel: offline or online"
           enum:
-          - all
-          - offline
           - online
+          - offline
+          - all
           type: string
         startDate:
           description: Start date
@@ -17247,6 +16493,9 @@ components:
           accountIds:
           - accountIds
           - accountIds
+          - accountIds
+          - accountIds
+          - accountIds
         type: type
       properties:
         attributes:
@@ -17282,7 +16531,6 @@ components:
       x-used-in-response: true
       x-optional-in-response: true
     ValueResourceBrandIdSearchRequest:
-      additionalProperties: false
       description: A value resource exposed by the API.
       example:
         attributes:
@@ -17390,11 +16638,15 @@ components:
           x-optional-in-response: true
       type: object
       x-used-in-response: true
-    ValueResourceCollectionOutcomePrivateMarketAccountFees:
+    ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
-        several value objects.
+        several value objects and metadata.
       example:
+        metadata:
+          offset: 1
+          count: 0
+          limit: 6
         data:
         - attributes:
             accountId: accountId
@@ -17469,6 +16721,8 @@ components:
           readOnly: true
           type: array
           x-optional-in-response: true
+        metadata:
+          $ref: '#/components/schemas/Metadata'
         warnings:
           description: Warnings that occured during this call.
           items:
@@ -17554,6 +16808,9 @@ components:
             accountIds:
             - accountIds
             - accountIds
+            - accountIds
+            - accountIds
+            - accountIds
           type: type
       properties:
         data:
@@ -17561,7 +16818,6 @@ components:
       type: object
       x-used-in-request: true
     ValueResourceInputBrandIdSearchRequest:
-      additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
         single value objects.
       example:
@@ -17723,44 +16979,6 @@ components:
           type: string
       type: object
       x-used-in-request: true
-    ValueResourceOfRecommendedKeywordsResult:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value.
-      example:
-        attributes:
-          keywords:
-            key:
-              createdAt: 2000-01-23T04:56:07.000+00:00
-              matchType: PositiveExactMatch
-              inputKeywords:
-                negativeBroad:
-                - negativeBroad
-                - negativeBroad
-                positiveExact:
-                - positiveExact
-                - positiveExact
-                negativeExact:
-                - negativeExact
-                - negativeExact
-              bid: 0.8008281904610115
-              reviewState: InReview
-              updatedAt: 2000-01-23T04:56:07.000+00:00
-          recommendedKeywords:
-          - recommendedKeywords
-          - recommendedKeywords
-        type: type
-      nullable: true
-      properties:
-        attributes:
-          $ref: '#/components/schemas/RecommendedKeywordsResult'
-        type:
-          nullable: true
-          type: string
-          x-optional-in-response: true
-      type: object
-      x-used-in-response: true
-      x-optional-in-response: true
     ValueResourceOfSellerCatalogRequestV2:
       description: A value resource exposed by the API.
       example:
@@ -17970,95 +17188,6 @@ components:
           description: Warnings that occured during this call.
           items:
             $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-          x-optional-in-response: true
-      type: object
-      x-used-in-response: true
-    ValueResourceOutcomeOfRecommendedKeywordsResult:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value.
-      example:
-        data:
-          attributes:
-            keywords:
-              key:
-                createdAt: 2000-01-23T04:56:07.000+00:00
-                matchType: PositiveExactMatch
-                inputKeywords:
-                  negativeBroad:
-                  - negativeBroad
-                  - negativeBroad
-                  positiveExact:
-                  - positiveExact
-                  - positiveExact
-                  negativeExact:
-                  - negativeExact
-                  - negativeExact
-                bid: 0.8008281904610115
-                reviewState: InReview
-                updatedAt: 2000-01-23T04:56:07.000+00:00
-            recommendedKeywords:
-            - recommendedKeywords
-            - recommendedKeywords
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceOfRecommendedKeywordsResult'
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-          x-optional-in-response: true
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
           nullable: true
           readOnly: true
           type: array

@@ -119,7 +119,6 @@ docs/AudienceSizeEstimationV1Response.md
 docs/AudienceUpdateEntityV1.md
 docs/AudienceUpdateEntityV1Resource.md
 docs/AudienceWarning.md
-docs/AutomatedBudgetConfiguration.md
 docs/AutomatedBudgetConfigurationV23Q1.md
 docs/BasicAudienceDefinition.md
 docs/BatchAcceptedResponse.md
@@ -535,7 +534,6 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/AudienceSizeEstima
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AudienceUpdateEntityV1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AudienceUpdateEntityV1Resource.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AudienceWarning.java
-src/main/java/com/criteo/api/marketingsolutions/preview/model/AutomatedBudgetConfiguration.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/AutomatedBudgetConfigurationV23Q1.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/BasicAudienceDefinition.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/BatchAcceptedResponse.java

@@ -94,9 +94,9 @@ Attributed Transactions report body request
 
 | Name | Value |
 |---- | -----|
-| ALL | &quot;all&quot; |
-| OFFLINE | &quot;offline&quot; |
 | ONLINE | &quot;online&quot; |
+| OFFLINE | &quot;offline&quot; |
+| ALL | &quot;all&quot; |
 
 
 

@@ -3982,8 +3982,8 @@ components:
           type: array
         reportType:
           default: summary
-          description: "Type of report, if no dimensions/metrics are provided, falls\
-            \ back to summary reportType"
+          description: "Type of report, if no dimensions and metrics are provided,\
+            \ falls back to summary reportType"
           enum:
           - summary
           - pageType
@@ -3999,9 +3999,9 @@ components:
           default: all
           description: "Filter on specific sales channel: offline or online"
           enum:
-          - all
-          - offline
           - online
+          - offline
+          - all
           type: string
         searchTermTargetings:
           description: "Filter on the type of search term targeting: unknown, automatic,\
@@ -4273,8 +4273,8 @@ components:
           type: array
         reportType:
           default: summary
-          description: "Type of report, if no dimensions/metrics are provided, falls\
-            \ back to summary reportType"
+          description: "Type of report, if no dimensions and metrics are provided,\
+            \ falls back to summary reportType"
           enum:
           - summary
           - pageType
@@ -4290,9 +4290,9 @@ components:
           default: all
           description: "Filter on specific sales channel: offline or online"
           enum:
-          - all
-          - offline
           - online
+          - offline
+          - all
           type: string
         searchTermTargetings:
           description: "Filter on the type of search term targeting: unknown, automatic,\
@@ -4715,7 +4715,8 @@ components:
             type: string
           type: array
         reportType:
-          description: Type of report
+          description: "Type of report, if no dimensions and metrics are provided,\
+            \ falls back to advertiser reportType"
           enum:
           - advertiser
           - environment
@@ -4738,9 +4739,9 @@ components:
           default: all
           description: "Filter on specific sales channel: offline or online"
           enum:
-          - all
-          - offline
           - online
+          - offline
+          - all
           type: string
         skuRelations:
           description: "Filter on sku relations: Same SKU, Same Parent SKU, Same Category,\

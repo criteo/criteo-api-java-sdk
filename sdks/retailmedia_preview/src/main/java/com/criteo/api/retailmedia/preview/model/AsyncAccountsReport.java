@@ -56,7 +56,7 @@ public class AsyncAccountsReport {
   private List<String> accountIds = new ArrayList<>();
 
   /**
-   * Level of aggregation, if no dimensions/metrics are provided, falls back to campaign aggregationLevel
+   * Level of aggregation, if no dimensions and metrics are provided, falls back to campaign aggregationLevel
    */
   @JsonAdapter(AggregationLevelEnum.Adapter.class)
   public enum AggregationLevelEnum {
@@ -506,7 +506,7 @@ public class AsyncAccountsReport {
   private List<MetricsEnum> metrics = null;
 
   /**
-   * Type of report, if no dimensions/metrics are provided, falls back to summary reportType
+   * Type of report, if no dimensions and metrics are provided, falls back to summary reportType
    */
   @JsonAdapter(ReportTypeEnum.Adapter.class)
   public enum ReportTypeEnum {
@@ -575,11 +575,11 @@ public class AsyncAccountsReport {
    */
   @JsonAdapter(SalesChannelEnum.Adapter.class)
   public enum SalesChannelEnum {
-    ALL("all"),
+    ONLINE("online"),
     
     OFFLINE("offline"),
     
-    ONLINE("online");
+    ALL("all");
 
     private String value;
 
@@ -831,7 +831,7 @@ public class AsyncAccountsReport {
   }
 
    /**
-   * Level of aggregation, if no dimensions/metrics are provided, falls back to campaign aggregationLevel
+   * Level of aggregation, if no dimensions and metrics are provided, falls back to campaign aggregationLevel
    * @return aggregationLevel
   **/
   @javax.annotation.Nullable
@@ -1001,7 +1001,7 @@ public class AsyncAccountsReport {
   }
 
    /**
-   * Type of report, if no dimensions/metrics are provided, falls back to summary reportType
+   * Type of report, if no dimensions and metrics are provided, falls back to summary reportType
    * @return reportType
   **/
   @javax.annotation.Nullable

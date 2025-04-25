@@ -7798,46 +7798,16 @@ components:
       - type
       type: object
       x-used-in-response: true
-    AutomatedBudgetConfiguration:
-      description: The campaign automated budget configuration model
-      example:
-        objective: customAction
-      nullable: true
-      properties:
-        objective:
-          description: Objective of the ad set
-          enum:
-          - customAction
-          - clicks
-          - conversions
-          - displays
-          - appPromotion
-          - revenue
-          - storeConversions
-          - value
-          - reach
-          - visits
-          - videoViews
-          type: string
-      type: object
-      x-used-in-request: true
     AutomatedBudgetConfigurationV23Q1:
       description: The automated budget configuration model
       example:
-        adSetOptimizationObjective: customAction
+        adSetOptimizationObjective: conversions
       nullable: true
       properties:
         adSetOptimizationObjective:
           enum:
-          - customAction
-          - clicks
           - conversions
-          - displays
-          - appPromotion
           - revenue
-          - storeConversions
-          - value
-          - reach
           - visits
           - videoViews
           nullable: true
@@ -7910,12 +7880,12 @@ components:
     BudgetAutomation:
       description: The campaign budget automation model
       example:
-        automatedBudgetConfiguration:
-          objective: customAction
+        budgetConfiguration:
+          adSetObjectives: conversions
         enabled: true
       properties:
-        automatedBudgetConfiguration:
-          $ref: '#/components/schemas/AutomatedBudgetConfiguration'
+        budgetConfiguration:
+          $ref: '#/components/schemas/BudgetAutomationConfiguration'
         enabled:
           type: boolean
       type: object
@@ -7923,19 +7893,12 @@ components:
     BudgetAutomationConfiguration:
       description: The budget automation configuration model
       example:
-        adSetObjectives: customAction
+        adSetObjectives: conversions
       properties:
         adSetObjectives:
           enum:
-          - customAction
-          - clicks
           - conversions
-          - displays
-          - appPromotion
           - revenue
-          - storeConversions
-          - value
-          - reach
           - visits
           - videoViews
           type: string
@@ -7945,7 +7908,7 @@ components:
       description: The campaign budget automation model
       example:
         automatedBudgetConfiguration:
-          adSetOptimizationObjective: customAction
+          adSetOptimizationObjective: conversions
         enabled: true
       nullable: true
       properties:
@@ -8032,7 +7995,7 @@ components:
         name: name
         budgetAutomation:
           automatedBudgetConfiguration:
-            adSetOptimizationObjective: customAction
+            adSetOptimizationObjective: conversions
           enabled: true
         spendLimit:
           spendLimitRenewal: undefined
@@ -8077,7 +8040,7 @@ components:
             name: name
             budgetAutomation:
               automatedBudgetConfiguration:
-                adSetOptimizationObjective: customAction
+                adSetOptimizationObjective: conversions
               enabled: true
             spendLimit:
               spendLimitRenewal: undefined
@@ -8093,7 +8056,7 @@ components:
             name: name
             budgetAutomation:
               automatedBudgetConfiguration:
-                adSetOptimizationObjective: customAction
+                adSetOptimizationObjective: conversions
               enabled: true
             spendLimit:
               spendLimitRenewal: undefined
@@ -8174,7 +8137,7 @@ components:
           name: name
           budgetAutomation:
             automatedBudgetConfiguration:
-              adSetOptimizationObjective: customAction
+              adSetOptimizationObjective: conversions
             enabled: true
           spendLimit:
             spendLimitRenewal: undefined
@@ -8212,7 +8175,7 @@ components:
             name: name
             budgetAutomation:
               automatedBudgetConfiguration:
-                adSetOptimizationObjective: customAction
+                adSetOptimizationObjective: conversions
               enabled: true
             spendLimit:
               spendLimitRenewal: undefined
@@ -9103,8 +9066,8 @@ components:
         goal: Unspecified
         name: name
         budgetAutomation:
-          automatedBudgetConfiguration:
-            objective: customAction
+          budgetConfiguration:
+            adSetObjectives: conversions
           enabled: true
         spendLimit:
           spendLimitRenewal: undefined
@@ -9146,8 +9109,8 @@ components:
             goal: Unspecified
             name: name
             budgetAutomation:
-              automatedBudgetConfiguration:
-                objective: customAction
+              budgetConfiguration:
+                adSetObjectives: conversions
               enabled: true
             spendLimit:
               spendLimitRenewal: undefined
@@ -9167,8 +9130,8 @@ components:
           goal: Unspecified
           name: name
           budgetAutomation:
-            automatedBudgetConfiguration:
-              objective: customAction
+            budgetConfiguration:
+              adSetObjectives: conversions
             enabled: true
           spendLimit:
             spendLimitRenewal: undefined
@@ -11500,8 +11463,8 @@ components:
       example:
         budgetAutomation:
           budgetConfiguration:
-            adSetObjectives: customAction
-          enable: true
+            adSetObjectives: conversions
+          enabled: true
         spendLimit:
           spendLimitRenewal: undefined
           spendLimitAmount:
@@ -11521,8 +11484,8 @@ components:
         - attributes:
             budgetAutomation:
               budgetConfiguration:
-                adSetObjectives: customAction
-              enable: true
+                adSetObjectives: conversions
+              enabled: true
             spendLimit:
               spendLimitRenewal: undefined
               spendLimitAmount:
@@ -11533,8 +11496,8 @@ components:
         - attributes:
             budgetAutomation:
               budgetConfiguration:
-                adSetObjectives: customAction
-              enable: true
+                adSetObjectives: conversions
+              enabled: true
             spendLimit:
               spendLimitRenewal: undefined
               spendLimitAmount:
@@ -11582,8 +11545,8 @@ components:
         attributes:
           budgetAutomation:
             budgetConfiguration:
-              adSetObjectives: customAction
-            enable: true
+              adSetObjectives: conversions
+            enabled: true
           spendLimit:
             spendLimitRenewal: undefined
             spendLimitAmount:
@@ -11606,15 +11569,15 @@ components:
       type: object
       x-used-in-request: true
     PatchMarketingCampaignBudgetAutomation:
-      description: patch marketing campaign budet automation model
+      description: patch marketing campaign budget automation model
       example:
         budgetConfiguration:
-          adSetObjectives: customAction
-        enable: true
+          adSetObjectives: conversions
+        enabled: true
       properties:
         budgetConfiguration:
           $ref: '#/components/schemas/BudgetAutomationConfiguration'
-        enable:
+        enabled:
           description: Budget automation for the marketing campaign enable
           type: boolean
       type: object

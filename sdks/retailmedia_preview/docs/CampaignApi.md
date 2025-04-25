@@ -19,10 +19,8 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**getApiV1ExternalRetailerPlacementsByRetailerId**](CampaignApi.md#getApiV1ExternalRetailerPlacementsByRetailerId) | **GET** /preview/retail-media/retailers/{retailer-id}/placements |  |
 | [**getApiV2ExternalAccountByAccountIdCreativescreativeId**](CampaignApi.md#getApiV2ExternalAccountByAccountIdCreativescreativeId) | **GET** /preview/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
 | [**getApiV2ExternalCampaignPreferredLineItemsByCampaignId**](CampaignApi.md#getApiV2ExternalCampaignPreferredLineItemsByCampaignId) | **GET** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
-| [**getApiV2ExternalLineItemBidMultipliersByLineItemId**](CampaignApi.md#getApiV2ExternalLineItemBidMultipliersByLineItemId) | **GET** /preview/retail-media/line-items/{line-item-id}/bid-multipliers |  |
 | [**getApiV2ExternalPreferredLineItemByLineItemId**](CampaignApi.md#getApiV2ExternalPreferredLineItemByLineItemId) | **GET** /preview/retail-media/preferred-line-items/{line-item-id} |  |
 | [**getCpcMinBidsBySkuIdsV1**](CampaignApi.md#getCpcMinBidsBySkuIdsV1) | **POST** /preview/retail-media/retailers/{retailerId}/cpc-min-bids |  |
-| [**getRecommendedKeywords**](CampaignApi.md#getRecommendedKeywords) | **GET** /preview/retail-media/line-items/{externalLineItemId}/keywords/recommended |  |
 | [**inReviewReportV1**](CampaignApi.md#inReviewReportV1) | **GET** /preview/retail-media/accounts/{account-id}/keywords/in-review-report |  |
 | [**pausePromotedProducts**](CampaignApi.md#pausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/pause |  |
 | [**postApi202110ExternalCampaignPreferredLineItemsByCampaignId**](CampaignApi.md#postApi202110ExternalCampaignPreferredLineItemsByCampaignId) | **POST** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
@@ -38,7 +36,6 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**putApi202110ExternalPreferredLineItemByLineItemId**](CampaignApi.md#putApi202110ExternalPreferredLineItemByLineItemId) | **PUT** /preview/retail-media/preferred-line-items/{line-item-id} |  |
 | [**putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId**](CampaignApi.md#putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId) | **PUT** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
 | [**putApiV2ExternalAccountByAccountIdCreativescreativeId**](CampaignApi.md#putApiV2ExternalAccountByAccountIdCreativescreativeId) | **PUT** /preview/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
-| [**putApiV2ExternalLineItemBidMultipliersByLineItemId**](CampaignApi.md#putApiV2ExternalLineItemBidMultipliersByLineItemId) | **PUT** /preview/retail-media/line-items/{line-item-id}/bid-multipliers |  |
 | [**searchBrandsByNameAsyncV1**](CampaignApi.md#searchBrandsByNameAsyncV1) | **POST** /preview/retail-media/brands/search |  |
 | [**setKeywordBids**](CampaignApi.md#setKeywordBids) | **POST** /preview/retail-media/line-items/{id}/keywords/set-bid |  |
 | [**unpausePromotedProducts**](CampaignApi.md#unpausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/unpause |  |
@@ -1424,95 +1421,6 @@ public class Example {
 | **400** | Bad Request |  -  |
 
 
-## getApiV2ExternalLineItemBidMultipliersByLineItemId
-
-> JsonApiSingleResponseOfLineItemBidMultipliersV2 getApiV2ExternalLineItemBidMultipliersByLineItemId(lineItemId)
-
-
-
-Fetch all bid multipliers for a given line item
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.preview;
-
-import com.criteo.api.retailmedia.preview.ApiClient;
-import com.criteo.api.retailmedia.preview.ApiClientBuilder;
-import com.criteo.api.retailmedia.preview.ApiException;
-import com.criteo.api.retailmedia.preview.Configuration;
-import com.criteo.api.retailmedia.preview.auth.*;
-import com.criteo.api.retailmedia.preview.model.*;
-import com.criteo.api.retailmedia.preview.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | External LineItemId for bid multiplier retrieval
-        try {
-            JsonApiSingleResponseOfLineItemBidMultipliersV2 result = apiInstance.getApiV2ExternalLineItemBidMultipliersByLineItemId(lineItemId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getApiV2ExternalLineItemBidMultipliersByLineItemId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| External LineItemId for bid multiplier retrieval | |
-
-### Return type
-
-[**JsonApiSingleResponseOfLineItemBidMultipliersV2**](JsonApiSingleResponseOfLineItemBidMultipliersV2.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: text/plain, application/json, text/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | BidMultipliers Found |  -  |
-
-
 ## getApiV2ExternalPreferredLineItemByLineItemId
 
 > PreferredLineItemV2Response getApiV2ExternalPreferredLineItemByLineItemId(lineItemId)
@@ -1686,95 +1594,6 @@ public class Example {
 
 - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
 - **Accept**: text/plain, application/json, text/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-
-## getRecommendedKeywords
-
-> ValueResourceOutcomeOfRecommendedKeywordsResult getRecommendedKeywords(externalLineItemId)
-
-
-
-Retrieves a collection of recommended keywords for a line item
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.preview;
-
-import com.criteo.api.retailmedia.preview.ApiClient;
-import com.criteo.api.retailmedia.preview.ApiClientBuilder;
-import com.criteo.api.retailmedia.preview.ApiException;
-import com.criteo.api.retailmedia.preview.Configuration;
-import com.criteo.api.retailmedia.preview.auth.*;
-import com.criteo.api.retailmedia.preview.model.*;
-import com.criteo.api.retailmedia.preview.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String externalLineItemId = "externalLineItemId_example"; // String | The external line item identifier
-        try {
-            ValueResourceOutcomeOfRecommendedKeywordsResult result = apiInstance.getRecommendedKeywords(externalLineItemId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#getRecommendedKeywords");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **externalLineItemId** | **String**| The external line item identifier | |
-
-### Return type
-
-[**ValueResourceOutcomeOfRecommendedKeywordsResult**](ValueResourceOutcomeOfRecommendedKeywordsResult.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 
 
 ### HTTP response details
@@ -3176,97 +2995,6 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
 | **204** | Creative updated |  -  |
-
-
-## putApiV2ExternalLineItemBidMultipliersByLineItemId
-
-> LineItemBidMultipliersV2Response putApiV2ExternalLineItemBidMultipliersByLineItemId(lineItemId, lineItemBidMultipliersV2Request)
-
-
-
-Updates the bid multipliers for a given line item
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.preview;
-
-import com.criteo.api.retailmedia.preview.ApiClient;
-import com.criteo.api.retailmedia.preview.ApiClientBuilder;
-import com.criteo.api.retailmedia.preview.ApiException;
-import com.criteo.api.retailmedia.preview.Configuration;
-import com.criteo.api.retailmedia.preview.auth.*;
-import com.criteo.api.retailmedia.preview.model.*;
-import com.criteo.api.retailmedia.preview.api.CampaignApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        CampaignApi apiInstance = new CampaignApi(defaultClient);
-        String lineItemId = "lineItemId_example"; // String | External LineItemId for bid multiplier retrieval
-        LineItemBidMultipliersV2Request lineItemBidMultipliersV2Request = new LineItemBidMultipliersV2Request(); // LineItemBidMultipliersV2Request | New Bid Multipliers to be set
-        try {
-            LineItemBidMultipliersV2Response result = apiInstance.putApiV2ExternalLineItemBidMultipliersByLineItemId(lineItemId, lineItemBidMultipliersV2Request);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CampaignApi#putApiV2ExternalLineItemBidMultipliersByLineItemId");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **lineItemId** | **String**| External LineItemId for bid multiplier retrieval | |
-| **lineItemBidMultipliersV2Request** | [**LineItemBidMultipliersV2Request**](LineItemBidMultipliersV2Request.md)| New Bid Multipliers to be set | [optional] |
-
-### Return type
-
-[**LineItemBidMultipliersV2Response**](LineItemBidMultipliersV2Response.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: text/plain, application/json, text/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | BidMultipliers Updated |  -  |
 
 
 ## searchBrandsByNameAsyncV1

@@ -705,7 +705,7 @@ public class AnalyticsApi {
 
     /**
      * 
-     * Returns an asynchronous Offsite Activity Report This endpoint is subject to specific rate limits.
+     * Returns an asynchronous Offsite Report This endpoint is subject to specific rate limits.
      * @param asyncOffsiteReportRequest  (required)
      * @return AsyncReportResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -724,7 +724,7 @@ public class AnalyticsApi {
 
     /**
      * 
-     * Returns an asynchronous Offsite Activity Report This endpoint is subject to specific rate limits.
+     * Returns an asynchronous Offsite Report This endpoint is subject to specific rate limits.
      * @param asyncOffsiteReportRequest  (required)
      * @return ApiResponse&lt;AsyncReportResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -744,7 +744,7 @@ public class AnalyticsApi {
 
     /**
      *  (asynchronously)
-     * Returns an asynchronous Offsite Activity Report This endpoint is subject to specific rate limits.
+     * Returns an asynchronous Offsite Report This endpoint is subject to specific rate limits.
      * @param asyncOffsiteReportRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

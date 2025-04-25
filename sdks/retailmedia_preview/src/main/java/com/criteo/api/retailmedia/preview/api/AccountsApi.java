@@ -28,10 +28,9 @@ import java.io.IOException;
 
 
 import com.criteo.api.retailmedia.preview.model.EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata;
-import com.criteo.api.retailmedia.preview.model.GrantConsentInput;
 import com.criteo.api.retailmedia.preview.model.Outcome;
 import com.criteo.api.retailmedia.preview.model.ValueResourceCollectionOutcomeOfSellerSearchResult;
-import com.criteo.api.retailmedia.preview.model.ValueResourceCollectionOutcomePrivateMarketAccountFees;
+import com.criteo.api.retailmedia.preview.model.ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputAccountFeesSearchRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputAccountFeesUpdateRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfSellerSearch;
@@ -221,132 +220,6 @@ public class AccountsApi {
         return localVarCall;
     }
     /**
-     * Build call for grantConsent
-     * @param accountId The demand account ID on which to grant consent (required)
-     * @param grantConsentInput  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call grantConsentCall(String accountId, GrantConsentInput grantConsentInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = grantConsentInput;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/accounts/{accountId}/grant-consent"
-            .replace("{" + "accountId" + "}", localVarApiClient.escapeString(accountId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call grantConsentValidateBeforeCall(String accountId, GrantConsentInput grantConsentInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'accountId' is set
-        if (accountId == null) {
-            throw new ApiException("Missing the required parameter 'accountId' when calling grantConsent(Async)");
-        }
-
-        return grantConsentCall(accountId, grantConsentInput, _callback);
-
-    }
-
-    /**
-     * 
-     * Grant consent to a business application on behalf of a Private Market demand account
-     * @param accountId The demand account ID on which to grant consent (required)
-     * @param grantConsentInput  (optional)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public void grantConsent(String accountId, GrantConsentInput grantConsentInput) throws ApiException {
-        grantConsentWithHttpInfo(accountId, grantConsentInput);
-    }
-
-    /**
-     * 
-     * Grant consent to a business application on behalf of a Private Market demand account
-     * @param accountId The demand account ID on which to grant consent (required)
-     * @param grantConsentInput  (optional)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> grantConsentWithHttpInfo(String accountId, GrantConsentInput grantConsentInput) throws ApiException {
-        okhttp3.Call localVarCall = grantConsentValidateBeforeCall(accountId, grantConsentInput, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * Grant consent to a business application on behalf of a Private Market demand account
-     * @param accountId The demand account ID on which to grant consent (required)
-     * @param grantConsentInput  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call grantConsentAsync(String accountId, GrantConsentInput grantConsentInput, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = grantConsentValidateBeforeCall(accountId, grantConsentInput, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for previewRetailMediaAccountsFeesSearchPost
      * @param limit used for paging, number of results returned per request, Maximum of 500 (optional, default to 50)
      * @param offset used for paging, number of records to skip (optional, default to 0)
@@ -429,7 +302,7 @@ public class AccountsApi {
      * @param limit used for paging, number of results returned per request, Maximum of 500 (optional, default to 50)
      * @param offset used for paging, number of records to skip (optional, default to 0)
      * @param valueResourceInputAccountFeesSearchRequest  (optional)
-     * @return ValueResourceCollectionOutcomePrivateMarketAccountFees
+     * @return ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -438,8 +311,8 @@ public class AccountsApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public ValueResourceCollectionOutcomePrivateMarketAccountFees previewRetailMediaAccountsFeesSearchPost(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest) throws ApiException {
-        ApiResponse<ValueResourceCollectionOutcomePrivateMarketAccountFees> localVarResp = previewRetailMediaAccountsFeesSearchPostWithHttpInfo(limit, offset, valueResourceInputAccountFeesSearchRequest);
+    public ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata previewRetailMediaAccountsFeesSearchPost(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest) throws ApiException {
+        ApiResponse<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata> localVarResp = previewRetailMediaAccountsFeesSearchPostWithHttpInfo(limit, offset, valueResourceInputAccountFeesSearchRequest);
         return localVarResp.getData();
     }
 
@@ -449,7 +322,7 @@ public class AccountsApi {
      * @param limit used for paging, number of results returned per request, Maximum of 500 (optional, default to 50)
      * @param offset used for paging, number of records to skip (optional, default to 0)
      * @param valueResourceInputAccountFeesSearchRequest  (optional)
-     * @return ApiResponse&lt;ValueResourceCollectionOutcomePrivateMarketAccountFees&gt;
+     * @return ApiResponse&lt;ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -458,9 +331,9 @@ public class AccountsApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValueResourceCollectionOutcomePrivateMarketAccountFees> previewRetailMediaAccountsFeesSearchPostWithHttpInfo(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest) throws ApiException {
+    public ApiResponse<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata> previewRetailMediaAccountsFeesSearchPostWithHttpInfo(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest) throws ApiException {
         okhttp3.Call localVarCall = previewRetailMediaAccountsFeesSearchPostValidateBeforeCall(limit, offset, valueResourceInputAccountFeesSearchRequest, null);
-        Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomePrivateMarketAccountFees>(){}.getType();
+        Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -480,10 +353,10 @@ public class AccountsApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call previewRetailMediaAccountsFeesSearchPostAsync(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest, final ApiCallback<ValueResourceCollectionOutcomePrivateMarketAccountFees> _callback) throws ApiException {
+    public okhttp3.Call previewRetailMediaAccountsFeesSearchPostAsync(Integer limit, Integer offset, ValueResourceInputAccountFeesSearchRequest valueResourceInputAccountFeesSearchRequest, final ApiCallback<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = previewRetailMediaAccountsFeesSearchPostValidateBeforeCall(limit, offset, valueResourceInputAccountFeesSearchRequest, _callback);
-        Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomePrivateMarketAccountFees>(){}.getType();
+        Type localVarReturnType = new TypeToken<ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

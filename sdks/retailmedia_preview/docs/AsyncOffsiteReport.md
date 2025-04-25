@@ -13,17 +13,17 @@ Async Offsite report body request
 |**campaignIds** | **List&lt;String&gt;** | Campaign ids to filter |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays |  [optional] |
 |**clickAttributionWindow** | [**ClickAttributionWindowEnum**](#ClickAttributionWindowEnum) | Click attribution window |  [optional] |
-|**creativeIds** | **List&lt;String&gt;** | Filter creative ids |  [optional] |
+|**creativeIds** | **List&lt;String&gt;** | Creative ids to filter |  [optional] |
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  |
 |**endDate** | **OffsetDateTime** | End date |  |
 |**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
 |**lineItemIds** | **List&lt;String&gt;** | Line item ids to filter |  [optional] |
-|**mediaTypes** | [**MediaTypesEnum**](#MediaTypesEnum) | Filter by media type |  [optional] |
+|**mediaType** | [**MediaTypeEnum**](#MediaTypeEnum) | Filter on the type of media: unknown, display, video |  [optional] |
 |**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  |
 |**retailerIds** | **List&lt;String&gt;** | Retailer ids to filter |  [optional] |
 |**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
 |**startDate** | **OffsetDateTime** | Start date |  |
-|**timezone** | **String** | Time zone : see Criteo developer portal for supported time zones |  [optional] |
+|**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
 |**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) | View attribution window |  [optional] |
 
 
@@ -74,17 +74,17 @@ Async Offsite report body request
 | LINEITEMNAME | &quot;lineItemName&quot; |
 | RETAILERID | &quot;retailerId&quot; |
 | RETAILERNAME | &quot;retailerName&quot; |
-| CREATIVEID | &quot;creativeId&quot; |
-| CREATIVENAME | &quot;creativeName&quot; |
 | BILLINGTYPE | &quot;billingType&quot; |
-| BUYTYPENAME | &quot;buyTypeName&quot; |
 | ENVIRONMENT | &quot;environment&quot; |
 | ADFORMATSIZE | &quot;adFormatSize&quot; |
 | SSP | &quot;ssp&quot; |
 | PUBLISHER | &quot;publisher&quot; |
 | INVENTORYTYPE | &quot;inventoryType&quot; |
 | MEDIATYPE | &quot;mediaType&quot; |
+| BUYTYPE | &quot;buyType&quot; |
 | SALESCHANNEL | &quot;salesChannel&quot; |
+| CREATIVEID | &quot;creativeId&quot; |
+| CREATIVENAME | &quot;creativeName&quot; |
 
 
 
@@ -99,13 +99,14 @@ Async Offsite report body request
 
 
 
-## Enum: MediaTypesEnum
+## Enum: MediaTypeEnum
 
 | Name | Value |
 |---- | -----|
-| ALL | &quot;all&quot; |
-| DISPLAY | &quot;display&quot; |
+| UNKNOWN | &quot;unknown&quot; |
 | VIDEO | &quot;video&quot; |
+| DISPLAY | &quot;display&quot; |
+| ALL | &quot;all&quot; |
 
 
 
@@ -134,8 +135,8 @@ Async Offsite report body request
 | VIDEOSPLAYEDTO50 | &quot;videosPlayedTo50&quot; |
 | VIDEOSPLAYEDTO75 | &quot;videosPlayedTo75&quot; |
 | VIDEOSPLAYEDTO100 | &quot;videosPlayedTo100&quot; |
-| STARTINGRATE | &quot;startingRate&quot; |
-| COMPLETIONRATE | &quot;completionRate&quot; |
+| VIDEOSTARTINGRATE | &quot;videoStartingRate&quot; |
+| VIDEOCOMPLETIONRATE | &quot;videoCompletionRate&quot; |
 | VIDEOCPC | &quot;videoCPC&quot; |
 | VIDEOCPCV | &quot;videoCPCV&quot; |
 | VISITS | &quot;visits&quot; |
@@ -148,9 +149,9 @@ Async Offsite report body request
 
 | Name | Value |
 |---- | -----|
-| ALL | &quot;all&quot; |
-| OFFLINE | &quot;offline&quot; |
 | ONLINE | &quot;online&quot; |
+| OFFLINE | &quot;offline&quot; |
+| ALL | &quot;all&quot; |
 
 
 

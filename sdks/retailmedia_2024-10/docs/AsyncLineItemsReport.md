@@ -16,7 +16,7 @@ Async Line Items report body request
 |**id** | **String** | Line Item id to report on |  [optional] |
 |**ids** | **List&lt;String&gt;** | Line Item ids to report on |  [optional] |
 |**metrics** | [**List&lt;MetricsEnum&gt;**](#List&lt;MetricsEnum&gt;) | List of metrics to report on |  [optional] |
-|**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report, if no dimensions/metrics are provided, falls back to summary reportType |  [optional] |
+|**reportType** | [**ReportTypeEnum**](#ReportTypeEnum) | Type of report, if no dimensions and metrics are provided, falls back to summary reportType |  [optional] |
 |**salesChannel** | [**SalesChannelEnum**](#SalesChannelEnum) | Filter on specific sales channel: offline or online |  [optional] |
 |**searchTermTargetings** | [**List&lt;SearchTermTargetingsEnum&gt;**](#List&lt;SearchTermTargetingsEnum&gt;) | Filter on the type of search term targeting: unknown, automatic, manual |  [optional] |
 |**searchTermTypes** | [**List&lt;SearchTermTypesEnum&gt;**](#List&lt;SearchTermTypesEnum&gt;) | Filter on the type of search term type: unknown, searched, entered |  [optional] |
@@ -161,9 +161,9 @@ Async Line Items report body request
 
 | Name | Value |
 |---- | -----|
-| ALL | &quot;all&quot; |
-| OFFLINE | &quot;offline&quot; |
 | ONLINE | &quot;online&quot; |
+| OFFLINE | &quot;offline&quot; |
+| ALL | &quot;all&quot; |
 
 
 
