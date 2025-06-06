@@ -151,6 +151,7 @@ docs/LineItemProductStatus.md
 docs/MatchTypeModel.md
 docs/Metadata.md
 docs/MonthlyLineItemBudegetOverride.md
+docs/NillableDecimal.md
 docs/NillableString.md
 docs/PageMetadata.md
 docs/PageOfBalanceHistoryChangeDataCaptureV1.md
@@ -226,6 +227,8 @@ docs/RmContactListStatisticsEntityV1.md
 docs/RmContactListStatisticsEntityV1Resource.md
 docs/RmContactListStatisticsEntityV1Response.md
 docs/RmContactListV1.md
+docs/RmEventsCreateV1.md
+docs/RmEventsUpdateV1.md
 docs/RmEventsV1.md
 docs/RmcaCommonProblem.md
 docs/SdkApiRestCommonProblem.md
@@ -449,6 +452,7 @@ src/main/java/com/criteo/api/retailmedia/v2024_10/model/LineItemProductStatus.ja
 src/main/java/com/criteo/api/retailmedia/v2024_10/model/MatchTypeModel.java
 src/main/java/com/criteo/api/retailmedia/v2024_10/model/Metadata.java
 src/main/java/com/criteo/api/retailmedia/v2024_10/model/MonthlyLineItemBudegetOverride.java
+src/main/java/com/criteo/api/retailmedia/v2024_10/model/NillableDecimal.java
 src/main/java/com/criteo/api/retailmedia/v2024_10/model/NillableString.java
 src/main/java/com/criteo/api/retailmedia/v2024_10/model/PageMetadata.java
 src/main/java/com/criteo/api/retailmedia/v2024_10/model/PageOfBalanceHistoryChangeDataCaptureV1.java
@@ -524,6 +528,8 @@ src/main/java/com/criteo/api/retailmedia/v2024_10/model/RmContactListStatisticsE
 src/main/java/com/criteo/api/retailmedia/v2024_10/model/RmContactListStatisticsEntityV1Resource.java
 src/main/java/com/criteo/api/retailmedia/v2024_10/model/RmContactListStatisticsEntityV1Response.java
 src/main/java/com/criteo/api/retailmedia/v2024_10/model/RmContactListV1.java
+src/main/java/com/criteo/api/retailmedia/v2024_10/model/RmEventsCreateV1.java
+src/main/java/com/criteo/api/retailmedia/v2024_10/model/RmEventsUpdateV1.java
 src/main/java/com/criteo/api/retailmedia/v2024_10/model/RmEventsV1.java
 src/main/java/com/criteo/api/retailmedia/v2024_10/model/RmcaCommonProblem.java
 src/main/java/com/criteo/api/retailmedia/v2024_10/model/SdkApiRestCommonProblem.java

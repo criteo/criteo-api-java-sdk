@@ -16,6 +16,7 @@ package com.criteo.api.retailmedia.v2025_01.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.retailmedia.v2025_01.model.RmContactListCreateV1;
+import com.criteo.api.retailmedia.v2025_01.model.RmEventsCreateV1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -56,6 +57,10 @@ public class RmAudienceSegmentCreateEntityV1 {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
+
+  public static final String SERIALIZED_NAME_EVENTS = "events";
+  @SerializedName(SERIALIZED_NAME_EVENTS)
+  private RmEventsCreateV1 events;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -109,6 +114,28 @@ public class RmAudienceSegmentCreateEntityV1 {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  public RmAudienceSegmentCreateEntityV1 events(RmEventsCreateV1 events) {
+    
+    this.events = events;
+    return this;
+  }
+
+   /**
+   * Get events
+   * @return events
+  **/
+  @javax.annotation.Nullable
+
+  public RmEventsCreateV1 getEvents() {
+    return events;
+  }
+
+
+  public void setEvents(RmEventsCreateV1 events) {
+    this.events = events;
   }
 
 
@@ -212,6 +239,7 @@ public class RmAudienceSegmentCreateEntityV1 {
     RmAudienceSegmentCreateEntityV1 rmAudienceSegmentCreateEntityV1 = (RmAudienceSegmentCreateEntityV1) o;
     return Objects.equals(this.contactList, rmAudienceSegmentCreateEntityV1.contactList) &&
         Objects.equals(this.description, rmAudienceSegmentCreateEntityV1.description) &&
+        Objects.equals(this.events, rmAudienceSegmentCreateEntityV1.events) &&
         Objects.equals(this.name, rmAudienceSegmentCreateEntityV1.name) &&
         Objects.equals(this.retailerId, rmAudienceSegmentCreateEntityV1.retailerId)&&
         Objects.equals(this.additionalProperties, rmAudienceSegmentCreateEntityV1.additionalProperties);
@@ -219,7 +247,7 @@ public class RmAudienceSegmentCreateEntityV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(contactList, description, name, retailerId, additionalProperties);
+    return Objects.hash(contactList, description, events, name, retailerId, additionalProperties);
   }
 
   @Override
@@ -228,6 +256,7 @@ public class RmAudienceSegmentCreateEntityV1 {
     sb.append("class RmAudienceSegmentCreateEntityV1 {\n");
     sb.append("    contactList: ").append(toIndentedString(contactList)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    events: ").append(toIndentedString(events)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    retailerId: ").append(toIndentedString(retailerId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -255,6 +284,7 @@ public class RmAudienceSegmentCreateEntityV1 {
     openapiFields = new HashSet<String>();
     openapiFields.add("contactList");
     openapiFields.add("description");
+    openapiFields.add("events");
     openapiFields.add("name");
     openapiFields.add("retailerId");
 
@@ -289,6 +319,10 @@ public class RmAudienceSegmentCreateEntityV1 {
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      // validate the optional field `events`
+      if (jsonObj.get("events") != null && !jsonObj.get("events").isJsonNull()) {
+        RmEventsCreateV1.validateJsonObject(jsonObj.getAsJsonObject("events"));
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));

@@ -320,7 +320,7 @@ public class AudienceApi {
 
     /**
      * 
-     * Delete the segments associated to the given audience IDs.
+     * Delete the segments associated to the given IDs.
      * @param accountId Account id (required)
      * @param rmAudienceSegmentBulkDeleteInputV1 Segment delete request. (required)
      * @return RmAudienceSegmentIdEntityV1ListResponse
@@ -341,7 +341,7 @@ public class AudienceApi {
 
     /**
      * 
-     * Delete the segments associated to the given audience IDs.
+     * Delete the segments associated to the given IDs.
      * @param accountId Account id (required)
      * @param rmAudienceSegmentBulkDeleteInputV1 Segment delete request. (required)
      * @return ApiResponse&lt;RmAudienceSegmentIdEntityV1ListResponse&gt;
@@ -363,7 +363,7 @@ public class AudienceApi {
 
     /**
      *  (asynchronously)
-     * Delete the segments associated to the given audience IDs.
+     * Delete the segments associated to the given IDs.
      * @param accountId Account id (required)
      * @param rmAudienceSegmentBulkDeleteInputV1 Segment delete request. (required)
      * @param _callback The callback to be executed when the API call finishes

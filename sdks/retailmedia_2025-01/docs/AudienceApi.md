@@ -115,7 +115,7 @@ public class Example {
 
 
 
-Delete the segments associated to the given audience IDs.
+Delete the segments associated to the given IDs.
 
 ### Example
 

@@ -12,7 +12,6 @@ Video positioning targeting writing model
 |**skippable** | [**SkippableEnum**](#SkippableEnum) |  |  [optional] |
 |**videoAspectRatio** | [**List&lt;VideoAspectRatioEnum&gt;**](#List&lt;VideoAspectRatioEnum&gt;) |  |  [optional] |
 |**videoInStreamPosition** | [**List&lt;VideoInStreamPositionEnum&gt;**](#List&lt;VideoInStreamPositionEnum&gt;) |  |  [optional] |
-|**videoPlacement** | [**List&lt;VideoPlacementEnum&gt;**](#List&lt;VideoPlacementEnum&gt;) |  |  [optional] |
 |**videoPlayerSize** | [**List&lt;VideoPlayerSizeEnum&gt;**](#List&lt;VideoPlayerSizeEnum&gt;) |  |  [optional] |
 |**videoPlcmt** | [**List&lt;VideoPlcmtEnum&gt;**](#List&lt;VideoPlcmtEnum&gt;) |  |  [optional] |
 
@@ -57,18 +56,6 @@ Video positioning targeting writing model
 | PREROLL | &quot;PreRoll&quot; |
 | MIDROLL | &quot;MidRoll&quot; |
 | POSTROLL | &quot;PostRoll&quot; |
-
-
-
-## Enum: List&lt;VideoPlacementEnum&gt;
-
-| Name | Value |
-|---- | -----|
-| INBANNER | &quot;InBanner&quot; |
-| INARTICLE | &quot;InArticle&quot; |
-| INFEED | &quot;InFeed&quot; |
-| INTERSTITIAL | &quot;Interstitial&quot; |
-| INSTREAM | &quot;InStream&quot; |
 
 
 

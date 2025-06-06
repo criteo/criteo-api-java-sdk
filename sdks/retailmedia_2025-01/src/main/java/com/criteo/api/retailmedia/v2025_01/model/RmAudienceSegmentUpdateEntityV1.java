@@ -16,6 +16,7 @@ package com.criteo.api.retailmedia.v2025_01.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.criteo.api.retailmedia.v2025_01.model.NillableString;
+import com.criteo.api.retailmedia.v2025_01.model.RmEventsUpdateV1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -57,6 +58,10 @@ public class RmAudienceSegmentUpdateEntityV1 {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private NillableString description;
+
+  public static final String SERIALIZED_NAME_EVENTS = "events";
+  @SerializedName(SERIALIZED_NAME_EVENTS)
+  private RmEventsUpdateV1 events;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -106,6 +111,28 @@ public class RmAudienceSegmentUpdateEntityV1 {
 
   public void setDescription(NillableString description) {
     this.description = description;
+  }
+
+
+  public RmAudienceSegmentUpdateEntityV1 events(RmEventsUpdateV1 events) {
+    
+    this.events = events;
+    return this;
+  }
+
+   /**
+   * Get events
+   * @return events
+  **/
+  @javax.annotation.Nullable
+
+  public RmEventsUpdateV1 getEvents() {
+    return events;
+  }
+
+
+  public void setEvents(RmEventsUpdateV1 events) {
+    this.events = events;
   }
 
 
@@ -187,6 +214,7 @@ public class RmAudienceSegmentUpdateEntityV1 {
     RmAudienceSegmentUpdateEntityV1 rmAudienceSegmentUpdateEntityV1 = (RmAudienceSegmentUpdateEntityV1) o;
     return Objects.equals(this.contactList, rmAudienceSegmentUpdateEntityV1.contactList) &&
         Objects.equals(this.description, rmAudienceSegmentUpdateEntityV1.description) &&
+        Objects.equals(this.events, rmAudienceSegmentUpdateEntityV1.events) &&
         Objects.equals(this.name, rmAudienceSegmentUpdateEntityV1.name)&&
         Objects.equals(this.additionalProperties, rmAudienceSegmentUpdateEntityV1.additionalProperties);
   }
@@ -197,7 +225,7 @@ public class RmAudienceSegmentUpdateEntityV1 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(contactList, description, name, additionalProperties);
+    return Objects.hash(contactList, description, events, name, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -213,6 +241,7 @@ public class RmAudienceSegmentUpdateEntityV1 {
     sb.append("class RmAudienceSegmentUpdateEntityV1 {\n");
     sb.append("    contactList: ").append(toIndentedString(contactList)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    events: ").append(toIndentedString(events)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -239,6 +268,7 @@ public class RmAudienceSegmentUpdateEntityV1 {
     openapiFields = new HashSet<String>();
     openapiFields.add("contactList");
     openapiFields.add("description");
+    openapiFields.add("events");
     openapiFields.add("name");
 
     // a set of required properties/fields (JSON key names)
@@ -260,6 +290,10 @@ public class RmAudienceSegmentUpdateEntityV1 {
       // validate the optional field `description`
       if (jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) {
         NillableString.validateJsonObject(jsonObj.getAsJsonObject("description"));
+      }
+      // validate the optional field `events`
+      if (jsonObj.get("events") != null && !jsonObj.get("events").isJsonNull()) {
+        RmEventsUpdateV1.validateJsonObject(jsonObj.getAsJsonObject("events"));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));

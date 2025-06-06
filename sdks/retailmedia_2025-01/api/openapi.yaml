@@ -406,7 +406,7 @@ paths:
       x-accepts: application/json
   /2025-01/retail-media/accounts/{account-id}/audience-segments/delete:
     post:
-      description: Delete the segments associated to the given audience IDs.
+      description: Delete the segments associated to the given IDs.
       operationId: bulkDeleteAudienceSegments
       parameters:
       - description: Account id
@@ -6949,13 +6949,14 @@ components:
         data:
         - attributes:
             budgetRemaining: 6.027456183070403
-            createdAt: 2000-01-23T04:56:07.000+00:00
             endDate: 2000-01-23
-            budgetSpent: 1.4658129805029452
             campaignId: campaignId
-            name: name
-            targetRetailerId: targetRetailerId
             type: unknown
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            budgetSpent: 1.4658129805029452
+            name: name
+            id: id
+            targetRetailerId: targetRetailerId
             startDate: 2000-01-23
             budget: 0.8008281904610115
             status: unknown
@@ -6964,13 +6965,14 @@ components:
           type: type
         - attributes:
             budgetRemaining: 6.027456183070403
-            createdAt: 2000-01-23T04:56:07.000+00:00
             endDate: 2000-01-23
-            budgetSpent: 1.4658129805029452
             campaignId: campaignId
-            name: name
-            targetRetailerId: targetRetailerId
             type: unknown
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            budgetSpent: 1.4658129805029452
+            name: name
+            id: id
+            targetRetailerId: targetRetailerId
             startDate: 2000-01-23
             budget: 0.8008281904610115
             status: unknown
@@ -7044,13 +7046,14 @@ components:
         data:
           attributes:
             budgetRemaining: 6.027456183070403
-            createdAt: 2000-01-23T04:56:07.000+00:00
             endDate: 2000-01-23
-            budgetSpent: 1.4658129805029452
             campaignId: campaignId
-            name: name
-            targetRetailerId: targetRetailerId
             type: unknown
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            budgetSpent: 1.4658129805029452
+            name: name
+            id: id
+            targetRetailerId: targetRetailerId
             startDate: 2000-01-23
             budget: 0.8008281904610115
             status: unknown
@@ -9236,13 +9239,14 @@ components:
         preferred and auction line items
       example:
         budgetRemaining: 6.027456183070403
-        createdAt: 2000-01-23T04:56:07.000+00:00
         endDate: 2000-01-23
-        budgetSpent: 1.4658129805029452
         campaignId: campaignId
-        name: name
-        targetRetailerId: targetRetailerId
         type: unknown
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        budgetSpent: 1.4658129805029452
+        name: name
+        id: id
+        targetRetailerId: targetRetailerId
         startDate: 2000-01-23
         budget: 0.8008281904610115
         status: unknown
@@ -9272,6 +9276,10 @@ components:
           nullable: true
           type: string
           x-optional-in-response: true
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
         name:
           maxLength: 255
           minLength: 0
@@ -11845,6 +11853,20 @@ components:
       type: object
       x-used-in-response: true
       x-used-in-request: true
+    NillableDecimal:
+      description: Placeholder object for value for which "null" is a valid business
+        value
+      example:
+        value: 0.8008281904610115
+      nullable: true
+      properties:
+        value:
+          description: The value. If missing or null the value is set to "null"
+          format: double
+          nullable: true
+          type: number
+      type: object
+      x-used-in-request: true
     NillableString:
       description: Placeholder object for string value  for which "null" is a valid
         business value
@@ -13062,13 +13084,14 @@ components:
       example:
         attributes:
           budgetRemaining: 6.027456183070403
-          createdAt: 2000-01-23T04:56:07.000+00:00
           endDate: 2000-01-23
-          budgetSpent: 1.4658129805029452
           campaignId: campaignId
-          name: name
-          targetRetailerId: targetRetailerId
           type: unknown
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          budgetSpent: 1.4658129805029452
+          name: name
+          id: id
+          targetRetailerId: targetRetailerId
           startDate: 2000-01-23
           budget: 0.8008281904610115
           status: unknown
@@ -14233,6 +14256,17 @@ components:
             name: name
             description: description
             retailerId: retailerId
+            events:
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice: 6.027456183070403
+              maxPrice: 0.8008281904610115
+              lookbackDays: Unknown
+              shopperActivity: Unknown
+              brandIds:
+              - brandIds
+              - brandIds
           type: type
         - attributes:
             contactList:
@@ -14240,6 +14274,17 @@ components:
             name: name
             description: description
             retailerId: retailerId
+            events:
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice: 6.027456183070403
+              maxPrice: 0.8008281904610115
+              lookbackDays: Unknown
+              shopperActivity: Unknown
+              brandIds:
+              - brandIds
+              - brandIds
           type: type
       properties:
         data:
@@ -14276,6 +14321,19 @@ components:
             name: name
             description:
               value: value
+            events:
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice:
+                value: 0.8008281904610115
+              maxPrice:
+                value: 0.8008281904610115
+              lookbackDays: Unknown
+              shopperActivity: Unknown
+              brandIds:
+              - brandIds
+              - brandIds
           id: id
           type: type
         - attributes:
@@ -14283,6 +14341,19 @@ components:
             name: name
             description:
               value: value
+            events:
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice:
+                value: 0.8008281904610115
+              maxPrice:
+                value: 0.8008281904610115
+              lookbackDays: Unknown
+              shopperActivity: Unknown
+              brandIds:
+              - brandIds
+              - brandIds
           id: id
           type: type
       properties:
@@ -14300,12 +14371,25 @@ components:
         name: name
         description: description
         retailerId: retailerId
+        events:
+          categoryIds:
+          - categoryIds
+          - categoryIds
+          minPrice: 6.027456183070403
+          maxPrice: 0.8008281904610115
+          lookbackDays: Unknown
+          shopperActivity: Unknown
+          brandIds:
+          - brandIds
+          - brandIds
       properties:
         contactList:
           $ref: '#/components/schemas/RmContactListCreateV1'
         description:
           description: Description of the segment
           type: string
+        events:
+          $ref: '#/components/schemas/RmEventsCreateV1'
         name:
           description: Name of the segment
           type: string
@@ -14327,6 +14411,17 @@ components:
           name: name
           description: description
           retailerId: retailerId
+          events:
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            minPrice: 6.027456183070403
+            maxPrice: 0.8008281904610115
+            lookbackDays: Unknown
+            shopperActivity: Unknown
+            brandIds:
+            - brandIds
+            - brandIds
         type: type
       properties:
         attributes:
@@ -15000,6 +15095,19 @@ components:
         name: name
         description:
           value: value
+        events:
+          categoryIds:
+          - categoryIds
+          - categoryIds
+          minPrice:
+            value: 0.8008281904610115
+          maxPrice:
+            value: 0.8008281904610115
+          lookbackDays: Unknown
+          shopperActivity: Unknown
+          brandIds:
+          - brandIds
+          - brandIds
       properties:
         contactList:
           description: Settings to update the contact list of the segment
@@ -15007,6 +15115,8 @@ components:
           x-used-in-request: true
         description:
           $ref: '#/components/schemas/NillableString'
+        events:
+          $ref: '#/components/schemas/RmEventsUpdateV1'
         name:
           description: Name of the segment
           type: string
@@ -15024,6 +15134,19 @@ components:
           name: name
           description:
             value: value
+          events:
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            minPrice:
+              value: 0.8008281904610115
+            maxPrice:
+              value: 0.8008281904610115
+            lookbackDays: Unknown
+            shopperActivity: Unknown
+            brandIds:
+            - brandIds
+            - brandIds
         id: id
         type: type
       properties:
@@ -15298,6 +15421,120 @@ components:
       type: object
       x-used-in-response: true
       x-optional-in-response: true
+    RmEventsCreateV1:
+      description: Settings to target users based on their behavior
+      example:
+        categoryIds:
+        - categoryIds
+        - categoryIds
+        minPrice: 6.027456183070403
+        maxPrice: 0.8008281904610115
+        lookbackDays: Unknown
+        shopperActivity: Unknown
+        brandIds:
+        - brandIds
+        - brandIds
+      properties:
+        brandIds:
+          description: Choose the brands your segment might be interested in
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        categoryIds:
+          description: Choose the categories your segment might be interested in
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        lookbackDays:
+          description: Number of days of the lookback windows
+          enum:
+          - Unknown
+          - Last7Days
+          - Last14Days
+          - Last30Days
+          - Last45Days
+          - Last60Days
+          - Last90Days
+          - Last120Days
+          - Last150Days
+          - Last180Days
+          type: string
+        maxPrice:
+          description: Reach people who’ve shown interest in products with a maximum
+            price
+          format: double
+          type: number
+        minPrice:
+          description: Reach people who’ve shown interest in products with a minimum
+            price
+          format: double
+          type: number
+        shopperActivity:
+          description: Types of shopper activity.
+          enum:
+          - Unknown
+          - View
+          - Buy
+          - AddToCart
+          type: string
+      type: object
+      x-used-in-request: true
+    RmEventsUpdateV1:
+      description: Settings to target users based on their behavior
+      example:
+        categoryIds:
+        - categoryIds
+        - categoryIds
+        minPrice:
+          value: 0.8008281904610115
+        maxPrice:
+          value: 0.8008281904610115
+        lookbackDays: Unknown
+        shopperActivity: Unknown
+        brandIds:
+        - brandIds
+        - brandIds
+      properties:
+        brandIds:
+          description: Choose the brands your segment might be interested in
+          items:
+            type: string
+          type: array
+        categoryIds:
+          description: Choose the categories your segment might be interested in
+          items:
+            type: string
+          type: array
+        lookbackDays:
+          description: Number of days of the lookback windows
+          enum:
+          - Unknown
+          - Last7Days
+          - Last14Days
+          - Last30Days
+          - Last45Days
+          - Last60Days
+          - Last90Days
+          - Last120Days
+          - Last150Days
+          - Last180Days
+          type: string
+        maxPrice:
+          $ref: '#/components/schemas/NillableDecimal'
+        minPrice:
+          $ref: '#/components/schemas/NillableDecimal'
+        shopperActivity:
+          description: Types of shopper activity.
+          enum:
+          - Unknown
+          - View
+          - Buy
+          - AddToCart
+          type: string
+      type: object
+      x-used-in-request: true
     RmEventsV1:
       description: Settings to target users based on their behavior
       example:

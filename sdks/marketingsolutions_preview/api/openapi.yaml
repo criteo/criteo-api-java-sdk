@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: Criteo API - MarketingSolutions
   title: Criteo API
-  version: preview
+  version: Preview
 servers:
 - url: https://api.criteo.com
 security:
@@ -6448,6 +6448,147 @@ paths:
       - Analytics
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /preview/reports/realtime:
+    post:
+      description: "With Realtime endpoint, you can analyse the realtime values of\
+        \ the main metrics: displays, clicks, cost."
+      operationId: GetRealtimeStatisticsReport
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/GenerateRealtimeStatisticsReportRequestAttributesRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateRealtimeStatisticsReportRequestAttributesRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GenerateRealtimeStatisticsReportRequestAttributesRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GenerateRealtimeStatisticsReportRequestAttributesRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/GenerateRealtimeStatisticsReportRequestAttributesRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GenerateRealtimeStatisticsReportRequestAttributesRequest'
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/GenerateRealtimeStatisticsReportRequestAttributesRequest'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/JsonReportRowsListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonReportRowsListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/JsonReportRowsListResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/JsonReportRowsListResponse'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/JsonReportRowsListResponse'
+          description: Success
+        "400":
+          content:
+            text/plain:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Bad Request
+        "403":
+          content:
+            text/plain:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/json:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/json:
+              example:
+                warnings: []
+                errors:
+                - traceId: 905125ba2e35bd81e02ea712e4a05e2d
+                  type: validation
+                  code: required-field
+                  instance: /report
+                  title: Start date and end date are required.
+                  detail: ""
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Forbidden
+      tags:
+      - Analytics
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /preview/reports/top-products:
     post:
       description: "With the topProducts endpoint, you can analyse the performances\
@@ -8323,9 +8464,6 @@ components:
         videoAspectRatio:
         - Horizontal
         - Horizontal
-        videoPlacement:
-        - InBanner
-        - InBanner
         videoPlcmt:
         - InStream
         - InStream
@@ -8376,19 +8514,6 @@ components:
             - PreRoll
             - MidRoll
             - PostRoll
-            type: string
-          nullable: true
-          type: array
-          uniqueItems: false
-          x-optional-in-response: true
-        videoPlacement:
-          items:
-            enum:
-            - InBanner
-            - InArticle
-            - InFeed
-            - Interstitial
-            - InStream
             type: string
           nullable: true
           type: array
@@ -8534,9 +8659,6 @@ components:
           videoAspectRatio:
           - Horizontal
           - Horizontal
-          videoPlacement:
-          - InBanner
-          - InBanner
           videoPlcmt:
           - InStream
           - InStream
@@ -8572,9 +8694,6 @@ components:
             videoAspectRatio:
             - Horizontal
             - Horizontal
-            videoPlacement:
-            - InBanner
-            - InBanner
             videoPlcmt:
             - InStream
             - InStream
@@ -12256,6 +12375,7 @@ components:
       description: The budget automation configuration model
       example:
         adSetObjectives: conversions
+      nullable: true
       properties:
         adSetObjectives:
           enum:
@@ -15442,6 +15562,184 @@ components:
       properties:
         attributes:
           $ref: '#/components/schemas/GenerateCreativesReportRequestAttributes'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+      x-used-in-request: true
+    GenerateRealtimeStatisticsReportRequestAttributes:
+      additionalProperties: false
+      description: This is the message defining the query for Realtime report
+      example:
+        advertiserIds:
+        - advertiserIds
+        - advertiserIds
+        - advertiserIds
+        - advertiserIds
+        - advertiserIds
+        timezone: UTC
+        adsetIds:
+        - adsetIds
+        - adsetIds
+        currency: EUR
+        campaignIds:
+        - campaignIds
+        - campaignIds
+        metrics:
+        - Clicks
+        - Clicks
+        dimensions:
+        - Advertiser
+        - Advertiser
+        lookbackWindow: 2
+      properties:
+        adsetIds:
+          description: List of adset ids to filter.
+          items:
+            type: string
+          nullable: true
+          type: array
+        advertiserIds:
+          description: List of advertiser ids to report on.
+          items:
+            type: string
+          maxItems: 10
+          minItems: 1
+          type: array
+        campaignIds:
+          description: List of campaign ids to filter.
+          items:
+            type: string
+          nullable: true
+          type: array
+        currency:
+          default: EUR
+          description: The currency used for the report. ISO 4217 code (three-letter
+            capitals).
+          nullable: true
+          type: string
+        dimensions:
+          default:
+          - AdvertiserId
+          - Advertiser
+          - CampaignId
+          - Campaign
+          - AdsetId
+          - Adset
+          - Day
+          - Hour
+          description: List of dimensions for the report.
+          items:
+            enum:
+            - Advertiser
+            - AdvertiserId
+            - Campaign
+            - CampaignId
+            - Adset
+            - AdsetId
+            - Year
+            - Month
+            - Week
+            - Day
+            - Hour
+            type: string
+          nullable: true
+          type: array
+        lookbackWindow:
+          default: 12
+          description: The number of hours to consider in the past.
+          format: int32
+          maximum: 24
+          minimum: 1
+          type: integer
+        metrics:
+          default:
+          - Displays
+          - Clicks
+          - Cost
+          description: List of metrics for the report.
+          items:
+            enum:
+            - Clicks
+            - Cost
+            - Displays
+            type: string
+          nullable: true
+          type: array
+        timezone:
+          default: UTC
+          description: The timezone used for the report.
+          nullable: true
+          type: string
+      required:
+      - advertiserIds
+      type: object
+      x-used-in-request: true
+    GenerateRealtimeStatisticsReportRequestAttributesRequest:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value objects.
+      example:
+        data:
+          attributes:
+            advertiserIds:
+            - advertiserIds
+            - advertiserIds
+            - advertiserIds
+            - advertiserIds
+            - advertiserIds
+            timezone: UTC
+            adsetIds:
+            - adsetIds
+            - adsetIds
+            currency: EUR
+            campaignIds:
+            - campaignIds
+            - campaignIds
+            metrics:
+            - Clicks
+            - Clicks
+            dimensions:
+            - Advertiser
+            - Advertiser
+            lookbackWindow: 2
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/GenerateRealtimeStatisticsReportRequestAttributesResource'
+      type: object
+      x-used-in-request: true
+    GenerateRealtimeStatisticsReportRequestAttributesResource:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          advertiserIds:
+          - advertiserIds
+          - advertiserIds
+          - advertiserIds
+          - advertiserIds
+          - advertiserIds
+          timezone: UTC
+          adsetIds:
+          - adsetIds
+          - adsetIds
+          currency: EUR
+          campaignIds:
+          - campaignIds
+          - campaignIds
+          metrics:
+          - Clicks
+          - Clicks
+          dimensions:
+          - Advertiser
+          - Advertiser
+          lookbackWindow: 2
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/GenerateRealtimeStatisticsReportRequestAttributes'
         type:
           description: Type of the resource.
           nullable: true
@@ -23119,9 +23417,6 @@ components:
         videoAspectRatio:
         - Horizontal
         - Horizontal
-        videoPlacement:
-        - InBanner
-        - InBanner
         videoPlcmt:
         - InStream
         - InStream
@@ -23168,17 +23463,6 @@ components:
             type: string
           type: array
           uniqueItems: false
-        videoPlacement:
-          items:
-            enum:
-            - InBanner
-            - InArticle
-            - InFeed
-            - Interstitial
-            - InStream
-            type: string
-          type: array
-          uniqueItems: false
         videoPlayerSize:
           items:
             enum:
@@ -23216,9 +23500,6 @@ components:
             videoAspectRatio:
             - Horizontal
             - Horizontal
-            videoPlacement:
-            - InBanner
-            - InBanner
             videoPlcmt:
             - InStream
             - InStream
@@ -23245,9 +23526,6 @@ components:
           videoAspectRatio:
           - Horizontal
           - Horizontal
-          videoPlacement:
-          - InBanner
-          - InBanner
           videoPlcmt:
           - InStream
           - InStream

@@ -14,6 +14,7 @@ A common line item to hold line item information shared between preferred and au
 |**campaignId** | **String** |  |  |
 |**createdAt** | **OffsetDateTime** |  |  |
 |**endDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  [optional] |
+|**id** | **String** | Id of the entity |  [optional] |
 |**name** | **String** |  |  |
 |**startDate** | **LocalDate** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |  |
 |**status** | [**StatusEnum**](#StatusEnum) |  |  [optional] |

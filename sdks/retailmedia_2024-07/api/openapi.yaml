@@ -6460,13 +6460,14 @@ components:
         data:
         - attributes:
             budgetRemaining: 6.027456183070403
-            createdAt: 2000-01-23T04:56:07.000+00:00
             endDate: 2000-01-23
-            budgetSpent: 1.4658129805029452
             campaignId: campaignId
-            name: name
-            targetRetailerId: targetRetailerId
             type: unknown
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            budgetSpent: 1.4658129805029452
+            name: name
+            id: id
+            targetRetailerId: targetRetailerId
             startDate: 2000-01-23
             budget: 0.8008281904610115
             status: unknown
@@ -6475,13 +6476,14 @@ components:
           type: type
         - attributes:
             budgetRemaining: 6.027456183070403
-            createdAt: 2000-01-23T04:56:07.000+00:00
             endDate: 2000-01-23
-            budgetSpent: 1.4658129805029452
             campaignId: campaignId
-            name: name
-            targetRetailerId: targetRetailerId
             type: unknown
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            budgetSpent: 1.4658129805029452
+            name: name
+            id: id
+            targetRetailerId: targetRetailerId
             startDate: 2000-01-23
             budget: 0.8008281904610115
             status: unknown
@@ -6555,13 +6557,14 @@ components:
         data:
           attributes:
             budgetRemaining: 6.027456183070403
-            createdAt: 2000-01-23T04:56:07.000+00:00
             endDate: 2000-01-23
-            budgetSpent: 1.4658129805029452
             campaignId: campaignId
-            name: name
-            targetRetailerId: targetRetailerId
             type: unknown
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            budgetSpent: 1.4658129805029452
+            name: name
+            id: id
+            targetRetailerId: targetRetailerId
             startDate: 2000-01-23
             budget: 0.8008281904610115
             status: unknown
@@ -8441,13 +8444,14 @@ components:
         preferred and auction line items
       example:
         budgetRemaining: 6.027456183070403
-        createdAt: 2000-01-23T04:56:07.000+00:00
         endDate: 2000-01-23
-        budgetSpent: 1.4658129805029452
         campaignId: campaignId
-        name: name
-        targetRetailerId: targetRetailerId
         type: unknown
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        budgetSpent: 1.4658129805029452
+        name: name
+        id: id
+        targetRetailerId: targetRetailerId
         startDate: 2000-01-23
         budget: 0.8008281904610115
         status: unknown
@@ -8477,6 +8481,10 @@ components:
           nullable: true
           type: string
           x-optional-in-response: true
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
         name:
           maxLength: 255
           minLength: 0
@@ -8594,7 +8602,9 @@ components:
         searchKeywords:
           items:
             type: string
+          nullable: true
           type: array
+          x-optional-in-response: true
       required:
       - pageType
       type: object
@@ -11892,13 +11902,14 @@ components:
       example:
         attributes:
           budgetRemaining: 6.027456183070403
-          createdAt: 2000-01-23T04:56:07.000+00:00
           endDate: 2000-01-23
-          budgetSpent: 1.4658129805029452
           campaignId: campaignId
-          name: name
-          targetRetailerId: targetRetailerId
           type: unknown
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          budgetSpent: 1.4658129805029452
+          name: name
+          id: id
+          targetRetailerId: targetRetailerId
           startDate: 2000-01-23
           budget: 0.8008281904610115
           status: unknown

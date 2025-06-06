@@ -201,6 +201,9 @@ docs/GenerateCategoriesReportRequestAttributesResource.md
 docs/GenerateCreativesReportRequestAttributes.md
 docs/GenerateCreativesReportRequestAttributesRequest.md
 docs/GenerateCreativesReportRequestAttributesResource.md
+docs/GenerateRealtimeStatisticsReportRequestAttributes.md
+docs/GenerateRealtimeStatisticsReportRequestAttributesRequest.md
+docs/GenerateRealtimeStatisticsReportRequestAttributesResource.md
 docs/GenerateStatisticsReport.md
 docs/GenerateStatisticsReportRequest.md
 docs/GenerateStatisticsReportResource.md
@@ -612,6 +615,9 @@ src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateCategories
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateCreativesReportRequestAttributes.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateCreativesReportRequestAttributesRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateCreativesReportRequestAttributesResource.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateRealtimeStatisticsReportRequestAttributes.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateRealtimeStatisticsReportRequestAttributesRequest.java
+src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateRealtimeStatisticsReportRequestAttributesResource.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateStatisticsReport.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateStatisticsReportRequest.java
 src/main/java/com/criteo/api/marketingsolutions/preview/model/GenerateStatisticsReportResource.java

@@ -76,6 +76,10 @@ public class ExternalCommonLineItem {
   @SerializedName(SERIALIZED_NAME_END_DATE)
   private LocalDate endDate;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -345,6 +349,28 @@ public class ExternalCommonLineItem {
   }
 
 
+  public ExternalCommonLineItem id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Id of the entity
+   * @return id
+  **/
+  @javax.annotation.Nullable
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
   public ExternalCommonLineItem name(String name) {
     
     this.name = name;
@@ -537,6 +563,7 @@ public class ExternalCommonLineItem {
         Objects.equals(this.campaignId, externalCommonLineItem.campaignId) &&
         Objects.equals(this.createdAt, externalCommonLineItem.createdAt) &&
         Objects.equals(this.endDate, externalCommonLineItem.endDate) &&
+        Objects.equals(this.id, externalCommonLineItem.id) &&
         Objects.equals(this.name, externalCommonLineItem.name) &&
         Objects.equals(this.startDate, externalCommonLineItem.startDate) &&
         Objects.equals(this.status, externalCommonLineItem.status) &&
@@ -552,7 +579,7 @@ public class ExternalCommonLineItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(budget, budgetRemaining, budgetSpent, campaignId, createdAt, endDate, name, startDate, status, targetRetailerId, type, updatedAt, additionalProperties);
+    return Objects.hash(budget, budgetRemaining, budgetSpent, campaignId, createdAt, endDate, id, name, startDate, status, targetRetailerId, type, updatedAt, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -572,6 +599,7 @@ public class ExternalCommonLineItem {
     sb.append("    campaignId: ").append(toIndentedString(campaignId)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
@@ -607,6 +635,7 @@ public class ExternalCommonLineItem {
     openapiFields.add("campaignId");
     openapiFields.add("createdAt");
     openapiFields.add("endDate");
+    openapiFields.add("id");
     openapiFields.add("name");
     openapiFields.add("startDate");
     openapiFields.add("status");
@@ -647,6 +676,9 @@ public class ExternalCommonLineItem {
       }
       if (!jsonObj.get("campaignId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));

@@ -186,7 +186,7 @@ public class ExternalLineItemPage202110 {
 
   public ExternalLineItemPage202110 addSearchKeywordsItem(String searchKeywordsItem) {
     if (this.searchKeywords == null) {
-      this.searchKeywords = new ArrayList<>();
+      this.searchKeywords = null;
     }
     this.searchKeywords.add(searchKeywordsItem);
     return this;

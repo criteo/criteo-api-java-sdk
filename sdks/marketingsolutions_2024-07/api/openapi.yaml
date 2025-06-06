@@ -7894,6 +7894,7 @@ components:
       description: The budget automation configuration model
       example:
         adSetObjectives: conversions
+      nullable: true
       properties:
         adSetObjectives:
           enum:

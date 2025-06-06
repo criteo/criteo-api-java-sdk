@@ -156,234 +156,6 @@ paths:
       tags:
       - Accounts
       x-accepts: application/json
-  /2024-04/retail-media/accounts/{account-id}/balances:
-    get:
-      description: Get page of balances for the given accountId.
-      operationId: Balances_GetApiV1ExternalAccountBalancesByAccountId
-      parameters:
-      - description: The account to get page of balances for
-        explode: false
-        in: path
-        name: account-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: The ids that you would like to limit your result set to
-        explode: true
-        in: query
-        name: limitToId
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-      - description: The 0 indexed page index you would like to receive given the
-          page size
-        explode: true
-        in: query
-        name: pageIndex
-        required: false
-        schema:
-          default: 0
-          format: int32
-          type: integer
-        style: form
-      - description: The maximum number of items you would like to receive in this
-          request
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          default: 25
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponsePagedListResponse'
-          description: Success
-      tags:
-      - Balance
-      x-accepts: application/json
-    post:
-      description: Create balance for the given account id
-      operationId: Balances_PostApiV1ExternalAccountBalancesByAccountId
-      parameters:
-      - description: The account to create balances for
-        explode: false
-        in: path
-        name: account-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateBalanceRequest'
-        x-bodyName: createBalance
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponse'
-          description: Success
-      tags:
-      - Balance
-      x-content-type: application/json
-      x-accepts: application/json
-  /2024-04/retail-media/accounts/{account-id}/balances/{balanceId}:
-    get:
-      description: Get a balance for the given account id and balance id
-      operationId: Balances_GetApiV1ExternalAccountByAccountIdAndBalanceId
-      parameters:
-      - description: The account of the balance
-        explode: false
-        in: path
-        name: account-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: The balance id
-        explode: false
-        in: path
-        name: balanceId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponse'
-          description: Success
-      tags:
-      - Balance
-      x-accepts: application/json
-    patch:
-      description: Modify a balance for the given account id
-      operationId: Balances_PatchApiV1ExternalAccountByAccountIdAndBalanceId
-      parameters:
-      - description: The account of the balance
-        explode: false
-        in: path
-        name: account-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: The balance to change the dates
-        explode: false
-        in: path
-        name: balanceId
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateBalanceModelRequest'
-        x-bodyName: updateBalanceModel
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponse'
-          description: Success
-      tags:
-      - Balance
-      x-content-type: application/json
-      x-accepts: application/json
-  /2024-04/retail-media/accounts/{account-id}/balances/{balanceId}/add-funds:
-    post:
-      description: Add funds to a balance for the given account id
-      operationId: Balances_PostApiV1ExternalAccountAddFundsByAccountIdAndBalanceId
-      parameters:
-      - description: The account of the balance
-        explode: false
-        in: path
-        name: account-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: The balance to add funds to
-        explode: false
-        in: path
-        name: balanceId
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AddFundsToBalanceRequest'
-        x-bodyName: addFundsToBalance
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponse'
-          description: Success
-      tags:
-      - Balance
-      x-content-type: application/json
-      x-accepts: application/json
-  /2024-04/retail-media/accounts/{account-id}/balances/{balanceId}/change-dates:
-    post:
-      description: Change dates of a balance for the given account id
-      operationId: Balances_PostApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId
-      parameters:
-      - description: The account of the balance
-        explode: false
-        in: path
-        name: account-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: The balance to change the dates
-        explode: false
-        in: path
-        name: balanceId
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ChangeDatesOfBalanceRequest'
-        x-bodyName: changeDatesOfBalance
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BalanceResponse'
-          description: Success
-      tags:
-      - Balance
-      x-content-type: application/json
-      x-accepts: application/json
   /2024-04/retail-media/accounts/{account-id}/campaigns:
     get:
       description: "Get all the editable and creatable campaign attributes including\
@@ -1831,61 +1603,6 @@ paths:
       tags:
       - Campaign
       x-accepts: application/json
-  /2024-04/retail-media/insertion-order-history/{insertionOrderId}/change-data-capture:
-    get:
-      description: Gets the balance's historical data change capture.
-      operationId: GetInsertionOrderHistoryChangeDataCapture
-      parameters:
-      - description: External insertion order id.
-        explode: false
-        in: path
-        name: insertionOrderId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: The number of elements to be returned.
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 25
-          format: int32
-          maximum: 100
-          minimum: 1
-          type: integer
-        style: form
-      - description: Comma separated change types string that will be queried.
-        explode: true
-        in: query
-        name: limitToChangeTypes
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: The (zero-based) starting offset in the collection.
-        explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          default: 0
-          format: int32
-          maximum: 2147483647
-          minimum: 0
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PageOfInsertionOrderHistoryChangeDataCapture'
-          description: Success
-      tags:
-      - Campaign
-      x-accepts: application/json
   /2024-04/retail-media/line-items/{id}/keywords:
     get:
       description: Fetch keywords associated with the specified line item
@@ -2068,180 +1785,6 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/LineItemBidMultipliersResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /2024-04/retail-media/line-items/{line-item-id}/products:
-    get:
-      description: This endpoint gets the promoted products on the specified line
-        item.
-      operationId: PromotedProductsApi_GetApi202110ExternalLineItemProductsByLineItemId
-      parameters:
-      - description: The ids that you would like to limit your result set to
-        explode: true
-        in: query
-        name: limitToId
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-      - description: The line item to interact with
-        explode: false
-        in: path
-        name: line-item-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: The 0 indexed page index you would like to receive given the
-          page size
-        explode: true
-        in: query
-        name: pageIndex
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - description: The maximum number of items you would like to receive in this
-          request
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PromotedProduct202110PagedListResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-accepts: application/json
-  /2024-04/retail-media/line-items/{line-item-id}/products/append:
-    post:
-      description: This endpoint appends one or more products to promote on the specified
-        line item.  The resulting state of the line item is returned.
-      operationId: PromotedProductsApi_PostApi202110ExternalLineItemProductsAppendByLineItemId
-      parameters:
-      - description: The line item to interact with
-        explode: false
-        in: path
-        name: line-item-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PromotedProduct202110ListRequest'
-        description: the products to append to this line item
-        x-bodyName: promotedProductsToAppend
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PromotedProduct202110PagedListResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /2024-04/retail-media/line-items/{line-item-id}/products/delete:
-    post:
-      description: This endpoint removes one or more products from promotion on the
-        specified line item.  The resulting state of the line item is returned.
-      operationId: PromotedProductsApi_PostApi202110ExternalLineItemProductsDeleteByLineItemId
-      parameters:
-      - description: The line item to interact with
-        explode: false
-        in: path
-        name: line-item-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PromotedProduct202110ListRequest'
-        description: ""
-        x-bodyName: promotedProductsToRemove
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PromotedProduct202110PagedListResponse'
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /2024-04/retail-media/line-items/{line-item-id}/products/pause:
-    post:
-      description: This endpoint pauses one or more promoted products on a specified
-        line item.
-      operationId: PromotedProducts_PostApi202110ExternalLineItemProductsPauseByLineItemId
-      parameters:
-      - description: The line item to interact with.
-        explode: false
-        in: path
-        name: line-item-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PromotedProduct202110ListRequest'
-        description: The products from which their IDs will be used to pause.
-        x-bodyName: promotedProductsToPause
-      responses:
-        "200":
-          description: Success
-      tags:
-      - Campaign
-      x-content-type: application/json
-      x-accepts: application/json
-  /2024-04/retail-media/line-items/{line-item-id}/products/unpause:
-    post:
-      description: This endpoint unpauses one or more promoted products on a specified
-        line item.
-      operationId: PromotedProducts_PostApi202110ExternalLineItemProductsUnpauseByLineItemId
-      parameters:
-      - description: The line item to interact with.
-        explode: false
-        in: path
-        name: line-item-id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PromotedProduct202110ListRequest'
-        description: The products from which their IDs will be used to unpause.
-        x-bodyName: promotedProductsToUnpause
-      responses:
-        "200":
           description: Success
       tags:
       - Campaign
@@ -3370,21 +2913,6 @@ paths:
       x-accepts: application/json
 components:
   schemas:
-    AddFundsToBalanceRequest:
-      description: Data model for an input resource
-      example:
-        data:
-          attributes:
-            deltaAmount: 0.8008281904610115
-            memo: memo
-            poNumber: poNumber
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfAddFundsToBalance'
-      type: object
-      x-used-in-request: true
     AddRemoveKeywordModel:
       additionalProperties: false
       description: A single keyword to be added or removed
@@ -5326,193 +4854,6 @@ components:
           type: array
       type: object
       x-used-in-response: true
-    BalanceResponse:
-      description: Data model for response resource
-      example:
-        data:
-          attributes:
-            privateMarketBillingType: notApplicable
-            endDate: 2000-01-23
-            deposited: 0.8008281904610115
-            spent: 1.4658129805029452
-            memo: memo
-            spendType: Onsite
-            remaining: 6.027456183070403
-            salesForceId: salesForceId
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            balanceType: unknown
-            name: name
-            poNumber: poNumber
-            startDate: 2000-01-23
-            status: unknown
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfBalanceResponse'
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-      type: object
-      x-used-in-response: true
-    BalanceResponsePagedListResponse:
-      description: Data model for a paged list of response resources
-      example:
-        metadata:
-          currentPageSize: 6
-          previousPage: previousPage
-          nextPage: nextPage
-          totalPages: 5
-          totalItemsAcrossAllPages: 1
-          currentPageIndex: 0
-        data:
-        - attributes:
-            privateMarketBillingType: notApplicable
-            endDate: 2000-01-23
-            deposited: 0.8008281904610115
-            spent: 1.4658129805029452
-            memo: memo
-            spendType: Onsite
-            remaining: 6.027456183070403
-            salesForceId: salesForceId
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            balanceType: unknown
-            name: name
-            poNumber: poNumber
-            startDate: 2000-01-23
-            status: unknown
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        - attributes:
-            privateMarketBillingType: notApplicable
-            endDate: 2000-01-23
-            deposited: 0.8008281904610115
-            spent: 1.4658129805029452
-            memo: memo
-            spendType: Onsite
-            remaining: 6.027456183070403
-            salesForceId: salesForceId
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            balanceType: unknown
-            name: name
-            poNumber: poNumber
-            startDate: 2000-01-23
-            status: unknown
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ResourceOfBalanceResponse'
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-        metadata:
-          $ref: '#/components/schemas/PageMetadata'
-        warnings:
-          items:
-            $ref: '#/components/schemas/CommonProblem'
-          readOnly: true
-          type: array
-      type: object
-      x-used-in-response: true
     CampaignAttributesV202301:
       description: An object that represents the available options to set when creating
         a Retail Media Campaign
@@ -5992,47 +5333,6 @@ components:
           type: array
       type: object
       x-used-in-response: true
-    ChangeDatesOfBalanceRequest:
-      description: Data model for an input resource
-      example:
-        data:
-          attributes:
-            endDate: 2000-01-23
-            memo: memo
-            startDate: 2000-01-23
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfChangeDatesOfBalance'
-      type: object
-      x-used-in-request: true
-    ChangeDetails:
-      additionalProperties: false
-      description: Change details of a property of the insertion order.
-      example:
-        changeValue: changeValue
-        previousValue: previousValue
-        currentValue: currentValue
-      properties:
-        changeValue:
-          description: Change detail of a property of the insertion order.
-          nullable: true
-          type: string
-        currentValue:
-          description: Current value of a property of the insertion order.
-          nullable: true
-          type: string
-        previousValue:
-          description: Previous value of a property of the insertion order.
-          nullable: true
-          type: string
-      required:
-      - changeValue
-      - currentValue
-      - previousValue
-      type: object
-      x-used-in-response: true
     ChoiceOption:
       additionalProperties: false
       description: An option given in a choice
@@ -6219,13 +5519,14 @@ components:
         data:
         - attributes:
             budgetRemaining: 6.027456183070403
-            createdAt: 2000-01-23T04:56:07.000+00:00
             endDate: 2000-01-23
-            budgetSpent: 1.4658129805029452
             campaignId: campaignId
-            name: name
-            targetRetailerId: targetRetailerId
             type: unknown
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            budgetSpent: 1.4658129805029452
+            name: name
+            id: id
+            targetRetailerId: targetRetailerId
             startDate: 2000-01-23
             budget: 0.8008281904610115
             status: unknown
@@ -6234,13 +5535,14 @@ components:
           type: type
         - attributes:
             budgetRemaining: 6.027456183070403
-            createdAt: 2000-01-23T04:56:07.000+00:00
             endDate: 2000-01-23
-            budgetSpent: 1.4658129805029452
             campaignId: campaignId
-            name: name
-            targetRetailerId: targetRetailerId
             type: unknown
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            budgetSpent: 1.4658129805029452
+            name: name
+            id: id
+            targetRetailerId: targetRetailerId
             startDate: 2000-01-23
             budget: 0.8008281904610115
             status: unknown
@@ -6314,13 +5616,14 @@ components:
         data:
           attributes:
             budgetRemaining: 6.027456183070403
-            createdAt: 2000-01-23T04:56:07.000+00:00
             endDate: 2000-01-23
-            budgetSpent: 1.4658129805029452
             campaignId: campaignId
-            name: name
-            targetRetailerId: targetRetailerId
             type: unknown
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            budgetSpent: 1.4658129805029452
+            name: name
+            id: id
+            targetRetailerId: targetRetailerId
             startDate: 2000-01-23
             budget: 0.8008281904610115
             status: unknown
@@ -6532,26 +5835,6 @@ components:
           x-optional-in-response: true
       type: object
       x-used-in-response: true
-    CreateBalanceRequest:
-      description: Data model for an input resource
-      example:
-        data:
-          attributes:
-            salesForceId: salesForceId
-            endDate: 2000-01-23
-            deposited: 0.8008281904610115
-            name: name
-            memo: memo
-            poNumber: poNumber
-            spendType: Onsite
-            startDate: 2000-01-23
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfCreateBalance'
-      type: object
-      x-used-in-request: true
     Creative202110:
       additionalProperties: false
       description: Metadata and usage info of a preferred deals creative
@@ -7666,30 +6949,6 @@ components:
       type: object
       x-used-in-response: true
       x-optional-in-response: true
-    ExternalAddFundsToBalance:
-      description: An object that represents the available options of adding funds
-        to a balance.
-      example:
-        deltaAmount: 0.8008281904610115
-        memo: memo
-        poNumber: poNumber
-      properties:
-        deltaAmount:
-          description: Amount of billable funds to be added / decreased allotted to
-            the balance.
-          format: double
-          type: number
-        memo:
-          description: Memo
-          type: string
-        poNumber:
-          description: Purchase Order number.
-          type: string
-      required:
-      - deltaAmount
-      - memo
-      type: object
-      x-used-in-request: true
     ExternalAddToBasketIdsUpdateModel202110:
       description: Update model for updating add to basket target ids
       example:
@@ -8070,114 +7329,6 @@ components:
       type: object
       x-used-in-response: true
       x-used-in-request: true
-    ExternalBalanceResponse:
-      description: A Retail Media Balance used to determine the funds available for
-        any or all campaigns in an account
-      example:
-        privateMarketBillingType: notApplicable
-        endDate: 2000-01-23
-        deposited: 0.8008281904610115
-        spent: 1.4658129805029452
-        memo: memo
-        spendType: Onsite
-        remaining: 6.027456183070403
-        salesForceId: salesForceId
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        balanceType: unknown
-        name: name
-        poNumber: poNumber
-        startDate: 2000-01-23
-        status: unknown
-        updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        balanceType:
-          description: Type of the balance
-          enum:
-          - unknown
-          - capped
-          - uncapped
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        deposited:
-          description: Amount of billable funds allotted to the balance.
-          format: decimal
-          nullable: true
-          type: number
-        endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-        memo:
-          description: Memo
-          type: string
-        name:
-          description: Name of the balance.
-          type: string
-        poNumber:
-          description: Purchase Order number.
-          type: string
-        privateMarketBillingType:
-          description: Billing type for Private Market.
-          enum:
-          - notApplicable
-          - billByRetailer
-          - billByCriteo
-          - unknown
-          type: string
-        remaining:
-          format: decimal
-          nullable: true
-          type: number
-        salesForceId:
-          description: SalesForceId the balance is linked to.
-          type: string
-        spendType:
-          description: Spend Type of the balance.
-          enum:
-          - Onsite
-          - Offsite
-          - OffsiteAwareness
-          type: string
-        spent:
-          format: decimal
-          nullable: true
-          type: number
-        startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-        status:
-          enum:
-          - unknown
-          - scheduled
-          - active
-          - ended
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - balanceType
-      - createdAt
-      - deposited
-      - endDate
-      - memo
-      - name
-      - poNumber
-      - privateMarketBillingType
-      - remaining
-      - salesForceId
-      - spendType
-      - spent
-      - startDate
-      - status
-      - updatedAt
-      type: object
-      x-used-in-response: true
     ExternalBrand:
       additionalProperties: false
       description: A Retail Media Brand used to represent a collection of products
@@ -8278,45 +7429,19 @@ components:
       - status
       type: object
       x-used-in-response: true
-    ExternalChangeDatesOfBalance:
-      description: An object that represents the available options to modify schedule
-        of a balance.
-      example:
-        endDate: 2000-01-23
-        memo: memo
-        startDate: 2000-01-23
-      properties:
-        endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-        memo:
-          description: Memo
-          type: string
-        startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-      required:
-      - endDate
-      - memo
-      - startDate
-      type: object
-      x-used-in-request: true
     ExternalCommonLineItem:
       description: A common line item to hold line item information shared between
         preferred and auction line items
       example:
         budgetRemaining: 6.027456183070403
-        createdAt: 2000-01-23T04:56:07.000+00:00
         endDate: 2000-01-23
-        budgetSpent: 1.4658129805029452
         campaignId: campaignId
-        name: name
-        targetRetailerId: targetRetailerId
         type: unknown
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        budgetSpent: 1.4658129805029452
+        name: name
+        id: id
+        targetRetailerId: targetRetailerId
         startDate: 2000-01-23
         budget: 0.8008281904610115
         status: unknown
@@ -8346,6 +7471,10 @@ components:
           nullable: true
           type: string
           x-optional-in-response: true
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
         name:
           maxLength: 255
           minLength: 0
@@ -8390,63 +7519,6 @@ components:
       - updatedAt
       type: object
       x-used-in-response: true
-    ExternalCreateBalance:
-      description: An object that represents the available options to set when creating
-        a Retail Media Balance
-      example:
-        salesForceId: salesForceId
-        endDate: 2000-01-23
-        deposited: 0.8008281904610115
-        name: name
-        memo: memo
-        poNumber: poNumber
-        spendType: Onsite
-        startDate: 2000-01-23
-      properties:
-        deposited:
-          description: Amount of billable funds allotted to the balance.
-          format: decimal
-          nullable: true
-          type: number
-        endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-        memo:
-          description: Memo
-          type: string
-        name:
-          description: Name of the balance.
-          type: string
-        poNumber:
-          description: Purchase Order number.
-          type: string
-        salesForceId:
-          description: SalesForceId the balance is linked to.
-          type: string
-        spendType:
-          description: Type of the balance spend.
-          enum:
-          - Onsite
-          - Offsite
-          - OffsiteAwareness
-          type: string
-        startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-      required:
-      - deposited
-      - endDate
-      - memo
-      - name
-      - salesForceId
-      - spendType
-      - startDate
-      type: object
-      x-used-in-request: true
     ExternalKeywordTarget202110:
       description: Identifies keyword targeting for a line item
       example:
@@ -8520,7 +7592,9 @@ components:
         searchKeywords:
           items:
             type: string
+          nullable: true
           type: array
+          x-optional-in-response: true
       required:
       - pageType
       type: object
@@ -8809,18 +7883,6 @@ components:
       - status
       type: object
       x-used-in-request: true
-    ExternalPromotedProduct202110:
-      description: identifies a promoted product
-      example:
-        bidOverride: 0.8008281904610115
-      properties:
-        bidOverride:
-          format: decimal
-          nullable: true
-          type: number
-      type: object
-      x-used-in-response: true
-      x-used-in-request: true
     ExternalRetailer:
       additionalProperties: false
       description: A Retail Media Retailer used to represent a selection of products
@@ -9037,41 +8099,6 @@ components:
       type: object
       x-used-in-response: true
       x-used-in-request: true
-    ExternalUpdateBalanceModel:
-      description: An object that represents the available options to set when updating
-        a Retail Media Balance
-      example:
-        salesForceId: salesForceId
-        endDate: 2000-01-23
-        name: name
-        memo: memo
-        poNumber: poNumber
-        startDate: 2000-01-23
-      properties:
-        endDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-        memo:
-          description: Memo
-          type: string
-        name:
-          description: Name of the balance.
-          type: string
-        poNumber:
-          description: Purchase Order number.
-          type: string
-        salesForceId:
-          description: SalesForceId the balance is linked to.
-          type: string
-        startDate:
-          description: "Represents the Date as a year, month, and day in the format\
-            \ YYYY-MM-DD"
-          format: date
-          type: string
-      type: object
-      x-used-in-request: true
     FilesVariablesSpecification:
       additionalProperties: false
       description: Specification of a file variable
@@ -9245,56 +8272,6 @@ components:
           type: string
       type: object
       x-used-in-request: true
-    InsertionOrderHistoryChangeDataCapture:
-      additionalProperties: false
-      description: Data model represents the data change capture of insertion order
-        history.
-      example:
-        dateOfModification: 2000-01-23T04:56:07.000+00:00
-        changeType: BalanceCreated
-        modifiedByUser: modifiedByUser
-        memo: memo
-        changeDetails:
-          changeValue: changeValue
-          previousValue: previousValue
-          currentValue: currentValue
-      properties:
-        changeDetails:
-          $ref: '#/components/schemas/ChangeDetails'
-        changeType:
-          description: Represent the type of change states of the history.
-          enum:
-          - BalanceCreated
-          - BalanceAdded
-          - BalanceRemoved
-          - BalanceUncapped
-          - BalanceCapped
-          - EndDate
-          - StartDate
-          - BalanceName
-          - PoNumber
-          - ValueAdd
-          - SalesforceId
-          type: string
-        dateOfModification:
-          description: Date when data change has occured.
-          format: date-time
-          type: string
-        memo:
-          description: Memo associate with the insertion order modification.
-          nullable: true
-          type: string
-          x-optional-in-response: true
-        modifiedByUser:
-          description: User name who modified the insertion order.
-          type: string
-      required:
-      - changeDetails
-      - changeType
-      - dateOfModification
-      - modifiedByUser
-      type: object
-      x-used-in-response: true
     JsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301:
       description: "A JSON:API wrapper class to format a <typeparamref name=\"TAttributes\"\
         \ /> with external Id, Type, and\r\nAttributes properties"
@@ -10669,32 +9646,6 @@ components:
       - NegativeBroadMatch
       type: string
       x-used-in-request: true
-    Metadata:
-      additionalProperties: false
-      description: Metadata related to the current request.
-      example:
-        offset: 1
-        count: 0
-        limit: 6
-      properties:
-        count:
-          format: int64
-          nullable: true
-          type: integer
-          x-optional-in-response: true
-        limit:
-          description: The number of elements to be returned.
-          format: int32
-          type: integer
-        offset:
-          description: The (zero-based) starting offset in the collection.
-          format: int32
-          type: integer
-      required:
-      - limit
-      - offset
-      type: object
-      x-used-in-response: true
     MonthlyLineItemBudegetOverride:
       additionalProperties: false
       description: The details for a monthly budget override
@@ -10773,44 +9724,6 @@ components:
       required:
       - currentPageIndex
       - currentPageSize
-      type: object
-      x-used-in-response: true
-    PageOfInsertionOrderHistoryChangeDataCapture:
-      additionalProperties: false
-      description: A wrapper class to return a single page of items with metadata
-        for offset and limit based paging.
-      example:
-        data:
-        - dateOfModification: 2000-01-23T04:56:07.000+00:00
-          changeType: BalanceCreated
-          modifiedByUser: modifiedByUser
-          memo: memo
-          changeDetails:
-            changeValue: changeValue
-            previousValue: previousValue
-            currentValue: currentValue
-        - dateOfModification: 2000-01-23T04:56:07.000+00:00
-          changeType: BalanceCreated
-          modifiedByUser: modifiedByUser
-          memo: memo
-          changeDetails:
-            changeValue: changeValue
-            previousValue: previousValue
-            currentValue: currentValue
-        meta:
-          offset: 1
-          count: 0
-          limit: 6
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/InsertionOrderHistoryChangeDataCapture'
-          type: array
-        meta:
-          $ref: '#/components/schemas/Metadata'
-      required:
-      - data
-      - meta
       type: object
       x-used-in-response: true
     PageTypeEnvironment202210:
@@ -11234,105 +10147,6 @@ components:
           type: string
       type: object
       x-used-in-response: true
-    PromotedProduct202110ListRequest:
-      description: Data model for a list of input resources
-      example:
-        data:
-        - attributes:
-            bidOverride: 0.8008281904610115
-          id: id
-          type: type
-        - attributes:
-            bidOverride: 0.8008281904610115
-          id: id
-          type: type
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ResourceOfPromotedProduct202110'
-          type: array
-      type: object
-      x-used-in-request: true
-    PromotedProduct202110PagedListResponse:
-      description: Data model for a paged list of response resources
-      example:
-        metadata:
-          currentPageSize: 6
-          previousPage: previousPage
-          nextPage: nextPage
-          totalPages: 5
-          totalItemsAcrossAllPages: 1
-          currentPageIndex: 0
-        data:
-        - attributes:
-            bidOverride: 0.8008281904610115
-          id: id
-          type: type
-        - attributes:
-            bidOverride: 0.8008281904610115
-          id: id
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          traceIdentifier: traceIdentifier
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ResourceOfPromotedProduct202110'
-          type: array
-        errors:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-        metadata:
-          $ref: '#/components/schemas/PageMetadata'
-        warnings:
-          items:
-            $ref: '#/components/schemas/ProblemDetails'
-          readOnly: true
-          type: array
-      type: object
-      x-used-in-response: true
     PutCampaignV202301:
       description: An object that represents the available options to set when editing
         a Retail Media Campaign
@@ -11378,26 +10192,6 @@ components:
           x-optional-in-response: true
       type: object
       x-used-in-response: true
-    ResourceOfAddFundsToBalance:
-      description: Data model for a Resource
-      example:
-        attributes:
-          deltaAmount: 0.8008281904610115
-          memo: memo
-          poNumber: poNumber
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ExternalAddFundsToBalance'
-        id:
-          description: Id of the entity
-          type: string
-        type:
-          description: Canonical type name of the entity
-          type: string
-      type: object
-      x-used-in-request: true
     ResourceOfAuctionLineItem:
       description: Data model for a Resource
       example:
@@ -11490,42 +10284,6 @@ components:
       type: object
       x-used-in-response: true
       x-used-in-request: true
-    ResourceOfBalanceResponse:
-      description: Data model for a Resource
-      example:
-        attributes:
-          privateMarketBillingType: notApplicable
-          endDate: 2000-01-23
-          deposited: 0.8008281904610115
-          spent: 1.4658129805029452
-          memo: memo
-          spendType: Onsite
-          remaining: 6.027456183070403
-          salesForceId: salesForceId
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          balanceType: unknown
-          name: name
-          poNumber: poNumber
-          startDate: 2000-01-23
-          status: unknown
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ExternalBalanceResponse'
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-          x-optional-in-response: true
-        type:
-          description: Canonical type name of the entity
-          nullable: true
-          type: string
-          x-optional-in-response: true
-      type: object
-      x-used-in-response: true
     ResourceOfCategory202204:
       description: Data model for a Resource
       example:
@@ -11550,38 +10308,19 @@ components:
           x-optional-in-response: true
       type: object
       x-used-in-response: true
-    ResourceOfChangeDatesOfBalance:
-      description: Data model for a Resource
-      example:
-        attributes:
-          endDate: 2000-01-23
-          memo: memo
-          startDate: 2000-01-23
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ExternalChangeDatesOfBalance'
-        id:
-          description: Id of the entity
-          type: string
-        type:
-          description: Canonical type name of the entity
-          type: string
-      type: object
-      x-used-in-request: true
     ResourceOfCommonLineItem:
       description: Data model for a Resource
       example:
         attributes:
           budgetRemaining: 6.027456183070403
-          createdAt: 2000-01-23T04:56:07.000+00:00
           endDate: 2000-01-23
-          budgetSpent: 1.4658129805029452
           campaignId: campaignId
-          name: name
-          targetRetailerId: targetRetailerId
           type: unknown
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          budgetSpent: 1.4658129805029452
+          name: name
+          id: id
+          targetRetailerId: targetRetailerId
           startDate: 2000-01-23
           budget: 0.8008281904610115
           status: unknown
@@ -11603,31 +10342,6 @@ components:
           x-optional-in-response: true
       type: object
       x-used-in-response: true
-    ResourceOfCreateBalance:
-      description: Data model for a Resource
-      example:
-        attributes:
-          salesForceId: salesForceId
-          endDate: 2000-01-23
-          deposited: 0.8008281904610115
-          name: name
-          memo: memo
-          poNumber: poNumber
-          spendType: Onsite
-          startDate: 2000-01-23
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ExternalCreateBalance'
-        id:
-          description: Id of the entity
-          type: string
-        type:
-          description: Canonical type name of the entity
-          type: string
-      type: object
-      x-used-in-request: true
     ResourceOfCreative202110:
       additionalProperties: false
       description: A class that represents a domain entity exposed by an API.
@@ -11862,29 +10576,6 @@ components:
           type: string
       type: object
       x-used-in-request: true
-    ResourceOfPromotedProduct202110:
-      description: Data model for a Resource
-      example:
-        attributes:
-          bidOverride: 0.8008281904610115
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ExternalPromotedProduct202110'
-        id:
-          description: Id of the entity
-          nullable: true
-          type: string
-          x-optional-in-response: true
-        type:
-          description: Canonical type name of the entity
-          nullable: true
-          type: string
-          x-optional-in-response: true
-      type: object
-      x-used-in-response: true
-      x-used-in-request: true
     ResourceOfTemplate:
       additionalProperties: false
       description: A class that represents a domain entity exposed by an API.
@@ -12022,29 +10713,6 @@ components:
       type: object
       x-used-in-response: true
       x-optional-in-response: true
-    ResourceOfUpdateBalanceModel:
-      description: Data model for a Resource
-      example:
-        attributes:
-          salesForceId: salesForceId
-          endDate: 2000-01-23
-          name: name
-          memo: memo
-          poNumber: poNumber
-          startDate: 2000-01-23
-        id: id
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ExternalUpdateBalanceModel'
-        id:
-          description: Id of the entity
-          type: string
-        type:
-          description: Canonical type name of the entity
-          type: string
-      type: object
-      x-used-in-request: true
     ResourceOutcome:
       additionalProperties: false
       description: Outcome object containing errors and warnings.
@@ -14510,24 +13178,6 @@ components:
       x-used-in-request: true
       x-used-in-response: true
       x-optional-in-response: true
-    UpdateBalanceModelRequest:
-      description: Data model for an input resource
-      example:
-        data:
-          attributes:
-            salesForceId: salesForceId
-            endDate: 2000-01-23
-            name: name
-            memo: memo
-            poNumber: poNumber
-            startDate: 2000-01-23
-          id: id
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceOfUpdateBalanceModel'
-      type: object
-      x-used-in-request: true
     ValueResourceInputOfCampaignBudgetOverrides:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a

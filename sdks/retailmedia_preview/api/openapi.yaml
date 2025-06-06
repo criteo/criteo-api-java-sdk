@@ -185,6 +185,72 @@ paths:
       tags:
       - Audience
       x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/audience-segments/compute-sizes:
+    post:
+      description: Gets the size of all segments. An error is returned for those whose
+        size calculation is not supported.
+      operationId: computeAudienceSegmentsSizes
+      parameters:
+      - description: Account id
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentComputeSizesInputV1'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentComputeSizesInputV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentComputeSizesInputV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentComputeSizesInputV1'
+        description: ""
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentSizeEntityV1ListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentSizeEntityV1ListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentSizeEntityV1ListResponse'
+          description: Success or partial success
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad request
+        "401":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not properly authenticated.
+        "403":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not authorized to access this resource.
+      tags:
+      - Audience
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /preview/retail-media/accounts/{account-id}/audience-segments/create:
     post:
       description: "Creates all segments with a valid configuration, and returns the\
@@ -254,7 +320,7 @@ paths:
       x-accepts: application/json
   /preview/retail-media/accounts/{account-id}/audience-segments/delete:
     post:
-      description: Delete the segments associated to the given audience IDs.
+      description: Delete the segments associated to the given IDs.
       operationId: bulkDeleteAudienceSegments
       parameters:
       - description: Account id
@@ -295,6 +361,72 @@ paths:
               schema:
                 $ref: '#/components/schemas/RmAudienceSegmentIdEntityV1ListResponse'
           description: Success or partial success
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad request
+        "401":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not properly authenticated.
+        "403":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not authorized to access this resource.
+      tags:
+      - Audience
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/audience-segments/estimate-size:
+    post:
+      description: Gets the size estimation of a non existent segment. An error is
+        returned when size calculation is not supported.
+      operationId: estimateAudienceSegmentSize
+      parameters:
+      - description: Account Id
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentEstimateSizeInputV1'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentEstimateSizeInputV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentEstimateSizeInputV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceSegmentEstimateSizeInputV1'
+        description: ""
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentSizeEstimationV1Response'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentSizeEstimationV1Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentSizeEstimationV1Response'
+          description: Success
         "400":
           content:
             text/plain: {}
@@ -383,6 +515,343 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse'
+          description: Success or partial success
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad request
+        "401":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not properly authenticated.
+        "403":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not authorized to access this resource.
+      tags:
+      - Audience
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/audiences:
+    patch:
+      description: "Updates the properties of all audiences with a valid configuration,\
+        \ and returns their IDs. For those that cannot be updated, one or multiple\
+        \ errors are returned."
+      operationId: bulkUpdateAudience
+      parameters:
+      - description: Account Id
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceBulkUpdateInputV1'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceBulkUpdateInputV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceBulkUpdateInputV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceBulkUpdateInputV1'
+        description: ""
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RmAudienceEntityV1ListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceEntityV1ListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceEntityV1ListResponse'
+          description: Success or partial success
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad request
+        "401":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not properly authenticated.
+        "403":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not authorized to access this resource.
+      tags:
+      - Audience
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/audiences/compute-sizes:
+    post:
+      description: Gets the size of all audiences. An error is returned for those
+        whose size calculation is not supported.
+      operationId: computeAudiencesSizes
+      parameters:
+      - description: Account Id
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceComputeSizesInputV1'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceComputeSizesInputV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceComputeSizesInputV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceComputeSizesInputV1'
+        description: ""
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSizeEntityV1ListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSizeEntityV1ListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSizeEntityV1ListResponse'
+          description: Success or partial success
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad request
+        "401":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not properly authenticated.
+        "403":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not authorized to access this resource.
+      tags:
+      - Audience
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/audiences/create:
+    post:
+      description: "Creates all audiences with a valid configuration, and returns\
+        \ their IDs. For those that cannot be created, one or multiple errors are\
+        \ returned."
+      operationId: bulkCreateAudience
+      parameters:
+      - description: Account Id
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceBulkCreateInputV1'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceBulkCreateInputV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceBulkCreateInputV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceBulkCreateInputV1'
+        description: Audience creation parameter
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RmAudienceEntityV1ListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceEntityV1ListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceEntityV1ListResponse'
+          description: Success or partial success
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad request
+        "401":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not properly authenticated.
+        "403":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not authorized to access this resource.
+      tags:
+      - Audience
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/audiences/delete:
+    post:
+      description: Deletes the audiences associated to the given IDs.
+      operationId: bulkDeleteAudiences
+      parameters:
+      - description: Account Id
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceBulkDeleteInputV1'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceBulkDeleteInputV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceBulkDeleteInputV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceBulkDeleteInputV1'
+        description: ""
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentIdEntityV1ListResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentIdEntityV1ListResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSegmentIdEntityV1ListResponse'
+          description: Success
+        "204":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Success or partial success
+        "400":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: Bad request
+        "401":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not properly authenticated.
+        "403":
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+          description: The API client is not authorized to access this resource.
+      tags:
+      - Audience
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /preview/retail-media/accounts/{account-id}/audiences/estimate-size:
+    post:
+      description: Gets the size estimation of a non existent audience. An error is
+        returned when size calculation is not supported.
+      operationId: estimateAudienceSize
+      parameters:
+      - description: Account Id
+        explode: false
+        in: path
+        name: account-id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceEstimateSizeInputV1'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceEstimateSizeInputV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceEstimateSizeInputV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RmAudienceEstimateSizeInputV1'
+        description: ""
+        required: true
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSizeEstimationV1Response'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSizeEstimationV1Response'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RmAudienceSizeEstimationV1Response'
           description: Success or partial success
         "400":
           content:
@@ -1236,6 +1705,69 @@ paths:
       - Accounts
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /preview/retail-media/auction-line-items/{lineItemId}:
+    get:
+      description: Gets a sponsored product line item by its id.
+      operationId: GetAuctionLineItemV2
+      parameters:
+      - description: The id of the line item
+        explode: false
+        in: path
+        name: lineItemId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceOutcomeOfSponsoredProductsLineItem'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+    put:
+      description: Updates a Sponsored Products Line Item given a line item id and
+        a request.
+      operationId: UpdateAuctionLineItemV2
+      parameters:
+      - description: The line item ID of the sponsored products line item.
+        explode: false
+        in: path
+        name: lineItemId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel'
+        description: An update request containing all details of the requested update.
+        x-bodyName: sponsoredProductsLineItemUpdateRequest
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceOutcomeOfSponsoredProductsLineItem'
+          description: Success
+      tags:
+      - Campaign
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove:
     post:
       description: "Add/remove identifiers to or from a retail-media contact list\
@@ -1686,6 +2218,104 @@ paths:
       tags:
       - Campaign
       x-content-type: application/json
+      x-accepts: application/json
+  /preview/retail-media/campaigns/{campaignId}/auction-line-items:
+    get:
+      description: Gets a page of sponsored product line items by campaign id.
+      operationId: GetAuctionLineItemsByCampaignIdV2
+      parameters:
+      - description: The id of the campaign
+        explode: false
+        in: path
+        name: campaignId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The ids that you would like to limit your result set to
+        explode: true
+        in: query
+        name: limitToId
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: The 0 indexed page index you would like to receive given the
+          page size
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        style: form
+      - description: The maximum number of items you would like to receive in this
+          request
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 25
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageOfSponsoredProductsLineItem'
+          description: Success
+      tags:
+      - Campaign
+      x-accepts: application/json
+    post:
+      description: Creates new auction line item with the specified settings
+      operationId: CreateAuctionLineItemV2
+      parameters:
+      - description: The given campaign id
+        explode: false
+        in: path
+        name: campaignId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/SponsoredProductsLineItemCreateRequestModel'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SponsoredProductsLineItemCreateRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SponsoredProductsLineItemCreateRequestModel'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SponsoredProductsLineItemCreateRequestModel'
+        description: The line item settings to create a line item with
+        x-bodyName: lineItem
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceOutcomeOfSponsoredProductsLineItem'
+          description: Success
+      tags:
+      - Campaign
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /preview/retail-media/catalog/products/batch:
     post:
@@ -3469,6 +4099,78 @@ paths:
       tags:
       - Campaign
       x-accepts: application/json
+  /preview/retail-media/retailers/{retailerId}/categories/search:
+    post:
+      description: Search a retailer categories by given text substring and category
+        ids.
+      operationId: CategoriesSearchV1
+      parameters:
+      - description: Limit of the search result.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        style: form
+      - description: Offset of the search result.
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        style: form
+      - description: Retailer id.
+        explode: false
+        in: path
+        name: retailerId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputCategoriesSearchRequestV1'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputCategoriesSearchRequestV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputCategoriesSearchRequestV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputCategoriesSearchRequestV1'
+        description: Request of categories search.
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeCategory202204Metadata'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Bad Request
+      tags:
+      - Campaign
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /preview/retail-media/retailers/{retailerId}/cpc-min-bids:
     post:
       description: Get overall and individual minimum bid amount for given retailer
@@ -3516,6 +4218,97 @@ paths:
       tags:
       - Campaign
       x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /preview/retail-media/retailers/{retailerId}/recommend-categories:
+    post:
+      description: Endpoint to get recommended categories by given retailer id and
+        sku id list.
+      operationId: GetRecommendedCategories
+      parameters:
+      - description: Retailer id.
+        explode: false
+        in: path
+        name: retailerId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputRecommendedCategoriesRequestV1'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputRecommendedCategoriesRequestV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputRecommendedCategoriesRequestV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputRecommendedCategoriesRequestV1'
+        description: Request of recommended categories.
+        x-bodyName: request
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResourceCollectionOutcomeCategory202204'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Bad Request
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Forbidden
+      tags:
+      - Campaign
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /preview/retail-media/retailers/{retailerId}/recommend-keywords:
+    post:
+      description: Recommend keywords by given retailer id and sku ids.
+      operationId: RecommendedKeywords
+      parameters:
+      - description: Retailer id.
+        explode: false
+        in: path
+        name: retailerId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueResourceInputRecommendedKeywordsRequestV1'
+        description: Request of recommended keywords.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueResourceOutcomeRecommendedKeywordsResponseV1'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+          description: Bad Request
+      tags:
+      - Campaign
+      x-content-type: application/json
       x-accepts: application/json
   /preview/retail-media/retailers/{retailerId}/sellers/{seller}:
     get:
@@ -5939,6 +6732,27 @@ components:
       - status
       type: object
       x-used-in-response: true
+    CategoriesSearchRequestV1:
+      description: An object that represents the request of CategoriesSearch endpoint.
+      example:
+        categoryIds:
+        - categoryIds
+        - categoryIds
+        textSubstring: textSubstring
+      properties:
+        categoryIds:
+          description: Categories search category ids criteria.
+          items:
+            type: string
+          minItems: 1
+          nullable: true
+          type: array
+        textSubstring:
+          description: Categories search text substring criteria.
+          nullable: true
+          type: string
+      type: object
+      x-used-in-request: true
     Category:
       description: Retailer Category.
       example:
@@ -7077,6 +7891,30 @@ components:
           x-optional-in-response: true
       type: object
       x-used-in-response: true
+    EntityResourceCategory202204:
+      description: "A domain entity exposed by the API, identified by a unique id."
+      example:
+        attributes:
+          name: name
+          text: text
+          parentId: parentId
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/Category202204'
+        id:
+          description: Unique id of the entity.
+          nullable: true
+          type: string
+          x-optional-in-response: true
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
     EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata:
       description: A top-level object that encapsulates a Criteo API response for
         several entities and metadata.
@@ -7159,6 +7997,172 @@ components:
           x-optional-in-response: true
         metadata:
           $ref: '#/components/schemas/PagingOffsetLimitMetadata'
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
+    EntityResourceCollectionOutcomeCategory202204:
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities.
+      example:
+        data:
+        - attributes:
+            name: name
+            text: text
+            parentId: parentId
+          id: id
+          type: type
+        - attributes:
+            name: name
+            text: text
+            parentId: parentId
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/EntityResourceCategory202204'
+          nullable: true
+          type: array
+          x-optional-in-response: true
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
+    EntityResourceCollectionOutcomeCategory202204Metadata:
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities and metadata.
+      example:
+        metadata:
+          offset: 1
+          count: 0
+          limit: 6
+        data:
+        - attributes:
+            name: name
+            text: text
+            parentId: parentId
+          id: id
+          type: type
+        - attributes:
+            name: name
+            text: text
+            parentId: parentId
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/EntityResourceCategory202204'
+          nullable: true
+          type: array
+          x-optional-in-response: true
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+        metadata:
+          $ref: '#/components/schemas/Metadata'
         warnings:
           description: Warnings that occured during this call.
           items:
@@ -7460,6 +8464,57 @@ components:
           x-optional-in-response: true
       type: object
       x-used-in-response: true
+    EntityResourceOfSponsoredProductsLineItem:
+      additionalProperties: false
+      description: "A domain entity exposed by the API, identified by a unique id."
+      example:
+        attributes:
+          externalLineItemId: 2
+          bidStrategy: Unknown
+          budgetRemaining: 6.027456183070403
+          endDate: 2000-01-23T04:56:07.000+00:00
+          campaignId: 5
+          targetBid: 3.616076749251911
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          budgetSpent: 1.4658129805029452
+          maxBid: 7.061401241503109
+          flightSchedule:
+            legs:
+            - dayOfWeek: Sunday
+              startTime: 2000-01-23T04:56:07.000+00:00
+              endTime: 2000-01-23T04:56:07.000+00:00
+            - dayOfWeek: Sunday
+              startTime: 2000-01-23T04:56:07.000+00:00
+              endTime: 2000-01-23T04:56:07.000+00:00
+          name: name
+          buyType: Unknown
+          isAutoDailyPacing: true
+          targetRetailerId: 2
+          dailyPacing: 5.637376656633329
+          monthlyPacing: 9.301444243932576
+          startDate: 2000-01-23T04:56:07.000+00:00
+          budget: 0.8008281904610115
+          status: Unknown
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/SponsoredProductsLineItem'
+        id:
+          description: Unique id of the entity.
+          nullable: true
+          type: string
+          x-optional-in-response: true
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     EntityResourceOutcomeOfCatalogStatusV2:
       description: A top-level object that encapsulates a Criteo API response for
         a single entity.
@@ -7516,6 +8571,101 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/EntityResourceOfCatalogStatusV2'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
+    EntityResourceOutcomeOfSponsoredProductsLineItem:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single entity.
+      example:
+        data:
+          attributes:
+            externalLineItemId: 2
+            bidStrategy: Unknown
+            budgetRemaining: 6.027456183070403
+            endDate: 2000-01-23T04:56:07.000+00:00
+            campaignId: 5
+            targetBid: 3.616076749251911
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            budgetSpent: 1.4658129805029452
+            maxBid: 7.061401241503109
+            flightSchedule:
+              legs:
+              - dayOfWeek: Sunday
+                startTime: 2000-01-23T04:56:07.000+00:00
+                endTime: 2000-01-23T04:56:07.000+00:00
+              - dayOfWeek: Sunday
+                startTime: 2000-01-23T04:56:07.000+00:00
+                endTime: 2000-01-23T04:56:07.000+00:00
+            name: name
+            buyType: Unknown
+            isAutoDailyPacing: true
+            targetRetailerId: 2
+            dailyPacing: 5.637376656633329
+            monthlyPacing: 9.301444243932576
+            startDate: 2000-01-23T04:56:07.000+00:00
+            budget: 0.8008281904610115
+            status: Unknown
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/EntityResourceOfSponsoredProductsLineItem'
         errors:
           description: Errors that occured during this call.
           items:
@@ -8296,6 +9446,66 @@ components:
       type: object
       x-used-in-request: true
       x-used-in-response: true
+      x-optional-in-response: true
+    FlightLeg:
+      additionalProperties: false
+      description: A leg of a flight schedule outlining which days and times the line
+        item will run.
+      example:
+        dayOfWeek: Sunday
+        startTime: 2000-01-23T04:56:07.000+00:00
+        endTime: 2000-01-23T04:56:07.000+00:00
+      properties:
+        dayOfWeek:
+          description: Enum for the days of the week.
+          enum:
+          - Sunday
+          - Monday
+          - Tuesday
+          - Wednesday
+          - Thursday
+          - Friday
+          - Saturday
+          - Everyday
+          - Weekdays
+          - Weekends
+          type: string
+        endTime:
+          format: date-time
+          type: string
+        startTime:
+          format: date-time
+          type: string
+      required:
+      - dayOfWeek
+      - endTime
+      - startTime
+      type: object
+      x-used-in-response: true
+      x-used-in-request: true
+    FlightSchedule:
+      additionalProperties: false
+      description: A flight schedule for a line item.
+      example:
+        legs:
+        - dayOfWeek: Sunday
+          startTime: 2000-01-23T04:56:07.000+00:00
+          endTime: 2000-01-23T04:56:07.000+00:00
+        - dayOfWeek: Sunday
+          startTime: 2000-01-23T04:56:07.000+00:00
+          endTime: 2000-01-23T04:56:07.000+00:00
+      nullable: true
+      properties:
+        legs:
+          description: A list of flight legs on which the line item will run.
+          items:
+            $ref: '#/components/schemas/FlightLeg'
+          nullable: true
+          type: array
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
+      x-used-in-request: true
       x-optional-in-response: true
     HyperlinkVariableValue:
       additionalProperties: false
@@ -9099,6 +10309,20 @@ components:
       type: object
       x-used-in-response: true
       x-optional-in-response: true
+    NillableDecimal:
+      description: Placeholder object for value for which "null" is a valid business
+        value
+      example:
+        value: 0.8008281904610115
+      nullable: true
+      properties:
+        value:
+          description: The value. If missing or null the value is set to "null"
+          format: double
+          nullable: true
+          type: number
+      type: object
+      x-used-in-request: true
     NillableString:
       description: Placeholder object for string value  for which "null" is a valid
         business value
@@ -9306,6 +10530,82 @@ components:
         data:
           items:
             $ref: '#/components/schemas/BalanceHistoryChangeDataCaptureV1'
+          type: array
+        meta:
+          $ref: '#/components/schemas/Metadata'
+      required:
+      - data
+      - meta
+      type: object
+      x-used-in-response: true
+    PageOfSponsoredProductsLineItem:
+      additionalProperties: false
+      description: A wrapper class to return a single page of items with metadata
+        for offset and limit based paging.
+      example:
+        data:
+        - externalLineItemId: 2
+          bidStrategy: Unknown
+          budgetRemaining: 6.027456183070403
+          endDate: 2000-01-23T04:56:07.000+00:00
+          campaignId: 5
+          targetBid: 3.616076749251911
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          budgetSpent: 1.4658129805029452
+          maxBid: 7.061401241503109
+          flightSchedule:
+            legs:
+            - dayOfWeek: Sunday
+              startTime: 2000-01-23T04:56:07.000+00:00
+              endTime: 2000-01-23T04:56:07.000+00:00
+            - dayOfWeek: Sunday
+              startTime: 2000-01-23T04:56:07.000+00:00
+              endTime: 2000-01-23T04:56:07.000+00:00
+          name: name
+          buyType: Unknown
+          isAutoDailyPacing: true
+          targetRetailerId: 2
+          dailyPacing: 5.637376656633329
+          monthlyPacing: 9.301444243932576
+          startDate: 2000-01-23T04:56:07.000+00:00
+          budget: 0.8008281904610115
+          status: Unknown
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - externalLineItemId: 2
+          bidStrategy: Unknown
+          budgetRemaining: 6.027456183070403
+          endDate: 2000-01-23T04:56:07.000+00:00
+          campaignId: 5
+          targetBid: 3.616076749251911
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          budgetSpent: 1.4658129805029452
+          maxBid: 7.061401241503109
+          flightSchedule:
+            legs:
+            - dayOfWeek: Sunday
+              startTime: 2000-01-23T04:56:07.000+00:00
+              endTime: 2000-01-23T04:56:07.000+00:00
+            - dayOfWeek: Sunday
+              startTime: 2000-01-23T04:56:07.000+00:00
+              endTime: 2000-01-23T04:56:07.000+00:00
+          name: name
+          buyType: Unknown
+          isAutoDailyPacing: true
+          targetRetailerId: 2
+          dailyPacing: 5.637376656633329
+          monthlyPacing: 9.301444243932576
+          startDate: 2000-01-23T04:56:07.000+00:00
+          budget: 0.8008281904610115
+          status: Unknown
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        meta:
+          offset: 1
+          count: 0
+          limit: 6
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/SponsoredProductsLineItem'
           type: array
         meta:
           $ref: '#/components/schemas/Metadata'
@@ -11705,6 +13005,61 @@ components:
           x-optional-in-response: true
       type: object
       x-used-in-response: true
+    RecommendedCategoriesRequestV1:
+      description: An object that represents the request of RecommendCategories endpoint.
+      example:
+        skuIds:
+        - skuIds
+        - skuIds
+      properties:
+        skuIds:
+          description: Sku id list.
+          items:
+            type: string
+          minItems: 1
+          type: array
+      required:
+      - skuIds
+      type: object
+      x-used-in-request: true
+    RecommendedKeywordsRequestV1:
+      additionalProperties: false
+      description: Request model of RecommendedKeywords
+      example:
+        skuIds:
+        - skuIds
+        - skuIds
+      properties:
+        skuIds:
+          description: Sku Id list that the recommended keywords generated on.
+          items:
+            type: string
+          minItems: 1
+          type: array
+      required:
+      - skuIds
+      type: object
+      x-used-in-request: true
+    RecommendedKeywordsResponseV1:
+      additionalProperties: false
+      description: Response model of Recommended Keywords
+      example:
+        recommendedKeywords:
+        - recommendedKeywords
+        - recommendedKeywords
+      nullable: true
+      properties:
+        recommendedKeywords:
+          description: Recommended keywords generated by given retailer Id and sku
+            Ids.
+          items:
+            type: string
+          type: array
+      required:
+      - recommendedKeywords
+      type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     ReportDataResponseResource:
       description: A top-level object that encapsulates a Criteo API response for
         a single value
@@ -13044,8 +14399,252 @@ components:
           type: array
           x-optional-in-response: true
       type: object
+      x-used-in-request: true
       x-used-in-response: true
       x-optional-in-response: true
+    RmAudienceBulkCreateInputV1:
+      description: A top-level object that encapsulates a Criteo API request for several
+        values.
+      example:
+        data:
+        - attributes:
+            name: name
+            description: description
+            algebra:
+              not: null
+              or:
+              - null
+              - null
+              and:
+              - null
+              - null
+              audienceSegmentId: audienceSegmentId
+            retailerId: retailerId
+          type: type
+        - attributes:
+            name: name
+            description: description
+            algebra:
+              not: null
+              or:
+              - null
+              - null
+              and:
+              - null
+              - null
+              audienceSegmentId: audienceSegmentId
+            retailerId: retailerId
+          type: type
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/RmAudienceCreateEntityV1Resource'
+          type: array
+      type: object
+      x-used-in-request: true
+    RmAudienceBulkDeleteInputV1:
+      description: A top-level object that encapsulates a Criteo API request for several
+        entities.
+      example:
+        data:
+        - attributes: "{}"
+          id: id
+          type: type
+        - attributes: "{}"
+          id: id
+          type: type
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/RmAudienceDeleteEntityV1Resource'
+          type: array
+      type: object
+      x-used-in-request: true
+    RmAudienceBulkUpdateInputV1:
+      description: A top-level object that encapsulates a Criteo API request for several
+        entities.
+      example:
+        data:
+        - attributes:
+            name: name
+            description:
+              value: value
+            algebra:
+              not: null
+              or:
+              - null
+              - null
+              and:
+              - null
+              - null
+              audienceSegmentId: audienceSegmentId
+          id: id
+          type: type
+        - attributes:
+            name: name
+            description:
+              value: value
+            algebra:
+              not: null
+              or:
+              - null
+              - null
+              and:
+              - null
+              - null
+              audienceSegmentId: audienceSegmentId
+          id: id
+          type: type
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/RmAudienceUpdateEntityV1Resource'
+          type: array
+      type: object
+      x-used-in-request: true
+    RmAudienceComputeSizesEntityV1:
+      description: Audience of people of interest for a marketer.
+      example:
+        channel: Unknown
+        ids:
+        - ids
+        - ids
+      properties:
+        channel:
+          description: Channel to compute the sizes for.
+          enum:
+          - Unknown
+          - Onsite
+          - Offsite
+          type: string
+        ids:
+          description: List of ids of the segments whose size is requested.
+          items:
+            type: string
+          type: array
+      type: object
+      x-used-in-request: true
+    RmAudienceComputeSizesEntityV1Resource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          channel: Unknown
+          ids:
+          - ids
+          - ids
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RmAudienceComputeSizesEntityV1'
+        type:
+          type: string
+      type: object
+      x-used-in-request: true
+    RmAudienceComputeSizesInputV1:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value.
+      example:
+        data:
+          attributes:
+            channel: Unknown
+            ids:
+            - ids
+            - ids
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/RmAudienceComputeSizesEntityV1Resource'
+      type: object
+      x-used-in-request: true
+    RmAudienceCreateEntityV1:
+      description: Audience of people of interest for a marketer.
+      example:
+        name: name
+        description: description
+        algebra:
+          not: null
+          or:
+          - null
+          - null
+          and:
+          - null
+          - null
+          audienceSegmentId: audienceSegmentId
+        retailerId: retailerId
+      properties:
+        algebra:
+          $ref: '#/components/schemas/RmAlgebraNodeV1'
+        description:
+          description: Description of the audience
+          type: string
+        name:
+          description: Name of the audience
+          type: string
+        retailerId:
+          description: Retailer  associated to the audience
+          type: string
+      required:
+      - algebra
+      - name
+      - retailerId
+      type: object
+      x-used-in-request: true
+    RmAudienceCreateEntityV1Resource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          name: name
+          description: description
+          algebra:
+            not: null
+            or:
+            - null
+            - null
+            and:
+            - null
+            - null
+            audienceSegmentId: audienceSegmentId
+          retailerId: retailerId
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RmAudienceCreateEntityV1'
+        type:
+          type: string
+      type: object
+      x-used-in-request: true
+    RmAudienceDeleteEntityV1:
+      description: Audience to delete
+      type: object
+      x-criteo-canonical:
+        infoType: entity
+        name: RetailMediaAudience
+        version: v1
+      x-used-in-request: true
+    RmAudienceDeleteEntityV1Resource:
+      description: A class that represents a domain entity exposed by an API
+      example:
+        attributes: "{}"
+        id: id
+        type: type
+      properties:
+        attributes:
+          description: Audience to delete
+          type: object
+          x-criteo-canonical:
+            infoType: entity
+            name: RetailMediaAudience
+            version: v1
+          x-used-in-request: true
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          type: string
+      type: object
+      x-used-in-request: true
     RmAudienceEntityV1:
       description: Audience of people of interest for a marketer.
       example:
@@ -13127,6 +14726,120 @@ components:
         version: v1
       x-used-in-response: true
       x-optional-in-response: true
+    RmAudienceEntityV1ListResponse:
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities
+      example:
+        data:
+        - attributes:
+            accountId: accountId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            channels:
+            - Unknown
+            - Unknown
+            name: name
+            description: description
+            algebra:
+              not: null
+              or:
+              - null
+              - null
+              and:
+              - null
+              - null
+              audienceSegmentId: audienceSegmentId
+            retailerId: retailerId
+            createdById: createdById
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        - attributes:
+            accountId: accountId
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            channels:
+            - Unknown
+            - Unknown
+            name: name
+            description: description
+            algebra:
+              not: null
+              or:
+              - null
+              - null
+              and:
+              - null
+              - null
+              audienceSegmentId: audienceSegmentId
+            retailerId: retailerId
+            createdById: createdById
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/RmAudienceEntityV1Resource'
+          nullable: true
+          type: array
+          x-optional-in-response: true
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
     RmAudienceEntityV1Resource:
       description: A class that represents a domain entity exposed by an API
       example:
@@ -13286,6 +14999,82 @@ components:
           x-optional-in-response: true
       type: object
       x-used-in-response: true
+    RmAudienceEstimateSizeEntityV1:
+      description: Audience of people of interest for a marketer.
+      example:
+        channel: Unknown
+        algebra:
+          not: null
+          or:
+          - null
+          - null
+          and:
+          - null
+          - null
+          audienceSegmentId: audienceSegmentId
+        retailerId: retailerId
+      properties:
+        algebra:
+          $ref: '#/components/schemas/RmAlgebraNodeV1'
+        channel:
+          description: Channel to estimate the size
+          enum:
+          - Unknown
+          - Onsite
+          - Offsite
+          type: string
+        retailerId:
+          description: Retailer id of the audience
+          type: string
+      type: object
+      x-used-in-request: true
+    RmAudienceEstimateSizeEntityV1Resource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          channel: Unknown
+          algebra:
+            not: null
+            or:
+            - null
+            - null
+            and:
+            - null
+            - null
+            audienceSegmentId: audienceSegmentId
+          retailerId: retailerId
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RmAudienceEstimateSizeEntityV1'
+        type:
+          type: string
+      type: object
+      x-used-in-request: true
+    RmAudienceEstimateSizeInputV1:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value.
+      example:
+        data:
+          attributes:
+            channel: Unknown
+            algebra:
+              not: null
+              or:
+              - null
+              - null
+              and:
+              - null
+              - null
+              audienceSegmentId: audienceSegmentId
+            retailerId: retailerId
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/RmAudienceEstimateSizeEntityV1Resource'
+      type: object
+      x-used-in-request: true
     RmAudienceSearchEntityV1:
       description: "Available filters to perform a search on audiences. If present,\
         \ the filters are AND'ed together when applied."
@@ -13400,6 +15189,17 @@ components:
             name: name
             description: description
             retailerId: retailerId
+            events:
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice: 6.027456183070403
+              maxPrice: 0.8008281904610115
+              lookbackDays: Unknown
+              shopperActivity: Unknown
+              brandIds:
+              - brandIds
+              - brandIds
           type: type
         - attributes:
             contactList:
@@ -13407,6 +15207,17 @@ components:
             name: name
             description: description
             retailerId: retailerId
+            events:
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice: 6.027456183070403
+              maxPrice: 0.8008281904610115
+              lookbackDays: Unknown
+              shopperActivity: Unknown
+              brandIds:
+              - brandIds
+              - brandIds
           type: type
       properties:
         data:
@@ -13443,6 +15254,19 @@ components:
             name: name
             description:
               value: value
+            events:
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice:
+                value: 0.8008281904610115
+              maxPrice:
+                value: 0.8008281904610115
+              lookbackDays: Unknown
+              shopperActivity: Unknown
+              brandIds:
+              - brandIds
+              - brandIds
           id: id
           type: type
         - attributes:
@@ -13450,6 +15274,19 @@ components:
             name: name
             description:
               value: value
+            events:
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice:
+                value: 0.8008281904610115
+              maxPrice:
+                value: 0.8008281904610115
+              lookbackDays: Unknown
+              shopperActivity: Unknown
+              brandIds:
+              - brandIds
+              - brandIds
           id: id
           type: type
       properties:
@@ -13457,6 +15294,61 @@ components:
           items:
             $ref: '#/components/schemas/RmAudienceSegmentUpdateEntityV1Resource'
           type: array
+      type: object
+      x-used-in-request: true
+    RmAudienceSegmentComputeSizeEntityV1:
+      description: Segment Ids and channel whose size was requested.
+      example:
+        channel: Unknown
+        ids:
+        - ids
+        - ids
+      properties:
+        channel:
+          description: Channel to compute the sizes for.
+          enum:
+          - Unknown
+          - Onsite
+          - Offsite
+          type: string
+        ids:
+          description: List of ids of the segments whose size is requested.
+          items:
+            type: string
+          type: array
+      type: object
+      x-used-in-request: true
+    RmAudienceSegmentComputeSizeEntityV1Resource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          channel: Unknown
+          ids:
+          - ids
+          - ids
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RmAudienceSegmentComputeSizeEntityV1'
+        type:
+          type: string
+      type: object
+      x-used-in-request: true
+    RmAudienceSegmentComputeSizesInputV1:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value.
+      example:
+        data:
+          attributes:
+            channel: Unknown
+            ids:
+            - ids
+            - ids
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/RmAudienceSegmentComputeSizeEntityV1Resource'
       type: object
       x-used-in-request: true
     RmAudienceSegmentCreateEntityV1:
@@ -13467,12 +15359,25 @@ components:
         name: name
         description: description
         retailerId: retailerId
+        events:
+          categoryIds:
+          - categoryIds
+          - categoryIds
+          minPrice: 6.027456183070403
+          maxPrice: 0.8008281904610115
+          lookbackDays: Unknown
+          shopperActivity: Unknown
+          brandIds:
+          - brandIds
+          - brandIds
       properties:
         contactList:
           $ref: '#/components/schemas/RmContactListCreateV1'
         description:
           description: Description of the segment
           type: string
+        events:
+          $ref: '#/components/schemas/RmEventsCreateV1'
         name:
           description: Name of the segment
           type: string
@@ -13494,6 +15399,17 @@ components:
           name: name
           description: description
           retailerId: retailerId
+          events:
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            minPrice: 6.027456183070403
+            maxPrice: 0.8008281904610115
+            lookbackDays: Unknown
+            shopperActivity: Unknown
+            brandIds:
+            - brandIds
+            - brandIds
         type: type
       properties:
         attributes:
@@ -13939,6 +15855,88 @@ components:
           x-optional-in-response: true
       type: object
       x-used-in-response: true
+    RmAudienceSegmentEstimateSizeEntityV1:
+      description: Set of rules that defines specific people to target.
+      example:
+        channel: Unknown
+        retailerId: retailerId
+        events:
+          categoryIds:
+          - categoryIds
+          - categoryIds
+          minPrice: 6.027456183070403
+          maxPrice: 0.8008281904610115
+          lookbackDays: Unknown
+          shopperActivity: Unknown
+          brandIds:
+          - brandIds
+          - brandIds
+      properties:
+        channel:
+          description: Channel to estimate the size
+          enum:
+          - Unknown
+          - Onsite
+          - Offsite
+          type: string
+        events:
+          $ref: '#/components/schemas/RmEventsEstimationV1'
+        retailerId:
+          description: Retailer id of the segment
+          type: string
+      type: object
+      x-used-in-request: true
+    RmAudienceSegmentEstimateSizeEntityV1Resource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          channel: Unknown
+          retailerId: retailerId
+          events:
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            minPrice: 6.027456183070403
+            maxPrice: 0.8008281904610115
+            lookbackDays: Unknown
+            shopperActivity: Unknown
+            brandIds:
+            - brandIds
+            - brandIds
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RmAudienceSegmentEstimateSizeEntityV1'
+        type:
+          type: string
+      type: object
+      x-used-in-request: true
+    RmAudienceSegmentEstimateSizeInputV1:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value.
+      example:
+        data:
+          attributes:
+            channel: Unknown
+            retailerId: retailerId
+            events:
+              categoryIds:
+              - categoryIds
+              - categoryIds
+              minPrice: 6.027456183070403
+              maxPrice: 0.8008281904610115
+              lookbackDays: Unknown
+              shopperActivity: Unknown
+              brandIds:
+              - brandIds
+              - brandIds
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/RmAudienceSegmentEstimateSizeEntityV1Resource'
+      type: object
+      x-used-in-request: true
     RmAudienceSegmentIdEntityV1:
       description: Audience Segment entity only with its ID
       nullable: true
@@ -14160,6 +16158,249 @@ components:
       type: object
       x-used-in-response: true
       x-optional-in-response: true
+    RmAudienceSegmentSizeEntityV1:
+      description: id and size of the segment
+      example:
+        relativeSize: 0.8008281904610115
+        size: 6
+      nullable: true
+      properties:
+        relativeSize:
+          description: Reach in number of users relative to the total users of a retailer
+            (e.g. 0.5523 / 55.23% users)
+          format: double
+          nullable: true
+          type: number
+          x-optional-in-response: true
+        size:
+          description: "Reach in absolute number of users (e.g. 150,300 users). It's\
+            \ not present when the user lacks permissions\r\nto view it."
+          format: int64
+          nullable: true
+          type: integer
+          x-optional-in-response: true
+      type: object
+      x-criteo-canonical:
+        infoType: entity
+        name: RetailMediaAudienceSegment
+        version: v1
+      x-used-in-response: true
+      x-optional-in-response: true
+    RmAudienceSegmentSizeEntityV1ListResponse:
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities
+      example:
+        data:
+        - attributes:
+            relativeSize: 0.8008281904610115
+            size: 6
+          id: id
+          type: type
+        - attributes:
+            relativeSize: 0.8008281904610115
+            size: 6
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/RmAudienceSegmentSizeEntityV1Resource'
+          nullable: true
+          type: array
+          x-optional-in-response: true
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
+    RmAudienceSegmentSizeEntityV1Resource:
+      description: A class that represents a domain entity exposed by an API
+      example:
+        attributes:
+          relativeSize: 0.8008281904610115
+          size: 6
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RmAudienceSegmentSizeEntityV1'
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
+          x-optional-in-response: true
+        type:
+          nullable: true
+          type: string
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
+    RmAudienceSegmentSizeEstimationV1:
+      description: Segment size estimation
+      example:
+        relativeSize: 0.8008281904610115
+        size: 6
+      nullable: true
+      properties:
+        relativeSize:
+          description: Reach in number of users relative to the total users of a retailer
+            (e.g. 0.5523 / 55.23% users)
+          format: double
+          nullable: true
+          type: number
+          x-optional-in-response: true
+        size:
+          description: "Reach in absolute number of users (e.g. 150,300 users). It's\
+            \ not present when the user lacks permissions\r\nto view it."
+          format: int64
+          nullable: true
+          type: integer
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
+      x-optional-in-response: true
+    RmAudienceSegmentSizeEstimationV1Resource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          relativeSize: 0.8008281904610115
+          size: 6
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RmAudienceSegmentSizeEstimationV1'
+        type:
+          nullable: true
+          type: string
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
+      x-optional-in-response: true
+    RmAudienceSegmentSizeEstimationV1Response:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        data:
+          attributes:
+            relativeSize: 0.8008281904610115
+            size: 6
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/RmAudienceSegmentSizeEstimationV1Resource'
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
     RmAudienceSegmentUpdateEntityV1:
       description: Set of rules that defines specific people to target.
       example:
@@ -14167,6 +16408,19 @@ components:
         name: name
         description:
           value: value
+        events:
+          categoryIds:
+          - categoryIds
+          - categoryIds
+          minPrice:
+            value: 0.8008281904610115
+          maxPrice:
+            value: 0.8008281904610115
+          lookbackDays: Unknown
+          shopperActivity: Unknown
+          brandIds:
+          - brandIds
+          - brandIds
       properties:
         contactList:
           description: Settings to update the contact list of the segment
@@ -14174,6 +16428,8 @@ components:
           x-used-in-request: true
         description:
           $ref: '#/components/schemas/NillableString'
+        events:
+          $ref: '#/components/schemas/RmEventsUpdateV1'
         name:
           description: Name of the segment
           type: string
@@ -14191,11 +16447,324 @@ components:
           name: name
           description:
             value: value
+          events:
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            minPrice:
+              value: 0.8008281904610115
+            maxPrice:
+              value: 0.8008281904610115
+            lookbackDays: Unknown
+            shopperActivity: Unknown
+            brandIds:
+            - brandIds
+            - brandIds
         id: id
         type: type
       properties:
         attributes:
           $ref: '#/components/schemas/RmAudienceSegmentUpdateEntityV1'
+        id:
+          description: Id of the entity
+          type: string
+        type:
+          type: string
+      type: object
+      x-used-in-request: true
+    RmAudienceSizeEntityV1:
+      description: id and size of the audience
+      example:
+        relativeSize: 0.8008281904610115
+        size: 6
+      nullable: true
+      properties:
+        relativeSize:
+          description: Reach in number of users relative to the total users of a retailer
+            (e.g. 0.5523 / 55.23% users)
+          format: double
+          nullable: true
+          type: number
+          x-optional-in-response: true
+        size:
+          description: "Reach in absolute number of users (e.g. 150,300 users). It's\
+            \ not present when the user lacks permissions\r\nto view it."
+          format: int64
+          nullable: true
+          type: integer
+          x-optional-in-response: true
+      type: object
+      x-criteo-canonical:
+        infoType: entity
+        name: RetailMediaAudience
+        version: v1
+      x-used-in-response: true
+      x-optional-in-response: true
+    RmAudienceSizeEntityV1ListResponse:
+      description: A top-level object that encapsulates a Criteo API response for
+        several entities
+      example:
+        data:
+        - attributes:
+            relativeSize: 0.8008281904610115
+            size: 6
+          id: id
+          type: type
+        - attributes:
+            relativeSize: 0.8008281904610115
+            size: 6
+          id: id
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/RmAudienceSizeEntityV1Resource'
+          nullable: true
+          type: array
+          x-optional-in-response: true
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
+    RmAudienceSizeEntityV1Resource:
+      description: A class that represents a domain entity exposed by an API
+      example:
+        attributes:
+          relativeSize: 0.8008281904610115
+          size: 6
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RmAudienceSizeEntityV1'
+        id:
+          description: Id of the entity
+          nullable: true
+          type: string
+          x-optional-in-response: true
+        type:
+          nullable: true
+          type: string
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
+    RmAudienceSizeEstimationV1:
+      description: Audience size estimation
+      example:
+        relativeSize: 0.8008281904610115
+        size: 6
+      nullable: true
+      properties:
+        relativeSize:
+          description: Reach in number of users relative to the total users of a retailer
+            (e.g. 0.5523 / 55.23% users)
+          format: double
+          nullable: true
+          type: number
+          x-optional-in-response: true
+        size:
+          description: "Reach in absolute number of users (e.g. 150,300 users). It's\
+            \ not present when the user lacks permissions\r\nto view it."
+          format: int64
+          nullable: true
+          type: integer
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
+      x-optional-in-response: true
+    RmAudienceSizeEstimationV1Resource:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        attributes:
+          relativeSize: 0.8008281904610115
+          size: 6
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RmAudienceSizeEstimationV1'
+        type:
+          nullable: true
+          type: string
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
+      x-optional-in-response: true
+    RmAudienceSizeEstimationV1Response:
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value
+      example:
+        data:
+          attributes:
+            relativeSize: 0.8008281904610115
+            size: 6
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          traceIdentifier: traceIdentifier
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/RmAudienceSizeEstimationV1Resource'
+        errors:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+        warnings:
+          items:
+            $ref: '#/components/schemas/CommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
+    RmAudienceUpdateEntityV1:
+      description: Audience of people of interest for a marketer.
+      example:
+        name: name
+        description:
+          value: value
+        algebra:
+          not: null
+          or:
+          - null
+          - null
+          and:
+          - null
+          - null
+          audienceSegmentId: audienceSegmentId
+      properties:
+        algebra:
+          $ref: '#/components/schemas/RmAlgebraNodeV1'
+        description:
+          $ref: '#/components/schemas/NillableString'
+        name:
+          description: Name of the audience
+          type: string
+      type: object
+      x-criteo-canonical:
+        infoType: entity
+        name: RetailMediaAudience
+        version: v1
+      x-used-in-request: true
+    RmAudienceUpdateEntityV1Resource:
+      description: A class that represents a domain entity exposed by an API
+      example:
+        attributes:
+          name: name
+          description:
+            value: value
+          algebra:
+            not: null
+            or:
+            - null
+            - null
+            and:
+            - null
+            - null
+            audienceSegmentId: audienceSegmentId
+        id: id
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RmAudienceUpdateEntityV1'
         id:
           description: Id of the entity
           type: string
@@ -14465,6 +17034,172 @@ components:
       type: object
       x-used-in-response: true
       x-optional-in-response: true
+    RmEventsCreateV1:
+      description: Settings to target users based on their behavior
+      example:
+        categoryIds:
+        - categoryIds
+        - categoryIds
+        minPrice: 6.027456183070403
+        maxPrice: 0.8008281904610115
+        lookbackDays: Unknown
+        shopperActivity: Unknown
+        brandIds:
+        - brandIds
+        - brandIds
+      properties:
+        brandIds:
+          description: Choose the brands your segment might be interested in
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        categoryIds:
+          description: Choose the categories your segment might be interested in
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        lookbackDays:
+          description: Number of days of the lookback windows
+          enum:
+          - Unknown
+          - Last7Days
+          - Last14Days
+          - Last30Days
+          - Last45Days
+          - Last60Days
+          - Last90Days
+          - Last120Days
+          - Last150Days
+          - Last180Days
+          type: string
+        maxPrice:
+          description: Reach people who’ve shown interest in products with a maximum
+            price
+          format: double
+          type: number
+        minPrice:
+          description: Reach people who’ve shown interest in products with a minimum
+            price
+          format: double
+          type: number
+        shopperActivity:
+          description: Types of shopper activity.
+          enum:
+          - Unknown
+          - View
+          - Buy
+          - AddToCart
+          type: string
+      type: object
+      x-used-in-request: true
+    RmEventsEstimationV1:
+      description: Settings to target users based on the shopping events
+      example:
+        categoryIds:
+        - categoryIds
+        - categoryIds
+        minPrice: 6.027456183070403
+        maxPrice: 0.8008281904610115
+        lookbackDays: Unknown
+        shopperActivity: Unknown
+        brandIds:
+        - brandIds
+        - brandIds
+      properties:
+        brandIds:
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        categoryIds:
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        lookbackDays:
+          enum:
+          - Unknown
+          - Last7Days
+          - Last14Days
+          - Last30Days
+          - Last45Days
+          - Last60Days
+          - Last90Days
+          - Last120Days
+          - Last150Days
+          - Last180Days
+          type: string
+        maxPrice:
+          format: double
+          type: number
+        minPrice:
+          format: double
+          type: number
+        shopperActivity:
+          enum:
+          - Unknown
+          - View
+          - Buy
+          - AddToCart
+          type: string
+      type: object
+      x-used-in-request: true
+    RmEventsUpdateV1:
+      description: Settings to target users based on their behavior
+      example:
+        categoryIds:
+        - categoryIds
+        - categoryIds
+        minPrice:
+          value: 0.8008281904610115
+        maxPrice:
+          value: 0.8008281904610115
+        lookbackDays: Unknown
+        shopperActivity: Unknown
+        brandIds:
+        - brandIds
+        - brandIds
+      properties:
+        brandIds:
+          description: Choose the brands your segment might be interested in
+          items:
+            type: string
+          type: array
+        categoryIds:
+          description: Choose the categories your segment might be interested in
+          items:
+            type: string
+          type: array
+        lookbackDays:
+          description: Number of days of the lookback windows
+          enum:
+          - Unknown
+          - Last7Days
+          - Last14Days
+          - Last30Days
+          - Last45Days
+          - Last60Days
+          - Last90Days
+          - Last120Days
+          - Last150Days
+          - Last180Days
+          type: string
+        maxPrice:
+          $ref: '#/components/schemas/NillableDecimal'
+        minPrice:
+          $ref: '#/components/schemas/NillableDecimal'
+        shopperActivity:
+          description: Types of shopper activity.
+          enum:
+          - Unknown
+          - View
+          - Buy
+          - AddToCart
+          type: string
+      type: object
+      x-used-in-request: true
     RmEventsV1:
       description: Settings to target users based on their behavior
       example:
@@ -15634,6 +18369,316 @@ components:
           type: array
       type: object
       x-used-in-response: true
+    SponsoredProductsLineItem:
+      additionalProperties: false
+      description: A model representing a Sponsored Products Line Item.
+      example:
+        externalLineItemId: 2
+        bidStrategy: Unknown
+        budgetRemaining: 6.027456183070403
+        endDate: 2000-01-23T04:56:07.000+00:00
+        campaignId: 5
+        targetBid: 3.616076749251911
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        budgetSpent: 1.4658129805029452
+        maxBid: 7.061401241503109
+        flightSchedule:
+          legs:
+          - dayOfWeek: Sunday
+            startTime: 2000-01-23T04:56:07.000+00:00
+            endTime: 2000-01-23T04:56:07.000+00:00
+          - dayOfWeek: Sunday
+            startTime: 2000-01-23T04:56:07.000+00:00
+            endTime: 2000-01-23T04:56:07.000+00:00
+        name: name
+        buyType: Unknown
+        isAutoDailyPacing: true
+        targetRetailerId: 2
+        dailyPacing: 5.637376656633329
+        monthlyPacing: 9.301444243932576
+        startDate: 2000-01-23T04:56:07.000+00:00
+        budget: 0.8008281904610115
+        status: Unknown
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      nullable: true
+      properties:
+        bidStrategy:
+          enum:
+          - Unknown
+          - Conversion
+          - Clicks
+          - Revenue
+          nullable: true
+          type: string
+          x-optional-in-response: true
+        budget:
+          format: double
+          nullable: true
+          type: number
+          x-optional-in-response: true
+        budgetRemaining:
+          format: double
+          nullable: true
+          type: number
+        budgetSpent:
+          format: double
+          nullable: true
+          type: number
+          x-optional-in-response: true
+        buyType:
+          enum:
+          - Unknown
+          - Auction
+          - Preferred
+          nullable: true
+          type: string
+          x-optional-in-response: true
+        campaignId:
+          format: int64
+          type: integer
+        createdAt:
+          format: date-time
+          type: string
+        dailyPacing:
+          format: double
+          nullable: true
+          type: number
+          x-optional-in-response: true
+        endDate:
+          format: date-time
+          nullable: true
+          type: string
+          x-optional-in-response: true
+        externalLineItemId:
+          format: int64
+          type: integer
+        flightSchedule:
+          $ref: '#/components/schemas/FlightSchedule'
+        isAutoDailyPacing:
+          nullable: true
+          type: boolean
+          x-optional-in-response: true
+        maxBid:
+          format: double
+          nullable: true
+          type: number
+          x-optional-in-response: true
+        monthlyPacing:
+          format: double
+          nullable: true
+          type: number
+          x-optional-in-response: true
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+        startDate:
+          format: date-time
+          type: string
+        status:
+          description: Status of a line item.
+          enum:
+          - Unknown
+          - Active
+          - Scheduled
+          - Draft
+          - Paused
+          - BudgetHit
+          - Ended
+          - Archived
+          - NoFunds
+          nullable: true
+          type: string
+          x-optional-in-response: true
+        targetBid:
+          format: double
+          nullable: true
+          type: number
+          x-optional-in-response: true
+        targetRetailerId:
+          format: int64
+          type: integer
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - budgetRemaining
+      - campaignId
+      - createdAt
+      - externalLineItemId
+      - name
+      - startDate
+      - targetRetailerId
+      - updatedAt
+      type: object
+      x-used-in-response: true
+      x-optional-in-response: true
+    SponsoredProductsLineItemCreateRequestModel:
+      additionalProperties: false
+      description: Model to create a retail media auction line item
+      example:
+        bidStrategy: Conversion
+        endDate: 2000-01-23T04:56:07.000+00:00
+        targetBid: 5.637376656633329
+        maxBid: 1.4658129805029452
+        flightSchedule:
+          legs:
+          - dayOfWeek: Sunday
+            startTime: 2000-01-23T04:56:07.000+00:00
+            endTime: 2000-01-23T04:56:07.000+00:00
+          - dayOfWeek: Sunday
+            startTime: 2000-01-23T04:56:07.000+00:00
+            endTime: 2000-01-23T04:56:07.000+00:00
+        name: name
+        isAutoDailyPacing: false
+        targetRetailerId: 2
+        dailyPacing: 6.027456183070403
+        monthlyPacing: 5.962133916683182
+        startDate: 2000-01-23T04:56:07.000+00:00
+        budget: 0.8008281904610115
+        status: Active
+      properties:
+        bidStrategy:
+          default: Conversion
+          enum:
+          - Unknown
+          - Conversion
+          - Clicks
+          - Revenue
+          type: string
+        budget:
+          format: double
+          nullable: true
+          type: number
+        dailyPacing:
+          format: double
+          nullable: true
+          type: number
+        endDate:
+          format: date-time
+          nullable: true
+          type: string
+        flightSchedule:
+          $ref: '#/components/schemas/FlightSchedule'
+        isAutoDailyPacing:
+          default: false
+          type: boolean
+        maxBid:
+          format: double
+          nullable: true
+          type: number
+        monthlyPacing:
+          format: double
+          nullable: true
+          type: number
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+        startDate:
+          format: date-time
+          type: string
+        status:
+          description: Status of a line item.
+          enum:
+          - Active
+          - Paused
+          - Draft
+          type: string
+        targetBid:
+          format: double
+          nullable: true
+          type: number
+        targetRetailerId:
+          format: int64
+          type: integer
+      required:
+      - name
+      - startDate
+      - targetRetailerId
+      type: object
+      x-used-in-request: true
+    SponsoredProductsLineItemUpdateRequestModel:
+      additionalProperties: false
+      description: A request to update a Sponsored Products Line Item.
+      example:
+        bidStrategy: Conversion
+        endDate: 2000-01-23T04:56:07.000+00:00
+        maxBid: 1.4658129805029452
+        flightSchedule:
+          legs:
+          - dayOfWeek: Sunday
+            startTime: 2000-01-23T04:56:07.000+00:00
+            endTime: 2000-01-23T04:56:07.000+00:00
+          - dayOfWeek: Sunday
+            startTime: 2000-01-23T04:56:07.000+00:00
+            endTime: 2000-01-23T04:56:07.000+00:00
+        name: name
+        isAutoDailyPacing: true
+        dailyPacing: 6.027456183070403
+        monthlyPacing: 5.962133916683182
+        startDate: 2000-01-23T04:56:07.000+00:00
+        targetBid: 5.637376656633329
+        budget: 0.8008281904610115
+        status: Active
+      properties:
+        bidStrategy:
+          default: Conversion
+          enum:
+          - Unknown
+          - Conversion
+          - Clicks
+          - Revenue
+          type: string
+        budget:
+          format: double
+          nullable: true
+          type: number
+        dailyPacing:
+          format: double
+          nullable: true
+          type: number
+        endDate:
+          format: date-time
+          nullable: true
+          type: string
+        flightSchedule:
+          $ref: '#/components/schemas/FlightSchedule'
+        isAutoDailyPacing:
+          type: boolean
+        maxBid:
+          format: double
+          nullable: true
+          type: number
+        monthlyPacing:
+          format: double
+          nullable: true
+          type: number
+        name:
+          maxLength: 255
+          minLength: 0
+          type: string
+        startDate:
+          format: date-time
+          type: string
+        status:
+          description: Status of a line item.
+          enum:
+          - Active
+          - Paused
+          - Draft
+          type: string
+        targetBid:
+          format: double
+          type: number
+      required:
+      - isAutoDailyPacing
+      - name
+      - startDate
+      - status
+      - targetBid
+      type: object
+      x-used-in-request: true
     StatusResponse:
       description: Status of an async report request
       example:
@@ -16549,6 +19594,24 @@ components:
           type: string
       type: object
       x-used-in-request: true
+    ValueResourceCategoriesSearchRequestV1:
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          categoryIds:
+          - categoryIds
+          - categoryIds
+          textSubstring: textSubstring
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CategoriesSearchRequestV1'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+      x-used-in-request: true
     ValueResourceCollectionOutcomeOfSellerSearchResult:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
@@ -16834,6 +19897,22 @@ components:
           $ref: '#/components/schemas/ValueResourceBrandIdSearchRequest'
       type: object
       x-used-in-request: true
+    ValueResourceInputCategoriesSearchRequestV1:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value objects.
+      example:
+        data:
+          attributes:
+            categoryIds:
+            - categoryIds
+            - categoryIds
+            textSubstring: textSubstring
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceCategoriesSearchRequestV1'
+      type: object
+      x-used-in-request: true
     ValueResourceInputCpcMinBidsRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -16915,6 +19994,38 @@ components:
           $ref: '#/components/schemas/ValueResourceOfSellerSearch'
       type: object
       x-used-in-request: true
+    ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value objects.
+      example:
+        data:
+          attributes:
+            bidStrategy: Conversion
+            endDate: 2000-01-23T04:56:07.000+00:00
+            maxBid: 1.4658129805029452
+            flightSchedule:
+              legs:
+              - dayOfWeek: Sunday
+                startTime: 2000-01-23T04:56:07.000+00:00
+                endTime: 2000-01-23T04:56:07.000+00:00
+              - dayOfWeek: Sunday
+                startTime: 2000-01-23T04:56:07.000+00:00
+                endTime: 2000-01-23T04:56:07.000+00:00
+            name: name
+            isAutoDailyPacing: true
+            dailyPacing: 6.027456183070403
+            monthlyPacing: 5.962133916683182
+            startDate: 2000-01-23T04:56:07.000+00:00
+            targetBid: 5.637376656633329
+            budget: 0.8008281904610115
+            status: Active
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel'
+      type: object
+      x-used-in-request: true
     ValueResourceInputPartnerBillingReportRequestV1:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -16935,6 +20046,37 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ValueResourcePartnerBillingReportRequestV1'
+      type: object
+      x-used-in-request: true
+    ValueResourceInputRecommendedCategoriesRequestV1:
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value objects.
+      example:
+        data:
+          attributes:
+            skuIds:
+            - skuIds
+            - skuIds
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceRecommendedCategoriesRequestV1'
+      type: object
+      x-used-in-request: true
+    ValueResourceInputRecommendedKeywordsRequestV1:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API request for a
+        single value objects.
+      example:
+        data:
+          attributes:
+            skuIds:
+            - skuIds
+            - skuIds
+          type: type
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceRecommendedKeywordsRequestV1'
       type: object
       x-used-in-request: true
     ValueResourceInputRetailMediaKeywordsReview:
@@ -17048,6 +20190,40 @@ components:
           x-optional-in-response: true
       type: object
       x-used-in-response: true
+    ValueResourceOfSponsoredProductsLineItemUpdateRequestModel:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          bidStrategy: Conversion
+          endDate: 2000-01-23T04:56:07.000+00:00
+          maxBid: 1.4658129805029452
+          flightSchedule:
+            legs:
+            - dayOfWeek: Sunday
+              startTime: 2000-01-23T04:56:07.000+00:00
+              endTime: 2000-01-23T04:56:07.000+00:00
+            - dayOfWeek: Sunday
+              startTime: 2000-01-23T04:56:07.000+00:00
+              endTime: 2000-01-23T04:56:07.000+00:00
+          name: name
+          isAutoDailyPacing: true
+          dailyPacing: 6.027456183070403
+          monthlyPacing: 5.962133916683182
+          startDate: 2000-01-23T04:56:07.000+00:00
+          targetBid: 5.637376656633329
+          budget: 0.8008281904610115
+          status: Active
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/SponsoredProductsLineItemUpdateRequestModel'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+      x-used-in-request: true
     ValueResourceOutcomeAccountFeesUpdateResult:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
@@ -17194,6 +20370,76 @@ components:
           x-optional-in-response: true
       type: object
       x-used-in-response: true
+    ValueResourceOutcomeRecommendedKeywordsResponseV1:
+      additionalProperties: false
+      description: A top-level object that encapsulates a Criteo API response for
+        a single value object.
+      example:
+        data:
+          attributes:
+            recommendedKeywords:
+            - recommendedKeywords
+            - recommendedKeywords
+          type: type
+        warnings:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        errors:
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+        - traceId: traceId
+          code: code
+          instance: instance
+          detail: detail
+          source:
+            key: source
+          stackTrace: stackTrace
+          title: title
+          type: unknown
+      properties:
+        data:
+          $ref: '#/components/schemas/ValueResourceRecommendedKeywordsResponseV1'
+        errors:
+          description: Errors that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+        warnings:
+          description: Warnings that occured during this call.
+          items:
+            $ref: '#/components/schemas/SdkApiRestCommonProblem'
+          nullable: true
+          readOnly: true
+          type: array
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
     ValueResourceOutcomeRetailMediaKeywordsReviewResult:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
@@ -17314,6 +20560,62 @@ components:
           x-optional-in-response: true
       type: object
       x-used-in-response: true
+    ValueResourceRecommendedCategoriesRequestV1:
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          skuIds:
+          - skuIds
+          - skuIds
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RecommendedCategoriesRequestV1'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+      x-used-in-request: true
+    ValueResourceRecommendedKeywordsRequestV1:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          skuIds:
+          - skuIds
+          - skuIds
+        type: type
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RecommendedKeywordsRequestV1'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+      type: object
+      x-used-in-request: true
+    ValueResourceRecommendedKeywordsResponseV1:
+      additionalProperties: false
+      description: A value resource exposed by the API.
+      example:
+        attributes:
+          recommendedKeywords:
+          - recommendedKeywords
+          - recommendedKeywords
+        type: type
+      nullable: true
+      properties:
+        attributes:
+          $ref: '#/components/schemas/RecommendedKeywordsResponseV1'
+        type:
+          description: Type of the resource.
+          nullable: true
+          type: string
+          x-optional-in-response: true
+      type: object
+      x-used-in-response: true
+      x-optional-in-response: true
     ValueResourceRetailMediaKeywordsReview:
       additionalProperties: false
       description: A value resource exposed by the API.
