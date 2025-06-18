@@ -160,6 +160,61 @@ public class AsyncCampaignsReport {
   private ClickAttributionWindowEnum clickAttributionWindow = ClickAttributionWindowEnum.NONE;
 
   /**
+   * Gets or Sets conquestingTypes
+   */
+  @JsonAdapter(ConquestingTypesEnum.Adapter.class)
+  public enum ConquestingTypesEnum {
+    UNKNOWN("unknown"),
+    
+    GENERIC("generic"),
+    
+    BRANDED("branded"),
+    
+    CONQUESTING("conquesting");
+
+    private String value;
+
+    ConquestingTypesEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ConquestingTypesEnum fromValue(String value) {
+      for (ConquestingTypesEnum b : ConquestingTypesEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ConquestingTypesEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ConquestingTypesEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ConquestingTypesEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ConquestingTypesEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CONQUESTING_TYPES = "conquestingTypes";
+  @SerializedName(SERIALIZED_NAME_CONQUESTING_TYPES)
+  private List<ConquestingTypesEnum> conquestingTypes = null;
+
+  /**
    * Gets or Sets dimensions
    */
   @JsonAdapter(DimensionsEnum.Adapter.class)
@@ -226,7 +281,9 @@ public class AsyncCampaignsReport {
     
     CREATIVETEMPLATEID("creativeTemplateId"),
     
-    CREATIVETEMPLATENAME("creativeTemplateName");
+    CREATIVETEMPLATENAME("creativeTemplateName"),
+    
+    CONQUESTINGTYPE("conquestingType");
 
     private String value;
 
@@ -794,6 +851,36 @@ public class AsyncCampaignsReport {
   }
 
 
+  public AsyncCampaignsReport conquestingTypes(List<ConquestingTypesEnum> conquestingTypes) {
+    
+    this.conquestingTypes = conquestingTypes;
+    return this;
+  }
+
+  public AsyncCampaignsReport addConquestingTypesItem(ConquestingTypesEnum conquestingTypesItem) {
+    if (this.conquestingTypes == null) {
+      this.conquestingTypes = new ArrayList<>();
+    }
+    this.conquestingTypes.add(conquestingTypesItem);
+    return this;
+  }
+
+   /**
+   * Filter on conquesting type: unknown, generic, branded, conquesting
+   * @return conquestingTypes
+  **/
+  @javax.annotation.Nullable
+
+  public List<ConquestingTypesEnum> getConquestingTypes() {
+    return conquestingTypes;
+  }
+
+
+  public void setConquestingTypes(List<ConquestingTypesEnum> conquestingTypes) {
+    this.conquestingTypes = conquestingTypes;
+  }
+
+
   public AsyncCampaignsReport dimensions(List<DimensionsEnum> dimensions) {
     
     this.dimensions = dimensions;
@@ -1176,6 +1263,7 @@ public class AsyncCampaignsReport {
     AsyncCampaignsReport asyncCampaignsReport = (AsyncCampaignsReport) o;
     return Objects.equals(this.campaignType, asyncCampaignsReport.campaignType) &&
         Objects.equals(this.clickAttributionWindow, asyncCampaignsReport.clickAttributionWindow) &&
+        Objects.equals(this.conquestingTypes, asyncCampaignsReport.conquestingTypes) &&
         Objects.equals(this.dimensions, asyncCampaignsReport.dimensions) &&
         Objects.equals(this.endDate, asyncCampaignsReport.endDate) &&
         Objects.equals(this.format, asyncCampaignsReport.format) &&
@@ -1194,7 +1282,7 @@ public class AsyncCampaignsReport {
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignType, clickAttributionWindow, dimensions, endDate, format, id, ids, metrics, reportType, salesChannel, searchTermTargetings, searchTermTypes, startDate, timezone, viewAttributionWindow, additionalProperties);
+    return Objects.hash(campaignType, clickAttributionWindow, conquestingTypes, dimensions, endDate, format, id, ids, metrics, reportType, salesChannel, searchTermTargetings, searchTermTypes, startDate, timezone, viewAttributionWindow, additionalProperties);
   }
 
   @Override
@@ -1203,6 +1291,7 @@ public class AsyncCampaignsReport {
     sb.append("class AsyncCampaignsReport {\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    clickAttributionWindow: ").append(toIndentedString(clickAttributionWindow)).append("\n");
+    sb.append("    conquestingTypes: ").append(toIndentedString(conquestingTypes)).append("\n");
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
@@ -1241,6 +1330,7 @@ public class AsyncCampaignsReport {
     openapiFields = new HashSet<String>();
     openapiFields.add("campaignType");
     openapiFields.add("clickAttributionWindow");
+    openapiFields.add("conquestingTypes");
     openapiFields.add("dimensions");
     openapiFields.add("endDate");
     openapiFields.add("format");
@@ -1285,6 +1375,10 @@ public class AsyncCampaignsReport {
       }
       if ((jsonObj.get("clickAttributionWindow") != null && !jsonObj.get("clickAttributionWindow").isJsonNull()) && !jsonObj.get("clickAttributionWindow").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `clickAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionWindow").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("conquestingTypes") != null && !jsonObj.get("conquestingTypes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `conquestingTypes` to be an array in the JSON string but got `%s`", jsonObj.get("conquestingTypes").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonArray()) {

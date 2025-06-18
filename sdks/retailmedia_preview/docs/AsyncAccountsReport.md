@@ -12,6 +12,7 @@ Async Accounts report body request
 |**aggregationLevel** | [**AggregationLevelEnum**](#AggregationLevelEnum) | Level of aggregation, if no dimensions and metrics are provided, falls back to campaign aggregationLevel |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays |  [optional] |
 |**clickAttributionWindow** | [**ClickAttributionWindowEnum**](#ClickAttributionWindowEnum) | Click attribution window |  [optional] |
+|**conquestingTypes** | [**List&lt;ConquestingTypesEnum&gt;**](#List&lt;ConquestingTypesEnum&gt;) | Filter on conquesting type: unknown, generic, branded, conquesting |  [optional] |
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  [optional] |
 |**endDate** | **OffsetDateTime** | End date |  |
 |**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
@@ -56,6 +57,17 @@ Async Accounts report body request
 
 
 
+## Enum: List&lt;ConquestingTypesEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| GENERIC | &quot;generic&quot; |
+| BRANDED | &quot;branded&quot; |
+| CONQUESTING | &quot;conquesting&quot; |
+
+
+
 ## Enum: List&lt;DimensionsEnum&gt;
 
 | Name | Value |
@@ -92,6 +104,7 @@ Async Accounts report body request
 | CREATIVETYPENAME | &quot;creativeTypeName&quot; |
 | CREATIVETEMPLATEID | &quot;creativeTemplateId&quot; |
 | CREATIVETEMPLATENAME | &quot;creativeTemplateName&quot; |
+| CONQUESTINGTYPE | &quot;conquestingType&quot; |
 
 
 

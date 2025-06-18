@@ -4652,6 +4652,9 @@ components:
         - unknown
         timezone: UTC
         format: json-compact
+        conquestingTypes:
+        - unknown
+        - unknown
         salesChannel: all
         reportType: summary
         accountIds:
@@ -4698,6 +4701,16 @@ components:
           - 14D
           - 30D
           type: string
+        conquestingTypes:
+          description: "Filter on conquesting type: unknown, generic, branded, conquesting"
+          items:
+            enum:
+            - unknown
+            - generic
+            - branded
+            - conquesting
+            type: string
+          type: array
         dimensions:
           description: List of dimensions to report on
           items:
@@ -4734,6 +4747,7 @@ components:
             - creativeTypeName
             - creativeTemplateId
             - creativeTemplateName
+            - conquestingType
             type: string
           type: array
         endDate:
@@ -4877,6 +4891,9 @@ components:
             - unknown
             timezone: UTC
             format: json-compact
+            conquestingTypes:
+            - unknown
+            - unknown
             salesChannel: all
             reportType: summary
             accountIds:
@@ -4913,6 +4930,9 @@ components:
           - unknown
           timezone: UTC
           format: json-compact
+          conquestingTypes:
+          - unknown
+          - unknown
           salesChannel: all
           reportType: summary
           accountIds:
@@ -4949,6 +4969,9 @@ components:
         - unknown
         timezone: UTC
         format: json-compact
+        conquestingTypes:
+        - unknown
+        - unknown
         salesChannel: all
         reportType: summary
         viewAttributionWindow: none
@@ -4982,6 +5005,16 @@ components:
           - 14D
           - 30D
           type: string
+        conquestingTypes:
+          description: "Filter on conquesting type: unknown, generic, branded, conquesting"
+          items:
+            enum:
+            - unknown
+            - generic
+            - branded
+            - conquesting
+            type: string
+          type: array
         dimensions:
           description: List of dimensions to report on
           items:
@@ -5018,6 +5051,7 @@ components:
             - creativeTypeName
             - creativeTemplateId
             - creativeTemplateName
+            - conquestingType
             type: string
           type: array
         endDate:
@@ -5168,6 +5202,9 @@ components:
             - unknown
             timezone: UTC
             format: json-compact
+            conquestingTypes:
+            - unknown
+            - unknown
             salesChannel: all
             reportType: summary
             viewAttributionWindow: none
@@ -5204,6 +5241,9 @@ components:
           - unknown
           timezone: UTC
           format: json-compact
+          conquestingTypes:
+          - unknown
+          - unknown
           salesChannel: all
           reportType: summary
           viewAttributionWindow: none
@@ -5388,6 +5428,9 @@ components:
         - unknown
         timezone: UTC
         format: json-compact
+        conquestingTypes:
+        - unknown
+        - unknown
         salesChannel: all
         reportType: summary
         viewAttributionWindow: none
@@ -5421,6 +5464,16 @@ components:
           - 14D
           - 30D
           type: string
+        conquestingTypes:
+          description: "Filter on conquesting type: unknown, generic, branded, conquesting"
+          items:
+            enum:
+            - unknown
+            - generic
+            - branded
+            - conquesting
+            type: string
+          type: array
         dimensions:
           description: List of dimensions to report on
           items:
@@ -5457,6 +5510,7 @@ components:
             - creativeTypeName
             - creativeTemplateId
             - creativeTemplateName
+            - conquestingType
             type: string
           type: array
         endDate:
@@ -5607,6 +5661,9 @@ components:
             - unknown
             timezone: UTC
             format: json-compact
+            conquestingTypes:
+            - unknown
+            - unknown
             salesChannel: all
             reportType: summary
             viewAttributionWindow: none
@@ -5643,6 +5700,9 @@ components:
           - unknown
           timezone: UTC
           format: json-compact
+          conquestingTypes:
+          - unknown
+          - unknown
           salesChannel: all
           reportType: summary
           viewAttributionWindow: none

@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   description: Criteo API - MarketingSolutions
   title: Criteo API
-  version: Preview
+  version: preview
 servers:
 - url: https://api.criteo.com
 security:

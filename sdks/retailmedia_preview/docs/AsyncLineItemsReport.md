@@ -10,6 +10,7 @@ Async Line Items report body request
 |------------ | ------------- | ------------- | -------------|
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays |  [optional] |
 |**clickAttributionWindow** | [**ClickAttributionWindowEnum**](#ClickAttributionWindowEnum) | Click attribution window |  [optional] |
+|**conquestingTypes** | [**List&lt;ConquestingTypesEnum&gt;**](#List&lt;ConquestingTypesEnum&gt;) | Filter on conquesting type: unknown, generic, branded, conquesting |  [optional] |
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  [optional] |
 |**endDate** | **OffsetDateTime** | End date |  |
 |**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
@@ -44,6 +45,17 @@ Async Line Items report body request
 | _7D | &quot;7D&quot; |
 | _14D | &quot;14D&quot; |
 | _30D | &quot;30D&quot; |
+
+
+
+## Enum: List&lt;ConquestingTypesEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| GENERIC | &quot;generic&quot; |
+| BRANDED | &quot;branded&quot; |
+| CONQUESTING | &quot;conquesting&quot; |
 
 
 
@@ -83,6 +95,7 @@ Async Line Items report body request
 | CREATIVETYPENAME | &quot;creativeTypeName&quot; |
 | CREATIVETEMPLATEID | &quot;creativeTemplateId&quot; |
 | CREATIVETEMPLATENAME | &quot;creativeTemplateName&quot; |
+| CONQUESTINGTYPE | &quot;conquestingType&quot; |
 
 
 
