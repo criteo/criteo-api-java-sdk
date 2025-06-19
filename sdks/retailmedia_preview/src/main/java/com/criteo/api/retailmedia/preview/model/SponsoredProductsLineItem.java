@@ -173,7 +173,7 @@ public class SponsoredProductsLineItem {
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
-  private Long campaignId;
+  private String campaignId;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -220,23 +220,23 @@ public class SponsoredProductsLineItem {
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    UNKNOWN("Unknown"),
+    UNKNOWN("unknown"),
     
-    ACTIVE("Active"),
+    ACTIVE("active"),
     
-    SCHEDULED("Scheduled"),
+    SCHEDULED("scheduled"),
     
-    DRAFT("Draft"),
+    DRAFT("draft"),
     
-    PAUSED("Paused"),
+    PAUSED("paused"),
     
-    BUDGETHIT("BudgetHit"),
+    BUDGETHIT("budgetHit"),
     
-    ENDED("Ended"),
+    ENDED("ended"),
     
-    ARCHIVED("Archived"),
+    ARCHIVED("archived"),
     
-    NOFUNDS("NoFunds");
+    NOFUNDS("noFunds");
 
     private String value;
 
@@ -286,7 +286,7 @@ public class SponsoredProductsLineItem {
 
   public static final String SERIALIZED_NAME_TARGET_RETAILER_ID = "targetRetailerId";
   @SerializedName(SERIALIZED_NAME_TARGET_RETAILER_ID)
-  private Long targetRetailerId;
+  private String targetRetailerId;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
@@ -405,7 +405,7 @@ public class SponsoredProductsLineItem {
   }
 
 
-  public SponsoredProductsLineItem campaignId(Long campaignId) {
+  public SponsoredProductsLineItem campaignId(String campaignId) {
     
     this.campaignId = campaignId;
     return this;
@@ -417,12 +417,12 @@ public class SponsoredProductsLineItem {
   **/
   @javax.annotation.Nonnull
 
-  public Long getCampaignId() {
+  public String getCampaignId() {
     return campaignId;
   }
 
 
-  public void setCampaignId(Long campaignId) {
+  public void setCampaignId(String campaignId) {
     this.campaignId = campaignId;
   }
 
@@ -691,7 +691,7 @@ public class SponsoredProductsLineItem {
   }
 
 
-  public SponsoredProductsLineItem targetRetailerId(Long targetRetailerId) {
+  public SponsoredProductsLineItem targetRetailerId(String targetRetailerId) {
     
     this.targetRetailerId = targetRetailerId;
     return this;
@@ -703,12 +703,12 @@ public class SponsoredProductsLineItem {
   **/
   @javax.annotation.Nonnull
 
-  public Long getTargetRetailerId() {
+  public String getTargetRetailerId() {
     return targetRetailerId;
   }
 
 
-  public void setTargetRetailerId(Long targetRetailerId) {
+  public void setTargetRetailerId(String targetRetailerId) {
     this.targetRetailerId = targetRetailerId;
   }
 
@@ -895,6 +895,9 @@ public class SponsoredProductsLineItem {
       if ((jsonObj.get("buyType") != null && !jsonObj.get("buyType").isJsonNull()) && !jsonObj.get("buyType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `buyType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("buyType").toString()));
       }
+      if (!jsonObj.get("campaignId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `campaignId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaignId").toString()));
+      }
       // validate the optional field `flightSchedule`
       if (jsonObj.get("flightSchedule") != null && !jsonObj.get("flightSchedule").isJsonNull()) {
         FlightSchedule.validateJsonObject(jsonObj.getAsJsonObject("flightSchedule"));
@@ -904,6 +907,9 @@ public class SponsoredProductsLineItem {
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      if (!jsonObj.get("targetRetailerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `targetRetailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("targetRetailerId").toString()));
       }
   }
 

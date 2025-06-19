@@ -20,7 +20,7 @@ Model to create a retail media auction line item
 |**startDate** | **OffsetDateTime** |  |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Status of a line item. |  [optional] |
 |**targetBid** | **Double** |  |  [optional] |
-|**targetRetailerId** | **Long** |  |  |
+|**targetRetailerId** | **String** |  |  |
 
 
 

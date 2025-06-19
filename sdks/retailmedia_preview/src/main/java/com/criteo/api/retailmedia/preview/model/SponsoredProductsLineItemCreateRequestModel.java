@@ -201,7 +201,7 @@ public class SponsoredProductsLineItemCreateRequestModel {
 
   public static final String SERIALIZED_NAME_TARGET_RETAILER_ID = "targetRetailerId";
   @SerializedName(SERIALIZED_NAME_TARGET_RETAILER_ID)
-  private Long targetRetailerId;
+  private String targetRetailerId;
 
   public SponsoredProductsLineItemCreateRequestModel() {
   }
@@ -470,7 +470,7 @@ public class SponsoredProductsLineItemCreateRequestModel {
   }
 
 
-  public SponsoredProductsLineItemCreateRequestModel targetRetailerId(Long targetRetailerId) {
+  public SponsoredProductsLineItemCreateRequestModel targetRetailerId(String targetRetailerId) {
     
     this.targetRetailerId = targetRetailerId;
     return this;
@@ -482,12 +482,12 @@ public class SponsoredProductsLineItemCreateRequestModel {
   **/
   @javax.annotation.Nonnull
 
-  public Long getTargetRetailerId() {
+  public String getTargetRetailerId() {
     return targetRetailerId;
   }
 
 
-  public void setTargetRetailerId(Long targetRetailerId) {
+  public void setTargetRetailerId(String targetRetailerId) {
     this.targetRetailerId = targetRetailerId;
   }
 
@@ -632,6 +632,9 @@ public class SponsoredProductsLineItemCreateRequestModel {
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      if (!jsonObj.get("targetRetailerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `targetRetailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("targetRetailerId").toString()));
       }
   }
 

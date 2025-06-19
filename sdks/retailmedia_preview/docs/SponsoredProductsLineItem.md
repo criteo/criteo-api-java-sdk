@@ -13,7 +13,7 @@ A model representing a Sponsored Products Line Item.
 |**budgetRemaining** | **Double** |  |  |
 |**budgetSpent** | **Double** |  |  [optional] |
 |**buyType** | [**BuyTypeEnum**](#BuyTypeEnum) |  |  [optional] |
-|**campaignId** | **Long** |  |  |
+|**campaignId** | **String** |  |  |
 |**createdAt** | **OffsetDateTime** |  |  |
 |**dailyPacing** | **Double** |  |  [optional] |
 |**endDate** | **OffsetDateTime** |  |  [optional] |
@@ -26,7 +26,7 @@ A model representing a Sponsored Products Line Item.
 |**startDate** | **OffsetDateTime** |  |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Status of a line item. |  [optional] |
 |**targetBid** | **Double** |  |  [optional] |
-|**targetRetailerId** | **Long** |  |  |
+|**targetRetailerId** | **String** |  |  |
 |**updatedAt** | **OffsetDateTime** |  |  |
 
 
@@ -56,15 +56,15 @@ A model representing a Sponsored Products Line Item.
 
 | Name | Value |
 |---- | -----|
-| UNKNOWN | &quot;Unknown&quot; |
-| ACTIVE | &quot;Active&quot; |
-| SCHEDULED | &quot;Scheduled&quot; |
-| DRAFT | &quot;Draft&quot; |
-| PAUSED | &quot;Paused&quot; |
-| BUDGETHIT | &quot;BudgetHit&quot; |
-| ENDED | &quot;Ended&quot; |
-| ARCHIVED | &quot;Archived&quot; |
-| NOFUNDS | &quot;NoFunds&quot; |
+| UNKNOWN | &quot;unknown&quot; |
+| ACTIVE | &quot;active&quot; |
+| SCHEDULED | &quot;scheduled&quot; |
+| DRAFT | &quot;draft&quot; |
+| PAUSED | &quot;paused&quot; |
+| BUDGETHIT | &quot;budgetHit&quot; |
+| ENDED | &quot;ended&quot; |
+| ARCHIVED | &quot;archived&quot; |
+| NOFUNDS | &quot;noFunds&quot; |
 
 
 

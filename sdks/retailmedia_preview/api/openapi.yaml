@@ -8529,15 +8529,15 @@ components:
       description: "A domain entity exposed by the API, identified by a unique id."
       example:
         attributes:
-          externalLineItemId: 2
+          externalLineItemId: 5
           bidStrategy: Unknown
           budgetRemaining: 6.027456183070403
           endDate: 2000-01-23T04:56:07.000+00:00
-          campaignId: 5
-          targetBid: 3.616076749251911
+          campaignId: campaignId
+          targetBid: 9.301444243932576
           createdAt: 2000-01-23T04:56:07.000+00:00
           budgetSpent: 1.4658129805029452
-          maxBid: 7.061401241503109
+          maxBid: 2.3021358869347655
           flightSchedule:
             legs:
             - dayOfWeek: Sunday
@@ -8549,12 +8549,12 @@ components:
           name: name
           buyType: Unknown
           isAutoDailyPacing: true
-          targetRetailerId: 2
-          dailyPacing: 5.637376656633329
-          monthlyPacing: 9.301444243932576
+          targetRetailerId: targetRetailerId
+          dailyPacing: 5.962133916683182
+          monthlyPacing: 7.061401241503109
           startDate: 2000-01-23T04:56:07.000+00:00
           budget: 0.8008281904610115
-          status: Unknown
+          status: unknown
           updatedAt: 2000-01-23T04:56:07.000+00:00
         id: id
         type: type
@@ -8656,15 +8656,15 @@ components:
       example:
         data:
           attributes:
-            externalLineItemId: 2
+            externalLineItemId: 5
             bidStrategy: Unknown
             budgetRemaining: 6.027456183070403
             endDate: 2000-01-23T04:56:07.000+00:00
-            campaignId: 5
-            targetBid: 3.616076749251911
+            campaignId: campaignId
+            targetBid: 9.301444243932576
             createdAt: 2000-01-23T04:56:07.000+00:00
             budgetSpent: 1.4658129805029452
-            maxBid: 7.061401241503109
+            maxBid: 2.3021358869347655
             flightSchedule:
               legs:
               - dayOfWeek: Sunday
@@ -8676,12 +8676,12 @@ components:
             name: name
             buyType: Unknown
             isAutoDailyPacing: true
-            targetRetailerId: 2
-            dailyPacing: 5.637376656633329
-            monthlyPacing: 9.301444243932576
+            targetRetailerId: targetRetailerId
+            dailyPacing: 5.962133916683182
+            monthlyPacing: 7.061401241503109
             startDate: 2000-01-23T04:56:07.000+00:00
             budget: 0.8008281904610115
-            status: Unknown
+            status: unknown
             updatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
           type: type
@@ -10604,15 +10604,15 @@ components:
         for offset and limit based paging.
       example:
         data:
-        - externalLineItemId: 2
+        - externalLineItemId: 5
           bidStrategy: Unknown
           budgetRemaining: 6.027456183070403
           endDate: 2000-01-23T04:56:07.000+00:00
-          campaignId: 5
-          targetBid: 3.616076749251911
+          campaignId: campaignId
+          targetBid: 9.301444243932576
           createdAt: 2000-01-23T04:56:07.000+00:00
           budgetSpent: 1.4658129805029452
-          maxBid: 7.061401241503109
+          maxBid: 2.3021358869347655
           flightSchedule:
             legs:
             - dayOfWeek: Sunday
@@ -10624,22 +10624,22 @@ components:
           name: name
           buyType: Unknown
           isAutoDailyPacing: true
-          targetRetailerId: 2
-          dailyPacing: 5.637376656633329
-          monthlyPacing: 9.301444243932576
+          targetRetailerId: targetRetailerId
+          dailyPacing: 5.962133916683182
+          monthlyPacing: 7.061401241503109
           startDate: 2000-01-23T04:56:07.000+00:00
           budget: 0.8008281904610115
-          status: Unknown
+          status: unknown
           updatedAt: 2000-01-23T04:56:07.000+00:00
-        - externalLineItemId: 2
+        - externalLineItemId: 5
           bidStrategy: Unknown
           budgetRemaining: 6.027456183070403
           endDate: 2000-01-23T04:56:07.000+00:00
-          campaignId: 5
-          targetBid: 3.616076749251911
+          campaignId: campaignId
+          targetBid: 9.301444243932576
           createdAt: 2000-01-23T04:56:07.000+00:00
           budgetSpent: 1.4658129805029452
-          maxBid: 7.061401241503109
+          maxBid: 2.3021358869347655
           flightSchedule:
             legs:
             - dayOfWeek: Sunday
@@ -10651,12 +10651,12 @@ components:
           name: name
           buyType: Unknown
           isAutoDailyPacing: true
-          targetRetailerId: 2
-          dailyPacing: 5.637376656633329
-          monthlyPacing: 9.301444243932576
+          targetRetailerId: targetRetailerId
+          dailyPacing: 5.962133916683182
+          monthlyPacing: 7.061401241503109
           startDate: 2000-01-23T04:56:07.000+00:00
           budget: 0.8008281904610115
-          status: Unknown
+          status: unknown
           updatedAt: 2000-01-23T04:56:07.000+00:00
         meta:
           offset: 1
@@ -18433,15 +18433,15 @@ components:
       additionalProperties: false
       description: A model representing a Sponsored Products Line Item.
       example:
-        externalLineItemId: 2
+        externalLineItemId: 5
         bidStrategy: Unknown
         budgetRemaining: 6.027456183070403
         endDate: 2000-01-23T04:56:07.000+00:00
-        campaignId: 5
-        targetBid: 3.616076749251911
+        campaignId: campaignId
+        targetBid: 9.301444243932576
         createdAt: 2000-01-23T04:56:07.000+00:00
         budgetSpent: 1.4658129805029452
-        maxBid: 7.061401241503109
+        maxBid: 2.3021358869347655
         flightSchedule:
           legs:
           - dayOfWeek: Sunday
@@ -18453,12 +18453,12 @@ components:
         name: name
         buyType: Unknown
         isAutoDailyPacing: true
-        targetRetailerId: 2
-        dailyPacing: 5.637376656633329
-        monthlyPacing: 9.301444243932576
+        targetRetailerId: targetRetailerId
+        dailyPacing: 5.962133916683182
+        monthlyPacing: 7.061401241503109
         startDate: 2000-01-23T04:56:07.000+00:00
         budget: 0.8008281904610115
-        status: Unknown
+        status: unknown
         updatedAt: 2000-01-23T04:56:07.000+00:00
       nullable: true
       properties:
@@ -18495,7 +18495,7 @@ components:
           x-optional-in-response: true
         campaignId:
           format: int64
-          type: integer
+          type: string
         createdAt:
           format: date-time
           type: string
@@ -18538,15 +18538,15 @@ components:
         status:
           description: Status of a line item.
           enum:
-          - Unknown
-          - Active
-          - Scheduled
-          - Draft
-          - Paused
-          - BudgetHit
-          - Ended
-          - Archived
-          - NoFunds
+          - unknown
+          - active
+          - scheduled
+          - draft
+          - paused
+          - budgetHit
+          - ended
+          - archived
+          - noFunds
           nullable: true
           type: string
           x-optional-in-response: true
@@ -18557,7 +18557,7 @@ components:
           x-optional-in-response: true
         targetRetailerId:
           format: int64
-          type: integer
+          type: string
         updatedAt:
           format: date-time
           type: string
@@ -18591,7 +18591,7 @@ components:
             endTime: 2000-01-23T04:56:07.000+00:00
         name: name
         isAutoDailyPacing: false
-        targetRetailerId: 2
+        targetRetailerId: targetRetailerId
         dailyPacing: 6.027456183070403
         monthlyPacing: 5.962133916683182
         startDate: 2000-01-23T04:56:07.000+00:00
@@ -18651,7 +18651,7 @@ components:
           type: number
         targetRetailerId:
           format: int64
-          type: integer
+          type: string
       required:
       - name
       - startDate
