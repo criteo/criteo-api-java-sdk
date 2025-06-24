@@ -5175,7 +5175,7 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call recommendedKeywordsCall(Integer retailerId, ValueResourceInputRecommendedKeywordsRequestV1 valueResourceInputRecommendedKeywordsRequestV1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call recommendedKeywordsCall(String retailerId, ValueResourceInputRecommendedKeywordsRequestV1 valueResourceInputRecommendedKeywordsRequestV1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5222,7 +5222,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call recommendedKeywordsValidateBeforeCall(Integer retailerId, ValueResourceInputRecommendedKeywordsRequestV1 valueResourceInputRecommendedKeywordsRequestV1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call recommendedKeywordsValidateBeforeCall(String retailerId, ValueResourceInputRecommendedKeywordsRequestV1 valueResourceInputRecommendedKeywordsRequestV1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'retailerId' is set
         if (retailerId == null) {
             throw new ApiException("Missing the required parameter 'retailerId' when calling recommendedKeywords(Async)");
@@ -5246,7 +5246,7 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public ValueResourceOutcomeRecommendedKeywordsResponseV1 recommendedKeywords(Integer retailerId, ValueResourceInputRecommendedKeywordsRequestV1 valueResourceInputRecommendedKeywordsRequestV1) throws ApiException {
+    public ValueResourceOutcomeRecommendedKeywordsResponseV1 recommendedKeywords(String retailerId, ValueResourceInputRecommendedKeywordsRequestV1 valueResourceInputRecommendedKeywordsRequestV1) throws ApiException {
         ApiResponse<ValueResourceOutcomeRecommendedKeywordsResponseV1> localVarResp = recommendedKeywordsWithHttpInfo(retailerId, valueResourceInputRecommendedKeywordsRequestV1);
         return localVarResp.getData();
     }
@@ -5265,7 +5265,7 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValueResourceOutcomeRecommendedKeywordsResponseV1> recommendedKeywordsWithHttpInfo(Integer retailerId, ValueResourceInputRecommendedKeywordsRequestV1 valueResourceInputRecommendedKeywordsRequestV1) throws ApiException {
+    public ApiResponse<ValueResourceOutcomeRecommendedKeywordsResponseV1> recommendedKeywordsWithHttpInfo(String retailerId, ValueResourceInputRecommendedKeywordsRequestV1 valueResourceInputRecommendedKeywordsRequestV1) throws ApiException {
         okhttp3.Call localVarCall = recommendedKeywordsValidateBeforeCall(retailerId, valueResourceInputRecommendedKeywordsRequestV1, null);
         Type localVarReturnType = new TypeToken<ValueResourceOutcomeRecommendedKeywordsResponseV1>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -5286,7 +5286,7 @@ public class CampaignApi {
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call recommendedKeywordsAsync(Integer retailerId, ValueResourceInputRecommendedKeywordsRequestV1 valueResourceInputRecommendedKeywordsRequestV1, final ApiCallback<ValueResourceOutcomeRecommendedKeywordsResponseV1> _callback) throws ApiException {
+    public okhttp3.Call recommendedKeywordsAsync(String retailerId, ValueResourceInputRecommendedKeywordsRequestV1 valueResourceInputRecommendedKeywordsRequestV1, final ApiCallback<ValueResourceOutcomeRecommendedKeywordsResponseV1> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = recommendedKeywordsValidateBeforeCall(retailerId, valueResourceInputRecommendedKeywordsRequestV1, _callback);
         Type localVarReturnType = new TypeToken<ValueResourceOutcomeRecommendedKeywordsResponseV1>(){}.getType();

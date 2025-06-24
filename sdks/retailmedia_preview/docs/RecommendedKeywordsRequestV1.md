@@ -8,7 +8,7 @@ Request model of RecommendedKeywords
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**skuIds** | **List&lt;String&gt;** | Sku Id list that the recommended keywords generated on. |  |
+|**productIds** | **List&lt;String&gt;** | Product Id list that the recommended keywords generated on. |  |
 
 
 

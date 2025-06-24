@@ -50,37 +50,37 @@ import com.criteo.api.retailmedia.preview.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RecommendedKeywordsRequestV1 {
-  public static final String SERIALIZED_NAME_SKU_IDS = "skuIds";
-  @SerializedName(SERIALIZED_NAME_SKU_IDS)
-  private List<String> skuIds = new ArrayList<>();
+  public static final String SERIALIZED_NAME_PRODUCT_IDS = "productIds";
+  @SerializedName(SERIALIZED_NAME_PRODUCT_IDS)
+  private List<String> productIds = new ArrayList<>();
 
   public RecommendedKeywordsRequestV1() {
   }
 
-  public RecommendedKeywordsRequestV1 skuIds(List<String> skuIds) {
+  public RecommendedKeywordsRequestV1 productIds(List<String> productIds) {
     
-    this.skuIds = skuIds;
+    this.productIds = productIds;
     return this;
   }
 
-  public RecommendedKeywordsRequestV1 addSkuIdsItem(String skuIdsItem) {
-    this.skuIds.add(skuIdsItem);
+  public RecommendedKeywordsRequestV1 addProductIdsItem(String productIdsItem) {
+    this.productIds.add(productIdsItem);
     return this;
   }
 
    /**
-   * Sku Id list that the recommended keywords generated on.
-   * @return skuIds
+   * Product Id list that the recommended keywords generated on.
+   * @return productIds
   **/
   @javax.annotation.Nonnull
 
-  public List<String> getSkuIds() {
-    return skuIds;
+  public List<String> getProductIds() {
+    return productIds;
   }
 
 
-  public void setSkuIds(List<String> skuIds) {
-    this.skuIds = skuIds;
+  public void setProductIds(List<String> productIds) {
+    this.productIds = productIds;
   }
 
 
@@ -94,19 +94,19 @@ public class RecommendedKeywordsRequestV1 {
       return false;
     }
     RecommendedKeywordsRequestV1 recommendedKeywordsRequestV1 = (RecommendedKeywordsRequestV1) o;
-    return Objects.equals(this.skuIds, recommendedKeywordsRequestV1.skuIds);
+    return Objects.equals(this.productIds, recommendedKeywordsRequestV1.productIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(skuIds);
+    return Objects.hash(productIds);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RecommendedKeywordsRequestV1 {\n");
-    sb.append("    skuIds: ").append(toIndentedString(skuIds)).append("\n");
+    sb.append("    productIds: ").append(toIndentedString(productIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -129,11 +129,11 @@ public class RecommendedKeywordsRequestV1 {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("skuIds");
+    openapiFields.add("productIds");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("skuIds");
+    openapiRequiredFields.add("productIds");
   }
 
  /**
@@ -164,10 +164,10 @@ public class RecommendedKeywordsRequestV1 {
         }
       }
       // ensure the required json array is present
-      if (jsonObj.get("skuIds") == null) {
+      if (jsonObj.get("productIds") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("skuIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `skuIds` to be an array in the JSON string but got `%s`", jsonObj.get("skuIds").toString()));
+      } else if (!jsonObj.get("productIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `productIds` to be an array in the JSON string but got `%s`", jsonObj.get("productIds").toString()));
       }
   }
 

@@ -8,7 +8,7 @@ An object that represents the request of RecommendCategories endpoint.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**skuIds** | **List&lt;String&gt;** | Sku id list. |  |
+|**productIds** | **List&lt;String&gt;** | Sku id list. |  |
 
 
 

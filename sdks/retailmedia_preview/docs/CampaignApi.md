@@ -3515,7 +3515,7 @@ public class Example {
         // oauth.setAccessToken("YOUR ACCESS TOKEN");
 
         CampaignApi apiInstance = new CampaignApi(defaultClient);
-        Integer retailerId = 56; // Integer | Retailer id.
+        String retailerId = "retailerId_example"; // String | Retailer id.
         ValueResourceInputRecommendedKeywordsRequestV1 valueResourceInputRecommendedKeywordsRequestV1 = new ValueResourceInputRecommendedKeywordsRequestV1(); // ValueResourceInputRecommendedKeywordsRequestV1 | Request of recommended keywords.
         try {
             ValueResourceOutcomeRecommendedKeywordsResponseV1 result = apiInstance.recommendedKeywords(retailerId, valueResourceInputRecommendedKeywordsRequestV1);
@@ -3536,7 +3536,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **retailerId** | **Integer**| Retailer id. | |
+| **retailerId** | **String**| Retailer id. | |
 | **valueResourceInputRecommendedKeywordsRequestV1** | [**ValueResourceInputRecommendedKeywordsRequestV1**](ValueResourceInputRecommendedKeywordsRequestV1.md)| Request of recommended keywords. | [optional] |
 
 ### Return type

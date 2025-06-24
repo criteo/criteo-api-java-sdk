@@ -4113,7 +4113,7 @@ paths:
         schema:
           default: 50
           format: int32
-          maximum: 2147483647
+          maximum: 500
           minimum: 1
           type: integer
         style: form
@@ -4284,8 +4284,7 @@ paths:
         name: retailerId
         required: true
         schema:
-          format: int32
-          type: integer
+          type: string
         style: simple
       requestBody:
         content:
@@ -13068,36 +13067,44 @@ components:
     RecommendedCategoriesRequestV1:
       description: An object that represents the request of RecommendCategories endpoint.
       example:
-        skuIds:
-        - skuIds
-        - skuIds
+        productIds:
+        - productIds
+        - productIds
+        - productIds
+        - productIds
+        - productIds
       properties:
-        skuIds:
+        productIds:
           description: Sku id list.
           items:
             type: string
+          maxItems: 1000
           minItems: 1
           type: array
       required:
-      - skuIds
+      - productIds
       type: object
       x-used-in-request: true
     RecommendedKeywordsRequestV1:
       additionalProperties: false
       description: Request model of RecommendedKeywords
       example:
-        skuIds:
-        - skuIds
-        - skuIds
+        productIds:
+        - productIds
+        - productIds
+        - productIds
+        - productIds
+        - productIds
       properties:
-        skuIds:
-          description: Sku Id list that the recommended keywords generated on.
+        productIds:
+          description: Product Id list that the recommended keywords generated on.
           items:
             type: string
+          maxItems: 1000
           minItems: 1
           type: array
       required:
-      - skuIds
+      - productIds
       type: object
       x-used-in-request: true
     RecommendedKeywordsResponseV1:
@@ -20114,9 +20121,12 @@ components:
       example:
         data:
           attributes:
-            skuIds:
-            - skuIds
-            - skuIds
+            productIds:
+            - productIds
+            - productIds
+            - productIds
+            - productIds
+            - productIds
           type: type
       properties:
         data:
@@ -20130,9 +20140,12 @@ components:
       example:
         data:
           attributes:
-            skuIds:
-            - skuIds
-            - skuIds
+            productIds:
+            - productIds
+            - productIds
+            - productIds
+            - productIds
+            - productIds
           type: type
       properties:
         data:
@@ -20624,9 +20637,12 @@ components:
       description: A value resource exposed by the API.
       example:
         attributes:
-          skuIds:
-          - skuIds
-          - skuIds
+          productIds:
+          - productIds
+          - productIds
+          - productIds
+          - productIds
+          - productIds
         type: type
       properties:
         attributes:
@@ -20642,9 +20658,12 @@ components:
       description: A value resource exposed by the API.
       example:
         attributes:
-          skuIds:
-          - skuIds
-          - skuIds
+          productIds:
+          - productIds
+          - productIds
+          - productIds
+          - productIds
+          - productIds
         type: type
       properties:
         attributes:
