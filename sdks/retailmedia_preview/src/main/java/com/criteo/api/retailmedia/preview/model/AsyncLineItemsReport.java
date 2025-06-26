@@ -160,61 +160,6 @@ public class AsyncLineItemsReport {
   private ClickAttributionWindowEnum clickAttributionWindow = ClickAttributionWindowEnum.NONE;
 
   /**
-   * Gets or Sets conquestingTypes
-   */
-  @JsonAdapter(ConquestingTypesEnum.Adapter.class)
-  public enum ConquestingTypesEnum {
-    UNKNOWN("unknown"),
-    
-    GENERIC("generic"),
-    
-    BRANDED("branded"),
-    
-    CONQUESTING("conquesting");
-
-    private String value;
-
-    ConquestingTypesEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ConquestingTypesEnum fromValue(String value) {
-      for (ConquestingTypesEnum b : ConquestingTypesEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ConquestingTypesEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ConquestingTypesEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ConquestingTypesEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ConquestingTypesEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_CONQUESTING_TYPES = "conquestingTypes";
-  @SerializedName(SERIALIZED_NAME_CONQUESTING_TYPES)
-  private List<ConquestingTypesEnum> conquestingTypes = null;
-
-  /**
    * Gets or Sets dimensions
    */
   @JsonAdapter(DimensionsEnum.Adapter.class)
@@ -283,7 +228,7 @@ public class AsyncLineItemsReport {
     
     CREATIVETEMPLATENAME("creativeTemplateName"),
     
-    CONQUESTINGTYPE("conquestingType");
+    TARGETEDKEYWORDTYPE("targetedKeywordType");
 
     private String value;
 
@@ -743,6 +688,61 @@ public class AsyncLineItemsReport {
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private OffsetDateTime startDate;
 
+  /**
+   * Gets or Sets targetedKeywordTypes
+   */
+  @JsonAdapter(TargetedKeywordTypesEnum.Adapter.class)
+  public enum TargetedKeywordTypesEnum {
+    UNKNOWN("unknown"),
+    
+    GENERIC("generic"),
+    
+    BRANDED("branded"),
+    
+    CONQUESTING("conquesting");
+
+    private String value;
+
+    TargetedKeywordTypesEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TargetedKeywordTypesEnum fromValue(String value) {
+      for (TargetedKeywordTypesEnum b : TargetedKeywordTypesEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TargetedKeywordTypesEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TargetedKeywordTypesEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TargetedKeywordTypesEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TargetedKeywordTypesEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TARGETED_KEYWORD_TYPES = "targetedKeywordTypes";
+  @SerializedName(SERIALIZED_NAME_TARGETED_KEYWORD_TYPES)
+  private List<TargetedKeywordTypesEnum> targetedKeywordTypes = null;
+
   public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
   @SerializedName(SERIALIZED_NAME_TIMEZONE)
   private String timezone = "UTC";
@@ -848,36 +848,6 @@ public class AsyncLineItemsReport {
 
   public void setClickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
     this.clickAttributionWindow = clickAttributionWindow;
-  }
-
-
-  public AsyncLineItemsReport conquestingTypes(List<ConquestingTypesEnum> conquestingTypes) {
-    
-    this.conquestingTypes = conquestingTypes;
-    return this;
-  }
-
-  public AsyncLineItemsReport addConquestingTypesItem(ConquestingTypesEnum conquestingTypesItem) {
-    if (this.conquestingTypes == null) {
-      this.conquestingTypes = new ArrayList<>();
-    }
-    this.conquestingTypes.add(conquestingTypesItem);
-    return this;
-  }
-
-   /**
-   * Filter on conquesting type: unknown, generic, branded, conquesting
-   * @return conquestingTypes
-  **/
-  @javax.annotation.Nullable
-
-  public List<ConquestingTypesEnum> getConquestingTypes() {
-    return conquestingTypes;
-  }
-
-
-  public void setConquestingTypes(List<ConquestingTypesEnum> conquestingTypes) {
-    this.conquestingTypes = conquestingTypes;
   }
 
 
@@ -1163,6 +1133,36 @@ public class AsyncLineItemsReport {
   }
 
 
+  public AsyncLineItemsReport targetedKeywordTypes(List<TargetedKeywordTypesEnum> targetedKeywordTypes) {
+    
+    this.targetedKeywordTypes = targetedKeywordTypes;
+    return this;
+  }
+
+  public AsyncLineItemsReport addTargetedKeywordTypesItem(TargetedKeywordTypesEnum targetedKeywordTypesItem) {
+    if (this.targetedKeywordTypes == null) {
+      this.targetedKeywordTypes = new ArrayList<>();
+    }
+    this.targetedKeywordTypes.add(targetedKeywordTypesItem);
+    return this;
+  }
+
+   /**
+   * Filter on targeted keyword type: unknown, generic, branded, conquesting
+   * @return targetedKeywordTypes
+  **/
+  @javax.annotation.Nullable
+
+  public List<TargetedKeywordTypesEnum> getTargetedKeywordTypes() {
+    return targetedKeywordTypes;
+  }
+
+
+  public void setTargetedKeywordTypes(List<TargetedKeywordTypesEnum> targetedKeywordTypes) {
+    this.targetedKeywordTypes = targetedKeywordTypes;
+  }
+
+
   public AsyncLineItemsReport timezone(String timezone) {
     
     this.timezone = timezone;
@@ -1263,7 +1263,6 @@ public class AsyncLineItemsReport {
     AsyncLineItemsReport asyncLineItemsReport = (AsyncLineItemsReport) o;
     return Objects.equals(this.campaignType, asyncLineItemsReport.campaignType) &&
         Objects.equals(this.clickAttributionWindow, asyncLineItemsReport.clickAttributionWindow) &&
-        Objects.equals(this.conquestingTypes, asyncLineItemsReport.conquestingTypes) &&
         Objects.equals(this.dimensions, asyncLineItemsReport.dimensions) &&
         Objects.equals(this.endDate, asyncLineItemsReport.endDate) &&
         Objects.equals(this.format, asyncLineItemsReport.format) &&
@@ -1275,6 +1274,7 @@ public class AsyncLineItemsReport {
         Objects.equals(this.searchTermTargetings, asyncLineItemsReport.searchTermTargetings) &&
         Objects.equals(this.searchTermTypes, asyncLineItemsReport.searchTermTypes) &&
         Objects.equals(this.startDate, asyncLineItemsReport.startDate) &&
+        Objects.equals(this.targetedKeywordTypes, asyncLineItemsReport.targetedKeywordTypes) &&
         Objects.equals(this.timezone, asyncLineItemsReport.timezone) &&
         Objects.equals(this.viewAttributionWindow, asyncLineItemsReport.viewAttributionWindow)&&
         Objects.equals(this.additionalProperties, asyncLineItemsReport.additionalProperties);
@@ -1282,7 +1282,7 @@ public class AsyncLineItemsReport {
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaignType, clickAttributionWindow, conquestingTypes, dimensions, endDate, format, id, ids, metrics, reportType, salesChannel, searchTermTargetings, searchTermTypes, startDate, timezone, viewAttributionWindow, additionalProperties);
+    return Objects.hash(campaignType, clickAttributionWindow, dimensions, endDate, format, id, ids, metrics, reportType, salesChannel, searchTermTargetings, searchTermTypes, startDate, targetedKeywordTypes, timezone, viewAttributionWindow, additionalProperties);
   }
 
   @Override
@@ -1291,7 +1291,6 @@ public class AsyncLineItemsReport {
     sb.append("class AsyncLineItemsReport {\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    clickAttributionWindow: ").append(toIndentedString(clickAttributionWindow)).append("\n");
-    sb.append("    conquestingTypes: ").append(toIndentedString(conquestingTypes)).append("\n");
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
@@ -1303,6 +1302,7 @@ public class AsyncLineItemsReport {
     sb.append("    searchTermTargetings: ").append(toIndentedString(searchTermTargetings)).append("\n");
     sb.append("    searchTermTypes: ").append(toIndentedString(searchTermTypes)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    targetedKeywordTypes: ").append(toIndentedString(targetedKeywordTypes)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -1330,7 +1330,6 @@ public class AsyncLineItemsReport {
     openapiFields = new HashSet<String>();
     openapiFields.add("campaignType");
     openapiFields.add("clickAttributionWindow");
-    openapiFields.add("conquestingTypes");
     openapiFields.add("dimensions");
     openapiFields.add("endDate");
     openapiFields.add("format");
@@ -1342,6 +1341,7 @@ public class AsyncLineItemsReport {
     openapiFields.add("searchTermTargetings");
     openapiFields.add("searchTermTypes");
     openapiFields.add("startDate");
+    openapiFields.add("targetedKeywordTypes");
     openapiFields.add("timezone");
     openapiFields.add("viewAttributionWindow");
 
@@ -1377,10 +1377,6 @@ public class AsyncLineItemsReport {
         throw new IllegalArgumentException(String.format("Expected the field `clickAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionWindow").toString()));
       }
       // ensure the optional json data is an array if present
-      if (jsonObj.get("conquestingTypes") != null && !jsonObj.get("conquestingTypes").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `conquestingTypes` to be an array in the JSON string but got `%s`", jsonObj.get("conquestingTypes").toString()));
-      }
-      // ensure the optional json data is an array if present
       if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `dimensions` to be an array in the JSON string but got `%s`", jsonObj.get("dimensions").toString()));
       }
@@ -1411,6 +1407,10 @@ public class AsyncLineItemsReport {
       // ensure the optional json data is an array if present
       if (jsonObj.get("searchTermTypes") != null && !jsonObj.get("searchTermTypes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `searchTermTypes` to be an array in the JSON string but got `%s`", jsonObj.get("searchTermTypes").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("targetedKeywordTypes") != null && !jsonObj.get("targetedKeywordTypes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `targetedKeywordTypes` to be an array in the JSON string but got `%s`", jsonObj.get("targetedKeywordTypes").toString()));
       }
       if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));
