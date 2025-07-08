@@ -14,6 +14,7 @@ Async Revenue report body request
 |**campaignIds** | **List&lt;String&gt;** | Campaign ids to filter |  [optional] |
 |**campaignType** | [**CampaignTypeEnum**](#CampaignTypeEnum) | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays |  [optional] |
 |**clickAttributionWindow** | [**ClickAttributionWindowEnum**](#ClickAttributionWindowEnum) | Click attribution window |  [optional] |
+|**clickMatchLevel** | [**ClickMatchLevelEnum**](#ClickMatchLevelEnum) | Click Match Level: Campaign, Same SKU, Same Category or Same Brand |  [optional] |
 |**dimensions** | [**List&lt;DimensionsEnum&gt;**](#List&lt;DimensionsEnum&gt;) | List of dimensions to report on |  [optional] |
 |**endDate** | **OffsetDateTime** | End date |  |
 |**format** | [**FormatEnum**](#FormatEnum) | Format of the output |  [optional] |
@@ -30,6 +31,7 @@ Async Revenue report body request
 |**startDate** | **OffsetDateTime** | Start date |  |
 |**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
 |**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) | View attribution window |  [optional] |
+|**viewMatchLevel** | [**ViewMatchLevelEnum**](#ViewMatchLevelEnum) | View Match Level: Campaign, Same SKU, Same Category or Same Brand |  [optional] |
 
 
 
@@ -71,6 +73,17 @@ Async Revenue report body request
 | _7D | &quot;7D&quot; |
 | _14D | &quot;14D&quot; |
 | _30D | &quot;30D&quot; |
+
+
+
+## Enum: ClickMatchLevelEnum
+
+| Name | Value |
+|---- | -----|
+| SAMESKU | &quot;sameSku&quot; |
+| SAMECATEGORY | &quot;sameCategory&quot; |
+| SAMEBRAND | &quot;sameBrand&quot; |
+| CAMPAIGN | &quot;campaign&quot; |
 
 
 
@@ -260,6 +273,17 @@ Async Revenue report body request
 | _7D | &quot;7D&quot; |
 | _14D | &quot;14D&quot; |
 | _30D | &quot;30D&quot; |
+
+
+
+## Enum: ViewMatchLevelEnum
+
+| Name | Value |
+|---- | -----|
+| SAMESKU | &quot;sameSku&quot; |
+| SAMECATEGORY | &quot;sameCategory&quot; |
+| SAMEBRAND | &quot;sameBrand&quot; |
+| CAMPAIGN | &quot;campaign&quot; |
 
 
 

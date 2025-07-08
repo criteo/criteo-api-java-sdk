@@ -274,6 +274,61 @@ public class AsyncRevenueReport {
   private ClickAttributionWindowEnum clickAttributionWindow = ClickAttributionWindowEnum.NONE;
 
   /**
+   * Click Match Level: Campaign, Same SKU, Same Category or Same Brand
+   */
+  @JsonAdapter(ClickMatchLevelEnum.Adapter.class)
+  public enum ClickMatchLevelEnum {
+    SAMESKU("sameSku"),
+    
+    SAMECATEGORY("sameCategory"),
+    
+    SAMEBRAND("sameBrand"),
+    
+    CAMPAIGN("campaign");
+
+    private String value;
+
+    ClickMatchLevelEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ClickMatchLevelEnum fromValue(String value) {
+      for (ClickMatchLevelEnum b : ClickMatchLevelEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ClickMatchLevelEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ClickMatchLevelEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ClickMatchLevelEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ClickMatchLevelEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CLICK_MATCH_LEVEL = "clickMatchLevel";
+  @SerializedName(SERIALIZED_NAME_CLICK_MATCH_LEVEL)
+  private ClickMatchLevelEnum clickMatchLevel = ClickMatchLevelEnum.CAMPAIGN;
+
+  /**
    * Gets or Sets dimensions
    */
   @JsonAdapter(DimensionsEnum.Adapter.class)
@@ -976,6 +1031,61 @@ public class AsyncRevenueReport {
   @SerializedName(SERIALIZED_NAME_VIEW_ATTRIBUTION_WINDOW)
   private ViewAttributionWindowEnum viewAttributionWindow = ViewAttributionWindowEnum.NONE;
 
+  /**
+   * View Match Level: Campaign, Same SKU, Same Category or Same Brand
+   */
+  @JsonAdapter(ViewMatchLevelEnum.Adapter.class)
+  public enum ViewMatchLevelEnum {
+    SAMESKU("sameSku"),
+    
+    SAMECATEGORY("sameCategory"),
+    
+    SAMEBRAND("sameBrand"),
+    
+    CAMPAIGN("campaign");
+
+    private String value;
+
+    ViewMatchLevelEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ViewMatchLevelEnum fromValue(String value) {
+      for (ViewMatchLevelEnum b : ViewMatchLevelEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ViewMatchLevelEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ViewMatchLevelEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ViewMatchLevelEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ViewMatchLevelEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_VIEW_MATCH_LEVEL = "viewMatchLevel";
+  @SerializedName(SERIALIZED_NAME_VIEW_MATCH_LEVEL)
+  private ViewMatchLevelEnum viewMatchLevel = ViewMatchLevelEnum.CAMPAIGN;
+
   public AsyncRevenueReport() {
   }
 
@@ -1132,6 +1242,28 @@ public class AsyncRevenueReport {
 
   public void setClickAttributionWindow(ClickAttributionWindowEnum clickAttributionWindow) {
     this.clickAttributionWindow = clickAttributionWindow;
+  }
+
+
+  public AsyncRevenueReport clickMatchLevel(ClickMatchLevelEnum clickMatchLevel) {
+    
+    this.clickMatchLevel = clickMatchLevel;
+    return this;
+  }
+
+   /**
+   * Click Match Level: Campaign, Same SKU, Same Category or Same Brand
+   * @return clickMatchLevel
+  **/
+  @javax.annotation.Nullable
+
+  public ClickMatchLevelEnum getClickMatchLevel() {
+    return clickMatchLevel;
+  }
+
+
+  public void setClickMatchLevel(ClickMatchLevelEnum clickMatchLevel) {
+    this.clickMatchLevel = clickMatchLevel;
   }
 
 
@@ -1534,6 +1666,28 @@ public class AsyncRevenueReport {
     this.viewAttributionWindow = viewAttributionWindow;
   }
 
+
+  public AsyncRevenueReport viewMatchLevel(ViewMatchLevelEnum viewMatchLevel) {
+    
+    this.viewMatchLevel = viewMatchLevel;
+    return this;
+  }
+
+   /**
+   * View Match Level: Campaign, Same SKU, Same Category or Same Brand
+   * @return viewMatchLevel
+  **/
+  @javax.annotation.Nullable
+
+  public ViewMatchLevelEnum getViewMatchLevel() {
+    return viewMatchLevel;
+  }
+
+
+  public void setViewMatchLevel(ViewMatchLevelEnum viewMatchLevel) {
+    this.viewMatchLevel = viewMatchLevel;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -1595,6 +1749,7 @@ public class AsyncRevenueReport {
         Objects.equals(this.campaignIds, asyncRevenueReport.campaignIds) &&
         Objects.equals(this.campaignType, asyncRevenueReport.campaignType) &&
         Objects.equals(this.clickAttributionWindow, asyncRevenueReport.clickAttributionWindow) &&
+        Objects.equals(this.clickMatchLevel, asyncRevenueReport.clickMatchLevel) &&
         Objects.equals(this.dimensions, asyncRevenueReport.dimensions) &&
         Objects.equals(this.endDate, asyncRevenueReport.endDate) &&
         Objects.equals(this.format, asyncRevenueReport.format) &&
@@ -1610,13 +1765,14 @@ public class AsyncRevenueReport {
         Objects.equals(this.soldBy, asyncRevenueReport.soldBy) &&
         Objects.equals(this.startDate, asyncRevenueReport.startDate) &&
         Objects.equals(this.timezone, asyncRevenueReport.timezone) &&
-        Objects.equals(this.viewAttributionWindow, asyncRevenueReport.viewAttributionWindow)&&
+        Objects.equals(this.viewAttributionWindow, asyncRevenueReport.viewAttributionWindow) &&
+        Objects.equals(this.viewMatchLevel, asyncRevenueReport.viewMatchLevel)&&
         Objects.equals(this.additionalProperties, asyncRevenueReport.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountIds, advertiserTypes, buyType, campaignIds, campaignType, clickAttributionWindow, dimensions, endDate, format, id, ids, lineItemIds, metrics, reportType, retailerIds, revenueType, salesChannel, skuRelations, soldBy, startDate, timezone, viewAttributionWindow, additionalProperties);
+    return Objects.hash(accountIds, advertiserTypes, buyType, campaignIds, campaignType, clickAttributionWindow, clickMatchLevel, dimensions, endDate, format, id, ids, lineItemIds, metrics, reportType, retailerIds, revenueType, salesChannel, skuRelations, soldBy, startDate, timezone, viewAttributionWindow, viewMatchLevel, additionalProperties);
   }
 
   @Override
@@ -1629,6 +1785,7 @@ public class AsyncRevenueReport {
     sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
     sb.append("    campaignType: ").append(toIndentedString(campaignType)).append("\n");
     sb.append("    clickAttributionWindow: ").append(toIndentedString(clickAttributionWindow)).append("\n");
+    sb.append("    clickMatchLevel: ").append(toIndentedString(clickMatchLevel)).append("\n");
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
@@ -1645,6 +1802,7 @@ public class AsyncRevenueReport {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    viewAttributionWindow: ").append(toIndentedString(viewAttributionWindow)).append("\n");
+    sb.append("    viewMatchLevel: ").append(toIndentedString(viewMatchLevel)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1674,6 +1832,7 @@ public class AsyncRevenueReport {
     openapiFields.add("campaignIds");
     openapiFields.add("campaignType");
     openapiFields.add("clickAttributionWindow");
+    openapiFields.add("clickMatchLevel");
     openapiFields.add("dimensions");
     openapiFields.add("endDate");
     openapiFields.add("format");
@@ -1690,6 +1849,7 @@ public class AsyncRevenueReport {
     openapiFields.add("startDate");
     openapiFields.add("timezone");
     openapiFields.add("viewAttributionWindow");
+    openapiFields.add("viewMatchLevel");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1736,6 +1896,9 @@ public class AsyncRevenueReport {
       }
       if ((jsonObj.get("clickAttributionWindow") != null && !jsonObj.get("clickAttributionWindow").isJsonNull()) && !jsonObj.get("clickAttributionWindow").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `clickAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickAttributionWindow").toString()));
+      }
+      if ((jsonObj.get("clickMatchLevel") != null && !jsonObj.get("clickMatchLevel").isJsonNull()) && !jsonObj.get("clickMatchLevel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `clickMatchLevel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clickMatchLevel").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonArray()) {
@@ -1784,6 +1947,9 @@ public class AsyncRevenueReport {
       }
       if ((jsonObj.get("viewAttributionWindow") != null && !jsonObj.get("viewAttributionWindow").isJsonNull()) && !jsonObj.get("viewAttributionWindow").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `viewAttributionWindow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewAttributionWindow").toString()));
+      }
+      if ((jsonObj.get("viewMatchLevel") != null && !jsonObj.get("viewMatchLevel").isJsonNull()) && !jsonObj.get("viewMatchLevel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `viewMatchLevel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("viewMatchLevel").toString()));
       }
   }
 

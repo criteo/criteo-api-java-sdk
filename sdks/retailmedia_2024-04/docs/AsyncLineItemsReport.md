@@ -21,6 +21,7 @@ Async Line Items report body request
 |**searchTermTargetings** | [**List&lt;SearchTermTargetingsEnum&gt;**](#List&lt;SearchTermTargetingsEnum&gt;) | Filter on the type of search term targeting: unknown, automatic, manual |  [optional] |
 |**searchTermTypes** | [**List&lt;SearchTermTypesEnum&gt;**](#List&lt;SearchTermTypesEnum&gt;) | Filter on the type of search term type: unknown, searched, entered |  [optional] |
 |**startDate** | **OffsetDateTime** | Start date |  |
+|**targetedKeywordTypes** | [**List&lt;TargetedKeywordTypesEnum&gt;**](#List&lt;TargetedKeywordTypesEnum&gt;) | Filter on targeted keyword type: unknown, generic, branded, conquesting |  [optional] |
 |**timezone** | **String** | Time zone : see criteo developer portal for supported time zones |  [optional] |
 |**viewAttributionWindow** | [**ViewAttributionWindowEnum**](#ViewAttributionWindowEnum) | View attribution window |  [optional] |
 
@@ -83,6 +84,7 @@ Async Line Items report body request
 | CREATIVETYPENAME | &quot;creativeTypeName&quot; |
 | CREATIVETEMPLATEID | &quot;creativeTemplateId&quot; |
 | CREATIVETEMPLATENAME | &quot;creativeTemplateName&quot; |
+| TARGETEDKEYWORDTYPE | &quot;targetedKeywordType&quot; |
 
 
 
@@ -184,6 +186,17 @@ Async Line Items report body request
 | UNKNOWN | &quot;unknown&quot; |
 | SEARCHED | &quot;searched&quot; |
 | ENTERED | &quot;entered&quot; |
+
+
+
+## Enum: List&lt;TargetedKeywordTypesEnum&gt;
+
+| Name | Value |
+|---- | -----|
+| UNKNOWN | &quot;unknown&quot; |
+| GENERIC | &quot;generic&quot; |
+| BRANDED | &quot;branded&quot; |
+| CONQUESTING | &quot;conquesting&quot; |
 
 
 
