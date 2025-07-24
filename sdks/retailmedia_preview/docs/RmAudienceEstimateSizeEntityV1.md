@@ -8,9 +8,9 @@ Audience of people of interest for a marketer.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**algebra** | [**RmAlgebraNodeV1**](RmAlgebraNodeV1.md) |  |  [optional] |
-|**channel** | [**ChannelEnum**](#ChannelEnum) | Channel to estimate the size |  [optional] |
-|**retailerId** | **String** | Retailer id of the audience |  [optional] |
+|**algebra** | [**RmAlgebraNodeV1**](RmAlgebraNodeV1.md) |  |  |
+|**channel** | [**ChannelEnum**](#ChannelEnum) | Channel to estimate the size |  |
+|**retailerId** | **String** | Retailer id of the audience |  |
 
 
 

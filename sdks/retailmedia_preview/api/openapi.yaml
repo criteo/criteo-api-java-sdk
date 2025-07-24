@@ -14155,6 +14155,9 @@ components:
           items:
             type: string
           type: array
+      required:
+      - channel
+      - ids
       type: object
     RmAudienceComputeSizesEntityV1Resource:
       description: A top-level object that encapsulates a Criteo API response for
@@ -14630,6 +14633,10 @@ components:
         retailerId:
           description: Retailer id of the audience
           type: string
+      required:
+      - algebra
+      - channel
+      - retailerId
       type: object
     RmAudienceEstimateSizeEntityV1Resource:
       description: A top-level object that encapsulates a Criteo API response for
@@ -14906,6 +14913,9 @@ components:
           items:
             type: string
           type: array
+      required:
+      - channel
+      - ids
       type: object
     RmAudienceSegmentComputeSizeEntityV1Resource:
       description: A top-level object that encapsulates a Criteo API response for
@@ -15444,6 +15454,10 @@ components:
         retailerId:
           description: Retailer id of the segment
           type: string
+      required:
+      - channel
+      - events
+      - retailerId
       type: object
     RmAudienceSegmentEstimateSizeEntityV1Resource:
       description: A top-level object that encapsulates a Criteo API response for
@@ -16554,6 +16568,9 @@ components:
           - Buy
           - AddToCart
           type: string
+      required:
+      - lookbackDays
+      - shopperActivity
       type: object
     RmEventsEstimationV1:
       description: Settings to target users based on the shopping events
@@ -16605,6 +16622,9 @@ components:
           - Buy
           - AddToCart
           type: string
+      required:
+      - lookbackDays
+      - shopperActivity
       type: object
     RmEventsUpdateV1:
       description: Settings to target users based on their behavior

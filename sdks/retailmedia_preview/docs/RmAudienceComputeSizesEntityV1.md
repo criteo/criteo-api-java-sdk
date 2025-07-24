@@ -8,8 +8,8 @@ Audience of people of interest for a marketer.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**channel** | [**ChannelEnum**](#ChannelEnum) | Channel to compute the sizes for. |  [optional] |
-|**ids** | **List&lt;String&gt;** | List of ids of the segments whose size is requested. |  [optional] |
+|**channel** | [**ChannelEnum**](#ChannelEnum) | Channel to compute the sizes for. |  |
+|**ids** | **List&lt;String&gt;** | List of ids of the segments whose size is requested. |  |
 
 
 

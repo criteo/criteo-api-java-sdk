@@ -8,9 +8,9 @@ Set of rules that defines specific people to target.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**channel** | [**ChannelEnum**](#ChannelEnum) | Channel to estimate the size |  [optional] |
-|**events** | [**RmEventsEstimationV1**](RmEventsEstimationV1.md) |  |  [optional] |
-|**retailerId** | **String** | Retailer id of the segment |  [optional] |
+|**channel** | [**ChannelEnum**](#ChannelEnum) | Channel to estimate the size |  |
+|**events** | [**RmEventsEstimationV1**](RmEventsEstimationV1.md) |  |  |
+|**retailerId** | **String** | Retailer id of the segment |  |
 
 
 

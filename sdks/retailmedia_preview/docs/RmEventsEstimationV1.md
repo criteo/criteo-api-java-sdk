@@ -10,10 +10,10 @@ Settings to target users based on the shopping events
 |------------ | ------------- | ------------- | -------------|
 |**brandIds** | **Set&lt;String&gt;** |  |  [optional] |
 |**categoryIds** | **Set&lt;String&gt;** |  |  [optional] |
-|**lookbackDays** | [**LookbackDaysEnum**](#LookbackDaysEnum) |  |  [optional] |
+|**lookbackDays** | [**LookbackDaysEnum**](#LookbackDaysEnum) |  |  |
 |**maxPrice** | **Double** |  |  [optional] |
 |**minPrice** | **Double** |  |  [optional] |
-|**shopperActivity** | [**ShopperActivityEnum**](#ShopperActivityEnum) |  |  [optional] |
+|**shopperActivity** | [**ShopperActivityEnum**](#ShopperActivityEnum) |  |  |
 
 
 

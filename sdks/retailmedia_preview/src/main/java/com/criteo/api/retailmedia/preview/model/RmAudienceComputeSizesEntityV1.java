@@ -105,7 +105,7 @@ public class RmAudienceComputeSizesEntityV1 {
 
   public static final String SERIALIZED_NAME_IDS = "ids";
   @SerializedName(SERIALIZED_NAME_IDS)
-  private List<String> ids = null;
+  private List<String> ids = new ArrayList<>();
 
   public RmAudienceComputeSizesEntityV1() {
   }
@@ -120,7 +120,7 @@ public class RmAudienceComputeSizesEntityV1 {
    * Channel to compute the sizes for.
    * @return channel
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public ChannelEnum getChannel() {
     return channel;
@@ -139,9 +139,6 @@ public class RmAudienceComputeSizesEntityV1 {
   }
 
   public RmAudienceComputeSizesEntityV1 addIdsItem(String idsItem) {
-    if (this.ids == null) {
-      this.ids = new ArrayList<>();
-    }
     this.ids.add(idsItem);
     return this;
   }
@@ -150,7 +147,7 @@ public class RmAudienceComputeSizesEntityV1 {
    * List of ids of the segments whose size is requested.
    * @return ids
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public List<String> getIds() {
     return ids;
@@ -260,6 +257,8 @@ public class RmAudienceComputeSizesEntityV1 {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("channel");
+    openapiRequiredFields.add("ids");
   }
 
  /**
@@ -274,11 +273,20 @@ public class RmAudienceComputeSizesEntityV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in RmAudienceComputeSizesEntityV1 is not found in the empty JSON string", RmAudienceComputeSizesEntityV1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) && !jsonObj.get("channel").isJsonPrimitive()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : RmAudienceComputeSizesEntityV1.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("channel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("ids") != null && !jsonObj.get("ids").isJsonArray()) {
+      // ensure the required json array is present
+      if (jsonObj.get("ids") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("ids").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `ids` to be an array in the JSON string but got `%s`", jsonObj.get("ids").toString()));
       }
   }

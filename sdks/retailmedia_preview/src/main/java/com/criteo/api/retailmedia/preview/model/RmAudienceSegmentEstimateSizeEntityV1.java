@@ -123,7 +123,7 @@ public class RmAudienceSegmentEstimateSizeEntityV1 {
    * Channel to estimate the size
    * @return channel
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public ChannelEnum getChannel() {
     return channel;
@@ -145,7 +145,7 @@ public class RmAudienceSegmentEstimateSizeEntityV1 {
    * Get events
    * @return events
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public RmEventsEstimationV1 getEvents() {
     return events;
@@ -167,7 +167,7 @@ public class RmAudienceSegmentEstimateSizeEntityV1 {
    * Retailer id of the segment
    * @return retailerId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getRetailerId() {
     return retailerId;
@@ -280,6 +280,9 @@ public class RmAudienceSegmentEstimateSizeEntityV1 {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("channel");
+    openapiRequiredFields.add("events");
+    openapiRequiredFields.add("retailerId");
   }
 
  /**
@@ -294,14 +297,19 @@ public class RmAudienceSegmentEstimateSizeEntityV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in RmAudienceSegmentEstimateSizeEntityV1 is not found in the empty JSON string", RmAudienceSegmentEstimateSizeEntityV1.openapiRequiredFields.toString()));
         }
       }
-      if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) && !jsonObj.get("channel").isJsonPrimitive()) {
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : RmAudienceSegmentEstimateSizeEntityV1.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("channel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
       }
-      // validate the optional field `events`
-      if (jsonObj.get("events") != null && !jsonObj.get("events").isJsonNull()) {
-        RmEventsEstimationV1.validateJsonObject(jsonObj.getAsJsonObject("events"));
-      }
-      if ((jsonObj.get("retailerId") != null && !jsonObj.get("retailerId").isJsonNull()) && !jsonObj.get("retailerId").isJsonPrimitive()) {
+      // validate the required field `events`
+      RmEventsEstimationV1.validateJsonObject(jsonObj.getAsJsonObject("events"));
+      if (!jsonObj.get("retailerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerId").toString()));
       }
   }

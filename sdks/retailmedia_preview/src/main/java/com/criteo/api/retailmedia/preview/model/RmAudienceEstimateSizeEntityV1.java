@@ -22,7 +22,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -146,7 +145,7 @@ public class RmAudienceEstimateSizeEntityV1 {
    * Channel to estimate the size
    * @return channel
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public ChannelEnum getChannel() {
     return channel;
@@ -168,7 +167,7 @@ public class RmAudienceEstimateSizeEntityV1 {
    * Retailer id of the audience
    * @return retailerId
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public String getRetailerId() {
     return retailerId;
@@ -240,20 +239,9 @@ public class RmAudienceEstimateSizeEntityV1 {
         Objects.equals(this.additionalProperties, rmAudienceEstimateSizeEntityV1.additionalProperties);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(algebra, channel, retailerId, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -292,6 +280,9 @@ public class RmAudienceEstimateSizeEntityV1 {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("algebra");
+    openapiRequiredFields.add("channel");
+    openapiRequiredFields.add("retailerId");
   }
 
  /**
@@ -306,14 +297,19 @@ public class RmAudienceEstimateSizeEntityV1 {
           throw new IllegalArgumentException(String.format("The required field(s) %s in RmAudienceEstimateSizeEntityV1 is not found in the empty JSON string", RmAudienceEstimateSizeEntityV1.openapiRequiredFields.toString()));
         }
       }
-      // validate the optional field `algebra`
-      if (jsonObj.get("algebra") != null && !jsonObj.get("algebra").isJsonNull()) {
-        RmAlgebraNodeV1.validateJsonObject(jsonObj.getAsJsonObject("algebra"));
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : RmAudienceEstimateSizeEntityV1.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
       }
-      if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) && !jsonObj.get("channel").isJsonPrimitive()) {
+      // validate the required field `algebra`
+      RmAlgebraNodeV1.validateJsonObject(jsonObj.getAsJsonObject("algebra"));
+      if (!jsonObj.get("channel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
       }
-      if ((jsonObj.get("retailerId") != null && !jsonObj.get("retailerId").isJsonNull()) && !jsonObj.get("retailerId").isJsonPrimitive()) {
+      if (!jsonObj.get("retailerId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `retailerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("retailerId").toString()));
       }
   }
