@@ -66,14 +66,12 @@ import com.criteo.api.retailmedia.preview.model.SkuSlimDataV2ListResponse;
 import com.criteo.api.retailmedia.preview.model.SponsoredProductsLineItemCreateRequestModel;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputBrandIdSearchRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputCategoriesSearchRequestV1;
-import com.criteo.api.retailmedia.preview.model.ValueResourceInputCpcMinBidsRequest;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfBrandCatalogRequestV2;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfSellerCatalogRequestV2;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputRecommendedCategoriesRequestV1;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputRecommendedKeywordsRequestV1;
 import com.criteo.api.retailmedia.preview.model.ValueResourceInputRetailMediaKeywordsReview;
-import com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeCpcMinBidsResponse;
 import com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeRecommendedKeywordsResponseV1;
 import com.criteo.api.retailmedia.preview.model.ValueResourceOutcomeRetailMediaKeywordsReviewResult;
 
@@ -2816,139 +2814,6 @@ public class CampaignApi {
 
         okhttp3.Call localVarCall = getAuctionLineItemsByCampaignIdV2ValidateBeforeCall(campaignId, limitToId, pageIndex, pageSize, _callback);
         Type localVarReturnType = new TypeToken<PageOfSponsoredProductsLineItem>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getCpcMinBidsBySkuIdsV1
-     * @param retailerId Retailer Id. (required)
-     * @param valueResourceInputCpcMinBidsRequest Cpc minimum bid amount request object. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCpcMinBidsBySkuIdsV1Call(Integer retailerId, ValueResourceInputCpcMinBidsRequest valueResourceInputCpcMinBidsRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = valueResourceInputCpcMinBidsRequest;
-
-        // create path and map variables
-        String localVarPath = "/preview/retail-media/retailers/{retailerId}/cpc-min-bids"
-            .replace("{" + "retailerId" + "}", localVarApiClient.escapeString(retailerId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth", "oauth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCpcMinBidsBySkuIdsV1ValidateBeforeCall(Integer retailerId, ValueResourceInputCpcMinBidsRequest valueResourceInputCpcMinBidsRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'retailerId' is set
-        if (retailerId == null) {
-            throw new ApiException("Missing the required parameter 'retailerId' when calling getCpcMinBidsBySkuIdsV1(Async)");
-        }
-
-        return getCpcMinBidsBySkuIdsV1Call(retailerId, valueResourceInputCpcMinBidsRequest, _callback);
-
-    }
-
-    /**
-     * 
-     * Get overall and individual minimum bid amount for given retailer id and sku id list.
-     * @param retailerId Retailer Id. (required)
-     * @param valueResourceInputCpcMinBidsRequest Cpc minimum bid amount request object. (optional)
-     * @return ValueResourceOutcomeCpcMinBidsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ValueResourceOutcomeCpcMinBidsResponse getCpcMinBidsBySkuIdsV1(Integer retailerId, ValueResourceInputCpcMinBidsRequest valueResourceInputCpcMinBidsRequest) throws ApiException {
-        ApiResponse<ValueResourceOutcomeCpcMinBidsResponse> localVarResp = getCpcMinBidsBySkuIdsV1WithHttpInfo(retailerId, valueResourceInputCpcMinBidsRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Get overall and individual minimum bid amount for given retailer id and sku id list.
-     * @param retailerId Retailer Id. (required)
-     * @param valueResourceInputCpcMinBidsRequest Cpc minimum bid amount request object. (optional)
-     * @return ApiResponse&lt;ValueResourceOutcomeCpcMinBidsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ValueResourceOutcomeCpcMinBidsResponse> getCpcMinBidsBySkuIdsV1WithHttpInfo(Integer retailerId, ValueResourceInputCpcMinBidsRequest valueResourceInputCpcMinBidsRequest) throws ApiException {
-        okhttp3.Call localVarCall = getCpcMinBidsBySkuIdsV1ValidateBeforeCall(retailerId, valueResourceInputCpcMinBidsRequest, null);
-        Type localVarReturnType = new TypeToken<ValueResourceOutcomeCpcMinBidsResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get overall and individual minimum bid amount for given retailer id and sku id list.
-     * @param retailerId Retailer Id. (required)
-     * @param valueResourceInputCpcMinBidsRequest Cpc minimum bid amount request object. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getCpcMinBidsBySkuIdsV1Async(Integer retailerId, ValueResourceInputCpcMinBidsRequest valueResourceInputCpcMinBidsRequest, final ApiCallback<ValueResourceOutcomeCpcMinBidsResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getCpcMinBidsBySkuIdsV1ValidateBeforeCall(retailerId, valueResourceInputCpcMinBidsRequest, _callback);
-        Type localVarReturnType = new TypeToken<ValueResourceOutcomeCpcMinBidsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

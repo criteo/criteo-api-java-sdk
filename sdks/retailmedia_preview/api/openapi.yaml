@@ -1644,67 +1644,6 @@ paths:
       - Accounts
       x-content-type: application/json-patch+json
       x-accepts: application/json
-  /preview/retail-media/accounts/sellers/search:
-    post:
-      description: Get the sellers mapped to provided accounts
-      operationId: SearchSellers
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfSellerSearch'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfSellerSearch'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfSellerSearch'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputOfSellerSearch'
-        description: ""
-        x-bodyName: searchDetails
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfSellerSearchResult'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfSellerSearchResult'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceCollectionOutcomeOfSellerSearchResult'
-          description: Success
-        "400":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-          description: Bad Request
-        "403":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/Outcome'
-          description: Forbidden
-      tags:
-      - Accounts
-      x-content-type: application/json-patch+json
-      x-accepts: application/json
   /preview/retail-media/auction-line-items/{lineItemId}:
     get:
       description: Gets a sponsored product line item by its id.
@@ -4167,54 +4106,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Outcome'
           description: Bad Request
-      tags:
-      - Campaign
-      x-content-type: application/json-patch+json
-      x-accepts: application/json
-  /preview/retail-media/retailers/{retailerId}/cpc-min-bids:
-    post:
-      description: Get overall and individual minimum bid amount for given retailer
-        id and sku id list.
-      operationId: GetCpcMinBidsBySkuIdsV1
-      parameters:
-      - description: Retailer Id.
-        explode: false
-        in: path
-        name: retailerId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputCpcMinBidsRequest'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputCpcMinBidsRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputCpcMinBidsRequest'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/ValueResourceInputCpcMinBidsRequest'
-        description: Cpc minimum bid amount request object.
-        x-bodyName: cpcMinBidsRequest
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ValueResourceOutcomeCpcMinBidsResponse'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceOutcomeCpcMinBidsResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ValueResourceOutcomeCpcMinBidsResponse'
-          description: Success
       tags:
       - Campaign
       x-content-type: application/json-patch+json
@@ -6923,47 +6814,6 @@ components:
           - validation
           nullable: true
           type: string
-      type: object
-    CpcMinBidsRequest:
-      additionalProperties: false
-      description: Cpc Min Bids request object.
-      example:
-        skuIds:
-        - skuIds
-        - skuIds
-      properties:
-        skuIds:
-          description: Sku id list for which minimum bid amounts are requested.
-          items:
-            type: string
-          type: array
-      required:
-      - skuIds
-      type: object
-    CpcMinBidsResponse:
-      additionalProperties: false
-      description: Cpc Min Bids response object.
-      example:
-        overallMinBid: 0.8008281904610115
-        skuMinBids:
-        - minBid: 6.027456183070403
-          skuId: skuId
-        - minBid: 6.027456183070403
-          skuId: skuId
-      nullable: true
-      properties:
-        overallMinBid:
-          description: Overall minimum bid amount for the given list of sku ids.
-          format: double
-          type: number
-        skuMinBids:
-          description: Minimum bid amounts for each of the given list of sku ids.
-          items:
-            $ref: '#/components/schemas/SkuMinBid'
-          type: array
-      required:
-      - overallMinBid
-      - skuMinBids
       type: object
     CpcRateCardPreview:
       description: Represents all minimum cpc rates for a retailer and category id
@@ -13952,28 +13802,6 @@ components:
       required:
       - keywords
       type: object
-    RetailMediaSeller:
-      additionalProperties: false
-      description: used to define the exact seller linked with an account
-      example:
-        sellerId: sellerId
-        name: name
-        retailerId: 0
-      properties:
-        name:
-          description: seller name
-          nullable: true
-          type: string
-        retailerId:
-          description: the retailer id
-          format: int32
-          nullable: true
-          type: integer
-        sellerId:
-          description: the seller id
-          nullable: true
-          type: string
-      type: object
     ReviewSetState:
       additionalProperties: false
       description: A Phrase-ReviewState pair describing an update to a keyword review
@@ -16928,58 +16756,6 @@ components:
           readOnly: true
           type: array
       type: object
-    SellerSearch:
-      additionalProperties: false
-      description: request body for the seller search endpoint
-      example:
-        accountIds:
-        - accountIds
-        - accountIds
-        - accountIds
-        - accountIds
-        - accountIds
-        includeDetails: false
-      properties:
-        accountIds:
-          description: list of accounts to return seller information for. max length
-            of 25
-          items:
-            type: string
-          maxItems: 25
-          type: array
-        includeDetails:
-          default: false
-          description: "whether to include additional fields beyond the sellerId and\
-            \ retailerId in the response.\r\nMay improve performance when set to false."
-          type: boolean
-      required:
-      - accountIds
-      type: object
-    SellerSearchResult:
-      additionalProperties: false
-      description: holds an AccountId and the mapped seller information for that account
-      example:
-        accountId: accountId
-        sellers:
-        - sellerId: sellerId
-          name: name
-          retailerId: 0
-        - sellerId: sellerId
-          name: name
-          retailerId: 0
-      nullable: true
-      properties:
-        accountId:
-          description: the id for the account
-          nullable: true
-          type: string
-        sellers:
-          description: the details for mapped sellers for the account
-          items:
-            $ref: '#/components/schemas/RetailMediaSeller'
-          nullable: true
-          type: array
-      type: object
     SetBidModel:
       additionalProperties: false
       description: A single keyword and associated bid override
@@ -17289,24 +17065,6 @@ components:
             $ref: '#/components/schemas/ProblemDetails'
           readOnly: true
           type: array
-      type: object
-    SkuMinBid:
-      additionalProperties: false
-      description: An object represents the minimum bid amount value of a sku.
-      example:
-        minBid: 6.027456183070403
-        skuId: skuId
-      properties:
-        minBid:
-          description: Minimum bid amount value.
-          format: double
-          type: number
-        skuId:
-          description: Sku id.
-          type: string
-      required:
-      - minBid
-      - skuId
       type: object
     SkuSearchRequestPreview:
       description: A request for sku by sellers or brands.
@@ -18995,91 +18753,6 @@ components:
           nullable: true
           type: string
       type: object
-    ValueResourceCollectionOutcomeOfSellerSearchResult:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        several value objects.
-      example:
-        data:
-        - attributes:
-            accountId: accountId
-            sellers:
-            - sellerId: sellerId
-              name: name
-              retailerId: 0
-            - sellerId: sellerId
-              name: name
-              retailerId: 0
-          type: type
-        - attributes:
-            accountId: accountId
-            sellers:
-            - sellerId: sellerId
-              name: name
-              retailerId: 0
-            - sellerId: sellerId
-              name: name
-              retailerId: 0
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ValueResourceOfSellerSearchResult'
-          nullable: true
-          type: array
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
     ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API response for
@@ -19171,44 +18844,6 @@ components:
           readOnly: true
           type: array
       type: object
-    ValueResourceCpcMinBidsRequest:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          skuIds:
-          - skuIds
-          - skuIds
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/CpcMinBidsRequest'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    ValueResourceCpcMinBidsResponse:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          overallMinBid: 0.8008281904610115
-          skuMinBids:
-          - minBid: 6.027456183070403
-            skuId: skuId
-          - minBid: 6.027456183070403
-            skuId: skuId
-        type: type
-      nullable: true
-      properties:
-        attributes:
-          $ref: '#/components/schemas/CpcMinBidsResponse'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
     ValueResourceInputAccountFeesSearchRequest:
       additionalProperties: false
       description: A top-level object that encapsulates a Criteo API request for a
@@ -19280,21 +18915,6 @@ components:
         data:
           $ref: '#/components/schemas/ValueResourceCategoriesSearchRequestV1'
       type: object
-    ValueResourceInputCpcMinBidsRequest:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
-      example:
-        data:
-          attributes:
-            skuIds:
-            - skuIds
-            - skuIds
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceCpcMinBidsRequest'
-      type: object
     ValueResourceInputOfBrandCatalogRequestV2:
       description: A top-level object that encapsulates a Criteo API request for a
         single value objects.
@@ -19337,25 +18957,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceOfSellerCatalogRequestV2'
-      type: object
-    ValueResourceInputOfSellerSearch:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API request for a
-        single value objects.
-      example:
-        data:
-          attributes:
-            accountIds:
-            - accountIds
-            - accountIds
-            - accountIds
-            - accountIds
-            - accountIds
-            includeDetails: false
-          type: type
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceOfSellerSearch'
       type: object
     ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel:
       additionalProperties: false
@@ -19506,49 +19107,6 @@ components:
           description: The Type of the resource.
           type: string
       type: object
-    ValueResourceOfSellerSearch:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          accountIds:
-          - accountIds
-          - accountIds
-          - accountIds
-          - accountIds
-          - accountIds
-          includeDetails: false
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/SellerSearch'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
-    ValueResourceOfSellerSearchResult:
-      additionalProperties: false
-      description: A value resource exposed by the API.
-      example:
-        attributes:
-          accountId: accountId
-          sellers:
-          - sellerId: sellerId
-            name: name
-            retailerId: 0
-          - sellerId: sellerId
-            name: name
-            retailerId: 0
-        type: type
-      properties:
-        attributes:
-          $ref: '#/components/schemas/SellerSearchResult'
-        type:
-          description: Type of the resource.
-          nullable: true
-          type: string
-      type: object
     ValueResourceOfSponsoredProductsLineItemUpdateRequestModel:
       additionalProperties: false
       description: A value resource exposed by the API.
@@ -19637,76 +19195,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ValueResourceAccountFeesUpdateResult'
-        errors:
-          description: Errors that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-        warnings:
-          description: Warnings that occured during this call.
-          items:
-            $ref: '#/components/schemas/SdkApiRestCommonProblem'
-          nullable: true
-          readOnly: true
-          type: array
-      type: object
-    ValueResourceOutcomeCpcMinBidsResponse:
-      additionalProperties: false
-      description: A top-level object that encapsulates a Criteo API response for
-        a single value object.
-      example:
-        data:
-          attributes:
-            overallMinBid: 0.8008281904610115
-            skuMinBids:
-            - minBid: 6.027456183070403
-              skuId: skuId
-            - minBid: 6.027456183070403
-              skuId: skuId
-          type: type
-        warnings:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        errors:
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-        - traceId: traceId
-          code: code
-          instance: instance
-          detail: detail
-          source:
-            key: source
-          stackTrace: stackTrace
-          title: title
-          type: unknown
-      properties:
-        data:
-          $ref: '#/components/schemas/ValueResourceCpcMinBidsResponse'
         errors:
           description: Errors that occured during this call.
           items:

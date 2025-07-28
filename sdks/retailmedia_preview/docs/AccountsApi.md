@@ -7,7 +7,6 @@ All URIs are relative to *https://api.criteo.com*. Please check the detailed ins
 | [**getApiExternalV1AccountPrivateMarketChildAccountsByAccountId**](AccountsApi.md#getApiExternalV1AccountPrivateMarketChildAccountsByAccountId) | **GET** /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts |  |
 | [**previewRetailMediaAccountsFeesSearchPost**](AccountsApi.md#previewRetailMediaAccountsFeesSearchPost) | **POST** /preview/retail-media/accounts/fees/search |  |
 | [**previewRetailMediaAccountsFeesUpdatePost**](AccountsApi.md#previewRetailMediaAccountsFeesUpdatePost) | **POST** /preview/retail-media/accounts/fees/update |  |
-| [**searchSellers**](AccountsApi.md#searchSellers) | **POST** /preview/retail-media/accounts/sellers/search |  |
 
 
 
@@ -270,97 +269,6 @@ public class Example {
 ### Return type
 
 [**ValueResourceOutcomeAccountFeesUpdateResult**](ValueResourceOutcomeAccountFeesUpdateResult.md)
-
-### Authorization
-
-[oauth](../README.md#oauth), [oauth](../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
-- **Accept**: text/plain, application/json, text/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-| **400** | Bad Request |  -  |
-| **403** | Forbidden |  -  |
-
-
-## searchSellers
-
-> ValueResourceCollectionOutcomeOfSellerSearchResult searchSellers(valueResourceInputOfSellerSearch)
-
-
-
-Get the sellers mapped to provided accounts
-
-### Example
-
-```java
-package com.criteo.api.retailmedia.preview;
-
-import com.criteo.api.retailmedia.preview.ApiClient;
-import com.criteo.api.retailmedia.preview.ApiClientBuilder;
-import com.criteo.api.retailmedia.preview.ApiException;
-import com.criteo.api.retailmedia.preview.Configuration;
-import com.criteo.api.retailmedia.preview.auth.*;
-import com.criteo.api.retailmedia.preview.model.*;
-import com.criteo.api.retailmedia.preview.api.AccountsApi;
-
-public class Example {
-    public static void main(String[] args) {
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        // Configure OAuth2, two options:
-        // 1. Use ApiClientBuilder to create the ApiClient with the credentials you want, refresh token mechanism IS handled for you 💚
-        String clientId = "YOUR CLIENT ID";
-        String clientSecret = "YOUR CLIENT SECRET";
-        ApiClient defaultClient = ApiClientBuilder.ForClientCredentials(clientId, clientSecret);
-        
-        // 2. Set your access token manually, refresh token mechanism IS NOT handled by the client
-        // ApiClient defaultClient = Configuration.getDefaultApiClient();
-        // OAuth oauth = (OAuth) defaultClient.getAuthentication("oauth");
-        // oauth.setAccessToken("YOUR ACCESS TOKEN");
-
-        AccountsApi apiInstance = new AccountsApi(defaultClient);
-        ValueResourceInputOfSellerSearch valueResourceInputOfSellerSearch = new ValueResourceInputOfSellerSearch(); // ValueResourceInputOfSellerSearch | 
-        try {
-            ValueResourceCollectionOutcomeOfSellerSearchResult result = apiInstance.searchSellers(valueResourceInputOfSellerSearch);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AccountsApi#searchSellers");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **valueResourceInputOfSellerSearch** | [**ValueResourceInputOfSellerSearch**](ValueResourceInputOfSellerSearch.md)|  | [optional] |
-
-### Return type
-
-[**ValueResourceCollectionOutcomeOfSellerSearchResult**](ValueResourceCollectionOutcomeOfSellerSearchResult.md)
 
 ### Authorization
 
